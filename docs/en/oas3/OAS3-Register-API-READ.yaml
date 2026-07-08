@@ -14,7 +14,7 @@ paths:
     get:
       tags:
         - Public Register
-      summary: Search or list registered WRPs
+      summary: Search or list registered Wallet-Relying Parties
       description: Returns a list of WRP depending on the query parameters (all WRPs are returned if no parameters are provided).
       operationId: listWrps
       parameters:
@@ -42,8 +42,8 @@ paths:
     get:
       tags:
         - Public Register
-      summary: Check whether an intended use is registered
-      description: A dedicated intended-use check endpoint for making narrowed-down intended use related queries
+      summary: Check if a specific intended use identifier, credential/claim type and/or privacy policy URL is registered for a Wallet-Relying Party's intended use.
+      description: This endpoint allows checking if a given Wallet Relying Party has declared an intended use with queried id, or for a specific credential format and claim path or privacy policy.
       operationId: checkIntendedUse
       parameters:
         - $ref: '#/components/parameters/rpidentifierQuery'
@@ -76,14 +76,14 @@ components:
     identifierQuery:
       name: identifier
       in: query
-      description: Filter by official or business registration identifier.
+      description: Filter by Wallet-Relying Party identifier.
       required: false
       schema:
         type: string
     legalnameQuery:
       name: legalname
       in: query
-      description: Filter by official company name.
+      description: Filter by legal name.
       required: false
       schema:
         type: string
@@ -97,7 +97,7 @@ components:
     policyQuery:
       name: policy
       in: query
-      description: Filter by privacy policy URL or policy URI as profiled.
+      description: Filter by policy URI or type.
       required: false
       schema:
         type: string
@@ -105,7 +105,7 @@ components:
     entitlementQuery:
       name: entitlement
       in: query
-      description: Filter by entitlement type URI.
+      description: Filter by entitlement.
       required: false
       schema:
         type: string
@@ -127,35 +127,35 @@ components:
     intendeduseidentifierQuery:
       name: intendeduseidentifier
       in: query
-      description: Filter by registrar-provided intended-use identifier.
+      description: The Registry-level unique identifier of the intended use.
       required: false
       schema:
         type: string
     claimpathQuery:
       name: claimpath
       in: query
-      description: Filter by intended-use requested claim path using a profile-defined serialized representation.
+      description: The path of the claim within the credential to check (e.g., 'IBAN')
       required: false
       schema:
         type: string
     credentialmetaQuery:
       name: credentialmeta
       in: query
-      description: Filter by credential metadata using a profile-defined serialization.
+      description: Filter by the contents of 'meta' attribute of a Credential (e.g., 'BankAccount').
       required: false
       schema:
         type: string
     credentialformatQuery:
       name: credentialformat
       in: query
-      description: Filter by credential format.
+      description: The format of the credential to check (e.g., 'dc+sd-jwt', 'mso_mdoc').
       required: false
       schema:
         type: string
     cursorQuery:
       name: cursor
       in: query
-      description: Cursor for pagination.
+      description: The cursor for the next page of results.
       required: false
       schema:
         type: string
@@ -191,7 +191,7 @@ components:
     policyurlQuery:
       name: policyurl
       in: query
-      description: Privacy policy URL to check for the identified WRP.
+      description: Used when checking if the privacy policy URL is registered for the identified Wallet Relying Party.
       required: false
       schema:
         type: string
@@ -199,12 +199,7 @@ components:
   responses:
     JwsWrpArrayResponse:
       description: >-
-        application/jwt JWS compact serialization. The decoded (signed) payload is an
-        array of WalletRelyingParty objects matching the query, with postalAddress
-        excluded from each published entry and, where relevant, the associated
-        WRPAC/WRPRC history per the Member State profile. This common API uses the
-        strict Annex VI array form; the optional SignedWRPArrayEnvelope from the
-        registry specification is a national/profile extension, out of scope of this baseline.
+       JWS-signed list of matching Wallet Relying Party objects
       headers:
         X-Next-Cursor:
           description: Cursor to pass as the cursor query parameter on the next GET /wrp request. Absent on the last page.
@@ -215,7 +210,6 @@ components:
           schema:
             type: string
             description: JWS compact serialization string.
-          example: eyJhbGciOiJFUzI1NiIsImtpZCI6InJlZ2lzdHJhci0xIn0.eyJ3cnAiOlt7Li4ufV19.c2lnbmF0dXJl
     JwsBooleanResponse:
       description: JWS compact string containing a signed boolean payload.
       content:

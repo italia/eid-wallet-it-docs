@@ -6,16 +6,16 @@ EUDIW Trust Artifacts
 
 This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as per `EIDAS-ARF`_, including:
 
-- :ref:`trust-artifact-eudiw:Register of WRPs`, 
+- :ref:`trust-artifact-eudiw:Register of WRPs`; 
 - :ref:`trust-artifact-eudiw:X509 Certificate Profiles`, containing the following specialized profiles:
 
-  - :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`, 
-  - :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`, and 
-  - :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`.
+  - :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`; 
+  - :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`;
+  - :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`;
 
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`,
-- :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`, and 
-- :ref:`trust-artifact-eudiw:Embedded Disclosure Policy Data Model`.
+- :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
+- :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
+- :ref:`trust-artifact-eudiw:Embedded Disclosure Policy (EDP)`.
 
 Register of WRPs
 ^^^^^^^^^^^^^^^^
@@ -48,35 +48,16 @@ This section documents a `TS05`_ aligned common Register API profile that satisf
 
 The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements, 
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
-
-.. warning::
-    DA CAPIRE - controllare: 
-
-    1. he name of some query parameters differ from [TS05] and the corresponding YAML file ts5-openapi31-registrar-api.yml containing the OpenAPI specification of the JSON and REST based application programming interfaces (e.g., intendedusecredentialmeta vs credentialmeta). This profile follows the OpenAPI specification.
-    In addition, this specification adds providesattestation to cover the [CIR 2025/848-Amendment] requirement for filtering parameter: type of attestations provided, returning the complete data set of each of the registered wallet-relying parties matching the value provided for this parameter.
-
-    2. where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State. come? 
-
-    3. `postalAddress`  è corretto che non venga pubblicato nel register? alto?
-
-    4. OpenAPI FILTRI: (1) nomi filtri da usare, Annex VI definisce endpoint e il fatto che ci siano dei filtri, i nomi li abbiamo presi da OpenAPI + (2) bastano openAPI o vogliamo le tabelle con i filtri nome filtri?
-
-    5. oltre ai 2 endpoint obbligatori, ci sarebbe anche GET /wrp/{identifier} — get by identifier (OPTIONAL) - lo vogliamo implementare in IT Wallet?
-
-
-- **GET /wrp — search/list**: Get a list of WRPs with optional filtering (defined in Annex VI of `CIR2025/848-Amendment`_) and pagination.
+  
+- **GET /wrp**: Get a list of WRPs with optional filtering (defined in Annex VI of `CIR2025/848-Amendment`_) and pagination.
   A successful response (``200``) MUST be a JWS-signed response body. The decoded payload MUST contain an array of ``WalletRelyingParty`` objects matching the query, and, where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State. The list of all registered WRPs is returned when no query parameters are provided.
-- **GET /wrp/check-intended-use — intended use check**: A dedicated intended-use check endpoint for making narrowed-down intended use related queries from the Register. A successful response (``200``) MUST provide a JWS-signed boolean ``true`` or ``false`` response, determined by the queried parameter in the Registrar's Intended use information for the specific WRP. 
+- **GET /wrp/check-intended-use**: A dedicated intended-use check endpoint for making narrowed-down intended use related queries from the Register. A successful response (``200``) MUST provide a JWS-signed boolean ``true`` or ``false`` response, determined by the queried parameter in the Registrar's Intended use information for the specific WRP. 
   If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code ``400`` and ``401``, respectively.
 
 .. note::
     The published API view excludes only `postalAddress` (`CIR2025/848-Amendment`_, Annex I, point 4). All other fields, including intended-use credential claims, are published as registered.
 
-Below is the Open API Specification for the common API read methods of the Register:
-
-.. literalinclude:: ./oas3/OAS3-Register-API-READ.yaml
-    :language: yaml
-    :linenos:
+The base OpenAPI Specification is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
 
 X509 Certificate Profiles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,17 +65,12 @@ X509 Certificate Profiles
 This section lists all the parameters and extensions that are required for an X509 certificate profile needed for EUDIW interoperability. This profile is general and is further specialized in the following cases:
 
 - :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`;
-- :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`.
+- :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`;
+- :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`.
 
 The final binary certificate structure is constructed by combining the seven core parameters (from ``version`` through ``subjectPublicKeyInfo``) with the specific extensions mandated by the selected profile, and is subsequently encoded using the ASN.1 Distinguished Encoding Rules (DER) as described in :rfc:`5280`.
 
 The table below lists the Certificate Profile Parameters for generic, EUDIW-compliant X509 certificates.
-
-.. warning::
-    TODO:
-
-    3. aggiornare conseguentemente l'esempio
 
 .. list-table:: Certificate Profile Parameters
    :class: longtable
@@ -339,14 +315,6 @@ Below there is a list of the mandatory extensions and their content, if applicab
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-.. warning::
-    TODO:
-
-    2. decidere estensioni supportate per WRPAC (dipende da scelta meccanismi di revoca + certificatePolicies) 
-
-    3. aggiornare conseguentemente l'esempio
-
-    4. WRPAC sono solo di durata lunga? 
 
 This section describes the purpose, format and content of Wallet-Relying Party Access Certificates (WRPACs).
 
@@ -398,7 +366,7 @@ The following is an example of a WRPAC for legal persons following the NCP.
   :language: text
 
 Entity Sign/Seal Certificate Profile
-""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 
 This section specifies :ref:`trust-artifact-eudiw:X509 Certificate Profiles` by describing the purpose, format and content of Entity Sign/Seal Certificate which are used for signing and sealing various Attestations. These profiles are specified in `ETSI_TS_119_412_6`.
 
@@ -421,9 +389,6 @@ Clause 4 in ETSI TS 119 412-6, further specifies PID Providers X509 certificates
   - ``subjectKeyIdentifier`` For end entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in :rfc:`5280`, clause 4.2.1.2.
   - ``authorityInfoAccess`` MUST be present.
   - the (esi4-qcStatement-6) ``qcStatements`` extension with the OID ``1.3.6.1.5.5.7.1.3`` MUST be present with ``QcType`` valued as ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``) as defined in Annex A of [`ETSI_TS_119_412_6`_].
-
-.. warning::
-  the oid ``1.3.6.1.5.5.7.1.3`` might not be the right one for esti uses ``1.3.6.1.5.5.7.0.35``. the latter is however a module oid and not an extension oid. Need to clarify with ETSI.
 
 The following is a non-normative example of a PID Provider's end-entity certificate for legal persons (non-self-signed).
 
@@ -521,9 +486,6 @@ The following is a non-normative example of a PuB-EAA Provider's end-entity cert
 
 Registrar Sign/Seal Certificate
 ................................
-
-.. warning:: 
-  The registrar is one per MS, it could be ideal to reference the sign/seal certificate directly on the LoTE, instead of a sub-CA.
   
 CIR 2025/848, further specifies the Registrar Sign/Seal Certificate parameters as follows:
 
@@ -538,49 +500,9 @@ CIR 2025/848, further specifies the Registrar Sign/Seal Certificate parameters a
     
   - the ``certificatePolicies`` extension MUST be present with the ``policyInformation`` field containing the *NCP* ``policyIdentifier`` (OID ``0.4.0.2042.1.1``).
 
-Wallet-Relying Party Registration Certificate (WRPRC) Profile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI_TS_119_475`_. This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
-- core identification attributes (clause 5.1 `ETSI_TS_119_475`_), 
-- service description attributes (clause 5.2.4 `ETSI_TS_119_475`_), 
-- entitlement attributes (see Annex A.2 `ETSI_TS_119_475`_), 
-- supervisory authority attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Relying Party attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Credential Issuer attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Intermediaty attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI_TS_119_475`_).
-
-The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI_TS_119_475`_.
-
-The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular,
-- The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI_TS_119_182_1`
-- The CWT MUST be signed with an Advanced Electronic Signature following structure as defined in :rfc:`9052` and :rfc:`9360`.
-
-Below are represented many non-normative examples of WRPRCs' headers and payloads. 
-
-.. literalinclude:: ../../examples/wrprc-jwt-header.json
-  :language: json
-
-.. literalinclude:: ../../examples/wrprc-cwt-header.txt
-  :language: text
-
-.. literalinclude:: ../../examples/wrprc-payload-ci.json
-  :language: json
-
-.. literalinclude:: ../../examples/wrprc-payload-rpi.json
-  :language: json
-
-.. warning::
-
-    `ETSI_TS_119_475`, Table 10 defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
 
 Trust Anchor Certificate Profile
 """"""""""""""""""""""""""""""""
-
-.. warning:: 
-  aggiungere schema dei trust anchors
-
-  non hanno delle certificate policies? tipo NCP o simili? sembra logico di si' a maggior ragione se sono emessi da un CA che emette anche WRPAC o Entity Sign/Seal Certificates che hanno questi requisiti.
 
 This section specifies an **X.509 certificate profile** for **Trust Anchors** used in the European Digital Identity Wallet (EUDIW) ecosystem. These certificates MUST be notified to the European Commission as described in `CIR2025/2980`_ and subsequently included in the appropriate LoTE.
 
@@ -693,6 +615,42 @@ The following is a non-normative example of a trust anchor certificate in a pseu
 .. literalinclude:: ../../examples/trust-anchor-cert.txt
   :language: text
 
+Wallet-Relying Party Registration Certificate (WRPRC) Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI_TS_119_475`_. This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
+- core identification attributes (clause 5.1 `ETSI_TS_119_475`_), 
+- service description attributes (clause 5.2.4 `ETSI_TS_119_475`_), 
+- entitlement attributes (see Annex A.2 `ETSI_TS_119_475`_), 
+- supervisory authority attributes (clause 5.2.4 `ETSI_TS_119_475`_),
+- Relying Party attributes (clause 5.2.4 `ETSI_TS_119_475`_),
+- Credential Issuer attributes (clause 5.2.4 `ETSI_TS_119_475`_),
+- Intermediaty attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI_TS_119_475`_).
+
+The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI_TS_119_475`_.
+
+The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular,
+- The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI_TS_119_182_1`
+- The CWT MUST be signed with an Advanced Electronic Signature following structure as defined in :rfc:`9052` and :rfc:`9360`.
+
+Below are represented many non-normative examples of WRPRCs' headers and payloads. 
+
+.. literalinclude:: ../../examples/wrprc-jwt-header.json
+  :language: json
+
+.. literalinclude:: ../../examples/wrprc-cwt-header.txt
+  :language: text
+
+.. literalinclude:: ../../examples/wrprc-payload-ci.json
+  :language: json
+
+.. literalinclude:: ../../examples/wrprc-payload-rpi.json
+  :language: json
+
+.. warning::
+
+    `ETSI_TS_119_475`, Table 10 defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
+
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
@@ -803,15 +761,7 @@ Attestation Providers (i.e., all Credential Issuers except the PID Provider) can
 
 EDPs are applicable to QEAAs, PuB-EAAs, and EAAs. They MUST NOT be applicable to PIDs.
 
-.. warning::
-
-  can we make this normative? "They are not applicable to PIDs as the EUDI Wallet Regulation does not provide any requirement for PID to contain an EDP."
-
 The EDP is distributed through the Credential Issuer Metadata at issuance time. The Attestation Provider MUST include the EDP (if any) by value in the Credential Issuer Metadata, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`. If availble, the Wallet Unit MUST store the EDP locally and associate it with the specific Attestation for which it was retrieved. The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the presentation protocol as per `ETSI TS 119 472-3`_, Section 4.2.5.1.
-
-!!! warning
-
-    According to ISS-MDATA-EBD-4.2.5.2-03, the Attestation Provider may provide only the `policy_uri` if the policy data set has already been pre-loaded into the Wallet Unit. As the mechanism for pre-loading policies into a Wallet Unit is not specified in the current normative references, this option MUST be considered out-of-scope of this specification, at least until further implementation details are provided by ETSI.?????
 
 Embedded Disclosure Policies are used to:
 

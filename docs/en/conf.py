@@ -70,6 +70,12 @@ redoc = [
         'page': 'OAS3-PDND-WP',
         'spec': './oas3/OAS3-PDND-WP.yaml',
         'embed': True,
+    },
+    {
+        'name': 'OAS3-Register-API-READ',
+        'page': 'OAS3-Register-API-READ',
+        'spec': './oas3/OAS3-Register-API-READ.yaml',
+        'embed': True,
     }
 ]
 

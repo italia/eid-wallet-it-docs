@@ -4,16 +4,26 @@
 OID FED Trust Artifacts
 -----------------------
 
-This section defines the required trust artifacts and their conceptual roles in OpenID Federation 1.0 as for `OID-FED`_,  including :ref:`infrastructure-trust:Federation API Endpoints`, :ref:`infrastructure-trust:Entity Configuration`  and :ref:`infrastructure-trust:Subordinate Statements`, and :ref:`infrastructure-trust:Trust Marks`.
+This section defines the required trust artifacts and their conceptual roles in OpenID Federation 1.0 as for `OID-FED`_,  including 
 
-.. warning::
+- :ref:`infrastructure-trust:Federation API Endpoints`;
+- :ref:`infrastructure-trust:Entity Configuration`;
+- :ref:`infrastructure-trust:Subordinate Statements`;
+- :ref:`infrastructure-trust:Trust Marks`.
 
-    TODO: chiarire relazione ruoli Wallet Providers, WRPs, Trust Anchors and Federation Intermediaries.. con Federation Entity 
-    e dettagliare quali entità invece non lo sono (es Authentic Source, Schema Provider...)
-    + capire se introdurre nome diverso per Trust Anchor e Federation Intermediaries -> Federation Authorities / Registration Body? VS  Leaves
-    + come rientrano Trust Mark issuer
-    + mettere nota che chiarisce cosa sono Federation intermediaries vs RP Intermediaries
-    + decidere nome Federation Intermediates?
+Before entering into the details, Figure :ref:`fig_OID-FED_roles` maps each wallet ecosystem entity onto the corresponding OpenID Federation role the entity plays: WRPs and Wallet Providers are Federation Entities that MUST be registered by a Federation Authority (a Trust Anchor or an Intermediate). The registration process establishes the participant's position in the trust hierarchy (as Leaf Entities, i.e entities with no Subordinate Entities)  and enables them to participate in credential operations as they proved their eligibility and received authorization to perform their designated functions. 
+
+In the IT Wallet ecosystem, both Trust Anchor and Intermediates play the role of Trust Mark Issuer.
+
+.. _fig_OID-FED_roles:
+.. plantuml:: plantuml/oid-fed-roles.puml
+    :width: 70%
+    :alt: The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves.
+    :caption: `OID-FED Roles <https://www.plantuml.com/plantuml/svg/ROv1IyD044Rl-ol6UWvIBUf1IaDgGF1GHF0eq-maBjtCXjdPXYB-TsiY9HLlE-pxU6yL5KLJwys5uyedI_1GBAwAnNiHMD4noTAOk7FSeM0BMwnsZOJ4jWW-2AWWnmw5M2TKBXBw4TZwuy8O8rGfSkC9PYLP4bGN6FAa7q6SEeepm0WrdhHmMT-KT-ivV1g0oVfLKbJ8kJeEXuqYd1DFh2GjMOTA0-5Ovs2-pYAU2VU_KazOnudtyRwyNj_-zRwXzwImaR1tbaPrty5_KFP2_k2uWGsA7aPIkg70_3oor6NBeMfoAfgXytJran-p8hQfzTy0>`_
+
+.. note:: 
+  Wallet Instances are not Federation Entities as they are End-User's personal devices authenticated by their Wallet Provider. 
+
 
 Federation API Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,9 +46,6 @@ Wallet Providers, WRPs, Trust Anchors and Federation Intermediaries MUST make pu
      - Metadata that an Entity publishes about itself, verifiable with a trusted third party (Superior Entity). It's called Entity Configuration.
  
 Only Trust Anchors and Federation Intermediaries MUST additionally make publicly available the following endpoints.
-
-.. warning::
-    6.14.4. Federation Subordinate Events Endpoint da capire dove e se inserire questi dettagli / veniva fatto rimando in subordinate events: See the section Federation Subordinate Events Endpoint for more details.
 
 .. list-table::
    :class: longtable
@@ -86,9 +93,6 @@ The Entity Configuration MUST be cryptographically signed. The public part of th
 The Entity Configuration MAY also contain one or more Trust Marks.
 
 **Role in Onboarding**: New entities publish their Entity Configuration as part of their registration process, declaring their capabilities, supported protocols, and compliance status to the federation. The configuration serves as the entity's initial declaration of its technical readiness and operational scope, enabling other participants to discover and validate its registration status.
-
-.. warning::
-    lascierei questo dettaglio anche qui, va poi ripreso in on-boarding per tutte le entità (anche EUDIW) in quanto meccanismo utilizzato per condividere WRP data e configurazioni
 
 **Role in Operations**: During Credential operations, Entity Configurations are retrieved by Wallets, Credential Issuers, and Relying Parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure Credential exchange.
 
@@ -196,9 +200,6 @@ In this section are defined the main Entity Type Identifiers mapped to the roles
      - ``federation_entity``, ``openid_credential_verifier``
      - `OID-FED`_, `OpenID4VP`_
 
-.. warning::
-    TO CHEKC: ho cambiato modificato questa tabella. Rimosso OpenID Entity / EUDI Entity e introdotto Relying Party Intermediary
-
 .. note::
   In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server, it MUST incorporate both ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
   Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
@@ -244,13 +245,6 @@ Trust Anchors and Federation Intermediates MUST expose the Federation Fetch endp
   The Federation Fetch endpoint MAY also publish X.509 Certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 Certificates via a RESTful service.
 
 **Role in Onboarding**: During entity registration, Trust Anchors and Federation Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.
-
-.. warning::
-   TO CHECK: 
-   
-   1. questo avviene solo se entity ha scelto national boundary, giusto? se solo EUDIW non serve. Se cosi' specificarlo qui e dopo nella procedura di onboarding
-
-   2. constraints e required? se sì allora va messo nell'esempio
 
 **Role in Operations**: During Credential operations, Subordinate Statements are retrieved to validate Trust Chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
 
@@ -382,14 +376,6 @@ Trust Marks in Entity Configuration MUST be represented as JSON objects containi
      - REQUIRED. A signed JSON Web Token representing the Trust Mark issued by the Federation Authority.
 
 The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the following claims:
-
-.. warning::
-    DA CAPIRE 
-    
-    1. se allinearlo con campi di WRPRC
-
-    2. nell'esempio ci sono anche claim "authorized_claims", "authorized_credential_types", "scope_restrictions" che nono sono descritte in tabella
-
 
 .. list-table:: Trust Mark JWT Claims
    :class: longtable
