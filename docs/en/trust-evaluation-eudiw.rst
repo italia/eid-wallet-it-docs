@@ -1,5 +1,8 @@
+Trust Evaluation in the EUDIW Trust Framework
+------------------------------------------------
+
 Trust Anchor Validation Process
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party (the validating Entity) uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted Lists in order to:
 
@@ -53,12 +56,11 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
      Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
 
 List of Trusted Entities Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 
 This section defines the validation of the EU-level List of Trusted Entities (List of Trusted Entities). The List of Trusted Entities is a digitally signed/sealed artifact (JWT format) containing metadata and public keys for entities operating at the EU level.
 
-List of Trusted Entities Validation Algorithm
-""""""""""""""""""""""""""""""""""""""""""""""
+**List of Trusted Entities Validation Algorithm**
 
 The validating Entity MUST initializes the following variables as described in [`ETSI_TS_119_615`_].
 
@@ -181,7 +183,7 @@ Below are listed the Sub-Status error codes of the List of Trusted Entities in t
      - The current date and time are greater than the ``NextUpdate`` value specified in the Trusted List, indicating the list is expired or out of date.
 
 Trusted List Validation
-^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 
 This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
 
@@ -190,7 +192,7 @@ This section defines the validation of Trusted List. In order to validate the Tr
 3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSITS119615`_].
 
 Authentication Process
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The **Authentication Process** enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party's X.509 certificate chain, starting from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and verifying the Wallet-Relying Party's possession of the corresponding private key.
 
@@ -237,7 +239,7 @@ The Wallet Unit's Authentication output MUST be based only on information derive
 The Wallet Unit MUST output a decision from the Authentication process: the Wallet-Relying Party can either be ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. In the first case, the Wallet Unit SHOULD proceed in the interaction flow with the Wallet-Relying Party; in the second, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction flow as the entity is not trustworthy.
 
 Wallet-Relying Party Access Certificate Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm` as follows:
 
@@ -250,7 +252,7 @@ The Entity performing Wallet-Relying Party Access Certificate validation initial
 - The ``trust_anchor`` MUST be the key and subject identifier of a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities. This certificate MUST either be exactly $C_1$ or contain the public key used to sign $C_1$.
 
 EUDIW Authorization Process
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section specifies the EUDIW Authorization Process that a Wallet Unit MUST execute to determine whether an interaction with a Wallet-Relying Party is allowed within the EUDI Wallet ecosystem. A Wallet Unit compliant with this specification MUST implement all the authorization-processing rules defined in this section. The EUDIW Authorization Process MUST start only *after* the Wallet Unit has been successfully authenticated the WRP according to :ref:`trust-evaluation-eudiw:Authentication Process`. If the WRP has not been authenticated (i.e. the :ref:`trust-evaluation-eudiw:Authentication Process` has failed), the EUDIW Authorization Process MUST NOT start as the other entity is deemed untrustworthy.
 
@@ -272,7 +274,7 @@ Within the *Authorization Validation*, the Wallet Unit MUST distinguish between 
 The Wallet Unit MUST support authorization-context resolution from both a Wallet-Relying Party Registration Certificate (where available) and the Register (where a Wallet-Relying Party Registration Certificate is not available or cannot be relied upon). The substantive authorization logic MUST NOT change based on the data source. Where both sources are available, the Wallet Unit MUST normalize both into the same internal authorization model before applying rules.
 
 Authorization Artifacts Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 This section defines the validation procedures for the Authorization Artifacts that are exchanged in the various flows. The Artifacts that carry the Authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information albeit in different formats. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure is self-contained: it specifies its inputs, its processing logic, and its output (a verification result code). The Authorization Artifacts Validation result MAY be overridden by the User under the conditions detailed in the :ref:`trust-evaluation-eudiw:Override Rules` section.
 
@@ -298,8 +300,7 @@ In case the Wallet-Relying Party Registration Certificate is not available, or i
 
 The response provides the same authorization-relevant data as a Wallet-Relying Party Registration Certificate. Each Registrar provides an online service available through an API interface, obtained as described in the :ref:`trust-artifact-eudiw:Common Register Open APIs` section. When using this service, the Wallet Unit SHOULD inform the User that an external query will be made.
 
-Wallet Relying Party Registration Certificate Validation 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+**Wallet Relying Party Registration Certificate Validation** 
 
 When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:
 
@@ -326,8 +327,7 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
  - If all of the above steps succeeds and the Wallet-Relying Party Registration Certificates is in ``VALID`` state, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_VALID``.
  - If any step fails, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_INVALID``. This is not a final authorization decision; it triggers the :ref:`trust-evaluation-eudiw:Register Query Validation` as fallback.
 
-Register Query Validation
-""""""""""""""""""""""""""""
+**Register Query Validation**
 
 When the Wallet-Relying Party Registration Certificate is not available or validation has failed, the Wallet Unit MUST attempt to contact the Register APIs:
 
@@ -366,7 +366,7 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
 **Three-tier fallback (issuance only)**: self-declared data from ``registrar_dataset`` (advisory only, MUST NOT be presented as verified).
 
 Authorization Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 
 The Wallet Unit's Authorization Validation procedure MUST follow the Authorization Artifacts Validation when ``authz_art_state == REGISTER_VALID`` or ``authz_art_state == CERTIFICATE_VALID``. If ``authz_art_state == FAILED``, the Wallet Unit SHOULD NOT execute any Authorization Validation procedure as it cannot change the final Authorization Decision outcome.
 
@@ -394,8 +394,7 @@ A request-carried Registrar URL MUST NOT be treated as sufficient proof of regis
 
 The Wallet Unit MUST output the variables ``authz_val_state`` and ``edp_state`` to indicate the final state of the Authorization Validation procedure. The initialization values of ``authz_val_state`` and ``edp_state`` MUST be ``none``.
 
-Authorization Validation Procedure
-""""""""""""""""""""""""""""""""""""
+**Authorization Validation Procedure**
 
 To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit MUST perform the following steps:
 
@@ -467,7 +466,7 @@ If the Binding verification succeedes, the Wallet Unit MUST display to the User 
 
 If all of the above checks (when required) are satisfied, the Wallet Unit MUST set the ``authz_val_state`` to ``VERIFICATION_PASSED``.
 
-.. warning ::
+.. warning::
 
     1. The code names may be changed a bit...
 
@@ -513,7 +512,7 @@ The diagram below illustrates the various steps of the Authorization Process and
 The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is elaborated on input the values of the ``edp_state`, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
 X509 Certificate Chain Validation Algorithm
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section defines the algorithm of the certification path validation as in :rfc:`5280` and :rfc:`6960`. The Entity performing validation MUST initialize the algorithm with:
 
@@ -597,7 +596,7 @@ The following figure illustrates the flowchart of the X509 Certificate Chain Val
     :caption: `Flowchart of the X509 Certificate Chain Validation Algorithm. <https://www.plantuml.com/plantuml/png/ZLLXRzis4FtENt50WSr57Izkbcsruwo9cc06Z3IeutR3EWYqTB8FbaY2fDAultwaw3Xi90FvabZKlRjxZ-zExutbsjPLoSo6XEAQLt17jiHhAMmYIwdXrV7mzFTtooZW8hDqJtPxoRFDIijQvBj871Qd1NP5IfsZxiuN5PpJTuJXRunPVm9_3qwFtq62sb916RS8jzokuJClAUUMf81RBJCqXh661cEZgL2rDIEMHI3bGHFuDnds1uD1Fn7_zPdLjR4f5zbQwZwmhDOQXKqjLJXsQUOM5Gn7C1LaoPNxtfHZ-qS4OttgUww9Bqjq5UzzLwcI9MNRr6f4bnOVb7iakpkUY3V3FYEnfYNvujlu7DWEMt6bIAnsXz-athYdLDLBzpRTuBRVSPOsGg95RI8C6LEZJeLxuquh_f1wAT8InSgk9sBWYQA5Kae5979y078w3Pq0tzPK8lIc1WZE9Y3-V0raeFSFcjSC062q4_w7oqbetBmC4Os4RmTEn4jkA7DIMbnfvmNu2IvTDTSW96lCDgQ9FuBFgAdOWg6LuBRM2BNnCMso8Jw0eP7TPrKEBdFWAqx2M8Xlz0U0ndkP1VSOwmezAnyq0wyPLDncQpJGeMV4b0he1Og1ZZEfCKumkqOHIHQBydO4jyrbxmpiYUw3Zc1QWD9eKDW-g9tGaQ4RAA6940kLknU_A5qBX9OJOSaDvY25lw8zgjNLoRwhkJTtK8I2LllW828LyCpRS0x7yF5JHt4o8AI5cyLirYeUrEkeYdc7WZ4snWUREfT-5TvbkiAS6aDUGERRFP0fPd_YZHfKX2_XkaC_hVX7iRjS0OMM5IHq6DHsCpoDxYDytC8VxDevAP72MCr9s9q1My5xSo-zJP_Y3MGNaxjFYwl32DVWml0L-Xz-rkUq4h0aUnZnRCruN_GXnqnZXS929_GlBl8oBEePYeWGxIVX1PfuApnX3yvXjvAH-nDPUnUPpl0FZqnQ0-0uG2UalV212gzBcnEM1g5t8m-q6dtvhY-ciwiFuxEpLqMHPSkJy_DEYB5IjQk8d0hMLHTwkxtPB7OW0ubutMxcPmYY-G2p8QKmXq9gi5olqCQxYdNNxRp3qLJiNGAZvbj4y0Q6upQahTNBDUhM9lJMollod56-aClz3P_H9XSBFljr05yqLqUrOjFs3ctDoc3CcBVrDGbUUk-H8Ib6Ri-P0mlug-ZSm3SVxveDt9w7cDnyaIHNy_drOkO9vXdcsH-1O20NIVCYMG8goC7Uk_zrLVuF>`_
 
 X509 Certificate Chain Status Checking
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 
 .. warning::
     
@@ -611,8 +610,7 @@ The Entity performing validation MUST determine the revocation status for every 
 
 For details regarding the formats and parameters of Certificate Revocation List and Online Certificate Status Protocol responses, see :ref:`infrascructure-trust:Revocation Mechanisms`.
 
-Status Checking via Certificate Revocation List
-""""""""""""""""""""""""""""""""""""""""""""""""
+**Status Checking via Certificate Revocation List**
 
 When using a Certificate Revocation List, the Entity performing validation MUST:
 
@@ -642,8 +640,7 @@ The following figure illustrates the flowchart of the CRL Status Validation Algo
     :alt: The figure illustrates the Flowchart of the CRL Validation Algorithm.
     :caption: `Flowchart of the CRL Status Validation Algorithm. <https://www.plantuml.com/plantuml/png/pPNHJzj84CRV_LUCX7G7JmSvq87XA24GAI9DguHGLOfKrjvniegpQ-sC0_dlQ-_6Q4FI5bKyzCdAUkQRx_TvjBaY5fRBHHxHNEb2MB60TifggNXrBTBvr9fIoux9ZOKzFCfECjnLQQn4kwuwF3hvxom9gZf6IyNAw2t1BClEqkETfQ5YbgI7BHcKtIlEiMiqRuwCk3w7ph0F3o9NKjHAyDcQ58cYoA56aSK21KS0AeFz4MC1Ht6bkAWQPvZE9xf7a9RMekPlN1ydo4-8Ug9vfcXSLB88GalG-Cp-vuS3u1bgsF-AT10102GMnJm2m9mGzWV6dyPjPbmK36p08bk5IuJIISZQzda4u7rvNHYkY-Js182_eMzCGP1KiTQAdYL0SNMX0-UXWvPLfj9QdrXmIJ6KUgxDKuKuH456nox3s-T2MPJ_ZBLO2fMB9CVpYukzRglREkrUNgxrY4tX1scfigXv-fJXQQRoQlozBV4WYc9diHN30rgLhQ17LA8zZshY6uFanlf3M0XEPnCTklLlcYWyqswUyU1kyEdBu8Md4VseoEbkSdW67vJBro4qTlzziNkZYArAIhzMHcbkhEzuHPxWjznkgxtLkTyUz_NXMf1AEqPNMg8sr3W9B4pqJ10yTjh_tm_7juzrlrVe-MzXTBwg5BZgfqwxRYHN-OeAu9t9jdOh80nMpH-7WoLceioP9fgDu-gs-wDVW8q9xH-7vfyRYtWSmqXDTJNU8lm5TxY2COaf-YLSttZey5xg6fYUNjRltxw2wuPDjHyltqEZxZBEQdFE6nGM2JN7_beTzcijI1G38Mz5_NxMrkR2U7U7UXB349SczVyLVMFcPU43hVo6TaPebSXXK2uIj1EjDDYgRuuoAABDQtetKDDNEywoLChMwp1_SbLCZN6DCaMPdWQDdkcgUfQB_3i0>`_
 
-Status Checking via OCSP
-""""""""""""""""""""""""""""
+**Status Checking via OCSP**
 
 When using OCSP, the Entity performing validation MUST:
 
