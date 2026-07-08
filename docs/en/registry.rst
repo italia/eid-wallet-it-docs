@@ -4,15 +4,6 @@
 Registry Infrastructure
 =======================
 
-.. warning::
-    
-    TOLTE parti relative a Federation Registry
-
-    DA CAPIRE 
-      1. perdiamo discovery degli endpoint per federation registry (possiamo assumerli noti (essendo quelli di OID FED) sapendo dominio TA?), similmente come fare discovery del WRP Registry (per RPRC_19a A Relying Party Instance SHALL include in each presentation request ... d) the URL of the Registrar of the Relying Party)? forse la parte di discovery la possiamo tenere comune x trust e aspetti di interop
-      2. come aggiornare "Decentralization of Display and Claim Information" + "7.10. Registry Infrastructure Usage Journeys", CI metadata non solo con OID FED  [todo: rimuovere riferimento EC oppure fare rimando  --> da capire dove mettere metadata retrieval / probabilmente onboarding]
-      3. controllare PR Pasquale su label/spaziature... e capire se fare modifiche 
-      4. se dettagliare relazione con cataloghi EC, se registry vanno aggiornati  x essere allineati con quelli EC 
 
 The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and Credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital Credential operations from entity onboarding to Credential presentation.
 
