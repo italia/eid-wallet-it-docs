@@ -80,6 +80,10 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Trust, Interoperabilità
      - Metadata Entity Configuration
      - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_solution`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
+   * - WP_002i
+     - Flusso remoto, Presentazione, Interoperabilità
+     - Response mode nei metadata del Wallet
+     - ``metadata.wallet_solution.wallet_metadata.response_modes_supported`` è ``["direct_post.jwt"]`` e non include modalità front-channel come ``query``, ``fragment`` o ``form_post.jwt``.
    * - WP_003
      - Trust, Interoperabilità
      - Utilizzo chiave metadata
@@ -653,7 +657,11 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, ``client_id_schemes_supported``, e ``authorization_endpoint`` per Sezione 10.1 di [`OpenID4VP`_].
+     - Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON secondo :ref:`remote-flow:Richiesta all'Endpoint URI Request`, includendo ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` impostato su ``["vp_token"]`` quando presente, e ``response_modes_supported`` impostato su ``["direct_post.jwt"]``.
+   * - WP_083d
+     - Flusso remoto, Presentazione, Interoperabilità
+     - Capability response mode
+     - ``response_modes_supported`` in ``wallet_metadata`` è esattamente ``["direct_post.jwt"]`` e NON DEVE includere modalità di redirect front-channel (``query``, ``fragment``, ``form_post.jwt``).
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``

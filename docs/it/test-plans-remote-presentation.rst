@@ -338,6 +338,11 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Verifica che ``response_types_supported`` sia impostato a ``vp_token`` quando presente.
     - ``response_types_supported`` è correttamente impostato a ``vp_token``.
 
+  * - RPR-82a
+    - Response Modes Supported
+    - Verifica che ``response_modes_supported`` nel ``wallet_metadata`` ricevuto sia solo ``["direct_post.jwt"]``.
+    - L'Istanza del Wallet dichiara ``response_modes_supported`` come ``["direct_post.jwt"]`` e non pubblicizza modalità front-channel.
+
   * - RPR-83
     - Redirect URI
     - Test che il Relying Party fornisca correttamente il parametro ``redirect_uri`` all’istanza Wallet.
@@ -375,8 +380,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-90
     - Validazione Response Mode
-    - Test che ``response_mode`` sia impostato a ``direct_post.jwt``.
-    - Il parametro ``response_mode`` è correttamente impostato a ``direct_post.jwt``.
+    - Test che ``response_mode`` sia impostato a ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device.
+    - Il parametro ``response_mode`` è correttamente impostato a ``direct_post.jwt`` per ogni transazione di presentazione remota.
 
   * - RPR-91
     - Validazione Response Type
