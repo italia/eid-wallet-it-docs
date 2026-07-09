@@ -582,6 +582,17 @@ The JWT payload parameters are described herein:
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
 .. note::
+  **Trusted Authorities in DCQL queries**
+
+  When a Credential Query in ``dcql_query`` includes the optional ``trusted_authorities`` parameter (Section 6.1.1 of `OpenID4VP`_), the Wallet Instance MUST treat it as a pre-selection filter before User consent, in addition to Relying Party trust and issuer authorization policies. If ``trusted_authorities`` is present, each returned presentation MUST match at least one entry in the corresponding array for that Credential Query.
+
+  Wallet Instances MUST support Trusted Authorities Query type ``aki`` (Section 6.1.1.1 of `OpenID4VP`_, as required by `OPENID4VC-HAIP`_) and type ``openid_federation`` (Section 6.1.1.3 of `OpenID4VP`_). For ``aki``, matching MUST use the Authority Key Identifier of an X.509 certificate in the Credential signing chain (for example, in the ``x5c`` header of an SD-JWT VC or in the mdoc IssuerAuth chain). For ``openid_federation``, matching MUST verify that a valid OpenID Federation trust path can be constructed from the Credential Issuer to an Entity Identifier listed in ``values``, using the national federation trust infrastructure in :ref:`trust-infrastructure:Trust Infrastructure`.
+
+  Relying Parties in the IT-Wallet ecosystem SHOULD prefer ``openid_federation`` with the Entity Identifier of an approved Trust Anchor or Intermediate when issuer trust is expressed through OpenID Federation. They SHOULD use ``aki`` when issuer trust is expressed through the X.509 PKI used for Credential Issuers (see :ref:`trust-infrastructure:X.509 PKI`). Multiple entries in the same ``trusted_authorities`` array are alternatives: the Wallet MUST accept a Credential that matches any one entry.
+
+  Type ``etsi_tl`` (Section 6.1.1.2 of `OpenID4VP`_) is not part of the IT-Wallet interoperability profile at the current stage; Wallet Instances SHOULD ignore unknown ``trusted_authorities`` types. Matching ``trusted_authorities`` does not replace the Relying Party's obligation to verify issuer trust on the received presentation, nor the Wallet's obligation to apply issuer authorization policies obtained from the Trust Chain.
+
+.. note::
   The ``transaction_data`` parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the goal is to bind the transaction details to the Authorization Response so that integrity is preserved and the User’s approval can be proven afterwards (non-repudiation).
 
   The binding mechanism depends on the Credential Format:
