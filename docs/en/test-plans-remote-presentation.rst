@@ -338,11 +338,6 @@ This section provides the set of test cases designed for technical implementers 
     - Verify that ``response_types_supported`` is set to ``vp_token`` when present.
     - ``response_types_supported`` is correctly set to ``vp_token``.
 
-  * - RPR-82a
-    - Response Modes Supported
-    - Verify that ``response_modes_supported`` in received ``wallet_metadata`` is ``["direct_post.jwt"]`` only.
-    - Wallet Instance declares ``response_modes_supported`` as ``["direct_post.jwt"]`` and does not advertise front-channel modes.
-
   * - RPR-83
     - Redirect URI
     - Test that Relying Party correctly provides ``redirect_uri`` parameter to Wallet Instance.

@@ -147,7 +147,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22direct_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u
 
     Dove il corpo della richiesta prima di essere codificato in ``application/x-www-form-urlencoded`` dal Wallet corrisponde a:
 
@@ -158,9 +158,6 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
           "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
           "response_types_supported": [
             "vp_token"
-          ],
-          "response_modes_supported": [
-            "direct_post.jwt"
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
@@ -409,7 +406,7 @@ Questa funzionalità può essere utile quando, ad esempio, l'Istanza del Wallet 
   L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
-La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–083d <wallet-credential-presentation-testcases>`).
+La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–WP_083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Parametri dell'Endpoint URI Request
    :class: longtable
@@ -440,29 +437,12 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
      - URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schemes* personalizzati possono anche essere utilizzati se necessario.
    * - `response_types_supported`
      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-   * - `response_modes_supported`
-     - OPZIONALE. Array JSON delle response mode OpenID4VP supportate dall'Istanza del Wallet quando restituisce una Authorization Response. Nel profilo IT-Wallet, l'unico valore supportato è ``direct_post.jwt`` (vedere la nota seguente; :ref:`RPR-82a <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`WP_083d <wallet-credential-presentation-testcases>`, :ref:`WP_002i <wallet-credential-presentation-testcases>`).
    * - `request_object_signing_alg_values_supported`
      - OPZIONALE. Vedi OpenID Connect Discovery.
 
 
 .. note::
    Nell’IT Wallet, le Relying Party legacy che utilizzano un URI ``https`` come ``client_id`` seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (``openid_federation``).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (``pre-registered``), come definito in [:rfc:`6749`], per garantire la compatibilità con le versioni precedenti.
-
-.. note::
-  **Response mode: ``response_modes_supported`` vs ``response_mode``**
-
-  Questi parametri NON DEVONO essere confusi:
-
-  * ``response_modes_supported`` — capacità opzionale dichiarata dal Wallet in ``wallet_metadata`` (Entity Configuration del Wallet Provider e Richiesta all'Endpoint URI Request). Indica quali response mode OpenID4VP l'Istanza del Wallet è in grado di gestire quando restituisce la Authorization Response.
-  * ``response_mode`` — parametro obbligatorio per transazione, impostato dalla Relying Party nel Request Object firmato. Seleziona come il Wallet consegna la Authorization Response per quella presentazione.
-
-  Nel profilo IT-Wallet, l'Istanza del Wallet consegna il ``vp_token`` esclusivamente tramite una richiesta HTTP POST back-channel all'endpoint ``response_uri`` della Relying Party. Pertanto:
-
-  * ``response_modes_supported`` DEVE essere ``["direct_post.jwt"]``. Le response mode front-channel come ``query``, ``fragment`` o ``form_post.jwt`` (`JARM`_) non sono utilizzate in questo profilo e NON DEVONO essere elencate (:ref:`RPR-82a <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`WP_083d <wallet-credential-presentation-testcases>`, :ref:`WP_002i <wallet-credential-presentation-testcases>`).
-  * ``response_mode`` nel Request Object DEVE essere ``direct_post.jwt`` per ogni transazione di presentazione remota, sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-
-  Il Flusso Same Device utilizza un meccanismo aggiuntivo non correlato a ``response_mode``: dopo che il Wallet ha inviato la Authorization Response cifrata a ``response_uri``, la Relying Party PUÒ restituire ``redirect_uri`` nella propria risposta HTTP 200 JSON affinché il Wallet restituisca il controllo al browser user-agent (vedere :ref:`remote-flow:Risposta della Relying Party`). Tale redirect riprende la sessione della Relying Party; non trasporta il ``vp_token``.
 
 .. note::
   Il parametro ``wallet_nonce`` è RACCOMANDATO per le Istanze del Wallet che vogliono prevenire il *replay* delle
@@ -563,7 +543,7 @@ I parametri del payload JWT sono descritti qui:
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
         - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
   * - **response_mode**
-    - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Vedere la nota su ``response_modes_supported`` vs ``response_mode`` in :ref:`remote-flow:Richiesta all'Endpoint URI Request`.
+    - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**
     - OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_.
   * - **transaction_data**
@@ -592,17 +572,6 @@ I parametri del payload JWT sono descritti qui:
 .. warning::
 
   Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-95 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-
-.. note::
-  **Trusted Authorities nelle query DCQL**
-
-  Quando una Credential Query in ``dcql_query`` include il parametro opzionale ``trusted_authorities`` (Sezione 6.1.1 di `OpenID4VP`_), l'Istanza del Wallet DEVE trattarlo come filtro di pre-selezione prima del consenso dell'Utente, oltre alla trust verso la Relying Party e alle policy di autorizzazione dell'emittente. Se ``trusted_authorities`` è presente, ogni presentazione restituita DEVE corrispondere ad almeno una voce dell'array per quella Credential Query.
-
-  Le Istanze del Wallet DEVONO supportare il tipo di Trusted Authorities Query ``aki`` (Sezione 6.1.1.1 di `OpenID4VP`_, come richiesto da `OPENID4VC-HAIP`_) e il tipo ``openid_federation`` (Sezione 6.1.1.3 di `OpenID4VP`_). Per ``aki``, il matching DEVE usare l'Authority Key Identifier di un certificato X.509 nella catena di firma della Credenziale (ad esempio nell'header ``x5c`` di un SD-JWT VC o nella catena IssuerAuth di un mdoc). Per ``openid_federation``, il matching DEVE verificare che sia costruibile un trust path OpenID Federation valido dall'Emittente della Credenziale a un Entity Identifier elencato in ``values``, utilizzando l'infrastruttura di federazione nazionale descritta in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
-
-  Le Relying Party nell'ecosistema IT-Wallet DOVREBBERO preferire ``openid_federation`` con l'Entity Identifier di un Trust Anchor o Intermediate approvato quando la trust dell'emittente è espressa tramite OpenID Federation. DOVREBBERO usare ``aki`` quando la trust dell'emittente è espressa tramite la PKI X.509 usata per i Credential Issuer (vedere :ref:`trust-infrastructure:X.509 PKI`). Più voci nello stesso array ``trusted_authorities`` sono alternative: il Wallet DEVE accettare una Credenziale che corrisponda a una qualsiasi voce.
-
-  Il tipo ``etsi_tl`` (Sezione 6.1.1.2 di `OpenID4VP`_) non fa attualmente parte del profilo di interoperabilità IT-Wallet; le Istanze del Wallet DOVREBBERO ignorare tipi ``trusted_authorities`` sconosciuti. Il matching di ``trusted_authorities`` non sostituisce l'obbligo della Relying Party di verificare la trust dell'emittente sulla presentazione ricevuta, né l'obbligo del Wallet di applicare le policy di autorizzazione dell'emittente ottenute dalla Trust Chain.
 
 .. note::
   Il parametro ``transaction_data`` è destinato ai casi d'uso in cui l'Istanza del Wallet DEVE autorizzare una transazione specifica, come l'avvio di un pagamento o una firma digitale. In questi scenari ad alta sensibilità, l'obiettivo è vincolare i dettagli della transazione alla Authorization Response, in modo da preservarne l'integrità e consentire di dimostrare successivamente l'approvazione dell'Utente (non ripudio).

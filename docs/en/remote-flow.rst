@@ -147,7 +147,7 @@ The details of each step shown in the previous picture are described below.
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22direct_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u
 
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
 
@@ -158,9 +158,6 @@ The details of each step shown in the previous picture are described below.
           "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
           "response_types_supported": [
             "vp_token"
-          ],
-          "response_modes_supported": [
-            "direct_post.jwt"
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
@@ -409,7 +406,7 @@ This feature can be useful when, for example, the Wallet Instance supports a res
   The Wallet Instance, when providing its technical capabilities to the Relying Party, MUST NOT include any User information or other explicit (:ref:`RPR-86 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`) information regarding the hardware used or usage preferences of its User (:ref:`RPR-86 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
 If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the ``request_uri`` endpoint of the Relying Party, with the method POST and content type set to ``application/x-www-form-urlencoded`` (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
-The request and its parameters are defined in Section 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request (:ref:`WP_083a–083d <wallet-credential-presentation-testcases>`).
+The request and its parameters are defined in Section 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Request URI Endpoint Parameters
    :class: longtable
@@ -440,29 +437,12 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
      - URL of the authorization server's endpoint, see `OAUTH2`_. Using a universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
    * - `response_types_supported`
      - OPTIONAL. JSON array of OAuth 2.0 ``response_type`` values. If present it MUST be set to ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-   * - `response_modes_supported`
-     - OPTIONAL. JSON array of OpenID4VP response modes the Wallet Instance supports when returning an Authorization Response. In the IT-Wallet profile, the only supported value is ``direct_post.jwt`` (see note below; :ref:`RPR-82a <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`WP_083d <wallet-credential-presentation-testcases>`, :ref:`WP_002i <wallet-credential-presentation-testcases>`).
    * - `request_object_signing_alg_values_supported`
      - OPTIONAL. See OpenID Connect Discovery.
 
 
 .. note::
   In the IT Wallet, legacy Relying Parties using an ``https`` URI as ``client_id`` implicitly follow the OpenID Federation client identifier prefix (``openid_federation``). Their trust is established and validated through trust chain resolution, which is treated as equivalent to that of statically trusted (pre-registered) clients as defined in [:rfc:`6749`], for backward compatibility.
-
-.. note::
-  **Response mode: ``response_modes_supported`` vs ``response_mode``**
-
-  These parameters MUST NOT be confused:
-
-  * ``response_modes_supported`` — optional capability declared by the Wallet in ``wallet_metadata`` (Wallet Provider Entity Configuration and Request URI Request). It advertises which OpenID4VP response modes the Wallet Instance can handle when returning the Authorization Response.
-  * ``response_mode`` — required per-transaction parameter set by the Relying Party in the signed Request Object. It selects how the Wallet delivers the Authorization Response for that presentation.
-
-  In the IT-Wallet profile, the Wallet Instance delivers the ``vp_token`` exclusively via a back-channel HTTP POST to the Relying Party ``response_uri``. Therefore:
-
-  * ``response_modes_supported`` MUST be ``["direct_post.jwt"]``. Front-channel redirect modes such as ``query``, ``fragment``, or ``form_post.jwt`` (`JARM`_) are not used in this profile and MUST NOT be listed (:ref:`RPR-82a <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`WP_083d <wallet-credential-presentation-testcases>`, :ref:`WP_002i <wallet-credential-presentation-testcases>`).
-  * ``response_mode`` in the Request Object MUST be ``direct_post.jwt`` for every remote presentation transaction, in both Same Device and Cross Device flows (:ref:`RPR-90 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-
-  The Same Device flow uses an additional mechanism that is unrelated to ``response_mode``: after the Wallet POSTs the encrypted Authorization Response to ``response_uri``, the Relying Party MAY return ``redirect_uri`` in its HTTP 200 JSON response so the Wallet returns control to the browser user-agent (see :ref:`remote-flow:Relying Party Response`). That redirect resumes the Relying Party session; it does not carry the ``vp_token``.
 
 .. note::
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
@@ -563,7 +543,7 @@ The JWT payload parameters are described herein:
         - **jwks**. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their ``kid`` value.
         - **client_name** and **logo_uri**. OPTIONAL. Used for user consent display and to show the Relying Party identity in the Wallet Instance interface.
   * - **response_mode**
-    - REQUIRED. It MUST be set to ``direct_post.jwt`` in both Same Device and Cross Device flows (:ref:`RPR-90 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`). See the note on ``response_modes_supported`` vs ``response_mode`` in :ref:`remote-flow:Request URI Request`.
+    - REQUIRED. It MUST be set to ``direct_post.jwt`` in both Same Device and Cross Device flows (:ref:`RPR-90 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **dcql_query**
     - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
@@ -592,17 +572,6 @@ The JWT payload parameters are described herein:
 .. warning::
 
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-95 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-
-.. note::
-  **Trusted Authorities in DCQL queries**
-
-  When a Credential Query in ``dcql_query`` includes the optional ``trusted_authorities`` parameter (Section 6.1.1 of `OpenID4VP`_), the Wallet Instance MUST treat it as a pre-selection filter before User consent, in addition to Relying Party trust and issuer authorization policies. If ``trusted_authorities`` is present, each returned presentation MUST match at least one entry in the corresponding array for that Credential Query.
-
-  Wallet Instances MUST support Trusted Authorities Query type ``aki`` (Section 6.1.1.1 of `OpenID4VP`_, as required by `OPENID4VC-HAIP`_) and type ``openid_federation`` (Section 6.1.1.3 of `OpenID4VP`_). For ``aki``, matching MUST use the Authority Key Identifier of an X.509 certificate in the Credential signing chain (for example, in the ``x5c`` header of an SD-JWT VC or in the mdoc IssuerAuth chain). For ``openid_federation``, matching MUST verify that a valid OpenID Federation trust path can be constructed from the Credential Issuer to an Entity Identifier listed in ``values``, using the national federation trust infrastructure in :ref:`trust-infrastructure:The Infrastructure of Trust`.
-
-  Relying Parties in the IT-Wallet ecosystem SHOULD prefer ``openid_federation`` with the Entity Identifier of an approved Trust Anchor or Intermediate when issuer trust is expressed through OpenID Federation. They SHOULD use ``aki`` when issuer trust is expressed through the X.509 PKI used for Credential Issuers (see :ref:`trust-infrastructure:X.509 PKI`). Multiple entries in the same ``trusted_authorities`` array are alternatives: the Wallet MUST accept a Credential that matches any one entry.
-
-  Type ``etsi_tl`` (Section 6.1.1.2 of `OpenID4VP`_) is not part of the IT-Wallet interoperability profile at the current stage; Wallet Instances SHOULD ignore unknown ``trusted_authorities`` types. Matching ``trusted_authorities`` does not replace the Relying Party's obligation to verify issuer trust on the received presentation, nor the Wallet's obligation to apply issuer authorization policies obtained from the Trust Chain.
 
 .. note::
   The ``transaction_data`` parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the goal is to bind the transaction details to the Authorization Response so that integrity is preserved and the User’s approval can be proven afterwards (non-repudiation).
