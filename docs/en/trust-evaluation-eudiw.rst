@@ -608,7 +608,7 @@ The Entity performing validation MUST determine the revocation status for every 
 - If the ``cRLDistributionPoints`` extension is present, the Entity performing validation MAY retrieve and validate the Certificate Revocation List (CRL).
 - If the ``authorityInfoAccess`` extension (with ``id-ad-ocsp``) is present, the Entity performing validation MAY perform an Online Certificate Status Protocol (OCSP) lookup.
 
-For details regarding the formats and parameters of Certificate Revocation List and Online Certificate Status Protocol responses, see :ref:`infrascructure-trust:Revocation Mechanisms`.
+For details regarding the formats and parameters of Certificate Revocation List and Online Certificate Status Protocol responses, see :ref:`infrastructure-trust:Revocation Mechanisms`.
 
 **Status Checking via Certificate Revocation List**
 
@@ -623,7 +623,7 @@ When using a Certificate Revocation List, the Entity performing validation MUST:
 4. Validate the Certificate Revocation List signature using the issuer's public key. If a key usage extension is present in the Certificate Revocation List issuer's certificate, verify that the ``cRLSign`` bit is set.
 5. Check if the certificate's serial number is listed in ``revokedCertificates``. If an entry is found then the certificate status is set to ``revoked``.
 
-!!! note
+.. note::
 
     In this case it is assumed that the issuer of both the Certificate Revocation List and certificate do coincide, and that the Certificate Revocation List is not signed by a delegated Certificate Revocation List issuer.
 
