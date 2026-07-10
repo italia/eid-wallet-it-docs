@@ -269,78 +269,73 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <td><p>Metadata Entity Configuration</p></td>
 <td><p>Il payload del JWT Entity Configuration contiene un oggetto <code class="docutils literal notranslate"><span class="pre">metadata</span></code> che include il parametro <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> e opzionalmente il parametro <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, ciascuno valorizzato seguendo il proprio schema.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_002i</p></td>
-<td><p>Flusso remoto, Presentazione, Interoperabilità</p></td>
-<td><p>Response mode nei metadata del Wallet</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">metadata.wallet_solution.wallet_metadata.response_modes_supported</span></code> è <code class="docutils literal notranslate"><span class="pre">[&quot;direct_post.jwt&quot;]</span></code> e non include modalità front-channel come <code class="docutils literal notranslate"><span class="pre">query</span></code>, <code class="docutils literal notranslate"><span class="pre">fragment</span></code> o <code class="docutils literal notranslate"><span class="pre">form_post.jwt</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>WP_003</p></td>
+<tr class="row-even"><td><p>WP_003</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Utilizzo chiave metadata</p></td>
 <td><p>Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_004</p></td>
+<tr class="row-odd"><td><p>WP_004</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Riferimento chiave metadata</p></td>
 <td><p>Per riferire le chiavi pubbliche, l'oggetto JSON contiene esattamente uno dei seguenti claim: <code class="docutils literal notranslate"><span class="pre">jwks</span></code>, <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code>, o <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_004a</p></td>
+<tr class="row-even"><td><p>WP_004a</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>JWKS per valore</p></td>
 <td><p>Se <code class="docutils literal notranslate"><span class="pre">jwks</span></code> è presente, il suo valore contiene un elemento JWK (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>) valido.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_004b</p></td>
+<tr class="row-odd"><td><p>WP_004b</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>JWKS per riferimento</p></td>
 <td><p>Se <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> è presente, il valore è un URL HTTPS a un JWKS che risulta risolvibile e valido.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_004c</p></td>
+<tr class="row-even"><td><p>WP_004c</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>URI JWKS firmato</p></td>
 <td><p>Se <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code> è presente, il valore è un URL HTTPS che punta a un JWT. Il payload di tale JWT è un JWK (<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>) ed è firmato con una chiave dell'Entità di Federazione.
 La risorsa specificata da <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code> è servita con il content type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. Un recupero riuscito di <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code> restituisce lo stato <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">200</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_005</p></td>
+<tr class="row-odd"><td><p>WP_005</p></td>
 <td><p>Trust, UX</p></td>
 <td><p>Applicazione 2FA portale</p></td>
 <td><p>Il portale del Fornitore di Wallet applica correttamente l'autenticazione a due fattori (2FA) prima di consentire agli Utenti di eseguire qualsiasi operazione.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_006</p></td>
+<tr class="row-even"><td><p>WP_006</p></td>
 <td><p>Revoca Wallet, Sicurezza</p></td>
 <td><p>Vista stato Istanze del Wallet del portale</p></td>
 <td><p>Il portale del Fornitore di Wallet consente correttamente agli Utenti di visualizzare lo stato corrente di tutte le Istanze del Wallet collegate al loro Account.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_007</p></td>
+<tr class="row-odd"><td><p>WP_007</p></td>
 <td><p>Revoca Wallet, Sicurezza</p></td>
 <td><p>Trigger revoca avviata dall'utente</p></td>
 <td><p>Il Fornitore di Wallet implementa e supporta richieste di revoca avviate dagli Utenti tramite il suo portale.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_007a</p></td>
+<tr class="row-even"><td><p>WP_007a</p></td>
 <td><p>Revoca Wallet, Sicurezza</p></td>
 <td><p>Revoca istanza portale</p></td>
 <td><p>Il portale del Fornitore di Wallet consente correttamente agli Utenti di revocare un'Istanza del Wallet specifica o tutte le Istanze del Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_008</p></td>
+<tr class="row-odd"><td><p>WP_008</p></td>
 <td><p>Revoca Wallet, Sicurezza</p></td>
 <td><p>Trigger revoca avviata dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale</p></td>
 <td><p>Il Fornitore di Wallet implementa e supporta richieste di revoca attivate dai Fornitori di Attestati Elettronici di Dati di Identificazione Personale tramite il PDND Endpoint.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_009</p></td>
+<tr class="row-even"><td><p>WP_009</p></td>
 <td><p>Revoca Wallet, Sicurezza</p></td>
 <td><p>Trigger revoca avviata dalle Autorità Legali</p></td>
 <td><p>Il Fornitore di Wallet implementa e supporta richieste di revoca attivate dalle Autorità Legali o Organi di Supervisione (es. attività illegali).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_010</p></td>
+<tr class="row-odd"><td><p>WP_010</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Meccanismo di revoca Istanza del Wallet</p></td>
 <td><p>Quando il Fornitore di Wallet attiva la revoca per un'Istanza del Wallet specifica, in qualsiasi momento, quell'Istanza viene terminata e non può più eseguire alcuna funzione.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_011</p></td>
+<tr class="row-even"><td><p>WP_011</p></td>
 <td><p>Trust, Sicurezza</p></td>
 <td><p>Verifica integrità Istanza del Wallet</p></td>
 <td><p>Il Fornitore di Wallet valuta periodicamente l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet utilizzando la Play Integrity API (Android) o App Attest (iOS).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_012</p></td>
+<tr class="row-odd"><td><p>WP_012</p></td>
 <td><p>Ciclo di vita, Interoperabilità</p></td>
 <td><p>Architettura componente backend</p></td>
 <td><p>Il Backend del Fornitore di Wallet supporta tutti i componenti (Frontend, Interfaccia API, Gestione Ciclo di Vita Istanza del Wallet, e Trust &amp; Sicurezza) come mostrato in <a class="reference internal" href="wallet-solution.html#fig-wallet-solution-high-level-architecture"><span class="std std-ref">Figure of Wallet Solution High Level Architecture</span></a>.</p></td>
@@ -986,354 +981,349 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Costruire <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Istanza del Wallet formatta <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON secondo <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a>, includendo <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">[&quot;vp_token&quot;]</span></code> quando presente, e <code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">[&quot;direct_post.jwt&quot;]</span></code>.</p></td>
+<td><p>Istanza del Wallet formatta <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON secondo <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a>, includendo <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">[&quot;vp_token&quot;]</span></code> quando presente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_083d</p></td>
-<td><p>Flusso remoto, Presentazione, Interoperabilità</p></td>
-<td><p>Capability response mode</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code> in <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> è esattamente <code class="docutils literal notranslate"><span class="pre">[&quot;direct_post.jwt&quot;]</span></code> e NON DEVE includere modalità di redirect front-channel (<code class="docutils literal notranslate"><span class="pre">query</span></code>, <code class="docutils literal notranslate"><span class="pre">fragment</span></code>, <code class="docutils literal notranslate"><span class="pre">form_post.jwt</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p>WP_083b</p></td>
+<tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Flusso-remoto, Presentazione, Privacy</p></td>
 <td><p>Escludere PII in <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
 <td><p>Il JSON <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> non contiene campi identificabili dall'utente o specifici del dispositivo (es. nomi, dettagli hardware).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_083c</p></td>
+<tr class="row-even"><td><p>WP_083c</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Generare nonce replay</p></td>
 <td><p>Un nuovo <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> viene generato e incluso nel payload della richiesta POST insieme al <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> per mitigare attacchi di replay.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_084</p></td>
+<tr class="row-odd"><td><p>WP_084</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Sicurezza</p></td>
 <td><p>Recupero chiave pubblica Relying Party</p></td>
 <td><p>Istanza del Wallet recupera la chiave pubblica corretta della Relying Party dal campo <code class="docutils literal notranslate"><span class="pre">metadata.openid_credential_verifier.jwks</span></code>, situato all'interno dell'Entity Configuration della Relying Party fornita dalla Trust Chain, utilizzando l'identificativo di chiave (<code class="docutils literal notranslate"><span class="pre">kid</span></code>) dall'header del Request Object.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_085</p></td>
+<tr class="row-even"><td><p>WP_085</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Verifica firma Request Object</p></td>
 <td><p>Istanza del Wallet conferma l'integrità del Request Object firmato eseguendo con successo la validazione della firma crittografica usando la chiave pubblica della Relying Party.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_086</p></td>
+<tr class="row-odd"><td><p>WP_086</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Abbinare <code class="docutils literal notranslate"><span class="pre">client_id</span></code> tra contesti</p></td>
 <td><p>Istanza del Wallet conferma che il claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> nel Request Object firmato abbia lo stesso <code class="docutils literal notranslate"><span class="pre">client_id</span></code> che ha originariamente estratto dall'URL dell'Authorization Request che il valore <code class="docutils literal notranslate"><span class="pre">sub</span></code> nell'Entity Configuration della Relying Party. Qualsiasi discrepanza causa il rifiuto dell Request Object.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_087</p></td>
+<tr class="row-even"><td><p>WP_087</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Controllare idoneità Relying Party</p></td>
 <td><p>Istanza del Wallet autorizza la richiesta e procede con il flusso quando verifica che i metadata, le policy e un Trust Mark valido della Relying Party consentono a quest'ultima di richiedere l'Attestato Elettronico specificato.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_088</p></td>
+<tr class="row-odd"><td><p>WP_088</p></td>
 <td><p>Flusso-remoto, Presentazione, Privacy</p></td>
 <td><p>Consenso utente per divulgazione</p></td>
 <td><p>Istanza del Wallet richiede il consenso dell'Utente presentando una schermata UI che mostra chiaramente l'identità verificata della Relying Party e un elenco di tutti gli Attributi richiesti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_089</p></td>
+<tr class="row-even"><td><p>WP_089</p></td>
 <td><p>Flusso-remoto, Presentazione, UX</p></td>
 <td><p>Gestire errori endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
 <td><p>Quando l'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party risponde con un errore, Istanza del Wallet mostra all'Utente un messaggio chiaro e leggibile, spiegando il motivo del fallimento e termina il flusso in modo sicuro.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_089a</p></td>
+<tr class="row-odd"><td><p>WP_089a</p></td>
 <td><p>Flusso-remoto, Presentazione, UX</p></td>
 <td><p>Registrare errori <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
 <td><p>Istanza del Wallet registra internamente le informazioni dettagliate dell'errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_089b</p></td>
+<tr class="row-even"><td><p>WP_089b</p></td>
 <td><p>Flusso-remoto, Presentazione, UX</p></td>
 <td><p>Recuperare da errori <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
 <td><p>Per un errore recuperabile, come <code class="docutils literal notranslate"><span class="pre">server_error</span></code>, Istanza del Wallet richiede all'Utente un'azione di recupero specifica, come suggerire un retry o opzione &quot;Scansiona QR di nuovo&quot;, se possibile.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_090</p></td>
+<tr class="row-odd"><td><p>WP_090</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Notificare Relying Party su richiesta non valida</p></td>
 <td><p>Se il Request Object è non valido o ne fallisse la verifica, Istanza del Wallet invia una Authorization Error Response tramite HTTP POST al Response Endpoint (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code>) della Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_091</p></td>
+<tr class="row-even"><td><p>WP_091</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Inviare l'Authorization Response</p></td>
 <td><p>Se la verifica Request Object è valida, Istanza del Wallet invia una Authorization Response tramite HTTP POST al Response Endpoint (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code>) della Relying Party.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_091a</p></td>
+<tr class="row-odd"><td><p>WP_091a</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Validare <code class="docutils literal notranslate"><span class="pre">response_uri</span></code></p></td>
 <td><p>Prima di inviare l'Authorization Response, Istanza del Wallet conferma che il <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> corrisponda esattamente a uno dei <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> attestati della Relying Party nei suoi metadata; una mancata corrispondenza interrompe il flusso.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_092</p></td>
+<tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Cifrare l'Authorization Response</p></td>
 <td><p>Istanza del Wallet cifra il JWT dell'Authorization Response per Sezione 8.3 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] utilizzando la chiave pubblica della Relying Party.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_093</p></td>
+<tr class="row-odd"><td><p>WP_093</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Costruire <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> con <code class="docutils literal notranslate"><span class="pre">state</span></code></p></td>
 <td><p>Il payload JWT dell'Authorization Response include il valore <code class="docutils literal notranslate"><span class="pre">state</span></code> originale e un parametro <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> contenetne un oggetto le cui coppie chiave-valore corrispondono agli Attestati Elettronici richiesti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_093a</p></td>
+<tr class="row-even"><td><p>WP_093a</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Includere presentazioni firmate</p></td>
 <td><p>All'interno di quel <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, ci sono gli Attestati Elettronici richiesti in formato SD JWT VC.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_093b</p></td>
+<tr class="row-odd"><td><p>WP_093b</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Aggiungere Key Binding JWT</p></td>
 <td><p>Istanza del Wallet genera per ogni singola presentazione SD-JWT all'interno del <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, il corrispondente Key Binding JWT.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_093c</p></td>
+<tr class="row-even"><td><p>WP_093c</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Formato Key Binding JWT</p></td>
 <td><p>L'header JOSE di ogni Key Binding JWT generato includeil parametro <code class="docutils literal notranslate"><span class="pre">typ</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code> e un parametro <code class="docutils literal notranslate"><span class="pre">alg</span></code> valorizzato con uno degli algoritmi di firma supportati. Il payload include i parametri <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, e <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> come definito in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_094</p></td>
+<tr class="row-odd"><td><p>WP_094</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Eseguire redirect user-agent</p></td>
 <td><p>Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, Istanza del Wallet esegue con successo un redirect dello user-agent al <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> fornito dalla Relying Party, così la Relying Party può riprendere l'interazione sullo stesso dispositivo che ha iniziato il flusso.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_094a</p></td>
+<tr class="row-even"><td><p>WP_094a</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Sicurezza</p></td>
 <td><p>Validare <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code></p></td>
 <td><p>Istanza del Wallet verifica che il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> corrisponda esattamente a uno degli URI elencati nei metadata <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> della Relying Party. Se non corrisponde, interrompe il flusso.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_095</p></td>
+<tr class="row-odd"><td><p>WP_095</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Supportare recupero supervisionato/non supervisionato</p></td>
 <td><p>Istanza del Wallet supporta una presentazione di Attestato Elettronico utilizzando il metodo Supervised Device Retrieval per uno scenario di verifica in presenza con supervisione umana e tramite Device Retrieval (non supervisionato) per verifica automatizzata senza supervisione umana.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_096</p></td>
+<tr class="row-even"><td><p>WP_096</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Supporto meccanismi Device Retrieval</p></td>
 <td><p>Istanza del Wallet supporta i meccanismi Device Retrieval tramite Bluetooth Low Energy (BLE) o NFC.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_096a</p></td>
+<tr class="row-odd"><td><p>WP_096a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Applicare solo device retrieval</p></td>
 <td><p>Istanza del Wallet rifiuta qualsiasi richiesta di iniziare un flusso prossimità utilizzando il meccanismo Server Retrieval.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_096b</p></td>
+<tr class="row-even"><td><p>WP_096b</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Supportare device retrieval BLE/NFC (condizionale)</p></td>
 <td><p>Istanza del Wallet completa con successo il flusso di recupero BLE o NFC. Il supporto BLE è obbligatorio, mentre NFC è RACCOMANDATO. Almeno un metodo di device retrieval (BLE o NFC) deve essere supportato; il fallimento costituisce non conformità.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_097</p></td>
+<tr class="row-odd"><td><p>WP_097</p></td>
 <td><p>Flusso-prossimità, Presentazione, UX</p></td>
 <td><p>Meccanismi DeviceEngagement supportati</p></td>
 <td><p>Istanza del Wallet supporta DeviceEngagement basato su codice QR o NFC Connection Handover.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_097a</p></td>
+<tr class="row-even"><td><p>WP_097a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Supporto QR/NFC engagement (condizionale)</p></td>
 <td><p>Istanza del Wallet completa una transazione di recupero dati sia via BLE che via NFC (quando l’hardware è disponibile). Il supporto QR è obbligatorio, mentre NFC è RACCOMANDATO. Almeno un metodo di engagement (QR o NFC) deve essere supportato; il fallimento costituisce non conformità.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_098</p></td>
+<tr class="row-odd"><td><p>WP_098</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Autenticazione Relying Party</p></td>
 <td><p>Istanza del Wallet supporta ed esegue l'Autenticazione dell'Istanza Relying Party in conformità al processo di Reader Authentication <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_099</p></td>
+<tr class="row-even"><td><p>WP_099</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Supporto mDL domestico</p></td>
 <td><p>Istanza del Wallet supporta e processa senza errore Attestati Elettronici mDL utilizzando le definizioni standard <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> ed eventuali aggiunte nel namespace domestico di IT Wallet (vedi <a class="reference external" href="credential-data-model.html#mdoc-cbor-credential-format">mdoc-CBOR Credential Format</a> per maggiori dettagli).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_100</p></td>
+<tr class="row-odd"><td><p>WP_100</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Autenticazione WSCA</p></td>
 <td><p>Istanza del Wallet richiede all'Utente di eseguire un’autenticazione basata su WSCA, direttamente o sbloccando l'applicazione, e non procede con il flusso prossimità finché non ha successo.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_101</p></td>
+<tr class="row-even"><td><p>WP_101</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Generare coppia chiavi EC effimere</p></td>
 <td><p>Istanza del Wallet genera con successo una nuova coppia di chiavi curva ellittica effimere (per la cipher suite <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> scelta).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_102</p></td>
+<tr class="row-odd"><td><p>WP_102</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Codifica CBOR dei dati DeviceEngagement</p></td>
 <td><p>DeviceEngagement è codificato CBOR e contiene i parametri <code class="docutils literal notranslate"><span class="pre">Version</span></code>, <code class="docutils literal notranslate"><span class="pre">Security</span></code>, <code class="docutils literal notranslate"><span class="pre">Capabilities</span></code> e <code class="docutils literal notranslate"><span class="pre">OriginInfos</span></code> (può essere vuoto). Per QR engagement include anche <code class="docutils literal notranslate"><span class="pre">DeviceRetrievalMode-BLEOptions</span></code> e/o <code class="docutils literal notranslate"><span class="pre">DeviceRetrievalMode-NFCOptions</span></code>. Per NFC engagement, tali opzioni sono omesse.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_102a</p></td>
+<tr class="row-even"><td><p>WP_102a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>DeviceEngagement via QR</p></td>
 <td><p>L'URI mdoc: QR codifica un DeviceEngagement valido in CBOR (per Sezione 9.1 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]) usando base64url-without-padding (<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4648.html"><strong>RFC 4648</strong></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_102b</p></td>
+<tr class="row-odd"><td><p>WP_102b</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Verificare parametro Security</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">Security</span></code> all'interno dei dati DeviceEngagement contiene un identificativo cipher suite supportato e la chiave pubblica effimera dell'Istanza del Wallet per <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> Tabella 22.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_102c</p></td>
+<tr class="row-even"><td><p>WP_102c</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Verificare parametro <code class="docutils literal notranslate"><span class="pre">DeviceRetrievalMode-BLEOptions</span></code></p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">DeviceRetrievalMode-BLEOptions</span></code> all'interno dei dati DeviceEngagement indica Central Client Mode e porta l'UUID dispositivo corretto.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_102d</p></td>
+<tr class="row-odd"><td><p>WP_102d</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Verificare parametro <code class="docutils literal notranslate"><span class="pre">DeviceRetrievalMode-NFCOptions</span></code></p></td>
 <td><p>Il parametro DeviceRetrievalMode-NFCOptions dichiara ruolo supportato (PICC per Istanza del Wallet) e dimensioni massime comando/risposta APDU per mappatura ISO.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_102e</p></td>
+<tr class="row-even"><td><p>WP_102e</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Verificare parametro <code class="docutils literal notranslate"><span class="pre">Capabilities</span></code></p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">Capabilities</span></code> all'interno dei dati DeviceEngagement imposta correttamente i parametri <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> e <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_102f</p></td>
+<tr class="row-odd"><td><p>WP_102f</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Verificare parametro <code class="docutils literal notranslate"><span class="pre">OriginInfos</span></code></p></td>
 <td><p>Se presente, il parametro <code class="docutils literal notranslate"><span class="pre">OriginInfos</span></code> nei dati DeviceEngagement è correttamente codificato come array (che può essere vuoto).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103</p></td>
+<tr class="row-even"><td><p>WP_103</p></td>
 <td><p>Flusso-prossimità, Presentazione, UX</p></td>
 <td><p>DeviceEngagement via NFC (Connection Handover)</p></td>
 <td><p>Istanza del Wallet espone DeviceEngagement tramite NFC Connection Handover (Statico o Negoziato).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103a</p></td>
+<tr class="row-odd"><td><p>WP_103a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>NFC Connection Handover (Statico)</p></td>
 <td><p>Istanza del Wallet agisce come NFC Tag (Tipo 4) e fornisce un Handover Select con almeno un Alternative Carrier Record e relativo Carrier Configuration Record; un Auxiliary Data Record trasporta il DeviceEngagement (tipo <code class="docutils literal notranslate"><span class="pre">iso.org:18013:deviceengagement</span></code>, id &quot;mdoc&quot;).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103b</p></td>
+<tr class="row-even"><td><p>WP_103b</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>NFC Connection Handover (Negoziato)</p></td>
 <td><p>Istanza del Wallet espone il servizio <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>; su Handover Request restituisce un Handover Select con esattamente un carrier selezionato e il DeviceEngagement ausiliario.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103c</p></td>
+<tr class="row-odd"><td><p>WP_103c</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato via TNEP</p></td>
 <td><p>Se <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code> nel DeviceEngagement, Istanza del Wallet accetta il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato sul servizio TNEP annunciato e successivamente verifica che corrisponda a quello ricevuto durante il recupero dati.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103d</p></td>
+<tr class="row-even"><td><p>WP_103d</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Codifica Carrier Configuration Record</p></td>
 <td><p>Istanza del Wallet include correttamente un Carrier Configuration Record per ogni carrier supportato: per NFC (tipo <code class="docutils literal notranslate"><span class="pre">iso.org:18013:nfc</span></code>, ID <code class="docutils literal notranslate"><span class="pre">nfc</span></code>)  per Sezione 9.2.2 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]; per BLE per Sezione 11.1.2 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103e</p></td>
+<tr class="row-odd"><td><p>WP_103e</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Auxiliary Data Record per DeviceEngagement</p></td>
 <td><p>Istanza del Wallet fornisce un Auxiliary Data Record che trasporta il DeviceEngagement (tipo <code class="docutils literal notranslate"><span class="pre">iso.org:18013:deviceengagement</span></code>, ID <code class="docutils literal notranslate"><span class="pre">mdoc</span></code>) utilizzando NFC Forum external type (0x04); ogni Alternative Carrier Record DEVE fare riferimento a questo record.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103f</p></td>
+<tr class="row-even"><td><p>WP_103f</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Alternative Carrier Records</p></td>
 <td><p>In Static Handover, l’Handover Select include uno o più Alternative Carrier Records; in Negotiated Handover contiene esattamente un carrier selezionato. L’Alternative Carrier NFC referenzia il Carrier Configuration Record <code class="docutils literal notranslate"><span class="pre">nfc</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103g</p></td>
+<tr class="row-odd"><td><p>WP_103g</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Mismatch di <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato</p></td>
 <td><p>Se il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato è ricevuto nel Negotiated Handover, Istanza del Wallet verifica la corrispondenza con quello ricevuto nel recupero dati; in caso di mancata corrispondenza termina il flusso.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103h</p></td>
+<tr class="row-even"><td><p>WP_103h</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Assenza di SessionEstablishment anticipato</p></td>
 <td><p>Se il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato non è ricevuto durante il Negotiated Handover, Istanza del Wallet procede con il Device Retrieval normalmente (nessun errore).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_104</p></td>
+<tr class="row-odd"><td><p>WP_104</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Derivare chiave di sessione</p></td>
 <td><p>Istanza del Wallet deriva con successo le chiave di sessione eseguendo il key-agreement negoziato con la propria chiave privata effimera e la chiave pubblica effimera della Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_105</p></td>
+<tr class="row-even"><td><p>WP_105</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Decifrare &amp; verificare <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code></p></td>
 <td><p>Istanza del Wallet decifra il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> usando la chiave di sessione derivata e valida la firma della Relying Party nel parametro <code class="docutils literal notranslate"><span class="pre">readerAuthAll</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_106</p></td>
+<tr class="row-odd"><td><p>WP_106</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Validare contenuti <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code></p></td>
 <td><p>Istanza del Wallet verifica che <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> includa la chiave pubblica della Relying Party e la richiesta di specifici attributi.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_107</p></td>
+<tr class="row-even"><td><p>WP_107</p></td>
 <td><p>Flusso-prossimità, Presentazione, Privacy</p></td>
 <td><p>Richiedere consenso agli attributi</p></td>
 <td><p>Istanza del Wallet decifra e mostra gli attributi richiesti all'Utente e procede solo dopo approvazione esplicita di quest'ultimo.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_107a</p></td>
+<tr class="row-odd"><td><p>WP_107a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Privacy</p></td>
 <td><p>Mostrare certificato Relying Party</p></td>
 <td><p>Istanza del Wallet mostra all'Utente il Certificato di Registrazione della Relying Party prima di ottenere il consenso dell'Utente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_108</p></td>
+<tr class="row-even"><td><p>WP_108</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Recuperare Attestati Elettronici mdoc</p></td>
 <td><p>Istanza del Wallet recupera gli Attestati Elettronici richiesti e li prepara per l'mdoc response.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_109</p></td>
+<tr class="row-odd"><td><p>WP_109</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Preparare la risposta mdoc</p></td>
 <td><p>Istanza del Wallet costruisce il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> (risposta mdoc) in CBOR includendo un array <code class="docutils literal notranslate"><span class="pre">documents</span></code> con gli Attestati Elettronici richiesti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_110</p></td>
+<tr class="row-even"><td><p>WP_110</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità</p></td>
 <td><p>Autenticazione mdoc</p></td>
 <td><p>Istanza del Wallet firma correttamente i dati di autenticazione <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> per ogni Attestato Elettronico presentato come spiegato nella Sezione 12.4 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_111</p></td>
+<tr class="row-odd"><td><p>WP_111</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Validare struttura risposta mdoc</p></td>
 <td><p>La risposta mdoc è un oggetto CBOR con parametro <code class="docutils literal notranslate"><span class="pre">version</span></code> alla radice e ogni documento in <code class="docutils literal notranslate"><span class="pre">documents</span></code> contenente <code class="docutils literal notranslate"><span class="pre">docType</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_111a</p></td>
+<tr class="row-even"><td><p>WP_111a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Validare parametro <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code></p></td>
 <td><p>Ogni documento include un <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> (anche vuoto) e un <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code>. Quest'ultimo è un JSON struttura avente un parametro <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> contenente un Array <code class="docutils literal notranslate"><span class="pre">COSE_Sign1</span></code> che autentica il dispositivo.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_112</p></td>
+<tr class="row-odd"><td><p>WP_112</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Cifrare <code class="docutils literal notranslate"><span class="pre">SessionData</span></code></p></td>
 <td><p>Istanza del Wallet cifra il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> con la chiave di sessione derivata.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_112a</p></td>
+<tr class="row-even"><td><p>WP_112a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Trasmettere messaggi su BLE</p></td>
 <td><p>Su BLE (usando le caratteristiche GATT ISO), Istanza del Wallet riceve correttamente il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> cifrato dalla Relying Party e trasmette il proprio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> cifrato (e gli eventuali codici di stato/terminazione).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_112b</p></td>
+<tr class="row-odd"><td><p>WP_112b</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Trasmettere messaggi su NFC</p></td>
 <td><p>Su NFC (usando il flusso APDU), Istanza del Wallet riceve correttamente il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> cifrato dalla Relying Party e trasmette il proprio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> cifrato, gestendo senza errori frammentazione e status word.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_112c</p></td>
+<tr class="row-even"><td><p>WP_112c</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Coerenza UUID/MTU BLE</p></td>
 <td><p>Gli UUID di servizio/caratteristiche BLE e l’MTU effettivo sono coerenti con quanto descritto in DeviceEngagement (e/o Carrier Configuration) e i messaggi sono segmentati di conseguenza.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_112d</p></td>
+<tr class="row-odd"><td><p>WP_112d</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Caratteristica BLE Ident (opzionale)</p></td>
 <td><p>Se implementata, Istanza del Wallet verifica il valore Ident della Relying Party prima del recupero dati e disconnette BLE in caso di mancata corrispondenza, per Sezione 11.1.3 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_112e</p></td>
+<tr class="row-even"><td><p>WP_112e</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Gestione SELECT AID NFC</p></td>
 <td><p>Istanza del Wallet espone l'<cite>AID</cite> e, su SELECT <cite>APDU</cite>, restituisce <cite>FCI</cite> valido con <cite>SW1/SW2</cite> corretti; seguono scambi ENVELOPE/GET RESPONSE.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_112f</p></td>
+<tr class="row-odd"><td><p>WP_112f</p></td>
 <td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
 <td><p>Coerenza dimensioni APDU NFC</p></td>
 <td><p>Le dimensioni comando/risposta <cite>APDU</cite> (inclusa frammentazione e gestione <cite>SW1=61</cite>) sono coerenti con le dimensioni massime descritte (Carrier Configuration / NFCOptions) durante il Device Engagement.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_113</p></td>
+<tr class="row-even"><td><p>WP_113</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Terminare sessione / timeout inattività</p></td>
 <td><p>Istanza del Wallet termina automaticamente la sessione se non vengono inviati/ricevuti messaggi di sessione per l'intervallo di timeout configurato.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_113a</p></td>
+<tr class="row-odd"><td><p>WP_113a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Terminare sessione / nessuna ulteriore richiesta</p></td>
 <td><p>Istanza del Wallet termina la sessione quando essa o la Relying Party hanno concluso lo scambio dati.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_113b</p></td>
+<tr class="row-even"><td><p>WP_113b</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Inviare segnale di terminazione (BLE)</p></td>
 <td><p>Istanza del Wallet invia il comando End (o codice di terminazione) su BLE per segnalare la chiusura della sessione.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_113c</p></td>
+<tr class="row-odd"><td><p>WP_113c</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Inviare terminazione su NFC</p></td>
 <td><p>Istanza del Wallet segnala la fine tramite uno status code in <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> e/o completa lo scambio APDU secondo ISO; non sono accettate ulteriori APDU per la sessione.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_114</p></td>
+<tr class="row-even"><td><p>WP_114</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Distruggere chiave di sessione</p></td>
 <td><p>Alla chiusura della sessione, Istanza del Wallet cancella chiave di sessione e materiale effimero correlato da memoria e archiviazione.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_114a</p></td>
+<tr class="row-odd"><td><p>WP_114a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Chiudere canale di comunicazione</p></td>
 <td><p>Istanza del Wallet chiude il canale attivo disconnettendo il link BLE o terminando lo scambio APDU NFC; non rimangono canali aperti.</p></td>
