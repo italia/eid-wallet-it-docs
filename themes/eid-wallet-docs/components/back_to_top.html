@@ -1,0 +1,10 @@
+{# Bootstrap Italia back-to-top — auto-init via data-bs-toggle="backtotop" #}
+{%- from "components/icons.html" import icon_arrow_up with context -%}
+<a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="{%- if current_lang == 'it' -%}Torna su{%- else -%}Back to top{%- endif -%}">
+  {{ icon_arrow_up('icon it-docs-back-to-top-icon') }}
+</a>
