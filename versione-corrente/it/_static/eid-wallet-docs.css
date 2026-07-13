@@ -69,7 +69,18 @@ body.it-docs-body {
 .it-docs-layout {
   flex: 1 1 auto;
   width: 100%;
+  max-width: 100%;
   padding: var(--it-docs-space-3) 0 var(--it-docs-space-5);
+}
+
+.it-docs-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: var(--it-docs-space-3);
+  padding-right: var(--it-docs-space-3);
 }
 
 .it-docs-row.row {
@@ -712,17 +723,20 @@ body.it-docs-body {
 .it-docs-main .body ol,
 .it-docs-main .body dl,
 .it-docs-main .body blockquote,
+.it-docs-main .body .admonition p,
+.it-docs-main .body .admonition ul,
+.it-docs-main .body .admonition ol,
+.it-docs-main .body .toctree-wrapper > p.caption {
+  max-width: min(100%, var(--it-docs-prose-max-width));
+}
+
 .it-docs-main .body h1,
 .it-docs-main .body h2,
 .it-docs-main .body h3,
 .it-docs-main .body h4,
 .it-docs-main .body h5,
-.it-docs-main .body h6,
-.it-docs-main .body .admonition p,
-.it-docs-main .body .admonition ul,
-.it-docs-main .body .admonition ol,
-.it-docs-main .body .toctree-wrapper > p.caption {
-  max-width: var(--it-docs-prose-max-width);
+.it-docs-main .body h6 {
+  max-width: 100%;
 }
 
 .it-docs-main .table-responsive,
