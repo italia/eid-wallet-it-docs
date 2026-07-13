@@ -8,6 +8,12 @@
   --bs-body-font-family: var(--it-docs-font-family);
 }
 
+/* Sidebar section titles — match navscroll over Bootstrap Italia sidebar defaults */
+.it-docs-primary-nav.sidebar-wrapper .sidebar-linklist-wrapper .link-list-wrapper > h3 {
+  font-size: var(--it-docs-nav-heading-size) !important;
+  line-height: 1.35 !important;
+}
+
 /* Black mode — local TOC (On this page), desktop only */
 @media (min-width: 992px) {
   html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper,

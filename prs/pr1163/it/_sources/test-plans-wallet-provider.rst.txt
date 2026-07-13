@@ -653,7 +653,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, ``client_id_schemes_supported``, e ``authorization_endpoint`` per Sezione 10.1 di [`OpenID4VP`_].
+     - Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON secondo :ref:`remote-flow:Richiesta all'Endpoint URI Request`, includendo ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` impostato su ``["vp_token"]`` quando presente.
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``

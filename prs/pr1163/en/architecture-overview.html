@@ -7,13 +7,13 @@
 
     <title>3. Architecture Overview &#8212; IT-Wallet Technical Specifications - PR #1163</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=a5775a5f" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=a7a052b3" />
 
-    <script src="_static/documentation_options.js?v=a68a9277"></script>
+    <script src="_static/documentation_options.js?v=6d0302ba"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -186,32 +186,36 @@
       </div>
     </div>
   </div>
-  <div class="header-title-section it-docs-header-title">
-    <div class="container py-3">
-      <div class="d-flex align-items-center justify-content-between flex-nowrap">
-        <div class="it-brand-wrapper it-docs-brand-wrapper">
-          <a href="index.html"
-             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
-             title="Home">
-            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
-            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
-            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Technical Specifications - PR #1163</span>
-          </a>
-        </div>
-        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
-                type="button"
-                data-it-docs-nav-toggle
-                data-it-docs-nav-target="#itDocsPrimaryNav"
-                aria-controls="itDocsPrimaryNav"
-                aria-expanded="false"
-                aria-label="Open navigation">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <div class="it-header-center-content-wrapper it-docs-header-compact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-center-content d-flex align-items-center justify-content-between flex-nowrap">
+            <div class="it-brand-wrapper it-docs-brand-wrapper">
+              <a href="index.html"
+                 class="it-docs-brand-link text-decoration-none"
+                 title="Home">
+                <span class="it-brand-title it-docs-header-site-title" id="header-site-title">IT-Wallet Technical Specifications - PR #1163</span>
+              </a>
+            </div>
+            <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                    type="button"
+                    data-it-docs-nav-toggle
+                    data-it-docs-nav-target="#itDocsPrimaryNav"
+                    aria-controls="itDocsPrimaryNav"
+                    aria-expanded="false"
+                    aria-label="Open navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
 </svg>
-          <span>Menu</span>
-        </button>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+    </div>
+    <div class="container it-docs-header-mobile-tools-container d-lg-none">
+      <div class="it-docs-header-mobile-tools"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
   <form class="it-docs-search-form" action="search.html" method="get">
     <label class="visually-hidden" for="it-docs-search-input-mobile">Search</label>
     <input id="it-docs-search-input-mobile"
@@ -237,9 +241,9 @@
   </div>
 </header>
 <div class="it-docs-layout">
-  <div class="container-fluid it-docs-container">
+  <div class="container it-docs-container">
     <div class="row it-docs-row">
-      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+      <aside class="col-12 col-lg-3 it-docs-sidebar-col" aria-label="Primary navigation">
         <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
           <div class="overlay d-lg-none"></div>
           <div class="close-div d-lg-none">
@@ -252,6 +256,7 @@
           <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
   <div class="sidebar-linklist-wrapper">
     <div class="link-list-wrapper">
+      <h3>Table of contents</h3>
       
       <div class="it-docs-sphinx-toc">
         <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
@@ -286,7 +291,7 @@
         </div>
       </aside>
 
-      <div class="col-12 col-lg-8 it-docs-main-col">
+      <div class="col-12 col-lg-6 it-docs-main-col">
         <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
           <noscript>
             <p class="it-docs-noscript alert alert-warning" role="alert">
@@ -296,7 +301,7 @@
           <div class="body">
             
   <section id="architecture-overview">
-<h1><span class="section-number">3. </span>Architecture Overview</h1>
+<h1><span class="section-number">3. </span>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Link to this heading">¶</a></h1>
 <p>The IT-Wallet System is a federated ecosystem that enables secure Digital Identity management and Digital Credential exchange for citizens and organizations.
 The IT-Wallet ecosystem is built on a multi-layered architecture, where governance bodies establish and maintain the trust infrastructure, Primary Actors implement and operate the technical solutions, and external systems provide additional services.</p>
 <p>The following diagrams depict the IT-Wallet architecture overview.</p>
@@ -307,7 +312,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLNlRzis4Fskl-Bc5fWDvCTQ9uK3B4KTnsq314cGk2ZwoJYHPviOHMgyKr9jsFy-aSuYgManOzC7mpe-Fl6zUoUzOy4WLM7XOh7_6QqbMTxLB5Gifq5jZ92IAX3immT_Jy6XKvJzP9oobIRuTNPqE3jQpdnHUaTEtcOVByxdoxl5_7P-lVXoCn-Eif-1VpEkn805MED8wfB01zdux7BwvVhJOdavVxzOtbvy-BX8yCVgulfcUNxz-IhLpcbb7C7TpUt5OdxNEO1K9UemFbI-ABnx-vsLbNUoZm_4lg3zuqD5GSpAA1JQ0QrHC4UcNOZzcdU06RrK6FGEIFggDkZMj4GhEy0VKlF-3NXe78kHIanqgt5sLh7u0bXgIvnDjPvRAiZ90jV30NsLs7Cxs8EN-NhchG-dWnSdwOgroFnOVOXPIJWVD8N7wZfGFHXzIri6Ks2e-wolNhsPv7edrXU_v4UJoT5pOY6rwRE-KVbulDgDzGWduzSdprdNJydlSq-cuvF9-zsuZuzVZu-d3NScHYorqmRRQOCVJbjiKdi7KoK-S7RcAwSnrCFsS7imUCRwREDW17zcq5mt5DYx8IhNxBl2c0UqCAlpfawg2aPgc5QoyUdVS3gx6WswI7nQamqAq3tQ2eKOPjCp25Jw80peD1ZcgYahNvJMf9EW2B4a8Zw0kUCgH43lqNxLy7Pj8kKvQKgaZIgpCiI0UaE18gjuS8-7Iv1v5Nn9wE29amMZPveFOdy4rtpQw-rBBXiSdGuwCn8xrhKhxtemLIgGDbifSEPrtRUej-p36ftv8zriFNjy5H4dgJ6xpYYqoIgI9CglefySnI4pCNSSOM_J4V-77CxxeQbA2lU6VQYVr7HhULE3G5nwnoQt12iVmBlSOz36hM7kn4ZKOvpuR_gt8aqXYK_TKRx1kifN38LtHdo81Dkkcm2enDmdhWEu42ZGuPeOIWnYb2dH2LYp8bKhIucFKefwCNimie7M40YLfV_YrNQKXWfpRloOUTUeBj9uf8uKv2Iw5NKFcsQbCVad6QH1jHkmtP2d3TiSb1GYeat07g0kZ3CiqR7xfB2DSSl2uDrt0m6B3TNR8Qbx8z8-evs6FdkWtoiJAD7_m2nuSglpCHsCabdfvnBhvQSuAz6pKQUKF4JbEhNq1k9ybFsLPTaxShegxDy0">IT-Wallet architecture overview - Governance.</a></span></p>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLNlRzis4Fskl-Bc5fWDvCTQ9uK3B4KTnsq314cGk2ZwoJYHPviOHMgyKr9jsFy-aSuYgManOzC7mpe-Fl6zUoUzOy4WLM7XOh7_6QqbMTxLB5Gifq5jZ92IAX3immT_Jy6XKvJzP9oobIRuTNPqE3jQpdnHUaTEtcOVByxdoxl5_7P-lVXoCn-Eif-1VpEkn805MED8wfB01zdux7BwvVhJOdavVxzOtbvy-BX8yCVgulfcUNxz-IhLpcbb7C7TpUt5OdxNEO1K9UemFbI-ABnx-vsLbNUoZm_4lg3zuqD5GSpAA1JQ0QrHC4UcNOZzcdU06RrK6FGEIFggDkZMj4GhEy0VKlF-3NXe78kHIanqgt5sLh7u0bXgIvnDjPvRAiZ90jV30NsLs7Cxs8EN-NhchG-dWnSdwOgroFnOVOXPIJWVD8N7wZfGFHXzIri6Ks2e-wolNhsPv7edrXU_v4UJoT5pOY6rwRE-KVbulDgDzGWduzSdprdNJydlSq-cuvF9-zsuZuzVZu-d3NScHYorqmRRQOCVJbjiKdi7KoK-S7RcAwSnrCFsS7imUCRwREDW17zcq5mt5DYx8IhNxBl2c0UqCAlpfawg2aPgc5QoyUdVS3gx6WswI7nQamqAq3tQ2eKOPjCp25Jw80peD1ZcgYahNvJMf9EW2B4a8Zw0kUCgH43lqNxLy7Pj8kKvQKgaZIgpCiI0UaE18gjuS8-7Iv1v5Nn9wE29amMZPveFOdy4rtpQw-rBBXiSdGuwCn8xrhKhxtemLIgGDbifSEPrtRUej-p36ftv8zriFNjy5H4dgJ6xpYYqoIgI9CglefySnI4pCNSSOM_J4V-77CxxeQbA2lU6VQYVr7HhULE3G5nwnoQt12iVmBlSOz36hM7kn4ZKOvpuR_gt8aqXYK_TKRx1kifN38LtHdo81Dkkcm2enDmdhWEu42ZGuPeOIWnYb2dH2LYp8bKhIucFKefwCNimie7M40YLfV_YrNQKXWfpRloOUTUeBj9uf8uKv2Iw5NKFcsQbCVad6QH1jHkmtP2d3TiSb1GYeat07g0kZ3CiqR7xfB2DSSl2uDrt0m6B3TNR8Qbx8z8-evs6FdkWtoiJAD7_m2nuSglpCHsCabdfvnBhvQSuAz6pKQUKF4JbEhNq1k9ybFsLPTaxShegxDy0">IT-Wallet architecture overview - Governance.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The governance level requires all participants in the ecosystem to comply with security and technical standards and requirements.</p>
@@ -318,7 +323,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLTxR-Eu4V_VdsBgEs0J8CuZJWxPHVTmkSIB1ktYqjZNQu42neWSoSHIf41IITHYltj9Yh8bn-irQY21HCw3_FtcCVh5EZIkBkNeJq8nMNE2FzzTdTrTBUzqMMb5olqy-il3_MmvNyoUPhyj_lKuEpeUsIz2LMYm12aKkQOYqCQjzEWTt5Fkbs3--FImcCrxPbrT8JVJCwRBKgkVT-paMha9lf3L9KskpnWP9tB1qD41qXmTPcZf4CEwi0U82RvaQFW1alJALgWAMg9q1uY_e9HqY62fCo6_UwCpeQmJhdOYmEefkAkjqoLOrqYoerlEPv9AKcw1nT6ONXqPXN9y0ZzcnPsMsdmS__0-_i9Qi9nMNrR2KPJJXfD9guMXPdoyRROoeaJJ3ArUNFnqa_63hFvmdbtTt5ozDUo8hOPMVsBPT9eVPlKARwQNxzzQBVHpG44n6jg-kPs-l_bqcEthwylfzQstxI6VAOcc8E02Yv0MByAjm5R8X2fwsUB9utu5fkUzHKuvrj9zyWxduZy45vUzJTQb8Vnt1Fxtc2nSNiVNpzwhKE7jwq19EHIAp9RITA0q7IfbkbRSKxYbSttUr_5lVHqqHhyaXSLAi2-Ah8NB-BwvpyL0fyJNpruA2ugxb-TzB4mu1DCcdFsYls5NoFLBE52Eqj9ev8IJ10-BoHyncs3UM4Sbt1eMs6AkDWGJU6p34cwPqyQEHgDVqosFKi2UmBYJwIn4qV5nkjOxUF9NlFW02rDR1mygDsYTgQC7Rry_2qu6K76uhTsAb1CCvhesZ6mqiFReq3lRQsNi1SR7tc_whMkmrrrQCi_26_KolwbCeudq1B-VoEjYIFz_gpyeWtcIZERyNrZhj45lT6VA2IV8diA30r5MRNvOoDVse3BQQQQbz-fvS8A92eE8TUXg6xt_y_Jw_3tqYhNr52iieh7JyScF3WlxiLyWh7zsz77CTE5ntdNR0DBIK26iYnHjQ7vAY-E4vN2bUuOIHKo1SCrxKGY74kuCyK0FIWiC_OftVz9RXJbRKOb-3JsHslZev50bQjgxFf5iWib7D14uxpDThojJtTswTjIxdrTUtW-OtBhdE0b_ZV-7mODTR2rj6rl-jiDuIuIdHz0v_6x9lBE0pXcHrOxixjX2kyHAU5MQhAFazl4XuZcRB_9QzYDg64tqMcbB779j09bViJ4ermTh3mi1ZUqeimx3rNY2ESLPjEIv8wChCfW9ALmJiRV4Ggw4yQ5MWiNujB7GTlxIueQ_-1gLiUR2WJCeP8-rNK7Px-MUZvrmyMm7-d3VKUut-y_pzk26F5J2QTE0zVy3JdLB46y3j4SKv4QNtJKSEl5Ca7Y7enGlWa9I6fq7qBNo-kq66NliiTu0NHXKjSIEeDWTZ9PjHEkgItMV3aKubDD0ojQcPIroKPYE16UGKMBb_ud-56ijXXqoGJeTRZi3klfx-Q6Vg0_MrcJyzLDHU50Xc1YTR2VeC8SuMtRfx6bvQwyjlz3FaTH7WwhLCevOErLXddQZaR3eJp58cuM7A8IjXCvGYlLMzgGjcj-eL-z0YfnOmoIT-aPB3Qmy6vBMeMD5eJ3qafRLI5hYDMR8Th3kJ88rVMdotLEEsX5sAHBmoonj-8jkSR8FrHVnLZw8VuvpBznMLUyDgqgc38VERtm8-XoqwkeTfm2wJu5GHP2vL2G6eP5msa6avsGN0v4dxp8fLeQitucdYVqpzJoRobHCSVyEEjzbxUHDoIB59qvFoDicnKnJTQKht2fLn1o_HrmPeTh3cwdwAJ20P2zJfkh7_r1l6Fo9hhFG9lv1HkI2JAo2WwX_3ZlDjxepEgZgpBETi1RFw6ZTT7h5RTX4eb71tamk4KvT6AnMtkGpIi4JweQUTP9dAs9VxCOXQoPPC-4KCgitqEo5d-dYcnLi-g6hLjsqjpEZEdPsP5I7uDh0tjIgreg3yV9NP5z8yK5fYdDW0sw5BeOvMUYxx8Luqyr3W9mBrxQTZXSuejFYD81QQaURadG2cNTQLs4df0KT0nU6c9FUfzwkuTxL4zdA-nIPf1WiiHt5rhIYDh-wTcH8Ycv6q7dOtpxvNhvQpDUCVGrVSd-b9fXjCtibgZPUiVzPuOaX4oClVDs5nlRxi46aBXV8ITk1ZfVDIgnyFPNXHY_P-ZO6osz6vB_NP0JPjoMj6zOtPn4xrDUxd1tYPHXPVHyUmhzXesiN9pMFKGjWdCT2T4eGIf41IkF9o4ild_fZyRRRuoJIeHg7X-FHBwHuNSh_0G00">IT-Wallet architecture overview - Primary Actors.</a></span></p>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLTxR-Eu4V_VdsBgEs0J8CuZJWxPHVTmkSIB1ktYqjZNQu42neWSoSHIf41IITHYltj9Yh8bn-irQY21HCw3_FtcCVh5EZIkBkNeJq8nMNE2FzzTdTrTBUzqMMb5olqy-il3_MmvNyoUPhyj_lKuEpeUsIz2LMYm12aKkQOYqCQjzEWTt5Fkbs3--FImcCrxPbrT8JVJCwRBKgkVT-paMha9lf3L9KskpnWP9tB1qD41qXmTPcZf4CEwi0U82RvaQFW1alJALgWAMg9q1uY_e9HqY62fCo6_UwCpeQmJhdOYmEefkAkjqoLOrqYoerlEPv9AKcw1nT6ONXqPXN9y0ZzcnPsMsdmS__0-_i9Qi9nMNrR2KPJJXfD9guMXPdoyRROoeaJJ3ArUNFnqa_63hFvmdbtTt5ozDUo8hOPMVsBPT9eVPlKARwQNxzzQBVHpG44n6jg-kPs-l_bqcEthwylfzQstxI6VAOcc8E02Yv0MByAjm5R8X2fwsUB9utu5fkUzHKuvrj9zyWxduZy45vUzJTQb8Vnt1Fxtc2nSNiVNpzwhKE7jwq19EHIAp9RITA0q7IfbkbRSKxYbSttUr_5lVHqqHhyaXSLAi2-Ah8NB-BwvpyL0fyJNpruA2ugxb-TzB4mu1DCcdFsYls5NoFLBE52Eqj9ev8IJ10-BoHyncs3UM4Sbt1eMs6AkDWGJU6p34cwPqyQEHgDVqosFKi2UmBYJwIn4qV5nkjOxUF9NlFW02rDR1mygDsYTgQC7Rry_2qu6K76uhTsAb1CCvhesZ6mqiFReq3lRQsNi1SR7tc_whMkmrrrQCi_26_KolwbCeudq1B-VoEjYIFz_gpyeWtcIZERyNrZhj45lT6VA2IV8diA30r5MRNvOoDVse3BQQQQbz-fvS8A92eE8TUXg6xt_y_Jw_3tqYhNr52iieh7JyScF3WlxiLyWh7zsz77CTE5ntdNR0DBIK26iYnHjQ7vAY-E4vN2bUuOIHKo1SCrxKGY74kuCyK0FIWiC_OftVz9RXJbRKOb-3JsHslZev50bQjgxFf5iWib7D14uxpDThojJtTswTjIxdrTUtW-OtBhdE0b_ZV-7mODTR2rj6rl-jiDuIuIdHz0v_6x9lBE0pXcHrOxixjX2kyHAU5MQhAFazl4XuZcRB_9QzYDg64tqMcbB779j09bViJ4ermTh3mi1ZUqeimx3rNY2ESLPjEIv8wChCfW9ALmJiRV4Ggw4yQ5MWiNujB7GTlxIueQ_-1gLiUR2WJCeP8-rNK7Px-MUZvrmyMm7-d3VKUut-y_pzk26F5J2QTE0zVy3JdLB46y3j4SKv4QNtJKSEl5Ca7Y7enGlWa9I6fq7qBNo-kq66NliiTu0NHXKjSIEeDWTZ9PjHEkgItMV3aKubDD0ojQcPIroKPYE16UGKMBb_ud-56ijXXqoGJeTRZi3klfx-Q6Vg0_MrcJyzLDHU50Xc1YTR2VeC8SuMtRfx6bvQwyjlz3FaTH7WwhLCevOErLXddQZaR3eJp58cuM7A8IjXCvGYlLMzgGjcj-eL-z0YfnOmoIT-aPB3Qmy6vBMeMD5eJ3qafRLI5hYDMR8Th3kJ88rVMdotLEEsX5sAHBmoonj-8jkSR8FrHVnLZw8VuvpBznMLUyDgqgc38VERtm8-XoqwkeTfm2wJu5GHP2vL2G6eP5msa6avsGN0v4dxp8fLeQitucdYVqpzJoRobHCSVyEEjzbxUHDoIB59qvFoDicnKnJTQKht2fLn1o_HrmPeTh3cwdwAJ20P2zJfkh7_r1l6Fo9hhFG9lv1HkI2JAo2WwX_3ZlDjxepEgZgpBETi1RFw6ZTT7h5RTX4eb71tamk4KvT6AnMtkGpIi4JweQUTP9dAs9VxCOXQoPPC-4KCgitqEo5d-dYcnLi-g6hLjsqjpEZEdPsP5I7uDh0tjIgreg3yV9NP5z8yK5fYdDW0sw5BeOvMUYxx8Luqyr3W9mBrxQTZXSuejFYD81QQaURadG2cNTQLs4df0KT0nU6c9FUfzwkuTxL4zdA-nIPf1WiiHt5rhIYDh-wTcH8Ycv6q7dOtpxvNhvQpDUCVGrVSd-b9fXjCtibgZPUiVzPuOaX4oClVDs5nlRxi46aBXV8ITk1ZfVDIgnyFPNXHY_P-ZO6osz6vB_NP0JPjoMj6zOtPn4xrDUxd1tYPHXPVHyUmhzXesiN9pMFKGjWdCT2T4eGIf41IkF9o4ild_fZyRRRuoJIeHg7X-FHBwHuNSh_0G00">IT-Wallet architecture overview - Primary Actors.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The primary operational layer implements the core Digital Credential lifecycle through coordinated interactions among specialized technical solutions, so that all Credential operations maintain security and privacy standards while enabling seamless user experiences.</p>
@@ -329,7 +334,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZPHHRzis4CVVzIbkQe7QW9EiTLAum5hKjTtLGz0OYOkYJyA9FCktIQH0dfAumxxxH5g9dNZ0x0S_tFtvv_5tT_he1PqqLGdpvSbtB4kIx6RZXQfixDIQXPGqZhBPlII_i55bemb-cvoVJSwpYQrgQyZ8X-JBV3hBRfQpwzdLyiTYrkidhy3_nQP6XnMKR4WsDO5rihR9vVZ7rRTbTZdxlCokvxz_MKPv5rrUBRBfrVUlCJQb5Hk2cyNrV3cxsIj0cXgr6vufMrNMVFYFpCeQES4xyhQYauipHKvunGg5Zb1h5CpHqp76jl17o5Xd2fq-GadtQesce0nBEK9-5thsly8pDbvO6k50goKxQRpO2hniIlB9MEjPIHKPMMBHI-bUo1aiqm6yp8k9BQrxdxvu5tyX5foxw5qOaQYpJfFheeMZJTf_Rbixhj1jdhg-VlrsbEkZN5_ycf-FHkU7na9g_TJrhSg7mzLnhkSu6hvvT-XQsDj0mIXwwZqQ3z-DFX_dVN7nPdWnRhqJOIbfjsImNJBONp8uWLb77iPAhFD9-tjr4Fna6wDRa3tg4WD87pKODI1sxouVxqfRMTh_Eu7sjo3dhUaffa7w5OLjE3hNP8Hb0mjdRrcJQq_iifeB5Yo17rHrfuAmAHgiWSby1hqMeH9d3QkTuGITxfzsjXvyo1U0ZQo3GCKhm9ExPTMcqMZezfNqxZuKSPmtqYfMre7D1Tbmy875V1fFeHA-HGd1tUldnaleucaAWvU2XN__PC1zxLZeVTfjQDgFWEBVumUkLskZ1scw1slQuPYYjFUNA6rD5VGMqw_J_hwEpSgX5zV45iVAwoOlMO4E9za8ELkJmvnBbiqfx572q6RDFqd3U37VFXkL8k_32nVZHsG3gD1WGVuvqzOXXgpZdzj8Jd97P212vN2KgtexzRxrKusBlKK9XBQzy6jqfBVrxfRYj8LtWFEHvlvNh4Nw36SeAPCrEvtLwBPbfEEkJjAm32bOR5DX2lzeD2l64go3cwOEp_RMRU2JrTnDp2KLRRupUJXtYNT0fkMcuWi12p8gNlTdvzZXwLWuAfeI9LZddVMkgdm3PUidjci2-9eKhrZjXYr2YdqgOpcriuf8iodyWCqjUU4Yzi63TVktgPPDoOTS3yTqzo5_u7g9c-nRtEKmflrTR3ksXx3xoJz9admaevkg_1S0">IT-Wallet architecture overview - external Actors.</a></span></p>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZPHHRzis4CVVzIbkQe7QW9EiTLAum5hKjTtLGz0OYOkYJyA9FCktIQH0dfAumxxxH5g9dNZ0x0S_tFtvv_5tT_he1PqqLGdpvSbtB4kIx6RZXQfixDIQXPGqZhBPlII_i55bemb-cvoVJSwpYQrgQyZ8X-JBV3hBRfQpwzdLyiTYrkidhy3_nQP6XnMKR4WsDO5rihR9vVZ7rRTbTZdxlCokvxz_MKPv5rrUBRBfrVUlCJQb5Hk2cyNrV3cxsIj0cXgr6vufMrNMVFYFpCeQES4xyhQYauipHKvunGg5Zb1h5CpHqp76jl17o5Xd2fq-GadtQesce0nBEK9-5thsly8pDbvO6k50goKxQRpO2hniIlB9MEjPIHKPMMBHI-bUo1aiqm6yp8k9BQrxdxvu5tyX5foxw5qOaQYpJfFheeMZJTf_Rbixhj1jdhg-VlrsbEkZN5_ycf-FHkU7na9g_TJrhSg7mzLnhkSu6hvvT-XQsDj0mIXwwZqQ3z-DFX_dVN7nPdWnRhqJOIbfjsImNJBONp8uWLb77iPAhFD9-tjr4Fna6wDRa3tg4WD87pKODI1sxouVxqfRMTh_Eu7sjo3dhUaffa7w5OLjE3hNP8Hb0mjdRrcJQq_iifeB5Yo17rHrfuAmAHgiWSby1hqMeH9d3QkTuGITxfzsjXvyo1U0ZQo3GCKhm9ExPTMcqMZezfNqxZuKSPmtqYfMre7D1Tbmy875V1fFeHA-HGd1tUldnaleucaAWvU2XN__PC1zxLZeVTfjQDgFWEBVumUkLskZ1scw1slQuPYYjFUNA6rD5VGMqw_J_hwEpSgX5zV45iVAwoOlMO4E9za8ELkJmvnBbiqfx572q6RDFqd3U37VFXkL8k_32nVZHsG3gD1WGVuvqzOXXgpZdzj8Jd97P212vN2KgtexzRxrKusBlKK9XBQzy6jqfBVrxfRYj8LtWFEHvlvNh4Nw36SeAPCrEvtLwBPbfEEkJjAm32bOR5DX2lzeD2l64go3cwOEp_RMRU2JrTnDp2KLRRupUJXtYNT0fkMcuWi12p8gNlTdvzZXwLWuAfeI9LZddVMkgdm3PUidjci2-9eKhrZjXYr2YdqgOpcriuf8iodyWCqjUU4Yzi63TVktgPPDoOTS3yTqzo5_u7g9c-nRtEKmflrTR3ksXx3xoJz9admaevkg_1S0">IT-Wallet architecture overview - external Actors.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>External systems provide services that connect the IT-Wallet ecosystem to the national digital infrastructure, enabling interoperability with existing government services and data sources.</p>
@@ -369,7 +374,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
         </main>
       </div>
 
-      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
         <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
@@ -395,50 +400,11 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
              decoding="async">
       </a>
     </li>
-    <li>
-      <a href="https://www.ipzs.it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-ipzs.png"
-             alt="Istituto Poligrafico e Zecca dello Stato"
-             width="105"
-             height="43"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
-    <li>
-      <a href="https://www.pagopa.it/it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-pagopa.svg"
-             alt="PagoPA"
-             width="121"
-             height="34"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
-    <li>
-      <a href="https://www.agid.gov.it/it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-agid.svg"
-             alt="Agenzia per l'Italia Digitale"
-             width="203"
-             height="31"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
         <p class="it-docs-footer-project">IT-Wallet Technical Specifications - PR #1163</p>
         <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.4</span><span class="it-docs-footer-detail">Last updated 13/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

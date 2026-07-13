@@ -7,13 +7,13 @@
 
     <title>13.1. Wallet Provider Endpoints &#8212; IT-Wallet Technical Specifications - PR #1163</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=a5775a5f" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=a7a052b3" />
 
-    <script src="_static/documentation_options.js?v=a68a9277"></script>
+    <script src="_static/documentation_options.js?v=6d0302ba"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -186,32 +186,36 @@
       </div>
     </div>
   </div>
-  <div class="header-title-section it-docs-header-title">
-    <div class="container py-3">
-      <div class="d-flex align-items-center justify-content-between flex-nowrap">
-        <div class="it-brand-wrapper it-docs-brand-wrapper">
-          <a href="index.html"
-             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
-             title="Home">
-            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
-            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
-            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Technical Specifications - PR #1163</span>
-          </a>
-        </div>
-        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
-                type="button"
-                data-it-docs-nav-toggle
-                data-it-docs-nav-target="#itDocsPrimaryNav"
-                aria-controls="itDocsPrimaryNav"
-                aria-expanded="false"
-                aria-label="Open navigation">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <div class="it-header-center-content-wrapper it-docs-header-compact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-center-content d-flex align-items-center justify-content-between flex-nowrap">
+            <div class="it-brand-wrapper it-docs-brand-wrapper">
+              <a href="index.html"
+                 class="it-docs-brand-link text-decoration-none"
+                 title="Home">
+                <span class="it-brand-title it-docs-header-site-title" id="header-site-title">IT-Wallet Technical Specifications - PR #1163</span>
+              </a>
+            </div>
+            <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                    type="button"
+                    data-it-docs-nav-toggle
+                    data-it-docs-nav-target="#itDocsPrimaryNav"
+                    aria-controls="itDocsPrimaryNav"
+                    aria-expanded="false"
+                    aria-label="Open navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
 </svg>
-          <span>Menu</span>
-        </button>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+    </div>
+    <div class="container it-docs-header-mobile-tools-container d-lg-none">
+      <div class="it-docs-header-mobile-tools"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
   <form class="it-docs-search-form" action="search.html" method="get">
     <label class="visually-hidden" for="it-docs-search-input-mobile">Search</label>
     <input id="it-docs-search-input-mobile"
@@ -237,9 +241,9 @@
   </div>
 </header>
 <div class="it-docs-layout">
-  <div class="container-fluid it-docs-container">
+  <div class="container it-docs-container">
     <div class="row it-docs-row">
-      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+      <aside class="col-12 col-lg-3 it-docs-sidebar-col" aria-label="Primary navigation">
         <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
           <div class="overlay d-lg-none"></div>
           <div class="close-div d-lg-none">
@@ -252,6 +256,7 @@
           <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
   <div class="sidebar-linklist-wrapper">
     <div class="link-list-wrapper">
+      <h3>Table of contents</h3>
       
       <div class="it-docs-sphinx-toc">
         <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
@@ -293,7 +298,7 @@
         </div>
       </aside>
 
-      <div class="col-12 col-lg-8 it-docs-main-col">
+      <div class="col-12 col-lg-6 it-docs-main-col">
         <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
           <noscript>
             <p class="it-docs-noscript alert alert-warning" role="alert">
@@ -303,7 +308,7 @@
           <div class="body">
             
   <section id="wallet-provider-endpoints">
-<h1><span class="section-number">13.1. </span>Wallet Provider Endpoints</h1>
+<h1><span class="section-number">13.1. </span>Wallet Provider Endpoints<a class="headerlink" href="#wallet-provider-endpoints" title="Link to this heading">¶</a></h1>
 <p>The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -314,29 +319,29 @@
 <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">Optional Test Cases for Wallet Instance</span></a>.</p>
 </div>
 <section id="id1">
-<h2><span class="section-number">13.1.1. </span>Federation Endpoint</h2>
+<h2><span class="section-number">13.1.1. </span>Federation Endpoint<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration.</p>
 <p>See Section <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> for technical details (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_001–004</span></a>).</p>
 </section>
 <section id="wallet-solution-nonce-endpoint">
-<h2><span class="section-number">13.1.2. </span>Wallet Solution Nonce Endpoint</h2>
+<h2><span class="section-number">13.1.2. </span>Wallet Solution Nonce Endpoint<a class="headerlink" href="#wallet-solution-nonce-endpoint" title="Link to this heading">¶</a></h2>
 <p>This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
 <p>See <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a> for details on the Nonce Request and Nonce Response (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131</span></a>).</p>
 </section>
 <section id="wallet-instance-management-endpoint">
-<h2><span class="section-number">13.1.3. </span>Wallet Instance Management Endpoint</h2>
+<h2><span class="section-number">13.1.3. </span>Wallet Instance Management Endpoint<a class="headerlink" href="#wallet-instance-management-endpoint" title="Link to this heading">¶</a></h2>
 <p>These are RESTful API endpoints provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
 The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core <a class="reference internal" href="wallet-instance-functionalities.html#id1"><span class="std std-ref">Wallet Instance Functionalities</span></a>.</p>
 <section id="wallet-instance-registration-request">
-<h3><span class="section-number">13.1.3.1. </span>Wallet Instance Registration Request</h3>
+<h3><span class="section-number">13.1.3.1. </span>Wallet Instance Registration Request<a class="headerlink" href="#wallet-instance-registration-request" title="Link to this heading">¶</a></h3>
 <p>To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain the claims described in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131–134</span></a>).</p>
 </section>
 <section id="wallet-instance-registration-response">
-<h3><span class="section-number">13.1.3.2. </span>Wallet Instance Registration Response</h3>
+<h3><span class="section-number">13.1.3.2. </span>Wallet Instance Registration Response<a class="headerlink" href="#wallet-instance-registration-response" title="Link to this heading">¶</a></h3>
 <p>If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>).</p>
 </section>
 <section id="wallet-instance-retrieval-request">
-<h3><span class="section-number">13.1.3.3. </span>Wallet Instance Retrieval Request</h3>
+<h3><span class="section-number">13.1.3.3. </span>Wallet Instance Retrieval Request<a class="headerlink" href="#wallet-instance-retrieval-request" title="Link to this heading">¶</a></h3>
 <p>To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -344,7 +349,7 @@ The following sections describe the registration, status retrieval and revocatio
 </div>
 </section>
 <section id="wallet-instance-retrieval-response">
-<h3><span class="section-number">13.1.3.4. </span>Wallet Instance Retrieval Response</h3>
+<h3><span class="section-number">13.1.3.4. </span>Wallet Instance Retrieval Response<a class="headerlink" href="#wallet-instance-retrieval-response" title="Link to this heading">¶</a></h3>
 <p>If a Wallet Instance Retrieval Request is successfully processed, the Wallet Provider MUST return an HTTP Response with a 200 (OK) status code.
 The response body MUST be in JSON format and include the relevant Wallet Instance information, such as its unique ID, status, and issuance date.
 When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_146</span></a>).</p>
@@ -362,7 +367,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 <section id="wallet-instance-revocation-request">
-<h3><span class="section-number">13.1.3.5. </span>Wallet Instance Revocation Request</h3>
+<h3><span class="section-number">13.1.3.5. </span>Wallet Instance Revocation Request<a class="headerlink" href="#wallet-instance-revocation-request" title="Link to this heading">¶</a></h3>
 <p>To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The request body MUST contain a <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_147</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -370,7 +375,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 <section id="wallet-instance-revocation-response">
-<h3><span class="section-number">13.1.3.6. </span>Wallet Instance Revocation Response</h3>
+<h3><span class="section-number">13.1.3.6. </span>Wallet Instance Revocation Response<a class="headerlink" href="#wallet-instance-revocation-response" title="Link to this heading">¶</a></h3>
 <p>If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_148</span></a>).</p>
 <p>If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039, WP_043–044</span></a>).</p>
 <p>Below is a non-normative example of an error response:</p>
@@ -386,7 +391,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">13.1.3.7. </span>Error Handling for Wallet Instance Management</h3>
+<h3><span class="section-number">13.1.3.7. </span>Error Handling for Wallet Instance Management<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>To ensure robustness and security, the Wallet Provider MUST handle errors consistently across all Wallet Instance Management requests, including Registration, Retrieval, and Revocation.</p>
 <p>In case of an error, the Wallet Provider MUST return an error response as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7231.html"><strong>RFC 7231</strong></a>, with additional details available in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7807.html"><strong>RFC 7807</strong></a>. The response MUST use the Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> and MUST include the following parameters:</p>
 <ul class="simple">
@@ -396,7 +401,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <p>The following sections categorize errors into <strong>common errors</strong>, which apply to all requests, and <strong>request-specific errors</strong>, which are relevant to particular operations (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–044</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_150–155</span></a>).</p>
 </section>
 <section id="common-error-responses">
-<h3><span class="section-number">13.1.3.8. </span>Common Error Responses</h3>
+<h3><span class="section-number">13.1.3.8. </span>Common Error Responses<a class="headerlink" href="#common-error-responses" title="Link to this heading">¶</a></h3>
 <p>The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -431,7 +436,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 </section>
 <section id="request-specific-error-responses">
-<h3><span class="section-number">13.1.3.9. </span>Request-Specific Error Responses</h3>
+<h3><span class="section-number">13.1.3.9. </span>Request-Specific Error Responses<a class="headerlink" href="#request-specific-error-responses" title="Link to this heading">¶</a></h3>
 <p>The errors in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-error-response"><span class="std std-ref">Mobile Application Instance Initialization Error Response</span></a> MUST be supported for error responses related to <strong>Wallet Instance Registration</strong>.</p>
 <p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Retrieval</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_041–042</span></a>):</p>
 <table class="longtable docutils align-default">
@@ -484,10 +489,10 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 </section>
 <section id="wallet-instance-attestation-issuance-endpoint">
-<h2><span class="section-number">13.1.4. </span>Wallet Instance Attestation Issuance Endpoint</h2>
+<h2><span class="section-number">13.1.4. </span>Wallet Instance Attestation Issuance Endpoint<a class="headerlink" href="#wallet-instance-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
 <p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Wallet Instance Attestation, by sending a Wallet Instance Attestation Issuance Request.</p>
 <section id="wallet-instance-attestation-issuance-request">
-<h3><span class="section-number">13.1.4.1. </span>Wallet Instance Attestation Issuance Request</h3>
+<h3><span class="section-number">13.1.4.1. </span>Wallet Instance Attestation Issuance Request<a class="headerlink" href="#wallet-instance-attestation-issuance-request" title="Link to this heading">¶</a></h3>
 <p>The Wallet Instance Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Wallet Instance Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wia-request+jwt</span></code>.</p>
 <p>The Wallet Instance Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
@@ -619,7 +624,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 <section id="wallet-instance-attestation-issuance-response">
-<h3><span class="section-number">13.1.4.2. </span>Wallet Instance Attestation Issuance Response</h3>
+<h3><span class="section-number">13.1.4.2. </span>Wallet Instance Attestation Issuance Response<a class="headerlink" href="#wallet-instance-attestation-issuance-response" title="Link to this heading">¶</a></h3>
 <p>If the Wallet Instance Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object includes <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> (see <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>). <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> is signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Wallet Instance Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>.</p>
 <p>The JSON Object returned in the response has the following claim:</p>
 <table class="longtable docutils align-default">
@@ -725,7 +730,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 </section>
 <section id="wallet-instance-attestation-jwt">
-<h3><span class="section-number">13.1.4.3. </span>Wallet Instance Attestation JWT</h3>
+<h3><span class="section-number">13.1.4.3. </span>Wallet Instance Attestation JWT<a class="headerlink" href="#wallet-instance-attestation-jwt" title="Link to this heading">¶</a></h3>
 <p>The JOSE header of the Wallet Instance Attestation JWT contains the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -850,10 +855,10 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 </section>
 <section id="key-attestation-issuance-endpoint">
-<h2><span class="section-number">13.1.5. </span>Key Attestation Issuance Endpoint</h2>
+<h2><span class="section-number">13.1.5. </span>Key Attestation Issuance Endpoint<a class="headerlink" href="#key-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
 <p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request.</p>
 <section id="key-attestation-issuance-request">
-<h3><span class="section-number">13.1.5.1. </span>Key Attestation Issuance Request</h3>
+<h3><span class="section-number">13.1.5.1. </span>Key Attestation Issuance Request<a class="headerlink" href="#key-attestation-issuance-request" title="Link to this heading">¶</a></h3>
 <p>The Key Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Key Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wua-request+jwt</span></code>.</p>
 <p>The Key Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
@@ -993,7 +998,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 <section id="key-attestation-issuance-response">
-<h3><span class="section-number">13.1.5.2. </span>Key Attestation Issuance Response</h3>
+<h3><span class="section-number">13.1.5.2. </span>Key Attestation Issuance Response<a class="headerlink" href="#key-attestation-issuance-response" title="Link to this heading">¶</a></h3>
 <p>If the Key Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object includes <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> (see <a class="reference internal" href="wallet-attestation-issuance.html#key-attestation-issuance"><span class="std std-ref">Key Attestation Issuance</span></a>). <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> is signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Key Attestation is to be used for the Issuance phase, as an <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> JOSE header in JWT <code class="docutils literal notranslate"><span class="pre">proof</span></code> type, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>.</p>
 <p>The JSON Object returned in the response has the following claim:</p>
 <table class="longtable docutils align-default">
@@ -1047,7 +1052,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 </section>
 <section id="key-attestation-jwt">
-<h3><span class="section-number">13.1.5.3. </span>Key Attestation JWT</h3>
+<h3><span class="section-number">13.1.5.3. </span>Key Attestation JWT<a class="headerlink" href="#key-attestation-jwt" title="Link to this heading">¶</a></h3>
 <p>The JOSE header of the Key Attestation JWT contains the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1198,7 +1203,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 </section>
 <section id="e-service-pdnd-wallet-provider-catalog">
-<h2><span class="section-number">13.1.6. </span>e-Service PDND Wallet Provider Catalog</h2>
+<h2><span class="section-number">13.1.6. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
 <p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
 <div class="admonition note">
@@ -1206,7 +1211,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 <p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
 </div>
 <section id="notify-user-death">
-<h3><span class="section-number">13.1.6.1. </span>Notify User Death</h3>
+<h3><span class="section-number">13.1.6.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1251,7 +1256,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
         </main>
       </div>
 
-      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
         <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
@@ -1345,50 +1350,11 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
              decoding="async">
       </a>
     </li>
-    <li>
-      <a href="https://www.ipzs.it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-ipzs.png"
-             alt="Istituto Poligrafico e Zecca dello Stato"
-             width="105"
-             height="43"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
-    <li>
-      <a href="https://www.pagopa.it/it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-pagopa.svg"
-             alt="PagoPA"
-             width="121"
-             height="34"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
-    <li>
-      <a href="https://www.agid.gov.it/it/"
-         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
-         target="_blank"
-         rel="noopener">
-        <img src="_static/img/footer/logo-agid.svg"
-             alt="Agenzia per l'Italia Digitale"
-             width="203"
-             height="31"
-             loading="lazy"
-             decoding="async">
-      </a>
-    </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
         <p class="it-docs-footer-project">IT-Wallet Technical Specifications - PR #1163</p>
         <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.4</span><span class="it-docs-footer-detail">Last updated 13/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
