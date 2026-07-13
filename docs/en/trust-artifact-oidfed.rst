@@ -400,18 +400,22 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
      - REQUIRED. Trust Mark issuance timestamp.
    * - **exp**
      - REQUIRED. Trust Mark expiration timestamp.
-   * - **organization_type**
-     - REQUIRED. Entity organization type (``public`` or ``private``).
+   * - **public_body**
+     - REQUIRED. Boolean indicating whether the entity is a public sector body.
    * - **vat_number**
-     - RECOMMENDED. VAT number of the entity (typically for private organizations).
+     - REQUIRED when ``public_body`` is ``false``. VAT number of the entity. It MAY also be present when ``public_body`` is ``true``.
    * - **legal_identifier**
      - RECOMMENDED. Legal registration number or identifier of the entity (e.g., business registration number, tax code).
    * - **ipa_code**
-     - RECOMMENDED. IPA (Indice delle Pubbliche Amministrazioni) code for public sector entities.
+     - REQUIRED when ``public_body`` is ``true``, MUST NOT be present otherwise. IPA (Indice delle Pubbliche Amministrazioni) code of the public sector entity.
    * - **organization_name**
-     - RECOMMENDED. Full name of the Organizational Entity.
+     - REQUIRED. Full name of the Organizational Entity.
    * - **email**
-     - RECOMMENDED. Institutional or PEC email of the organization.
+     - REQUIRED. Institutional or PEC email of the organization.
+   * - **support_uri**
+     - REQUIRED. URL or email address to be used for requests related to the entity, such as data deletion or portability. 
+   * - **srv_description**
+     - REQUIRED. Multilingual description of the service provided by the entity. Each entry contains ``lang`` and ``value``. 
    * - **entitlements**
      - REQUIRED. Array of entitlement URIs identifying the role of the subject, as defined in `ETSI_TS_119_475`_ Annex A.2 (e.g. ``Service_Provider``, ``PID_Provider``, ``QEAA_Provider``, ``PUB_EAA_Provider``, ``Non_Q_EAA_Provider``).
    * - **provides_attestations**
@@ -430,7 +434,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
      - OPTIONAL. URL with additional web information about the Trust Mark.
 
 .. note::
-  The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI_TS_119_475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts. The identity and branding claims are specific to the IT-Wallet federation.
+  The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) and the identity and transparency claims aligned with the WRPRC (``public_body``, ``support_uri``, ``srv_description``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI_TS_119_475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts.
 
 .. note::
   The revocation status of a Trust Mark is verified through the Federation Trust Mark Status endpoint (`OID-FED`_ Section 8.4), not through a status list carried in the token. This is the difference with the WRPRC, whose ``status`` claim points to a status list: the Trust Mark relies on the federation native revocation mechanism. The consumption of these claims by the Trust Evaluator is defined in :ref:`trust-evaluation-oidfed:Authorization`.
@@ -447,11 +451,16 @@ Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badg
      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer",
      "iat": 1718207217,
      "exp": 1749743216,
-     "organization_type": "public",
+     "public_body": true,
      "ipa_code": "c_h501",
      "legal_identifier": "80012345678",
      "organization_name": "Comune di Example",
      "email": "protocollo@comune.example.it",
+     "support_uri": "https://badge-issuer.example.it/support",
+     "srv_description": [
+       {"lang": "it", "value": "Servizio di emissione del badge dipendente"},
+       {"lang": "en", "value": "Employee Badge issuance service"}
+     ],
      "entitlements": ["Non_Q_EAA_Provider"],
      "provides_attestations": [
        {
@@ -468,6 +477,11 @@ Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badg
          ]
        }
      ],
+     "supervisory_authority": {
+       "uri": "https://www.dpa.example.it/report",
+       "email": "reports@dpa.example.it",
+       "phone": "+390612345678"
+     },
      "logo_uri": "https://badge-issuer.example.it/logo.svg"
    }
 
@@ -481,11 +495,16 @@ Relying Party, a private organization requesting the Employee Badge for physical
      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
      "iat": 1718207217,
      "exp": 1749743216,
-     "organization_type": "private",
+     "public_body": false,
      "vat_number": "IT12345678901",
      "legal_identifier": "12345678901",
      "organization_name": "Private Company S.p.A.",
      "email": "compliance@privatecompany.example.com",
+     "support_uri": "https://access.privatecompany.example.com/support",
+     "srv_description": [
+       {"lang": "it", "value": "Servizio di controllo dell'accesso fisico"},
+       {"lang": "en", "value": "Physical access control service"}
+     ],
      "entitlements": ["Service_Provider"],
      "credentials": [
        {
@@ -521,15 +540,25 @@ Relying Party Intermediary. It declares no intended use of its own, so its regis
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
      "sub": "https://intermediary.example.com",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
      "iat": 1718207217,
      "exp": 1749743216,
-     "organization_type": "private",
+     "public_body": false,
      "vat_number": "IT98765432109",
      "legal_identifier": "98765432109",
      "organization_name": "Intermediary S.r.l.",
      "email": "info@intermediary.example.com",
+     "support_uri": "https://intermediary.example.com/support",
+     "srv_description": [
+       {"lang": "it", "value": "Servizio di intermediazione per Relying Party"},
+       {"lang": "en", "value": "Intermediation service for Relying Parties"}
+     ],
      "entitlements": ["Service_Provider"],
+     "supervisory_authority": {
+       "uri": "https://www.dpa.example.it/report",
+       "email": "reports@dpa.example.it",
+       "phone": "+390612345678"
+     },
      "logo_uri": "https://intermediary.example.com/logo.svg"
    }
 
