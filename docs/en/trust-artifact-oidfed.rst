@@ -348,18 +348,24 @@ As a result of a successful onboarding completion, entities receive IT-Wallet Fe
 Trust Mark Types and Schema
 """""""""""""""""""""""""""
 
-Entities MAY receive multiple Trust Marks for different purposes. Trust Mark identifiers MUST follow a hierarchical schema that reflects the authorization scope:
+Trust Mark identifiers MUST follow a hierarchical schema that reflects the authorization scope:
 
 ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``
 
 Where:
 
   - ``<federation_authority_domain>``: The domain of the issuing Federation Authority.
-  - ``<purpose>``: The Trust Mark purpose. The ``federation-entity`` purpose is **REQUIRED** for all entities. Additional Trust Mark purposes MAY be supported, such as ``authorization_policy`` for granular operational scope definitions.
-  - ``<entity_type>``: The recipient entity type (e.g., ``credential-issuer``, ``relying-party``, ``wallet-provider``).
+  - ``<purpose>``: The Trust Mark purpose. The ``registration-entity`` purpose is **REQUIRED** for all entities as a result of the onboarding process. Additional Trust Mark purposes MAY be defined for future needs, but they are not required for the authorization processes defined in :ref:`trust-evaluation-oidfed:Authorization`.
+  - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
 
-Trust Mark Structure
-""""""""""""""""""""
+Trust Mark registration-entity
+"""""""""""""""""""""""""""""""
+
+Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity. The only Trust MArk issuer MUST be the Federation TA. It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request. This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework. An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly. 
+
+A Relying Party Intermediary receives its registration Trust Mark with the ``intermediate`` ``<entity_type>`` in the identifier. Differently from the EUDIW Trust Framework, where the intermediary relationship is expressed in the registration data of the intermediated Relying Party, in the National Trust Framework the relationship is expressed through the federation hierarchy as the Intermediary is a Federation Intermediate that publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. The registration Trust Mark of each affiliated Relying Party is also issued by the Federation Trust Anchor. For this reason no dedicated intermediary field is present in the Trust Mark. The onboarding of the Intermediary is defined in :ref:`onboarding-procedure:Relying Party Intermediaries`.
+
+**Trust Mark Structure**
 
 Trust Marks in Entity Configuration MUST be represented as JSON objects containing the following claims:
 
@@ -380,16 +386,16 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
 .. list-table:: Trust Mark JWT Claims
    :class: longtable
    :header-rows: 1
-   :widths: 20 80
+   :widths: 22 78
 
    * - **Claim**
      - **Description**
    * - **iss**
-     - REQUIRED. Federation Authority issuing the Trust Mark (immediate superior: Trust Anchor or Intermediate).
+     - REQUIRED. The Federation Trust Anchor that issues the Trust Mark.
    * - **sub**
      - REQUIRED. Federation Entity Identifier of the subject.
    * - **trust_mark_type**
-     - REQUIRED. Unique Trust Mark identifier, MUST match the ``trust_mark_type`` claim.
+     - REQUIRED. Unique Trust Mark identifier. It MUST match the ``trust_mark_type`` claim of the Trust Mark Object.
    * - **iat**
      - REQUIRED. Trust Mark issuance timestamp.
    * - **exp**
@@ -406,90 +412,124 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
      - RECOMMENDED. Full name of the Organizational Entity.
    * - **email**
      - RECOMMENDED. Institutional or PEC email of the organization.
+   * - **entitlements**
+     - REQUIRED. Array of entitlement URIs identifying the role of the subject, as defined in `ETSI_TS_119_475`_ Annex A.2 (e.g. ``Service_Provider``, ``PID_Provider``, ``QEAA_Provider``, ``PUB_EAA_Provider``, ``Non_Q_EAA_Provider``).
+   * - **provides_attestations**
+     - REQUIRED for a Credential Issuer, MUST NOT be present otherwise. Array of the Credential types the subject is authorized to issue. Each entry contains ``format``, ``meta`` to identify the Credential type, and an optional ``claim`` array.
+   * - **credentials**
+     - REQUIRED for a Relying Party that requests Credentials, MUST NOT be present otherwise. Array of the Credential queries the subject is authorized to request, used for the Overasking Check. Each entry contains ``format``, ``meta`` (e.g. ``vct_values`` or ``doctype_value``) and a ``claim`` array of the authorized attribute paths.
+   * - **purpose**
+     - REQUIRED for a Relying Party that requests Credentials, MUST NOT be present otherwise. Multilingual list describing the data processing associated with the intended use. Each entry contains ``lang`` and ``value``.
+   * - **privacy_policy**
+     - REQUIRED for a Relying Party that requests Credentials, MUST NOT be present otherwise. URL of the subject privacy policy.
+   * - **supervisory_authority**
+     - REQUIRED. Data Protection Authority information, with ``uri``, ``email`` and ``phone``.
    * - **logo_uri**
      - REQUIRED. URL pointing to the :ref:`brand-identity:Trust Mark` for UI/UX purposes.
    * - **ref**
      - OPTIONAL. URL with additional web information about the Trust Mark.
 
-The following non-normative examples illustrate different Trust Mark JWT contents for federation membership and different authorization policies:
+.. note::
+  The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI_TS_119_475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts. The identity and branding claims are specific to the IT-Wallet federation.
+
+.. note::
+  The revocation status of a Trust Mark is verified through the Federation Trust Mark Status endpoint (`OID-FED`_ Section 8.4), not through a status list carried in the token. This is the difference with the WRPRC, whose ``status`` claim points to a status list: the Trust Mark relies on the federation native revocation mechanism. The consumption of these claims by the Trust Evaluator is defined in :ref:`trust-evaluation-oidfed:Authorization`.
+
+The following non-normative examples illustrate the registration Trust Mark JWT content for a Credential Issuer, a public non-qualified EAA Provider issuing an Employee Badge, for a Relying Party requesting that Employee Badge, and for a Relying Party Intermediary.
+
+Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badge:
 
 .. code-block:: json
 
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://ci.public-authority.gov.example",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer",
+     "sub": "https://badge-issuer.example.it",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "public",
-     "ipa_code": "pub_001",
-     "legal_identifier": "12345678901",
-     "organization_name": "Public Authority Services",
-     "email": "registry@public-authority.gov.example"
+     "ipa_code": "c_h501",
+     "legal_identifier": "80012345678",
+     "organization_name": "Comune di Example",
+     "email": "protocollo@comune.example.it",
+     "entitlements": ["Non_Q_EAA_Provider"],
+     "provides_attestations": [
+       {
+         "format": "dc+sd-jwt",
+         "meta": {
+           "vct_values": ["urn:it-wallet:badge:1"]
+         },
+         "claim": [
+           {"path": ["document_number"]},
+           {"path": ["works_for"]},
+           {"path": ["given_name"]},
+           {"path": ["family_name"]},
+           {"path": ["job_title"]}
+         ]
+       }
+     ],
+     "logo_uri": "https://badge-issuer.example.it/logo.svg"
    }
+
+Relying Party, a private organization requesting the Employee Badge for physical access control:
 
 .. code-block:: json
 
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://rental.cars.example.com",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/relying-party",
+     "sub": "https://access.privatecompany.example.com",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "private",
      "vat_number": "IT12345678901",
      "legal_identifier": "12345678901",
-     "organization_name": "Premium Car Rental Services Ltd",
-     "email": "compliance@rental.cars.example.com",
-     "authorized_claims": ["given_name", "family_name", "driving_privileges"],
-     "authorized_credential_types": ["mobile-driving-license"],
-     "scope_restrictions": {
-       "domains": ["MOBILITY_TRAVEL"],
-       "purposes": ["DRIVING_RIGHTS_VERIFICATION"]
-     }
+     "organization_name": "Private Company S.p.A.",
+     "email": "compliance@privatecompany.example.com",
+     "entitlements": ["Service_Provider"],
+     "credentials": [
+       {
+         "format": "dc+sd-jwt",
+         "meta": {
+           "vct_values": ["urn:it-wallet:badge:1"]
+         },
+         "claim": [
+           {"path": ["given_name"]},
+           {"path": ["family_name"]},
+           {"path": ["works_for"]},
+           {"path": ["job_title"]}
+         ]
+       }
+     ],
+     "purpose": [
+       {"lang": "en", "value": "Employee verification for physical access control"},
+       {"lang": "it", "value": "Verifica del dipendente per il controllo dell'accesso fisico"}
+     ],
+     "privacy_policy": "https://access.privatecompany.example.com/privacy",
+     "supervisory_authority": {
+       "uri": "https://www.dpa.example.it/report",
+       "email": "reports@dpa.example.it",
+       "phone": "+390612345678"
+     },
+     "logo_uri": "https://access.privatecompany.example.com/logo.svg"
    }
+
+Relying Party Intermediary. It declares no intended use of its own, so its registration Trust Mark carries no ``credentials`` and no ``purpose``. It is a Federation Intermediate, and its affiliated Relying Parties set their ``authority_hints`` to it.
 
 .. code-block:: json
 
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://private-badge.ci.example.com",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/credential-issuer",
+     "sub": "https://intermediary.example.com",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "private",
-     "vat_number": "IT98765432101",
-     "legal_identifier": "98765432101",
-     "organization_name": "Badge Services Ltd",
-     "email": "compliance@rprivate-badge.ci.example.com",
-     "authorized_claims": ["given_name", "family_name", "company_id"],
-     "authorized_credential_types": ["example-company-badge"],
-     "scope_restrictions": {
-       "domains": ["EMPLOYMENT"],
-       "purposes": ["ACCESS_PERMIT"]
-     }
-   }
-
-Federation Entities MUST integrate Trust Marks in their Entity Configuration using the ``trust_marks`` claim as specified in :ref:`infrastructure-trust:Entity Configuration Leaves and Federation Intermediates`. 
-Entities MAY receive multiple Trust Marks for different authorization scopes.
-
-.. code-block:: json
-
-   {
-     "iss": "https://credentials.example.gov",
-     "sub": "https://credentials.example.gov",
-     "jwks": { 
-      // jwks content
-     },
-     "authority_hints": ["https://trust-anchor.eid-wallet.example.it"],
-     "trust_marks": [
-       {
-         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer",
-         "trust_mark": "eyJhbGciOiJFUzI1NiIsImtpZCI6IlRydXN0QW5jaG9yS2V5SWQiLCJ0eXAiOiJKV1QifQ..."
-       }
-     ],
-     "metadata": { 
-      // Metadata content
-     }
+     "vat_number": "IT98765432109",
+     "legal_identifier": "98765432109",
+     "organization_name": "Intermediary S.r.l.",
+     "email": "info@intermediary.example.com",
+     "entitlements": ["Service_Provider"],
+     "logo_uri": "https://intermediary.example.com/logo.svg"
    }
 
