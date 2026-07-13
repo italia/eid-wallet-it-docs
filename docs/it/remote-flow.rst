@@ -48,7 +48,7 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
   2. *Richiesta URI Request*: l'Istanza del Wallet estrae dal payload i seguenti parametri: ``client_id``, ``request_uri``, ``request_uri_method``.
 
     * Se ``request_uri_method`` è fornito e impostato con il valore ``post``, l'Istanza del Wallet DOVREBBE trasmettere i suoi metadata all'endpoint ``request_uri`` della Relying Party utilizzando il metodo HTTP ``POST``.
-    * Se ``request_uri_method`` è impostato con il valore ``get`` o non è presente, l'Istanza del Wallet DEVE recuperare il Request Object firmato utilizzando una richiesta HTTP con metodo ``GET`` all'endpoint fornito nel parametro ``request_uri`` (:ref:`RPR-78 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    * Se ``request_uri_method`` è impostato con il valore ``get`` o non è presente, l'Istanza del Wallet DEVE recuperare il Request Object firmato utilizzando una richiesta HTTP con metodo ``GET`` all'endpoint fornito nel parametro ``request_uri`` (:ref:`RPR-08 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
   3. *URI Request Response*: la Relying Party restituisce un Request Object firmato all'Istanza del Wallet.
   4. *Controlli Istanza di Wallet*: l'Istanza del Wallet:
@@ -147,7 +147,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u
 
     Dove il corpo della richiesta prima di essere codificato in ``application/x-www-form-urlencoded`` dal Wallet corrisponde a:
 
@@ -158,9 +158,6 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
           "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
           "response_types_supported": [
             "vp_token"
-          ],
-          "response_modes_supported": [
-            "query"
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
@@ -386,7 +383,7 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
   * - **request_uri**
     - CONDIZIONALE. OBBLIGATORIO a meno che ``request`` non sia presente. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.
   * - **request_uri_method**
-    - OPZIONALE solo se ``request_uri`` è presente, altrimenti NON DEVE essere presente. Il metodo HTTP DEVE essere impostato con ``get`` o ``post`` (:ref:`RPR-98 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
+    - OPZIONALE solo se ``request_uri`` è presente, altrimenti NON DEVE essere presente. Il metodo HTTP DEVE essere impostato con ``get`` o ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-08 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-09 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
 
 .. note::
   Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
@@ -409,7 +406,7 @@ Questa funzionalità può essere utile quando, ad esempio, l'Istanza del Wallet 
   L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
-La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
+La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–WP_083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Parametri dell'Endpoint URI Request
    :class: longtable
@@ -440,17 +437,12 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
      - URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schemes* personalizzati possono anche essere utilizzati se necessario.
    * - `response_types_supported`
      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-   * - `response_modes_supported`
-     - OPZIONALE. Array JSON di valori "response_mode" di OAuth 2.0 come specificato in `OAUTH-MULT-RESP-TYPE`_. Il valore supportato DEVE essere *query*.
    * - `request_object_signing_alg_values_supported`
      - OPZIONALE. Vedi OpenID Connect Discovery.
 
 
 .. note::
    Nell’IT Wallet, le Relying Party legacy che utilizzano un URI ``https`` come ``client_id`` seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (``openid_federation``).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (``pre-registered``), come definito in [:rfc:`6749`], per garantire la compatibilità con le versioni precedenti.
-
-.. note::
-   Anche se il campo ``response_modes_supported`` fa riferimento a `JARM`_ per garantire l’interoperabilità a livello JARM della Authorization Response, mantenendo un formato basato su JWT per i reindirizzamenti front-channel come ``form_post.jwt`` nel Flusso Same Device, la Relying Party adotta invece ``direct_post.jwt`` nel Flusso Cross Device, che si basa su una consegna back-channel tramite una richiesta HTTP POST alla Relying Party. L’effettivo utilizzo di ``direct_post.jwt`` è descritto di seguito in :ref:`remote-flow:Risposta dell'Endpoint URI Request`, dove la Relying Party imposta il ``response_mode`` per la transazione.
 
 .. note::
   Il parametro ``wallet_nonce`` è RACCOMANDATO per le Istanze del Wallet che vogliono prevenire il *replay* delle
@@ -520,9 +512,9 @@ I parametri dell'header JWT sono descritti di seguito:
   * - **Nome**
     - **Descrizione**
   * - **alg**
-    - OBBLIGATORIO. Algoritmo utilizzato per firmare il JWT, secondo [:rfc:`7516#section-4.1.1`]. DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC) (:ref:`RPR-104 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. Algoritmo utilizzato per firmare il JWT, secondo [:rfc:`7516#section-4.1.1`]. DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC) (:ref:`RPR-88 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **typ**
-    - OBBLIGATORIO. Media Type del JWT, come definito in [:rfc:`7519`] e [:rfc:`9101`]. DOVREBBE essere impostato sul valore ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. Media Type del JWT, come definito in [:rfc:`7519`] e [:rfc:`9101`]. DOVREBBE essere impostato sul valore ``oauth-authz-req+jwt`` (:ref:`RPR-89 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **kid**
     - OBBLIGATORIO. ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [:rfc:`7517`].
   * - **trust_chain**
@@ -551,7 +543,7 @@ I parametri del payload JWT sono descritti qui:
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
         - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
   * - **response_mode**
-    - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**
     - OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_.
   * - **transaction_data**
@@ -561,13 +553,13 @@ I parametri del payload JWT sono descritti qui:
   * - **transaction_data_hashes_alg**
     - OPZIONALE. Un array di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash, corrispondente a un nome di algoritmo di hash elencato nel registro IANA. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro di risposta ``transaction_data_hashes``. Se omesso, l’algoritmo di hash predefinito è sha-256.
   * - **response_type**
-    - OBBLIGATORIO. DEVE essere impostato su ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. DEVE essere impostato su ``vp_token`` (:ref:`RPR-91 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **wallet_nonce**
-    - OBBLIGATORIO se precedentemente fornito dall'Istanza del Wallet (:ref:`RPR-94 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di `OpenID4VP`_.
+    - OBBLIGATORIO se precedentemente fornito dall'Istanza del Wallet (:ref:`RPR-81 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di `OpenID4VP`_.
   * - **response_uri**
-    - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-109 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-92 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **nonce**
-    - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-110 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`)..
+    - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-93 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`)..
   * - **state**
     - RACCOMANDATO. Identificatore univoco della Authorization Request, il suo valore DOVREBBE essere opaco per l’Istanza del Wallet.
   * - **iss**
@@ -575,11 +567,11 @@ I parametri del payload JWT sono descritti qui:
   * - **iat**
     - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora in cui il JWT è stato emesso.
   * - **exp**
-    - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (:ref:`RPR-111 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (:ref:`RPR-94 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 .. warning::
 
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-95 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 .. note::
   Il parametro ``transaction_data`` è destinato ai casi d'uso in cui l'Istanza del Wallet DEVE autorizzare una transazione specifica, come l'avvio di un pagamento o una firma digitale. In questi scenari ad alta sensibilità, l'obiettivo è vincolare i dettagli della transazione alla Authorization Response, in modo da preservarne l'integrità e consentire di dimostrare successivamente l'approvazione dell'Utente (non ripudio).
@@ -593,7 +585,7 @@ I parametri del payload JWT sono descritti qui:
   Il parametro ``state`` in una richiesta OAuth è opzionale, ma è altamente RACCOMANDATO. Viene utilizzato principalmente per prevenire attacchi Cross-Site Request Forgery (CSRF) includendo un valore unico e imprevedibile che la Relying Party può verificare al momento della ricezione della risposta. Inoltre, aiuta a mantenere lo stato tra Request e Response, come le informazioni di sessione o altri dati di cui la Relying Party ha bisogno dopo il processo di autorizzazione.
 
 .. note::
-  L'utilizzo del parametro ``client_metadata`` è condizionale. Se ``client_id`` utilizza il prefisso ``x509_hash``, tutti i metadata della Relying Party, oltre alla sua chiave pubblica utilizzata per firmare il Request Object, DEVONO essere forniti in ``client_metadata``. Tuttavia, se il parametro è presente e ``client_id`` utilizza il prefisso ``openid_federation``, l'Istanza del Wallet DEVE ottenere i metadata della Relying Party attraverso la Trust Chain OpenID Federation (:ref:`RPR-113 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) e NON DEVE utilizzare ``client_metadata`` per sovrascrivere o sostituire i metadata risolti. L'unica eccezione è ``client_metadata.jwks`` (e i relativi parametri sulle capacità di cifratura della risposta, come ``encrypted_response_enc_values_supported``), che PUÒ essere utilizzato esclusivamente per trasportare chiavi pubbliche specifiche della richiesta (effimere) per cifrare la Authorization Response in ``direct_post.jwt`` (vedere `OpenID4VP`_ Sezione 8.3).
+  L'utilizzo del parametro ``client_metadata`` è condizionale. Se ``client_id`` utilizza il prefisso ``x509_hash``, tutti i metadata della Relying Party, oltre alla sua chiave pubblica utilizzata per firmare il Request Object, DEVONO essere forniti in ``client_metadata``. Tuttavia, se il parametro è presente e ``client_id`` utilizza il prefisso ``openid_federation``, l'Istanza del Wallet DEVE ottenere i metadata della Relying Party attraverso la Trust Chain OpenID Federation (:ref:`RPR-96 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) e NON DEVE utilizzare ``client_metadata`` per sovrascrivere o sostituire i metadata risolti. L'unica eccezione è ``client_metadata.jwks`` (e i relativi parametri sulle capacità di cifratura della risposta, come ``encrypted_response_enc_values_supported``), che PUÒ essere utilizzato esclusivamente per trasportare chiavi pubbliche specifiche della richiesta (effimere) per cifrare la Authorization Response in ``direct_post.jwt`` (vedere `OpenID4VP`_ Sezione 8.3).
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^
