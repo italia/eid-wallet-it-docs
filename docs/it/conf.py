@@ -2,9 +2,11 @@
 
 # -- PROJECT Variables ----------------------------------------------------
 settings_project_name = "IT-Wallet Specifiche Tecniche"
+# Stable browser/tab title and header — not modified by CI preview suffixes.
+settings_site_title = "IT-Wallet Specifiche Tecniche"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.4'
+settings_doc_version = '1.4.5'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
@@ -153,51 +155,31 @@ myst_enable_auto_toc_tree = True
 myst_update_mathjax = False
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = 'piccolo_theme'
+html_theme = 'eid-wallet-docs'
+html_theme_path = ['../../themes']
 
-# html_theme_path = [docs_italia_theme.get_html_theme_path()]
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further. For a list of options available for each theme, see the
-# documentation.
 html_theme_options = {
-    # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
-    # 'False': default (alabaster) badge | 'True': custom (italia) badge
-    # 'custom_versions_badge': True,
-    #'collapse_navigation': True,
-    "show_theme_credit": False,
-    "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
+    "header_org_name": settings_editor_name,
+    "header_project_name": settings_site_title,
+    "header_logo_path": "shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg",
+    "source_url": "https://github.com/italia/eudi-wallet-it-docs",
     "source_icon": "github",
-    # "banner_text": 'We just launched a newsletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
+    "alternate_lang": "en",
+    "alternate_lang_label": "ENG",
+    "alternate_lang_name": "English",
 }
 
-# -- ReadTheDoc requirements and local template generation---------------------
-
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-#  on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-
-#  if not on_rtd: # only import and set the theme if we're building docs locally
-    #  html_theme_path = [docs_italia_theme.get_html_theme_path()]
-    #  html_theme = 'docs_italia_theme'
-    #  pass
-#  else:
-    #  # Override default css to get a larger width for ReadTheDoc build
-    #  html_context = {
-        #  'css_files': [
-            #  '_static/css/theme.css',
-            #  '_static/css/badge_only.css',
-            #  '_static/css/itwallet-override.css' # div#top_nav nav { background-color: #0066CC } actually #3889CE
-        #  ],
-    #  }
-
 html_css_files = [
-    "itwallet-override.css"
+    "eid-wallet-docs-fonts.css",
+    "shared-ui/css/bootstrap-italia.min.css",
+    "shared-ui/css/ita.min.css",
+    "eid-wallet-docs-overrides.css",
 ]
 
 
 # The name for this set of Sphinx documents. If None, it defaults to
 # "<project> v<release> documentation".
-html_title = f"{settings_project_name}"
+html_title = settings_site_title
 
 # A shorter title for the navigation bar. Default is the same as html_title.
 # html_short_title = "IT-Wallet"
@@ -253,6 +235,9 @@ html_last_updated_fmt = '%d/%m/%Y'
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 html_show_copyright = False
+
+# Permalink anchors next to headings (shown on hover/focus via theme CSS).
+html_permalinks = True
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it. The value of this option must be the
