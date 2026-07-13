@@ -375,8 +375,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-90
     - Validazione Response Mode
-    - Test che ``response_mode`` sia impostato a ``direct_post.jwt``.
-    - Il parametro ``response_mode`` è correttamente impostato a ``direct_post.jwt``.
+    - Test che ``response_mode`` sia impostato a ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device.
+    - Il parametro ``response_mode`` è correttamente impostato a ``direct_post.jwt`` per ogni transazione di presentazione remota.
 
   * - RPR-91
     - Validazione Response Type

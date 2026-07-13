@@ -1,0 +1,60 @@
+{#
+  Search page — Bootstrap Italia form + enhanced result list.
+#}
+{%- extends "layout.html" -%}
+{%- from "components/icons.html" import icon_search with context -%}
+{%- set title = _('Search') -%}
+
+{%- block scripts -%}
+  {{ super() }}
+  <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+  <script src="{{ pathto('_static/language_data.js', 1) }}"></script>
+  <script src="{{ pathto('_static/js/eid-wallet-docs-search.js', 1) }}"></script>
+{%- endblock -%}
+
+{%- block extrahead -%}
+  <script src="{{ pathto('searchindex.js', 1) }}" defer="defer"></script>
+  <meta name="robots" content="noindex" />
+  {{ super() }}
+{%- endblock -%}
+
+{%- block body -%}
+<section class="it-docs-search-page" aria-labelledby="search-documentation">
+  <h1 id="search-documentation">{{ _('Search') }}</h1>
+
+  <noscript>
+    <div class="alert alert-warning it-docs-noscript" role="alert">
+      <p class="mb-0">
+        {%- trans -%}Please activate JavaScript to enable the search functionality.{%- endtrans -%}
+      </p>
+    </div>
+  </noscript>
+
+  <p class="it-docs-search-help">
+    {%- trans -%}Searching for multiple words only shows matches that contain all words.{%- endtrans -%}
+  </p>
+
+  <div class="it-docs-searchbox it-docs-searchbox--page" role="search">
+    <form class="it-docs-search-form" id="it-docs-search-page-form" action="" method="get">
+      <label class="visually-hidden" for="it-docs-search-page-input">{{ _('Search') }}</label>
+      <input id="it-docs-search-page-input"
+             class="form-control it-docs-search-input"
+             type="search"
+             name="q"
+             value=""
+             aria-labelledby="search-documentation"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="false"
+             enterkeyhint="search"/>
+      <button class="btn it-docs-search-submit" type="submit">
+        {{ icon_search('icon it-docs-search-icon') }}
+        <span class="visually-hidden">{{ _('Search') }}</span>
+      </button>
+    </form>
+  </div>
+  <p id="search-progress" class="it-docs-search-progress" aria-live="polite"></p>
+  <div id="search-results" class="it-docs-search-results-host"></div>
+</section>
+{%- endblock -%}
