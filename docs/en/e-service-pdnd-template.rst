@@ -114,7 +114,7 @@ Authentic Source Template Parameters
 
 The template e-service **MUST** adhere to the following specifications:
 
-    - **Name**: IT Wallet - Authentic Source - <``Credential name``>
+    - **Name**: EAA Creation <``Name / EAA Type Name``> – IT-Wallet
     - **Intended Recipients**: IT Wallet - Authentic Source - <``Authentic Source domain``>
     - **Description**: Description text useful to the Credential Issuer about the new Credential <``Credential name``>
     - **Technology**: REST
