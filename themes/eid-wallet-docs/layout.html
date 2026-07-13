@@ -115,7 +115,7 @@
               <a href="{{ pathto(root_doc)|e }}"
                  class="it-docs-brand-link text-decoration-none"
                  title="{{ _('Home') }}">
-                <span class="it-brand-title it-docs-header-site-title" id="header-site-title">{{ header_project_name|e }}</span>
+                <h2 class="it-brand-title it-docs-header-site-title" id="header-site-title">{{ header_project_name|e }}</h2>
               </a>
             </div>
             <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
@@ -218,10 +218,6 @@
     <div class="it-docs-footer-inner">
       {%- include "components/footer_partners.html" -%}
       <div class="it-docs-footer-meta">
-        <p class="it-docs-footer-project">{{ theme_footer_project_name or project }}</p>
-        {%- if theme_footer_org_name %}
-        <p class="it-docs-footer-org">{{ theme_footer_org_name }}</p>
-        {%- endif %}
         <p class="it-docs-footer-details">
           {%- if version -%}
           <span class="it-docs-footer-detail">{{ _('Version') }} {{ version|e }}</span>

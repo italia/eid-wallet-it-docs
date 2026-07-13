@@ -286,6 +286,25 @@
     });
   }
 
+  function initMainLandmark() {
+    var main = document.getElementById("main-content");
+    if (!main) return;
+
+    var pageHeading = document.querySelector(".it-docs-main .body > h1:first-of-type");
+    if (pageHeading) {
+      if (!pageHeading.id) {
+        pageHeading.id = "page-document-title";
+      }
+      main.setAttribute("aria-labelledby", pageHeading.id);
+      return;
+    }
+
+    var siteTitle = document.getElementById("header-site-title");
+    if (siteTitle) {
+      main.setAttribute("aria-labelledby", siteTitle.id);
+    }
+  }
+
   function initFooterExternalLinks() {
     var hint =
       document.documentElement.lang && document.documentElement.lang.indexOf("it") === 0
@@ -308,6 +327,7 @@
     initLangDropdowns();
     initBrightnessToggle();
     initMobileNavPanels();
+    initMainLandmark();
     initFooterExternalLinks();
     initSphinxTocScroll();
     markCurrentLocalTocLink();

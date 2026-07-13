@@ -2,6 +2,8 @@
 
 # -- PROJECT Variables ----------------------------------------------------
 settings_project_name = "IT-Wallet Technical Specifications"
+# Stable browser/tab title and header — not modified by CI preview suffixes.
+settings_site_title = "IT-Wallet Technical Specifications"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = '1.4.3'
@@ -153,15 +155,13 @@ html_theme_path = ['../../themes']
 
 html_theme_options = {
     "header_org_name": settings_editor_name,
-    "header_project_name": settings_project_name,
+    "header_project_name": settings_site_title,
     "header_logo_path": "shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg",
     "source_url": "https://github.com/italia/eudi-wallet-it-docs",
     "source_icon": "github",
     "alternate_lang": "it",
     "alternate_lang_label": "ITA",
     "alternate_lang_name": "Italiano",
-    "footer_org_name": settings_editor_name,
-    "footer_project_name": settings_project_name,
 }
 
 html_css_files = [
@@ -174,7 +174,7 @@ html_css_files = [
 
 # The name for this set of Sphinx documents. If None, it defaults to
 # "<project> v<release> documentation".
-html_title = f"{settings_project_name}"
+html_title = settings_site_title
 
 # A shorter title for the navigation bar. Default is the same as html_title.
 # html_short_title = "IT-Wallet"
