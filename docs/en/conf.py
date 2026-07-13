@@ -231,8 +231,8 @@ html_last_updated_fmt = '%d/%m/%Y'
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 html_show_copyright = False
 
-# Hide ¶ permalink anchors next to headings, figures and code blocks.
-html_permalinks = False
+# Permalink anchors next to headings (shown on hover/focus via theme CSS).
+html_permalinks = True
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it. The value of this option must be the

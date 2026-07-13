@@ -106,32 +106,34 @@
       </div>
     </div>
   </div>
-  <div class="header-title-section it-docs-header-title">
-    <div class="container py-3">
-      <div class="d-flex align-items-center justify-content-between flex-nowrap">
-        <div class="it-brand-wrapper it-docs-brand-wrapper">
-          <a href="{{ pathto(root_doc)|e }}"
-             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
-             title="{{ _('Home') }}">
-            {%- if logo_url %}
-            <img src="{{ logo_url }}" alt="" class="it-docs-logo" height="40">
-            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
-            {%- endif %}
-            <span class="it-docs-header-project-name" id="header-project-name">{{ header_project_name|e }}</span>
-          </a>
+  <div class="it-header-center-content-wrapper it-docs-header-compact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-center-content d-flex align-items-center justify-content-between flex-nowrap">
+            <div class="it-brand-wrapper it-docs-brand-wrapper">
+              <a href="{{ pathto(root_doc)|e }}"
+                 class="it-docs-brand-link text-decoration-none"
+                 title="{{ _('Home') }}">
+                <span class="it-brand-title it-docs-header-site-title" id="header-site-title">{{ header_project_name|e }}</span>
+              </a>
+            </div>
+            <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                    type="button"
+                    data-it-docs-nav-toggle
+                    data-it-docs-nav-target="#itDocsPrimaryNav"
+                    aria-controls="itDocsPrimaryNav"
+                    aria-expanded="false"
+                    aria-label="{{ _('Open navigation') }}">
+              {{ icon_burger() }}
+              <span>{{ _('Menu') }}</span>
+            </button>
+          </div>
         </div>
-        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
-                type="button"
-                data-it-docs-nav-toggle
-                data-it-docs-nav-target="#itDocsPrimaryNav"
-                aria-controls="itDocsPrimaryNav"
-                aria-expanded="false"
-                aria-label="{{ _('Open navigation') }}">
-          {{ icon_burger() }}
-          <span>{{ _('Menu') }}</span>
-        </button>
       </div>
-      <div class="it-docs-header-mobile-tools d-lg-none">
+    </div>
+    <div class="container it-docs-header-mobile-tools-container d-lg-none">
+      <div class="it-docs-header-mobile-tools">
         {%- set search_variant = 'mobile' -%}
         {%- include "searchbox.html" %}
       </div>
@@ -144,9 +146,9 @@
 
 {%- block content %}
 <div class="it-docs-layout">
-  <div class="container-fluid it-docs-container">
+  <div class="container it-docs-container">
     <div class="row it-docs-row">
-      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="{{ _('Primary navigation') }}">
+      <aside class="col-12 col-lg-3 it-docs-sidebar-col" aria-label="{{ _('Primary navigation') }}">
         <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
           <div class="overlay d-lg-none"></div>
           <div class="close-div d-lg-none">
@@ -162,7 +164,7 @@
         </div>
       </aside>
 
-      <div class="col-12 col-lg-8 it-docs-main-col">
+      <div class="col-12 col-lg-6 it-docs-main-col">
         <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
           <noscript>
             <p class="it-docs-noscript alert alert-warning" role="alert">
@@ -196,7 +198,7 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="{{ _('Secondary navigation') }}">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="{{ _('Secondary navigation') }}">
         <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
           {%- block sidebar2 %}
           {%- include "navscroll.html" %}
