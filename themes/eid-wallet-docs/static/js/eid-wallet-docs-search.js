@@ -22,6 +22,20 @@
     return String(value || "").replace(/\s+/g, " ").trim();
   }
 
+  function indexTermMatchesFile(indexEntry, file) {
+    if (indexEntry === undefined) return false;
+    if (indexEntry === file) return true;
+    if (Array.isArray(indexEntry)) return indexEntry.includes(file);
+    return false;
+  }
+
+  function indexTermExcludesFile(termsIndex, titleTermsIndex, term, file) {
+    return (
+      indexTermMatchesFile(termsIndex[term], file) ||
+      indexTermMatchesFile(titleTermsIndex[term], file)
+    );
+  }
+
   function splitOrBranches(query) {
     var placeholders = [];
     var tokenized = String(query || "").replace(/"([^"]*)"/g, function (match) {
@@ -302,12 +316,7 @@
 
       if (
         Array.from(excludedTerms).some(function (term) {
-          return (
-            terms[term] === file ||
-            titleTermsIndex[term] === file ||
-            (terms[term] || []).includes(file) ||
-            (titleTermsIndex[term] || []).includes(file)
-          );
+          return indexTermExcludesFile(terms, titleTermsIndex, term, file);
         })
       ) {
         continue;
@@ -524,20 +533,36 @@
     });
   }
 
+  var PHRASE_FETCH_CONCURRENCY = 4;
+
   function filterResultsByPhrases(results, phrases) {
     if (!phrases.length) {
       return Promise.resolve(results);
     }
 
-    return Promise.all(
-      results.map(function (item) {
-        return fetchDocumentText(item[0]).then(function (text) {
-          return documentContainsPhrases(text, phrases) ? item : null;
+    var filtered = [];
+
+    function processBatch(start) {
+      if (start >= results.length) {
+        return Promise.resolve(filtered);
+      }
+
+      var batch = results.slice(start, start + PHRASE_FETCH_CONCURRENCY);
+      return Promise.all(
+        batch.map(function (item) {
+          return fetchDocumentText(item[0]).then(function (text) {
+            return documentContainsPhrases(text, phrases) ? item : null;
+          });
+        })
+      ).then(function (items) {
+        items.forEach(function (item) {
+          if (item) filtered.push(item);
         });
-      })
-    ).then(function (items) {
-      return items.filter(Boolean);
-    });
+        return processBatch(start + PHRASE_FETCH_CONCURRENCY);
+      });
+    }
+
+    return processBatch(0);
   }
 
   function filterBranchesByPhrases(branches) {
