@@ -484,7 +484,7 @@ The Register and the WalletRelyingParty Schema
 
 The Register is the national register of Wallet-Relying Parties that each Member State establishes and maintains under `CIR2025/848`_ (Article 3), operated by the Registrar.
 
-It is distinct from the five components of the :ref:`registry:Registry Infrastructure`: those hold Credential semantics and discovery data (claims, schemas, catalogue, taxonomy, Authentic Sources), whereas the Register holds the WRP registration records that drive the WRPAC and WRPRC and support Relying Party authorization.
+It is distinct from the five semantic components of the :ref:`registry:Registry Infrastructure`: those hold Credential semantics and discovery data (claims, schemas, catalogue, taxonomy, Authentic Sources), whereas the Register holds the WRP registration records that drive the WRPAC and WRPRC and support Relying Party authorization, and is documented there as the :ref:`registry:Register of WRPs`.
 
 Each record is a ``WalletRelyingParty`` object whose structure is defined normatively by the Annex VI schema (Tables 1-11) of the `CIR2025/848-Amendment`_: it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
 
