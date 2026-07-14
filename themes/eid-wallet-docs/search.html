@@ -30,9 +30,50 @@
     </div>
   </noscript>
 
-  <p class="it-docs-search-help">
-    {%- trans -%}Searching for multiple words only shows matches that contain all words.{%- endtrans -%}
-  </p>
+  <div class="it-docs-search-help">
+    <p class="it-docs-search-help-intro">
+      {%- trans -%}By default, all terms must appear on the page. Combine the operators below to refine your search.{%- endtrans -%}
+    </p>
+    <ul class="it-docs-search-help-list">
+      <li>
+        <strong>{%- trans -%}Exact phrase:{%- endtrans -%}</strong>
+        {%- trans -%}words must appear adjacent and in order in the page body.{%- endtrans -%}
+        <code>"{{ _('digital credential') }}"</code>
+      </li>
+      <li>
+        <strong>{%- trans -%}Require term:{%- endtrans -%}</strong>
+        {%- trans -%}explicitly require a term (same as the default).{%- endtrans -%}
+        <code>+{{ _('wallet') }}</code>
+      </li>
+      <li>
+        <strong>{%- trans -%}Exclude term:{%- endtrans -%}</strong>
+        {%- trans -%}hide pages that contain the term.{%- endtrans -%}
+        <code>-{{ _('deprecated') }}</code>
+      </li>
+      <li>
+        <strong>{%- trans -%}Either term (OR):{%- endtrans -%}</strong>
+        {%- trans -%}match at least one branch; useful to broaden the query.{%- endtrans -%}
+        <code>{{ _('wallet') }} OR {{ _('credential') }}</code>
+      </li>
+      <li>
+        <strong>{%- trans -%}Title only:{%- endtrans -%}</strong>
+        {%- trans -%}limit a term to page or section titles; shorthand {%- endtrans -%}
+        <code>t:</code>
+        {%- trans -%} is also supported.{%- endtrans -%}
+        <code>title:{{ _('Introduction') }}</code>
+        <span class="it-docs-search-help-sep">{%- trans -%}or{%- endtrans -%}</span>
+        <code>title:"{{ _('Trust framework') }}"</code>
+      </li>
+    </ul>
+    <p class="it-docs-search-help-examples">
+      <strong>{%- trans -%}Examples:{%- endtrans -%}</strong>
+      <code>+{{ _('wallet') }} -{{ _('deprecated') }}</code>
+      <span class="it-docs-search-help-sep">·</span>
+      <code>"{{ _('remote presentation') }}" OR title:{{ _('PID') }}</code>
+      <span class="it-docs-search-help-sep">·</span>
+      <code>{{ _('authentication') }} title:{{ _('Overview') }}</code>
+    </p>
+  </div>
 
   <div class="it-docs-searchbox it-docs-searchbox--page" role="search">
     <form class="it-docs-search-form" id="it-docs-search-page-form" action="" method="get">
