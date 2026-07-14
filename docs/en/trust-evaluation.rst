@@ -5,30 +5,28 @@
 Trust Evaluation Process
 ========================
 
-Trust evaluation is the set of processes that allow a participant of the IT-Wallet ecosystem to establish, in a verifiable way, whether another participant, or an attestation produced by it, can be trusted for a given purpose.
+Every trust evaluation process involves the following roles: 
 
-Two trust frameworks coexist in IT-Wallet.
+- The **Trust Evaluator** is the party that performs the evaluation. 
+- The **Trust Evaluated Party** is the entity, or the attestation, that is the object of the evaluation. 
 
-  - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_). It is mandatory and authoritative for the notified entities and for cross-border interoperability.
-  - The **National Trust Framework** is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. It is the registration and onboarding layer for all the entities of the ecosystem, and it provides trust evaluation mechanisms for the operational phases where the EUDIW Trust Framework is not required.
-
-This section defines the trust evaluation processes in a form that is agnostic from the trust framework, the rules that determine which framework applies to a given interaction, and how each entity uses the two frameworks. The framework specific procedures are defined in the following sections.
-
-Every trust evaluation process involves two roles. The **Verifier** is the party that performs the evaluation. The **Verified Party** is the entity, or the attestation, that is the object of the evaluation. The same entity acts in both roles at different moments of the flows. The framework specific sections define which entity acts in which role, when, and for which purpose.
+The same entity can act in both roles at different moments of the flows. The framework specific sections define which entity acts in which role, when, and for which purpose.
 
 Each process requires a validated root of trust as a precondition. Each trust framework defines how its own root of trust is established, distributed and mantained. In the National Trust Framework this is the Federation Trust Anchor (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Distribution and Validation`). In the EUDIW Trust Framework these are the Trust Anchors obtained from the applicable Trusted Lists and Lists of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
 
 The trust evaluation processes are the following:
 
-  - **Authentication**. It asserts the cryptographic identity of a transacting entity. The Verifier binds the identifier of the Verified Party to the proof of possession of a private key whose public part is trusted under the applicable root of trust.
-  - **Authorization**. It evaluates a registration artifact to assert the entitlements of the Verified Party, that is the specific capabilities the entity is authorized to perform, such as issuing a given Credential type or requesting a given set of attributes.
-  - **Metadata Retrieval and Validation**. It obtains and validates the technical configuration of the Verified Party, such as endpoints, public keys and supported algorithms.
+  - **Authentication**. It asserts the cryptographic identity of a transacting entity. The Trust Evaluator binds the identifier of the Trust Evaluated Party to the proof of possession of a private key whose public part is trusted under the applicable root of trust.
+  - **Authorization**. It evaluates a registration artifact to assert the entitlements of the Trust Evaluated Party, that is the specific capabilities the entity is authorized to perform, such as issuing a given Credential type or requesting a given set of attributes.
+  - **Metadata Retrieval and Validation**. It obtains and validates the technical configuration of the Trust Evaluated Party, such as endpoints, public keys and supported algorithms.
   - **Signing Trust Anchor Validation**. It ingests an attestation and outputs the validated root of trust, identifier and public key, to be used for the verification of the issuer data authentication of that attestation.
 
 The first three processes have an entity as their object. The fourth one has an attestation as its object and this includes Digital Credentials and the Wallet Instance Attestation.
 
-Applicable Trust Framework by Entity
+Trust Framework Selection
 ------------------------------------
+
+This section has the aim of describing Trust Framework selection rules applicable to the operationals flow by the Entities involved. For the Signing Trust Anchor Validation there is no selection to perform. The trust anchor for the verification of an attestation is defined by the Rulebook of its Credential type, in every phase and whichever party performs the verification. Attestations whose Rulebook anchors them to a List of Trusted Entities or to a Trusted List, such as PIDs, QEAAs and PuB-EAAs, MUST be validated against those trust anchors also when the interaction follows the National Trust Framework (see OIA_12, OIA_13, OIA_14 and OIA_15 of the ARF Annex 2, `EIDAS-ARF`_). For example, a Relying Party that obtains a PID from a national Wallet Instance MUST validate it against the trust anchors published in the PID Providers List of Trusted Entities. The procedure for the Credentials anchored to the National Trust Framework is defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation` (see also :ref:`onboarding-procedure:The Dual-Path Trust Model`).
 
 The table below gives an high-level view of which trust framework applies to each entity in the operational phases. In particular, each cell indicates the applicable framework and the selection criterion, and points to the section where the corresponding procedures are defined. A more detailed view of which procedures each entity implements, and in which role, is given in the table of each framework section (see :ref:`trust-evaluation-oidfed:Trust Evaluation Processes by Context` for the National Trust Framework and the corresponding detail section of the EUDIW Trust Framework). The onboarding paths and the artifacts obtained by each entity type are defined in :ref:`onboarding-procedure:The Onboarding Processes`.
 
@@ -47,21 +45,15 @@ The Signing Trust Anchor Validation is not provided in the table, since it does 
       - Not applicable as a transacting party. The Wallet Provider is evaluated indirectly, as the issuer of the Wallet Instance Attestation, through the framework selected by the counterpart.
       - Not applicable as a transacting party.
     * - Wallet Instance
-      - Acts as Verifier toward the Credential Issuer. It MUST support both EUDIW and National Trust Framework depending on whether the requested  Credential is in the EU catalogue or only in the national catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
-      - Acts as Verifier toward the Relying Party. It MUST support both EUDIW and National Trust Framework. In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party, while in the proximity flow only the EUDIW mdoc reader authentication applies (see :ref:`trust-evaluation:Selection at Presentation`).
+      - Acts as Trust Evaluator toward the Credential Issuer. It MUST support both EUDIW and National Trust Framework depending on whether the requested  Credential is in the EU catalogue or only in the national catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
+      - Acts as Trust Evaluator toward the Relying Party. It MUST support both EUDIW and National Trust Framework. In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party, while in the proximity flow only the EUDIW mdoc reader authentication applies (see :ref:`trust-evaluation:Selection at Presentation`).
     * - Credential Issuer
-      - Acts as Verifier toward the Wallet Instance. It MUST support EUDIW when the Credential being issued is in the EU catalogue, or National Trust Framework only when the Credential is not in the EU catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
+      - Acts as Trust Evaluator toward the Wallet Instance. It MUST support EUDIW when the Credential being issued is in the EU catalogue, or National Trust Framework only when the Credential is not in the EU catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
       - Not applicable.
     * - Relying Party
       - Not applicable.
-      - Acts as Verified Party toward the Wallet Instance. It MUST support EUDIW Trust Framework when it operates under the EUDIW profile, that is for cross-border services, or National Trust Framework otherwise (see :ref:`trust-evaluation:Selection at Presentation`).
+      - Acts as Trust Evaluated Party toward the Wallet Instance. It MUST support EUDIW Trust Framework when it operates under the EUDIW profile, that is for cross-border services, or National Trust Framework otherwise (see :ref:`trust-evaluation:Selection at Presentation`).
 
-Trust Framework Selection
--------------------------
-
-This section has the aim of describing Trust Framework selection rules applicable to the operationals flow by the Entities involved. For the Signing Trust Anchor Validation there is no selection to perform. The trust anchor for the verification of an attestation is defined by the Rulebook of its Credential type, in every phase and whichever party performs the verification. Attestations whose Rulebook anchors them to a List of Trusted Entities or to a Trusted List, such as PIDs, QEAAs and PuB-EAAs, MUST be validated against those trust anchors also when the interaction follows the National Trust Framework (see OIA_12, OIA_13, OIA_14 and OIA_15 of the ARF Annex 2, `EIDAS-ARF`_). For example, a Relying Party that obtains a PID from a national Wallet Instance MUST validate it against the trust anchors published in the PID Providers List of Trusted Entities. The procedure for the Credentials anchored to the National Trust Framework is defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation` (see also :ref:`onboarding-procedure:The Dual-Path Trust Model`).
-
-The rules below apply to the entity scoped processes, that are Authentication, Authorization and Metadata Retrieval and Validation, and are defined per phase.
 
 .. note::
   In case of technical divergence between the configuration published through EUDIW mechanisms and the configuration published through the federation, for example different certificates for the same entity in a List of Trusted Entities and in the Trust Anchor Entity Configuration, the EUDIW configuration MUST prevail. 
