@@ -162,13 +162,20 @@ The Onboarding Processes
 
 To participate in the IT-Wallet ecosystem an entity MUST perform an onboarding procedure that establishes its regulatory compliance, its authorizations, and its trust relationships.
 
-The procedure consists of three processes, which apply differently depending on the entity type:
+The procedure consists of four processes, which apply differently depending on the entity type:
 
   1. The :ref:`onboarding-procedure:Administrative Process` validates an entity's legal standing, regulatory compliance, and organizational eligibility.
      It is performed by the Supervisory Body and applies to Authentic Sources, Wallet Providers, and WRPs;
   2. The :ref:`onboarding-procedure:Registration Process` performs technical registration.
      Every entity is registered in the National Trust Infrastructure; entities whose category requires it, or that opt in for cross-border recognition, are additionally registered as EUDIW Wallet-Relying Parties in the Register;
-  3. The :ref:`onboarding-procedure:Certificate Issuance Process` equips the entity with the cryptographic trust artifacts tied to its registration, for one or both trust frameworks depending on its category.
+  3. The :ref:`onboarding-procedure:Certificate Issuance Process` equips the entity with the cryptographic trust artifacts tied to its registration, for one or both trust frameworks depending on its category;
+  4. The :ref:`onboarding-procedure:Notification and Publication` publishes a notified entity in the trusted list for its category, which is what makes it trusted across the ecosystem.
+
+Not every entity performs every process.
+A Wallet Provider, for instance, is administratively assessed, completes federation registration, and is then notified, without WRP registration or certificate issuance; a national-only Relying Party stops after federation registration.
+
+Although this document presents the national (federation) and EUDIW flows of the Dual Trust Framework as separate paths, the onboarding entity does not experience them as separate procedures.
+The Onboarding System exposes a single entry point, the Onboarding UI, which orchestrates the whole procedure end to end: it drives the entity through the applicable administrative and technical steps of both trust frameworks with a unified UX, so that the dual path remains an implementation detail of the infrastructure rather than a burden on the onboarding entity.
 
 Onboarding consumes and produces a defined set of artifacts.
 The inputs depend on the entity's type and selected scope:
@@ -364,8 +371,8 @@ For **Credential Issuers**, the administrative process records the Credential ty
 
 Clearing the administrative process is, for every Wallet-Relying Party, the precondition for technical registration in the Register and in the federation.
 
-Summary
-^^^^^^^
+Administrative Summary
+^^^^^^^^^^^^^^^^^^^^^^
 
 The table below summarises the administrative process by entity type.
 In every case the checks are performed by the Supervisory Body.
@@ -485,6 +492,36 @@ The intermediary relationship is expressed in the registration data rather than 
 At presentation time the Wallet Instance verifies that the authenticated Intermediary is authorized to act for the intermediated Relying Party, using the ``intermediary`` structure of the WRPRC or the Register, and displays both identities to the User.
 These verification rules belong to the trust-evaluation process (see :ref:`trust-evaluation-eudiw:Authorization Validation`) and are out of scope of onboarding.
 
+Registration Summary
+^^^^^^^^^^^^^^^^^^^^
+
+The table below summarises technical registration by entity type.
+Federation registration is performed by the Federation Authorities; WRP Registration is performed by the Registrar.
+
+.. list-table:: Registration Process by Entity Type
+   :class: longtable
+   :widths: 24 40 36
+   :header-rows: 1
+
+   * - **Entity**
+     - **Technical registration**
+     - **Output**
+   * - Authentic Source
+     - Out of this process: its technical registration runs through PDND integration during the :ref:`onboarding-procedure:Administrative Process`.
+     - Entry in the :ref:`registry:Authentic Source Registry`.
+   * - Wallet Provider
+     - OID Federation Registration only, with no WRP Registration.
+     - Active Subordinate with a published Entity Configuration and a Trust Mark.
+   * - PID / QEAA / PuB-EAA / non-qualified EAA Provider
+     - OID Federation Registration, then WRP Registration in the Register.
+     - Active Subordinate and a Register entry with status ``active``.
+   * - Relying Party
+     - OID Federation Registration, then WRP Registration in EUDIW scope, or federation only in national scope.
+     - Active Subordinate and, in EUDIW scope, a Register entry.
+   * - Relying Party Intermediary
+     - OID Federation Registration as an Intermediate Entity, then WRP Registration with ``isIntermediary``.
+     - Active Subordinate authorised for its Leaves and a Register entry.
+
 Certificate Issuance Process
 ----------------------------
 
@@ -505,10 +542,20 @@ Signature/Seal Certificates
 
 
 
-Notification and Publication
+Certificate Issuance Summary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The concluding step of onboarding publishes a notified entity, together with the trust anchor of the technical component it operates, in the appropriate trusted list.
+
+
+Notification and Publication
+----------------------------
+
+Notification and Publication is the concluding process of onboarding.
+It publishes a notified entity, together with the trust anchor of the technical component it operates, in the trusted list for its category.
+
+It applies only to the notified categories (PID, QEAA, and PuB-EAA Providers, and non-qualified EAA Providers operating in EUDIW) and to the Wallet Provider.
+A Wallet Provider reaches this process directly after its administrative assessment and its federation registration, without WRP registration or certificate issuance.
+
 Notification is a Member State level process (Commission Implementing Regulation (EU) 2024/2980) for which the Supervisory Body acts as the national single point of contact toward the European Commission, while the Trusted List / LoTE Provider signs and publishes the lists.
 
 **Input Model.**
