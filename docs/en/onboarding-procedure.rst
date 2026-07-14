@@ -10,7 +10,7 @@ The IT-Wallet ecosystem operates two trust frameworks together:
 
 - **National Trust Framework**, built on OpenID Federation 1.0 together with the national X.509 PKI embedded in the same Federation Trust Anchor, is the **root of this onboarding procedure**.
   It is the mandatory National Trust Framework every entity onboards into, and the layer that drives identity proofing and, in turn, certificate issuance for the other framework too.
-- **EUDIW Trust Framework**, defined at EU level for Wallet-Relying Parties (`EIDAS-ARF`_, Commission Implementing Regulation (EU) 2025/848), is **additive** on top of the National Trust Framework.
+- **EUDIW Trust Framework**, defined at EU level for Wallet-Relying Parties (`EIDAS-ARF`_, `CIR2025/848`_), is **additive** on top of the National Trust Framework.
   For entities in a notified category (PID Providers, QEAA Providers, and PuB-EAA Providers) it is mandatory, and becomes the **authoritative** one for the artifacts a Wallet Instance relies on to check identity and legal value.
 
 Non-qualified EAA Providers follow the EUDIW Trust Framework as well: when operating in EUDIW their trust anchor is published in the EAA Providers LoTE, while a national-only EAA Provider relies on the trust anchor distributed through the applicable Attestation Rulebook.
@@ -43,7 +43,7 @@ Those trust-infrastructure roles are in turn realised by the software components
 
   - **Authentic Sources**: authoritative providers of the data that Credentials are built from.
     They follow a data-focused registration path based on PDND integration; their trust is governed by the PDND trust framework rather than by the Wallet-Relying Party model, and they are therefore outside the Dual Trust Framework logic described below;
-  - **Wallet-Relying Parties (WRPs)**: the umbrella category defined by Commission Implementing Regulation (EU) 2025/848 for every entity that relies on Wallet Units to provide a service.
+  - **Wallet-Relying Parties (WRPs)**: the umbrella category defined by `CIR2025/848`_ for every entity that relies on Wallet Units to provide a service.
     It is further split into:
 
     - **Credential Issuers**, comprising **PID Providers** and **Attestation Providers** (**QEAA Providers**, **PuB-EAA Providers**, and non-qualified **EAA Providers**).
@@ -57,7 +57,7 @@ Those trust-infrastructure roles are in turn realised by the software components
 **Trust-infrastructure entities**
 
   - **Supervisory Body**: runs the Administrative Process, avails itself of the Registrar for technical registration, and acts as the national single point of contact for notification to the European Commission;
-  - **Registrar** and **Register**: the Registrar performs the technical registration of WRPs and writes their records into the **Register** defined by Commission Implementing Regulation (EU) 2025/848;
+  - **Registrar** and **Register**: the Registrar performs the technical registration of WRPs and writes their records into the **Register** defined by `CIR2025/848`_;
   - **Provider of WRPAC** and **Provider of WRPRC**: issue, respectively, the Wallet-Relying Party Access Certificate (WRPAC) and the Wallet-Relying Party Registration Certificate (WRPRC);
   - **Trusted List / LoTE Provider**: signs and publishes the trusted lists, i.e. the Lists of Trusted Entities (LoTEs) and the EU Member State Trusted List (EUMS TL).
     This provider has a special role, as its own trust anchor is the root against which the trusted lists are validated;
@@ -80,8 +80,8 @@ The trust-infrastructure roles listed above are realised, within the Onboarding 
 
 Two of these components are data stores, kept separate on purpose:
 
-- the **WRP Register** holds the WRP registration records defined by Commission Implementing Regulation (EU) 2025/848 (identification, intended use, and related data), and drives the issuance of the WRPAC and WRPRC;
-- the **notification dataset** holds the notifiable information defined by Commission Implementing Regulation (EU) 2024/2980 (identification, trust anchors, and service supply points), and feeds the Publication Service when an entity is published in a trusted list.
+- the **WRP Register** holds the WRP registration records defined by `CIR2025/848`_ (identification, intended use, and related data), and drives the issuance of the WRPAC and WRPRC;
+- the **notification dataset** holds the notifiable information defined by `CIR2024/2980`_ (identification, trust anchors, and service supply points), and feeds the Publication Service when an entity is published in a trusted list.
 
 The two overlap only in the identification data, so the split avoids conflating registration with notification: the infrastructure entities that are notified but not registered as WRPs (Wallet Providers, Providers of WRPAC/WRPRC, Registrars) appear in the notification dataset but not in the Register.
 
@@ -180,9 +180,9 @@ The Onboarding System exposes a single entry point, the Onboarding UI, which orc
 Onboarding consumes and produces a defined set of artifacts.
 The inputs depend on the entity's type and selected scope:
 
-  - **Registration data**, for every entity registered in the Register (all WRP types), conforming to the ``WalletRelyingParty`` schema that transposes the Commission Implementing Regulation (EU) 2025/848 Annex I set;
+  - **Registration data**, for every entity registered in the Register (all WRP types), conforming to the ``WalletRelyingParty`` schema that transposes the `CIR2025/848`_ Annex I set;
   - **Notifiable data**, for entities published in a trusted list (PID, PuB-EAA, QEAA, and non-qualified EAA Providers, and the Wallet Provider): the identification, trust anchors, and service supply points needed for the trusted-list entry;
-  - **Cryptographic material**: the public key(s) for which a WRP requests a WRPAC, generated according to ETSI TS 119 411-8, and the public keys of the signature or seal certificates the entity uses to sign or seal its artifacts.
+  - **Cryptographic material**: the public key(s) for which a WRP requests a WRPAC, generated according to `ETSI TS 119 411-8`_, and the public keys of the signature or seal certificates the entity uses to sign or seal its artifacts.
 
 A WRP that is also a notified entity provides both the registration data and the notifiable data; a Relying Party or Relying Party Intermediary provides only registration data, as it requires no trusted-list entry.
 
@@ -431,12 +431,15 @@ The entity MUST already publish a valid Entity Configuration signed with the cor
 **Output Model.**
 An active Subordinate, discoverable through the federation endpoints, whose Entity Configuration carries the ``authority_hints`` pointing to the Federation Authority and the ``trust_marks`` it received.
 For a national-only entity, this Entity Configuration and Trust Mark are what make it recognisable and its authorizations verifiable.
+How these artifacts are consumed at runtime is defined in the trust-evaluation process (see :ref:`trust-evaluation-oidfed:Trust Evaluation Processes by Context`).
 
 **Procedure.**
 The Federation Authority validates the request and the published Entity Configuration and applies the applicable metadata policy.
 It then registers the entity as its Subordinate and issues the Subordinate Statement and the Trust Marks attesting the entity's role and authorizations.
 The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`infrastructure-trust:Subordinate Statements`).
 The X.509 certificate that certifies the Federation Entity Key is issued in the Certificate Issuance Process, separated from the federation onboarding flow in this profile.
+
+Registration is not a one-off event: every subsequent change to an onboarded entity (its registration, updates to its Federation Entity Keys, and its revocation) is published by the Federation Authority as a signed event on the Federation Subordinate Events Endpoint (``/federation_subordinate_events_endpoint``), so that other participants can track the entity's lifecycle over time (see :ref:`infrastructure-trust:Federation API Endpoints`).
 
 WRP Registration
 ^^^^^^^^^^^^^^^^^
@@ -449,26 +452,27 @@ No Trust Mark is issued here, because the Trust Mark belongs to the OID Federati
 The two are linked by the entity's identifier: the Federation Entity Identifier used in the Entity Configuration also identifies the entity in its Register record.
 
 **Input Model.**
-The entity submits its registration data conforming to the ``WalletRelyingParty`` schema (Commission Implementing Regulation (EU) 2025/848, Annex I, and the common data schema of the CIR 2025/848 Amendment, Annex VI).
+The entity submits its registration data conforming to the ``WalletRelyingParty`` schema (`CIR2025/848`_, Annex I, and the common data schema of the `CIR2025/848-Amendment`_, Annex VI).
 The data covers the entity's identification and its intended use (the attributes a Relying Party intends to request from Wallet Units, or the attestation types an Attestation Provider intends to issue), together with the cryptographic material, i.e. the public key(s) for which the entity requests a WRPAC.
 This key is distinct from the federation signing key carried in the Entity Configuration.
 
 **Output Model.**
 A Register entry with status ``active``.
 This active status is the green light for the issuance of the WRPAC and, where mandated, the WRPRC (see :ref:`onboarding-procedure:Certificate Issuance Process`).
+How the Register entry and its entitlements are consumed at runtime is defined in the trust-evaluation process (see :ref:`trust-evaluation-eudiw:Authorization Validation`).
 
 **Procedure.**
 The entity submits its registration data to the Registrar through the Onboarding UI (the Registration Service, over the common Register REST API).
-The Registrar verifies the entity's identity and eligibility (the identity proofing carried out during the Administrative Process, per ETSI TS 119 461) and, on success, creates the record in the Register with status ``active``.
+The Registrar verifies the entity's identity and eligibility (the identity proofing carried out during the Administrative Process, per `ETSI TS 119 461`_) and, on success, creates the record in the Register with status ``active``.
 The Register record is electronically signed or sealed by, or on behalf of, the Registrar, so that the certificate providers and the Wallet can rely on it.
 
 The Register and the WalletRelyingParty Schema
 """"""""""""""""""""""""""""""""""""""""""""""
 
-The Register is the national register of Wallet-Relying Parties that each Member State establishes and maintains under Commission Implementing Regulation (EU) 2025/848 (Article 3), operated by the Registrar.
+The Register is the national register of Wallet-Relying Parties that each Member State establishes and maintains under `CIR2025/848`_ (Article 3), operated by the Registrar.
 It is distinct from the five components of the :ref:`registry:Registry Infrastructure`: those hold Credential semantics and discovery data (claims, schemas, catalogue, taxonomy, Authentic Sources), whereas the Register holds the WRP registration records that drive the WRPAC and WRPRC and support Relying Party authorization.
 
-Each record is a ``WalletRelyingParty`` object whose structure is defined normatively by the Annex VI schema (Tables 1-11) of the Commission Implementing Regulation (EU) 2025/848 Amendment: it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
+Each record is a ``WalletRelyingParty`` object whose structure is defined normatively by the Annex VI schema (Tables 1-11) of the `CIR2025/848-Amendment`_: it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
 The conceptual role of the Register, with non-normative object examples, is described in :ref:`trust-artifact-eudiw:Register of WRPs`, and its public read API in :ref:`trust-artifact-eudiw:Common Register Open APIs`.
 
 Relying Party Intermediaries
@@ -487,7 +491,7 @@ Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary a
 The intermediary relationship is expressed in the registration data rather than in a hierarchy of certificates:
 
   - the Intermediary's own record sets ``isIntermediary`` to ``true`` and omits ``intendedUse``, since it declares no intended use of its own;
-  - each intermediated Relying Party's record references the Intermediary through the ``usesIntermediary`` field (identifier, trade name, and register URI of the Intermediary), and its WRPRC carries the ``intermediary`` structure that names the authorized Intermediary (ETSI TS 119 475, Table 10; Commission Implementing Regulation (EU) 2025/848, Annex I).
+  - each intermediated Relying Party's record references the Intermediary through the ``usesIntermediary`` field (identifier, trade name, and register URI of the Intermediary), and its WRPRC carries the ``intermediary`` structure that names the authorized Intermediary (`ETSI TS 119 475`_, Table 10; `CIR2025/848`_, Annex I).
 
 At presentation time the Wallet Instance verifies that the authenticated Intermediary is authorized to act for the intermediated Relying Party, using the ``intermediary`` structure of the WRPRC or the Register, and displays both identities to the User.
 These verification rules belong to the trust-evaluation process (see :ref:`trust-evaluation-eudiw:Authorization Validation`) and are out of scope of onboarding.
@@ -556,7 +560,7 @@ It publishes a notified entity, together with the trust anchor of the technical 
 It applies only to the notified categories (PID, QEAA, and PuB-EAA Providers, and non-qualified EAA Providers operating in EUDIW) and to the Wallet Provider.
 A Wallet Provider reaches this process directly after its administrative assessment and its federation registration, without WRP registration or certificate issuance.
 
-Notification is a Member State level process (Commission Implementing Regulation (EU) 2024/2980) for which the Supervisory Body acts as the national single point of contact toward the European Commission, while the Trusted List / LoTE Provider signs and publishes the lists.
+Notification is a Member State level process (`CIR2024/2980`_) for which the Supervisory Body acts as the national single point of contact toward the European Commission, while the Trusted List / LoTE Provider signs and publishes the lists.
 
 **Input Model.**
 The notifiable data collected during onboarding (identification, trust anchors, and service supply points), together with the entity's signing trust anchor produced by the certificate issuance above: for an Attestation Provider, the key with which its credential issuer signs the attestations; for a Wallet Provider, the key that signs the Wallet Unit Attestations of its Wallet Solution.
@@ -564,6 +568,7 @@ The notifiable data collected during onboarding (identification, trust anchors, 
 **Output Model.**
 The entity's entry in the trusted list that corresponds to its category, which is what makes a notified entity trusted by the Wallet and by Relying Parties.
 If publication does not complete, the entity may already hold its Register entry and its certificates but is not yet trusted for its notified category until the entry appears in the list.
+How the trusted-list entry is validated at runtime is defined in the trust-evaluation process (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
 
 **Procedure.**
 The Supervisory Body notifies the entity to the European Commission, and the Trusted List / LoTE Provider signs and publishes it in the trusted list for its category:
