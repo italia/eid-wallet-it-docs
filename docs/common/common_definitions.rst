@@ -24,6 +24,7 @@
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _CIR2024/2980: https://eur-lex.europa.eu/eli/reg_impl/2024/2980/
 .. _CIR2025/848: https://eur-lex.europa.eu/eli/reg_impl/2025/848/
+.. _CIR2025/848-Amendment: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=PI_COM:Ares(2026)1286341
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
 .. _ISO18013-5: https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf
 .. _JWA: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms
