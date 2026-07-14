@@ -6,30 +6,30 @@ Onboarding Procedure
 
 Onboarding is the process through which an entity becomes operational and recognisable within the IT-Wallet ecosystem: it establishes the entity's legal eligibility, registers it with the competent bodies, and equips it with the trust artifacts other participants rely on to authenticate it and evaluate its authorizations.
 
-The IT-Wallet ecosystem operates two trust models together:
+The IT-Wallet ecosystem operates two trust frameworks together:
 
-- **National Trust Model**, built on OpenID Federation 1.0 together with the national X.509 PKI rooted in the same Federation Trust Anchor, is the **root of this onboarding procedure**.
-  It is the mandatory, national trust model every entity onboards into, and the layer that drives identity proofing and, in turn, certificate issuance for the other model too. 
-  A single OpenID Federation onboarding is what makes an entity recognisable within the ecosystem, and it yields, from one procedure, the entity's Entity Configuration, its Trust Marks, its EUDIW trust artifacts, and its signing certificates.
-- **EUDIW Trusted-List trust model** defined at EU level for Wallet-Relying Parties (`EIDAS-ARF`_, Commission Implementing Regulation (EU) 2025/848) is **additive** on top of the National Trust Model.
-  For entities in a notified category (PID Providers, QEAA Providers, and PuB-EAA Providers) it is mandatory, and becomes the **authoritative** one for the artifacts a Wallet Instance relies on to check identity and legal value. 
-  Non-qualified EAA Providers follow the EUDIW model as well: when operating in EUDIW their trust anchor is published in the EAA Providers LoTE, while a national-only EAA Provider relies on the trust anchor distributed through the applicable Attestation Rulebook.
+- **National Trust Framework**, built on OpenID Federation 1.0 together with the national X.509 PKI embedded in the same Federation Trust Anchor, is the **root of this onboarding procedure**.
+  It is the mandatory National Trust Framework every entity onboards into, and the layer that drives identity proofing and, in turn, certificate issuance for the other framework too.
+- **EUDIW Trust Framework**, defined at EU level for Wallet-Relying Parties (`EIDAS-ARF`_, Commission Implementing Regulation (EU) 2025/848), is **additive** on top of the National Trust Framework.
+  For entities in a notified category (PID Providers, QEAA Providers, and PuB-EAA Providers) it is mandatory, and becomes the **authoritative** one for the artifacts a Wallet Instance relies on to check identity and legal value.
+
+Non-qualified EAA Providers follow the EUDIW Trust Framework as well: when operating in EUDIW their trust anchor is published in the EAA Providers LoTE, while a national-only EAA Provider relies on the trust anchor distributed through the applicable Attestation Rulebook.
 
 Which verification mechanism a given Credential requires is not up to whoever is checking it, but is dictated by the Credential's own legal category, because that category fixes the applicable signature-verification anchor (Trusted List, LoTE, or OID-FED Trust Chain) regardless of whether the verifying party itself operates only nationally or also cross-border.
 
-Where the two models diverge in configuration, the EUDIW model prevails, being legally binding, while the national trust model is functionally binding within the national ecosystem.
+Where the two frameworks diverge in configuration, the EUDIW Trust Framework prevails, being legally binding, while the National Trust Framework is functionally binding within the national ecosystem.
 
 This section is organised around the three processes that, together, take an entity from a registration request to full operational status:
 
 - The **Administrative Process** establishes an entity's legal standing, regulatory compliance, and eligibility to participate in the ecosystem, ahead of any technical step;
 - The **Registration Process** technically registers the entity: always in the National Trust Infrastructure, and, where the entity's category requires or opts into it, also as a EUDIW Wallet-Relying Party;
-- The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust models depending on its category.
+- The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust frameworks depending on its category.
 
 
 Overview
 --------
 
-This overview introduces the actors and system components involved in onboarding, the dual trust-model logic that shapes every onboarding decision, and the three processes an entity goes through.
+This overview introduces the actors and system components involved in onboarding, the Dual Trust Framework logic that shapes every onboarding decision, and the three processes an entity goes through.
 The processes themselves are specified in the sections that follow; the material here is the shared frame they build on.
 
 Entities and Components
@@ -42,7 +42,7 @@ Those trust-infrastructure roles are in turn realised by the software components
 **Entities being onboarded**
 
   - **Authentic Sources**: authoritative providers of the data that Credentials are built from.
-    They follow a data-focused registration path based on PDND integration; their trust is governed by the PDND trust framework rather than by the Wallet-Relying Party model, and they are therefore outside the dual-path logic described below;
+    They follow a data-focused registration path based on PDND integration; their trust is governed by the PDND trust framework rather than by the Wallet-Relying Party model, and they are therefore outside the Dual Trust Framework logic described below;
   - **Wallet-Relying Parties (WRPs)**: the umbrella category defined by Commission Implementing Regulation (EU) 2025/848 for every entity that relies on Wallet Units to provide a service.
     It is further split into:
 
@@ -52,7 +52,7 @@ Those trust-infrastructure roles are in turn realised by the software components
       A Relying Party operates through one or more **Relying Party Instances**.
 
   - **Wallet Providers**: provide the **Wallet Solution** and the **Wallet Instances** that Users install.
-    A Wallet Provider is not a WRP; in the EUDIW model it follows a notification-only path (no Register entry and no Wallet-Relying Party Access Certificate), but it still onboards into the national federation.
+    A Wallet Provider is not a WRP; in the EUDIW Trust Framework it follows a notification-only path (no Register entry and no Wallet-Relying Party Access Certificate), but it still onboards into the national federation.
 
 **Trust-infrastructure entities**
 
@@ -71,7 +71,7 @@ Those trust-infrastructure roles are in turn realised by the software components
 
 The trust-infrastructure roles listed above are realised, within the Onboarding System, by the following software components:
 
-- the **Onboarding UI** that orchestrates the flow;
+- the **Onboarding UI** that provides the onboarding entities with a single touchpoint that orchestrates the entire onbording flow;
 - the **Registration Service** (the Registrar) that verifies WRPs and writes their records to the **WRP Register**;
 - the **WRPAC** and **WRPRC Issuance Services**;
 - the **Signature Certificate Issuance Service**;
@@ -87,10 +87,10 @@ The two overlap only in the identification data, so the split avoids conflating 
 
 These components operate alongside the components of the Registry Infrastructure (Claims Registry, AS Registry, Digital Credentials Catalog, Schema Registry, and Taxonomy, see :ref:`registry:Registry Infrastructure`) and, at EU level, the European Commission LoTE Provider with its Lists of Trusted Lists (LOTLs), LoTEs, and Catalogues.
 
-The Dual-Path Trust Model
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Dual Trust Framework
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-One principle governs how the two trust models combine: the mechanism used to verify a Credential's signature is bound to the Credential's **legal category**, not to the verifier's context.
+One principle governs how the two trust frameworks combine: the mechanism used to verify a Credential's signature is bound to the Credential's **legal category**, not to the context of the party that performs the verification.
 
 The legal category confers legal value on the Credential, and that value fixes the signature-verification anchor.
 
@@ -98,11 +98,11 @@ A PuB-EAA, for instance, carries the legal effect its defining regulation attach
 
 .. plantuml:: plantuml/onboarding-system-overview.puml
     :width: 99%
-    :alt: IT-Wallet onboarding system overview showing dual-path registration processes and trust infrastructure
+    :alt: IT-Wallet onboarding system overview showing dual trust framework registration processes and trust infrastructure
     :caption: `IT-Wallet Onboarding System Overview. <https://www.plantuml.com/plantuml/svg/ZLJRRjj647tdLmma8AXHoqxTk7NwK4IcAC20MnkMWlH1BwFbY5vakQlkHJ9HvDyxkvG8Ch2548ObSSwPovdB9-VH-b2hp4kl2EwMao-e57buq6k3jfIwWaNZFDNmi2ExaxJFClTLwYrQhC4zOsds4RH1vQXdAMc3GVablVYfafMkINiG_8zi3xL5yHKhMlY6WriI7dMb-cwcrffzRfInCBvEJy_O4U2_3E3Ms9Bi0VjhUh9l_OpGunhTZu5HU6DF8BCMC2eq2zUiz4-M_WtaV9J2TDATZG0TaFPPTgWKHYSa7d7037fbZNgGptV9MP0mdbqNDxCF4TfvdPQrrD9vYrxk21wj4UHST0WmyBW8szX6Psp3fPLDSefb3UFYbzkY-9tntmQUdwWw-3NwXD-7kzbaNinWJYKTmDFWdusLNf9ZWPOsE0zJBVWT_0ntSH9gAYLwScShFPc0JZHKvr2ZBj7752UJbE26IXZVtiwA-UqWS2y_op46kIvYdOBQ7bYgO9pV5B_b7vE3RXX6NvuUeULHT97VFS7L-wlhoviFDorrRxT3zb2VdAoN6odGy_eu5r2BK_gpPITP8Z0RuD3J_1W3HHVYDEMfezWtAGlUEFJ14boo3gXM-hKqanydXxK1lDBzXlkriSZVWeXkZvfAlU4IXuBc2cNjuCXCKD6-6y_dywiy_uumNGp1wDZp6zYPhAH71RcbahINg1paR5McQWEXVuEv4CzKup2II-_U82pnnMXJjqYFBptOS0B-DgsoQUfGb_0Orkhm-xK9IDR1ZAOGsx3kPdoOILeTAk6UCu-hT6-M1JVs_c5vpn_5vxyMiBnlXzMhdWzEa_-oJ2WJIhvLmPejeUPXC7KjdUCC4ea4RtzwieoqvwNxCzwPFy25TIrzokHyfRa6YiS5uoIXy2xBWanWB6j6u-06CRuzYKSGxp23ZdV2zbQLIw8TsGOeNTEp8uCnpE2H_nwja-9KSlN26kScwtIaEs9Q9wOUCcWNBHelBfBH3esyKknq_qoM3gU7oiuNjwLJOgNRoBXMb5GvWjfLO5pOHhOx9jo07EmDDuCjnnpR-lPMUcA2u1eu3HHHlRCirT2JWGMIcmQSHnzu2Dw1CDfn3DAYYM3xms1kH88w6Q7IkK3mpyNr-uzmkM9KfQMkG7JtWfDc3HB3AoP41BoBkYZfdZiRHKrrRnMoZ0U25U-fiqCbepw7Uy0pjGrsQnovyyCkkkmJwJBKwdy0>`_
 
 The table below reads by Credential category: each row is the **provider of that category**, and the columns show the artifacts its onboarding provisions and the signature-verification anchor that follows.
-For notified categories the EUDIW mechanism is authoritative, while the national trust model is the mandatory national layer that every provider also holds.
+For notified categories the EUDIW mechanism is authoritative, while the National Trust Framework is the mandatory national layer that every provider also holds.
 The entity-authentication and signature columns describe how those artifacts are later consumed in the Trust Evaluation Process; they are shown here only to motivate what onboarding must provision.
 
 .. list-table:: Onboarding Artifacts and Signature-Verification Anchor by Credential Category
@@ -155,7 +155,7 @@ The entity-authentication and signature columns describe how those artifacts are
 
 Wallet Instances are not federation entities and are not onboarded directly: a Wallet Instance is registered indirectly, through its Wallet Provider (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`), and is deemed reliable through a Wallet Instance Attestation issued and signed by that Wallet Provider (see :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`).
 
-The Wallet MUST support both models: the EUDIW model because it is legally required, and the national trust model for functional conformance.
+The Wallet MUST support both frameworks: the EUDIW Trust Framework because it is legally required, and the National Trust Framework for functional conformance.
 
 The Onboarding Processes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +168,7 @@ The procedure consists of three processes, which apply differently depending on 
      It is performed by the Supervisory Body and applies to Authentic Sources, Wallet Providers, and WRPs;
   2. The :ref:`onboarding-procedure:Registration Process` performs technical registration.
      Every entity is registered in the National Trust Infrastructure; entities whose category requires it, or that opt in for cross-border recognition, are additionally registered as EUDIW Wallet-Relying Parties in the Register;
-  3. The :ref:`onboarding-procedure:Certificate Issuance Process` equips the entity with the cryptographic trust artifacts tied to its registration, for one or both trust models depending on its category.
+  3. The :ref:`onboarding-procedure:Certificate Issuance Process` equips the entity with the cryptographic trust artifacts tied to its registration, for one or both trust frameworks depending on its category.
 
 Onboarding consumes and produces a defined set of artifacts.
 The inputs depend on the entity's type and selected scope:
@@ -264,7 +264,7 @@ It uses these abbreviations:
    A Wallet Provider that completes onboarding in IT-Wallet is notified in the EUDIW ecosystem, and its Wallet Solution is certified.
    Its onboarding produces its Entity Configuration and the certificates for its Wallet Instance Attestation and key-attestation keys, and its trust anchor is published in the Wallet Providers LoTE.
 
-Relying Party Intermediaries onboard through a dedicated variant of this procedure that also grants them the authority to onboard subordinate Relying Parties, handled differently by the two trust models.
+Relying Party Intermediaries onboard through a dedicated variant of this procedure that also grants them the authority to onboard subordinate Relying Parties, handled differently by the two trust frameworks.
 This is detailed in :ref:`onboarding-procedure:Relying Party Intermediaries`.
 
 Onboarding Scenarios (Authentic Sources and Relying Parties)
@@ -415,7 +415,7 @@ OID Federation Registration
 
 OID Federation Registration is mandatory for every Federation Entity (Credential Issuers, Relying Parties, and Wallet Providers) and onboards it into the national trust hierarchy operated by the Federation Authorities (the National Trust Anchor and its Intermediates).
 It is the foundation of onboarding: for a national-only entity it is the sole registration, and for an entity that also registers as a Wallet-Relying Party it is the layer that registration builds upon.
-Its prerequisites and artifacts (the Federation Entity keys, the Entity Configuration published at ``/.well-known/openid-federation``, and the Certificate Signing Request) are specified in :ref:`trust-infrastructure:The Infrastructure of Trust` and are not restated here.
+Its prerequisites and artifacts (the Federation Entity keys, the Entity Configuration published at ``/.well-known/openid-federation``, and the Certificate Signing Request) are specified in :ref:`infrastructure-trust:Infrastructure of Trust` and are not restated here.
 
 **Input Model.**
 The entity submits an onboarding request to its Federation Authority containing its Federation Entity Identifier, its Federation Entity Key in JWK format, and an X.509 Certificate Signing Request in PKCS #10 format.
@@ -428,7 +428,7 @@ For a national-only entity, this Entity Configuration and Trust Mark are what ma
 **Procedure.**
 The Federation Authority validates the request and the published Entity Configuration and applies the applicable metadata policy.
 It then registers the entity as its Subordinate and issues the Subordinate Statement and the Trust Marks attesting the entity's role and authorizations.
-The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`trust-infrastructure:Subordinate Statements`).
+The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`infrastructure-trust:Subordinate Statements`).
 The X.509 certificate that certifies the Federation Entity Key is issued in the Certificate Issuance Process, separated from the federation onboarding flow in this profile.
 
 WRP Registration
@@ -461,22 +461,22 @@ The Register and the WalletRelyingParty Schema
 The Register is the national register of Wallet-Relying Parties that each Member State establishes and maintains under Commission Implementing Regulation (EU) 2025/848 (Article 3), operated by the Registrar.
 It is distinct from the five components of the :ref:`registry:Registry Infrastructure`: those hold Credential semantics and discovery data (claims, schemas, catalogue, taxonomy, Authentic Sources), whereas the Register holds the WRP registration records that drive the WRPAC and WRPRC and support Relying Party authorization.
 
-Each record conforms to the ``WalletRelyingParty`` schema (Commission Implementing Regulation (EU) 2025/848, Annex I, and Annex VI of the Amendment): it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
-The full data model and the common Register API are specified in :ref:`trust-artifact-eudiw:Register of WRPs` and :ref:`trust-artifact-eudiw:Common Register Open APIs`, and are not restated here.
+Each record is a ``WalletRelyingParty`` object whose structure is defined normatively by the Annex VI schema (Tables 1-11) of the Commission Implementing Regulation (EU) 2025/848 Amendment: it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
+The conceptual role of the Register, with non-normative object examples, is described in :ref:`trust-artifact-eudiw:Register of WRPs`, and its public read API in :ref:`trust-artifact-eudiw:Common Register Open APIs`.
 
 Relying Party Intermediaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Relying Party Intermediary is a Relying Party that connects to Wallet Units and requests User attributes on behalf of other (intermediated) Relying Parties (`EIDAS-ARF`_).
 Its eligibility to act on behalf of Relying Parties, pursuant to Art. 5b(8) of the eIDAS2 Regulation (`EU_2024_1183`_), is established during the Administrative Process.
-Because the two trust models handle intermediation differently, an Intermediary is onboarded in both, and the way the intermediary relationship is expressed differs accordingly.
+Because the two trust frameworks handle intermediation differently, an Intermediary is onboarded in both, and the way the intermediary relationship is expressed differs accordingly.
 
 **OpenID Federation.** A Relying Party Intermediary matches an OpenID Federation Intermediate Entity.
 It registers its federation keys and endpoints, publishes its own Entity Configuration, and issues Subordinate Statements for its Leaves.
 Upon completion the Trust Anchor issues it an Intermediary Trust Mark (``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``) and, through the ``trust_mark_issuers`` claim of its Entity Configuration, authorizes it to issue Trust Marks to its affiliated Relying Parties.
 Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary and carries the Trust Mark the Intermediary issued to it.
 
-**EUDIW.** In the EUDIW model there is no Intermediate Entity: an Intermediary is registered as an ordinary Wallet-Relying Party (a Relying Party acting on behalf of others) and authenticates towards Wallet Units with its own WRPAC.
+**EUDIW.** In the EUDIW Trust Framework there is no Intermediate Entity: an Intermediary is registered as an ordinary Wallet-Relying Party (a Relying Party acting on behalf of others) and authenticates towards Wallet Units with its own WRPAC.
 The intermediary relationship is expressed in the registration data rather than in a hierarchy of certificates:
 
   - the Intermediary's own record sets ``isIntermediary`` to ``true`` and omits ``intendedUse``, since it declares no intended use of its own;
