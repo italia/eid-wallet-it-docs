@@ -59,7 +59,8 @@ html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wra
   border-left: none;
 }
 
-/* Dark content modes — pager buttons (Bootstrap Italia tokens on dark surfaces) */
+/* Middle and black content modes — pager primary (next) button.
+   The filled blue reads well on both the light cream and the dark surface. */
 html[data-it-docs-brightness="middle"] .it-docs-pager .btn-primary,
 html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary {
   --bs-btn-color: #fff;
@@ -88,7 +89,36 @@ html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary:focus-visible 
   border-color: var(--bs-btn-hover-border-color) !important;
 }
 
-html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary,
+/* Middle (light cream) content mode — secondary/prev pager button:
+   dark-blue outline so it stays legible on the light surface */
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary {
+  --bs-btn-color: var(--it-docs-content-link);
+  --bs-btn-border-color: var(--it-docs-content-link);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--it-docs-content-link);
+  --bs-btn-hover-border-color: var(--it-docs-content-link);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--it-docs-content-link-hover);
+  --bs-btn-active-border-color: var(--it-docs-content-link-hover);
+  --bs-btn-focus-shadow-rgb: 0, 89, 168;
+  --bs-link-color: var(--it-docs-content-link);
+  --bs-link-hover-color: #fff;
+  color: var(--it-docs-content-link) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: inset 0 0 0 2px var(--it-docs-content-link) !important;
+}
+
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:hover,
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus,
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus-visible {
+  color: #fff !important;
+  background-color: var(--it-docs-content-link) !important;
+  border-color: var(--it-docs-content-link) !important;
+  box-shadow: inset 0 0 0 2px var(--it-docs-content-link) !important;
+}
+
+/* Black (dark) content mode — secondary/prev pager button: white outline on dark */
 html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary {
   --bs-btn-color: #fff;
   --bs-btn-border-color: #fff;
@@ -107,9 +137,6 @@ html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary {
   box-shadow: inset 0 0 0 2px #fff !important;
 }
 
-html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:hover,
-html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus,
-html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus-visible,
 html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:hover,
 html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:focus,
 html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:focus-visible {
