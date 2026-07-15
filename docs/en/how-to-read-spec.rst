@@ -104,9 +104,9 @@ To implement the technological interfaces required to communicate with Credentia
 
 To become registered as an Authentic Source within the system by completing the administrative and technical procedures required.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Authentic Source registration process.
+- **Section** :ref:`onboarding-procedure:Onboarding System`: Overview of the onboarding system architecture and the Authentic Source registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Authentic Source registration.
+- **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Authentic Source registration.
 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
@@ -164,9 +164,9 @@ To implement the Wallet Solution in line with specific technological standards t
 
 To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Wallet Provider registration process.
+- **Section** :ref:`onboarding-procedure:Onboarding System`: Overview of the onboarding system architecture and the Wallet Provider registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration.
+- **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Wallet Provider registration.
 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
@@ -220,9 +220,9 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 
 To become registered as a Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Credential Issuer registration process.
+- **Section** :ref:`onboarding-procedure:Onboarding System`: Overview of the onboarding system architecture and the Credential Issuer registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Credential Issuer registration.
+- **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Credential Issuer registration.
 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
@@ -274,8 +274,8 @@ To implement verification functionalities following specific protocols, to send 
 
 To become registered as a Relying Party within the system, by completing the administrative and technical procedure and becoming a reliable actor when requesting User data.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Relying Party registration process.
+- **Section** :ref:`onboarding-procedure:Onboarding System`: Overview of the onboarding system architecture and the Relying Party registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on implementation procedures for Relying Party registration.
+- **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on implementation procedures for Relying Party registration.
 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.

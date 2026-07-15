@@ -5,7 +5,7 @@ Relying Party Entity Configuration
 ------------------------------------------
 
 According to Section :ref:`trust-infrastructure:Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
-The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates` and :ref:`trust-infrastructure:Entity Configurations Common Parameters`.
+The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`trust-artifact-oidfed:Entity Configuration of a Leaf` and :ref:`trust-infrastructure:Entity Configurations Common Parameters`.
 
 The Relying Parties MUST provide the following metadata types:
 

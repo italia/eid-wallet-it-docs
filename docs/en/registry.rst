@@ -566,7 +566,7 @@ A non-normative example of the Italian localization URI for the bundle would be 
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
 
-Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:Authentic Source to Credential Issuer Authorization Process`.
+Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`onboarding-procedure:Integration and Technical Registration`.
 
 .. note::
    Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`infrastructure-trust:Federation API Endpoints`.

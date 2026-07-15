@@ -40,7 +40,7 @@ An entity registered as a designated Intermediary that acts on behalf of WRPs du
 Common Register Open APIs
 """""""""""""""""""""""""
 
-This section documents a `TS05`_ aligned common Register API profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
+This section documents a `EUDI-TS 5`_ aligned common Register API profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
 
 The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements, 
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
@@ -283,25 +283,25 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
 
 - **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
 
-- **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation. According to `ETSI_TS_119_472_3`_(ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
+- **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation. According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
 
   - For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``. 
-  - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``. The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI_TS_119_472_3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
+  - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``. The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI TS 119 472-3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
 
-- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates. Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation. According to `ETSI_TS_119_472_3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
-
-.. note::
-
-  `ETSI_TS_119_472_3`_(ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI TS 119 475`_, held in the Wallet-Relying Party Registration Certificate. Annex A.3 of `ETSI TS 119 475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
+- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates. Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation. According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
 
 .. note::
 
-  `EIDAS-ARF`_ HLR EDP_02 refers to *EU-wide unique identifiers*, as defined in Reg_32, for the authorized RP list. `ETSI_TS_119_472_3`_ (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate. The ``organizationIdentifier`` attribute within the DN has the same semantics as the identifier given in `EIDAS-ARF`_ HLR Reg_32. This specification aligns with the `ETSI_TS_119_472_3`_ formulation.
+  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI TS 119 475`_, held in the Wallet-Relying Party Registration Certificate. Annex A.3 of `ETSI TS 119 475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
+
+.. note::
+
+  `EIDAS-ARF`_ HLR EDP_02 refers to *EU-wide unique identifiers*, as defined in Reg_32, for the authorized RP list. `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate. The ``organizationIdentifier`` attribute within the DN has the same semantics as the identifier given in `EIDAS-ARF`_ HLR Reg_32. This specification aligns with the `ETSI TS 119 472-3`_ formulation.
 
 Embedded Disclosure Policy Data Model
 """"""""""""""""""""""""""""""""""""""
 
-The following table provides a comprehensive overview of the Embedded Disclosure Policy data model, including parameter names, data types, descriptions, and the specific clauses in `ETSI_TS_119_472_3`_ where each parameter is defined.
+The following table provides a comprehensive overview of the Embedded Disclosure Policy data model, including parameter names, data types, descriptions, and the specific clauses in `ETSI TS 119 472-3`_ where each parameter is defined.
 
 .. list-table:: Embedded Disclosure Policy Parameters
    :class: longtable
@@ -318,7 +318,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - REQUIRED. Unique identifier of the Embedded Disclosure Policy (EDP). 
 
        The association of the EDP with an EAA MUST be established by including this unique URI. The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Instance (WI). The EDP MAY be accessible through this URI.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
      - string
@@ -327,59 +327,59 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
        * ``"specific_root_of_trust"``: Access is restricted to Relying Parties chaining to specified trusted roots.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
      - string
      - OPTIONAL. Description of the applicability of the policy to a particular community and/or class of application sharing common security requirements.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-04)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-04)
 
    * - ``policy_authority``
      - string
      - OPTIONAL. Identifier of the authority or entity responsible for the policy.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-05)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-05)
 
    * - ``policy_info_url``
      - string (URL)
      - OPTIONAL. Link to a website of the Attestation Provider (AP) explaining the disclosure policy guidelines in layman's terms.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
 
    * - ``authorized_parties``
      - array of objects
      - REQUIRED if ``policy_type`` is ``"authorized_rp_only"``. Contains a list of authorized Relying Parties allowed to access the Attestation.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].subject_dn``
      - string
      - OPTIONAL. Subject Distinguished Name (DN) of the Relying Party extracted from its Wallet-Relying Party Access Certificate (WRPAC), formatted as an LDAP string compliant with :rfc:`4514`. At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
      - string (URI)
      - OPTIONAL. URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
      - array of objects
      - REQUIRED if ``policy_type`` is ``"specific_root_of_trust"``. Defines a precise list of trusted root or intermediate certificates. Only RPs whose WRPACs successfully chain to one of these roots are permitted access.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-08)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
      - string
      - REQUIRED. Issuer Distinguished Name (DN) in LDAP string form compliant with :rfc:`4514`.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-09)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``trusted_roots[].serial_number``
      - string
      - REQUIRED. Certificate serial number corresponding to the defined issuer.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-09)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``extensions``
      - array of objects
      - OPTIONAL. Container for supplementary EDP extension structures. 
 
        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present. Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
-     - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
 

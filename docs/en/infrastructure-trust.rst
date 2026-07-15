@@ -22,7 +22,7 @@ This choice will affect both the onboarding and the trust evaluation procedures.
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both `OID-FED`_ and EUDIW trust mechanisms MUST be supported.
     While PID Providers, QEAA Providers and PuB-EAA Provider MUST support EUDIW trust mechanism as they are issuing Credentials regulated in eIDAS 2.0.
 
-In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation`).
+In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
 .. include:: trust-artifact-eudiw.rst
 .. include:: trust-artifact-oidfed.rst
@@ -49,7 +49,7 @@ This section describes the artifacts that are employed in :ref:`infrastructure-t
     - issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
     - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
-    - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC)`.
+    - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 
 Certificate Revocation List (CRL)

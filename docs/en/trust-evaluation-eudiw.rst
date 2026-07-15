@@ -189,7 +189,7 @@ Trusted List Validation
 
 This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
 
-1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the validation of the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation Algorithm` except for the LOTL format which is always XML.
+1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the validation of the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` except for the LOTL format which is always XML.
 2. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
 3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSI TS 119 615`_].
 
@@ -278,20 +278,20 @@ The Wallet Unit MUST support authorization-context resolution from both a Wallet
 Authorization Artifacts Validation
 """""""""""""""""""""""""""""""""""
 
-This section defines the validation procedures for the Authorization Artifacts that are exchanged in the various flows. The Artifacts that carry the Authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information albeit in different formats. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure is self-contained: it specifies its inputs, its processing logic, and its output (a verification result code). The Authorization Artifacts Validation result MAY be overridden by the User under the conditions detailed in the :ref:`trust-evaluation-eudiw:Override Rules` section.
+This section defines the validation procedures for the Authorization Artifacts that are exchanged in the various flows. The Artifacts that carry the Authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information albeit in different formats. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure is self-contained: it specifies its inputs, its processing logic, and its output (a verification result code). The Authorization Artifacts Validation result MAY be overridden by the User under the conditions detailed in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
 The Validation flow that the Wallet Unit performs, depends on the availability of the Wallet-Relying Party Registration Certificate in the interaction with the Wallet-Relying Party. 
 
 - During the Presentation flow, the Relying-Party MAY include the Wallet-Relying Party Registration Certificate in the Presentation Request. In case, depending on the Presentation type, i.e., remote or proximity; the Relying-Party MUST include the Wallet-Relying Party Registration Certificate by value in the:
 
-    - ``verifier_info`` parameter included in the Request Object JWT within the authorization request (see [`ETSITS119472-2`_] and Section 5.1 of [`OpenID4VP`_]). This is an array of JSON Objects containing Wallet-Relying Party Registration Certificate in base64-encoded format and data including the URL of Registrar online service.
-    - ``euwrprc`` CBOR byte string with serialized Wallet-Relying Party Registration Certificate member of ``requestInfo`` included in the ISO ``DeviceRequest`` Proximity Flow, Section 5.3 [`ETSITS119472-2`_].
+    - ``verifier_info`` parameter included in the Request Object JWT within the authorization request (see [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_]). This is an array of JSON Objects containing Wallet-Relying Party Registration Certificate in base64-encoded format and data including the URL of Registrar online service.
+    - ``euwrprc`` CBOR byte string with serialized Wallet-Relying Party Registration Certificate member of ``requestInfo`` included in the ISO ``DeviceRequest`` Proximity Flow, Section 5.3 [`ETSI TS 119 472-2`_].
 
      !!! warning
 
-        Currently, the mapping of `EIDAS-ARF`_ HRL RPRC_19a data in the ``requestInfo`` map is not defined in [`ETSITS119472-2`_]
+        Currently, the mapping of `EIDAS-ARF`_ HRL RPRC_19a data in the ``requestInfo`` map is not defined in [`ETSI TS 119 472-2`_]
 
-- During the Issuance flow, the Credential Issuer includes authorization data in the Credential Issuer Metadata through the ``issuer_info`` array (Section 4.2.3 of [`ETSITS119472-3`_]). This array contains:
+- During the Issuance flow, the Credential Issuer includes authorization data in the Credential Issuer Metadata through the ``issuer_info`` array (Section 4.2.3 of [`ETSI TS 119 472-3`_]). This array contains:
 
     - [OPTIONAL] A ``registration_cert`` element containing the Wallet-Relying Party Registration Certificate by value (ISS-MDATA-REG_CERT-4.2.3-04/05) (OPTIONAL).
     - [REQUIRED] An element with format ``registrar_dataset`` containing self-declared registration information including ``identifier``, ``srvDescription``, ``registryURI`, and ``providesAttestations``.
@@ -402,7 +402,7 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
 
 1. **Binding verification**. The Wallet Unit MUST ensure that the authenticated entity is the same as the entity described in the authorization data. The types of checks depend on the flow as well as the context.
 
-    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSIEN319412-1`_) with 
+    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSI EN 319 412-1`_) with 
     
         - the Credential Issuer's WRPRC ``sub`` field's value; or,
         - in case no WRPRC is available, the Credential Issuer ``identifier`` value used in the GET request (``/wrp/{identifier}``) to the Register endpoint; and
@@ -410,7 +410,7 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
 
      If any checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``BINDING_FAILED``.
 
-    - **Credential Presentation**. The Wallet Unit MUST extract the Relying Party identifier from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSIEN319412-1`_).
+    - **Credential Presentation**. The Wallet Unit MUST extract the Relying Party identifier from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSI EN 319 412-1`_).
     
      The Wallet Unit first assumes the **No intermediary** scenario. The Wallet Unit MUST match the extracted Relying Party identifier with
 
@@ -478,7 +478,7 @@ If all of the above checks (when required) are satisfied, the Wallet Unit MUST s
 
     - ``policy_type = no_policy``; no restriction applies.
     - ``policy_type = authorized_rp_only``; only **Authorized Relying Parties** within the ``authorized_parties[]`` list can be authorized for the Presentation. The Wallet Unit MUST compare the Relying Party subject DN from Wallet-Relying Party Access Certificate against ``subject_dn`` entries, and/or compare the RP entitlements or sub-entitlements from Wallet-Relying Party Registration Certificate against ``entitlement_uri`` entries. A match on either criterion is sufficient.
-    - ``policy_type = specific_root_of_trust`` only Relying Parties whose WRPAC trust chain contains one of the ``trusted_roots[]`` array of objects can be authorized for the Presentation. The Wallet Unit MUST compare against the ``trusted_roots`` list and match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison (as defined in ISS-MDATA-EBD-4.2.5.2-09, [`ETSITS119472-3`_]). 
+    - ``policy_type = specific_root_of_trust`` only Relying Parties whose WRPAC trust chain contains one of the ``trusted_roots[]`` array of objects can be authorized for the Presentation. The Wallet Unit MUST compare against the ``trusted_roots`` list and match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison (as defined in ISS-MDATA-EBD-4.2.5.2-09, [`ETSI TS 119 472-3`_]). 
     
      If either of these checks is satisfied or no EDP are present, the Wallet Unit MUST set the ``edp_state`` to ``EDP_SATISFIED``; on the contrary, if none are satisfied the Wallet Unit MUST set the ``edp_state`` to ``EDP_NOT_SATISFIED``.
 

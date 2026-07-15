@@ -121,7 +121,7 @@ The following is a non-normative example of a PuB-EAA Provider's end-entity cert
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. These certificates MUST be notified to the European Commission as described in `CIR2025/2980`_ and subsequently included in the appropriate LoTE.
+This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. These certificates MUST be notified to the European Commission as described in `CIR2024/2980`_ and subsequently included in the appropriate LoTE.
 
 A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**. When published through List of Trusted Entities, that certificate is referenced from the corresponding service entry through the ``serviceDigitalIdentity`` component.
 

@@ -67,7 +67,8 @@ Those trust-infrastructure roles are in turn realised by the software components
 .. note::
    A single organisation may perform several of these functions at once.
 
-**Onboarding System components**
+Onboarding System
+"""""""""""""""""
 
 The trust-infrastructure roles listed above are realised, within the Onboarding System, by the following software components:
 

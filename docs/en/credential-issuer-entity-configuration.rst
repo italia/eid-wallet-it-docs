@@ -6,7 +6,7 @@ Credential Issuer Entity Configuration
 --------------------------------------
 
 The Credential Issuers, as Federation Entity, MUST adhere to the guidelines outlined in Section :ref:`trust-infrastructure:Configuration of the Federation`. Specifically, they MUST provide a *well-known* endpoint that hosts their Entity Configuration.
-The Entity Configuration of Credential Issuers MUST contain the parameters defined in the Sections :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates` and :ref:`trust-infrastructure:Entity Configurations Common Parameters`.
+The Entity Configuration of Credential Issuers MUST contain the parameters defined in the Sections :ref:`trust-artifact-oidfed:Entity Configuration of a Leaf` and :ref:`trust-infrastructure:Entity Configurations Common Parameters`.
 
 The Credential Issuers MUST provide, at least, the following metadata types:
 

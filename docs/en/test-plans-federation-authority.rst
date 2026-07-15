@@ -41,7 +41,7 @@ All validations  align with (`OID-FED`_).
   * - FA_005
     - Security, Interoperability
     - Entity Configuration common parameters
-    - Payload contains ``jwks`` and ``metadata`` with ``federation_entity`` object including published Federation endpoints as per :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`.
+    - Payload contains ``jwks`` and ``metadata`` with ``federation_entity`` object including published Federation endpoints as per :ref:`registry:Registry Integration and Cross-References`.
   * - FA_006
     - Security
     - Entity Configuration key material validity

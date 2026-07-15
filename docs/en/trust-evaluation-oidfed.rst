@@ -34,7 +34,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
 
         On the received Credential:
 
-        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation`
+        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`
       - The Wallet Instance Attestation with the proof of possession of the attested key, validated as defined in :ref:`trust-evaluation-oidfed:Wallet Instance Authentication`.
     * - Wallet Instance
       - Remote presentation, ``openid_federation`` prefix
@@ -54,7 +54,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - Remote presentation, ``openid_federation`` prefix
       - On the received Credentials:
 
-        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation`
+        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`
 
         On the Wallet Provider, to invoke the Wallet through the national discovery mechanism (see the note below):
 
@@ -183,7 +183,7 @@ The certification path validation is the standard X.509 path validation defined 
 Within the National Trust Framework the following applies.
 
   - The trust anchor of the path validation is the applicable Signing Trust Anchor, obtained as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
-  - The end-entity certificate carries the OpenID Federation Entity Identifier of the subject in the ``subjectAltName`` URI. This is the element that links the X.509 signature to the federation identity of the signer. Therefore, the validation extracts this identifier so that the calling process can verify that the certificate that signed the artifact belongs to the OpenID Federation entity expected for that artifact. The comparison against the expected identifier, for example the ``iss`` of the Credential, is performed by the calling process (see :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation`). This variant only produces the identifier and it does not by itself establish which identifier is expected.
+  - The end-entity certificate carries the OpenID Federation Entity Identifier of the subject in the ``subjectAltName`` URI. This is the element that links the X.509 signature to the federation identity of the signer. Therefore, the validation extracts this identifier so that the calling process can verify that the certificate that signed the artifact belongs to the OpenID Federation entity expected for that artifact. The comparison against the expected identifier, for example the ``iss`` of the Credential, is performed by the calling process (see :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`). This variant only produces the identifier and it does not by itself establish which identifier is expected.
 
 .. note::
   The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding procedure and are out of the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
@@ -359,7 +359,7 @@ The Trust Evaluator MUST output ``TRUST_MARK_VALID`` or ``TRUST_MARK_INVALID``. 
 Entitlement Check
 """""""""""""""""""""
 
-The entitlements define what the entity is authorized to do, such as the Credential types it may issue or the attributes it may request. Within IT-Wallet these authorization data are carried in the registration Trust Mark, in the ``entitlements``, ``provides_attestations`` and ``credentials`` claims defined in :ref:`trust-artifact-oidfed:Trust Mark Structure`, and MUST NOT be derived from the metadata alone.
+The entitlements define what the entity is authorized to do, such as the Credential types it may issue or the attributes it may request. Within IT-Wallet these authorization data are carried in the registration Trust Mark, in the ``entitlements``, ``provides_attestations`` and ``credentials`` claims defined in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`, and MUST NOT be derived from the metadata alone.
 
 **Input**
 
@@ -410,7 +410,7 @@ The transparency claims carried in the Trust Mark are the following:
 - ``public_body``, whether the entity is a public sector body;
 - ``support_uri``, the contact for requests related to the entity, such as data deletion or portability.
 
-Their definitions are provided in :ref:`trust-artifact-oidfed:Trust Mark Structure`. 
+Their definitions are provided in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`. 
 
 When the Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both. In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
 

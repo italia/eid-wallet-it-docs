@@ -88,7 +88,7 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-infrastructure:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value.
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-evaluation:Trust Evaluation Process`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value.
 
 .. note::
   **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata (:ref:`WP_046 <wallet-credential-issuance-testcases>`). A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
