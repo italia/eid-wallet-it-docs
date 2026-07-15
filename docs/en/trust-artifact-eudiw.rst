@@ -6,16 +6,12 @@ EUDIW Trust Artifacts
 
 This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as per `EIDAS-ARF`_, including:
 
-- :ref:`trust-artifact-eudiw:Register of WRPs`; 
-- :ref:`trust-artifact-eudiw:X509 Certificate Profiles`, containing the following specialized profiles:
-
-  - :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`; 
-  - :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`;
-  - :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`;
-
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
-- :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
-- :ref:`trust-artifact-eudiw:Embedded Disclosure Policy (EDP)`.
+- :ref:`infrastructure-trust:Register of WRPs`; 
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`
+- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
+- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
+- :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 Register of WRPs
 ^^^^^^^^^^^^^^^^
@@ -59,561 +55,76 @@ and provide methods for searching and querying complete data sets of registered 
 
 The base OpenAPI Specification is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
 
-X509 Certificate Profiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This section lists all the parameters and extensions that are required for an X509 certificate profile needed for EUDIW interoperability. This profile is general and is further specialized in the following cases:
-
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`;
-- :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`.
-
-The final binary certificate structure is constructed by combining the seven core parameters (from ``version`` through ``subjectPublicKeyInfo``) with the specific extensions mandated by the selected profile, and is subsequently encoded using the ASN.1 Distinguished Encoding Rules (DER) as described in :rfc:`5280`.
-
-The table below lists the Certificate Profile Parameters for generic, EUDIW-compliant X509 certificates.
-
-.. list-table:: Certificate Profile Parameters
-   :class: longtable
-   :header-rows: 1
-   :widths: 20 55 25
-
-   * - **Parameter**
-     - **Description**
-     - **Defined in**
-
-   * - ``version``
-     - REQUIRED. Indicates the version of the encoded certificate. For this profile, it MUST be ``v3`` (``2``).
-     - :rfc:`5280#section-4.1.2.1`
-
-   * - ``serialNumber``
-     - REQUIRED. The serial number of the certificate.
-     - :rfc:`5280#section-4.1.2.2`
-
-   * - ``signature``
-     - REQUIRED. Identifies the signature algorithm used by the Certificate Authority (CA) to sign the certificate. The signature algorithm SHOULD be selected according to [`ETSITS119312`_], but MAY be superseded by national recommendations.
-     - :rfc:`5280#section-4.1.2.3`
-
-   * - ``signature.algorithm``
-     - REQUIRED. The OID of the signature algorithm. It MUST be one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
-     - :rfc:`5280#section-4.1.1.2`
-
-   * - ``signature.parameters``
-     - OPTIONAL. Algorithm-specific parameters, dependent on the algorithm used.
-     - :rfc:`5280#section-4.1.1.2`
-
-   * - ``issuer``
-     - REQUIRED. Identifies the entity that has signed and issued the certificate.
-
-       If the issuer is a legal person, the following attributes MUST be present:
-
-       * ``countryName`` indicating the country in which the issuer of the certificate is established;
-       * ``organizationName`` indicating the full registered name of the certificate issuing organization;
-       * ``commonName`` indicating a name commonly used by the subject to represent itself;
-       * conditionally, an ``organizationIdentifier`` if an appropriate registration number is known to exist, and it has a value different from the organization name.
-
-       If the issuer is a natural person, the following attributes MUST be present:
-
-       * ``countryName`` indicating a country that is consistent with the legal jurisdiction under which certificates are issued;
-       * choice of (``givenName`` and/or ``surname``) or ``pseudonym``; if the given name or surname of the issuer is known, the respective attribute MUST be present;
-       * ``commonName``;
-       * ``serialNumber``.
-     - clause 4.2.3 of [`ETSI_EN_319_412_2`_].
-
-   * - ``validity``
-     - REQUIRED. Time interval during which the Certificate Authority (CA) warrants that it will maintain information about the status of the certificate.
-     - :rfc:`5280#section-4.1.2.5`.
-
-   * - ``validity.notBefore``
-     - REQUIRED. The date on which the certificate validity period begins. Dates through 2049 MUST use ``UTCTime``; dates in 2050 or later MUST use ``GeneralizedTime``.
-     - :rfc:`5280#section-4.1.2.5`.
-
-   * - ``validity.notAfter``
-     - REQUIRED. The date on which the certificate validity period ends. Dates through 2049 MUST use ``UTCTime``; dates in 2050 or later MUST use ``GeneralizedTime``.
-     - :rfc:`5280#section-4.1.2.5`.
-
-   * - ``subject``
-     - REQUIRED. Identifies the entity associated with the public key stored in the subject public key field. If present, the size of ``organizationName``, ``organizationalUnitName`` and ``commonName`` MAY be longer than the limit as stated in [RFC 5280].
-
-       If the subject is a natural person, the following attributes MUST be present:
-
-       * ``countryName`` indicating the general context in which other attributes are to be understood;
-       * choice of (``givenName`` and/or ``surname``) or ``pseudonym``;
-       * ``commonName`` indicating a name of the subject;
-       * conditionally, ``serialNumber`` if the above attributes are not sufficient to ensure subject name uniqueness.
-
-       When a natural person subject is associated with an organization, the attributes MAY also identify such organization using attributes like ``organizationName`` and ``organizationIdentifier``.
-
-       If the subject is a legal person, the following attributes MUST be present:
-
-       * ``countryName`` indicating the country in which the subject is established;
-       * ``organizationName`` indicating the full registered name of the subject;
-       * ``organizationIdentifier`` indicating an identification of the subject organization different from the organization name;
-       * ``commonName`` indicating a name commonly used by the subject to represent itself.
-     - clause 4.2.4 of [`ETSI_EN_319_412_2`_], clause 4.2.1 of [`ETSI_EN_319_412_3`_].
-
-   * - ``subjectPublicKeyInfo``
-     - REQUIRED. Carries the public key and identifies the algorithm with which the key is used. The subject public key SHOULD be selected according to [ETSI TS 119 312] but MAY be superseded by national recommendations.
-     - :rfc:`5280#section-4.1.2.7`.
-
-   * - ``subjectPublicKeyInfo.algorithm``
-     - REQUIRED. The algorithm identifier for the public key. It MUST be one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
-     - :rfc:`5280#section-4.1.2.7`.
-
-   * - ``subjectPublicKeyInfo.subjectPublicKey``
-     - REQUIRED. The public key itself.
-     - :rfc:`5280#section-4.1.2.7`.
-
-   * - ``extensions``
-     - REQUIRED. A sequence of one or more certificate extensions.
-     - :rfc:`5280#section-4.1.2.9`.
-
-The extensions field of the WRPAC MUST contain various extensions, each of which is an ASN.1 SEQUENCE containing the following fields:
-
-.. list-table:: Extension Profile Parameters
-   :class: longtable
-   :header-rows: 1
-   :widths: 20 55 25
-
-   * - **Parameter**
-     - **Description**
-     - **Defined in**
-
-   * - ``[extension_name].extnID``
-     - REQUIRED. The OID identifying the specific extension type.
-     - :rfc:`5280#section-4.1.2.9`.
-
-   * - ``[extension_name].critical``
-     - CONDITIONAL. Indicates whether the extension is critical. DEFAULT is ``FALSE``.
-     - :rfc:`5280#section-4.1.2.9`.
-
-   * - ``[extension_name].extnValue``
-     - REQUIRED. Contains the DER encoding of the ASN.1 value corresponding to the extension type identified by ``extnID``.
-     - :rfc:`5280#section-4.1.2.9`.
-
-Below there is a list of the mandatory extensions and their content, if applicable. The column "Criticality" of the certificate extensions takes the semantics defined in [RFC 5280, clause 4.2] and uses the following acronyms:
-
-- C: The extension MUST be considered critical.
-- NC: The extension MUST be considered non-critical.
-
-.. list-table:: Certificate Extensions Profile Parameters
-   :class: longtable
-   :header-rows: 1
-   :widths: 20 15 45 20
-
-   * - **Parameter**
-     - **Criticality**
-     - **Description**
-     - **Defined in**
-
-   * - ``authorityKeyIdentifier``
-     - NC
-     - REQUIRED. Extension with the OID ``2.5.29.35``.
-       Contains the ``keyIdentifier`` for the issuing CA's public key.
-       The ``authorityCertIssuer`` and ``authorityCertSerialNumber`` fields MAY be present but are not required.
-     - clause 4.3.1 of [`ETSI_EN_319_412_2`_].
-
-   * - ``keyUsage``
-     - C
-     - REQUIRED. Extension with the OID ``2.5.29.15``.
-       It MUST be one of the following:
-       A. non-repudiation;
-       B. non-repudiation and digital signature;
-       C. digital signature;
-       D. digital signature and (key encipherment or key agreement);
-       E. key encipherment or key agreement;
-       F. non-repudiation and digital signature and (key encipherment or key agreement).
-       Type A, C, or E should be used to avoid mixed usage of keys.
-       Certificates issued to natural persons and used to validate commitment to signed content (e.g., documents/agreements) MUST be limited to type A, B, or F (type A should be used).
-       Certificates issued to legal persons and used to validate digital signatures over content MUST be limited to type A, B, or F (type A should be used).
-     - clause 4.3.2 of [`ETSI_EN_319_412_2`_], clause 4.3.2 of [`ETSIEN319412-3`_].
-
-   * - ``cRLDistributionPoints``
-     - NC
-     - CONDITIONAL. Extension with the OID ``2.5.29.31``.
-       Sequence of ``distributionPoint`` represented by a CHOICE of ``FullName`` or ``nameRelativeToCRLIssuer``, ``reasons``, and ``cRLIssuer``.
-       **Applicable condition:** If the certificate does not include any access location of an Online Certificate Status Protocol (OCSP) responder or the validity assured extension.
-       It contains at least one reference to a publicly available Certificate Revocation List (CRL).
-     - clause 4.3.11 of [`ETSI_EN_319_412_2`_].
-   
-   * - ``ext-etsi-valassured-ST-certs``
-     - NC
-     - CONDITIONAL. Extension with the OID ``0.4.0.194121.2.1``.
-       **Applicable condition:** For short-term certificates which cannot be revoked.
-       Indicates that the certificate issuer ensures the validity of the certificate is assured at time of use of the corresponding private key. Upon presence of such statement, the WRP can decide not to check the certificate revocation status (e.g., when validating a digital signature).
-     - clause 6.6.1 of [`ETSIEN319412-1`_].
-
-   * - ``noRevAvail``
-     - NC
-     - CONDITIONAL. Extension with the OID ``2.5.29.56``.
-       Allows a CA to indicate that no revocation information will be made available for this certificate.
-       **Applicable condition:** If the certificate includes the validity assured extension, but neither includes a CRL distribution point nor access location of an OCSP responder.
-     - :rfc:`9608#section-2`.
-
-   * - ``authorityInfoAccess``
-     - NC
-     - CONDITIONAL. Extension with the OID ``1.3.6.1.5.5.7.1.1``.
-       Sequence of ``AccessDescription``, containing an ``accessMethod`` (OID) and an ``accessLocation``.
-       It MUST at least include the ``id-ad-caIssuers`` OID specifying at least one access location of a valid CA certificate of the issuing CA.
-       If OCSP is supported, it MUST include the ``id-ad-ocsp`` OID specifying at least one access location of an OCSP responder providing status information for the present certificate.
-       If the certificate does not include any CRL distribution point and does not include the validity assured extension, a reference to at least one OCSP responder MUST be present.
-     - clause 4.4.1 of [`ETSI_EN_319_412_2`_].
-
-   * - ``subjectKeyIdentifier``
-     - NC
-     - REQUIRED. Extension with the OID ``2.5.29.14``. Contains a key identifier for the subject's public key.
-     - :rfc:`5280#section-4.2.1.2`.
-
-   * - ``certificatePolicies``
-     - NC
-     - REQUIRED. Extension with the OID ``2.5.29.32``.
-       Sequence of ``PolicyInformation`` elements, each being a SEQUENCE of ``policyIdentifier`` (OID) and ``policyQualifiers``.
-     - clause 4.3.3 of [`ETSI_EN_319_412_2`_].
-
-   * - ``subjectAltName``
-     - NC
-     - REQUIRED. Extension with the OID ``2.5.29.17``.
-       Sequence of ``GeneralName`` elements, each representing a possible alternative name for the subject of the certificate (e.g., ``dNSName`` for web site certificates, ``directoryName`` for transliterated names).
-       **Note:** This extension is for alternative subject names, not WRP contact information.
-     - :rfc:`5280#section-4.2.1.6`.
-
-   * - ``subjectInfoAccess``
-     - NC
-     - REQUIRED. Extension with the OID ``1.3.6.1.5.5.7.1.11``.
-       Sequence of ``AccessDescription``, containing an ``accessMethod`` (OID) and ``accessLocation``.
-       **Applicable condition:** Must contain WRP contact information as stated in clause 6.6.1 of [`ETSI_TS_119_411_8`_]. There MUST be at least one element among the following methods:
-       * ``id-ad-wrp`` (or equivalent) indicating a URI where the WRP can be contacted for helpdesk/support matters.
-       * ``id-ad-wrp`` (or equivalent) indicating a telephone number for WRP registration/usage matters.
-       * ``id-ad-wrp`` (or equivalent) indicating an email address for WRP registration/usage matters.
-     - clause 6.6.1 of [`ETSI_TS_119_411_8`_].
-
-   * - ``qcStatements`` (esi4-qcStatement-1)
-     - NC
-     - REQUIRED. ``QCStatement`` carried within the ``qcStatements`` extension (OID 1.3.6.1.5.5.7.1.3).
-       **Applicable condition:** For qualified certificates.
-       Contains a ``statementId`` (OID ``0.4.0.1862.1.1``). The ``statementInfo`` field MUST be absent.
-       It indicates that the certificate is qualified within the defined legal framework. For the eIDAS regulatory environment, the ``QcCClegislation`` MUST be absent.
-     - :rfc:`3739#appendix-C.1.1.4`, clause 4.2.1 of [`ETSI_EN_319_412_5`_].
-
-   * - ``qcStatements`` (esi4-qcStatement-4)
-     - NC
-     - REQUIRED. ``QCStatement`` carried within the ``qcStatements`` extension (OID 1.3.6.1.5.5.7.1.3).
-       **Applicable condition:** For qualified certificates where the private key resides in a Qualified Signature/Seal Creation Device (QSCD).
-       Contains a ``statementId`` (OID ``0.4.0.1862.1.4``). The ``statementInfo`` field MUST be absent.
-     - :rfc:`3739#appendix-C.1.1.4`, clause 4.2.2 of [`ETSI_EN_319_412_5`_].
-
-   * - ``qcStatements`` (esi4-qcStatement-6)
-     - NC
-     - REQUIRED. ``QCStatement`` carried within the ``qcStatements`` extension (OID 1.3.6.1.5.5.7.1.3).
-       **Applicable condition:** Mandatory for qualified certificates issued for electronic seals (Annex III) and qualified certificates for website authentication (Annex IV). Optional for qualified certificates for electronic signatures (Annex I).
-       Contains a ``statementId`` (OID ``0.4.0.1862.1.6``) and a ``statementInfo`` containing a ``QcType``.
-       The ``QcType`` is a ``SEQUENCE SIZE (1) OF OBJECT IDENTIFIER`` containing exactly one of the following purpose OIDs:
-       * ``0.4.0.1862.1.6.1`` (``id-etsi-qct-esign``)
-       * ``0.4.0.1862.1.6.2`` (``id-etsi-qct-eseal``)
-       * ``0.4.0.1862.1.6.3`` (``id-etsi-qct-web``)
-       Declares that a certificate is issued for one and only one of the purposes: electronic signature, electronic seal, or web site authentication.
-     - :rfc:`3739#appendix-C.1.1.4`, clause 4.2.3 of [`ETSI_EN_319_412_5`_].
-
 Wallet-Relying Party Access Certificate (WRPAC) Profile
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the purpose, format and content of Wallet-Relying Party Access Certificates (WRPACs).
+This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPAC)**.
 
-According to the Article 2 of CIR (EU) 2025/848 `CIR2025/848`_, a WRPAC, is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet. For more details on the authentication process, see :ref:`trust-evaluation-eudiw:Authentication Process`.
+According to the Article 2 of [`CIR2025/848`_], a WRPAC is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet. For more details on the authentication process, see :ref:`trust-evaluation-eudiw:Authentication Process`.
 
 The suspension or cancellation of the WRP services, involves revocation of all valid WRPAC by the relevant issuing authority, such that the WRP is no longer able to interact with Wallet Units. For more detail on the Trust Management processes, see :ref:`infrastructure-trust:EUDIW Trust Management Process`.
 
-The Annex IV of `CIR2025/848`_ also states that the WRPACs are meant for performing electronic signatures or seals and that they MUST comply with at least the Normalised Certificate Policy (NCP) requirements specified in the ETSI standards. 
+Annex IV of [`CIR2025/848`_] also states that the WRPACs are meant for performing electronic signatures or seals and that they MUST comply with at least the Normalised Certificate Policy (NCP) requirements specified in the ETSI standards. 
 Taking into account these minimal requirements, different scenarios are possible and specified in the following clauses: certificates issued to natural or legal persons, supporting advanced signatures/seals or even qualified signature/seals. Conditional requirements are defined according to the specific case the WRPACs fall into.
 
-The technical standard that defines the common requirements with respect to content and format of these certificates is ETSI TS 119 411-8 `ETSI_TS_119_411_8`_.
+The specific requirements for WRPACs are specified in `ETSI TS 119 411-8`_.
 
-Clause 4 in ETSI TS 119 412-6, further specifies PID Providers X509 certificates parameters as follows:
+- Basic Fields: all required, as described in :ref:`x509-certificate-profile:X.509 Certificate Profile`.
 
-- Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
+- Extensions:
 
-- Among Extensions parameters,
+  - ``subjectKeyIdentifier``: for end-entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in Clause 4.2.1.2 of [:rfc:`5280`].
 
-  - the ``keyUsage`` extension MUST contain one (and only one) of the key-usage settings Type A, Type B, Type C, or Type F, as defined in ETSI EN 319 412-2.
-  - At least one of the following extensions MUST be present:
+  - ``keyUsage``: it MUST contain exactly one of the following key usage
+    settings: *Type A*, *Type B*, *Type C*, or *Type F*.
 
-    * ``cRLDistributionPoints`` extension with at least one reference to a publicly available Certificate Revocation List (CRL) as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
-    * ``authorityInfoAccess`` extension with at least one reference to a publicly available Online Certificate Status Protocol (OCSP) responder providing status information for the present certificate as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+  - ``certificatePolicies``: it MUST include a ``PolicyInformation`` term with
+  
+    - ``policyIdentifier`` containing one of the following OIDs defined in [`ETSI TS 119 411-8`_]
 
-  - the ``certificatePolicies`` extension MUST be present with the ``PolicyInformation`` field containing the following values defined by [`ETSI_TS_119_411_8`_]:
+      * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``)
+      * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``)
+      * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``)
+      * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
 
-    * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``)
-    * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``)
-    * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``)
-    * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
+    - ``policyQualifiers`` containing a ``CPSuri`` that references an URL where the CPS of the Provider of WRPAC is located.
 
-   The ``cpsURI`` under Certificate policies MUST indicate a URL where the CPS of the Provider of WRPAC is located.
+  - ``authorityInfoAccess``: it MUST be present and include an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
-  - ``subjectKeyIdentifier`` For end entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in :rfc:`5280`, clause 4.2.1.2.
-  - ``authorityInfoAccess`` MUST be present.
-  - the (esi4-qcStatement-6) ``qcStatements`` extension with the OID ``1.3.6.1.5.5.7.1.3`` MUST be present with ``QcType`` valued as ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``) as defined in Annex A of [`ETSI_TS_119_412_6`_].
+  - ``qcStatements``: TBD.
 
-The extension is mandatory as stated in [`ETSI_TS_119_411_8`_], requirement GEN-6.6.1-03. 
-     - :rfc:`3647#section-3.3.1`, :rfc:`5280#section-4.2.1.4`.
+  - At least one of the following conditions MUST apply:
+
+    * ``cRLDistributionPoints`` is present and contains at least one reference to a publicly available Certificate Revocation List (CRL), as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
+
+    * ``authorityInfoAccess`` additionally includes an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 .. note::
     **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI_TS_119_475`_ `ETSI_TS_119_475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
-
-Wallet-Relying Party Access Certificate compliant with this 
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
 .. literalinclude:: ../../examples/wrpac-ncp.txt
   :language: text
 
-Entity Sign/Seal Certificate Profile
-""""""""""""""""""""""""""""""""""""
+Registrar Sign/Seal Certificate Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section specifies :ref:`trust-artifact-eudiw:X509 Certificate Profiles` by describing the purpose, format and content of Entity Sign/Seal Certificate which are used for signing and sealing various Attestations. These profiles are specified in `ETSI_TS_119_412_6`.
+This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
 
-PID Provider Sign/Seal Certificate
-.....................................
+The specific requirements for WRPACs are specified in `CIR 2025/848`_.
 
-Clause 4 in ETSI TS 119 412-6, further specifies PID Providers X509 certificates parameters as follows:
+- Basic Fields: all required, as described in :ref:`x509-certificate-profile:X.509 Certificate Profile`.
 
-- Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
+- Extensions:
 
-- Among Extensions parameters,
+  - ``certificatePolicies``: it MUST include a ``PolicyInformation`` term with ``0.4.0.2042.1.1`` (*NCP*) as ``policyIdentifier``.
 
-  - the ``keyUsage`` extension MUST contain one (and only one) of the key-usage settings Type A, Type B, Type C, or Type F, as defined in ETSI EN 319 412-2.
-  - At least one of the following extensions MUST be present:
+  - At least one of the following conditions MUST apply:
 
-    * ``cRLDistributionPoints`` extension with at least one reference to a publicly available Certificate Revocation List (CRL) as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
-    * ``authorityInfoAccess`` extension with at least one reference to a publicly available Online Certificate Status Protocol (OCSP) responder providing status information for the present certificate as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+    * ``cRLDistributionPoints`` is present and contains at least one reference to a publicly available Certificate Revocation List (CRL), as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
 
-  - the ``certificatePolicies`` extension MUST be present with the ``policyInformation`` field containing the *NCP+* ``policyIdentifier`` (OID ``0.4.0.2042.1.2``).
-  - ``subjectKeyIdentifier`` For end entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in :rfc:`5280`, clause 4.2.1.2.
-  - ``authorityInfoAccess`` MUST be present.
-  - the (esi4-qcStatement-6) ``qcStatements`` extension with the OID ``1.3.6.1.5.5.7.1.3`` MUST be present with ``QcType`` valued as ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``) as defined in Annex A of [`ETSI_TS_119_412_6`_].
-
-The following is a non-normative example of a PID Provider's end-entity certificate for legal persons (non-self-signed).
-
-.. literalinclude:: ../../examples/pid-sign-seal.txt
-  :language: text
-
-Wallet Provider Sign/Seal Certificate
-.....................................
-
-Clause 5 in ETSI TS 119 412-6, further specifies Wallet Providers X509 certificates parameters as follows:
-
-- Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
-
-- Among Extensions parameters,
-
-  - the ``keyUsage`` extension MUST contain one (and only one) of the key-usage settings Type A, Type B, Type C, or Type F, as defined in ETSI EN 319 412-2.
-  - At least one of the following extensions MUST be present:
-
-    * ``cRLDistributionPoints`` extension with at least one reference to a publicly available Certificate Revocation List (CRL) as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
-    * ``authorityInfoAccess`` extension with at least one reference to a publicly available Online Certificate Status Protocol (OCSP) responder providing status information for the present certificate as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-
-  - ``subjectKeyIdentifier`` For end entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in :rfc:`5280`, clause 4.2.1.2.
-  - ``authorityInfoAccess`` MUST be present.
-  - the (esi4-qcStatement-6) ``qcStatements`` extension with the OID ``1.3.6.1.5.5.7.1.3`` MUST be present with ``QcType`` valued as ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``) as defined in Annex A of [`ETSI_TS_119_412_6`_].
-
-The following is a non-normative example of a Wallet Provider's end-entity certificate for legal persons (non-self-signed).
-
-.. literalinclude:: ../../examples/wp-sign-seal.txt
-  :language: text
-
-(Q)EAA Provider Sign/Seal Certificate
-.....................................
-
-Clause 6 and 7 in ETSI TS 119 412-6, further specifies (Q)EAA Providers X509 certificates parameters as follows: 
-
-- for EAA Providers Sign/Seal Certificates, all core and extension parameters are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
-
-- for QEAA Providers Sign/Seal Certificates, 
-
-  - all core parameters are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`
-
-  - Among Extensions parameters,
-
-    - ``authorityInfoAccess`` MUST be present.
-
-For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list. 
-
-The following is a non-normative example of a QEAA Provider's end-entity certificate for legal persons (non-self-signed).
-
-.. literalinclude:: ../../examples/qeaa-sign-seal.txt
-  :language: text
-
-PuB-EAA Provider Sign/Seal Certificate
-......................................
-
-Clause 8 in ETSI TS 119 412-6, further specifies PuB-EAA Providers X509 certificates parameters as follows:
-
-- Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
-
-- Among Extensions parameters,
-
-  - ``authorityInfoAccess`` extension with at least one reference to a publicly available Online Certificate Status Protocol (OCSP) responder providing status information for the present certificate as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-  - the ``certificatePolicies`` extension MUST be present with the ``policyInformation`` field containing the *NCP+* ``policyIdentifier`` (OID ``0.4.0.2042.1.2``).
-  - the ``qcStatements`` extension indicated in the table below MUST be present.
-
-.. list-table:: Additional PuB-EAA Extensions Profile Parameters
-   :class: longtable
-   :header-rows: 1
-   :widths: 20 15 45 20
-
-   * - **Parameter**
-     - **Criticality**
-     - **Description**
-     - **Defined in**
-
-   * - ``qcStatements`` (esi4-qcStatement-10)
-     - NC
-     - REQUIRED. Extension with the OID ``1.3.6.1.5.5.7.1.3``.
-
-        Sequence of ``QCStatement``, containing a ``statementId`` (OID ``0.4.0.194126.1.3``) and a ``statementInfo`` containing a ``QcPSB`` element.
-
-        The ``QcPSB`` element is a ``SEQUENCE`` containing the following parameters:
-
-       * ``countryOfLegislation``: A ``PrintableString (SIZE (2))`` containing the alpha-2 country code of the legislation framework of the public sector body. In the case of European Union law, ``EU`` MUST be used in place of the country code.
-       * ``authSourceIdentification``: A ``UTF8String`` containing the unique identification of the authentic source.
-       * ``legislationIdentification``: A ``UTF8String`` containing the identification of the legislation framework.
-
-        **Applicable condition:** Mandatory data requirement for Public Sector Body (PSB) certificates to declare legal frameworks and identity source mappings.
-     - :rfc:`3739#appendix-C.1.1.4`, Annex A of [`ETSI_TS_119_412_6`_].
-
-The following is a non-normative example of a PuB-EAA Provider's end-entity certificate for legal persons (non-self-signed).
-
-.. literalinclude:: ../../examples/pubeaa-sign-seal.txt
-  :language: text
-
-Registrar Sign/Seal Certificate
-................................
-  
-CIR 2025/848, further specifies the Registrar Sign/Seal Certificate parameters as follows:
-
-- Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.
-
-- Among Extensions parameters,
-
-  - At least one of the following extensions MUST be present:
-
-    * ``cRLDistributionPoints`` extension with at least one reference to a publicly available Certificate Revocation List (CRL) as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
-    * ``authorityInfoAccess`` extension with at least one reference to a publicly available Online Certificate Status Protocol (OCSP) responder providing status information for the present certificate as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-    
-  - the ``certificatePolicies`` extension MUST be present with the ``policyInformation`` field containing the *NCP* ``policyIdentifier`` (OID ``0.4.0.2042.1.1``).
-
-
-Trust Anchor Certificate Profile
-""""""""""""""""""""""""""""""""
-
-This section specifies an **X.509 certificate profile** for **Trust Anchors** used in the European Digital Identity Wallet (EUDIW) ecosystem. These certificates MUST be notified to the European Commission as described in `CIR2025/2980`_ and subsequently included in the appropriate LoTE.
-
-A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**. When published through List of Trusted Entities, that certificate is referenced from the corresponding service entry through the ``serviceDigitalIdentity`` component.
-
-.. note::
-
-  A Trust Anchor certificate may be *self-signed* or *non-self-signed*. In both cases it is treated as a Trust Anchor when found in a LoTE as required by the EUDIW Trust Framework.
-
-Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration of Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate. The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`). Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
-
-This section further specifies the requirements of :ref:`trust-artifact-eudiw:X509 Certificate Profiles` parameters for Trust Anchor certificates, as follows:
-
-.. list-table:: Certificate Extensions Profile for Trust Anchor Parameters
-   :class: longtable
-   :header-rows: 1
-   :widths: 20 15 45 20
-
-   * - **Parameter**
-     - **Criticality**
-     - **Description**
-     - **Defined in**
-   * - ``subject``
-     - —
-     - REQUIRED. The Trust Anchor certificate MUST contain a non-empty subject distinguished name.
-       The subject DN MUST identify the entity associated with the trust anchor public key in a clear and unambiguous manner.
-       If the Trust Anchor represents a legal or organizational entity, the subject DN MUST contain an ``organizationName`` attribute identifying that entity.
-     - :rfc:`5280#section-4.1.2.6`.
-   * - ``issuer``
-     - —
-     - REQUIRED. The Trust Anchor certificate MUST contain an issuer distinguished name.
-       If the certificate is self-signed, the issuer DN MUST be identical to the subject DN.
-       If the certificate is non-self-signed, the issuer DN MUST identify the entity that signed and issued the certificate and MAY differ from the subject DN.
-     - :rfc:`5280#section-4.1.2.4`.
-   * - ``subjectKeyIdentifier``
-     - NC
-     - REQUIRED. Extension with the OID ``2.5.29.14``.
-       Identifies the trust anchor public key.
-       The value SHOULD be derived from the public key in a stable and interoperable manner (e.g., via SHA-256) to support reliable certificate path construction and certificate matching in LoTE / Trusted List based deployments.
-     - :rfc:`5280#section-4.2.1.2`.
-   * - ``basicConstraints``
-     - C
-     - REQUIRED. Extension with the OID ``2.5.29.19``.
-       The ``cA`` field MUST be set to TRUE, signalling CA capability for X.509 path validation.
-       The ``pathLenConstraint`` field MAY be present.
-       If present, ``pathLenConstraint`` MUST limit the number of non-self-issued intermediate CA certificates below the Trust Anchor.
-       Setting ``pathLenConstraint`` to 0 is RECOMMENDED unless a documented operational need exists to support additional subordinate CA tiers.
-       This extension MUST be critical.
-     - :rfc:`5280#section-4.2.1.9`.
-   * - ``keyUsage``
-     - C
-     - REQUIRED. Extension with the OID ``2.5.29.15``.
-       The extension MUST include the ``keyCertSign`` bit.
-       The extension MAY include the ``cRLSign`` bit if the Trust Anchor certificate is used by the CA to sign certificate revocation lists.
-       The extension SHOULD be limited to usages consistent with the certification authority role of the Trust Anchor certificate.
-       This extension MUST be critical.
-     - :rfc:`5280#section-4.2.1.3`.
-   * - ``ext-etsi-valassured-ST-certs``
-     - NC
-     - OPTIONAL. Extension with the OID ``0.4.0.194121.2.1``.
-       Indicates that the certificate issuer ensures the validity of the certificate is assured at time of use of the corresponding private key.
-     - clause 6.6.1 of [`ETSIEN319412-1`_].
-
-.. note::
-   **Trust Anchor revocation.**
-    Trust Anchor certificates are not expected to be revoked as they are trusted by policy when published in a LoTE or Trusted List. As a result, revocation information (e.g., CRL or OCSP) is not required for Trust Anchor certificates and entities using Trust Anchor certificates retrived in a LoTE or Trusted List MAY avoid revocation checking for Trust Anchor certificates.
-
-.. note::
-
-   **Self-signed vs. non-self-signed trust anchors.**
-   A LoTE / Trusted List-published trust anchor certificate MAY be self-signed (traditional root CA style) or non-self-signed but treated as a trust anchor by policy (a pinned intermediate CA certificate).
-   Relying parties MUST NOT require an additional issuer chain above a LoTE-designated trust anchor, even if it is not self-signed, because the trust anchor is a trust-store input designated by policy.
-
-The following table maps the various Certificates used in the ecosystem, the attested public key uses, and the location of the Trust Anchor.
-
-.. list-table:: Certificate and Trust Anchor Matrix
-   :header-rows: 1
-
-   * - **Certificate**
-     - **Attested Key Use**
-     - **Trust Anchor location**
-   * - PID Provider Sign/Seal Certificate
-     - signing PID, siging PID Status List Token
-     - PID Providers LoTE
-   * - Wallet Provider Sign/Seal Certificate
-     - signing WIA, KA, signing WIA/KA Status List Token 
-     - Wallet Providers LoTE
-   * - EAA Provider Sign/Seal Certificate
-     - signing EAA, signing EAA Status List Token
-     - ``trustedAuthority`` attribute in the machine-readable Attestation Rulebook for the specific EAA
-   * - QEAA Provider Sign/Seal Certificate
-     - signing QEAA, signing QEAA Status List Token
-     - eIDAS I Trusted List
-   * - Pub-EAA Provider Sign/Seal Certificate
-     - signing PuB-EAA, signing PuB-EAA Status List Token
-     - Pub-EAA Providers LoTE
-   * - Wallet-Relying Party WRPAC
-     - signing Request Objects or ``readerAuth`` during Digital Credential Presentation for Relying Parties; signing Credential Issuer Metadata for Credential Issuers
-     - Provider of WRPAC LoTE
-   * - Wallet-Relying Party WRPRC
-     - N/A
-     - Provider of WRPRC LoTE
-
-.. note::
-
-  As described in `Section 4.3.1 of ARF TS11 <https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md#431-schemameta-main-class>`_ the Trust Anchor of a EAA Sign/Seal Certificate is rferenced in the ``trustedAuthority`` attribute of the machine-readable Attestation Rulebook for the specific EAA.
-
-The following is a non-normative example of a trust anchor certificate in a pseudo-structure format.
-
-.. literalinclude:: ../../examples/trust-anchor-cert.txt
-  :language: text
+    * ``authorityInfoAccess`` additionally includes an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
