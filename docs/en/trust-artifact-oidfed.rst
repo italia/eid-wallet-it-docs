@@ -4,16 +4,13 @@
 OID FED Trust Artifacts
 -----------------------
 
-This section defines the required trust artifacts and their conceptual roles in OpenID Federation 1.0 as for `OID-FED`_,  including 
+This section defines the trust artifacts of the National Trust Framework that are defined in the following specifications of the OpenID Federation family, each within its own scope:
 
-- :ref:`infrastructure-trust:Federation API Endpoints`;
-- :ref:`infrastructure-trust:Entity Configuration`;
-- :ref:`infrastructure-trust:Subordinate Statements`;
-- :ref:`infrastructure-trust:Trust Marks`.
+- OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
+- OpenID Federation for Wallet Architectures, the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.
+- OpenID Federation Subordinate Events, that defines the Subordinate Events endpoint, used to obtain the registration history of an Immediate Subordinate.
 
-Before entering into the details, Figure :ref:`fig_OID-FED_roles` maps each wallet ecosystem entity onto the corresponding OpenID Federation role the entity plays: WRPs and Wallet Providers are Federation Entities that MUST be registered by a Federation Authority (a Trust Anchor or an Intermediate). The registration process establishes the participant's position in the trust hierarchy (as Leaf Entities, i.e entities with no Subordinate Entities)  and enables them to participate in credential operations as they proved their eligibility and received authorization to perform their designated functions. 
-
-In the IT Wallet ecosystem, both Trust Anchor and Intermediates play the role of Trust Mark Issuer.
+Figure :ref:`fig_OID-FED_roles` maps each wallet ecosystem entity onto the OpenID Federation role it plays. Wallet-Relying Parties and Wallet Providers are Federation Entities that MUST be registered by a Federation Authority, that is a Federation TA or Intermediate.
 
 .. _fig_OID-FED_roles:
 .. plantuml:: plantuml/oid-fed-roles.puml
@@ -21,195 +18,136 @@ In the IT Wallet ecosystem, both Trust Anchor and Intermediates play the role of
     :alt: The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves.
     :caption: `OID-FED Roles <https://www.plantuml.com/plantuml/svg/ROv1IyD044Rl-ol6UWvIBUf1IaDgGF1GHF0eq-maBjtCXjdPXYB-TsiY9HLlE-pxU6yL5KLJwys5uyedI_1GBAwAnNiHMD4noTAOk7FSeM0BMwnsZOJ4jWW-2AWWnmw5M2TKBXBw4TZwuy8O8rGfSkC9PYLP4bGN6FAa7q6SEeepm0WrdhHmMT-KT-ivV1g0oVfLKbJ8kJeEXuqYd1DFh2GjMOTA0-5Ovs2-pYAU2VU_KazOnudtyRwyNj_-zRwXzwImaR1tbaPrty5_KFP2_k2uWGsA7aPIkg70_3oor6NBeMfoAfgXytJran-p8hQfzTy0>`_
 
-.. note:: 
-  Wallet Instances are not Federation Entities as they are End-User's personal devices authenticated by their Wallet Provider. 
+.. note::
+  Wallet Instances are not Federation Entities, they are the End-User personal devices authenticated by their Wallet Provider.
 
 
 Federation API Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-OpenID Federation 1.0 uses RESTful Web Services secured over HTTPs. 
-All the endpoints listed below are defined in the `OID-FED`_ specs.
+OpenID Federation 1.0 uses RESTful web services secured over HTTPS. All Federation Entities MUST publish its own Entity Configuration at `.well-known/openid-federation` endpoint according to `OID-FED`_ Section 9. Federation TA and Intermediaries additionally expose the federation endpoints used to build and validate the Trust Chains and to support the Trust Marks.
 
-Wallet Providers, WRPs, Trust Anchors and Federation Intermediaries MUST make publicly available the following endpoint.
+In `OID-FED`_ Section 5.1.1 are defined the Federation Entity properties that are supported in IT-Wallet specification profile. Within IT-Wallet, in addition to the fetch (`OID-FED`_ Section 8.1) and the list (`OID-FED`_ Section 8.2) endpoints that are REQUIRED for Federation TA and Intermediaries, the following apply.
 
 .. list-table::
    :class: longtable
-   :widths: 20 20 20
+   :widths: 22 30 48
    :header-rows: 1
 
    * - Endpoint Name
      - HTTP Request
      - Scope
-   * - federation metadata
-     - **GET** .well-known/openid-federation
-     - Metadata that an Entity publishes about itself, verifiable with a trusted third party (Superior Entity). It's called Entity Configuration.
- 
-Only Trust Anchors and Federation Intermediaries MUST additionally make publicly available the following endpoints.
-
-.. list-table::
-   :class: longtable
-   :widths: 20 20 20
-   :header-rows: 1
-
-   * - Endpoint Name
-     - HTTP Request
-     - Scope
-   * - subordinate list endpoint
-     - **GET** /list
-     - Lists the Subordinates. See `OID-FED`_ Section 8.2
-   * - fetch endpoint
-     - **GET** /federation_fetch_endpoint?sub=https://rp.example.org
-     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See `OID-FED`_ Section 8.1
-   * - trust mark status
+   * - resolve. REQUIRED for Federation TA and Intermediates.
+     - **GET** /resolve?sub=https://rp.example.org&anchor=https://trust-anchor.example.org
+     - Returns the resolved Trust Chain and the final metadata about an already evaluated subject. See `OID-FED`_ Section 8.3
+   * - trust mark status. REQUIRED only for Federation TA. 
      - **POST** /trust_mark_status
-     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See `OID-FED`_ Section 8.4
-   * - trust mark list
+     - Returns the status, that is the validity, of a Trust Mark about a specific subject. See `OID-FED`_ Section 8.4
+   * - trust mark list. REQUIRED only for Federation TA. 
      - **GET** /trust_mark_listing?trust_mark_type=...
-     - Lists all entities for which Trust Marks have been issued and are still valid. See `OID-FED`_ Section 8.5
-   * - trust mark
+     - Lists the subjects for which a Trust Mark of the given type has been issued and is still valid. See `OID-FED`_ Section 8.5
+   * - trust mark. REQUIRED only for Federation TA. 
      - **GET** /trust_mark?trust_mark_type=...
-     - Returns the Trust Mark related to a specific subject. See `OID-FED`_ Section 8.6
-   * - historical keys
+     - Returns the Trust Mark about a specific subject. See `OID-FED`_ Section 8.6
+   * - historical keys. REQUIRED for Federation TA and Intermediates. 
      - **GET** /federation_historical_keys
-     - Lists the expired and revoked keys, with the motivation of the revocation. See `OID-FED`_ Section 8.7
-   * - subordinate events
+     - Lists the expired and revoked Federation Entity Keys, with the reason of the revocation. See `OID-FED`_ Section 8.7
+   * - subordinate events. REQUIRED for Federation TA and OPTIONAL for Intermediates. 
      - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
-     - Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. 
+     - Returns the history of the registration events about an Immediate Subordinate. 
 
-All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default. 
-The Federation Subordinate Events Endpoint also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
+The Subordinate Events endpoint is defined  `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_. Its purpose is to give a verifiable, historical track of the registration events concerning an Immediate Subordinate, such as its registration, the update of its Federation Entity Keys and its revocation. For the request format, the response format and the event types refer to `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_ Section 2.2 and 2.3. 
 
-
-Entity Configuration
-^^^^^^^^^^^^^^^^^^^^
-
-The Entity Configuration is the verifiable document that each Federation Entity MUST publish on its own behalf, in the **.well-known/openid-federation** endpoint.
-
-The Entity Configuration HTTP Response MUST set the media type to `application/entity-statement+jwt`.
-
-The Entity Configuration MUST be cryptographically signed. The public part of this key MUST be provided in the Entity Configuration and within the Subordinate Statement issued by a immediate superior and related to its subordinate Federation Entity.
-
-The Entity Configuration MAY also contain one or more Trust Marks.
-
-**Role in Onboarding**: New entities publish their Entity Configuration as part of their registration process, declaring their capabilities, supported protocols, and compliance status to the federation. The configuration serves as the entity's initial declaration of its technical readiness and operational scope, enabling other participants to discover and validate its registration status.
-
-**Role in Operations**: During Credential operations, Entity Configurations are retrieved by Wallets, Credential Issuers, and Relying Parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure Credential exchange.
-
-Technical details about Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
+All the responses of the federation endpoints are signed JWTs, with the exception of the subordinate list endpoint and the trust mark status endpoint, that are served as plain JSON by default.
 
 .. note::
-  **Entity Configuration Signature**
+  Within IT-Wallet the resolve endpoint MUST responds to unauthenticated requests only with cached information about Entities, if available, and the collection and assessment of a Trust Chain MUST NOT be the default action of the resolve endpoint, as described in `OID-FED`_ Section 18.1.
 
-  All the signature-check operations regarding the Entity Configurations, Subordinate Statements and Trust Marks, are carried out with the Federation public keys. For the supported algorithms refer to Section :ref:`algorithms:Cryptographic Algorithms`.
+Entity Statements
+^^^^^^^^^^^^^^^^^^^^^^^
+The Entity Configuration is the Entity Statement that each Federation Entity issues about itself and publishes at the ``.well-known/openid-federation`` path (`OID-FED`_ Section 3). Its ``iss`` and ``sub`` are the Federation Entity Identifier of the Entity itself, and it is signed with a Federation Entity Key. The HTTP response sets the media type to ``application/entity-statement+jwt``. The Entity Configuration MAY also contain one or more Trust Marks.
 
-Entity Configurations Common Parameters
+A Subordinate Statement is the Entity Statement that a Trust Anchor or a Federation Intermediate issues about its Immediate Subordinate (`OID-FED`_ Section 3). Its ``iss`` is the issuer, its ``sub`` is the Subordinate, and it carries the Federation Entity Keys of the Subordinate, so it is the statement that binds the Subordinate keys under its superior. It MAY also carry a metadata policy and the Trust Marks about the Subordinate.
+
+Entity Configuration
+"""""""""""""""""""""""
+
+In the IT-Wallet ecosystem the Entity Configuration is published during the onboarding of the Entity (see :ref:`onboarding-procedure:The Onboarding Processes`) and is retrieved and validated during the trust evaluation, as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication` and :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`.
+
+Technical details about the Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
+
+.. note::
+  All the signature checks on the Entity Configurations, the Subordinate Statements and the Trust Marks are carried out with the Federation Entity Keys. For the supported algorithms refer to Section :ref:`algorithms:Cryptographic Algorithms`.
+
+Subordinate Statements
+"""""""""""""""""""""""
+
+Trust Anchors and Federation Intermediates serve their Subordinate Statements through the fetch endpoint (`OID-FED`_ Section 8.1), where a Trust Evaluator retrieves them to validate the Entity Configuration signature of the Subordinate and to build the Trust Chain. The metadata policy, when present, changes the final metadata of the Leaf. The final metadata is derived from the whole Trust Chain, from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor, as defined in :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`. The revocation of a Subordinate is expressed by the absence of a valid Subordinate Statement about it, as defined in :ref:`trust-evaluation-oidfed:Federation Trust Chain`.
+
+Within IT-Wallet the Subordinate Statements are issued during the onboarding of the Subordinate (see :ref:`onboarding-procedure:The Onboarding Processes`).
+
+
+Entity Statement Parameters
 """""""""""""""""""""""""""""""""""""""
 
-The Entity Configurations of all the participants in the federation MUST have in common the parameters listed below.
+In addition to the REQUIRED common parameter ``iss``, ``sub``, ``iat``, ``exp`` and ``jwks`` as defined in `OID-FED`_ Section 3.1.1, within IT-Wallet specification profile the following parameters apply.
 
-.. list-table::
-   :class: longtable
-   :widths: 20 60
-   :header-rows: 1
+In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
-   * - **Claim**
-     - **Description**
-   * - **iss**
-     - String. Identifier of the issuing Entity.
-   * - **sub**
-     - String. Identifier of the Entity to which it is referred. It MUST be equal to ``iss``.
-   * - **iat**
-     - UNIX Timestamp with the time of generation of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
-   * - **exp**
-     - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
-   * - **jwks**
-     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim ``kid``) and MAY have a ``x5c`` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of Trust Evaluation.
-
-       **x5c**: The ``x5c`` parameter included in Entity Configuration's ``jwks`` parameter MUST only contain the self-issued X.509 Certificate about the corresponding ``jwk``.
-   * - **metadata**
-     - JSON Object. Each key of the JSON Object represents a metadata type identifier containing JSON Object representing the metadata, according to the metadata schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
+- **metadata**: JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for *federation_entity* int their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`.
+- **trust_marks**: REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`trust-artifact-oidfed:Trust Mark registration-entity`.
+- **trust_mark_issuers**: REQUIRED only for Federation TA and MUST NOT included otherwise. JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers. Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier. 
 
 
-Entity Configuration Trust Anchor
-"""""""""""""""""""""""""""""""""
+In Subordinate Statement (`OID-FED`_ Section 3.1.3):
 
-The Trust Anchor Entity Configuration, in addition to the common parameters listed above, MUST use the following parameters:
+- **metadata_policy**: OPTIONAL in `OID-FED`_. Metadata policy bound to a specific metadata type and applied to the subtree, resolved by combining the ``metadata_policy`` Claims along the Trust Chain, as defined in `OID-FED`_ Section 6.1.4. Within IT-Wallet the Subordinate Statement about a Leaf MUST carry a ``metadata_policy`` that binds the protocol metadata of the Leaf to the values approved at onboarding: it MUST fix the protocol signature keys (``jwks``) and, when present in the metadata type, the service endpoints and the request, response and redirect URIs, for example ``request_uris``, ``response_uris`` and ``redirect_uris`` of the ``openid_credential_verifier``, using the metadata policy operators of `OID-FED`_ Section 6.1.3. This Subordinate Statement is issued by the immediate superior that registered the Leaf, that is the Federation TA for the Leaves it registers directly and a Federation Intermediate for its affiliated Relying Parties. The Subordinate Statement about a Federation Intermediate does not carry a ``metadata_policy``, because the Intermediate has no protocol metadata and its affiliated Relying Parties are bound by the Intermediate itself. A superior MAY further restrict the metadata policy set by its own superiors, but MUST NOT relax it, as defined in `OID-FED`_ Section 6.1.1.
+- **constraints**: REQUIRED only for Federation TA. It carries the constraints applied to the subtree below the issuer. It MUST contain ``allowed_entity_types``, that restricts the metadata Entity Types the Subordinates in the subtree are allowed to publish, and ``max_path_length``, that limits the number of Intermediates between the issuer and the Trust Chain subject. The ``federation_entity`` Entity Type is always allowed and MUST NOT be listed in ``allowed_entity_types``. See `OID-FED`_ Section 6.2.
 
-.. list-table::
-   :class: longtable
-   :widths: 20 60
-   :header-rows: 1
+All other optional parameters defined in `OID-FED`_ Section 3 that are not recognized within IT-Wallet specification profile MUST be ignored during the evaluation of an Entity Statement. 
 
-   * - **Claim**
-     - **Description**
-   * - **trust_mark_issuers**
-     - JSON Array that defines which Federation authorities are considered trustworthy for issuing specific Trust Marks, assigned with their unique identifiers.
-
-
-Entity Configuration Leaves and Federation Intermediates
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-In addition to the previously defined claims, the Entity Configuration of the Leaves and of the Federation Intermediate Entities MUST use the following parameters:
-
-.. list-table::
-   :class: longtable
-   :widths: 20 60
-   :header-rows: 1
-
-   * - **Claim**
-     - **Description**
-   * - **authority_hints**
-     - Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or an Intermediate, that issues an Subordinate Statement related to this subject.
-   * - **trust_marks**
-     - A JSON Array containing the Trust Marks.
-
+.. note::
+  Within IT-Wallet the Federation Entity Keys carried in the ``jwks`` of an Entity Configuration or of a Subordinate Statement are used to sign the federation statements and are validated through the Federation Trust Chain, not through X.509. The X.509 signing PKI, whose certificates are used to sign the Attestations, is a separate trust relationship. The Signing Trust Anchors of this PKI are distributed in the Entity Configuration of the Federation Trust Anchor, each provided in the ``x5c`` parameter (:rfc:`7517` Section 4.7) of a dedicated JWK within the ``jwks``, distinct from the Federation Entity Keys that do not carry ``x5c``, as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`. The Document Signer certificates of the Credential Issuers are not carried in the ``jwks`` of the Entity Statements: they are included in the signed Attestations, in the ``x5chain`` header for the mdoc format and in the ``x5c`` header for the JOSE format, and are validated as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`. The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding (see :ref:`onboarding-procedure:The Onboarding Processes`).
 
 Entity Type Identifiers and Metadata
 """"""""""""""""""""""""""""""""""""
 
-In this section are defined the main Entity Type Identifiers mapped to the roles of the ecosystem, giving the references of the metadata protocol for each of these.
+The Entity Type Identifiers of the ecosystem roles are defined in OpenID Federation for Wallet Architectures, section Wallet Architecture Entity Types, which is the wallet profile of OpenID Federation. Each role declares in its Entity Configuration one or more metadata types, whose parameters follow the protocol specification of that metadata type. The table below maps the roles of the ecosystem to their Entity Type Identifiers and gives the reference of the metadata protocol for each of them.
 
-.. note::
-  The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
+.. warning::
+  Within IT-Wallet the Wallet Provider metadata type MUST be ``wallet_solution``. This is a deviation from OpenID Federation for Wallet Architectures, that names the corresponding Entity Type Identifier ``openid_wallet_provider``.
 
 .. list-table::
    :class: longtable
-   :widths: 20 20 60
+   :widths: 25 30 45
    :header-rows: 1
 
    * - Entity
      - Metadata Type
-     - References
    * - Trust Anchor
      - ``federation_entity``
-     - `OID-FED`_
    * - Federation Intermediate
      - ``federation_entity``
-     - `OID-FED`_
    * - Wallet Provider
      - ``federation_entity``, ``wallet_solution``
-     - --
    * - Credential Issuer
      - ``federation_entity``, ``openid_credential_issuer``, [``oauth_authorization_server``]
-     - `OPENID4VCI`_
    * - Relying Party
      - ``federation_entity``, ``openid_credential_verifier``
-     - `OID-FED`_, `OpenID4VP`_
    * - Relying Party Intermediary
-     - ``federation_entity``, ``openid_credential_verifier``
-     - `OID-FED`_, `OpenID4VP`_
+     - ``federation_entity``
 
 .. note::
-  In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server, it MUST incorporate both ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
-  Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
-  Furthermore, should there be a necessity for User Authentication by the Credential Issuer, it could be necessary to include the relevant metadata type, either ``openid_relying_party`` or ``openid_credential_verifier``.
+  A Relying Party Intermediary is a Federation Intermediate. As an intermediary it is not involved in the protocol flows, so it does not publish a protocol metadata of its own, only the ``federation_entity`` metadata. It publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. Its registration Trust Mark uses the ``intermediate`` Entity Type Identifier in the Trust Mark type, as defined in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`.
 
-The *federation_entity* metadata for Leaves contain the following claims.
+.. note::
+  When a PID or EAA Provider implements both the Credential Issuer and the Authorization Server within the same Entity, it MUST include both ``openid_credential_issuer`` and ``oauth_authorization_server`` in its metadata types. When the Authorization Server is a separate Entity, the Credential Issuer metadata MUST contain the ``authorization_servers`` parameter with the identifier of the Authorization Server. According to `OPENID4VCI`_ the Authorization Server MAY be external to the Entity that implements the Credential Endpoint, therefore the use of ``oauth_authorization_server`` is OPTIONAL. Furthermore, should there be a necessity for User Authentication by the Credential Issuer, it could be necessary to include the relevant metadata type ``openid_credential_verifier``.
+
+The ``federation_entity`` metadata carries the informational parameters below together with the federation endpoint parameters. The federation endpoint parameters (``federation_fetch_endpoint``, ``federation_list_endpoint``, ``federation_resolve_endpoint`` and the others) are published only by the Federation TA and the Intermediates, according to their obligations defined in the Federation API Endpoints section above, and a Leaf does not expose them. The informational parameters below are OPTIONAL in `OID-FED`_; IT-Wallet specification profile supports the claims in the following table. 
 
 .. list-table::
   :class: longtable
-  :widths: 20 60
+  :widths: 25 60
   :header-rows: 1
 
   * - **Claim**
@@ -221,124 +159,474 @@ The *federation_entity* metadata for Leaves contain the following claims.
   * - **policy_uri**
     - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **logo_uri**
-    - REQUIRED. URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. URL of the entity logo, in SVG format. See `OID-FED`_ Section 5.2.2
   * - **contacts**
-    - REQUIRED. Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
-  * - **federation_resolve_endpoint**
-    - OPTIONAL. See `OID-FED`_ Section 8.3
+    - REQUIRED. Within IT-Wallet it is the institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
   * - **tos_uri**
-    - OPTIONAL. URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
+    - OPTIONAL. URL of the terms of service of the entity. See `OID-FED`_ Section 5.2.2
 
 Metadata about Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-solution-metadata:Wallet Solution Metadata`, :ref:`credential-issuer-solution:Credential Issuer Metadata` and :ref:`relying-party-metadata:Relying Party Metadata` respectively.
 
-Subordinate Statements
-^^^^^^^^^^^^^^^^^^^^^^
+Entity Statement Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Trust Anchors and Federation Intermediates publish Subordinate Statements related to their immediate Subordinates.
-The Subordinate Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.
+The following sections provide non-normative examples of Entity Statements, both for the direct onboarding under the Federation TA and for the intermediated onboarding under a Federation Intermediate. All the statements are signed JWTs with the JOSE header ``alg``, ``kid`` and ``typ`` set to ``entity-statement+jwt``, and only the payloads are shown. The protocol metadata and the pinned key sets are truncated (``{ ... }``) as their full definition is given in the metadata sections referenced above.
 
-The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor.
+Entity Configuration of a Federation TA
+"""""""""""""""""""""""""""""""""""""""
 
-Trust Anchors and Federation Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature.
-
-.. note::
-  The Federation Fetch endpoint MAY also publish X.509 Certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 Certificates via a RESTful service.
-
-**Role in Onboarding**: During entity registration, Trust Anchors and Federation Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.
-
-**Role in Operations**: During Credential operations, Subordinate Statements are retrieved to validate Trust Chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
-
-
-The Subordinate Statement issued by Trust Anchors and Intermediates contains the following attributes:
-
-.. list-table::
-   :class: longtable
-   :widths: 20 60
-   :header-rows: 1
-
-   * - **Claim**
-     - **Description**
-   * - **iss**
-     - REQUIRED. See `OID-FED`_ Section 3 for further details.
-   * - **sub**
-     - REQUIRED. See `OID-FED`_ Section 3 for further details.
-   * - **iat**
-     - REQUIRED. See `OID-FED`_ Section 3 for further details.
-   * - **exp**
-     - REQUIRED. See `OID-FED`_ Section 3 for further details.
-   * - **jwks**
-     - REQUIRED. Federation JWKS of the *sub* entity. See `OID-FED`_ Section 3 for further details.
-   * - **metadata_policy**
-     - OPTIONAL. JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OID-FED`_ specifications, Section 6.1, for the implementation details.
-   * - **trust_marks**
-     - OPTIONAL. JSON Array containing the Trust Marks issued by itself for the subordinate subject.
-   * - **constraints**
-     - REQUIRED. It MAY contain the **allowed_leaf_entity_types**, that restricts what types of metadata the subject is allowed to publish. It MAY contain the maximum number of Intermediates allowed between a itself and the Leaf (**max_path_length**)
-
-.. note::
-  **Subordinate Statement Signature**
-
-  The same considerations and requirements made for the Entity Configuration and in relation to the signature mechanisms MUST be applied for the Subordinate Statements.
-
-
-Below there is a non-normative example of an Subordinate Statement issued by a Trust Anchor or its Federation Intermediate in relation to one of its Subordinates.
+The Federation TA is the root of the Trust Chain. Its Entity Configuration has no ``authority_hints`` and no registration Trust Mark, it declares in ``trust_mark_issuers`` that itself is the only issuer of the registration Trust Marks, and its ``jwks`` carries, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI as dedicated JWKs with ``x5c``.
 
 .. code-block:: json
 
-    {
-        "alg": "ES256",
-        "kid": "em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg",
-        "typ": "entity-statement+jwt"
-    }
-
-.. code-block:: json
-
-    {
-        "exp": 1649623546,
-        "iat": 1649450746,
-        "iss": "https://intermediate.example.org",
-        "sub": "https://rp.example.it",
-        "jwks": {
-            "keys": [ // keys about the Subordinate
-                {
-                    "kty": "EC",
-                    "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-                    "crv": "P-256",
-                    "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
-                    "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
-                      // <X.509 certificate about the Subordinate>
-                      ]
-                }
-            ]
-        },
-        "metadata_policy": {
-            "openid_credential_verifier": {
-                "scope": {
-                    "subset_of": [
-                         "eu.europa.ec.eudiw.pid.1",
-                         "given_name",
-                         "family_name",
-                         "email"
-                      ]
-                },
-                "vp_formats": {
-                    "dc+sd-jwt": {
-                        "sd-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ],
-                        "kb-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ]
-                    }
-                }
-            }
+   {
+     "iss": "https://trust-anchor.eid-wallet.example.it",
+     "sub": "https://trust-anchor.eid-wallet.example.it",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "yRnq6oEvrxcZ1zYStADzTLX-qSw3Pb7E6mqJGNqnygA",
+           "x": "xrk5H1nEWrNYRb7FBamuSRHHf-XWjv1k-uZCSVCSAnc",
+           "y": "FM5YI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB0k"
+         },
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "use": "sig",
+           "kid": "signing-trust-anchor-01",
+           "x": "B0sj_kZRT4A-oP9Y57dinEiDFTG-tjuPu7MiiQHHQ_g",
+           "y": "iMDCuatE53HiX2VTDJ_q7LbQ-A7fgjXZpJsW-eZzge0",
+           "x5c": [
+             "<Signing Trust Anchor X.509 certificate>"
+           ]
          }
-    }
+       ]
+     },
+     "metadata": {
+       "federation_entity": {
+         "organization_name": "IT-Wallet Federation Trust Anchor",
+         "homepage_uri": "https://trust-anchor.eid-wallet.example.it",
+         "policy_uri": "https://trust-anchor.eid-wallet.example.it/policy",
+         "logo_uri": "https://trust-anchor.eid-wallet.example.it/logo.svg",
+         "contacts": [
+           "trust-anchor@pec.example.it"
+         ],
+         "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/fetch",
+         "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+         "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+         "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+         "federation_trust_mark_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark",
+         "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
+         "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/historical_keys"
+       }
+     },
+     "trust_mark_issuers": {
+       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution": [
+         "https://trust-anchor.eid-wallet.example.it"
+       ],
+       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer": [
+         "https://trust-anchor.eid-wallet.example.it"
+       ],
+       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier": [
+         "https://trust-anchor.eid-wallet.example.it"
+       ],
+       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate": [
+         "https://trust-anchor.eid-wallet.example.it"
+       ]
+     }
+   }
 
+Entity Subordinate of Leaf issued by the Federation TA
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+The Federation TA issues a Subordinate Statement about each Leaf it registers directly. The statement carries the Federation Entity Keys of the Leaf, the ``metadata_policy`` that fixes the protocol keys and, when present, the service endpoints and the URIs of the Leaf to the values approved at onboarding, and the ``constraints`` of the subtree.
+
+**Wallet Provider**
+
+.. code-block:: json
+
+   {
+     "iss": "https://trust-anchor.eid-wallet.example.it",
+     "sub": "https://wallet-provider.example.it",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "LqZSJoAEybT9V3jUQfZYUjVV-U5jV34sgbhIsIXltSY",
+           "x": "38k73K5mw7Ev34lMwJhMBy5L2PnP9ayGfnMMtk4UZAw",
+           "y": "4ohTh7joeKLhRfPRSXQvnu-OMqUIn9lzoJAp_ztuv1A"
+         }
+       ]
+     },
+     "metadata_policy": {
+       "wallet_solution": {
+         "jwks": {
+           "value": { ... the Wallet Provider protocol keys registered at onboarding ... }
+         }
+       }
+     },
+     "constraints": {
+       "allowed_entity_types": [
+         "wallet_solution"
+       ],
+       "max_path_length": 0
+     }
+   }
+
+**Relying Party**
+
+.. code-block:: json
+
+   {
+     "iss": "https://trust-anchor.eid-wallet.example.it",
+     "sub": "https://access.privatecompany.example.com",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "cwdtstHkIOqwWD8UeXjY_NdKfB-d1bzIx7XKBQNVbsg",
+           "x": "y8ahuTA-G4oLpTFYp7YrTd99kLPSlNoLPmwGJcXvWY8",
+           "y": "HNRLc-1ennbeBtF3LbtBdq_0c7EX4samlHnwXilH_i0"
+         }
+       ]
+     },
+     "metadata_policy": {
+       "openid_credential_verifier": {
+         "jwks": {
+           "value": { ... the Relying Party protocol keys registered at onboarding ... }
+         },
+         "request_uris": {
+           "value": [
+             "https://access.privatecompany.example.com/openid4vp/request"
+           ]
+         },
+         "response_uris": {
+           "value": [
+             "https://access.privatecompany.example.com/openid4vp/response"
+           ]
+         },
+         "redirect_uris": {
+           "value": [
+             "https://access.privatecompany.example.com/openid4vp/callback"
+           ]
+         }
+       }
+     },
+     "constraints": {
+       "allowed_entity_types": [
+         "openid_credential_verifier"
+       ],
+       "max_path_length": 0
+     }
+   }
+
+**Credential Issuer**
+
+.. code-block:: json
+
+   {
+     "iss": "https://trust-anchor.eid-wallet.example.it",
+     "sub": "https://badge-issuer.example.it",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "r6KG1Jbgcv0iNW1y0ERO_X2Jw926V2UHRJH8d-GcDEI",
+           "x": "26w7G_Myczl2-S8n0m1lMIjo3IzgZky-yNVdwaKOmhQ",
+           "y": "2WMnoyCXqS4FUdv9e4JEAJKyhRIODi5xGfFdnA6cnVM"
+         }
+       ]
+     },
+     "metadata_policy": {
+       "openid_credential_issuer": {
+         "jwks": {
+           "value": { ... the Credential Issuer protocol keys registered at onboarding ... }
+         },
+         "credential_endpoint": {
+           "value": "https://badge-issuer.example.it/credential"
+         }
+       }
+     },
+     "constraints": {
+       "allowed_entity_types": [
+         "openid_credential_issuer",
+         "oauth_authorization_server"
+       ],
+       "max_path_length": 0
+     }
+   }
+
+Entity Subordinate of an Intermediate
+"""""""""""""""""""""""""""""""""""""
+
+The Federation TA issues a Subordinate Statement about the Federation Intermediate. The ``constraints`` restrict the subtree of the Intermediate to the Relying Parties it can intermediate, and ``max_path_length`` is set to 1 to allow the single level of intermediation between the Federation TA and the affiliated Relying Parties. It carries no ``metadata_policy``: the affiliated Relying Parties are bound by the Intermediate in the Subordinate Statements it issues about them.
+
+.. code-block:: json
+
+   {
+     "iss": "https://trust-anchor.eid-wallet.example.it",
+     "sub": "https://intermediary.example.com",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
+           "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
+           "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
+         }
+       ]
+     },
+     "constraints": {
+       "allowed_entity_types": [
+         "openid_credential_verifier"
+       ],
+       "max_path_length": 1
+     }
+   }
+
+Entity Subordinate of Leaf issued by a Federation Intermediate
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The Federation Intermediate issues a Subordinate Statement about each affiliated Relying Party. It carries the ``metadata_policy`` that binds the protocol metadata of the affiliated Relying Party to the values approved at onboarding, exactly as the Federation TA does for the Leaves it registers directly. The ``constraints`` of the subtree are set by the Federation TA in the statement about the Intermediate. In the National Trust Framework an Intermediary intermediates only Relying Parties.
+
+.. code-block:: json
+
+   {
+     "iss": "https://intermediary.example.com",
+     "sub": "https://rp.affiliated.example.com",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "n47zfejmk3V14aKUQCEcA7sTKi-SXMw7E1MFnpQCL-0",
+           "x": "H3_bMVOWJoDSBenUzelAbAj4vanmXNJ3KT2Vk_OaehI",
+           "y": "aMoXkKSssBtMHwSCR-hY8mmFQFs3Hf5iQ0zFWMHAQfc"
+         }
+       ]
+     },
+     "metadata_policy": {
+       "openid_credential_verifier": {
+         "jwks": {
+           "value": { ... the affiliated Relying Party protocol keys registered at onboarding ... }
+         },
+         "request_uris": {
+           "value": [
+             "https://rp.affiliated.example.com/openid4vp/request"
+           ]
+         },
+         "response_uris": {
+           "value": [
+             "https://rp.affiliated.example.com/openid4vp/response"
+           ]
+         },
+         "redirect_uris": {
+           "value": [
+             "https://rp.affiliated.example.com/openid4vp/callback"
+           ]
+         }
+       }
+     }
+   }
+
+Entity Configuration of a Federation Intermediate
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+The Federation Intermediate is a ``federation_entity`` only. Its Entity Configuration points to the Federation TA through ``authority_hints`` and carries its registration Trust Mark with the ``intermediate`` Entity Type Identifier. It exposes the fetch and list endpoints used to serve the Subordinate Statements of its affiliated Relying Parties.
+
+.. code-block:: json
+
+   {
+     "iss": "https://intermediary.example.com",
+     "sub": "https://intermediary.example.com",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "authority_hints": [
+       "https://trust-anchor.eid-wallet.example.it"
+     ],
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
+           "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
+           "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
+         }
+       ]
+     },
+     "metadata": {
+       "federation_entity": {
+         "organization_name": "Intermediary S.r.l.",
+         "homepage_uri": "https://intermediary.example.com",
+         "policy_uri": "https://intermediary.example.com/policy",
+         "logo_uri": "https://intermediary.example.com/logo.svg",
+         "contacts": [
+           "intermediary@pec.example.com"
+         ],
+         "federation_fetch_endpoint": "https://intermediary.example.com/fetch",
+         "federation_list_endpoint": "https://intermediary.example.com/list"
+       }
+     },
+     "trust_marks": [
+       {
+         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
+         "trust_mark": "<signed Trust Mark JWT>"
+       }
+     ]
+   }
+
+Entity Configuration of a Leaf
+""""""""""""""""""""""""""""""
+
+Each Leaf publishes its own Entity Configuration, pointing to its immediate superior through ``authority_hints`` and carrying its registration Trust Mark. The examples below report the main claims, the protocol metadata is referenced to its metadata section.
+
+**Wallet Provider**
+
+.. code-block:: json
+
+   {
+     "iss": "https://wallet-provider.example.it",
+     "sub": "https://wallet-provider.example.it",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "authority_hints": [
+       "https://trust-anchor.eid-wallet.example.it"
+     ],
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "LqZSJoAEybT9V3jUQfZYUjVV-U5jV34sgbhIsIXltSY",
+           "x": "38k73K5mw7Ev34lMwJhMBy5L2PnP9ayGfnMMtk4UZAw",
+           "y": "4ohTh7joeKLhRfPRSXQvnu-OMqUIn9lzoJAp_ztuv1A"
+         }
+       ]
+     },
+     "metadata": {
+       "federation_entity": {
+         "organization_name": "Example Wallet Provider",
+         "homepage_uri": "https://wallet-provider.example.it",
+         "policy_uri": "https://wallet-provider.example.it/policy",
+         "logo_uri": "https://wallet-provider.example.it/logo.svg",
+         "contacts": [
+           "wallet-provider@pec.example.it"
+         ]
+       },
+       "wallet_solution": { ... as defined in the Wallet Solution Metadata section ... }
+     },
+     "trust_marks": [
+       {
+         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution",
+         "trust_mark": "<signed Trust Mark JWT>"
+       }
+     ]
+   }
+
+**Relying Party**
+
+.. code-block:: json
+
+   {
+     "iss": "https://access.privatecompany.example.com",
+     "sub": "https://access.privatecompany.example.com",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "authority_hints": [
+       "https://trust-anchor.eid-wallet.example.it"
+     ],
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "cwdtstHkIOqwWD8UeXjY_NdKfB-d1bzIx7XKBQNVbsg",
+           "x": "y8ahuTA-G4oLpTFYp7YrTd99kLPSlNoLPmwGJcXvWY8",
+           "y": "HNRLc-1ennbeBtF3LbtBdq_0c7EX4samlHnwXilH_i0"
+         }
+       ]
+     },
+     "metadata": {
+       "federation_entity": {
+         "organization_name": "Private Company S.p.A.",
+         "homepage_uri": "https://access.privatecompany.example.com",
+         "policy_uri": "https://access.privatecompany.example.com/policy",
+         "logo_uri": "https://access.privatecompany.example.com/logo.svg",
+         "contacts": [
+           "compliance@pec.privatecompany.example.com"
+         ]
+       },
+       "openid_credential_verifier": { ... as defined in the Relying Party Metadata section ... }
+     },
+     "trust_marks": [
+       {
+         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
+         "trust_mark": "<signed Trust Mark JWT>"
+       }
+     ]
+   }
+
+**Credential Issuer**
+
+.. code-block:: json
+
+   {
+     "iss": "https://badge-issuer.example.it",
+     "sub": "https://badge-issuer.example.it",
+     "iat": 1718207217,
+     "exp": 1749743216,
+     "authority_hints": [
+       "https://trust-anchor.eid-wallet.example.it"
+     ],
+     "jwks": {
+       "keys": [
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "kid": "r6KG1Jbgcv0iNW1y0ERO_X2Jw926V2UHRJH8d-GcDEI",
+           "x": "26w7G_Myczl2-S8n0m1lMIjo3IzgZky-yNVdwaKOmhQ",
+           "y": "2WMnoyCXqS4FUdv9e4JEAJKyhRIODi5xGfFdnA6cnVM"
+         }
+       ]
+     },
+     "metadata": {
+       "federation_entity": {
+         "organization_name": "Comune di Example",
+         "homepage_uri": "https://badge-issuer.example.it",
+         "policy_uri": "https://badge-issuer.example.it/policy",
+         "logo_uri": "https://badge-issuer.example.it/logo.svg",
+         "contacts": [
+           "protocollo@pec.comune.example.it"
+         ]
+       },
+       "openid_credential_issuer": { ... as defined in the Credential Issuer Metadata section ... }
+     },
+     "trust_marks": [
+       {
+         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer",
+         "trust_mark": "<signed Trust Mark JWT>"
+       }
+     ]
+   }
 
 Trust Marks
 ^^^^^^^^^^^
