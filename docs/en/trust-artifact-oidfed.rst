@@ -27,34 +27,40 @@ Federation API Endpoints
 
 OpenID Federation 1.0 uses RESTful web services secured over HTTPS. All Federation Entities MUST publish its own Entity Configuration at `.well-known/openid-federation` endpoint according to `OID-FED`_ Section 9. Federation TA and Intermediaries additionally expose the federation endpoints used to build and validate the Trust Chains and to support the Trust Marks.
 
-In `OID-FED`_ Section 5.1.1 are defined the Federation Entity properties that are supported in IT-Wallet specification profile. Within IT-Wallet, in addition to the fetch (`OID-FED`_ Section 8.1) and the list (`OID-FED`_ Section 8.2) endpoints that are REQUIRED for Federation TA and Intermediaries, the following apply.
+In `OID-FED`_ Section 5.1.1 are defined the Federation Entity properties supported in IT-Wallet specification profile. The table below lists the federation endpoints, the Entity Types that MUST expose each of them, and the request parameters used within IT-Wallet with their REQUIRED or OPTIONAL status. The parameters follow `OID-FED`_ Section 8, and are sent as query parameters for the GET requests and in the body for the POST requests.
 
 .. list-table::
    :class: longtable
-   :widths: 22 30 48
+   :widths: 26 36 38
    :header-rows: 1
 
-   * - Endpoint Name
-     - HTTP Request
-     - Scope
+   * - Endpoint
+     - Request parameters
+     - Description
+   * - fetch. REQUIRED for Federation TA and Intermediates.
+     - **GET**. ``sub`` REQUIRED.
+     - Returns a Subordinate Statement about an Immediate Subordinate. See `OID-FED`_ Section 8.1
+   * - list. REQUIRED for Federation TA and Intermediates.
+     - **GET**. ``entity_type``, ``trust_marked``, ``trust_mark_type`` and ``intermediate``, all OPTIONAL.
+     - Lists the Immediate Subordinates, optionally filtered by the parameters. See `OID-FED`_ Section 8.2
    * - resolve. REQUIRED for Federation TA and Intermediates.
-     - **GET** /resolve?sub=https://rp.example.org&anchor=https://trust-anchor.example.org
+     - **GET**. ``sub`` and ``trust_anchor`` REQUIRED, ``entity_type`` OPTIONAL.
      - Returns the resolved Trust Chain and the final metadata about an already evaluated subject. See `OID-FED`_ Section 8.3
-   * - trust mark status. REQUIRED only for Federation TA. 
-     - **POST** /trust_mark_status
+   * - trust mark status. REQUIRED only for Federation TA.
+     - **POST**. ``trust_mark`` REQUIRED.
      - Returns the status, that is the validity, of a Trust Mark about a specific subject. See `OID-FED`_ Section 8.4
-   * - trust mark list. REQUIRED only for Federation TA. 
-     - **GET** /trust_mark_listing?trust_mark_type=...
+   * - trust mark list. REQUIRED only for Federation TA.
+     - **GET**. ``trust_mark_type`` REQUIRED, ``sub`` OPTIONAL.
      - Lists the subjects for which a Trust Mark of the given type has been issued and is still valid. See `OID-FED`_ Section 8.5
-   * - trust mark. REQUIRED only for Federation TA. 
-     - **GET** /trust_mark?trust_mark_type=...
+   * - trust mark. REQUIRED only for Federation TA.
+     - **GET**. ``trust_mark_type`` and ``sub`` REQUIRED.
      - Returns the Trust Mark about a specific subject. See `OID-FED`_ Section 8.6
-   * - historical keys. REQUIRED for Federation TA and Intermediates. 
-     - **GET** /federation_historical_keys
+   * - historical keys. REQUIRED for Federation TA and Intermediates.
+     - **GET**. No request parameters.
      - Lists the expired and revoked Federation Entity Keys, with the reason of the revocation. See `OID-FED`_ Section 8.7
-   * - subordinate events. REQUIRED for Federation TA and OPTIONAL for Intermediates. 
-     - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
-     - Returns the history of the registration events about an Immediate Subordinate. 
+   * - subordinate events. REQUIRED for Federation TA and OPTIONAL for Intermediates.
+     - **GET**. ``sub`` REQUIRED.
+     - Returns the history of the registration events about an Immediate Subordinate.
 
 The Subordinate Events endpoint is defined  `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_. Its purpose is to give a verifiable, historical track of the registration events concerning an Immediate Subordinate, such as its registration, the update of its Federation Entity Keys and its revocation. For the request format, the response format and the event types refer to `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_ Section 2.2 and 2.3. 
 
@@ -850,3 +856,5 @@ Relying Party Intermediary. It declares no intended use of its own, so its regis
      "logo_uri": "https://intermediary.example.com/logo.svg"
    }
 
+
+   
