@@ -166,7 +166,7 @@ The steps below verify a Trust Chain according to `OID-FED`_, with the pointer t
    - The statement issued by the Federation Trust Anchor is verified with the validated Federation Trust Anchor keys.
    - The Entity Configuration of the subject is verified with the keys attested in the Subordinate Statement about it.
 
-4. Enforce the ``constraints`` carried in the Subordinate Statements along the chain, as defined in `OID-FED`_. In particular, verify that the metadata types published by the subject are within the ``allowed_leaf_entity_types`` and that the number of Intermediates does not exceed the ``max_path_length`` set by the superiors.
+4. Enforce the constraints carried in the Subordinate Statements along the chain, as defined in OID-FED_ Section 6.2. In particular, verify that the metadata Entity Types published by the subject are within the ``allowed_entity_types``, considering that the ``federation_entity`` Entity Type is always allowed, and that the number of Intermediates does not exceed the ``max_path_length`` set by the superiors.
 5. Compute the Trust Chain expiration as the earliest ``exp`` value among the statements.
 
 If any verification fails, the Trust Chain MUST be considered invalid and the subject MUST NOT be trusted on the basis of it.
