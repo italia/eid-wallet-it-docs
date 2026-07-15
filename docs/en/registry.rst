@@ -12,7 +12,10 @@ The registry architecture addresses semantic standardization and Credential disc
 Registry Architecture Overview
 ------------------------------
 
-The IT-Wallet registry infrastructure comprises five main components:
+The IT-Wallet registry infrastructure spans both trust models.
+Five **national** semantic and discovery registries provide the standardized definitions and discovery data; the **EUDIW** Register of WRPs holds the entity-registration records mandated at EU level and operated nationally; and two **EUDIW**, EU-level catalogues provide the cross-border counterparts of the national semantic registries.
+
+**National semantic and discovery registries** — standardized definitions and discovery data:
 
 1. **Claims Registry**: Standardized semantic definitions for individual Credential attributes, data types, and validation rules.
 2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
@@ -20,7 +23,56 @@ The IT-Wallet registry infrastructure comprises five main components:
 4. **Schema Registry**: Authoritative list of Credential Schemas.
 5. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
 
-These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
+**EUDIW entity register** (operated nationally): the :ref:`registry:Register of WRPs`, operated by the Registrar under `CIR2025/848`_, holds the registration records of Wallet-Relying Parties produced during onboarding (see :ref:`onboarding-procedure:WRP Registration`).
+It is not a semantic registry: it drives the issuance of the WRPAC and WRPRC and supports Relying Party authorization.
+
+**EUDIW catalogues** (EU level): the :ref:`registry:Catalogue of Attributes` and the :ref:`registry:Catalogue of Schemes`, maintained by the European Commission, are the cross-border counterparts to which the national Claims Registry and Schema Registry align.
+
+The national registries and the Register are maintained under the Supervisory Body to ensure consistency, security, and regulatory compliance; the EUDIW catalogues are maintained at EU level.
+
+The table below summarises, for each component, its trust model, who maintains it, and the onboarding or operational phase in which it is used.
+
+.. list-table:: Registry Components at a Glance
+   :class: longtable
+   :widths: 24 16 26 34
+   :header-rows: 1
+
+   * - **Component**
+     - **Trust model**
+     - **Maintained by**
+     - **Used at**
+   * - :ref:`registry:Claims Registry`
+     - National
+     - Supervisory Body (published by the Trust Anchor)
+     - Issuance: the Credential Issuer resolves the semantics of the attributes to include.
+   * - :ref:`registry:Authentic Source Registry`
+     - National
+     - Supervisory Body (published by the Trust Anchor)
+     - Onboarding and issuance: Authentic Sources declare their data; Credential Issuers discover them.
+   * - :ref:`registry:Digital Credentials Catalog`
+     - National
+     - Supervisory Body (published by the Trust Anchor)
+     - Discovery: Wallet Instances and Relying Parties browse the available Credential types.
+   * - :ref:`registry:Schema Registry`
+     - National
+     - Supervisory Body (published by the Trust Anchor)
+     - Issuance and presentation: Credential Issuers and Relying Parties resolve and validate Credential schemas.
+   * - :ref:`registry:Taxonomy`
+     - National
+     - Supervisory Body (published by the Trust Anchor)
+     - Discovery and authorization: domains, classes, and purposes classify Credentials and frame scopes.
+   * - :ref:`registry:Register of WRPs`
+     - EUDIW (operated nationally)
+     - Registrar
+     - Onboarding: the Registrar writes WRP records; presentation and issuance: the records authorize Relying Parties and Providers.
+   * - :ref:`registry:Catalogue of Attributes`
+     - EUDIW (EU level)
+     - European Commission
+     - Cross-border alignment of the national Claims Registry, and framework selection.
+   * - :ref:`registry:Catalogue of Schemes`
+     - EUDIW (EU level)
+     - European Commission
+     - Cross-border alignment of the national Schema Registry, and framework selection.
 
 Registry Discovery Endpoint
 -------------------------------
@@ -80,6 +132,7 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
        * **credential_catalog**: URI of the Digital Credentials Catalog well-known endpoint.
        * **taxonomy**: URI of the Taxonomy resource.
        * **schema_registry**: URI of the Schema Registry API.
+       * **register**: URI of the EUDIW Register of WRPs public read API.
    * - **content_negotiation**
      - REQUIRED. Array of content types supported by the discovery endpoint (e.g., ``["application/json", "application/jwt"]``).
 
@@ -97,6 +150,7 @@ JWT payload structure (when decoded):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
+      "register": "https://trust-anchor.eid-wallet.example.it/api/v1/register",
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -514,34 +568,14 @@ AS-CI Coordination
 
 Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:Authentic Source to Credential Issuer Authorization Process`.
 
-Federation Registry
--------------------
-
-The **Federation Registry** provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in :ref:`trust-infrastructure:Federation API endpoints`.
-
-Registry Integration Role
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Within the IT-Wallet System Register architecture, the Federation Registry serves as the **trust validation layer** for:
-
-1. **Entity Authentication**: Validates the cryptographic identity of all participants before registry operations
-2. **Trust Chain Verification**: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation
-3. **Compliance Verification**: Maintains Trust Marks that attest regulatory compliance and operational status
-
-Federation Registry Access
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in :ref:`trust-infrastructure:Federation API endpoints`. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in `Registry Discovery Endpoint`_.
-
 .. note::
-   Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.
-
-   For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
+   Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`infrastructure-trust:Federation API Endpoints`.
+   These endpoints are also surfaced through the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` for standard OpenID Federation 1.0 compliance.
 
 Digital Credentials Catalog
 ---------------------------
 
-The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
+The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is maintained by the Supervisory Body and published by the Trust Anchor, publicly available to all Entities through a specialized endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
 
 The Digital Credential Catalog aims to:
 
@@ -1212,7 +1246,7 @@ The taxonomy supports multilingual environments through the ``_l10n_id`` suffix 
 - **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
 - **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
 
-The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.
+The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body and published by the Trust Anchor, ensuring regulatory compliance and semantic consistency.
 
 **Taxonomy JSON Structure:**
 
@@ -1291,7 +1325,7 @@ A non-normative example of the Italian localization URI for the bundle would be 
 Schema Registry
 -----------------
 
-The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. It is managed by the Trust Anchor and provides a single, verifiable source for retrieving the technical specifications required for parsing, validating, and displaying Digital Credentials.
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. It is maintained by the Supervisory Body and published by the Trust Anchor, providing a single, verifiable source for retrieving the technical specifications required for parsing, validating, and displaying Digital Credentials.
 
 **Schema Registry Objectives:**
 
@@ -1350,6 +1384,35 @@ A non-normative example of the Schema Registry payload:
 .. literalinclude:: ../../examples/schema-registry-example-payload.json
   :language: JSON
 
+Register of WRPs
+----------------
+
+The **Register of WRPs** is the entity register of the **EUDIW** trust model: each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
+Unlike the national semantic registries above, it does not hold Credential semantics: it holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
+
+The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-procedure:WRP Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
+In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-procedure:The Dual Trust Framework`).
+
+The full data model and the public read API are specified in :ref:`trust-artifact-eudiw:Register of WRPs` and :ref:`trust-artifact-eudiw:Common Register Open APIs`, and are not restated here.
+
+EUDIW Catalogues
+----------------
+
+At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
+A Credential type present in these catalogues is recognised across Member States and is evaluated under the **EUDIW** Trust Framework, whereas a Credential present only in the national registries is evaluated under the **National** Trust Framework (see :ref:`onboarding-procedure:The Dual Trust Framework` and :ref:`trust-evaluation:Trust Framework Selection`).
+
+Catalogue of Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **Catalogue of Attributes** is the EU-level catalogue of standardized attribute definitions and namespaces used across attestations.
+The national :ref:`registry:Claims Registry` aligns its claim identifiers to this catalogue so that nationally defined attributes remain interoperable cross-border.
+
+Catalogue of Schemes
+^^^^^^^^^^^^^^^^^^^^^
+
+The **Catalogue of Schemes** is the EU-level catalogue of attestation schemes (``SchemaMeta``): the machine-readable metadata that binds an attestation type to its Rulebook and schema.
+The national :ref:`registry:Schema Registry` aligns to it, and a scheme referenced here anchors an attestation to the EUDIW trust anchors rather than to the national Attestation Rulebook.
+
 Registry Integration and Cross-References
 ------------------------------------------
 
@@ -1359,6 +1422,9 @@ The registry components are interconnected and work together to support the comp
 2. **AS Registry** ↔ **Catalog**: Credential types reference AS capabilities for data source validation.
 3. **Catalog** ↔ **Taxonomy**: Credential entries specify domains and purposes from the taxonomy for discovery and authorization.
 4. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
+5. **Claims Registry** ↔ **Catalogue of Attributes**: national attribute definitions align to the EU-level catalogue for cross-border interoperability.
+6. **Schema Registry** ↔ **Catalogue of Schemes**: national Credential schemas align to the EU-level catalogue of attestation schemes.
+7. **Register of WRPs** ↔ **WRPAC / WRPRC**: the signed WRP records drive certificate issuance and support Relying Party authorization at presentation.
 
 Registry Infrastructure Usage Journeys
 --------------------------------------
@@ -1407,7 +1473,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 
 1.  **Wallet Authorization and Selection**:
 
-  * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP .
+  * The Wallet receives a Presentation Request from the RP and verifies that the RP is authorized to make it, comparing the requested *claims* with the RP entitlements and *Authorization Policies* held in the :ref:`registry:Register of WRPs` (surfaced through the RP WRPAC and WRPRC).
   * The Wallet consults the **Digital Credentials Catalog** and the **Taxonomy** to verify the *Domains*, the *Classes* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
   * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
   * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
@@ -1415,7 +1481,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 2.  **Discovery and Integrity**:
 
   * The RP receives the Digital Credential from the User.
-  * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider as defined in Section :ref:`trust-infrastructure:The Infrastructure of Trust`.
+  * The RP consults the federation endpoints via the Trust Anchor (``/fetch``, ``/trust_mark_status``) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider, as described in :ref:`infrastructure-trust:Federation API Endpoints`.
   * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:
