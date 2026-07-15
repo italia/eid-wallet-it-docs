@@ -4,7 +4,7 @@
 Federation Authority Test Matrix
 --------------------------------
 
-This section defines test cases for Federation Authorities (Trust Anchors and Intermediates) responsible for operating the Trust Infrastructure as described in :ref:`trust-infrastructure:The Infrastructure of Trust`. Tests focus on correctness and conformance of:
+This section defines test cases for Federation Authorities (Trust Anchors and Intermediates) responsible for operating the Trust Infrastructure as described in :ref:`infrastructure-trust:Infrastructure of Trust`. Tests focus on correctness and conformance of:
 
 - Entity Configuration (``.well-known/openid-federation``)
 - Subordinate Statements returned by ``/fetch``

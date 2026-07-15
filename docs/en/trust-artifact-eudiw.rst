@@ -100,7 +100,7 @@ The specific requirements for WRPACs are specified in `ETSI TS 119 411-8`_.
     * ``authorityInfoAccess`` additionally includes an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 .. note::
-    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI_TS_119_475`_ `ETSI_TS_119_475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
+    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_ `ETSI TS 119 475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
@@ -112,7 +112,7 @@ Registrar Sign/Seal Certificate Profile
 
 This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
 
-The specific requirements for WRPACs are specified in `CIR 2025/848`_.
+The specific requirements for WRPACs are specified in `CIR2025/848`_.
 
 - Basic Fields: all required, as described in :ref:`x509-certificate-profile:X.509 Certificate Profile`.
 
@@ -129,16 +129,16 @@ The specific requirements for WRPACs are specified in `CIR 2025/848`_.
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI_TS_119_475`_. This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
-- core identification attributes (clause 5.1 `ETSI_TS_119_475`_), 
-- service description attributes (clause 5.2.4 `ETSI_TS_119_475`_), 
-- entitlement attributes (see Annex A.2 `ETSI_TS_119_475`_), 
-- supervisory authority attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Relying Party attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Credential Issuer attributes (clause 5.2.4 `ETSI_TS_119_475`_),
-- Intermediaty attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI_TS_119_475`_).
+This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI TS 119 475`_. This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
+- core identification attributes (clause 5.1 `ETSI TS 119 475`_), 
+- service description attributes (clause 5.2.4 `ETSI TS 119 475`_), 
+- entitlement attributes (see Annex A.2 `ETSI TS 119 475`_), 
+- supervisory authority attributes (clause 5.2.4 `ETSI TS 119 475`_),
+- Relying Party attributes (clause 5.2.4 `ETSI TS 119 475`_),
+- Credential Issuer attributes (clause 5.2.4 `ETSI TS 119 475`_),
+- Intermediaty attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
 
-The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI_TS_119_475`_.
+The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI TS 119 475`_.
 
 The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular,
 - The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI_TS_119_182_1`
@@ -174,7 +174,7 @@ Ecosystem Entities utilize these lists to:
 
 The three distinct types of trust lists are:
 
-- Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI_TS_119_612`_. Each Member State publishes one TL in XML format. It is signed by the respective Member State with an AdES digital signature at conformance level baseline B (as defined in `ETSI_TS_119_182_1`_). TLs are published in a machine-readable format at endpoints specified within the LOTL. These Lists hold current and historical information about the accreditation of trust service providers, referencing:
+- Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. Each Member State publishes one TL in XML format. It is signed by the respective Member State with an AdES digital signature at conformance level baseline B (as defined in `ETSI TS 119 182-1`_). TLs are published in a machine-readable format at endpoints specified within the LOTL. These Lists hold current and historical information about the accreditation of trust service providers, referencing:
 
   - Qualified Trust Service Providers (QTSP)s, such as Qualified Certificates Issuing and revocation mechanisms, QEAA Providers, Qualified electronic archiving services.
   - Non-Qualified Trust Services such as EAA Providers, 
@@ -182,11 +182,11 @@ The three distinct types of trust lists are:
 
    Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction. They are numbered and renewed periodically, and published in a website for unrestricted download. To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
 
-- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI_TS_119_612`_. There is only one LOTL, which is published in XML format and signed by the European Commission (EC). It utilizes an AdES digital signature at conformance level baseline B (per `ETSI_TS_119_182_1`_) and references the trusted certificates that each National Trusted List. To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism. It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
+- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. There is only one LOTL, which is published in XML format and signed by the European Commission (EC). It utilizes an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_) and references the trusted certificates that each National Trusted List. To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism. It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
 
   The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently, the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
 
-- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI_TS_119_602`_. These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI_TS_119_182_1`_). To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU. The <artifacts:List of Trusted Entities (LoTE)|LoTE> types can be one of the following, as defined in annex C.2:
+- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI TS 119 602`_. These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_). To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU. The <artifacts:List of Trusted Entities (LoTE)|LoTE> types can be one of the following, as defined in annex C.2:
 
   - PID Provider;
   - Wallet Provider;
@@ -283,7 +283,7 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
 
 - **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
 
-- **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation. According to `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
+- **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation. According to `ETSI_TS_119_472_3`_(ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
 
   - For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``. 
   - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``. The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI_TS_119_472_3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
@@ -292,7 +292,7 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
 
 .. note::
 
-  `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI_TS_119_475`_, held in the Wallet-Relying Party Registration Certificate. Annex A.3 of `ETSI_TS_119_475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
+  `ETSI_TS_119_472_3`_(ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI TS 119 475`_, held in the Wallet-Relying Party Registration Certificate. Annex A.3 of `ETSI TS 119 475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
 
 .. note::
 
@@ -356,7 +356,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``authorized_parties[].entitlement_uri``
      - string (URI)
-     - OPTIONAL. URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI_TS_119_475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
+     - OPTIONAL. URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
      - Clause 4.2.5.2 of [`ETSI_TS_119_472_3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``

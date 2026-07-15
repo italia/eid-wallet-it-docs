@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Authorization Decision and Override Rules
 ------------------------------------------
 
@@ -83,4 +85,3 @@ The following table details the override behavior for each procedure when it pro
      - Presentation
      - ``EDP_NOT_SATISFIED``
      - Overridable. User can deny or allow.
-

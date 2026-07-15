@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Trust Evaluation in the EUDIW Trust Framework
 ------------------------------------------------
 
@@ -62,7 +64,7 @@ This section defines the validation of the EU-level List of Trusted Entities (Li
 
 **List of Trusted Entities Validation Algorithm**
 
-The validating Entity MUST initializes the following variables as described in [`ETSI_TS_119_615`_].
+The validating Entity MUST initializes the following variables as described in [`ETSI TS 119 615`_].
 
 **Input Variables**:
 
@@ -187,9 +189,9 @@ Trusted List Validation
 
 This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
 
-1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSITS119615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the validation of the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation Algorithm` except for the LOTL format which is always XML.
+1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the validation of the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation Algorithm` except for the LOTL format which is always XML.
 2. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
-3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSITS119615`_].
+3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSI TS 119 615`_].
 
 Authentication Process
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -304,7 +306,7 @@ The response provides the same authorization-relevant data as a Wallet-Relying P
 
 When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:
 
-1. **Format verification**: confirm ``typ`` is ``rc-wrp+jwt`` (remote flow) or ``rc-wrp+cwt`` (proximity flow) (Section 5.2.1 of [`ETSITS119475`_]).
+1. **Format verification**: confirm ``typ`` is ``rc-wrp+jwt`` (remote flow) or ``rc-wrp+cwt`` (proximity flow) (Section 5.2.1 of [`ETSI TS 119 475`_]).
 2. **Algorithm verification**: verify the conformance of signature algorithm (``alg`` neither ``none`` nor deprecated).
 3. **Signature validation**: verify that the Wallet-Relying Party Registration Certificate signature is valid.
 4. **Trust Anchor validation**: Validate the Providers of WRPRC List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`) and retrieve the WRPRC Trust Anchor (found in the ``TrustedEntitiesList.ServiceDigitalIdentity`` field of the Providers of WRPRC List of Trusted Entities) that anchors the root of the certificate path.
@@ -338,7 +340,7 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
     - During the Presentation flow the entity identifiers is either the value of the ``verifier_info[].data.identifier`` parameter in the Request object for the Remote flow, or the value of the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` parameter in the mdoc Request.
     - During the Issuance flow the entity identifier is the value of the ``issuer_info[].data.identifier`` parameter.
  
-4. **Format verification**: confirm ``typ`` is ``jwt`` (Section 5.2.1 of [`ETSITS119475`_]).
+4. **Format verification**: confirm ``typ`` is ``jwt`` (Section 5.2.1 of [`ETSI TS 119 475`_]).
 5. **Verify pertinence**: the Wallet Unit MUST verify that the response pertains to the relevant authorization subject and intended use.
 6. **Verify response signature**: verify that the Registrar signature in the response is valid using the Sign/Seal certificate of the Registrar in the ``x5c`` claim of the response.
 7. **Trust Anchor validation**: Validate the Registrars List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`) and retrieve the Registrar Trust Anchor (found in the ``TrustedEntitiesList.ServiceDigitalIdentity`` field of the Registrar List of Trusted Entities) that anchors the root of the certificate path.
@@ -665,5 +667,3 @@ The following figure illustrates the flowchart of the OCSP Response Validation A
     :width: 99%
     :alt: The figure illustrates the Flowchart of the OCSP Response Validation Algorithm.
     :caption: `Flowchart of the OCSP Response Validation Algorithm. <https://www.plantuml.com/plantuml/png/dLDVJren57_lfpY9oG8F9ieqK_m_78aFsumuaoKcQsbFuOHBUzEUY_BjHxaKH0WnzgazFVtz-RMzZgm2L-D2n16vKWKrXXlDD26UVbTwD0Y-SgRZ2nzW3m_jiSLjdJuO38kkWyFZRwVzDrqTxmmnURS1QAqzrKVRMjSGRLyVjCoRjaVY0hlUyJgbu5I7tvtUFJnWBBsB24-g8ACI9jm7hp568UQcXGXOec81iq4M6Zt64WxRy8I1x1HaM43qM74LuU82OgKJWAqAQ1mqPHDuY0uQKunD0OlH3wX6ynKMC_g6y_LUPdb03bEucIWgLB_0gmpoDuFaqRvXnd79m1u2SY2SuBEhIgCOJMqoApnR7CoSl_mxg0u69ajQCK9jfmsoSYFdNvmyEp_VwxQwhPFkvUNQiSY-N24xGrQiPdLuy3Aa0g7n62fi2h6CiRKPu-Eqn1GYcVroHA_xNiTolwyYwMMGEQlTUf_T0wheNHlkt2JTxkgo4yUwdMoZ3cQJkobgEolfNvVIUpHmYgk0MHyj-6BU-9pSZBjJwWRJUvr7RRZrELw3uUvMmXUGIKkQZXNhuTMdaxs5dnJd63j4ffU_9kmkWjHL2EZu7zCO9VIHNn3TivCyfFWdlTvPLJa3qk4hBmgVrhd-rt-ybXJGV5Hn-rw5MKtso0qAp2XoPW43rwJoRExhJIKzuO7tPgKvhNQfJllpJsOq6dtoNjCM_80JFy8bnGxit9dWhTN6j3OjVoJHhP7bdAxHcMfS_0S0>`_
-
-

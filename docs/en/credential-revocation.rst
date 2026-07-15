@@ -548,7 +548,7 @@ Upon receiving a Digital Credential, a Relying Party MUST first perform the vali
 - Resolve the Status List Token from the provided URI.
 - Validate the Status List Token:
 
-  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
   - Check for the existence of the required claims as defined in Section :ref:`credential-revocation:Status List Token`.
 

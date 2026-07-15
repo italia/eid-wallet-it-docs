@@ -705,7 +705,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
    * - **srv_description**
      - REQUIRED. Multilingual description of the service provided by the entity. Each entry contains ``lang`` and ``value``. 
    * - **entitlements**
-     - REQUIRED. Array of entitlement URIs identifying the role of the subject, as defined in `ETSI_TS_119_475`_ Annex A.2 (e.g. ``Service_Provider``, ``PID_Provider``, ``QEAA_Provider``, ``PUB_EAA_Provider``, ``Non_Q_EAA_Provider``).
+     - REQUIRED. Array of entitlement URIs identifying the role of the subject, as defined in `ETSI TS 119 475`_ Annex A.2 (e.g. ``Service_Provider``, ``PID_Provider``, ``QEAA_Provider``, ``PUB_EAA_Provider``, ``Non_Q_EAA_Provider``).
    * - **provides_attestations**
      - REQUIRED for a Credential Issuer, MUST NOT be present otherwise. Array of the Credential types the subject is authorized to issue. Each entry contains ``format``, ``meta`` to identify the Credential type, and an optional ``claim`` array.
    * - **credentials**
@@ -722,7 +722,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
      - OPTIONAL. URL with additional web information about the Trust Mark.
 
 .. note::
-  The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) and the identity and transparency claims aligned with the WRPRC (``public_body``, ``support_uri``, ``srv_description``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI_TS_119_475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts.
+  The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) and the identity and transparency claims aligned with the WRPRC (``public_body``, ``support_uri``, ``srv_description``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI TS 119 475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts.
 
 .. note::
   The revocation status of a Trust Mark is verified through the Federation Trust Mark Status endpoint (`OID-FED`_ Section 8.4), not through a status list carried in the token. This is the difference with the WRPRC, whose ``status`` claim points to a status list: the Trust Mark relies on the federation native revocation mechanism. The consumption of these claims by the Trust Evaluator is defined in :ref:`trust-evaluation-oidfed:Authorization`.

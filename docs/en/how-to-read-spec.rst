@@ -23,7 +23,7 @@ The specification is organized into the following major sections:
 - **Section** :ref:`functionalities:User Experience Design`:
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`:
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`:
   Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
 
 - **Section** :ref:`entities:Entities`:
@@ -70,7 +70,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -124,7 +124,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -184,7 +184,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -240,7 +240,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 

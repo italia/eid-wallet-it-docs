@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Trust Evaluation in the National Trust Framework
 -----------------------------------------------------
 
@@ -370,7 +372,7 @@ The Trust Evaluator MUST output ``ENTITLEMENT_VALID`` or ``WRONG_ENTITLEMENT``.
 
 **Process**
 
-1. Extract the ``entitlements`` from the validated Trust Marks and verify that they match the role expected in the current interaction, for example that an entity acting as Credential Issuer holds an issuing entitlement of `ETSI_TS_119_475`_ Annex A.2.
+1. Extract the ``entitlements`` from the validated Trust Marks and verify that they match the role expected in the current interaction, for example that an entity acting as Credential Issuer holds an issuing entitlement of `ETSI TS 119 475`_ Annex A.2.
 2. During issuance, verify that the offered Credential type is present in the ``provides_attestations`` of the Trust Mark, comparing the ``format`` and the ``meta`` of the offered Credential against the authorized entries.
 3. During presentation, the attribute level check against the ``credentials`` of the Trust Mark is performed by the Overasking Check below.
 
@@ -441,4 +443,3 @@ When the metadata are obtained through a statically provided Trust Chain, they M
 
 .. note::
   Within IT-Wallet the ``metadata_policy`` covers only the technical configuration parameters, such as endpoints, cryptographic keys and supported algorithms. Entitlements and authorization policies MUST NOT be expressed through metadata policies; they are carried by the Trust Marks, as defined in :ref:`trust-evaluation-oidfed:Authorization`.
-
