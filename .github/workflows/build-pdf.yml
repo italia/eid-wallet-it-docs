@@ -93,6 +93,24 @@ jobs:
             tail -120 lualatex-en.log
             exit 1
           fi
+
+          # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+          echo "=== Compressing English PDF (Ghostscript /ebook) ==="
+          before_bytes=$(stat -c%s "$SETTINGS_FILE_NAME.pdf")
+          gs -sDEVICE=pdfwrite \
+            -dCompatibilityLevel=1.5 \
+            -dPDFSETTINGS=/ebook \
+            -dDetectDuplicateImages=true \
+            -dCompressFonts=true \
+            -dNOPAUSE -dQUIET -dBATCH \
+            -sOutputFile="$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+          if [ -f "$SETTINGS_FILE_NAME-opt.pdf" ]; then
+            after_bytes=$(stat -c%s "$SETTINGS_FILE_NAME-opt.pdf")
+            mv "$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+            echo "Compressed EN: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+          else
+            echo "Warning: Ghostscript compression failed for EN; keeping uncompressed PDF"
+          fi
           ls -la "$SETTINGS_FILE_NAME.pdf"
 
 
@@ -127,6 +145,24 @@ jobs:
             echo "=== Last 120 lines of LaTeX log ==="
             tail -120 lualatex-it.log
             exit 1
+          fi
+
+          # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+          echo "=== Compressing Italian PDF (Ghostscript /ebook) ==="
+          before_bytes=$(stat -c%s "$SETTINGS_FILE_NAME.pdf")
+          gs -sDEVICE=pdfwrite \
+            -dCompatibilityLevel=1.5 \
+            -dPDFSETTINGS=/ebook \
+            -dDetectDuplicateImages=true \
+            -dCompressFonts=true \
+            -dNOPAUSE -dQUIET -dBATCH \
+            -sOutputFile="$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+          if [ -f "$SETTINGS_FILE_NAME-opt.pdf" ]; then
+            after_bytes=$(stat -c%s "$SETTINGS_FILE_NAME-opt.pdf")
+            mv "$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+            echo "Compressed IT: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+          else
+            echo "Warning: Ghostscript compression failed for IT; keeping uncompressed PDF"
           fi
           ls -la "$SETTINGS_FILE_NAME.pdf"
 

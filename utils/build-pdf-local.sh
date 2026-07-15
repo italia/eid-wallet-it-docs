@@ -86,6 +86,31 @@ for LANG in en it; do
     cd "$PWD_BEFORE"
     exit 1
   fi
+
+  # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+  # Override with PDF_COMPRESS_SETTINGS=/screen for smaller files (~13MB).
+  if command -v gs &>/dev/null; then
+    PDF_COMPRESS_SETTINGS="${PDF_COMPRESS_SETTINGS:-/ebook}"
+    echo "=== Compressing ${ULANG} PDF (Ghostscript ${PDF_COMPRESS_SETTINGS}) ==="
+    before_bytes=$(stat -c%s "${BASENAME}.pdf")
+    gs -sDEVICE=pdfwrite \
+      -dCompatibilityLevel=1.5 \
+      -dPDFSETTINGS="${PDF_COMPRESS_SETTINGS}" \
+      -dDetectDuplicateImages=true \
+      -dCompressFonts=true \
+      -dNOPAUSE -dQUIET -dBATCH \
+      -sOutputFile="${BASENAME}-opt.pdf" "${BASENAME}.pdf"
+    if [[ -f "${BASENAME}-opt.pdf" ]]; then
+      after_bytes=$(stat -c%s "${BASENAME}-opt.pdf")
+      mv "${BASENAME}-opt.pdf" "${BASENAME}.pdf"
+      echo "Compressed ${ULANG}: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+    else
+      echo "Warning: Ghostscript compression failed for ${ULANG}; keeping uncompressed PDF"
+    fi
+  else
+    echo "Warning: gs not found; skipping post-build PDF compression for ${ULANG}"
+  fi
+
   cd "$PWD_BEFORE"
 
   cp "$ROOT_DIR/build/latex/${LANG}/${BASENAME}.pdf" "$ROOT_DIR/pdf_output/${BASENAME}-${LANG}-${TIMESTAMP}.pdf"
