@@ -121,7 +121,7 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
 
 .. note::
-  Se i Credential Issuer rilasciano credenziali con un periodo di validità inferiore a 24 ore, devono verificare il periodo di validità della WIA e della KA solo al momento del rilascio, come indicato in EUDI-TS 3_.
+  Se i Credential Issuer rilasciano credenziali con un periodo di validità inferiore a 24 ore, devono verificare il periodo di validità della WIA e della KA solo al momento del rilascio, come indicato in `EUDI-TS 3_`.
 
 .. note::
   Nell'attuale versione della specifica, i Fornitori di Attestati vengono notificati direttamente della revoca di un'Istanza del Wallet dal Fornitore di Wallet tramite un servizio e-service PDND.
