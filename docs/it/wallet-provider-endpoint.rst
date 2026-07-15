@@ -454,7 +454,7 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
       - `OpenID4VCI`_ and `EUDI-TS 3`_.
     * - **wallet_solution_certification_information**
-      - OBBLIGATORIO. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
+      - OPZIONALE. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
       - `EUDI-TS 3`_.
     * - **client_status**
       - OBBLIGATORIO. Meccanismo di stato per la Wallet Attestation.
@@ -771,7 +771,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
     Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
 
 .. note::
-    Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel file ``key_storage_status.exp``.    
+    Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel claim ``key_storage_status.exp``.
 
 
 
