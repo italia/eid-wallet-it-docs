@@ -534,7 +534,7 @@ In particolare, il JWT della Key Attestation Issuance include i seguenti paramet
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - Il tipo del JWT; DEVE essere impostato a ``wua-request+jwt``.
+      - Il tipo del JWT; DEVE essere impostato a ``ka-request+jwt``.
       -
 
 Il JWT della Key Attestation Request include i seguenti claim nel body:
@@ -593,7 +593,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "ka-request+jwt"
     }
 
 .. code-block:: json

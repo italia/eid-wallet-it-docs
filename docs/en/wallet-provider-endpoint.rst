@@ -534,7 +534,7 @@ In particular, the Key Attestation Issuance JWT includes the following HTTP head
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wua-request+jwt``.
+      - The type of the JWT, it MUST set to ``ka-request+jwt``.
       -
 
 The Key Attestation Request JWT includes the following body claims:
@@ -593,7 +593,7 @@ Below is a non-normative example of a Key Attestation Request JWT header and pay
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "ka-request+jwt"
     }
 
 .. code-block:: json
