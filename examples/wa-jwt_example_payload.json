@@ -17,12 +17,12 @@
           "uri": "https://revocation_url/wia-statuslists/42"
         }
       },
-      "exp": 1303497780
+      "exp": 1772447918
     },
     "wallet_name": "ExampleOrg",
     "wallet_version": "1.0.0",
     "wallet_link": "https://example.org/wallets/ExampleOrg/info",
-    "wallet_solution_certification_information": "",
+    "wallet_solution_certification_information": "https://example.org/wallets/ExampleOrg/certification",
     "sub": "https://wallet-solution.example.org",
     "exp": 1772447918
   
