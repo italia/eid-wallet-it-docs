@@ -57,7 +57,7 @@ The base OpenAPI Specification is available :raw-html:`<a href="OAS3-Register-AP
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPAC)**.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPACs)**.
 
 According to the Article 2 of [`CIR2025/848`_], a WRPAC is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet. For more details on the authentication process, see :ref:`trust-evaluation-eudiw:Authentication Process`.
 
@@ -68,38 +68,53 @@ Taking into account these minimal requirements, different scenarios are possible
 
 The specific requirements for WRPACs are specified in `ETSI TS 119 411-8`_.
 
-- Basic Fields: all required, as described in :ref:`x509-certificate-profile:X.509 Certificate Profile`.
+The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
-- Extensions:
+.. list-table:: PID Provider Sign/Seal Certificate Extensions
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 20 50
 
-  - ``subjectKeyIdentifier``: for end-entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in Clause 4.2.1.2 of [:rfc:`5280`].
+   * - **Extension**
+     - **Presence**
+     - **Notes**
 
-  - ``keyUsage``: it MUST contain exactly one of the following key usage
-    settings: *Type A*, *Type B*, *Type C*, or *Type F*.
+   * - ``authorityKeyIdentifier``
+     - REQUIRED
+     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
-  - ``certificatePolicies``: it MUST include a ``PolicyInformation`` term with
+   * - ``keyUsage``
+     - REQUIRED
+     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C*, or *Type F*.
 
-    - ``policyIdentifier`` containing one of the following OIDs defined in [`ETSI TS 119 411-8`_]
+   * - ``certificatePolicies``
+     - REQUIRED
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_)
+     
+       * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
+       * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
+       * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``);
+       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
 
-      * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``)
-      * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``)
-      * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``)
-      * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
+       and ``policyQualifiers`` containing a ``cpsURI`` that references an URL where the CPS of the Provider of WRPAC is located.
 
-    - ``policyQualifiers`` containing a ``CPSuri`` that references an URL where the CPS of the Provider of WRPAC is located.
+   * - ``subjectAltName``
+     - REQUIRED
+     -
 
-  - ``authorityInfoAccess``: it MUST be present and include an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+   * - ``cRLDistributionPoints``
+     - CONDITIONAL
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
-  - ``qcStatements``: TBD.
+   * - ``authorityInfoAccess``
+     - REQUIRED
+     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
-  - At least one of the following conditions MUST apply:
-
-    * ``cRLDistributionPoints`` is present and contains at least one reference to a publicly available Certificate Revocation List (CRL), as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
-
-    * ``authorityInfoAccess`` additionally includes an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 .. note::
-    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_ `ETSI TS 119 475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
+    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
@@ -109,21 +124,49 @@ The following is an example of a WRPAC for legal persons following the NCP.
 Registrar Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
 
-The specific requirements for WRPACs are specified in `CIR2025/848`_.
+The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
-- Basic Fields: all required, as described in :ref:`x509-certificate-profile:X.509 Certificate Profile`.
+.. list-table:: Registrar Sign/Seal Certificate Extensions
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 20 50
 
-- Extensions:
+   * - **Extension**
+     - **Presence**
+     - **Notes**
 
-  - ``certificatePolicies``: it MUST include a ``PolicyInformation`` term with ``0.4.0.2042.1.1`` (*NCP*) as ``policyIdentifier``.
+   * - ``authorityKeyIdentifier``
+     - REQUIRED
+     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
-  - At least one of the following conditions MUST apply:
+   * - ``subjectKeyIdentifier``
+     - REQUIRED
+     - The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
-    * ``cRLDistributionPoints`` is present and contains at least one reference to a publicly available Certificate Revocation List (CRL), as described in :ref:`infrastructure-trust:Certificate Revocation List (CRL)`.
+   * - ``keyUsage``
+     - REQUIRED
+     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C*, or *Type F*.
 
-    * ``authorityInfoAccess`` additionally includes an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+   * - ``certificatePolicies``
+     - REQUIRED
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to ``0.4.0.2042.1.1`` (*NCP*).
+
+   * - ``subjectAltName``
+     - REQUIRED
+     -
+
+   * - ``cRLDistributionPoints``
+     - CONDITIONAL
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+
+   * - ``authorityInfoAccess``
+     - REQUIRED
+     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+
 
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
