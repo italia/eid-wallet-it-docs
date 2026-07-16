@@ -1727,6 +1727,53 @@ body.it-docs-body > .it-docs-footer {
 .it-docs-search-help {
   color: #5c6f82;
   margin-bottom: var(--it-docs-space-3);
+  font-size: 0.9375rem;
+}
+
+.it-docs-search-help-intro {
+  margin: 0 0 var(--it-docs-space-1);
+}
+
+.it-docs-search-help-list {
+  margin: 0;
+  padding-left: var(--it-docs-space-4);
+}
+
+.it-docs-search-help-list li + li {
+  margin-top: var(--it-docs-space-1);
+}
+
+.it-docs-search-help-list code {
+  font-size: 0.875em;
+  color: inherit;
+  background: rgba(0, 77, 153, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: var(--it-docs-radius);
+}
+
+.it-docs-search-help-list strong {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.it-docs-search-help-sep {
+  color: #8a9bab;
+  margin: 0 0.35rem;
+}
+
+.it-docs-search-help-examples {
+  margin: var(--it-docs-space-2) 0 0;
+  font-size: 0.9375rem;
+  color: #5c6f82;
+}
+
+.it-docs-search-help-examples code {
+  font-size: 0.875em;
+  color: inherit;
+  background: rgba(0, 77, 153, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: var(--it-docs-radius);
+  white-space: nowrap;
 }
 
 .it-docs-searchbox--page {
