@@ -26,7 +26,6 @@ This section is organised around the four processes that, together, take an enti
 - The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust frameworks depending on its category;
 - The **Notification and Publication** process publishes a notified entity in the trusted list for its category, which is what makes it trusted across the ecosystem.
 
-
 Overview
 --------
 
@@ -548,27 +547,17 @@ Federation registration is performed by the Federation Authorities; WRP Registra
 Certificate Issuance Process
 ----------------------------
 
-
-
 WRPAC Issuance
 ^^^^^^^^^^^^^^
-
-
 
 WRPRC Issuance
 ^^^^^^^^^^^^^^
 
-
-
 Signature/Seal Certificates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
 Certificate Issuance Summary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 
 Notification and Publication
 ----------------------------
@@ -601,5 +590,3 @@ The Supervisory Body notifies the entity to the European Commission, and the Tru
 
 A **Relying Party** or a **Relying Party Intermediary** requires no trusted-list entry: trust in it is anchored through the signed Register and its WRPAC.
 The trusted-list entry binds the organisational entity to the technical component that operates at runtime.
-
-

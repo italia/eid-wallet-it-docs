@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-.. include:: ../common/symbols.rst
 
 X.509 Certificate Profile
 -------------------------
@@ -210,7 +209,7 @@ The criticality values used in this specification have the following meaning:
      - NC
      - ``2.5.29.32``
      - Contains a sequence of certificate policies that reflect the practices and procedures undertaken by the CA. For each element, in the form of a ``PolicyInformation`` structure, the following fields are available:
-     
+
        * ``policyIdentifier`` (REQUIRED): represents the OID identifying the certificate policy applicable to the certificate.
        * ``policyQualifiers`` (OPTIONAL): contains a sequence of policy qualifier information associated with the certificate policy. The supported policy qualifiers are defined by the applicable certificate profile.
      - :rfc:`5280#section-4.2.1.4`, Clause 4.3.3 of [`ETSI EN 319 412-2`_].
@@ -220,7 +219,7 @@ The criticality values used in this specification have the following meaning:
      - NC
      - ``2.5.29.17``
      - Contains a sequence alternative names and contact information associated with the subject of the certificate. For each element, in the form of a ``GeneralName`` structure, the following fields are available:
-     
+
        * ``otherName`` (OPTIONAL): contains an alternative name of a type identified by an OID.
        * ``rfc822Name`` (OPTIONAL): contains an email address.
        * ``dNSName`` (OPTIONAL): contains a domain name.
@@ -263,7 +262,7 @@ The criticality values used in this specification have the following meaning:
 
        * ``reasons`` (OPTIONAL): indicates the reasons for which the CRL is issued.
        * ``cRLIssuer`` (OPTIONAL): identifies the entity that issues the CRL when it is different from the certificate issuer.
-       
+
        **REQUIRED IF:** the certificate does not include any access location of an Online Certificate Status Protocol (OCSP) responder or the validity assured extension.
      - :rfc:`5280#section-4.2.1.13`, Clause 4.3.11 of [`ETSI EN 319 412-2`_].
 
@@ -279,14 +278,14 @@ The criticality values used in this specification have the following meaning:
        The extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``). The corresponding ``accessLocation`` MUST specify at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``), and the corresponding ``accessLocation`` MUST specify at least one OCSP responder authoritative to provide certificate status information for the certificate.
-     
+
        It MUST include an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported, it MUST include an ``AccessDescription`` term with ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of an OCSP responder providing status information for the present certificate.
 
        If the certificate does not include any CRL distribution point and does not include the validity assured extension, a reference to at least one OCSP responder MUST be present.
      - :rfc:`5280#section-4.2.2.1`, Clause 4.4.1 of [`ETSI EN 319 412-2`_].
-   
+
    * - ``ext-etsi-valassured-ST-certs``
      - CONDITIONAL
      - NC
@@ -315,3 +314,4 @@ The criticality values used in this specification have the following meaning:
        * ``statementInfo`` (OPTIONAL): contains additional information associated with the qualified certificate statement. Its presence and encoding depend on the value of ``statementId``.
 
        The specific certificate profiles defined in this specification specify the ``QCStatement`` structures that MUST be present, including the required ``statementId`` values and the associated ``statementInfo`` contents, where applicable.
+     - :rfc:`3739#section-3.2.6`.

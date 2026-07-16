@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-.. include:: ../common/symbols.rst
 
 Common Trust Artifacts
 ----------------------
@@ -91,7 +90,7 @@ For QEAA Providers Sign/Seal Certificates:
 
   - ``authorityInfoAccess``: it MUST be present and include an ``AccessDescription`` structure with ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) as ``accessMethod`` and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
-For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list. 
+For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
 
 The following is a non-normative example of a QEAA Provider's end-entity certificate for legal persons (non-self-signed).
 
@@ -147,7 +146,6 @@ Relying Parties, Credential Issuers and Wallet Units validate a presented Access
 
   - ``ext-etsi-valassured-ST-certs``: if present, it indicates that the certificate issuer ensures the validity of the certificate is assured at time of use of the corresponding private key.
 
-
 .. note::
    **Trust Anchor revocation.**
     Trust Anchor certificates are not expected to be revoked as they are trusted by policy when published in a LoTE or Trusted List. As a result, revocation information (e.g., CRL or OCSP) is not required for Trust Anchor certificates and entities using Trust Anchor certificates retrived in a LoTE or Trusted List MAY avoid revocation checking for Trust Anchor certificates.
@@ -170,7 +168,7 @@ The following table maps the various Certificates used in the ecosystem, the att
      - signing PID, siging PID Status List Token
      - PID Providers LoTE
    * - Wallet Provider Sign/Seal Certificate
-     - signing WIA, KA, signing WIA/KA Status List Token 
+     - signing WIA, KA, signing WIA/KA Status List Token
      - Wallet Providers LoTE
    * - EAA Provider Sign/Seal Certificate
      - signing EAA, signing EAA Status List Token

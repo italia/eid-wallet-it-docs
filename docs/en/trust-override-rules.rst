@@ -3,14 +3,12 @@
 Authorization Decision and Override Rules
 ------------------------------------------
 
-
 **Output Model**
 
 The Authorization Decision can be:
 
-- `AUTHORIZED` if the condition `authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID AND edp_state == EDP_SATISFIED AND authz_val_state == VERIFICATION_PASSED` is satisfied; and 
-- `NOT_AUTHORIZED` otherwise. 
-
+- `AUTHORIZED` if the condition `authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID AND edp_state == EDP_SATISFIED AND authz_val_state == VERIFICATION_PASSED` is satisfied; and
+- `NOT_AUTHORIZED` otherwise.
 
 **Override Principles**
 
@@ -27,7 +25,7 @@ All other presentation failures, including binding failures or intermediary bind
 
 In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome. User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the authorization decision.
 
-.. note:: 
+.. note::
     **User opt-in**.
     The *Scope Comparison Procedure* in :ref:`trust-evaluation-eudiw:Authorization Validation` is executed only if the User enabled registration verification. Override mechanisms define what happens when the procedure produces a negative result.
 

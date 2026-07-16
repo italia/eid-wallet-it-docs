@@ -1,20 +1,18 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
-
 Infrastructure of Trust
 =======================
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the essential trust artifacts (:ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`infrastructure-trust:Trust Management and Lifecycle`).
+This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the general :ref:`infrastructure-trust:X.509 Certificate Profile` and the :ref:`infrastructure-trust:Common Trust Artifacts` shared by both frameworks, followed by the framework-specific artifacts (:ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`infrastructure-trust:Trust Management and Lifecycle`).
 
 Overview
 --------
 
 The IT-Wallet ecosystem operates on a federated trust infrastructure, requiring participating entities to establish mutual trust before engaging in any interactions involving User attribute.
-To be able to perform a trust evaluation process, entities first needs to onboard in the ecosystem (see :ref:`onboarding-procedure:Onboarding Procedure`). 
+To be able to perform a trust evaluation process, entities first needs to onboard in the ecosystem (see :ref:`onboarding-procedure:Onboarding Procedure`).
 During this phase, Non-Qualified EAA Providers and Relying Parties need to specify whether they require to be interoperable with European entities or they operate only in the national boundary.
 This choice will affect both the onboarding and the trust evaluation procedures. If only the national boundary is requested, the infrastructure of trust complies with OpenID Federation 1.0 (`OID-FED`_). Otherwise, the EUDI Wallet (EUDIW) trust infrastructure defined in `ARF`_ is necessary.
 
@@ -24,12 +22,14 @@ This choice will affect both the onboarding and the trust evaluation procedures.
 
 In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
+.. include:: x509-certificate-profile.rst
+.. include:: trust-artifact-common.rst
 .. include:: trust-artifact-eudiw.rst
 .. include:: trust-artifact-oidfed.rst
 
 Trust Management and Lifecycle
 ------------------------------
- 
+
 State Machine for Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -51,7 +51,6 @@ This section describes the artifacts that are employed in :ref:`infrastructure-t
     - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
     - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
-
 Certificate Revocation List (CRL)
 """""""""""""""""""""""""""""""""
 
@@ -62,7 +61,7 @@ CRLs MAY be used for the following types of certificates:
 - Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate`.
 - Sign/Seal certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
 
-If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field. 
+If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field.
 
 The CRL issuer MAY also generate delta CRLs. A delta CRL only lists those certificates, within its scope, whose revocation status has changed since the issuance of a referenced complete CRL. The referenced complete CRL is referred to as a base CRL. The scope of a delta CRL MUST be the same as the base CRL that it references.
 
@@ -214,7 +213,6 @@ The ``crlExtensions`` field MAY contain various extensions. Notable standard ext
      - *SEQUENCE* (``IssuingDistributionPoint``)
      - A **critical** extension describing the scope of the CRL. Contains flags ``distributionPoint``, ``onlyContainsUserCerts``, ``onlyContainsCACerts``, ``onlySomeReasons``, ``indirectCRL``, and ``onlyContainsAttributeCerts``. For delta-CRL deployments, the ``indirectCRL`` bit is set to TRUE when the delta is signed by a CRL issuer other than the CA that issued the certificates (common when a delegated revocation service is used), and ``onlySomeReasons`` MAY restrict the delta CRL to specific revocation reasons (e.g., ``keyCompromise`` only). The base CRL and corresponding delta CRLs MUST share the same scope (same ``onlyContains*`` flags and ``distributionPoint``).
 
-
 Online Certificate Status Protocol (OCSP)
 """"""""""""""""""""""""""""""""""""""""""""
 
@@ -224,7 +222,7 @@ An OCSP client issues a status request to an OCSP responder and MUST suspend the
 
 If supported by the Certificate Authority (CA), the URI to which the OCSP Responder can be invoked MUST be present in the ``authorityInfoAccess.accessLocation`` extension of the Wallet Relying Party Access Certificate (WRPAC).
 
-This protocol specifies the data that MUST be exchanged between the OCSP client (which checks the status of one or more certificates) and the OCSP server (which provides the corresponding status). 
+This protocol specifies the data that MUST be exchanged between the OCSP client (which checks the status of one or more certificates) and the OCSP server (which provides the corresponding status).
 
 The following table sums up the roles of the OCSP client and server in the EUDIW ecosystem.
 
@@ -237,17 +235,17 @@ The following table sums up the roles of the OCSP client and server in the EUDIW
    * - Wallet Unit
      - WRPAC Provider
      - WRPAC Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - PID Provider Trust Anchor
      - PID Sign/Seal Certificate Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - PuB-EAA Provider Trust Anchor
      - PuB-EAA Sign/Seal Certificate Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - (Q)EAA Provider Trust Anchor
      - (Q)EAA Sign/Seal Certificate Status Check
 
-.. note:: 
+.. note::
     The Status check on Sign/Seal Certificates is needed only in case the Sign/Seal Certificate is not referenced directly as a Trust Anchor Certificate, in which case it is trusted a priori and does not need a separate status check.
 
 Online Certificate Status Protocol Request Format
@@ -545,7 +543,6 @@ In the OCSP Response there MUST be at least a ``SingleResponse`` for each ``Cert
 
 Below is a non-normative example of an OCSP response with a single ``good`` status.
 
-
 .. literalinclude:: ../../examples/ocsp-response.txt
   :language: text
 
@@ -561,7 +558,6 @@ The Provider of WRPRC MUST use the following values for the possible statuses of
 - `0x00` - `VALID` - The WRPRC is valid.
 - `0x01` - `INVALID` - The WRPRC is revoked.
 - `0x02` - `SUSPENDED` - The WRPRC is suspended.
-
 
 Once the <components:Wallet Unit> receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.
 

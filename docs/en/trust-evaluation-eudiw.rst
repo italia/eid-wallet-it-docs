@@ -8,7 +8,7 @@ Trust Anchor Validation Process
 
 This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party (the validating Entity) uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted Lists in order to:
 
-- validate the trustworthiness of a Trust Anchor (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) to authenticate, authorize or validate an entity or artifact during *runtime*.
+- validate the trustworthiness of a Trust Anchor (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) to authenticate, authorize or validate an entity or artifact during *runtime*.
 - validate the information contained in the List for *historcal purposes*.
 
 Depending on the Trust Artifact or Attestation being verified, the validating Entity MUST fetch, download, and validate the List which references the appropriate Trust Anchor:
@@ -47,7 +47,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_PASSED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_PASSED``;
 
-     Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
+     Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
 
 - If the validation algorithms terminate with:
 
@@ -55,7 +55,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
+     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy.
 
 List of Trusted Entities Validation
 """""""""""""""""""""""""""""""""""""
@@ -135,7 +135,7 @@ The validation MUST perform the following steps:
     - Update ``OJEU-LoTE-Certs-Set`` according to the new Trust Anchor either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union OJEU publication.
 
 .. note::
-    
+
     - Steps 4, 5 and 11 allow modifying the location of the List of Trusted Entities file without changing the initial trusted signer public key, as long as the both the old and the new location have the same content (otherwise the validation fails with ``LoTE_FILE_CONFLICT`` status). This allows the List of Trusted Entities to be retrieved from different locations without affecting the Trust Anchor validation as long as the content is the same.
     - In case of ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE`` error, it is likely that the Official Journal of the European Union OJEU publication has been updated with a new location for the List of Trusted Entities List of Trusted Entities. The validating Entity SHOULD repeat the validation process after having downloaded the most recent version of the OJEU.
     - In step 8, the validating Entity established the binding of the signer certificate of the ``LoTE`` XML with the certificate referenced in the Official Journal of the European Union OJEU, effectively using the latter as a Trust Anchor.
@@ -214,7 +214,7 @@ To authenticate the Wallet-Relying Party, the Wallet Unit MUST verify the authen
 3. **LoTE Validation:** Retrieve the WRPAC Trust Anchor that anchors the root of the certificate path from the validated List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
 
 4. **Trust Anchor Retrieval:** To retrieve the correct Trust Anchor, the Wallet Unit MUST:
-    
+
     - match the ``issuer.organizationIdentifier`` field value of certificate $C_1$ with the ``TrustedEntityList[].TrustedEntity.TETradeName`` field value of the LoTE; and
     - use the certificates found in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field as the Trust Anchor.
 
@@ -223,9 +223,9 @@ To authenticate the Wallet-Relying Party, the Wallet Unit MUST verify the authen
 .. warning::
 
     Implementers:
-    
+
         -  SHOULD consider strategies to cache validated Lists of Trusted Lists, Lists of Trusted Entities, and Member States' Trusted Lists to allow the Wallet Unit to correctly process the Authentication Validation. The frequency of updates and the types of lists that should be cached represent a trade-off between interoperability and resource utilization.
-        
+
         - MUST distinguish between transient authentication (e.g., access control) and content commitment (non-repudiation). To prevent an attacker from disguising a legal commitment as a protocol nonce, the WRP MUST NOT use the Wallet-Relying Party Access Certificate private key to sign arbitrary data that could be controlled by an external party.
 
 
@@ -235,7 +235,7 @@ The Wallet Unit's Authentication output MUST be based only on information derive
 
 - The appropriate Trust Anchor obtained from a valid instance of the Provider of WRPAC LoTE;
 - The X509 certificate path terminating with the WRPAC end-entity certificate;
-- A Wallet-Relying Party signature over some data carrying the proof of possession of the private key referenced in the WRPAC. 
+- A Wallet-Relying Party signature over some data carrying the proof of possession of the private key referenced in the WRPAC.
 
 **Output Model**
 
@@ -281,7 +281,7 @@ Authorization Artifacts Validation
 
 This section defines the validation procedures for the Authorization Artifacts that are exchanged in the various flows. The Artifacts that carry the Authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information albeit in different formats. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure is self-contained: it specifies its inputs, its processing logic, and its output (a verification result code). The Authorization Artifacts Validation result MAY be overridden by the User under the conditions detailed in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
-The Validation flow that the Wallet Unit performs, depends on the availability of the Wallet-Relying Party Registration Certificate in the interaction with the Wallet-Relying Party. 
+The Validation flow that the Wallet Unit performs, depends on the availability of the Wallet-Relying Party Registration Certificate in the interaction with the Wallet-Relying Party.
 
 - During the Presentation flow, the Relying-Party MAY include the Wallet-Relying Party Registration Certificate in the Presentation Request. In case, depending on the Presentation type, i.e., remote or proximity; the Relying-Party MUST include the Wallet-Relying Party Registration Certificate by value in the:
 
@@ -303,7 +303,7 @@ In case the Wallet-Relying Party Registration Certificate is not available, or i
 
 The response provides the same authorization-relevant data as a Wallet-Relying Party Registration Certificate. Each Registrar provides an online service available through an API interface, obtained as described in the :ref:`trust-artifact-eudiw:Common Register Open APIs` section. When using this service, the Wallet Unit SHOULD inform the User that an external query will be made.
 
-**Wallet Relying Party Registration Certificate Validation** 
+**Wallet Relying Party Registration Certificate Validation**
 
 When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:
 
@@ -342,7 +342,7 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
 
     - During the Presentation flow the entity identifiers is either the value of the ``verifier_info[].data.identifier`` parameter in the Request object for the Remote flow, or the value of the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` parameter in the mdoc Request.
     - During the Issuance flow the entity identifier is the value of the ``issuer_info[].data.identifier`` parameter.
- 
+
 4. **Format verification**: confirm ``typ`` is ``jwt`` (Section 5.2.1 of [`ETSI TS 119 475`_]).
 5. **Verify pertinence**: the Wallet Unit MUST verify that the response pertains to the relevant authorization subject and intended use.
 6. **Verify response signature**: verify that the Registrar signature in the response is valid using the Sign/Seal certificate of the Registrar in the ``x5c`` claim of the response.
@@ -405,8 +405,8 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
 
 1. **Binding verification**. The Wallet Unit MUST ensure that the authenticated entity is the same as the entity described in the authorization data. The types of checks depend on the flow as well as the context.
 
-    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSI EN 319 412-1`_) with 
-    
+    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSI EN 319 412-1`_) with
+
         - the Credential Issuer's WRPRC ``sub`` field's value; or,
         - in case no WRPRC is available, the Credential Issuer ``identifier`` value used in the GET request (``/wrp/{identifier}``) to the Register endpoint; and
         - the ``issuer_info.data.identifier`` field's value from the Credential Issuer Metadata's payload.
@@ -414,7 +414,7 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
      If any checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``BINDING_FAILED``.
 
     - **Credential Presentation**. The Wallet Unit MUST extract the Relying Party identifier from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSI EN 319 412-1`_).
-    
+
      The Wallet Unit first assumes the **No intermediary** scenario. The Wallet Unit MUST match the extracted Relying Party identifier with
 
         - the Relying Party's WRPRC ``sub`` field's value; or,
@@ -422,18 +422,18 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
         - the ``verifier_info.data.identifier`` field's value from the Request Object's payload during the Remote flow; or,
         - the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` field in the mdoc Request during the proximity flow.
 
-     If any checks fail, it is possible that the Presentation happens in the **Intermediary** scenario, where the Presentation Request is intermediated by a Relying Party Intermediary. The Wallet Unit MUST attempt to match the Relying Party identifier extracted from the WRPAC (``subject.organizationIdentifier``) with 
+     If any checks fail, it is possible that the Presentation happens in the **Intermediary** scenario, where the Presentation Request is intermediated by a Relying Party Intermediary. The Wallet Unit MUST attempt to match the Relying Party identifier extracted from the WRPAC (``subject.organizationIdentifier``) with
         - the Relying Party Intermediary's ``intermediary.sub`` field's value (in either the WRPRC or Register Response depending on availability);
 
-If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation Procedure and set the ``authz_val_state`` to ``BINDING_FAILED``. 
+If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation Procedure and set the ``authz_val_state`` to ``BINDING_FAILED``.
 
-If the Binding verification succeedes, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern: 
+If the Binding verification succeedes, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern:
 
 - *"[``intermediary.sname``] acting on behalf of [``verifier_info.data.srvDescription``] for [``verifier_info.data.intendedUseIdentifier``]"* when in Remote flow.
 - *"[``intermediary.sname``] acting on behalf of [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.srvDescription``] for [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.intendedUseIdentifier``]"* when in proximity flow.
 
 .. note::
-    
+
     If the Wallet used only the Wallet-Relying Party Registration Certificate ``sub`` for the Binding Verification, and ``authz_val_state == BINDING_FAILED``, the WRPRC is not valid for this Relying Party. The Wallet Unit MUST attempt to query the Registrar URI, validate the response as described in :ref:`Register Query Validation <register-query-validation>`, and repeat the binding procedure.
 
 .. note::
@@ -453,8 +453,8 @@ If the Binding verification succeedes, the Wallet Unit MUST display to the User 
 3. **Attestation Type Verification**. During Credential Issuance, the Wallet Unit MUST verify that the PID or Attestation Type being issued is registered for the Credential Issuer:
 
     - For a PID Provider issuing PIDs, the Wallet Unit MAY skip this step.
-    - Otherwise, the Wallet Unit MUST match 
-    
+    - Otherwise, the Wallet Unit MUST match
+
         - the ``provides_attestations[]`` (in the WRPRC) or ``data.providesAttestations`` (in the Registrar Response) array against the ``credential_configurations_supported`` keys in the Credential Issuer Metadata. Matching MUST be case-sensitive and exact (``vct_value`` for SD-JWT VC, ``doctype`` for mDL).
 
      If not found, the procedure MUST output ``ATTESTATION_TYPE_NOT_REGISTERED``.
@@ -477,14 +477,13 @@ If all of the above checks (when required) are satisfied, the Wallet Unit MUST s
 
     2. unsure about the value of constraining the implementation algorithm that much...
 
-5. **EDP Evaluation**. During Credential Presentation, for each Digital Credential matching a Presentation Request, the Wallet Unit MUST check for a locally stored Embedded Disclosure Policy. If no Embedded Disclosure Policy exists, this check is superseded. Otherwise, if the Embedded Disclosure Policy are present and 
+5. **EDP Evaluation**. During Credential Presentation, for each Digital Credential matching a Presentation Request, the Wallet Unit MUST check for a locally stored Embedded Disclosure Policy. If no Embedded Disclosure Policy exists, this check is superseded. Otherwise, if the Embedded Disclosure Policy are present and
 
     - ``policy_type = no_policy``; no restriction applies.
     - ``policy_type = authorized_rp_only``; only **Authorized Relying Parties** within the ``authorized_parties[]`` list can be authorized for the Presentation. The Wallet Unit MUST compare the Relying Party subject DN from Wallet-Relying Party Access Certificate against ``subject_dn`` entries, and/or compare the RP entitlements or sub-entitlements from Wallet-Relying Party Registration Certificate against ``entitlement_uri`` entries. A match on either criterion is sufficient.
-    - ``policy_type = specific_root_of_trust`` only Relying Parties whose WRPAC trust chain contains one of the ``trusted_roots[]`` array of objects can be authorized for the Presentation. The Wallet Unit MUST compare against the ``trusted_roots`` list and match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison (as defined in ISS-MDATA-EBD-4.2.5.2-09, [`ETSI TS 119 472-3`_]). 
-    
-     If either of these checks is satisfied or no EDP are present, the Wallet Unit MUST set the ``edp_state`` to ``EDP_SATISFIED``; on the contrary, if none are satisfied the Wallet Unit MUST set the ``edp_state`` to ``EDP_NOT_SATISFIED``.
+    - ``policy_type = specific_root_of_trust`` only Relying Parties whose WRPAC trust chain contains one of the ``trusted_roots[]`` array of objects can be authorized for the Presentation. The Wallet Unit MUST compare against the ``trusted_roots`` list and match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison (as defined in ISS-MDATA-EBD-4.2.5.2-09, [`ETSI TS 119 472-3`_]).
 
+     If either of these checks is satisfied or no EDP are present, the Wallet Unit MUST set the ``edp_state`` to ``EDP_SATISFIED``; on the contrary, if none are satisfied the Wallet Unit MUST set the ``edp_state`` to ``EDP_NOT_SATISFIED``.
 
 **Output Model**
 
@@ -512,7 +511,6 @@ The diagram below illustrates the various steps of the Authorization Process and
     :width: 99%
     :alt: The figure illustrates the Flowchart of the EUDIW Authorization Algorithm.
     :caption: `Flowchart of the EUDIW Authorization Algorithm. <https://www.plantuml.com/plantuml/png/hPRFSjis4CRlV8eTvs8VghPnq_XFaeQIePHJLrP9rfwUD0YuaZ2c00q0Ag4xUVS2XAaW1ktuK7g65e5lTxzT_q3hlJPKcMPJ9_gMYorLT0FQj3NQk-BimKxA3DznquufkrqfsOXg8ckfuCNqrFqCAQMgKDshZhihKCrjRMwu5552Cfw-ceu7fM76bwSdFut3kZDfC7P7fgVaTP9qlIR9MTgODGh36JK8D_aS3alLQ0DaH-k6kY97vmbVmg7R2yNLRqVWdk1GoAC4uEm2SGDkrxJG2EEoV9BAhDjpkwkDt2POQuJ35lLHWgBYooJPzft0WSij5R_hQa9grvUK6GtNjEPLjtW0_zfCpakcdTLy0dH7UKq_rjYRyTd1NgxhBHpSqBf6yqEETSl5gXjT2pckk3RAbvgWgzNr51LprzdF8vXAjQ46TgYyqWhE--sN8qZhbRLkrfjXnV482huIr3GAOUTBXFk_ZC0FFHNCpc18ycfqtp5RKow65B_Q9BZPIaLhlyrDkzzyRHqOMryF6pmPmKIkKQ5WQ2iWk_LRNxgxlVcnftNjNNYD1jqmXbelcpgUlqqx8NcPJRD9MfB5TNgPNPo_UVEYObYnatVlEf4dGiZ1a6os3rek6Vjut0Trx3mCFgCMeBi5LMQXRQi8Rq58WQuH7t3FJYHx2mD5uIg_RrL8ynMpnoZpGA62lnfKxQCOaSz6MQZt_2duExyCGPf88T0AZ0mqEqxXzxAS5o5Glb2ZBTJzeUCL2aSoge2i8NH3ggxTUWjRTmW42eO1KFscGhsLGYFedk8GhE-XU-Bf_x50IoOB3jk0zdG4C-UtvdS8bQs-mmgiXlOyViDYF_LdufYJ3rbHalovB4xJx98y3p-_PkqzWx0zNmEwRoq-QEAnbsM06yoLj3qr2dlmafwzCHULW-Kw0c4_qruIpp4SopYRNMIp3uj7nkFVzS54dVi0SU9WhN63miHUl9lUJo3LO25cwzYFotgJNra_P5PcvINvq_wEJ4LUWag-LYOCAigw8Kvh-GdATelxSfdM3HKC--3-5AR6e3P-z2uWwYYgvQk5SJt5qN_Ke5HQbgGeqpAxcYtAV-PaCRig5pqiGt-4gESmspN9FOmktJmj2XAV1e2GzQWDdtgkKAFmVOGrt7kdO7ABC94RYotNJqx3IybdXbW5KuYDNrddQV67e--2b6HIVgTr8V__plrharpCWwz8J_JcX8KLwIN72gI2cUo2jtvqJpHhLOl2EYscMUGoQZCEjOI4uU6KuYQZ9_yv_FGb-LhChoNTGNzl7vfD_Hy0>`_
-
 
 The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is elaborated on input the values of the ``edp_state``, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
@@ -604,7 +602,7 @@ X509 Certificate Chain Status Checking
 """""""""""""""""""""""""""""""""""""""
 
 .. warning::
-    
+
     TODO: richiamare il trust managemnt.
 
 The Entity performing validation MUST determine the revocation status for every certificate in the path with one of the following methods:

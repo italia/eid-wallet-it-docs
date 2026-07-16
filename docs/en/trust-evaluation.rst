@@ -1,14 +1,13 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
 Trust Evaluation Process
 ========================
 
-Every trust evaluation process involves the following roles: 
+Every trust evaluation process involves the following roles:
 
-- The **Trust Evaluator** is the party that performs the evaluation. 
-- The **Trust Evaluated Party** is the entity, or the attestation, that is the object of the evaluation. 
+- The **Trust Evaluator** is the party that performs the evaluation.
+- The **Trust Evaluated Party** is the entity, or the attestation, that is the object of the evaluation.
 
 The same entity can act in both roles at different moments of the flows. The framework specific sections define which entity acts in which role, when, and for which purpose.
 
@@ -54,9 +53,8 @@ The Signing Trust Anchor Validation is not provided in the table, since it does 
       - Not applicable.
       - Acts as Trust Evaluated Party toward the Wallet Instance. It MUST support EUDIW Trust Framework when it operates under the EUDIW profile, that is for cross-border services, or National Trust Framework otherwise (see :ref:`trust-evaluation:Selection at Presentation`).
 
-
 .. note::
-  In case of technical divergence between the configuration published through EUDIW mechanisms and the configuration published through the federation, for example different certificates for the same entity in a List of Trusted Entities and in the Trust Anchor Entity Configuration, the EUDIW configuration MUST prevail. 
+  In case of technical divergence between the configuration published through EUDIW mechanisms and the configuration published through the federation, for example different certificates for the same entity in a List of Trusted Entities and in the Trust Anchor Entity Configuration, the EUDIW configuration MUST prevail.
 
 Selection at Issuance
 ^^^^^^^^^^^^^^^^^^^^^
@@ -74,19 +72,18 @@ In the remote flow the selection is declared by the Relying Party through the ``
 
 A Relying Party interacting with a Wallet Unit under the EUDIW profile (i.e. when a Relying Party wants to provide cross-border online services to the users), MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] (OIDFVP-HAIP-COMMON-REQ-01). A Relying Party that knows it is interacting with a national Wallet Instance, through the wallet discovery mechanism of the ecosystem (see :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` and the Selection Page in :ref:`functionalities:User Experience Design`), MAY use the ``openid_federation`` prefix with the federation artifacts.
 
-The Wallet Instance MUST support both prefixes and MUST process each request under the trust evaluation procedures of the framework declared by the prefix. In particular, the ``x509_hash`` prefix selects the EUDIW procedures (see :ref:`trust-evaluation-eudiw:Authentication Process`), the ``openid_federation`` prefix selects the National Trust Framework procedures (see :ref:`trust-evaluation-oidfed:Trust Evaluation Processes by Context`). The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework. 
+The Wallet Instance MUST support both prefixes and MUST process each request under the trust evaluation procedures of the framework declared by the prefix. In particular, the ``x509_hash`` prefix selects the EUDIW procedures (see :ref:`trust-evaluation-eudiw:Authentication Process`), the ``openid_federation`` prefix selects the National Trust Framework procedures (see :ref:`trust-evaluation-oidfed:Trust Evaluation Processes by Context`). The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework.
 
 In the proximity flow the Relying Party Instance authentication follows the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on the access certificate, as profiled in Section 5.3 of [`ETSI TS 119 472-2`_] (see :ref:`proximity-flow:mdoc Request`). A selection mechanism equivalent to the ``client_id`` prefix is not defined in [`ISO18013-5`_].
 
 Failure Handling
 ^^^^^^^^^^^^^^^^
 
-The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework. During presentation flow, if a Relying Party declares the ``x509_hash`` prefix and the access certificate validation fails, the Wallet Instance MUST NOT attempt the evaluation under the National Trust Framework, and the same rule applies in the opposite direction. 
+The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework. During presentation flow, if a Relying Party declares the ``x509_hash`` prefix and the access certificate validation fails, the Wallet Instance MUST NOT attempt the evaluation under the National Trust Framework, and the same rule applies in the opposite direction.
 
 At issuance, if the evaluation of the Credential Issuer or of the Wallet Instance Attestation fails under the framework selected by the catalogue, the interaction MUST NOT continue and MUST NOT be re-evaluated under the other framework. In the EUDIW Trust Framework, according to the ARF Annex 2 (`EIDAS-ARF`_), the Wallet Unit MUST validate the access certificate of the Provider and its registration before requesting the issuance and, when this verification does not succeed, it MUST display a warning to the User and MUST NOT request the issuance (ISSU_24, ISSU_24a and ISSU_24b for the PID Providers, ISSU_34, ISSU_34a and ISSU_34b for the other Providers). The Provider MUST validate the Wallet Instance Attestation through the Wallet Providers LoTE before issuing (ISSU_21, ISSU_28). Unlike the presentation case, no User choice option is foreseen at issuance. Within the National Trust Framework the same behavior applies by analogy.
 
 When the authentication of a Relying Party fails, the Wallet Instance MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy. Under the EUDIW Trust Framework this behavior is required by RPA_05 and RPA_06a of the ARF Annex 2 (`EIDAS-ARF`_). Within the National Trust Framework the same behavior applies by analogy with RPA_05.
-
 
 .. include:: trust-evaluation-eudiw.rst
 .. include:: trust-evaluation-oidfed.rst
