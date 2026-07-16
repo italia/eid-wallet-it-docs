@@ -714,9 +714,6 @@ The body of the Key Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. String containing the URL identifying the Wallet Provider.
-      - :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
