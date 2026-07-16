@@ -500,7 +500,7 @@ Richiesta di Emissione della Key Attestation
 
 La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con ``Content-Type`` impostato a ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``wua-request+jwt``.
+L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``ka-request+jwt``.
 
 Il body della richiesta di emissione Key Attestation contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di header e i claim del body descritti di seguito.
 
