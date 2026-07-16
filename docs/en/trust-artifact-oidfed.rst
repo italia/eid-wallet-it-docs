@@ -1,9 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
-OID-FED Trust Artifacts
------------------------
+National Trust Artifacts
+------------------------
 
-This section defines the trust artifacts of the National Trust Framework that are defined in the following specifications of the OpenID Federation family, each within its own scope:
+This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. 
+The X.509 profile is detailed in the :ref:`infrastructure-trust:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
 - OpenID Federation for Wallet Architectures, the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.
@@ -15,7 +16,7 @@ Figure :ref:`fig_OID-FED_roles` maps each wallet ecosystem entity onto the OpenI
 .. plantuml:: plantuml/oid-fed-roles.puml
     :width: 70%
     :alt: The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves.
-    :caption: `OID-FED Roles <https://www.plantuml.com/plantuml/svg/ROv1IyD044Rl-ol6UWvIBUf1IaDgGF1GHF0eq-maBjtCXjdPXYB-TsiY9HLlE-pxU6yL5KLJwys5uyedI_1GBAwAnNiHMD4noTAOk7FSeM0BMwnsZOJ4jWW-2AWWnmw5M2TKBXBw4TZwuy8O8rGfSkC9PYLP4bGN6FAa7q6SEeepm0WrdhHmMT-KT-ivV1g0oVfLKbJ8kJeEXuqYd1DFh2GjMOTA0-5Ovs2-pYAU2VU_KazOnudtyRwyNj_-zRwXzwImaR1tbaPrty5_KFP2_k2uWGsA7aPIkg70_3oor6NBeMfoAfgXytJran-p8hQfzTy0>`_
+    :caption: `OID-FED Roles <https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00>`_
 
 .. note::
   Wallet Instances are not Federation Entities, they are the End-User personal devices authenticated by their Wallet Provider.
@@ -241,8 +242,8 @@ The Federation TA is the root of the Trust Chain. Its Entity Configuration has n
      }
    }
 
-Entity Subordinate of Leaf issued by the Federation TA
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Subordinate Statement of Leaf issued by the Federation TA
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Federation TA issues a Subordinate Statement about each Leaf it registers directly. The statement carries the Federation Entity Keys of the Leaf, the ``metadata_policy`` that fixes the protocol keys and, when present, the service endpoints and the URIs of the Leaf to the values approved at onboarding, and the ``constraints`` of the subtree.
 
@@ -370,8 +371,8 @@ The Federation TA issues a Subordinate Statement about each Leaf it registers di
      }
    }
 
-Entity Subordinate of an Intermediate
-"""""""""""""""""""""""""""""""""""""
+Subordinate Statement of an Intermediate
+""""""""""""""""""""""""""""""""""""""""
 
 The Federation TA issues a Subordinate Statement about the Federation Intermediate. The ``constraints`` restrict the subtree of the Intermediate to the Relying Parties it can intermediate, and ``max_path_length`` is set to 1 to allow the single level of intermediation between the Federation TA and the affiliated Relying Parties. It carries no ``metadata_policy``: the affiliated Relying Parties are bound by the Intermediate in the Subordinate Statements it issues about them.
 
@@ -401,8 +402,8 @@ The Federation TA issues a Subordinate Statement about the Federation Intermedia
      }
    }
 
-Entity Subordinate of Leaf issued by a Federation Intermediate
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Subordinate Statement of Leaf issued by a Federation Intermediate
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Federation Intermediate issues a Subordinate Statement about each affiliated Relying Party. It carries the ``metadata_policy`` that binds the protocol metadata of the affiliated Relying Party to the values approved at onboarding, exactly as the Federation TA does for the Leaves it registers directly. The ``constraints`` of the subtree are set by the Federation TA in the statement about the Intermediate. In the National Trust Framework an Intermediary intermediates only Relying Parties.
 
