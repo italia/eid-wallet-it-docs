@@ -322,51 +322,47 @@ The applicable Trust Anchor depends on the type of the received attestation. For
 If any step fails, the attestation MUST NOT be considered issued by a trusted issuer.
 
 EUDIW Authentication
-^^^^^^^^^^^^^^^^^^^^
-
-The **Authentication Process** enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party's X.509 certificate chain, starting from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and verifying the Wallet-Relying Party's possession of the corresponding private key.
-
-To authenticate the Wallet-Relying Party, the Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate by performing the following steps:
-
-1. **Verify the Signature:** Use the public key from the validated Wallet-Relying Party Access Certificate to verify the Wallet-Relying Party's signature on the artifact it produces in the specific interaction, as detailed below.
-
-    - During Credential Issuance, the Wallet Unit MUST obtain the Credential Issuer Metadata, extract the ``x5c`` claim value from the header and verify the Credential Issuer Metadata signature using the top certificate of the certificate chain (i.e., the one whose subject DN corresponds to the Credential Issuer's name).
-    - During Credential Presentation,
-
-        - if the Presentation follows the Remote Flow, the Wallet Unit MUST extract the ``x5c`` claim value from the header of the Request Object and verify the Request Object's signature using the top certificate of the certificate chain (i.e., the one whose subject DN corresponds to the Relying Party's name).
-        - if the Presentation follows the Proximity Flow, the Wallet Unit MUST extract the ``readerAuthAll[].33`` (or alternatively ``readerAuth[].33``) claim value from the mdoc Request and check its signature using the top certificate of the certificate chain (i.e., the one whose subject DN corresponds to the Relying Party's name).
-
-2. **Construct the Certification Path:** Build a path starting from the certificate issued by the Provider of WRPAC (``C_1``) and ending with the Wallet-Relying Party Access Certificate presented by the WRP (``C_n``). *(Note: The simplest path consists of just one certificate, where ``n = 1``).*
-
-3. **LoTE Validation:** Retrieve the WRPAC Trust Anchor that anchors the root of the certificate path from the validated List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
-
-4. **Trust Anchor Retrieval:** To retrieve the correct Trust Anchor, the Wallet Unit MUST:
-    
-    - match the ``issuer.organizationIdentifier`` field value of certificate ``C_1`` with the ``TrustedEntityList[].TrustedEntity.TETradeName`` field value of the LoTE; and
-    - use the certificates found in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field as the Trust Anchor.
-
-5. **Execute Path Validation:** Run the algorithm defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm` as described in :ref:`trust-evaluation-eudiw:Wallet-Relying Party Access Certificate Validation`.
-
-.. warning::
-
-    A Wallet-Relying Party MUST distinguish between transient authentication (e.g., access control) and content commitment (non-repudiation). To prevent an attacker from disguising a legal commitment as a protocol nonce, the Wallet-Relying Party MUST NOT use the Wallet-Relying Party Access Certificate private key to sign arbitrary data that could be controlled by an external party.
-
-
+^^^^^^^^^^^^^^^^^^^
+ 
+The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key. The Wallet-Relying Party Access Certificate is profiled in [**FIXME**: aggiungere rif a sezione artefact eudiw relativa al WRPAC].
+ 
+For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
+ 
 **Input**
-
-The Wallet Unit's Authentication output MUST be based only on information derived from:
-
-- The appropriate Trust Anchor obtained from a valid instance of the Provider of WRPAC LoTE;
-- The X509 certificate path terminating with the WRPAC end-entity certificate;
-- A Wallet-Relying Party signature over some data carrying the proof of possession of the private key referenced in the WRPAC. 
-
+ 
+The Authentication outcome MUST be based only on information derived from:
+ 
+- the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities;
+- the X.509 certificate path terminating with the Wallet-Relying Party Access Certificate end-entity certificate;
+- a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.
+ 
 **Outcome**
-
-The Wallet Unit MUST output a decision from the Authentication process: the Wallet-Relying Party can either be ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. In the first case, the Wallet Unit SHOULD proceed in the interaction flow with the Wallet-Relying Party; in the second, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction flow as the entity is not trustworthy.
-
+ 
+The Wallet Unit MUST output a decision: the Wallet-Relying Party is either ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. If ``AUTHENTICATED``, the Wallet Unit proceeds in the interaction flow. If ``NON_AUTHENTICATED``, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction, as the entity is not trustworthy.
+ 
+**Process**
+ 
+The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:
+ 
+1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`). To select the correct entry, match the ``issuer.organizationIdentifier`` of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntityList[].TrustedEntity.TETradeName`` of the List of Trusted Entities. The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
+ 
+2. **Construct the Certification Path**: build a path starting from the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_1``) and ending with the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_n``). The simplest path consists of a single certificate, where ``n = 1``.
+ 
+3. **Execute Path Validation**: validate the certification path as defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`, using the Trust Anchor retrieved at step 1, as described in :ref:`trust-evaluation-eudiw:Wallet-Relying Party Access Certificate Validation`.
+ 
+4. **Verify the Signature**: use the public key of the validated Wallet-Relying Party Access Certificate to verify the Wallet-Relying Party signature over the artifact it signs in the specific interaction. The certificate chain and the signed artifact depend on the flow:
+ 
+    - **Remote Flow**: the chain is carried in the ``x5c`` header of the Wallet-Relying Party signed Request Object, and the Relying Party is authenticated through the ``x509_hash`` Client Identifier Prefix, as defined in [`OpenID4VP`_] and [`OPENID4VC-HAIP`_].
+    - **Proximity Flow**: the chain is carried in the mdoc reader authentication (``ReaderAuth``) signed by the Wallet-Relying Party, in the COSE ``x5chain`` header (label ``33``), as defined in [`ISO18013-5`_].
+    - **Issuance Flow**: the chain is carried in the ``x5c`` header of the Wallet-Relying Party signed Credential Issuer Metadata, as defined in [`OpenID4VCI`_].
+ 
+.. warning::
+ 
+    A Wallet-Relying Party MUST distinguish between transient authentication (e.g., access control) and content commitment (non-repudiation). To prevent an attacker from disguising a legal commitment as a protocol nonce, the Wallet-Relying Party MUST NOT use the Wallet-Relying Party Access Certificate private key to sign arbitrary data that could be controlled by an external party.
+ 
 Wallet-Relying Party Access Certificate Validation
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-
+ 
 The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there, where ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party, ``C_n`` is the Wallet-Relying Party Access Certificate, and the ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
 
 EUDIW Authorization
