@@ -6,8 +6,8 @@ OID-FED Trust Artifacts
 This section defines the trust artifacts of the National Trust Framework that are defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
-- OpenID Federation for Wallet Architectures, the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.
-- OpenID Federation Subordinate Events, that defines the Subordinate Events endpoint, used to obtain the registration history of an Immediate Subordinate.
+- OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_) the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.
+- OpenID Federation Subordinate Events (`OID-FED-SUBORDINATE-EVENTS`_), that defines the Subordinate Events endpoint, used to obtain the registration history of an Immediate Subordinate.
 
 Figure :ref:`fig_OID-FED_roles` maps each wallet ecosystem entity onto the OpenID Federation role it plays. Wallet-Relying Parties and Wallet Providers are Federation Entities that MUST be registered by a Federation Authority, that is a Federation TA or Intermediate.
 
@@ -30,7 +30,7 @@ The Federation Entity properties supported in the IT-Wallet specification profil
 
 .. list-table::
    :class: longtable
-   :widths: 26 36 38
+   :widths: 25 35 40
    :header-rows: 1
 
    * - Endpoint
@@ -48,7 +48,7 @@ The Federation Entity properties supported in the IT-Wallet specification profil
    * - **trust mark status** (``/trust_mark_status``). REQUIRED only for Federation TA.
      - **POST**. ``trust_mark`` REQUIRED.
      - The Trust Mark Status Response, that is the validity of the Trust Mark, as a signed JWT (``application/trust-mark-status-response+jwt``). `OID-FED`_ Section 8.4.2
-   * - **trust mark list** (``/trust_mark_list``). REQUIRED only for Federation TA.
+   * - **trust mark list** (``/trust_marked_list``). REQUIRED only for Federation TA.
      - **GET**. ``trust_mark_type`` REQUIRED, ``sub`` OPTIONAL.
      - A JSON array of the Entity Identifiers for which the Trust Mark is issued and still valid (``application/json``). `OID-FED`_ Section 8.5.2
    * - **trust mark** (``/trust_mark``). REQUIRED only for Federation TA.
@@ -68,6 +68,10 @@ The **Subordinate Events** (``/subordinate_events``) endpoint is defined in `Ope
 
 Entity Statements
 ^^^^^^^^^^^^^^^^^^^^^^^
+
+A **Entity Statement** is a signed JWT issued by an entity (either itself or a superior) to share federation metadata.
+It contains the keys, policies, and configuration details required for the subject entity to participate in the federation.
+
 The **Entity Configuration** is the Entity Statement that each Federation Entity issues about itself and publishes at the ``.well-known/openid-federation`` path (`OID-FED`_ Section 3). Its ``iss`` and ``sub`` are the Federation Entity Identifier of the Entity itself, and it is signed with a Federation Entity Key. The HTTP response sets the media type to ``application/entity-statement+jwt``. The Entity Configuration MAY also contain one or more Trust Marks.
 
 A **Subordinate Statement** is the Entity Statement that a Trust Anchor or a Federation Intermediate issues about its Immediate Subordinate (`OID-FED`_ Section 3). Its ``iss`` is the issuer, its ``sub`` is the Subordinate, and it carries the Federation Entity Keys of the Subordinate, so it is the statement that binds the Subordinate keys under its superior. It MAY also carry a metadata policy and the Trust Marks about the Subordinate.
@@ -96,7 +100,7 @@ In addition to the REQUIRED common parameters ``iss``, ``sub``, ``iat``, ``exp``
 
 In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
-- **metadata** (``metadata``): JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`.
+- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`.
 - **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`trust-artifact-oidfed:Trust Mark registration-entity`.
 - **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA and MUST NOT be included otherwise. JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers. Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
 
@@ -220,9 +224,10 @@ The Federation TA is the root of the Trust Chain. Its Entity Configuration has n
          "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
          "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
          "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+         "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_marked_list",
          "federation_trust_mark_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark",
-         "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_list",
-         "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/historical_keys"
+         "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/historical_keys",
+         "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/subordinate_events"
        }
      },
      "trust_mark_issuers": {
@@ -650,7 +655,7 @@ Where:
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""
 
-Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity. The only Trust Mark issuer MUST be the Federation TA. It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request. This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework. An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
+Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity. The only Trust Mark issuer for this kind of Trust Mark MUST be the Federation TA. It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request. This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework. An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
 
 A Relying Party Intermediary receives its registration Trust Mark with the ``intermediate`` ``<entity_type>`` in the identifier. Unlike the EUDIW Trust Framework, where the intermediary relationship is expressed in the registration data of the intermediated Relying Party, in the National Trust Framework the relationship is expressed through the federation hierarchy as the Intermediary is a Federation Intermediate that publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. The registration Trust Mark of each affiliated Relying Party is also issued by the Federation Trust Anchor. For this reason no dedicated intermediary field is present in the Trust Mark. The onboarding of the Intermediary is defined in :ref:`onboarding-procedure:Relying Party Intermediaries`.
 
@@ -661,7 +666,7 @@ Trust Marks in Entity Configuration MUST be represented as JSON objects containi
 .. list-table:: Trust Mark Object Claims (in Entity Configuration)
    :class: longtable
    :header-rows: 1
-   :widths: 20 80
+   :widths: 25 75
 
    * - **Claim**
      - **Description**
