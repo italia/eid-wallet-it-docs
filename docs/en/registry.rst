@@ -1443,9 +1443,9 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
   * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
   * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
-  * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
+  * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
 
-3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
+3.  **Final Action**: The entity can then use the metadata to display the catalog information to a User, or use it in other ways.
 
 Credential Issuance
 ^^^^^^^^^^^^^^^^^^^

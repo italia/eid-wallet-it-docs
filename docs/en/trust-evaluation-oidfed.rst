@@ -257,7 +257,7 @@ For Credentials in mdoc format the Mobile Security Object carries the Document S
 3. Verify the attestation signature with the selected key or certificate.
 
 .. note::
-  When required, the Federation Historical Keys endpoint and the published CRLs to ensure that the attestatin was valid at the time of issuance or presentation (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
+  When required, the Federation Historical Keys endpoint and the published CRLs to ensure that the attestation was valid at the time of issuance or presentation (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
 
 The lifecycle of the signing certificates MUST be kept aligned with the federation configuration set of the issuer keys. When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly. Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.
 

@@ -93,7 +93,7 @@ The validation MUST perform the following steps:
 
 4. (LoTE Location Conflict) Check the condition: ``OJEU-LoTE-Loc != LoTE Location`` AND ``LoTE != Content at LoTE Location``.
 
-    - (`LoTE Location`` is the URI in the ``PointersToOtherLoTE`` claim of ``LoTE`` with ``SchemeTerritory`` = ``EU``).
+    - (``LoTE Location`` is the URI in the ``PointersToOtherLoTE`` claim of ``LoTE`` with ``SchemeTerritory`` = ``EU``).
     - If ``TRUE``: Validation MUST stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_FILE_CONFLICT``.
     - If ``FALSE``, proceed to the next step.
 
@@ -116,7 +116,7 @@ The validation MUST perform the following steps:
     - Case $n \neq 0$ (History Chain):
 
         - Iterate $i$ from 1 to $n$ (from most recent Pivot to oldest). Let ``Pivot`` be the file downloaded from the $i$-th URI.
-        - (Link Check) Set ``Pivot-Certs-Set`` to the certificates in the ``PointersToOtherLoTE`` claim (territory ``EU``) of ``Pivot`. If ``LoTESO-Cert`` (the signer of the previous file in the chain) is not in ``Pivot-Certs-Set``, validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
+        - (Link Check) Set ``Pivot-Certs-Set`` to the certificates in the ``PointersToOtherLoTE`` claim (territory ``EU``) of ``Pivot``. If ``LoTESO-Cert`` (the signer of the previous file in the chain) is not in ``Pivot-Certs-Set``, validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
         - (Update Signer) Set ``LoTESO-Cert`` to the first certificate in the ``x5c`` header parameter of ``Pivot``.
         - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert``. If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED``, and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
         - The loop continues, walking backwards until ``LoTESO-Cert`` represents the signer of the oldest Pivot.
@@ -125,7 +125,7 @@ The validation MUST perform the following steps:
 
 9. (Expiration) If current time is greater than the ``NextUpdate`` parameter's value of ``LoTE``, validation MUST fail.
 
-10. (Success) Set ``Authenticated-LoTE`` to ``LoTE`, ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``.
+10. (Success) Set ``Authenticated-LoTE`` to ``LoTE``, ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``.
 
 11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (territory ``EU``), update ``OJEU-LoTE-Loc`` to that value.
 
@@ -189,9 +189,10 @@ Trusted List Validation
 
 This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
 
-1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the validation of the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` except for the LOTL format which is always XML.
-2. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
-3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSI TS 119 615`_].
+1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` except for the LOTL format which is always XML.
+
+1. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
+2. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSI TS 119 615`_].
 
 Authentication Process
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -287,14 +288,14 @@ The Validation flow that the Wallet Unit performs, depends on the availability o
     - ``verifier_info`` parameter included in the Request Object JWT within the authorization request (see [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_]). This is an array of JSON Objects containing Wallet-Relying Party Registration Certificate in base64-encoded format and data including the URL of Registrar online service.
     - ``euwrprc`` CBOR byte string with serialized Wallet-Relying Party Registration Certificate member of ``requestInfo`` included in the ISO ``DeviceRequest`` Proximity Flow, Section 5.3 [`ETSI TS 119 472-2`_].
 
-     !!! warning
-
+    .. warning::
         Currently, the mapping of `EIDAS-ARF`_ HRL RPRC_19a data in the ``requestInfo`` map is not defined in [`ETSI TS 119 472-2`_]
+
 
 - During the Issuance flow, the Credential Issuer includes authorization data in the Credential Issuer Metadata through the ``issuer_info`` array (Section 4.2.3 of [`ETSI TS 119 472-3`_]). This array contains:
 
     - [OPTIONAL] A ``registration_cert`` element containing the Wallet-Relying Party Registration Certificate by value (ISS-MDATA-REG_CERT-4.2.3-04/05) (OPTIONAL).
-    - [REQUIRED] An element with format ``registrar_dataset`` containing self-declared registration information including ``identifier``, ``srvDescription``, ``registryURI`, and ``providesAttestations``.
+    - [REQUIRED] An element with format ``registrar_dataset`` containing self-declared registration information including ``identifier``, ``srvDescription``, ``registryURI``, and ``providesAttestations``.
 
      Metadata is signed with the Attestation Provider Wallet-Relying Party Access Certificate private key (ISSU_22a). Authorization data contained in the Embedded Disclosure Policy is also distributed through the Credential Issuer Metadata within ``credential_configurations_supported`` field.
 
@@ -327,7 +328,9 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 **Output Model**
 
  - If all of the above steps succeeds and the Wallet-Relying Party Registration Certificates is in ``VALID`` state, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_VALID``.
- - If any step fails, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_INVALID``. This is not a final authorization decision; it triggers the :ref:`trust-evaluation-eudiw:Register Query Validation` as fallback.
+ - If any step fails, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_INVALID``. This is not a final authorization decision; it triggers the :ref:`Register Query Validation <register-query-validation>` as fallback.
+
+.. _register-query-validation:
 
 **Register Query Validation**
 
@@ -431,7 +434,7 @@ If the Binding verification succeedes, the Wallet Unit MUST display to the User 
 
 .. note::
     
-    If the Wallet used only the Wallet-Relying Party Registration Certificate ``sub`` for the Binding Verification, and ``authz_val_state == BINDING_FAILED``, the WRPRC is not valid for this Relying Party. The Wallet Unit MUST attempt to query the Registrar URI, validate the response as described in :ref:`trust-evaluation-eudiw:Register Query Validation`, and repeat the binding procedure.
+    If the Wallet used only the Wallet-Relying Party Registration Certificate ``sub`` for the Binding Verification, and ``authz_val_state == BINDING_FAILED``, the WRPRC is not valid for this Relying Party. The Wallet Unit MUST attempt to query the Registrar URI, validate the response as described in :ref:`Register Query Validation <register-query-validation>`, and repeat the binding procedure.
 
 .. note::
 
@@ -511,7 +514,7 @@ The diagram below illustrates the various steps of the Authorization Process and
     :caption: `Flowchart of the EUDIW Authorization Algorithm. <https://www.plantuml.com/plantuml/png/hPRFSjis4CRlV8eTvs8VghPnq_XFaeQIePHJLrP9rfwUD0YuaZ2c00q0Ag4xUVS2XAaW1ktuK7g65e5lTxzT_q3hlJPKcMPJ9_gMYorLT0FQj3NQk-BimKxA3DznquufkrqfsOXg8ckfuCNqrFqCAQMgKDshZhihKCrjRMwu5552Cfw-ceu7fM76bwSdFut3kZDfC7P7fgVaTP9qlIR9MTgODGh36JK8D_aS3alLQ0DaH-k6kY97vmbVmg7R2yNLRqVWdk1GoAC4uEm2SGDkrxJG2EEoV9BAhDjpkwkDt2POQuJ35lLHWgBYooJPzft0WSij5R_hQa9grvUK6GtNjEPLjtW0_zfCpakcdTLy0dH7UKq_rjYRyTd1NgxhBHpSqBf6yqEETSl5gXjT2pckk3RAbvgWgzNr51LprzdF8vXAjQ46TgYyqWhE--sN8qZhbRLkrfjXnV482huIr3GAOUTBXFk_ZC0FFHNCpc18ycfqtp5RKow65B_Q9BZPIaLhlyrDkzzyRHqOMryF6pmPmKIkKQ5WQ2iWk_LRNxgxlVcnftNjNNYD1jqmXbelcpgUlqqx8NcPJRD9MfB5TNgPNPo_UVEYObYnatVlEf4dGiZ1a6os3rek6Vjut0Trx3mCFgCMeBi5LMQXRQi8Rq58WQuH7t3FJYHx2mD5uIg_RrL8ynMpnoZpGA62lnfKxQCOaSz6MQZt_2duExyCGPf88T0AZ0mqEqxXzxAS5o5Glb2ZBTJzeUCL2aSoge2i8NH3ggxTUWjRTmW42eO1KFscGhsLGYFedk8GhE-XU-Bf_x50IoOB3jk0zdG4C-UtvdS8bQs-mmgiXlOyViDYF_LdufYJ3rbHalovB4xJx98y3p-_PkqzWx0zNmEwRoq-QEAnbsM06yoLj3qr2dlmafwzCHULW-Kw0c4_qruIpp4SopYRNMIp3uj7nkFVzS54dVi0SU9WhN63miHUl9lUJo3LO25cwzYFotgJNra_P5PcvINvq_wEJ4LUWag-LYOCAigw8Kvh-GdATelxSfdM3HKC--3-5AR6e3P-z2uWwYYgvQk5SJt5qN_Ke5HQbgGeqpAxcYtAV-PaCRig5pqiGt-4gESmspN9FOmktJmj2XAV1e2GzQWDdtgkKAFmVOGrt7kdO7ABC94RYotNJqx3IybdXbW5KuYDNrddQV67e--2b6HIVgTr8V__plrharpCWwz8J_JcX8KLwIN72gI2cUo2jtvqJpHhLOl2EYscMUGoQZCEjOI4uU6KuYQZ9_yv_FGb-LhChoNTGNzl7vfD_Hy0>`_
 
 
-The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is elaborated on input the values of the ``edp_state`, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
+The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is elaborated on input the values of the ``edp_state``, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
 X509 Certificate Chain Validation Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -541,17 +544,17 @@ Iterate through the path for $i$ from $1$ to $n$:
 
     - Verify the signature of $C_i$ using ``working_public_key``, ``working_public_key_parameters``, and the algorithm identifier.
     - Ensure ``current_time`` falls within the ``notBefore`` and ``notAfter`` validity period of $C_i$.
-    - Check revocation status (Certificate Revocation List (CRL) or Online Certificate Status Protocol (OCSP)) as defined in [Revocation Checking](#revocation-checking).
+    - Check revocation status (Certificate Revocation List (CRL) or Online Certificate Status Protocol (OCSP)) as defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Status Checking`.
     - Verify that the issuer name of $C_i$ matches ``working_issuer_name``.
 
 2. Policy Processing:
 
     - If ``certificatePolicies`` extension is present and ``valid_policy_tree`` is not ``NULL``:
-        - Process policy constraints, qualifiers, and mappings according to [RFC 5280, Section 6.1.3].
+        - Process policy constraints, qualifiers, and mappings according to :rfc:`5280#section-6.1.3`.
 
         - for each policy $P$ not equal to ``anyPolicy`` in the certificate policies extension, let $P$-OID denote the OID for policy $P$ and $P$-Q denote the qualifier set for policy $P$.
             - for each node of depth $i-1$ in the ``valid_policy_tree`` where $P$-OID is in the node's ``expected_policy_set``, create a child node with ``valid_policy`` $P$-OID, ``qualifier_set`` $P$-Q, and ``expected_policy_set`` set to {$P$-OID}.
-            - If no match is found for $P$-OID in any node of depth $i-1$ and the ``valid_policy_tree`` has a node of depth $i-1$ with ``valid_policy`` set to ``anyPolicy`, generate a child node with ``valid_policy`` $P$-OID, ``qualifier_set`` $P$-Q, and ``expected_policy_set`` set to {``anyPolicy``}.
+            - If no match is found for $P$-OID in any node of depth $i-1$ and the ``valid_policy_tree`` has a node of depth $i-1$ with ``valid_policy`` set to ``anyPolicy``, generate a child node with ``valid_policy`` $P$-OID, ``qualifier_set`` $P$-Q, and ``expected_policy_set`` set to {``anyPolicy``}.
 
         - if the ``certificatePolicies`` extension contains ``anyPolicy`` with the qualifier set $AP$-Q, $i \leq n$, and the certificate is self issued, then for each node of depth $i-1$ in the ``valid_policy_tree`` and each value in the ``expected_policy_set`` of that node, generate a child node with ``valid_policy`` and ``expected_policy_set`` set to the ``expected_policy_set`` value, set the ``qualifier_set`` set to $AP$-Q.
         - Update the ``valid_policy_tree`` by pruning nodes that do not match the policies in $C_i$.

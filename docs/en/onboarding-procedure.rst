@@ -19,17 +19,18 @@ Which verification mechanism a given Credential requires is not up to whoever is
 
 Where the two frameworks diverge in configuration, the EUDIW Trust Framework prevails, being legally binding, while the National Trust Framework is functionally binding within the national ecosystem.
 
-This section is organised around the three processes that, together, take an entity from a registration request to full operational status:
+This section is organised around the four processes that, together, take an entity from a registration request to full operational status:
 
 - The **Administrative Process** establishes an entity's legal standing, regulatory compliance, and eligibility to participate in the ecosystem, ahead of any technical step;
 - The **Registration Process** technically registers the entity: always in the National Trust Infrastructure, and, where the entity's category requires or opts into it, also as a EUDIW Wallet-Relying Party;
-- The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust frameworks depending on its category.
+- The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust frameworks depending on its category;
+- The **Notification and Publication** process publishes a notified entity in the trusted list for its category, which is what makes it trusted across the ecosystem.
 
 
 Overview
 --------
 
-This overview introduces the actors and system components involved in onboarding, the Dual Trust Framework logic that shapes every onboarding decision, and the three processes an entity goes through.
+This overview introduces the actors and system components involved in onboarding, the Dual Trust Framework logic that shapes every onboarding decision, and the four processes an entity goes through.
 The processes themselves are specified in the sections that follow; the material here is the shared frame they build on.
 
 Entities and Components
@@ -72,7 +73,7 @@ Onboarding System
 
 The trust-infrastructure roles listed above are realised, within the Onboarding System, by the following software components:
 
-- the **Onboarding UI** that provides the onboarding entities with a single touchpoint that orchestrates the entire onbording flow;
+- the **Onboarding UI** that provides the onboarding entities with a single touchpoint that orchestrates the entire onboarding flow;
 - the **Registration Service** (the Registrar) that verifies WRPs and writes their records to the **WRP Register**;
 - the **WRPAC** and **WRPRC Issuance Services**;
 - the **Signature Certificate Issuance Service**;
