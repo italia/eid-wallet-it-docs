@@ -1,0 +1,147 @@
+/**
+ * Post–Bootstrap Italia overrides (loaded after bootstrap-italia.min.css).
+ * Brightness modes and navscroll/local TOC need to win over BI defaults.
+ */
+
+:root {
+  --bs-font-sans-serif: var(--it-docs-font-family);
+  --bs-body-font-family: var(--it-docs-font-family);
+}
+
+/* Sidebar section titles — match navscroll over Bootstrap Italia sidebar defaults */
+.it-docs-primary-nav.sidebar-wrapper .sidebar-linklist-wrapper .link-list-wrapper > .it-docs-nav-section-label {
+  font-size: var(--it-docs-nav-heading-size) !important;
+  line-height: 1.35 !important;
+}
+
+/* Black mode — local TOC (On this page), desktop only */
+@media (min-width: 992px) {
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .menu-wrapper,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .navbar-collapsable,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .navbar-collapsable .menu-wrapper {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--it-docs-content-text);
+  }
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > .it-docs-nav-section-label,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc {
+  color: var(--it-docs-content-muted);
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc ul ul a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc ul ul ul a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a {
+  color: var(--it-docs-content-text) !important;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a.active,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a.active,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active {
+  color: var(--it-docs-content-link) !important;
+  border-left-color: var(--it-docs-content-link) !important;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a.active span,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active span {
+  color: var(--it-docs-content-link) !important;
+  text-decoration: none;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active {
+  border-left: none;
+}
+
+/* Middle and black content modes — pager primary (next) button.
+   The filled blue reads well on both the light cream and the dark surface. */
+html[data-it-docs-brightness="middle"] .it-docs-pager .btn-primary,
+html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0066cc;
+  --bs-btn-border-color: #0066cc;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #0059a8;
+  --bs-btn-hover-border-color: #0059a8;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0059a8;
+  --bs-btn-active-border-color: #0059a8;
+  --bs-btn-focus-shadow-rgb: 0, 102, 204;
+  color: var(--bs-btn-color) !important;
+  background-color: var(--bs-btn-bg) !important;
+  border-color: var(--bs-btn-border-color) !important;
+}
+
+html[data-it-docs-brightness="middle"] .it-docs-pager .btn-primary:hover,
+html[data-it-docs-brightness="middle"] .it-docs-pager .btn-primary:focus,
+html[data-it-docs-brightness="middle"] .it-docs-pager .btn-primary:focus-visible,
+html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary:hover,
+html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary:focus,
+html[data-it-docs-brightness="black"] .it-docs-pager .btn-primary:focus-visible {
+  color: var(--bs-btn-hover-color) !important;
+  background-color: var(--bs-btn-hover-bg) !important;
+  border-color: var(--bs-btn-hover-border-color) !important;
+}
+
+/* Middle (light cream) content mode — secondary/prev pager button:
+   dark-blue outline so it stays legible on the light surface */
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary {
+  --bs-btn-color: var(--it-docs-content-link);
+  --bs-btn-border-color: var(--it-docs-content-link);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--it-docs-content-link);
+  --bs-btn-hover-border-color: var(--it-docs-content-link);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--it-docs-content-link-hover);
+  --bs-btn-active-border-color: var(--it-docs-content-link-hover);
+  --bs-btn-focus-shadow-rgb: 0, 89, 168;
+  --bs-link-color: var(--it-docs-content-link);
+  --bs-link-hover-color: #fff;
+  color: var(--it-docs-content-link) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: inset 0 0 0 2px var(--it-docs-content-link) !important;
+}
+
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:hover,
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus,
+html[data-it-docs-brightness="middle"] .it-docs-pager a.btn-outline-primary:focus-visible {
+  color: #fff !important;
+  background-color: var(--it-docs-content-link) !important;
+  border-color: var(--it-docs-content-link) !important;
+  box-shadow: inset 0 0 0 2px var(--it-docs-content-link) !important;
+}
+
+/* Black (dark) content mode — secondary/prev pager button: white outline on dark */
+html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-color: #17324d;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-color: #17324d;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #fff;
+  --bs-btn-focus-shadow-rgb: 255, 255, 255;
+  --bs-link-color: #fff;
+  --bs-link-hover-color: #17324d;
+  color: #fff !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: inset 0 0 0 2px #fff !important;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:hover,
+html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:focus,
+html[data-it-docs-brightness="black"] .it-docs-pager a.btn-outline-primary:focus-visible {
+  color: #17324d !important;
+  background-color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: inset 0 0 0 2px #fff !important;
+}
