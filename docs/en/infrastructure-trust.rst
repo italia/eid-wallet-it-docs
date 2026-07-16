@@ -6,7 +6,7 @@ Infrastructure of Trust
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the general :ref:`infrastructure-trust:X.509 Certificate Profile` and the :ref:`infrastructure-trust:Common Trust Artifacts` shared by both frameworks, followed by the framework-specific artifacts (:ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`infrastructure-trust:Trust Management and Lifecycle`).
+This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the general :ref:`infrastructure-trust:X.509 Certificate Profile` and the :ref:`infrastructure-trust:Common Trust Artifacts` shared by both frameworks, followed by the framework-specific artifacts (:ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID-FED Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`infrastructure-trust:Trust Management and Lifecycle`).
 
 Overview
 --------
@@ -20,7 +20,7 @@ This choice will affect both the onboarding and the trust evaluation procedures.
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both `OID-FED`_ and EUDIW trust mechanisms MUST be supported.
     While PID Providers, QEAA Providers and PuB-EAA Provider MUST support EUDIW trust mechanism as they are issuing Credentials regulated in eIDAS 2.0.
 
-In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID FED Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
+In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:OID-FED Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
 .. include:: x509-certificate-profile.rst
 .. include:: trust-artifact-common.rst
@@ -36,7 +36,7 @@ State Machine for Entities
 EUDIW Trust Management Process
 """"""""""""""""""""""""""""""
 
-OID FED Trust Management Process
+OID-FED Trust Management Process
 """"""""""""""""""""""""""""""""
 
 Revocation Mechanisms
