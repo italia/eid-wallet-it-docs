@@ -23,7 +23,7 @@
     "wallet_version": "1.0.0",
     "wallet_link": "https://example.org/wallets/ExampleOrg/info",
     "wallet_solution_certification_information": "https://example.org/wallets/ExampleOrg/certification",
-    "sub": "https://wallet-solution.example.org",
+    "sub": "https://wallet-solution.example.org/dd762e6f8b613193",
     "exp": 1772447918
   
 }

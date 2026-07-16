@@ -452,7 +452,7 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
       - `OpenID4VCI`_.
     * - **wallet_version**
       - OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
-      - `OpenID4VCI`_ and `EUDI-TS 3`_.
+      - `OpenID4VCI`_ e `EUDI-TS 3`_.
     * - **wallet_solution_certification_information**
       - OPZIONALE. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
       - `EUDI-TS 3`_.
