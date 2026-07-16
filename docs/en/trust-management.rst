@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-.. include:: ../common/symbols.rst
 
 Trust Management and Lifecycle
 ------------------------------
@@ -260,7 +259,7 @@ This section describes the artifacts that are employed in :ref:`infrastructure-t
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
   - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
-  - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC)`.
+  - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
   ETSI 319 411-1 v1.5.1 recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
