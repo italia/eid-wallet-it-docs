@@ -291,34 +291,35 @@ If any step fails, the certification path MUST be considered invalid and the art
 
 EUDIW Signing Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+ 
 This process provides and validates the root of trust for the verification of the issuer data authentication of a received attestation, that is a Digital Credential or the Wallet Instance Attestation. The validation of the Lists of Trusted Entities and Trusted Lists, and the extraction of the Trust Anchors they publish, is defined in :ref:`trust-evaluation-eudiw:EUDIW Trust Anchor Validation`. This section defines how such a validated Trust Anchor is then used to validate the signer of a received attestation.
-
+ 
 .. note::
-  In the National Trust Framework this root of trust is the Signing Trust Anchor of the signing X.509 PKI (see :ref:`trust-evaluation:Signing Trust Anchor Distribution and Validation`). Within the EUDIW Trust Framework the root of trust of a received attestation is the Trust Anchor published in the applicable List of Trusted Entities or Trusted List.
-
+  In the National Trust Framework this root of trust is the Signing Trust Anchor of the signing X.509 PKI (see :ref:`trust-evaluation:Signing Trust Anchor Distribution and Validation`). Within the EUDIW Trust Framework the root of trust of a received attestation is the Trust Anchor published in the applicable List of Trusted Entities or Trusted List, made available in accordance with Article 22 of [`EIDAS`_].
+ 
 The applicable Trust Anchor depends on the type of the received attestation. For a Digital Credential it is selected according to the Credential Rulebook; for the Wallet Instance Attestation, for which no Rulebook applies, it is the Trust Anchor of the Wallet Provider:
-
+ 
 - the PID Providers List of Trusted Entities for a PID;
 - the corresponding Member State Trusted List for a QEAA;
 - the PuB-EAA Providers List of Trusted Entities for a PuB-EAA;
+- the applicable Trust Anchor distributed through the mechanism defined in the Attestation Rulebook for a non-qualified EAA, when available;
 - the Wallet Providers List of Trusted Entities for the Wallet Instance Attestation.
-
+ 
 **Input**
-
+ 
 - The received attestation and the signer certificate chain carried with it.
-- The Credential type of the attestation, used to select the applicable List of Trusted Entities or Trusted List.
-
+- The type of the attestation, used to select the applicable List of Trusted Entities or Trusted List.
+ 
 **Outcome**
-
+ 
 - The validated Trust Anchor and the validated signer certificate for the attestation, or a failure.
-
+ 
 **Process**
-
+ 
 1. Select the applicable List of Trusted Entities or Trusted List according to the type of the received attestation, that is the Credential Rulebook for a Digital Credential and the Wallet Providers List of Trusted Entities for the Wallet Instance Attestation, and validate it as defined in :ref:`trust-evaluation-eudiw:EUDIW Trust Anchor Validation`, obtaining the Trust Anchor.
-2. Validate the signer certificate chain of the attestation, for a Digital Credential the Document Signer certificate, against the obtained Trust Anchor, as defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`.
-3. Verify the attestation signature with the validated signer certificate.
-
+2. Extract the signer certificate chain from the attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. For a Digital Credential in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For a Digital Credential in SD-JWT VC format and for the Wallet Instance Attestation, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
+3. Verify the attestation signature with the validated signer certificate. For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
+ 
 If any step fails, the attestation MUST NOT be considered issued by a trusted issuer.
 
 EUDIW Authentication
