@@ -65,7 +65,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``qcStatements``
      - REQUIRED
-     - TBD. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``esi4-qcStatement-6``) and ``statementInfo`` containing a ``QcType`` structure with the value ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Annex A of [`ETSI TS 119 412-6`_].
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
 
 
 The following is a non-normative example of a PID Provider's end-entity certificate for legal persons (non-self-signed).
@@ -121,7 +121,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``qcStatements``
      - REQUIRED
-     - TBD. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``esi4-qcStatement-6``) and ``statementInfo`` containing a ``QcType`` structure with the value ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Annex A of [`ETSI TS 119 412-6`_].
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
 
 
 The following is a non-normative example of a Wallet Provider's end-entity certificate for legal persons (non-self-signed).
@@ -229,8 +229,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``qcStatements``
      - REQUIRED
-     - TBD. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.10`` (``esi4-qcStatement-10``) and ``statementInfo`` containing a ``QcType`` structure with value ``0.4.0.194126.1.3`` (``id-etsi-qcs-QcPSB``) and a ``QcPSB`` structure, as defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
-
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
 The following is a non-normative example of a PuB-EAA Provider's end-entity certificate for legal persons (non-self-signed).
 
