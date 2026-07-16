@@ -6,10 +6,10 @@ Trust Evaluation in the EUDIW Trust Framework
 Trust Anchor Validation Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party (the validating Entity) uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted Lists in order to:
+This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party (the validating Entity) uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted List, in order to:
 
 - validate the trustworthiness of a Trust Anchor (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) to authenticate, authorize or validate an entity or artifact during *runtime*.
-- validate the information contained in the List for *historcal purposes*.
+- validate the information contained in the List for *historical purposes*.
 
 Depending on the Trust Artifact or Attestation being verified, the validating Entity MUST fetch, download, and validate the List which references the appropriate Trust Anchor:
 
@@ -35,9 +35,9 @@ To support continuous key rotation and regular updates, the LoTE and LOTL implem
 The validating Entity MUST base Trust Anchor validation decisions only on information derived from:
 
 - The Official Journal of the EU (OJEU) anchoring trust in the root certificates that signed the Lists of Trusted Entities and List of Trusted Lists. The current version of OJEU can be found `here <https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944>`_.
-- A validated Lists of Trusted Entities or List of Trusted Lists and Member State level Trusted Lists.
+- Validated Lists of Trusted Entities, or a List of Trusted Lists and Member State level Trusted Lists.
 
-**Otput Model**
+**Output Model**
 
 Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` and :ref:`trust-evaluation-eudiw:Trusted List Validation`) gives a granular verification result code when it detects a negative condition. These codes feed into the final decision:
 
@@ -64,7 +64,7 @@ This section defines the validation of the EU-level List of Trusted Entities (Li
 
 **List of Trusted Entities Validation Algorithm**
 
-The validating Entity MUST initializes the following variables as described in [`ETSI TS 119 615`_].
+The validating Entity MUST initialize the following variables as described in [`ETSI TS 119 615`_].
 
 **Input Variables**:
 
@@ -257,14 +257,14 @@ The Entity performing Wallet-Relying Party Access Certificate validation initial
 EUDIW Authorization Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section specifies the EUDIW Authorization Process that a Wallet Unit MUST execute to determine whether an interaction with a Wallet-Relying Party is allowed within the EUDI Wallet ecosystem. A Wallet Unit compliant with this specification MUST implement all the authorization-processing rules defined in this section. The EUDIW Authorization Process MUST start only *after* the Wallet Unit has been successfully authenticated the WRP according to :ref:`trust-evaluation-eudiw:Authentication Process`. If the WRP has not been authenticated (i.e. the :ref:`trust-evaluation-eudiw:Authentication Process` has failed), the EUDIW Authorization Process MUST NOT start as the other entity is deemed untrustworthy.
+This section specifies the EUDIW Authorization Process that a Wallet Unit MUST execute to determine whether an interaction with a Wallet-Relying Party is allowed within the EUDI Wallet ecosystem. A Wallet Unit compliant with this specification MUST implement all the authorization-processing rules defined in this section. The EUDIW Authorization Process MUST start only *after* the Wallet Unit has successfully authenticated the WRP according to :ref:`trust-evaluation-eudiw:Authentication Process`. If the WRP has not been authenticated (i.e. the :ref:`trust-evaluation-eudiw:Authentication Process` has failed), the EUDIW Authorization Process MUST NOT start as the other entity is deemed untrustworthy.
 
 The EUDIW Authorization Process is split into:
 - :ref:`trust-evaluation-eudiw:Authorization Artifacts Validation` which validates integrity and authenticity of the Trust Artifact carrying the authorization data; and
 - :ref:`trust-evaluation-eudiw:Authorization Validation` which validates the information content of the validated artifact. In particular, this validation process covers:
 
     - **Issuance authorization**: Determines whether a Credential Issuer is registered for the relevant role and authorized to issue the specific Digital Credential. This applies to PID, QEAA, PuB-EAA, and EAA Providers operating within the EUDIW ecosystem.
-    - **Presentation authorization**: Determines whether a Relying Party's request falls within its registered scope, whether an Embedded Disclosure Policy permits the disclosure, and whether the User approves.This applies to interactions involving both Relying Parties and Relying Party Intermediaries, across both Remote and Proximity Flows.
+    - **Presentation authorization**: Determines whether a Relying Party's request falls within its registered scope, whether an Embedded Disclosure Policy permits the disclosure, and whether the User approves. This applies to interactions involving both Relying Parties and Relying Party Intermediaries, across both Remote and Proximity Flows.
 
 - :ref:`trust-evaluation:Authorization Decision and Override Rules` which outputs an *Authorization Decision* expressed as ``AUTHORIZED`` or ``NOT_AUTHORIZED`` on the base of the Authorization Artifacts Validation and Authorization Validation results. Depending on the Flow type the User MAY *override* the Authorization Decision.
 
@@ -299,7 +299,7 @@ The Validation flow that the Wallet Unit performs, depends on the availability o
 
      Metadata is signed with the Attestation Provider Wallet-Relying Party Access Certificate private key (ISSU_22a). Authorization data contained in the Embedded Disclosure Policy is also distributed through the Credential Issuer Metadata within ``credential_configurations_supported`` field.
 
-In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST use the entity identifier and, OPTIONALLY, the ``intended_use_id`` (``presentation``) or (``issuance``). use the Registrar URL and query this service using the entity unique identifier and, for presentation, the ``intended_use_id``.
+In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST use the Registrar URL to query this service using the entity unique identifier and, OPTIONALLY, the ``intended_use_id`` (``presentation`` or ``issuance``).
 
 The response provides the same authorization-relevant data as a Wallet-Relying Party Registration Certificate. Each Registrar provides an online service available through an API interface, obtained as described in the :ref:`trust-artifact-eudiw:Common Register Open APIs` section. When using this service, the Wallet Unit SHOULD inform the User that an external query will be made.
 
@@ -327,7 +327,7 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 
 **Output Model**
 
- - If all of the above steps succeeds and the Wallet-Relying Party Registration Certificates is in ``VALID`` state, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_VALID``.
+ - If all of the above steps succeed and the Wallet-Relying Party Registration Certificate is in ``VALID`` state, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_VALID``.
  - If any step fails, the Wallet Unit MUST set the ``authz_art_state`` to ``CERTIFICATE_INVALID``. This is not a final authorization decision; it triggers the :ref:`Register Query Validation <register-query-validation>` as fallback.
 
 .. _register-query-validation:
@@ -340,7 +340,7 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
 2. **Connect** to the Registrar online service using HTTPS.
 3. **Query** the Registrar service using the entity identifier and, OPTIONALLY, the ``intended_use_id`` (``presentation``) or (``issuance``).
 
-    - During the Presentation flow the entity identifiers is either the value of the ``verifier_info[].data.identifier`` parameter in the Request object for the Remote flow, or the value of the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` parameter in the mdoc Request.
+    - During the Presentation flow the entity identifier is either the value of the ``verifier_info[].data.identifier`` parameter in the Request object for the Remote flow, or the value of the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` parameter in the mdoc Request.
     - During the Issuance flow the entity identifier is the value of the ``issuer_info[].data.identifier`` parameter.
 
 4. **Format verification**: confirm ``typ`` is ``jwt`` (Section 5.2.1 of [`ETSI TS 119 475`_]).
@@ -365,7 +365,7 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
 
 **Output Model**
 
- - If all of the above steps succeeds, the Wallet Unit MUST set the ``authz_art_state`` to ``REGISTER_VALID``.
+ - If all of the above steps succeed, the Wallet Unit MUST set the ``authz_art_state`` to ``REGISTER_VALID``.
  - If any of the above steps fails, the Wallet Unit MUST set the ``authz_art_state`` to ``FAILED``.
 
 **Three-tier fallback (issuance only)**: self-declared data from ``registrar_dataset`` (advisory only, MUST NOT be presented as verified).
@@ -427,7 +427,7 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
 
 If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation Procedure and set the ``authz_val_state`` to ``BINDING_FAILED``.
 
-If the Binding verification succeedes, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern:
+If the Binding verification succeeds, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern:
 
 - *"[``intermediary.sname``] acting on behalf of [``verifier_info.data.srvDescription``] for [``verifier_info.data.intendedUseIdentifier``]"* when in Remote flow.
 - *"[``intermediary.sname``] acting on behalf of [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.srvDescription``] for [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.intendedUseIdentifier``]"* when in proximity flow.
@@ -512,7 +512,7 @@ The diagram below illustrates the various steps of the Authorization Process and
     :alt: The figure illustrates the Flowchart of the EUDIW Authorization Algorithm.
     :caption: `Flowchart of the EUDIW Authorization Algorithm. <https://www.plantuml.com/plantuml/png/hPRFSjis4CRlV8eTvs8VghPnq_XFaeQIePHJLrP9rfwUD0YuaZ2c00q0Ag4xUVS2XAaW1ktuK7g65e5lTxzT_q3hlJPKcMPJ9_gMYorLT0FQj3NQk-BimKxA3DznquufkrqfsOXg8ckfuCNqrFqCAQMgKDshZhihKCrjRMwu5552Cfw-ceu7fM76bwSdFut3kZDfC7P7fgVaTP9qlIR9MTgODGh36JK8D_aS3alLQ0DaH-k6kY97vmbVmg7R2yNLRqVWdk1GoAC4uEm2SGDkrxJG2EEoV9BAhDjpkwkDt2POQuJ35lLHWgBYooJPzft0WSij5R_hQa9grvUK6GtNjEPLjtW0_zfCpakcdTLy0dH7UKq_rjYRyTd1NgxhBHpSqBf6yqEETSl5gXjT2pckk3RAbvgWgzNr51LprzdF8vXAjQ46TgYyqWhE--sN8qZhbRLkrfjXnV482huIr3GAOUTBXFk_ZC0FFHNCpc18ycfqtp5RKow65B_Q9BZPIaLhlyrDkzzyRHqOMryF6pmPmKIkKQ5WQ2iWk_LRNxgxlVcnftNjNNYD1jqmXbelcpgUlqqx8NcPJRD9MfB5TNgPNPo_UVEYObYnatVlEf4dGiZ1a6os3rek6Vjut0Trx3mCFgCMeBi5LMQXRQi8Rq58WQuH7t3FJYHx2mD5uIg_RrL8ynMpnoZpGA62lnfKxQCOaSz6MQZt_2duExyCGPf88T0AZ0mqEqxXzxAS5o5Glb2ZBTJzeUCL2aSoge2i8NH3ggxTUWjRTmW42eO1KFscGhsLGYFedk8GhE-XU-Bf_x50IoOB3jk0zdG4C-UtvdS8bQs-mmgiXlOyViDYF_LdufYJ3rbHalovB4xJx98y3p-_PkqzWx0zNmEwRoq-QEAnbsM06yoLj3qr2dlmafwzCHULW-Kw0c4_qruIpp4SopYRNMIp3uj7nkFVzS54dVi0SU9WhN63miHUl9lUJo3LO25cwzYFotgJNra_P5PcvINvq_wEJ4LUWag-LYOCAigw8Kvh-GdATelxSfdM3HKC--3-5AR6e3P-z2uWwYYgvQk5SJt5qN_Ke5HQbgGeqpAxcYtAV-PaCRig5pqiGt-4gESmspN9FOmktJmj2XAV1e2GzQWDdtgkKAFmVOGrt7kdO7ABC94RYotNJqx3IybdXbW5KuYDNrddQV67e--2b6HIVgTr8V__plrharpCWwz8J_JcX8KLwIN72gI2cUo2jtvqJpHhLOl2EYscMUGoQZCEjOI4uU6KuYQZ9_yv_FGb-LhChoNTGNzl7vfD_Hy0>`_
 
-The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is elaborated on input the values of the ``edp_state``, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
+The final Authorization Decision (i.e., ``AUTHORIZED`` or ``NOT_AUTHORIZED``) is derived from the values of the ``edp_state``, ``authz_val_state`` and ``authz_art_state``. More details are found in the :ref:`trust-evaluation:Authorization Decision and Override Rules` section.
 
 X509 Certificate Chain Validation Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

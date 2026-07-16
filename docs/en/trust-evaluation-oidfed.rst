@@ -46,7 +46,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - On the Wallet Instance:
 
         - :ref:`trust-evaluation-oidfed:Wallet Instance Authentication`
-      - The Entity Configuration  (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the issuance artifacts signed with keys resolvable through the federation, validated ad defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication`. For the mdoc format, the Document Signer certificate in the ``x5chain`` header, validated as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`.
+      - The Entity Configuration (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the issuance artifacts signed with keys resolvable through the federation, validated as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication`. For the mdoc format, the Document Signer certificate in the ``x5chain`` header, validated as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`.
     * - Relying Party
       - Remote presentation, ``openid_federation`` prefix
       - On the received Credentials:
@@ -56,7 +56,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
         On the Wallet Provider, to invoke the Wallet through the national discovery mechanism (see the note below):
 
         - :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`
-      - The Entity Configuration  (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the signed Request Object with keys resolvable through the federation, including the ``trust_chain`` header when offline validation is expected, validated as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication` and :ref:`trust-evaluation-oidfed:Authorization`.
+      - The Entity Configuration (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the signed Request Object with keys resolvable through the federation, including the ``trust_chain`` header when offline validation is expected, validated as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication` and :ref:`trust-evaluation-oidfed:Authorization`.
     * - Relying Party Intermediary
       - Remote presentation, as the Federation Intermediate of an affiliated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
@@ -74,7 +74,7 @@ Federation Trust Anchor Distribution
 
 The configuration of the federation is published by the Federation Trust Anchor within its Entity Configuration, available at the well-known web path **.well-known/openid-federation**. All the Entities MUST obtain the federation configuration before entering the operational phase and MUST keep it up to date. The federation configuration contains the Federation Trust Anchor public keys for signature operations and the federation endpoints (see :ref:`trust-artifact-oidfed:Entity Configuration`).
 
-The Federation Trust Anchor MUST distribute its Federation Public Keys through secure out-of-band mechanisms. When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration, and they MUST discard any key that do not match.
+The Federation Trust Anchor MUST distribute its Federation Public Keys through secure out-of-band mechanisms. When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration, and they MUST discard any key that does not match.
 
 .. note::
   Within IT-Wallet the out-of-band channel is the contact channel established with the Entity during the registration process (see :ref:`onboarding-procedure:Registration Process`).
@@ -163,7 +163,7 @@ The steps below verify a Trust Chain according to `OID-FED`_, with the pointer t
    - The statement issued by the Federation Trust Anchor is verified with the validated Federation Trust Anchor keys.
    - The Entity Configuration of the subject is verified with the keys attested in the Subordinate Statement about it.
 
-4. Enforce the constraints carried in the Subordinate Statements along the chain, as defined in OID-FED_ Section 6.2. In particular, verify that the metadata Entity Types published by the subject are within the ``allowed_entity_types``, considering that the ``federation_entity`` Entity Type is always allowed, and that the number of Intermediates does not exceed the ``max_path_length`` set by the superiors.
+4. Enforce the constraints carried in the Subordinate Statements along the chain, as defined in `OID-FED`_ Section 6.2. In particular, verify that the metadata Entity Types published by the subject are within the ``allowed_entity_types``, considering that the ``federation_entity`` Entity Type is always allowed, and that the number of Intermediates does not exceed the ``max_path_length`` set by the superiors.
 5. Compute the Trust Chain expiration as the earliest ``exp`` value among the statements.
 
 If any verification fails, the Trust Chain MUST be considered invalid and the subject MUST NOT be trusted on the basis of it.
@@ -251,7 +251,7 @@ For Credentials in mdoc format the Mobile Security Object carries the Document S
 3. Verify the attestation signature with the selected key or certificate.
 
 .. note::
-  When required, the Federation Historical Keys endpoint and the published CRLs to ensure that the attestation was valid at the time of issuance or presentation (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
+  When required, the Federation Historical Keys endpoint and the published CRLs MUST be used to ensure that the attestation was valid at the time of issuance or presentation (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
 
 The lifecycle of the signing certificates MUST be kept aligned with the federation configuration set of the issuer keys. When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly. Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.
 

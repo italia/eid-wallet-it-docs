@@ -7,7 +7,7 @@ Authorization Decision and Override Rules
 
 The Authorization Decision can be:
 
-- `AUTHORIZED` if the condition `authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID AND edp_state == EDP_SATISFIED AND authz_val_state == VERIFICATION_PASSED` is satisfied; and
+- `AUTHORIZED` if the condition `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND edp_state == EDP_SATISFIED AND authz_val_state == VERIFICATION_PASSED` is satisfied; and
 - `NOT_AUTHORIZED` otherwise.
 
 **Override Principles**
@@ -18,8 +18,8 @@ A `NOT_AUTHORIZED` decision can be either *non-overridable* (the Wallet Unit blo
 
 - During the **Presentation** phase, all negative verification outcomes MUST be *non-overridable*, except for the following cases:
 
-    - **Negative scope comparison**. If `authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID AND edp_state == OVERASKING_DETECTED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Scope Comparison finds the Relying Party requesting .
-    - **Negative Embedded Disclosure Policy evaluation**. If `authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID AND edp_state == EDP_NOT_SATISFIED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+    - **Negative scope comparison**. If `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND authz_val_state == OVERASKING_DETECTED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Scope Comparison finds the Relying Party requesting more than its registered scope.
+    - **Negative Embedded Disclosure Policy evaluation**. If `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND edp_state == EDP_NOT_SATISFIED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
 
 All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable because they indicate an integrity problem rather than a user-facing choice.
 
@@ -42,7 +42,7 @@ The following table details the override behavior for each procedure when it pro
    * - Wallet-Relying Party Registration Certificate Validation
      - Both
      - ``CERTIFICATE_INVALID``
-     - It triggers Register Validation* as fallback. User is not involved.
+     - It triggers Register Query Validation as fallback. User is not involved.
    * - Register Validation
      - Issuance
      - ``FAILED``
