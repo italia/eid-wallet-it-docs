@@ -732,7 +732,7 @@ The body of the Key Attestation JWT contains the following claims:
     * - **status**
       - REQUIRED. Status mechanism for the Key Attestation.
 
-        - **status_list**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **status_list**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the Keystore or WSCA/WSCD.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.

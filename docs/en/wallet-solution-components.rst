@@ -96,10 +96,16 @@ This component MUST provide the Wallet Unit dashboard and transaction log functi
 - maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;
 - support User interaction with transaction records, including viewing, export, and deletion.
 
-Secure Storage
-^^^^^^^^^^^^^^
+Keystore
+^^^^^^^^
 
-The Wallet Instance MUST use this component to protect critical assets and to securely execute cryptographic functions.
+The Wallet Instance MUST use this component to securely generate, store, and use cryptographic keys for all Digital Credentials. The Keystore relies on the device's OEM hardware-backed cryptographic environment (Strongbox or TEE on Android; Secure Enclave on iOS) and is attested via the OEM Key Attestation APIs. The Keystore is the default secure storage mechanism for all Wallet Instance operations and Digital Credentials.
+
+
+WSCA/WSCD Interface
+^^^^^^^^^^^^^^^^^^^
+
+For PID issuance and management at Level of Assurance High, the Wallet Instance MUST interact with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This component provides the interface to the WSCA and the Remote WSCD, and ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for Level of Assurance High. The WSCA/WSCD Interface is used exclusively for the PID.
 
 
 Wallet Solution Interaction Patterns
