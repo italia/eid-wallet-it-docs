@@ -732,7 +732,7 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.
 
-        - **status_list**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell'Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
+        - **status_list**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell'Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del Keystore o del WSCA/Remote WSCD.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
