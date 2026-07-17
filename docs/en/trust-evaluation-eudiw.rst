@@ -63,10 +63,10 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted Lists in order to:
+This section specifies the **Trust Anchor Validation Process** that a Wallet Unit or Wallet-Relying Party uses to establish the cryptographic integrity and authenticity of a List of Trusted Entities, or a Trusted List, in order to:
 
-- validate the trustworthiness of a Trust Anchor (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) to authenticate, authorize or validate an entity or artifact during *runtime*.
-- validate the information contained in the List for *historcal purposes*.
+- validate the trustworthiness of a Trust Anchor (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) to authenticate, authorize or validate an entity or artifact during *runtime*.
+- validate the information contained in the List for *historical purposes*.
 
 Depending on the Trust Artifact or Attestation being verified, the Trust Evaluator MUST fetch, download, and validate the List which references the appropriate Trust Anchor:
 
@@ -104,7 +104,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_PASSED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_PASSED``;
 
-    Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
+    Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
 
 - If the validation algorithms terminate with:
 
@@ -112,7 +112,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
+     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
 
 .. note::
 
@@ -130,7 +130,7 @@ This section defines the validation of the EU-level List of Trusted Entities (Li
 
 **List of Trusted Entities Validation Algorithm**
 
-The validating Entity MUST initializes the following variables as described in [`ETSI_TS_119_615`_].
+The validating Entity MUST initialize the following variables as described in [`ETSI_TS_119_615`_].
 
 **Input Variables**:
 
@@ -323,9 +323,9 @@ The applicable Trust Anchor depends on the type of the received attestation. For
 If any step fails, the attestation MUST NOT be considered issued by a trusted issuer.
 
 EUDIW Authentication
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
  
-The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key. The Wallet-Relying Party Access Certificate is profiled in [**FIXME**: aggiungere rif a sezione artefact eudiw relativa al WRPAC].
+The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key. The Wallet-Relying Party Access Certificate is profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
  
 For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
  
