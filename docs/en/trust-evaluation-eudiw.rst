@@ -543,17 +543,17 @@ The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elabo
 
 EUDIW Metadata Retrieval and Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+ 
 Within the EUDIW Trust Framework the metadata of a Wallet-Relying Party are obtained through the protocol flow and their authenticity is established through the Wallet-Relying Party Access Certificate. This applies to Credential Issuance and to Credential Presentation in the Remote Flow. In the Proximity Flow no separate metadata retrieval is performed: the Relying Party identity is established through the mdoc reader authentication (see :ref:`trust-evaluation-eudiw:EUDIW Authentication`).
-
+ 
 **Metadata Retrieval**
-
+ 
 The Wallet Unit obtains the metadata of the Wallet-Relying Party according to the interaction:
-
-- During Credential Issuance, the Credential Issuer Metadata is obtained from the Credential Issuer well-known metadata endpoint, as defined in [`OPENID4VCI`_] (see :ref:`credential-issuer-endpoint:Metadata Endpoints`).
+ 
+- During Credential Issuance, the Credential Issuer Metadata is obtained from the Credential Issuer well-known metadata endpoint, as defined in [`OpenID4VCI`_] (see :ref:`credential-issuer-endpoint:Metadata Endpoints`).
 - During Credential Presentation in the Remote Flow, the Relying Party metadata is carried in the Request Object of the authorization request, as defined in [`OpenID4VP`_] (see :ref:`remote-flow:Request Object`).
-
+ 
 **Metadata Validation**
-
-The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate. The signed metadata artifact carries the ``x5c`` header with the certificate chain of the Wallet-Relying Party, and the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation-eudiw:EUDIW Authentication`. The Wallet Unit MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.
+ 
+The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate. During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the ``x5c`` header of the JOSE signature; during Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same ``x5c`` header. In both cases the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation-eudiw:EUDIW Authentication`, and MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.
 
