@@ -12,6 +12,14 @@ This section defines the required trust artifacts and their conceptual roles in 
 - :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
 - :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
+The data model of these Trust Artifacts profiles the following external specifications.
+ 
+- `ETSI TS 119 602`_, which defines the data model of the Lists of Trusted Entities and the profiles of the EUDIW lists.
+- `ETSI TS 119 411-8`_, which defines the Wallet-Relying Party Access Certificate.
+- `ETSI TS 119 475`_, which defines the Wallet-Relying Party Registration Certificate together with its entitlements.
+- `ETSI EN 319 412-1`_, which defines the subject attributes of the certificates.
+- `ETSI TS 119 182-1`_, which defines the JAdES format of the signature of a List of Trusted Entities.
+
 Register of WRPs
 ^^^^^^^^^^^^^^^^
 

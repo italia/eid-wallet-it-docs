@@ -6,6 +6,10 @@ Trust Evaluation in the National Trust Framework
 This section defines the trust evaluation procedures of the National Trust Framework.
 The Entity Type Identifiers and the metadata of each role, used during these procedures, are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`, according to that profile. The selection rules that define when these procedures apply are detailed in :ref:`trust-evaluation:Trust Framework Selection`.
 
+The Trust Artifacts used during these procedures, that is the Entity Configuration, the Subordinate Statements, the Trust Marks, are defined in :ref:`trust-artifact-oidfed:National Trust Artifacts`.
+
+The procedures defined in this section are executed within the operational Issuance and Presentation flows (see :ref:`digital-credential-flows:Digital Credential Flows`). The parameters they operate on, such as the signed Request Object, the mdoc Request, the Metadata of all Entities involved and the data model of the received Digital Credentials, are defined in the respective sections (see :ref:`entities:Entities`, :ref:`remote-flow:Request Object` for the Remote Flow, :ref:`proximity-flow:mdoc Request` for the Proximity Flow, and :ref:`credential-data-model:SD-JWT-VC Credential Format` and :ref:`credential-data-model:mdoc-CBOR Credential Format` for the Digital Credential formats).
+
 Trust Evaluation Processes by Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

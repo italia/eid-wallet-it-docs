@@ -1,6 +1,20 @@
 Trust Evaluation in the EUDIW Trust Framework
 ------------------------------------------------
 
+The procedures defined in this section profile combine the following external specifications.
+ 
+- `ETSI TS 119 615`_ and `ETSI TS 119 612`_, which define the procedure and the data structures for authenticating and interpreting the List of Trusted Lists and the Member State Trusted Lists, applied here to the Lists of Trusted Entities.
+- `ETSI EN 319 102-1`_ and `ETSI TS 119 182-1`_, which define, respectively, the validation of AdES signatures and the JAdES format of the signature of a List of Trusted Entities.
+- `ETSI TS 119 411-8`_, `ETSI TS 119 475`_ and `ETSI EN 319 412-1`_, which define, respectively, the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate together with its entitlements, and the certificate subject attributes.
+- `ETSI TS 119 472-2`_ and `ETSI TS 119 472-3`_, which profile the Presentation and the Issuance protocols respectively, through which a Wallet-Relying Party is authenticated and its registration information is made available to the Wallet Unit; the latter also defines the Embedded Disclosure Policy.
+- IETF RFC 5280 (:rfc:`5280`) and IETF RFC 6960 (:rfc:`6960`), which define the X.509 certification path validation and the Online Certificate Status Protocol.
+ 
+.. note::
+ 
+    The data model of the Trust Artifacts referenced by these procedures, that is the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate, the Register, the Lists of Trusted Entities and the Embedded Disclosure Policy, together with the specifications that define them, is defined in :ref:`infrastructure-trust:EUDIW Trust Artifacts`.
+ 
+    The procedures defined in this section are executed within the operational Issuance and Presentation flows (see :ref:`digital-credential-flows:Digital Credential Flows`). The parameters they operate on, such as the signed Request Object, the mdoc Request, the Metadata of all Entities involved and the data model of the received Digital Credentials, are defined in the respective sections (see :ref:`entities:Entities`, :ref:`remote-flow:Request Object` for the Remote Flow, :ref:`proximity-flow:mdoc Request` for the Proximity Flow, and :ref:`credential-data-model:SD-JWT-VC Credential Format` and :ref:`credential-data-model:mdoc-CBOR Credential Format` for the Digital Credential formats).
+
 EUDIW Trust Evaluation Processes by Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
