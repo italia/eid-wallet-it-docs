@@ -369,7 +369,7 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 <li><p>If a Wallet Unit contains multiple Keystores or WSCAs, it SHALL, internally and securely, keep track of which PIDs and attestations are bound to which Keystore or WSCA.</p></li>
 <li><p>A Wallet Unit SHALL present a Key Attestation only as part of the issuance of a PID or a key-bound attestation.</p></li>
 <li><p>The Key Attestation SHALL enable PID Providers to request a Wallet Provider to revoke a Wallet Unit, by including an identifier for the Wallet Unit in the KA (e.g., a URI and index to an Attestation Status List). The Wallet Provider SHALL ensure that this Wallet Unit identifier does not enable tracking of the User.</p></li>
-<li><p>The Key Attestation MUST contain one or multiple attested credential's public key(s) that are bound to the same Keystore or WSCA/WSCD.</p></li>
+<li><p>The Key Attestation MUST contain one or multiple attested Credential's public key(s) that are bound to the same Keystore or WSCA/WSCD.</p></li>
 <li><p>The Key Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. Wallet Providers SHALL ensure that the certificates they use for signing KAs and WIAs comply with all applicable requirements in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.01.01_60/ts_11941206v010101p.pdf">ETSI TS 119 412-6</a>, in particular Clause 5.</p></li>
 <li><p>An Attestation Provider issuing non-device-bound attestations SHALL indicate in its Credential Issuer metadata that it does not need a KA. A Wallet Unit SHALL NOT send a KA to an Attestation Provider when requesting a non-device-bound attestation. Note: A Wallet Unit sends a WIA to the Attestation Provider regardless of whether the attestations it issues are device-bound or not.</p></li>
 <li><p>A Wallet Provider SHALL ensure that the presentation of a KA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, this is achieved by letting the signed KA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the KA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the KA.</p></li>
@@ -495,7 +495,7 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 16/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

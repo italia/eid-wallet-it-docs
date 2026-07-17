@@ -354,6 +354,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
+    **KA**
       Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment. For PID issuance at Level of Assurance High, the Key Attestation describes the properties of the WSCA and of the Remote WSCD (remote HSM). For all other device-bound Digital Credentials, the Key Attestation describes the properties of the Keystore using the OEM Key Attestation APIs.
       Aligned with Technical Specification 3.
 

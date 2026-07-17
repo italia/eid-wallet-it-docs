@@ -107,6 +107,8 @@ WSCA/WSCD Interface
 
 For PID issuance and management at Level of Assurance High, the Wallet Instance MUST interact with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This component provides the interface to the WSCA and the Remote WSCD, and ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for Level of Assurance High. The WSCA/WSCD Interface is used exclusively for the PID.
 
+Key attestation for the Remote WSCD is performed by the Wallet Provider: after the WSCA generates the PID key pair within the Remote WSCD (remote HSM), the Wallet Provider attests the properties of both the WSCA and the Remote WSCD and issues a Key Attestation (KA) that is presented to the PID Provider during PID issuance. The KA for the Remote WSCD differs from the Keystore-based KA in that it describes the remote HSM's security properties rather than the OEM device hardware, providing the higher certification level required for Level of Assurance High.
+
 
 Wallet Solution Interaction Patterns
 ====================================
