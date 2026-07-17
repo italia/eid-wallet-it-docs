@@ -68,7 +68,7 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
 
 
-The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons (non-self-signed).
+The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/pid-sign-seal.txt
   :language: text
@@ -124,7 +124,7 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
 
 
-The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons (non-self-signed).
+The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/wp-sign-seal.txt
   :language: text
@@ -174,7 +174,7 @@ The following table defines the complete set of extensions applicable to the cer
 
 For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
 
-The following is a non-normative example of a QEAA Provider Sign/Seal Certificate certificate for legal persons (non-self-signed).
+The following is a non-normative example of a QEAA Provider Sign/Seal Certificate certificate for legal persons.
 
 .. literalinclude:: ../../examples/qeaa-sign-seal.txt
   :language: text
@@ -226,7 +226,7 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
 
-The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons (non-self-signed).
+The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/pubeaa-sign-seal.txt
   :language: text
@@ -234,15 +234,14 @@ The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certifi
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. These certificates MUST be notified to the European Commission as described in `CIR2024/2980`_ and subsequently included in the appropriate LoTE.
-
-A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**. When published through List of Trusted Entities, that certificate is referenced from the corresponding service entry through the ``serviceDigitalIdentity`` component.
-
-.. note::
-
-  A Trust Anchor certificate may be *self-signed* or *non-self-signed*. In both cases it is treated as a Trust Anchor when found in a LoTE as required by the EUDIW Trust Framework.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
 
 Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate. The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`). Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
+
+.. note::
+  **Trust Anchor Location.**
+  The location of the Trust Anchor Certificate is determined by the specific Trust Framework selected (see :ref:`trust-evaluation-eudiw:EUDIW Trust Anchor Validation` and :ref:`trust-evaluation-oidfed:Federation Trust Anchor Validation`).
+
 
 The following table defines the profile-specific requirements for the certificate fields. Fields not listed in the table remain subject to the requirements defined in the common :ref:`infrastructure-trust:X.509 Certificate Profile`.
 
@@ -258,7 +257,7 @@ The following table defines the profile-specific requirements for the certificat
      - If the certificate is self-signed, the issuer DN MUST be identical to the subject DN. Otherwise, the issuer DN MUST identify the entity that signed and issued the certificate and MAY differ from the subject DN.
 
    * - ``subject``
-     - The subject DN MUST identify the entity associated with the trust anchor public key in a clear and unambiguous manner. If the Trust Anchor represents a legal or organizational entity, the subject DN MUST contain an ``organizationName`` attribute identifying that entity.
+     - The subject DN MUST identify the entity associated with the Trust Anchor public key in a clear and unambiguous manner. If the Trust Anchor represents a legal or organizational entity, the subject DN MUST contain an ``organizationName`` attribute identifying that entity.
 
 
 .. list-table:: Trust Anchor Certificate Extensions
@@ -272,11 +271,11 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``authorityKeyIdentifier``
      - CONDITIONAL
-     - **REQUIRED IF:** the certificate is not self-signed, to facilitate chain building towards the LoTE Trust Anchor. For self-signed certificates, it is RECOMMENDED. If present, the value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - **REQUIRED IF:** the certificate is not self-signed. For self-signed certificates, it is RECOMMENDED. If present, the value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
      - REQUIRED
-     - Provides a key identifier for the Trust Anchor public key, enabling reliable chain building and LoTE matching. The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - Provides a key identifier for the Trust Anchor public key. The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED
@@ -304,50 +303,20 @@ The following table defines the profile-specific requirements for the certificat
 
 
 .. note::
-   **Trust Anchor revocation.**
-    Trust Anchor certificates are not expected to be revoked as they are trusted by policy when published in a LoTE or Trusted List. As a result, revocation information (e.g., CRL or OCSP) is not required for Trust Anchor certificates and entities using Trust Anchor certificates retrived in a LoTE or Trusted List MAY avoid revocation checking for Trust Anchor certificates.
+  **Trust Anchor Revocation.**
+  Trust Anchor certificates are not subject to revocation, as their trust is established by policy through their formal inclusion and publication as specified by the applicable Trust Framework. Consequently, revocation status information, such as CRLs or OCSP responses, is not required for Trust Anchor certificates.
+
+  Moreover, validating entities utilizing Trust Anchor certificates retrieved as specified by the applicable Trust Framework MAY omit revocation status checks for those certificates.
 
 .. note::
-
-   **Self-signed vs. non-self-signed trust anchors.**
-   A LoTE / Trusted List-published trust anchor certificate MAY be self-signed (traditional root CA style) or non-self-signed but treated as a trust anchor by policy (a pinned intermediate CA certificate).
-   Relying parties MUST NOT require an additional issuer chain above a LoTE-designated trust anchor, even if it is not self-signed, because the trust anchor is a trust-store input designated by policy.
-
-The following table maps the various Certificates used in the ecosystem, the attested public key uses, and the location of the Trust Anchor.
-
-.. list-table:: Certificate and Trust Anchor Matrix
-   :header-rows: 1
-
-   * - **Certificate**
-     - **Attested Key Use**
-     - **Trust Anchor location**
-   * - PID Provider Sign/Seal Certificate
-     - signing PID, siging PID Status List Token
-     - PID Providers LoTE
-   * - Wallet Provider Sign/Seal Certificate
-     - signing WIA, KA, signing WIA/KA Status List Token
-     - Wallet Providers LoTE
-   * - EAA Provider Sign/Seal Certificate
-     - signing EAA, signing EAA Status List Token
-     - ``trustedAuthority`` attribute in the machine-readable Attestation Rulebook for the specific EAA
-   * - QEAA Provider Sign/Seal Certificate
-     - signing QEAA, signing QEAA Status List Token
-     - eIDAS I Trusted List
-   * - Pub-EAA Provider Sign/Seal Certificate
-     - signing PuB-EAA, signing PuB-EAA Status List Token
-     - Pub-EAA Providers LoTE
-   * - Wallet-Relying Party WRPAC
-     - signing Request Objects or ``readerAuth`` during Digital Credential Presentation for Relying Parties; signing Credential Issuer Metadata for Credential Issuers
-     - Provider of WRPAC LoTE
-   * - Wallet-Relying Party WRPRC
-     - N/A
-     - Provider of WRPRC LoTE
+  **Trust Anchor Signature.**
+  A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy). Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.
 
 .. note::
 
   As described in Section 4.3.1 of [`EUDI-TS 12`_], the Trust Anchor of a EAA Sign/Seal Certificate is referenced in the ``trustedAuthority`` attribute of the machine-readable Attestation Rulebook for the specific EAA.
 
-The following is a non-normative example of a Trust Anchor Certificate (self-signed).
+The following is a non-normative example of a Trust Anchor Certificate.
 
 .. literalinclude:: ../../examples/trust-anchor-cert.txt
   :language: text
