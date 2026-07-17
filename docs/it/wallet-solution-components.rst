@@ -107,6 +107,8 @@ WSCA/WSCD Interface
 
 Per l'emissione e la gestione del PID a Livello di Garanzia Alto, l'Istanza del Wallet DEVE interagire con un **WSCA operante in un Remote WSCD** implementato come Hardware Security Module (HSM) remoto operato lato server. Questo componente fornisce l'interfaccia verso il WSCA e il Remote WSCD, e garantisce che le chiavi private del PID siano generate e gestite in un ambiente hardware remoto antimanomissione conforme ai requisiti per il Livello di Garanzia Alto. La WSCA/WSCD Interface è utilizzata esclusivamente per il PID.
 
+L'attestazione delle chiavi nel contesto del Remote WSCD è eseguita dal Wallet Provider: dopo che il WSCA genera la coppia di chiavi del PID all'interno del Remote WSCD (HSM remoto), il Wallet Provider attesta le proprietà del WSCA e del Remote WSCD ed emette un Key Attestation (KA) che viene presentato al PID Provider durante l'emissione del PID. Il KA per il Remote WSCD descrive le proprietà di sicurezza dell'HSM remoto (anziché dell'hardware OEM del dispositivo), fornendo il livello di certificazione superiore richiesto per il Livello di Garanzia Alto.
+
 
 Modelli di Interazione della Soluzione Wallet
 =============================================
