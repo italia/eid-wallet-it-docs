@@ -112,7 +112,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
+    Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
 
 .. note::
 
@@ -124,131 +124,126 @@ List Key Rotation and Historical Verification
 To support continuous key rotation and regular updates, the LoTE and LOTL implement a *pivoting mechanism*. This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at distinct URI *pivots*. Each List version is signed with a public key referenced within the immediately preceding version, rather than reusing the same key. The newest List version explicitly contains the URIs where all historical versions are hosted. An Entity validates this chain of pivots from the newest version back to the oldest by verifying that each subsequent artifact is correctly signed by the public key authorized in the prior version. Final validation is achieved by verifying the trustworthiness of the oldest public key, either via a lookup in the OJEU or directly against a cached, previously validated version of the List. This ensures that an entity possessing the last known valid version can reliably discover the next version and validate it via an unbroken chain of trust rooted in the OJEU.
 
 List of Trusted Entities Validation
-"""""""""""""""""""""""""""""""""""""
-
-This section defines the validation of the EU-level List of Trusted Entities (List of Trusted Entities). The List of Trusted Entities is a digitally signed/sealed artifact (JWT format) containing metadata and public keys for entities operating at the EU level.
-
+"""""""""""""""""""""""""""""""""""
+ 
+This section defines the validation of a List of Trusted Entities. The List of Trusted Entities, its data model and the List of Trusted Entities types used within the EUDIW ecosystem, one for each category of notified provider, are defined in :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
+ 
+A List of Trusted Entities is a signed list. Its authenticity is rooted in the Official Journal of the European Union, and it supports continuous key rotation through the *pivoting mechanism* described in :ref:`trust-evaluation-eudiw:List Key Rotation and Historical Verification`. The Trust Anchors it publishes are provided in the ``ServiceDigitalIdentity`` of its trusted entity service entries, as defined in clause 6.6.3 of [`ETSI TS 119 602`_].
+ 
+The authentication procedure below follows clause 4.1 of [`ETSI TS 119 615`_], which specifies the authentication of the EC compiled List of Trusted Lists (LOTL) with its pivot mechanism, applied to the List of Trusted Entities data model of [`ETSI TS 119 602`_] and to its JAdES signature ([`ETSI TS 119 182-1`_]) in place of the XML LOTL. The variables used below are the List of Trusted Entities analogs of the LOTL variables preconfigured in clause 4.0 (GPR-4.0-02) of [`ETSI TS 119 615`_]: ``OJEU-LoTE-Loc`` corresponds to ``OJEU-LOTL-Loc``, ``OJEU-LoTE-Certs-Set`` to ``OJEU-LOTL-Certs-Set``, ``LoTESO-Cert`` to ``LOTLSO-Cert``; the ``PointersToOtherLoTE`` and ``SchemeInformationURI`` claims correspond to the *Pointers to other TSLs* (clause 6.3.13 of [`ETSI TS 119 602`_]) and *Scheme information URI* (clause 6.3.7) components.
+ 
 **List of Trusted Entities Validation Algorithm**
-
-The validating Entity MUST initialize the following variables as described in [`ETSI_TS_119_615`_].
-
+ 
+The validating Entity initializes the following variables, corresponding to the parameters preconfigured in GPR-4.0-02 of [`ETSI TS 119 615`_] for the LOTL.
+ 
 **Input Variables**:
-
-- ``OJEU-Loc``: URI of the latest (known) Official Journal of the European Union OJEU publication.
-- ``OJEU-LoTE-Loc``: URI of the last processed LoTE. Defaults to the value in ``OJEU-Loc``.
-- ``OJEU-LoTE-Certs-Set``: The set of Trust Anchor certificates from the ``OJEU-Loc`` publication.
-- ``LoTE``: The LoTE JWT currently being processed. Initialized as ``NULL``.
-- ``LoTE-Signer-Cert``: The certificate extracted from the ``x5c`` header parameter of the LoTE.
-- ``LoTESO-Cert``: Temporary variable for the Scheme Operator certificate being validated. Initialized as ``NULL``.
-- ``LoTESO-Certs-Set``: Trusted certificates extracted from the ``PointersToOtherLoTE`` claim (``SchemeTerritory`` ``EU``) of a LoTE or Pivot. Initialized as ``NULL``.
-
+ 
+- ``OJEU-Loc``: URI of the latest known Official Journal of the European Union publication.
+- ``OJEU-LoTE-Loc``: URI of the last processed List of Trusted Entities. Defaults to the value in ``OJEU-Loc``.
+- ``OJEU-LoTE-Certs-Set``: the set of Trust Anchor certificates from the ``OJEU-Loc`` publication.
+- ``LoTE``: the List of Trusted Entities JWT currently being processed. Initialized as ``NULL``.
+- ``LoTE-Signer-Cert``: the certificate extracted from the ``x5c`` header parameter of the List of Trusted Entities.
+- ``LoTESO-Cert``: temporary variable for the Scheme Operator certificate being validated. Initialized as ``NULL``.
+- ``LoTESO-Certs-Set``: trusted certificates extracted from the ``PointersToOtherLoTE`` claim (``SchemeTerritory`` ``EU``, clause 6.3.10 of [`ETSI TS 119 602`_]) of a List of Trusted Entities.
+ 
 **Output Variables**:
-
-- ``Authenticated-LoTE``: The validated JSON payload.
-- ``LoTE-Status``: The validation result (e.g., ``LoTE_VERIFICATION_PASSED``).
+ 
+- ``Authenticated-LoTE``: the validated JSON payload.
+- ``LoTE-Status``: the validation result (e.g., ``LoTE_VERIFICATION_PASSED``).
 - ``LoTE-Sub-Status``: detailed error codes.
-
-**Validation Steps**:
-The validation MUST perform the following steps:
-
-1. (Initialization) Download the JWT file from ``OJEU-LoTE-Loc`` and assign it to ``LoTE``.
-2. (Parsing) Extract the first certificate from the ``x5c`` header of ``LoTE`` and assign it to ``LoTE-Signer-Cert``.
-3. (Pivot Discovery) Iterate through the ``uriValue`` claims in the ``SchemeInformationURI`` object. Count the number of valid URIs found before encountering the URI matching ``OJEU-Loc``. Let ``n`` be that count.
-
-    - If no URI matches ``OJEU-Loc``: Validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``. (This may imply that a new version of the OJEU is available).
-
-4. (LoTE Location Conflict) Check the condition: ``OJEU-LoTE-Loc != LoTE Location`` AND ``LoTE != Content at LoTE Location``.
-
-    - (``LoTE Location`` is the URI in the ``PointersToOtherLoTE`` claim of ``LoTE`` with ``SchemeTerritory`` = ``EU``).
-    - If ``TRUE``: Validation MUST stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_FILE_CONFLICT``.
+ 
+**Process**:
+ 
+The validation MUST perform the following steps. Each step indicates the corresponding requirement of clause 4.1 of [`ETSI TS 119 615`_].
+ 
+1. (Initialization) Download the JWT file from ``OJEU-LoTE-Loc`` and assign it to ``LoTE``. (PRO-4.1.4-01)
+2. (Parsing) Extract the first certificate from the ``x5c`` header of ``LoTE`` and assign it to ``LoTE-Signer-Cert``. (PRO-4.1.4-02)
+3. (Pivot Discovery) Iterate through the ``uriValue`` claims in the ``SchemeInformationURI`` component (clause 6.3.7 of [`ETSI TS 119 602`_]). Count the number of valid URIs preceding the URI matching ``OJEU-Loc`` and assign it to ``n``. (PRO-4.1.4-03 for the search of ``OJEU-Loc``, PRO-4.1.4-04 for the count of ``n``)
+ 
+    - If no URI matches ``OJEU-Loc``: validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``.
+ 
+4. (LoTE Location Conflict) Check the condition ``OJEU-LoTE-Loc != LoTE Location`` AND ``LoTE != Content at LoTE Location``, where ``LoTE Location`` is the ``LoTELocation`` URI in the ``PointersToOtherLoTE`` component of ``LoTE`` with ``SchemeTerritory`` ``EU`` (clause 6.3.13 of [`ETSI TS 119 602`_]). (PRO-4.1.4-05)
+ 
+    - If ``TRUE``: validation MUST stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_FILE_CONFLICT``.
     - If ``FALSE``, proceed to the next step.
-
-5. (LoTE Freshness) Check the condition: ``OJEU-LoTE-Loc == LoTE Location`` AND ``LoTE !=`` Content at ``LoTE Location``.
-
-    - If ``TRUE``: Set ``OJEU-LoTE-Loc`` to ``LoTE Location`` and restart from Step 1.
+ 
+5. (LoTE Freshness) Check the condition ``OJEU-LoTE-Loc == LoTE Location`` AND ``LoTE != Content at LoTE Location``. (PRO-4.1.4-06)
+ 
+    - If ``TRUE``: set ``OJEU-LoTE-Loc`` to ``LoTE Location`` and restart from Step 1.
     - If ``FALSE``, proceed to the next step.
-
-6. (Digital Signature Validation) Validate the cryptographic signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert``.
-
-    - If validation fails: Stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
+ 
+6. (Digital Signature Validation) Validate the signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert`` as a directly trusted certificate, following the basic signature validation of ETSI EN 319 102-1 as required by PRO-4.1.4-07. (PRO-4.1.4-07, PRO-4.1.4-08)
+ 
+    - If validation fails: stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
     - If successful:
-
+ 
         - Set ``LoTESO-Cert`` to ``LoTE-Signer-Cert``.
-        - Set ``LoTESO-Certs-Set`` to the certificates found in the ``PointersToOtherLoTE`` claim (territory ``EU``) of the current ``LoTE`` payload.
-
-7. (Intermediate Pivot Validation)
-
-    - Case ``n = 0`` (No Pivots): Proceed directly to Step 8.
+        - Set ``LoTESO-Certs-Set`` to the certificates found in the ``PointersToOtherLoTE`` claim (territory ``EU``) of the current ``LoTE`` payload. (PRO-4.1.4-09)
+ 
+7. (Intermediate Pivot Validation) (PRO-4.1.4-10 for the case ``n = 0``, PRO-4.1.4-11 for the pivot loop)
+ 
+    - Case ``n = 0`` (No Pivots): proceed directly to Step 8.
     - Case ``n != 0`` (History Chain):
-
+ 
         - Iterate ``i`` from 1 to ``n`` (from most recent Pivot to oldest). Let ``Pivot`` be the file downloaded from the ``i``-th URI.
         - (Link Check) Set ``Pivot-Certs-Set`` to the certificates in the ``PointersToOtherLoTE`` claim (territory ``EU``) of ``Pivot``. If ``LoTESO-Cert`` (the signer of the previous file in the chain) is not in ``Pivot-Certs-Set``, validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
         - (Update Signer) Set ``LoTESO-Cert`` to the first certificate in the ``x5c`` header parameter of ``Pivot``.
-        - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert``. If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED``, and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
+        - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert``. If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
         - The loop continues, walking backwards until ``LoTESO-Cert`` represents the signer of the oldest Pivot.
-
-8. (Trust Root Validation) Verify the end of the chain. If ``LoTESO-Cert`` (from the last Pivot or current LoTE List of Trusted Entitie) is not in ``OJEU-LoTE-Certs-Set`` (the Trust Anchor), validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``.
-
-9. (Expiration) If current time is greater than the ``NextUpdate`` parameter's value of ``LoTE``, validation MUST fail.
-
-10. (Success) Set ``Authenticated-LoTE`` to ``LoTE``, ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``.
-
-11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (territory ``EU``), update ``OJEU-LoTE-Loc`` to that value.
-
-12. (Update Trust Root) [Caution: This step modifies the Root of Trust configuration]
-
+ 
+8. (Trust Root Validation) Verify the end of the chain. If ``LoTESO-Cert`` (from the last Pivot, or from the current ``LoTE`` when no Pivot exists) is not in ``OJEU-LoTE-Certs-Set`` (the Trust Anchor), validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``. (PRO-4.1.4-12)
+ 
+9. (Expiration) If the current time is greater than the ``NextUpdate`` value of ``LoTE`` (clause 6.3.15 of [`ETSI TS 119 602`_]), validation MUST fail. (PRO-4.1.4-13)
+ 
+10. (Success) Set ``Authenticated-LoTE`` to ``LoTE`` and ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``. (PRO-4.1.4-14, PRO-4.1.4-15)
+ 
+11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (territory ``EU``), update ``OJEU-LoTE-Loc`` to that value. (PRO-4.1.4-16)
+ 
+12. (Update Trust Root) [Caution: this step modifies the Root of Trust configuration] (PRO-4.1.4-17)
+ 
     - If ``OJEU-Loc`` does not match the first URI in ``SchemeInformationURI``, update ``OJEU-LoTE-Loc``.
-    - Update ``OJEU-LoTE-Certs-Set`` according to the new Trust Anchor either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union OJEU publication.
-
+    - Update ``OJEU-LoTE-Certs-Set`` according to the new Trust Anchor, either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union publication.
+ 
 .. note::
-    
-    - Steps 4, 5 and 11 allow modifying the location of the List of Trusted Entities file without changing the initial trusted signer public key, as long as the both the old and the new location have the same content (otherwise the validation fails with ``LoTE_FILE_CONFLICT`` status). This allows the List of Trusted Entities to be retrieved from different locations without affecting the Trust Anchor validation as long as the content is the same.
-    - In case of ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE`` error, it is likely that the Official Journal of the European Union OJEU publication has been updated with a new location for the List of Trusted Entities List of Trusted Entities. The validating Entity SHOULD repeat the validation process after having downloaded the most recent version of the OJEU.
-    - In step 8, the validating Entity established the binding of the signer certificate of the ``LoTE`` XML with the certificate referenced in the Official Journal of the European Union OJEU, effectively using the latter as a Trust Anchor.
-
-Below is a flowchart summarizing the above steps for the validation of the List of Trusted Entities List of Trusted Entities:
-
+ 
+    - Steps 4, 5 and 11 allow modifying the location of the List of Trusted Entities file without changing the initial trusted signer public key, as long as both the old and the new location have the same content, otherwise the validation fails with ``LoTE_FILE_CONFLICT``. This allows the List of Trusted Entities to be retrieved from different locations without affecting the Trust Anchor validation, as long as the content is the same.
+    - In case of ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE`` error, it is likely that the Official Journal of the European Union publication has been updated with a new location for the List of Trusted Entities. The validating Entity SHOULD repeat the validation process after downloading the most recent version of the Official Journal of the European Union.
+    - In step 8, the validating Entity establishes the binding of the signer certificate of the ``LoTE`` with the certificate referenced in the Official Journal of the European Union, effectively using the latter as a Trust Anchor.
+ 
+Below is a flowchart summarizing the above steps for the validation of the List of Trusted Entities:
+ 
 .. plantuml:: plantuml/lote-val-alg.puml
     :width: 99%
-    :alt: The figure illustrates the Flowchart of the LoTE Validation Algorithm.
-    :caption: `Flowchart of the LoTE Validation Algorithm. <https://www.plantuml.com/plantuml/png/ZLL_Rzf84FtVds9EbQwWNdnGcgO7WJGXH9UAqgWaEPt4Fnll65QOMMjt2SctF-zwoHhEf46A5DjlPjxyU3DVjM7Ah5TPf9U2SgRO2iuJ8nw5URvWoNAkv9huK6PImRlK_UgGKd5K7jLnlnhKbIIpYwc0XfAuC4BI_wBYITf9iHPQ3Tjg7Nz-wDJ1VDmAA3B2P0XZeGt856xLMXlaC29J6A26R__SmZtB16VMFefSaQ98OOxCH000tNOCroGC_0wNSaEPPFoWkncbIgxWnxVHtT4XpD5O9ZtdkNJ_COORfZJ2tyWugkwCHaz6iSJ0LCm95GnH6NWwhXg951gT6AvixNmqcS3TpsiG18iYi5JFPqqm2oHeJAJzCmxSR3fx5zWPWZKilfQ-PlIdemldb2oaWkzYhbnXO8B8aVTUh8iGkNl0J2Cq_aKDZIaQe131iVmKsmZEXsrJced4dCteHyPTWHplt_g5-qruFfzS1aJrgy_8HWjHN2vN8iCN_xtJqtVf5tx2sM0GO5NIWVX4xdfw3rSAzO9GQqWMc2o19KO3qpOqP5BcC6S6WnVY8et2Vz53CTGRfZXqxt9U8Dym39PkcdOIFXZumOFDmYRKE8uhT8QMpbxf-cyldT2-JSKhk4UbRKikqM1Yi9WB86dAMHckbK8ori05BpeQsLP-ZhTAGKWyvb1URdQPMIlSzkoQ7grnCohxnKJMVTNQKXIfyADZySZt6kiRMZRolkBT3k8zKu8zPAWBGVcCjeBgmy5sb8WZAxcWmotAkdNwlc7FTWtq8jzpMvsJ6AurKE6y1GsIS2CUfT7D7HKI3A3r1qpjZe6nb7dJ4oxVE1Ft7aI_3KO2LJHVMKdEPhkCl9a8sjmHu5ZGiXoTeX05mxrQ69_Rm_FM3-HbTe5vLIAXUHTABf7AuXG1cA2twwvEmbukLNvrsz0rm5FrAxEtgyRwEhoChhTzVK83BGSFOF2ej-VgG--lcQ4a8sYDO6IvLfBj4Nijcztr8E0K28fr-bqgdvW-goXTVFWGXDsCzYh_7gPBaPTcbHjOzjBMZFgjweH_YNspVyeTW_qvwOxbxSZT5BQsNun8c1ynkmjV4N7WPkFz5SFeAHVAi_8ZF94R6DYzzcJAYJchlGhTGn8lVTRiaj2yskFGRRVYQfLkpgVJqQNrmZyXTrv2ptpLkkrs32LBTmKpk91okM9g-UkhC2EHGh9WD4SEWhQgx5cl7r-yLg_rZEm157CGgNCFA_c8VEUwM6BHLoI-NcN_0G00>`_
-
+    :alt: The figure illustrates the Flowchart of the List of Trusted Entities Validation Algorithm.
+    :caption: Flowchart of the List of Trusted Entities Validation Algorithm.
+ 
 Below are listed the Sub-Status error codes of the List of Trusted Entities in tabular format.
-
+ 
 .. list-table:: List of Trusted Entities Sub-Status Error Codes
    :class: longtable
    :header-rows: 1
-
+ 
    * - Code
      - Phase
      - Meaning
    * - ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``
      - both
-     - No URI matches the expected ``OJEU-Loc`` within the LoTE's ``SchemeInformationURI``. This typically implies that a newer version of the OJEU publication is available.
+     - No URI matches the expected ``OJEU-Loc`` within the ``SchemeInformationURI`` of the List of Trusted Entities. This typically implies that a newer version of the Official Journal of the European Union publication is available.
    * - ``LoTE_FILE_CONFLICT``
      - both
-     - A location conflict is detected where the tracked LoTE location differs from the active LoTE location, and the content across these files does not match.
+     - A location conflict is detected where the tracked List of Trusted Entities location differs from the active one, and the content across these files does not match.
    * - ``LoTE_SIGNATURE_VERIFICATION_FAILED``
      - both
-     - The cryptographic signature validation of the current LoTE file failed using the extracted signer certificate, indicating potential tampering or corruption.
+     - The signature validation of the current List of Trusted Entities file failed using the extracted signer certificate, indicating potential tampering or corruption.
    * - ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``
      - both
-     - The historical chain of trust is broken because the signing certificate of the previous pivot or file (i-1) cannot be found in the trusted certificate set of the succeeding pivot (i).
+     - The historical chain of trust is broken because the signing certificate of the previous pivot or file (i-1) is not found in the trusted certificate set of the succeeding pivot (i).
    * - ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``
      - both
-     - The cryptographic signature validation failed for an intermediate pivot file (i) within the historical chain.
+     - The signature validation failed for an intermediate pivot file (i) within the historical chain.
    * - ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``
      - both
-     - The final certificate at the root of the pivot chain (or the current LoTE signer if no pivots exist) is not found in the initial ``OJEU-LoTE-Certs-Set`` Trust Anchor.
-   * - ``EUTL_SIGNATURE_VERIFICATION_FAILED``
-     - both
-     - The digital signature of the Trusted List failed validation or is undetermined when checked against the signer certificate's public key.
-   * - ``EUTLSO_SIGNER_CERT_NOT_AUTHENTICATED_BY_LoTE``
-     - both
-     - The Trusted List signer certificate is not present in the certificate set extracted from the LOTL, indicating the signing certificate of the TL is not authenticated and may have been tampered with.
-   * - ``WARNING_EUTL_NEXTUPDATE_PASSED``
-     - both
-     - The current date and time are greater than the ``NextUpdate`` value specified in the Trusted List, indicating the list is expired or out of date.
+     - The final certificate at the root of the pivot chain, or the current List of Trusted Entities signer when no pivot exists, is not found in the ``OJEU-LoTE-Certs-Set`` Trust Anchor.
 
 Trusted List Validation
 """""""""""""""""""""""""""""

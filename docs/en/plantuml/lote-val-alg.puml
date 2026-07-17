@@ -12,7 +12,7 @@ title List of Trusted Entities JWT Validation
 start
 
 repeat
-    :1. Init & Download List of Trusted Entities\nfrom OJEU-List of Trusted Entities-Loc;
+    :1. Init & Download List of Trusted Entities\nfrom OJEU-LoTE-Loc;
     
     :2. Parse Header:\nExtract Signer Cert x5c;
     
@@ -28,14 +28,14 @@ repeat
         endif
     endif
 
-#fff3cd:Update OJEU-List of Trusted Entities-Loc;
+#fff3cd:Update OJEU-LoTE-Loc;
 repeat while (5. Freshness Check\nOld-List-Loc == New-List-Loc AND\nOld-List != New-List) is (Yes (New Version Detected)) not (No (Current is Fresh))
 
 if (6. Validate current List of Trusted Entities Signature) then (Invalid)
     #f8d7da:Fail: List of Trusted Entities Sig Verification Failed;
     stop
 else (Valid)
-    :Set Variables:\nCurrent Signer = List of Trusted Entities-Signer-Cert\nExtract Trusted Set from Payload;
+    :Set Variables:\nCurrent Signer = LoTE-Signer-Cert\nExtract Trusted Set from Payload;
 endif
 
 if (7. Is n = 0 (no Pivots)?) then (No (n > 0, Start Loop))
@@ -75,7 +75,7 @@ else (Yes)
     endif
 endif
 
-:11. Update Local Bookmark OJEU-List of Trusted Entities-Loc\nif changed in payload;
+:11. Update Local Bookmark OJEU-LoTE-Loc\nif changed in payload;
 
 #fff3cd:Update Trust Anchor\nConfig if OJEU moved;
 
