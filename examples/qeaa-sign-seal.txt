@@ -1,119 +1,117 @@
 AccessCertificate cert = {
-
-    tbsCertificate: {
-
-    version: 2,                     // integer value 2 for v3
+  tbsCertificate: {
+    version: 2,                                           // Integer value 2 for v3
     serialNumber: "0x6F3A0B91D2...",
+
     signature: AlgorithmIdentifier {
-        oid: "1.2.840.113549.1.1.11",  // sha256WithRSAEncryption
-        params: NULL
+      oid: "1.2.840.113549.1.1.11",                       // sha256WithRSAEncryption
+      params: NULL
     },
 
-    issuer: DistinguishedName {      // issuer attributes for legal person
-        countryName: "CZ",
-        organizationName: "Example Trust Services CA",
-        commonName: "Example CA",
-        organizationIdentifier: "VATCZ-123456789"
+    issuer: DistinguishedName {                           // Issuer attributes for legal person
+      countryName: "CZ",
+      organizationName: "Example Trust Services CA",
+      commonName: "Example CA",
+      organizationIdentifier: "VATCZ-123456789"
     },
 
     validity: {
-        notBefore: "2026-01-27T00:00:00Z",
-        notAfter:  "2027-01-27T00:00:00Z"
+      notBefore: "2026-01-27T00:00:00Z",
+      notAfter:  "2027-01-27T00:00:00Z"
     },
 
-    subject: DistinguishedName {     // subject attributes for legal person
-        countryName: "CZ",
-        organizationName: "Example of EAA/QEAA Provider",
-        organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12",
-        commonName: "EAA/QEAA Provider Example"
+    subject: DistinguishedName {                          // Subject attributes for legal person
+      countryName: "CZ",
+      organizationName: "Example of (Q)EAA Provider",
+      commonName: "(Q)EAA Provider Example",
+      organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
     },
 
     subjectPublicKeyInfo: {
-        algorithm: AlgorithmIdentifier {
-        oid: "1.2.840.113549.1.1.1",
+      algorithm: AlgorithmIdentifier {
+        oid: "1.2.840.113549.1.1.1",                      // rsaEncryption
         params: NULL
-        },
+      },
 
-        subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
+      subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
     },
-
 
     extensions: [
-
-        Extension {
-        oid: "2.5.29.35",            // authorityKeyIdentifier
+      Extension {
+        oid: "2.5.29.35",                                 // authorityKeyIdentifier
         critical: false,
         value: AuthorityKeyIdentifier {
-            keyIdentifier: "HEX(20B_KEYID_OF_ISSUING_CA_PUBLIC_KEY)"
+          keyIdentifier: "HEX(20B_KEYID_OF_ISSUING_CA_PUBLIC_KEY)"
         }
-        },
-
-        Extension {
-        oid: "2.5.29.15",            // keyUsage
+      },
+      
+      Extension {
+        oid: "2.5.29.15",                                 // keyUsage
         critical: true,
         value: KeyUsage {
-            nonRepudiation: true        // Type A
-            // all others false
+          nonRepudiation: true                            // Type A
+          // All other bits set to false
         }
-        },
+      },
 
-        Extension {
-        oid: "1.3.6.1.5.5.7.1.1",    // authority information access
-        critical: false,
-        value: AuthorityInfoAccess [
-            AccessDescription {
-            accessMethod: "1.3.6.1.5.5.7.48.2",            // id-ad-caIssuers
-            accessLocation: URI("https://ca.example.test/caIssuers/issuing-ca.cer")
-            },
-
-            AccessDescription {
-            accessMethod: "1.3.6.1.5.5.7.48.1",            // id-ad-ocsp
-            accessLocation: URI("https://ocsp.example.test")
-            }
-        ]
-        },
-
-        Extension {
-        oid: "2.5.29.32",            // certificatePolicies
+      Extension {
+        oid: "2.5.29.32",                                 // certificatePolicies
         critical: false,
         value: CertificatePolicies [
-            PolicyInformation {
-            policyIdentifier: "0.4.0.194112.1.3",          // qcp-legal-qcsd
+          PolicyInformation {
+            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qcsd
             policyQualifiers: [
-                CPSuri("https://rpca.example.test/cps")
+              CPSuri("https://rpca.example.test/cps")
             ]
-            }
+          }
         ]
-        },
+      },
 
-        Extension {
-        oid: "2.5.29.17",            // subjectAltName
+      Extension {
+        oid: "2.5.29.17",                                 // subjectAltName
         critical: false,
         value: SubjectAltName [
-            GeneralName.uniformResourceIdentifier("https://eaa.example.test/support"),
-            GeneralName.rfc822Name("support@eaa.example.test"),
-            GeneralName.otherName(
-            typeId: "2.5.4.20",       // id-at-telephoneNumber
+          GeneralName.uniformResourceIdentifier("https://eaa.example.test/support"),
+          GeneralName.rfc822Name("support@eaa.example.test"),
+          GeneralName.otherName(
+            typeId: "2.5.4.20",                           // id-at-telephoneNumber
             value: "+420-111-222-333"
-            )
+          )
         ]
-        },
+      },
 
-        Extension {
-        oid: "2.5.29.31",            // cRLDistributionPoints
+      Extension {
+        oid: "2.5.29.31",                                 // cRLDistributionPoints
         critical: false,
         value: CRLDistributionPoints [
-            DistributionPoint {
+          DistributionPoint {
             distributionPoint: URI("https://crl.example.test/issuing-ca.crl")
-            }
+          }
         ]
-        }
-    ]
-    },
+      }
 
-    signatureAlgorithm: AlgorithmIdentifier {
-    oid: "1.2.840.113549.1.1.11",    // must match/align with tbsCertificate.signature
+      Extension {
+        oid: "1.3.6.1.5.5.7.1.1",                         // authorityInfoAccess
+        critical: false,
+        value: AuthorityInfoAccess [
+          AccessDescription {
+            accessMethod: "1.3.6.1.5.5.7.48.2",           // id-ad-caIssuers
+            accessLocation: URI("https://ca.example.test/caIssuers/issuing-ca.cer")
+          },
+
+          AccessDescription {
+            accessMethod: "1.3.6.1.5.5.7.48.1",           // id-ad-ocsp
+            accessLocation: URI("https://ocsp.example.test")
+          }
+        ]
+      }
+    ]
+  },
+
+  signatureAlgorithm: AlgorithmIdentifier {
+    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
     params: NULL
-    },
-    signatureValue: "BASE64(SIGN(issuerPrivateKey, DER(tbsCertificate)))"
+  },
+
+  signatureValue: "BASE64(SIGN(issuerPrivateKey, DER(tbsCertificate)))"
 }

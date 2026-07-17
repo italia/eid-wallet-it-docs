@@ -168,6 +168,12 @@ The following table defines the complete set of extensions applicable to the cer
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 
+The following is a non-normative example of a Registrar Sign/Seal Certificate for legal persons (non-self-signed).
+
+.. literalinclude:: ../../examples/registrar-sign-seal.txt
+  :language: text
+
+
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

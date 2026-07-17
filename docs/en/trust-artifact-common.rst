@@ -68,7 +68,7 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
 
 
-The following is a non-normative example of a PID Provider's end-entity certificate for legal persons (non-self-signed).
+The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons (non-self-signed).
 
 .. literalinclude:: ../../examples/pid-sign-seal.txt
   :language: text
@@ -124,7 +124,7 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
 
 
-The following is a non-normative example of a Wallet Provider's end-entity certificate for legal persons (non-self-signed).
+The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons (non-self-signed).
 
 .. literalinclude:: ../../examples/wp-sign-seal.txt
   :language: text
@@ -133,8 +133,6 @@ The following is a non-normative example of a Wallet Provider's end-entity certi
 """""""""""""""""""""""""""""""""""""
 
 The specific requirements for EAA Provider and QEAA Provider Sign/Seal Certificates are specified in Clauses 6 and 7 of [`ETSI TS 119 412-6`_], respectively.
-
-The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
 The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
@@ -173,14 +171,10 @@ The following table defines the complete set of extensions applicable to the cer
      
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
-   * - ``qcStatements``
-     - REQUIRED
-     - TBD.
-
 
 For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
 
-The following is a non-normative example of a QEAA Provider's end-entity certificate for legal persons (non-self-signed).
+The following is a non-normative example of a QEAA Provider Sign/Seal Certificate certificate for legal persons (non-self-signed).
 
 .. literalinclude:: ../../examples/qeaa-sign-seal.txt
   :language: text
@@ -231,7 +225,8 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
-The following is a non-normative example of a PuB-EAA Provider's end-entity certificate for legal persons (non-self-signed).
+
+The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons (non-self-signed).
 
 .. literalinclude:: ../../examples/pubeaa-sign-seal.txt
   :language: text
@@ -352,7 +347,7 @@ The following table maps the various Certificates used in the ecosystem, the att
 
   As described in Section 4.3.1 of [`EUDI-TS 12`_], the Trust Anchor of a EAA Sign/Seal Certificate is referenced in the ``trustedAuthority`` attribute of the machine-readable Attestation Rulebook for the specific EAA.
 
-The following is a non-normative example of a trust anchor certificate in a pseudo-structure format.
+The following is a non-normative example of a Trust Anchor Certificate (self-signed).
 
 .. literalinclude:: ../../examples/trust-anchor-cert.txt
   :language: text

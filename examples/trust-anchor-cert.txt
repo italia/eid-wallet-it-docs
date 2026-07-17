@@ -1,27 +1,74 @@
-trustAnchorFromCert ::= {
-    Certificate {
-      tbsCertificate {
-        version         v3,
-        serialNumber    1,
-        signature       { algorithm sha256WithRSAEncryption, parameters NULL },
-        issuer          rdnSequence { { { type commonName, value "Example Root CA" } } },
-        validity        { notBefore utcTime "20260101000000Z",
-                          notAfter  utcTime "20460101000000Z" },
-        subject         rdnSequence { { { type commonName, value "Example Root CA" } } },
-        subjectPublicKeyInfo rsaPubKey,
-        extensions {
-          { extnID id-ce-basicConstraints,
-            critical TRUE,
-            extnValue '3003020101FF'H },               -- cA=TRUE, pathLen absent
-          { extnID id-ce-subjectKeyIdentifier,
-            critical FALSE,
-            extnValue '0414A1B2C3D4E5F60718293A4B5C6D7E8F90A1B2C3D4'H },
-          { extnID id-ce-keyUsage,
-            critical TRUE,
-            extnValue '030205C0'H }                   -- keyCertSign, cRLSign
+AccessCertificate cert = {
+  tbsCertificate: {
+    version: 2,                                           // Integer value 2 for v3
+    serialNumber: "0x6F3A0B91D2...",
+
+    signature: AlgorithmIdentifier {
+      oid: "1.2.840.113549.1.1.11",                       // sha256WithRSAEncryption
+      params: NULL
+    },
+
+    issuer: DistinguishedName {                           // Issuer attributes
+      countryName: "CZ",
+      organizationName: "Example Root CA",
+      commonName: "Example CA",
+      organizationIdentifier: "VATCZ-123456789"
+    },
+
+    validity: {
+      notBefore: "2026-01-27T00:00:00Z",
+      notAfter:  "2046-01-27T00:00:00Z"
+    },
+
+    subject: DistinguishedName {                          // Subject attributes
+      countryName: "CZ",
+      organizationName: "Example Root CA",
+      commonName: "Example CA",
+      organizationIdentifier: "VATCZ-123456789"
+    },
+
+    subjectPublicKeyInfo: {
+      algorithm: AlgorithmIdentifier {
+        oid: "1.2.840.113549.1.1.1",                      // rsaEncryption
+        params: NULL
+      },
+
+      subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
+    },
+
+    extensions: [
+      Extension {
+        oid: "2.5.29.14",                                 // subjectKeyIdentifier
+        critical: false,
+        value: SubjectKeyIdentifier [
+          keyIdentifier: "SHA-1(SUBJECT_PUBLIC_KEY_VALUE)"
+        ]
+      },
+
+      Extension {
+        oid: "2.5.29.15",                                 // keyUsage
+        critical: true,
+        value: KeyUsage {
+          keyCertSign: true,
+          cRLSign: trus
+          // All other bits set to false
         }
       },
-      signatureAlgorithm { algorithm sha256WithRSAEncryption, parameters NULL },
-      signatureValue '...RSA signature over tbsCertificate... 'H
-    }
+
+      Extension {
+        oid: "2.5.29.19",                                 // basicConstraints
+        critical: true,
+        value: BasicConstraints {
+          cA: true
+        }
+      }
+    ]
+  },
+
+  signatureAlgorithm: AlgorithmIdentifier {
+    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
+    params: NULL
+  },
+
+  signatureValue: "BASE64(SIGN(issuerPrivateKey, DER(tbsCertificate)))"
 }
