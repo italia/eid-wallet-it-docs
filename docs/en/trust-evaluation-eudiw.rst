@@ -112,7 +112,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-    Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
+    Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
 
 .. note::
 
@@ -250,9 +250,9 @@ Trusted List Validation
 
 This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
 
-1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSITS119615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` except for the LOTL format which is always XML.
+1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation` except for the LOTL format which is always XML.
 2. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
-3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSITS119615`_].
+3. Obtain and validate the relevant Trusted List as described in section 4.2 of [`ETSI TS 119 615`_].
 
 X509 Certificate Chain Validation Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -320,7 +320,7 @@ If any step fails, the attestation MUST NOT be considered issued by a trusted is
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
  
-The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key. The Wallet-Relying Party Access Certificate is profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
+The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction. It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key. The Wallet-Relying Party Access Certificate is profiled in :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
  
 For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
  
