@@ -49,7 +49,7 @@ The Signing Trust Anchor Validation is not included in the table below, since, a
       - Not applicable as a transacting party.
     * - Wallet Instance
       - Acts as Trust Evaluator toward the Credential Issuer. It MUST support both EUDIW and National Trust Framework depending on whether the requested  Credential is in the EU catalogue or only in the national catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
-      - Acts as Trust Evaluator toward the Relying Party. It MUST support both EUDIW and National Trust Framework. In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party, while in the proximity flow only the EUDIW mdoc reader authentication applies (see :ref:`trust-evaluation:Selection at Presentation`).
+      - Acts as Trust Evaluator toward the Relying Party. It MUST support both EUDIW and National Trust Framework. In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party, while in the proximity flow both frameworks use the mdoc reader authentication and the framework is determined by the trust anchor that validates the reader certificate (see :ref:`trust-evaluation:Selection at Presentation`).
     * - Credential Issuer
       - Acts as Trust Evaluator toward the Wallet Instance. It MUST support EUDIW when the Credential being issued is in the EU catalogue, or National Trust Framework only when the Credential is not in the EU catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
       - Not applicable.
@@ -78,16 +78,23 @@ A Relying Party interacting with a Wallet Unit under the EUDIW profile (i.e. whe
 
 The Wallet Instance MUST support both prefixes and MUST process each request under the trust evaluation procedures of the framework declared by the prefix. In particular, the ``x509_hash`` prefix selects the EUDIW procedures (see :ref:`trust-evaluation-eudiw:EUDIW Authentication`), the ``openid_federation`` prefix selects the National Trust Framework procedures (see :ref:`trust-evaluation-oidfed:Trust Evaluation Processes by Context`). The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework.
 
-In the proximity flow the Relying Party Instance authentication follows the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on the access certificate, as profiled in Section 5.3 of [`ETSI TS 119 472-2`_] (see :ref:`proximity-flow:mdoc Request`). A selection mechanism equivalent to the ``client_id`` prefix is not defined in [`ISO18013-5`_].
+In the proximity flow both Trust Frameworks use the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on an X.509 certificate provided by the Relying Party Instance in the ``x5chain`` header of the ``ReaderAuth``. 
+
+Under the EUDIW Trust Framework the certificate is the access certificate, as profiled in Section 5.3 of [`ETSI TS 119 472-2`_] (see :ref:`proximity-flow:mdoc Request`), and it is validated against the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities. 
+
+Under the National Trust Framework the certificate is the Relying Party authentication certificate and it is validated against an Authentication Trust Anchor published in the Federation Trust Anchor Entity Configuration (see :ref:`trust-evaluation-oidfed:Relying Party Proximity Authentication`).
+
+A selection mechanism equivalent to the ``client_id`` prefix is not defined in [`ISO18013-5`_]. Within IT-Wallet the applicable framework is determined by the trust anchor that validates the certification path of the reader certificate. The request is processed under the EUDIW Trust Framework when the path terminates in a trust anchor of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities, and under the National Trust Framework when it terminates in an Authentication Trust Anchor of the federation. The Wallet Instance MUST determine the applicable framework before the Authorization process and MUST run the Authorization under that framework only.
 
 Failure Handling
 ^^^^^^^^^^^^^^^^
 
-The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework. During presentation flow, if a Relying Party declares the ``x509_hash`` prefix and the access certificate validation fails, the Wallet Instance MUST NOT attempt the evaluation under the National Trust Framework, and the same rule applies in the opposite direction.
+The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
 
-At issuance, if the evaluation of the Credential Issuer or of the Wallet Instance Attestation fails under the framework selected by the catalogue, the interaction MUST NOT continue and MUST NOT be re-evaluated under the other framework. In the EUDIW Trust Framework, according to the ARF Annex 2 (`EIDAS-ARF`_), the Wallet Unit MUST validate the access certificate of the Provider and its registration before requesting the issuance and, when this verification does not succeed, it MUST display a warning to the User and MUST NOT request the issuance (ISSU_24, ISSU_24a and ISSU_24b for the PID Providers, ISSU_34, ISSU_34a and ISSU_34b for the other Providers). The Provider MUST validate the Wallet Instance Attestation through the Wallet Providers LoTE before issuing (ISSU_21, ISSU_28). Unlike the presentation case, no User choice option is foreseen at issuance. Within the National Trust Framework the same behavior applies by analogy.
+In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
+During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance. Unlike the presentation case, no User choice option is foreseen at issuance. 
 
-When the authentication of a Relying Party fails, the Wallet Instance MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy. Under the EUDIW Trust Framework this behavior is required by RPA_05 and RPA_06a of the ARF Annex 2 (`EIDAS-ARF`_). Within the National Trust Framework the same behavior applies by analogy with RPA_05.
+This behavior follows the requirements defined in the ARF Annex 2 (`EIDAS-ARF`_), and applies for both EUDIW and National Trust Frameworks.
 
 .. include:: trust-evaluation-eudiw.rst
 .. include:: trust-evaluation-oidfed.rst
