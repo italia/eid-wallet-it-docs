@@ -39,7 +39,7 @@ As shown in :numref:`fig_WRP_and_Wallet_Providers_States`, WRPs and Wallet Provi
 **Transition from REGISTERED or OPERATIONAL to REMOVED**: ``REMOVED`` indicates the revocation of an Entity's due to voluntary offboarding, a severe security breach, or a critical compliance failure.
 
   - *EUDIW Trust Framework*: for WRPs it results in the revocation of WRPAC/WRPRC and signing/seal certificates, removal of the entry from the WRP Register and update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL. For Wallet Provider it results in the update of Wallet Provider LoTE. 
-  - *National Trust Framework*:  for bothe WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
+  - *National Trust Framework*:  for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
 
 An Entity MUST reject new interactions or transactions initiated by a ``REMOVED`` Entity, and all cryptographic keys, active attestations, and operational capabilities associated with the Entity MUST be immediately revoked.
 However, Entities MAY continue to validate historical data, signatures, and Attestations generated prior to the removal timestamp, subject to local risk policies. 
@@ -163,7 +163,7 @@ In the tables below are found the relationships between the registered data and 
 
 .. note::
   The inclusion of Wallet Providers and Credential Issuers in the LoTE is an implicit assertion of their role and authorization within the ecosystem. In particular, their inclusion is a result of the succesful completion of the registration and notification procedures as defined in `CIR2025/848`_ (registration of WRP) and `CIR2024/2980`_ (notifications of WRP and Wallet Provider).
-  Similarly, the possiblity to fetch and Subordinate Statement of an Entity means that the Entity is currently part of the ecosystem.
+  Similarly, the possibility to fetch a Subordinate Statement of an Entity means that the Entity is currently part of the ecosystem.
 
 .. note::
   QEAAs are provided by Qualified Trust Service Providers (QTSPs). Their identity/technical/authorization information are available in dedicated EUMS TL.
@@ -201,10 +201,6 @@ For WRP updating their identity information, technical configurations, and/or au
   
     - **LoTE Update** [ONLY for PID and Pub-EAA Providers]: Upon obtaining a new signature/seal certificate with the updated key the LoTE Provider MUST be notified, which will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the updated Signature/Seal certificate.
 
-  - *National Trust Framework*: 
-
-    - **Trust Anchor Entity Configuration Update**: Upon obtaining a new signature/seal certificate with the updated key the Federation Trust Anchor MUST be notified, which will publish a new version of its Entity Configuration.
-
 - **Authentication Key update:** 
 
   - *EUDIW Trust Framework*: The WRP MUST notify WRPAC key updates to the Provider of WRPAC
@@ -214,6 +210,7 @@ For WRP updating their identity information, technical configurations, and/or au
   - *National Trust Framework*: 
 
     - **Entity Configuration Update**: The Entity MUST update its Entity Configuration.
+    - **Subordinate Statement Update**: The Federation Authority MUST update the Subordinate Statement of the updated Entity.
 
 **Wallet Provider Updates**
 
@@ -241,10 +238,6 @@ For Wallet Providers updating their identity information and/or technical config
   - *EUDIW Trust Framework*: 
 
     - **LoTE Update** [ONLY for Trust Anchor certificates]: Upon obtaining a new signature/seal certificate with the updated key the LoTE Provider MUST be notified, which will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the entity's updated Signature/Seal certificate.
-
-  - *National Trust Framework*: 
-
-    - **Trust Anchor Entity Configuration Update**: Upon obtaining a new signature/seal certificate with the updated key the Federation Trust Anchor MUST be notified, which will publish a new version of its Entity Configuration.
 
 Revocation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^

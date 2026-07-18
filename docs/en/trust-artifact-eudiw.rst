@@ -24,9 +24,13 @@ Register of WRPs
 ^^^^^^^^^^^^^^^^
 
 The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs and their authorisations/declared usage.
+This section documents a `EUDI-TS 5`_ aligned profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
+
+Register Dataset
+""""""""""""""""
 
 The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of the `CIR2025/848-Amendment`_.
-Below some non-normative examples of WRP objects stored in the Register.
+Below some non-normative examples of ``WalletRelyingParty`` objects stored in the Register.
 
 A bank registered as a Relying Party requesting PID for know-your-customer procedures.
 
@@ -44,10 +48,8 @@ An entity registered as a designated Intermediary that acts on behalf of WRPs du
   :language: JSON
 
 
-Common Register Open APIs
-"""""""""""""""""""""""""
-
-This section documents a `EUDI-TS 5`_ aligned common Register API profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
+Register Open APIs
+""""""""""""""""""
 
 The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements,
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
@@ -60,7 +62,10 @@ and provide methods for searching and querying complete data sets of registered 
 .. note::
     The published API view excludes only `postalAddress` (`CIR2025/848-Amendment`_, Annex I, point 4). All other fields, including intended-use credential claims, are published as registered.
 
-The base OpenAPI Specification is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
+The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ v1.3 is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
+
+.. warning::
+  In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in the `CIR2025/848-Amendment`_.
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,6 +191,7 @@ Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI TS 119 475`_. This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
+
 - core identification attributes (clause 5.1 `ETSI TS 119 475`_),
 - service description attributes (clause 5.2.4 `ETSI TS 119 475`_),
 - entitlement attributes (see Annex A.2 `ETSI TS 119 475`_),
@@ -197,19 +203,19 @@ This section defines Wallet-Relying Party Registration Certificate (WRPRC), as d
 The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI TS 119 475`_.
 
 The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular,
+
 - The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI_TS_119_182_1`
 - The CWT MUST be signed with an Advanced Electronic Signature following structure as defined in :rfc:`9052` and :rfc:`9360`.
 
-Below are represented many non-normative examples of WRPRCs' headers and payloads.
+Below a non-normative example of WRPRC header and payload for a Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-jwt-header.json
   :language: json
 
-.. literalinclude:: ../../examples/wrprc-cwt-header.txt
-  :language: text
-
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
   :language: json
+
+Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
 
 .. literalinclude:: ../../examples/wrprc-payload-rpi.json
   :language: json
@@ -225,7 +231,7 @@ This section describes the format and contents of three types of Trust Artifacts
 
 Ecosystem Entities utilize these lists to:
 
-- **Validate runtime trustworthiness**: Verify a Trust Anchor (see `:ref:trust-artifact-eudiw:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
+- **Validate runtime trustworthiness**: Verify a Trust Anchor (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
 - **Perform historical validation**: Validate information contained within the list for historical audit purposes.
 
 The three distinct types of trust lists are:
@@ -242,7 +248,7 @@ The three distinct types of trust lists are:
 
   The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently, the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
 
-- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI TS 119 602`_. These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_). To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU. The <artifacts:List of Trusted Entities (LoTE)|LoTE> types can be one of the following, as defined in annex C.2:
+- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI TS 119 602`_. These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_). To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU. The LoTE types can be one of the following, as defined in annex C.2:
 
   - PID Provider;
   - Wallet Provider;
