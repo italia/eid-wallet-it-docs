@@ -45,6 +45,13 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
         - :ref:`trust-evaluation-oidfed:Authorization`, including the Overasking Check
         - :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`
       - No entity level artifact is required from the Wallet Instance.
+    * - Wallet Instance
+      - Proximity presentation
+      - On the Relying Party:
+
+        - :ref:`trust-evaluation-oidfed:Relying Party Proximity Authentication`
+        - :ref:`trust-evaluation-oidfed:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in the ``requestInfo`` of the ISO ``DeviceRequest``
+      - No entity level artifact is required from the Wallet Instance.
     * - Credential Issuer
       - Issuing national only Credentials
       - On the Wallet Instance:
@@ -259,13 +266,24 @@ For Credentials in mdoc format the Mobile Security Object carries the Document S
 
 The lifecycle of the signing certificates MUST be kept aligned with the federation configuration set of the issuer keys. When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly. Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.
 
+Authentication Trust Anchor Distribution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Authentication Trust Anchors are distributed through the Federation Trust Anchor Entity Configuration with the same mechanism used for the Signing Trust Anchors. Each Authentication Trust Anchor certificate is provided in the ``x5c`` parameter of a dedicated JWK, distinct from the Federation Entity Keys.
+
+An Authentication Trust Anchor is the root of the X.509 authentication PKI that issues the Relying Party authentication certificates used in the Proximity Flow. These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
+
+.. note::
+  The issuance of the Relying Party authentication certificates and the operation of the authentication PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
+
 Authentication
 ^^^^^^^^^^^^^^^^^^^^
 
-The Authentication process has the aim of asserting the identity of the Trust Evaluated Party. Two procedures are defined:
+The Authentication process has the aim of asserting the identity of the Trust Evaluated Party. Three procedures are defined:
 
-- Federation Entity Authentication applies to the entities that publish an Entity Configuration.
+- Federation Entity Authentication applies to the entities that publish an Entity Configuration, in the Remote Flow.
 - Wallet Instance Authentication applies to the Wallet Instance, which is not a Federation Entity.
+- Relying Party Proximity Authentication applies to the Relying Party in the Proximity Flow.
 
 Federation Entity Authentication
 """""""""""""""""""""""""""""""""""
@@ -318,6 +336,28 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for t
 3. Check the temporal validity and the revocation status of the Wallet Instance Attestation.
 4. Verify the proof of possession of the attested key, according to the protocol in use.
 
+Relying Party Proximity Authentication
+"""""""""""""""""""""""""""""""""""""""
+
+In the Proximity Flow the Relying Party is authenticated through the mdoc reader authentication defined in [`ISO18013-5`_]. The Relying Party signs the session transcript with the private key of its authentication certificate and provides the certificate chain in the ``x5chain`` header of the ``ReaderAuth``. The certification path terminates in an Authentication Trust Anchor distributed as defined in :ref:`trust-evaluation-oidfed:Authentication Trust Anchor Distribution`.
+
+**Input**
+
+- The ``ReaderAuth`` signed by the Relying Party, with the authentication certificate chain in the ``x5chain`` header.
+- The applicable Authentication Trust Anchor.
+
+**Outcome**
+
+The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. In the second case the Relying Party MUST NOT be considered authenticated and the interaction MUST NOT continue.
+
+**Process**
+
+1. Extract the certificate chain from the ``x5chain`` header of the ``ReaderAuth``.
+2. Validate the certification path against the applicable Authentication Trust Anchor as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`.
+3. Verify the ``ReaderAuth`` signature over the session transcript with the validated authentication certificate.
+
+The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
+
 Authorization
 ^^^^^^^^^^^^^^^^^^
 
@@ -338,7 +378,7 @@ Trust Mark Validation
 
 **Input**
 
-- The *registration-entity* Trust Mark JWT, obtained from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6).
+- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow, through the ``euWrprc`` member as defined in the EUDIW Trust Framework.
 - The validated Federation Trust Anchor configuration.
 
 **Outcome**

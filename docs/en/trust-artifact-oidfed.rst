@@ -181,7 +181,7 @@ The following sections provide non-normative examples of Entity Statements, both
 Entity Configuration of a Federation TA
 """""""""""""""""""""""""""""""""""""""
 
-The Federation TA is the root of the Trust Chain. Its Entity Configuration has no ``authority_hints`` and no registration Trust Mark, it declares in ``trust_mark_issuers`` that itself is the only issuer of the registration Trust Marks, and its ``jwks`` carries, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI as dedicated JWKs with ``x5c``.
+The Federation TA is the root of the Trust Chain. Its Entity Configuration has no ``authority_hints``, and its ``jwks`` provides, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI and the Authentication Trust Anchors of the X.509 authentication PKI, as dedicated JWKs with ``x5c``. A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates; an Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow. Each such JWK is identified by its ``kid`` and by the properties of the certificate provided in its ``x5c``.
 
 .. code-block:: json
 
@@ -208,6 +208,17 @@ The Federation TA is the root of the Trust Chain. Its Entity Configuration has n
            "y": "iMDCuatE53HiX2VTDJ_q7LbQ-A7fgjXZpJsW-eZzge0",
            "x5c": [
              "<Signing Trust Anchor X.509 certificate>"
+           ]
+         },
+         {
+           "kty": "EC",
+           "crv": "P-256",
+           "use": "sig",
+           "kid": "authentication-trust-anchor-01",
+           "x": "Zm3kQp9rB1xYtA5nF2wEsRHHf-XWjv1k-uZCSVCSAn8",
+           "y": "Km9ZI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB2m",
+           "x5c": [
+             "<Authentication Trust Anchor X.509 certificate>"
            ]
          }
        ]
@@ -656,7 +667,7 @@ Where:
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""
 
-Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity. The only Trust Mark issuer MUST be the Federation TA. It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request. This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework. An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
+Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity. The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA. It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request. This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework. An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
 
 A Relying Party Intermediary receives its registration Trust Mark with the ``intermediate`` ``<entity_type>`` in the identifier. Unlike the EUDIW Trust Framework, where the intermediary relationship is expressed in the registration data of the intermediated Relying Party, in the National Trust Framework the relationship is expressed through the federation hierarchy as the Intermediary is a Federation Intermediate that publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. The registration Trust Mark of each affiliated Relying Party is also issued by the Federation Trust Anchor. For this reason no dedicated intermediary field is present in the Trust Mark. The onboarding of the Intermediary is defined in :ref:`onboarding-procedure:Relying Party Intermediaries`.
 
