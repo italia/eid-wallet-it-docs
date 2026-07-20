@@ -228,7 +228,7 @@ Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
 
 .. warning::
 
-    `ETSI_TS_119_475`, Table 10 defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
+  `ETSI TS 119 475`_, Table 10 defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
 
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
