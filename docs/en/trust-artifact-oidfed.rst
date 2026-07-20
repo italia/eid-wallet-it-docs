@@ -649,7 +649,7 @@ Each Leaf publishes its own Entity Configuration, pointing to its immediate supe
 Trust Marks
 ^^^^^^^^^^^
 
-As a result of a successful onboarding completion, entities receive IT-Wallet Federation Trust Marks. Trust Marks are issued by the Federation Authority (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) through the Federation Trust Mark Endpoint and serve as verifiable attestations about compliance with IT-Wallet technical profiles and/or authorization policies.
+As a result of a successful onboarding completion, entities receive IT-Wallet Federation Trust Marks. The registration Trust Mark is issued by the Federation Trust Anchor, also for the entities onboarded through a Federation Intermediate, and is made available through the Federation Trust Mark Endpoint. Trust Marks serve as verifiable attestations about compliance with IT-Wallet technical profiles and/or authorization policies.
 
 Trust Mark Types and Schema
 """""""""""""""""""""""""""

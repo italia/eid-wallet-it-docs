@@ -505,8 +505,8 @@ Because the two trust frameworks handle intermediation differently, an Intermedi
 **OpenID Federation.** A Relying Party Intermediary matches an OpenID Federation Intermediate Entity.
 It registers its federation keys and endpoints, publishes its own Entity Configuration, and issues Subordinate Statements for its Leaves.
 
-Upon completion the Trust Anchor issues it an Intermediary Trust Mark (``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``) and, through the ``trust_mark_issuers`` claim of its Entity Configuration, authorizes it to issue Trust Marks to its affiliated Relying Parties.
-Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary and carries the Trust Mark the Intermediary issued to it.
+Upon completion the Federation Trust Anchor issues it a registration Trust Mark with the ``intermediate`` Entity Type Identifier (``https://<federation_authority_domain>/trust_marks/registration-entity/intermediate``).
+Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary, while its own registration Trust Mark is issued by the Federation Trust Anchor as well: within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, and the Intermediary does not issue Trust Marks to its affiliated Relying Parties (see :ref:`trust-artifact-oidfed:Trust Mark registration-entity`).
 
 **EUDIW.** In the EUDIW Trust Framework there is no Intermediate Entity: an Intermediary is registered as an ordinary Wallet-Relying Party (a Relying Party acting on behalf of others) and authenticates towards Wallet Units with its own WRPAC.
 The intermediary relationship is expressed in the registration data rather than in a hierarchy of certificates:
