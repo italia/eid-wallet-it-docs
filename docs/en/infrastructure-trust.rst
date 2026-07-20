@@ -31,6 +31,7 @@ In both cases, the onboarding and, eventually, European notification processes r
   :caption: Infrastructure of Trust Table of Contents
   :maxdepth: 3
 
+  trust-pki-architecture.rst
   x509-certificate-profile.rst
   trust-artifact-common.rst
   trust-artifact-eudiw.rst
