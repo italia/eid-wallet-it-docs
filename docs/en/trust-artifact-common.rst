@@ -47,7 +47,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``certificatePolicies``
      - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to ``0.4.0.2042.1.2`` (*NCP+*).
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-098``.
 
    * - ``subjectAltName``
      - REQUIRED
@@ -94,8 +94,8 @@ The following table defines the complete set of extensions applicable to the cer
      - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - REQUIRED
-     - The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL
+     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED
@@ -103,7 +103,9 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``certificatePolicies``
      - REQUIRED
-     - TBD.
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least (as per `EIDAS-ARF`_ requirement ``EW-DM-38-001``):
+       * The requirements for *NCP*, defined in `ETSI EN 319 411-1`_, for KAs describing a keystore.
+       * The requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, for KAs describing a WSCA/WSCD.
 
    * - ``subjectAltName``
      - REQUIRED
@@ -149,6 +151,10 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
+   * - ``subjectKeyIdentifier``
+     - OPTIONAL
+     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+
    * - ``keyUsage``
      - REQUIRED
      - 
@@ -170,6 +176,10 @@ The following table defines the complete set of extensions applicable to the cer
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
+
+   * - ``qcStatements``
+     - REQUIRED (only for QEAA)
+     - It MUST contain a ``QCStatement`` structure among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_].
 
 
 For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
@@ -199,13 +209,17 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
+   * - ``subjectKeyIdentifier``
+     - OPTIONAL
+     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+
    * - ``keyUsage``
      - REQUIRED
      - 
 
    * - ``certificatePolicies``
      - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to ``0.4.0.2042.1.2`` (*NCP+*).
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-103``.
 
    * - ``subjectAltName``
      - REQUIRED
@@ -283,7 +297,7 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``certificatePolicies``
      - OPTIONAL
-     - It MAY be used to signal policy OIDs relevant to the issuing CA's practices.
+     - It MAY include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
 
    * - ``basicConstraints``
      - REQUIRED
@@ -291,15 +305,13 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``cRLDistributionPoints``
      - OPTIONAL
-     - It MAY include CRL distribution point URIs when CRL-based revocation is used.
+     - It MAY include CRL distribution point URIs, when CRL-based revocation is used.
 
    * - ``authorityInfoAccess``
      - CONDITIONAL
      - **REQUIRED IF:** the certificate contains ``basicConstraints`` with ``pathLenConstraint`` > 0. If present, it MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` that MUST use the ``http://`` scheme and MUST NOT use the ``https://`` scheme.
 
-   * - ``ext-etsi-valassured-ST-certs``
-     - OPTIONAL
-     - If present, it indicates that the certificate issuer ensures the validity of the certificate is assured at time of use of the corresponding private key.
+       It MAY also include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.
 
 
 .. note::

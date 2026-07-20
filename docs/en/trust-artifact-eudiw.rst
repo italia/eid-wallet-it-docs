@@ -83,7 +83,7 @@ The specific requirements for WRPACs are specified in `ETSI TS 119 411-8`_.
 
 The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
-.. list-table:: PID Provider Sign/Seal Certificate Extensions
+.. list-table:: Wallet-Relying Party Access Certificate Extensions
    :class: longtable
    :header-rows: 1
    :widths: 30 20 50
@@ -95,6 +95,10 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityKeyIdentifier``
      - REQUIRED
      - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+
+   * - ``subjectKeyIdentifier``
+     - OPTIONAL
+     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED
@@ -155,8 +159,8 @@ The following table defines the complete set of extensions applicable to the cer
      - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - REQUIRED
-     - The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL
+     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED
@@ -164,7 +168,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``certificatePolicies``
      - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to ``0.4.0.2042.1.1`` (*NCP*).
+     - It MUST include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
 
    * - ``subjectAltName``
      - REQUIRED

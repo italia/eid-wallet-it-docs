@@ -67,7 +67,7 @@ AccessCertificate cert = {
         critical: false,
         value: CertificatePolicies [
           PolicyInformation {
-            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qcsd
+            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qscd
             policyQualifiers: [
               CPSuri("https://rpca.example.test/cps")
             ]
