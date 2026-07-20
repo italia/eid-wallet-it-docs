@@ -4,83 +4,34 @@
 Authorization Decision and Override Rules
 ------------------------------------------
 
-**Output Model**
+The Authorization Decision can either be ``AUTHORIZED`` or ``NOT_AUTHORIZED``. The conditions that determine this outcome depend on the specific Authorization Validation procedure followed.
 
-The Authorization Decision can be:
+- In case the Wallet Unit follows the :ref:`trust-evaluation:EUDIW Authorization` evaluation path, then the outcome is:
 
-- `AUTHORIZED` if the condition `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND edp_state == EDP_SATISFIED AND authz_val_state == VERIFICATION_PASSED` is satisfied; and
-- `NOT_AUTHORIZED` otherwise.
+    - ``AUTHORIZED`` if the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``; or,
+    - ``NOT_AUTHORIZED`` otherwise.
+
+- In case the Wallet Unit follows the National :ref:`trust-evaluation:Authorization` evaluation path, then the outcome is:
+
+    - ``AUTHORIZED`` if the process terminates with ``TRUST_MARK_VALID`` AND ``ENTITLEMENT_VALID`` AND ``VERIFICATION_PASSED``; or,
+    - ``NOT_AUTHORIZED`` otherwise.
 
 **Override Principles**
 
-A `NOT_AUTHORIZED` decision can be either *non-overridable* (the Wallet Unit blocks the interaction) or *overridable* (the Wallet Unit presents the negative outcome and the User can choose to proceed).
+A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit blocks the interaction) or *overridable* (the Wallet Unit presents the negative outcome and the User can choose to proceed).
 
 - During **Credential Issuance** phase, all negative verification outcomes MUST be *non-overridable*: the Wallet Unit MUST NOT let the User interact with providers whose registration cannot be confirmed.
 
 - During the **Presentation** phase, all negative verification outcomes MUST be *non-overridable*, except for the following cases:
 
-    - **Negative scope comparison**. If `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND authz_val_state == OVERASKING_DETECTED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Scope Comparison finds the Relying Party requesting more than its registered scope.
-    - **Negative Embedded Disclosure Policy evaluation**. If `(authz_art_state == REGISTER_VALID OR authz_art_state == CERTIFICATE_VALID) AND edp_state == EDP_NOT_SATISFIED`, i.e. the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+    - **Overasking [EUDIW]**. When the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``OVERASKING_DETECTED``, i.e., the Authorization Artifact Validation has had a positive outcome, but the Scope Comparison finds the Relying Party requesting more than its registered scope.
+    - **Negative Embedded Disclosure Policy evaluation [EUDIW]**. When the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_NOT_SATISFIED``, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+    - **Overasking [National]**. When the process terminates with ``TRUST_MARK_VALID`` AND ``OVERASKING_DETECTED``, i.e., the :ref:`trust-evaluation:Trust Mark Validation` has had a positive outcome, but the :ref:`trust-evaluation:Overasking Check` finds the Relying Party requesting more than its registered scope.
 
-All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable because they indicate an integrity problem rather than a user-facing choice.
+All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable as they indicate an integrity problem rather than a user-facing choice.
 
-In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome. User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the authorization decision.
+In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome. User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.
 
 .. note::
     **User opt-in**.
     The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` is executed only if the User enabled registration verification. Override mechanisms define what happens when the procedure produces a negative result.
-
-The following table details the override behavior for each procedure when it provides a negative outcome. Each row identifies a procedure, the phase in which it applies, the result code produced on failure, and whether the User can override that outcome. [FIXME: Check the table. Some entries like wrong entitlements should be non-overridable, but the table says they are. The table is copy-paste from APTITUDE.]
-
-.. list-table:: Evaluation Procedure Outcomes and Override Rules
-   :header-rows: 1
-   :widths: 30 15 25 30
-
-   * - Evaluation Procedure
-     - Phase
-     - Negative Outcome
-     - User Override
-   * - Wallet-Relying Party Registration Certificate Validation
-     - Both
-     - ``CERTIFICATE_INVALID``
-     - It triggers Register Query Validation as fallback. User is not involved.
-   * - Register Validation
-     - Issuance
-     - ``FAILED``
-     - Non-overridable.
-   * - Register Validation
-     - Presentation
-     - ``FAILED``
-     - Overridable. Advisory to User.
-   * - Binding Verification
-     - Issuance
-     - ``BINDING_FAILED``
-     - Non-overridable.
-   * - Binding Verification (direct RP)
-     - Presentation
-     - ``BINDING_FAILED``
-     - Non-overridable.
-   * - Binding Verification (intermediary)
-     - Presentation
-     - ``INTERMEDIARY_NOT_AUTHORIZED``
-     - Non-overridable.
-   * - Entitlement Verification
-     - Issuance
-     - ``WRONG_ENTITLEMENT``
-     - Non-overridable.
-   * - Entitlement Verification
-     - Presentation
-     - ``WRONG_ENTITLEMENT``
-     - Overridable. Advisory to User
-   * - Attestation Type Verification
-     - Issuance
-     - ``ATTESTATION_TYPE_NOT_REGISTERED``
-     - Non-overridable.
-   * - Scope Comparison
-     - Presentation
-     - ``OVERASKING_DETECTED``
-     - Overridable. Advisory to User.
-   * - Embedded Disclosure Policy (EDP) Evaluation
-     - Presentation
-     - ``EDP_NOT_SATISFIED``
-     - Overridable. User can deny or allow.
