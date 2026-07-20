@@ -59,7 +59,7 @@ AccessCertificate cert = {
         critical: false,
         value: CertificatePolicies [
           PolicyInformation {
-            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qcsd
+            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qscd
             policyQualifiers: [
               CPSuri("https://rpca.example.test/cps")
             ]
@@ -102,6 +102,21 @@ AccessCertificate cert = {
           AccessDescription {
             accessMethod: "1.3.6.1.5.5.7.48.1",           // id-ad-ocsp
             accessLocation: URI("https://ocsp.example.test")
+          }
+        ]
+      }
+
+      Extension {
+        oid: "1.3.6.1.5.5.7.1.3",                         // qcStatements
+        critical: false,
+        value: QCStatements [
+          QCStatement {
+            statementId: "0.4.0.1862.1.6",                // id-etsi-qcs-QcType
+            statementInfo: QcType {
+              [
+                "0.4.0.1862.1.6.1"                        // id-etsi-qct-esign
+              ]
+            }
           }
         ]
       }
