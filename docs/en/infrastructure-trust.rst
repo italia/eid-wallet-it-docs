@@ -27,6 +27,7 @@ This choice will affect both the onboarding and the trust evaluation procedures.
 
 In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`), then used during the trust evalution processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
+.. include:: trust-pki-architecture.rst
 .. include:: x509-certificate-profile.rst
 .. include:: trust-artifact-common.rst
 .. include:: trust-artifact-eudiw.rst
