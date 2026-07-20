@@ -423,7 +423,7 @@ The validation flow depends on the availability of the Wallet-Relying Party Regi
 - During the Presentation flow the Relying Party MAY convey the Wallet-Relying Party Registration Certificate by value:
  
     - in the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
-    - in the ``euwrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
+    - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
  
 - During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the self-declared registration information. The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
  
