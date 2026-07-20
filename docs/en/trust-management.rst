@@ -32,7 +32,7 @@ As shown in :numref:`fig_WRP_and_Wallet_Providers_States`, WRPs and Wallet Provi
 
 **Transition from REGISTERED to OPERATIONAL**:  ``OPERATIONAL`` indicates that an Entity has been successfully authorized to perform role-related operations. 
 
-  - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a signing/seal certificate whose signing Trust Anchor has been added in the LoTE or in the EUMS TL;  Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a signing/seal certificate whose signing Trust Anchor has been added in the LoTE.
+  - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a signing/seal certificate. The signing Trust Anchor of that certificate MUST have been added in the LoTE or in the EUMS TL. Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a signing/seal certificate whose signing Trust Anchor has been added in the LoTE.
   - *National Trust Framework*: WRPs and Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state, they have obtained the signing/seal certificate(s) and the Trust Mark(s), and their Subordinate Statement has been published by the Federation Authority.
 
 **Transition from OPERATIONAL to REGISTERED**: an Entity goes back to ``REGISTERED`` state when it no longer possesses valid Trust Artifacts. This can be triggered by their expiration or by their revocation following an update of the Entity. To return to the ``OPERATIONAL`` state, a new Trust Artifact issuance is required.
@@ -62,7 +62,7 @@ State Machines for Trust Artifacts are described below:
   
   - A WRPAC in ``VALID`` state MUST NOT be present in the designated CRL and/or SHALL return a ``good`` status in the OCSP response. A WRPAC in ``REVOKED`` state MUST be present in the designated CRL and/or MUST return a ``revoked`` status in the OCSP response.
   - A WRPRC in ``VALID`` state MUST return a ``0x00`` status in the corresponding Status List Token. A WRPRC in ``REVOKED`` state MUST have status value ``0x01`` within the corresponding Status List Token.
-- For Trust Lists (LoTE, LOTL, EUMS TL), the lifecycle states are ``CURRENT`` and ``HISTORICAL``. The transition from ``CURRENT`` to ``HISTORICAL`` is triggered by the publication of a new version of the Trust List that replaces the previous version. Once a Trust List is in the ``HISTORICAL`` state, it MUST NOT be used for any operational use within the ecosystem, the only exception being the validation of Trust List trustworthiness via the pivoting mechanism and the validation of historical operations via the ``ServiceHistory`` component of the Trust List.
+- For Trust Lists (LoTE, LOTL, EUMS TL), the lifecycle states are ``CURRENT`` and ``HISTORICAL``. The transition from ``CURRENT`` to ``HISTORICAL`` is triggered by the publication of a new version of the Trust List that replaces the previous version. Once a Trust List is in the ``HISTORICAL`` state, it MUST NOT be used for any operational use within the ecosystem. Two exceptions apply: the validation of Trust List trustworthiness via the pivoting mechanism, and the validation of historical operations via the ``ServiceHistory`` component of the Trust List.
 - Trust Marks: the status of a Trust Mark are ``ACTIVE``, ``EXPIRED``, ``REVOKED``. The status can be checked using the Trust Mark Status endpoint (see Section 8.4 of `OID-FED`_).
 
 .. note:: 
@@ -788,8 +788,8 @@ In this specification, the roles of the Provider of WRPRC and Status Issuer (i.e
 
 The Provider of WRPRC MUST use the following values for the possible statuses of the issued WRPRCs:
 
-- `0x00` - `VALID` - The WRPRC is valid.
-- `0x01` - `INVALID` - The WRPRC is revoked.
+- ``0x00`` - ``VALID`` - The WRPRC is valid.
+- ``0x01`` - ``INVALID`` - The WRPRC is revoked.
 
 
 Once the Wallet Unit receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.

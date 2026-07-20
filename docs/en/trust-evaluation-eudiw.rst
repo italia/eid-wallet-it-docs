@@ -147,7 +147,12 @@ This section defines the validation of a List of Trusted Entities. The List of T
  
 A List of Trusted Entities is a signed list. Its authenticity is rooted in the Official Journal of the European Union, and it supports continuous key rotation through the *pivoting mechanism* described in :ref:`trust-evaluation:List Key Rotation and Historical Verification`. The Trust Anchors it publishes are provided in the ``ServiceDigitalIdentity`` of its trusted entity service entries, as defined in clause 6.6.3 of [`ETSI TS 119 602`_].
  
-The authentication procedure below follows clause 4.1 of [`ETSI TS 119 615`_], which specifies the authentication of the EC compiled List of Trusted Lists (LOTL) with its pivot mechanism, applied to the List of Trusted Entities data model of [`ETSI TS 119 602`_] and to its JAdES signature ([`ETSI TS 119 182-1`_]) in place of the XML LOTL. The variables used below are the List of Trusted Entities analogs of the LOTL variables preconfigured in clause 4.0 (GPR-4.0-02) of [`ETSI TS 119 615`_]: ``OJEU-LoTE-Loc`` corresponds to ``OJEU-LOTL-Loc``, ``OJEU-LoTE-Certs-Set`` to ``OJEU-LOTL-Certs-Set``, ``LoTESO-Cert`` to ``LOTLSO-Cert``; the ``PointersToOtherLoTE`` and ``SchemeInformationURI`` claims correspond to the *Pointers to other TSLs* (clause 6.3.13 of [`ETSI TS 119 602`_]) and *Scheme information URI* (clause 6.3.7) components.
+The authentication procedure below follows clause 4.1 of [`ETSI TS 119 615`_], which specifies the authentication of the EC compiled List of Trusted Lists (LOTL) with its pivot mechanism. Here that procedure is applied to the List of Trusted Entities data model of [`ETSI TS 119 602`_] and to its JAdES signature ([`ETSI TS 119 182-1`_]), in place of the XML LOTL. The variables used below are the List of Trusted Entities analogs of the LOTL variables preconfigured in clause 4.0 (GPR-4.0-02) of [`ETSI TS 119 615`_]. They correspond as follows:
+
+- ``OJEU-LoTE-Loc`` corresponds to ``OJEU-LOTL-Loc``;
+- ``OJEU-LoTE-Certs-Set`` to ``OJEU-LOTL-Certs-Set``;
+- ``LoTESO-Cert`` to ``LOTLSO-Cert``;
+- the ``PointersToOtherLoTE`` and ``SchemeInformationURI`` claims correspond to the *Pointers to other TSLs* (clause 6.3.13 of [`ETSI TS 119 602`_]) and *Scheme information URI* (clause 6.3.7) components.
  
 **List of Trusted Entities Validation Algorithm**
  
@@ -377,7 +382,11 @@ The Wallet Unit MUST verify the authenticity and integrity of the presented Wall
 Wallet-Relying Party Access Certificate Validation
 """""""""""""""""""""""""""""""""""""""""""""""""""""
  
-The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there, where ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party, ``C_n`` is the Wallet-Relying Party Access Certificate, and the ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
+The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there. The inputs are the following:
+
+- ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party;
+- ``C_n`` is the Wallet-Relying Party Access Certificate;
+- ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
 
 EUDIW Authorization
 ^^^^^^^^^^^^^^^^^^^
@@ -568,5 +577,5 @@ The Wallet Unit obtains the metadata of the Wallet-Relying Party according to th
  
 **Metadata Validation**
  
-The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate. During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the ``x5c`` header of the JOSE signature; during Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same ``x5c`` header. In both cases the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation:EUDIW Authentication`, and MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.
+The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate. During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the ``x5c`` header of the JOSE signature. During Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same ``x5c`` header. In both cases the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation:EUDIW Authentication`, and MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.
 
