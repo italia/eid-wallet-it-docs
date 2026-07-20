@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-solution.rst at title level '-' (level 1).
 
 
 Wallet Provider Entity Configuration
