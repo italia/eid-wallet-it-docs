@@ -11,7 +11,7 @@ Two trust frameworks coexist in IT-Wallet.
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_). It is mandatory and authoritative for the notified entities and for cross-border interoperability.
   - The **National Trust Framework** is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. It is the registration and onboarding layer for all the entities of the ecosystem, and it provides trust evaluation mechanisms for the operational phases where the EUDIW Trust Framework is not required.
 
-This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and the :ref:`trust-artifact-common:Common Trust Artifacts` shared by both frameworks, followed by the framework-specific artifacts (:ref:`trust-artifact-eudiw:EUDIW Trust Artifacts` and :ref:`trust-artifact-oidfed:National Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`trust-management:Trust Management and Lifecycle`).
+This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`). Then, it defines the general :ref:`infrastructure-trust:X.509 Certificate Profile` and the :ref:`infrastructure-trust:Common Trust Artifacts` shared by both frameworks, followed by the framework-specific artifacts (:ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`). Finally, it describes the related lifecycle (:ref:`infrastructure-trust:Trust Management and Lifecycle`).
 
 Overview
 --------
@@ -25,17 +25,14 @@ This choice affects both the onboarding and the trust evaluation procedures. If 
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
     PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0.
 
-In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`trust-artifact-common:Common Trust Artifacts`, :ref:`trust-artifact-eudiw:EUDIW Trust Artifacts` and :ref:`trust-artifact-oidfed:National Trust Artifacts`), then used during the trust evaluation processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
+In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`), then used during the trust evaluation processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
-.. toctree::
-  :caption: Infrastructure of Trust Table of Contents
-  :maxdepth: 3
 
-  trust-pki-architecture.rst
-  x509-certificate-profile.rst
-  trust-artifact-common.rst
-  trust-artifact-eudiw.rst
-  trust-artifact-oidfed.rst
-  trust-management.rst
+.. include:: trust-pki-architecture.rst
+.. include:: x509-certificate-profile.rst
+.. include:: trust-artifact-common.rst
+.. include:: trust-artifact-eudiw.rst
+.. include:: trust-artifact-oidfed.rst
+.. include:: trust-management.rst
 
 

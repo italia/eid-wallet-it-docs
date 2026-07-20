@@ -4,7 +4,7 @@ National Trust Artifacts
 ------------------------
 
 This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. 
-The X.509 profile is detailed in the :ref:`trust-artifact-common:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
+The X.509 profile is detailed in the :ref:`infrastructure-trust:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
 - OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_) the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.
@@ -80,7 +80,7 @@ A **Subordinate Statement** is the Entity Statement that a Trust Anchor or a Fed
 Entity Configuration
 """""""""""""""""""""""
 
-In the IT-Wallet ecosystem the Entity Configuration is published during the onboarding of the Entity (see :ref:`onboarding-procedure:The Onboarding Processes`) and is retrieved and validated during the trust evaluation, as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication` and :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`.
+In the IT-Wallet ecosystem the Entity Configuration is published during the onboarding of the Entity (see :ref:`onboarding-procedure:The Onboarding Processes`) and is retrieved and validated during the trust evaluation, as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
 Technical details about the Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
 
@@ -90,7 +90,7 @@ Technical details about the Entity Configuration of Wallet Provider, Credential 
 Subordinate Statements
 """""""""""""""""""""""
 
-Trust Anchors and Federation Intermediates serve their Subordinate Statements through the **fetch** (``/fetch``) endpoint (`OID-FED`_ Section 8.1), where a Trust Evaluator retrieves them to validate the Entity Configuration signature of the Subordinate and to build the Trust Chain. The metadata policy, when present, changes the final metadata of the Leaf. The final metadata is derived from the whole Trust Chain, from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor, as defined in :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`. The revocation of a Subordinate is expressed by the absence of a valid Subordinate Statement about it, as defined in :ref:`trust-evaluation-oidfed:Federation Trust Chain`.
+Trust Anchors and Federation Intermediates serve their Subordinate Statements through the **fetch** (``/fetch``) endpoint (`OID-FED`_ Section 8.1), where a Trust Evaluator retrieves them to validate the Entity Configuration signature of the Subordinate and to build the Trust Chain. The metadata policy, when present, changes the final metadata of the Leaf. The final metadata is derived from the whole Trust Chain, from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor, as defined in :ref:`trust-evaluation:Metadata Retrieval and Validation`. The revocation of a Subordinate is expressed by the absence of a valid Subordinate Statement about it, as defined in :ref:`trust-evaluation:Federation Trust Chain`.
 
 Within IT-Wallet the Subordinate Statements are issued during the onboarding of the Subordinate (see :ref:`onboarding-procedure:The Onboarding Processes`).
 
@@ -101,8 +101,8 @@ In addition to the REQUIRED common parameters ``iss``, ``sub``, ``iat``, ``exp``
 
 In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
-- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`.
-- **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`trust-artifact-oidfed:Trust Mark registration-entity`.
+- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
+- **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
 - **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA and MUST NOT be included otherwise. JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers. Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
 
 In Subordinate Statement (`OID-FED`_ Section 3.1.3):
@@ -113,7 +113,7 @@ In Subordinate Statement (`OID-FED`_ Section 3.1.3):
 All other optional parameters defined in `OID-FED`_ Section 3 that are not recognized within IT-Wallet specification profile MUST be ignored during the evaluation of an Entity Statement.
 
 .. note::
-  Within IT-Wallet the Federation Entity Keys carried in the ``jwks`` of an Entity Configuration or of a Subordinate Statement are used to sign the federation statements and are validated through the Federation Trust Chain, not through X.509. The X.509 signing PKI, whose certificates are used to sign the Attestations, is a separate trust relationship. The Signing Trust Anchors of this PKI are distributed in the Entity Configuration of the Federation Trust Anchor. Each one is provided in the ``x5c`` parameter (:rfc:`7517` Section 4.7) of a dedicated JWK within the ``jwks``, distinct from the Federation Entity Keys, which do not carry ``x5c``, as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`. The Document Signer certificates of the Credential Issuers are not carried in the ``jwks`` of the Entity Statements: they are included in the signed Attestations, in the ``x5chain`` header for the mdoc format and in the ``x5c`` header for the JOSE format, and are validated as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`. The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding (see :ref:`onboarding-procedure:The Onboarding Processes`).
+  Within IT-Wallet the Federation Entity Keys carried in the ``jwks`` of an Entity Configuration or of a Subordinate Statement are used to sign the federation statements and are validated through the Federation Trust Chain, not through X.509. The X.509 signing PKI, whose certificates are used to sign the Attestations, is a separate trust relationship. The Signing Trust Anchors of this PKI are distributed in the Entity Configuration of the Federation Trust Anchor. Each one is provided in the ``x5c`` parameter (:rfc:`7517` Section 4.7) of a dedicated JWK within the ``jwks``, distinct from the Federation Entity Keys, which do not carry ``x5c``, as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`. The Document Signer certificates of the Credential Issuers are not carried in the ``jwks`` of the Entity Statements: they are included in the signed Attestations, in the ``x5chain`` header for the mdoc format and in the ``x5c`` header for the JOSE format, and are validated as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`. The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding (see :ref:`onboarding-procedure:The Onboarding Processes`).
 
 Entity Type Identifiers and Metadata
 """"""""""""""""""""""""""""""""""""
@@ -144,7 +144,7 @@ The Entity Type Identifiers of the ecosystem roles are defined in OpenID Federat
      - ``federation_entity``
 
 .. note::
-  A Relying Party Intermediary is a Federation Intermediate. As an intermediary it is not involved in the protocol flows, so it does not publish a protocol metadata of its own, only the ``federation_entity`` metadata. It publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. Its registration Trust Mark uses the ``intermediate`` Entity Type Identifier in the Trust Mark type, as defined in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`.
+  A Relying Party Intermediary is a Federation Intermediate. As an intermediary it is not involved in the protocol flows, so it does not publish a protocol metadata of its own, only the ``federation_entity`` metadata. It publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. Its registration Trust Mark uses the ``intermediate`` Entity Type Identifier in the Trust Mark type, as defined in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
 .. note::
   When a PID or EAA Provider implements both the Credential Issuer and the Authorization Server within the same Entity, it MUST include both ``openid_credential_issuer`` and ``oauth_authorization_server`` in its metadata types. When the Authorization Server is a separate Entity, the Credential Issuer metadata MUST contain the ``authorization_servers`` parameter with the identifier of the Authorization Server. According to `OPENID4VCI`_ the Authorization Server MAY be external to the Entity that implements the Credential Endpoint, therefore the use of ``oauth_authorization_server`` is OPTIONAL. Furthermore, should there be a necessity for User Authentication by the Credential Issuer, it could be necessary to include the relevant metadata type ``openid_credential_verifier``.
@@ -661,8 +661,8 @@ Trust Mark identifiers MUST follow a hierarchical schema that reflects the autho
 Where:
 
   - ``<federation_authority_domain>``: The domain of the issuing Federation Authority.
-  - ``<purpose>``: The Trust Mark purpose. The ``registration-entity`` purpose is **REQUIRED** for all entities as a result of the onboarding process. Additional Trust Mark purposes MAY be defined for future needs, but they are not required for the authorization processes defined in :ref:`trust-evaluation-oidfed:Authorization`.
-  - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
+  - ``<purpose>``: The Trust Mark purpose. The ``registration-entity`` purpose is **REQUIRED** for all entities as a result of the onboarding process. Additional Trust Mark purposes MAY be defined for future needs, but they are not required for the authorization processes defined in :ref:`trust-evaluation:Authorization`.
+  - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
 
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""
@@ -743,7 +743,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
   The claims that carry the authorization data (``entitlements``, ``provides_attestations``, ``credentials``, ``purpose``, ``privacy_policy``, ``supervisory_authority``) and the identity and transparency claims aligned with the WRPRC (``public_body``, ``support_uri``, ``srv_description``) are defined in analogy with the EUDIW Wallet-Relying Party Registration Certificate (`ETSI TS 119 475`_), so that a Trust Evaluator can reuse the same authorization logic for both artifacts.
 
 .. note::
-  The revocation status of a Trust Mark is verified through the **trust mark status** (``/trust_mark_status``) endpoint (`OID-FED`_ Section 8.4), not through a status list carried in the token. This is the difference with the WRPRC, whose ``status`` claim points to a status list: the Trust Mark relies on the federation native revocation mechanism. The consumption of these claims by the Trust Evaluator is defined in :ref:`trust-evaluation-oidfed:Authorization`.
+  The revocation status of a Trust Mark is verified through the **trust mark status** (``/trust_mark_status``) endpoint (`OID-FED`_ Section 8.4), not through a status list carried in the token. This is the difference with the WRPRC, whose ``status`` claim points to a status list: the Trust Mark relies on the federation native revocation mechanism. The consumption of these claims by the Trust Evaluator is defined in :ref:`trust-evaluation:Authorization`.
 
 The following non-normative examples illustrate the registration Trust Mark JWT content for a Credential Issuer, a public non-qualified EAA Provider issuing an Employee Badge, for a Relying Party requesting that Employee Badge, and for a Relying Party Intermediary.
 

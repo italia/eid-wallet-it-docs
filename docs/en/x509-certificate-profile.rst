@@ -5,10 +5,10 @@ X.509 Certificate Profile
 
 This section defines a general **X.509 Certificate Profile**, which is further specialized for the following artifacts:
 
-- :ref:`trust-artifact-common:Entity Sign/Seal Certificate Profile` (EUDIW and National Trust Framework);
-- :ref:`trust-artifact-common:Trust Anchor Certificate Profile` (EUDIW and National Trust Framework);
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile` (EUDIW Trust Framework);
-- :ref:`trust-artifact-eudiw:Registrar Sign/Seal Certificate Profile` (EUDIW Trust Framework).
+- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile` (EUDIW and National Trust Framework);
+- :ref:`infrastructure-trust:Trust Anchor Certificate Profile` (EUDIW and National Trust Framework);
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` (EUDIW Trust Framework);
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile` (EUDIW Trust Framework).
 
 The common profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on :rfc:`5280` and ETSI EN 319 412. Each X.509 certificate profile defined by this specification MUST conform to the requirements of this section unless explicitly stated otherwise.
 
@@ -79,7 +79,7 @@ The following table defines the certificate fields applicable to the certificate
    * - ``extensions``
      - Section 4.1.2.9
      - REQUIRED
-     - It MUST conform to the structure defined in :rfc:`5280#section-4.2`. The applicable extensions and their profile-specific constraints are defined in :ref:`x509-certificate-profile:Supported Certificate Extensions` and in the corresponding certificate profile.
+     - It MUST conform to the structure defined in :rfc:`5280#section-4.2`. The applicable extensions and their profile-specific constraints are defined in :ref:`infrastructure-trust:Supported Certificate Extensions` and in the corresponding certificate profile.
 
 Supported Certificate Extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -5,12 +5,12 @@ EUDIW Trust Artifacts
 
 This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as per `EIDAS-ARF`_, including:
 
-- :ref:`trust-artifact-eudiw:Register of WRPs`;
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`trust-artifact-eudiw:Registrar Sign/Seal Certificate Profile`
-- :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
-- :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
-- :ref:`trust-artifact-eudiw:Embedded Disclosure Policy (EDP)`.
+- :ref:`infrastructure-trust:Register of WRPs`;
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`
+- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
+- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
+- :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 The data model of these Trust Artifacts profiles the following external specifications.
  
@@ -70,11 +70,11 @@ The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPACs)**.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPACs)**.
 
-According to the Article 2 of [`CIR2025/848`_], a WRPAC is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet. For more details on the authentication process, see :ref:`trust-evaluation-eudiw:EUDIW Authentication`.
+According to the Article 2 of [`CIR2025/848`_], a WRPAC is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet. For more details on the authentication process, see :ref:`trust-evaluation:EUDIW Authentication`.
 
-The suspension or cancellation of the WRP services, involves revocation of all valid WRPAC by the relevant issuing authority, such that the WRP is no longer able to interact with Wallet Units. For more detail on the Trust Management processes, see :ref:`trust-management:Trust Management and Lifecycle`.
+The suspension or cancellation of the WRP services, involves revocation of all valid WRPAC by the relevant issuing authority, such that the WRP is no longer able to interact with Wallet Units. For more detail on the Trust Management processes, see :ref:`infrastructure-trust:Trust Management and Lifecycle`.
 
 Annex IV of [`CIR2025/848`_] also states that the WRPACs are meant for performing electronic signatures or seals and that they MUST comply with at least the Normalised Certificate Policy (NCP) requirements specified in the ETSI standards.
 Taking into account these minimal requirements, different scenarios are possible and specified in the following clauses: certificates issued to natural or legal persons, supporting advanced signatures/seals or even qualified signature/seals. Conditional requirements are defined according to the specific case the WRPACs fall into.
@@ -127,7 +127,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 
 .. note::
@@ -141,7 +141,7 @@ The following is an example of a WRPAC for legal persons following the NCP.
 Registrar Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Registrar Sign/Seal Certificates**.
 
 The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
 
@@ -182,7 +182,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 
 The following is a non-normative example of a Registrar Sign/Seal Certificate for legal persons (non-self-signed).
@@ -235,7 +235,7 @@ This section describes the format and contents of three types of Trust Artifacts
 
 Ecosystem Entities utilize these lists to:
 
-- **Validate runtime trustworthiness**: Verify a Trust Anchor (see :ref:`trust-artifact-common:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
+- **Validate runtime trustworthiness**: Verify a Trust Anchor (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
 - **Perform historical validation**: Validate information contained within the list for historical audit purposes.
 
 The three distinct types of trust lists are:
@@ -267,6 +267,7 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
 
 .. list-table:: eIDAS Trust List Ecosystem Profiles
    :class: longtable
+   :widths: 14 20 16 16 18 16
    :header-rows: 1
 
    * - List Type

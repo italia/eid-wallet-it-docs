@@ -108,7 +108,7 @@ To become registered as an Authentic Source within the system by completing the 
 
 - **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Authentic Source registration.
 
-- **Section** :ref:`x509-certificate-profile:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Wallet Provider
@@ -168,7 +168,7 @@ To become registered as a Wallet Provider within the system by completing the ad
 
 - **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Wallet Provider registration.
 
-- **Section** :ref:`x509-certificate-profile:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Credential Issuer
@@ -224,7 +224,7 @@ To become registered as a Credential Issuer within the system, by completing the
 
 - **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on technical implementation procedures for Credential Issuer registration.
 
-- **Section** :ref:`x509-certificate-profile:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Relying Party
@@ -278,4 +278,4 @@ To become registered as a Relying Party within the system, by completing the adm
 
 - **Section** :ref:`onboarding-procedure:Onboarding Procedure`: Focus on implementation procedures for Relying Party registration.
 
-- **Section** :ref:`x509-certificate-profile:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.

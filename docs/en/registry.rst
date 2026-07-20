@@ -567,7 +567,7 @@ AS-CI Coordination
 Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`onboarding-procedure:Integration and Technical Registration`.
 
 .. note::
-   Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`trust-artifact-oidfed:Federation API Endpoints`.
+   Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`infrastructure-trust:Federation API Endpoints`.
    These endpoints are also surfaced through the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` for standard OpenID Federation 1.0 compliance.
 
 Digital Credentials Catalog
@@ -1391,7 +1391,7 @@ Unlike the national semantic registries above, it does not hold Credential seman
 The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-procedure:WRP Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
 In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-procedure:The Dual Trust Framework`).
 
-The full data model and the public read API are specified in :ref:`trust-artifact-eudiw:Register of WRPs` and :ref:`trust-artifact-eudiw:Register Open APIs`, and are not restated here.
+The full data model and the public read API are specified in :ref:`infrastructure-trust:Register of WRPs` and :ref:`infrastructure-trust:Register Open APIs`, and are not restated here.
 
 EUDIW Catalogues
 ----------------
@@ -1479,7 +1479,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 2.  **Discovery and Integrity**:
 
   * The RP receives the Digital Credential from the User.
-  * The RP consults the federation endpoints via the Trust Anchor (``/fetch``, ``/trust_mark_status``) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider, as described in :ref:`trust-artifact-oidfed:Federation API Endpoints`.
+  * The RP consults the federation endpoints via the Trust Anchor (``/fetch``, ``/trust_mark_status``) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider, as described in :ref:`infrastructure-trust:Federation API Endpoints`.
   * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:

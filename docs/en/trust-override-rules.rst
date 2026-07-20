@@ -27,7 +27,7 @@ In case of non-overridable failures, the Wallet Unit MUST clearly inform the Use
 
 .. note::
     **User opt-in**.
-    The *Scope Comparison Procedure* in :ref:`trust-evaluation-eudiw:Authorization Validation` is executed only if the User enabled registration verification. Override mechanisms define what happens when the procedure produces a negative result.
+    The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` is executed only if the User enabled registration verification. Override mechanisms define what happens when the procedure produces a negative result.
 
 The following table details the override behavior for each procedure when it provides a negative outcome. Each row identifies a procedure, the phase in which it applies, the result code produced on failure, and whether the User can override that outcome. [FIXME: Check the table. Some entries like wrong entitlements should be non-overridable, but the table says they are. The table is copy-paste from APTITUDE.]
 

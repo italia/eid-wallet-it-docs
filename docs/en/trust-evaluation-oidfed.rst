@@ -4,9 +4,9 @@ Trust Evaluation in the National Trust Framework
 -----------------------------------------------------
 
 This section defines the trust evaluation procedures of the National Trust Framework.
-The Entity Type Identifiers and the metadata of each role, used during these procedures, are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata`, according to that profile. The selection rules that define when these procedures apply are detailed in :ref:`trust-evaluation:Trust Framework Selection`.
+The Entity Type Identifiers and the metadata of each role, used during these procedures, are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`, according to that profile. The selection rules that define when these procedures apply are detailed in :ref:`trust-evaluation:Trust Framework Selection`.
 
-The Trust Artifacts used during these procedures, that is the Entity Configuration, the Subordinate Statements, the Trust Marks, are defined in :ref:`trust-artifact-oidfed:National Trust Artifacts`.
+The Trust Artifacts used during these procedures, that is the Entity Configuration, the Subordinate Statements, the Trust Marks, are defined in :ref:`infrastructure-trust:National Trust Artifacts`.
 
 The procedures defined in this section are executed within the operational Issuance and Presentation flows (see :ref:`digital-credential-flows:Digital Credential Flows`). The parameters they operate on, such as the signed Request Object, the mdoc Request, the Metadata of all Entities involved and the data model of the received Digital Credentials, are defined in the respective sections (see :ref:`entities:Entities`, :ref:`remote-flow:Request Object` for the Remote Flow, and :ref:`credential-data-model:SD-JWT-VC Credential Format` and :ref:`credential-data-model:mdoc-CBOR Credential Format` for the Digital Credential formats).
 
@@ -29,49 +29,49 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - Issuance of a national only Credential
       - On the Credential Issuer:
 
-        - :ref:`trust-evaluation-oidfed:Federation Entity Authentication`
-        - :ref:`trust-evaluation-oidfed:Authorization`
-        - :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`
+        - :ref:`trust-evaluation:Federation Entity Authentication`
+        - :ref:`trust-evaluation:Authorization`
+        - :ref:`trust-evaluation:Metadata Retrieval and Validation`
 
         On the received Credential:
 
-        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`
-      - The Wallet Instance Attestation with the proof of possession of the attested key, validated as defined in :ref:`trust-evaluation-oidfed:Wallet Instance Authentication`.
+        - :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`
+      - The Wallet Instance Attestation with the proof of possession of the attested key, validated as defined in :ref:`trust-evaluation:Wallet Instance Authentication`.
     * - Wallet Instance
       - Remote presentation, ``openid_federation`` prefix
       - On the Relying Party:
 
-        - :ref:`trust-evaluation-oidfed:Federation Entity Authentication`
-        - :ref:`trust-evaluation-oidfed:Authorization`, including the Overasking Check
-        - :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`
+        - :ref:`trust-evaluation:Federation Entity Authentication`
+        - :ref:`trust-evaluation:Authorization`, including the Overasking Check
+        - :ref:`trust-evaluation:Metadata Retrieval and Validation`
       - No entity level artifact is required from the Wallet Instance.
     * - Wallet Instance
       - Proximity presentation
       - On the Relying Party:
 
-        - :ref:`trust-evaluation-oidfed:Relying Party Proximity Authentication`
-        - :ref:`trust-evaluation-oidfed:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in the ``requestInfo`` of the ISO ``DeviceRequest``
+        - :ref:`trust-evaluation:Relying Party Proximity Authentication`
+        - :ref:`trust-evaluation:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in the ``requestInfo`` of the ISO ``DeviceRequest``
       - No entity level artifact is required from the Wallet Instance.
     * - Credential Issuer
       - Issuing national only Credentials
       - On the Wallet Instance:
 
-        - :ref:`trust-evaluation-oidfed:Wallet Instance Authentication`
-      - The Entity Configuration (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the issuance artifacts signed with keys resolvable through the federation, validated as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication`. For the mdoc format, the Document Signer certificate in the ``x5chain`` header, validated as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`.
+        - :ref:`trust-evaluation:Wallet Instance Authentication`
+      - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the registration Trust Marks (:ref:`infrastructure-trust:Trust Mark registration-entity`), and the issuance artifacts signed with keys resolvable through the federation, validated as defined in :ref:`trust-evaluation:Federation Entity Authentication`. For the mdoc format, the Document Signer certificate in the ``x5chain`` header, validated as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
     * - Relying Party
       - Remote presentation, ``openid_federation`` prefix
       - On the received Credentials:
 
-        - :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`
+        - :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`
 
         On the Wallet Provider, to invoke the Wallet through the national discovery mechanism (see the note below):
 
-        - :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`
-      - The Entity Configuration (:ref:`trust-artifact-oidfed:Entity Configuration`) with the registration Trust Marks (:ref:`trust-artifact-oidfed:Trust Mark registration-entity`), and the signed Request Object with keys resolvable through the federation, including the ``trust_chain`` header when offline validation is expected, validated as defined in :ref:`trust-evaluation-oidfed:Federation Entity Authentication` and :ref:`trust-evaluation-oidfed:Authorization`.
+        - :ref:`trust-evaluation:Metadata Retrieval and Validation`
+      - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the registration Trust Marks (:ref:`infrastructure-trust:Trust Mark registration-entity`), and the signed Request Object with keys resolvable through the federation, including the ``trust_chain`` header when offline validation is expected, validated as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`.
     * - Relying Party Intermediary
       - Remote presentation, as the Federation Intermediate of an affiliated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - The Entity Configuration (:ref:`trust-artifact-oidfed:Entity Configuration`) with the ``intermediate`` registration Trust Mark (see :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`), and the Subordinate Statements of its affiliated Relying Parties. The Intermediary is validated as part of the affiliated Relying Party's Trust Chain, whose ``authority_hints`` point to it. The Wallet Instance MUST verify that the affiliated Relying Party's Trust Chain is validated through a recognized Intermediary or directly through the Federation Trust Anchor, and it informs the User as defined in :ref:`trust-evaluation-oidfed:User Transparency`.
+      - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the ``intermediate`` registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and the Subordinate Statements of its affiliated Relying Parties. The Intermediary is validated as part of the affiliated Relying Party's Trust Chain, whose ``authority_hints`` point to it. The Wallet Instance MUST verify that the affiliated Relying Party's Trust Chain is validated through a recognized Intermediary or directly through the Federation Trust Anchor, and it informs the User as defined in :ref:`trust-evaluation:User Transparency`.
 
 .. note::
   In the remote flow the Relying Party invokes the Wallet through app links (universal links) instead of custom URL schemes. This IT-Wallet choice requires the Relying Party to obtain and validate the Wallet Provider metadata beforehand, building the Trust Chain about the Wallet Provider (Metadata Retrieval and Validation), as part of the Wallet Metadata Retrieval Flow (see :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` and the Selection Page in :ref:`functionalities:User Experience Design`). This mechanism is specific to the remote flow and does not apply to the proximity flow.
@@ -83,7 +83,7 @@ Federation Trust Anchor Distribution and Validation
 Federation Trust Anchor Distribution
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The configuration of the federation is published by the Federation Trust Anchor within its Entity Configuration, available at the well-known web path **.well-known/openid-federation**. All the Entities MUST obtain the federation configuration before entering the operational phase and MUST keep it up to date. The federation configuration contains the Federation Trust Anchor public keys for signature operations and the federation endpoints (see :ref:`trust-artifact-oidfed:Entity Configuration`).
+The configuration of the federation is published by the Federation Trust Anchor within its Entity Configuration, available at the well-known web path **.well-known/openid-federation**. All the Entities MUST obtain the federation configuration before entering the operational phase and MUST keep it up to date. The federation configuration contains the Federation Trust Anchor public keys for signature operations and the federation endpoints (see :ref:`infrastructure-trust:Entity Configuration`).
 
 The Federation Trust Anchor MUST distribute its Federation Public Keys through secure out-of-band mechanisms. When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration, and they MUST discard any key that does not match.
 
@@ -92,7 +92,7 @@ The Federation Trust Anchor MUST distribute its Federation Public Keys through s
 
 Entities MAY additionally pin the Federation Trust Anchor public keys, in their local configuration. A pinned configuration MAY be used only while it is valid and MUST be updated when a key rotation occurs.
 
-The Federation Trust Anchor Entity Configuration also provides the Signing Trust Anchors of the X.509 signing PKI, used to verify the Credentials anchored to this framework. Their distribution and validation are defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`, as they concern the verification of an attestation and not the validation of the Federation Trust Anchor.
+The Federation Trust Anchor Entity Configuration also provides the Signing Trust Anchors of the X.509 signing PKI, used to verify the Credentials anchored to this framework. Their distribution and validation are defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`, as they concern the verification of an attestation and not the validation of the Federation Trust Anchor.
 
 Federation Trust Anchor Validation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,7 +115,7 @@ The verification of the Entity Configuration is the Entity Statement validation 
 2. Verify that the Entity Configuration is a signed JWT with ``iss`` and ``sub`` equal to the Federation Trust Anchor identifier, and verify its signature with one of the keys contained in its ``jwks``. The supported signature algorithms are defined in :ref:`algorithms:Cryptographic Algorithms`.
 3. Compare the keys in ``jwks`` with the keys obtained out-of-band or pinned, discarding the keys that do not match.
 4. Check the temporal validity of the Entity Configuration through the ``iat`` and ``exp`` claims.
-5. Extract the federation endpoints from the ``federation_entity`` metadata, and the ``trust_mark_issuers`` claim (see :ref:`trust-artifact-oidfed:Entity Configuration`).
+5. Extract the federation endpoints from the ``federation_entity`` metadata, and the ``trust_mark_issuers`` claim (see :ref:`infrastructure-trust:Entity Configuration`).
 
 If any step fails, the federation configuration MUST NOT be used.
 
@@ -136,7 +136,7 @@ Federation Trust Chain
 
 The Trust Chain is a sequence of verified statements that validates an Entity compliance with the federation. It has an expiration date, beyond which it MUST be renewed to obtain fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Federation Trust Anchor.
 
-This procedure verifies the Trust Chain. The derivation of the final metadata of the subject, obtained applying the metadata policies carried by the statements of the Trust Chain, is defined in :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`. According to `OID-FED`_, the verification of the chain and the derivation of the final metadata, is referred to as the **resolution of a Trust Chain**.
+This procedure verifies the Trust Chain. The derivation of the final metadata of the subject, obtained applying the metadata policies carried by the statements of the Trust Chain, is defined in :ref:`trust-evaluation:Metadata Retrieval and Validation`. According to `OID-FED`_, the verification of the chain and the derivation of the final metadata, is referred to as the **resolution of a Trust Chain**.
 
 The Trust Chain is built through the **Federation Entity Discovery** process defined in `OID-FED`_:
 
@@ -157,7 +157,7 @@ The maximum validity of a Trust Chain can be enforced by the Federation Trust An
 **Input**
 
 - The Federation Entity Identifier of the subject, or a statically provided Trust Chain.
-- The validated Federation Trust Anchor Federation Public Keys (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Distribution`).
+- The validated Federation Trust Anchor Federation Public Keys (see :ref:`trust-evaluation:Federation Trust Anchor Distribution`).
 
 **Outcome**
 
@@ -182,14 +182,14 @@ If any verification fails, the Trust Chain MUST be considered invalid and the su
 X.509 Certificate Chain Validation
 """""""""""""""""""""""""""""""""""""
 
-This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature. For artifacts in JOSE format the chain is carried in the ``x5c`` header parameter, as defined in :rfc:`7515` and used in IT-Wallet in the Request Object of the presentation flow (see :ref:`remote-flow:Request Object`). For Credentials in mdoc format the chain is carried in the ``x5chain`` unprotected header (element 33) of the Mobile Security Object, as defined in :rfc:`9360` and in :ref:`credential-data-model:Mobile Security Object`. The chain contains the Document Signer certificate and any intermediate certificate. It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
+This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature. For artifacts in JOSE format the chain is carried in the ``x5c`` header parameter, as defined in :rfc:`7515` and used in IT-Wallet in the Request Object of the presentation flow (see :ref:`remote-flow:Request Object`). For Credentials in mdoc format the chain is carried in the ``x5chain`` unprotected header (element 33) of the Mobile Security Object, as defined in :rfc:`9360` and in :ref:`credential-data-model:Mobile Security Object`. The chain contains the Document Signer certificate and any intermediate certificate. It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
 
-The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in :ref:`trust-management:Revocation Mechanisms`. This is the same certification path validation used in the EUDIW Trust Framework (see :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`); the only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier. In this section, for the National Trust Framework, the algorithm details are not redefined.
+The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in :ref:`infrastructure-trust:Revocation Mechanisms`. This is the same certification path validation used in the EUDIW Trust Framework (see :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`); the only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier. In this section, for the National Trust Framework, the algorithm details are not redefined.
 
 Within the National Trust Framework the following applies.
 
-  - The trust anchor of the path validation is the applicable Signing Trust Anchor, obtained as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
-  - The end-entity certificate carries the OpenID Federation Entity Identifier of the subject in the ``subjectAltName`` URI. This is the element that links the X.509 signature to the federation identity of the signer. Therefore, the validation extracts this identifier so that the calling process can verify that the certificate that signed the artifact belongs to the OpenID Federation entity expected for that artifact. The comparison against the expected identifier, for example the ``iss`` of the Credential, is performed by the calling process (see :ref:`trust-evaluation-oidfed:Signing Trust Anchor Validation Procedure`). This variant only produces the identifier and it does not by itself establish which identifier is expected.
+  - The trust anchor of the path validation is the applicable Signing Trust Anchor, obtained as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
+  - The end-entity certificate carries the OpenID Federation Entity Identifier of the subject in the ``subjectAltName`` URI. This is the element that links the X.509 signature to the federation identity of the signer. Therefore, the validation extracts this identifier so that the calling process can verify that the certificate that signed the artifact belongs to the OpenID Federation entity expected for that artifact. The comparison against the expected identifier, for example the ``iss`` of the Credential, is performed by the calling process (see :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`). This variant only produces the identifier and it does not by itself establish which identifier is expected.
 
 .. note::
   The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding procedure and are out of the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
@@ -197,7 +197,7 @@ Within the National Trust Framework the following applies.
 **Input**
 
 - The certificate chain extracted from the artifact header, that is the Document Signer certificate and any intermediate certificate.
-- The applicable Signing Trust Anchor certificate, obtained as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
+- The applicable Signing Trust Anchor certificate, obtained as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
 
 **Outcome**
 
@@ -220,7 +220,7 @@ This process provides and validates the root of trust for the verification of th
 
 The Signing Trust Anchor is the root of trust of the X.509 PKI used to sign the Digital Credentials whose Rulebook anchors them to the National Trust Framework.
 
-It is distinct from the Federation Trust Anchor of :ref:`trust-evaluation-oidfed:Federation Trust Anchor Distribution` as the Federation Trust Anchor is the root of the federation statements, while a Signing Trust Anchor is the root of a certification path that validates the signature of an attestation. The Federation Trust Anchor and a Signing Trust Anchor MAY be operated by the same organization, but they are different trust relationships, with different lifecycles and different revocation channels.
+It is distinct from the Federation Trust Anchor of :ref:`trust-evaluation:Federation Trust Anchor Distribution` as the Federation Trust Anchor is the root of the federation statements, while a Signing Trust Anchor is the root of a certification path that validates the signature of an attestation. The Federation Trust Anchor and a Signing Trust Anchor MAY be operated by the same organization, but they are different trust relationships, with different lifecycles and different revocation channels.
 
 There MAY be more than one Signing Trust Anchor. Each Credential Issuer that signs Credentials in this framework uses a Signing Trust Anchor as the root of its Document Signer certificates. Different Credential Issuers MAY rely on different Signing Trust Anchors.
 
@@ -243,7 +243,7 @@ The procedure depends on the format of the attestation.
 
 For attestations in JOSE format, such as Digital Credentials in SD-JWT VC format and the Wallet Instance Attestation, the issuer is identified by the ``iss`` claim and the signature verification key is referenced by the ``kid`` header parameter. The key MUST be resolved within the final metadata of the issuer, obtained through the Federation Trust Chain. The artifact MAY carry the ``trust_chain`` JOSE header to allow the validation without a new discovery process.
 
-For Credentials in mdoc format the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header. The signature is verified with that certificate. The Signing Trust Anchor of the issuer is validated by extracting the OpenID Federation Entity Identifier from the ``subjectAltName`` URI and by validating the certification path against the applicable Signing Trust Anchor obtained as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
+For Credentials in mdoc format the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header. The signature is verified with that certificate. The Signing Trust Anchor of the issuer is validated by extracting the OpenID Federation Entity Identifier from the ``subjectAltName`` URI and by validating the certification path against the applicable Signing Trust Anchor obtained as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
 
 **Input**
 
@@ -257,12 +257,12 @@ For Credentials in mdoc format the Mobile Security Object carries the Document S
 
 **Process**
 
-1. For JOSE artifacts, derive the issuer final metadata from the Federation Trust Chain (see :ref:`trust-evaluation-oidfed:Federation Trust Chain` and :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`) and select the key referenced by the ``kid`` header.
-2. For mdoc artifacts, validate the ``x5chain`` as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation` and verify that the OpenID Federation Entity Identifier in the ``subjectAltName`` URI corresponds to the expected issuer.
+1. For JOSE artifacts, derive the issuer final metadata from the Federation Trust Chain (see :ref:`trust-evaluation:Federation Trust Chain` and :ref:`trust-evaluation:Metadata Retrieval and Validation`) and select the key referenced by the ``kid`` header.
+2. For mdoc artifacts, validate the ``x5chain`` as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation` and verify that the OpenID Federation Entity Identifier in the ``subjectAltName`` URI corresponds to the expected issuer.
 3. Verify the attestation signature with the selected key or certificate.
 
 .. note::
-  When required, the Federation Historical Keys endpoint and the published CRLs MUST be used to ensure that the attestation was valid at the time of issuance or presentation (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
+  When required, the Federation Historical Keys endpoint and the published CRLs MUST be used to ensure that the attestation was valid at the time of issuance or presentation (see :ref:`trust-evaluation:Federation Trust Anchor Key Rotation and Historical Verification` for more details).
 
 The lifecycle of the signing certificates MUST be kept aligned with the federation configuration set of the issuer keys. When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly. Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.
 
@@ -271,7 +271,7 @@ Authentication Trust Anchor Distribution
 
 The Authentication Trust Anchors are distributed through the Federation Trust Anchor Entity Configuration with the same mechanism used for the Signing Trust Anchors. Each Authentication Trust Anchor certificate is provided in the ``x5c`` parameter of a dedicated JWK, distinct from the Federation Entity Keys.
 
-An Authentication Trust Anchor is the root of the X.509 authentication PKI that issues the Relying Party authentication certificates used in the Proximity Flow. These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
+An Authentication Trust Anchor is the root of the X.509 authentication PKI that issues the Relying Party authentication certificates used in the Proximity Flow. These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
 
 .. note::
   The issuance of the Relying Party authentication certificates and the operation of the authentication PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
@@ -302,7 +302,7 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. In t
 
 **Process**
 
-1. Validate the Trust Chain about the Trust Evaluated Party and derive its final metadata (see :ref:`trust-evaluation-oidfed:Federation Trust Chain` and :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`).
+1. Validate the Trust Chain about the Trust Evaluated Party and derive its final metadata (see :ref:`trust-evaluation:Federation Trust Chain` and :ref:`trust-evaluation:Metadata Retrieval and Validation`).
 2. Verify that the entity identifier carried by the artifact, for example the ``client_id`` or the ``iss`` claim, matches the subject of the Trust Chain.
 3. Select within the final metadata the public key referenced by the ``kid`` header.
 4. Verify the artifact signature with the selected key.
@@ -331,7 +331,7 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for t
 
 **Process**
 
-1. Validate the Trust Chain about the Wallet Provider that issued the Wallet Instance Attestation and derive its final metadata (see :ref:`trust-evaluation-oidfed:Federation Trust Chain` and :ref:`trust-evaluation-oidfed:Metadata Retrieval and Validation`).
+1. Validate the Trust Chain about the Wallet Provider that issued the Wallet Instance Attestation and derive its final metadata (see :ref:`trust-evaluation:Federation Trust Chain` and :ref:`trust-evaluation:Metadata Retrieval and Validation`).
 2. Verify the Wallet Instance Attestation signature with one of the Wallet Provider keys published in the final metadata.
 3. Check the temporal validity and the revocation status of the Wallet Instance Attestation.
 4. Verify the proof of possession of the attested key, according to the protocol in use.
@@ -339,7 +339,7 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for t
 Relying Party Proximity Authentication
 """""""""""""""""""""""""""""""""""""""
 
-In the Proximity Flow the Relying Party is authenticated through the mdoc reader authentication defined in [`ISO18013-5`_]. The Relying Party signs the session transcript with the private key of its authentication certificate and provides the certificate chain in the ``x5chain`` header of the ``ReaderAuth``. The certification path terminates in an Authentication Trust Anchor distributed as defined in :ref:`trust-evaluation-oidfed:Authentication Trust Anchor Distribution`.
+In the Proximity Flow the Relying Party is authenticated through the mdoc reader authentication defined in [`ISO18013-5`_]. The Relying Party signs the session transcript with the private key of its authentication certificate and provides the certificate chain in the ``x5chain`` header of the ``ReaderAuth``. The certification path terminates in an Authentication Trust Anchor distributed as defined in :ref:`trust-evaluation:Authentication Trust Anchor Distribution`.
 
 **Input**
 
@@ -353,7 +353,7 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED``. In t
 **Process**
 
 1. Extract the certificate chain from the ``x5chain`` header of the ``ReaderAuth``.
-2. Validate the certification path against the applicable Authentication Trust Anchor as defined in :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`.
+2. Validate the certification path against the applicable Authentication Trust Anchor as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
 3. Verify the ``ReaderAuth`` signature over the session transcript with the validated authentication certificate.
 
 The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
@@ -361,7 +361,7 @@ The successful verification provides both the authentication of the Relying Part
 Authorization
 ^^^^^^^^^^^^^^^^^^
 
-The authorization data of an entity are provided by the registration Trust Mark issued by the Registrar through the Federation Authority. The registration Trust Mark is functionally analogous to the Wallet-Relying Party Registration Certificate of the EUDIW Trust Framework, and it reuses the same field names for the authorization data. It attests the registration of the entity and carries its ``entitlements`` and, where applicable, the ``provides_attestations`` or the ``credentials`` it is authorized to issue or to request. Its structure is defined in :ref:`trust-artifact-oidfed:Trust Mark registration-entity` and the identifiers schema in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`.
+The authorization data of an entity are provided by the registration Trust Mark issued by the Registrar through the Federation Authority. The registration Trust Mark is functionally analogous to the Wallet-Relying Party Registration Certificate of the EUDIW Trust Framework, and it reuses the same field names for the authorization data. It attests the registration of the entity and carries its ``entitlements`` and, where applicable, the ``provides_attestations`` or the ``credentials`` it is authorized to issue or to request. Its structure is defined in :ref:`infrastructure-trust:Trust Mark registration-entity` and the identifiers schema in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
 The Authorization process is composed of the following procedures:
 
@@ -387,7 +387,7 @@ The Trust Evaluator MUST output ``TRUST_MARK_VALID`` or ``TRUST_MARK_INVALID``. 
 
 **Process**
 
-1. Verify that the issuer of the Trust Mark is authorized for that ``trust_mark_type``, according to the ``trust_mark_issuers`` claim of the Federation Trust Anchor Entity Configuration. For the registration Trust Mark, that is a Trust Mark whose ``trust_mark_type`` has the ``registration-entity`` purpose, the Trust Mark Validation additionally verifies that the ``trust_mark_type`` matches the expected registration identifier for the role of the subject and that the issuer is the Federation Trust Anchor, since the registration Trust Mark MUST be issued only by the Federation Trust Anchor (see :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`).
+1. Verify that the issuer of the Trust Mark is authorized for that ``trust_mark_type``, according to the ``trust_mark_issuers`` claim of the Federation Trust Anchor Entity Configuration. For the registration Trust Mark, that is a Trust Mark whose ``trust_mark_type`` has the ``registration-entity`` purpose, the Trust Mark Validation additionally verifies that the ``trust_mark_type`` matches the expected registration identifier for the role of the subject and that the issuer is the Federation Trust Anchor, since the registration Trust Mark MUST be issued only by the Federation Trust Anchor (see :ref:`infrastructure-trust:Trust Mark Types and Schema`).
 2. Verify the Trust Mark signature with the Federation Entity Keys of its issuer, obtained through the Trust Chain when the issuer is not the Federation Trust Anchor.
 3. Check the temporal validity of the Trust Mark through the ``iat`` and ``exp`` claims.
 4. When online, check the Trust Mark status through the Federation Trust Mark Status endpoint (`OID-FED`_ Section 8.4).
@@ -395,7 +395,7 @@ The Trust Evaluator MUST output ``TRUST_MARK_VALID`` or ``TRUST_MARK_INVALID``. 
 Entitlement Check
 """""""""""""""""""""
 
-The entitlements define what the entity is authorized to do, such as the Credential types it may issue or the attributes it may request. Within IT-Wallet these authorization data are carried in the registration Trust Mark, in the ``entitlements``, ``provides_attestations`` and ``credentials`` claims defined in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`, and MUST NOT be derived from the metadata alone.
+The entitlements define what the entity is authorized to do, such as the Credential types it may issue or the attributes it may request. Within IT-Wallet these authorization data are carried in the registration Trust Mark, in the ``entitlements``, ``provides_attestations`` and ``credentials`` claims defined in :ref:`infrastructure-trust:Trust Mark Types and Schema`, and MUST NOT be derived from the metadata alone.
 
 **Input**
 
@@ -434,7 +434,7 @@ The Wallet Instance MUST output ``VERIFICATION_PASSED`` or ``OVERASKING_DETECTED
 User Transparency
 """""""""""""""""
 
-Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed. Before the disclosure, the Wallet Instance MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision. This is consistent with the User approval that concludes the presentation, as defined in :ref:`trust-override-rules:Authorization Decision and Override Rules`.
+Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed. Before the disclosure, the Wallet Instance MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision. This is consistent with the User approval that concludes the presentation, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
 The transparency claims carried in the Trust Mark are the following:
 
@@ -446,22 +446,22 @@ The transparency claims carried in the Trust Mark are the following:
 - ``public_body``, whether the entity is a public sector body;
 - ``support_uri``, the contact for requests related to the entity, such as data deletion or portability.
 
-Their definitions are provided in :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`.
+Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
-When the Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both. In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`trust-artifact-oidfed:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
+When the Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both. In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
 
 Metadata Retrieval and Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The metadata of a Federation Entity MUST be consumed only in their final form, that is the metadata resulting from the application of the metadata policies to the metadata published in the Entity Configuration, along the validated Trust Chain (see :ref:`trust-evaluation-oidfed:Federation Trust Chain`). The metadata published in the Entity Configuration MUST NOT be used without this processing.
+The metadata of a Federation Entity MUST be consumed only in their final form, that is the metadata resulting from the application of the metadata policies to the metadata published in the Entity Configuration, along the validated Trust Chain (see :ref:`trust-evaluation:Federation Trust Chain`). The metadata published in the Entity Configuration MUST NOT be used without this processing.
 
-The metadata types and their parameters are defined in :ref:`trust-artifact-oidfed:Entity Type Identifiers and Metadata` and in the protocol specifications referenced there.
+The metadata types and their parameters are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` and in the protocol specifications referenced there.
 
 The Wallet Instance configuration is provided by the Wallet Provider within its metadata as defined in :ref:`wallet-solution-metadata:Wallet Solution Metadata`.
 
 **Input**
 
-- A validated Trust Chain about the subject (see :ref:`trust-evaluation-oidfed:Federation Trust Chain`).
+- A validated Trust Chain about the subject (see :ref:`trust-evaluation:Federation Trust Chain`).
 
 **Outcome**
 
@@ -474,7 +474,7 @@ The Wallet Instance configuration is provided by the Wallet Provider within its 
 3. Verify the presence of the parameters that are REQUIRED for that metadata type.
 4. Use the endpoints, the keys and the algorithms only from the final metadata.
 
-When the metadata are obtained through a statically provided Trust Chain, they MUST be refreshed when the Trust Chain expires, as defined in :ref:`trust-evaluation-oidfed:Federation Trust Chain`.
+When the metadata are obtained through a statically provided Trust Chain, they MUST be refreshed when the Trust Chain expires, as defined in :ref:`trust-evaluation:Federation Trust Chain`.
 
 .. note::
-  Within IT-Wallet the ``metadata_policy`` covers only the technical configuration parameters, such as endpoints, cryptographic keys and supported algorithms. Entitlements and authorization policies MUST NOT be expressed through metadata policies; they are carried by the Trust Marks, as defined in :ref:`trust-evaluation-oidfed:Authorization`.
+  Within IT-Wallet the ``metadata_policy`` covers only the technical configuration parameters, such as endpoints, cryptographic keys and supported algorithms. Entitlements and authorization policies MUST NOT be expressed through metadata policies; they are carried by the Trust Marks, as defined in :ref:`trust-evaluation:Authorization`.

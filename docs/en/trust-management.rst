@@ -3,7 +3,7 @@
 Trust Management and Lifecycle
 ------------------------------
 
-This section describes first the lifecycle of Entities and Trust Artifacts (:ref:`trust-management:Lifecycle State Machine`) and then their revocation mechanisms (:ref:`trust-management:Revocation Mechanisms`).
+This section describes first the lifecycle of Entities and Trust Artifacts (:ref:`infrastructure-trust:Lifecycle State Machine`) and then their revocation mechanisms (:ref:`infrastructure-trust:Revocation Mechanisms`).
  
 Lifecycle State Machine
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -92,6 +92,8 @@ Below these updates and their operational effects on the Trust Artifacts state a
 In the tables below are found the relationships between the registered data and the Trust Artifacts in which they are contained for specific entity types.
 
 .. list-table:: Entity Data and Trust Artifacts
+   :class: longtable
+   :widths: 16 18 22 22 22
    :header-rows: 1
 
    * - Entity Type
@@ -242,17 +244,17 @@ For Wallet Providers updating their identity information and/or technical config
 Revocation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the artifacts that are employed in :ref:`trust-management:Trust Management and Lifecycle` to manage the status of certificates and entities by detailing respective formats and parameters. The main distinction is the following:
+This section describes the artifacts that are employed in :ref:`infrastructure-trust:Trust Management and Lifecycle` to manage the status of certificates and entities by detailing respective formats and parameters. The main distinction is the following:
 
 - To manage Wallet-Relying Party Access Certificates and Sign/Seal Certificates, the entities acting as Trust Anchors for these certificates MUST:
 
-  - make available at least one revocation mechanism among :ref:`trust-management:Certificate Revocation List (CRL)` and :ref:`trust-management:Online Certificate Status Protocol (OCSP)`;
+  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
   - issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`trust-management:Status List Token (SLT)`;
-  - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+  - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
+  - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
   ETSI 319 411-1 v1.5.1 recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
@@ -276,6 +278,8 @@ If supported by the CA, the CRL MUST be available at the URI specified in the ``
 An X.509 v2 CRL is represented as the ASN.1 DER encoding of the ``CertificateList`` SEQUENCE. The ASN.1 DER encoding is a strictly defined tag, length, and value encoding system for each element. The final bytes transmitted represent the DER encoding of the top-level SEQUENCE containing the fields in the following table:
 
 .. list-table:: Top-Level CertificateList Structure
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -315,6 +319,8 @@ Certificate List Content
 The ``tbsCertList`` (To Be Signed Certificate List) is an ASN.1 SEQUENCE containing several fields and extensions. The following table lists all such fields and extensions that are required in a CRL or conditionally required.
 
 .. list-table:: tbsCertList Fields and Extensions
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -386,6 +392,8 @@ The ``tbsCertList`` (To Be Signed Certificate List) is an ASN.1 SEQUENCE contain
 The ``crlExtensions`` field MAY contain various extensions. Notable standard extensions include:
 
 .. list-table:: Notable crlExtensions
+   :class: longtable
+   :widths: 25 15 15 10 35
    :header-rows: 1
 
    * - Parameter
@@ -434,6 +442,8 @@ This protocol specifies the data that MUST be exchanged between the OCSP client 
 The following table sums up the roles of the OCSP client and server in the EUDIW ecosystem.
 
 .. list-table:: OCSP roles in the EUDIW ecosystem
+   :class: longtable
+   :widths: 28 28 44
    :header-rows: 1
 
    * - OCSP Client
@@ -461,6 +471,8 @@ Online Certificate Status Protocol Request Format
 The OCSP request MUST be the ASN.1 DER encoding of the ``OCSPRequest`` SEQUENCE, which contains the ``tbsRequest`` (To-Be-Signed Request) and an optional signature. The following table lists the parameters found within the ``tbsRequest`` structure.
 
 .. list-table:: tbsRequest Structure Parameters
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -497,6 +509,8 @@ The OCSP request MUST be the ASN.1 DER encoding of the ``OCSPRequest`` SEQUENCE,
 The ``reqCert`` parameter utilizes the ``CertID`` structure, MUST be an ASN.1 *SEQUENCE* containing the following parameters:
 
 .. list-table:: CertID Structure Parameters
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -538,6 +552,8 @@ The ``reqCert`` parameter utilizes the ``CertID`` structure, MUST be an ASN.1 *S
 The ``requestExtensions`` and ``singleRequestExtensions`` structures MAY contain various extensions. The following table lists the requested ones:
 
 .. list-table:: OCSP Nonce Extension
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -564,6 +580,8 @@ Online Certificate Status Protocol Response Format
 An OCSP response MUST be the ASN.1 DER encoding of the ``OCSPResponse`` *SEQUENCE*. When transported over HTTP, the body of the HTTP response MUST contain the raw DER encoding of this ``OCSPResponse``, with the MIME type ``application/ocsp-response``. The ``OCSPResponse`` *SEQUENCE* contains the following parameters:
 
 .. list-table:: OCSPResponse Structure Parameters
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -598,6 +616,8 @@ An OCSP response MUST be the ASN.1 DER encoding of the ``OCSPResponse`` *SEQUENC
 ``BasicOCSPResponse`` is an ASN.1 SEQUENCE containing the following parameters:
 
 .. list-table:: BasicOCSPResponse Structure Parameters
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -674,6 +694,8 @@ An OCSP response MUST be the ASN.1 DER encoding of the ``OCSPResponse`` *SEQUENC
 The ``responseExtensions`` structure MAY contain various extensions. The following table lists the requested ones:
 
 .. list-table:: Response Extensions Nonce
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
@@ -690,6 +712,8 @@ The ``responseExtensions`` structure MAY contain various extensions. The followi
 In the OCSP Response there MUST be at least a ``SingleResponse`` for each ``CertID`` in the request. Each ``SingleResponse`` is an ASN.1 *SEQUENCE* that carries the following parameters:
 
 .. list-table:: SingleResponse Structure Parameters
+   :class: longtable
+   :widths: 22 18 10 15 35
    :header-rows: 1
 
    * - Parameter
