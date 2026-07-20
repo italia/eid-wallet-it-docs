@@ -19,6 +19,7 @@ The data model of these Trust Artifacts profiles the following external specific
 - `ETSI TS 119 475`_, which defines the Wallet-Relying Party Registration Certificate together with its entitlements.
 - `ETSI EN 319 412-1`_, which defines the subject attributes of the certificates.
 - `ETSI TS 119 182-1`_, which defines the JAdES format of the signature of a List of Trusted Entities.
+- `ETSI EN 319 132-1`_, which defines the XAdES format of the signature of Trusted List and List of Trusted List.
 
 Register of WRPs
 ^^^^^^^^^^^^^^^^
@@ -240,7 +241,7 @@ Ecosystem Entities utilize these lists to:
 
 The three distinct types of trust lists are:
 
-- Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. Each Member State publishes one TL in XML format. It is signed by the respective Member State with an AdES digital signature at conformance level baseline B (as defined in `ETSI TS 119 182-1`_). TLs are published in a machine-readable format at endpoints specified within the LOTL. These Lists hold current and historical information about the accreditation of trust service providers, referencing:
+- Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. Each Member State publishes one TL in XML format. It is signed by the respective Member State with an XAdES digital signature at conformance level baseline B (as defined in `ETSI EN 319 132-1`_). TLs are published in a machine-readable format at endpoints specified within the LOTL. These Lists hold current and historical information about the accreditation of trust service providers, referencing:
 
   - Qualified Trust Service Providers (QTSP)s, such as Qualified Certificates Issuing and revocation mechanisms, QEAA Providers, Qualified electronic archiving services.
   - Non-Qualified Trust Services such as EAA Providers,
@@ -248,7 +249,7 @@ The three distinct types of trust lists are:
 
    Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction. They are numbered and renewed periodically, and published in a website for unrestricted download. To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
 
-- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. There is only one LOTL, which is published in XML format and signed by the European Commission (EC). It utilizes an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_) and references the trusted certificates that each National Trusted List. To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism. It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
+- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. There is only one LOTL, which is published in XML format and signed by the European Commission (EC). It utilizes an XAdES digital signature at conformance level baseline B (per `ETSI EN 319 132-1`_) and references the trusted certificates that each National Trusted List. To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism. It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
 
   The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently, the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
 
@@ -278,13 +279,13 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
    * - **Trusted Lists (TL)**
      - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
      - ETSI TS 119 612; ``XML`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - Member State scope; one list per Member State, signed by that Member State.
      - Machine-readable endpoint specified within the LOTL.
    * - **List of Trusted Lists (LOTL)**
      - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
      - ETSI TS 119 612; ``XML`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - European Union scope; a single global list signed by the European Commission (EC) that anchors the National Trusted Lists.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: PID Provider Lists**
