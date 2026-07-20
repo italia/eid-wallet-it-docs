@@ -118,10 +118,10 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
             - **type**: it MUST be set to ``openid_credential``,
             - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
 
-        When eID Substantial Authentication with MRTD Verification is requested, an additional JSON Object MUST be included with the following claims:
+        When the Wallet Instance intends to indicate eID Substantial Authentication with MRTD Verification as an optional hint, an additional JSON Object MAY be included with the following claims:
 
             - **type**: REQUIRED. MUST be ``it_l2+document_proof``,
-            - **idphinting**: REQUIRED. URL of the Identity Provider to be used as a hint,
+            - **idphinting**: REQUIRED. URL of the Identity Provider to be used as an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`,
             - **challenge_method**: REQUIRED. Specifies the MRTD verification method. The value MUST be ``mrtd+ias``. Additional verification methods MAY be defined in future releases of this Specification,
             - **challenge_redirect_uri**: REQUIRED. Redirect URI, recognized by Wallet Instance, for handling the challenge response.
       - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
@@ -267,6 +267,32 @@ Authorization endpoint
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
 The authorization server MUST first verify the identity of the User that own the credential.
+
+
+User Authentication Method Selection
+....................................
+
+The Authorization Server of the Credential Issuer is responsible for authenticating the User according to its authentication policies and the applicable Trust Framework. The decision on which authentication method to apply, and whether to present a discovery page of the supported methods, MUST remain with the Authorization Server of the Credential Issuer.
+
+For PID issuance:
+
+  * The Authorization Server MUST authenticate the User using one of the methods it supports, including CieID with Level of Assurance High (CIE L3) and, if supported, eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
+  * The Authorization Server MAY present a discovery page enabling the User to select among the authentication methods it supports and allows for the request in progress.
+  * The Wallet Instance MAY include in the Pushed Authorization Request one or more optional hints related to the User's preferred authentication method, as defined below. Such hints MUST NOT be interpreted as a binding imposition of the authentication method by the Wallet Instance.
+  * If the Authorization Server receives a hint that it supports and accepts, it SHOULD honor it and MAY omit presenting a discovery page and/or autonomously applying only its default authentication method.
+  * If the hint is absent, unsupported, or not accepted, the Authorization Server MUST apply its authentication policies, including any discovery page and the default authentication method.
+  * A Wallet Instance MUST NOT be required to implement an authentication-method discovery interface as an interoperability prerequisite for PID issuance. Any Wallet-side pre-selection interfaces (for example to improve User experience) remain optional and MUST be limited to providing hints to the Authorization Server.
+
+The authentication hints recognized for PID issuance are the following:
+
+  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification;
+  * the ``idphinting`` claim within that object constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
+  * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies. In the absence of a User selection via a Credential Issuer discovery page, the PID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
+
+.. note::
+   This Section concerns authentication method selection during PID issuance and does not apply to the Relying Party Touchpoint Discovery Page described in :ref:`functionalities:User Experience Design`, which has a distinct purpose (selection of the method to access a service).
+
+For (Q)EAA issuance, the Authorization Server MUST authenticate the User by requesting presentation of a valid PID from the Wallet Instance using [`OpenID4VP`_], as described in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. In that context, discovery of SPID, CIE L3, or L2+ methods does not apply.
 
 
 Authorization Request

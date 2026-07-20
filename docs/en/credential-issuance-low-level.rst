@@ -114,7 +114,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   Wallet Solutions supporting both JAR-compliant and non-compliant Authorization Servers may duplicate parameters in both the request body and the signed Request Object. Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
 
 .. note::
-   For eID Substantial Authentication with MRTD Verification, the ``authorization_details`` object MUST contain the type ``"it_l2+document_proof"``. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
+   To indicate eID Substantial Authentication with MRTD Verification as an optional hint, the ``authorization_details`` array MAY contain an element with ``type`` set to ``"it_l2+document_proof"``, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
 
 The Credential Issuer performs the following checks upon the receipt of the PAR request:
 
@@ -204,7 +204,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 
 .. note::
-   **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), or according to eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`, and requires the User consent for the PID issuance.
+   **User Authentication and Consent**: The PID Provider performs the User authentication at the Authorization Endpoint according to its authentication policies, as defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection`. Allowed methods include CieID with Level of Assurance High (CIE L3) and, if supported, eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`. The Authorization Server MAY present a discovery page of the supported methods; any hints from the Wallet Instance remain optional. The PID Provider also requires the User consent for the PID issuance.
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID, obtained beforehand, to initiate the transaction with the (Q)EAA Provider. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
 
 
