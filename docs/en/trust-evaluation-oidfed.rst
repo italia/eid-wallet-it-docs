@@ -184,7 +184,7 @@ X.509 Certificate Chain Validation
 
 This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature. For artifacts in JOSE format the chain is carried in the ``x5c`` header parameter, as defined in :rfc:`7515` and used in IT-Wallet in the Request Object of the presentation flow (see :ref:`remote-flow:Request Object`). For Credentials in mdoc format the chain is carried in the ``x5chain`` unprotected header (element 33) of the Mobile Security Object, as defined in :rfc:`9360` and in :ref:`credential-data-model:Mobile Security Object`. The chain contains the Document Signer certificate and any intermediate certificate. It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution`.
 
-The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in :ref:`infrastructure-trust:Revocation Mechanisms`. This is the same certification path validation used in the EUDIW Trust Framework (see :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`); the only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier. In this section, for the National Trust Framework, the algorithm details are not redefined.
+The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in :ref:`trust-management:Revocation Mechanisms`. This is the same certification path validation used in the EUDIW Trust Framework (see :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`); the only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier. In this section, for the National Trust Framework, the algorithm details are not redefined.
 
 Within the National Trust Framework the following applies.
 
@@ -271,7 +271,7 @@ Authentication Trust Anchor Distribution
 
 The Authentication Trust Anchors are distributed through the Federation Trust Anchor Entity Configuration with the same mechanism used for the Signing Trust Anchors. Each Authentication Trust Anchor certificate is provided in the ``x5c`` parameter of a dedicated JWK, distinct from the Federation Entity Keys.
 
-An Authentication Trust Anchor is the root of the X.509 authentication PKI that issues the Relying Party authentication certificates used in the Proximity Flow. These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
+An Authentication Trust Anchor is the root of the X.509 authentication PKI that issues the Relying Party authentication certificates used in the Proximity Flow. These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
 
 .. note::
   The issuance of the Relying Party authentication certificates and the operation of the authentication PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
@@ -434,7 +434,7 @@ The Wallet Instance MUST output ``VERIFICATION_PASSED`` or ``OVERASKING_DETECTED
 User Transparency
 """""""""""""""""
 
-Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed. Before the disclosure, the Wallet Instance MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision. This is consistent with the User approval that concludes the presentation, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed. Before the disclosure, the Wallet Instance MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision. This is consistent with the User approval that concludes the presentation, as defined in :ref:`trust-override-rules:Authorization Decision and Override Rules`.
 
 The transparency claims carried in the Trust Mark are the following:
 

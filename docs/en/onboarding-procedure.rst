@@ -447,13 +447,13 @@ How these artifacts are consumed at runtime is defined in the trust-evaluation p
 **Procedure.**
 The Federation Authority validates the request and the published Entity Configuration and applies the applicable metadata policy.
 It then registers the entity as its Subordinate and issues the Subordinate Statement and the Trust Marks attesting the entity's role and authorizations.
-The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`infrastructure-trust:Subordinate Statements`).
+The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`trust-artifact-oidfed:Subordinate Statements`).
 The X.509 certificate that certifies the Federation Entity Key is issued in the Certificate Issuance Process, separated from the federation onboarding flow in this profile.
 
 During registration the Federation Authority also makes the Federation Trust Anchor's public keys available to the onboarding entity, out of band from the Trust Anchor's own Entity Configuration and through the same registration contact channel.
 This is what bootstraps the entity's trust in the Trust Anchor: at trust-evaluation time the entity compares the keys published in the Trust Anchor Entity Configuration against these out-of-band keys and discards any that do not match (see :ref:`trust-evaluation-oidfed:Federation Trust Anchor Distribution and Validation`).
 
-Registration is not a one-off event: every subsequent change to an onboarded entity (its registration, updates to its Federation Entity Keys, and its revocation) is published by the Federation Authority as a signed event on the Federation Subordinate Events Endpoint (``/federation_subordinate_events_endpoint``), so that other participants can track the entity's lifecycle over time (see :ref:`infrastructure-trust:Federation API Endpoints`).
+Registration is not a one-off event: every subsequent change to an onboarded entity (its registration, updates to its Federation Entity Keys, and its revocation) is published by the Federation Authority as a signed event on the Federation Subordinate Events Endpoint (``/federation_subordinate_events_endpoint``), so that other participants can track the entity's lifecycle over time (see :ref:`trust-artifact-oidfed:Federation API Endpoints`).
 
 WRP Registration
 ^^^^^^^^^^^^^^^^^
@@ -492,7 +492,7 @@ It is distinct from the five semantic components of the :ref:`registry:Registry 
 
 Each record is a ``WalletRelyingParty`` object whose structure is defined normatively by the Annex VI schema (Tables 1-11) of the `CIR2025/848-Amendment`_: it carries the entity's identification, its intended use, its entitlements, the attestation types it issues where applicable, its intermediary references (``usesIntermediary``, ``isIntermediary``, see :ref:`onboarding-procedure:Relying Party Intermediaries`), and its governance and key material.
 
-The conceptual role of the Register, with non-normative object examples, is described in :ref:`trust-artifact-eudiw:Register of WRPs`, and its public read API in :ref:`trust-artifact-eudiw:Common Register Open APIs`.
+The conceptual role of the Register, with non-normative object examples, is described in :ref:`trust-artifact-eudiw:Register of WRPs`, and its public read API in :ref:`trust-artifact-eudiw:Register Open APIs`.
 
 Relying Party Intermediaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

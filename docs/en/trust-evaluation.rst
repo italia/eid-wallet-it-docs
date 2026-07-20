@@ -96,6 +96,10 @@ During Issuance Flow, when this authentication does not succeed, the Wallet Unit
 
 This behavior follows the requirements defined in the ARF Annex 2 (`EIDAS-ARF`_), and applies for both EUDIW and National Trust Frameworks.
 
-.. include:: trust-evaluation-eudiw.rst
-.. include:: trust-evaluation-oidfed.rst
-.. include:: trust-override-rules.rst
+.. toctree::
+  :caption: Trust Evaluation Table of Contents
+  :maxdepth: 3
+
+  trust-evaluation-eudiw.rst
+  trust-evaluation-oidfed.rst
+  trust-override-rules.rst

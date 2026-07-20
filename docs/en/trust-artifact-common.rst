@@ -5,17 +5,17 @@ Common Trust Artifacts
 
 This section details the common artifacts involved in both the EUDIW and National Trust Frameworks, including:
 
-- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`;
-- :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
+- :ref:`trust-artifact-common:Entity Sign/Seal Certificate Profile`;
+- :ref:`trust-artifact-common:Trust Anchor Certificate Profile`.
 
 Entity Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Entity Sign/Seal Certificates**, which are used for signing and sealing various Attestations. This profile is originally defined in `ETSI TS 119 412-6`_.
+This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Entity Sign/Seal Certificates**, which are used for signing and sealing various Attestations. This profile is originally defined in `ETSI TS 119 412-6`_.
 
 .. warning::
 
-  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed. A self-signed certificate intended to act as a Trust Anchor is outside the scope of this certificate profile and MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
+  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed. A self-signed certificate intended to act as a Trust Anchor is outside the scope of this certificate profile and MUST comply with the requirements defined in :ref:`trust-artifact-common:Trust Anchor Certificate Profile`.
 
 PID Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""
@@ -61,7 +61,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
      - REQUIRED
@@ -117,7 +117,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
      - REQUIRED
@@ -169,7 +169,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED (only for QEAA)
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
 
 
 For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
@@ -219,7 +219,7 @@ The following table defines the complete set of extensions applicable to the cer
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
      
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`trust-management:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
      - REQUIRED
@@ -234,7 +234,7 @@ The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certifi
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
+This section extends the general :ref:`x509-certificate-profile:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
 
 Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate. The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm`). Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
 
@@ -243,7 +243,7 @@ Relying Parties, Credential Issuers and Wallet Units validate a presented Access
   The location of the Trust Anchor Certificate is determined by the specific Trust Framework selected (see :ref:`trust-evaluation-eudiw:EUDIW Trust Anchor Validation` and :ref:`trust-evaluation-oidfed:Federation Trust Anchor Validation`).
 
 
-The following table defines the profile-specific requirements for the certificate fields. Fields not listed in the table remain subject to the requirements defined in the common :ref:`infrastructure-trust:X.509 Certificate Profile`.
+The following table defines the profile-specific requirements for the certificate fields. Fields not listed in the table remain subject to the requirements defined in the common :ref:`x509-certificate-profile:X.509 Certificate Profile`.
 
 .. list-table:: Trust Anchor Certificate Fields
    :class: longtable

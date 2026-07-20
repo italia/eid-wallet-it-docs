@@ -26,19 +26,19 @@ As shown in :numref:`fig_WRP_and_Wallet_Providers_States`, WRPs and Wallet Provi
 - ``UNREGISTERED``: Indicates that an Entity does not currently hold a valid subscription or registration within the IT Wallet ecosystem. This is the default baseline state. Entities in this state are outside the trust boundary and MUST NOT participate in any operations.
 - ``REGISTERED``: Indicates that an Entity has successfully completed the onboarding process and its identity has been verified. 
 
-  - *EUDIW Trust Framework*: WRPs are in ``REGISTERED`` state if their Entity's information has been added in the WRP Register. While Wallet Providers become ``REGISTERED`` when the certification and onboarding records are successful collected and verified.
-  - *National Trust Framework*: WRPs or Wallet Providers are in ``REGISTERED`` state when the onboarding records are successful collected and verified.
+  - *EUDIW Trust Framework*: WRPs are in ``REGISTERED`` state when their Entity information has been added to the WRP Register, while Wallet Providers become ``REGISTERED`` when the certification and onboarding records have been successfully collected and verified.
+  - *National Trust Framework*: WRPs and Wallet Providers are in ``REGISTERED`` state when the onboarding records have been successfully collected and verified.
 
 **Transition from REGISTERED to OPERATIONAL**:  ``OPERATIONAL`` indicates that an Entity has been successfully authorized to perform role-related operations. 
 
   - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a signing/seal certificate whose signing Trust Anchor has been added in the LoTE or in the EUMS TL;  Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a signing/seal certificate whose signing Trust Anchor has been added in the LoTE.
-  - *National Trust Framework*: WRPs or Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and obtain signing/seal certificate(s), Trust Mark(s) and their Subordinate Statement has been published by the Federation Authority.
+  - *National Trust Framework*: WRPs and Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state, they have obtained the signing/seal certificate(s) and the Trust Mark(s), and their Subordinate Statement has been published by the Federation Authority.
 
-**Transition from OPERATIONAL to REGISTERED**: an Entity goes back to ``REGISTERED`` state when does not possess valid Trust Artifacts, this can be triggered by their expiration or their revocation due to Entity's updates. To go back in ``OPERATIONAL`` state a new Trust Artifact issuance is required.
+**Transition from OPERATIONAL to REGISTERED**: an Entity goes back to ``REGISTERED`` state when it no longer possesses valid Trust Artifacts. This can be triggered by their expiration or by their revocation following an update of the Entity. To return to the ``OPERATIONAL`` state, a new Trust Artifact issuance is required.
 
-**Transition from REGISTERED or OPERATIONAL to REMOVED**: ``REMOVED`` indicates the revocation of an Entity's due to voluntary offboarding, a severe security breach, or a critical compliance failure.
+**Transition from REGISTERED or OPERATIONAL to REMOVED**: ``REMOVED`` indicates the removal of an Entity due to voluntary offboarding, a severe security breach, or a critical compliance failure.
 
-  - *EUDIW Trust Framework*: for WRPs it results in the revocation of WRPAC/WRPRC and signing/seal certificates, removal of the entry from the WRP Register and update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL. For Wallet Provider it results in the update of Wallet Provider LoTE. 
+  - *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC/WRPRC and of the signing/seal certificates, in the removal of the entry from the WRP Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL. For Wallet Providers it results in the update of the Wallet Providers LoTE.
   - *National Trust Framework*:  for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
 
 An Entity MUST reject new interactions or transactions initiated by a ``REMOVED`` Entity, and all cryptographic keys, active attestations, and operational capabilities associated with the Entity MUST be immediately revoked.
@@ -242,16 +242,16 @@ For Wallet Providers updating their identity information and/or technical config
 Revocation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the artifacts that are employed in :ref:`infrastructure-trust:Trust Management and Lifecycle` to manage the status of certificates and entities by detailing respective formats and parameters. The main distinction is the following:
+This section describes the artifacts that are employed in :ref:`trust-management:Trust Management and Lifecycle` to manage the status of certificates and entities by detailing respective formats and parameters. The main distinction is the following:
 
 - To manage Wallet-Relying Party Access Certificates and Sign/Seal Certificates, the entities acting as Trust Anchors for these certificates MUST:
 
-  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
+  - make available at least one revocation mechanism among :ref:`trust-management:Certificate Revocation List (CRL)` and :ref:`trust-management:Online Certificate Status Protocol (OCSP)`;
   - issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
+  - make available an endpoint to request :ref:`trust-management:Status List Token (SLT)`;
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::

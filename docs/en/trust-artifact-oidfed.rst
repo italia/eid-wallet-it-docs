@@ -4,7 +4,7 @@ National Trust Artifacts
 ------------------------
 
 This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. 
-The X.509 profile is detailed in the :ref:`infrastructure-trust:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
+The X.509 profile is detailed in the :ref:`trust-artifact-common:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
 - OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_) the wallet profile of OpenID Federation. It defines the Entity Type Identifiers of the Entities used in this section.

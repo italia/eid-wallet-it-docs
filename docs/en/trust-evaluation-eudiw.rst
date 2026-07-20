@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Trust Evaluation in the EUDIW Trust Framework
 ------------------------------------------------
 
@@ -11,7 +13,7 @@ The procedures defined in this section profile combine the following external sp
  
 .. note::
  
-    The data model of the Trust Artifacts referenced by these procedures, that is the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate, the Register, the Lists of Trusted Entities and the Embedded Disclosure Policy, together with the specifications that define them, is defined in :ref:`infrastructure-trust:EUDIW Trust Artifacts`.
+    The data model of the Trust Artifacts referenced by these procedures, that is the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate, the Register, the Lists of Trusted Entities and the Embedded Disclosure Policy, together with the specifications that define them, is defined in :ref:`trust-artifact-eudiw:EUDIW Trust Artifacts`.
  
     The procedures defined in this section are executed within the operational Issuance and Presentation flows (see :ref:`digital-credential-flows:Digital Credential Flows`). The parameters they operate on, such as the signed Request Object, the mdoc Request, the Metadata of all Entities involved and the data model of the received Digital Credentials, are defined in the respective sections (see :ref:`entities:Entities`, :ref:`remote-flow:Request Object` for the Remote Flow, :ref:`proximity-flow:mdoc Request` for the Proximity Flow, and :ref:`credential-data-model:SD-JWT-VC Credential Format` and :ref:`credential-data-model:mdoc-CBOR Credential Format` for the Digital Credential formats).
 
@@ -273,7 +275,7 @@ X509 Certificate Chain Validation Algorithm
 
 This procedure validates a certification path. It is invoked by the :ref:`trust-evaluation-eudiw:EUDIW Authentication` and by the :ref:`trust-evaluation-eudiw:Authorization Artifacts Validation` to validate the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate and the Registrar Sign/Seal Certificate chains. The Trust Anchor consumed as ``trust_anchor`` is profiled in :ref:`trust-artifact-common:Trust Anchor Certificate Profile`.
 
-The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL and the OCSP formats and parameters, are defined in :ref:`infrastructure-trust:Revocation Mechanisms`. The algorithm details are not redefined here. This is the same certification path validation used in the National Trust Framework (see :ref:`trust-evaluation:X.509 Certificate Chain Validation`), where the difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.
+The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`. The certificate lifecycle and the revocation mechanisms, including the CRL and the OCSP formats and parameters, are defined in :ref:`trust-management:Revocation Mechanisms`. The algorithm details are not redefined here. This is the same certification path validation used in the National Trust Framework (see :ref:`trust-evaluation-oidfed:X.509 Certificate Chain Validation`), where the difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.
 
 Within the EUDIW Trust Framework the following applies.
 
@@ -304,7 +306,7 @@ EUDIW Signing Trust Anchor Validation
 This process provides and validates the root of trust for the verification of the issuer data authentication of a received attestation, that is a Digital Credential or the Wallet Instance Attestation. The validation of the Lists of Trusted Entities and Trusted Lists, and the extraction of the Trust Anchors they publish, is defined in :ref:`trust-evaluation-eudiw:EUDIW Trust Anchor Validation`. This section defines how such a validated Trust Anchor is then used to validate the signer of a received attestation.
  
 .. note::
-  In the National Trust Framework this root of trust is the Signing Trust Anchor of the signing X.509 PKI (see :ref:`trust-evaluation:Signing Trust Anchor Distribution and Validation`). Within the EUDIW Trust Framework the root of trust of a received attestation is the Trust Anchor published in the applicable List of Trusted Entities or Trusted List, made available in accordance with Article 22 of [`EIDAS`_].
+  In the National Trust Framework this root of trust is the Signing Trust Anchor of the signing X.509 PKI (see :ref:`trust-evaluation-oidfed:Signing Trust Anchor Distribution and Validation`). Within the EUDIW Trust Framework the root of trust of a received attestation is the Trust Anchor published in the applicable List of Trusted Entities or Trusted List, made available in accordance with Article 22 of [`EIDAS`_].
  
 The applicable Trust Anchor depends on the type of the received attestation. For a Digital Credential it is selected according to the Credential Rulebook; for the Wallet Instance Attestation, for which no Rulebook applies, it is the Trust Anchor of the Wallet Provider:
  
@@ -380,7 +382,7 @@ EUDIW Authorization
  
 This section specifies the EUDIW Authorization Process that a Wallet Unit MUST execute to determine whether an interaction with a Wallet-Relying Party is allowed within the EUDI Wallet ecosystem. The EUDIW Authorization Process MUST start only *after* the Wallet-Relying Party has been successfully authenticated according to :ref:`trust-evaluation-eudiw:EUDIW Authentication`. If the Wallet-Relying Party has not been authenticated, the EUDIW Authorization Process MUST NOT start.
  
-The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate or, equivalently, by the Register Response. Both are profiled in [`ETSI TS 119 475`_] and their data model is described in :ref:`trust-artifact-eudiw:Common Register Open APIs`. 
+The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate or, equivalently, by the Register Response. Both are profiled in [`ETSI TS 119 475`_] and their data model is described in :ref:`trust-artifact-eudiw:Register Open APIs`. 
  
 The EUDIW Authorization Process is split into:
  
@@ -390,7 +392,7 @@ The EUDIW Authorization Process is split into:
     - **Issuance authorization**: determines whether a Credential Issuer is registered for the relevant role and authorized to issue the specific Digital Credential. This applies to PID, QEAA, PuB-EAA and EAA Providers operating within the EUDIW ecosystem.
     - **Presentation authorization**: determines whether a Relying Party request falls within its registered scope, whether an Embedded Disclosure Policy permits the disclosure, and whether the User approves. This applies to interactions involving both Relying Parties and Relying Party Intermediaries, across both Remote and Proximity Flows.
  
-- :ref:`trust-evaluation:Authorization Decision and Override Rules`, which outputs an *Authorization Decision* expressed as ``AUTHORIZED`` or ``NOT_AUTHORIZED`` on the base of the Authorization Artifacts Validation and Authorization Validation results. Depending on the Flow type the User MAY *override* the Authorization Decision.
+- :ref:`trust-override-rules:Authorization Decision and Override Rules`, which outputs an *Authorization Decision* expressed as ``AUTHORIZED`` or ``NOT_AUTHORIZED`` on the base of the Authorization Artifacts Validation and Authorization Validation results. Depending on the Flow type the User MAY *override* the Authorization Decision.
  
 Within the *Authorization Validation*, the Wallet Unit MUST distinguish between the authenticated Wallet-Relying Party and the *Authorization Subject*, that is the entity whose authorization is being evaluated:
  
@@ -403,7 +405,7 @@ The Wallet Unit MUST support authorization-context resolution from both a Wallet
 Authorization Artifacts Validation
 """""""""""""""""""""""""""""""""""
  
-The artifacts that carry the authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information, in the JWT and CWT profiles defined in Section 5.2.1 of [`ETSI TS 119 475`_]. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure specifies its inputs, its processing logic and its output, a verification result code. The result MAY be overridden by the User under the conditions detailed in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+The artifacts that carry the authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response. Both carry equivalent information, in the JWT and CWT profiles defined in Section 5.2.1 of [`ETSI TS 119 475`_]. The Wallet Unit MUST support the validation of both and MUST validate at least one of the two. Each validation procedure specifies its inputs, its processing logic and its output, a verification result code. The result MAY be overridden by the User under the conditions detailed in :ref:`trust-override-rules:Authorization Decision and Override Rules`.
  
 The validation flow depends on the availability of the Wallet-Relying Party Registration Certificate in the interaction.
  
@@ -414,7 +416,7 @@ The validation flow depends on the availability of the Wallet-Relying Party Regi
  
 - During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the self-declared registration information. The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
  
-In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST query the Register as described in :ref:`Register Query Validation <register-query-validation>`. The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate. Each Registrar exposes an online service through the API described in :ref:`trust-artifact-eudiw:Common Register Open APIs`. When using this service the Wallet Unit SHOULD inform the User that an external query will be made.
+In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST query the Register as described in :ref:`Register Query Validation <register-query-validation>`. The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate. Each Registrar exposes an online service through the API described in :ref:`trust-artifact-eudiw:Register Open APIs`. When using this service the Wallet Unit SHOULD inform the User that an external query will be made.
  
 **Wallet-Relying Party Registration Certificate Validation**
  
@@ -543,7 +545,7 @@ Variable               Code                                 Phase           Mean
 ``edp_state``          ``EDP_NOT_SATISFIED``                presentation    The Relying Party does not satisfy any locally stored Embedded Disclosure Policy.
 =====================  ===================================  ==============  ====================================================================================================================================
  
-The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elaborated from the ``authz_art_state``, ``authz_val_state`` and ``edp_state`` values, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elaborated from the ``authz_art_state``, ``authz_val_state`` and ``edp_state`` values, as defined in :ref:`trust-override-rules:Authorization Decision and Override Rules`.
  
 .. plantuml:: plantuml/eudiw-authz-eval.puml
     :width: 99%
