@@ -162,7 +162,7 @@ The validating Entity initializes the following variables, corresponding to the 
 
 - ``OJEU-Loc``: URI of the latest known Official Journal of the European Union publication.
 - ``OJEU-LoTE-Loc``: URI of the last processed List of Trusted Entities. Defaults to the value in ``OJEU-Loc``.
-- ``OJEU-LoTE-Certs-Set``: the set of Trust Anchor certificates from the ``OJEU-Loc`` publication.
+- ``OJEU-LoTE-Certs-Set``: the set of trusted certificates from the ``OJEU-Loc`` publication.
 - ``LoTE``: the List of Trusted Entities JWT currently being processed. Initialized as ``NULL``.
 - ``LoTE-Signer-Cert``: the certificate extracted from the ``x5c`` header parameter of the List of Trusted Entities.
 - ``LoTESO-Cert``: temporary variable for the Scheme Operator certificate being validated. Initialized as ``NULL``.
@@ -194,13 +194,13 @@ The validation MUST perform the following steps. Each step indicates the corresp
     - If ``TRUE``: set ``OJEU-LoTE-Loc`` to ``LoTE Location`` and restart from Step 1.
     - If ``FALSE``, proceed to the next step.
 
-6. (Digital Signature Validation) Validate the signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert`` as a directly trusted certificate, following the basic signature validation of ETSI EN 319 102-1 as required by PRO-4.1.4-07. (PRO-4.1.4-07, PRO-4.1.4-08)
+6. (Digital Signature Validation) Validate the signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert`` as a directly trusted certificate, following the basic signature validation of ETSI EN 319 102-1 as required by PRO-4.1.4-07. In particular, the *Country code* and *Organization* fields in the Subject Distinguished Name of the certificate supporting the AdES digital signature shall match respectively the scheme territory and one of the scheme operator name values within the LoTE. (PRO-4.1.4-07, PRO-4.1.4-08, clause 6.8.0 of [`ETSI TS 119 602`_])
 
     - If validation fails: stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
     - If successful:
 
         - Set ``LoTESO-Cert`` to ``LoTE-Signer-Cert``.
-        - Set ``LoTESO-Certs-Set`` to the certificates found in the ``PointersToOtherLoTE`` claim (territory ``EU``) of the current ``LoTE`` payload. (PRO-4.1.4-09)
+        - Set ``LoTESO-Certs-Set`` to the certificates found in the ``PointersToOtherLoTE`` claim (scheme territory ``EU``) of the current ``LoTE`` payload. (PRO-4.1.4-09)
 
 7. (Intermediate Pivot Validation) (PRO-4.1.4-10 for the case ``n = 0``, PRO-4.1.4-11 for the pivot loop)
 
@@ -210,27 +210,27 @@ The validation MUST perform the following steps. Each step indicates the corresp
         - Iterate ``i`` from 1 to ``n`` (from most recent Pivot to oldest). Let ``Pivot`` be the file downloaded from the ``i``-th URI.
         - (Link Check) Set ``Pivot-Certs-Set`` to the certificates in the ``PointersToOtherLoTE`` claim (territory ``EU``) of ``Pivot``. If ``LoTESO-Cert`` (the signer of the previous file in the chain) is not in ``Pivot-Certs-Set``, validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
         - (Update Signer) Set ``LoTESO-Cert`` to the first certificate in the ``x5c`` header parameter of ``Pivot``.
-        - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert``. If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
+        - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert`` as described in step 6. (Digital Signature Validation). If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
         - The loop continues, walking backwards until ``LoTESO-Cert`` represents the signer of the oldest Pivot.
 
-8. (Trust Root Validation) Verify the end of the chain. If ``LoTESO-Cert`` (from the last Pivot, or from the current ``LoTE`` when no Pivot exists) is not in ``OJEU-LoTE-Certs-Set`` (the Trust Anchor), validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``. (PRO-4.1.4-12)
+8. (Trust Root Validation) Verify the end of the chain. If ``LoTESO-Cert`` (from the last Pivot, or from the current ``LoTE`` when no Pivot exists) is not in ``OJEU-LoTE-Certs-Set`` (the set of trusted certificates), validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``. (PRO-4.1.4-12)
 
-9. (Expiration) If the current time is greater than the ``NextUpdate`` value of ``LoTE`` (clause 6.3.15 of [`ETSI TS 119 602`_]), validation MUST fail. (PRO-4.1.4-13)
+9. (Expiration) If the current time is greater than the ``NextUpdate`` value of ``LoTE``, or it is set to ``NULL`` (clause 6.3.15 of [`ETSI TS 119 602`_]), validation MUST fail. (PRO-4.1.4-13)
 
 10. (Success) Set ``Authenticated-LoTE`` to ``LoTE`` and ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``. (PRO-4.1.4-14, PRO-4.1.4-15)
 
-11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (territory ``EU``), update ``OJEU-LoTE-Loc`` to that value. (PRO-4.1.4-16)
+11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (scheme territory ``EU``), update ``OJEU-LoTE-Loc`` to that value. (PRO-4.1.4-16)
 
 12. (Update Trust Root) [Caution: this step modifies the Root of Trust configuration] (PRO-4.1.4-17)
 
     - If ``OJEU-Loc`` does not match the first URI in ``SchemeInformationURI``, update ``OJEU-LoTE-Loc``.
-    - Update ``OJEU-LoTE-Certs-Set`` according to the new Trust Anchor, either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union publication.
+    - Update ``OJEU-LoTE-Certs-Set`` according to the new set of trusted certificates, either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union publication.
 
 .. note::
 
     - Steps 4, 5 and 11 allow modifying the location of the List of Trusted Entities file without changing the initial trusted signer public key, as long as both the old and the new location have the same content, otherwise the validation fails with ``LoTE_FILE_CONFLICT``. This allows the List of Trusted Entities to be retrieved from different locations without affecting the Trust Anchor validation, as long as the content is the same.
     - In case of ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE`` error, it is likely that the Official Journal of the European Union publication has been updated with a new location for the List of Trusted Entities. The validating Entity SHOULD repeat the validation process after downloading the most recent version of the Official Journal of the European Union.
-    - In step 8, the validating Entity establishes the binding of the signer certificate of the ``LoTE`` with the certificate referenced in the Official Journal of the European Union, effectively using the latter as a Trust Anchor.
+    - In step 8, the validating Entity establishes the binding of the signer certificate of the ``LoTE`` with the certificate referenced in the Official Journal of the European Union, effectively using the latter as a source of trusted certificates.
 
 Below is a flowchart summarizing the above steps for the validation of the List of Trusted Entities:
 
@@ -266,12 +266,12 @@ Below are listed the Sub-Status error codes of the List of Trusted Entities in t
      - The signature validation failed for an intermediate pivot file (i) within the historical chain.
    * - ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``
      - both
-     - The final certificate at the root of the pivot chain, or the current List of Trusted Entities signer when no pivot exists, is not found in the ``OJEU-LoTE-Certs-Set`` Trust Anchor.
+     - The final certificate at the root of the pivot chain, or the current List of Trusted Entities signer when no pivot exists, is not found in the ``OJEU-LoTE-Certs-Set`` set of trusted certificates.
 
 Trusted List Validation
 """""""""""""""""""""""""""""
 
-This section defines the validation of Trusted List. In order to validate the Trusted List, the Wallet Unit MUST:
+This section defines the validation of Trusted List. In order to validate the Trusted List, the validating Ent MUST:
 
 1. Validate the EU List of Trusted Lists using the algorithm described in section 4.1 of [`ETSI TS 119 615`_]. If this fails, the validation stops and the Wallet Unit MUST consider the Entity it is interacting with as not trusted. The validation process is analogue to the :ref:`trust-evaluation:List of Trusted Entities Validation` except for the LOTL format which is always XML.
 2. Parse the validated EU List of Trusted Lists to discover the necessary certificate to validate the relevant Member State Trusted List.
@@ -286,13 +286,13 @@ The certification path validation is the standard X.509 path validation defined 
 
 Within the EUDIW Trust Framework the following applies.
 
-  - The ``trust_anchor`` is the trusted certificate obtained from the ``ServiceDigitalIdentity`` component of the applicable, validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`), that is the Provider of WRPAC LoTE for the Wallet-Relying Party Access Certificate, the Provider of WRPRC LoTE for the Wallet-Relying Party Registration Certificate, and the Registrar LoTE for the Registrar Sign/Seal Certificate.
+  - The ``trust_anchor`` is the trusted certificate obtained from the ``ServiceDigitalIdentity`` component of the applicable, validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) or Trusted List (see :ref:`trust-evaluation:Trusted List Validation`), that is the Provider of WRPAC LoTE for the Wallet-Relying Party Access Certificate, the Provider of WRPRC LoTE for the Wallet-Relying Party Registration Certificate, and the Registrar LoTE for the Registrar Sign/Seal Certificate.
   - The revocation status checking MAY be skipped for a certificate that carries both the ``noRevAvail`` and the ``ETSIValAssuredCertMod`` extensions (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`), whose status is then determined solely by its validity period.
 
 **Input**
 
 - ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` is the first certificate of the chain and ``C_n`` is the end-entity certificate. For any ``i`` in ``1, ..., n-1``, ``C_i`` is the issuer of ``C_i+1``.
-- ``trust_anchor``: the trusted certificate obtained from the ``ServiceDigitalIdentity`` of the validated List of Trusted Entities. It MUST either be exactly ``C_1`` or contain the public key used to sign ``C_1``. Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.
+- ``trust_anchor``: the trusted certificate obtained from the ``ServiceDigitalIdentity`` of the validated List of Trusted Entities or Trusted List. It MUST either be exactly ``C_1`` or contain the public key used to sign ``C_1``. Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.
 - ``current_time``: the current date and time.
 
 **Outcome**
@@ -363,9 +363,9 @@ The Wallet Unit MUST output a decision: the Wallet-Relying Party is either ``AUT
 
 The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:
 
-1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`). To select the correct entry, match the ``issuer.organizationIdentifier`` of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntityList[].TrustedEntity.TETradeName`` of the List of Trusted Entities. The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
+1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`). To select the correct entry, match the ``issuer.organizationIdentifier`` of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntitiesList[].TrustedEntity.TETradeName`` of the List of Trusted Entities. The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
 
-2. **Construct the Certification Path**: build a path starting from the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_1``) and ending with the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_n``). The simplest path consists of a single certificate, where ``n = 1``.
+2. **Construct the Certification Path**: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_1``) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_n``). The simplest path consists of a single certificate, where ``n = 1``.
 
 3. **Execute Path Validation**: validate the certification path as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, using the Trust Anchor retrieved at step 1, as described in :ref:`trust-evaluation:Wallet-Relying Party Access Certificate Validation`.
 
@@ -380,13 +380,17 @@ The Wallet Unit MUST verify the authenticity and integrity of the presented Wall
     A Wallet-Relying Party MUST distinguish between transient authentication (e.g., access control) and content commitment (non-repudiation). To prevent an attacker from disguising a legal commitment as a protocol nonce, the Wallet-Relying Party MUST NOT use the Wallet-Relying Party Access Certificate private key to sign arbitrary data that could be controlled by an external party.
 
 Wallet-Relying Party Access Certificate Validation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there. The inputs are the following:
 
-- ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party;
-- ``C_n`` is the Wallet-Relying Party Access Certificate;
+- ``C_n`` is the first certificate of the chain provided by the Wallet-Relying Party;
+- ``C_1`` is the Wallet-Relying Party Access Certificate;
 - ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
+
+.. warning:: 
+
+  As described in Section 6.1.1 of `OPENID4VC-HAIP`_ the Trust Anchor Certificate needed for the validation of the WRPAC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.
 
 EUDIW Authorization
 ^^^^^^^^^^^^^^^^^^^
@@ -437,10 +441,14 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 2. **Algorithm verification**: verify that the signature algorithm is conformant, that is ``alg`` is neither ``none`` nor a deprecated algorithm.
 3. **Signature validation**: verify that the Wallet-Relying Party Registration Certificate signature is valid.
 4. **Trust Anchor validation**: validate the Providers of WRPRC List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
-5. **Path validation**: validate the certificate chain of the Wallet-Relying Party Registration Certificate as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the certificate issued by the Provider of WRPRC, ``C_n`` is the Wallet-Relying Party Registration Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
+5. **Path validation**: validate the certificate chain of the Wallet-Relying Party Registration Certificate as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_n`` is the certificate issued by the Provider of WRPRC, ``C_1`` is the Wallet-Relying Party Registration Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
 6. **Temporal validity**: check ``iat`` and ``exp`` if present.
 7. **Status verification**: check the revocation status through the ``status`` field of the Wallet-Relying Party Registration Certificate, as defined in [`ETSI TS 119 475`_], following :ref:`credential-revocation:Checking Credentials Statuses`.
 8. **Coherence check**: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are coherent with the interaction.
+
+.. note:: 
+
+  In Step 5. **Path Validation**, the Trust Anchor Certificate needed for the validation of the WRPRC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.
 
 **Outcome**
 
@@ -460,7 +468,7 @@ When the Wallet-Relying Party Registration Certificate is not available or its v
 5. **Verify pertinence**: verify that the response pertains to the relevant Authorization Subject and intended use.
 6. **Verify the response signature**: verify the Registrar signature using the Sign/Seal certificate carried in the ``x5c`` claim of the response.
 7. **Trust Anchor validation**: validate the Registrars List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Registrar Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
-8. **Path validation**: validate the Registrar Sign/Seal certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the first certificate of the chain provided by the Registrar, ``C_n`` is the Registrar Sign/Seal Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
+8. **Path validation**: validate the Registrar Sign/Seal certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the Registrar Sign/Seal Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
 9. **Normalize** the Register-derived data into the same internal model used for the Wallet-Relying Party Registration Certificate.
 
 .. note::
@@ -472,7 +480,7 @@ When the Wallet-Relying Party Registration Certificate is not available or its v
 - If all the steps succeed, the Wallet Unit MUST set ``authz_art_state`` to ``REGISTER_VALID``.
 - If any step fails, the Wallet Unit MUST set ``authz_art_state`` to ``FAILED``.
 
-During Issuance only, the ``registrar_dataset`` data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified.
+During Issuance only, the ``registrar_dataset`` data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified. In Step 8. **Path Validation**, the Trust Anchor Certificate needed for the validation of the Registrar Sign/Seal Certificate MUST NOT be included in the certificate chain Register's response and MUST be always retrieved in the appropriate LoTE.
 
 Authorization Validation
 """""""""""""""""""""""""""""
