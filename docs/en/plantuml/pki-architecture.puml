@@ -22,10 +22,9 @@ package "National PKI" as NAT {
   rectangle "National Root CA\n//offline, outside the validation path//" as ROOT
 
   rectangle "PID Provider Sign/Seal CA\n//PID Provider Sign/Seal Certificates//" as CA_PIDS
-  rectangle "PID Provider Access CA\n//WRPAC of the PID Providers//" as CA_PIDA
   rectangle "Wallet Provider Sign/Seal CA\n//Wallet Provider Sign/Seal Certificates//" as CA_WP
   rectangle "PuB-EAA Provider Sign/Seal CA\n//PuB-EAA Provider Sign/Seal Certificates//" as CA_PUB
-  rectangle "WRPAC CA\n//WRPAC of the Wallet-Relying Parties//" as CA_WRPAC
+  rectangle "Access CA\n//access certificates of Wallet-Relying\nParties and PID Providers//" as CA_WRPAC
   rectangle "National Authentication CA\n//Relying Party authentication certificates//" as CA_AUTH
   rectangle "WRPRC Sign/Seal CA\n//signing certificates of the Provider of WRPRC//" as CA_WRPRC
   rectangle "Registrar Sign/Seal CA\n//Registrar Sign/Seal Certificates//" as CA_REG
@@ -57,7 +56,6 @@ package "National Trust Framework" as PUBNAT {
 }
 
 ROOT --> CA_PIDS
-ROOT --> CA_PIDA
 ROOT --> CA_WP
 ROOT --> CA_PUB
 ROOT --> CA_WRPAC
@@ -67,10 +65,10 @@ ROOT --> CA_REG
 ROOT --> CA_EAA
 
 CA_PIDS ..> L_PID
-CA_PIDA ..> L_PID
 CA_WP ..> L_WP
 CA_PUB ..> L_PUB
 CA_WRPAC ..> L_WRPAC
+CA_WRPAC ..> L_PID
 CA_WRPRC ..> L_WRPRC
 CA_REG ..> L_REG
 CA_Q ..> L_TL

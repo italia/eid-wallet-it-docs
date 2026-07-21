@@ -538,7 +538,7 @@ Below a non-normative example of an MRTD PoP Validation Request:
 
 **The Wallet Instance MUST:**
 
-- Perform `ICAO 9303`_ compliant NFC document reading (PACE,etc.).
+- Perform `ICAO 9303`_ compliant NFC document reading (PACE, etc.).
 - Validate document cryptographic signatures and certificate chains.
 - Extract identity attributes (DG1 and DG11), Anti-Cloning Public Key from document data groups, and SODs (form MRTD and IAS Applications).
 - Perform the Anti-Cloning Internal Authentication.

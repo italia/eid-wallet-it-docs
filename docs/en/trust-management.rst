@@ -258,7 +258,7 @@ This section describes the artifacts that are employed in :ref:`infrastructure-t
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
-  ETSI 319 411-1 v1.5.1 recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
+  `ETSI EN 319 411-1`_ recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
 
 Certificate Revocation List (CRL)
 """""""""""""""""""""""""""""""""
@@ -403,27 +403,27 @@ The ``crlExtensions`` field MAY contain various extensions. Notable standard ext
      - Format
      - Description
    * - ``authorityKeyIdentifier``
-     - [RFC 5280, clause 5.2.1]
+     - :rfc:`5280`, clause 5.2.1
      - REQUIRED
      - *SEQUENCE*
      - Provides a means of identifying the public key corresponding to the private key used to sign the CRL. Contains ``keyIdentifier`` (OCTET STRING), ``authorityCertIssuer``, or ``authorityCertSerialNumber``.
    * - ``cRLNumber``
-     - [RFC 5280, clause 5.2.3]
+     - :rfc:`5280`, clause 5.2.3
      - REQUIRED
      - *INTEGER*
      - A non-critical extension conveying a monotonically increasing sequence number for a given CRL scope and issuer. Both base CRLs and delta CRLs share the same monotonically increasing sequence; the delta CRL's number MUST be greater than the base CRL's number it references.
    * - ``deltaCRLIndicator``
-     - [RFC 5280, clause 5.2.4]
+     - :rfc:`5280`, clause 5.2.4
      - REQUIRED for delta CRLs; MUST NOT appear in base CRLs
      - *INTEGER* (``BaseCRLNumber``)
      - A **critical** extension that marks the CRL as a delta CRL and identifies the base CRL it is relative to. The integer value is the ``cRLNumber`` of the base CRL on which this delta is built. A relying party that does not understand this extension MUST reject the CRL. The base CRL MUST still be reachable (cached or retrievable) for the delta to be useful. If this extension is absent, the CRL is a full (base) CRL.
    * - ``freshestCRL`` (a.k.a. *CRL Distribution Points* on a CRL)
-     - [RFC 5280, clause 5.2.6]
+     - :rfc:`5280`, clause 5.2.6
      - OPTIONAL; RECOMMENDED on base CRLs in deployments that issue delta CRLs
      - *SEQUENCE OF DistributionPointName*
      - A non-critical extension indicating where the most recently issued delta CRL for the same scope can be retrieved. Each ``DistributionPointName`` carries one or more URIs (typically ``uniformResourceIdentifier``). When present on a base CRL, it MUST point to the delta CRL distribution location; when present on a delta CRL, it points to the next delta CRL. A relying party uses this to discover deltas without additional out-of-band configuration.
    * - ``issuingDistributionPoint``
-     - [RFC 5280, clause 5.2.5]
+     - :rfc:`5280`, clause 5.2.5
      - OPTIONAL; REQUIRED when the CRL scope is restricted (e.g., only-CA, only-end-entity, only-some-reasons) or when the CRL is indirect
      - *SEQUENCE* (``IssuingDistributionPoint``)
      - A **critical** extension describing the scope of the CRL. Contains flags ``distributionPoint``, ``onlyContainsUserCerts``, ``onlyContainsCACerts``, ``onlySomeReasons``, ``indirectCRL``, and ``onlyContainsAttributeCerts``. For delta-CRL deployments, the ``indirectCRL`` bit is set to TRUE when the delta is signed by a CRL issuer other than the Certificate Authority that issued the certificates (common when a delegated revocation service is used), and ``onlySomeReasons`` MAY restrict the delta CRL to specific revocation reasons (e.g., ``keyCompromise`` only). The base CRL and corresponding delta CRLs MUST share the same scope (same ``onlyContains*`` flags and ``distributionPoint``).
