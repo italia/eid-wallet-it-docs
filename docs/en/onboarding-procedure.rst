@@ -179,7 +179,9 @@ Not every entity performs every process.
 A Wallet Provider, for instance, is administratively assessed, completes federation registration, and is then notified, without WRP registration or certificate issuance; a national-only Relying Party stops after federation registration.
 
 Although this document presents the national (federation) and EUDIW flows of the Dual Trust Framework as separate paths, the onboarding entity does not experience them as separate procedures.
-The Onboarding System exposes a single entry point, the Onboarding UI, which orchestrates the whole procedure end to end. It drives the entity through the applicable administrative and technical steps of both trust frameworks with a unified UX. The dual path therefore remains an implementation detail of the infrastructure, rather than a burden on the onboarding entity.
+The Onboarding System exposes a single entry point, the Onboarding UI, which orchestrates the whole procedure end to end.
+It drives the entity through the applicable administrative and technical steps of both trust frameworks with a unified UX.
+The dual path therefore remains an implementation detail of the infrastructure, rather than a burden on the onboarding entity.
 
 Onboarding consumes and produces a defined set of artifacts.
 The inputs depend on the entity's type and selected scope:
@@ -449,12 +451,15 @@ How these artifacts are consumed at runtime is defined in the trust-evaluation p
 The Federation Authority validates the request and the published Entity Configuration and applies the applicable metadata policy.
 It then registers the entity as its Subordinate and issues the Subordinate Statement and the Trust Marks attesting the entity's role and authorizations.
 The entity retrieves its Subordinate Statement and updates its Entity Configuration with the received ``authority_hints`` and ``trust_marks`` (see :ref:`infrastructure-trust:Subordinate Statements`).
+
 The X.509 certificate that certifies the Federation Entity Key is issued in the Certificate Issuance Process, separated from the federation onboarding flow in this profile.
 
 During registration the Federation Authority also makes the Federation Trust Anchor's public keys available to the onboarding entity, out of band from the Trust Anchor's own Entity Configuration and through the same registration contact channel.
 This is what bootstraps the entity's trust in the Trust Anchor: at trust-evaluation time the entity compares the keys published in the Trust Anchor Entity Configuration against these out-of-band keys and discards any that do not match (see :ref:`trust-evaluation:Federation Trust Anchor Distribution and Validation`).
 
-Registration is not a one-off event. Every subsequent change to an onboarded entity, that is its registration, the updates to its Federation Entity Keys and its revocation, is published by the Federation Authority as a signed event on the Federation Subordinate Events Endpoint (``/federation_subordinate_events_endpoint``). Other participants can therefore track the entity's lifecycle over time (see :ref:`infrastructure-trust:Federation API Endpoints`).
+Registration is not a one-off event.
+Every subsequent change to an onboarded entity, that is its registration, the updates to its Federation Entity Keys and its revocation, is published by the Federation Authority as a signed event on the Federation Subordinate Events Endpoint (``/federation_subordinate_events_endpoint``).
+Other participants can therefore track the entity's lifecycle over time (see :ref:`infrastructure-trust:Federation API Endpoints`).
 
 WRP Registration
 ^^^^^^^^^^^^^^^^^
@@ -482,6 +487,7 @@ How the Register entry and its entitlements are consumed at runtime is defined i
 **Procedure.**
 The entity submits its registration data to the Registrar through the Onboarding UI (the Registration Service, over the common Register REST API).
 The Registrar verifies the entity's identity and eligibility (the identity proofing carried out during the Administrative Process, per `ETSI TS 119 461`_) and, on success, creates the record in the Register with status ``active``.
+
 The Register record is electronically signed or sealed by, or on behalf of, the Registrar, so that the certificate providers and the Wallet can rely on it.
 
 The Register and the WalletRelyingParty Schema
@@ -507,7 +513,8 @@ Because the two trust frameworks handle intermediation differently, an Intermedi
 It registers its federation keys and endpoints, publishes its own Entity Configuration, and issues Subordinate Statements for its Leaves.
 
 Upon completion the Federation Trust Anchor issues it a registration Trust Mark with the ``intermediate`` Entity Type Identifier (``https://<federation_authority_domain>/trust_marks/registration-entity/intermediate``).
-Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary. Its own registration Trust Mark, however, is issued by the Federation Trust Anchor: within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, and the Intermediary does not issue Trust Marks to its affiliated Relying Parties (see :ref:`infrastructure-trust:Trust Mark registration-entity`).
+Each affiliated Relying Party sets its ``authority_hints`` to the Intermediary.
+Its own registration Trust Mark, however, is issued by the Federation Trust Anchor: within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, and the Intermediary does not issue Trust Marks to its affiliated Relying Parties (see :ref:`infrastructure-trust:Trust Mark registration-entity`).
 
 **EUDIW.** In the EUDIW Trust Framework there is no Intermediate Entity: an Intermediary is registered as an ordinary Wallet-Relying Party (a Relying Party acting on behalf of others) and authenticates towards Wallet Units with its own WRPAC.
 The intermediary relationship is expressed in the registration data rather than in a hierarchy of certificates:
@@ -575,7 +582,8 @@ A Wallet Provider reaches this process directly after its administrative assessm
 Notification is a Member State level process (`CIR2024/2980`_) for which the Supervisory Body acts as the national single point of contact toward the European Commission, while the Trusted List / LoTE Provider signs and publishes the lists.
 
 **Input Model.**
-The notifiable data collected during onboarding (identification, trust anchors, and service supply points), together with the entity's signing trust anchor produced by the certificate issuance above. That signing trust anchor is, for an Attestation Provider, the key with which its credential issuer signs the attestations; for a Wallet Provider, it is the key that signs the Wallet Unit Attestations of its Wallet Solution.
+The notifiable data collected during onboarding (identification, trust anchors, and service supply points), together with the entity's signing trust anchor produced by the certificate issuance above.
+That signing trust anchor is, for an Attestation Provider, the key with which its credential issuer signs the attestations; for a Wallet Provider, it is the key that signs the Wallet Unit Attestations of its Wallet Solution.
 
 **Output Model.**
 The entity's entry in the trusted list that corresponds to its category, which is what makes a notified entity trusted by the Wallet and by Relying Parties.

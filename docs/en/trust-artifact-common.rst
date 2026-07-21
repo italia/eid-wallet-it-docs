@@ -12,18 +12,21 @@ This section details the common artifacts involved in both the EUDIW and Nationa
 Entity Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Entity Sign/Seal Certificates**, which are used for signing and sealing various Attestations. This profile is originally defined in `ETSI TS 119 412-6`_.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Entity Sign/Seal Certificates**, which are used for signing and sealing various Attestations.
+This profile is originally defined in `ETSI TS 119 412-6`_.
 
 .. warning::
 
-  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed. A self-signed certificate intended to act as a Trust Anchor is outside the scope of this certificate profile and MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
+  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed.
+  A self-signed certificate intended to act as a Trust Anchor is outside the scope of this certificate profile and MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
 
 PID Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""
 
 The specific requirements for PID Provider Sign/Seal Certificates are specified in Clause 4 of [`ETSI TS 119 412-6`_].
 
-The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
+The following table defines the complete set of extensions applicable to the certificate profile.
+Extensions not listed in the table MUST NOT be present.
 
 .. list-table:: PID Provider Sign/Seal Certificate Extensions
    :class: longtable
@@ -60,11 +63,13 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``authorityInfoAccess``
      - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA. If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
      - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
+       The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
 
 
 The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons.
@@ -77,7 +82,8 @@ Wallet Provider Sign/Seal Certificate
 
 The specific requirements for Wallet Provider Sign/Seal Certificates are specified in Clause 5 of [`ETSI TS 119 412-6`_].
 
-The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
+The following table defines the complete set of extensions applicable to the certificate profile.
+Extensions not listed in the table MUST NOT be present.
 
 .. list-table:: Wallet Provider Sign/Seal Certificate Extensions
    :class: longtable
@@ -122,7 +128,8 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``qcStatements``
      - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
+       The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
 
 
 The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons.
@@ -135,7 +142,8 @@ The following is a non-normative example of a Wallet Provider Sign/Seal Certific
 
 The specific requirements for EAA Provider and QEAA Provider Sign/Seal Certificates are specified in Clauses 6 and 7 of [`ETSI TS 119 412-6`_], respectively.
 
-The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
+The following table defines the complete set of extensions applicable to the certificate profile.
+Extensions not listed in the table MUST NOT be present.
 
 .. list-table:: (Q)EAA Provider Sign/Seal Certificate Extensions
    :class: longtable
@@ -193,7 +201,8 @@ PuB-EAA Provider Sign/Seal Certificate
 
 The specific requirements for PuB-EAA Provider Sign/Seal Certificates are specified in Clause 8 of [`ETSI TS 119 412-6`_].
 
-The following table defines the complete set of extensions applicable to the certificate profile. Extensions not listed in the table MUST NOT be present.
+The following table defines the complete set of extensions applicable to the certificate profile.
+Extensions not listed in the table MUST NOT be present.
 
 .. list-table:: PuB-EAA Provider Sign/Seal Certificate Extensions
    :class: longtable
@@ -236,7 +245,8 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``qcStatements``
      - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
+     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``.
+       The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
 
 The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons.
@@ -247,16 +257,21 @@ The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certifi
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**. A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`. In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
+This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**.
+A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
 
-Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate. The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`). Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
+Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate.
+The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`).
+Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
 
 .. note::
   **Trust Anchor Location.**
   The location of the Trust Anchor Certificate is determined by the specific Trust Framework selected (see :ref:`trust-evaluation:EUDIW Trust Anchor Validation` and :ref:`trust-evaluation:Federation Trust Anchor Validation`).
 
 
-The following table defines the profile-specific requirements for the certificate fields. Fields not listed in the table remain subject to the requirements defined in the common :ref:`infrastructure-trust:X.509 Certificate Profile`.
+The following table defines the profile-specific requirements for the certificate fields.
+Fields not listed in the table remain subject to the requirements defined in the common :ref:`infrastructure-trust:X.509 Certificate Profile`.
 
 .. list-table:: Trust Anchor Certificate Fields
    :class: longtable
@@ -267,10 +282,12 @@ The following table defines the profile-specific requirements for the certificat
      - **Additional Requirements**
 
    * - ``issuer``
-     - If the certificate is self-signed, the issuer DN MUST be identical to the subject DN. Otherwise, the issuer DN MUST identify the entity that signed and issued the certificate and MAY differ from the subject DN.
+     - If the certificate is self-signed, the issuer DN MUST be identical to the subject DN.
+       Otherwise, the issuer DN MUST identify the entity that signed and issued the certificate and MAY differ from the subject DN.
 
    * - ``subject``
-     - The subject DN MUST identify the entity associated with the Trust Anchor public key in a clear and unambiguous manner. If the Trust Anchor represents a legal or organizational entity, the subject DN MUST contain an ``organizationName`` attribute identifying that entity.
+     - The subject DN MUST identify the entity associated with the Trust Anchor public key in a clear and unambiguous manner.
+       If the Trust Anchor represents a legal or organizational entity, the subject DN MUST contain an ``organizationName`` attribute identifying that entity.
 
 
 .. list-table:: Trust Anchor Certificate Extensions
@@ -284,15 +301,20 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``authorityKeyIdentifier``
      - CONDITIONAL
-     - **REQUIRED IF:** the certificate is not self-signed. For self-signed certificates, it is RECOMMENDED. If present, the value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - **REQUIRED IF:** the certificate is not self-signed.
+       For self-signed certificates, it is RECOMMENDED.
+       If present, the value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
      - REQUIRED
-     - Provides a key identifier for the Trust Anchor public key. The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - Provides a key identifier for the Trust Anchor public key.
+       The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED
-     - It MUST assert the ``keyCertSign`` bit. It MAY assert the ``cRLSign`` bit if the Trust Anchor certificate is used by the CA to sign CRLs. It SHOULD be limited to usages consistent with the CA role of the Trust Anchor certificate.
+     - It MUST assert the ``keyCertSign`` bit.
+       It MAY assert the ``cRLSign`` bit if the Trust Anchor certificate is used by the CA to sign CRLs.
+       It SHOULD be limited to usages consistent with the CA role of the Trust Anchor certificate.
 
    * - ``certificatePolicies``
      - OPTIONAL
@@ -300,7 +322,9 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``basicConstraints``
      - REQUIRED
-     - The ``cA`` field MUST be set to ``TRUE``, signalling CA capability for X.509 path validation. The ``pathLenConstraint`` MAY be present; in that case, it MUST limit the number of non-self-issued intermediate CA certificates below this Trust Anchor. It is RECOMMENDED to set ``pathLenConstraint`` to 0 to prevent subordinate CA layers, unless a documented operational need exists to support additional intermediate CA tiers.
+     - The ``cA`` field MUST be set to ``TRUE``, signalling CA capability for X.509 path validation.
+       The ``pathLenConstraint`` MAY be present; in that case, it MUST limit the number of non-self-issued intermediate CA certificates below this Trust Anchor.
+       It is RECOMMENDED to set ``pathLenConstraint`` to 0 to prevent subordinate CA layers, unless a documented operational need exists to support additional intermediate CA tiers.
 
    * - ``cRLDistributionPoints``
      - OPTIONAL
@@ -308,20 +332,23 @@ The following table defines the profile-specific requirements for the certificat
 
    * - ``authorityInfoAccess``
      - CONDITIONAL
-     - **REQUIRED IF:** the certificate contains ``basicConstraints`` with ``pathLenConstraint`` > 0. If present, it MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` that MUST use the ``http://`` scheme and MUST NOT use the ``https://`` scheme.
+     - **REQUIRED IF:** the certificate contains ``basicConstraints`` with ``pathLenConstraint`` > 0.
+       If present, it MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` that MUST use the ``http://`` scheme and MUST NOT use the ``https://`` scheme.
 
        It MAY also include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.
 
 
 .. note::
   **Trust Anchor Revocation.**
-  Trust Anchor certificates are not subject to revocation, as their trust is established by policy through their formal inclusion and publication as specified by the applicable Trust Framework. Consequently, revocation status information, such as CRLs or OCSP responses, is not required for Trust Anchor certificates.
+  Trust Anchor certificates are not subject to revocation, as their trust is established by policy through their formal inclusion and publication as specified by the applicable Trust Framework.
+  Consequently, revocation status information, such as CRLs or OCSP responses, is not required for Trust Anchor certificates.
 
   Moreover, validating entities utilizing Trust Anchor certificates retrieved as specified by the applicable Trust Framework MAY omit revocation status checks for those certificates.
 
 .. note::
   **Trust Anchor Signature.**
-  A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy). Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.
+  A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy).
+  Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.
 
 .. note::
 

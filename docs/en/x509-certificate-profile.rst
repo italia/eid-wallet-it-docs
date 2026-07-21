@@ -11,16 +11,19 @@ This section defines a general **X.509 Certificate Profile**, which is further s
 - :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` (EUDIW Trust Framework);
 - :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile` (EUDIW Trust Framework).
 
-The common profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on :rfc:`5280` and ETSI EN 319 412. Each X.509 certificate profile defined by this specification MUST conform to the requirements of this section unless explicitly stated otherwise.
+The common profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on :rfc:`5280` and ETSI EN 319 412.
+Each X.509 certificate profile defined by this specification MUST conform to the requirements of this section unless explicitly stated otherwise.
 
-The final certificate is obtained by combining the certificate body (``version`` through ``subjectPublicKeyInfo``) with the certificate extensions required by the selected certificate profile. The resulting ASN.1 structure MUST be encoded using the Distinguished Encoding Rules (DER) as specified in :rfc:`5280`.
+The final certificate is obtained by combining the certificate body (``version`` through ``subjectPublicKeyInfo``) with the certificate extensions required by the selected certificate profile.
+The resulting ASN.1 structure MUST be encoded using the Distinguished Encoding Rules (DER) as specified in :rfc:`5280`.
 
 Common Certificate Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``TBSCertificate`` structure and its fields MUST conform to :rfc:`5280#section-4.1`.
 
-The following table defines the certificate fields applicable to the certificate profiles defined in this specification. For each field, the table specifies the corresponding :rfc:`5280` reference, its presence requirement, and any additional profile-specific constraints.
+The following table defines the certificate fields applicable to the certificate profiles defined in this specification.
+For each field, the table specifies the corresponding :rfc:`5280` reference, its presence requirement, and any additional profile-specific constraints.
 
 .. list-table:: Certificate Profile Fields
    :class: longtable
@@ -80,12 +83,14 @@ The following table defines the certificate fields applicable to the certificate
    * - ``extensions``
      - Section 4.1.2.9
      - REQUIRED
-     - It MUST conform to the structure defined in :rfc:`5280#section-4.2`. The applicable extensions and their profile-specific constraints are defined in :ref:`infrastructure-trust:Supported Certificate Extensions` and in the corresponding certificate profile.
+     - It MUST conform to the structure defined in :rfc:`5280#section-4.2`.
+       The applicable extensions and their profile-specific constraints are defined in :ref:`infrastructure-trust:Supported Certificate Extensions` and in the corresponding certificate profile.
 
 Supported Certificate Extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following table lists the certificate extensions supported by the X.509 certificate profiles defined in this specification, together with their object identifiers, default criticality, and normative references. Specific certificate profiles define whether an extension is REQUIRED, OPTIONAL, or MUST NOT be present, and MAY further constrain its contents.
+The following table lists the certificate extensions supported by the X.509 certificate profiles defined in this specification, together with their object identifiers, default criticality, and normative references.
+Specific certificate profiles define whether an extension is REQUIRED, OPTIONAL, or MUST NOT be present, and MAY further constrain its contents.
 
 The criticality values used in this specification have the following meaning:
 
