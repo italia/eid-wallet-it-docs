@@ -424,9 +424,9 @@ The validation flow depends on the availability of the Wallet-Relying Party Regi
 
     - in the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
     - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
-
-- During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the self-declared registration information. The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
-
+ 
+- During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the registration information. The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
+ 
 In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST query the Register as described in :ref:`Register Query Validation <register-query-validation>`. The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate. Each Registrar exposes an online service through the API described in :ref:`infrastructure-trust:Register Open APIs`. When using this service the Wallet Unit SHOULD inform the User that an external query will be made.
 
 **Wallet-Relying Party Registration Certificate Validation**
@@ -472,7 +472,7 @@ When the Wallet-Relying Party Registration Certificate is not available or its v
 - If all the steps succeed, the Wallet Unit MUST set ``authz_art_state`` to ``REGISTER_VALID``.
 - If any step fails, the Wallet Unit MUST set ``authz_art_state`` to ``FAILED``.
 
-During Issuance only, the ``registrar_dataset`` self-declared data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified.
+During Issuance only, the ``registrar_dataset`` data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified.
 
 Authorization Validation
 """""""""""""""""""""""""""""
@@ -485,7 +485,7 @@ The Wallet Unit MUST base the Authorization Validation only on:
 
 - the authenticated Wallet-Relying Party and the interaction context, authoritative only for the identity of the Wallet-Relying Party;
 - a validated Authorization Artifact, that is a Wallet-Relying Party Registration Certificate or a Register Response, authoritative for the subject identity, entitlements, intended use, registered scope, intermediary relationships, issuance-specific data and privacy policy references, as defined in [`ETSI TS 119 475`_];
-- explicitly identified self-declared fallback information, non-authoritative;
+- explicitly identified fallback information, non-authoritative;
 - a verified Embedded Disclosure Policy, REQUIRED when provided by the Attestation Provider during Credential Issuance, authoritative when present.
 
 Where authoritative sources conflict with non-authoritative sources, the authoritative sources MUST supersede. Where the authenticated Wallet-Relying Party context conflicts with the identity or the intermediary binding in the verified authorization context, the Wallet Unit MUST produce ``NOT_AUTHORIZED``, non-overridable. A request-carried Registrar URL MUST NOT be treated as sufficient proof of registered information by itself; it MAY be used only as a discovery hint unless confirmed by an authoritative source.
