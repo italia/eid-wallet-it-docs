@@ -47,13 +47,13 @@ The Federation Entity properties supported in the IT-Wallet specification profil
    * - **resolve** (``/resolve``). REQUIRED for Federation TA and Intermediates.
      - **GET**. ``sub`` and ``trust_anchor`` REQUIRED, ``entity_type`` OPTIONAL.
      - The Resolve Response with the Resolved Metadata, the Trust Chain and the verified Trust Marks, as a signed JWT (``application/resolve-response+jwt``). `OID-FED`_ Section 8.3.2
-   * - **trust mark status** (``/trust_mark_status``). REQUIRED only for Federation TA.
+   * - **trust mark status** (``/trust_mark_status``). REQUIRED for Federation TA and OPTIONAL for Intermediates.
      - **POST**. ``trust_mark`` REQUIRED.
      - The Trust Mark Status Response, that is the validity of the Trust Mark, as a signed JWT (``application/trust-mark-status-response+jwt``). `OID-FED`_ Section 8.4.2
-   * - **trust mark list** (``/trust_marked_list``). REQUIRED only for Federation TA.
+   * - **trust mark list** (``/trust_marked_list``). REQUIRED for Federation TA and OPTIONAL for Intermediates.
      - **GET**. ``trust_mark_type`` REQUIRED, ``sub`` OPTIONAL.
      - A JSON array of the Entity Identifiers for which the Trust Mark is issued and still valid (``application/json``). `OID-FED`_ Section 8.5.2
-   * - **trust mark** (``/trust_mark``). REQUIRED only for Federation TA.
+   * - **trust mark** (``/trust_mark``). REQUIRED only for Federation TA and OPTIONAL for Intermediates.
      - **GET**. ``trust_mark_type`` and ``sub`` REQUIRED.
      - The requested Trust Mark, as a signed JWT (``application/trust-mark+jwt``). `OID-FED`_ Section 8.6.2
    * - **historical keys** (``/historical_keys``). REQUIRED for Federation TA and Intermediates.
@@ -102,7 +102,7 @@ In addition to the REQUIRED common parameters ``iss``, ``sub``, ``iat``, ``exp``
 
 In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
-- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
+- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type (see `OID_FED`_ Section 3.1.1). All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
 - **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
 - **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA and MUST NOT be included otherwise. JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers. Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
 
