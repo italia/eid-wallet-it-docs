@@ -258,7 +258,7 @@ This section describes the artifacts that are employed in :ref:`infrastructure-t
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
-  ETSI 319 411-1 v1.5.1 recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
+  `ETSI EN 319 411-1`_ recommends the support of OCSP, see clause CSS-6.3.10-06 and Note 2.
 
 Certificate Revocation List (CRL)
 """""""""""""""""""""""""""""""""
