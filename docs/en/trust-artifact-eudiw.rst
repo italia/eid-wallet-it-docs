@@ -280,50 +280,50 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
      - Publication & Update Mechanism
    * - **Trusted Lists (TL)**
      - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
-     - ETSI TS 119 612; ``XML`` format.
+     - `ETSI TS 119 612`_; ``XML`` format.
      - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - Member State scope; one list per Member State, signed by that Member State.
      - Machine-readable endpoint specified within the LOTL.
    * - **List of Trusted Lists (LOTL)**
      - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
-     - ETSI TS 119 612; ``XML`` format.
+     - `ETSI TS 119 612`_; ``XML`` format.
      - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - European Union scope; a single global list signed by the European Commission (EC) that anchors the National Trusted Lists.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: PID Provider Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex D; ``JSON`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex D; ``JSON`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Wallet Provider (WP) Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex E; ``JSON`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex E; ``JSON`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Provider of WRPAC Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex F; ``JSON`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex F; ``JSON`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type (Wallet Relying Party Access Certificate).
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Provider of WRPRC Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex G; ``JSON`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex G; ``JSON`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type (Wallet Relying Party Registration Certificate).
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: PuB-EAA Provider Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex H; ``JSON`` or ``XML`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex H; ``JSON`` or ``XML`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Registrar and Register Provider Lists**
      - Articles 4 and 5 of [CIR 2024/2980].
-     - ETSI TS 119 602 Annex I; ``JSON`` format.
-     - AdES digital signature, baseline B (ETSI TS 119 182-1).
+     - `ETSI TS 119 602`_ Annex I; ``JSON`` format.
+     - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
 
@@ -341,7 +341,7 @@ Attestation Providers (i.e., all Credential Issuers except the PID Provider) can
 
 EDPs are applicable to QEAAs, PuB-EAAs, and EAAs. They MUST NOT be applicable to PIDs.
 
-The EDP is distributed through the Credential Issuer Metadata at issuance time. The Attestation Provider MUST include the EDP (if any) by value in the Credential Issuer Metadata, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`. If availble, the Wallet Unit MUST store the EDP locally and associate it with the specific Attestation for which it was retrieved. The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the presentation protocol as per `ETSI TS 119 472-3`_, Section 4.2.5.1.
+The EDP is distributed through the Credential Issuer Metadata at issuance time. The Attestation Provider MUST include the EDP (if any) by value in the Credential Issuer Metadata, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_. If available, the Wallet Unit MUST store the EDP locally and associate it with the specific Attestation for which it was retrieved. The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the presentation protocol as per `ETSI TS 119 472-3`_, Section 4.2.5.1.
 
 Embedded Disclosure Policies are used to:
 
