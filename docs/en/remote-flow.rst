@@ -639,7 +639,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **Claim**
     - **Description**
   * - **typ**
-    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
+    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of :rfc:`8725`.
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the Section :ref:`algorithms:Cryptographic Algorithms`.
 
@@ -653,7 +653,7 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
   * - **Claim**
     - **Description**
   * - **iat**
-    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
+    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in :rfc:`7519`.
   * - **aud**
     - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.
   * - **nonce**
