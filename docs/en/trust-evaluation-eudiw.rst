@@ -424,9 +424,9 @@ The validation flow depends on the availability of the Wallet-Relying Party Regi
 
     - in the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
     - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
- 
+
 - During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the registration information. The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
- 
+
 In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST query the Register as described in :ref:`Register Query Validation <register-query-validation>`. The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate. Each Registrar exposes an online service through the API described in :ref:`infrastructure-trust:Register Open APIs`. When using this service the Wallet Unit SHOULD inform the User that an external query will be made.
 
 **Wallet-Relying Party Registration Certificate Validation**
@@ -540,21 +540,60 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
 
 At the end of the Authorization Validation the Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` values. The table below summarizes the codes.
 
-===================== =================================== ============== ====================================================================================================================================
-Variable Code Phase Meaning
-===================== =================================== ============== ====================================================================================================================================
-``authz_art_state`` ``CERTIFICATE_VALID`` both The Wallet-Relying Party Registration Certificate format, signature, trust anchor and status are successfully verified.
-``authz_art_state`` ``CERTIFICATE_INVALID`` both A format, signature, trust anchor or status check fails on the presented registration certificate.
-``authz_art_state`` ``REGISTER_VALID`` both The online Registrar query completed, and the response signature, pertinence and trust anchor passed.
-``authz_art_state`` ``FAILED`` both The online Registrar query or response verification failed during the fallback procedures.
-``authz_val_state`` ``WRONG_ENTITLEMENT`` both The entitlements of the Authorization Subject do not match the expected role for the active context.
-``authz_val_state`` ``BINDING_FAILED`` both The identity binding between the authenticated Wallet-Relying Party and the authorization data fails.
-``authz_val_state`` ``ATTESTATION_TYPE_NOT_REGISTERED`` issuance The Attestation Type being issued is not found in the Credential Issuer registered profiles.
-``authz_val_state`` ``OVERASKING_DETECTED`` presentation The Relying Party requests Digital Credentials, formats or namespaces that exceed its registered scope.
-``authz_val_state`` ``VERIFICATION_PASSED`` both Identity binding, entitlement verification, attestation matching and scope checking all passed.
-``edp_state`` ``EDP_SATISFIED`` presentation No Embedded Disclosure Policy restriction applies, or the Relying Party satisfies the local policy.
-``edp_state`` ``EDP_NOT_SATISFIED`` presentation The Relying Party does not satisfy any locally stored Embedded Disclosure Policy.
-===================== =================================== ============== ====================================================================================================================================
+.. _table_authz_state_codes:
+.. list-table:: Authorization Validation State Codes
+   :class: longtable
+   :widths: 18 26 12 44
+   :header-rows: 1
+
+   * - **Variable**
+     - **Code**
+     - **Phase**
+     - **Meaning**
+   * - ``authz_art_state``
+     - ``CERTIFICATE_VALID``
+     - both
+     - The Wallet-Relying Party Registration Certificate format, signature, trust anchor and status are successfully verified.
+   * - ``authz_art_state``
+     - ``CERTIFICATE_INVALID``
+     - both
+     - A format, signature, trust anchor or status check fails on the presented registration certificate.
+   * - ``authz_art_state``
+     - ``REGISTER_VALID``
+     - both
+     - The online Registrar query completed, and the response signature, pertinence and trust anchor passed.
+   * - ``authz_art_state``
+     - ``FAILED``
+     - both
+     - The online Registrar query or response verification failed during the fallback procedures.
+   * - ``authz_val_state``
+     - ``WRONG_ENTITLEMENT``
+     - both
+     - The entitlements of the Authorization Subject do not match the expected role for the active context.
+   * - ``authz_val_state``
+     - ``BINDING_FAILED``
+     - both
+     - The identity binding between the authenticated Wallet-Relying Party and the authorization data fails.
+   * - ``authz_val_state``
+     - ``ATTESTATION_TYPE_NOT_REGISTERED``
+     - issuance
+     - The Attestation Type being issued is not found in the Credential Issuer registered profiles.
+   * - ``authz_val_state``
+     - ``OVERASKING_DETECTED``
+     - presentation
+     - The Relying Party requests Digital Credentials, formats or namespaces that exceed its registered scope.
+   * - ``authz_val_state``
+     - ``VERIFICATION_PASSED``
+     - both
+     - Identity binding, entitlement verification, attestation matching and scope checking all passed.
+   * - ``edp_state``
+     - ``EDP_SATISFIED``
+     - presentation
+     - No Embedded Disclosure Policy restriction applies, or the Relying Party satisfies the local policy.
+   * - ``edp_state``
+     - ``EDP_NOT_SATISFIED``
+     - presentation
+     - The Relying Party does not satisfy any locally stored Embedded Disclosure Policy.
 
 The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elaborated from the ``authz_art_state``, ``authz_val_state`` and ``edp_state`` values, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
