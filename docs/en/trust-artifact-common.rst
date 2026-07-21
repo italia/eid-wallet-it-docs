@@ -16,7 +16,7 @@ This section extends the general :ref:`infrastructure-trust:X.509 Certificate Pr
 
 .. warning::
 
-  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed. A self-signed certificate intended to act as a Trust Anchor MAY be used in interoperability, however, National Sign/Seal certificates MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile` and :ref:`trust-pki-architecture:Certification Hierarchies` which requires National Trust Anchors to be bound to a common root.
+  The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed. A self-signed certificate intended to act as a Trust Anchor MAY be used in interoperability, however, National Sign/Seal certificates MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile` and :ref:`infrastructure-trust:Certification Hierarchies` which requires National Trust Anchors to be bound to a common root.
 
 PID Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""

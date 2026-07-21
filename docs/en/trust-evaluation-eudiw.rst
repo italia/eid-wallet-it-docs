@@ -194,7 +194,7 @@ The validation MUST perform the following steps. Each step indicates the corresp
     - If ``TRUE``: set ``OJEU-LoTE-Loc`` to ``LoTE Location`` and restart from Step 1.
     - If ``FALSE``, proceed to the next step.
 
-6. (Digital Signature Validation) Validate the signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert`` as a directly trusted certificate, following the basic signature validation of ETSI EN 319 102-1 as required by PRO-4.1.4-07. In particular, the *Country code* and *Organization* fields in the Subject Distinguished Name of the certificate supporting the AdES digital signature shall match respectively the scheme territory and one of the scheme operator name values within the LoTE. (PRO-4.1.4-07, PRO-4.1.4-08, clause 6.8.0 of [`ETSI TS 119 602`_])
+6. (Digital Signature Validation) Validate the signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert`` as a directly trusted certificate, following the basic signature validation of [`ETSI EN 319 102-1`_] as required by PRO-4.1.4-07. In particular, the *Country code* and *Organization* fields in the Subject Distinguished Name of the certificate supporting the AdES digital signature shall match respectively the scheme territory and one of the scheme operator name values within the LoTE. (PRO-4.1.4-07, PRO-4.1.4-08, clause 6.8.0 of [`ETSI TS 119 602`_])
 
     - If validation fails: stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
     - If successful:
