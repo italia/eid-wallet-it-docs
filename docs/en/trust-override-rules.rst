@@ -8,7 +8,7 @@ The Authorization Decision can either be ``AUTHORIZED`` or ``NOT_AUTHORIZED``. T
 
 - In case the Wallet Unit follows the :ref:`trust-evaluation:EUDIW Authorization` evaluation path, then the outcome is:
 
-    - ``AUTHORIZED`` if the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``; or,
+    - ``AUTHORIZED`` if the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``; or
     - ``NOT_AUTHORIZED`` otherwise.
 
 - In case the Wallet Unit follows the National :ref:`trust-evaluation:Authorization` evaluation path, then the outcome is:

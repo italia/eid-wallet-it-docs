@@ -206,7 +206,7 @@ For WRP updating their identity information, technical configurations, and/or au
 
 - **Authentication Key update:**
 
-  - *EUDIW Trust Framework*: The WRP MUST notify WRPAC key updates to the Provider of WRPAC
+  - *EUDIW Trust Framework*: The WRP MUST notify WRPAC key updates to the Provider of WRPAC.
 
     - **WRPAC Revocation and Re-issuance**: The Provider of WRPAC MUST revoke the Entity's current WRPAC. Revocation MUST be executed by appending the certificate's serial number to the active CRL or by returning a revoked status in the OCSP response. The Provider of WRPAC MUST issue a new WRPAC with the updated key.
 

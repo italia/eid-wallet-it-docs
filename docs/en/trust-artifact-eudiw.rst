@@ -8,7 +8,7 @@ This section defines the required trust artifacts and their conceptual roles in 
 
 - :ref:`infrastructure-trust:Register of WRPs`;
 - :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`;
 - :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
 - :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
 - :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
@@ -108,12 +108,12 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``certificatePolicies``
      - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_)
+     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_):
 
        * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
        * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
        * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``);
-       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
+       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``).
 
        and ``policyQualifiers`` containing a ``cpsURI`` that references an URL where the CPS of the Provider of WRPAC is located.
 
@@ -204,13 +204,13 @@ This section defines Wallet-Relying Party Registration Certificate (WRPRC), as d
 - supervisory authority attributes (clause 5.2.4 `ETSI TS 119 475`_),
 - Relying Party attributes (clause 5.2.4 `ETSI TS 119 475`_),
 - Credential Issuer attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- Intermediaty attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
+- Intermediary attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
 
 The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`. It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI TS 119 475`_.
 
-The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular,
+The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates. In particular:
 
-- The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI TS 119 182-1`_
+- The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI TS 119 182-1`_.
 - The CWT MUST be signed with an Advanced Electronic Signature following structure as defined in :rfc:`9052` and :rfc:`9360`.
 
 Below a non-normative example of WRPRC header and payload for a Relying Party.
@@ -245,7 +245,7 @@ The three distinct types of trust lists are:
 - Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_. Each Member State publishes one TL in XML format. It is signed by the respective Member State with an XAdES digital signature at conformance level baseline B (as defined in `ETSI EN 319 132-1`_). TLs are published in a machine-readable format at endpoints specified within the LOTL. These Lists hold current and historical information about the accreditation of trust service providers, referencing:
 
   - Qualified Trust Service Providers (QTSP)s, such as Qualified Certificates Issuing and revocation mechanisms, QEAA Providers, Qualified electronic archiving services.
-  - Non-Qualified Trust Services such as EAA Providers,
+  - Non-Qualified Trust Services such as EAA Providers.
   - Other Trust Services defined at the national level, such as archiving.
 
    Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction. They are numbered and renewed periodically, and published in a website for unrestricted download. To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
@@ -327,7 +327,7 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
      - European Union scope; one list per specific ecosystem entity type.
      - Machine-readable endpoint specified within the OJEU. Implements a pivoting mechanism to handle continuous updates.
 
-The example below shows a non-normative example of payload of a List of Trusted Entities for PID Providers
+The example below shows a non-normative example of payload of a List of Trusted Entities for PID Providers.
 
 .. literalinclude:: ../../examples/lote-pid.json
   :language: json
