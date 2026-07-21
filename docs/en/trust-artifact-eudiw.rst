@@ -14,7 +14,7 @@ This section defines the required trust artifacts and their conceptual roles in 
 - :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 The data model of these Trust Artifacts profiles the following external specifications.
- 
+
 - `ETSI TS 119 602`_, which defines the data model of the Lists of Trusted Entities and the profiles of the EUDIW lists.
 - `ETSI TS 119 411-8`_, which defines the Wallet-Relying Party Access Certificate.
 - `ETSI TS 119 475`_, which defines the Wallet-Relying Party Registration Certificate together with its entitlements.
@@ -62,7 +62,7 @@ and provide methods for searching and querying complete data sets of registered 
   If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code ``400`` and ``401``, respectively.
 
 .. note::
-    The published API view excludes only `postalAddress` (`CIR2025/848-Amendment`_, Annex I, point 4). All other fields, including intended-use credential claims, are published as registered.
+    The published API view excludes only ``postalAddress`` (`CIR2025/848-Amendment`_, Annex I, point 4). All other fields, including intended-use credential claims, are published as registered.
 
 The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ v1.3 is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
 
@@ -109,7 +109,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``certificatePolicies``
      - REQUIRED
      - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_)
-     
+
        * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
        * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
        * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``);
@@ -128,7 +128,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 
@@ -183,7 +183,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 

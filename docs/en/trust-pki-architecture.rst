@@ -75,7 +75,7 @@ The following table lists the Certification Authorities, the certificates that a
 The Qualified CA is not subordinate to the national Root Certification Authority. When the QEAA Provider is a Qualified Trust Service Provider, that Certification Authority belongs to the perimeter of the Qualified Trust Service Provider and follows its own supervision and publication regime.
 
 .. note::
-  The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile. 
+  The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.
 
 .. note::
   The Federation Entity Keys are not certified by the Certification Authorities described in this section. The binding between a Federation Entity and its keys is provided by the Entity Configuration and by the Subordinate Statement issued by its superior, which are validated through the Federation Trust Chain and not with a certification path (see :ref:`infrastructure-trust:National Trust Artifacts`). The Entity Configuration of the Federation Trust Anchor is used as a distribution channel for the Trust Anchors of the X.509 hierarchies.

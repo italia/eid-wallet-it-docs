@@ -691,11 +691,11 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
         - **issuer_state**: OPTIONAL. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contain the following information:
 
-            - *authenticSourceId:* REQUIRED. It MUST correspond to the ``entity_id`` value of the Authentic Source that provides the Credential Dataset(s) as registered in the :ref:`registry:Authentic Source Registry`. 
+            - *authenticSourceId:* REQUIRED. It MUST correspond to the ``entity_id`` value of the Authentic Source that provides the Credential Dataset(s) as registered in the :ref:`registry:Authentic Source Registry`.
 
-            - *datasetId:* REQUIRED. The unique identifier of the dataset provided by the Authentic Source as registered in the :ref:`registry:Authentic Source Registry`. 
+            - *datasetId:* REQUIRED. The unique identifier of the dataset provided by the Authentic Source as registered in the :ref:`registry:Authentic Source Registry`.
 
-            - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the Authentic Source. 
+            - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the Authentic Source.
 
         The ``issuer_state`` MUST follow the structure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` when ``objectId`` is absent, or ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` when ``objectId`` is present. The optional ``objectId`` segment MUST be omitted when not available; an empty trailing segment MUST NOT be used. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
 

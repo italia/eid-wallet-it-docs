@@ -23,7 +23,7 @@ Where the two frameworks diverge in configuration, the EUDIW Trust Framework pre
 This section is organised around the four processes that, together, take an entity from a registration request to full operational status:
 
 - The **Administrative Process** establishes an entity's legal standing, regulatory compliance, and eligibility to participate in the ecosystem, ahead of any technical step;
-- The **Registration Process** technically registers the entity: always in the National Trust Infrastructure, and, where the entity's category requires or opts into it, also as a EUDIW Wallet-Relying Party;
+- The **Registration Process** technically registers the entity: always in the National Trust Infrastructure, and, where the entity's category requires or opts into it, also as an EUDIW Wallet-Relying Party;
 - The **Certificate Issuance Process** equips the entity with the cryptographic trust artifacts tied to its registration, again for one or both trust frameworks depending on its category;
 - The **Notification and Publication** process publishes a notified entity in the trusted list for its category, which is what makes it trusted across the ecosystem.
 

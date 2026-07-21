@@ -40,7 +40,7 @@ The following table defines the certificate fields applicable to the certificate
    * - ``serialNumber``
      - Section 4.1.2.2
      - REQUIRED
-     - 
+     -
 
    * - ``signature``
      - Section 4.1.2.3, Section 4.1.1.2
@@ -55,7 +55,7 @@ The following table defines the certificate fields applicable to the certificate
    * - ``validity``
      - Section 4.1.2.5
      - REQUIRED
-     - 
+     -
 
    * - ``subject``
      - Section 4.1.2.6
@@ -141,7 +141,7 @@ The criticality values used in this specification have the following meaning:
      - ``1.3.6.1.5.5.7.1.1``
      - NC
      - :rfc:`5280#section-4.2.2.1`, Clause 4.4.1 of [`ETSI EN 319 412-2`_]
-   
+
    * - ``ext-etsi-valassured-ST-certs``
      - ``0.4.0.194121.2.1``
      - NC

@@ -61,7 +61,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
@@ -119,7 +119,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
@@ -158,7 +158,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``keyUsage``
      - REQUIRED
-     - 
+     -
 
    * - ``certificatePolicies``
      - REQUIRED
@@ -175,7 +175,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED (only for QEAA)
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
@@ -216,7 +216,7 @@ The following table defines the complete set of extensions applicable to the cer
 
    * - ``keyUsage``
      - REQUIRED
-     - 
+     -
 
    * - ``certificatePolicies``
      - REQUIRED
@@ -233,7 +233,7 @@ The following table defines the complete set of extensions applicable to the cer
    * - ``authorityInfoAccess``
      - REQUIRED
      - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-     
+
       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
@@ -327,7 +327,7 @@ The following table defines the profile-specific requirements for the certificat
 
 .. note::
 
-  As described in Section 4.3.1 of [`EUDI-TS 12`_], the Trust Anchor of a EAA Sign/Seal Certificate is referenced in the ``trustedAuthority`` attribute of the machine-readable Attestation Rulebook for the specific EAA.
+  As described in Section 4.3.1 of [`EUDI-TS 12`_], the Trust Anchor of an EAA Sign/Seal Certificate is referenced in the ``trustedAuthority`` attribute of the machine-readable Attestation Rulebook for the specific EAA.
 
 The following is a non-normative example of a Trust Anchor Certificate.
 

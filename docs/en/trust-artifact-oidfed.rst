@@ -4,7 +4,7 @@
 National Trust Artifacts
 ------------------------
 
-This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials. 
+This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials.
 The X.509 profile is detailed in the :ref:`infrastructure-trust:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework. It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
@@ -102,7 +102,7 @@ In addition to the REQUIRED common parameters ``iss``, ``sub``, ``iat``, ``exp``
 
 In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
-- **metadata** (``metadata``):  REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
+- **metadata** (``metadata``): REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type. All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type. The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
 - **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates. JSON Array of the Trust Marks of the subject. The registration Trust Mark is defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
 - **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA and MUST NOT be included otherwise. JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers. Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
 
@@ -869,4 +869,4 @@ Relying Party Intermediary. It declares no intended use of its own, so its regis
      "logo_uri": "https://intermediary.example.com/logo.svg"
    }
 
-   
+

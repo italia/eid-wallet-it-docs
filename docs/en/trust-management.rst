@@ -5,7 +5,7 @@ Trust Management and Lifecycle
 ------------------------------
 
 This section describes first the lifecycle of Entities and Trust Artifacts (:ref:`infrastructure-trust:Lifecycle State Machine`) and then their revocation mechanisms (:ref:`infrastructure-trust:Revocation Mechanisms`).
- 
+
 Lifecycle State Machine
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -22,15 +22,15 @@ As shown in :numref:`fig_WRP_and_Wallet_Providers_States`, WRPs and Wallet Provi
     :alt: The figure illustrates the WRP and Wallet Providers States.
     :caption: `WRP and Wallet Providers States. <https://www.plantuml.com/plantuml/svg/NP91RzD048Nl-oj6FI10QhbpG0tWGYIeaPkM0-KmyOwJWVMkDJlROduzwtL8tVXWMPettxptvCkeA9fwPyoFrp_X_FmTt7gXdO7yc3nKWhFRwwRwjBxPL4tryGmm7YJb3M_XFKPox0cA_0BkVPqqiYNGFO5AYWhRaBn56I_CV-W9iid0fk1WRSahwmYKfLl7SKzsebPjY6DKwW7RbcA4dQ1Nia_C-blLh3Rh-dhrfK3hmTH3HbubvqR0fFiW_7UYBMnyhUyE7hwpxgtWepV7hsavo2EAXJ2Ge7Bm4OH-KQkpgyySDLDRT4j5ZoDi2HxGiSL9EHTQAYijprbhlmsPpNu7Bvvotv5mnsr1cUQmK8AiOqpeMuBGmQOKknBb3bkDEUa2V384-ZEmaCr-Wu3GG_XD5cmYq03LV3KDazDuFBZeO89or3bSMP_DbPidqW_2MjguGdP92Dv0tNN7cFV-vNDl2zohHUyJDl-HKnIIddq6tYWg6ND9tgRU_GC0>`_
 
-**Transition from UNREGISTERED to REGISTERED**: 
+**Transition from UNREGISTERED to REGISTERED**:
 
 - ``UNREGISTERED``: Indicates that an Entity does not currently hold a valid subscription or registration within the IT Wallet ecosystem. This is the default baseline state. Entities in this state are outside the trust boundary and MUST NOT participate in any operations.
-- ``REGISTERED``: Indicates that an Entity has successfully completed the onboarding process and its identity has been verified. 
+- ``REGISTERED``: Indicates that an Entity has successfully completed the onboarding process and its identity has been verified.
 
   - *EUDIW Trust Framework*: WRPs are in ``REGISTERED`` state when their Entity information has been added to the WRP Register, while Wallet Providers become ``REGISTERED`` when the certification and onboarding records have been successfully collected and verified.
   - *National Trust Framework*: WRPs and Wallet Providers are in ``REGISTERED`` state when the onboarding records have been successfully collected and verified.
 
-**Transition from REGISTERED to OPERATIONAL**:  ``OPERATIONAL`` indicates that an Entity has been successfully authorized to perform role-related operations. 
+**Transition from REGISTERED to OPERATIONAL**: ``OPERATIONAL`` indicates that an Entity has been successfully authorized to perform role-related operations.
 
   - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a signing/seal certificate. The signing Trust Anchor of that certificate MUST have been added in the LoTE or in the EUMS TL. Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a signing/seal certificate whose signing Trust Anchor has been added in the LoTE.
   - *National Trust Framework*: WRPs and Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state, they have obtained the signing/seal certificate(s) and the Trust Mark(s), and their Subordinate Statement has been published by the Federation Authority.
@@ -40,10 +40,10 @@ As shown in :numref:`fig_WRP_and_Wallet_Providers_States`, WRPs and Wallet Provi
 **Transition from REGISTERED or OPERATIONAL to REMOVED**: ``REMOVED`` indicates the removal of an Entity due to voluntary offboarding, a severe security breach, or a critical compliance failure.
 
   - *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC/WRPRC and of the signing/seal certificates, in the removal of the entry from the WRP Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL. For Wallet Providers it results in the update of the Wallet Providers LoTE.
-  - *National Trust Framework*:  for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
+  - *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
 
 An Entity MUST reject new interactions or transactions initiated by a ``REMOVED`` Entity, and all cryptographic keys, active attestations, and operational capabilities associated with the Entity MUST be immediately revoked.
-However, Entities MAY continue to validate historical data, signatures, and Attestations generated prior to the removal timestamp, subject to local risk policies. 
+However, Entities MAY continue to validate historical data, signatures, and Attestations generated prior to the removal timestamp, subject to local risk policies.
 
 Removal events are categorized based on their initiation source:
 
@@ -59,14 +59,14 @@ Trust Artifacts Lifecycle State Machine
 State Machines for Trust Artifacts are described below:
 
 - For WRPAC, WRPRC and signing/seal certificates, the lifecycle states are ``VALID`` and ``REVOKED``. The transition from ``VALID`` to ``REVOKED`` is triggered by the revocation of the Trust Artifact, which can be initiated by the corresponding Trust Artifact provider due to various reasons such as key compromise, organizational changes, or non-compliance with framework policies. Once a Trust Artifact is in the ``REVOKED`` state, it MUST NOT be trusted for any operational use within the ecosystem, and any Entity relying on it MUST reject it for authentication, authorization, or any other trust-related operations.
-  
+
   - A WRPAC in ``VALID`` state MUST NOT be present in the designated CRL and/or SHALL return a ``good`` status in the OCSP response. A WRPAC in ``REVOKED`` state MUST be present in the designated CRL and/or MUST return a ``revoked`` status in the OCSP response.
   - A WRPRC in ``VALID`` state MUST return a ``0x00`` status in the corresponding Status List Token. A WRPRC in ``REVOKED`` state MUST have status value ``0x01`` within the corresponding Status List Token.
 - For Trust Lists (LoTE, LOTL, EUMS TL), the lifecycle states are ``CURRENT`` and ``HISTORICAL``. The transition from ``CURRENT`` to ``HISTORICAL`` is triggered by the publication of a new version of the Trust List that replaces the previous version. Once a Trust List is in the ``HISTORICAL`` state, it MUST NOT be used for any operational use within the ecosystem. Two exceptions apply: the validation of Trust List trustworthiness via the pivoting mechanism, and the validation of historical operations via the ``ServiceHistory`` component of the Trust List.
 - Trust Marks: the status of a Trust Mark are ``ACTIVE``, ``EXPIRED``, ``REVOKED``. The status can be checked using the Trust Mark Status endpoint (see Section 8.4 of `OID-FED`_).
 
-.. note:: 
-  Register, Entity Configurations and Subordinate Statements are simply published or unpublished. During their publication they can be updated. 
+.. note::
+  Register, Entity Configurations and Subordinate Statements are simply published or unpublished. During their publication they can be updated.
 
 The diagram :numref:`fig_Trust_Artifacts_States` highlights the state machine of the aforementioned Trust Artifacts:
 
@@ -76,7 +76,7 @@ The diagram :numref:`fig_Trust_Artifacts_States` highlights the state machine of
     :caption: `Trust Artifacts States. <https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0>`_
 
 
-Entities Updates and Their Effects on Trust Artifacts 
+Entities Updates and Their Effects on Trust Artifacts
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Entities are characterized by three main categories of registered data:
@@ -104,7 +104,7 @@ In the tables below are found the relationships between the registered data and 
      - National Trust Artifacts
 
    * - WRP (all)
-     - Identity Information 
+     - Identity Information
      - n/a
      - Register, WRPAC, WRPRC, LoTE (only for PID, PubEAA and notified non-qualified EAA Provider)
      - Entity Configuration, Trust Mark
@@ -152,9 +152,9 @@ In the tables below are found the relationships between the registered data and 
      - Subordinate Statement, Trust Mark
 
    * - Wallet Provider
-     - Identity Information 
+     - Identity Information
      - n/a
-     - LoTE 
+     - LoTE
      - Entity Configuration, Trust Mark
 
    * - Wallet Provider
@@ -172,7 +172,7 @@ In the tables below are found the relationships between the registered data and 
   QEAAs are provided by Qualified Trust Service Providers (QTSPs). Their identity/technical/authorization information are available in dedicated EUMS TL.
 
   Identity/technical/authorization information for Registrars, Providers of WRPAC, Providers of WRPRC are available in dedicated LoTE.
-  
+
 
 **Wallet-Relying Party Updates**
 
@@ -180,37 +180,37 @@ For WRP updating their identity information, technical configurations, and/or au
 
 *Identity Information and Authorizations Updates*
 
-- *EUDIW Trust Framework*: 
+- *EUDIW Trust Framework*:
 
   - **Registry Update**: the Registrar MUST update the WRP information within the Register.
   - **WRPAC Revocation and Re-issuance**: The Provider of WRPAC MUST revoke the Entity's current WRPAC. Revocation MUST be executed by appending the certificate's serial number to the active CRL or by returning a revoked status in the OCSP response. The Provider of WRPAC MUST issue a new WRPAC with the updated data.
   - **WRPRC Revocation and Re-Issuance**: The Provider of WRPRC MUST revoke the Entity's current WRPRC if present. Revocation MUST be executed by setting the status value of the WRPRC within the corresponding Status List Token to 0x01. The Provider of WRPRC MUST issue a new WRPRC with the updated data if required.
   - **LoTE Update** [ONLY for PID and Pub-EAA Providers]: the LoTE Provider MUST be notified with the updates, it will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the PID/PuB-EAA Provider's updated information.
 
-- *National Trust Framework*: 
+- *National Trust Framework*:
 
   - **Entity Configuration Update**: The Entity MUST update the WRP information within its Entity Configuration.
-  - **Trust Mark Revocation and Re-Issuance**: The Federation Authority MUST revoke the Trust Mark and issue a new one with the updated information. 
+  - **Trust Mark Revocation and Re-Issuance**: The Federation Authority MUST revoke the Trust Mark and issue a new one with the updated information.
 
 *Technical Configurations Updates*
 
-- **Signature/Seal Key update:**  the WRP MUST notify signature/seal key updates to the Certificate Authority responsible for the issuance of these certificates.
+- **Signature/Seal Key update:** the WRP MUST notify signature/seal key updates to the Certificate Authority responsible for the issuance of these certificates.
 
-  - *Common*: 
+  - *Common*:
 
     - **Signature/Seal Certificate Revocation and Re-issuance**: The Certificate Authority MUST revoke the Entity's current signature/seal certificate. The Certificate Authority MUST issue a new signature/seal certificate with the updated key.
 
-  - *EUDIW Trust Framework*: 
-  
+  - *EUDIW Trust Framework*:
+
     - **LoTE Update** [ONLY for PID and Pub-EAA Providers]: Upon obtaining a new signature/seal certificate with the updated key the LoTE Provider MUST be notified, which will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the updated Signature/Seal certificate.
 
-- **Authentication Key update:** 
+- **Authentication Key update:**
 
   - *EUDIW Trust Framework*: The WRP MUST notify WRPAC key updates to the Provider of WRPAC
 
     - **WRPAC Revocation and Re-issuance**: The Provider of WRPAC MUST revoke the Entity's current WRPAC. Revocation MUST be executed by appending the certificate's serial number to the active CRL or by returning a revoked status in the OCSP response. The Provider of WRPAC MUST issue a new WRPAC with the updated key.
 
-  - *National Trust Framework*: 
+  - *National Trust Framework*:
 
     - **Entity Configuration Update**: The Entity MUST update its Entity Configuration.
     - **Subordinate Statement Update**: The Federation Authority MUST update the Subordinate Statement of the updated Entity.
@@ -221,24 +221,24 @@ For Wallet Providers updating their identity information and/or technical config
 
 *Identity Information Updates*
 
-- *EUDIW Trust Framework*: 
+- *EUDIW Trust Framework*:
 
   - **LoTE Update**: the LoTE Provider MUST be notified with the updates, which will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the Wallet Provider's updated information.
 
-- *National Trust Framework*: 
+- *National Trust Framework*:
 
   - **Entity Configuration Update**: The Wallet Provider MUST update its Entity Configuration.
-  - **Trust Mark Revocation and Re-Issuance**: The Federation Authority MUST revoke the Trust Mark and issue a new one with the updated information. 
+  - **Trust Mark Revocation and Re-Issuance**: The Federation Authority MUST revoke the Trust Mark and issue a new one with the updated information.
 
 *Technical Configurations Updates*
 
 - **Signature/Seal Key update:** the Wallet Provider MUST notify signature/seal key updates to the Certificate Authority responsible for the issuance of these certificates.
 
-  - *Common*: 
+  - *Common*:
 
     - **Signature/Seal Certificate Revocation and Re-issuance**: The Certificate Authority MUST revoke the Entity's current signature/seal certificate. The Certificate Authority MUST issue a new signature/seal certificate with the updated key.
 
-  - *EUDIW Trust Framework*: 
+  - *EUDIW Trust Framework*:
 
     - **LoTE Update** [ONLY for Trust Anchor certificates]: Upon obtaining a new signature/seal certificate with the updated key the LoTE Provider MUST be notified, which will then publish a new version of the LoTE with the updated ``ServiceInformation`` component using the pivoting mechanism with the entity's updated Signature/Seal certificate.
 
@@ -270,7 +270,7 @@ CRLs MAY be used for the following types of certificates:
 - Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate`.
 - Sign/Seal certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
 
-If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field. 
+If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field.
 
 The CRL issuer MAY also generate delta CRLs. A delta CRL only lists those certificates, within its scope, whose revocation status has changed since the issuance of a referenced complete CRL. The referenced complete CRL is referred to as a base CRL. The scope of a delta CRL MUST be the same as the base CRL that it references.
 
@@ -438,7 +438,7 @@ An OCSP client issues a status request to an OCSP responder and MUST suspend the
 
 If supported by the Certificate Authority, the URI to which the OCSP Responder can be invoked MUST be present in the ``authorityInfoAccess.accessLocation`` extension of the Wallet Relying Party Access Certificate (WRPAC).
 
-This protocol specifies the data that MUST be exchanged between the OCSP client (which checks the status of one or more certificates) and the OCSP server (which provides the corresponding status). 
+This protocol specifies the data that MUST be exchanged between the OCSP client (which checks the status of one or more certificates) and the OCSP server (which provides the corresponding status).
 
 The following table sums up the roles of the OCSP client and server in the EUDIW ecosystem.
 
@@ -453,17 +453,17 @@ The following table sums up the roles of the OCSP client and server in the EUDIW
    * - Wallet Unit
      - WRPAC Provider
      - WRPAC Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - PID Provider Trust Anchor
      - PID Sign/Seal Certificate Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - PuB-EAA Provider Trust Anchor
      - PuB-EAA Sign/Seal Certificate Status Check
-   * - Wallet Unit or Relying Party 
+   * - Wallet Unit or Relying Party
      - (Q)EAA Provider Trust Anchor
      - (Q)EAA Sign/Seal Certificate Status Check
 
-.. note:: 
+.. note::
     The Status check on Sign/Seal Certificates is needed only in case the Sign/Seal Certificate is not referenced directly as a Trust Anchor Certificate, in which case it is trusted a priori and does not need a separate status check.
 
 Online Certificate Status Protocol Request Format
@@ -799,7 +799,7 @@ Status List Token (SLT)
 
 The **Status List Token** is available at the Status List Endpoint. It is formatted as a JSON Web Token (JWT) signed by the Provider of WRPRC and contains the parameters described in :ref:`credential-revocation:Status List Token`. The only difference is the ``status_list`` claim, which is a JSON object containing the following parameters:
 
-.. _table_status_list_structure:
+.. _table_wrprc_status_list_structure:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -809,7 +809,7 @@ The **Status List Token** is available at the Status List Endpoint. It is format
     - **Description**
     - **Reference**
   * - **bits**
-    - REQUIRED. JSON Integer specifying the number of bits per WRPRC in the compressed byte array (`lst`). The allowed values for bits are 1,2,4 and 8.
+    - REQUIRED. JSON Integer specifying the number of bits per WRPRC in the compressed byte array (``lst``). The allowed values for bits are 1,2,4 and 8.
     - `TOKEN-STATUS-LIST`_
   * - **lst**
     - REQUIRED. JSON String that contains the status values for all the WRPRCs it conveys statuses for. The value MUST be the base64url-encoded compressed byte array.

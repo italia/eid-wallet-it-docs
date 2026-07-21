@@ -79,9 +79,9 @@ A Relying Party interacting with a Wallet Unit under the EUDIW profile (i.e. whe
 
 The Wallet Instance MUST support both prefixes and MUST process each request under the trust evaluation procedures of the framework declared by the prefix. In particular, the ``x509_hash`` prefix selects the EUDIW procedures (see :ref:`trust-evaluation:EUDIW Authentication`), the ``openid_federation`` prefix selects the National Trust Framework procedures (see :ref:`trust-evaluation:Trust Evaluation Processes by Context`). The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework.
 
-In the proximity flow both Trust Frameworks use the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on an X.509 certificate provided by the Relying Party Instance in the ``x5chain`` header of the ``ReaderAuth``. 
+In the proximity flow both Trust Frameworks use the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on an X.509 certificate provided by the Relying Party Instance in the ``x5chain`` header of the ``ReaderAuth``.
 
-Under the EUDIW Trust Framework the certificate is the access certificate, as profiled in Section 5.3 of [`ETSI TS 119 472-2`_] (see :ref:`proximity-flow:mdoc Request`), and it is validated against the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities. 
+Under the EUDIW Trust Framework the certificate is the access certificate, as profiled in Section 5.3 of [`ETSI TS 119 472-2`_] (see :ref:`proximity-flow:mdoc Request`), and it is validated against the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities.
 
 Under the National Trust Framework the certificate is the Relying Party authentication certificate and it is validated against an Authentication Trust Anchor published in the Federation Trust Anchor Entity Configuration (see :ref:`trust-evaluation:Relying Party Proximity Authentication`).
 
@@ -93,7 +93,7 @@ Failure Handling
 The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
 
 In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
-During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance. Unlike the presentation case, no User choice option is foreseen at issuance. 
+During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance. Unlike the presentation case, no User choice option is foreseen at issuance.
 
 This behavior follows the requirements defined in the ARF Annex 2 (`EIDAS-ARF`_), and applies for both EUDIW and National Trust Frameworks.
 
