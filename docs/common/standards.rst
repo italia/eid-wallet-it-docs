@@ -49,8 +49,36 @@ Infrastructure of Trust
       - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", February 2026, Final.
     * - `OID-FED-SUBORDINATE-EVENTS`_
       - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
+    * - `ETSI TS 119 461`_
+      - ETSI TS 119 461 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service components providing identity proofing of trust service subjects.
+    * - `ETSI EN 319 411-1`_
+      - ETSI EN 319 411-1 v1.3.0 - Electronic Signatures and Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements.
+    * - `ETSI TS 119 411-8`_
+      - ETSI TS 119 411-8 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service providers issuing certificates; Part 8: Access certificate policy for EUDI Wallet Relying Parties.
+    * - `ETSI EN 319 412-1`_
+      - ETSI EN 319 412-1 v1.7.0 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 1: Overview and common data structures.
+    * - `ETSI EN 319 412-2`_
+      - ETSI EN 319 412-2 v2.4.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 2: Certificate profile for certificates issued to natural persons.
+    * - `ETSI EN 319 412-3`_
+      - ETSI EN 319 412-3 v1.3.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 3: Certificate profile for certificates issued to legal persons.
+    * - `ETSI EN 319 412-5`_
+      - ETSI EN 319 412-5 v2.4.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 5: QCStatements.
     * - `ETSI TS 119 412-6`_
-      - ETSI TS 119 412-6 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.
+      - ETSI TS 119 412-6 v1.2.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.
+    * - `ETSI TS 119 475`_
+      - ETSI TS 119 475 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Relying party attributes supporting EUDI Wallet user's authorisation decisions.
+    * - `ETSI TS 119 602`_
+      - ETSI TS 119 602 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model.
+    * - `ETSI TS 119 612`_
+      - ETSI TS 119 612 v2.4.1 - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
+    * - `ETSI TS 119 615`_
+      - ETSI TS 119 615 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
+    * - `ETSI EN 319 102-1`_
+      - ETSI EN 319 102-1 v1.4.1 - Electronic Signatures and Trust Infrastructures (ESI); Procedures for Creation and Validation of AdES Digital Signatures; Part 1: Creation and Validation.
+    * - `ETSI EN 319 132-1`_
+      - ETSI EN 319 132-1 v1.3.1 - Electronic Signatures and Infrastructures (ESI); XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures.
+    * - `ETSI TS 119 182-1`_
+      - ETSI TS 119 182-1 v1.2.1 - Electronic Signatures and Infrastructures (ESI); JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures.
 
 
 Digital Credential Data Format
@@ -81,7 +109,8 @@ Digital Credential Issuance
       - Looker, T., Bastian, P., Bormann, C., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
     * - `OAUTH-MULT-RESP-TYPE`_
       - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
-
+    * - `ETSI TS 119 472-3`_
+      - ETSI TS 119 472-3 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes;  Part 3: Profiles for issuance of EAA or PID.
 
 Digital Credential Presentation
 -------------------------------
@@ -100,6 +129,8 @@ Digital Credential Presentation
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
     * - `OIDC-RP-Metadata`_
       - Jones, M.B., Hedberg, R., Bradley, J., Skokan, F., "OpenID Connect Relying Party Metadata Choices 1.0", March 2026.
+    * - `ETSI TS 119 472-2`_
+      - ETSI TS 119 472-2 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes;  Part 2: Profiles for EAA/PID Presentations to Relying Party.
 
 Digital Credential Revocation Check Mechanisms
 ----------------------------------------------
