@@ -310,53 +310,53 @@ If any step fails, the certification path MUST be considered invalid and the art
 EUDIW Attestation Signature Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This process validates the signature on a Digital Credential (Attestation) or Wallet Instance Attestation using the appropriate Sign/Seal Certificate as profiled in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`. It is invoked during the issuance and presentation flows to validate the signature on the Digital Credential or Wallet Instance Attestation.
+This process validates the signature on an Attestation (Digital Credential or Wallet Instance Attestation) using the appropriate Sign/Seal Certificate as profiled in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`. It is invoked during the issuance and presentation flows to validate the signature on the Attestation.
 
 The process MUST be structured as follows:
 
-- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA, or a WIA), or is a Wallet Instance Attestation, then one of the following cases applies:
-  - **Base Signature Validation**: Executed when the Digital Credential or Wallet Instance Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (for PID, PuB-EAA, or WIA) or Trusted List (for QEAA).
-  - **Fallback Signature Validation**: Executed when the Digital Credential or Wallet Instance Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (for PID, PuB-EAA, or WIA).
+- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
+  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (for PID, PuB-EAA, or WIA) or Trusted List (for QEAA).
+  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (for PID, PuB-EAA, or WIA).
 - If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
 
 The **Base Signature Validation** is structured as follows:
 
 **Input**
 
-- The received Digital Credential or Wallet Instance Attestation and the signer certificate chain carried within.
+- The received Attestation and the signer certificate chain carried within.
 - The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities or Trusted List.
 
 **Outcome**
 
-- The validated Digital Credential, Wallet Instance Attestation, or a validation failure.
+- The validated Attestation, or a validation failure.
 
 **Process**
 
-1. Verify the Digital Credential signature with the validated signer certificate. For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
-2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Digital Credential, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-3. Extract the signer certificate chain from the Digital Credential and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`. For a Digital Credential in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For a Digital Credential in SD-JWT VC format and for the Wallet Instance Digital Credential, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
+1. Verify the Attestation signature with the validated signer certificate. For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
+2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`. For an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
-If **Base Signature Validation** results in failure, the Entity validating the Digital Credential MUST execute **Fallback Signature Validation** as follows:
+If **Base Signature Validation** results in failure, the Entity validating the Attestation MUST execute **Fallback Signature Validation** as follows:
 
 **Input**
 
-- The received Digital Credential or Wallet Instance Attestation.
+- The received Attestation.
 - The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities.
 
 **Outcome**
 
-- The validated Digital Credential or Wallet Instance Attestation, or a validation failure.
+- The validated Attestation, or a validation failure.
 
 **Process**
 
-1. Select the applicable List of Trusted Entities according to the type of Digital Credential or Wallet Instance Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-2. Verify the Digital Credential or Wallet Instance Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
+1. Select the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+2. Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
 
 .. warning::
 
-   Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates. In this case, these certificates MUST NOT be included in the Digital Credential or Wallet Instance Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure. To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
+   Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates. In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure. To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
 
-If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Digital Credential or Wallet Instance Attestation MUST NOT be considered as issued by a trusted Entity.
+If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
