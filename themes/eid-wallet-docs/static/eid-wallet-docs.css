@@ -14,6 +14,10 @@
   --it-docs-border: 1px solid rgba(0, 0, 0, 0.08);
   --it-docs-sticky-top: var(--it-docs-space-3);
   --it-docs-col-gutter: var(--it-docs-space-3);
+  /* Page edge + half row gutter — matches sidebar "Table of contents" text start */
+  --it-docs-page-gutter: var(--it-docs-space-3);
+  --it-docs-row-gutter-x: var(--it-docs-space-4);
+  --it-docs-content-inline-start: calc(var(--it-docs-page-gutter) + (var(--it-docs-row-gutter-x) / 2));
   --it-docs-scrollbar-size: 6px;
   --it-docs-scrollbar-track: transparent;
   --it-docs-scrollbar-thumb: rgba(92, 111, 130, 0.32);
@@ -78,8 +82,8 @@ body.it-docs-body {
   max-width: none !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding-left: var(--it-docs-space-3);
-  padding-right: var(--it-docs-space-3);
+  padding-left: var(--it-docs-page-gutter);
+  padding-right: var(--it-docs-page-gutter);
 }
 
 .it-docs-row.row {
@@ -88,7 +92,7 @@ body.it-docs-body {
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
-  --bs-gutter-x: var(--it-docs-space-4);
+  --bs-gutter-x: var(--it-docs-row-gutter-x);
 }
 
 .it-docs-menu-scroll {
@@ -142,10 +146,20 @@ body.it-docs-body {
   min-height: calc(var(--it-docs-space-1) * 5);
   padding-top: var(--it-docs-space-1);
   padding-bottom: var(--it-docs-space-1);
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
 }
 
 .it-docs-header .container {
-  /* Match Bootstrap container gutters — no custom override. */
+  /* Align with sidebar "Table of contents" / column content start */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: var(--it-docs-content-inline-start);
+  padding-right: var(--it-docs-content-inline-start);
 }
 
 .it-docs-header .it-header-slim-wrapper.bg-primary .navbar-brand,
@@ -435,11 +449,10 @@ body.it-docs-body {
 }
 
 .it-docs-header-compact .it-header-center-content {
-  /* Match slim bar org name inset (.it-header-slim-wrapper-content padding). */
   padding-top: var(--it-docs-space-2);
   padding-bottom: var(--it-docs-space-2);
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 0;
+  padding-right: 0;
   min-height: calc(var(--it-docs-space-2) * 2 + 2.5rem);
 }
 
@@ -1296,6 +1309,7 @@ body.it-docs-body > .it-docs-footer {
   :root {
     --it-docs-col-gutter: var(--it-docs-space-2);
     --it-docs-sticky-top: var(--it-docs-space-2);
+    --it-docs-row-gutter-x: var(--it-docs-space-2);
   }
 
   body.it-docs-nav-open {
@@ -1309,7 +1323,7 @@ body.it-docs-body > .it-docs-footer {
   .it-docs-row {
     display: flex;
     flex-direction: column;
-    --bs-gutter-x: var(--it-docs-space-2);
+    --bs-gutter-x: var(--it-docs-row-gutter-x);
   }
 
   .it-docs-header .it-header-slim-wrapper-content {
@@ -1592,11 +1606,6 @@ body.it-docs-body > .it-docs-footer {
 }
 
 @media (max-width: 575.98px) {
-  .it-docs-header-compact .container {
-    padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
-    padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
-  }
-
   .it-docs-header-compact .it-docs-header-site-title {
     font-size: 0.9375rem;
   }
@@ -1664,7 +1673,7 @@ body.it-docs-body > .it-docs-footer {
 
 @media (min-width: 992px) {
   .it-docs-row {
-    --bs-gutter-x: var(--it-docs-space-3);
+    --bs-gutter-x: var(--it-docs-row-gutter-x);
   }
 
   .it-docs-row {
