@@ -59,7 +59,7 @@
   }
 }
 
-html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > .it-docs-nav-section-label,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-nav-section-label,
 html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc {
   color: var(--it-docs-content-muted);
 }
