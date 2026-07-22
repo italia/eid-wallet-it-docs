@@ -440,7 +440,6 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
   When present, the Relying Party MUST evaluate it (:ref:`RPR-81 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
-.. _request-uri-response:
 
 Request URI Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
