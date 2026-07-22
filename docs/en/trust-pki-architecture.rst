@@ -59,7 +59,7 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
       - Entity Configuration of the Federation Trust Anchor, as Authentication Trust Anchor (see :ref:`trust-evaluation:Authentication Trust Anchor Distribution`).
 
     * - WRPRC Sign/Seal CA
-      - The signing certificate of the Provider of WRPRC (see :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`).
+      - The Sign/Seal certificate of the Provider of WRPRC (see :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`).
       - Providers of WRPRC LoTE.
 
     * - Registrar Sign/Seal CA

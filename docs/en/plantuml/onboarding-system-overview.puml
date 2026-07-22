@@ -34,7 +34,7 @@ package "IT-Wallet Onboarding System" {
   package "Certificate Issuance Process" {
     rectangle "Provider of WRPAC" as wrpac #C8E6C9
     rectangle "Provider of WRPRC" as wrprc #C8E6C9
-    rectangle "Signature / Seal\nCertificate Issuance" as sig #C8E6C9
+    rectangle "Sign / Seal\nCertificate Issuance" as sig #C8E6C9
   }
   
   package "Registry Infrastructure" as reginf {
@@ -70,7 +70,7 @@ ui --> reginf : updates registry infrastructure
 reg --> wrpreg : write record\n(active)
 wrpac --> reg : verify status\n& consistency
 wrprc --> reg : verify status\n& consistency
-fed --> sig : issue X.509 /\nsigning certificate
+fed --> sig : issue X.509 /\nSign/Seal certificate
 
 pub --> tl : sign & publish
 pub --> ec : notification

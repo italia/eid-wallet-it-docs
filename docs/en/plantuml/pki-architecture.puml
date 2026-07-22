@@ -26,7 +26,7 @@ package "National PKI" as NAT {
   
   rectangle "Access CA\n//access certificates of Wallet-Relying\nParties and PID Providers//" as CA_WRPAC
   rectangle "National Authentication CA\n//Relying Party authentication certificates//" as CA_AUTH
-  rectangle "WRPRC Sign/Seal CA\n//signing certificates of the Provider of WRPRC//" as CA_WRPRC
+  rectangle "WRPRC Sign/Seal CA\n//Sign/Seal certificates of the Provider of WRPRC//" as CA_WRPRC
   rectangle "Registrar Sign/Seal CA\n//Registrar Sign/Seal Certificates//" as CA_REG
   rectangle "National EAA Sign/Seal CA\n//Document Signer certificates//" as CA_EAA
 }
