@@ -323,6 +323,18 @@
     });
   }
 
+  function wrapScrollableTables() {
+    document.querySelectorAll(".it-docs-main table.docutils, .it-docs-main table.align-default").forEach(function (table) {
+      if (table.parentElement && table.parentElement.classList.contains("table-responsive")) {
+        return;
+      }
+      var wrap = document.createElement("div");
+      wrap.className = "table-responsive";
+      table.parentNode.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initLangDropdowns();
     initBrightnessToggle();
@@ -330,6 +342,7 @@
     initMainLandmark();
     initFooterExternalLinks();
     initSphinxTocScroll();
+    wrapScrollableTables();
     markCurrentLocalTocLink();
     window.addEventListener("hashchange", markCurrentLocalTocLink);
   });

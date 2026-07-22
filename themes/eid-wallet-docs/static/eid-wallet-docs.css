@@ -20,7 +20,6 @@
   --it-docs-scrollbar-thumb-hover: rgba(0, 77, 153, 0.5);
   --it-docs-scrollbar-thumb-active: rgba(0, 77, 153, 0.65);
   --it-docs-nav-heading-size: 0.875rem;
-  --it-docs-prose-max-width: 75ch;
   /* Bootstrap Italia type scale — https://designers.italia.it/design-system/fondamenti/tipografia/ */
   --it-docs-heading-1-size: 2.5rem;
   --it-docs-heading-2-size: 2rem;
@@ -723,13 +722,11 @@ body.it-docs-body {
 .it-docs-main .body ol,
 .it-docs-main .body dl,
 .it-docs-main .body blockquote,
+.it-docs-main .body .admonition,
 .it-docs-main .body .admonition p,
 .it-docs-main .body .admonition ul,
 .it-docs-main .body .admonition ol,
-.it-docs-main .body .toctree-wrapper > p.caption {
-  max-width: min(100%, var(--it-docs-prose-max-width));
-}
-
+.it-docs-main .body .toctree-wrapper > p.caption,
 .it-docs-main .body h1,
 .it-docs-main .body h2,
 .it-docs-main .body h3,
@@ -739,14 +736,20 @@ body.it-docs-body {
   max-width: 100%;
 }
 
-.it-docs-main .table-responsive,
-.it-docs-main table.docutils,
-.it-docs-main table.align-default {
+/* Scrollable tables: wrapper provides overflow; table keeps native layout */
+.it-docs-main .table-responsive {
   display: block;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin: var(--it-docs-space-3) 0;
+}
+
+.it-docs-main .table-responsive > table.docutils,
+.it-docs-main .table-responsive > table.align-default {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .it-docs-main pre,
@@ -942,17 +945,25 @@ body.it-docs-body {
   color: #004d99;
 }
 
-.it-docs-main table.docutils {
+.it-docs-main table.docutils,
+.it-docs-main table.align-default {
   width: 100%;
+  /* Readable column widths on narrow viewports; scroll via .table-responsive */
+  min-width: 36rem;
   margin: var(--it-docs-space-3) 0;
   border-collapse: collapse;
 }
 
 .it-docs-main table.docutils th,
-.it-docs-main table.docutils td {
+.it-docs-main table.docutils td,
+.it-docs-main table.align-default th,
+.it-docs-main table.align-default td {
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: var(--it-docs-space-1) var(--it-docs-space-2);
   vertical-align: top;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .it-docs-main pre {
@@ -978,6 +989,19 @@ body.it-docs-body {
   padding: var(--it-docs-space-2) var(--it-docs-space-3);
   margin: var(--it-docs-space-3) 0;
   border-radius: 0 var(--it-docs-radius) var(--it-docs-radius) 0;
+}
+
+.it-docs-main .admonition.warning,
+.it-docs-main .admonition.caution,
+.it-docs-main .admonition.attention {
+  border-left-color: #e7a23c;
+  background: rgba(231, 162, 60, 0.12);
+}
+
+.it-docs-main .admonition.warning .admonition-title,
+.it-docs-main .admonition.caution .admonition-title,
+.it-docs-main .admonition.attention .admonition-title {
+  color: #a66a00;
 }
 
 .it-docs-main .admonition-title {
@@ -1907,6 +1931,9 @@ html:not([data-it-docs-brightness]) {
   --it-docs-content-nav-hover-bg: rgba(0, 102, 204, 0.05);
   --it-docs-content-nav-active-bg: rgba(0, 102, 204, 0.08);
   --it-docs-content-admonition-bg: rgba(0, 102, 204, 0.05);
+  --it-docs-content-admonition-warning-bg: rgba(231, 162, 60, 0.12);
+  --it-docs-content-admonition-warning-border: #e7a23c;
+  --it-docs-content-admonition-warning-title: #a66a00;
   --it-docs-content-search-highlight-bg: #fff3bf;
   --it-docs-content-search-highlight-text: #17324d;
   --it-docs-content-control-bg: #ffffff;
@@ -1930,6 +1957,9 @@ html[data-it-docs-brightness="middle"] {
   --it-docs-content-nav-hover-bg: rgba(0, 89, 168, 0.08);
   --it-docs-content-nav-active-bg: rgba(0, 89, 168, 0.12);
   --it-docs-content-admonition-bg: rgba(0, 89, 168, 0.08);
+  --it-docs-content-admonition-warning-bg: rgba(231, 162, 60, 0.16);
+  --it-docs-content-admonition-warning-border: #d4922a;
+  --it-docs-content-admonition-warning-title: #8a5a00;
   --it-docs-content-search-highlight-bg: #f3e2a6;
   --it-docs-content-search-highlight-text: #2b2b2b;
   --it-docs-content-control-bg: #faf6ef;
@@ -1966,6 +1996,7 @@ html[data-it-docs-brightness="black"] {
   --it-docs-content-admonition-bg: rgba(144, 200, 255, 0.14);
   --it-docs-content-admonition-warning-bg: rgba(255, 183, 77, 0.16);
   --it-docs-content-admonition-warning-border: #ffb84d;
+  --it-docs-content-admonition-warning-title: #ffb84d;
   --it-docs-content-search-highlight-bg: #6b5a00;
   --it-docs-content-search-highlight-text: #fff8d6;
   --it-docs-content-control-bg: #1e1e1e;
@@ -2158,6 +2189,25 @@ html[data-it-docs-brightness="middle"] .it-docs-main .admonition,
 html[data-it-docs-brightness="black"] .it-docs-main .admonition {
   background: var(--it-docs-content-admonition-bg);
   border-left-color: var(--it-docs-content-link);
+}
+
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.warning,
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.caution,
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.attention,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.warning,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.caution,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.attention {
+  background: var(--it-docs-content-admonition-warning-bg);
+  border-left-color: var(--it-docs-content-admonition-warning-border);
+}
+
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.warning .admonition-title,
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.caution .admonition-title,
+html[data-it-docs-brightness="middle"] .it-docs-main .admonition.attention .admonition-title,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.warning .admonition-title,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.caution .admonition-title,
+html[data-it-docs-brightness="black"] .it-docs-main .admonition.attention .admonition-title {
+  color: var(--it-docs-content-admonition-warning-title);
 }
 
 html[data-it-docs-brightness="middle"] .it-docs-navscroll-col,
@@ -2361,11 +2411,6 @@ html[data-it-docs-brightness="black"] .it-docs-main .admonition li {
 
 html[data-it-docs-brightness="black"] .it-docs-main .admonition-title {
   color: var(--it-docs-content-text);
-}
-
-html[data-it-docs-brightness="black"] .it-docs-main .admonition.warning {
-  background: var(--it-docs-content-admonition-warning-bg);
-  border-left-color: var(--it-docs-content-admonition-warning-border);
 }
 
 html[data-it-docs-brightness="black"] .it-docs-main table.docutils th {
