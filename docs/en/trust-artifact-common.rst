@@ -18,7 +18,7 @@ This profile is originally defined in `ETSI TS 119 412-6`_.
 .. warning::
 
   The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed.
-  A self-signed certificate intended to act as a Trust Anchor is outside the scope of this certificate profile and MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
+  A self-signed certificate intended to act as a Trust Anchor MAY be used in interoperability, however, National Sign/Seal certificates MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile` and :ref:`infrastructure-trust:Certification Hierarchies` which requires National Trust Anchors to be bound to a common root.
 
 PID Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""
@@ -47,7 +47,8 @@ Extensions not listed in the table MUST NOT be present.
 
    * - ``keyUsage``
      - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C*, or *Type F*.
+     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
+       For additional details, see Clause 4.4.1 [`ETSI TS 119 412-6`_], Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
      - REQUIRED
@@ -55,7 +56,7 @@ Extensions not listed in the table MUST NOT be present.
 
    * - ``subjectAltName``
      - REQUIRED
-     -
+     - 
 
    * - ``cRLDistributionPoints``
      - CONDITIONAL
@@ -104,7 +105,8 @@ Extensions not listed in the table MUST NOT be present.
 
    * - ``keyUsage``
      - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C*, or *Type F*.
+     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
+       For additional details, see Clause 4.4.1 [`ETSI TS 119 412-6`_], Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
      - REQUIRED
@@ -164,7 +166,8 @@ Extensions not listed in the table MUST NOT be present.
 
    * - ``keyUsage``
      - REQUIRED
-     -
+     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*.
+       For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
      - REQUIRED
@@ -248,6 +251,9 @@ Extensions not listed in the table MUST NOT be present.
      - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``.
        The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
+.. warning:: 
+
+  Annex A of [`ETSI TS 119 412-6`_] does not define the specific OID of the ``id-etsi-qcs-QcPSB`` statement identifier.
 
 The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons.
 

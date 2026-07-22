@@ -65,19 +65,19 @@ The Signing Trust Anchor Validation is not included in the table below, since, a
         The Wallet Provider is evaluated indirectly, as the issuer of the Wallet Instance Attestation, through the framework selected by the counterpart.
       - Not applicable as a transacting party.
     * - Wallet Instance
-      - Acts as Trust Evaluator toward the Credential Issuer.
-        It MUST support both EUDIW and National Trust Framework depending on whether the requested  Credential is in the EU catalogue or only in the national catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
+      - Acts as Trust Evaluator toward the Credential Issuer and, at the same time, as Trust Evaluated Party toward it, since the Credential Issuer validates its Wallet Instance Attestation.
+        As Trust Evaluator it MUST support both EUDIW and National Trust Framework depending on whether the requested Credential is in the EU catalogue or only in the national catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
       - Acts as Trust Evaluator toward the Relying Party.
         It MUST support both EUDIW and National Trust Framework.
         In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party, while in the proximity flow both frameworks use the mdoc reader authentication and the framework is determined by the trust anchor that validates the reader certificate (see :ref:`trust-evaluation:Selection at Presentation`).
     * - Credential Issuer
-      - Acts as Trust Evaluator toward the Wallet Instance.
-        It MUST support EUDIW when the Credential being issued is in the EU catalogue, or National Trust Framework only when the Credential is not in the EU catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
+      - Acts as Trust Evaluator toward the Wallet Instance and, at the same time, as Trust Evaluated Party toward it, since the Wallet Instance validates its Authentication, Authorization and Metadata.
+        As Trust Evaluator it MUST support EUDIW when the Credential being issued is in the EU catalogue, or National Trust Framework only when the Credential is not in the EU catalogue (see :ref:`trust-evaluation:Selection at Issuance`).
       - Not applicable.
     * - Relying Party
       - Not applicable.
       - Acts as Trust Evaluated Party toward the Wallet Instance.
-        It MUST support EUDIW Trust Framework when it operates under the EUDIW profile, that is for cross-border services, or National Trust Framework otherwise (see :ref:`trust-evaluation:Selection at Presentation`).
+        It MUST support EUDIW Trust Framework, with the ``x509_hash`` prefix, when it provides cross-border services, and the National Trust Framework, with the ``openid_federation`` prefix, when it does not provide cross-border services and interacts with a national Wallet Instance (see :ref:`trust-evaluation:Selection at Presentation`).
 
 .. note::
   In case of technical divergence between the configuration published through EUDIW mechanisms and the configuration published through the federation, for example different certificates for the same entity in a List of Trusted Entities and in the Trust Anchor Entity Configuration, the EUDIW configuration MUST prevail.
@@ -101,8 +101,8 @@ Selection at Presentation
 
 In the remote flow the selection is declared by the Relying Party through the ``client_id`` prefix of the request (see `OpenID4VP`_, Section 5.9).
 
-A Relying Party interacting with a Wallet Unit under the EUDIW profile (i.e. when a Relying Party wants to provide cross-border online services to the users), MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] (OIDFVP-HAIP-COMMON-REQ-01).
-A Relying Party that knows it is interacting with a national Wallet Instance, through the wallet discovery mechanism of the ecosystem (see :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` and the Selection Page in :ref:`functionalities:User Experience Design`), MAY use the ``openid_federation`` prefix with the federation artifacts.
+A Relying Party that wants to provide cross-border online services to the users operates under the EUDIW profile and MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] (OIDFVP-HAIP_COMMON_GEN_REQ-02).
+A Relying Party that does not provide cross-border services and knows, through the wallet discovery mechanism of the ecosystem (see :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` and the Selection Page in :ref:`functionalities:User Experience Design`), that it is interacting with a national Wallet Instance, MUST use the ``openid_federation`` prefix with the federation artifacts.
 
 The Wallet Instance MUST support both prefixes and MUST process each request under the trust evaluation procedures of the framework declared by the prefix.
 In particular, the ``x509_hash`` prefix selects the EUDIW procedures (see :ref:`trust-evaluation:EUDIW Authentication`), the ``openid_federation`` prefix selects the National Trust Framework procedures (see :ref:`trust-evaluation:Trust Evaluation Processes by Context`).

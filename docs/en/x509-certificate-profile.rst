@@ -130,7 +130,7 @@ The criticality values used in this specification have the following meaning:
    * - ``subjectAltName``
      - ``2.5.29.17``
      - NC
-     - :rfc:`5280#section-4.2.1.6`, Clause 4.3.5 of [`ETSI EN 319 412-2`_]
+     - :rfc:`5280#section-4.2.1.6`, Clause 4.3.5 of [`ETSI EN 319 412-2`_], Clause 6.6.1, GEN-6.6.1-07 of [`ETSI TS 119 411-8`]
 
    * - ``basicConstraints``
      - ``2.5.29.19``

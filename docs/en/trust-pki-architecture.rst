@@ -25,7 +25,7 @@ Each subordinate Certification Authority serves one service, and its certificate
     :width: 99%
     :align: center
     :alt: The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority.
-    :caption: `PKI Architecture of the IT-Wallet Ecosystem. <https://www.plantuml.com/plantuml/svg/dLTDRziu4BqRy7yOj0TVrlOss0LsUoYg-AFr9fiwiWFl8K11IxHDH2O3adBW5ltldI4fMPBjf9la48YSUVDc-6R8V3IMQPjlCvZCkmkMPTn25wPN4uXqiX6M9pRNlDtgm81hArOYOLOe2Hl1DICBRe3951xpPLRi9Hic9Sz0hS1kEAHSYnrFOQvpOo6IoKPfqsktsYtp8EGZqsmBPiDIzIJa6bOiCxowbV8LopCxLjBUi2s7pppRSOknpXZDn3SExowgkv7MwccWCgNXxH_kfxghCKScrnc7x-qMm2LB7jPQvJBr7WkgWjjG6bDfmFoe8ZsYArkVmNaxZkZt2EalzqFBZhtT8v6bobA7tMvbV6N1Aj1YlR6G2cABHQQj8joR6rTtbj6vlG5cu2QQ4ma2FMHtC8kLiZ28xcM_hrQhJ4Z-6wZS6f5oTs8xbedKd-KZivj-tu76NxxCZp2dao5CjTgXguQPMCl-Z6C43tvkirGIDm5x47r5ura3FEZnBFup-oT3BAPDzlbbTnH5psJmZC7fBEuk6p6Y9E7613pcFvAABxM9JwGRysoFFN0lfzYJHMTLYrZD9Pv6WtC77ELuZD8M3UbZ1tGWy3smkaboCfleRlwvUIRnD1uSrSdWDs4t4oCrbRMZHCcxbaJSJ2BcQs4i3fUZ82TtJlAEHv_EbOPEimayL4c-nMAu3IHwkXZe6NgoRBpR73jb9ShXDkDw9v93oixrTZwR-f5GuNFmz1Hk_vVARfj4HdV3oIAG6ECeuazAFpXh5EJexYXyJLJtyXhhIiVZ093J28L10dG8rzIQptVcon0ljjuli3XghT8tI2iQlCpZHDiqOU9VWZalt1UzZ-NvBzykwTmjddFfHIYaZGWbaA3LnGLXyiamcWKfN7-TNpUbK2hzZ1h2tL0BF-QOlXy4rLlwNZhYUnWekHBht9k4oEEH4uLKbkuhQzMMFW7csF8Ll81mnVSupZJt3mMpmVGGvP_5bNSIqesAK-5CZo3tpXc3mN-zFt__stlLfWtDoi9669DZX2LwrTyjte_6ez8OgKVV71rT5X1AIHSTTBiV3hTITOMKNBCWMTOClCIgItwEDepYXf5JHNN13PnsAx20Nkz3qOkEHbWWFfv6OK642Xw5aUVKM2snt4mlBMDlYNp2ccD6OoTya-X2Lc45nG3l0QLQlrMgOkhtdHFrVDrd5kwEfZ4zEYlg8krx-TB6AtJMUPNEEg_KMQUXiqwfC_-gMzFdeMzc2fzSY8iFrVSUrZYcbT35VMho9RuVXQIb-gEyhkiXy-bxJF8yOrqB8aozTDLJmV8XCXBtz2cHZ_WN_tjejtu2>`_
+    :caption: `PKI Architecture of the IT-Wallet Ecosystem. <https://www.plantuml.com/plantuml/svg/dLVTRnev47z7udyOjG-y772DxgIxFbJTyD5oILEo474FaIgpQy3AOaUsbuYh-h_VZEs5tOLDei03iMVcDn_-pTZvR2pJDjzcC9bt5opBk8KkJAyc4Eba8onFRAvvkzM10TTMh4J2h50IDe9hHXhS09CfFERBh90b6oObpq2jm6uuf5oB7KzXhdDZ8PB9HcdJQxVQBVCWv2FJR0jcmrBr9EGQLYmpl2nA-OhbcHqhQM_ObiDNdksuHLyDIZFn7uSF5sLffBLw6gXCQNZ_X_kKfHfpP7ATSVZPRW5SikHXhLKkKs-ne2euWTAOIWtcLndf4KtPkW7d_JYYxmdIN-v3sovwkyT0bYfB7NQxbV6L1Qj0Y_N6GYeeMYmoYGftxsvStLb6v_OEc86RQ4v14EWnkwDQh9I5GNGl-tsrMcL2yjz0vTQ8bBiJsx5CfFui7vdTzFiEDFx-VNw2EPqCOQhL3aqrpCHQzcSSFNZm9k61ITm4x47q0vLdDV30nqRyP-HdNIocvA3c94eIRan0P7wHbCo9njvHD-RP7ZbwBwVOCmNpoqcMVSNJQD1q056EPPQsQ1ZlEw03WU-1LLMIimb5T_ElzPh5qtXmKYc3QyAk9qQdVIWV9KhMbIJYUX8nNmjZiVbFd9oLd8qx7drfAiqeYaw0Xoh9jrWC9y10pnS3BKFF71hZDaSchyHX-CoutedacB8plPtFfhvbI_4SBNq8jnJNgubsM--I_BBR1E0xvHc5yzroTrbFTdGtd2n2ecCSH_n9wGUdZygZkvCKAyIzbzTuTaG11u1vZv1yH7A7S4tj-NntlWpXs--PihmY2agxYb7O1lf6WvVZEDEQTPZuLJ3DpV6YzMaBVEFR9PsynPC-M14A4IH24YIeTN51c7moZ6Q13DS_vjTrAXowgO4DuNwek1zpJDyFc_9DVIzTu7iOABaIwzoh1C_ZaIE5L9RkB6lLbfO0Snmh9Ro0SCNtE38rzuy5iy7q4EMVnPKt4jADetFkJ8yWzyuOdS6_lJz__zjRLIOQpUD2HnYJeuSbMbNVBjwEHh3IwAb7Quw6BWi8fQJB3hhTJyURgRn3JAwiFQFAMtuqrvJYcf8ZGNd3pR1sApY5NkzJqNhEQzWWztu651hK5aKSXPAFgRPxm7BNn44pzfeOJzXpaT4a2slYMCWgxE3PmqT0PbOlgZ9t-drdH2rUjPc5wwYkJE_C4fc8wfwj97W3hJflebNdZRJgr6ZLET3AF-JMj3osoKpXAmjnyMtwqSCQ5sd9TN55cto9JqOXQQlw3g_IUCXy-XwJB1kqAqw4gPQkV2fOFaJ6m7tubCXd_CL_6EZF_m40>`_
 
 The following table lists the Certification Authorities, the certificates that are issued by each of them, and the channel through which the derived Trust Anchor is distributed.
 The Lists of Trusted Entities and the Trusted Lists named in the table are defined in :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
@@ -47,10 +47,6 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
     * - Wallet Provider Sign/Seal CA
       - :ref:`infrastructure-trust:Wallet Provider Sign/Seal Certificate`
       - Wallet Providers LoTE.
-
-    * - PuB-EAA Provider Sign/Seal CA
-      - :ref:`infrastructure-trust:PuB-EAA Provider Sign/Seal Certificate`
-      - PuB-EAA Providers LoTE.
 
     * - Access CA
       - Access certificates following the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, issued to the Wallet-Relying Parties and to the PID Providers.
@@ -79,8 +75,13 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
       - :ref:`infrastructure-trust:(Q)EAA Provider Sign/Seal Certificate`, for the QEAA.
       - Member State Trusted List, published in accordance with Article 22 of [`EIDAS`_].
 
-The Qualified CA is not subordinate to the national Root Certification Authority.
-When the QEAA Provider is a Qualified Trust Service Provider, that Certification Authority belongs to the perimeter of the Qualified Trust Service Provider and follows its own supervision and publication regime.
+    * - PuB-EAA Provider Sign/Seal CA
+      - :ref:`infrastructure-trust:PuB-EAA Provider Sign/Seal Certificate`, the qualified certificate supporting the qualified electronic seal of the public sector body (Article 45f(1)(b) of [`EIDAS`_]).
+      - PuB-EAA Providers LoTE.
+
+The Qualified CA of the QEAA Provider and the PuB-EAA Provider Sign/Seal CA are not subordinate to the national Root Certification Authority.
+Both belong to the perimeter of a Qualified Trust Service Provider and follow its own supervision and publication regime.
+The sign/seal certificate of a PuB-EAA Provider is a qualified electronic seal issued by a Qualified Trust Service Provider (Article 45f of [`EIDAS`_]).
 
 .. note::
   The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.
