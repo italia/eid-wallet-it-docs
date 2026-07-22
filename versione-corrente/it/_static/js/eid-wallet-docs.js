@@ -323,6 +323,56 @@
     });
   }
 
+  function wrapScrollableTables() {
+    document.querySelectorAll(".it-docs-main table.docutils, .it-docs-main table.align-default").forEach(function (table) {
+      if (table.parentElement && table.parentElement.classList.contains("table-responsive")) {
+        return;
+      }
+      var wrap = document.createElement("div");
+      wrap.className = "table-responsive";
+      table.parentNode.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    });
+  }
+
+  var NAVSCROLL_COLLAPSED_KEY = "it-docs-navscroll-collapsed";
+
+  function isNavscrollCollapsed() {
+    return document.documentElement.classList.contains("it-docs-navscroll-collapsed");
+  }
+
+  function syncNavscrollToggleState(collapsed) {
+    document.querySelectorAll("[data-it-docs-navscroll-desktop-toggle]").forEach(function (button) {
+      button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    });
+  }
+
+  function setNavscrollCollapsed(collapsed) {
+    document.documentElement.classList.toggle("it-docs-navscroll-collapsed", collapsed);
+    syncNavscrollToggleState(collapsed);
+    try {
+      localStorage.setItem(NAVSCROLL_COLLAPSED_KEY, collapsed ? "1" : "0");
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  function initNavscrollDesktopToggle() {
+    var toggles = document.querySelectorAll("[data-it-docs-navscroll-desktop-toggle]");
+    if (!toggles.length) {
+      document.documentElement.classList.remove("it-docs-navscroll-collapsed");
+      return;
+    }
+
+    syncNavscrollToggleState(isNavscrollCollapsed());
+
+    toggles.forEach(function (button) {
+      button.addEventListener("click", function () {
+        setNavscrollCollapsed(!isNavscrollCollapsed());
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initLangDropdowns();
     initBrightnessToggle();
@@ -330,6 +380,8 @@
     initMainLandmark();
     initFooterExternalLinks();
     initSphinxTocScroll();
+    wrapScrollableTables();
+    initNavscrollDesktopToggle();
     markCurrentLocalTocLink();
     window.addEventListener("hashchange", markCurrentLocalTocLink);
   });

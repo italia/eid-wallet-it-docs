@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=97237ffd" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=390a0e01" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -35,6 +35,13 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
         }
       } catch (error) {
         /* ignore storage errors */
@@ -270,7 +277,36 @@
     </div>
   </noscript>
 
-  <p class="it-docs-search-help">Searching for multiple words only shows matches that contain all words.</p>
+  <div class="it-docs-search-help">
+    <p class="it-docs-search-help-intro">By default, all terms must appear on the page. Combine the operators below to refine your search.</p>
+    <ul class="it-docs-search-help-list">
+      <li>
+        <strong>Exact phrase:</strong>words must appear adjacent and in order in the page body.<code>"digital credential"</code>
+      </li>
+      <li>
+        <strong>Require term:</strong>explicitly require a term (same as the default).<code>+wallet</code>
+      </li>
+      <li>
+        <strong>Exclude term:</strong>hide pages that contain the term.<code>-deprecated</code>
+      </li>
+      <li>
+        <strong>Either term (OR):</strong>match at least one branch; useful to broaden the query.<code>wallet OR credential</code>
+      </li>
+      <li>
+        <strong>Title only:</strong>limit a term to page or section titles; shorthand<code>t:</code>is also supported.<code>title:Introduction</code>
+        <span class="it-docs-search-help-sep">or</span>
+        <code>title:"Trust framework"</code>
+      </li>
+    </ul>
+    <p class="it-docs-search-help-examples">
+      <strong>Examples:</strong>
+      <code>+wallet -deprecated</code>
+      <span class="it-docs-search-help-sep">·</span>
+      <code>"remote presentation" OR title:PID</code>
+      <span class="it-docs-search-help-sep">·</span>
+      <code>authentication title:Overview</code>
+    </p>
+  </div>
 
   <div class="it-docs-searchbox it-docs-searchbox--page" role="search">
     <form class="it-docs-search-form" id="it-docs-search-page-form" action="" method="get">
@@ -301,8 +337,7 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -329,7 +364,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 13/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 22/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
