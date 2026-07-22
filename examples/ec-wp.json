@@ -34,9 +34,6 @@
       "response_types_supported": [
         "vp_token"
       ],
-      "response_modes_supported": [
-        "query"
-      ],
       "vp_formats_supported": {
         "dc+sd-jwt": {
           "sd-jwt_alg_values": [

@@ -86,6 +86,42 @@ for LANG in en it; do
     cd "$PWD_BEFORE"
     exit 1
   fi
+
+  # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+  # Override with PDF_COMPRESS_SETTINGS=/screen for smaller files (~13MB).
+  if command -v gs &>/dev/null; then
+    PDF_COMPRESS_SETTINGS="${PDF_COMPRESS_SETTINGS:-/printer}"
+    echo "=== Compressing ${ULANG} PDF (Ghostscript ${PDF_COMPRESS_SETTINGS}) ==="
+    before_bytes=$(wc -c < "${BASENAME}.pdf")
+    rm -f "${BASENAME}-opt.pdf"
+    if ! gs -sDEVICE=pdfwrite \
+        -dCompatibilityLevel=1.7 \
+        -dPDFSETTINGS="${PDF_COMPRESS_SETTINGS}" \
+        -dDetectDuplicateImages=true \
+        -dCompressFonts=true \
+        -dNOPAUSE -dQUIET -dBATCH \
+        -sOutputFile="${BASENAME}-opt.pdf" "${BASENAME}.pdf"; then
+      echo "Warning: Ghostscript error for ${ULANG}; keeping uncompressed PDF"
+      rm -f "${BASENAME}-opt.pdf"
+    else
+      after_bytes=$(wc -c < "${BASENAME}-opt.pdf" 2>/dev/null || echo 0)
+      pages_before=$(pdfinfo "${BASENAME}.pdf"     2>/dev/null | awk '/^Pages:/{print $2}')
+      pages_after=$( pdfinfo "${BASENAME}-opt.pdf" 2>/dev/null | awk '/^Pages:/{print $2}')
+      if [[ "${after_bytes}" -lt 10000 || "${after_bytes}" -ge "${before_bytes}" ]]; then
+        echo "Warning: suspicious output for ${ULANG} (${after_bytes}B vs ${before_bytes}B); keeping original"
+        rm -f "${BASENAME}-opt.pdf"
+      elif [[ -n "${pages_before}" && "${pages_before}" != "${pages_after}" ]]; then
+        echo "Warning: page count changed for ${ULANG} (${pages_after:-?} != ${pages_before}); keeping original"
+        rm -f "${BASENAME}-opt.pdf"
+      else
+        mv "${BASENAME}-opt.pdf" "${BASENAME}.pdf"
+        echo "Compressed ${ULANG}: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+      fi
+    fi
+  else
+    echo "Warning: gs not found; skipping post-build PDF compression for ${ULANG}"
+  fi
+
   cd "$PWD_BEFORE"
 
   cp "$ROOT_DIR/build/latex/${LANG}/${BASENAME}.pdf" "$ROOT_DIR/pdf_output/${BASENAME}-${LANG}-${TIMESTAMP}.pdf"

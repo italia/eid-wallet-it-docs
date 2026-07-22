@@ -114,7 +114,7 @@ Parametri del Template per Fonte Autentica
 
 Il servizio elettronico template **DEVE** rispettare le seguenti proprietà:
 
-    - **Name**: IT Wallet - Fonte Autentica - <``Nome dell'Attestato Elettronico``>
+    - **Name**: Creazione EAA <``Nome / Nome tipologia EAA``> – IT-Wallet
     - **Intended Recipients**: IT Wallet - Fonte Autentica - <``Dominio della Fonte Autentica``>
     - **Description**: Descrizioni utili al Fornitore di Attestati Elettronici in relazione al nuovo attestato elettronico <``Nome dell'Attestato Elettronico``>
     - **Technology**: REST
