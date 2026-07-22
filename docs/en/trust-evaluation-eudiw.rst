@@ -44,7 +44,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
 
         On the received Credential:
 
-        - :ref:`trust-evaluation:EUDIW Signing Trust Anchor Validation`
+        - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`
       - The Wallet Instance Attestation, validated against the Wallet Providers List of Trusted Entities.
     * - Wallet Unit
       - Remote presentation, ``x509_hash`` prefix
@@ -65,13 +65,13 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
       - Issuing Credentials in the EU catalogue
       - On the Wallet Instance:
 
-        - :ref:`trust-evaluation:EUDIW Signing Trust Anchor Validation`, applied to the Wallet Instance Attestation
+        - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`, applied to the Wallet Instance Attestation
       - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
     * - Relying Party
       - Remote or proximity presentation
       - On the received Credentials:
 
-        - :ref:`trust-evaluation:EUDIW Signing Trust Anchor Validation`
+        - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`
       - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
@@ -313,7 +313,7 @@ Below are listed the Sub-Status error codes of the List of Trusted Entities in t
      - The final certificate at the root of the pivot chain, or the current List of Trusted Entities signer when no pivot exists, is not found in the ``OJEU-LoTE-Certs-Set`` set of trusted certificates.
 
 Trusted List Validation
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 This section defines the validation of Trusted List.
 In order to validate the Trusted List, the validating Ent MUST:
@@ -327,7 +327,7 @@ In order to validate the Trusted List, the validating Ent MUST:
 X509 Certificate Chain Validation Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This procedure validates a certification path.
+This procedure validates the certification path.
 It is invoked by the :ref:`trust-evaluation:EUDIW Authentication` and by the :ref:`trust-evaluation:Authorization Artifacts Validation` to validate the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate and the Registrar Sign/Seal Certificate chains.
 The Trust Anchor consumed as ``trust_anchor`` is profiled in :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
 
@@ -346,7 +346,7 @@ Within the EUDIW Trust Framework the following applies.
 - ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` is the first certificate of the chain and ``C_n`` is the end-entity certificate.
   For any ``i`` in ``1, ..., n-1``, ``C_i`` is the issuer of ``C_i+1``.
 - ``trust_anchor``: the trusted certificate obtained from the ``ServiceDigitalIdentity`` of the validated List of Trusted Entities or Trusted List.
-  It MUST either be exactly ``C_1`` or contain the public key used to sign ``C_1``.
+  It MUST contain the public key used to sign ``C_1``.
   Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.
 - ``current_time``: the current date and time.
 
@@ -362,45 +362,64 @@ Within the EUDIW Trust Framework the following applies.
 
 If any step fails, the certification path MUST be considered invalid and the artifact signature MUST NOT be verified with the presented certificate chain.
 
-EUDIW Signing Trust Anchor Validation
+EUDIW Attestation Signature Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This process provides and validates the root of trust for the verification of the issuer data authentication of a received attestation, that is a Digital Credential or the Wallet Instance Attestation.
-The validation of the Lists of Trusted Entities and Trusted Lists, and the extraction of the Trust Anchors they publish, is defined in :ref:`trust-evaluation:EUDIW Trust Anchor Validation`.
-This section defines how such a validated Trust Anchor is then used to validate the signer of a received attestation.
+This process validates the signature on an Attestation (Digital Credential or Wallet Instance Attestation) using the appropriate Sign/Seal Certificate as profiled in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
+It is invoked during the issuance and presentation flows to validate the signature on the Attestation.
 
-.. note::
-  In the National Trust Framework this root of trust is the Signing Trust Anchor of the signing X.509 PKI (see :ref:`trust-evaluation:Signing Trust Anchor Distribution and Validation`).
-  Within the EUDIW Trust Framework the root of trust of a received attestation is the Trust Anchor published in the applicable List of Trusted Entities or Trusted List, made available in accordance with Article 22 of [`EIDAS`_].
+The process MUST be structured as follows:
 
-The applicable Trust Anchor depends on the type of the received attestation.
-For a Digital Credential it is selected according to the Credential Rulebook; for the Wallet Instance Attestation, for which no Rulebook applies, it is the Trust Anchor of the Wallet Provider:
+- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
 
-- the PID Providers List of Trusted Entities for a PID;
-- the corresponding Member State Trusted List for a QEAA;
-- the PuB-EAA Providers List of Trusted Entities for a PuB-EAA;
-- the applicable Trust Anchor distributed through the mechanism defined in the Attestation Rulebook for a non-qualified EAA, when available;
-- the Wallet Providers List of Trusted Entities for the Wallet Instance Attestation.
+  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (for PID, PuB-EAA, or WIA) or Trusted List (for QEAA).
+  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (for PID, PuB-EAA, or WIA).
+
+- If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
+
+The **Base Signature Validation** is structured as follows:
 
 **Input**
 
-- The received attestation and the signer certificate chain carried with it.
-- The type of the attestation, used to select the applicable List of Trusted Entities or Trusted List.
+- The received Attestation and the signer certificate chain carried within it.
+- The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities or Trusted List.
 
 **Outcome**
 
-- The validated Trust Anchor and the validated signer certificate for the attestation, or a failure.
+- The validated Attestation, or a validation failure.
 
 **Process**
 
-1. Select the applicable List of Trusted Entities or Trusted List according to the type of the received attestation, that is the Credential Rulebook for a Digital Credential and the Wallet Providers List of Trusted Entities for the Wallet Instance Attestation, and validate it as defined in :ref:`trust-evaluation:EUDIW Trust Anchor Validation`, obtaining the Trust Anchor.
-2. Extract the signer certificate chain from the attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
-   For a Digital Credential in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_].
-   For a Digital Credential in SD-JWT VC format and for the Wallet Instance Attestation, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
-3. Verify the attestation signature with the validated signer certificate.
+1. Verify the Attestation signature with the validated signer certificate.
    For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
+2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+   For an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_].
+   For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
-If any step fails, the attestation MUST NOT be considered issued by a trusted issuer.
+If **Base Signature Validation** results in failure, the Entity validating the Attestation MUST execute **Fallback Signature Validation** as follows:
+
+**Input**
+
+- The received Attestation.
+- The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities.
+
+**Outcome**
+
+- The validated Attestation, or a validation failure.
+
+**Process**
+
+1. Select the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+2. Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
+
+.. warning::
+
+   Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates.
+   In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure.
+   To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
+
+If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
@@ -460,7 +479,7 @@ The inputs are the following:
 - ``C_1`` is the Wallet-Relying Party Access Certificate;
 - ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
 
-.. warning:: 
+.. warning::
 
   As described in Section 6.1.1 of `OPENID4VC-HAIP`_ the Trust Anchor Certificate needed for the validation of the WRPAC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.
 
@@ -538,7 +557,7 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 7. **Status verification**: check the revocation status through the ``status`` field of the Wallet-Relying Party Registration Certificate, as defined in [`ETSI TS 119 475`_], following :ref:`credential-revocation:Checking Credentials Statuses`.
 8. **Coherence check**: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are coherent with the interaction.
 
-.. note:: 
+.. note::
 
   In Step 5.
   **Path Validation**, the Trust Anchor Certificate needed for the validation of the WRPRC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.

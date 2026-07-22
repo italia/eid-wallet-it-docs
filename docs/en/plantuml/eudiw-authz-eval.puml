@@ -29,9 +29,9 @@ partition "Authorization Artifacts Validation" {
     }
     
     if (All WRPRC checks successful?) then (yes)
-      :CERTIFICATE_VALID;<<#dcedc8>>
+      #dcedc8:CERTIFICATE_VALID;
     else (no)
-      :CERTIFICATE_INVALID;<<#ffccb3>>
+      #ffccb3:CERTIFICATE_INVALID;
     endif
   else (no)
     :authz_art_state = none;
@@ -51,9 +51,9 @@ partition "Authorization Artifacts Validation" {
     }
 
     if (All Register checks successful?) then (yes)
-      :REGISTER_VALID;<<#dcedc8>>
+      #dcedc8:REGISTER_VALID;
     else (no)
-      :FAILED;<<#ffccb3>>
+      #ffccb3:FAILED;
     endif
   else (no)
   endif
@@ -65,13 +65,13 @@ if (authz_art_state == CERTIFICATE_VALID OR authz_art_state == REGISTER_VALID) t
     :1. Binding Verification;
     
     if (Binding successful?) then (no)
-      :BINDING_FAILED;<<#ffccb3>>
+      #ffccb3:BINDING_FAILED;
       stop
     else (yes)
       :2. Entitlement Verification;
       
       if (Entitlements match?) then (no)
-        :WRONG_ENTITLEMENT;<<#ffccb3>>
+        #ffccb3:WRONG_ENTITLEMENT;
       else (yes)
         
         if (Interaction Flow Type?) then (Issuance)
@@ -80,24 +80,24 @@ if (authz_art_state == CERTIFICATE_VALID OR authz_art_state == REGISTER_VALID) t
           if (Attestation Registered?) then (no)
             :ATTESTATION_TYPE_NOT_REGISTERED;<<#ffccb3>>
           else (yes)
-            :VERIFICATION_PASSED;<<#dcedc8>>
+            #dcedc8:VERIFICATION_PASSED;
           endif
           
         else (Presentation)
           :4. Scope Comparison;
           
           if (Scope Exceeded?) then (yes)
-            :OVERASKING_DETECTED;<<#ffccb3>>
+            #ffccb3:OVERASKING_DETECTED;
           else (no)
-            :VERIFICATION_PASSED;<<#dcedc8>>
+            #dcedc8:VERIFICATION_PASSED;
           endif
           
           :5. EDP Evaluation;
           
           if (EDP Satisfied or No EDP present?) then (yes)
-            :EDP_SATISFIED;<<#dcedc8>>
+            #dcedc8:EDP_SATISFIED;
           else (no)
-            :EDP_NOT_SATISFIED;<<#ffccb3>>
+            #ffccb3:EDP_NOT_SATISFIED;
           endif
         endif
       endif
