@@ -333,7 +333,7 @@ The **Base Signature Validation** is structured as follows:
 **Process**
 
 1. Verify the Digital Credential signature with the validated signer certificate. For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
-2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Digital Credential, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Digital Credential, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
 3. Extract the signer certificate chain from the Digital Credential and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`. For a Digital Credential in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For a Digital Credential in SD-JWT VC format and for the Wallet Instance Digital Credential, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
 If **Base Signature Validation** results in failure, the Entity validating the Digital Credential MUST execute **Fallback Signature Validation** as follows:
