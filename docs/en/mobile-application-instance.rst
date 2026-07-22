@@ -39,7 +39,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
@@ -78,7 +78,8 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`). This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
+  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`).
+  This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
 
 **Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature (:ref:`WP_135–137 <wallet-instance-optional-testcases>`), therefore:
 
@@ -244,7 +245,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
     :class: longtable
     :widths: 20 20 50
     :header-rows: 1
- 
+
     * - **HTTP Status Code**
       - **Error Code**
       - **Description**
@@ -321,7 +322,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
 
 .. The Key Binding Request JWT includes the following body claims:
 
-.. 
+..
   .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -361,7 +362,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
 .. Below is a non-normative example of a Key Binding Request JWT header and payload.
 
 
-.. 
+..
  .. code-block:: json
 
  ..   {
@@ -371,7 +372,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
     }
 
 .. .. code-block:: json
-  
+
  ..   {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",
@@ -462,3 +463,5 @@ The following table lists HTTP Status Codes and related error codes that are sup
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - The service is unavailable. Please try again later.
+
+

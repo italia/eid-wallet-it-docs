@@ -1,16 +1,14 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Incluso tramite endpoints.rst al livello di titolo '-' (livello 1).
 
 .. role:: raw-html(raw)
   :format: html
 
-
 Endpoint del Credential Issuer
--------------------------------
+------------------------------
 
 Endpoint Metadata
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
 
@@ -29,7 +27,7 @@ Di seguito è riportato un esempio non normativo.
     Accept-Language: it-IT, it;q=0.9
 
 .. code-block:: http
-  
+
     GET /.well-known/openid-credential-issuer HTTP/1.1
     Host: issuer.example.com
     Accept: application/jwt
@@ -87,3 +85,5 @@ Get Statistics
     - Credential Issuer
   * - **Fruitore**
     - Terza Parte Autorizzata
+
+

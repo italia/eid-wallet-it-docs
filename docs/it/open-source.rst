@@ -1,37 +1,75 @@
 .. include:: ../common/common_definitions.rst
 
 
-Rilasci Open Source 
+Rilasci Open Source
 ===================
 
-In linea con i principi generali di apertura e trasparenza, i Fornitori di Wallet, i Fornitori di Credenziali e le Relying Party sono incoraggiati a considerare l'adozione di approcci open-source, anche durante la fase di sperimentazione, per promuovere la collaborazione, la revisione tra pari e i miglioramenti condivisi in tutto l'ecosistema. Questo incoraggiamento fa parte di un quadro in evoluzione, in attesa della definizione delle procedure pertinenti dalle `linee guida sull'acquisizione e il riutilizzo del software per le pubbliche amministrazioni <https://docs.italia.it/italia/developers-italia/gl-acquisition-and-reuse-software-for-pa-docs/en/stabile/index.html>`_ ai sensi dell'articolo 64-quater del CAD, che fa riferimento all'articolo 69 riguardante il rilascio del codice sorgente. L'open source è supportato dagli articoli 68 e 69 del Codice dell'Amministrazione Digitale (CAD) (e relative linee guida), dai regolamenti europei (`Artificial Intelligence Act (AI Act) <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689>`_, `Cyber Resilience Act (CRA) <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847>`_, `Interoperable Europe Act <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202400903>`_).
+1. Principi Generali
+^^^^^^^^^^^^^^^^^^^^
 
-Tutti gli implementatori, siano essi Fornitori di Wallet, Fornitori di Credenziali o Relying Party, proprietari del codice del prodotto (da ora in poi Proprietari di Progetti Open Source) DOVREBBERO seguire le migliori pratiche del settore per il software open-source, inclusa una documentazione adeguata, il controllo delle versioni e il coinvolgimento della comunità. In particolare:
+L'ecosistema IT-Wallet è costruito su principi di apertura e trasparenza. In conformità con il **Codice dell'Amministrazione Digitale (CAD)** e con il **Regolamento europeo eIDAS 2.0**, l'adozione di framework open source, anche durante la fase di sperimentazione, è fortemente incoraggiata come fattore abilitante chiave per garantire fiducia, collaborazione, revisione tra pari e miglioramenti condivisi in tutto l'ecosistema. Questo quadro è allineato con l'**Interoperable Europe Act**, con l'obiettivo di massimizzare il valore pubblico e la sicurezza attraverso la trasparenza.
 
-- **Trasparenza e Documentazione**: I Proprietari di Progetti Open Source DOVREBBERO produrre una documentazione chiara e linee guida per i contributi.
-- **Coinvolgimento della Comunità**: I Proprietari di Progetti Open Source DOVREBBERO favorire il coinvolgimento attivo della comunità per lo sviluppo e il supporto.
-- **Controllo di Versione del Software**: I Proprietari di Progetti Open Source DOVREBBERO utilizzare sistemi di controllo delle versioni, come Git, per gestire le modifiche al codice.
-- **Pratiche di Sicurezza**: I Proprietari di Progetti Open Source DOVREBBERO produrre audit regolari del codice e standard di codifica sicura.
-- **Licenze**: I Proprietari di Progetti Open Source DEVONO utilizzare licenze open-source appropriate, riconosciute come "licenza libera" o "licenza open source" dalla Free Software Foundation o dalla Open Source Initiative.
-- **Divulgazione Responsabile della Sicurezza**: I Proprietari di Progetti Open Source DOVREBBERO configurare procedure di divulgazione responsabile della sicurezza per gestire i problemi di sicurezza in modo appropriato, mitigando qualsiasi tipo di minaccia derivante da una divulgazione irresponsabile di problemi di sicurezza.
+2. Requisiti Standard
+^^^^^^^^^^^^^^^^^^^^^
 
-Fornitori di Wallet
-^^^^^^^^^^^^^^^^^^^
+Tutte le entità (Fornitori di Wallet, Fornitori di Credenziali, Relying Party) coinvolte nell'ecosistema IT-Wallet (di seguito "Proprietari di Progetto") **DOVREBBERO** aderire alle migliori pratiche del settore per garantire che il software sia utilizzabile, conforme e sicuro, seguendo almeno quelle elencate nelle sezioni seguenti.
 
-I Fornitori di Wallet sono incoraggiati a rilasciare il loro codice sorgente, il sistema di build e tutti gli altri asset necessari alla riproducibilità dell'implementazione al fine di facilitare la trasparenza e l'audit di sicurezza all'interno dell'ecosistema IT-Wallet. Ove applicabile, il rilascio del codice sorgente DOVREBBE seguire le specifiche di seguito:
+2.1 Licenze
+"""""""""""
 
-- **Regolamenti Europei**: Secondo il Regolamento consolidato (UE) 910/2014, Art 5a punto 3, `il codice sorgente dei componenti software applicativi dei Wallet di Identità Digitale Europea deve essere concesso in licenza open-source. Gli Stati membri possono prevedere che, per motivi debitamente giustificati, il codice sorgente di componenti specifici diversi da quelli installati sui dispositivi degli utenti non sia divulgato`.
+- I Proprietari di Progetto **DEVONO** utilizzare una licenza approvata dalla Open Source Initiative (OSI).
+- I Proprietari di Progetto **DOVREBBERO** dare priorità alla **EUPL-1.2** (European Union Public License versione 1.2) per garantire la compatibilità legale all'interno del settore pubblico dell'UE, oppure a licenze permissive (es. Apache 2.0, MIT) per SDK e librerie al fine di massimizzarne l'adozione.
 
-Fornitori di Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^
+2.2 Gestione del Codice e Trasparenza
+"""""""""""""""""""""""""""""""""""""
 
-I Fornitori di Credenziali sono incoraggiati a rilasciare il loro codice sorgente sotto una licenza open-source, a partire dalla fase di sperimentazione.
+- **Controllo di Versione**: I Proprietari di Progetto **DEVONO** utilizzare piattaforme di hosting del codice che consentano l'accesso pubblico senza richiedere un login (es. GitHub, GitLab), garantendo una cronologia trasparente delle modifiche.
+- **Documentazione**: I repository **DEVONO** includere una documentazione chiara, come:
 
-Relying Party
-^^^^^^^^^^^^^
-Le Relying Party sono incoraggiate a seguire le stesse condizioni dei Fornitori di Credenziali per quanto riguarda il rilascio del loro codice sorgente.
+  - ``README.md``: Panoramica del progetto e istruzioni di installazione.
+  - ``LICENSE.md``: Termini con cui il titolare del copyright consente al destinatario di utilizzare il software (come descritto nella sezione *Licenze* sopra).
+  - ``CONTRIBUTING.md``: Linee guida per i contributi al codice effettuati da soggetti esterni (es. contributori della community).
 
-Divulgazione Responsabile
-^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Community**: I Proprietari di Progetto **DOVREBBERO** interagire attivamente con la community per lo sviluppo e il supporto, gestendo le issue e le richieste di contributo in modo tempestivo.
 
-Nel contesto europeo, il Cyber Resilience Act (CRA) impone procedure per la gestione delle segnalazioni di vulnerabilità e richiede la segnalazione delle vulnerabilità attivamente sfruttate ai Computer Security Incident Response Team (CSIRT). La Direttiva sulla sicurezza delle reti e dei sistemi informativi (UE) 2022/2555 (`NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>`_) sottolinea anche la gestione delle vulnerabilità nell'ambito della gestione del rischio di cybersecurity.
+2.3 Sicurezza e Qualità
+"""""""""""""""""""""""
+
+- **Qualità del Codice**: I Proprietari di Progetto **DOVREBBERO** implementare test automatizzati (es. test E2E e di integrazione) e pipeline di Continuous Integration. Tali pipeline **DOVREBBERO** essere pubbliche per consentirne l'ispezione.
+- **Audit di Sicurezza**: I Proprietari di Progetto **DOVREBBERO** eseguire regolarmente audit del codice e analisi statiche.
+- **SBOM**: I Proprietari di Progetto **DOVREBBERO** fornire una Software Bill of Materials (SBOM) per facilitare la gestione delle vulnerabilità, in linea con il **Cyber Resilience Act (CRA)**.
+
+3. Fornitori di Wallet
+^^^^^^^^^^^^^^^^^^^^^^
+
+3.1 Open Source Obbligatorio
+""""""""""""""""""""""""""""
+
+Ai sensi del **Regolamento consolidato (UE) n. 910/2014 (eIDAS 2.0)**, Art. 5a par. 3, il codice sorgente dei componenti software applicativi delle soluzioni IT-Wallet **DEVE** essere rilasciato con licenza open-source.
+
+Per motivi di sicurezza debitamente giustificati, il codice sorgente di componenti specifici, diversi da quelli installati sui dispositivi degli utenti, **PUÒ** rimanere chiuso, a condizione che ciò non comprometta la verificabilità complessiva della soluzione.
+
+4. Fornitori di Credenziali e Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+4.1 Componenti di integrazione
+""""""""""""""""""""""""""""""
+
+Per favorire l'interoperabilità dell'ecosistema e ridurre i costi di integrazione:
+
+- I Fornitori di Credenziali e le Relying Party **DOVREBBERO** rilasciare Software Development Kit (SDK), librerie client e specifiche delle API con licenza open-source.
+
+4.2 Infrastruttura di backend
+"""""""""""""""""""""""""""""
+
+I Fornitori di Credenziali e le Relying Party **DOVREBBERO** rilasciare la logica core del proprio backend con licenza open-source, a partire dalla fase di sperimentazione, per promuovere trasparenza e riuso.
+
+5. Divulgazione Responsabile e Gestione delle Vulnerabilità
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In conformità con il **Cyber Resilience Act (CRA)** e la **Direttiva NIS2 (UE) 2022/2555**:
+
+- **Politica di Sicurezza**: Tutti i repository Open Source **DOVREBBERO** contenere un file ``SECURITY.md`` che descriva la procedura per la segnalazione delle vulnerabilità.
+- **Segnalazione**: I Proprietari di Progetto **DOVREBBERO** istituire un canale per la divulgazione responsabile, al fine di gestire i problemi di sicurezza in modo riservato prima del rilascio pubblico.
+- **Vulnerabilità sfruttate**: I Proprietari di Progetto **DEVONO** cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate e seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.
+
+

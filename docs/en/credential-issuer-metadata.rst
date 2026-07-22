@@ -1,4 +1,6 @@
 .. include:: ../common/common_definitions.rst
+.. Included via credential-issuer-solution.rst at title level '-' (level 1).
+
 
 Credential Issuer Metadata
 --------------------------
@@ -30,9 +32,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **acr_values_supported**
     - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
 
-      - `https://trust-anchor.eid-wallet.example.it/loa/low`
-      - `https://trust-anchor.eid-wallet.example.it/loa/substantial`
-      - `https://trust-anchor.eid-wallet.example.it/loa/high`
+      - `https://{Trust Anchor Domain}/loa/low`
+      - `https://{Trust Anchor Domain}/loa/substantial`
+      - `https://{Trust Anchor Domain}/loa/high`
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_types_supported**
@@ -59,8 +61,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
     - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OID-FED`_ Section 5.2.1 and `JWK`_.
 
 .. important::
-  If ``token_endpoint_auth_methods_supported`` includes ``attest_jwt_client_auth``, the Authorization Server MUST include both
-  ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` in its metadata.
+  If ``token_endpoint_auth_methods_supported`` includes ``attest_jwt_client_auth``, the Authorization Server MUST include both ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` in its metadata.
   Clients SHOULD fetch and parse the Authorization Server metadata to detect support and algorithm requirements for Attestation-Based Client Authentication. When algorithms are incompatible, the client MAY obtain a new client attestation using a supported algorithm.
 
 Metadata for openid_credential_issuer
@@ -110,7 +111,7 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
         - **credential_metadata**: REQUIRED. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
 
-          - **display**: Array of objects containing display language properties. The parameters that MUST be included are
+          - **display**: Array of objects containing display language properties. The following parameters are included:
 
                 - **name**: REQUIRED. String value of a display name for the Digital Credential.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
@@ -120,22 +121,24 @@ The *openid_credential_issuer* metadata contains the following claims.
                   - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer. The logo mime type MUST be ``application/svg``.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
-                
+
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
-          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
+          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value contains the following parameters. See `OpenID4VCI`_ Section B.2.
 
-            - **path**: It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
-            - **mandatory**: Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
-            - **sd**: String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
-            - **display**: Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. The parameters that MUST be included are
+            - **path**: REQUIRED. It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
+            - **mandatory**: REQUIRED. Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
+            - **sd**: REQUIRED.String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
+            - **display**: CONDITIONAL. REQUIRED only for the claims that are shown to the User. Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
 
-                - **name**: String value of a display name for the claim.
-                - **description**: human-readable description for the claim.
-                - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
-                
+                - **name**: REQUIRED. String value of a display name for the claim.
+                - **label**: OPTIONAL. String value of a display name for the claim.
+                - **description**: REQUIRED. human-readable description for the claim.
+                - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
+
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
-        - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
+        - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
+        - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
@@ -150,4 +153,5 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
   * - **status_list_aggregation_endpoint**
     - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
+
 

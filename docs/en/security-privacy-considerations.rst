@@ -1,7 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
 Security and Privacy Considerations
 ===================================
 
@@ -82,8 +81,7 @@ SR-E-20
    * - |check-icon|
      - The Trust Framework must ensure that the identification of an Issuer is unique and unambiguous. If there are multiple instances of the same Issuer using the same key material, the Verifier must trust all instances equally.
 
-The IT Wallet Trust Framework ensures that each entity (e.g., an Issuer) is uniquely identified through cryptographic
-keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
+The IT Wallet Trust Framework ensures that each entity (e.g., an Issuer) is uniquely identified through cryptographic keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -222,7 +220,7 @@ SR-P-41
      - The protocol must ensure that an attacker cannot successfully forward an interaction between a Wallet and a Verifier to a Verifier under the control of the attacker.
 
 A prerequisite for a successful attack of this kind is that the attacker has access to some messages between the Wallet and the Verifier, for example,
-the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarrantes confidentiality, avoiding the leakage of the response.
+the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality, avoiding the leakage of the response.
 In addition to TLS, the existing implementation of **nonce** and audience checks in the presentation protocol should help to meet the P-41 security requirement.
 Regarding the **nonce** claim, the Verifier MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Verifier during the authorization request.
 Regarding the **aud** value, the Verifier must check that the audience of the presentation matches the Verifier's identifier.
@@ -253,7 +251,7 @@ SR-V-10
    * - |partially-check-icon|
      - (conditional w.r.t I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.
 
-Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsability of its issuer, the trusted Wallet Provider.
+Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsibility of its issuer, the trusted Wallet Provider.
 
 .. note::
   Currently, no explicit security and privacy measures related to this requirement are specified in [`OpenID4VC-SecTrust`_] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees
@@ -435,10 +433,8 @@ Another endpoint to be validated is the **redirect_uri**, which is used to redir
 In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Verifier onboarding using OpenID Federation. During the presentation phase, the Wallet must validate this value by verifying the trust with the Verifier according to the Section `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
 
 
-In order to be sure that the **redirect_uri** is received from a legit Wallet and not from the attacker, the Verifier response endpoint upon the recipient of a valid
-authorization response creates a fresh cryptographic value that is linked to the authorization response and attaches it to the **redirect_uri** that is sent to the Wallet.
-When the Verifier receives the redirect, it can extract the response code and check with its response endpoint whether the response code was associated with this Authorization
-Response. (See :ref:`remote-flow:Redirect URI`).
+In order to be sure that the **redirect_uri** is received from a legit Wallet and not from the attacker, the Verifier response endpoint upon the recipient of a valid authorization response creates a fresh cryptographic value that is linked to the authorization response and attaches it to the **redirect_uri** that is sent to the Wallet.
+When the Verifier receives the redirect, it can extract the response code and check with its response endpoint whether the response code was associated with this Authorization Response. (See :ref:`remote-flow:Redirect URI`).
 
 SPR-P-70
 ^^^^^^^^
@@ -473,8 +469,8 @@ SPR-P-80
    * - |check-icon|
      - The protocol must ensure that the Issuer cannot learn where the User uses the Credential.
 
-The exchange protocol does not require any interactions between Verifiers and Issuers. In addition, privacy-preserving Status List mechanism
-ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
+The exchange protocol does not require any interactions between Verifiers and Issuers.
+In addition, privacy-preserving Status List mechanism ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
 
 SPR-W-50
 ^^^^^^^^

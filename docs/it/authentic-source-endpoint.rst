@@ -27,7 +27,7 @@ L'e-service è descritto tramite una specifica OpenAPI in cui sono dettagliati i
     Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` PUÒ contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
 
 Get Attribute Claims
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 
 .. _table_authentic-source-endpoint-get-attribute-claims:
 .. list-table::
@@ -44,7 +44,7 @@ Get Attribute Claims
 
 Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
 
-  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service). 
+  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service).
   - Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim ``object_id`` DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim ``object_id``, indipendentemente dal suo stato.
 
 .. note::
@@ -54,7 +54,7 @@ Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
     - il Credential Issuer DEVE leggere il valore ``last_updated`` ricevuto nella risposta per essere in grado di verificare se gli Attributi dell'Utente sono cambiati dall'ultima emissione di un Attestato Elettronico.
 
 Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Per garantire la coerenza tra il "Ciclo di Vita degli Attestati Elettronici" documentato in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici` e l'Enum status delle OpenAPI, la seguente mappatura e logica operativa DEVE essere applicata per il campo ``status`` negli ``attributeClaims``.
 
@@ -85,7 +85,7 @@ Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attesta
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
-La risposta ha come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
+La risposta DEVE avere come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json
@@ -110,3 +110,5 @@ Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) 
 
 .. warning::
   Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint ``.well-known`` pubblici esposti direttamente dalla Fonte Autentica o distribuzione *out-of-band*). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.
+
+

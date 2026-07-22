@@ -1,7 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
+
 Entity Configuration del Fornitore di Wallet
---------------------------------------------------
+--------------------------------------------
 
 Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la Entity Configuration del Fornitore di Wallet (:ref:`WP_001 <wallet-provider-backend-testcases>`).
 
@@ -9,8 +10,9 @@ La Entity Configuration del Fornitore di Wallet restituita DEVE contenere gli at
 
 La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dalla Soluzione Wallet come componente del Fornitore di Wallet. È strutturata in conformità con `OID-FED`_ e con :ref:`trust-infrastructure:L'Infrastruttura di Trust` delineata in questa specifica (:ref:`WP_002 <wallet-provider-backend-testcases>`).
 
+
 Header JWT della Entity Configuration del Fornitore di Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :class: longtable
@@ -27,7 +29,7 @@ Header JWT della Entity Configuration del Fornitore di Wallet
       - Tipo di media, impostato su ``entity-statement+jwt``.
 
 Payload JWT della Entity Configuration del Fornitore di Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :class: longtable
@@ -55,8 +57,9 @@ Payload JWT della Entity Configuration del Fornitore di Wallet
 .. note::
    I test che coprono la struttura di Entity Configuration (header e payload) sono forniti in :ref:`WP_002a–002h <wallet-provider-backend-testcases>`.
 
+
 Esempio di Entity Configuration del Fornitore di Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Di seguito è riportato un esempio non normativo di payload di una Entity Configuration del Fornitore di Wallet contenente metadati per
 

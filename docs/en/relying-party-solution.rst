@@ -6,7 +6,10 @@ Relying Party Solution
 
 A Relying Party, as an Organizational entity relying upon IT-Wallet, provides Technical Solutions (Relying Party Solution) that could combine software, hardware, services, settings, and configurations, including Relying Party Instances for User authentication and Digital Credential verification.
 
-In order to implement and provide Technical Solutions, a Relying Party could take advantage of services provided by an Intermediary Entity. A Relying Party Intermediary is an Organization Entity that may act on behalf of the Relying Party offering services to it, making the Relying Party able to connect to Wallet Instance and authenticate Users and verify User's Digital Credentials.
+In order to implement and provide Technical Solutions, a Relying Party may rely on the services of a **Relying Party Intermediary**. Pursuant to Article 5b(8) of `EU_2024_1183`_, intermediaries acting on behalf of Relying Parties are deemed to be Relying Parties and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. For the complete definitions and the underlying European legal framework, see **Relying Party Intermediary** and **IT-Wallet Intermediary** in :ref:`defined-terms:Defined Terms and Acronyms`.
+
+.. note::
+  In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (**IT-Wallet Intermediary**).
 
 A Relying Party provides at least one of the following components:
 
@@ -38,4 +41,5 @@ The following diagram depicts the Relying Party Solution High Level Architecture
   relying-party-instance.rst
   relying-party-entity-configuration.rst
   relying-party-metadata.rst
+
 

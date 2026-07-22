@@ -91,7 +91,7 @@
                 "elementIdentifier": "verification",
                 "elementValue": {
                     "trust_framework": "it_cie",
-                    "assurance_level": "high",
+                    "assurance_level": "https://trust-anchor.example.it/loa/high",
                 }
                 }
             >>)

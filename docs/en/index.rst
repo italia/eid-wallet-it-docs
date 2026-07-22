@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
-IT-Wallet Technical Documentation - |version|
-=============================================
+IT-Wallet Technical Documentation
+=================================
 
 This document provides the technical architecture, implementation framework and design requirements to be adopted by the IT-Wallet System Technical Solutions.
 
@@ -31,4 +31,5 @@ This document provides the technical architecture, implementation framework and 
   contribute.rst
   open-source.rst
   appendix.rst
+
 

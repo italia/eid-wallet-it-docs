@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Credential Verifier Test Matrix
 -----------------------------------
 
@@ -7,3 +8,5 @@ This section provides the set of test cases designed for technical implementers 
 
 .. include:: test-plans-remote-presentation.rst
 .. include:: test-plans-proximity-presentation.rst
+
+

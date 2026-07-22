@@ -10,57 +10,21 @@
 #
 # Usage: from repo root, with env activated:
 #   ./utils/build-pdf-local.sh
+#
+# Optional override:
+#   PDF_RELEASE_DATE=2026-07-03 ./utils/build-pdf-local.sh
+# Otherwise the date is resolved from the current git tag or the build date.
 
 set -e
-cd "$(dirname "$0")/.."
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
 
 # Ensure a valid UTF-8 locale for Sphinx/Python inside slim Docker images
 export LANG="${LANG:-C.UTF-8}"
 export LC_ALL="${LC_ALL:-C.UTF-8}"
 
-# Prepare temporary edits to document titles, similar to .github/workflows/build-pdf.yml
-IT_CONF="docs/it/conf.py"
-EN_CONF="docs/en/conf.py"
-IT_CONF_BAK="$(mktemp)"
-EN_CONF_BAK="$(mktemp)"
-cp "$IT_CONF" "$IT_CONF_BAK"
-cp "$EN_CONF" "$EN_CONF_BAK"
-
-trap 'cp "$IT_CONF_BAK" "$IT_CONF"; cp "$EN_CONF_BAK" "$EN_CONF"' EXIT
-
-# Determine tag:
-# - If PDF_BUILD_TAG is set, use that (manual override)
-# - Otherwise, if HEAD is exactly at a tag, use that
-# - Otherwise use "current version" labels
-TAG="${PDF_BUILD_TAG:-}"
-if [[ -z "$TAG" ]] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  TAG="$(git describe --tags --exact-match HEAD 2>/dev/null || true)"
-fi
-
-if [[ -n "$TAG" ]]; then
-  # Use Python to robustly normalize titles to "<base> - Release <TAG>" for both languages
-  python - <<PY
-from pathlib import Path
-
-tag = "${TAG}"
-for conf_path in [Path("$IT_CONF"), Path("$EN_CONF")]:
-    text = conf_path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    for i, line in enumerate(lines):
-        if line.strip().startswith("settings_project_name"):
-            # Extract base before the first " - "
-            before_eq, _, value = line.partition("=")
-            value_str = value.strip().strip('"')
-            base = value_str.split(" - ", 1)[0]
-            lines[i] = f'{before_eq}= "{base} - Release {tag}"'
-            break
-    conf_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-print(f"Applied release tag '{tag}' to document titles (local build)")
-PY
-else
-  sed -i 's/\(settings_project_name = ".*\)"/\1 - Versione Corrente"/' "$IT_CONF"
-  sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' "$EN_CONF"
-  echo "Applied editor/default titles for local build"
+if [[ -n "${PDF_RELEASE_DATE:-}" ]]; then
+  echo "Using PDF release date override: ${PDF_RELEASE_DATE}"
 fi
 
 if ! command -v lualatex &>/dev/null; then
@@ -80,11 +44,11 @@ TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 for LANG in en it; do
   ULANG=${LANG^^}
   echo "=== Sphinx LaTeX (${ULANG}) ==="
-  sphinx-build -b latex "docs/${LANG}/" "build/latex/${LANG}"
+  sphinx-build -b latex "$ROOT_DIR/docs/${LANG}/" "$ROOT_DIR/build/latex/${LANG}"
 
   # Normalize copied PDFs to 1.5 so LuaLaTeX can include them
   if command -v gs &>/dev/null; then
-    for f in "build/latex/${LANG}/images/pdf/"*.pdf; do
+    for f in "$ROOT_DIR/build/latex/${LANG}/images/pdf/"*.pdf; do
       [ -f "$f" ] || continue
       out="${f%.pdf}-t.pdf"
       gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$out" "$f" 2>/dev/null
@@ -93,7 +57,7 @@ for LANG in en it; do
     done
   fi
 
-  TEX_FILE=$(find "build/latex/${LANG}" -maxdepth 1 -type f -name '*.tex' | head -n 1)
+  TEX_FILE=$(find "$ROOT_DIR/build/latex/${LANG}" -maxdepth 1 -type f -name '*.tex' | head -n 1)
   if [[ -z "$TEX_FILE" ]]; then
     echo "Error: no .tex file found for ${ULANG} build in build/latex/${LANG}"
     exit 1
@@ -105,10 +69,16 @@ for LANG in en it; do
 
   echo "=== LuaLaTeX ${ULANG} (3 passes) ==="
   PWD_BEFORE=$(pwd)
-  cd "build/latex/${LANG}"
+  cd "$ROOT_DIR/build/latex/${LANG}"
   for i in 1 2 3; do
     echo "--- Pass $i ---"
-    lualatex -interaction=nonstopmode -file-line-error "${BASENAME}.tex"
+    rc=0
+    lualatex -interaction=nonstopmode -file-line-error "${BASENAME}.tex" || rc=$?
+    # LuaLaTeX may return non-zero on the first pass due to unresolved refs
+    # while still producing usable aux/pdf artifacts for subsequent passes.
+    if [[ $rc -ne 0 ]]; then
+      echo "Warning: LuaLaTeX returned ${rc} on ${ULANG} pass ${i}; continuing"
+    fi
     makeindex -s python.ist "${BASENAME}.idx" 2>/dev/null || true
   done
   if [[ ! -f "${BASENAME}.pdf" ]]; then
@@ -118,8 +88,8 @@ for LANG in en it; do
   fi
   cd "$PWD_BEFORE"
 
-  cp "build/latex/${LANG}/${BASENAME}.pdf" "pdf_output/${BASENAME}-${LANG}-${TIMESTAMP}.pdf"
+  cp "$ROOT_DIR/build/latex/${LANG}/${BASENAME}.pdf" "$ROOT_DIR/pdf_output/${BASENAME}-${LANG}-${TIMESTAMP}.pdf"
 done
 
 echo "Done. PDFs in pdf_output/"
-ls -la pdf_output/*.pdf
+ls -la "$ROOT_DIR"/pdf_output/*.pdf

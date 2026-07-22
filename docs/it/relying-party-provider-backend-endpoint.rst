@@ -1,8 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. _relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party:
-
-.. "included" file, so we start with '-' title level
+.. Incluso tramite relying-party-endpoints.rst al livello di titolo '"' (livello 3).
 
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 
@@ -26,7 +23,7 @@ Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente
 Endpoint di Inizializzazione dell'App di Verifica della Relying Party
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`).
+L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.
 
 Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
 
@@ -38,7 +35,8 @@ Il Key Binding Endpoint della Relying Party consente alle App di Verifica di ass
 Richiesta di Associazione Chiavi della Relying Party
 ....................................................
 
-Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance Attestation`. 
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance Attestation`.
+
 
 Le uniche differenze sono le seguenti:
 
@@ -61,7 +59,6 @@ Se si verifica un errore durante il processo, viene restituita una risposta di e
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in formato leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
-
 
 Di seguito è riportato un esempio non normativo di una Key Binding Error Response.
 
@@ -112,7 +109,7 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.
-    * - ``422 Unprocessable Content`` [OPTIONAL]
+    * - ``422 Unprocessable Content`` [OPZIONALE]
       - ``validation_error``
       - La richiesta non rispetta il formato richiesto.
     * - ``500 Internal Server Error``
@@ -228,8 +225,10 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
       - La richiesta non può essere soddisfatta perché l'Endpoint è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
 Endpoint di Cancellazione della Relying Party del Provider Backend
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint di Cancellazione consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party, supportando i diritti di privacy dell'utente e la conformità normativa.
 
 Per i requisiti di implementazione dettagliati, vedere :ref:`relying-party-remote-flow-endpoints:Endpoint di Cancellazione della Relying Party`.
+
+

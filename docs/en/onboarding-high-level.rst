@@ -22,7 +22,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     2. **Technical Registration**: Following administrative approval, entities complete technical registration through specialized pathways:
 
-        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private). 
+        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private).
 
         b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register Credential types with automatic catalog publication per Supervisory Body policy.
 
@@ -45,7 +45,7 @@ Authentic Source Registration Process
 
 Authentic Source registration allows data providers to establish their authoritative role in the Digital Credential ecosystem through the registration of their data capabilities and standardized access mechanisms based on the Claims Registry and Taxonomy classifications.
 
-Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally ``purposes``) that determine catalog eligibility per Supervisory Body policies. 
+Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally ``purposes``) that determine catalog eligibility per Supervisory Body policies.
 
 Public and Private Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.
 
@@ -69,6 +69,18 @@ For PID Providers, Attestation Providers, and Relying Parties, the federation on
  - **Entity Registration**: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.
  - **Certificate Issuance**: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.
  - **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that can be used to verify entity registration, and requested attributes.
+
+Onboarding of Relying Party Intermediaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Relying Party Intermediaries use a dedicated onboarding process that grants the status of recognized Intermediary and the authority to onboard subordinate Relying Parties. In the implementation profile described by these technical specifications, a Relying Party Intermediary matches an OpenID Federation Intermediate Entity (see the definition of **IT-Wallet Intermediary**). The process includes:
+
+- **Administrative registration**: The Intermediary submits organizational and legal documentation demonstrating its eligibility to act on behalf of Relying Parties pursuant to Art. 5b(8) of the eIDAS2 Regulation (`EU_2024_1183`_).
+- **Technical registration**: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for subordinate Leaves.
+- **Issuance of the Intermediary Trust Mark**: Upon completion of the onboarding process, the Trust Anchor issues to the Intermediary a Trust Mark with identifier ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``. This Trust Mark is the verifiable evidence of the Intermediary's recognized role in the federation.
+- **Authorization to issue Trust Marks**: The Trust Anchor updates its own Entity Configuration by including the Intermediary in the ``trust_mark_issuers`` attribute for the ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` identifier, authorizing the Intermediary to issue Trust Marks to its affiliated Relying Parties.
+
+The affiliated RP's Entity Configuration MUST include the Trust Mark issued by the Intermediary and MUST set ``authority_hints`` using the Intermediary's URL identifier.
 
 Entity Lifecycle Management
 ---------------------------
@@ -126,7 +138,7 @@ Removal processes MAY include investigations, remediations, and appeal procedure
 
 .. warning::
 
-    For critical security incidents or immediate threats to federation integrity, the Supervisory Body MAY implement emergency suspension with immediate effect. 
+    For critical security incidents or immediate threats to federation integrity, the Supervisory Body MAY implement emergency suspension with immediate effect.
 
 Lifecycle Coordination Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -191,12 +203,12 @@ From the Authentic Source operator perspective, the onboarding process begins wi
     - **Catalog Outcome**: Badge becomes publicly discoverable but it is available for the issuance only via Credential Offer.
 
 Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.
- 
+
 .. warning::
 
     **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.
 
-Credential Issuer Operator Journey  
+Credential Issuer Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources. Alternatively, the Credential Issuer operators receive directly the integration request by the Authentic Source.
@@ -204,7 +216,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
 **Example - mDL (Public Scenario)**:
 
     - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.
-    - **Integration Request**: Automatic approval due to regulatory mandate. 
+    - **Integration Request**: Automatic approval due to regulatory mandate.
     - **Technical Setup**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
     - **User Access**: Citizens discover mDL through a public catalog in Wallet.
@@ -217,7 +229,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
     - **Catalog Publication**: Badge automatically published in the Credential Catalog.
     - **User Access**: Employees receive badges only via direct Credential Offer from company systems.
 
-Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users. 
+Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users.
 
 .. warning::
 
@@ -233,7 +245,7 @@ A key technical requirement involves implementing Wallet integrity and authentic
 The certification process includes security evaluation, covering wallet architecture, data protection mechanisms, and user privacy features. Successfully certified wallet providers are registered in the Federation Registry and can distribute their applications through app stores.
 
 Relying Party Operator Journey
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Relying Party operators begin by identifying which EAA types are required for their specific services and evaluating integration complexity with existing authentication systems. The registration request provides evidence of legitimate needs for accessing specific Credential types and User attributes, outlining the intended service use cases and organizational characteristics that justify Credential access.
 
@@ -269,6 +281,8 @@ Service authorization by the Supervisory Body MUST involve policy-based evaluati
 User Experience Journey
 -------------------------------
 
-When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`). 
+When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`).
 
 This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
+
+

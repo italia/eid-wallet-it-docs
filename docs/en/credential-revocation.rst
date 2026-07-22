@@ -163,10 +163,10 @@ Entities Involved
 While the Credential Issuer MUST directly manage the validity status of Digital Credentials it has issued, other actors MAY trigger the Digital Credential revocation/suspension process:
 
   - Users, through:
-  
+
     - Their Wallet Instance
     - Web service provided by the Issuer
-  
+
   - The Authentic Source when Credential attributes are updated or change validity status
   - The Wallet Provider when revoking a Wallet Instance
   - The Identity Provider if the Digital Identity used for PID issuance is stolen or compromised
@@ -243,7 +243,7 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
 
-The Wallet Provider that, for any reason, revokes a Wallet Instance MUST ensure that the updated status is reflected in the status list of the related the Wallet Unit Attestation. 
+The Wallet Provider that, for any reason, revokes a Wallet Instance MUST ensure that the updated status is reflected in the status list of the related the Wallet Unit Attestation.
 In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
 Afterwards the revocation of the Wallet Unit Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
 
@@ -254,12 +254,12 @@ Authentic Sources manage attributes separately from Digital Credentials, which v
 
 Authentic Sources using PDND MUST use Signal Hub as the only notification update mechanism. In this case, they MUST deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
 
-  - The value of one or more Attributes contained in the Authentic Source's database has changed; 
+  - The value of one or more Attributes contained in the Authentic Source's database has changed;
   - The validity status of the Attributes is updated (revocation or suspension).
 
 In both cases, the Signal MUST have ``signalType`` set to ``UPDATE``.
 
-Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by quering the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
+Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by querying the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 The following diagram illustrates the high-level status update process for Authentic Sources.
 
@@ -274,7 +274,7 @@ The following diagram illustrates the high-level status update process for Authe
 .. only:: format_latex
 
   .. figure:: ./images/pdf/status-update-as.pdf
-    :alt: Status update process process Authentic Sources
+    :alt: Status update process for Authentic Sources
     :width: 100%
 
 The process starts with data or data validity changes that occur in the Authentic Source data. Changes can also be initiated by third-party entities other than the Authentic Source, such as when law enforcement agencies report illegal activities.
@@ -291,11 +291,10 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Unit Attestation status list) the status updating is handled as N separate status changes.  The Credential Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance MUST NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
+  * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Instance and Key Attestation status list) the status updating is handled as one or more separate status changes.  The Credential Issuer updates each Credential's status individually (for instance, by flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). The Wallet Instance MUST NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
 
 .. note::
   As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
-
 
 
 Validity Verification Mechanisms
@@ -346,7 +345,7 @@ The Issuer of a Digital Credential MUST use the following values for possible St
 
 For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 3, 1, 2, respectively; it will:
 
-  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x00, 0x30, 0x21]``.
+  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in hexadecimal notation generates the byte array ``[0x00, 0x30, 0x21]``.
   - compress the array using DEFLATE.
 
 .. note::
@@ -354,7 +353,7 @@ For example, if five states for a certain Digital Credential are possible, then 
 
 .. note::
   The main privacy consideration for a Status List is to prevent the Issuer from tracking the usage of the Digital Credential when the status is being checked. If a Credential Issuer offers status information by referencing a specific token, this would enable the Credential Issuer to create a profile for the issued token by correlating the date and identity of Relying Parties, that are requesting the status. Implementations MUST therefore integrate the status information of many Digital Credentials into the same list. As a result, the Issuer does not learn for which Digital Credential the Relying Party is requesting the Status List. The privacy of the User is protected by the anonymity within the set of Digital Credential in the Status List, this limits the possibilities of tracking by the Issuer.
-  This herd privacy effect depends on the number of entities within the Status List. A larger amount of Digial Credentials referenced therein results in better privacy but also impacts the performance as more data has to be transferred to read the Status List. Depending on the Status List parameters (e.g. the amounts of bits designating the Credential values), Credential Issuers have to strike an appropriate balance between privacy and performance.
+  This herd privacy effect depends on the number of entities within the Status List. A larger amount of Digital Credentials referenced therein results in better privacy but also impacts the performance as more data has to be transferred to read the Status List. Depending on the Status List parameters (e.g. the amounts of bits designating the Credential values), Credential Issuers have to strike an appropriate balance between privacy and performance.
 
 Once the Relying Party receives a Digital Credential, this enables it to request the Status List to validate its status through the provided URI parameter and look up the corresponding index. However, the Relying Party is able to store the URI and index of the Digital Credential to request the Status List again at a later time. By doing so regularly, the Relying Party may create a profile of the Digital Credential's validity status. This behaviour might also be abused in cases where this is not intended and unknown to the User, e.g. profiling the suspension of a driving license. This behaviour could be mitigated e.g., by regular re-issuance of the Digital Credential.
 
@@ -411,7 +410,7 @@ The Status List Token is available at the Status List Endpoint and contains the 
     - `TOKEN-STATUS-LIST`_
 
 .. note::
-  It is RECOMMENDED that the Credential Issuer sets the ``exp`` claim so that the Status List Token is short-lived. Typically, this involves the ``exp`` claim not to exeed the ``iat`` claim by more than 24 hours.
+  It is RECOMMENDED that the Credential Issuer sets the ``exp`` claim so that the Status List Token is short-lived. Typically, this involves the ``exp`` claim not to exceed the ``iat`` claim by more than 24 hours.
 
 A JSON-encoded Status List has the following structure:
 
@@ -461,8 +460,8 @@ The following is an example of Status List Token before applying signature and e
     "sub": "https://example-issuer.com/statuslists/",
     "ttl": 43200
   }
- 
- 
+
+
 Handling Credential Status with Status List Token
 """""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -544,7 +543,7 @@ The following is a non-normative example of a response for a Status List Token w
   eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjEsImxzdCI6ImVOcmJ1UmdBQWhjQlhRIn0sInN1YiI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSIsInR0bCI6NDMyMDB9.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
 
 Upon receiving a Digital Credential, a Relying Party MUST first perform the validation of the Digital Credential itself (e.g., checking for expected attributes, valid signature and expiration time). If this validation is not successful, the Digital Credential MUST be rejected. If the validation was successful, the Relying Party MUST perform the following validation steps to evaluate the status of the Digital Credential:
- 
+
 - Check for the existence of a ``status`` claim, check for the existence of a ``status_list`` claim within the ``status`` claim and validate that the content of ``status_list`` adheres to the rules defined in Section :ref:`credential-revocation:Handling Credential Status with Status List Token`.
 - Resolve the Status List Token from the provided URI.
 - Validate the Status List Token:
@@ -583,20 +582,5 @@ In case any error occurs when the Status Token Endpoint generates the response, 
     - The Status List Provider is temporary unavailable.
   * - *504 Gateway Timeout* [OPTIONAL]
     - The Status List Provider cannot fulfill the request within the defined time interval.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

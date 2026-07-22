@@ -47,7 +47,7 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
   To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithim is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
@@ -71,7 +71,7 @@ A non-normative example of the backup JWT header and payload is as the following
     "alg": "ES256",
     "typ": "wallet-unit-credentials-backup+jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -120,7 +120,7 @@ The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <cr
   * - **wallet_instance_attestation**
     - It MUST be set to a value containing the :term:`Wallet Instance Attestation` JWT.
   * - **credentials_backup**
-    - Object that describes specifics of the:term:`Credential` that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
+    - Object that describes specifics of the:term:`Credential` that are backed up. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
 
 
 Restore flow for Hardware Binding Credential
@@ -132,7 +132,7 @@ Restore flow for Hardware Binding Credential
    :width: 90%
    :alt: The figure illustrates the sequence diagram for restore flow, with the steps explained below.
    :caption: `Restore Flow <https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80>`_
-    
+
 
 .. .. figure:: ../../images/Restore_Flow.svg
 ..   :name: Sequence Diagram for Wallet Instance Restore
@@ -155,4 +155,6 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 - Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the:term:`Credential` (:ref:`WP_130b <credential-backup-testcases>`).
 
 .. note::
-  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Instance Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
+  The :term:`Wallet Instance` MUST NOT check the expiration of the :term:`Wallet Instance Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
+
+

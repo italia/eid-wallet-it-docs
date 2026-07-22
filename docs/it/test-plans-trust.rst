@@ -1,3 +1,6 @@
+.. include:: ../common/common_definitions.rst
+
+
 Matrice di Test per la Valutazione della Fiducia
 ------------------------------------------------
 
@@ -45,3 +48,5 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - Security
     - Attacchi replay
     - Le dichiarazioni firmate utilizzando identificatori univoci sono memorizzate fino al loro tempo di scadenza e controllate contro qualsiasi replay di esse.
+
+

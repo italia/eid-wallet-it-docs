@@ -146,7 +146,7 @@
         "elementIdentifier": "verification",
         "elementValue": {
           "trust_framework": "it_wallet",
-          "assurance_level": "high",
+          "assurance_level": "https://trust-anchor.example.it/loa/high",
           }
         }
       >>)

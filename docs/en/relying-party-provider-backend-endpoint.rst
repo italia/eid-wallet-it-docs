@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Included via relying-party-endpoints.rst at title level '"' (level 3).
 
 The Relying Party MUST expose a set of endpoints for handling the lifecycle of Verifier Apps that use a remote backend service provided by their Relying Party Provider Backend. These endpoints support proximity presentation flows by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance. The specific implementation details are left to the Relying Party's discretion.
 
@@ -121,7 +120,6 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
-
 Relying Party Provider Backend Access Certificate Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -232,3 +230,5 @@ Relying Party Provider Backend Erasure Endpoint
 The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.
 
 For detailed implementation requirements, see :ref:`relying-party-remote-flow-endpoints:Relying Party Erasure Endpoint`.
+
+

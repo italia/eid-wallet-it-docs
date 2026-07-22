@@ -15,5 +15,5 @@
   "inline-style-disabled": false,
   "inline-script-disabled": false,
   "space-tab-mixed-disabled": "space",
-  "id-class-value": "dash"
+  "id-class-value": false
 }

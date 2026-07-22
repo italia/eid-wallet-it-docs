@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Included via endpoints.rst at title level '-' (level 1).
 
 Relying Party Endpoints
 ------------------------
@@ -18,3 +17,5 @@ Relying Party Provider Backend Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: relying-party-provider-backend-endpoint.rst
+
+

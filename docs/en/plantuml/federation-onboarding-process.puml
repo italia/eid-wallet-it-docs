@@ -14,23 +14,24 @@ ta -> ta: Verify registration information
 ta -> ta: Validate Entity Configuration at\n/.well-known/openid-federation endpoint
 ta -> ta: Apply metadata policies with cascading effect
 ta -> ta: Issue X.509 Certificates about\nFederation Entity Public Keys in CSRs
+ta -> ta: Generate Federation Trust Marks for entity
 
 alt Validation successful
-    ta -> fe: X.509 Certificate chain response\n(Entity certificate + authority certificates)
+    ta -> fe: Registration identifier
 else Validation failed
     ta -> fe: Rejection with identified issues
 end
 
-== Step 3: Entity Configuration Update and Resolve Request ==
+== Step 3: Federation Entity Data Retrieval ==
 
 fe -> ta: Get Subordinate Statement\n(/fetch?sub=entity_id)
-ta -> ta: Generate Federation Trust Mark for entity
-ta -> ta: Include Trust Mark in Subordinate Statement
-ta -> fe: Subordinate Statement response
+ta -> fe: Subordinate Statement Response (sub, jwks (X.509 Certificate chains), metadata_policy)
+loop for each entity type
+fe -> ta: Trust Mark Request\n(/trust_mark?trust_mark_type=<type>)
+ta -> fe: Trust Mark Response (Trust Mark)
+end
 
-== Step 4: Resolve Response and Onboarding Completion ==
-
-fe -> fe: Update Entity Configuration:\n- Add authority_hints claim\n- Add trust_marks claim
+== Step 4:  Entity Configuration Update and Onboarding Completion ==
+fe -> fe: Update Entity Configuration:\n- Add authority_hints claim\n- Add x5c claims with certificate chains\n- Add trust_marks claim
 fe -> fe: Publish updated EC at\n/.well-known/openid-federation
-
 @enduml

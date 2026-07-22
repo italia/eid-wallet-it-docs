@@ -11,3 +11,5 @@ Questo processo consente all'Utente che ha appena installato l'applicazione di r
 
 .. note::
   Il Fornitore di Wallet DOVREBBE associare l'Istanza del Wallet (tramite l'identificatore ``hardware_key_tag``) a un Utente specifico identificato in modo univoco all'interno dei sistemi del Fornitore di Wallet. Questo sarà utile per il ciclo di vita dell'Istanza del Wallet e per una futura revoca. Per i dettagli far riferimento all':ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`.
+
+

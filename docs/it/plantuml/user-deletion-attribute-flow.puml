@@ -8,7 +8,7 @@ participant "User Agent" as ua
 end box
 
 box Relying Party
-participant "Erasure Endoint" as eept
+participant "Erasure Endpoint" as eept
 participant "Federation Endpoint" as fept
 end box
 

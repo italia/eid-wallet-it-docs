@@ -52,7 +52,7 @@
 .btn-itwallet-auth {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 8px; /* Bootstrap Italia icon button spacing */
   font-family: "Titillium Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600; /* Semi-bold per il label principale */
   text-align: left;
@@ -62,24 +62,22 @@
   user-select: none;
   border: 2px solid transparent;
   border-radius: 4px;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: #0066CC;
   color: #FFFFFF;
-  padding: 0.5rem 1rem;
-  /* Default size: Small (S) per Brand Manual */
-  font-size: 0.875rem;    /* 14px */
-  line-height: 1.428;     /* ~20px */
-  min-height: 40px; /* Accessibility: minimum touch area */
-  gap: 0.5rem;
+  padding: 12px 24px; /* Bootstrap Italia / design system spec */
+  /* Default size: Medium (M) - versione consigliata */
+  font-size: 1rem;        /* 16px */
+  line-height: 1.4;       /* ~22px */
+  min-height: 48px; /* Accessibility: minimum touch area */
   justify-content: flex-start; /* Default: left alignment */
+  box-shadow: none;
 }
 
 .btn-itwallet-auth:hover:not(:disabled) {
   background-color: #0052A3;
   color: #FFFFFF;
   text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
 }
 
 .btn-itwallet-auth:focus {
@@ -92,8 +90,6 @@
 
 .btn-itwallet-auth:active:not(:disabled) {
   background-color: #003D7A;
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
 }
 
 .btn-itwallet-auth:disabled {
@@ -103,20 +99,21 @@
   color: #FFFFFF;
 }
 
-/* Icon - default size Small (S) */
+/* Icon - default size Medium (M) */
 .btn-itwallet-auth .btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 16px;
-  height: 20px;
+  width: 20px;
+  height: 24px;
 }
 
 .btn-itwallet-auth .btn-icon svg {
   width: 100%;
   height: 100%;
   fill: currentColor;
+  display: block;
 }
 
 /* Text */
@@ -159,46 +156,48 @@
   padding-left: 0;
 }
 
-/* Sizes - default is Small (S) */
+/* Sizes - default is Medium (M) */
 
-/* Small (default) - base .btn-itwallet-auth already uses these values */
+/* Small */
 .btn-itwallet-auth.btn-sm {
-  padding: 0.5rem 1rem;
+  padding: 12px 24px;
   font-size: 0.875rem;   /* 14px */
   line-height: 1.428;    /* ~20px */
   min-height: 40px;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .btn-itwallet-auth.btn-sm .btn-icon {
-  width: 16px;
-  height: 20px;
+  width: 13px;
+  height: 16px;
 }
 
-/* Medium */
+/* Medium (default) - base .btn-itwallet-auth already uses these values */
 .btn-itwallet-auth.btn-md {
-  padding: 0.625rem 1.25rem;
-  font-size: 0.9375rem;  /* 15px */
-  line-height: 1.4;      /* ~21px */
+  padding: 12px 24px;
+  font-size: 1rem;       /* 16px */
+  line-height: 1.4;      /* ~22px */
   min-height: 48px;
+  gap: 8px;
 }
 
 .btn-itwallet-auth.btn-md .btn-icon {
-  width: 18px;
-  height: 22px;
+  width: 20px;
+  height: 24px;
 }
 
 /* Large */
 .btn-itwallet-auth.btn-lg {
-  padding: 1rem 2rem;
+  padding: 18px 24px;
   font-size: 1.125rem;   /* 18px */
   line-height: 1.444;    /* ~26px */
-  min-height: 56px;
+  min-height: 60px;
+  gap: 8px;
 }
 
 .btn-itwallet-auth.btn-lg .btn-icon {
-  width: 24px;
-  height: 28px;
+  width: 20px;
+  height: 24px;
 }
 
 /* Responsive */
@@ -209,8 +208,9 @@
   }
   
   .btn-itwallet-auth.btn-lg {
-    padding: 0.875rem 1.5rem;
+    padding: 16px 24px;
     font-size: 1rem;
+    min-height: 56px;
   }
 }
 
@@ -224,14 +224,6 @@
 @media (prefers-reduced-motion: reduce) {
   .btn-itwallet-auth {
     transition: none;
-  }
-  
-  .btn-itwallet-auth:hover:not(:disabled) {
-    transform: none;
-  }
-  
-  .btn-itwallet-auth:active:not(:disabled) {
-    transform: none;
   }
 }
 

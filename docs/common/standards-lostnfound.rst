@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-  
+
 
 Infrastructure of Trust
 =======================
@@ -9,7 +9,7 @@ Infrastructure of Trust
     :header-rows: 0
 
     * - `OID-FED`_
-      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", December 2024, Draft 41.
+      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", February 2026, Final.
     * - DTS/ESI-0019602
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model. Trusted lists in other formats, such as JSON, CBOR or ASN.1.
     * - ISO-IEC_7367
@@ -39,7 +39,6 @@ Identity Proofing Proposals for Future Milestones
       - CEN: Biometric injection attack detection for remote registration (`CEN/TS 18099:2024 <https://conto.uni.com/en/cen-ts-18099-2024>`_)
     * - CEN_Biometric_Requirements
       - CEN: European requirements for biometric products. Personal identification — European requirements for biometric products — Part 2: Interoperability tests. (Replaces: N 2588 CEN/TC 224/WG 18 European requirements for biometric products Part 2)
-
 
 
 Biometric Data
@@ -232,3 +231,5 @@ Digital Credential Presentation Proposals for Future Milestones
       - Cards and security devices for personal identification - Building blocks for identity management via mobile devices - Part 4: Protocols and services for operational phase
     * - ISO/IEC 18013-7
       - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
+
+

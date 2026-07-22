@@ -160,7 +160,7 @@
       ],
       "logo_uri": "https://www.gov.example/assets/transport-data-logo.svg",
       "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
-      "service_documentation": "https://docs.gov.example/transport/api-docs",
+      "service_documentation_uri": "https://docs.gov.example/transport/api-docs",
       "update_frequency": "real_time",
       "user_information": [  
         {

@@ -17,7 +17,7 @@ Wallet Architecture and Reference Frameworks
 
     * - `EIDAS-ARF`_
       - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
-    
+
 
 EUDI Wallet Standards and Technical Specifications
 --------------------------------------------------
@@ -34,8 +34,6 @@ EUDI Wallet Standards and Technical Specifications
       - Specification of Strong Customer Authentication (SCA) Implementation with the Wallet.
 
 
-
-
 Infrastructure of Trust
 -----------------------
 
@@ -48,7 +46,7 @@ Infrastructure of Trust
     * - `OID-FED-WALLET`_
       - De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., "OpenID Federation Wallet Architectures 1.0", October 2024, Draft 03.
     * - `OID-FED`_
-      - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", December 2025, Draft 46.
+      - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", February 2026, Final.
     * - `OID-FED-SUBORDINATE-EVENTS`_
       - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
     * - `ETSI TS 119 412-6`_
@@ -63,7 +61,7 @@ Digital Credential Data Format
     :header-rows: 0
 
     * - `SD-JWT-VC`_
-      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", September 2025, Draft 11.
+      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", October 2025, Draft 12.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
 
@@ -147,3 +145,5 @@ Security and Protection Profiles
 
     * - `UNI CEI EN ISO/IEC 27001:2024`
       - Information security, cybersecurity and privacy protection — Information security management systems — Requirement
+
+

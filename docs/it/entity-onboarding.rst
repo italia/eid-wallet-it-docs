@@ -12,7 +12,7 @@ Panoramica
 ----------
 
 Architettura del Sistema di Onboarding delle Entità
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'ecosistema IT-Wallet opera su un'infrastruttura di fiducia federata, che richiede alle entità partecipanti di stabilire una fiducia reciproca prima di intraprendere qualsiasi interazione che coinvolga attributi dell'Utente.
 
@@ -22,7 +22,7 @@ Il framework di onboarding definisce procedure di registrazione tecnica in base 
   2. Le Entità Operative (Emittenti di Credenziali, Relying Party, Fornitori di Wallet) seguono procedure di instaurazione della fiducia.
 
 Tipologie di Entità e Percorsi di Onboarding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi percorsi di onboarding:
 
@@ -57,14 +57,14 @@ La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi
      - Attestazione del Wallet da un Fornitore di Wallet affidabile
 
 Registrazione Amministrativa e Tecnica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il processo di onboarding segue un approccio strutturato in più fasi:
 
   1. **Registrazione Amministrativa**: Tutte le entità DEVONO completare la registrazione amministrativa iniziale che ne valida la posizione giuridica, la conformità normativa e l'idoneità organizzativa a partecipare all'ecosistema IT-Wallet.
 
   2. **Registrazione Tecnica**: A seguito dell'approvazione amministrativa, le entità effettuano la registrazione tecnica attraverso percorsi specializzati:
-    
+
     - **Registrazione Fonte Autentica**: Procedure di registrazione incentrate sui dati con validazione dell'integrazione API.
     - **Registrazione in Federazione**: Instaurazione della fiducia crittografica come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
@@ -79,12 +79,12 @@ Il processo di onboarding segue un approccio strutturato in più fasi:
 Tutti i componenti del registro e le loro interazioni sono descritti in dettaglio in :ref:`registry:Infrastruttura del Registro`.
 
 Processo di Registrazione delle Fonti Autentiche
--------------------------------------------------
+------------------------------------------------
 
 Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in :ref:`onboarding-high-level:Journey dell'Operatore della Fonte Autentica`.
 
 Requisiti di Registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
 
@@ -110,7 +110,7 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
     - **Audit Trail**: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.
 
 Requisiti sulle informazioni di registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
   Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.
@@ -135,14 +135,14 @@ Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informa
 
        - Array di identificatori di claim del Registro dei Claims forniti dalla Fonte Autentica (es. ``["given_name", "family_name", "driving_privileges"]``).
        - Finalità previste per la verifica, utilizzando gli identificatori di finalità della tassonomia (es. ``["DRIVING_RIGHTS_VERIFICATION"]``).
-      
+
    * - **Dettagli di Implementazione API**
      - **OBBLIGATORIO**. Informazioni dettagliate sull'integrazione:
 
        - Framework di autorizzazione per l'accesso API.
        - Definizioni API quali Formati di Richiesta/Risposta, inclusa la gestione degli errori.
    * - **Capacità di Fornitura dei Dati**
-     - **OBBLIGATORIO**. Indica se la Fonte Autentica supporta la fornitura immediata/differita dei dati (booleano).    
+     - **OBBLIGATORIO**. Indica se la Fonte Autentica supporta la fornitura immediata/differita dei dati (booleano).
    * - **Informazioni per l'Utente**
      - **OPZIONALE**. Testo in formato Markdown contenente informazioni in linguaggio naturale sui vincoli o limitazioni nella disponibilità dei dati. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati dopo una data specifica, questa informazione DEVE essere comunicata agli Utenti.
 
@@ -163,9 +163,9 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
 .. plantuml:: plantuml/as-registration-process.puml
     :width: 99%
     :alt: Processo di registrazione della Fonte Autentica che mostra la procedura in 3 fasi
-    :caption: `Processo di Registrazione della Fonte Autentica. <https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6>`_ 
+    :caption: `Processo di Registrazione della Fonte Autentica. <https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6>`_
 
-**Fase 1 - Predisposizione del Pacchetto di Registrazione**: L'Entità predispone le informazioni di registrazione conformemente alla tabella dei requisiti sopra riportata. Di seguito è fornito un esempio non normativo delle informazioni in formato JSON. 
+**Fase 1 - Predisposizione del Pacchetto di Registrazione**: L'Entità predispone le informazioni di registrazione conformemente alla tabella dei requisiti sopra riportata. Di seguito è fornito un esempio non normativo delle informazioni in formato JSON.
 
 .. list-table:: Campi di Primo Livello del Registro delle Fonti Autentiche
    :class: longtable
@@ -257,7 +257,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
-     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+     - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin**
      - JSON Object Array
      - OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim ``locale`` e ``name``.
@@ -309,7 +309,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione :ref:`credential-revocation:Token Status Lists`. DEVE contenere i claim ``locale``, ``title``, ``description`` e ``<Status-Type-Value>``.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
@@ -353,7 +353,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    La registrazione della Fonte Autentica è completa e indipendente dall'integrazione con l'Emittente di Credenziali. Le Fonti Autentiche diventano rilevabili immediatamente dopo la pubblicazione nel Registro delle Fonti Autentiche, mentre la disponibilità delle Credenziali per gli Utenti finali dipende dall'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali, seguita dalla riuscita integrazione tecnica e dall'approvazione dell'Organismo di Vigilanza per l'idoneità al catalogo.
 
 Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra gli Emittenti di Credenziali e le Fonti Autentiche.
 
@@ -365,12 +365,12 @@ L'integrazione tecnica comprende:
 - **Implementazione della Sicurezza**: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.
 
 Processo di Onboarding delle Entità Federate
----------------------------------------------
+--------------------------------------------
 
 Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Modello Gerarchico dell'Autorità di Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La federazione IT-Wallet implementa un **modello di onboarding gerarchico** in cui le Entità Federate DEVONO essere registrate da uno dei seguenti attori:
 
@@ -389,7 +389,7 @@ Pertanto, le Entità Federate POSSONO essere registrate attraverso percorsi diff
   - **Onboarding Mediato da un Intermediario**: L'Entità si registra presso un Intermediario appropriato.
 
 Prerequisiti di Onboarding alla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avviare il processo di onboarding:
 
@@ -411,7 +411,7 @@ Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avvi
   - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tutte le entità federate DOVREBBERO mantenere almeno due chiavi di firma attestate dal Trust Anchor:
 
@@ -431,7 +431,7 @@ La chiave di backup DEVE essere:
 - Mantenuta con gli stessi standard di sicurezza della chiave attiva
 
 Procedura di Onboarding alla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 La procedura di onboarding alla federazione segue una procedura strutturata in 4 fasi e può essere eseguita dal Trust Anchor o da un Intermediario.
 
 .. note::
@@ -443,7 +443,7 @@ La procedura di onboarding alla federazione segue una procedura strutturata in 4
 .. plantuml:: plantuml/federation-onboarding-process.puml
     :width: 99%
     :alt: Processo di onboarding dell'entità federata che mostra la procedura in 4 fasi
-    :caption: `Processo di Onboarding dell'Entità Federata. <https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0>`_
+    :caption: `Processo di Onboarding dell'Entità Federata. <https://www.plantuml.com/plantuml/svg/ZLDDRnCn4BtxLunwQgIavOCUY4W_b1PKAWHAeN2e54tiSJEjrrxMOqB-FVknoswL8769el6yjs_Up3kFWeMap2bC4dpALbGebPSrrfoZ5pXuJuOA50uUhhomR0y08rZwPzT5adKekaP1fMOpk1NAuUKKFljLmCAmVu05_KmK1MxJAkCOA-XiffGbc9o2uBHv40Wzf6WWz_wmaGBNbsFuabQEDTpG5Zv-lubZcDykugZ_wgifx5C7T-ZOD4Nq1kPK25lMA0JNCIRqccf1WfsWEohORg6W1uxIyh6teSZg_trdnqtGwfm7R_aXjHWi9pW-sf1paoSVDluuvEJPJ6mlaxp90tiPS5xakTj2He861I4FZZLJX0tB6ZH6ZRL7P2tf8QuQXk37qScBjyCX8-0gf5B9pe87ZaPWN_ivuFj0lkgdeQjVYnG5Fc7n5A7q0wWcKWgT37sEIMkAqIQd000QJajJM3opr5HmorGeSf6611RPaTa1FvAkdoihUhW1haQFYhpfp-7r57OdlgmSNP0KJB_GjNVO3rmVQQXk48LA6XJAo5TtU6n9zFeifjMicNd9PgHwRNjniA2O1ny93alW61utfMs7Eni2lKRsSJJ-k_HblVJjIBaGyiPerElMRP1jJhtimKwwg5LwfQekix9wrlzTLj3Pk-htj5S_f1X8xekZvyw-cSB-U_-Mrrb0RuRvduSiToHjxYrr7sswzp9Dx_q4Bem1x5AyNBEN2DeXPztZxnFT5Bfix5ZQTVOEj1IzZ2O4SGsfbcFWQluVkLNdv4tAt1y0>`_
 
 **Fase 1 - Invio della Richiesta di Onboarding**: L'Entità Federata avvia il processo di onboarding inviando una richiesta di registrazione tecnica contenente le seguenti informazioni.
 
@@ -496,21 +496,7 @@ L'esempio seguente mostra il contenuto decodificato della CSR:
   - **Applicazione delle Politiche sui Metadati**: Applicazione delle politiche sui metadati specifiche della federazione ai metadati dell'entità in base alle caratteristiche organizzative e all'ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando registrata tramite un Intermediario, si applicano le politiche sia dell'Intermediario che del Trust Anchor, con le politiche del Trust Anchor prevalenti in caso di conflitti.
   - **Emissione del Certificato X.509**: Certificazione della Chiave dell'Entità Federata con l'emissione del Certificato X.509 utilizzando l'infrastruttura di fiducia dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari DEVONO emettere Certificati X.509 utilizzando **vincoli di denominazione** appropriati che limitino l'uso di nomi DNS e URI ai soli propri subordinati.
 
-Al termine della validazione positiva, l'entità riceve una risposta contenente una Catena di Certificati X.509 in cui:
-
-  - Il primo elemento è il Certificato X.509 contenente la Chiave dell'Entità Federata (emesso dall'Autorità di Federazione).
-  - **Per l'onboarding da Trust Anchor**: Il secondo elemento è il Certificato X.509 auto-firmato del Trust Anchor per la validazione del primo Certificato X.509.
-  - **Per l'onboarding da Intermediario**: Gli elementi aggiuntivi includono il Certificato X.509 dell'Intermediario e il Certificato auto-firmato del Trust Anchor, formando una catena di Certificati X.509 completa.
-  - Tutti i Certificati X.509 sono espressi in formato DER e codificati in Base64.
-
-Esempio di risposta con catena di Certificati X.509:
-
-.. code-block:: json
-
-   [
-     "MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...",
-     "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."
-   ]
+  In caso di esito positivo, l'entità riceve un identificativo di registrazione.
 
 .. note::
    Se il processo di emissione fallisce, l'entità richiedente riceve una risposta con i problemi identificati da risolvere prima di inviare una nuova richiesta di onboarding.
@@ -520,6 +506,30 @@ Esempio di risposta con catena di Certificati X.509:
 
 **Fase 3 - Recupero della Dichiarazione del Subordinato**: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
+In questo modo, l'entità riceve la Catena di Certificati X.509 all'interno del claim ``jwks`` in cui:
+
+  - Il primo elemento è il Certificato X.509 contenente la Chiave dell'Entità Federata (emesso dall'Autorità di Federazione).
+  - **Per l'onboarding da Trust Anchor**: Il secondo elemento è il Certificato X.509 auto-firmato del Trust Anchor per la validazione del primo Certificato X.509.
+  - **Per l'onboarding da Intermediario**: Gli elementi aggiuntivi includono il Certificato X.509 dell'Intermediario e il Certificato auto-firmato del Trust Anchor, formando una catena di Certificati X.509 completa.
+  - Tutti i Certificati X.509 sono espressi in formato DER e codificati in Base64.
+
+Esempio di risposta con catena di Certificati X.509 all'interno del claim ``jwks``:
+
+.. code-block:: json
+
+ {
+    "keys": [
+      {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
+		    "x5c": ["MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...", "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."]
+      }
+    ]
+  }
+
 Esempio di richiesta fetch:
 
 .. code-block:: http
@@ -528,7 +538,9 @@ Esempio di richiesta fetch:
     Host: trust-anchor.example.gov
 
 .. note::
-   Se l'endpoint ``/fetch`` risponde con codice di stato ``400`` o ``404``, l'entità DEVE risolvere i problemi descritti nel messaggio di risposta prima di richiamare nuovamente l'endpoint fetch. 
+   Se l'endpoint ``/fetch`` risponde con codice di stato ``400`` o ``404``, l'entità DEVE risolvere i problemi descritti nel messaggio di risposta prima di richiamare nuovamente l'endpoint fetch.
+
+Inoltre, l'entità può recuperare i Trust Mark tramite l'endpoint Trust Mark come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 **Fase 4: Aggiornamento della Configurazione dell'Entità e Completamento dell'Onboarding**
 
@@ -588,21 +600,21 @@ L'Entità Federata DEVE completare il processo di onboarding:
          ]
 
 .. note::
-   Per aggiornare i Trust Mark dopo l'onboarding, l'entità può utilizzare l'endpoint fetch del proprio superiore immediato per ottenere tutti i Trust Mark aggiornati che la riguardano. Quando l'emittente del Trust Mark è diverso dall'entità superiore che ha registrato l'entità, le Entità Federate possono ottenere Trust Mark aggiornati in qualsiasi momento utilizzando l'endpoint Federation Trust Mark come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+   Le Entità Federate possono ottenere Trust Mark in qualsiasi momento utilizzando il Federation Trust Mark Endpoint come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Al completamento positivo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
-   
+
 
 .. note::
    **Integrazione nel Registro della Federazione**: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
 
 Trust Mark della Federazione IT-Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
+Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) attraverso il Federation Trust Mark Endpoint e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
 
 Tipologie e Schema dei Trust Mark
-""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
 
 Le Entità POSSONO ricevere più Trust Mark per finalità diverse. Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che rispecchia l'ambito di autorizzazione:
 
@@ -615,7 +627,7 @@ Dove:
   - ``<entity_type>``: La tipologia dell'entità destinataria (es. ``credential-issuer``, ``relying-party``, ``wallet-provider``).
 
 Struttura dei Trust Mark
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 I Trust Mark nella Configurazione dell'Entità DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
 
@@ -733,7 +745,7 @@ Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione d
    {
      "iss": "https://credentials.example.gov",
      "sub": "https://credentials.example.gov",
-     "jwks": { 
+     "jwks": {
       // contenuto jwks
      },
      "authority_hints": ["https://trust-anchor.eid-wallet.example.it"],
@@ -743,7 +755,7 @@ Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione d
          "trust_mark": "eyJhbGciOiJFUzI1NiIsImtpZCI6IlRydXN0QW5jaG9yS2V5SWQiLCJ0eXAiOiJKV1QifQ..."
        }
      ],
-     "metadata": { 
+     "metadata": {
       // contenuto dei Metadati
      }
    }
@@ -753,7 +765,7 @@ Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione d
    {
      "iss": "https://healthcare-ci.example.gov",
      "sub": "https://healthcare-ci.example.gov",
-     "jwks": { 
+     "jwks": {
       // contenuto jwks
      },
      "authority_hints": ["https://healthcare.intermediate.eid-wallet.example.it"],
@@ -763,13 +775,13 @@ Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione d
          "trust_mark": "eyJhbGciOiJFUzI1NiIsImtpZCI6IkhlYWx0aGNhcmVJbnRlcm1lZGlhdGVLZXlJZCIsInR5cCI6IkpXVCJ9..."
        }
      ],
-     "metadata": { 
-      // contenuto dei Metadati  
+     "metadata": {
+      // contenuto dei Metadati
     }
    }
 
 Validazione dei Trust Mark
-"""""""""""""""""""""""""""
+""""""""""""""""""""""""""
 
 I partecipanti alla federazione validano lo stato dei Trust Mark tramite due meccanismi:
 

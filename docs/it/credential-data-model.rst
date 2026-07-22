@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
-  
+
 
 Modello di Dati degli Attestati Elettronici
-==============================================
+===========================================
 
 Un modello di dati dell'Attestato Elettronico ha la seguente struttura:
 
@@ -17,7 +17,7 @@ Gli Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) sono rilasciati da
 Mentre il modello dati (Q)EAA è guidato dal caso d'uso e può includere diversi attributi dell'Utente, gli attributi di metadati specifici per ciascun formato dati sono forniti nelle sezioni seguenti.
 
 Attributi di Metadati Format-Agnostic dell'Attestato Elettronico
------------------------------------------------------------------
+----------------------------------------------------------------
 
 La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla credenziale.
 
@@ -48,10 +48,8 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
 
 Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
 
-.. _credential-data-model-attestato-elettronico-in-formato-sd-jwt-vc:
-
 Formato Attestato Elettronico SD-JWT-VC
-----------------------------------------
+---------------------------------------
 
 Quando gli Attestati Elettronici sono emessi in formato SD-JWT-VC, DEVONO essere conformi alle specifiche `SD-JWT`_ e `SD-JWT-VC`_.
 
@@ -71,7 +69,7 @@ Vedere `SD-JWT-VC`_ e `SD-JWT`_ per ulteriori dettagli.
 
 
 Attributi Metadata degli Attestati Elettronici SD-JWT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il JOSE Header contiene i seguenti parametri obbligatori:
 
@@ -102,7 +100,6 @@ Il JOSE Header contiene i seguenti parametri obbligatori:
 
 Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i seguenti claim NON DEVONO essere divulgabili selettivamente.
 
-
 .. _table_sd-jwt-vc_parameters:
 .. list-table::
     :class: longtable
@@ -122,7 +119,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - `[RFC7519, Sezione 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
+      - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
       - OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
@@ -140,7 +137,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. *Stringa*. Identificativo del dato `expiry_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce al periodo di validità amministrativa dell'Attestato Elettronico, che è tipicamente diverso dal periodo di validità tecnica espresso dal claim JWT ``exp``.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
-      - OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`.
+      - OPZIONALE. OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
@@ -152,11 +149,10 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
       - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
-        Include i seguenti sotto-valori:
+      - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Include i seguenti sotto-valori:
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
-          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
+          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
       - Estensione domestica.
     * - **_sd**
@@ -165,6 +161,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
     * - **_sd_alg**
       - OBBLIGATORIO. *Stringa*. Algoritmo di hash utilizzato dal Fornitore di Attestati Elettronici per generare i digest.
       - 4.1.1 `SD-JWT`_
+
 
 .. note::
   I claim JWT standard ``nbf`` e ``exp`` sono utilizzati per esprimere il periodo di validità tecnica di un Attestato Elettronico conforme a SD-JWT VC.
@@ -229,16 +226,6 @@ Di seguito è riportato l'elenco delle disclosure:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "birth_date", "1980-01-10"]``
 
 
-**Claim** ``expiry_date``:
-
- * Hash SHA-256: ``_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ``
- * Disclosure:
-   ``WyJYY1hsUFZDcWpITnZlQkNubFZQWWdBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
-   ``MjQtMDEtMDEiXQ``
- * Contenuto:
-   ``["XcXlPVCqjHNveBCnlVPYgA", "expiry_date", "2024-01-01"]``
-
-
 **Claim** ``tax_id_code``:
 
  * Hash SHA-256: ``Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas``
@@ -267,26 +254,19 @@ Il formato combinato per l'emissione del (Q)EAA è rappresentato di seguito:
   :language: text
 
 Type Metadata dell'Attestato Elettronico
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
+In aggiunta ai parametri definiti nella sezione 9.2 di [`SD-JWT-VC`_], il seguente parametro DOVREBBE essere incluso:
+
+  - ``name``: Nome "human-readable" dell'Attributo destinato agli utenti finali.
+
 In conformità con la Sezione 6.3.3 di `SD-JWT-VC`_, il documento JSON del *Type Metadata* PUÒ essere recuperato tramite un *well-known* endpoint.
 Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/type-metadata``. A tale endpoint DEVE essere aggiunto il parametro di query ``vct``.
-L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` e ``application/jwt`` come content type.
+L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` come content type.
 
 Di seguito è riportato un esempio non normativo.
-
-.. code-block:: http
-
-    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
-    Host: issuer.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 .. code-block:: http
 
@@ -297,20 +277,18 @@ Di seguito è riportato un esempio non normativo.
     HTTP/1.1 200 OK
     Content-Type: application/json
 
-    {	
+    {
       "vct": "urn:eudi:pid:it:1",
       "name": "...",
       "description": "...",
       ...
     }
 
-
-.. _credential-data-model-attestato-elettronico-in-formato-mdoc-cbor:
-
 Formato Attestato Elettronico mdoc-CBOR
-------------------------------------------
+---------------------------------------
 
 Gli Attestati Elettronici emessi in formato mdoc-CBOR DEVONO essere basati sullo standard ISO/IEC 18013-5.
+
 I dati in mdoc DEVONO essere codificati in CBOR come definito in :rfc:`8949`.
 
 Questo modello dati struttura gli Attestati Elettronici in componenti distinti: namespaces (**nameSpaces**) e prova crittografica (**issuerAuth**).
@@ -410,7 +388,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
           - Se definito da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (per esempio, per una mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``).
 
-          - Se definito a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.{credential_type}.{version}`` (ad es., ``eu.europa.ec.eudi.pid.1``).
+          - Se definito a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.eudi.{credential_type}.{version}`` (ad es., ``eu.europa.ec.eudi.pid.1``).
 
           - Se definito a livello nazionale, DEVE essere una stringa della forma ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (ad es., ``it-wallet.trust-registry.pid.1``).
 
@@ -419,11 +397,11 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - *(tstr)*. Versione del `MobileSecurityObject`.
       - [ISO 18013-5#9.1.2.4]
     * - **validityInfo**
-      - *(map, REQUIRED)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
+      - *(map, OBBLIGATORIO)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
 
-          * **signed** *(tdate, OPTIONAL)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
-          * **validFrom** *(tdate, OPTIONAL)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido.
+          * **signed** *(tdate, OPZIONALE)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
+          * **validFrom** *(tdate, OPZIONALE)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
+          * **validUntil** *(tdate, OBBLIGATORIO)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -441,7 +419,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, CONDIZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_.
+      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::
@@ -475,7 +453,7 @@ Attributi dei Namespaces
       - [ISO 18013-5#8.3.2.1.2.3]
 
 Attributi Metadata degli Attestati Elettronici mdoc-CBOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 I seguenti **elementIdentifiers** che rappresentano attributi metadata format-encoded sono definiti per gli Attestati Elettronici in formato mdoc-CBOR all'interno del rispettivo *nameSpace*:
 
@@ -513,7 +491,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
      - *(map, OPZIONALE)*. Identificativo del dato format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. La CBOR map include i seguenti membri:
 
          * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
-         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
+         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
      - Estensione domestica.
 
@@ -523,6 +501,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
 
 .. note::
   Indipendentemente dal tipo di Attestato Elettronico, il valore di ``sub`` NON DEVE essere mostrato all'Utente, in quanto non è un attributo dello stesso. È utilizzato per scopi di identificazione dagli Emittenti di Credenziali.
+
 
 Esempi mdoc-CBOR
 ^^^^^^^^^^^^^^^^

@@ -4,7 +4,6 @@
         "JOQk0kuBSVk80rFlv9VGY-yiIzsfzEJKk3d4RROfzkM",
         "Q7TX7kL8CNUp3BFBKP5xxIuPu5gRgkO6HplM3E1iMIc",
         "Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas",
-        "_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ",
         "oF2qeWAbKO_qWGQ5z-HGKeifl2PMIEMbJe8L-PJ-wko",
         "qbRtUHp9Oax9dm5GeKnw_W12Yu1E2DoU6wrFPee7aBo"
     ],
@@ -25,7 +24,7 @@
     "vct#integrity": "2e40bcd6799008085ffb1a1f3517efee335298fd976b3e655bfb3f4eaa11d171",
     "verification": {
         "trust_framework": "it_wallet",
-        "assurance_level": "high"
+        "assurance_level": "https://trust-anchor.example.it/loa/high"
     },
     "_sd_alg": "sha-256",
     "cnf": {

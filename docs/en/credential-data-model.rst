@@ -1,4 +1,3 @@
-
 .. include:: ../common/common_definitions.rst
 
 
@@ -15,12 +14,12 @@ A Digital Credential data model has the following structure:
 - **User attributes**: Information about the User, such as identity or qualifications.
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT VC or mdoc-CBOR data format.
-The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.  
+The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.
 
 Format-Agnostic Credential Metadata Attributes
 -----------------------------------------------
 
-The following table defines the common metadata attributes that are applicable to Digital Credentials regardless of their encoding format. These attributes represent the semantic information about the Credential.  
+The following table defines the common metadata attributes that are applicable to Digital Credentials regardless of their encoding format. These attributes represent the semantic information about the Credential.
 
 .. _table_format_agnostic_attributes:
 .. list-table::
@@ -69,7 +68,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
 See `SD-JWT-VC`_ and `SD-JWT`_ for additional details.
 
 
-Digital Credential SD-JWT Metadata Attributes 
+Digital Credential SD-JWT Metadata Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The JOSE header contains the following mandatory parameters:
@@ -99,7 +98,7 @@ The JOSE header contains the following mandatory parameters:
     - REQUIRED. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWT.
     - :rfc:`7515` Section 4.1.8 and [`SD-JWT-VC`_] Section 3.5.
 
-The JWT payload contains the following claims. Unless otherwise specifed, the following claims MUST NOT be selectively disclosable. 
+The JWT payload contains the following claims. Unless otherwise specified, the following claims MUST NOT be selectively disclosable.
 
 .. _table_sd-jwt-vc_parameters:
 .. list-table::
@@ -120,20 +119,20 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **issuing_authority**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. 
+      - REQUIRED. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuing_country**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. 
+      - REQUIRED. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuance_date**
       - OPTIONAL. *String*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the JWT ``iat`` claim.
-      - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].  
+      - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].
     * - **date_of_expiry**
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
@@ -144,7 +143,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - REQUIRED. *String*. Format-encoded data identifier `credential_type_identifier` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. Unless otherwhise specified by `EIDAS-ARF`_ and EUDI Rulebooks, the `vct` SHOULD follow a structure like `urn:it-wallet:{credential_type}:{credential_type_version}`. 
+      - REQUIRED. *String*. Format-encoded data identifier `credential_type_identifier` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. Unless otherwise specified by `EIDAS-ARF`_ and EUDI Rulebooks, the `vct` SHOULD follow a structure like `urn:it-wallet:{credential_type}:{credential_type_version}`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - OPTIONAL. *String*. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -153,7 +152,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It includes the following sub-value:
 
           * ``trust_framework``: REQUIRED. *String* identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
-          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process.
+          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
       - Domestic extension.
     * - **_sd**
@@ -227,16 +226,6 @@ In the following the disclosure list is given:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "birth_date", "1980-01-10"]``
 
 
-**Claim** ``expiry_date``:
-
- * SHA-256 Hash: ``_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ``
- * Disclosure:
-   ``WyJYY1hsUFZDcWpITnZlQkNubFZQWWdBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
-   ``MjQtMDEtMDEiXQ``
- * Contents:
-   ``["XcXlPVCqjHNveBCnlVPYgA", "expiry_date", "2024-01-01"]``
-
-
 **Claim** ``tax_id_code``:
 
  * SHA-256 Hash: ``Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas``
@@ -269,22 +258,15 @@ Digital Credential Type Metadata Document
 
 When provided, the Type Metadata Document MUST be a *JSON object* compliant with Section 6.2 of [`SD-JWT-VC`_].
 
+In addition to the properties defined in section 9.2 of [`SD-JWT-VC`_] the following property SHOULD be included:
+
+  - ``name``: A human-readable label for the claim, intended for end users.
+
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
-The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
+The Endpoint returns a ``200 OK`` status code and supports ``application/json`` as content type.
 
 Below a non-normative example is given.
-
-.. code-block:: http
-
-    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
-    Host: pidprovider.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 .. code-block:: http
 
@@ -327,7 +309,7 @@ An mdoc-CBOR Digital Credential MUST be compliant with the following structure:
       - **Description**
       - **Reference**
     * - **nameSpaces**
-      - *(map)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. 
+      - *(map)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces.
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
       - *(COSE_Sign1)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
@@ -365,7 +347,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - :rfc:`9053`
 
 .. note::
-  Only the signature algorithm MUST be present in the protected header, other elements SHOULD not be present in the protected header.
+  Only the signature algorithm MUST be present in the protected header, other elements SHOULD NOT be present in the protected header.
 
 The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 
@@ -406,7 +388,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
         - When defined by an ISO standard, It MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g. for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``).
 
-        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
+        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.eudi.{credential_type}.{version}`` (e.g., ``eu.europa.ec.eudi.pid.1``).
 
         - When defined at national level, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
 
@@ -419,7 +401,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
           * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
           * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -495,7 +477,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
 
    * - **issuance_date**
      - *(tdate or full-date, OPTIONAL)*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the `MobileSecurityObject` parameters ``signed`` or ``validFrom``.
-     - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].  
+     - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].
 
    * - **expiry_date**
      - *(tdate or full-date, OPTIONAL)*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST be according to ISO 8601-1 YYYY-MM-DD format.
@@ -509,7 +491,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
      - *(map, OPTIONAL)*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The CBOR map includes the following members:
 
          * ``trust_framework`` *(tstr, REQUIRED)*: trust framework used for User authentication.
-         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication.
+         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
      - Domestic extension.
 
@@ -639,8 +621,5 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
      - |
        | nameSpaces
        |
-
-
-
 
 

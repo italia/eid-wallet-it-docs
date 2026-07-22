@@ -1,15 +1,15 @@
 .. include:: ../common/common_definitions.rst
 
 
-Wallet Unit Attestation Issuance
+Key Attestation Issuance
 =================================
 
-This section describes how the Wallet Provider issues a Wallet Unit Attestations.
+This section describes how the Wallet Provider issues Key Attestations.
 
 .. plantuml:: plantuml/wallet-attestation-issuance.puml
     :width: 99%
-    :alt: The figure illustrates the Sequence Diagram for Wallet Unit Attestations acquisition.
-    :caption: `Sequence Diagram for Wallet Unit Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLNVRzis47xdNt5W7-O0Qe0Ds1u2RAYHPKcmeJEQPdkO1-4adYt2yb4ZAMVPNp-IKIrPfRiMUp5CyRiVztt7kpVEe_NzlXNOUyFzlY8h6gq8DiRuolmjn5UhWD2rxf2z4rXxOq4-Eh8Iq47lWa4t8a3-ZcrB7kuvkEQQ4Wgx3avHFzCpBBsd0FBQC2nNzov1T-WTl7ATrRpTMY8-jVkH3hgcuDtJrch_30zauvVH0UOTpD9RMNFGYYnKME-8LJAjwfqGiQBNFuICh-0T_TMJyu30z0Ic8_kIh6_Ghzc6Mst90SBWz96rFwagqgKFw2ao84Ju6JnVDrJlG6_WsZvttcmjTeskuGwjUa9B4EbPytlSmaBAPlXQxkYvzBYLygA0784582kOKvIk87h50-eMgvQcgTmInxh8WM42Om6XGbytO3PGMrB4NcCB8JPqgEt2NO0tK15WYauAD9yZ86OVa-xwglnQoWA6ezM7TBwyl2nWXF0Cmg5I8ImRJs0EP2EBHH09NlroVtlt_lRTpSrRyKBbN5Rj8CeUY_0DmK-a1l4IHQRog1cqTx0dZmez2cAL8WtSX31Z0qZ99lQo70LDlH9-4d9aSG9DjmF9urT59ovoIWHqtMfYNyR4oWPT8rD_Fjmjl_dskyNHMG5_ZEJb-Vpp0d8XFjLtAxDQywJhdDuo-jw6WF0znDDYaSkmW7ohpZz7QQEmGrhetLM-uesnqovsZcnKK4IJmN3AcVu0BV43LCerLwPd5LisaGR9UfGbQvGYp-POIBVrySKkMLcZ5Rp-w0bkMlEKJ0dhvlXWnDWpSRODPUzIzhMbStgFZWOrXOWsqN9MTxp78OripT5oh3bZ0CSEWRbdLtepWAKSrCzuAAGyaLRHh6Xg7KNszAyF0tFuESobjBwSgl_L8Kdyn-NdDah4VY616MyP4ebLTZoS7RR3jBgISk9q27asPYRB0lAllu1nygmvzzWdm-Vby9HIBPrf-nYlr2h__K3M7VFfMlI1s7qWOKR9E9aVY1LC2fsFvhV7dH5E1UINXjxCNpbe1vfrt7Zw7r9fMHp2VoLwftaB7zSiRWA4ZQVfDlWjcfniWynbXlaORnp6kvTXd3VDgfc7vhJC8aVjOjpKtD4a5Bxc_-gwYSDhIvzeKt6o6CzxTPrXHsA-C2V7u42y8LRzllqN>`_
+    :alt: The figure illustrates the Sequence Diagram for Key Attestations acquisition.
+    :caption: `Sequence Diagram for Key Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLNVRoCr47xtNp7oFP1AUvL0WeTAe8jAQIlG4Ltlu86WQ7OzoLhPZ1VRcrB-UcntcztwN7GLBr7i_UR7VDzuvftpQFrmw0GEtl1mgCcALYk2hJ6-DdyByTKg87IZUsJl13RUM92V75a9w61mmQ2V421_nwuZ3xSSN7D32OLz3yzHFzC3BBsd0FBQC2nNjov1z-WTl76zrRpRMI9-RlSZ7NL3mRkddTN-0Ux8nfl90POTPEcjh3bgHHPgRFR4AfdMpLw8MD7R7qB65_21_Xh8UK1WkWVJatrCrhVersp3Lst90K9UJQH97z5Jh5o8y3Dwl6ofsOFUmgLzwBtPMUnRtS0DMdMFbfAZDN_47IoaRCVRpPuUDXvtKfvLK2Ak0cG5EJNf4qIlU4JTOTtHF9LhubWFEJ1CO2mWrEYR5imM6akAs6li8CI67hLTk3Fm1ce2JD59WUOycvXrJBOVwitNKbOm7gq-flFv-Na54uGp28SAXR1iF84vaetiLK4KUFFBxVNDn-iFLrVlnIE5kOpQGPGv9kzRWfz8ZM8bQapjKJDex-107XLw5CGgHHev2M4cmQLa4tjNJaActWW_2JcnDuEchoEvqwsYPovA2WHqqsbYluc9RLfqhKpzU7Up_ERRxnOdPnNyCP5NvlFFCoY6-8z-MvdLccVTvlIEqGys18Jl8PuMYrA65PHRDB-EqeRxfxJGkujonLjZvzth7Dcee8Wce-6SC_q4tU0JLCerrsPW5LiraGR9UfAbQ9GYPtChfDlv-5ANhApH2jv-rkpRpjmdKyAcFJqKCVLCd6LZsVkKVMFf9RqdHwEQGaIRO9dN7R_Zc4QnvcWvrLmmW5E7GExPRRmPmLAEwXSyLEbkabPHLZHrZY9x-jUxaJdy4kPIMg-cwlzrI1B_q_9B6oLYNqrWvgr88h4gZuUyxyOfTI7bpDaOwiLOXUmgAB_w2gQ9i-RI8vyDdSV3VNey6sUw8SRRQ5M-Fv9rftpw3dqWz12ApwYO9l8TiO9PeVb8Vd_Q5U5KGNbPw6t-ka4xqApZXjF_a4fBuXZ-Ap4upJlul6Pn5I1iFCstm6_HvDaMA7_CcO_nfY6yVnp2PTEYccLeISiYSj8knarD7Kr2uMj-gTjcZYuj5TfIp1TWmOlh3JiI-KAS7OEXU4UiXaFtBm00>`_
 
 
 .. .. figure:: ../../images/wallet_instance_acquisition.svg
@@ -19,15 +19,15 @@ This section describes how the Wallet Provider issues a Wallet Unit Attestations
 
 ..   Sequence Diagram for Wallet App Attestation acquisition
 
-**Step 1**: The User initiates a new operation that necessitates the acquisition of a Wallet Unit Attestation.
+**Step 1**: The User initiates a new operation that necessitates the acquisition of a Key Attestation.
 
 **Steps 2-3**: The Wallet Instance MUST:
 
   1. Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required (:ref:`WP_140a <wallet-instance-optional-testcases>`).
-  2. Generate one or batch of asymmetric credential key pair(s) to be attested in Wallet Unit Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
+  2. Generate one or batch of asymmetric Credential key pair(s) to be attested in Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
   3. Verify the Wallet Provider's federation membership and retrieve its metadata (:ref:`WP_023 <wallet-instance-testcases>`).
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks.
 
 The ``nonce`` MUST ensure single-use within a predetermined time frame.
 
@@ -54,7 +54,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 * requests the Device Integrity Service to create an ``integrity_assertion`` value linked to the ``client_data_hash``.
 * receives a signed ``integrity_assertion`` value for Wallet Instance from the Device Integrity Service, authenticated by the OEM (:ref:`WP_140e <wallet-instance-optional-testcases>`).
 
-.. note:: 
+.. note::
   ``integrity_assertion`` is a custom payload generated by Device Integrity Service, signed by device OEM and encoded in base64 to have uniformity between different devices.
 
 .. note::
@@ -64,28 +64,28 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 *  requests the Key Attestation API to create an ``key_attestation`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``key_attestation`` value from the Key Attestation API, authenticated by the OEM.
-*  generate ``keys_to_attest`` value by signing the ``key_attestation`` using the private key of the initially generated credential key pair (``priv_key``). 
+*  generate ``keys_to_attest`` value by signing the ``key_attestation`` using the private key of the initially generated credential key pair (``priv_key``).
 
 **Steps 16-19**: The Wallet Instance:
 
 *  requests the Device Integrity Service to create an ``integrity_assertion`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
-*  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Wallet Unit Attestation using the private key of the initially generated credential key pair (``priv_key``). 
+*  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Key Attestation using the private key of the initially generated credential key pair (``priv_key``).
 
-**Steps 20-21 (Wallet Unit Attestation Issuance Request)**: The Wallet Instance:
+**Steps 20-21 (Key Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and other configuration related parameters (see :ref:`Table of the Wallet Unit Attestation Request Body <table_wua_request_claim>`) and is signed using the private key that it is public key illustrated in the request through ``cnf`` (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
-* Submits the Wallet Unit Attestation Request to the :ref:`wallet-provider-endpoint:Wallet Unit Attestation Issuance Endpoint` of the Wallet Provider Backend.
+* Constructs the Key Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform`` and other configuration related parameters (see :ref:`Table of the Key Attestation Request Body <table_ka_request_claim>`). The Key Attestation Request MUST be signed using the private key related to the public key included in the request, using the ``cnf`` parameter (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Submits the Key Attestation Request to the :ref:`wallet-provider-endpoint:Key Attestation Issuance Endpoint` of the Wallet Provider Backend.
 
-.. note:: 
+.. note::
   ``keys_to_attest`` contains a ``key_attestation`` object in case of Android and ``integrity_assertion`` in case of iOS.
 
-The Wallet Instance MUST send the signed Wallet Unit Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's :ref:`wallet-provider-endpoint:Wallet Unit Attestation Issuance Endpoint` (:ref:`WP_142 <wallet-instance-optional-testcases>`).
+The Wallet Instance MUST send the signed Key Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's :ref:`wallet-provider-endpoint:Key Attestation Issuance Endpoint` (:ref:`WP_142 <wallet-instance-optional-testcases>`).
 
-**Steps 22-27**: The Wallet Provider Backend evaluates the Wallet unit Attestation Request and MUST perform the following checks (:ref:`WP_143 <wallet-instance-optional-testcases>`):
+**Steps 22-27**: The Wallet Provider Backend evaluates the Key Attestation Request and MUST perform the following checks (:ref:`WP_143 <wallet-instance-optional-testcases>`):
 
-  1. The request MUST include all required HTTP header parameters as defined in :ref:`wallet-provider-endpoint:Wallet Unit Attestation Issuance Request` (:ref:`WP_143a <wallet-instance-optional-testcases>`).
-  2. The signature of the Wallet Unit Attestation Request MUST be valid and verifiable using the provided ``jwk`` (:ref:`WP_143b <wallet-instance-optional-testcases>`).
+  1. The request MUST include all required HTTP header parameters as defined in :ref:`wallet-provider-endpoint:Key Attestation Issuance Request` (:ref:`WP_143a <wallet-instance-optional-testcases>`).
+  2. The signature of the Key Attestation Request MUST be valid and verifiable using the provided ``jwk`` (:ref:`WP_143b <wallet-instance-optional-testcases>`).
   3. The ``nonce`` value MUST have been generated by the Wallet Provider and not previously used (:ref:`WP_143c <wallet-instance-optional-testcases>`).
   4. A valid and currently registered Wallet Instance associated with the provided ``hardware_key_tag`` MUST exist (:ref:`WP_143d <wallet-instance-optional-testcases>`).
   5. The signature of the ``keys_to_attest`` parameter Must be first validated using the provided ``jwk`` and its value (``key_attestation`` in case of Android or ``integrity_assertion`` in case of iOS) MUST be validated according to the device manufacturer's guidelines.
@@ -94,9 +94,9 @@ The Wallet Instance MUST send the signed Wallet Unit Attestation Request JWT as 
   8. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
   9. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
-Upon successful completion of all checks, the Wallet Provider issues a Wallet Unit Attestation valid for at least one month.
+Upon successful completion of all checks, the Wallet Provider issues a Key Attestation valid for at least one month.
 
-**Step 28 (Wallet Unit Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Unit Attestations signed by the Wallet Provider in the JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet Unit Attestations received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Step 28 (Key Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code set with ``200`` and Content-Type ``application/json``. The response MUST contain the Key Attestations signed by the Wallet Provider using the JWT format. The Wallet Instance MUST perform security and integrity verification of the Key Attestations received, along with the trust verification already evaluated about the Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Below is a non-normative example of the response.
@@ -107,5 +107,7 @@ Below is a non-normative example of the response.
   Content-Type: application/json
 
   {
-    "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
+    "key_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

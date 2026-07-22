@@ -54,7 +54,7 @@ Icona e label allineate a sinistra. La dimensione del bottone dipende dalla lung
 ```html
 <button class="btn btn-itwallet-auth btn-standard" type="button">
   <span class="btn-icon">
-    <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="20" height="24" viewBox="0 1.999 20.0764 24.002" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M9.4711 2.1181C9.3255 2.0357 9.1708 1.9991 9.0207 2C8.5465 2.0037 8.1117 2.3836 8.1144 2.9127L8.141 7.7572L1.3722 3.9609C1.2258 3.8785 1.0711 3.8419 0.9209 3.8428C0.4467 3.8464 0.0156 4.2264 0.0146 4.7555L0 20.7225C0 21.4429 0.3241 22.0709 1.018 22.46L7.1029 25.8819C7.2493 25.9643 7.404 26.0009 7.5542 26C8.0284 25.9963 8.4605 25.6164 8.4605 25.0873V8.7138L11.6773 10.5044C12.3721 10.8907 12.6953 11.5215 12.6953 12.2419V21.8357L18.7124 25.2109C18.8589 25.2933 19.0136 25.3299 19.1637 25.329C19.6379 25.3253 20.07 24.9454 20.07 24.4163L20.0764 9.2338C20.0764 8.5133 19.7523 7.8854 19.0584 7.4963L9.4711 2.1181Z" fill="currentColor"/>
     </svg>
   </span>
@@ -84,9 +84,9 @@ Dimensione del bottone fissa. L'icona è allineata a sinistra, mentre la label �
 
 ### Varianti di Dimensione
 
-La dimensione di default è **Small (S)**. Per usare il bottone in dimensione default non è necessario aggiungere classi di size.
+La dimensione di default (consigliata) è **Medium (M)**. Per usare il bottone nella dimensione default non è necessario aggiungere classi di size; la classe `btn-md` è fornita per esplicitarla.
 
-#### Small (Default)
+#### Small
 ```html
 <button class="btn btn-itwallet-auth btn-sm" type="button">
   <span class="btn-icon">...</span>
@@ -94,7 +94,7 @@ La dimensione di default è **Small (S)**. Per usare il bottone in dimensione de
 </button>
 ```
 
-#### Medium
+#### Medium (Default)
 ```html
 <button class="btn btn-itwallet-auth btn-md" type="button">
   <span class="btn-icon">...</span>
