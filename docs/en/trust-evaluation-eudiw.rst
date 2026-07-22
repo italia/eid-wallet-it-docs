@@ -65,17 +65,17 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
       - On the Wallet Instance:
 
         - :ref:`trust-evaluation:EUDIW Signing Trust Anchor Validation`, applied to the Wallet Instance Attestation
-      - The Wallet-Relying Party Access Certificate and its registration, that is the Wallet-Relying Party Registration Certificate or the corresponding Register entry.
+      - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
     * - Relying Party
       - Remote or proximity presentation
       - On the received Credentials:
 
         - :ref:`trust-evaluation:EUDIW Signing Trust Anchor Validation`
-      - The Wallet-Relying Party Access Certificate and its registration, that is the Wallet-Relying Party Registration Certificate or the corresponding Register entry.
+      - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - Its own Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party.
+      - Its own Wallet-Relying Party Access Certificate and the registration of the intermediated Relying Party, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
 
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
