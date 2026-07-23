@@ -23,7 +23,7 @@ Wallet-Relying Parties and Wallet Providers are Federation Entities that MUST be
     :caption: `OID-FED Roles <https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00>`_
 
 .. note::
-  Wallet Instances are not Federation Entities, they are the End-User personal devices authenticated by their Wallet Provider.
+  Wallet Units are not Federation Entities, they are the End-User personal devices authenticated by their Wallet Provider.
 
 
 Federation API Endpoints

@@ -28,7 +28,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - **Context**
       - **As Trust Evaluator, implements**
       - **As Trust Evaluated Party, provides**
-    * - Wallet Instance
+    * - Wallet Unit
       - Issuance of a national only Credential
       - On the Credential Issuer:
 
@@ -39,27 +39,27 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
         On the received Credential:
 
         - :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`
-      - The Wallet Instance Attestation with the proof of possession of the attested key, validated as defined in :ref:`trust-evaluation:Wallet Instance Authentication`.
-    * - Wallet Instance
+      - The Wallet Instance Attestation with the proof of possession of the attested key, validated as defined in :ref:`trust-evaluation:Wallet Unit Authentication`.
+    * - Wallet Unit
       - Remote presentation, ``openid_federation`` prefix
       - On the Relying Party:
 
         - :ref:`trust-evaluation:Federation Entity Authentication`
         - :ref:`trust-evaluation:Authorization`, including the Overasking Check
         - :ref:`trust-evaluation:Metadata Retrieval and Validation`
-      - No entity level artifact is required from the Wallet Instance.
-    * - Wallet Instance
+      - No entity level artifact is required from the Wallet Unit.
+    * - Wallet Unit
       - Proximity presentation
       - On the Relying Party:
 
         - :ref:`trust-evaluation:Relying Party Proximity Authentication`
         - :ref:`trust-evaluation:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in the ``requestInfo`` of the ISO ``DeviceRequest``
-      - No entity level artifact is required from the Wallet Instance.
+      - No entity level artifact is required from the Wallet Unit.
     * - Credential Issuer
       - Issuing national only Credentials
-      - On the Wallet Instance:
+      - On the Wallet Unit:
 
-        - :ref:`trust-evaluation:Wallet Instance Authentication`
+        - :ref:`trust-evaluation:Wallet Unit Authentication`
       - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the registration Trust Marks (:ref:`infrastructure-trust:Trust Mark registration-entity`), and the issuance artifacts signed with keys resolvable through the federation, validated as defined in :ref:`trust-evaluation:Federation Entity Authentication`.
         For the mdoc format, the Document Signer certificate in the ``x5chain`` header, validated as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
     * - Relying Party
@@ -77,7 +77,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - It does not act as Trust Evaluator in the operational flows.
       - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the ``intermediate`` registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and the Subordinate Statements of its affiliated Relying Parties.
         The Intermediary is validated as part of the affiliated Relying Party's Trust Chain, whose ``authority_hints`` point to it.
-        The Wallet Instance MUST verify that the affiliated Relying Party's Trust Chain is validated through a recognized Intermediary or directly through the Federation Trust Anchor, and it informs the User as defined in :ref:`trust-evaluation:User Transparency`.
+        The Wallet Unit MUST verify that the affiliated Relying Party's Trust Chain is validated through a recognized Intermediary or directly through the Federation Trust Anchor, and it informs the User as defined in :ref:`trust-evaluation:User Transparency`.
 
 .. note::
   In the remote flow the Relying Party invokes the Wallet through app links (universal links) instead of custom URL schemes.
@@ -342,7 +342,7 @@ The Authentication process has the aim of asserting the identity of the Trust Ev
 Three procedures are defined:
 
 - Federation Entity Authentication applies to the entities that publish an Entity Configuration, in the Remote Flow.
-- Wallet Instance Authentication applies to the Wallet Instance, which is not a Federation Entity.
+- Wallet Unit Authentication applies to the Wallet Unit, which is not a Federation Entity.
 - Relying Party Proximity Authentication applies to the Relying Party in the Proximity Flow.
 
 Federation Entity Authentication
@@ -374,29 +374,29 @@ The User notification and the prohibition of the cross scheme retry are defined 
 
 The successful verification provides both the authentication of the Trust Evaluated Party and the proof of possession of its private key.
 
-Wallet Instance Authentication
+Wallet Unit Authentication
 """""""""""""""""""""""""""""""""""
 
-The Wallet Instance Attestation conveys the Wallet Instance public key which is used to validate the signature over the Wallet Instance Attestation.
+The Wallet Instance Attestation conveys the Wallet Unit public key which is used to validate the signature over the Wallet Instance Attestation.
 The format and the issuance flow are defined in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
 The evaluation MUST follow the model defined in OpenID Federation for Wallet Architectures.
-The Wallet Instance authenticates with a Client authentication mechanism that provides the Wallet Instance Attestation issued by its Wallet Provider, together with the proof of possession of the attested key.
+The Wallet Unit authenticates with a Client authentication mechanism that provides the Wallet Instance Attestation issued by its Wallet Provider, together with the proof of possession of the attested key.
 In the issuance flow this is realized with the OAuth 2.0 Attestation-Based Client Authentication, that is the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters (`OAUTH-ATTESTATION-CLIENT-AUTH`_), as described in `OPENID4VCI`_.
-To establish trust in the Wallet Instance, the Trust Evaluator MUST:
+To establish trust in the Wallet Unit, the Trust Evaluator MUST:
 
 - Establish trust in the Wallet Provider that issued the Wallet Instance Attestation.
 - Validate the attestation with the Wallet Provider keys obtained through the Federation Trust Chain.
 
 **Input**
 
-- The Wallet Instance Attestation presented by the Wallet Instance.
+- The Wallet Instance Attestation presented by the Wallet Unit.
 - The proof of possession of the key attested in the Wallet Instance Attestation.
 - A Trust Chain about the Wallet Provider.
 
 **Outcome**
 
-The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for the Wallet Instance.
+The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for the Wallet Unit.
 
 **Process**
 
@@ -507,8 +507,8 @@ Overasking Check
 
 **Outcome**
 
-The Wallet Instance MUST output ``VERIFICATION_PASSED`` or ``OVERASKING_DETECTED``, identifying the unregistered attributes or Digital Credentials.
-On ``OVERASKING_DETECTED`` the Wallet Instance MUST NOT disclose the attributes that are not authorized and MUST inform the User of the detected overasking.
+The Wallet Unit MUST output ``VERIFICATION_PASSED`` or ``OVERASKING_DETECTED``, identifying the unregistered attributes or Digital Credentials.
+On ``OVERASKING_DETECTED`` the Wallet Unit MUST NOT disclose the attributes that are not authorized and MUST inform the User of the detected overasking.
 
 **Process**
 
@@ -522,7 +522,7 @@ User Transparency
 """""""""""""""""
 
 Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed.
-Before the disclosure, the Wallet Instance MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision.
+Before the disclosure, the Wallet Unit MUST inform the User of the identity of the Relying Party and of the Digital Credentials and attributes requested, and it presents the additional transparency claims of the Trust Mark to support the informed decision.
 This is consistent with the User approval that concludes the presentation, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
 The transparency claims carried in the Trust Mark are the following:
@@ -537,7 +537,7 @@ The transparency claims carried in the Trust Mark are the following:
 
 Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
-When the Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
+When the Relying Party operates through a Relying Party Intermediary, the Wallet Unit MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
 In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
 
 Metadata Retrieval and Validation
@@ -548,7 +548,7 @@ The metadata published in the Entity Configuration MUST NOT be used without this
 
 The metadata types and their parameters are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` and in the protocol specifications referenced there.
 
-The Wallet Instance configuration is provided by the Wallet Provider within its metadata as defined in :ref:`wallet-solution-metadata:Wallet Solution Metadata`.
+The Wallet Unit configuration is provided by the Wallet Provider within its metadata as defined in :ref:`wallet-solution-metadata:Wallet Solution Metadata`.
 
 **Input**
 

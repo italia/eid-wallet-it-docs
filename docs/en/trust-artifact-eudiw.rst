@@ -424,6 +424,9 @@ Embedded Disclosure Policy Data Model
 
 The following table provides a comprehensive overview of the Embedded Disclosure Policy data model, including parameter names, data types, descriptions, and the specific clauses in `ETSI TS 119 472-3`_ where each parameter is defined.
 
+.. warning::
+  The parameter names are defined in this section and are not based on a normative ETSI specification. Section 4.2.5.2 of `ETSI TS 119 472-3`_ defines the high level requirements for data model, but the final JSON schema will be published separately by ETSI. The structure defined here is an implementation profile based on the ETSI data model requirements, and parameter names MAY change when the ETSI schema is published.
+
 .. list-table:: Embedded Disclosure Policy Parameters
    :class: longtable
    :header-rows: 1
@@ -440,7 +443,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
-       The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Instance (WI).
+       The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
        The EDP MAY be accessible through this URI.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
@@ -541,7 +544,7 @@ The locally stored EDP is then implicitly invalidated together with the Digital 
 The User needs to request a new issuance to obtain the Digital Credential with the updated EDP.
 
 Even a minor policy change (e.g., adding a single RP to the authorized list) requires revocation and re-issuance.
-The timing of detection depends on when the Wallet Unit checks the Digital Credential status: if the WI checks only at presentation time, a policy change will not be detected until the next presentation attempt.
+The timing of detection depends on when the Wallet Unit checks the Digital Credential status: if the Wallet Unit checks only at presentation time, a policy change will not be detected until the next presentation attempt.
 
 .. warning::
 

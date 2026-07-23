@@ -63,7 +63,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
       - No entity level artifact is required from the Wallet Unit.
     * - Credential Issuer
       - Issuing Credentials in the EU catalogue
-      - On the Wallet Instance:
+      - On the Wallet Unit:
 
         - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`, applied to the Wallet Instance Attestation
       - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
