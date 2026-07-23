@@ -29,6 +29,7 @@
       } catch (error) {
         /* ignore storage errors */
       }
+      {%- if display_toc -%}
       try {
         if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
           document.documentElement.classList.add("it-docs-navscroll-collapsed");
@@ -36,6 +37,7 @@
       } catch (error) {
         /* ignore storage errors */
       }
+      {%- endif -%}
     })();
   </script>
 {%- endblock %}
