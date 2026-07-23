@@ -31,47 +31,37 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: PID Provider Sign/Seal Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - REQUIRED
-     - The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - REQUIRED. The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
+     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
        For additional details, see Clause 4.4.1 [`ETSI TS 119 412-6`_], Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-098``.
+     - REQUIRED. It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-098``.
 
    * - ``subjectAltName``
-     - REQUIRED
-     - 
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
+     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
        The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
-
 
 The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons.
 
@@ -89,50 +79,40 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: Wallet Provider Sign/Seal Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL
-     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
+     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, *Type C* or *Type F*.
        For additional details, see Clause 4.4.1 [`ETSI TS 119 412-6`_], Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least (as per `EIDAS-ARF`_ requirement ``EW-DM-38-001``):
+     - REQUIRED. It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least (as per `EIDAS-ARF`_ requirement ``EW-DM-38-001``):
        * The requirements for *NCP*, defined in `ETSI EN 319 411-1`_, for KAs describing a keystore.
        * The requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, for KAs describing a WSCA/WSCD.
 
    * - ``subjectAltName``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
+     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``).
        The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
-
 
 The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons.
 
@@ -150,47 +130,37 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: (Q)EAA Provider Sign/Seal Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL
-     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*.
+     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*.
        For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - TBD.
+     - REQUIRED. TBD.
 
    * - ``subjectAltName``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED (only for QEAA)
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED (only for QEAA). It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED (only for QEAA)
-     - It MUST contain a ``QCStatement`` structure among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_].
-
+     - REQUIRED (only for QEAA). It MUST contain a ``QCStatement`` structure among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_].
 
 For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Credentials they issue and they use signed revocation lists such as Token Status List, they MUST use the same Sign/Seal Certificate to sign/seal the revocation list.
 
@@ -210,48 +180,39 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: PuB-EAA Provider Sign/Seal Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL
-     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-103``.
+     - REQUIRED. It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to the OID of a certificate policy including at least the requirements for *NCP+*, defined in `ETSI EN 319 411-1`_, to comply with `EIDAS-ARF`_ requirement ``AS-AP-10-103``.
 
    * - ``subjectAltName``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED
-     - It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``.
+     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``.
        The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
 
-.. warning:: 
+.. warning::
 
   Annex A of [`ETSI TS 119 412-6`_] does not define the specific OID of the ``id-etsi-qcs-QcPSB`` statement identifier.
 
@@ -299,50 +260,41 @@ Fields not listed in the table remain subject to the requirements defined in the
 .. list-table:: Trust Anchor Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate is not self-signed.
+     - CONDITIONAL. **REQUIRED IF:** the certificate is not self-signed.
        For self-signed certificates, it is RECOMMENDED.
        If present, the value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - REQUIRED
-     - Provides a key identifier for the Trust Anchor public key.
+     - REQUIRED. Provides a key identifier for the Trust Anchor public key.
        The ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST assert the ``keyCertSign`` bit.
+     - REQUIRED. It MUST assert the ``keyCertSign`` bit.
        It MAY assert the ``cRLSign`` bit if the Trust Anchor certificate is used by the CA to sign CRLs.
        It SHOULD be limited to usages consistent with the CA role of the Trust Anchor certificate.
 
    * - ``certificatePolicies``
-     - OPTIONAL
-     - It MAY include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
+     - OPTIONAL. It MAY include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
 
    * - ``basicConstraints``
-     - REQUIRED
-     - The ``cA`` field MUST be set to ``TRUE``, signalling CA capability for X.509 path validation.
+     - REQUIRED. The ``cA`` field MUST be set to ``TRUE``, signalling CA capability for X.509 path validation.
        The ``pathLenConstraint`` MAY be present; in that case, it MUST limit the number of non-self-issued intermediate CA certificates below this Trust Anchor.
        It is RECOMMENDED to set ``pathLenConstraint`` to 0 to prevent subordinate CA layers, unless a documented operational need exists to support additional intermediate CA tiers.
 
    * - ``cRLDistributionPoints``
-     - OPTIONAL
-     - It MAY include CRL distribution point URIs, when CRL-based revocation is used.
+     - OPTIONAL. It MAY include CRL distribution point URIs, when CRL-based revocation is used.
 
    * - ``authorityInfoAccess``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate contains ``basicConstraints`` with ``pathLenConstraint`` > 0.
+     - CONDITIONAL. **REQUIRED IF:** the certificate contains ``basicConstraints`` with ``pathLenConstraint`` > 0.
        If present, it MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` that MUST use the ``http://`` scheme and MUST NOT use the ``https://`` scheme.
 
        It MAY also include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.
-
 
 .. note::
   **Trust Anchor Revocation.**

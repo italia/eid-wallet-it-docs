@@ -98,27 +98,22 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: Wallet-Relying Party Access Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL
-     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
+     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_):
+     - REQUIRED. It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_):
 
        * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
        * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
@@ -128,19 +123,15 @@ Extensions not listed in the table MUST NOT be present.
        and ``policyQualifiers`` containing a ``cpsURI`` that references an URL where the CPS of the Provider of WRPAC is located.
 
    * - ``subjectAltName``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-
 
 .. note::
     **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
@@ -162,42 +153,33 @@ Extensions not listed in the table MUST NOT be present.
 .. list-table:: Registrar Sign/Seal Certificate Extensions
    :class: longtable
    :header-rows: 1
-   :widths: 30 20 50
+   :widths: 25 75
 
    * - **Extension**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED
-     - The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL
-     - If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - REQUIRED
-     - It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
+     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED
-     - It MUST include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
+     - REQUIRED. It MUST include a ``PolicyInformation`` structure relevant to the issuing CA's practices.
 
    * - ``subjectAltName``
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL
-     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - REQUIRED
-     - It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-
 
 The following is a non-normative example of a Registrar Sign/Seal Certificate for legal persons (non-self-signed).
 
@@ -430,99 +412,86 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 .. list-table:: Embedded Disclosure Policy Parameters
    :class: longtable
    :header-rows: 1
-   :widths: 20 15 45 20
+   :widths: 22 20 58
 
    * - **Parameter**
-     - **Type**
-     - **Description**
      - **Defined in**
+     - **Description**
 
    * - ``policy_uri``
-     - string (URI)
-     - REQUIRED.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
+     - REQUIRED. string (URI).
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
        The EDP MAY be accessible through this URI.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
-     - string
-     - REQUIRED.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
+     - REQUIRED. string.
        Policy type classification.
        Valid values:
 
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
        * ``"specific_root_of_trust"``: Access is restricted to Relying Parties chaining to specified trusted roots.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
-     - string
-     - OPTIONAL.
-       Description of the applicability of the policy to a particular community and/or class of application sharing common security requirements.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-04)
+     - OPTIONAL. string.
+       Description of the applicability of the policy to a particular community and/or class of application sharing common security requirements.
 
    * - ``policy_authority``
-     - string
-     - OPTIONAL.
-       Identifier of the authority or entity responsible for the policy.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-05)
+     - OPTIONAL. string.
+       Identifier of the authority or entity responsible for the policy.
 
    * - ``policy_info_url``
-     - string (URL)
-     - OPTIONAL.
-       Link to a website of the Attestation Provider (AP) explaining the disclosure policy guidelines in layman's terms.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
+     - OPTIONAL. string (URL).
+       Link to a website of the Attestation Provider (AP) explaining the disclosure policy guidelines in layman's terms.
 
    * - ``authorized_parties``
-     - array of objects
-     - REQUIRED if ``policy_type`` is ``"authorized_rp_only"``.
-       Contains a list of authorized Relying Parties allowed to access the Attestation.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - REQUIRED. array of objects. if ``policy_type`` is ``"authorized_rp_only"``.
+       Contains a list of authorized Relying Parties allowed to access the Attestation.
 
    * - ``authorized_parties[].subject_dn``
-     - string
-     - OPTIONAL.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - OPTIONAL. string.
        Subject Distinguished Name (DN) of the Relying Party extracted from its Wallet-Relying Party Access Certificate (WRPAC), formatted as an LDAP string compliant with :rfc:`4514`.
        At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
-     - string (URI)
-     - OPTIONAL.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+     - OPTIONAL. string (URI).
        URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC).
        At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
-     - array of objects
-     - REQUIRED if ``policy_type`` is ``"specific_root_of_trust"``.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
+     - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
        Defines a precise list of trusted root or intermediate certificates.
        Only RPs whose WRPACs successfully chain to one of these roots are permitted access.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
-     - string
-     - REQUIRED.
-       Issuer Distinguished Name (DN) in LDAP string form compliant with :rfc:`4514`.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
+     - REQUIRED. string.
+       Issuer Distinguished Name (DN) in LDAP string form compliant with :rfc:`4514`.
 
    * - ``trusted_roots[].serial_number``
-     - string
-     - REQUIRED.
-       Certificate serial number corresponding to the defined issuer.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
+     - REQUIRED. string.
+       Certificate serial number corresponding to the defined issuer.
 
    * - ``extensions``
-     - array of objects
-     - OPTIONAL.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
+     - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present.
        Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
 

@@ -28,62 +28,51 @@ For each field, the table specifies the corresponding :rfc:`5280` reference, its
 .. list-table:: Certificate Profile Fields
    :class: longtable
    :header-rows: 1
-   :widths: 25 15 15 45
+   :widths: 25 20 55
 
    * - **Field**
      - **Reference (in RFC 5280)**
-     - **Presence**
-     - **Notes**
+     - **Description**
 
    * - ``version``
      - Section 4.1.2.1
-     - REQUIRED
-     - It MUST be version 3 (value ``2``).
+     - REQUIRED. It MUST be version 3 (value ``2``).
 
    * - ``serialNumber``
      - Section 4.1.2.2
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``signature``
      - Section 4.1.2.3, Section 4.1.1.2
-     - REQUIRED
-     - The referenced algorithm MUST be among those defined in :ref:`algorithms:Cryptographic Algorithms`.
+     - REQUIRED. The referenced algorithm MUST be among those defined in :ref:`algorithms:Cryptographic Algorithms`.
 
    * - ``issuer``
      - Section 4.1.2.4
-     - REQUIRED
-     - It MUST comply with the applicable requirements of [`ETSI EN 319 412-2`_] (Clause 4.2.3.1 for **legal persons**, Clause 4.2.3.2 for **natural persons**), as specified by the corresponding certificate profile.
+     - REQUIRED. It MUST comply with the applicable requirements of [`ETSI EN 319 412-2`_] (Clause 4.2.3.1 for **legal persons**, Clause 4.2.3.2 for **natural persons**), as specified by the corresponding certificate profile.
 
    * - ``validity``
      - Section 4.1.2.5
-     - REQUIRED
-     -
+     - REQUIRED.
 
    * - ``subject``
      - Section 4.1.2.6
-     - REQUIRED
-     - It MUST comply with the applicable requirements of [`ETSI EN 319 412-2`_] (Clause 4.2.4) for **natural persons** and [`ETSI EN 319 412-3`_] (Clause 4.2.1) for **legal persons**, as specified by the corresponding certificate profile.
+     - REQUIRED. It MUST comply with the applicable requirements of [`ETSI EN 319 412-2`_] (Clause 4.2.4) for **natural persons** and [`ETSI EN 319 412-3`_] (Clause 4.2.1) for **legal persons**, as specified by the corresponding certificate profile.
 
    * - ``subjectPublicKeyInfo``
      - Section 4.1.2.7
-     - REQUIRED
-     - The referenced algorithm MUST be among those defined in :ref:`algorithms:Cryptographic Algorithms`.
+     - REQUIRED. The referenced algorithm MUST be among those defined in :ref:`algorithms:Cryptographic Algorithms`.
 
    * - ``issuerUniqueID``
      - Section 4.1.2.8
-     - OPTIONAL
-     - It SHOULD NOT be present.
+     - OPTIONAL. It SHOULD NOT be present.
 
    * - ``subjectUniqueID``
      - Section 4.1.2.8
-     - OPTIONAL
-     - It SHOULD NOT be present.
+     - OPTIONAL. It SHOULD NOT be present.
 
    * - ``extensions``
      - Section 4.1.2.9
-     - REQUIRED
-     - It MUST conform to the structure defined in :rfc:`5280#section-4.2`.
+     - REQUIRED. It MUST conform to the structure defined in :rfc:`5280#section-4.2`.
        The applicable extensions and their profile-specific constraints are defined in :ref:`infrastructure-trust:Supported Certificate Extensions` and in the corresponding certificate profile.
 
 Supported Certificate Extensions
