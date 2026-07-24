@@ -52,7 +52,7 @@ Infrastructure of Trust
     * - `ETSI TS 119 461`_
       - ETSI TS 119 461 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service components providing identity proofing of trust service subjects.
     * - `ETSI EN 319 411-1`_
-      - ETSI EN 319 411-1 v1.3.0 - Electronic Signatures and Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements.
+      - ETSI EN 319 411-1 v1.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements.
     * - `ETSI TS 119 411-8`_
       - ETSI TS 119 411-8 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service providers issuing certificates; Part 8: Access certificate policy for EUDI Wallet Relying Parties.
     * - `ETSI EN 319 412-1`_
@@ -62,17 +62,17 @@ Infrastructure of Trust
     * - `ETSI EN 319 412-3`_
       - ETSI EN 319 412-3 v1.3.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 3: Certificate profile for certificates issued to legal persons.
     * - `ETSI EN 319 412-5`_
-      - ETSI EN 319 412-5 v2.4.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 5: QCStatements.
+      - ETSI EN 319 412-5 v2.6.0 (draft) - Electronic Signatures and Trust Infrastructures (ESI); Certificate Profiles; Part 5: QCStatements.
     * - `ETSI TS 119 412-6`_
       - ETSI TS 119 412-6 v1.2.1 - Electronic Signatures and Infrastructures (ESI); Certificate Profiles; Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.
     * - `ETSI TS 119 475`_
-      - ETSI TS 119 475 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Relying party attributes supporting EUDI Wallet user's authorisation decisions.
+      - ETSI TS 119 475 v1.2.1 - Electronic Signatures and Trust Infrastructures (ESI); Relying party attributes supporting EUDI Wallet user's authorisation decisions.
     * - `ETSI TS 119 602`_
       - ETSI TS 119 602 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model.
     * - `ETSI TS 119 612`_
       - ETSI TS 119 612 v2.4.1 - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
     * - `ETSI TS 119 615`_
-      - ETSI TS 119 615 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
+      - ETSI TS 119 615 v1.3.1 - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
     * - `ETSI EN 319 102-1`_
       - ETSI EN 319 102-1 v1.4.1 - Electronic Signatures and Trust Infrastructures (ESI); Procedures for Creation and Validation of AdES Digital Signatures; Part 1: Creation and Validation.
     * - `ETSI EN 319 132-1`_
@@ -110,7 +110,7 @@ Digital Credential Issuance
     * - `OAUTH-MULT-RESP-TYPE`_
       - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
     * - `ETSI TS 119 472-3`_
-      - ETSI TS 119 472-3 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes;  Part 3: Profiles for issuance of EAA or PID.
+      - ETSI TS 119 472-3 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes; Part 3: Profiles for issuance of EAA or PID.
 
 Digital Credential Presentation
 -------------------------------
@@ -122,7 +122,7 @@ Digital Credential Presentation
     * - `OpenID4VP`_
       - Terbu, O., Lodderstedt, T., Yasuda, K., Fett, D., Heenan, J., "OpenID for Verifiable Presentations 1.0", July 2025.
     * - `OAuthCrossDeviceSec`_
-      - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
+      - Kasselman, P., Fett, D., Skokan, F., "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OPENID4VC-HAIP`_
       - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", November 2025, Draft 6.
     * - `ISO18013-5`_
@@ -130,7 +130,7 @@ Digital Credential Presentation
     * - `OIDC-RP-Metadata`_
       - Jones, M.B., Hedberg, R., Bradley, J., Skokan, F., "OpenID Connect Relying Party Metadata Choices 1.0", March 2026.
     * - `ETSI TS 119 472-2`_
-      - ETSI TS 119 472-2 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes;  Part 2: Profiles for EAA/PID Presentations to Relying Party.
+      - ETSI TS 119 472-2 v1.2.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes; Part 2: Profiles for EAA/PID Presentations to Relying Party.
 
 Digital Credential Revocation Check Mechanisms
 ----------------------------------------------
@@ -140,7 +140,7 @@ Digital Credential Revocation Check Mechanisms
     :header-rows: 0
 
     * - `TOKEN-STATUS-LIST`_
-      - Looker, T., Bastian, P., Bormann, C.,  "Token Status List (TSL)", October 2025, Draft 13.
+      - Looker, T., Bastian, P., Bormann, C., "Token Status List (TSL)", October 2025, Draft 13.
 
 National Data Interoperability Platform Specifications
 ------------------------------------------------------
