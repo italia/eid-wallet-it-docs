@@ -289,9 +289,9 @@ Below are listed the Sub-Status error codes of the List of Trusted Entities in t
    :widths: 38 10 52
    :header-rows: 1
 
-   * - Code
-     - Phase
-     - Meaning
+   * - **Code**
+     - **Phase**
+     - **Meaning**
    * - ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``
      - both
      - No URI matches the expected ``OJEU-Loc`` within the ``SchemeInformationURI`` of the List of Trusted Entities.

@@ -284,12 +284,12 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
    :widths: 14 20 16 16 18 16
    :header-rows: 1
 
-   * - List Type
-     - Legal Basis
-     - Governing Standard & Format
-     - Signature Profile
-     - Scope & Signer
-     - Publication & Update Mechanism
+   * - **List Type**
+     - **Legal Basis**
+     - **Governing Standard & Format**
+     - **Signature Profile**
+     - **Scope & Signer**
+     - **Publication & Update Mechanism**
    * - **Trusted Lists (TL)**
      - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
      - `ETSI TS 119 612`_; ``XML`` format.
@@ -412,23 +412,22 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 .. list-table:: Embedded Disclosure Policy Parameters
    :class: longtable
    :header-rows: 1
-   :widths: 22 20 58
+   :widths: 20 60 20
 
    * - **Parameter**
-     - **Defined in**
      - **Description**
+     - **Reference**
 
    * - ``policy_uri``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
      - REQUIRED. string (URI).
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
        The EDP MAY be accessible through this URI.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
      - REQUIRED. string.
        Policy type classification.
        Valid values:
@@ -436,62 +435,63 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
        * ``"specific_root_of_trust"``: Access is restricted to Relying Parties chaining to specified trusted roots.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-04)
      - OPTIONAL. string.
        Description of the applicability of the policy to a particular community and/or class of application sharing common security requirements.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-04)
 
    * - ``policy_authority``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-05)
      - OPTIONAL. string.
        Identifier of the authority or entity responsible for the policy.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-05)
 
    * - ``policy_info_url``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
      - OPTIONAL. string (URL).
        Link to a website of the Attestation Provider (AP) explaining the disclosure policy guidelines in layman's terms.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
 
    * - ``authorized_parties``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
      - REQUIRED. array of objects. if ``policy_type`` is ``"authorized_rp_only"``.
        Contains a list of authorized Relying Parties allowed to access the Attestation.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].subject_dn``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
      - OPTIONAL. string.
        Subject Distinguished Name (DN) of the Relying Party extracted from its Wallet-Relying Party Access Certificate (WRPAC), formatted as an LDAP string compliant with :rfc:`4514`.
        At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
      - OPTIONAL. string (URI).
        URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC).
        At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
        Defines a precise list of trusted root or intermediate certificates.
        Only RPs whose WRPACs successfully chain to one of these roots are permitted access.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
      - REQUIRED. string.
        Issuer Distinguished Name (DN) in LDAP string form compliant with :rfc:`4514`.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``trusted_roots[].serial_number``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
      - REQUIRED. string.
        Certificate serial number corresponding to the defined issuer.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``extensions``
-     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
      - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present.
        Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
+     - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
 

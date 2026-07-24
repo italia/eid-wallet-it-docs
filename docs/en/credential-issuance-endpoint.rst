@@ -38,8 +38,8 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Instance Attestation JWT.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - **It MUST be set to a value containing the Wallet Instance Attestation JWT.**
+      - **`OAUTH-ATTESTATION-CLIENT-AUTH`_.**
     * - **OAuth-Client-Attestation-PoP**
       - It MUST be set to a value containing the Wallet Instance Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.

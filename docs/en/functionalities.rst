@@ -1443,8 +1443,8 @@ Activation of the Wallet Instance Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The device does not support the Wallet Solution (e.g. absence of minimum security or technological requirements)
     - Wallet Provider
   * - The Wallet Provider's services are unresponsive (e.g. technical errors or lack of connection)
@@ -1464,8 +1464,8 @@ Issuance of Electronic Attestations of Attributes Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The Wallet Instance and/or the PID are not active
     - Wallet Instance
   * - The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
@@ -1486,8 +1486,8 @@ Presentation of Electronic Attestations Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service
     - Wallet Instance
   * - The Wallet Provider's services or the Relying Party's services are unresponsive (e.g. technical errors or lack of connection)
@@ -1500,8 +1500,8 @@ Management of Electronic Attestations Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The service for revocation/ backup/ restore of an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
     - Electronic Attestations of Attributes Provider
   * - The service for revocation of PID is unavailable (e.g. technical errors)
@@ -1516,8 +1516,8 @@ Deactivation of the Wallet Instance Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The service for deactivating the Wallet Instance is unavailable (e.g. technical errors)
     - Wallet Provider
 

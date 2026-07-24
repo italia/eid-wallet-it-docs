@@ -43,9 +43,9 @@ The responses follow the OID-FED response formats referenced in the table.
    :widths: 25 35 40
    :header-rows: 1
 
-   * - Endpoint
-     - Request parameters
-     - Response
+   * - **Endpoint**
+     - **Request parameters**
+     - **Response**
    * - **fetch** (``/fetch``).
        REQUIRED for Federation TA and Intermediates.
      - **GET**.
@@ -196,8 +196,8 @@ The table below maps the roles of the ecosystem to their Entity Type Identifiers
    :widths: 25 75
    :header-rows: 1
 
-   * - Entity
-     - Metadata Type
+   * - **Entity**
+     - **Metadata Type**
    * - Trust Anchor
      - ``federation_entity``
    * - Federation Intermediate

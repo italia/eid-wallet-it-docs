@@ -37,10 +37,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_001
      - Trust, Security
      - Entity Configuration publication
@@ -159,10 +159,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_013
      - Lifecycle, Interoperability
      - Frontend component architecture
@@ -345,10 +345,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_045
      - Issuance, Interoperability
      - Credential Issuer Discovery
@@ -615,10 +615,10 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_076
      - Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Same Device flow
@@ -947,10 +947,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_115
      - Attribute Deletion, Lifecycle, Privacy
      - Attribute deletion function
@@ -996,10 +996,10 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_120
      - Backup and Restore, UX
      - Credential backup initiation
@@ -1107,10 +1107,10 @@ These test cases are optional and have been designed for the IT Wallet implement
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_131
      - Wallet Initialization / Registration, Lifecycle, Security
      - Nonce request for replay protection

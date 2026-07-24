@@ -414,8 +414,8 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    :widths: 20 80
    :header-rows: 1
 
-   * - Parameter
-     - Description
+   * - **Parameter**
+     - **Description**
    * - `wallet_metadata`
      - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 10.1 and the table below, "Wallet Metadata Parameters".
    * - `wallet_nonce`
@@ -428,8 +428,8 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    :widths: 20 80
    :header-rows: 1
 
-   * - Parameter
-     - Description
+   * - **Parameter**
+     - **Description**
    * - `vp_formats_supported`
      - REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by `OPENID4VC-HAIP`_ (including ``dc+sd-jwt`` and ``mso_mdoc``).
    * - `client_id_prefixes_supported`

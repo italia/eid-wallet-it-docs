@@ -19,10 +19,10 @@ All validations  align with (`OID-FED`_).
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - FA_001
     - Discovery, Interoperability
     - Entity Configuration media type
