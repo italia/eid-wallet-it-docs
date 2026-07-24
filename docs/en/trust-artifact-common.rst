@@ -172,7 +172,9 @@ The following is a non-normative example of a QEAA Provider Sign/Seal Certificat
 PuB-EAA Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""""""
 
-The specific requirements for PuB-EAA Provider Sign/Seal Certificates are specified in Clause 8 of [`ETSI TS 119 412-6`_].
+.. warning::
+
+  While the specific requirements for PuB-EAA Provider Sign/Seal Certificates that are specified in Clause 8 of [`ETSI TS 119 412-6`_] do not require this profile to be qualified, Art. 45f(1)(b) of [`EU_2024_1183`_] requires PuB-EAA type Attestations to be signed with a qualified certificate. To satisfy both requirements, although not stated either the [`EIDAS-ARF`_] or [`ETSI TS 119 412-6`_], this profile merges the QEAA and PuB-EAA Provider Sign/Seal Certificate profiles specified in Clauses 6, 7 and 8 of [`ETSI TS 119 412-6`_].
 
 The following table defines the complete set of extensions applicable to the certificate profile.
 Extensions not listed in the table MUST NOT be present.
@@ -209,8 +211,10 @@ Extensions not listed in the table MUST NOT be present.
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``.
-       The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
+     - REQUIRED. It MUST contain the following ``QCStatement`` structures:
+        
+        - one with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
+        - one as defined in Clause 4.2 of [`ETSI EN 319 412-5`_].
 
 .. warning::
 

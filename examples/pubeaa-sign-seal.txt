@@ -9,10 +9,10 @@ AccessCertificate cert = {
     },
 
     issuer: DistinguishedName {                           // Issuer attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example Trust Services CA",
       commonName: "Example CA",
-      organizationIdentifier: "VATCZ-123456789"
+      organizationIdentifier: "VATIT-123456789"
     },
 
     validity: {
@@ -21,7 +21,7 @@ AccessCertificate cert = {
     },
 
     subject: DistinguishedName {                          // Subject attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example of PuB-EAA Provider",
       commonName: "PuB-EAA Provider Example",
       organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
@@ -125,7 +125,15 @@ AccessCertificate cert = {
               authSourceIdentification: "https://www.anpr.interno.it",
               legislationIdentification: "https://www.normattiva.it/eli/id/2005/05/16/005G0106/sg"
             }
-          }
+          },
+          QCStatement {
+            statementId: "0.4.0.1862.1.6",                // id-etsi-qcs-QcType
+            statementInfo: QcType {
+              [
+                "0.4.0.1862.1.6.1"                        // id-etsi-qct-esign
+              ]
+            }
+          }  
         ]
       }
     ]

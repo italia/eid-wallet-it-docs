@@ -145,13 +145,17 @@ List Key Rotation and Historical Verification
 """""""""""""""""""""""""""""""""""""""""""""
 
 To support continuous key rotation and regular updates, the LoTE and LOTL implement a *pivoting mechanism*.
-This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at distinct URI *pivots*.
-Each List version is signed with a public key referenced within the immediately preceding version, rather than reusing the same key.
+This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at other distinct URIs called *pivots*.
+Each List version is signed with a public key referenced within the immediately preceding pivot. The last pivot is signed with the key referenced in the OJEU.
 The newest List version explicitly contains the URIs where all historical versions are hosted.
 
 An Entity validates this chain of pivots from the newest version back to the oldest by verifying that each subsequent artifact is correctly signed by the public key authorized in the prior version.
 Final validation is achieved by verifying the trustworthiness of the oldest public key, either via a lookup in the OJEU or directly against a cached, previously validated version of the List.
 This ensures that an entity possessing the last known valid version can reliably discover the next version and validate it via an unbroken chain of trust rooted in the OJEU.
+
+While the pivoting mechanism enables continuous updates to LoTE parameters, certain updates may require adding a ``ServiceHistory`` object to the LoTE to preserve the historical keys and configurations needed to validate legacy signatures. The specific scenarios in which an Entity update triggers a migration of its configuration into ``ServiceHistory`` are detailed in Section :ref:infrastructure-trust:Trust Management and Lifecycle.
+
+Regardless of an Entity's objective when validating the LoTE (whether retrieving a current or historical configuration), the validation mechanism MUST strictly follow Section :ref:`trust-evaluation:List of Trusted Entities Validation`.
 
 List of Trusted Entities Validation
 """""""""""""""""""""""""""""""""""
@@ -372,8 +376,11 @@ The process MUST be structured as follows:
 
 - If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
 
-  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (for PID, PuB-EAA, or WIA) or Trusted List (for QEAA).
-  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (for PID, PuB-EAA, or WIA).
+  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID or WIA) or Trusted List (only for PuB-EAA or QEAA).
+  
+   In addition, in case of a PuB-EAA Sign/Seal certificate, the Entity validating the signature MAY validate the corresponding PuB-EAA LoTE and match the Trust Anchor the corresponding parameter in the LoTE to establish that the Digital Credential signer is indeed an Authorized Pub-EAA.
+
+  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (only for PID or WIA).
 
 - If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
 
@@ -390,14 +397,36 @@ The **Base Signature Validation** is structured as follows:
 
 **Process**
 
-1. Verify the Attestation signature with the validated signer certificate.
-   For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
-2. Select the applicable List of Trusted Entities or Trusted List according to the type of the received Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation` or :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
-   For an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_].
-   For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
+This process depends on the Attestation type:
+
+- **PID** or **WIA**.
+  
+  1. Verify the Attestation signature with the Sign/Seal certificate provided in the Attestation.
+  2. Select the applicable List of Trusted Entities according to the type of the received Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+  3. Extract the Sign/Seal certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+
+- **QEAA**.
+
+  1. Verify the Attestation signature using the Sign/Seal certificate provided in the Attestation. For a QEAA, the qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
+  2. Fetch the appropriate Trusted List according to the nationality of the Credential Issuer, validate it as defined in :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+  3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+
+- **PuB-EAA**.
+
+  1. Verify the Attestation signature with the Sign/Seal certificate provided in the Attestation. The qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
+  2. Select the appropriate Trusted List according to the nationality of the Credential Issuer, fetch and validate it as defined in :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+  3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+  4. [OPTIONAL] Fetch the PuB-EAA LoTE, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and match the relevant parameters of the PuB-EAA provider's ``TrustedEntityList`` object (e.g., the ``SubjectDigitalIdentity`` field) with the Trust Anchor recovered from the Trusted List.
+
+.. note:: 
+
+  In each of the above cases, for an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
 If **Base Signature Validation** results in failure, the Entity validating the Attestation MUST execute **Fallback Signature Validation** as follows:
+
+.. warning::
+  
+  This process only applies to **PID** and **WIA** Attestation types.
 
 **Input**
 
@@ -410,7 +439,7 @@ If **Base Signature Validation** results in failure, the Entity validating the A
 
 **Process**
 
-1. Select the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
+1. Fetch the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
 2. Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
 
 .. warning::
@@ -418,6 +447,10 @@ If **Base Signature Validation** results in failure, the Entity validating the A
    Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates.
    In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure.
    To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
+
+.. note::
+
+  When verifiying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
 
 If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
