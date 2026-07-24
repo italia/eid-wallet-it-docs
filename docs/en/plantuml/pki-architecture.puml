@@ -1,4 +1,4 @@
-@startuml IT-Wallet - PKI Architecture
+@startuml
 ' Certification hierarchies and publication channel of the derived Trust Anchors.
 
 skinparam shadowing false
@@ -26,14 +26,14 @@ package "National PKI" as NAT {
   
   rectangle "Access CA\n//access certificates of Wallet-Relying\nParties and PID Providers//" as CA_WRPAC
   rectangle "National Authentication CA\n//Relying Party authentication certificates//" as CA_AUTH
-  rectangle "WRPRC Sign/Seal CA\n//Sign/Seal certificates of the Provider of WRPRC//" as CA_WRPRC
+  rectangle "WRPRC Sign/Seal CA\n//signing certificates of the Provider of WRPRC//" as CA_WRPRC
   rectangle "Registrar Sign/Seal CA\n//Registrar Sign/Seal Certificates//" as CA_REG
   rectangle "National EAA Sign/Seal CA\n//Document Signer certificates//" as CA_EAA
 }
 
 package "Qualified Trust Service Provider" as QTSP {
   rectangle "Qualified CA\n//QEAA Provider Sign/Seal Certificates//" as CA_Q
-  rectangle "PuB-EAA Provider Sign/Seal CA\n//PuB-EAA Provider Sign/Seal Certificates//" as CA_PUB
+  rectangle "Qualified CA\n//PuB-EAA Provider Sign/Seal Certificates//" as CA_PUB
 }
 
 package "EUDIW Trust Framework" as PUBEU {
@@ -66,7 +66,7 @@ ROOT --> CA_EAA
 
 CA_PIDS ..> L_PID
 CA_WP ..> L_WP
-CA_PUB ..> L_PUB
+CA_PUB ..> L_TL
 CA_WRPAC ..> L_WRPAC
 CA_WRPAC ..> L_PID
 CA_WRPRC ..> L_WRPRC
@@ -86,6 +86,4 @@ legend bottom
   Solid arrow: issues the certificate of the subordinate Certification Authority.
   Dashed arrow: the Certification Authority certificate is published as Trust Anchor in.
 endlegend
-
 @enduml
-
