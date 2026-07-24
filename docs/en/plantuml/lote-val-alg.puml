@@ -28,7 +28,6 @@ repeat
         endif
     endif
 
-#fff3cd:Update OJEU-LoTE-Loc;
 repeat while (5. Freshness Check\nOld-List-Loc == New-List-Loc AND\nOld-List != New-List) is (Yes (New Version Detected)) not (No (Current is Fresh))
 
 if (6. Validate current List of Trusted Entities Signature) then (Invalid)
@@ -77,7 +76,7 @@ endif
 
 :11. Update Local Bookmark OJEU-LoTE-Loc\nif changed in payload;
 
-#fff3cd:Update Trust Anchor\nConfig if OJEU moved;
+#fff3cd:Update Trust Root Configuration;
 
 end
 @enduml
