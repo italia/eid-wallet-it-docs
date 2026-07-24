@@ -9,10 +9,10 @@ AccessCertificate cert = {
     },
 
     issuer: DistinguishedName {                           // Issuer attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example Trust Services CA",
       commonName: "Example CA",
-      organizationIdentifier: "VATCZ-123456789"
+      organizationIdentifier: "VATIT-123456789"
     },
 
     validity: {
@@ -21,7 +21,7 @@ AccessCertificate cert = {
     },
 
     subject: DistinguishedName {                          // Subject attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example of (Q)EAA Provider",
       commonName: "(Q)EAA Provider Example",
       organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"

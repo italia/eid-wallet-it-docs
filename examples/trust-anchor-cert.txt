@@ -9,7 +9,7 @@ AccessCertificate cert = {
     },
 
     issuer: DistinguishedName {                           // Issuer attributes
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example Root CA",
       commonName: "Example CA",
       organizationIdentifier: "VATCZ-123456789"
@@ -21,7 +21,7 @@ AccessCertificate cert = {
     },
 
     subject: DistinguishedName {                          // Subject attributes
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example Root CA",
       commonName: "Example CA",
       organizationIdentifier: "VATCZ-123456789"

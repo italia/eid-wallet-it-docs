@@ -9,7 +9,7 @@ AccessCertificate cert = {
     },
 
     issuer: DistinguishedName {                           // Issuer attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example Trust Services CA",
       commonName: "Example CA",
       organizationIdentifier: "VATCZ-123456789"
@@ -21,7 +21,7 @@ AccessCertificate cert = {
     },
 
     subject: DistinguishedName {                          // Subject attributes for legal person
-      countryName: "CZ",
+      countryName: "IT",
       organizationName: "Example of PID Provider",
       commonName: "PID Provider Example",
       organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
