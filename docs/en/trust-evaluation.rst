@@ -90,7 +90,7 @@ The selection is driven by the catalogue of the requested Credential (see :ref:`
 
 For Authentication, Authorization and Metadata Retrieval and Validation of the Credential Issuer, the Wallet Unit MUST apply the EUDIW procedures when the requested Credential is present in the EU catalogue, and the National Trust Framework procedures when the Credential is present only in the national catalogue.
 This rule MUST be applied also to EAA Providers, therefore, the same Credential Issuer MAY be evaluated under different frameworks in different interactions, according to the Credential requested.
-The headers of the signed artifacts of the Credential Issuer manifest the same selection: an ``x5c`` header carrying the access certificate for the EUDIW path, and a ``kid`` header, with the optional ``trust_chain`` header, for the National Trust Framework path.
+The headers of the signed artifacts of the Credential Issuer reflects the same selection: an ``x5c`` header carrying the access certificate for the EUDIW path, and a ``kid`` header, with the optional ``trust_chain`` header, for the National Trust Framework path.
 These headers MUST be consistent with the framework selected by the catalogue.
 
 For the validation of the Wallet Unit, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities when the Credential being issued is present in the EU catalogue.

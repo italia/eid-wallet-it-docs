@@ -136,7 +136,7 @@ If any step fails, the federation configuration MUST NOT be used.
 Federation Trust Anchor Key Rotation and Historical Verification
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-When it is required to validate a trust chain over the time, even if the Federation Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
+When it is required to validate a Trust Chain over time, even if the Federation Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
 This property supports the non-repudiability of the long lived attestations.
 
 When the Federation Trust Anchor rotates its keys, the new keys are distributed with the same out-of-band mechanism used for the initial distribution.

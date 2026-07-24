@@ -14,7 +14,7 @@ The procedures defined in this section profile combine the following external sp
 
 .. note::
 
-    The data model of the Trust Artifacts referenced by these procedures, that is the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate, the Register, the Lists of Trusted Entities and the Embedded Disclosure Policy, together with the specifications that define them, is defined in :ref:`infrastructure-trust:EUDIW Trust Artifacts`.
+    The data model of the Trust Artifacts referenced by these procedures, together with the specifications that define them, is defined in :ref:`infrastructure-trust:EUDIW Trust Artifacts`.
 
     The procedures defined in this section are executed within the operational Issuance and Presentation flows (see :ref:`digital-credential-flows:Digital Credential Flows`).
     The parameters they operate on, such as the signed Request Object, the mdoc Request, the Metadata of all Entities involved and the data model of the received Digital Credentials, are defined in the respective sections (see :ref:`entities:Entities`, :ref:`remote-flow:Request Object` for the Remote Flow, :ref:`proximity-flow:mdoc Request` for the Proximity Flow, and :ref:`credential-data-model:SD-JWT-VC Credential Format` and :ref:`credential-data-model:mdoc-CBOR Credential Format` for the Digital Credential formats).
@@ -27,7 +27,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
 .. _table_eudiw_tf_roles:
 .. list-table:: Trust Evaluation Processes by Entity and Context in the EUDIW Trust Framework
     :class: longtable
-    :widths: 12 20 40 28
+    :widths: 12 20 34 34
     :header-rows: 1
 
     * - **Entity**
@@ -169,8 +169,8 @@ The variables used below are the List of Trusted Entities analogs of the LOTL va
 They correspond as follows:
 
 - ``OJEU-LoTE-Loc`` corresponds to ``OJEU-LOTL-Loc``;
-- ``OJEU-LoTE-Certs-Set`` to ``OJEU-LOTL-Certs-Set``;
-- ``LoTESO-Cert`` to ``LOTLSO-Cert``;
+- ``OJEU-LoTE-Certs-Set`` corresponds to ``OJEU-LOTL-Certs-Set``;
+- ``LoTESO-Cert`` corresponds to ``LOTLSO-Cert``;
 - the ``PointersToOtherLoTE`` and ``SchemeInformationURI`` claims correspond to the *Pointers to other TSLs* (clause 6.3.13 of [`ETSI TS 119 602`_]) and *Scheme information URI* (clause 6.3.7) components.
 
 **List of Trusted Entities Validation Algorithm**
@@ -580,9 +580,9 @@ When the Wallet-Relying Party Registration Certificate is not available or its v
    The entity identifier is the ``verifier_info[].data.identifier`` in the Remote Flow, the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow, or the ``issuer_info[].data.identifier`` during Issuance.
 4. **Format verification**: confirm that ``typ`` is ``jwt``, as defined in Section 5.2.1 of [`ETSI TS 119 475`_].
 5. **Verify pertinence**: verify that the response pertains to the relevant Authorization Subject and intended use.
-6. **Verify the response signature**: verify the Registrar signature using the Sign/Seal certificate carried in the ``x5c`` claim of the response.
+6. **Verify the response signature**: verify the Registrar signature using the Sign/Seal Certificate carried in the ``x5c`` claim of the response.
 7. **Trust Anchor validation**: validate the Registrars List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Registrar Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
-8. **Path validation**: validate the Registrar Sign/Seal certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the Registrar Sign/Seal Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
+8. **Path validation**: validate the Registrar Sign/Seal Certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the Registrar Sign/Seal Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
 9. **Normalize** the Register-derived data into the same internal model used for the Wallet-Relying Party Registration Certificate.
 
 .. note::

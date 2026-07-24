@@ -59,7 +59,7 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
       - Entity Configuration of the Federation Trust Anchor, as Authentication Trust Anchor (see :ref:`trust-evaluation:Authentication Trust Anchor Distribution`).
 
     * - WRPRC Sign/Seal CA
-      - The Sign/Seal certificate of the Provider of WRPRC (see :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`).
+      - The Sign/Seal Certificate of the Provider of WRPRC (see :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`).
       - Providers of WRPRC LoTE.
 
     * - Registrar Sign/Seal CA
@@ -81,7 +81,7 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
 
 The Qualified CA of the QEAA Provider and the PuB-EAA Provider Sign/Seal CA are not subordinate to the national Root Certification Authority.
 Both belong to the perimeter of a Qualified Trust Service Provider and follow its own supervision and publication regime.
-The sign/seal certificate of a PuB-EAA Provider is a qualified electronic seal issued by a Qualified Trust Service Provider (Article 45f of [`EIDAS`_]).
+The Sign/Seal Certificate of a PuB-EAA Provider is a qualified electronic seal issued by a Qualified Trust Service Provider (Article 45f of [`EIDAS`_]).
 
 .. note::
   The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.

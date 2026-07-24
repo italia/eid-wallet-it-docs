@@ -35,10 +35,10 @@ Each state dictates the Entity's authorization level and operational capabilitie
 
 **Transition from REGISTERED to OPERATIONAL**: ``OPERATIONAL`` indicates that an Entity has been successfully authorized to perform role-related operations.
 
-  - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a signing/seal certificate.
+  - *EUDIW Trust Framework*: WRPs are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a WRPAC, optionally a WRPRC and, based on the role, a Sign/Seal Certificate.
     The signing Trust Anchor of that certificate MUST have been added in the LoTE or in the EUMS TL.
-    Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a signing/seal certificate whose signing Trust Anchor has been added in the LoTE.
-  - *National Trust Framework*: WRPs and Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state, they have obtained the signing/seal certificate(s) and the Trust Mark(s), and their Subordinate Statement has been published by the Federation Authority.
+    Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state and they obtained a Sign/Seal Certificate whose signing Trust Anchor has been added in the LoTE.
+  - *National Trust Framework*: WRPs and Wallet Providers are in ``OPERATIONAL`` state if they were in ``REGISTERED`` state, they have obtained the Sign/Seal Certificate(s) and the Trust Mark(s), and their Subordinate Statement has been published by the Federation Authority.
 
 **Transition from OPERATIONAL to REGISTERED**: an Entity goes back to ``REGISTERED`` state when it no longer possesses valid Trust Artifacts.
 This can be triggered by their expiration or by their revocation following an update of the Entity.
@@ -46,9 +46,9 @@ To return to the ``OPERATIONAL`` state, a new Trust Artifact issuance is require
 
 **Transition from REGISTERED or OPERATIONAL to REMOVED**: ``REMOVED`` indicates the removal of an Entity due to voluntary offboarding, a severe security breach, or a critical compliance failure.
 
-  - *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC/WRPRC and of the signing/seal certificates, in the removal of the entry from the WRP Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
+  - *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC/WRPRC and of the Sign/Seal Certificates, in the removal of the entry from the WRP Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
     For Wallet Providers it results in the update of the Wallet Providers LoTE.
-  - *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the signing/seal certificates.
+  - *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement, related Trust Mark and revocation of the Sign/Seal Certificates.
 
 An Entity MUST reject new interactions or transactions initiated by a ``REMOVED`` Entity, and all cryptographic keys, active attestations, and operational capabilities associated with the Entity MUST be immediately revoked.
 However, Entities MAY continue to validate historical data, signatures, and Attestations generated prior to the removal timestamp, subject to local risk policies.
@@ -67,7 +67,7 @@ Trust Artifacts Lifecycle State Machine
 
 State Machines for Trust Artifacts are described below:
 
-- For WRPAC, WRPRC and signing/seal certificates, the lifecycle states are ``VALID`` and ``REVOKED``.
+- For WRPAC, WRPRC and Sign/Seal Certificates, the lifecycle states are ``VALID`` and ``REVOKED``.
   The transition from ``VALID`` to ``REVOKED`` is triggered by the revocation of the Trust Artifact, which can be initiated by the corresponding Trust Artifact provider due to various reasons such as key compromise, organizational changes, or non-compliance with framework policies.
   Once a Trust Artifact is in the ``REVOKED`` state, it MUST NOT be trusted for any operational use within the ecosystem, and any Entity relying on it MUST reject it for authentication, authorization, or any other trust-related operations.
 
@@ -302,7 +302,7 @@ The CRL MUST be digitally signed by the **CRL issuer**.
 CRLs MAY be used for the following types of certificates:
 
 - Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate`.
-- Sign/Seal certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
+- Sign/Seal Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
 
 If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field.
 
