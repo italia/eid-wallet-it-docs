@@ -1086,6 +1086,13 @@ Each element of the ``credentials`` array contains at least the following inform
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
+  * - **state**
+    - REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:
+
+      * ``ACTIVE``: the Credential type can be issued from this versioned entry. An entry can be ``ACTIVE`` only while at least one Credential Issuer is listed in the **issuers** field, the referenced Authentic Source or parent Credential type is available, and the schema is registered for at least one supported format.
+      * ``INACTIVE``: the Credential type MUST NOT be issued from this versioned entry. An entry is ``INACTIVE`` when it has just been registered, when one of the conditions for the ``ACTIVE`` state stops holding, or when it has been superseded by a more recent version.
+
+      Only one versioned entry of the same ``credential_type`` MUST be ``ACTIVE`` at a given time.
   * - **credential_name_l10n_id**
     - REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., ``mDL.name``).
   * - **legal_type**
@@ -1126,7 +1133,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **purposes**
     - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
+    - CONDITIONAL. It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
 
        * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
        * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).

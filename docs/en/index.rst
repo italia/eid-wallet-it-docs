@@ -16,9 +16,9 @@ This document provides the technical architecture, implementation framework and 
   architecture-overview.rst
   functionalities.rst
   infrastructure-trust.rst
-  onboarding-procedure.rst
-  registry.rst
   trust-evaluation.rst
+  registry.rst
+  onboarding-system.rst
   entities.rst
   digital-credential-management.rst
   digital-credential-flows.rst

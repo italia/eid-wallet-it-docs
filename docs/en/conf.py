@@ -163,6 +163,15 @@ exclude_patterns += [
     'trust-evaluation-eudiw.rst',
     'trust-evaluation-oidfed.rst',
     'trust-override-rules.rst',
+    # included by onboarding-system.rst
+    'onboarding-lifecycle.rst',
+    'onboarding-overview.rst',
+    'onboarding-registration-model.rst',
+    'onboarding-processes.rst',
+    'onboarding-processes-entities.rst',
+    'onboarding-processes-artifacts.rst',
+    'onboarding-processes-credentials.rst',
+    'onboarding-lifecycle.rst',
 ]
 
 # The name of the Pygments (syntax highlighting) style to use.
