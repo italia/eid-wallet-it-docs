@@ -161,9 +161,50 @@ Within IT-Wallet the same retention applies to the Federation Authority for the 
 Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
 This is set by Annex IV of [`CIR2025/848`_] for the Providers of WRPACs and by Annex V of [`CIR2025/848`_] for the Providers of WRPRCs.
 
-Within the National Trust Framework the same events are published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (``federation_subordinate_events_endpoint``), using the event types ``registration``, ``metadata_update``, ``metadata_policy_update``, ``jwks_update``, ``suspension`` and ``revocation`` defined in [`OID-FED-SUBORDINATE-EVENTS`_].
-Other participants can therefore track the lifecycle of an Entity over time.
-The endpoint is described in :ref:`infrastructure-trust:Federation API Endpoints`.
+Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (``federation_subordinate_events_endpoint``), so that other participants can track the lifecycle of an Entity over time.
+The endpoint and the format of its response are described in :ref:`infrastructure-trust:Federation API Endpoints`.
+
+Each event of the state machine MUST be published as an object of the ``federation_registration_events`` array, using the event types defined in [`OID-FED-SUBORDINATE-EVENTS`_].
+The table below gives, for each event, the value of the ``event`` parameter and how the parameters of the event object are populated.
+
+.. _table_subordinate_events_mapping:
+.. list-table:: Mapping of the Lifecycle Events to the Subordinate Events
+   :class: longtable
+   :widths: 26 24 22 28
+   :header-rows: 1
+
+   * - **Lifecycle event**
+     - **event**
+     - **iat**
+     - **event_description**
+
+   * - Registration
+     - ``registration``
+     - Time the registration is related to.
+     - Not used.
+
+   * - Update of Identity Information or Technical Configuration
+     - ``metadata_update``
+     - Time the update is related to.
+     - MAY be used to provide further details about the update.
+
+   * - Key rotation/update of a Federation Entity Key
+     - ``jwks_update``
+     - Time the key rotation/update is related to.
+     - Not used.
+
+   * - Suspension
+     - ``suspension``
+     - Time the suspension is related to.
+     - MAY be used to provide further details about the suspension.
+
+   * - Cancellation
+     - ``revocation``
+     - Time the cancellation is related to.
+     - MAY be used to provide further details about the revocation.
+
+When a ``registration`` event is present, the ``metadata_update`` and ``jwks_update`` events MUST NOT be provided at the same time, since the registration is assumed to configure the initial state of the Entity, as specified in [`OID-FED-SUBORDINATE-EVENTS`_].
+
 
 Entity Updates and Their Effects on Trust Artifacts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -329,25 +370,25 @@ The alignment process is not automatic and it works in both directions.
 Events, Registries and Trust Artifacts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The table below summarises, for each event, which registries and which Trust Artifacts are impacted.
+The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
-The table provides the effect, while the way each Trust Artifact is revoked, updated or published is described in :ref:`onboarding-system:Entity Updates and Their Effects on Trust Artifacts` and, for the technical mechanisms, in :ref:`infrastructure-trust:Revocation Mechanisms`.
+The relationship between an Entity update and the Trust Artifacts it affects is given in :ref:`onboarding-system:Entity Updates and Their Effects on Trust Artifacts`, and the technical mechanisms that publish the status of a Trust Artifact in :ref:`infrastructure-trust:Revocation Mechanisms`.
 
 .. _table_events_registries_artifacts:
-.. list-table:: Events, Impacted Registries and Impacted Trust Artifacts
+.. list-table:: Events and Impacted Registries
    :class: longtable
-   :widths: 18 16 33 33
+   :widths: 22 20 34 24
    :header-rows: 1
 
    * - **Event**
      - **Decided by**
      - **Impacted registries and catalogs**
-     - **Impacted Trust Artifacts**
+     - **Effects on Trust Artifacts**
 
    * - Registration of an Entity
      - Registrar, Federation Authority
      - Register (new entry). Notification to the Commission for the notified categories.
-     - Entity Configuration, Subordinate Statement, registration Trust Mark, WRPAC, WRPRC where applicable, Sign/Seal Certificate, LoTE or EUMS TL entry.
+     - The Entity obtains its Trust Artifacts, see :ref:`table_entity_data_and_trust_artifacts`.
 
    * - Update of an Entity
      - Registrar, Federation Authority
@@ -356,13 +397,13 @@ The table provides the effect, while the way each Trust Artifact is revoked, upd
 
    * - Key rotation of an Entity
      - Certificate Authority, Provider of WRPAC, Federation Authority
-     - No registry is impacted, unless the key is a Trust Anchor key.
-     - Revocation and re-issuance of the certificate holding the key. Entity Configuration and Subordinate Statement for the Federation Entity Keys. LoTE for the Trust Anchor keys.
+     - No registry is impacted, unless the key is a Trust Anchor key, in which case the LoTE.
+     - Revocation and re-issuance of the certificate holding the key, see :ref:`table_entity_data_and_trust_artifacts`.
 
    * - Suspension of an Entity
      - Registrar
      - Register (registration status no longer valid).
-     - Revocation of the affected WRPAC and WRPRC. Revocation of the registration Trust Mark and update of the Subordinate Statement.
+     - Revocation of the affected WRPAC, WRPRC and registration Trust Mark, and update of the Subordinate Statement.
 
    * - Reactivation of an Entity
      - Registrar
@@ -372,45 +413,30 @@ The table provides the effect, while the way each Trust Artifact is revoked, upd
    * - Cancellation of an Entity
      - Registrar
      - Register (entry removed). Update of the LoTE or of the EUMS TL for the notified categories.
-     - Revocation of WRPAC, WRPRC and Sign/Seal Certificates. Removal of the Subordinate Statement and of the registration Trust Mark. ``revocation`` event on the Federation Subordinate Events Endpoint.
+     - Revocation of the WRPAC, WRPRC and Sign/Seal Certificates, and removal of the Subordinate Statement and of the registration Trust Mark.
 
    * - Registration of a Credential type version
-     - Supervisory Body, published by the Trust Anchor
+     - Supervisory Body, published by the Federation Trust Anchor
      - Digital Credentials Catalog (new versioned entry, ``INACTIVE``). Schema Registry, for the schema of the new version.
      - None.
 
-   * - Activation of a Credential type version
-     - Supervisory Body, published by the Trust Anchor
+   * - Activation or deactivation of a Credential type version
+     - Supervisory Body, published by the Federation Trust Anchor
      - Digital Credentials Catalog (state of the versioned entry).
      - None.
 
-   * - Enrolment of a Credential Issuer on a Credential type version
-     - Supervisory Body, published by the Trust Anchor
-     - Digital Credentials Catalog (``issuers`` of the versioned entry). Register, for the Credential provision capabilities of the Credential Issuer.
-     - Re-issuance of the WRPRC of the Credential Issuer. Update of the Subordinate Statement and re-issuance of the registration Trust Mark.
-
-   * - Withdrawal of a Credential Issuer from a Credential type version
-     - Supervisory Body, published by the Trust Anchor
-     - Digital Credentials Catalog (``issuers`` of the versioned entry). Register, for the Credential provision capabilities of the Credential Issuer.
-     - Re-issuance of the WRPRC of the Credential Issuer. Update of the Subordinate Statement and re-issuance of the registration Trust Mark.
-
    * - New version of a Credential type
-     - Supervisory Body, published by the Trust Anchor
+     - Supervisory Body, published by the Federation Trust Anchor
      - Digital Credentials Catalog (new versioned entry ``ACTIVE``, previous versioned entry ``INACTIVE``). Schema Registry.
      - None.
 
-   * - Deactivation of a Credential type version
-     - Supervisory Body, published by the Trust Anchor
-     - Digital Credentials Catalog (state of the versioned entry).
-     - None. The Credentials already issued keep their own status.
-
    * - Registration of a new claim or of a new schema
-     - Supervisory Body, published by the Trust Anchor
+     - Supervisory Body, published by the Federation Trust Anchor
      - Claims Registry or Schema Registry (new entry). Alignment towards the Catalogue of Attributes or the Catalogue of Schemes.
      - None.
 
    * - Registration of an Authentic Source
-     - Supervisory Body, published by the Trust Anchor
+     - Supervisory Body, published by the Federation Trust Anchor
      - Authentic Source Registry (new entry).
      - None.
 
@@ -418,9 +444,6 @@ The table provides the effect, while the way each Trust Artifact is revoked, upd
      - Authentic Source, through PDND
      - Authentic Source Registry. Digital Credentials Catalog, for the versioned entries that depend on it.
      - None.
-
-.. note::
-  Within the National Trust Framework every event that changes the registration of an Entity is published by the Federation Authority on the Federation Subordinate Events Endpoint, as described in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 .. note::
   The cancellation of a registration is the event, while the complete exit of an Entity from the ecosystem, which covers both Trust Frameworks, is the Entity Removal process described in the onboarding processes.
