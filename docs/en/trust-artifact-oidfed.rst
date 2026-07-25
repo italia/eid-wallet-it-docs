@@ -120,7 +120,7 @@ It MAY also carry a metadata policy and the Trust Marks about the Subordinate.
 Entity Configuration
 """""""""""""""""""""""
 
-In the IT-Wallet ecosystem the Entity Configuration is published during the onboarding of the Entity (see :ref:`onboarding-procedure:The Onboarding Processes`) and is retrieved and validated during the trust evaluation, as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+In the IT-Wallet ecosystem the Entity Configuration is published during the onboarding of the Entity (see :ref:`onboarding-system:Onboarding Processes`) and is retrieved and validated during the trust evaluation, as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
 Technical details about the Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
 
@@ -136,7 +136,7 @@ The metadata policy, when present, changes the final metadata of the Leaf.
 The final metadata is derived from the whole Trust Chain, from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor, as defined in :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 The revocation of a Subordinate is expressed by the absence of a valid Subordinate Statement about it, as defined in :ref:`trust-evaluation:Federation Trust Chain`.
 
-Within IT-Wallet the Subordinate Statements are issued during the onboarding of the Subordinate (see :ref:`onboarding-procedure:The Onboarding Processes`).
+Within IT-Wallet the Subordinate Statements are issued during the onboarding of the Subordinate (see :ref:`onboarding-system:Onboarding Processes`).
 
 Entity Statement Parameters
 """""""""""""""""""""""""""""""""""""""
@@ -178,7 +178,7 @@ All other optional parameters defined in `OID-FED`_ Section 3 that are not recog
   The Signing Trust Anchors of this PKI are distributed in the Entity Configuration of the Federation Trust Anchor.
   Each one is provided in the ``x5c`` parameter (:rfc:`7517` Section 4.7) of a dedicated JWK within the ``jwks``, distinct from the Federation Entity Keys, which do not carry ``x5c``, as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
   The Document Signer certificates of the Credential Issuers are not carried in the ``jwks`` of the Entity Statements: they are included in the signed Attestations, in the ``x5chain`` header for the mdoc format and in the ``x5c`` header for the JOSE format, and are validated as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
-  The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding (see :ref:`onboarding-procedure:The Onboarding Processes`).
+  The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding (see :ref:`onboarding-system:Onboarding Processes`).
 
 Entity Type Identifiers and Metadata
 """"""""""""""""""""""""""""""""""""
@@ -781,7 +781,7 @@ In the EUDIW Trust Framework the intermediary relationship is expressed in the r
 In the National Trust Framework, instead, it is expressed through the federation hierarchy: the Intermediary is a Federation Intermediate that publishes the Subordinate Statements of its affiliated Relying Parties, and each affiliated Relying Party sets its ``authority_hints`` to the Intermediary.
 The registration Trust Mark of each affiliated Relying Party is also issued by the Federation Trust Anchor.
 For this reason no dedicated intermediary field is present in the Trust Mark.
-The onboarding of the Intermediary is defined in :ref:`onboarding-procedure:Relying Party Intermediaries`.
+The onboarding of the Intermediary is defined in :ref:`onboarding-system:Relying Party Intermediary`.
 
 **Trust Mark Structure**
 

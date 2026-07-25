@@ -10,7 +10,7 @@ It defines which of them are operated within IT-Wallet, which certificates each 
 
 The content of the certificates is not defined here.
 The common requirements are defined in :ref:`infrastructure-trust:X.509 Certificate Profile` and the specific requirements of each certificate are defined together with the artifact that uses it.
-The issuance of the certificates is part of the onboarding (see :ref:`onboarding-procedure:The Onboarding Processes`).
+The issuance of the certificates is part of the onboarding (see :ref:`onboarding-system:Onboarding Processes`).
 The use of the Trust Anchors at runtime is defined in :ref:`trust-evaluation:EUDIW Trust Anchor Validation` for the EUDIW Trust Framework and in :ref:`trust-evaluation:Signing Trust Anchor Distribution` and :ref:`trust-evaluation:Authentication Trust Anchor Distribution` for the National Trust Framework.
 
 Certification Hierarchies

@@ -22,7 +22,7 @@ Five **national** semantic and discovery registries provide the standardized def
 4. **Schema Registry**: Authoritative list of Credential Schemas.
 5. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
 
-**EUDIW entity register** (operated nationally): the :ref:`registry:Register of WRPs`, operated by the Registrar under `CIR2025/848`_, holds the registration records of Wallet-Relying Parties produced during onboarding (see :ref:`onboarding-procedure:WRP Registration`).
+**EUDIW entity register** (operated nationally): the :ref:`registry:Register of WRPs`, operated by the Registrar under `CIR2025/848`_, holds the registration records of Wallet-Relying Parties produced during onboarding (see :ref:`onboarding-system:Entity Registration`).
 It is not a semantic registry: it drives the issuance of the WRPAC and WRPRC and supports Relying Party authorization.
 
 **EUDIW catalogues** (EU level): the :ref:`registry:Catalogue of Attributes` and the :ref:`registry:Catalogue of Schemes`, maintained by the European Commission, are the cross-border counterparts to which the national Claims Registry and Schema Registry align.
@@ -565,7 +565,7 @@ A non-normative example of the Italian localization URI for the bundle would be 
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
 
-Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`onboarding-procedure:Integration and Technical Registration`.
+Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`onboarding-system:Authentic Source Registration`.
 
 .. note::
    Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`infrastructure-trust:Federation API Endpoints`.
@@ -1396,8 +1396,8 @@ Register of WRPs
 The **Register of WRPs** is the entity register of the **EUDIW** trust model: each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
 Unlike the national semantic registries above, it does not hold Credential semantics: it holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
 
-The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-procedure:WRP Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
-In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-procedure:The Dual Trust Framework`).
+The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-system:Entity Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
+In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
 
 The full data model and the public read API are specified in :ref:`infrastructure-trust:Register of WRPs` and :ref:`infrastructure-trust:Register Open APIs`, and are not restated here.
 
@@ -1405,7 +1405,7 @@ EUDIW Catalogues
 ----------------
 
 At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
-A Credential type present in these catalogues is recognised across Member States and is evaluated under the **EUDIW** Trust Framework, whereas a Credential present only in the national registries is evaluated under the **National** Trust Framework (see :ref:`onboarding-procedure:The Dual Trust Framework` and :ref:`trust-evaluation:Trust Framework Selection`).
+A Credential type present in these catalogues is recognised across Member States and is evaluated under the **EUDIW** Trust Framework, whereas a Credential present only in the national registries is evaluated under the **National** Trust Framework (see :ref:`onboarding-system:Onboarding System and Lifecycle Management` and :ref:`trust-evaluation:Trust Framework Selection`).
 
 Catalogue of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^

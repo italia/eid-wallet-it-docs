@@ -42,12 +42,12 @@ For the Signing Trust Anchor Validation there is no selection to perform: the tr
 Attestations whose Rulebook anchors them to a List of Trusted Entities or to a Trusted List, such as PIDs, QEAAs and PuB-EAAs, MUST be validated against those trust anchors also when the interaction follows the National Trust Framework (see OIA_12, OIA_13, OIA_14 and OIA_15 of the ARF Annex 2, `EIDAS-ARF`_).
 For example, a Relying Party that obtains a PID from a national Wallet Unit MUST validate it against the trust anchors published in the PID Providers List of Trusted Entities.
 
-The procedure for the Credentials anchored to the National Trust Framework is defined in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure` (see also :ref:`onboarding-procedure:The Dual Trust Framework`).
+The procedure for the Credentials anchored to the National Trust Framework is defined in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure` (see also :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
 
 The table below gives a high-level view of which trust framework applies to each entity in the operational phases.
 In particular, each cell indicates the applicable framework and the selection criterion, and points to the section where the corresponding procedures are defined.
 A more detailed view of which procedures each entity implements, and in which role, is given in the table of each framework section (see :ref:`trust-evaluation:Trust Evaluation Processes by Context` for the National Trust Framework and the corresponding detail section of the EUDIW Trust Framework).
-The onboarding paths and the artifacts obtained by each entity type are defined in :ref:`onboarding-procedure:The Onboarding Processes`.
+The onboarding paths and the artifacts obtained by each entity type are defined in :ref:`onboarding-system:Onboarding Processes`.
 
 The Signing Trust Anchor Validation is not included in the table below, since, as noted above, it does not depend on the entity or on the selected framework.
 

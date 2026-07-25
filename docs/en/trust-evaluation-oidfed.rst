@@ -99,7 +99,7 @@ The Federation Trust Anchor MUST distribute its Federation Public Keys through s
 When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration, and they MUST discard any key that does not match.
 
 .. note::
-  Within IT-Wallet the out-of-band channel is the contact channel established with the Entity during the registration process (see :ref:`onboarding-procedure:Registration Process`).
+  Within IT-Wallet the out-of-band channel is the contact channel established with the Entity during the registration process (see :ref:`onboarding-system:Entity Registration`).
 
 Entities MAY additionally pin the Federation Trust Anchor public keys, in their local configuration.
 A pinned configuration MAY be used only while it is valid and MUST be updated when a key rotation occurs.
@@ -236,7 +236,7 @@ Within the National Trust Framework the following applies.
     This variant only produces the identifier and it does not by itself establish which identifier is expected.
 
 .. note::
-  The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding procedure and are out of the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
+  The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding procedure and are out of the scope of this section (see :ref:`onboarding-system:Onboarding Processes`).
 
 **Input**
 
@@ -285,7 +285,7 @@ The result of this distribution is, for each Trust Evaluator, the set of validat
 This set is the trust anchor material consumed by the validation procedure below.
 
 .. note::
-  The issuance of the Document Signer certificates and the operation of the signing PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
+  The issuance of the Document Signer certificates and the operation of the signing PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-system:Onboarding Processes`).
 
 Signing Trust Anchor Validation Procedure
 """""""""""""""""""""""""""""""""""""""""
@@ -333,7 +333,7 @@ An Authentication Trust Anchor is the root of the X.509 authentication PKI that 
 These certificates follow the same profile as the Wallet-Relying Party Access Certificate (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`).
 
 .. note::
-  The issuance of the Relying Party authentication certificates and the operation of the authentication PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-procedure:The Onboarding Processes`).
+  The issuance of the Relying Party authentication certificates and the operation of the authentication PKI are defined in the onboarding procedure and are not in the scope of this section (see :ref:`onboarding-system:Onboarding Processes`).
 
 Authentication
 ^^^^^^^^^^^^^^^^^^^^

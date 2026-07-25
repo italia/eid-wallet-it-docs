@@ -23,7 +23,7 @@ Overview
 --------
 
 The IT-Wallet ecosystem operates on a federated trust infrastructure, requiring participating entities to establish mutual trust before engaging in any interaction involving User attributes.
-To be able to perform a trust evaluation process, entities first need to onboard in the ecosystem (see :ref:`onboarding-procedure:Onboarding Procedure`).
+To be able to perform a trust evaluation process, entities first need to onboard in the ecosystem (see :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
 During this phase, Non-Qualified EAA Providers and Relying Parties MUST declare whether they need to interoperate with European entities or they operate only within the national boundary.
 
 This choice affects both the onboarding and the trust evaluation procedures.
