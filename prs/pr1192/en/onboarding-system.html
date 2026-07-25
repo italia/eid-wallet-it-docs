@@ -766,9 +766,54 @@ Wallet Providers are not registered as WRPs, so the suspension and cancellation 
 </div>
 <p>Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
 This is set by Annex IV of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] for the Providers of WRPACs and by Annex V of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] for the Providers of WRPRCs.</p>
-<p>Within the National Trust Framework the same events are published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (<code class="docutils literal notranslate"><span class="pre">federation_subordinate_events_endpoint</span></code>), using the event types <code class="docutils literal notranslate"><span class="pre">registration</span></code>, <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code>, <code class="docutils literal notranslate"><span class="pre">metadata_policy_update</span></code>, <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code>, <code class="docutils literal notranslate"><span class="pre">suspension</span></code> and <code class="docutils literal notranslate"><span class="pre">revocation</span></code> defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
-Other participants can therefore track the lifecycle of an Entity over time.
-The endpoint is described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
+<p>Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (<code class="docutils literal notranslate"><span class="pre">federation_subordinate_events_endpoint</span></code>), so that other participants can track the lifecycle of an Entity over time.
+The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
+<p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
+The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id759">
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 28.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Lifecycle event</strong></p></th>
+<th class="head"><p><strong>event</strong></p></th>
+<th class="head"><p><strong>iat</strong></p></th>
+<th class="head"><p><strong>event_description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Registration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">registration</span></code></p></td>
+<td><p>Time the registration is related to.</p></td>
+<td><p>Not used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Update of Identity Information or Technical Configuration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metadata_update</span></code></p></td>
+<td><p>Time the update is related to.</p></td>
+<td><p>MAY be used to provide further details about the update.</p></td>
+</tr>
+<tr class="row-even"><td><p>Key rotation/update of a Federation Entity Key</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jwks_update</span></code></p></td>
+<td><p>Time the key rotation/update is related to.</p></td>
+<td><p>Not used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspension</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">suspension</span></code></p></td>
+<td><p>Time the suspension is related to.</p></td>
+<td><p>MAY be used to provide further details about the suspension.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cancellation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">revocation</span></code></p></td>
+<td><p>Time the cancellation is related to.</p></td>
+<td><p>MAY be used to provide further details about the revocation.</p></td>
+</tr>
+</tbody>
+</table>
+<p>When a <code class="docutils literal notranslate"><span class="pre">registration</span></code> event is present, the <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> and <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> events MUST NOT be provided at the same time, since the registration is assumed to configure the initial state of the Entity, as specified in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].</p>
 </section>
 <section id="entity-updates-and-their-effects-on-trust-artifacts">
 <h3><span class="section-number">8.4.3. </span>Entity Updates and Their Effects on Trust Artifacts<a class="headerlink" href="#entity-updates-and-their-effects-on-trust-artifacts" title="Link to this heading">¶</a></h3>
@@ -784,8 +829,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id759">
-<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id760">
+<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -927,29 +972,29 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 </section>
 <section id="events-registries-and-trust-artifacts">
 <h3><span class="section-number">8.4.7. </span>Events, Registries and Trust Artifacts<a class="headerlink" href="#events-registries-and-trust-artifacts" title="Link to this heading">¶</a></h3>
-<p>The table below summarises, for each event, which registries and which Trust Artifacts are impacted.
+<p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
-The table provides the effect, while the way each Trust Artifact is revoked, updated or published is described in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a> and, for the technical mechanisms, in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id760">
-<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Events, Impacted Registries and Impacted Trust Artifacts</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
+The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id761">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id761" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 18.0%" />
-<col style="width: 16.0%" />
-<col style="width: 33.0%" />
-<col style="width: 33.0%" />
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 34.0%" />
+<col style="width: 24.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Event</strong></p></th>
 <th class="head"><p><strong>Decided by</strong></p></th>
 <th class="head"><p><strong>Impacted registries and catalogs</strong></p></th>
-<th class="head"><p><strong>Impacted Trust Artifacts</strong></p></th>
+<th class="head"><p><strong>Effects on Trust Artifacts</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Registration of an Entity</p></td>
 <td><p>Registrar, Federation Authority</p></td>
 <td><p>Register (new entry). Notification to the Commission for the notified categories.</p></td>
-<td><p>Entity Configuration, Subordinate Statement, registration Trust Mark, WRPAC, WRPRC where applicable, Sign/Seal Certificate, LoTE or EUMS TL entry.</p></td>
+<td><p>The Entity obtains its Trust Artifacts, see <a class="reference internal" href="#table-entity-data-and-trust-artifacts"><span class="std std-ref">Entity Data and Trust Artifacts</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Update of an Entity</p></td>
 <td><p>Registrar, Federation Authority</p></td>
@@ -958,13 +1003,13 @@ The table provides the effect, while the way each Trust Artifact is revoked, upd
 </tr>
 <tr class="row-even"><td><p>Key rotation of an Entity</p></td>
 <td><p>Certificate Authority, Provider of WRPAC, Federation Authority</p></td>
-<td><p>No registry is impacted, unless the key is a Trust Anchor key.</p></td>
-<td><p>Revocation and re-issuance of the certificate holding the key. Entity Configuration and Subordinate Statement for the Federation Entity Keys. LoTE for the Trust Anchor keys.</p></td>
+<td><p>No registry is impacted, unless the key is a Trust Anchor key, in which case the LoTE.</p></td>
+<td><p>Revocation and re-issuance of the certificate holding the key, see <a class="reference internal" href="#table-entity-data-and-trust-artifacts"><span class="std std-ref">Entity Data and Trust Artifacts</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Suspension of an Entity</p></td>
 <td><p>Registrar</p></td>
 <td><p>Register (registration status no longer valid).</p></td>
-<td><p>Revocation of the affected WRPAC and WRPRC. Revocation of the registration Trust Mark and update of the Subordinate Statement.</p></td>
+<td><p>Revocation of the affected WRPAC, WRPRC and registration Trust Mark, and update of the Subordinate Statement.</p></td>
 </tr>
 <tr class="row-even"><td><p>Reactivation of an Entity</p></td>
 <td><p>Registrar</p></td>
@@ -974,59 +1019,40 @@ The table provides the effect, while the way each Trust Artifact is revoked, upd
 <tr class="row-odd"><td><p>Cancellation of an Entity</p></td>
 <td><p>Registrar</p></td>
 <td><p>Register (entry removed). Update of the LoTE or of the EUMS TL for the notified categories.</p></td>
-<td><p>Revocation of WRPAC, WRPRC and Sign/Seal Certificates. Removal of the Subordinate Statement and of the registration Trust Mark. <code class="docutils literal notranslate"><span class="pre">revocation</span></code> event on the Federation Subordinate Events Endpoint.</p></td>
+<td><p>Revocation of the WRPAC, WRPRC and Sign/Seal Certificates, and removal of the Subordinate Statement and of the registration Trust Mark.</p></td>
 </tr>
 <tr class="row-even"><td><p>Registration of a Credential type version</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
+<td><p>Supervisory Body, published by the Federation Trust Anchor</p></td>
 <td><p>Digital Credentials Catalog (new versioned entry, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>). Schema Registry, for the schema of the new version.</p></td>
 <td><p>None.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Activation of a Credential type version</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
+<tr class="row-odd"><td><p>Activation or deactivation of a Credential type version</p></td>
+<td><p>Supervisory Body, published by the Federation Trust Anchor</p></td>
 <td><p>Digital Credentials Catalog (state of the versioned entry).</p></td>
 <td><p>None.</p></td>
 </tr>
-<tr class="row-even"><td><p>Enrolment of a Credential Issuer on a Credential type version</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
-<td><p>Digital Credentials Catalog (<code class="docutils literal notranslate"><span class="pre">issuers</span></code> of the versioned entry). Register, for the Credential provision capabilities of the Credential Issuer.</p></td>
-<td><p>Re-issuance of the WRPRC of the Credential Issuer. Update of the Subordinate Statement and re-issuance of the registration Trust Mark.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Withdrawal of a Credential Issuer from a Credential type version</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
-<td><p>Digital Credentials Catalog (<code class="docutils literal notranslate"><span class="pre">issuers</span></code> of the versioned entry). Register, for the Credential provision capabilities of the Credential Issuer.</p></td>
-<td><p>Re-issuance of the WRPRC of the Credential Issuer. Update of the Subordinate Statement and re-issuance of the registration Trust Mark.</p></td>
-</tr>
 <tr class="row-even"><td><p>New version of a Credential type</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
+<td><p>Supervisory Body, published by the Federation Trust Anchor</p></td>
 <td><p>Digital Credentials Catalog (new versioned entry <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, previous versioned entry <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>). Schema Registry.</p></td>
 <td><p>None.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Deactivation of a Credential type version</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
-<td><p>Digital Credentials Catalog (state of the versioned entry).</p></td>
-<td><p>None. The Credentials already issued keep their own status.</p></td>
-</tr>
-<tr class="row-even"><td><p>Registration of a new claim or of a new schema</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
+<tr class="row-odd"><td><p>Registration of a new claim or of a new schema</p></td>
+<td><p>Supervisory Body, published by the Federation Trust Anchor</p></td>
 <td><p>Claims Registry or Schema Registry (new entry). Alignment towards the Catalogue of Attributes or the Catalogue of Schemes.</p></td>
 <td><p>None.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Registration of an Authentic Source</p></td>
-<td><p>Supervisory Body, published by the Trust Anchor</p></td>
+<tr class="row-even"><td><p>Registration of an Authentic Source</p></td>
+<td><p>Supervisory Body, published by the Federation Trust Anchor</p></td>
 <td><p>Authentic Source Registry (new entry).</p></td>
 <td><p>None.</p></td>
 </tr>
-<tr class="row-even"><td><p>Change of availability of an Authentic Source</p></td>
+<tr class="row-odd"><td><p>Change of availability of an Authentic Source</p></td>
 <td><p>Authentic Source, through PDND</p></td>
 <td><p>Authentic Source Registry. Digital Credentials Catalog, for the versioned entries that depend on it.</p></td>
 <td><p>None.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Within the National Trust Framework every event that changes the registration of an Entity is published by the Federation Authority on the Federation Subordinate Events Endpoint, as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The cancellation of a registration is the event, while the complete exit of an Entity from the ecosystem, which covers both Trust Frameworks, is the Entity Removal process described in the onboarding processes.
