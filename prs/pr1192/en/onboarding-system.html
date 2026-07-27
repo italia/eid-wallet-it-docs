@@ -513,27 +513,81 @@ pkgent --&gt; pub
 <p>This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains. It is organized as a common part and a profile for each role.</p>
 <section id="common-registration-data">
 <h3><span class="section-number">8.2.1. </span>Common Registration Data<a class="headerlink" href="#common-registration-data" title="Link to this heading">¶</a></h3>
-<p>Every entity that onboards provides a common set of registration data, regardless of its role and of the registry where the data is finally stored.
-This common set identifies the organization, provides the contact information and states the role it intends to play, and it is the same information whether the entity is a Wallet-Relying Party, an Authentic Source or a Wallet Provider.</p>
-<p>The common registration data covers the following information.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Legal name</strong> of the organization, as it appears in the official records.</p></li>
-<li><p><strong>Identifier</strong>, one or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations (<cite>Indice dei domicili digitali della Pubblica Amministrazione e dei gestori di pubblici servizi &lt;https://indicepa.gov.it/ipa-portale/&gt;</cite>). The other identifier types defined in Table 2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], such as the European Unique Identifier (EUID) and the Legal Entity Identifier (LEI), are optional but they are not supported in the current version of these specifications. The syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> is defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></li>
-<li><p><strong>Legal nature</strong> of the entity, that is whether it is a public sector body or a private entity.</p></li>
-<li><p><strong>Contact information</strong>, that is the postal address, the electronic mail address, the telephone number and the information web page of the organization.</p></li>
-<li><p><strong>Policy references</strong>, that is the terms and conditions and the privacy policy of the service, each published at its own URL.</p></li>
-<li><p><strong>Data Protection Authority</strong>, the authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. For a Wallet-Relying Party this information is carried by the <code class="docutils literal notranslate"><span class="pre">supervisoryAuthority</span></code> field defined in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></li>
-<li><p><strong>Declared roles</strong>, that is the entitlements the entity requests, which state the roles it intends to play in the ecosystem.</p></li>
-</ul>
-</div></blockquote>
-<p>The Onboarding System collects this common set once, at registration, independently of where the data is finally stored.
-Depending on the role, the data is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), and the notification dataset for a Wallet Provider.
-The common set described above is the information the entity provides, seen from the Onboarding System and independently of its encoding.</p>
-<p>Every entity that is a Federation Entity, that is every entity except an Authentic Source, additionally provides the technical data of the National Trust Framework, that is its Federation Entity Identifier, its Federation Entity Keys and its service endpoints.
-This technical data is described in the OID Federation Registration, see <a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and it is not part of the administrative common set above.</p>
-<p>Beyond the common set, each entity provides the data that is specific to its role, such as the attributes a Relying Party intends to request, the attestation types an Attestation Provider intends to issue, and the way an entity valorizes the common data for its role.
-This role-specific data, together with the cryptographic material for which a Wallet-Relying Party requests a WRPAC, is described in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
+<p>This section defines the complete set of information the Onboarding System collects, with its semantics and, where applicable, its normative reference.
+Depending on the role, the information is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), and the notification dataset for a Wallet Provider.</p>
+<p>The table below is the reference catalog of the information.
+Each <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> is an instance of this catalog, that states which information is required for a role and how the entity valorizes it.
+The Description column points to the artifact or the registry that carries the information, where this helps the mapping.</p>
+<table class="longtable docutils align-default" id="id759">
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Onboarding Registration Information</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 50.0%" />
+<col style="width: 28.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Information</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Normative reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Legal name</p></td>
+<td><p>The name of the organization as it appears in the official records. In the Register it is the <code class="docutils literal notranslate"><span class="pre">legalName</span></code>, in the AS Registry the <code class="docutils literal notranslate"><span class="pre">organization_name_l10n_id</span></code>.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-odd"><td><p>Identifier</p></td>
+<td><p>One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations. The other identifier types of Table 2, such as EUID and LEI, are optional and are not supported in the current version. The syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> is defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></td>
+<td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 2</p></td>
+</tr>
+<tr class="row-even"><td><p>Legal nature</p></td>
+<td><p>Whether the entity is a public sector body or a private entity. In the Register it is the <code class="docutils literal notranslate"><span class="pre">isPSB</span></code> flag, in the AS Registry the <code class="docutils literal notranslate"><span class="pre">organization_type</span></code>.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-odd"><td><p>Contact information</p></td>
+<td><p>The postal address, the electronic mail address, the telephone number and the information web page of the organization.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-even"><td><p>Policy references</p></td>
+<td><p>The terms and conditions and the privacy policy of the service, each published at its own URL.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Protection Authority</p></td>
+<td><p>The authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. In the Register it is the <code class="docutils literal notranslate"><span class="pre">supervisoryAuthority</span></code> field (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), in the AS Registry the <code class="docutils literal notranslate"><span class="pre">dpa_contact</span></code>.</p></td>
+<td><p>Regulation (EU) 2016/679, Article 46a</p></td>
+</tr>
+<tr class="row-even"><td><p>Declared roles</p></td>
+<td><p>The entitlements the entity requests, which state the roles it intends to play in the ecosystem and which drive the role-specific information below.</p></td>
+<td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Annex A.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Service description</p></td>
+<td><p>The user-facing trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units, so that the User can recognize the entity.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-even"><td><p>Intended use</p></td>
+<td><p>The attributes a Relying Party intends to request from the Wallet Units, or the attestation types an Attestation Provider intends to issue. Provided by the entities that request attributes or issue attestations.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intermediary relationship</p></td>
+<td><p>For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.</p></td>
+<td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 10</p></td>
+</tr>
+<tr class="row-even"><td><p>Federation Entity Identifier</p></td>
+<td><p>The identifier of the entity in the National Trust Framework, that is the <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> of its Entity Configuration. Provided by every Federation Entity, that is every entity except an Authentic Source.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Federation Entity Key</p></td>
+<td><p>The public key with which the entity signs its federation statements, provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> endpoint.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
+</tr>
+<tr class="row-even"><td><p>Certificate Signing Requests</p></td>
+<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.</p></td>
+<td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The table gives the whole set.
+A given entity provides only the subset that applies to its role, as defined in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
 </section>
 <section id="eligibility-and-compliance-preconditions">
 <h3><span class="section-number">8.2.2. </span>Eligibility and Compliance Preconditions<a class="headerlink" href="#eligibility-and-compliance-preconditions" title="Link to this heading">¶</a></h3>
@@ -570,8 +624,8 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 <p>A successful registration produces, depending on the role and on the scope of operation, the entry in the Register, the Trust Artifacts and the entry in the trusted list.
 The way each artifact is produced is described in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the effects of the later changes in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
 <p>The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the national artifacts of the National Trust Framework.</p>
-<table class="longtable docutils align-default" id="id759">
-<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id760">
+<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 12.0%" />
@@ -887,14 +941,14 @@ The lifecycle of the single Digital Credentials issued to the Users is a differe
 <h3><span class="section-number">8.4.1. </span>Entity Lifecycle State Machine<a class="headerlink" href="#entity-lifecycle-state-machine" title="Link to this heading">¶</a></h3>
 <p>This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.2</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
-<figure class="align-default" id="id760">
+<figure class="align-default" id="id761">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id760" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id761" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -957,8 +1011,8 @@ The Authentic Sources follow the PDND framework, and the effects that their life
 <p>Every transition of the state machine of the Entities is caused by an event.
 For each event, this section states who is entitled to trigger it, who is responsible for it, and, when applicable, on which normative basis and within which conditions.
 The events that concern the Credential types and the Authentic Sources are described in the dedicated sections below.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id761">
-<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id761" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id762">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id762" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -1038,8 +1092,8 @@ This is set by Annex IV of [<a class="reference external" href="https://eur-lex.
 The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id762">
-<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id762" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id763">
+<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id763" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -1097,8 +1151,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id763">
-<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id763" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id764">
+<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id764" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -1243,8 +1297,8 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 <p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
 The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id764">
-<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id764" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id765">
+<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id765" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />
