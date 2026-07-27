@@ -3241,7 +3241,7 @@ The protocol metadata and the pinned key sets are truncated (<code class="docuti
 Its Entity Configuration has no <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code>, and its <code class="docutils literal notranslate"><span class="pre">jwks</span></code> provides, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI and the Authentication Trust Anchors of the X.509 authentication PKI, as dedicated JWKs with <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.
 A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates; an Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
 Each such JWK is identified by its <code class="docutils literal notranslate"><span class="pre">kid</span></code> and by the properties of the certificate provided in its <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3321,7 +3321,7 @@ Each such JWK is identified by its <code class="docutils literal notranslate"><s
 <p>The Federation TA issues a Subordinate Statement about each Leaf it registers directly.
 The statement carries the Federation Entity Keys of the Leaf, the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> that fixes the protocol keys and, when present, the service endpoints and the URIs of the Leaf to the values approved at onboarding, and the <code class="docutils literal notranslate"><span class="pre">constraints</span></code> of the subtree.</p>
 <p><strong>Wallet Provider</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3354,7 +3354,7 @@ The statement carries the Federation Entity Keys of the Leaf, the <code class="d
 </pre></div>
 </div>
 <p><strong>Relying Party</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3402,7 +3402,7 @@ The statement carries the Federation Entity Keys of the Leaf, the <code class="d
 </pre></div>
 </div>
 <p><strong>Credential Issuer</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3444,7 +3444,7 @@ The statement carries the Federation Entity Keys of the Leaf, the <code class="d
 <p>The Federation TA issues a Subordinate Statement about the Federation Intermediate.
 The <code class="docutils literal notranslate"><span class="pre">constraints</span></code> restrict the subtree of the Intermediate to the Relying Parties it can intermediate, and <code class="docutils literal notranslate"><span class="pre">max_path_length</span></code> is set to 1 to allow the single level of intermediation between the Federation TA and the affiliated Relying Parties.
 It carries no <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>: the affiliated Relying Parties are bound by the Intermediate in the Subordinate Statements it issues about them.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediary.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3476,7 +3476,7 @@ It carries no <code class="docutils literal notranslate"><span class="pre">metad
 It carries the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> that binds the protocol metadata of the affiliated Relying Party to the values approved at onboarding, exactly as the Federation TA does for the Leaves it registers directly.
 The <code class="docutils literal notranslate"><span class="pre">constraints</span></code> of the subtree are set by the Federation TA in the statement about the Intermediate.
 In the National Trust Framework an Intermediary intermediates only Relying Parties.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediary.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.affiliated.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3523,7 +3523,7 @@ In the National Trust Framework an Intermediary intermediates only Relying Parti
 <p>The Federation Intermediate is a <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> only.
 Its Entity Configuration points to the Federation TA through <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> and carries its registration Trust Mark with the <code class="docutils literal notranslate"><span class="pre">intermediate</span></code> Entity Type Identifier.
 It exposes the fetch and list endpoints used to serve the Subordinate Statements of its affiliated Relying Parties.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediary.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediary.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3570,7 +3570,7 @@ It exposes the fetch and list endpoints used to serve the Subordinate Statements
 <p>Each Leaf publishes its own Entity Configuration, pointing to its immediate superior through <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> and carrying its registration Trust Mark.
 The examples below report the main claims, the protocol metadata is referenced to its metadata section.</p>
 <p><strong>Wallet Provider</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3611,7 +3611,7 @@ The examples below report the main claims, the protocol metadata is referenced t
 </pre></div>
 </div>
 <p><strong>Relying Party</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3652,7 +3652,7 @@ The examples below report the main claims, the protocol metadata is referenced t
 </pre></div>
 </div>
 <p><strong>Credential Issuer</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
@@ -3867,7 +3867,7 @@ The consumption of these claims by the Trust Evaluator is defined in <a class="r
 </div>
 <p>The following non-normative examples illustrate the registration Trust Mark JWT content for a Credential Issuer, a public non-qualified EAA Provider issuing an Employee Badge, for a Relying Party requesting that Employee Badge, and for a Relying Party Intermediary.</p>
 <p>Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badge:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer&quot;</span><span class="p">,</span>
@@ -3909,7 +3909,7 @@ The consumption of these claims by the Trust Evaluator is defined in <a class="r
 </pre></div>
 </div>
 <p>Relying Party, a private organization requesting the Employee Badge for physical access control:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier&quot;</span><span class="p">,</span>
@@ -3957,7 +3957,7 @@ The consumption of these claims by the Trust Evaluator is defined in <a class="r
 <p>Relying Party Intermediary.
 It declares no intended use of its own, so its registration Trust Mark carries no <code class="docutils literal notranslate"><span class="pre">credentials</span></code> and no <code class="docutils literal notranslate"><span class="pre">purpose</span></code>.
 It is a Federation Intermediate, and its affiliated Relying Parties set their <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> to it.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediary.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate&quot;</span><span class="p">,</span>
@@ -4952,7 +4952,7 @@ JSON String that contains a URI to retrieve the Status List Aggregation for this
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 25/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 27/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
