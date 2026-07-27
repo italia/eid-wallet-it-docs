@@ -6,63 +6,79 @@ Registration Model
 
 This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains. It is organized as a common part and a profile for each role.
 
-Common Registration Data
-^^^^^^^^^^^^^^^^^^^^^^^^
+Registration Data Model
+^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines the complete set of information the Onboarding System collects, with its semantics and, where applicable, its normative reference.
-Depending on the role, the information is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), and the notification dataset for a Wallet Provider.
+This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference.
 
-The table below is the reference catalog of the information.
-Each :ref:`onboarding-system:Registration Profiles` is an instance of this catalog, that states which information is required for a role and how the entity valorizes it.
-The Description column points to the artifact or the registry that carries the information, where this helps the mapping.
+Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), the Digital Credentials Catalog for the Credential types (:ref:`registry:Digital Credentials Catalog`), and the notification dataset for a Wallet Provider.
 
-.. list-table:: Onboarding Registration Information
+The table below is the reference catalog of the data, identified by a format-agnostic **Data Identifier**.
+A Data Identifier can group a set of detailed fields of a destination data model that are semantically close and are provided together, in which case the Description lists the fields it provides.
+Each :ref:`onboarding-system:Registration Profiles` is an instance of this catalog, that states which Data Identifiers are required for a role and how the entity valorizes them.
+
+.. list-table:: Registration Data Model
    :class: longtable
    :widths: 22 50 28
    :header-rows: 1
 
-   * - **Information**
+   * - **Data Identifier**
      - **Description**
      - **Normative reference**
-   * - Legal name
+   * - `legal_name`
      - The name of the organization as it appears in the official records. In the Register it is the ``legalName``, in the AS Registry the ``organization_name_l10n_id``.
      - [`CIR2025/848`_], Annex I
-   * - Identifier
+   * - `identifier`
      - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. The other identifier types of Table 2, such as EUID and LEI, are optional and are not supported in the current version. The syntax of the ``organizationIdentifier`` is defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
      - [`ETSI TS 119 475`_], Table 2
-   * - Legal nature
+   * - `legal_nature`
      - Whether the entity is a public sector body or a private entity. In the Register it is the ``isPSB`` flag, in the AS Registry the ``organization_type``.
      - [`CIR2025/848`_], Annex I
-   * - Contact information
+   * - `contact_information`
      - The postal address, the electronic mail address, the telephone number and the information web page of the organization.
      - [`CIR2025/848`_], Annex I
-   * - Policy references
+   * - `service_policies`
      - The terms and conditions and the privacy policy of the service, each published at its own URL.
      - [`CIR2025/848`_], Annex I
-   * - Data Protection Authority
+   * - `data_protection_authority`
      - The authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. In the Register it is the ``supervisoryAuthority`` field (:ref:`infrastructure-trust:Register of WRPs`), in the AS Registry the ``dpa_contact``.
      - Regulation (EU) 2016/679, Article 46a
-   * - Declared roles
+   * - `entitlements`
      - The entitlements the entity requests, which state the roles it intends to play in the ecosystem and which drive the role-specific information below.
      - [`ETSI TS 119 475`_], Annex A.2
-   * - Service description
+   * - `service_description`
      - The user-facing trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units, so that the User can recognize the entity.
      - [`CIR2025/848`_], Annex I
-   * - Intended use
-     - The attributes a Relying Party intends to request from the Wallet Units, or the attestation types an Attestation Provider intends to issue. Provided by the entities that request attributes or issue attestations.
+   * - `intended_use`
+     - The attributes a Relying Party intends to request from the Wallet Units. Provided by the entities that request attributes from the Wallet Units.
      - [`CIR2025/848`_], Annex I
-   * - Intermediary relationship
+   * - `provided_attestations`
+     - The attestation types an Attestation Provider intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
+   * - `intermediary_relationship`
      - For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.
      - [`ETSI TS 119 475`_], Table 10
-   * - Federation Entity Identifier
+   * - `federation_entity_identifier`
      - The identifier of the entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration. Provided by every Federation Entity, that is every entity except an Authentic Source.
      - `OID-FED`_, Section 3
-   * - Federation Entity Key
+   * - `federation_entity_key`
      - The public key with which the entity signs its federation statements, provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
      - `OID-FED`_, Section 3
-   * - Certificate Signing Requests
+   * - `certificate_signing_requests`
      - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.
      - :rfc:`2986`
+   * - `provided_claims_purposes`
+     - The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the ``data_capabilities`` of the AS Registry entry, that is the ``available_claims``, the ``intended_purposes`` and the related integration details, see :ref:`registry:Authentic Source Registry`.
+     - [`CIR2025/848`_], Annex I
+   * - `credential_type_declaration`
+     - For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
+   * - `credential_technical_specification`
+     - Technical definition of a Credential type, that groups the Technical Specification fields of the Digital Credentials Catalog, that is the Credential schemes, the Credential formats and the authentication policy, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
+   * - `credential_policies`
+     - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
 
 The table gives the whole set.
 A given entity provides only the subset that applies to its role, as defined in :ref:`onboarding-system:Registration Profiles`.
@@ -136,10 +152,10 @@ The table shows the artifacts that vary by role, that is the EUDIW artifacts obt
      - no
      - PuB-EAA Providers LoTE
    * - Non-qualified EAA Provider
-     - yes only if it issues a Digital Credential published in a EU Rulebook
-     - yes only if it issues a Digital Credential published in a EU Rulebook
-     - yes only if it issues a Digital Credential published in a EU Rulebook
-     - Sign/Seal Certificate, for the Digital Credentials anchored to the National Trust Framework
+     - yes only if it issues an Attestation published in a EU Rulebook
+     - yes only if it issues an Attestation published in a EU Rulebook
+     - yes only if it issues an Attestation published in a EU Rulebook
+     - Sign/Seal Certificate, for the Attestations anchored to the National Trust Framework
      - None, trust anchor distribution defined in the applicable Attestation Rulebook
    * - Relying Party
      - yes
