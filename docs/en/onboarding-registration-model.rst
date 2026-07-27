@@ -9,28 +9,63 @@ This section provides the static view of the registration with the aim of defini
 Common Registration Data
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every entity that onboards provides a common set of registration data, regardless of its role and of the registry where the data is finally stored.
-This common set identifies the organization, provides the contact information and states the role it intends to play, and it is the same information whether the entity is a Wallet-Relying Party, an Authentic Source or a Wallet Provider.
+This section defines the complete set of information the Onboarding System collects, with its semantics and, where applicable, its normative reference.
+Depending on the role, the information is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), and the notification dataset for a Wallet Provider.
 
-The common registration data covers the following information.
+The table below is the reference catalog of the information.
+Each :ref:`onboarding-system:Registration Profiles` is an instance of this catalog, that states which information is required for a role and how the entity valorizes it.
+The Description column points to the artifact or the registry that carries the information, where this helps the mapping.
 
-  - **Legal name** of the organization, as it appears in the official records.
-  - **Identifier**, one or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations (`Indice dei domicili digitali della Pubblica Amministrazione e dei gestori di pubblici servizi <https://indicepa.gov.it/ipa-portale/>`). The other identifier types defined in Table 2 of [`ETSI TS 119 475`_], such as the European Unique Identifier (EUID) and the Legal Entity Identifier (LEI), are optional but they are not supported in the current version of these specifications. The syntax of the ``organizationIdentifier`` is defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
-  - **Legal nature** of the entity, that is whether it is a public sector body or a private entity.
-  - **Contact information**, that is the postal address, the electronic mail address, the telephone number and the information web page of the organization.
-  - **Policy references**, that is the terms and conditions and the privacy policy of the service, each published at its own URL.
-  - **Data Protection Authority**, the authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. For a Wallet-Relying Party this information is carried by the ``supervisoryAuthority`` field defined in :ref:`infrastructure-trust:Register of WRPs`.
-  - **Declared roles**, that is the entitlements the entity requests, which state the roles it intends to play in the ecosystem.
+.. list-table:: Onboarding Registration Information
+   :class: longtable
+   :widths: 22 50 28
+   :header-rows: 1
 
-The Onboarding System collects this common set once, at registration, independently of where the data is finally stored.
-Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), and the notification dataset for a Wallet Provider.
-The common set described above is the information the entity provides, seen from the Onboarding System and independently of its encoding.
+   * - **Information**
+     - **Description**
+     - **Normative reference**
+   * - Legal name
+     - The name of the organization as it appears in the official records. In the Register it is the ``legalName``, in the AS Registry the ``organization_name_l10n_id``.
+     - [`CIR2025/848`_], Annex I
+   * - Identifier
+     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. The other identifier types of Table 2, such as EUID and LEI, are optional and are not supported in the current version. The syntax of the ``organizationIdentifier`` is defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
+     - [`ETSI TS 119 475`_], Table 2
+   * - Legal nature
+     - Whether the entity is a public sector body or a private entity. In the Register it is the ``isPSB`` flag, in the AS Registry the ``organization_type``.
+     - [`CIR2025/848`_], Annex I
+   * - Contact information
+     - The postal address, the electronic mail address, the telephone number and the information web page of the organization.
+     - [`CIR2025/848`_], Annex I
+   * - Policy references
+     - The terms and conditions and the privacy policy of the service, each published at its own URL.
+     - [`CIR2025/848`_], Annex I
+   * - Data Protection Authority
+     - The authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. In the Register it is the ``supervisoryAuthority`` field (:ref:`infrastructure-trust:Register of WRPs`), in the AS Registry the ``dpa_contact``.
+     - Regulation (EU) 2016/679, Article 46a
+   * - Declared roles
+     - The entitlements the entity requests, which state the roles it intends to play in the ecosystem and which drive the role-specific information below.
+     - [`ETSI TS 119 475`_], Annex A.2
+   * - Service description
+     - The user-facing trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units, so that the User can recognize the entity.
+     - [`CIR2025/848`_], Annex I
+   * - Intended use
+     - The attributes a Relying Party intends to request from the Wallet Units, or the attestation types an Attestation Provider intends to issue. Provided by the entities that request attributes or issue attestations.
+     - [`CIR2025/848`_], Annex I
+   * - Intermediary relationship
+     - For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.
+     - [`ETSI TS 119 475`_], Table 10
+   * - Federation Entity Identifier
+     - The identifier of the entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration. Provided by every Federation Entity, that is every entity except an Authentic Source.
+     - `OID-FED`_, Section 3
+   * - Federation Entity Key
+     - The public key with which the entity signs its federation statements, provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
+     - `OID-FED`_, Section 3
+   * - Certificate Signing Requests
+     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.
+     - :rfc:`2986`
 
-Every entity that is a Federation Entity, that is every entity except an Authentic Source, additionally provides the technical data of the National Trust Framework, that is its Federation Entity Identifier, its Federation Entity Keys and its service endpoints.
-This technical data is described in the OID Federation Registration, see :ref:`onboarding-system:Entity Registration`, and it is not part of the administrative common set above.
-
-Beyond the common set, each entity provides the data that is specific to its role, such as the attributes a Relying Party intends to request, the attestation types an Attestation Provider intends to issue, and the way an entity valorizes the common data for its role.
-This role-specific data, together with the cryptographic material for which a Wallet-Relying Party requests a WRPAC, is described in :ref:`onboarding-system:Registration Profiles`.
+The table gives the whole set.
+A given entity provides only the subset that applies to its role, as defined in :ref:`onboarding-system:Registration Profiles`.
 
 Eligibility and Compliance Preconditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
