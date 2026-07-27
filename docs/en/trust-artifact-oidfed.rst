@@ -273,80 +273,8 @@ Its Entity Configuration has no ``authority_hints``, and its ``jwks`` provides, 
 A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates; an Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
 Each such JWK is identified by its ``kid`` and by the properties of the certificate provided in its ``x5c``.
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://trust-anchor.eid-wallet.example.it",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "yRnq6oEvrxcZ1zYStADzTLX-qSw3Pb7E6mqJGNqnygA",
-           "x": "xrk5H1nEWrNYRb7FBamuSRHHf-XWjv1k-uZCSVCSAnc",
-           "y": "FM5YI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB0k"
-         },
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "use": "sig",
-           "kid": "signing-trust-anchor-01",
-           "x": "B0sj_kZRT4A-oP9Y57dinEiDFTG-tjuPu7MiiQHHQ_g",
-           "y": "iMDCuatE53HiX2VTDJ_q7LbQ-A7fgjXZpJsW-eZzge0",
-           "x5c": [
-             "<Signing Trust Anchor X.509 certificate>"
-           ]
-         },
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "use": "sig",
-           "kid": "authentication-trust-anchor-01",
-           "x": "Zm3kQp9rB1xYtA5nF2wEsRHHf-XWjv1k-uZCSVCSAn8",
-           "y": "Km9ZI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB2m",
-           "x5c": [
-             "<Authentication Trust Anchor X.509 certificate>"
-           ]
-         }
-       ]
-     },
-     "metadata": {
-       "federation_entity": {
-         "organization_name": "IT-Wallet Federation Trust Anchor",
-         "homepage_uri": "https://trust-anchor.eid-wallet.example.it",
-         "policy_uri": "https://trust-anchor.eid-wallet.example.it/policy",
-         "logo_uri": "https://trust-anchor.eid-wallet.example.it/logo.svg",
-         "contacts": [
-           "trust-anchor@pec.example.it"
-         ],
-         "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/fetch",
-         "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
-         "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
-         "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-         "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_marked_list",
-         "federation_trust_mark_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark",
-         "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/historical_keys",
-         "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/subordinate_events"
-       }
-     },
-     "trust_mark_issuers": {
-       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution": [
-         "https://trust-anchor.eid-wallet.example.it"
-       ],
-       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer": [
-         "https://trust-anchor.eid-wallet.example.it"
-       ],
-       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier": [
-         "https://trust-anchor.eid-wallet.example.it"
-       ],
-       "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate": [
-         "https://trust-anchor.eid-wallet.example.it"
-       ]
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ec-federation-ta.json
+  :language: JSON
 
 Subordinate Statement of Leaf issued by the Federation TA
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -356,127 +284,18 @@ The statement carries the Federation Entity Keys of the Leaf, the ``metadata_pol
 
 **Wallet Provider**
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://wallet-provider.example.it",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "LqZSJoAEybT9V3jUQfZYUjVV-U5jV34sgbhIsIXltSY",
-           "x": "38k73K5mw7Ev34lMwJhMBy5L2PnP9ayGfnMMtk4UZAw",
-           "y": "4ohTh7joeKLhRfPRSXQvnu-OMqUIn9lzoJAp_ztuv1A"
-         }
-       ]
-     },
-     "metadata_policy": {
-       "wallet_solution": {
-         "jwks": {
-           "value": { "... the Wallet Provider protocol keys registered at onboarding ..." }
-         }
-       }
-     },
-     "constraints": {
-       "allowed_entity_types": [
-         "wallet_solution"
-       ],
-       "max_path_length": 0
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ss-ta-leaf-wallet-provider.json
+  :language: JSON
 
 **Relying Party**
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://access.privatecompany.example.com",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "cwdtstHkIOqwWD8UeXjY_NdKfB-d1bzIx7XKBQNVbsg",
-           "x": "y8ahuTA-G4oLpTFYp7YrTd99kLPSlNoLPmwGJcXvWY8",
-           "y": "HNRLc-1ennbeBtF3LbtBdq_0c7EX4samlHnwXilH_i0"
-         }
-       ]
-     },
-     "metadata_policy": {
-       "openid_credential_verifier": {
-         "jwks": {
-           "value": { "... the Relying Party protocol keys registered at onboarding ..." }
-         },
-         "request_uris": {
-           "value": [
-             "https://access.privatecompany.example.com/openid4vp/request"
-           ]
-         },
-         "response_uris": {
-           "value": [
-             "https://access.privatecompany.example.com/openid4vp/response"
-           ]
-         },
-         "redirect_uris": {
-           "value": [
-             "https://access.privatecompany.example.com/openid4vp/callback"
-           ]
-         }
-       }
-     },
-     "constraints": {
-       "allowed_entity_types": [
-         "openid_credential_verifier"
-       ],
-       "max_path_length": 0
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ss-ta-leaf-relying-party.json
+  :language: JSON
 
 **Credential Issuer**
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://badge-issuer.example.it",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "r6KG1Jbgcv0iNW1y0ERO_X2Jw926V2UHRJH8d-GcDEI",
-           "x": "26w7G_Myczl2-S8n0m1lMIjo3IzgZky-yNVdwaKOmhQ",
-           "y": "2WMnoyCXqS4FUdv9e4JEAJKyhRIODi5xGfFdnA6cnVM"
-         }
-       ]
-     },
-     "metadata_policy": {
-       "openid_credential_issuer": {
-         "jwks": {
-           "value": { "... the Credential Issuer protocol keys registered at onboarding ..." }
-         },
-         "credential_endpoint": {
-           "value": "https://badge-issuer.example.it/credential"
-         }
-       }
-     },
-     "constraints": {
-       "allowed_entity_types": [
-         "openid_credential_issuer",
-         "oauth_authorization_server"
-       ],
-       "max_path_length": 0
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ss-ta-leaf-credential-issuer.json
+  :language: JSON
 
 Subordinate Statement of an Intermediate
 """"""""""""""""""""""""""""""""""""""""
@@ -485,31 +304,8 @@ The Federation TA issues a Subordinate Statement about the Federation Intermedia
 The ``constraints`` restrict the subtree of the Intermediate to the Relying Parties it can intermediate, and ``max_path_length`` is set to 1 to allow the single level of intermediation between the Federation TA and the affiliated Relying Parties.
 It carries no ``metadata_policy``: the affiliated Relying Parties are bound by the Intermediate in the Subordinate Statements it issues about them.
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://intermediary.example.com",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
-           "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
-           "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
-         }
-       ]
-     },
-     "constraints": {
-       "allowed_entity_types": [
-         "openid_credential_verifier"
-       ],
-       "max_path_length": 1
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ss-intermediate.json
+  :language: JSON
 
 Subordinate Statement of Leaf issued by a Federation Intermediate
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -519,47 +315,8 @@ It carries the ``metadata_policy`` that binds the protocol metadata of the affil
 The ``constraints`` of the subtree are set by the Federation TA in the statement about the Intermediate.
 In the National Trust Framework an Intermediary intermediates only Relying Parties.
 
-.. code-block:: json
-
-   {
-     "iss": "https://intermediary.example.com",
-     "sub": "https://rp.affiliated.example.com",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "n47zfejmk3V14aKUQCEcA7sTKi-SXMw7E1MFnpQCL-0",
-           "x": "H3_bMVOWJoDSBenUzelAbAj4vanmXNJ3KT2Vk_OaehI",
-           "y": "aMoXkKSssBtMHwSCR-hY8mmFQFs3Hf5iQ0zFWMHAQfc"
-         }
-       ]
-     },
-     "metadata_policy": {
-       "openid_credential_verifier": {
-         "jwks": {
-           "value": { "... the affiliated Relying Party protocol keys registered at onboarding ..." }
-         },
-         "request_uris": {
-           "value": [
-             "https://rp.affiliated.example.com/openid4vp/request"
-           ]
-         },
-         "response_uris": {
-           "value": [
-             "https://rp.affiliated.example.com/openid4vp/response"
-           ]
-         },
-         "redirect_uris": {
-           "value": [
-             "https://rp.affiliated.example.com/openid4vp/callback"
-           ]
-         }
-       }
-     }
-   }
+.. literalinclude:: ../../examples/oidfed-ss-intermediate-leaf.json
+  :language: JSON
 
 Entity Configuration of a Federation Intermediate
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -568,47 +325,8 @@ The Federation Intermediate is a ``federation_entity`` only.
 Its Entity Configuration points to the Federation TA through ``authority_hints`` and carries its registration Trust Mark with the ``intermediate`` Entity Type Identifier.
 It exposes the fetch and list endpoints used to serve the Subordinate Statements of its affiliated Relying Parties.
 
-.. code-block:: json
-
-   {
-     "iss": "https://intermediary.example.com",
-     "sub": "https://intermediary.example.com",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "authority_hints": [
-       "https://trust-anchor.eid-wallet.example.it"
-     ],
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
-           "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
-           "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
-         }
-       ]
-     },
-     "metadata": {
-       "federation_entity": {
-         "organization_name": "Intermediary S.r.l.",
-         "homepage_uri": "https://intermediary.example.com",
-         "policy_uri": "https://intermediary.example.com/policy",
-         "logo_uri": "https://intermediary.example.com/logo.svg",
-         "contacts": [
-           "intermediary@pec.example.com"
-         ],
-         "federation_fetch_endpoint": "https://intermediary.example.com/fetch",
-         "federation_list_endpoint": "https://intermediary.example.com/list"
-       }
-     },
-     "trust_marks": [
-       {
-         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
-         "trust_mark": "<signed Trust Mark JWT>"
-       }
-     ]
-   }
+.. literalinclude:: ../../examples/oidfed-ec-federation-intermediate.json
+  :language: JSON
 
 Entity Configuration of a Leaf
 """"""""""""""""""""""""""""""
@@ -618,132 +336,18 @@ The examples below report the main claims, the protocol metadata is referenced t
 
 **Wallet Provider**
 
-.. code-block:: json
-
-   {
-     "iss": "https://wallet-provider.example.it",
-     "sub": "https://wallet-provider.example.it",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "authority_hints": [
-       "https://trust-anchor.eid-wallet.example.it"
-     ],
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "LqZSJoAEybT9V3jUQfZYUjVV-U5jV34sgbhIsIXltSY",
-           "x": "38k73K5mw7Ev34lMwJhMBy5L2PnP9ayGfnMMtk4UZAw",
-           "y": "4ohTh7joeKLhRfPRSXQvnu-OMqUIn9lzoJAp_ztuv1A"
-         }
-       ]
-     },
-     "metadata": {
-       "federation_entity": {
-         "organization_name": "Example Wallet Provider",
-         "homepage_uri": "https://wallet-provider.example.it",
-         "policy_uri": "https://wallet-provider.example.it/policy",
-         "logo_uri": "https://wallet-provider.example.it/logo.svg",
-         "contacts": [
-           "wallet-provider@pec.example.it"
-         ]
-       },
-       "wallet_solution": { ".. as defined in the Wallet Solution Metadata section ..." }
-     },
-     "trust_marks": [
-       {
-         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution",
-         "trust_mark": "<signed Trust Mark JWT>"
-       }
-     ]
-   }
+.. literalinclude:: ../../examples/oidfed-ec-leaf-wallet-provider.json
+  :language: JSON
 
 **Relying Party**
 
-.. code-block:: json
-
-   {
-     "iss": "https://access.privatecompany.example.com",
-     "sub": "https://access.privatecompany.example.com",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "authority_hints": [
-       "https://trust-anchor.eid-wallet.example.it"
-     ],
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "cwdtstHkIOqwWD8UeXjY_NdKfB-d1bzIx7XKBQNVbsg",
-           "x": "y8ahuTA-G4oLpTFYp7YrTd99kLPSlNoLPmwGJcXvWY8",
-           "y": "HNRLc-1ennbeBtF3LbtBdq_0c7EX4samlHnwXilH_i0"
-         }
-       ]
-     },
-     "metadata": {
-       "federation_entity": {
-         "organization_name": "Private Company S.p.A.",
-         "homepage_uri": "https://access.privatecompany.example.com",
-         "policy_uri": "https://access.privatecompany.example.com/policy",
-         "logo_uri": "https://access.privatecompany.example.com/logo.svg",
-         "contacts": [
-           "compliance@pec.privatecompany.example.com"
-         ]
-       },
-       "openid_credential_verifier": { "... as defined in the Relying Party Metadata section ..." }
-     },
-     "trust_marks": [
-       {
-         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
-         "trust_mark": "<signed Trust Mark JWT>"
-       }
-     ]
-   }
+.. literalinclude:: ../../examples/oidfed-ec-leaf-relying-party.json
+  :language: JSON
 
 **Credential Issuer**
 
-.. code-block:: json
-
-   {
-     "iss": "https://badge-issuer.example.it",
-     "sub": "https://badge-issuer.example.it",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "authority_hints": [
-       "https://trust-anchor.eid-wallet.example.it"
-     ],
-     "jwks": {
-       "keys": [
-         {
-           "kty": "EC",
-           "crv": "P-256",
-           "kid": "r6KG1Jbgcv0iNW1y0ERO_X2Jw926V2UHRJH8d-GcDEI",
-           "x": "26w7G_Myczl2-S8n0m1lMIjo3IzgZky-yNVdwaKOmhQ",
-           "y": "2WMnoyCXqS4FUdv9e4JEAJKyhRIODi5xGfFdnA6cnVM"
-         }
-       ]
-     },
-     "metadata": {
-       "federation_entity": {
-         "organization_name": "Comune di Example",
-         "homepage_uri": "https://badge-issuer.example.it",
-         "policy_uri": "https://badge-issuer.example.it/policy",
-         "logo_uri": "https://badge-issuer.example.it/logo.svg",
-         "contacts": [
-           "protocollo@pec.comune.example.it"
-         ]
-       },
-       "openid_credential_issuer": { "... as defined in the Credential Issuer Metadata section ..." }
-     },
-     "trust_marks": [
-       {
-         "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer",
-         "trust_mark": "<signed Trust Mark JWT>"
-       }
-     ]
-   }
+.. literalinclude:: ../../examples/oidfed-ec-leaf-credential-issuer.json
+  :language: JSON
 
 Trust Marks
 ^^^^^^^^^^^
@@ -892,125 +496,17 @@ The following non-normative examples illustrate the registration Trust Mark JWT 
 
 Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badge:
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://badge-issuer.example.it",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "public_body": true,
-     "ipa_code": "c_h501",
-     "legal_identifier": "80012345678",
-     "organization_name": "Comune di Example",
-     "email": "protocollo@comune.example.it",
-     "support_uri": "https://badge-issuer.example.it/support",
-     "srv_description": [
-       {"lang": "it", "value": "Servizio di emissione del badge dipendente"},
-       {"lang": "en", "value": "Employee Badge issuance service"}
-     ],
-     "entitlements": ["Non_Q_EAA_Provider"],
-     "provides_attestations": [
-       {
-         "format": "dc+sd-jwt",
-         "meta": {
-           "vct_values": ["urn:it-wallet:badge:1"]
-         },
-         "claim": [
-           {"path": ["document_number"]},
-           {"path": ["works_for"]},
-           {"path": ["given_name"]},
-           {"path": ["family_name"]},
-           {"path": ["job_title"]}
-         ]
-       }
-     ],
-     "supervisory_authority": {
-       "uri": "https://www.dpa.example.it/report",
-       "email": "reports@dpa.example.it",
-       "phone": "+390612345678"
-     },
-     "logo_uri": "https://badge-issuer.example.it/logo.svg"
-   }
+.. literalinclude:: ../../examples/oidfed-trust-mark-credential-issuer.json
+  :language: JSON
 
 Relying Party, a private organization requesting the Employee Badge for physical access control:
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://access.privatecompany.example.com",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "public_body": false,
-     "vat_number": "IT12345678901",
-     "legal_identifier": "12345678901",
-     "organization_name": "Private Company S.p.A.",
-     "email": "compliance@privatecompany.example.com",
-     "support_uri": "https://access.privatecompany.example.com/support",
-     "srv_description": [
-       {"lang": "it", "value": "Servizio di controllo dell'accesso fisico"},
-       {"lang": "en", "value": "Physical access control service"}
-     ],
-     "entitlements": ["Service_Provider"],
-     "credentials": [
-       {
-         "format": "dc+sd-jwt",
-         "meta": {
-           "vct_values": ["urn:it-wallet:badge:1"]
-         },
-         "claim": [
-           {"path": ["given_name"]},
-           {"path": ["family_name"]},
-           {"path": ["works_for"]},
-           {"path": ["job_title"]}
-         ]
-       }
-     ],
-     "purpose": [
-       {"lang": "en", "value": "Employee verification for physical access control"},
-       {"lang": "it", "value": "Verifica del dipendente per il controllo dell'accesso fisico"}
-     ],
-     "privacy_policy": "https://access.privatecompany.example.com/privacy",
-     "supervisory_authority": {
-       "uri": "https://www.dpa.example.it/report",
-       "email": "reports@dpa.example.it",
-       "phone": "+390612345678"
-     },
-     "logo_uri": "https://access.privatecompany.example.com/logo.svg"
-   }
+.. literalinclude:: ../../examples/oidfed-trust-mark-relying-party.json
+  :language: JSON
 
 Relying Party Intermediary.
 It declares no intended use of its own, so its registration Trust Mark carries no ``credentials`` and no ``purpose``.
 It is a Federation Intermediate, and its affiliated Relying Parties set their ``authority_hints`` to it.
 
-.. code-block:: json
-
-   {
-     "iss": "https://trust-anchor.eid-wallet.example.it",
-     "sub": "https://intermediary.example.com",
-     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
-     "iat": 1718207217,
-     "exp": 1749743216,
-     "public_body": false,
-     "vat_number": "IT98765432109",
-     "legal_identifier": "98765432109",
-     "organization_name": "Intermediary S.r.l.",
-     "email": "info@intermediary.example.com",
-     "support_uri": "https://intermediary.example.com/support",
-     "srv_description": [
-       {"lang": "it", "value": "Servizio di intermediazione per Relying Party"},
-       {"lang": "en", "value": "Intermediation service for Relying Parties"}
-     ],
-     "entitlements": ["Service_Provider"],
-     "supervisory_authority": {
-       "uri": "https://www.dpa.example.it/report",
-       "email": "reports@dpa.example.it",
-       "phone": "+390612345678"
-     },
-     "logo_uri": "https://intermediary.example.com/logo.svg"
-   }
-
-
+.. literalinclude:: ../../examples/oidfed-trust-mark-intermediate.json
+  :language: JSON
