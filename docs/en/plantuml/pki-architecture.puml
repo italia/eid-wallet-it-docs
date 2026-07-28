@@ -24,7 +24,7 @@ package "National PKI" as NAT {
   rectangle "PID Provider Sign/Seal CA\n//PID Provider Sign/Seal Certificates//" as CA_PIDS
   rectangle "Wallet Provider Sign/Seal CA\n//Wallet Provider Sign/Seal Certificates//" as CA_WP
   
-  rectangle "Access CA\n//access certificates of Wallet-Relying\nParties and PID Providers//" as CA_WRPAC
+  rectangle "WRPAC CA\nAccess certificates of Wallet-Relying Parties " as CA_WRPAC
   rectangle "National Authentication CA\n//Relying Party authentication certificates//" as CA_AUTH
   rectangle "WRPRC Sign/Seal CA\n//Sign/Seal certificates of the Provider of WRPRC//" as CA_WRPRC
   rectangle "Registrar Sign/Seal CA\n//Registrar Sign/Seal Certificates//" as CA_REG
@@ -39,7 +39,7 @@ package "Qualified Trust Service Provider" as QTSP {
 package "EUDIW Trust Framework" as PUBEU {
   rectangle "PID Providers\nList of Trusted Entities" as L_PID
   rectangle "Wallet Providers\nList of Trusted Entities" as L_WP
-  rectangle "PuB-EAA Providers\nList of Trusted Entities" as L_PUB
+  ' rectangle "PuB-EAA Providers\nList of Trusted Entities" as L_PUB
   rectangle "Providers of WRPAC\nList of Trusted Entities" as L_WRPAC
   rectangle "Providers of WRPRC\nList of Trusted Entities" as L_WRPRC
   rectangle "Registrar\nList of Trusted Entities" as L_REG
