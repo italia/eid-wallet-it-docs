@@ -592,27 +592,31 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 <td><p>The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the AS Registry entry, that is the <code class="docutils literal notranslate"><span class="pre">available_claims</span></code>, the <code class="docutils literal notranslate"><span class="pre">intended_purposes</span></code> and the related integration details, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
+<td><p>The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text. It is stored in the <code class="docutils literal notranslate"><span class="pre">organization_info</span></code> and in the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the AS Registry entry, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. The other entities do not provide it, since their visual assets are carried in their Entity Configuration.</p></td>
+<td><p>This specification</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_type_declaration</cite></p></td>
 <td><p>For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<tr class="row-odd"><td><p><cite>credential_technical_specification</cite></p></td>
 <td><p>Technical definition of a Credential type, that groups the Technical Specification fields of the Digital Credentials Catalog, that is the Credential schemes, the Credential formats and the authentication policy, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<tr class="row-even"><td><p><cite>credential_policies</cite></p></td>
 <td><p>Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
 <td><p>The outcome of the conformity assessment of the entity. For a PuB-EAA Provider it is the conformity assessment report issued by a conformity assessment body under Article 45f of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]. For a Wallet Provider and a PID Provider it is the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN). Provided by the notified categories.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>service_supply_point</cite></p></td>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
 <td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. Provided by the notified categories that issue an Attestation requested by the Wallet Unit, that is the PID Providers and the PuB-EAA Providers.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
+<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
 <td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It is provided as an input by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, that is the QEAA Providers and the PuB-EAA Providers, whose Qualified Certification Authority belongs to the perimeter of a Qualified Trust Service Provider, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
