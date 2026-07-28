@@ -257,7 +257,7 @@ The table below provides the relationship between the categories of registered d
      - X.509 Sign/Seal Certificate
 
    * - Credential Issuer or Wallet Provider
-     - Technical Configuration (Signature/Seal Trust Anchor)
+     - Technical Configuration (Metadata, Signature/Seal Trust Anchor)
      - LoTE
      - Trust Anchor Entity Configuration
 
