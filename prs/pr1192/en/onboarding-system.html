@@ -545,7 +545,7 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>contact_information</cite></p></td>
-<td><p>The postal address, the electronic mail address, the telephone number and the information web page of the organization.</p></td>
+<td><p>The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service. In the Register the support contact is the <code class="docutils literal notranslate"><span class="pre">supportURI</span></code> field.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>service_policies</cite></p></td>
@@ -603,6 +603,18 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 <tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
 <td><p>Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the conformity assessment of the entity. For a PuB-EAA Provider it is the conformity assessment report issued by a conformity assessment body under Article 45f of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]. For a Wallet Provider and a PID Provider it is the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN). Provided by the notified categories.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. Provided by the notified categories that issue an Attestation requested by the Wallet Unit, that is the PID Providers and the PuB-EAA Providers.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
+<td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It is provided as an input by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, that is the QEAA Providers and the PuB-EAA Providers, whose Qualified Certification Authority belongs to the perimeter of a Qualified Trust Service Provider, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
 </tbody>
 </table>
@@ -1580,7 +1592,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 27/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
