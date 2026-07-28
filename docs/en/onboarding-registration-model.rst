@@ -260,7 +260,7 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
    * - `intended_use`
      - The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.
    * - `intermediary_relationship`
-     - REQUIRED only where the Relying Party operates through a WRP Intermediary. In that case it references its WRP intermediary identifier. The intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
+     - REQUIRED only where the Relying Party operates through a RP Intermediary. In that case it references its RP intermediary identifier. The RP intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the Relying Party in the National Trust Framework.
    * - `federation_entity_key`
