@@ -12,7 +12,7 @@ Two trust frameworks coexist in IT-Wallet.
 
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_).
     It is mandatory and authoritative for the notified entities and for cross-border interoperability.
-  - The **National Trust Framework** is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials.
+  - The **National Trust Framework** is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials requiring X.509 PKI.
     It is the registration and onboarding layer for all the entities of the ecosystem, and it provides trust evaluation mechanisms for the operational phases where the EUDIW Trust Framework is not required.
 
 This section provides first an overview of the entities and processes involved in the trust infrastructure (:ref:`infrastructure-trust:Overview`).
