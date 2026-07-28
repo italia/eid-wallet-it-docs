@@ -264,16 +264,40 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the Relying Party in the National Trust Framework.
    * - `federation_entity_key`
-     - The Federation Entity Key of the Relying Party.
+     - REQUIRED for a Relying Party that operates without an intermediary. A Relying Party operating through a RP Intermediary MUST NOT provide it, because it is registered by its RP Intermediary according to the National Trust Framework.
    * - `certificate_signing_requests`
      - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
+
+.. note::
+   An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
+   An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
 
 
 Relying Party Intermediary
 """"""""""""""""""""""""""
 
+In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
+It provides the same Data Identifiers as a :ref:`onboarding-system:Relying Party`, with the differences in the table below.
+The Data Identifiers not listed here are provided as for a Relying Party.
+
+.. list-table:: Relying Party Intermediary Registration Data, differences from the Relying Party
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `intended_use`
+     - Not provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.
+   * - `intermediary_relationship`
+     - Valorized on the intermediary side, that is the Relying Party declares that it is a designated intermediary.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the Relying Party Intermediary in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the Relying Party Intermediary.
+
 .. note::
-   Draft. To be written.
+  The registration of a Relying Party Intermediary and the registration of its intermediated Relying Parties are linked, the Intermediary declares that it acts as an intermediary, and each intermediated Relying Party references it in its own :ref:`onboarding-system:Relying Party` profile.
 
 
 Wallet Provider
