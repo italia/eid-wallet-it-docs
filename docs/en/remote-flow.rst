@@ -506,7 +506,7 @@ The JWT header parameters are described below:
   * - **typ**
     - REQUIRED. Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-89 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **kid**
-    - REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
+    - REQUIRED when ``client_id`` uses the ``openid_federation`` scheme. OPTIONAL when ``client_id`` uses an ``x509_hash`` prefix scheme. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
   * - **trust_chain**
     - OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
