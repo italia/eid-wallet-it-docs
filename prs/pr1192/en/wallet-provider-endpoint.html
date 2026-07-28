@@ -785,37 +785,46 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>REQUIRED. String containing the URL identifying the Wallet Provider.</p></td>
-<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.</p></td>
+<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> and <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>REQUIRED. JWK Thumbprint of the public key included in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
-<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> and <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
+<tr class="row-odd"><td><p><strong>nbf</strong></p></td>
+<td><p>OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.</p></td>
 <td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> and <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>nbf</strong></p></td>
-<td><p>OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
+<tr class="row-odd"><td><p><strong>wallet_link</strong></p></td>
 <td><p>REQUIRED. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
+<tr class="row-even"><td><p><strong>wallet_name</strong></p></td>
 <td><p>REQUIRED. String containing a human-readable name of the Wallet.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_version</strong></p></td>
+<td><p>REQUIRED. String value of the Wallet Solution version.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> and <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_solution_certification_information</strong></p></td>
+<td><p>OPTIONAL. String value that contains a URL that links to the certification of the Wallet Solution.</p></td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>client_status</strong></p></td>
+<td><p>REQUIRED. Status mechanism for the Wallet Attestation.</p>
+<ul class="simple">
+<li><p><strong>status</strong>: REQUIRED. a status list reference as specified in Appendix E of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>. The value represents the revocation state of the Wallet Instance.</p></li>
+<li><p><strong>exp</strong>: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>sub</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Instance, which is the unique identifier of Wallet Solution in URL format.</p></td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -833,6 +842,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span>
 <span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
@@ -840,21 +850,39 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8g9qKk3tRCBHsu57pNy3oMPc-jeJW8zU1LvfG9H5__M&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KD0MNCPtJqUd1RGiTdAxEL6OCw5trfzqSrU6BHKOy2g&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dd762e6f8b613193&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span>
+<span class="w">        </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dd762e6f8b613193&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;status_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;idx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://revocation_url/wia-statuslists/42&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1772447918</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleOrg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wallet_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/wallets/ExampleOrg/info&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1772444318</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wallet_solution_certification_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/wallets/ExampleOrg/certification&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-solution.example.org/dd762e6f8b613193&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1772447918</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>As the certification scheme has not yet been defined, the exact content of <code class="docutils literal notranslate"><span class="pre">wallet_solution_certification_information</span></code> is undefined. This content will be defined in a future update.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>As a revocation mechanism for WIA, the per-issuer reuse option described in Section 2.5.1 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> is preferred.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim is not needed anymore in the WIA body as Wallet Provider identity is now inferred from the signing certificate in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> JOSE header parameter.</p>
 </div>
 </section>
 </section>
@@ -864,7 +892,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <section id="key-attestation-issuance-request">
 <h3><span class="section-number">12.1.5.1. </span>Key Attestation Issuance Request<a class="headerlink" href="#key-attestation-issuance-request" title="Link to this heading">¶</a></h3>
 <p>The Key Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Key Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wua-request+jwt</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Key Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">ka-request+jwt</span></code>.</p>
 <p>The Key Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
 <p>Below is a non-normative example of a Key Attestation Request.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/key-attestation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -892,14 +920,14 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Thumbprint of the Wallet Instance's JWK contained in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
-<td><p>[<span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>The type of the JWT, it MUST set to <code class="docutils literal notranslate"><span class="pre">wua-request+jwt</span></code>.</p></td>
+<td><p>The type of the JWT, it MUST be set to <code class="docutils literal notranslate"><span class="pre">ka-request+jwt</span></code>.</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -920,15 +948,15 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>String containing the unique identifier of the Wallet Instance.</p></td>
-<td><p>[<span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX timestamp representing the JWT expiration time.</p></td>
-<td><p>[<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> obtained from the Nonce Endpoint.</p></td>
@@ -952,7 +980,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object containing the public part of the first asymmetric key pair (first element of <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+<td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>platform</strong></p></td>
 <td><p>String containing the value of the device operating system.</p></td>
@@ -972,7 +1000,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wua-request+jwt&quot;</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ka-request+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1073,11 +1101,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Key Attestation.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
@@ -1088,8 +1116,8 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
+<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1107,23 +1135,19 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>REQUIRED. String containing the URL identifying the Wallet Provider.</p></td>
-<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>attested_keys</strong></p></td>
+<tr class="row-even"><td><p><strong>attested_keys</strong></p></td>
 <td><p>REQUIRED. A non-empty array of attested keys from the same key storage component using the syntax of JWK, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
+<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>key_storage</strong></p></td>
+<tr class="row-odd"><td><p><strong>key_storage</strong></p></td>
 <td><p>REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the key storage component and its keys attested in the <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code> parameter. The following values are defined as a value for this claim:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: It MUST be used when key storage is resistant to attack with attack potential <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
@@ -1134,7 +1158,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>user_authentication</strong></p></td>
+<tr class="row-even"><td><p><strong>user_authentication</strong></p></td>
 <td><p>REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the user authentication methods allowed to access the private keys from the <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code> parameter. The following values are defined as a value for this claim:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: It MUST be used when user authentication is resistant to attack with attack potential <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
@@ -1145,15 +1169,16 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>status</strong></p></td>
+<tr class="row-odd"><td><p><strong>key_storage_status</strong></p></td>
 <td><p>REQUIRED. Status mechanism for the Key Attestation.</p>
 <ul class="simple">
-<li><p><strong>status_list</strong>: REQUIRED. a status list reference as specified in Appendix D of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>. The value represents the revocation state of the WSCD or Keystore.</p></li>
+<li><p><strong>status</strong>: REQUIRED. a status list reference as specified in Appendix D of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>. The value represents the revocation state of the WSCD or Keystore.</p></li>
+<li><p><strong>exp</strong>: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p></li>
 </ul>
 </td>
 <td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>certification</strong></p></td>
+<tr class="row-even"><td><p><strong>certification</strong></p></td>
 <td><p>OPTIONAL. A String that contains a URL that links to the certification of the key storage component.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
@@ -1182,17 +1207,19 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">            </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;key_storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;status_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;idx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">412</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://revocation_url/statuslists/1&quot;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;key_storage_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;status_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;idx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">412</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://revocation_url/statuslists/1&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;user_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;key_storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;user_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1203,6 +1230,10 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As a revocation mechanism for KA, the Type-shared index described in Section 2.5.2 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> is preferred.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by <code class="docutils literal notranslate"><span class="pre">key_storage_status.exp</span></code>.</p>
 </div>
 </section>
 </section>

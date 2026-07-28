@@ -426,6 +426,10 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
 <li><p><strong>Revoca dell'Istanza del Wallet</strong> (<strong>WI REV</strong>): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Instance Attestation, che viene riportata nella Wallet Instance Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.</p></li>
 <li><p><strong>Eliminazione dei Dati</strong>: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Il Wallet Provider DEVE scegliere il periodo di validità tecnica della Wallet Instance Attestation e DEVE mantenere la lista di revoca per l’intero periodo di validità della Wallet Instance Attestation Status List, come definito dal claim <code class="docutils literal notranslate"><span class="pre">client_status.exp</span></code> nella Wallet Instance Attestation.</p>
+</div>
 </section>
 </section>
 

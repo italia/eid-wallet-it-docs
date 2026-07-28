@@ -424,6 +424,10 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 <li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Instance Attestation, which is reflected on the Wallet Instance Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
 <li><p><strong>Data Purging</strong>: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A Wallet Provider SHALL choose the technical validity period of the Wallet Instance Attestation and SHALL maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the <code class="docutils literal notranslate"><span class="pre">client_status.exp</span></code> claim in the Wallet Instance Attestation.</p>
+</div>
 </section>
 </section>
 

@@ -435,15 +435,6 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. String containing the URL identifying the Wallet Provider.
-      - :rfc:`7519`.
-    * - **sub**
-      - REQUIRED. JWK Thumbprint of the public key included in the ``cnf`` claim.
-      - :rfc:`7519` and `EUDI-TS 3`_.
-    * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.
       - :rfc:`9126` and :rfc:`7519` and `EUDI-TS 3`_.
@@ -459,6 +450,21 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **wallet_name**
       - REQUIRED. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
+    * - **wallet_version**
+      - REQUIRED. String value of the Wallet Solution version.
+      - `OpenID4VCI`_ and `EUDI-TS 3`_.
+    * - **wallet_solution_certification_information**
+      - OPTIONAL. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **client_status**
+      - REQUIRED. Status mechanism for the Wallet Attestation.
+
+        - **status**: REQUIRED. a status list reference as specified in Appendix E of `OpenID4VCI`_. The value represents the revocation state of the Wallet Instance.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
+      - `EUDI-TS 3`_.
+    * - **sub**
+      - REQUIRED. Identifier of the Wallet Instance, which is the unique identifier of Wallet Solution in URL format.
+      - `EUDI-TS 3`_.
 
 
 Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:
@@ -471,8 +477,15 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 
 
 .. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
+
+
+.. note::
     As a revocation mechanism for WIA, the per-issuer reuse option described in Section 2.5.1 of `EUDI-TS 3`_ is preferred.
 
+
+.. note::
+    The ``iss`` claim is not needed anymore in the WIA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
 
 
 
@@ -487,7 +500,7 @@ Key Attestation Issuance Request
 
 The Key Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-The ``typ`` header of the Key Attestation Issuance Request JWT assumes the value ``wua-request+jwt``.
+The ``typ`` header of the Key Attestation Issuance Request JWT assumes the value ``ka-request+jwt``.
 
 The Key Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
@@ -521,7 +534,7 @@ In particular, the Key Attestation Issuance JWT includes the following HTTP head
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wua-request+jwt``.
+      - The type of the JWT, it MUST be set to ``ka-request+jwt``.
       -
 
 The Key Attestation Request JWT includes the following body claims:
@@ -580,7 +593,7 @@ Below is a non-normative example of a Key Attestation Request JWT header and pay
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "ka-request+jwt"
     }
 
 .. code-block:: json
@@ -701,9 +714,6 @@ The body of the Key Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. String containing the URL identifying the Wallet Provider.
-      - :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
@@ -729,10 +739,11 @@ The body of the Key Attestation JWT contains the following claims:
         - ``iso_18045_enhanced-basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Enhanced-Basic``.
         - ``iso_18045_basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Basic``.
       - `OpenID4VCI`_.
-    * - **status**
+    * - **key_storage_status**
       - REQUIRED. Status mechanism for the Key Attestation.
 
-        - **status_list**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **status**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
@@ -755,6 +766,10 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
 
 .. note::
     As a revocation mechanism for KA, the Type-shared index described in Section 2.5.2 of `EUDI-TS 3`_ is preferred.
+
+
+.. note::
+    A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
 
 
 
