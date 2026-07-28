@@ -143,7 +143,7 @@ The table shows the artifacts that vary by role, that is the EUDIW artifacts obt
      - **Register record**
      - **WRPAC**
      - **WRPRC**
-     - **National x.509 certificate**
+     - **National X.509 certificate**
      - **LoTE entry**
    * - PID Provider
      - yes
