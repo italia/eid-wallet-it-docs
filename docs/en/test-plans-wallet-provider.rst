@@ -654,7 +654,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats ``wallet_metadata`` as a JSON object per :ref:`remote-flow:Request URI Request` that includes ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` set to ``["vp_token"]`` when present.
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, and optionally ``client_id_prefixes_supported`` and ``request_object_signing_alg_values_supported`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
