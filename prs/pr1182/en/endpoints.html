@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Endpoints &#8212; IT-Wallet Technical Specifications</title>
+    <title>12. Endpoints &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="13.1. Wallet Provider Endpoints" href="wallet-provider-endpoint.html" />
-    <link rel="prev" title="12.3. Wallet Metadata Retrieval Flow" href="wallet-metadata-retrieval.html" />
+    <link rel="next" title="12.1. Wallet Provider Endpoints" href="wallet-provider-endpoint.html" />
+    <link rel="prev" title="11.3. Wallet Metadata Retrieval Flow" href="wallet-metadata-retrieval.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,7 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,30 +263,29 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Wallet Provider Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Credential Issuer Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">13.5. PDND Signal Hub Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">12.1. Wallet Provider Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">12.2. Credential Issuer Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">12.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">12.4. Authentic Source Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">12.5. PDND Signal Hub Endpoints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
 </ul>
 
       </div>
@@ -308,98 +306,98 @@
           <div class="body">
             
   <section id="endpoints">
-<h1><span class="section-number">13. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">12. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Endpoints Table of Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Wallet Provider Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#id1">13.1.1. Federation Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint">13.1.2. Wallet Solution Nonce Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint">13.1.3. Wallet Instance Management Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-request">13.1.3.1. Wallet Instance Registration Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-response">13.1.3.2. Wallet Instance Registration Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-request">13.1.3.3. Wallet Instance Retrieval Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-response">13.1.3.4. Wallet Instance Retrieval Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-request">13.1.3.5. Wallet Instance Revocation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-response">13.1.3.6. Wallet Instance Revocation Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id2">13.1.3.7. Error Handling for Wallet Instance Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#common-error-responses">13.1.3.8. Common Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#request-specific-error-responses">13.1.3.9. Request-Specific Error Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-provider-endpoint.html">12.1. Wallet Provider Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#id1">12.1.1. Federation Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint">12.1.2. Wallet Solution Nonce Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint">12.1.3. Wallet Instance Management Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-request">12.1.3.1. Wallet Instance Registration Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-response">12.1.3.2. Wallet Instance Registration Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-request">12.1.3.3. Wallet Instance Retrieval Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-response">12.1.3.4. Wallet Instance Retrieval Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-request">12.1.3.5. Wallet Instance Revocation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-response">12.1.3.6. Wallet Instance Revocation Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id2">12.1.3.7. Error Handling for Wallet Instance Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#common-error-responses">12.1.3.8. Common Error Responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#request-specific-error-responses">12.1.3.9. Request-Specific Error Responses</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-endpoint">13.1.4. Wallet Instance Attestation Issuance Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-request">13.1.4.1. Wallet Instance Attestation Issuance Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-response">13.1.4.2. Wallet Instance Attestation Issuance Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-jwt">13.1.4.3. Wallet Instance Attestation JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-endpoint">12.1.4. Wallet Instance Attestation Issuance Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-request">12.1.4.1. Wallet Instance Attestation Issuance Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-response">12.1.4.2. Wallet Instance Attestation Issuance Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-jwt">12.1.4.3. Wallet Instance Attestation JWT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-endpoint">13.1.5. Key Attestation Issuance Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-request">13.1.5.1. Key Attestation Issuance Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-response">13.1.5.2. Key Attestation Issuance Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-jwt">13.1.5.3. Key Attestation JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-endpoint">12.1.5. Key Attestation Issuance Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-request">12.1.5.1. Key Attestation Issuance Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-response">12.1.5.2. Key Attestation Issuance Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-jwt">12.1.5.3. Key Attestation JWT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalog">13.1.6. e-Service PDND Wallet Provider Catalog</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#notify-user-death">13.1.6.1. Notify User Death</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Credential Issuer Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#metadata-endpoints">13.2.1. Metadata Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#credential-issuance-endpoints">13.2.2. Credential Issuance Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#pushed-authorization-request-endpoint">13.2.2.1. Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#authorization-endpoint">13.2.2.2. Authorization endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#token-endpoint">13.2.2.3. Token endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#nonce-endpoint">13.2.2.4. Nonce Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#credential-endpoint">13.2.2.5. Credential endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#deferred-endpoint">13.2.2.6. Deferred Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notification-endpoint">13.2.2.7. Notification endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#e-service-pdnd-credential-issuer-catalog">13.2.3. e-Service PDND Credential Issuer Catalog</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#get-statistics">13.2.3.1. Get Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalog">12.1.6. e-Service PDND Wallet Provider Catalog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#notify-user-death">12.1.6.1. Notify User Death</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-remote-flow-endpoints">13.3.1. Relying Party Remote Flow Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#id96">13.3.1.1. Federation Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#openid4vp-remote-flow-endpoints">13.3.1.2. OpenID4VP Remote Flow Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#user-data-management-endpoints">13.3.1.3. User Data Management Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#security-considerations">13.3.1.4. Security Considerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#implementation-notes">13.3.1.5. Implementation Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuer-endpoint.html">12.2. Credential Issuer Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#metadata-endpoints">12.2.1. Metadata Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#credential-issuance-endpoints">12.2.2. Credential Issuance Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#pushed-authorization-request-endpoint">12.2.2.1. Pushed Authorization Request Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#authorization-endpoint">12.2.2.2. Authorization endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#token-endpoint">12.2.2.3. Token endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#nonce-endpoint">12.2.2.4. Nonce Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#credential-endpoint">12.2.2.5. Credential endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#deferred-endpoint">12.2.2.6. Deferred Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notification-endpoint">12.2.2.7. Notification endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-endpoints">13.3.2. Relying Party Provider Backend Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-federation-endpoint">13.3.2.1. Relying Party Provider Backend Federation Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-nonce-endpoint">13.3.2.2. Relying Party Provider Backend Nonce Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-verifier-app-initialization-endpoint">13.3.2.3. Relying Party Verifier App Initialization Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-key-binding-endpoint">13.3.2.4. Relying Party Provider Backend Key Binding Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-access-certificate-endpoint">13.3.2.5. Relying Party Provider Backend Access Certificate Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-erasure-endpoint">13.3.2.6. Relying Party Provider Backend Erasure Endpoint</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html#e-service-pdnd-authentic-source-catalog">13.4.1. e-Service PDND Authentic Source Catalog</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
-<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#credential-lifecycle-states-mapping">13.4.1.2. Credential Lifecycle States Mapping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#example-of-authentic-source-response">13.4.1.3. Example of Authentic Source response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#e-service-pdnd-credential-issuer-catalog">12.2.3. e-Service PDND Credential Issuer Catalog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#get-statistics">12.2.3.1. Get Statistics</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="signal-hub-endpoint.html">13.5. PDND Signal Hub Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#prerequisites">13.5.1. Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#signal-hub-e-services">13.5.2. Signal Hub e-Services</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#signal-collection-e-service">13.5.2.1. Signal Collection e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#signal-distribution-e-service">13.5.2.2. Signal Distribution e-Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoints.html">12.3. Relying Party Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-remote-flow-endpoints">12.3.1. Relying Party Remote Flow Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#id109">12.3.1.1. Federation Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#openid4vp-remote-flow-endpoints">12.3.1.2. OpenID4VP Remote Flow Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#user-data-management-endpoints">12.3.1.3. User Data Management Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#security-considerations">12.3.1.4. Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#implementation-notes">12.3.1.5. Implementation Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#signals-processing">13.5.3. Signals Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-endpoints">12.3.2. Relying Party Provider Backend Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-federation-endpoint">12.3.2.1. Relying Party Provider Backend Federation Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-nonce-endpoint">12.3.2.2. Relying Party Provider Backend Nonce Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-verifier-app-initialization-endpoint">12.3.2.3. Relying Party Verifier App Initialization Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-key-binding-endpoint">12.3.2.4. Relying Party Provider Backend Key Binding Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-access-certificate-endpoint">12.3.2.5. Relying Party Provider Backend Access Certificate Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-erasure-endpoint">12.3.2.6. Relying Party Provider Backend Erasure Endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-source-endpoint.html">12.4. Authentic Source Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html#e-service-pdnd-authentic-source-catalog">12.4.1. e-Service PDND Authentic Source Catalog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims">12.4.1.1. Get Attribute Claims</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#credential-lifecycle-states-mapping">12.4.1.2. Credential Lifecycle States Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#example-of-authentic-source-response">12.4.1.3. Example of Authentic Source response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signal-hub-endpoint.html">12.5. PDND Signal Hub Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#prerequisites">12.5.1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#signal-hub-e-services">12.5.2. Signal Hub e-Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#signal-collection-e-service">12.5.2.1. Signal Collection e-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#signal-distribution-e-service">12.5.2.2. Signal Distribution e-Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#signals-processing">12.5.3. Signals Processing</a></li>
 </ul>
 </li>
 </ul>
@@ -414,12 +412,12 @@
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>12.3. Wallet Metadata Retrieval Flow</span>
+                <span>11.3. Wallet Metadata Retrieval Flow</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="wallet-provider-endpoint.html">
-                <span>13.1. Wallet Provider Endpoints</span>
+                <span>12.1. Wallet Provider Endpoints</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -429,8 +427,7 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -457,7 +454,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

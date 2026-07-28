@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.3. PDND e-Service Template &#8212; IT-Wallet Technical Specifications</title>
+    <title>19.3. PDND e-Service Template &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20.4. Test Plans" href="test-plans.html" />
-    <link rel="prev" title="20.2. e-Service PDND" href="e-service-pdnd.html" />
+    <link rel="next" title="19.4. Test Plans" href="test-plans.html" />
+    <link rel="prev" title="19.2. e-Service PDND" href="e-service-pdnd.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,28 +269,27 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendix</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Mobile Application Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">20.3. PDND e-Service Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">19. Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">19.1. Mobile Application Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">19.2. e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">19.3. PDND e-Service Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html">19.4. Test Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">19.5. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -308,7 +312,7 @@
           <div class="body">
             
   <section id="pdnd-e-service-template">
-<h1><span class="section-number">20.3. </span>PDND e-Service Template<a class="headerlink" href="#pdnd-e-service-template" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">19.3. </span>PDND e-Service Template<a class="headerlink" href="#pdnd-e-service-template" title="Link to this heading">¶</a></h1>
 <p>The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is defined in this document.</p>
 <blockquote>
 <div><ul class="simple">
@@ -318,12 +322,12 @@
 <p>The template e-service serves as a standardized blueprint containing all necessary technical and descriptive metadata for an e-service. API Managers, who can be either Providers or Consumers within the PDND ecosystem, MAY create and maintain these templates.</p>
 <p>Once a template e-service is published, it is accessible through the PDND Template Catalog, a centralized repository that facilitates discovery and reuse. This catalog enables any authorized PDND Participant to browse available templates and instantiate new e-services based on existing designs.</p>
 <section id="pdnd-template-e-service-definition-and-guidelines">
-<h2><span class="section-number">20.3.1. </span>PDND Template e-service definition and guidelines<a class="headerlink" href="#pdnd-template-e-service-definition-and-guidelines" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">19.3.1. </span>PDND Template e-service definition and guidelines<a class="headerlink" href="#pdnd-template-e-service-definition-and-guidelines" title="Link to this heading">¶</a></h2>
 <p>The PDND infrastructure supports the lifecycle management of Template E-Services, similar to that of traditional e-services. The lifecycle states include: <strong>Draft</strong>, <strong>Active</strong>, <strong>Suspended</strong>, and <strong>Deprecated</strong>. As with traditional e-services, PDND enforces role-based access control to govern status transitions.</p>
 <section id="templates-e-service-management">
-<h3><span class="section-number">20.3.1.1. </span>Templates e-service Management<a class="headerlink" href="#templates-e-service-management" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.3.1.1. </span>Templates e-service Management<a class="headerlink" href="#templates-e-service-management" title="Link to this heading">¶</a></h3>
 <section id="template-e-service-creation">
-<h4><span class="section-number">20.3.1.1.1. </span>Template E-Service Creation<a class="headerlink" href="#template-e-service-creation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.1.1. </span>Template E-Service Creation<a class="headerlink" href="#template-e-service-creation" title="Link to this heading">¶</a></h4>
 <p>Participants are enabled to create Templates E-Service via a guided wizard accessible through the PDND Web GUI (APIs will be available in the future). The creation workflow closely mirrors that of standard e-service creation, with the following distinctions:</p>
 <blockquote>
 <div><ul class="simple">
@@ -335,7 +339,7 @@
 <p>Participants are prohibited from creating multiple templates with the same name: template names MUST be unique per participant. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalog, thereby making them accessible to all Participants.</p>
 </section>
 <section id="template-e-service-modification">
-<h4><span class="section-number">20.3.1.1.2. </span>Template E-Service Modification<a class="headerlink" href="#template-e-service-modification" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.1.2. </span>Template E-Service Modification<a class="headerlink" href="#template-e-service-modification" title="Link to this heading">¶</a></h4>
 <p>Participants who have created a template may edit it. The scope of editable fields depends on the template’s lifecycle state:</p>
 <blockquote>
 <div><ul class="simple">
@@ -358,7 +362,7 @@
 </div></blockquote>
 </section>
 <section id="template-e-service-suspension">
-<h4><span class="section-number">20.3.1.1.3. </span>Template E-Service Suspension<a class="headerlink" href="#template-e-service-suspension" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.1.3. </span>Template E-Service Suspension<a class="headerlink" href="#template-e-service-suspension" title="Link to this heading">¶</a></h4>
 <p>Templates, like e-services, can be Suspended. When suspended:</p>
 <blockquote>
 <div><ul class="simple">
@@ -371,7 +375,7 @@
 </div></blockquote>
 </section>
 <section id="template-e-service-instantiation">
-<h4><span class="section-number">20.3.1.1.4. </span>Template E-Service Instantiation<a class="headerlink" href="#template-e-service-instantiation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.1.4. </span>Template E-Service Instantiation<a class="headerlink" href="#template-e-service-instantiation" title="Link to this heading">¶</a></h4>
 <p>Participants MAY instantiate a Template E-Service by browsing the Template Catalog and selecting a template. This process generates a new e-service.</p>
 <p>Instantiation constraints include:</p>
 <blockquote>
@@ -409,7 +413,7 @@
 </section>
 </section>
 <section id="version-management">
-<h3><span class="section-number">20.3.1.2. </span>Version Management<a class="headerlink" href="#version-management" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.3.1.2. </span>Version Management<a class="headerlink" href="#version-management" title="Link to this heading">¶</a></h3>
 <p>Template versioning follows a controlled process:</p>
 <blockquote>
 <div><ul class="simple">
@@ -424,11 +428,11 @@
 <p>Participants instantiating a template may then update either the specific instance or, if available, upgrade to a newer template version.</p>
 </section>
 <section id="authentic-source-template">
-<h3><span class="section-number">20.3.1.3. </span>Authentic Source Template<a class="headerlink" href="#authentic-source-template" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.3.1.3. </span>Authentic Source Template<a class="headerlink" href="#authentic-source-template" title="Link to this heading">¶</a></h3>
 <p>The template e-service functionality is employed to standardize data transmission from Authentic Sources to Credential Issuers.
 The template e-service SHOULD be published within PDND by the Credential Issuer and is accessible through the PDND Template Catalog.</p>
 <section id="authentic-source-template-parameters">
-<h4><span class="section-number">20.3.1.3.1. </span>Authentic Source Template Parameters<a class="headerlink" href="#authentic-source-template-parameters" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.3.1. </span>Authentic Source Template Parameters<a class="headerlink" href="#authentic-source-template-parameters" title="Link to this heading">¶</a></h4>
 <p>The template e-service <strong>MUST</strong> adhere to the following specifications:</p>
 <blockquote>
 <div><ul class="simple">
@@ -446,7 +450,7 @@ The template e-service SHOULD be published within PDND by the Credential Issuer 
 </div></blockquote>
 </section>
 <section id="authentic-source-template-instantiation">
-<h4><span class="section-number">20.3.1.3.2. </span>Authentic Source Template Instantiation<a class="headerlink" href="#authentic-source-template-instantiation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.3.2. </span>Authentic Source Template Instantiation<a class="headerlink" href="#authentic-source-template-instantiation" title="Link to this heading">¶</a></h4>
 <p>Each Authentic Source <strong>SHOULD</strong> instantiate the <em>IT Wallet - Authentic Source</em> template e-service in PDND.
 The instantiation process will result in a new e-service that <strong>MUST</strong> satisfy the following requirements:</p>
 <blockquote>
@@ -460,7 +464,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <p>Additional information required during the creation process is provider-dependent.</p>
 </section>
 <section id="authentic-source-pdnd-openapi-specification">
-<h4><span class="section-number">20.3.1.3.3. </span>Authentic Source PDND OpenAPI Specification<a class="headerlink" href="#authentic-source-pdnd-openapi-specification" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.3.1.3.3. </span>Authentic Source PDND OpenAPI Specification<a class="headerlink" href="#authentic-source-pdnd-openapi-specification" title="Link to this heading">¶</a></h4>
 <p>Below is the complete Open API Specification for the Authentic Source PDND e-services:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.1</span>
 <span class="linenos">  2</span><span class="nt">info</span><span class="p">:</span>
@@ -1004,12 +1008,12 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>20.2. e-Service PDND</span>
+                <span>19.2. e-Service PDND</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="test-plans.html">
-                <span>20.4. Test Plans</span>
+                <span>19.4. Test Plans</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -1019,8 +1023,16 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -1046,23 +1058,35 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
-<li><a class="reference internal" href="#">20.3. PDND e-Service Template</a><ul>
-<li><a class="reference internal" href="#pdnd-template-e-service-definition-and-guidelines">20.3.1. PDND Template e-service definition and guidelines</a><ul>
-<li><a class="reference internal" href="#templates-e-service-management">20.3.1.1. Templates e-service Management</a><ul>
-<li><a class="reference internal" href="#template-e-service-creation">20.3.1.1.1. Template E-Service Creation</a></li>
-<li><a class="reference internal" href="#template-e-service-modification">20.3.1.1.2. Template E-Service Modification</a></li>
-<li><a class="reference internal" href="#template-e-service-suspension">20.3.1.1.3. Template E-Service Suspension</a></li>
-<li><a class="reference internal" href="#template-e-service-instantiation">20.3.1.1.4. Template E-Service Instantiation</a></li>
+<li><a class="reference internal" href="#">19.3. PDND e-Service Template</a><ul>
+<li><a class="reference internal" href="#pdnd-template-e-service-definition-and-guidelines">19.3.1. PDND Template e-service definition and guidelines</a><ul>
+<li><a class="reference internal" href="#templates-e-service-management">19.3.1.1. Templates e-service Management</a><ul>
+<li><a class="reference internal" href="#template-e-service-creation">19.3.1.1.1. Template E-Service Creation</a></li>
+<li><a class="reference internal" href="#template-e-service-modification">19.3.1.1.2. Template E-Service Modification</a></li>
+<li><a class="reference internal" href="#template-e-service-suspension">19.3.1.1.3. Template E-Service Suspension</a></li>
+<li><a class="reference internal" href="#template-e-service-instantiation">19.3.1.1.4. Template E-Service Instantiation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#version-management">20.3.1.2. Version Management</a></li>
-<li><a class="reference internal" href="#authentic-source-template">20.3.1.3. Authentic Source Template</a><ul>
-<li><a class="reference internal" href="#authentic-source-template-parameters">20.3.1.3.1. Authentic Source Template Parameters</a></li>
-<li><a class="reference internal" href="#authentic-source-template-instantiation">20.3.1.3.2. Authentic Source Template Instantiation</a></li>
-<li><a class="reference internal" href="#authentic-source-pdnd-openapi-specification">20.3.1.3.3. Authentic Source PDND OpenAPI Specification</a></li>
+<li><a class="reference internal" href="#version-management">19.3.1.2. Version Management</a></li>
+<li><a class="reference internal" href="#authentic-source-template">19.3.1.3. Authentic Source Template</a><ul>
+<li><a class="reference internal" href="#authentic-source-template-parameters">19.3.1.3.1. Authentic Source Template Parameters</a></li>
+<li><a class="reference internal" href="#authentic-source-template-instantiation">19.3.1.3.2. Authentic Source Template Instantiation</a></li>
+<li><a class="reference internal" href="#authentic-source-pdnd-openapi-specification">19.3.1.3.3. Authentic Source PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -1102,7 +1126,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

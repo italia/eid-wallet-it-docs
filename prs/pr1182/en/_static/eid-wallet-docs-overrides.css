@@ -8,6 +8,39 @@
   --bs-body-font-family: var(--it-docs-font-family);
 }
 
+/* Header — align slim/center content with sidebar "Table of contents" */
+.it-docs-header .container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: var(--it-docs-content-inline-start) !important;
+  padding-right: var(--it-docs-content-inline-start) !important;
+}
+
+.it-docs-header .it-header-slim-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.it-docs-header .it-header-slim-wrapper .it-header-slim-wrapper-content {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.it-docs-header .it-header-center-content-wrapper,
+.it-docs-header .it-header-center-content-wrapper.it-docs-header-compact {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.it-docs-header-compact .it-header-center-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Sidebar section titles — match navscroll over Bootstrap Italia sidebar defaults */
 .it-docs-primary-nav.sidebar-wrapper .sidebar-linklist-wrapper .link-list-wrapper > .it-docs-nav-section-label {
   font-size: var(--it-docs-nav-heading-size) !important;
@@ -26,7 +59,7 @@
   }
 }
 
-html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > .it-docs-nav-section-label,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-nav-section-label,
 html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc {
   color: var(--it-docs-content-muted);
 }

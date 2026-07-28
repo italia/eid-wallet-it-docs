@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>19. Open Source Releases &#8212; IT-Wallet Technical Specifications</title>
+    <title>18. Open Source Releases &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. Appendix" href="appendix.html" />
-    <link rel="prev" title="18. How to contribute" href="contribute.html" />
+    <link rel="next" title="19. Appendix" href="appendix.html" />
+    <link rel="prev" title="17. How to contribute" href="contribute.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,23 +269,22 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">19. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
 </ul>
 
       </div>
@@ -301,23 +305,23 @@
           <div class="body">
             
   <section id="open-source-releases">
-<h1><span class="section-number">19. </span>Open Source Releases<a class="headerlink" href="#open-source-releases" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">18. </span>Open Source Releases<a class="headerlink" href="#open-source-releases" title="Link to this heading">¶</a></h1>
 <section id="general-principles">
-<h2><span class="section-number">19.1. </span>1. General Principles<a class="headerlink" href="#general-principles" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">18.1. </span>1. General Principles<a class="headerlink" href="#general-principles" title="Link to this heading">¶</a></h2>
 <p>The IT-Wallet ecosystem is built upon principles of openness and transparency. In accordance with the <strong>Italian Digital Administration Code (CAD)</strong> and the <strong>European eIDAS 2.0 Regulation</strong>, the adoption of open source frameworks, including during the experimentation phase, is strongly encouraged as a key enabler to ensure trust, collaboration, peer review and shared improvements across the ecosystem. This framework aligns with the <strong>Interoperable Europe Act</strong>, aiming to maximize public value and security through transparency.</p>
 </section>
 <section id="standard-requirements">
-<h2><span class="section-number">19.2. </span>2. Standard Requirements<a class="headerlink" href="#standard-requirements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">18.2. </span>2. Standard Requirements<a class="headerlink" href="#standard-requirements" title="Link to this heading">¶</a></h2>
 <p>All entities (Wallet Providers, Credential Issuers, Relying Parties) involved within the IT-Wallet ecosystem (hereinafter &quot;Project Owners&quot;) <strong>SHOULD</strong> adhere to industry best practices to ensure the software is usable, compliant, and secure, following at least those listed in the sections below.</p>
 <section id="licensing">
-<h3><span class="section-number">19.2.1. </span>2.1 Licensing<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.2.1. </span>2.1 Licensing<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Project Owners <strong>MUST</strong> use an Open Source Initiative (OSI) approved license.</p></li>
 <li><p>Project Owners <strong>SHOULD</strong> prioritize the <strong>EUPL-1.2</strong> (European Union Public License version 1.2) to ensure legal compatibility within the EU public sector, or permissive licenses (e.g., Apache 2.0, MIT) for SDKs and libraries to maximize adoption.</p></li>
 </ul>
 </section>
 <section id="code-management-transparency">
-<h3><span class="section-number">19.2.2. </span>2.2 Code Management &amp; Transparency<a class="headerlink" href="#code-management-transparency" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.2.2. </span>2.2 Code Management &amp; Transparency<a class="headerlink" href="#code-management-transparency" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Version Control</strong>: Project Owners <strong>MUST</strong> use code hosting platforms that allow public access without requiring a login (e.g., GitHub, GitLab), ensuring a transparent history of changes.</p></li>
 <li><p><strong>Documentation</strong>: Repositories <strong>MUST</strong> include clear documentation, such as:</p>
@@ -331,7 +335,7 @@
 </ul>
 </section>
 <section id="security-quality">
-<h3><span class="section-number">19.2.3. </span>2.3 Security &amp; Quality<a class="headerlink" href="#security-quality" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.2.3. </span>2.3 Security &amp; Quality<a class="headerlink" href="#security-quality" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Code Quality</strong>: Project Owners <strong>SHOULD</strong> implement automated testing (e.g., E2E and integration tests) and Continuous Integration pipelines. Such pipelines <strong>SHOULD</strong> be public to allow inspection.</p></li>
 <li><p><strong>Security Audits</strong>: Project Owners <strong>SHOULD</strong> perform regular code audits and static analysis.</p></li>
@@ -340,29 +344,29 @@
 </section>
 </section>
 <section id="wallet-providers">
-<h2><span class="section-number">19.3. </span>3. Wallet Providers<a class="headerlink" href="#wallet-providers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">18.3. </span>3. Wallet Providers<a class="headerlink" href="#wallet-providers" title="Link to this heading">¶</a></h2>
 <section id="mandatory-open-source">
-<h3><span class="section-number">19.3.1. </span>3.1 Mandatory Open Source<a class="headerlink" href="#mandatory-open-source" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.3.1. </span>3.1 Mandatory Open Source<a class="headerlink" href="#mandatory-open-source" title="Link to this heading">¶</a></h3>
 <p>Pursuant to the <strong>Consolidated Regulation (EU) No 910/2014 (eIDAS 2.0)</strong>, Art. 5a par. 3, the source code of the application software components of IT-Wallet solutions <strong>MUST</strong> be open-source licensed.</p>
 <p>For duly justified security reasons, the source code of specific components, other than those installed on user devices, <strong>MAY</strong> remain closed, provided this does not compromise the overall auditability of the solution.</p>
 </section>
 </section>
 <section id="credential-issuers-and-relying-parties">
-<h2><span class="section-number">19.4. </span>4. Credential Issuers and Relying Parties<a class="headerlink" href="#credential-issuers-and-relying-parties" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">18.4. </span>4. Credential Issuers and Relying Parties<a class="headerlink" href="#credential-issuers-and-relying-parties" title="Link to this heading">¶</a></h2>
 <section id="integration-components">
-<h3><span class="section-number">19.4.1. </span>4.1 Integration components<a class="headerlink" href="#integration-components" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.4.1. </span>4.1 Integration components<a class="headerlink" href="#integration-components" title="Link to this heading">¶</a></h3>
 <p>To foster ecosystem interoperability and reduce integration costs:</p>
 <ul class="simple">
 <li><p>Credential Issuers and Relying Parties <strong>SHOULD</strong> release Software Development Kits (SDKs), client libraries, and API specifications under an open-source license.</p></li>
 </ul>
 </section>
 <section id="backend-infrastructure">
-<h3><span class="section-number">19.4.2. </span>4.2 Backend infrastructure<a class="headerlink" href="#backend-infrastructure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">18.4.2. </span>4.2 Backend infrastructure<a class="headerlink" href="#backend-infrastructure" title="Link to this heading">¶</a></h3>
 <p>Credential Issuers and Relying Parties <strong>SHOULD</strong> release their backend core logic under an open-source license, starting from the experimentation phase, to promote transparency and reuse.</p>
 </section>
 </section>
 <section id="responsible-disclosure-and-vulnerability-management">
-<h2><span class="section-number">19.5. </span>5. Responsible Disclosure and Vulnerability Management<a class="headerlink" href="#responsible-disclosure-and-vulnerability-management" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">18.5. </span>5. Responsible Disclosure and Vulnerability Management<a class="headerlink" href="#responsible-disclosure-and-vulnerability-management" title="Link to this heading">¶</a></h2>
 <p>In compliance with the <strong>Cyber Resilience Act (CRA)</strong> and <strong>NIS2 Directive (EU) 2022/2555</strong>:</p>
 <ul class="simple">
 <li><p><strong>Security Policy</strong>: All Open Source repositories <strong>SHOULD</strong> contain a <code class="docutils literal notranslate"><span class="pre">SECURITY.md</span></code> file outlining the procedure for reporting vulnerabilities.</p></li>
@@ -380,12 +384,12 @@
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>18. How to contribute</span>
+                <span>17. How to contribute</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="appendix.html">
-                <span>20. Appendix</span>
+                <span>19. Appendix</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -395,8 +399,16 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -422,27 +434,39 @@
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
-<li><a class="reference internal" href="#">19. Open Source Releases</a><ul>
-<li><a class="reference internal" href="#general-principles">19.1. 1. General Principles</a></li>
-<li><a class="reference internal" href="#standard-requirements">19.2. 2. Standard Requirements</a><ul>
-<li><a class="reference internal" href="#licensing">19.2.1. 2.1 Licensing</a></li>
-<li><a class="reference internal" href="#code-management-transparency">19.2.2. 2.2 Code Management &amp; Transparency</a></li>
-<li><a class="reference internal" href="#security-quality">19.2.3. 2.3 Security &amp; Quality</a></li>
+<li><a class="reference internal" href="#">18. Open Source Releases</a><ul>
+<li><a class="reference internal" href="#general-principles">18.1. 1. General Principles</a></li>
+<li><a class="reference internal" href="#standard-requirements">18.2. 2. Standard Requirements</a><ul>
+<li><a class="reference internal" href="#licensing">18.2.1. 2.1 Licensing</a></li>
+<li><a class="reference internal" href="#code-management-transparency">18.2.2. 2.2 Code Management &amp; Transparency</a></li>
+<li><a class="reference internal" href="#security-quality">18.2.3. 2.3 Security &amp; Quality</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wallet-providers">19.3. 3. Wallet Providers</a><ul>
-<li><a class="reference internal" href="#mandatory-open-source">19.3.1. 3.1 Mandatory Open Source</a></li>
+<li><a class="reference internal" href="#wallet-providers">18.3. 3. Wallet Providers</a><ul>
+<li><a class="reference internal" href="#mandatory-open-source">18.3.1. 3.1 Mandatory Open Source</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#credential-issuers-and-relying-parties">19.4. 4. Credential Issuers and Relying Parties</a><ul>
-<li><a class="reference internal" href="#integration-components">19.4.1. 4.1 Integration components</a></li>
-<li><a class="reference internal" href="#backend-infrastructure">19.4.2. 4.2 Backend infrastructure</a></li>
+<li><a class="reference internal" href="#credential-issuers-and-relying-parties">18.4. 4. Credential Issuers and Relying Parties</a><ul>
+<li><a class="reference internal" href="#integration-components">18.4.1. 4.1 Integration components</a></li>
+<li><a class="reference internal" href="#backend-infrastructure">18.4.2. 4.2 Backend infrastructure</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#responsible-disclosure-and-vulnerability-management">19.5. 5. Responsible Disclosure and Vulnerability Management</a></li>
+<li><a class="reference internal" href="#responsible-disclosure-and-vulnerability-management">18.5. 5. Responsible Disclosure and Vulnerability Management</a></li>
 </ul>
 </li>
 </ul>
@@ -478,7 +502,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

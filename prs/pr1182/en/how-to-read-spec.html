@@ -7,11 +7,11 @@
 
     <title>How to Read the Specification &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -34,8 +34,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -262,23 +267,22 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
 </ul>
 
       </div>
@@ -313,7 +317,7 @@ Provides high-level view on the Architecture in terms of governance and operatio
 Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>:
 Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>:
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>:
 Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="entities.html#entities"><span class="std std-ref">Entities</span></a>:
 Comprehensive implementation requirements for each ecosystem participant: Wallet Solutions, Credential Issuers, Relying Parties, and Authentic Sources, including their components, interaction patterns, and configuration requirements.</p></li>
@@ -344,7 +348,7 @@ Provides supplementary technical details, implementation patterns, and testing f
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.</p></li>
 </ul>
 <p><strong>Phase 2: Design</strong></p>
@@ -367,9 +371,9 @@ Provides supplementary technical details, implementation patterns, and testing f
 <p><strong>Phase 4: Registration</strong></p>
 <p>To become registered as an Authentic Source within the system by completing the administrative and technical procedures required.</p>
 <ul class="simple">
-<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-high-level.html#onboarding-system"><span class="std std-ref">Onboarding System</span></a>: Overview of the onboarding system architecture and the Authentic Source registration process.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>: Focus on technical implementation procedures for Authentic Source registration.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="x5c-evaluation.html#x-509-certificate-management-operations"><span class="std std-ref">X.509 Certificate Management Operations</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Authentic Source registration process.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>: Focus on technical implementation procedures for Authentic Source registration.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
 <section id="wallet-provider">
@@ -380,7 +384,7 @@ Provides supplementary technical details, implementation patterns, and testing f
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.</p></li>
 </ul>
 <p><strong>Phase 2: Design</strong></p>
@@ -406,9 +410,9 @@ Provides supplementary technical details, implementation patterns, and testing f
 <p><strong>Phase 4: Registration</strong></p>
 <p>To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.</p>
 <ul class="simple">
-<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-high-level.html#onboarding-system"><span class="std std-ref">Onboarding System</span></a>: Overview of the onboarding system architecture and the Wallet Provider registration process.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>: Focus on technical implementation procedures for Wallet Provider registration.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="x5c-evaluation.html#x-509-certificate-management-operations"><span class="std std-ref">X.509 Certificate Management Operations</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Wallet Provider registration process.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Focus on technical implementation procedures for Wallet Provider registration.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
 <section id="credential-issuer">
@@ -419,7 +423,7 @@ Provides supplementary technical details, implementation patterns, and testing f
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.</p></li>
 </ul>
 <p><strong>Phase 2: Design</strong></p>
@@ -443,9 +447,9 @@ Provides supplementary technical details, implementation patterns, and testing f
 <p><strong>Phase 4: Registration</strong></p>
 <p>To become registered as a Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.</p>
 <ul class="simple">
-<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-high-level.html#onboarding-system"><span class="std std-ref">Onboarding System</span></a>: Overview of the onboarding system architecture and the Credential Issuer registration process.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>: Focus on technical implementation procedures for Credential Issuer registration.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="x5c-evaluation.html#x-509-certificate-management-operations"><span class="std std-ref">X.509 Certificate Management Operations</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Credential Issuer registration process.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Focus on technical implementation procedures for Credential Issuer registration.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
 <section id="relying-party">
@@ -456,7 +460,7 @@ Provides supplementary technical details, implementation patterns, and testing f
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.</p></li>
 </ul>
 <p><strong>Phase 2: Design</strong></p>
@@ -479,9 +483,9 @@ Provides supplementary technical details, implementation patterns, and testing f
 <p><strong>Phase 4: Registration</strong></p>
 <p>To become registered as a Relying Party within the system, by completing the administrative and technical procedure and becoming a reliable actor when requesting User data.</p>
 <ul class="simple">
-<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-high-level.html#onboarding-system"><span class="std std-ref">Onboarding System</span></a>: Overview of the onboarding system architecture and the Relying Party registration process.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>: Focus on implementation procedures for Relying Party registration.</p></li>
-<li><p><strong>Section</strong> <a class="reference internal" href="x5c-evaluation.html#x-509-certificate-management-operations"><span class="std std-ref">X.509 Certificate Management Operations</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Relying Party registration process.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Focus on implementation procedures for Relying Party registration.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
 </section>
@@ -492,8 +496,16 @@ Provides supplementary technical details, implementation patterns, and testing f
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -519,7 +531,19 @@ Provides supplementary technical details, implementation patterns, and testing f
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
 <li><a class="reference internal" href="#">How to Read the Specification</a><ul>
@@ -566,7 +590,7 @@ Provides supplementary technical details, implementation patterns, and testing f
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

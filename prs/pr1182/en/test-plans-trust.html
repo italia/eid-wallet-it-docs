@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.2. Trust Evaluation Test Matrix &#8212; IT-Wallet Technical Specifications</title>
+    <title>19.4.1.2. Trust Evaluation Test Matrix &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20.4.1.3. Federation Authority Test Matrix" href="test-plans-federation-authority.html" />
-    <link rel="prev" title="20.4.1.1. Signature Evaluation Test Matrix" href="test-plans-signature.html" />
+    <link rel="next" title="19.4.1.3. Federation Authority Test Matrix" href="test-plans-federation-authority.html" />
+    <link rel="prev" title="19.4.1.1. Signature Evaluation Test Matrix" href="test-plans-signature.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,7 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,36 +263,35 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendix</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Mobile Application Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. PDND e-Service Template</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">20.4.1.1. Signature Evaluation Test Matrix</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">20.4.1.2. Trust Evaluation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-federation-authority.html">20.4.1.3. Federation Authority Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet-provider.html">20.4.1.4. Wallet Provider Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">20.4.1.5. Credential Issuer Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-presentation.html">20.4.1.6. Credential Verifier Test Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">19. Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">19.1. Mobile Application Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">19.2. e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">19.3. PDND e-Service Template</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">19.4. Test Plans</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">19.4.1.1. Signature Evaluation Test Matrix</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19.4.1.2. Trust Evaluation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-federation-authority.html">19.4.1.3. Federation Authority Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet-provider.html">19.4.1.4. Wallet Provider Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">19.4.1.5. Credential Issuer Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-presentation.html">19.4.1.6. Credential Verifier Test Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">19.5. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -316,7 +314,7 @@
           <div class="body">
             
   <section id="trust-evaluation-test-matrix">
-<h1><span class="section-number">20.4.1.2. </span>Trust Evaluation Test Matrix<a class="headerlink" href="#trust-evaluation-test-matrix" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">19.4.1.2. </span>Trust Evaluation Test Matrix<a class="headerlink" href="#trust-evaluation-test-matrix" title="Link to this heading">¶</a></h1>
 <p>This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -326,10 +324,10 @@
 <col style="width: 35.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Test Case ID</p></th>
-<th class="head"><p>Purpose</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Expected Result</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Test Case ID</strong></p></th>
+<th class="head"><p><strong>Purpose</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Expected Result</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -385,12 +383,12 @@
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>20.4.1.1. Signature Evaluation Test Matrix</span>
+                <span>19.4.1.1. Signature Evaluation Test Matrix</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="test-plans-federation-authority.html">
-                <span>20.4.1.3. Federation Authority Test Matrix</span>
+                <span>19.4.1.3. Federation Authority Test Matrix</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -400,8 +398,7 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -428,7 +425,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

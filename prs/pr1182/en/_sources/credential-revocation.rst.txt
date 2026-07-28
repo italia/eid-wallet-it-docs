@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via digital-credential-management.rst at title level '=' (document title).
 
 
 Digital Credential Lifecycle
@@ -243,9 +244,9 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
 
-The Wallet Provider that, for any reason, revokes a Wallet Instance MUST ensure that the updated status is reflected in the status list of the related the Wallet Unit Attestation.
-In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
-Afterwards the revocation of the Wallet Unit Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
+In case of device loss, theft, or a general vulnerability, the Wallet Provider MUST revoke the Wallet Instance. Therefore, the Wallet Provider MUST ensure that the updated status is reflected in the status list of the related Wallet Instance Attestation. In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.
+In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Instance Attestations and Key Attestations related to the Wallet Instances to which the Credentials were issued.
+After the revocation of the Wallet Instance Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
 
 Status Update by Authentic Sources
 """"""""""""""""""""""""""""""""""
@@ -548,7 +549,7 @@ Upon receiving a Digital Credential, a Relying Party MUST first perform the vali
 - Resolve the Status List Token from the provided URI.
 - Validate the Status List Token:
 
-  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
   - Check for the existence of the required claims as defined in Section :ref:`credential-revocation:Status List Token`.
 

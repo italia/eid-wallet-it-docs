@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4. Wallet Instance &#8212; IT-Wallet Technical Specifications</title>
+    <title>9.1.4. Wallet Instance &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10.1.4.1. Wallet Instance Lifecycle" href="wallet-instance-lifecycle.html" />
-    <link rel="prev" title="10.1.2. Wallet Solution Components" href="wallet-solution-components.html" />
+    <link rel="next" title="9.1.4.1. Wallet Instance Lifecycle" href="wallet-instance-lifecycle.html" />
+    <link rel="prev" title="9.1.2. Wallet Solution Components" href="wallet-solution-components.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,7 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,38 +263,37 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entities</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">10.1. Wallet Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">10.1.1. Wallet Solution Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">10.1.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">10.1.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">10.1.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.1.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.1.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.1.7. Wallet Solution Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">9. Entities</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">9.1. Wallet Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">9.1.1. Wallet Solution Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">9.1.2. Wallet Solution Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">9.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.1.4. Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">9.1.5. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">9.1.6. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">9.1.7. Wallet Solution Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">10.3. Relying Party Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Authentic Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">9.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">9.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">9.4. Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
 </ul>
 
       </div>
@@ -316,34 +314,34 @@
           <div class="body">
             
   <section id="wallet-instance">
-<h1><span class="section-number">10.1.4. </span>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">9.1.4. </span>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h1>
 <p>The Wallet Instance establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.</p>
 <p>The Wallet Instance establishes trust with PID and (Q)EAA Providers by consistently presenting Wallet Instance and Key Attestations during interactions.
 These verifiable attestations, provided by the Wallet Provider, serve to authenticate the Wallet Instance itself, ensuring the trustworthiness of the secure storage environment: the <strong>Keystore</strong> for all device-bound Digital Credentials, and the <strong>WSCA</strong> operating within a <strong>Remote WSCD</strong> (remote HSM) exclusively for the PID at Level of Assurance High. They also verify that the Wallet Instance has not been revoked and ensure its reliability when engaging with other ecosystem actors.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Wallet Instance Table of Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-lifecycle.html">10.1.4.1. Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-installed">10.1.4.1.1. Transition to Installed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#id1">10.1.4.1.2. Transition to Operational</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-valid">10.1.4.1.3. Transition to Valid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-uninstalled">10.1.4.1.4. Transition to Uninstalled</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#wallet-instance-lifecycle-management">10.1.4.1.5. Wallet Instance Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-lifecycle.html">9.1.4.1. Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-installed">9.1.4.1.1. Transition to Installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#id1">9.1.4.1.2. Transition to Operational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-valid">9.1.4.1.3. Transition to Valid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-uninstalled">9.1.4.1.4. Transition to Uninstalled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#wallet-instance-lifecycle-management">9.1.4.1.5. Wallet Instance Lifecycle Management</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-functionalities.html">10.1.4.2. Wallet Instance Functionalities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-registration.html">10.1.4.2.1. Wallet Instance Initialization and Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation-issuance.html">10.1.4.2.2. Wallet Instance Attestation Issuance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">10.1.4.2.3. Key Attestation Issuance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html">10.1.4.2.4. Wallet Instance Revocation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-request">10.1.4.2.4.1. Wallet Instance Revocation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-response">10.1.4.2.4.2. Wallet Instance Revocation Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#revocation-check-mechanisms">10.1.4.2.4.3. Revocation Check Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-functionalities.html">9.1.4.2. Wallet Instance Functionalities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-registration.html">9.1.4.2.1. Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation-issuance.html">9.1.4.2.2. Wallet Instance Attestation Issuance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">9.1.4.2.3. Key Attestation Issuance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html">9.1.4.2.4. Wallet Instance Revocation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-request">9.1.4.2.4.1. Wallet Instance Revocation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-response">9.1.4.2.4.2. Wallet Instance Revocation Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#revocation-check-mechanisms">9.1.4.2.4.3. Revocation Check Mechanisms</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="user-attribute-deletion.html">10.1.4.2.5. User's Attributes Deletion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-dashboard.html">10.1.4.2.6. Wallet Instance Dashboard and Transaction Logging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-dashboard.html#export-and-deletion-of-transaction-records">10.1.4.2.6.1. Export and Deletion of Transaction Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-attribute-deletion.html">9.1.4.2.5. User's Attributes Deletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-dashboard.html">9.1.4.2.6. Wallet Instance Dashboard and Transaction Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-dashboard.html#export-and-deletion-of-transaction-records">9.1.4.2.6.1. Export and Deletion of Transaction Records</a></li>
 </ul>
 </li>
 </ul>
@@ -360,12 +358,12 @@ These verifiable attestations, provided by the Wallet Provider, serve to authent
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>10.1.2. Wallet Solution Components</span>
+                <span>9.1.2. Wallet Solution Components</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="wallet-instance-lifecycle.html">
-                <span>10.1.4.1. Wallet Instance Lifecycle</span>
+                <span>9.1.4.1. Wallet Instance Lifecycle</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -375,8 +373,7 @@ These verifiable attestations, provided by the Wallet Provider, serve to authent
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -403,7 +400,7 @@ These verifiable attestations, provided by the Wallet Provider, serve to authent
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

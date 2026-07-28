@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.2. e-Service PDND &#8212; IT-Wallet Technical Specifications</title>
+    <title>19.2. e-Service PDND &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,8 +23,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20.3. PDND e-Service Template" href="e-service-pdnd-template.html" />
-    <link rel="prev" title="20.1. Mobile Application Instance" href="mobile-application-instance.html" />
+    <link rel="next" title="19.3. PDND e-Service Template" href="e-service-pdnd-template.html" />
+    <link rel="prev" title="19.1. Mobile Application Instance" href="mobile-application-instance.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -36,8 +36,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,28 +269,27 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendix</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Mobile Application Instance</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">20.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. PDND e-Service Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">19. Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">19.1. Mobile Application Instance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">19.2. e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">19.3. PDND e-Service Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html">19.4. Test Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">19.5. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -308,7 +312,7 @@
           <div class="body">
             
   <section id="e-service-pdnd">
-<h1><span class="section-number">20.2. </span>e-Service PDND<a class="headerlink" href="#e-service-pdnd" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">19.2. </span>e-Service PDND<a class="headerlink" href="#e-service-pdnd" title="Link to this heading">¶</a></h1>
 <p>The <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> framework empowers Member States to establish the interfaces, terms, and conditions governing communication between Credential Issuers and Authentic Sources. In the Italian context, interoperability is established by leveraging the following guidelines:</p>
 <blockquote>
 <div><ul class="simple">
@@ -325,7 +329,7 @@
 </div></blockquote>
 <p>Access to an e-Service requires Consumers to obtain a specific Access Token, known within the PDND infrastructure as a Voucher.</p>
 <section id="requirements-and-security-patterns">
-<h2><span class="section-number">20.2.1. </span>Requirements and Security Patterns<a class="headerlink" href="#requirements-and-security-patterns" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">19.2.1. </span>Requirements and Security Patterns<a class="headerlink" href="#requirements-and-security-patterns" title="Link to this heading">¶</a></h2>
 <p>This specification is based on the following set of requirements:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -431,7 +435,7 @@
 </div>
 </section>
 <section id="pdnd-voucher-issuance">
-<h2><span class="section-number">20.2.2. </span>PDND Voucher Issuance<a class="headerlink" href="#pdnd-voucher-issuance" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">19.2.2. </span>PDND Voucher Issuance<a class="headerlink" href="#pdnd-voucher-issuance" title="Link to this heading">¶</a></h2>
 <p>The PDND infrastructure defines two different types of Vouchers:</p>
 <blockquote>
 <div><ul class="simple">
@@ -441,9 +445,9 @@
 </div></blockquote>
 <p>The two flows are described below.</p>
 <section id="pdnd-voucher-for-e-service">
-<h3><span class="section-number">20.2.2.1. </span>PDND Voucher for e-Service<a class="headerlink" href="#pdnd-voucher-for-e-service" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.2.1. </span>PDND Voucher for e-Service<a class="headerlink" href="#pdnd-voucher-for-e-service" title="Link to this heading">¶</a></h3>
 <section id="pdnd-voucher-for-e-services-prerequisites">
-<h4><span class="section-number">20.2.2.1.1. </span>PDND Voucher for e-Services Prerequisites<a class="headerlink" href="#pdnd-voucher-for-e-services-prerequisites" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.1.1. </span>PDND Voucher for e-Services Prerequisites<a class="headerlink" href="#pdnd-voucher-for-e-services-prerequisites" title="Link to this heading">¶</a></h4>
 <p>The <strong>Consumer</strong> MUST comply with the following prerequisites:</p>
 <blockquote>
 <div><ul class="simple">
@@ -465,7 +469,7 @@
 </div></blockquote>
 </section>
 <section id="pdnd-voucher-for-e-services-flow">
-<h4><span class="section-number">20.2.2.1.2. </span>PDND Voucher for e-Services Flow<a class="headerlink" href="#pdnd-voucher-for-e-services-flow" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.1.2. </span>PDND Voucher for e-Services Flow<a class="headerlink" href="#pdnd-voucher-for-e-services-flow" title="Link to this heading">¶</a></h4>
 <figure class="align-default" id="id1">
 <span id="fig-voucherissuance-eservice-flow"></span><p class="plantuml">
 <object data="_images/plantuml-f84783ca28e7757e5f8ab75faa1f0db10b3846c6.svg" type="image/svg+xml" style="width:80%">
@@ -473,12 +477,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VP71RjH0343lynLMUcaZLaALuD03QfHjrKK8ecQ1O-HEtCqeoJXuF4ktNqycj5s42fSeTkpdP-SoA8h6SO1l76r70fiG8dfBi09QrIHxPycequ7-Ns8mAliutf4OSySFaESb-n17aZo7aysUvM009XHrrate5R8y_r94xQ0S77dDymmmG7bjoBSm8vuvrVhpEZ6AnoZqBqPwiBX7LCSUaXN94x6eZqIU5AvPeFYwtcoRswjwsxmzDp1FNNqehoygePbEyF7x5dww6Mjvd0OQoIlA0LfKXDCismhQtldTrTwrv2rbsPavGigv9of1VLESltiF7OOE-1vUQqkmczE_ysU9DoiRyqmKGYLOLrn1JmUOq0cWRs4IvlkbggWlNdxGBVs853J1xNBQnhLPzWPUGWo191tgzMoZXub-Vze9UbtYPKVnh0Iy9u6YXfDFRjTfvNoVbk_8zY5fBqN65FLgaJzQXObzeAI5rb88ZN9FJmxfzS_1z30veT0udmPVpjWu3hy0">Voucher Issuance for e-Service - Detailed flow.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VP71RjH0343lynLMUcaZLaALuD03QfHjrKK8ecQ1O-HEtCqeoJXuF4ktNqycj5s42fSeTkpdP-SoA8h6SO1l76r70fiG8dfBi09QrIHxPycequ7-Ns8mAliutf4OSySFaESb-n17aZo7aysUvM009XHrrate5R8y_r94xQ0S77dDymmmG7bjoBSm8vuvrVhpEZ6AnoZqBqPwiBX7LCSUaXN94x6eZqIU5AvPeFYwtcoRswjwsxmzDp1FNNqehoygePbEyF7x5dww6Mjvd0OQoIlA0LfKXDCismhQtldTrTwrv2rbsPavGigv9of1VLESltiF7OOE-1vUQqkmczE_ysU9DoiRyqmKGYLOLrn1JmUOq0cWRs4IvlkbggWlNdxGBVs853J1xNBQnhLPzWPUGWo191tgzMoZXub-Vze9UbtYPKVnh0Iy9u6YXfDFRjTfvNoVbk_8zY5fBqN65FLgaJzQXObzeAI5rb88ZN9FJmxfzS_1z30veT0udmPVpjWu3hy0">Voucher Issuance for e-Service - Detailed flow.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-trackingevidence-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.1 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.1 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -488,7 +492,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-trackingevidence-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.2 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.2 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
@@ -515,7 +519,7 @@
 </div>
 <p><strong>Step 4 (Voucher Request)</strong>: The Consumer creates a Voucher Request and sends it to the PDND Authorization Server.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 20.3 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.3 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJodG0iOiJQT1NUIiwiaHR1IjoiaHR0cHM6Ly9pbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImlhdCI6MTc2MjI2MDYxNn0.D0ZUDkfGHx_rQBdYi_3VSXkdbJM-7FSWN88LWICQImMWtIWd2mbxGb7v8udfM_c4_ase8x7I3I1JZm01Us3QEA</span>
@@ -529,7 +533,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-clientassertion-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.4 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.4 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -539,7 +543,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-clientassertion-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.5 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.5 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
@@ -609,7 +613,7 @@
 </div>
 <p><strong>Step 6 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Consumer.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20.6 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.6 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -623,7 +627,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-accesstoken-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.7 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.7 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
@@ -633,7 +637,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-accesstoken-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.8 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.8 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://interop.pagopa.it&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
@@ -662,9 +666,9 @@
 </section>
 </section>
 <section id="pdnd-voucher-for-interoperability-api">
-<h3><span class="section-number">20.2.2.2. </span>PDND Voucher for Interoperability API<a class="headerlink" href="#pdnd-voucher-for-interoperability-api" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.2.2. </span>PDND Voucher for Interoperability API<a class="headerlink" href="#pdnd-voucher-for-interoperability-api" title="Link to this heading">¶</a></h3>
 <section id="pdnd-voucher-for-interoperability-api-prerequisites">
-<h4><span class="section-number">20.2.2.2.1. </span>PDND Voucher for Interoperability API Prerequisites<a class="headerlink" href="#pdnd-voucher-for-interoperability-api-prerequisites" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.2.1. </span>PDND Voucher for Interoperability API Prerequisites<a class="headerlink" href="#pdnd-voucher-for-interoperability-api-prerequisites" title="Link to this heading">¶</a></h4>
 <p>The <strong>Participant</strong> MUST comply with the following prerequisites:</p>
 <blockquote>
 <div><ul class="simple">
@@ -675,7 +679,7 @@
 </div></blockquote>
 </section>
 <section id="voucher-for-interoperability-api-flow">
-<h4><span class="section-number">20.2.2.2.2. </span>Voucher for Interoperability API Flow<a class="headerlink" href="#voucher-for-interoperability-api-flow" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.2.2. </span>Voucher for Interoperability API Flow<a class="headerlink" href="#voucher-for-interoperability-api-flow" title="Link to this heading">¶</a></h4>
 <figure class="align-default" id="id2">
 <span id="fig-voucherissuance-interoperabilityapi-flow"></span><p class="plantuml">
 <object data="_images/plantuml-2fc5da499a7427e9451a516e6d5240613f29845f.svg" type="image/svg+xml" style="width:80%">
@@ -683,12 +687,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 20.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZP11ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR0cWrbCTjEPsQ3--heQr4CBtoLavXsUzs6tB9h43ptyShxfaA1Wzjes20aKLf3SYAGFfZToWQmib1ZfySFNIdjnrWy79AKExWnH79UQn3Hcr5RY-BVTiBdY-kkNT9axotv00aURps6RlgKbkScqIAivYc1HJ8uk2c1y0GF_H-QbWxmt60eYq0pvNg5juIRmiBX9xBxluXWMsTKJ_eyHFexCLOjn5Yga2MacPjMBcE-JDAlMpqVvYNyyii0oYfgxHMtQAFe4pr4p8mNclxUrN4PyH4VILkPvfHHP9mXkGhe9mEARENPI6djI07c7pOc3rFr8gQnAaZJVhrzMF3hB6BHqqo1pBUw4iqFuVI_6ysW8kJOs56_Hjdxe_m80">Voucher Issuance for Interoperability API - Detailed flow.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZP11ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR0cWrbCTjEPsQ3--heQr4CBtoLavXsUzs6tB9h43ptyShxfaA1Wzjes20aKLf3SYAGFfZToWQmib1ZfySFNIdjnrWy79AKExWnH79UQn3Hcr5RY-BVTiBdY-kkNT9axotv00aURps6RlgKbkScqIAivYc1HJ8uk2c1y0GF_H-QbWxmt60eYq0pvNg5juIRmiBX9xBxluXWMsTKJ_eyHFexCLOjn5Yga2MacPjMBcE-JDAlMpqVvYNyyii0oYfgxHMtQAFe4pr4p8mNclxUrN4PyH4VILkPvfHHP9mXkGhe9mEARENPI6djI07c7pOc3rFr8gQnAaZJVhrzMF3hB6BHqqo1pBUw4iqFuVI_6ysW8kJOs56_Hjdxe_m80">Voucher Issuance for Interoperability API - Detailed flow.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 20.9 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.9 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -701,7 +705,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-clientassertion-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.10 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.10 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a4d8e3f-8b7d-4c98-926f-2745c6b1f832&quot;</span><span class="p">,</span>
@@ -711,7 +715,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-clientassertion-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.11 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.11 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
@@ -749,7 +753,7 @@
 </div></blockquote>
 <p><strong>Step 2 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Participant.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20.12 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.12 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -763,7 +767,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-accesstoken-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.13 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.13 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
@@ -773,7 +777,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-accesstoken-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.14 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.14 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://interop.pagopa.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
@@ -790,10 +794,10 @@
 </section>
 </section>
 <section id="pdnd-authorization-server-endpoint">
-<h3><span class="section-number">20.2.2.3. </span>PDND Authorization Server Endpoint<a class="headerlink" href="#pdnd-authorization-server-endpoint" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.2.3. </span>PDND Authorization Server Endpoint<a class="headerlink" href="#pdnd-authorization-server-endpoint" title="Link to this heading">¶</a></h3>
 <p>The PDND Authorization Server Endpoint issues Vouchers to Participants. These Vouchers allow Consumers to access e-Service resources and enable Participants to interact with the Interoperability API.</p>
 <section id="pdnd-voucher-request">
-<h4><span class="section-number">20.2.2.3.1. </span>PDND Voucher Request<a class="headerlink" href="#pdnd-voucher-request" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.3.1. </span>PDND Voucher Request<a class="headerlink" href="#pdnd-voucher-request" title="Link to this heading">¶</a></h4>
 <p>The request to the PDND Authorization Server Endpoint adheres to the Client Credentials Grant flow specified in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The client authenticates itself by presenting a JWT-based client assertion as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a> and <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>.</p>
 <p>Following the specifications above, the request MUST be an HTTP POST request with a body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
 <p>The Voucher Request MUST include the following HTTP header parameters (unless otherwise specified):</p>
@@ -935,7 +939,7 @@
 </table>
 </section>
 <section id="pdnd-voucher-response">
-<h4><span class="section-number">20.2.2.3.2. </span>PDND Voucher Response<a class="headerlink" href="#pdnd-voucher-response" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.2.3.2. </span>PDND Voucher Response<a class="headerlink" href="#pdnd-voucher-response" title="Link to this heading">¶</a></h4>
 <p>The Voucher Response MUST include the following body parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1065,7 +1069,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-endpoint-authorizationserver-error">
-<div class="code-block-caption"><span class="caption-number">Listing 20.15 </span><span class="caption-text">Non-normative example of a Voucher Error Response</span><a class="headerlink" href="#code-voucherissuance-endpoint-authorizationserver-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.15 </span><span class="caption-text">Non-normative example of a Voucher Error Response</span><a class="headerlink" href="#code-voucherissuance-endpoint-authorizationserver-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -1129,9 +1133,9 @@
 </section>
 </section>
 <section id="key-retrieval">
-<h2><span class="section-number">20.2.3. </span>Key Retrieval<a class="headerlink" href="#key-retrieval" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">19.2.3. </span>Key Retrieval<a class="headerlink" href="#key-retrieval" title="Link to this heading">¶</a></h2>
 <section id="pdnd-authorization-server-keys">
-<h3><span class="section-number">20.2.3.1. </span>PDND Authorization Server Keys<a class="headerlink" href="#pdnd-authorization-server-keys" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.3.1. </span>PDND Authorization Server Keys<a class="headerlink" href="#pdnd-authorization-server-keys" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id3">
 <span id="fig-keyretrieval-pdnd-flow"></span><p class="plantuml">
 <object data="_images/plantuml-ec6b6cf349359821286257f5c2155bbec0fa977f.svg" type="image/svg+xml" style="width:80%">
@@ -1139,12 +1143,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 20.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/RSx1IWCn58NXVPxYK7U1-01Tb1Qw40ILp6BMQNl4q4nIRsvc79_UgOWAkZsN_-DkgmRHDYJSSuQdIkGO4XoUzWzxer4J_p-PqBJaDXmenXpA6wozxjRYPlVUX0QuB7Gynal8YfMrjnDJSkTSfcpj2g6YDymdBF6t86MC9yfLkIkPyvxJN-Xnr_G5dhKqEH8TPQHyaRxxCNtdDlqQdg-DLV5SvFDrd3bNOthdDhvR_vgsIzc6z040">Key Retrieval for PDND Keys - Detailed flow.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/RSx1IWCn58NXVPxYK7U1-01Tb1Qw40ILp6BMQNl4q4nIRsvc79_UgOWAkZsN_-DkgmRHDYJSSuQdIkGO4XoUzWzxer4J_p-PqBJaDXmenXpA6wozxjRYPlVUX0QuB7Gynal8YfMrjnDJSkTSfcpj2g6YDymdBF6t86MC9yfLkIkPyvxJN-Xnr_G5dhKqEH8TPQHyaRxxCNtdDlqQdg-DLV5SvFDrd3bNOthdDhvR_vgsIzc6z040">Key Retrieval for PDND Keys - Detailed flow.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 20.16 </span><span class="caption-text">Non-normative example of the Keys Request</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.16 </span><span class="caption-text">Non-normative example of the Keys Request</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/jwks.json</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 </pre></div>
@@ -1152,7 +1156,7 @@
 </div>
 <p><strong>Step 2 (Keys Response)</strong>: The .well-known Endpoint returns the list of keys used by the PDND to sign Vouchers, as a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20.17 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.17 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1179,14 +1183,14 @@
 </div>
 </section>
 <section id="pdnd-authorization-server-well-known-endpoint">
-<h3><span class="section-number">20.2.3.2. </span>PDND Authorization Server .well-known Endpoint<a class="headerlink" href="#pdnd-authorization-server-well-known-endpoint" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.3.2. </span>PDND Authorization Server .well-known Endpoint<a class="headerlink" href="#pdnd-authorization-server-well-known-endpoint" title="Link to this heading">¶</a></h3>
 <p>The .well-known Endpoint is part of the PDND Infrastructure and used to retrieve the public keys used by the PDND Authorization Server to sign the Vouchers.</p>
 <section id="pdnd-authorization-server-keys-request">
-<h4><span class="section-number">20.2.3.2.1. </span>PDND Authorization Server Keys Request<a class="headerlink" href="#pdnd-authorization-server-keys-request" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.2.1. </span>PDND Authorization Server Keys Request<a class="headerlink" href="#pdnd-authorization-server-keys-request" title="Link to this heading">¶</a></h4>
 <p>The Keys Request is a <code class="docutils literal notranslate"><span class="pre">GET</span></code> HTTP request sent to the .well-known Endpoint. This endpoint allows Participants to retrieve the public keys necessary to verify digital signatures on Vouchers issued by the PDND Authorization Server.</p>
 </section>
 <section id="pdnd-authorization-server-keys-response">
-<h4><span class="section-number">20.2.3.2.2. </span>PDND Authorization Server Keys Response<a class="headerlink" href="#pdnd-authorization-server-keys-response" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.2.2. </span>PDND Authorization Server Keys Response<a class="headerlink" href="#pdnd-authorization-server-keys-response" title="Link to this heading">¶</a></h4>
 <p>The .well-known Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] containing the public keys employed by the PDND Authorization Server to sign Vouchers.</p>
 <p>If any errors occur during the retrieval of the keys, the .well-known Endpoint MUST return an error response. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
@@ -1196,7 +1200,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-wellknown-error">
-<div class="code-block-caption"><span class="caption-number">Listing 20.18 </span><span class="caption-text">Non-normative example of a Keys Error Response</span><a class="headerlink" href="#code-keyretrieval-endpoint-wellknown-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.18 </span><span class="caption-text">Non-normative example of a Keys Error Response</span><a class="headerlink" href="#code-keyretrieval-endpoint-wellknown-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1234,9 +1238,9 @@
 </section>
 </section>
 <section id="participants-keys">
-<h3><span class="section-number">20.2.3.3. </span>Participants' Keys<a class="headerlink" href="#participants-keys" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.3.3. </span>Participants' Keys<a class="headerlink" href="#participants-keys" title="Link to this heading">¶</a></h3>
 <section id="participants-key-retrieval-prerequisites">
-<h4><span class="section-number">20.2.3.3.1. </span>Participants' Key Retrieval Prerequisites<a class="headerlink" href="#participants-key-retrieval-prerequisites" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.3.1. </span>Participants' Key Retrieval Prerequisites<a class="headerlink" href="#participants-key-retrieval-prerequisites" title="Link to this heading">¶</a></h4>
 <p>The <strong>Participant</strong> who requests the key MUST comply with the following prerequisites:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1248,7 +1252,7 @@
 </div></blockquote>
 </section>
 <section id="participants-key-retrieval-flow">
-<h4><span class="section-number">20.2.3.3.2. </span>Participants' Key Retrieval Flow<a class="headerlink" href="#participants-key-retrieval-flow" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.3.2. </span>Participants' Key Retrieval Flow<a class="headerlink" href="#participants-key-retrieval-flow" title="Link to this heading">¶</a></h4>
 <figure class="align-default" id="id4">
 <span id="fig-keyretrieval-participant-flow"></span><p class="plantuml">
 <object data="_images/plantuml-cd8f37818971a62efdf6c4cfe370d76fde507aa5.svg" type="image/svg+xml" style="width:80%">
@@ -1256,12 +1260,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 20.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fSp1IiGm4CRnUvxY8nw4mBx07fOjRS4YQDcpbxITrM7J92OJjJwz5SGAWXUlC__lTynYavJPuPOMd4WIqujrsA5Vxpnoj5wo4XP7VoVA5Wc-p0CbfORm1cFwvgun1bVLUqcaWBZrqCPqNYY5ICaEx5WML7rdZ8RDw1Jv2QloJMtJJ_4cU5eQUlsDtbT5db0x9YzVMDrkMjtk3jt-HC-5ik0S4dx8rncn38v7N6Xvy6D8YN8CVcB_20d8aKO-hs-jBpnfhQ2wtQ5kz_ynZkIdChiF">Key Retrieval for Participant's Key - Detailed flow.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fSp1IiGm4CRnUvxY8nw4mBx07fOjRS4YQDcpbxITrM7J92OJjJwz5SGAWXUlC__lTynYavJPuPOMd4WIqujrsA5Vxpnoj5wo4XP7VoVA5Wc-p0CbfORm1cFwvgun1bVLUqcaWBZrqCPqNYY5ICaEx5WML7rdZ8RDw1Jv2QloJMtJJ_4cU5eQUlsDtbT5db0x9YzVMDrkMjtk3jt-HC-5ik0S4dx8rncn38v7N6Xvy6D8YN8CVcB_20d8aKO-hs-jBpnfhQ2wtQ5kz_ynZkIdChiF">Key Retrieval for Participant's Key - Detailed flow.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 20.19 </span><span class="caption-text">Non-normative example of the Key Request</span><a class="headerlink" href="#code-keyretrieval-participant-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.19 </span><span class="caption-text">Non-normative example of the Key Request</span><a class="headerlink" href="#code-keyretrieval-participant-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/keys/c7e3d6a4-5b99-4298-9b84-d8f3a61279f1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjVhM2M3ZjI4LTkxYjktNGM0ZS04OWE5LTZlMmY4NWQ5MjYyYiIsImF1ZCI6Imh0dHBzOi8vaW50ZXJvcC5wYWdvcGEuaXQvYXBpL3YxIiwiZXhwIjoxNzMzMjM2NjgwLCJuYmYiOjE3MzMyMzMxNTgsImlhdCI6MTczMzIzMzA4MCwianRpIjoiZjg3ZTJkNWItOWY2NS00ZjBmLThhZDQtOTJlNThlNmIxM2M3IiwiY2xpZW50X2lkIjoiNWEzYzdmMjgtOTFiOS00YzRlLTg5YTktNmUyZjg1ZDkyNjJiIn0.SKDDap16Ubi6gYwpKVdBcuhmhF_XnGiHeoxkF8F4IAualYORu_TxnDZqeP_RCcBAxSRkJTFbMihPCLA7DoRQOw</span>
@@ -1270,7 +1274,7 @@
 </div>
 <p><strong>Step 2 (Key Response)</strong>: The Interoperability API Endpoint returns the requested key, as a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20.20 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.20 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1294,10 +1298,10 @@
 </section>
 </section>
 <section id="pdnd-interoperability-api-endpoint">
-<h3><span class="section-number">20.2.3.4. </span>PDND Interoperability API Endpoint<a class="headerlink" href="#pdnd-interoperability-api-endpoint" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.3.4. </span>PDND Interoperability API Endpoint<a class="headerlink" href="#pdnd-interoperability-api-endpoint" title="Link to this heading">¶</a></h3>
 <p>The Interoperability API Endpoint is part of the PDND Infrastructure and used to retrieve the public keys of other parties enrolled in the PDND.</p>
 <section id="pdnd-interoperability-api-key-request">
-<h4><span class="section-number">20.2.3.4.1. </span>PDND Interoperability API Key Request<a class="headerlink" href="#pdnd-interoperability-api-key-request" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.4.1. </span>PDND Interoperability API Key Request<a class="headerlink" href="#pdnd-interoperability-api-key-request" title="Link to this heading">¶</a></h4>
 <p>The Key Request is a <code class="docutils literal notranslate"><span class="pre">GET</span></code> HTTP request sent to the <code class="docutils literal notranslate"><span class="pre">/keys/&lt;kid&gt;</span></code> API. This request is used to retrieve a specific key identified by its unique <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p>
 <p>The Key Request MUST include the following HTTP header parameters:</p>
 <table class="docutils align-default">
@@ -1321,12 +1325,12 @@
 </table>
 </section>
 <section id="pdnd-interoperability-api-key-response">
-<h4><span class="section-number">20.2.3.4.2. </span>PDND Interoperability API Key Response<a class="headerlink" href="#pdnd-interoperability-api-key-response" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.3.4.2. </span>PDND Interoperability API Key Response<a class="headerlink" href="#pdnd-interoperability-api-key-response" title="Link to this heading">¶</a></h4>
 <p>In case a public key with the provided <code class="docutils literal notranslate"><span class="pre">kid</span></code> exists, the Interoperability API Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] representing that key.</p>
 <p>If any errors occur during the retrieval of the key, the Interoperability API Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
 <p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-interoperabilityapi-error-401">
-<div class="code-block-caption"><span class="caption-number">Listing 20.21 </span><span class="caption-text">Non-normative example of a Key Error Response in case of 401 errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-401" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.21 </span><span class="caption-text">Non-normative example of a Key Error Response in case of 401 errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
 <span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">Bearer error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
 </pre></div>
@@ -1340,7 +1344,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-interoperabilityapi-error-others">
-<div class="code-block-caption"><span class="caption-number">Listing 20.22 </span><span class="caption-text">Non-normative example of a Key Error Response in case of other errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-others" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.22 </span><span class="caption-text">Non-normative example of a Key Error Response in case of other errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-others" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1391,9 +1395,9 @@
 </section>
 </section>
 <section id="e-service-usage">
-<h2><span class="section-number">20.2.4. </span>e-Service Usage<a class="headerlink" href="#e-service-usage" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">19.2.4. </span>e-Service Usage<a class="headerlink" href="#e-service-usage" title="Link to this heading">¶</a></h2>
 <section id="e-service-usage-prerequisites">
-<h3><span class="section-number">20.2.4.1. </span>e-Service Usage Prerequisites<a class="headerlink" href="#e-service-usage-prerequisites" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.4.1. </span>e-Service Usage Prerequisites<a class="headerlink" href="#e-service-usage-prerequisites" title="Link to this heading">¶</a></h3>
 <p>The <strong>Consumer</strong> MUST comply with the following prerequisites:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1413,7 +1417,7 @@
 </div>
 </section>
 <section id="e-service-usage-flow">
-<h3><span class="section-number">20.2.4.2. </span>e-Service Usage Flow<a class="headerlink" href="#e-service-usage-flow" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.4.2. </span>e-Service Usage Flow<a class="headerlink" href="#e-service-usage-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id5">
 <span id="fig-usage-flow"></span><p class="plantuml">
 <object data="_images/plantuml-2b3dffd601356e0f71db2689540a61806a80b336.svg" type="image/svg+xml" style="width:80%">
@@ -1421,12 +1425,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 20.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZP31RjGm48RlVegHUm5BAo6EFQ2kaYuK8RfAjd1SkSwGM9jumdYyPVlqE4sxiAfQzHB5zlpVVFelebYMDFI0Ynfvxnt2JRGjAl7IuxDRPPDGICCjibAtz0UCAIZ4D20R0sTNU-A30XWpr3i_sY2WZRbU9kcWw3q6CKQ3ZL2i58O6CkA9iow_bnDZUPyONs9C7s9_RyLJWCaD-P6uh9yHcVQ-cSs-KC13YNSlWIkCbDZXARFwZrci5f-ArVcQCGCGllxSm9tFoUZRO2KnmZkjwwU3rk-F4IWOhI2KQrh3o4I_vgUgFeVIYitBVoUCClD-K7BTL2y7oY7ADja3phxvjfFFZ1WKGD6Xsu7M4rBhIV9X-cqXwnp6k1NQOJW9qoXm7Vh3BABrygQyscohotgp_V0nJmAyXl-tOCFMxNneBwVwWyE7w75D_dcRvx7C4ycgNiojFhQ63JHMhBh88sde_m80">e-Service Usage - Detailed flow.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZP31RjGm48RlVegHUm5BAo6EFQ2kaYuK8RfAjd1SkSwGM9jumdYyPVlqE4sxiAfQzHB5zlpVVFelebYMDFI0Ynfvxnt2JRGjAl7IuxDRPPDGICCjibAtz0UCAIZ4D20R0sTNU-A30XWpr3i_sY2WZRbU9kcWw3q6CKQ3ZL2i58O6CkA9iow_bnDZUPyONs9C7s9_RyLJWCaD-P6uh9yHcVQ-cSs-KC13YNSlWIkCbDZXARFwZrci5f-ArVcQCGCGllxSm9tFoUZRO2KnmZkjwwU3rk-F4IWOhI2KQrh3o4I_vgUgFeVIYitBVoUCClD-K7BTL2y7oY7ADja3phxvjfFFZ1WKGD6Xsu7M4rBhIV9X-cqXwnp6k1NQOJW9qoXm7Vh3BABrygQyscohotgp_V0nJmAyXl-tOCFMxNneBwVwWyE7w75D_dcRvx7C4ycgNiojFhQ63JHMhBh88sde_m80">e-Service Usage - Detailed flow.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-signature-header">
-<div class="code-block-caption"><span class="caption-number">Listing 20.23 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> header</span><a class="headerlink" href="#code-usage-flow-signature-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.23 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> header</span><a class="headerlink" href="#code-usage-flow-signature-header" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -1436,7 +1440,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-signature-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 20.24 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> payload</span><a class="headerlink" href="#code-usage-flow-signature-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.24 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> payload</span><a class="headerlink" href="#code-usage-flow-signature-payload" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
@@ -1464,7 +1468,7 @@
 </div>
 <p><strong>Step 3 (e-Service Request):</strong> The Consumer sends an e-Service Request to the Provider, including the Voucher.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 20.25 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.25 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/ente-example/v1/hello/echo/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">erogatore.example</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw</span>
@@ -1575,7 +1579,7 @@
 <p>If any of the previous checks fail, the Provider MUST reject the Request.</p>
 <p><strong>Step 4 (e-Service Response):</strong> Upon successful checks, the Provider provides the Consumer with the requested data. In The Response header MUST be present the JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) to ensure integrity.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20.26 </span><span class="caption-text">Non-normative example of the e-Service Response</span><a class="headerlink" href="#code-usage-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.26 </span><span class="caption-text">Non-normative example of the e-Service Response</span><a class="headerlink" href="#code-usage-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Agid-JWT-Signature</span><span class="o">:</span> <span class="l">ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg</span>
@@ -1621,9 +1625,9 @@
 <p>If any of the previous checks fail, the Consumer MUST reject the Response.</p>
 </section>
 <section id="e-service-endpoint">
-<h3><span class="section-number">20.2.4.3. </span>e-Service Endpoint<a class="headerlink" href="#e-service-endpoint" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">19.2.4.3. </span>e-Service Endpoint<a class="headerlink" href="#e-service-endpoint" title="Link to this heading">¶</a></h3>
 <section id="e-service-request">
-<h4><span class="section-number">20.2.4.3.1. </span>e-Service Request<a class="headerlink" href="#e-service-request" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.4.3.1. </span>e-Service Request<a class="headerlink" href="#e-service-request" title="Link to this heading">¶</a></h4>
 <p>The e-Service Request MUST include the following HTTP header parameters (unless otherwise specified):</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1820,7 +1824,7 @@
 <p>When complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern, the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload MUST also contain the tracked data agreed upon with the Provider.</p>
 </section>
 <section id="e-service-response">
-<h4><span class="section-number">20.2.4.3.2. </span>e-Service Response<a class="headerlink" href="#e-service-response" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">19.2.4.3.2. </span>e-Service Response<a class="headerlink" href="#e-service-response" title="Link to this heading">¶</a></h4>
 <p>The e-Service Response MUST use HTTP Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
 <p>The e-Service Response MUST include the following HTTP header parameters:</p>
 <table class="longtable docutils align-default">
@@ -1903,7 +1907,7 @@
 <p>If any errors occur during the validation of the e-Service Request, the e-Service Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
 <p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> and <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error-401">
-<div class="code-block-caption"><span class="caption-number">Listing 20.27 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of 401 errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.27 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of 401 errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
 <span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">DPoP error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
 </pre></div>
@@ -1920,7 +1924,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error">
-<div class="code-block-caption"><span class="caption-number">Listing 20.28 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of other errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19.28 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of other errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/problem+json</span>
 
@@ -1971,12 +1975,12 @@
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>20.1. Mobile Application Instance</span>
+                <span>19.1. Mobile Application Instance</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="e-service-pdnd-template.html">
-                <span>20.3. PDND e-Service Template</span>
+                <span>19.3. PDND e-Service Template</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -1986,8 +1990,16 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -2013,54 +2025,66 @@
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
-<li><a class="reference internal" href="#">20.2. e-Service PDND</a><ul>
-<li><a class="reference internal" href="#requirements-and-security-patterns">20.2.1. Requirements and Security Patterns</a></li>
-<li><a class="reference internal" href="#pdnd-voucher-issuance">20.2.2. PDND Voucher Issuance</a><ul>
-<li><a class="reference internal" href="#pdnd-voucher-for-e-service">20.2.2.1. PDND Voucher for e-Service</a><ul>
-<li><a class="reference internal" href="#pdnd-voucher-for-e-services-prerequisites">20.2.2.1.1. PDND Voucher for e-Services Prerequisites</a></li>
-<li><a class="reference internal" href="#pdnd-voucher-for-e-services-flow">20.2.2.1.2. PDND Voucher for e-Services Flow</a></li>
+<li><a class="reference internal" href="#">19.2. e-Service PDND</a><ul>
+<li><a class="reference internal" href="#requirements-and-security-patterns">19.2.1. Requirements and Security Patterns</a></li>
+<li><a class="reference internal" href="#pdnd-voucher-issuance">19.2.2. PDND Voucher Issuance</a><ul>
+<li><a class="reference internal" href="#pdnd-voucher-for-e-service">19.2.2.1. PDND Voucher for e-Service</a><ul>
+<li><a class="reference internal" href="#pdnd-voucher-for-e-services-prerequisites">19.2.2.1.1. PDND Voucher for e-Services Prerequisites</a></li>
+<li><a class="reference internal" href="#pdnd-voucher-for-e-services-flow">19.2.2.1.2. PDND Voucher for e-Services Flow</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pdnd-voucher-for-interoperability-api">20.2.2.2. PDND Voucher for Interoperability API</a><ul>
-<li><a class="reference internal" href="#pdnd-voucher-for-interoperability-api-prerequisites">20.2.2.2.1. PDND Voucher for Interoperability API Prerequisites</a></li>
-<li><a class="reference internal" href="#voucher-for-interoperability-api-flow">20.2.2.2.2. Voucher for Interoperability API Flow</a></li>
+<li><a class="reference internal" href="#pdnd-voucher-for-interoperability-api">19.2.2.2. PDND Voucher for Interoperability API</a><ul>
+<li><a class="reference internal" href="#pdnd-voucher-for-interoperability-api-prerequisites">19.2.2.2.1. PDND Voucher for Interoperability API Prerequisites</a></li>
+<li><a class="reference internal" href="#voucher-for-interoperability-api-flow">19.2.2.2.2. Voucher for Interoperability API Flow</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pdnd-authorization-server-endpoint">20.2.2.3. PDND Authorization Server Endpoint</a><ul>
-<li><a class="reference internal" href="#pdnd-voucher-request">20.2.2.3.1. PDND Voucher Request</a></li>
-<li><a class="reference internal" href="#pdnd-voucher-response">20.2.2.3.2. PDND Voucher Response</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#key-retrieval">20.2.3. Key Retrieval</a><ul>
-<li><a class="reference internal" href="#pdnd-authorization-server-keys">20.2.3.1. PDND Authorization Server Keys</a></li>
-<li><a class="reference internal" href="#pdnd-authorization-server-well-known-endpoint">20.2.3.2. PDND Authorization Server .well-known Endpoint</a><ul>
-<li><a class="reference internal" href="#pdnd-authorization-server-keys-request">20.2.3.2.1. PDND Authorization Server Keys Request</a></li>
-<li><a class="reference internal" href="#pdnd-authorization-server-keys-response">20.2.3.2.2. PDND Authorization Server Keys Response</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#participants-keys">20.2.3.3. Participants' Keys</a><ul>
-<li><a class="reference internal" href="#participants-key-retrieval-prerequisites">20.2.3.3.1. Participants' Key Retrieval Prerequisites</a></li>
-<li><a class="reference internal" href="#participants-key-retrieval-flow">20.2.3.3.2. Participants' Key Retrieval Flow</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pdnd-interoperability-api-endpoint">20.2.3.4. PDND Interoperability API Endpoint</a><ul>
-<li><a class="reference internal" href="#pdnd-interoperability-api-key-request">20.2.3.4.1. PDND Interoperability API Key Request</a></li>
-<li><a class="reference internal" href="#pdnd-interoperability-api-key-response">20.2.3.4.2. PDND Interoperability API Key Response</a></li>
+<li><a class="reference internal" href="#pdnd-authorization-server-endpoint">19.2.2.3. PDND Authorization Server Endpoint</a><ul>
+<li><a class="reference internal" href="#pdnd-voucher-request">19.2.2.3.1. PDND Voucher Request</a></li>
+<li><a class="reference internal" href="#pdnd-voucher-response">19.2.2.3.2. PDND Voucher Response</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#e-service-usage">20.2.4. e-Service Usage</a><ul>
-<li><a class="reference internal" href="#e-service-usage-prerequisites">20.2.4.1. e-Service Usage Prerequisites</a></li>
-<li><a class="reference internal" href="#e-service-usage-flow">20.2.4.2. e-Service Usage Flow</a></li>
-<li><a class="reference internal" href="#e-service-endpoint">20.2.4.3. e-Service Endpoint</a><ul>
-<li><a class="reference internal" href="#e-service-request">20.2.4.3.1. e-Service Request</a></li>
-<li><a class="reference internal" href="#e-service-response">20.2.4.3.2. e-Service Response</a></li>
+<li><a class="reference internal" href="#key-retrieval">19.2.3. Key Retrieval</a><ul>
+<li><a class="reference internal" href="#pdnd-authorization-server-keys">19.2.3.1. PDND Authorization Server Keys</a></li>
+<li><a class="reference internal" href="#pdnd-authorization-server-well-known-endpoint">19.2.3.2. PDND Authorization Server .well-known Endpoint</a><ul>
+<li><a class="reference internal" href="#pdnd-authorization-server-keys-request">19.2.3.2.1. PDND Authorization Server Keys Request</a></li>
+<li><a class="reference internal" href="#pdnd-authorization-server-keys-response">19.2.3.2.2. PDND Authorization Server Keys Response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#participants-keys">19.2.3.3. Participants' Keys</a><ul>
+<li><a class="reference internal" href="#participants-key-retrieval-prerequisites">19.2.3.3.1. Participants' Key Retrieval Prerequisites</a></li>
+<li><a class="reference internal" href="#participants-key-retrieval-flow">19.2.3.3.2. Participants' Key Retrieval Flow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pdnd-interoperability-api-endpoint">19.2.3.4. PDND Interoperability API Endpoint</a><ul>
+<li><a class="reference internal" href="#pdnd-interoperability-api-key-request">19.2.3.4.1. PDND Interoperability API Key Request</a></li>
+<li><a class="reference internal" href="#pdnd-interoperability-api-key-response">19.2.3.4.2. PDND Interoperability API Key Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-service-usage">19.2.4. e-Service Usage</a><ul>
+<li><a class="reference internal" href="#e-service-usage-prerequisites">19.2.4.1. e-Service Usage Prerequisites</a></li>
+<li><a class="reference internal" href="#e-service-usage-flow">19.2.4.2. e-Service Usage Flow</a></li>
+<li><a class="reference internal" href="#e-service-endpoint">19.2.4.3. e-Service Endpoint</a><ul>
+<li><a class="reference internal" href="#e-service-request">19.2.4.3.1. e-Service Request</a></li>
+<li><a class="reference internal" href="#e-service-response">19.2.4.3.2. e-Service Response</a></li>
 </ul>
 </li>
 </ul>
@@ -2100,7 +2124,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

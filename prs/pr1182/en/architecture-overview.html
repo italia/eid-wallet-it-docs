@@ -7,11 +7,11 @@
 
     <title>3. Architecture Overview &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=c97b86a3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -23,7 +23,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Onboarding System" href="onboarding-high-level.html" />
+    <link rel="next" title="4. User Experience Design" href="functionalities.html" />
     <link rel="prev" title="2. Brand Identity" href="brand-identity.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
@@ -36,8 +36,7 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -264,23 +263,22 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
 </ul>
 
       </div>
@@ -342,7 +340,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
 <p>The architecture enables the following core interaction processes:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><strong>Entity Onboarding and Federation</strong>: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a <strong>Claims Registry</strong> and <strong>Taxonomy</strong> that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section <a class="reference internal" href="onboarding-high-level.html#onboarding-system"><span class="std std-ref">Onboarding System</span></a> and <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p></li>
+<li><p><strong>Entity Onboarding and Federation</strong>: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a <strong>Claims Registry</strong> and <strong>Taxonomy</strong> that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a> and <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p></li>
 <li><p><strong>Credential Discovery and Catalog Management</strong>: The ecosystem supports dual Credential discovery mechanisms - public discovery through the <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> for general-purpose Credentials, and private discovery via direct Credential Offers for specific use cases. The catalog is automatically populated based on Supervisory Body policies from registered Claims Registry and Taxonomy definitions.</p></li>
 <li><p><strong>Credential Issuance</strong>: Credential Issuers coordinate with Authentic Sources via standardised APIs to request verified User attributes, creating Digital Credentials based on authoritative data. Issuance can proceed for both Credentials discovered within the Credential Catalog and Credential provided through Credential offer flows.</p></li>
 <li><p><strong>Credential Storage and Management</strong>: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management.</p></li>
@@ -363,8 +361,8 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
-              <a class="btn btn-primary" href="onboarding-high-level.html">
-                <span>4. Onboarding System</span>
+              <a class="btn btn-primary" href="functionalities.html">
+                <span>4. User Experience Design</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -374,8 +372,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -402,7 +399,7 @@ The IT-Wallet ecosystem is built on a multi-layered architecture, where governan
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

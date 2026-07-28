@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via test-plans.rst at title level '-' (level 1).
 
 
 Credential Issuer Test Matrix
@@ -12,10 +13,10 @@ This section provides the set of test cases designed for technical implementers 
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - CI_001
     - Trust, Security
     - Entity Configuration publication

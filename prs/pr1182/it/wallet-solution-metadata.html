@@ -7,11 +7,11 @@
 
     <title>10.1.7. Metadati della Soluzione Wallet &#8212; IT-Wallet Specifiche Tecniche</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
     <script src="_static/documentation_options.js?v=af8558f3"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -37,8 +37,7 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -340,23 +339,42 @@
 <td><p>CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. DEVE essere presente se <code class="docutils literal notranslate"><span class="pre">jwks</span></code> e <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> sono assenti.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logo_uri</span></code></p></td>
-<td><p>OBBLIGATORIO. URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
+<td><p>OBBLIGATORIO. URL del logo dell'entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella <a class="reference internal" href="remote-flow.html#table-wallet-metadata-parameters"><span class="std std-ref">Tabella dei parametri dei metadati del portafoglio</span></a> e seguenti due parametri</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code> Credential Offer Endpoint del Wallet.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wallet_name</span></code> Stringa contenente il nome del Wallet.</p></li>
-</ul>
-</div></blockquote>
-</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_name</span></code></p></td>
+<td><p>OBBLIGATORIO. Stringa contenente il nome del Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code></p></td>
+<td><p>OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schemes</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code></p></td>
+<td><p>OBBLIGATORIO. Credential Offer Endpoint del Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code></p></td>
+<td><p>OPZIONALE. Array JSON di valori &quot;response_type&quot; di OAuth 2.0. Se presente DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>. Il valore predefinito è <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code></p></td>
+<td><p>OPZIONALE. Array JSON di valori &quot;response_mode&quot; di OAuth 2.0 come specificato in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>. Il valore supportato DEVE essere <em>query</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code></p></td>
+<td><p>OBBLIGATORIO. Oggetto contenente un elenco di coppie nome/valore, in cui il nome è un identificatore di formato di Credenziale e il valore definisce i parametri specifici del formato supportati da un Wallet. Vedere <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendice B. Le Istanze del Wallet DEVONO supportare gli identificatori di formato di Credenziale richiesti da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> (inclusi <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> e <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code></p></td>
+<td><p>RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> e <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; se omesso, il valore predefinito è pre-registrato.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code></p></td>
+<td><p>OPZIONALE. Vedi OpenID Connect Discovery.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Alcuni flussi relativi agli Attestati Elettronici richiedono il recupero delle informazioni del Wallet prima di interagire con il Wallet stesso. Il flusso è descritto in <a class="reference internal" href="wallet-metadata-retrieval.html#flusso-di-recupero-dei-wallet-metadata"><span class="std std-ref">Flusso di Recupero dei Wallet Metadata</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>universal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
+Inoltre, gli <em>universal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli <em>URL scheme</em> personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, e in particolare utilizzando l'url personalizzato <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
 </div>
 </section>
 
@@ -383,8 +401,7 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
         </div>
       </aside>
     </div>
@@ -411,7 +428,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 17/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
