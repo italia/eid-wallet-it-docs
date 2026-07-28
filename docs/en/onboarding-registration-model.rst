@@ -35,7 +35,7 @@ Each :ref:`onboarding-system:Registration Profiles` is an instance of this catal
      - Whether the entity is a public sector body or a private entity. In the Register it is the ``isPSB`` flag, in the AS Registry the ``organization_type``.
      - [`CIR2025/848`_], Annex I
    * - `contact_information`
-     - The postal address, the electronic mail address, the telephone number and the information web page of the organization.
+     - The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service. In the Register the support contact is the ``supportURI`` field.
      - [`CIR2025/848`_], Annex I
    * - `service_policies`
      - The terms and conditions and the privacy policy of the service, each published at its own URL.
@@ -79,6 +79,15 @@ Each :ref:`onboarding-system:Registration Profiles` is an instance of this catal
    * - `credential_policies`
      - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
+   * - `conformity_assessment`
+     - The outcome of the conformity assessment of the entity. For a PuB-EAA Provider it is the conformity assessment report issued by a conformity assessment body under Article 45f of [`EIDAS`_]. For a Wallet Provider and a PID Provider it is the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN). Provided by the notified categories.
+     - [`EIDAS-ARF`_], Annex 2
+   * - `service_supply_point`
+     - The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. Provided by the notified categories that issue an Attestation requested by the Wallet Unit, that is the PID Providers and the PuB-EAA Providers.
+     - [`EIDAS-ARF`_], Annex 2
+   * - `signing_trust_anchor`
+     - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It is provided as an input by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, that is the QEAA Providers and the PuB-EAA Providers, whose Qualified Certification Authority belongs to the perimeter of a Qualified Trust Service Provider, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
+     - [`EIDAS-ARF`_], Annex 2
 
 The table gives the whole set.
 A given entity provides only the subset that applies to its role, as defined in :ref:`onboarding-system:Registration Profiles`.
