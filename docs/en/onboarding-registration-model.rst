@@ -231,8 +231,42 @@ Non-Qualified EAA Provider
 Relying Party
 """""""""""""
 
-.. note::
-   Draft. To be written.
+The table below lists the Data Identifiers a Relying Party provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+
+.. list-table:: Relying Party Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the Relying Party as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the Relying Party. A public body also provides its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the Relying Party is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact email address. The information web page are provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the service.
+   * - `service_description`
+     - The localized description of the service the Relying Party offers, one description per service. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact.
+   * - `entitlements`
+     - The entitlements that state the Relying Party role, and the additional roles it plays where applicable.
+   * - `intended_use`
+     - The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.
+   * - `intermediary_relationship`
+     - REQUIRED only where the Relying Party operates through a WRP Intermediary. In that case it references its WRP intermediary identifier. The intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the Relying Party in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the Relying Party.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
 
 
 Relying Party Intermediary
