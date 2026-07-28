@@ -70,6 +70,9 @@ Each :ref:`onboarding-system:Registration Profiles` is an instance of this catal
    * - `provided_claims_purposes`
      - The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the ``data_capabilities`` of the AS Registry entry, that is the ``available_claims``, the ``intended_purposes`` and the related integration details, see :ref:`registry:Authentic Source Registry`.
      - [`CIR2025/848`_], Annex I
+   * - `visual_identity`
+     - The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text. It is stored in the ``organization_info`` and in the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`. The other entities do not provide it, since their visual assets are carried in their Entity Configuration.
+     - This specification
    * - `credential_type_declaration`
      - For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
