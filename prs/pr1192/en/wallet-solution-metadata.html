@@ -339,21 +339,40 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logo_uri</span></code></p></td>
 <td><p>REQUIRED. URL of the entity's logo that will be shown to the User. The logo mime type MUST be <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>REQUIRED. It contains the Wallet Metadata parameters as defined in <a class="reference internal" href="remote-flow.html#table-wallet-metadata-parameters"><span class="std std-ref">Table of Wallet Metadata Parameters</span></a> and the following two parameters</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code> Credential Offer Endpoint of a Wallet.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wallet_name</span></code> String containing a human-readable name of the Wallet.</p></li>
-</ul>
-</div></blockquote>
-</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_name</span></code></p></td>
+<td><p>REQUIRED. String containing a human-readable name of the Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code></p></td>
+<td><p>REQUIRED. URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code></p></td>
+<td><p>REQUIRED. Credential Offer Endpoint of a Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code></p></td>
+<td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-82</span></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code></p></td>
+<td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_mode&quot; values as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>. The supported value MUST be <em>query</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code></p></td>
+<td><p>REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> (including <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code></p></td>
+<td><p>RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> and <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; if omitted, the default is <code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code></p></td>
+<td><p>OPTIONAL. See OpenID Connect Discovery.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There are Digital Credential flows that require retrieving Wallet Solution metadata before interacting with the Wallet itself. The flow is described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
+Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, and in particular the custom URL <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
 </div>
 </section>
 

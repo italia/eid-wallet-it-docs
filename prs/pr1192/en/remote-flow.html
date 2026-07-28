@@ -439,16 +439,12 @@ Below is a non-normative example with Request Object by reference:</p>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">application/oauth-authz-req+jwt</span>
 
-<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u</span>
+<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">qPmxiNFCR3QTm19POc8u</span>
 </pre></div>
 </div>
 <p>Where the body of the request prior to being encoded in <cite>application/x-www-form-urlencoded</cite> by the Wallet corresponds to:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;wallet_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-solution.digital-strategy.europa.eu/authorization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;vp_token&quot;</span>
-<span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ES384&quot;</span><span class="p">]</span>
@@ -725,12 +721,6 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 <tr class="row-odd"><td><p><cite>client_id_prefixes_supported</cite></p></td>
 <td><p>RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> and <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; if omitted, the default is <code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
-<td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using a universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
-<td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-82</span></a>).</p></td>
-</tr>
 <tr class="row-even"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
 <td><p>OPTIONAL. See OpenID Connect Discovery.</p></td>
 </tr>
@@ -744,11 +734,6 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
 When present, the Relying Party MUST evaluate it (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-81</span></a>).</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. The URL schemes <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> and <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> and <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> are supported to ensure interoperability.</p>
 </div>
 </section>
 <section id="request-uri-response">

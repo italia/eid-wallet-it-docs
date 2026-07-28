@@ -444,16 +444,12 @@ Di seguito è riportato un esempio non normativo per un Request Object by refere
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">application/oauth-authz-req+jwt</span>
 
-<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u</span>
+<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22vp_formats_supported%22%3A%7B%22dc%2Bsd-jwt%22%3A%7B%22sd-jwt_alg_values%22%3A%5B%22ES256%22%2C%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">qPmxiNFCR3QTm19POc8u</span>
 </pre></div>
 </div>
 <p>Dove il corpo della richiesta prima di essere codificato in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> dal Wallet corrisponde a:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;wallet_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-solution.digital-strategy.europa.eu/authorization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;vp_token&quot;</span>
-<span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="s2">&quot;ES384&quot;</span><span class="p">]</span>
@@ -730,12 +726,6 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 <tr class="row-odd"><td><p><cite>client_id_prefixes_supported</cite></p></td>
 <td><p>RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> e <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; se omesso, il valore predefinito è pre-registrato.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
-<td><p>URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schemes</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
-<td><p>OPZIONALE. Array JSON di valori &quot;response_type&quot; di OAuth 2.0. Se presente DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-82</span></a>).</p></td>
-</tr>
 <tr class="row-even"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
 <td><p>OPZIONALE. Vedi OpenID Connect Discovery.</p></td>
 </tr>
@@ -749,11 +739,6 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 <p class="admonition-title">Nota</p>
 <p>Il parametro <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> è RACCOMANDATO per le Istanze del Wallet che vogliono prevenire il <em>replay</em> delle
 loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, la Relying Party DEVE controllarlo (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-81</span></a>).</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>univarsal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Gli <em>URL scheme</em> <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> e <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> definiti in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> sono supportati per garantire l'interoperabilità.</p>
 </div>
 </section>
 <section id="risposta-dell-endpoint-uri-request">
