@@ -15,6 +15,7 @@
     "credentials": [
         {
             "version": "1",
+            "state": "ACTIVE",
             "credential_type": "mDL",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",

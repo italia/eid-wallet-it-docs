@@ -29,6 +29,15 @@
       } catch (error) {
         /* ignore storage errors */
       }
+      {%- if display_toc -%}
+      try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      {%- endif -%}
     })();
   </script>
 {%- endblock %}
@@ -199,6 +208,16 @@
       </div>
 
       <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="{{ _('Secondary navigation') }}">
+        {%- if display_toc -%}
+        <button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="{{ _('Show page contents') }}">
+          {{ icon_chevron_left('icon icon-sm') }}
+        </button>
+        {%- endif -%}
         <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
           {%- block sidebar2 %}
           {%- include "navscroll.html" %}

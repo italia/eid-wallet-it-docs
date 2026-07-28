@@ -1,0 +1,67 @@
+@startuml IT-Wallet Onboarding System
+left to right direction
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam packageStyle rectangle
+skinparam ArrowColor #666666
+skinparam ArrowFontSize 11
+skinparam linetype ortho
+skinparam nodesep 18
+skinparam ranksep 45
+skinparam rectangleBorderColor #333333
+skinparam roundCorner 8
+skinparam databaseBorderColor #333333
+skinparam actorBorderColor #333333
+
+actor "Supervisory Body" as adm #E1BEE7
+
+package "IT-Wallet Onboarding System" {
+
+  package "Attestation Onboarding" as pkgatt #F5F5F5 {
+    rectangle "**Authentic Source** \n**Management**\n..\nAuthentic Sources" as asmgr #C8E6C9
+    rectangle "**Claims and Schema** \n**Management**\n..\nAuthentic Sources" as schmgr #C8E6C9
+    rectangle "**Catalog**\n **Management**\n..\nAll Credential Issuers" as catmgr #C8E6C9
+  }
+
+  package "Entity Onboarding" as pkgent #F5F5F5 {
+    rectangle "**National Federation Management**\n..\nAll Entities" as fed #C8E6C9
+    rectangle "**EUDIW Registration Management**\n..\nCredential Issuers, Relying Parties,\nRelying Party Intermediaries\noperating in EUDIW boundary" as reg #BBDEFB
+    rectangle "**Certificate** \n**Management**\n..\nJWT and X.509 Artifacts" as x509 #FFE0B2
+  }
+
+  rectangle "**EU Notification Management**\n..\nPID / QEAA / PuB-EAA Providers,\nWallet Providers" as pub #BBDEFB
+
+  package "Registries and Data Stores" as pkgdata #F5F5F5 {
+    database "National\nAS Registry" as asreg #C8E6C9
+    database "National Claims /\nSchema Reg., Taxonomy" as reg3 #C8E6C9
+    database "National\nCredentials Catalog" as cat #C8E6C9
+    database "EUDIW\nRegister" as wrpreg #BBDEFB
+    database "EUDIW\nNotification Dataset" as notif #BBDEFB
+  }
+}
+
+cloud "Attestation\nRulebook" as rb #EEEEEE
+cloud "European\nCommission" as ec #EEEEEE
+
+' ---- supervisory body gates ----
+adm --> pkgatt : oversees and\ngoverns
+adm --> pkgent : eligibility and\ncompliance
+
+' ---- rulebook reference ----
+rb ..> catmgr
+
+' ---- component to store (writes) ----
+asmgr --> asreg
+schmgr --> reg3
+catmgr --> cat
+reg --> wrpreg
+pub --> notif
+pub ..> ec
+
+' ---- certificate issuance ----
+fed --> x509
+reg --> x509
+
+pkgent --> pub
+
+@enduml

@@ -1,0 +1,148 @@
+AccessCertificate cert = {
+  tbsCertificate: {
+    version: 2,                                           // Integer value 2 for v3
+    serialNumber: "0x6F3A0B91D2...",
+
+    signature: AlgorithmIdentifier {
+      oid: "1.2.840.113549.1.1.11",                       // sha256WithRSAEncryption
+      params: NULL
+    },
+
+    issuer: DistinguishedName {                           // Issuer attributes for legal person
+      countryName: "IT",
+      organizationName: "Example Trust Services CA",
+      commonName: "Example CA",
+      organizationIdentifier: "VATIT-123456789"
+    },
+
+    validity: {
+      notBefore: "2026-01-27T00:00:00Z",
+      notAfter:  "2027-01-27T00:00:00Z"
+    },
+
+    subject: DistinguishedName {                          // Subject attributes for legal person
+      countryName: "IT",
+      organizationName: "Example of PuB-EAA Provider",
+      commonName: "PuB-EAA Provider Example",
+      organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
+    },
+
+    subjectPublicKeyInfo: {
+      algorithm: AlgorithmIdentifier {
+        oid: "1.2.840.113549.1.1.1",                      // rsaEncryption
+        params: NULL
+      },
+
+      subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
+    },
+
+    extensions: [
+      Extension {
+        oid: "2.5.29.35",                                 // authorityKeyIdentifier
+        critical: false,
+        value: AuthorityKeyIdentifier {
+          keyIdentifier: "HEX(20B_KEYID_OF_ISSUING_CA_PUBLIC_KEY)"
+        }
+      },
+
+      Extension {
+        oid: "2.5.29.14",                                 // subjectKeyIdentifier
+        critical: false,
+        value: SubjectKeyIdentifier [
+          keyIdentifier: "SHA-1(SUBJECT_PUBLIC_KEY_VALUE)"
+        ]
+      },
+
+      Extension {
+        oid: "2.5.29.15",                                 // keyUsage
+        critical: true,
+        value: KeyUsage {
+          nonRepudiation: true                            // Type A
+          // All other bits set to false
+        }
+      },
+
+      Extension {
+        oid: "2.5.29.32",                                 // certificatePolicies
+        critical: false,
+        value: CertificatePolicies [
+          PolicyInformation {
+            policyIdentifier: "0.4.0.194112.1.3",         // qcp-legal-qscd
+            policyQualifiers: [
+              CPSuri("https://rpca.example.test/cps")
+            ]
+          }
+        ]
+      },
+
+      Extension {
+        oid: "2.5.29.17",                                 // subjectAltName
+        critical: false,
+        value: SubjectAltName [
+          GeneralName.uniformResourceIdentifier("https://pub-eaa.example.test/support"),
+          GeneralName.rfc822Name("support@pub-eaa.example.test"),
+          GeneralName.otherName(
+            typeId: "2.5.4.20",                           // id-at-telephoneNumber
+            value: "+420-111-222-333"
+          )
+        ]
+      },
+
+      Extension {
+        oid: "2.5.29.31",                                 // cRLDistributionPoints
+        critical: false,
+        value: CRLDistributionPoints [
+          DistributionPoint {
+            distributionPoint: URI("https://crl.example.test/issuing-ca.crl")
+          }
+        ]
+      }
+
+      Extension {
+        oid: "1.3.6.1.5.5.7.1.1",                         // authorityInfoAccess
+        critical: false,
+        value: AuthorityInfoAccess [
+          AccessDescription {
+            accessMethod: "1.3.6.1.5.5.7.48.2",           // id-ad-caIssuers
+            accessLocation: URI("https://ca.example.test/caIssuers/issuing-ca.cer")
+          },
+
+          AccessDescription {
+            accessMethod: "1.3.6.1.5.5.7.48.1",           // id-ad-ocsp
+            accessLocation: URI("https://ocsp.example.test")
+          }
+        ]
+      },
+
+      Extension {
+        oid: "1.3.6.1.5.5.7.1.3",                         // qcStatements
+        critical: false,
+        value: QCStatements [
+          QCStatement {
+            statementId: "TBD",                           // id-etsi-qcs-QcPSB (OID not yet defined)
+            statementInfo: QcPSB {
+              countryOfLegislation: "IT",
+              authSourceIdentification: "https://www.anpr.interno.it",
+              legislationIdentification: "https://www.normattiva.it/eli/id/2005/05/16/005G0106/sg"
+            }
+          },
+          QCStatement {
+            statementId: "0.4.0.1862.1.6",                // id-etsi-qcs-QcType
+            statementInfo: QcType {
+              [
+                "0.4.0.1862.1.6.1"                        // id-etsi-qct-esign
+              ]
+            }
+          }  
+        ]
+      }
+    ]
+  },
+
+  signatureAlgorithm: AlgorithmIdentifier {
+    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
+    params: NULL
+  },
+
+  signatureValue: "BASE64(SIGN(issuerPrivateKey, DER(tbsCertificate)))"
+}

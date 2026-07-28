@@ -1,5 +1,5 @@
 {%- if display_toc -%}
-{%- from "components/icons.html" import icon_expand, icon_close with context -%}
+{%- from "components/icons.html" import icon_expand, icon_close, icon_chevron_right with context -%}
 <nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="{{ _('Page contents') }}">
@@ -22,7 +22,17 @@
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">{{ _('On this page') }}</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">{{ _('On this page') }}</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="{{ _('Hide page contents') }}">
+            {{ icon_chevron_right('icon icon-sm') }}
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           {{ toc }}
         </div>

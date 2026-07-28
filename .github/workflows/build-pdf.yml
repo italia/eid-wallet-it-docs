@@ -93,6 +93,36 @@ jobs:
             tail -120 lualatex-en.log
             exit 1
           fi
+
+          # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+          PDF_COMPRESS_SETTINGS="${PDF_COMPRESS_SETTINGS:-/printer}"
+          echo "=== Compressing English PDF (Ghostscript $PDF_COMPRESS_SETTINGS) ==="
+          before_bytes=$(wc -c < "$SETTINGS_FILE_NAME.pdf")
+          rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+          if ! gs -sDEVICE=pdfwrite \
+            -dCompatibilityLevel=1.7 \
+            -dPDFSETTINGS="$PDF_COMPRESS_SETTINGS" \
+            -dDetectDuplicateImages=true \
+            -dCompressFonts=true \
+            -dNOPAUSE -dQUIET -dBATCH \
+            -sOutputFile="$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"; then
+            echo "Warning: Ghostscript error for EN; keeping uncompressed PDF"
+            rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+          else
+            after_bytes=$(wc -c < "$SETTINGS_FILE_NAME-opt.pdf" 2>/dev/null || echo 0)
+            pages_before=$(pdfinfo "$SETTINGS_FILE_NAME.pdf" 2>/dev/null | awk '/^Pages:/{print $2}')
+            pages_after=$(pdfinfo "$SETTINGS_FILE_NAME-opt.pdf" 2>/dev/null | awk '/^Pages:/{print $2}')
+            if [ "$after_bytes" -lt 10000 ] || [ "$after_bytes" -ge "$before_bytes" ]; then
+              echo "Warning: suspicious output for EN (${after_bytes}B vs ${before_bytes}B); keeping original"
+              rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+            elif [ -n "$pages_before" ] && [ "$pages_before" != "$pages_after" ]; then
+              echo "Warning: page count changed for EN (${pages_after:-?} != ${pages_before}); keeping original"
+              rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+            else
+              mv "$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+              echo "Compressed EN: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+            fi
+          fi
           ls -la "$SETTINGS_FILE_NAME.pdf"
 
 
@@ -127,6 +157,36 @@ jobs:
             echo "=== Last 120 lines of LaTeX log ==="
             tail -120 lualatex-it.log
             exit 1
+          fi
+
+          # Post-build compression: downsample embedded bitmaps (typically 35MB → ~16MB).
+          PDF_COMPRESS_SETTINGS="${PDF_COMPRESS_SETTINGS:-/printer}"
+          echo "=== Compressing Italian PDF (Ghostscript $PDF_COMPRESS_SETTINGS) ==="
+          before_bytes=$(wc -c < "$SETTINGS_FILE_NAME.pdf")
+          rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+          if ! gs -sDEVICE=pdfwrite \
+            -dCompatibilityLevel=1.7 \
+            -dPDFSETTINGS="$PDF_COMPRESS_SETTINGS" \
+            -dDetectDuplicateImages=true \
+            -dCompressFonts=true \
+            -dNOPAUSE -dQUIET -dBATCH \
+            -sOutputFile="$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"; then
+            echo "Warning: Ghostscript error for IT; keeping uncompressed PDF"
+            rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+          else
+            after_bytes=$(wc -c < "$SETTINGS_FILE_NAME-opt.pdf" 2>/dev/null || echo 0)
+            pages_before=$(pdfinfo "$SETTINGS_FILE_NAME.pdf" 2>/dev/null | awk '/^Pages:/{print $2}')
+            pages_after=$(pdfinfo "$SETTINGS_FILE_NAME-opt.pdf" 2>/dev/null | awk '/^Pages:/{print $2}')
+            if [ "$after_bytes" -lt 10000 ] || [ "$after_bytes" -ge "$before_bytes" ]; then
+              echo "Warning: suspicious output for IT (${after_bytes}B vs ${before_bytes}B); keeping original"
+              rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+            elif [ -n "$pages_before" ] && [ "$pages_before" != "$pages_after" ]; then
+              echo "Warning: page count changed for IT (${pages_after:-?} != ${pages_before}); keeping original"
+              rm -f "$SETTINGS_FILE_NAME-opt.pdf"
+            else
+              mv "$SETTINGS_FILE_NAME-opt.pdf" "$SETTINGS_FILE_NAME.pdf"
+              echo "Compressed IT: $((before_bytes / 1024 / 1024))MB → $((after_bytes / 1024 / 1024))MB"
+            fi
           fi
           ls -la "$SETTINGS_FILE_NAME.pdf"
 
