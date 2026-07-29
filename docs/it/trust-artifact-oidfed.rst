@@ -370,11 +370,15 @@ Dove:
     Ulteriori finalità di Trust Mark POSSONO essere definite per esigenze future, ma non sono richieste per i processi di autorizzazione definiti in :ref:`trust-evaluation:Authorization`.
   - ``<entity_type>``: l'Entity Type Identifier del soggetto, tra quelli definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (ad esempio ``openid_credential_issuer`` o ``openid_credential_verifier``), e ``intermediate`` per un Relying Party Intermediary.
 
+.. note::
+  Il Federation TA nazionale è l'issuer di Trust Mark riconosciuto nella federazione e l'unica Entity che può abilitare altri issuer di Trust Mark usando il parametro ``trust_mark_issuers`` nella propria Entity Configuration.
+  Ulteriori finalità di Trust Mark, quando definite, POSSONO pertanto essere emesse da altre Entity autorizzate tramite ``trust_mark_issuers``.
+
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""
 
 Nell'IT-Wallet il Trust Mark ``registration-entity`` è il Trust Mark di registrazione di un'entità.
-Il Federation TA nazionale è l'issuer di Trust Mark riconosciuto nella federazione e l'unico che può abilitare altri issuer di Trust Mark usando il parametro ``trust_mark_issuers`` nella propria Entity Configuration.
+L'unico issuer del Trust Mark di registrazione DEVE essere il Federation TA.
 Attesta la registrazione e trasporta i dati di autorizzazione dell'entità, ossia i suoi entitlements e, ove applicabile, le Credentials e gli attributi che è autorizzata a emettere o a richiedere.
 Questo Trust Mark di registrazione è l'analogo funzionale del Wallet-Relying Party Registration Certificate (WRPRC) del EUDIW Trust Framework.
 Un'entità riceve un Trust Mark di registrazione per ciascun ruolo che detiene, con la componente ``<entity_type>`` dell'identificatore impostata di conseguenza.
