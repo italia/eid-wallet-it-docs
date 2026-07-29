@@ -35,7 +35,7 @@ Il Trust Anchor DEVE pubblicare i metadati di discovery del registro all'endpoin
 Inoltre, il Registro di Sistema IT-Wallet DEVE utilizzare due distinti pattern di accesso:
 
 - **API dei Registri Dati**: DEVONO supportare capacità di paginazione e filtraggio.
-- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 Di seguito è riportato un esempio non normativo.
 
@@ -529,12 +529,12 @@ Un esempio non normativo dell'URI di localizzazione italiana per il bundle sareb
 Coordinamento FA-EI
 ^^^^^^^^^^^^^^^^^^^
 
-A seguito della registrazione FA, il Registro FA consente agli Emittenti di Credenziali di individuare entità FA idonee e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è descritto in dettaglio in :ref:`entity-onboarding:Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali`.
+A seguito della registrazione FA, il Registro FA consente agli Emittenti di Credenziali di individuare entità FA idonee e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è descritto in dettaglio in :ref:`onboarding-system:Onboarding Processes`.
 
 Registro della Federazione
 --------------------------
 
-Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`infrastructure-trust:Federation API Endpoints`.
 
 Ruolo di Integrazione del Registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -548,12 +548,12 @@ All'interno dell'architettura del Registro di Sistema IT-Wallet, il Registro del
 Accesso al Registro della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
+Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`infrastructure-trust:Federation API Endpoints`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
 
 .. note::
    Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) sia attraverso la Configurazione dell'Entità del Trust Anchor all'indirizzo ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le sorgenti forniscono gli stessi URL degli endpoint ma servono diversi pattern di discovery: la discovery del registro per l'orientamento iniziale nell'ecosistema, la Configurazione dell'Entità per la conformità standard a OpenID Federation 1.0.
 
-   Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+   Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 Catalogo degli Attestati Elettronici
 ------------------------------------
@@ -1367,6 +1367,36 @@ Un esempio non normativo del payload del Registro degli Schemi:
 .. literalinclude:: ../../examples/schema-registry-example-payload.json
   :language: JSON
 
+Registro delle WRP
+------------------
+
+Il **Registro delle WRP** è il registro delle entità del modello di trust **EUDIW**.
+Ciascuno Stato membro lo istituisce e lo gestisce ai sensi del `CIR2025/848`_ (articolo 3), tramite il **Registrar**.
+Il Registrar conserva i *record di registrazione* delle Wallet-Relying Party (identificazione, uso previsto, entitlements e materiale crittografico) che guidano l'emissione di WRPAC e WRPRC e supportano l'autorizzazione della Relying Party.
+
+Il Registrar scrive un record quando una WRP completa la registrazione tecnica durante l'onboarding; ciascun record è firmato o sigillato elettronicamente per conto del Registrar, così che i provider dei certificati e il Wallet possano farvi affidamento.
+Nel modello di trust duale questa registrazione **EUDIW** è additiva rispetto all'identità nazionale OID Federation dell'entità.
+
+Il modello dati completo e le API pubbliche di lettura sono specificati nelle sezioni dedicate dell'infrastruttura di trust e non sono ripresi qui.
+
+Cataloghi EUDIW
+---------------
+
+A livello UE la Commissione europea mantiene due cataloghi **EUDIW** che sono le controparti transfrontaliere dei registri semantici nazionali, definiti in ARF TS11 (`EUDI-TS 11`_) (Interfacce e formati per il Catalogue of Attributes e il Catalogue of Schemes).
+Una tipologia di Credenziale presente in questi cataloghi è riconosciuta tra gli Stati membri ed è valutata nel Trust Framework **EUDIW**, mentre una Credenziale presente solo nei registri nazionali è valutata nel Trust Framework **Nazionale**.
+
+Catalogue of Attributes
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Il **Catalogue of Attributes** è il catalogo a livello UE delle definizioni standardizzate di attributi e dei namespace utilizzati nelle attestazioni.
+Il :ref:`registry:Registro dei Claims` nazionale allinea i propri identificatori di claim a questo catalogo, affinché gli attributi definiti a livello nazionale restino interoperabili a livello transfrontaliero.
+
+Catalogue of Schemes
+^^^^^^^^^^^^^^^^^^^^
+
+Il **Catalogue of Schemes** è il catalogo a livello UE degli schemi di attestazione (``SchemaMeta``): i metadati machine-readable che legano una tipologia di attestazione al relativo Rulebook e schema.
+Il Registro degli Schemi nazionale si allinea a esso, e uno schema ivi referenziato ancora un'attestazione agli ancoraggi di trust EUDIW piuttosto che all'Attestation Rulebook nazionale.
+
 Integrazione del Registro e Riferimenti Incrociati
 --------------------------------------------------
 
@@ -1433,7 +1463,7 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 2.  **Discovery e Integrità**:
 
   * La RP riceve la Credenziale Digitale dall'Utente.
-  * La RP consulta il **Registro della Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+  * La RP consulta il **Registro della Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet come definito nella Sezione :ref:`infrastructure-trust:Infrastructure of Trust`.
   * La RP consulta il **Registro degli Schemi** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
 
 3.  **Validazione dello Schema e della Politica Finale**:

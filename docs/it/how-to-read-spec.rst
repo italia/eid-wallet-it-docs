@@ -23,7 +23,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`:
   Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`:
+- **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`:
   Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.
 
 - **Sezione** :ref:`entities:Entità`:
@@ -70,7 +70,7 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
+- **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
@@ -104,11 +104,11 @@ Implementare le interfacce tecnologiche necessarie per comunicare con il Fornito
 
 Registrarsi al sistema come Fonte Autentica, completando le procedure amministrative e tecniche richieste.
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica.
 
-- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione della Fonte Autentica.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Approfondimento sulle procedure tecniche per la registrazione della Fonte Autentica.
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
+- **Sezione** :ref:`infrastructure-trust:Trust Management and Lifecycle`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
 
 
 Fornitore di Wallet
@@ -124,7 +124,7 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
+- **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
@@ -164,11 +164,11 @@ Implementare la Soluzione Wallet in conformità a specifici standard tecnologici
 
 Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema.
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.
 
-- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Wallet.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Wallet.
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
+- **Sezione** :ref:`infrastructure-trust:Trust Management and Lifecycle`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
 
 
 Fornitore di Attestati Elettronici
@@ -184,7 +184,7 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
+- **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
@@ -220,11 +220,11 @@ Sviluppare endpoint secondo specifici protocolli e implementare le funzionalità
 
 Registrarsi al sistema come Credential Issuer, completando le procedure amministrative e tecniche previste affinché i (Q)EAA emessi verso i Wallet siano riconosciuti come affidabili dal Sistema.
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Attestati Elettronici.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Attestati Elettronici.
 
-- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Attestati Elettronici.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Attestati Elettronici.
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
+- **Sezione** :ref:`infrastructure-trust:Trust Management and Lifecycle`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
 
 
 Fornitori di servizi (Relying Party)
@@ -240,7 +240,7 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
+- **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
@@ -274,8 +274,8 @@ Implementare le funzionalità di verifica secondo specifici protocolli, al fine 
 
 Registrarsi al sistema come Relying Party, completando le procedure amministrative e tecniche previste, e diventare soggetto affidabile per la richiesta dei dati degli Utenti.
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell'architettura del sistema di onboarding e del processo di registrazione della Relying Party.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Panoramica dell'architettura del sistema di onboarding e del processo di registrazione della Relying Party.
 
-- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.
+- **Sezione** :ref:`onboarding-system:Onboarding System and Lifecycle Management`: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
+- **Sezione** :ref:`infrastructure-trust:Trust Management and Lifecycle`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.

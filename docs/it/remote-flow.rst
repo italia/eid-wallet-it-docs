@@ -512,7 +512,7 @@ I parametri dell'header JWT sono descritti di seguito:
     - OBBLIGATORIO quando ``client_id`` utilizza uno schema con prefisso ``x509_hash``. OPZIONALE quando ``client_id`` utilizza lo schema ``openid_federation``. Contiene il certificato X.509 foglia della Relying Party (e opzionalmente i certificati intermedi), utilizzato per verificare la firma JWT con la chiave pubblica nel certificato della Relying Party come definito in :rfc:`7515`. Il certificato della Relying Party in ``x5c`` DEVE attestare informazioni di identità della Relying Party sufficienti per vincolare gli endpoint di rete referenziati dal flusso di presentazione. In particolare, gli endpoint utilizzati nella Authorization Request e Authorization Response (ad esempio, ``response_uri``, ``redirect_uri``) DEVONO corrispondere alle informazioni di identità contenute nel certificato della Relying Party (ad esempio, un SAN di tipo URI per il matching completo dell'URI o un DNS Name SAN per il matching del nome host).
 
 .. note::
-   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`trust-infrastructure:X.509 PKI` per informazioni di base sulla validazione della catena di certificati X.509.
+   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`infrastructure-trust:PKI Architecture` per informazioni di base sulla validazione della catena di certificati X.509.
 
 I parametri del payload JWT sono descritti qui:
 

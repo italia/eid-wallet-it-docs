@@ -362,7 +362,7 @@ L'**unprotected header** DEVE contenere i seguenti parametri, se non diversament
       - **Riferimento**
     * - **4**
       - *(tstr, OPZIONALE)*. Identificativo univoco del JWK dell'Emittente. Richiesto quando l'Emittente del documento mdoc utilizza OpenID Federation.
-      - :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+      - :ref:`infrastructure-trust:Infrastructure of Trust`
     * - **33**
       - *(array)*. Catena di certificati X.509 relativa all'Emittente. Obbligatorio se l'autenticazione è basata su certificato X.509.
       - :rfc:`9360`

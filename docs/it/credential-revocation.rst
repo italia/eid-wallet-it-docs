@@ -548,7 +548,7 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
 
-  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
   - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.
 

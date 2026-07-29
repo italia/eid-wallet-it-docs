@@ -1,3 +1,7 @@
+:orphan:
+
+.. This document is superseded by infrastructure-trust.rst / trust-evaluation.rst / onboarding-system.rst (EN-aligned IT courtesy translation). It is kept only for historical reference and is not part of the toctree.
+
 .. include:: ../common/common_definitions.rst
 
 

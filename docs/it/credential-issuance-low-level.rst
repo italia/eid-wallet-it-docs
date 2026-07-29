@@ -88,7 +88,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-evaluation:Trust Evaluation Process`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
