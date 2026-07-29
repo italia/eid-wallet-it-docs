@@ -6,7 +6,7 @@ Matrice di Test per Wallet Provider
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 
-- :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+- :ref:`infrastructure-trust:Infrastructure of Trust`
 - :ref:`wallet-solution:Soluzione Wallet`
 - :ref:`credential-issuance:Emissione di Attestati Elettronici`
 - :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`
