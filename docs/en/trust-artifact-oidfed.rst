@@ -4,12 +4,12 @@
 National Trust Artifacts
 ------------------------
 
-This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials.
+This section defines the National Trust Framework that is based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials that requires X.509.
 The X.509 profile is detailed in the :ref:`infrastructure-trust:Common Trust Artifacts`, while the following sections define the required Trust Artifacts and their conceptual roles defined in the following specifications of the OpenID Federation family, each within its own scope:
 
 - OpenID Federation 1.0 (`OID-FED`_), the core framework.
   It defines the main artifacts including the Entity Statements, the federation endpoints and the Trust Marks.
-- OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_) the wallet profile of OpenID Federation.
+- OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_) the Wallet implementation profile for OpenID Federation 1.0.
   It defines the Entity Type Identifiers of the Entities used in this section.
 - OpenID Federation Subordinate Events (`OID-FED-SUBORDINATE-EVENTS`_), that defines the Subordinate Events endpoint, used to obtain the registration history of an Immediate Subordinate.
 
@@ -307,8 +307,8 @@ It carries no ``metadata_policy``: the affiliated Relying Parties are bound by t
 .. literalinclude:: ../../examples/oidfed-ss-intermediate.json
   :language: JSON
 
-Subordinate Statement of Leaf issued by a Federation Intermediate
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Subordinate Statement about a Leaf issued by a Federation Intermediate
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Federation Intermediate issues a Subordinate Statement about each affiliated Relying Party.
 It carries the ``metadata_policy`` that binds the protocol metadata of the affiliated Relying Party to the values approved at onboarding, exactly as the Federation TA does for the Leaves it registers directly.
@@ -374,7 +374,7 @@ Trust Mark registration-entity
 """""""""""""""""""""""""""""""
 
 Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trust Mark of an entity.
-The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
+The national Federation TA is the Trust Mark issuer recognized within the federation and the only who may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
 An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
@@ -405,7 +405,45 @@ Trust Marks in Entity Configuration MUST be represented as JSON objects containi
      - REQUIRED.
        A signed JSON Web Token representing the Trust Mark issued by the Federation Authority.
 
-The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the following claims:
+The Trust Mark JWT (contained in the ``trust_mark`` claim above) MUST be a signed JWT that includes both a JOSE header and a payload, as defined in `OID-FED`_ Section 7.
+
+**Trust Mark JWT Header**
+
+The JOSE header of the Trust Mark JWT MUST include the following parameters:
+
+.. list-table:: Trust Mark JWT Header Parameters
+   :class: longtable
+   :header-rows: 1
+   :widths: 25 75
+
+   * - **Parameter**
+     - **Description**
+   * - **alg**
+     - REQUIRED.
+       The cryptographic algorithm used to sign the Trust Mark JWT.
+       It MUST be one of the algorithms supported for Federation Entity Keys (see :ref:`algorithms:Cryptographic Algorithms`).
+   * - **kid**
+     - REQUIRED.
+       Key ID of the Federation Entity Key used to sign the Trust Mark, as defined in `OID-FED`_ Section 7.
+   * - **typ**
+     - REQUIRED.
+       Media type of the Trust Mark JWT.
+       It MUST be set to ``trust-mark+jwt``, as defined in `OID-FED`_ Section 7, unless a more specific media type is defined by the trust framework for the particular kind of Trust Mark.
+       Trust Marks without a ``typ`` header parameter or with an unrecognized ``typ`` value MUST be rejected.
+
+A non-normative example of a Trust Mark JWT header:
+
+.. code-block:: JSON
+
+  {
+    "alg": "ES256",
+    "kid": "ta-federation-key-1",
+    "typ": "trust-mark+jwt"
+  }
+
+**Trust Mark JWT Payload**
+
+The Trust Mark JWT payload includes the following claims:
 
 .. list-table:: Trust Mark JWT Claims
    :class: longtable
