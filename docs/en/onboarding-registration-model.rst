@@ -68,7 +68,7 @@ Each :ref:`onboarding-system:Registration Profiles` is an instance of this catal
      - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.
      - :rfc:`2986`
    * - `provided_claims_purposes`
-     - The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the ``data_capabilities`` of the AS Registry entry, that is the ``available_claims``, the ``intended_purposes`` and the related integration details, see :ref:`registry:Authentic Source Registry`.
+     - The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the ``data_capabilities`` of the AS Registry entry, that is the ``available_claims``, the ``intended_purposes``, the integration details (``integration_method``, ``integration_endpoint``, ``api_specification``), the ``data_provision`` mode, the ``update_frequency`` and the ``service_documentation_uri``, see :ref:`registry:Authentic Source Registry`.
      - [`CIR2025/848`_], Annex I
    * - `visual_identity`
      - The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text. It is stored in the ``organization_info`` and in the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`. The other entities do not provide it, since their visual assets are carried in their Entity Configuration.
@@ -518,6 +518,33 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 Authentic Source
 """"""""""""""""
 
-.. note::
-   Draft. To be written.
+An Authentic Source is out of the EUDIW and the National Trust Frameworks, and its trust is governed by the PDND framework.
+It is not registered in the Register and it is not a Federation Entity, so it does not provide the federation data and it obtains no Trust Artifact.
+Its registration data is the entry of the AS Registry.
+The table below lists the Data Identifiers an Authentic Source provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+
+.. list-table:: Authentic Source Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the Authentic Source as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the Authentic Source. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the Authentic Source is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the Authentic Source, together with the postal address and the information web page provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the data-provision service.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `provided_claims_purposes`
+     - The claims the Authentic Source provides, selected from the Claims Registry, the purposes it serves, selected from the Taxonomy, and the data-provision capabilities, that is the integration through the PDND framework, the data-provision mode and the update frequency.
+   * - `visual_identity`
+     - The logo of the Authentic Source organization and the logo and the background color associated with each provided dataset, each with its integrity digest and its alternative text.
 
