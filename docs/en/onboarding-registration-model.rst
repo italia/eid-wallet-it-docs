@@ -254,8 +254,50 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 QEAA Provider
 """""""""""""
 
-.. note::
-   Draft. To be written.
+The table below lists the Data Identifiers a QEAA Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+
+.. list-table:: QEAA Provider Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the QEAA Provider as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the QEAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the QEAA Provider is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the QEAA Provider, together with the postal address and the information web page provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the QEAA issuance service.
+   * - `service_description`
+     - The localized description of the QEAA issuance service. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `entitlements`
+     - The entitlements that state the QEAA Provider role, and the additional roles it plays where applicable.
+   * - `provided_attestations`
+     - The declaration that the QEAA Provider issues its QEAA types, with the format and the attributes of each type.
+   * - `conformity_assessment`
+     - The outcome of the conformity assessment supporting the qualification of the Qualified Trust Service Provider that issues the QEAA.
+   * - `credential_type_declaration`
+     - The QEAA types the QEAA Provider issues, each anchored to its Rulebook.
+   * - `credential_technical_specification`
+     - The technical definition of each QEAA type, that is its schemes and its formats.
+   * - `credential_policies`
+     - The conditions of use of each QEAA type, that is its validity and its purposes.
+   * - `signing_trust_anchor`
+     - The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the QEAA Provider in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the QEAA Provider.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.
 
 
 PuB-EAA Provider
