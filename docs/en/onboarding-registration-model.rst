@@ -109,7 +109,7 @@ The verification applies to Authentic Sources, Wallet Providers and Wallet-Relyi
     The assessment covers the security of the wallet architecture, its data-protection mechanisms and its user-privacy features, and it is the precondition for the Wallet Solution to be certified.
     The certification of the Wallet Solution is an external process, and this phase uses its outcome as an input.
     The certification follows the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).
-  - **PID Providers**: validated per national designation as providers of Person Identification Data, and subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN).
+  - **PID Providers**: validated per national designation as providers of Person Identification Data, subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).
   - **QEAA Providers**: validated through the qualification and the supervision of the issuing Qualified Trust Service Provider.
   - **PuB-EAA Providers**: validated through the conformity assessment required by Article 45f of the eIDAS2 Regulation.
   - **Non-qualified EAA Providers**: validated for the eligibility to issue.
@@ -205,6 +205,7 @@ For example, an entity can be at the same time a Relying Party and a QEAA Provid
 PID Provider
 """"""""""""
 
+A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
 The table below lists the Data Identifiers a PID Provider provides to the Onboarding System.
 The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
 
@@ -234,7 +235,7 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
    * - `provided_attestations`
      - The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.
    * - `conformity_assessment`
-     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN).
+     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
    * - `service_supply_point`
      - The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.
    * - `credential_type_declaration`
@@ -303,6 +304,7 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 PuB-EAA Provider
 """"""""""""""""
 
+A PuB-EAA Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PuB-EAA Providers LoTE.
 The table below lists the Data Identifiers a PuB-EAA Provider provides to the Onboarding System.
 The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
 
@@ -475,8 +477,42 @@ The Data Identifiers not listed here are provided as for a Relying Party.
 Wallet Provider
 """""""""""""""
 
-.. note::
-   Draft. To be written.
+A Wallet Provider is a Federation Entity that is notified, but it is not registered in the Register, because it does not act as a Wallet-Relying Party.
+Its registration data is part of the notification dataset, and its Sign/Seal trust anchor is published in the Wallet Providers LoTE.
+The table below lists the Data Identifiers a Wallet Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+
+.. list-table:: Wallet Provider Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the Wallet Provider as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the Wallet Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the Wallet Provider is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the Wallet Provider, together with the postal address and the information web page provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the Wallet Solution.
+   * - `service_description`
+     - The localized description of the Wallet Solution. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `entitlements`
+     - The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.
+   * - `conformity_assessment`
+     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the Wallet Provider in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the Wallet Provider.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for the Sign/Seal Certificate, with which the Wallet Provider signs the Wallet Unit Attestations.
 
 
 Authentic Source
