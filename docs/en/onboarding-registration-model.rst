@@ -122,29 +122,58 @@ The Onboarding System collects the registration data, and it is then encoded in 
    * - `legal_nature`
      - In the Register, the ``isPSB`` flag. In the AS Registry, the ``organization_type``.
    * - `contact_information`
-     - In the Register, the ``postalAddress``, the ``infoURI`` and the ``supportURI``. In the AS Registry, the ``contacts``, the ``homepage_uri``.
+     - In the Register: 
+     
+         - ``postalAddress``, 
+         - ``infoURI``,
+         - ``supportURI``. 
+       
+       In the AS Registry: 
+         
+         - ``contacts``, 
+         - ``homepage_uri``.
    * - `data_protection_authority`
      - In the Register, the ``supervisoryAuthority``. In the AS Registry, the ``dpa_contact``.
    * - `provided_claims_purposes`
      - In the AS Registry, the ``data_capabilities``, that is 
      
-      - ``available_claims``, 
-      - ``intended_purposes``, 
-      - ``integration_method``, 
-      - ``integration_endpoint``, 
-      - ``api_specification``, 
-      - ``data_provision``, 
-      - ``update_frequency``, 
-      - ``service_documentation_uri``.
-
+         - ``available_claims``, 
+         - ``intended_purposes``, 
+         - ``integration_method``, 
+         - ``integration_endpoint``, 
+         - ``api_specification``, 
+         - ``data_provision``, 
+         - ``update_frequency``, 
+         - ``service_documentation_uri``.
    * - `visual_identity`
-     - In the AS Registry, the ``logo_uri`` of the ``organization_info`` and the ``logo_uri`` and ``background_color`` of the ``data_capabilities``, each with its integrity digest and its alternative text.
+     - In the AS Registry the 
+     
+         - ``logo_uri`` of the ``organization_info``,
+         - ``background_color`` of the ``data_capabilities``, 
+       
+       each with its integrity digest and its alternative text.
    * - `credential_type_declaration`
-     - In the Digital Credentials Catalog, the ``credential_type``, the ``credential_name_l10n_id``, the ``authentication`` and the reference to the Authentic Sources through the ``issuers`` field.
+     - In the Digital Credentials Catalog: 
+     
+         - ``credential_type``, 
+         - ``credential_name_l10n_id``, 
+         - ``authentication``,
+       
+       and the reference to the Authentic Sources through the ``issuers`` field.
    * - `credential_technical_specification`
-     - In the Digital Credentials Catalog, the ``schema_uri``, the ``format``, the ``vct`` and the ``docType``.
+     - In the Digital Credentials Catalog:
+     
+         - ``schema_uri``, 
+         - ``format``, 
+         - ``vct``,
+         - ``docType``.
    * - `credential_policies`
-     - In the Digital Credentials Catalog, the ``validity_info``, the ``restriction_policy``, the ``pricing_policy`` and the ``legal_type``.
+     - In the Digital Credentials Catalog:
+     
+         - ``validity_info``, 
+         - ``restriction_policy``, 
+         - ``pricing_policy``, 
+         - ``legal_type``.
    * - `conformity_assessment`
      - In the notification dataset, the conformity assessment report.
    * - `service_supply_point`
