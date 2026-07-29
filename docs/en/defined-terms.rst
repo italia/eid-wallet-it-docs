@@ -462,14 +462,22 @@ Below are the main acronyms used in the document:
     - Carta di Identità Elettronica (National Electronic Identity Card)
   * - **EAA**
     - Electronic Attestation of Attributes
+  * - **EUMS TL**
+    - European Union Member State Trusted List (national Trusted List under Article 22 of eIDAS)
   * - **IAM**
     - Identity and Access Management
   * - **LoA**
     - Level of Assurance
+  * - **LOTL**
+    - List of Trusted Lists
+  * - **LoTE**
+    - List of Trusted Entities
   * - **NAB**
     - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
+  * - **OJEU**
+    - Official Journal of the European Union
   * - **PDND**
     - Piattaforma Digitale Nazionale Dati (National Digital Data Platform)
   * - **PID**
@@ -486,6 +494,10 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WRPAC**
+    - Wallet-Relying Party Access Certificate
+  * - **WRPRC**
+    - Wallet-Relying Party Registration Certificate
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **WSCD**
