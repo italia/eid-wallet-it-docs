@@ -354,14 +354,55 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 Non-Qualified EAA Provider
 """"""""""""""""""""""""""
 
-.. note::
-   Draft. To be written.
+A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+The table below lists the Data Identifiers a Non-Qualified EAA Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+
+.. list-table:: Non-Qualified EAA Provider Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the Non-Qualified EAA Provider as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the Non-Qualified EAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the Non-Qualified EAA Provider is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the Non-Qualified EAA Provider, together with the postal address and the information web page provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the EAA issuance service.
+   * - `service_description`
+     - The localized description of the EAA issuance service. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `entitlements`
+     - The entitlements that state the Non-Qualified EAA Provider role, and the additional roles it plays where applicable.
+   * - `provided_attestations`
+     - The declaration that the Non-Qualified EAA Provider issues its EAA types, with the format and the attributes of each type.
+   * - `credential_type_declaration`
+     - The EAA types the Non-Qualified EAA Provider issues, each anchored to its Rulebook.
+   * - `credential_technical_specification`
+     - The technical definition of each EAA type, that is its schemes and its formats.
+   * - `credential_policies`
+     - The conditions of use of each EAA type, that is its validity and its purposes.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the Non-Qualified EAA Provider in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the Non-Qualified EAA Provider.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.
 
 
 
 Relying Party
 """""""""""""
 
+At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artefacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 The table below lists the Data Identifiers a Relying Party provides to the Onboarding System.
 The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
 
