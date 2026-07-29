@@ -303,8 +303,52 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 PuB-EAA Provider
 """"""""""""""""
 
-.. note::
-   Draft. To be written.
+The table below lists the Data Identifiers a PuB-EAA Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+
+.. list-table:: PuB-EAA Provider Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the PuB-EAA Provider as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the PuB-EAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - Whether the PuB-EAA Provider is a public sector body or a private entity.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the PuB-EAA Provider, together with the postal address and the information web page provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the PuB-EAA issuance service.
+   * - `service_description`
+     - The localized description of the PuB-EAA issuance service. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `entitlements`
+     - The entitlements that state the PuB-EAA Provider role, and the additional roles it plays where applicable.
+   * - `provided_attestations`
+     - The declaration that the PuB-EAA Provider issues its PuB-EAA types, with the format and the attributes of each type.
+   * - `conformity_assessment`
+     - The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [`EIDAS`_].
+   * - `service_supply_point`
+     - The URL at which a Wallet Unit starts the process of requesting and obtaining a PuB-EAA.
+   * - `credential_type_declaration`
+     - The PuB-EAA types the PuB-EAA Provider issues, each anchored to its Rulebook.
+   * - `credential_technical_specification`
+     - The technical definition of each PuB-EAA type, that is its schemes and its formats.
+   * - `credential_policies`
+     - The conditions of use of each PuB-EAA type, that is its validity and its purposes.
+   * - `signing_trust_anchor`
+     - The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the PuB-EAA Provider in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the PuB-EAA Provider.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.
 
 
 Non-Qualified EAA Provider
