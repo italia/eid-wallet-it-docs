@@ -83,10 +83,10 @@ Following the implementation profile in Section :ref:`credential-presentation:Di
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request re-issuance of that Digital Credential as specified in Section :ref:`backup-restore:Backup and Restore`.
+For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section :ref:`backup-restore:Backup and Restore`.
 
 .. note::
-   Currently the re-issuance of the PID is not managed by the Backup and Restore Component.
+   Currently the issuance of the PID during restore is not managed by the Backup and Restore Component.
 
 Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
