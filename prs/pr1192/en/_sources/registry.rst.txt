@@ -1393,8 +1393,9 @@ A non-normative example of the Schema Registry payload:
 Register of WRPs
 ----------------
 
-The **Register of WRPs** is the entity register of the **EUDIW** trust model: each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
-Unlike the national semantic registries above, it does not hold Credential semantics: it holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
+The **Register of WRPs** is the entity register of the **EUDIW** trust model.
+Each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
+The Registrar holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
 
 The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-system:Entity Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
 In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
@@ -1404,7 +1405,7 @@ The full data model and the public read API are specified in :ref:`infrastructur
 EUDIW Catalogues
 ----------------
 
-At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
+At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (`EUDI-TS 11`_) (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
 A Credential type present in these catalogues is recognised across Member States and is evaluated under the **EUDIW** Trust Framework, whereas a Credential present only in the national registries is evaluated under the **National** Trust Framework (see :ref:`onboarding-system:Onboarding System and Lifecycle Management` and :ref:`trust-evaluation:Trust Framework Selection`).
 
 Catalogue of Attributes
