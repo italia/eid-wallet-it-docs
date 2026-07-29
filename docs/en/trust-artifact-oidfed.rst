@@ -371,7 +371,7 @@ Where:
   - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
 
 .. note::
-  The national Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
+  The Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
   Additional Trust Mark purposes, when defined, MAY therefore be issued by other Entities authorized through ``trust_mark_issuers``.
 
 Trust Mark registration-entity
