@@ -205,8 +205,50 @@ For example, an entity can be at the same time a Relying Party and a QEAA Provid
 PID Provider
 """"""""""""
 
-.. note::
-   Draft. To be written.
+The table below lists the Data Identifiers a PID Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+
+.. list-table:: PID Provider Registration Data
+   :class: longtable
+   :widths: 34 66
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Values**
+   * - `legal_name`
+     - The legal name of the PID Provider as it appears in the official records.
+   * - `identifier`
+     - The VATIN of the PID Provider and its ``NTR`` identifier valued with its IPA code.
+   * - `legal_nature`
+     - The legal nature of the PID Provider as a public sector body.
+   * - `contact_information`
+     - The institutional contact (PEC) and the technical support contact of the PID Provider, together with the postal address and the information web page are provided where available.
+   * - `service_policies`
+     - The terms and conditions and the privacy policy of the PID issuance service.
+   * - `service_description`
+     - The localized description of the PID issuance service. The user-facing trade name is provided where available.
+   * - `data_protection_authority`
+     - The Data Protection Authority contact email.
+   * - `entitlements`
+     - The entitlements that state the PID Provider role, and the additional roles it plays where applicable.
+   * - `provided_attestations`
+     - The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.
+   * - `conformity_assessment`
+     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN).
+   * - `service_supply_point`
+     - The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.
+   * - `credential_type_declaration`
+     - The PID type the PID Provider issues, anchored to the PID Rulebook.
+   * - `credential_technical_specification`
+     - The technical definition of the PID, that is its schemes and its formats, the PID being provided in both the SD-JWT VC and the mdoc-CBOR format.
+   * - `credential_policies`
+     - The conditions of use of the PID, that is its validity and its purposes.
+   * - `federation_entity_identifier`
+     - The Federation Entity Identifier of the PID Provider in the National Trust Framework.
+   * - `federation_entity_key`
+     - The Federation Entity Key of the PID Provider.
+   * - `certificate_signing_requests`
+     - One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units, and one for the Sign/Seal Certificate, with which it signs the issued PID.
 
 
 QEAA Provider
