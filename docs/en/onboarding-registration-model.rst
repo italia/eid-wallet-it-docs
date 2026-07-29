@@ -9,69 +9,82 @@ This section provides the static view of the registration with the aim of defini
 Registration Data Model
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference.
+This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic **Data Identifier**.
+The following tables provide:
+
+- A base registration data provided by every entity, whatever its role.
+- An extended registration data provided by an entity depending on its role, and each :ref:`onboarding-system:Registration Profiles` is an instance that states which extended data the role provides and how the entity valorizes it.
 
 Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), the Digital Credentials Catalog for the Credential types (:ref:`registry:Digital Credentials Catalog`), and the notification dataset for a Wallet Provider.
+The mapping to the destination data models is given in :ref:`onboarding-system:Mapping to the Registry Data Models`.
 
-The table below is the reference catalog of the data, identified by a format-agnostic **Data Identifier**.
-A Data Identifier can group a set of detailed fields of a destination data model that are semantically close and are provided together, in which case the Description lists the fields it provides.
-Each :ref:`onboarding-system:Registration Profiles` is an instance of this catalog, that states which Data Identifiers are required for a role and how the entity valorizes them.
-
-.. list-table:: Registration Data Model
+.. list-table:: Base Registration Data
    :class: longtable
-   :widths: 22 50 28
+   :widths: 26 46 28
    :header-rows: 1
 
    * - **Data Identifier**
      - **Description**
      - **Normative reference**
    * - `legal_name`
-     - The name of the organization as it appears in the official records. In the Register it is the ``legalName``, in the AS Registry the ``organization_name_l10n_id``.
+     - The name of the organization as it appears in the official records.
      - [`CIR2025/848`_], Annex I
    * - `identifier`
-     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. The other identifier types of Table 2, such as EUID and LEI, are optional and are not supported in the current version. The syntax of the ``organizationIdentifier`` is defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
+     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the ``organizationIdentifier`` defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
      - [`ETSI TS 119 475`_], Table 2
    * - `legal_nature`
-     - Whether the entity is a public sector body or a private entity. In the Register it is the ``isPSB`` flag, in the AS Registry the ``organization_type``.
+     - Whether the entity is a public sector body or a private entity.
      - [`CIR2025/848`_], Annex I
    * - `contact_information`
-     - The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service. In the Register the support contact is the ``supportURI`` field.
+     - The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service.
      - [`CIR2025/848`_], Annex I
    * - `service_policies`
      - The terms and conditions and the privacy policy of the service, each published at its own URL.
      - [`CIR2025/848`_], Annex I
    * - `data_protection_authority`
-     - The authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. In the Register it is the ``supervisoryAuthority`` field (:ref:`infrastructure-trust:Register of WRPs`), in the AS Registry the ``dpa_contact``.
+     - The authority contact email competent for the supervision of the entity under the data-protection law. It MUST be provided for each intended use of the Wallet-Relying Party.
      - Regulation (EU) 2016/679, Article 46a
+
+The extended registration data is provided in the table below.
+A given entity provides only the subset that applies to its role, as defined in the corresponding profile in :ref:`onboarding-system:Registration Profiles`.
+
+.. list-table:: Extended Registration Data
+   :class: longtable
+   :widths: 26 46 28
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Description**
+     - **Normative reference**
    * - `entitlements`
-     - The entitlements the entity requests, which state the roles it intends to play in the ecosystem and which drive the role-specific information below.
+     - The entitlements the entity requests, which state the roles it intends to play in the ecosystem.
      - [`ETSI TS 119 475`_], Annex A.2
    * - `service_description`
-     - The user-facing trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units, so that the User can recognize the entity.
+     - The trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units.
      - [`CIR2025/848`_], Annex I
    * - `intended_use`
-     - The attributes a Relying Party intends to request from the Wallet Units. Provided by the entities that request attributes from the Wallet Units.
+     - The attributes a Relying Party intends to request from the Wallet Units. 
      - [`CIR2025/848`_], Annex I
    * - `provided_attestations`
-     - The attestation types an Attestation Provider intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`.
+     - The Attestation types a Credential Issuer intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
      - For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.
      - [`ETSI TS 119 475`_], Table 10
    * - `federation_entity_identifier`
-     - The identifier of the entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration. Provided by every Federation Entity, that is every entity except an Authentic Source.
+     - The identifier of the Federation Entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration.
      - `OID-FED`_, Section 3
    * - `federation_entity_key`
-     - The public key with which the entity signs its federation statements, provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
+     - The public key with which the Federation Entity signs its Entity Configuration. It MUST be provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
      - `OID-FED`_, Section 3
    * - `certificate_signing_requests`
-     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.
+     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key.
      - :rfc:`2986`
    * - `provided_claims_purposes`
-     - The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the ``data_capabilities`` of the AS Registry entry, that is the ``available_claims``, the ``intended_purposes``, the integration details (``integration_method``, ``integration_endpoint``, ``api_specification``), the ``data_provision`` mode, the ``update_frequency`` and the ``service_documentation_uri``, see :ref:`registry:Authentic Source Registry`.
-     - [`CIR2025/848`_], Annex I
+     - The claims composing an Attestation, selected from the Claims Registry, and the purposes it uses, selected from the Taxonomy, together with the data-provision capabilities. It groups the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`.
+     - This specification
    * - `visual_identity`
-     - The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text. It is stored in the ``organization_info`` and in the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`. The other entities do not provide it, since their visual assets are carried in their Entity Configuration.
+     - The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text.
      - This specification
    * - `credential_type_declaration`
      - For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see :ref:`registry:Digital Credentials Catalog`.
@@ -83,17 +96,61 @@ Each :ref:`onboarding-system:Registration Profiles` is an instance of this catal
      - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `conformity_assessment`
-     - The outcome of the conformity assessment of the entity. For a PuB-EAA Provider it is the conformity assessment report issued by a conformity assessment body under Article 45f of [`EIDAS`_]. For a Wallet Provider and a PID Provider it is the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN). Provided by the notified categories.
+     - The outcome of the conformity assessment of the entity, such as Confomity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
      - [`EIDAS-ARF`_], Annex 2
    * - `service_supply_point`
-     - The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. Provided by the notified categories that issue an Attestation requested by the Wallet Unit, that is the PID Providers and the PuB-EAA Providers.
+     - The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. It MUST be provided by the notified categories that issue an Attestation requested by the Wallet Unit.
      - [`EIDAS-ARF`_], Annex 2
    * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It is provided as an input by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, that is the QEAA Providers and the PuB-EAA Providers, whose Qualified Certification Authority belongs to the perimeter of a Qualified Trust Service Provider, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
+     - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
      - [`EIDAS-ARF`_], Annex 2
 
-The table gives the whole set.
-A given entity provides only the subset that applies to its role, as defined in :ref:`onboarding-system:Registration Profiles`.
+Mapping to the Registry Data Models
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Onboarding System collects the registration data, and it is then encoded in the data model of the destination that depends on the role. The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.
+
+.. list-table:: Mapping of the Data Identifiers to the destination data models
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Destination fields**
+   * - `legal_name`
+     - In the Register, the ``legalName``. In the AS Registry, the ``organization_name_l10n_id``.
+   * - `legal_nature`
+     - In the Register, the ``isPSB`` flag. In the AS Registry, the ``organization_type``.
+   * - `contact_information`
+     - In the Register, the ``postalAddress``, the ``infoURI`` and the ``supportURI``. In the AS Registry, the ``contacts``, the ``homepage_uri``.
+   * - `data_protection_authority`
+     - In the Register, the ``supervisoryAuthority``. In the AS Registry, the ``dpa_contact``.
+   * - `provided_claims_purposes`
+     - In the AS Registry, the ``data_capabilities``, that is 
+     
+      - ``available_claims``, 
+      - ``intended_purposes``, 
+      - ``integration_method``, 
+      - ``integration_endpoint``, 
+      - ``api_specification``, 
+      - ``data_provision``, 
+      - ``update_frequency``, 
+      - ``service_documentation_uri``.
+
+   * - `visual_identity`
+     - In the AS Registry, the ``logo_uri`` of the ``organization_info`` and the ``logo_uri`` and ``background_color`` of the ``data_capabilities``, each with its integrity digest and its alternative text.
+   * - `credential_type_declaration`
+     - In the Digital Credentials Catalog, the ``credential_type``, the ``credential_name_l10n_id``, the ``authentication`` and the reference to the Authentic Sources through the ``issuers`` field.
+   * - `credential_technical_specification`
+     - In the Digital Credentials Catalog, the ``schema_uri``, the ``format``, the ``vct`` and the ``docType``.
+   * - `credential_policies`
+     - In the Digital Credentials Catalog, the ``validity_info``, the ``restriction_policy``, the ``pricing_policy`` and the ``legal_type``.
+   * - `conformity_assessment`
+     - In the notification dataset, the conformity assessment report.
+   * - `service_supply_point`
+     - In the notification dataset, the service supply point.
+   * - `signing_trust_anchor`
+     - In the notification dataset, the trust anchor.
 
 Eligibility and Compliance Preconditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,6 +256,7 @@ Registration Profiles
 ^^^^^^^^^^^^^^^^^^^^^
 
 This Section describes the registration of each role as a profile.
+Every profile provides the base registration data defined in :ref:`onboarding-system:Registration Data Model`, and each profile below states only the extended registration data the role provides and how the entity valorizes it, together with any specialization of the base data.
 An entity can hold more than one entitlement in a single registration record and for more than one role, so the profiles are not mutually exclusive and they compose.
 For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.
 
@@ -206,8 +264,7 @@ PID Provider
 """"""""""""
 
 A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
-The table below lists the Data Identifiers a PID Provider provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+In addition to the base registration data, a PID Provider provides the extended registration data below.
 
 .. list-table:: PID Provider Registration Data
    :class: longtable
@@ -216,22 +273,10 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the PID Provider as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the PID Provider and its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - The legal nature of the PID Provider as a public sector body.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the PID Provider, together with the postal address and the information web page are provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the PID issuance service.
-   * - `service_description`
-     - The localized description of the PID issuance service. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
    * - `entitlements`
      - The entitlements that state the PID Provider role, and the additional roles it plays where applicable.
+   * - `service_description`
+     - The localized description of the PID issuance service. The user-facing trade name is provided where available.
    * - `provided_attestations`
      - The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.
    * - `conformity_assessment`
@@ -255,8 +300,8 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 QEAA Provider
 """""""""""""
 
-The table below lists the Data Identifiers a QEAA Provider provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+A QEAA Provider is a Federation Entity that issues Qualified Electronic Attestations of Attributes, and its Sign/Seal Certificate is the qualified certificate issued by the Qualified Trust Service Provider it belongs to.
+In addition to the base registration data, a QEAA Provider provides the extended registration data below.
 
 .. list-table:: QEAA Provider Registration Data
    :class: longtable
@@ -265,22 +310,10 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the QEAA Provider as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the QEAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the QEAA Provider is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the QEAA Provider, together with the postal address and the information web page provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the QEAA issuance service.
-   * - `service_description`
-     - The localized description of the QEAA issuance service. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
    * - `entitlements`
      - The entitlements that state the QEAA Provider role, and the additional roles it plays where applicable.
+   * - `service_description`
+     - The localized description of the QEAA issuance service. The user-facing trade name is provided where available.
    * - `provided_attestations`
      - The declaration that the QEAA Provider issues its QEAA types, with the format and the attributes of each type.
    * - `conformity_assessment`
@@ -305,8 +338,7 @@ PuB-EAA Provider
 """"""""""""""""
 
 A PuB-EAA Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PuB-EAA Providers LoTE.
-The table below lists the Data Identifiers a PuB-EAA Provider provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`.
+In addition to the base registration data, a PuB-EAA Provider provides the extended registration data below.
 
 .. list-table:: PuB-EAA Provider Registration Data
    :class: longtable
@@ -315,20 +347,8 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the PuB-EAA Provider as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the PuB-EAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the PuB-EAA Provider is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the PuB-EAA Provider, together with the postal address and the information web page provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the PuB-EAA issuance service.
    * - `service_description`
-     - The localized description of the PuB-EAA issuance service. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
+     - The localized description of the PuB-EAA issuance service. The trade name is provided where available.
    * - `entitlements`
      - The entitlements that state the PuB-EAA Provider role, and the additional roles it plays where applicable.
    * - `provided_attestations`
@@ -358,8 +378,7 @@ Non-Qualified EAA Provider
 
 A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
 A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
-The table below lists the Data Identifiers a Non-Qualified EAA Provider provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.
 
 .. list-table:: Non-Qualified EAA Provider Registration Data
    :class: longtable
@@ -368,20 +387,8 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the Non-Qualified EAA Provider as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the Non-Qualified EAA Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the Non-Qualified EAA Provider is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the Non-Qualified EAA Provider, together with the postal address and the information web page provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the EAA issuance service.
    * - `service_description`
      - The localized description of the EAA issuance service. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
    * - `entitlements`
      - The entitlements that state the Non-Qualified EAA Provider role, and the additional roles it plays where applicable.
    * - `provided_attestations`
@@ -405,8 +412,7 @@ Relying Party
 """""""""""""
 
 At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artefacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
-The table below lists the Data Identifiers a Relying Party provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+Besides the base registration data, a Relying Party provides the extended registration data below.
 
 .. list-table:: Relying Party Registration Data
    :class: longtable
@@ -415,20 +421,8 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the Relying Party as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the Relying Party. A public body also provides its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the Relying Party is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact email address. The information web page are provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the service.
    * - `service_description`
      - The localized description of the service the Relying Party offers, one description per service. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact.
    * - `entitlements`
      - The entitlements that state the Relying Party role, and the additional roles it plays where applicable.
    * - `intended_use`
@@ -462,7 +456,7 @@ The Data Identifiers not listed here are provided as for a Relying Party.
    * - **Data Identifier**
      - **Values**
    * - `intended_use`
-     - Not provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.
+     - It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.
    * - `intermediary_relationship`
      - Valorized on the intermediary side, that is the Relying Party declares that it is a designated intermediary.
    * - `federation_entity_identifier`
@@ -479,8 +473,7 @@ Wallet Provider
 
 A Wallet Provider is a Federation Entity that is notified, but it is not registered in the Register, because it does not act as a Wallet-Relying Party.
 Its registration data is part of the notification dataset, and its Sign/Seal trust anchor is published in the Wallet Providers LoTE.
-The table below lists the Data Identifiers a Wallet Provider provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+Besides the base registration data, a Wallet Provider provides the extended registration data below.
 
 .. list-table:: Wallet Provider Registration Data
    :class: longtable
@@ -489,20 +482,8 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the Wallet Provider as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the Wallet Provider. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the Wallet Provider is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the Wallet Provider, together with the postal address and the information web page provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the Wallet Solution.
    * - `service_description`
      - The localized description of the Wallet Solution. The user-facing trade name is provided where available.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
    * - `entitlements`
      - The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.
    * - `conformity_assessment`
@@ -521,8 +502,7 @@ Authentic Source
 An Authentic Source is out of the EUDIW and the National Trust Frameworks, and its trust is governed by the PDND framework.
 It is not registered in the Register and it is not a Federation Entity, so it does not provide the federation data and it obtains no Trust Artifact.
 Its registration data is the entry of the AS Registry.
-The table below lists the Data Identifiers an Authentic Source provides to the Onboarding System.
-The semantics of each Data Identifier is defined in :ref:`onboarding-system:Registration Data Model`. Unless otherwise specified, the following information is REQUIRED.
+In addition to the base registration data, an Authentic Source provides the extended registration data below.
 
 .. list-table:: Authentic Source Registration Data
    :class: longtable
@@ -531,18 +511,6 @@ The semantics of each Data Identifier is defined in :ref:`onboarding-system:Regi
 
    * - **Data Identifier**
      - **Values**
-   * - `legal_name`
-     - The legal name of the Authentic Source as it appears in the official records.
-   * - `identifier`
-     - The VATIN of the Authentic Source. A public body MUST also provide its ``NTR`` identifier valued with its IPA code.
-   * - `legal_nature`
-     - Whether the Authentic Source is a public sector body or a private entity.
-   * - `contact_information`
-     - The institutional contact (PEC) and the technical support contact of the Authentic Source, together with the postal address and the information web page provided where available.
-   * - `service_policies`
-     - The terms and conditions and the privacy policy of the data-provision service.
-   * - `data_protection_authority`
-     - The Data Protection Authority contact email.
    * - `provided_claims_purposes`
      - The claims the Authentic Source provides, selected from the Claims Registry, the purposes it serves, selected from the Taxonomy, and the data-provision capabilities, that is the integration through the PDND framework, the data-provision mode and the update frequency.
    * - `visual_identity`
