@@ -748,10 +748,73 @@ An entity can hold more than one entitlement in a single registration record and
 For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.</p>
 <section id="pid-provider">
 <h4><span class="section-number">8.2.4.1. </span>PID Provider<a class="headerlink" href="#pid-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<p>The table below lists the Data Identifiers a PID Provider provides to the Onboarding System.
+The semantics of each Data Identifier is defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.</p>
+<table class="longtable docutils align-default" id="id796">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">PID Provider Registration Data</span><a class="headerlink" href="#id796" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>legal_name</cite></p></td>
+<td><p>The legal name of the PID Provider as it appears in the official records.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>identifier</cite></p></td>
+<td><p>The VATIN of the PID Provider and its <code class="docutils literal notranslate"><span class="pre">NTR</span></code> identifier valued with its IPA code.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>legal_nature</cite></p></td>
+<td><p>The legal nature of the PID Provider as a public sector body.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>contact_information</cite></p></td>
+<td><p>The institutional contact (PEC) and the technical support contact of the PID Provider, together with the postal address and the information web page are provided where available.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>service_policies</cite></p></td>
+<td><p>The terms and conditions and the privacy policy of the PID issuance service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the PID issuance service. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>data_protection_authority</cite></p></td>
+<td><p>The Data Protection Authority contact email.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the PID Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN).</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>The PID type the PID Provider issues, anchored to the PID Rulebook.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>The technical definition of the PID, that is its schemes and its formats, the PID being provided in both the SD-JWT VC and the mdoc-CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<td><p>The conditions of use of the PID, that is its validity and its purposes.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the PID Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the PID Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units, and one for the Sign/Seal Certificate, with which it signs the issued PID.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="qeaa-provider">
 <h4><span class="section-number">8.2.4.2. </span>QEAA Provider<a class="headerlink" href="#qeaa-provider" title="Link to this heading">¶</a></h4>
@@ -778,8 +841,8 @@ For example, an entity can be at the same time a Relying Party and a QEAA Provid
 <h4><span class="section-number">8.2.4.5. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
 <p>The table below lists the Data Identifiers a Relying Party provides to the Onboarding System.
 The semantics of each Data Identifier is defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>. Unless otherwise specified, the following information is REQUIRED.</p>
-<table class="longtable docutils align-default" id="id796">
-<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Relying Party Registration Data</span><a class="headerlink" href="#id796" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id797">
+<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Relying Party Registration Data</span><a class="headerlink" href="#id797" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 66.0%" />
@@ -842,8 +905,8 @@ An intermediated Relying Party that operates only at national level is registere
 <p>In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
 It provides the same Data Identifiers as a <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a>, with the differences in the table below.
 The Data Identifiers not listed here are provided as for a Relying Party.</p>
-<table class="longtable docutils align-default" id="id797">
-<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id797" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id798">
+<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id798" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 66.0%" />
@@ -1062,14 +1125,14 @@ The lifecycle of the single Digital Credentials issued to the Users is a differe
 <h3><span class="section-number">8.4.1. </span>Entity Lifecycle State Machine<a class="headerlink" href="#entity-lifecycle-state-machine" title="Link to this heading">¶</a></h3>
 <p>This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.2</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
-<figure class="align-default" id="id798">
+<figure class="align-default" id="id799">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id798" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id799" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -1132,8 +1195,8 @@ The Authentic Sources follow the PDND framework, and the effects that their life
 <p>Every transition of the state machine of the Entities is caused by an event.
 For each event, this section states who is entitled to trigger it, who is responsible for it, and, when applicable, on which normative basis and within which conditions.
 The events that concern the Credential types and the Authentic Sources are described in the dedicated sections below.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id799">
-<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id799" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id800">
+<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id800" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -1213,8 +1276,8 @@ This is set by Annex IV of [<a class="reference external" href="https://eur-lex.
 The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id800">
-<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id800" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id801">
+<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id801" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -1272,8 +1335,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id801">
-<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id801" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id802">
+<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id802" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -1418,8 +1481,8 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 <p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
 The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id802">
-<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id802" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id803">
+<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id803" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />

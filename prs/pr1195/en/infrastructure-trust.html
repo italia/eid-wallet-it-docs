@@ -3712,11 +3712,16 @@ Additional Trust Mark purposes MAY be defined for future needs, but they are not
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;entity_type&gt;</span></code>: The Entity Type Identifier of the subject, among those defined in <a class="reference internal" href="#entity-type-identifiers-and-metadata"><span class="std std-ref">Entity Type Identifiers and Metadata</span></a> (for example <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> or <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>), and <code class="docutils literal notranslate"><span class="pre">intermediate</span></code> for a Relying Party Intermediary.</p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The national Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> parameter in its Entity Configuration.
+Additional Trust Mark purposes, when defined, MAY therefore be issued by other Entities authorized through <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>.</p>
+</div>
 </section>
 <section id="trust-mark-registration-entity">
 <h4><span class="section-number">5.6.4.2. </span>Trust Mark registration-entity<a class="headerlink" href="#trust-mark-registration-entity" title="Link to this heading">¶</a></h4>
 <p>Within IT-Wallet the <code class="docutils literal notranslate"><span class="pre">registration-entity</span></code> Trust Mark is the registration Trust Mark of an entity.
-The national Federation TA is the Trust Mark issuer recognized within the federation and the only who may enable other Trust Mark issuers using the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> parameter in its Entity Configuration.
+The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
 An entity receives one registration Trust Mark for each role it holds, with the <code class="docutils literal notranslate"><span class="pre">&lt;entity_type&gt;</span></code> component of the identifier set accordingly.</p>
