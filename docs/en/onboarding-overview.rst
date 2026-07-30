@@ -64,7 +64,7 @@ The table below lists the components, the services each of them provides, and th
    * - EUDIW Registration Management
      - Verification and registration of the Wallet-Relying Parties in the Register
      - :ref:`onboarding-system:Entity Registration`
-   * - X.509 Certificate Management
+   * - Certificate Management
      - Issuance and update of WRPAC, WRPRC, Sign/Seal and National Authentication certificates
      - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`
    * - EU Notification Management

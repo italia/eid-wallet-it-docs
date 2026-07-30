@@ -26,7 +26,7 @@ package "IT-Wallet Onboarding System" {
   package "Entity Onboarding" as pkgent #F5F5F5 {
     rectangle "**National Federation Management**\n..\nAll Entities" as fed #C8E6C9
     rectangle "**EUDIW Registration Management**\n..\nCredential Issuers, Relying Parties,\nRelying Party Intermediaries\noperating in EUDIW boundary" as reg #BBDEFB
-    rectangle "**Certificate** \n**Management**\n..\nJWT and X.509 Artifacts" as x509 #FFE0B2
+    rectangle "**Certificate Management**\n..\nX.509 and JWT Artifacts (WRPAC/WRPRC)" as x509 #BBDEFB
   }
 
   rectangle "**EU Notification Management**\n..\nPID / QEAA / PuB-EAA Providers,\nWallet Providers" as pub #BBDEFB
@@ -59,7 +59,7 @@ pub --> notif
 pub ..> ec
 
 ' ---- certificate issuance ----
-fed --> x509
+' fed --> x509
 reg --> x509
 
 pkgent --> pub
