@@ -36,7 +36,7 @@ sphinxcontrib-redoc==1.6.0
 myst-parser==4.0.1
 sphinxcontrib-plantuml==0.30
 sphinx-autobuild>=2024.10.3
-pillow==12.3.0
+pillow==12.2.0
 svglib==1.5.1
 reportlab==4.4.0
 jsonschema>=4.0.0
