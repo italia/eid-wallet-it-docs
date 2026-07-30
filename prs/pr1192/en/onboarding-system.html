@@ -402,7 +402,7 @@ An onboarding entity interacts with the system through a single entry point, the
 <td><p>Verification and registration of the Wallet-Relying Parties in the Register</p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>X.509 Certificate Management</p></td>
+<tr class="row-odd"><td><p>Certificate Management</p></td>
 <td><p>Issuance and update of WRPAC, WRPRC, Sign/Seal and National Authentication certificates</p></td>
 <td><p><a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a></p></td>
 </tr>
@@ -432,8 +432,8 @@ The Authentic Sources register in the AS Registry only, without a Register recor
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.</p>
 <figure class="align-default" id="id793">
 <p class="plantuml">
-<object data="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.png"><img src="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.png" alt="&#64;startuml IT-Wallet Onboarding System
+<object data="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.png"><img src="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.png" alt="&#64;startuml IT-Wallet Onboarding System
 left to right direction
 skinparam shadowing false
 skinparam defaultTextAlignment center
@@ -461,7 +461,7 @@ package &quot;IT-Wallet Onboarding System&quot; {
   package &quot;Entity Onboarding&quot; as pkgent #F5F5F5 {
     rectangle &quot;**National Federation Management**\n..\nAll Entities&quot; as fed #C8E6C9
     rectangle &quot;**EUDIW Registration Management**\n..\nCredential Issuers, Relying Parties,\nRelying Party Intermediaries\noperating in EUDIW boundary&quot; as reg #BBDEFB
-    rectangle &quot;**Certificate** \n**Management**\n..\nJWT and X.509 Artifacts&quot; as x509 #FFE0B2
+    rectangle &quot;**Certificate Management**\n..\nX.509 and JWT Artifacts (WRPAC/WRPRC)&quot; as x509 #BBDEFB
   }
 
   rectangle &quot;**EU Notification Management**\n..\nPID / QEAA / PuB-EAA Providers,\nWallet Providers&quot; as pub #BBDEFB
@@ -494,7 +494,7 @@ pub --&gt; notif
 pub ..&gt; ec
 
 ' ---- certificate issuance ----
-fed --&gt; x509
+' fed --&gt; x509
 reg --&gt; x509
 
 pkgent --&gt; pub
@@ -2030,7 +2030,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 29/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 30/07/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
