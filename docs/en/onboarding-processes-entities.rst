@@ -120,7 +120,7 @@ The process does not produce a state in IT-Wallet, because the trust, the author
 
 1. The eligibility and the compliance of the Authentic Source MUST have been verified by the Supervisory Body, that validates its legal standing and its data authority and classifies it as public or private, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
    This verification is the precondition of the registration.
-2. The Authentic Source declares its registration data: ``provided_claims_purposes``, and ``visual_identity`` in addition to the base registration data, to the Authentic Source Management.
+2. The Authentic Source declares its registration data.
 3. The declared claims are verified against the :ref:`registry:Claims Registry` and the declared purposes against the Taxonomy.
    A claim that is not yet in the Claims Registry activates the :ref:`onboarding-system:Claim Registration`.
 4. The Authentic Source Management writes the entry in the AS Registry, whose structure is defined in :ref:`registry:Authentic Source Registry`.
