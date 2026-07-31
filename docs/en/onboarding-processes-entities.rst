@@ -4,16 +4,76 @@
 Entity Onboarding
 ^^^^^^^^^^^^^^^^^
 
-This section describes the processes that manage the lifecycle of the Entities and of the Authentic Sources.
-Each process is described with its Input, its Outcome and its Process, while the governance of the corresponding events is given in the Lifecycle Management.
+This section describes the processes that manage the lifecycle of the entities and of the Authentic Sources.
+Each process is described with its Input, its Outcome and its Process, while the governance of the corresponding events, that is who is entitled to decide and within which conditions, is given in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 Entity Registration
 """""""""""""""""""
 
-.. note::
-   Draft. To be written.
+Entity Registration process takes in input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
+The process is parameterized by the registration profile of the role, and its outcome is the transition of the Entity to the ``REGISTERED`` state.
+It enables the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes, that bring the Entity to ``OPERATIONAL``, and, for a Credential Issuer, the :ref:`onboarding-system:Credential Type Registration`.
+The issuance of the certificates and of the registration Trust Mark, and the governance of the states, are described in the referenced processes and in :ref:`onboarding-system:Lifecycle Management`.
 
-Process that registers an Entity into the ecosystem, parameterized by the registration profile of its role.
+**Input**
+
+The input is the registration data of the Entity, following the profile of its role defined in :ref:`onboarding-system:Registration Data Model` and in :ref:`onboarding-system:Registration Profiles`.
+The data is organized in the three categories of registered data defined in :ref:`onboarding-system:Lifecycle Management`, and for each category a part is provided by the Entity and a part is derived by the Onboarding System.
+
+- *Identity Information*, provided by the Entity: 
+
+   - ``legal_name``,
+   - ``identifier``, 
+   - ``legal_nature``, 
+   - ``contact_information``, 
+   - ``service_policies``,
+   - ``data_protection_authority``.
+   
+- *Technical Configuration*, provided by the Entity, in particular the ``federation_entity_identifier`` and the ``federation_entity_key`` of its Entity Configuration, and the ``certificate_signing_requests`` from which the certificates are later issued.
+- *Authorization Information*, provided by the Entity, i.e.:
+
+   - ``entitlements``, 
+   - ``intended_use``, 
+   - ``provided_attestations`` for a Credential Issuer, 
+   - ``intermediary_relationship`` where applicable, 
+   - ``conformity_assessment`` for the categories that need it.
+
+The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration, the first one by this process and the others by the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes.
+For a PID Provider and a Wallet Provider the ``signing_trust_anchor`` derives from the national issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.
+
+The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+
+**Outcome**
+
+The outcome is the Entity in the ``REGISTERED`` state, that is the moment in which the registration record exists and has been verified, as defined in :ref:`onboarding-system:Lifecycle Management`.
+The registration is recorded across the two Trust Frameworks according to the role and to the declaration of the Entity.
+
+- In the National Trust Framework the Entity is registered in the federation, and its Subordinate Statement, that carries the registration Trust Mark, is published by the National Federation Management.
+- In the EUDIW Trust Framework, for the Wallet-Relying Parties, a signed record is written in the Register, and it drives the later issuance of the WRPAC and of the WRPRC.
+
+The National Trust Framework is always the registration layer, while the EUDIW Trust Framework is added for the notified categories and for the Entities that declare the cross-border operation, as described in :ref:`infrastructure-trust:Overview`.
+The Register and the notification dataset are kept separate, as described in :ref:`onboarding-system:Registration Outcomes`.
+
+**Process**
+
+1. The eligibility and the compliance of the Entity MUST have been verified, including the identity proofing and the verification of the entitlements, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+   This verification is the precondition of the registration.
+2. The Onboarding System collects the registration data of the profile, validates it, and routes each part to the component responsible for it.
+3. The National Federation Management registers the Entity in the federation.
+   It validates the Entity Configuration published by the Entity, given by the ``federation_entity_identifier`` and the ``federation_entity_key``, and it prepares the metadata policy that binds the protocol metadata of the Entity to the values approved at onboarding.
+   It then invokes the :ref:`onboarding-system:Registration Trust Mark Issuance` to obtain the registration Trust Mark, and it publishes the Subordinate Statement about the Entity, that carries the metadata policy and the Trust Mark.
+   Then, the Entity MUST include the received Trust Mark in its Entity Configuration, that points to its immediate superior through the ``authority_hints``.
+   During the same registration the Federation Trust Anchor public keys are made available to the Entity out-of-band, through the contact channel of the registration, and this bootstraps the trust of the Entity in the Trust Anchor, see :ref:`trust-evaluation:Federation Trust Anchor Distribution and Validation`.
+   The structure of the Entity Configuration and of the Subordinate Statement is defined in :ref:`infrastructure-trust:National Trust Artifacts`.
+4. Where the role and the declaration of the Entity require the EUDIW Trust Framework, the EUDIW Registration Management verifies the Entity and writes its record in the Register, and the Registrar signs or seals it.
+   The record drives the later issuance of the WRPAC and of the WRPRC, and its data model and its public API are defined in :ref:`infrastructure-trust:Register of WRPs`.
+   For a Credential Issuer, the ``provided_attestations`` declared at registration add the Credential Issuer to the ``issuers`` field of the versioned entry of each declared Credential type, as described in :ref:`onboarding-system:Credential Type Registration`, and the same declaration is carried in the record and in the WRPRC.
+5. The registration produces the ``registration`` event, that the Federation Authority publishes on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
+   At the end of the process the Entity is ``REGISTERED``, the record enables the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes that bring it to ``OPERATIONAL``, and, for a Credential Issuer, the declaration can activate the declared Credential types, as described in :ref:`onboarding-system:Credential Type Activation and Deactivation`.
+
+.. note::
+   The Register is the national register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [`CIR2025/848`_] and operates through the Registrar.
+   It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as :ref:`registry:Register of WRPs`.
 
 Entity Update
 """""""""""""
@@ -21,7 +81,9 @@ Entity Update
 .. note::
    Draft. To be written.
 
-Process that changes the registered information of an Entity, covering its identity information, its technical configuration including the rotation and the request of keys, and its authorization information.
+Process that changes the registered information of an entity, covering its identity information, its technical configuration including the rotation and the request of keys, and its authorization information.
+The effects of an update on the Trust Artifacts are given in :ref:`onboarding-system:Entity Updates and Their Effects on Trust Artifacts`.
+The change of the Credential provision capabilities of a Credential Issuer, which adds or removes it from the ``issuers`` field of a versioned entry of the catalog, is part of this process.
 
 Entity Suspension and Removal
 """""""""""""""""""""""""""""
@@ -29,15 +91,45 @@ Entity Suspension and Removal
 .. note::
    Draft. To be written.
 
-Process that suspends, reactivates or cancels the registration of an Entity, covering all the cases and both the request by the authority and the request by the Entity itself, across the two Trust Frameworks.
+Process that suspends, reactivates or cancels the registration of an entity, covering all the cases and both the request by the competent authority and the request by the entity itself, across the two Trust Frameworks.
+The governance of the corresponding events is given in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 Authentic Source Registration
 """""""""""""""""""""""""""""
 
-.. note::
-   Draft. To be written.
+Authentic Source Registration process writes an Authentic Source information into the AS Registry, so that the Credential Issuers can discover which data are available and through which e-Service.
+An Authentic Source is neither a Wallet-Relying Party nor a Federation Entity, so it does not go through the federation registration nor the Wallet-Relying Party registration, and it obtains no Trust Artifact.
+Its trust, its authorization and its operational aspects are governed by the PDND framework, see :ref:`e-service-pdnd:e-Service PDND`, and IT-Wallet does not define a lifecycle of the Authentic Sources, so this process does not produce a state transition.
+It enables the :ref:`onboarding-system:Credential Type Registration`, as the data source a Credential type references, and it can activate the :ref:`onboarding-system:Claim Registration` when a declared claim is not yet in the Claims Registry.
 
-Process that registers an Authentic Source in the Authentic Source Registry, so that the Credential Issuers can discover which data are available and through which e-Service.
+**Input**
+
+The input is the registration data of the Authentic Source, following its profile in :ref:`onboarding-system:Registration Data Model` and in :ref:`onboarding-system:Registration Profiles`, that is the base registration data and, in addition, the ``provided_claims_purposes`` and the ``visual_identity``.
+The Authentic Source selects from the :ref:`registry:Claims Registry` the standardized claim identifiers it provides, and from the Taxonomy the purposes it serves.
+An Authentic Source does not provide the federation data nor the ``certificate_signing_requests``, and it has no ``entitlements``.
+From this data the Authentic Source Management composes the entry of the Authentic Source in the AS Registry, whose structure is defined in :ref:`registry:Authentic Source Registry`, and it generates the registry-level fields, i.e. the identifier of the registry, its version, its last-modification time and its localization configuration.
+The eligibility of the Authentic Source, that validates its legal standing and its data authority and classifies it as public or private, is a precondition and is described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+
+**Outcome**
+
+An entry in the AS Registry, that makes the Authentic Source discoverable by the Credential Issuers, with its organization information, its declared data capabilities, its integration method and its intended purposes.
+The registration of the Authentic Source is complete and independent of the integration of any Credential Issuer, because an Authentic Source declares its capabilities before any Credential type exists.
+The process does not produce a state in IT-Wallet, because the trust, the authorization and the operational aspects of the Authentic Source stay within the PDND framework, and the effects that the PDND lifecycle produces inside IT-Wallet are described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
+
+**Process**
+
+1. The eligibility and the compliance of the Authentic Source MUST have been verified by the Supervisory Body, that validates its legal standing and its data authority and classifies it as public or private, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+   This verification is the precondition of the registration.
+2. The Authentic Source declares its registration data: ``provided_claims_purposes``, and ``visual_identity`` in addition to the base registration data, to the Authentic Source Management.
+3. The declared claims are verified against the :ref:`registry:Claims Registry` and the declared purposes against the Taxonomy.
+   A claim that is not yet in the Claims Registry activates the :ref:`onboarding-system:Claim Registration`.
+4. The Authentic Source Management writes the entry in the AS Registry, whose structure is defined in :ref:`registry:Authentic Source Registry`.
+   The Authentic Source becomes discoverable by the Credential Issuers.
+5. The entry enables the :ref:`onboarding-system:Credential Type Registration`, as the Authentic Source is the data source that a Credential type references.
+
+.. note::
+   The integration between an Authentic Source and a Credential Issuer takes place within PDND and is a precondition for the activation of a Credential type, not a process of the Onboarding System.
+   Its effect on the lifecycle of the Credential type is described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
 
 Authentic Source Update
 """""""""""""""""""""""
@@ -45,7 +137,7 @@ Authentic Source Update
 .. note::
    Draft. To be written.
 
-Process that changes the entry of an Authentic Source, including the effect on the Credential types that depend on it.
+Process that changes the entry of an Authentic Source, including the effect on the versioned entries of the Credential types that depend on it.
 
 Authentic Source Removal
 """"""""""""""""""""""""
@@ -53,4 +145,4 @@ Authentic Source Removal
 .. note::
    Draft. To be written.
 
-Process that removes the entry of an Authentic Source, including the effect on the Credential types that depend on it.
+Process that removes the entry of an Authentic Source, with the deactivation of the versioned entries that depend on it.
