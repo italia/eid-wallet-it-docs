@@ -1543,7 +1543,7 @@ The process does not produce a state in IT-Wallet, because the trust, the author
 <ol class="arabic simple">
 <li><p>The eligibility and the compliance of the Authentic Source MUST have been verified by the Supervisory Body, that validates its legal standing and its data authority and classifies it as public or private, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
 This verification is the precondition of the registration.</p></li>
-<li><p>The Authentic Source declares its registration data: <code class="docutils literal notranslate"><span class="pre">provided_claims_purposes</span></code>, and <code class="docutils literal notranslate"><span class="pre">visual_identity</span></code> in addition to the base registration data, to the Authentic Source Management.</p></li>
+<li><p>The Authentic Source declares its registration data.</p></li>
 <li><p>The declared claims are verified against the <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> and the declared purposes against the Taxonomy.
 A claim that is not yet in the Claims Registry activates the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p></li>
 <li><p>The Authentic Source Management writes the entry in the AS Registry, whose structure is defined in <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.
@@ -1619,11 +1619,25 @@ Each process covers both the first issuance and the re-issuance, for example aft
 Each process is described with its Input, its Outcome and its Process.</p>
 <section id="claim-registration">
 <h4><span class="section-number">8.3.5.1. </span>Claim Registration<a class="headerlink" href="#claim-registration" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that adds a claim to the Claims Registry when a needed claim is not available, and aligns it towards the corresponding European catalog.</p>
+<p>Claim Registration adds a standardized claim definition to the Claims Registry, when a claim that an Authentic Source or a Credential type needs is not yet available.
+The Claims Registry is maintained by the Supervisory Body and it provides semantic definitions of the Credential attributes, such as their data type, their validation rules and their interoperability mappings.
+The claim definitions are aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a>.
+This process enables the <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a> and the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a> that use the claim.</p>
+<p><strong>Input</strong></p>
+<p>The input is the definition of the claim to register, following the Claim Entry Parameters of the <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a>, that is the canonical name of the claim, its description, its <code class="docutils literal notranslate"><span class="pre">type</span></code> (<code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">array</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code>), the <code class="docutils literal notranslate"><span class="pre">format</span></code> and the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> where a string carries a qualified value, the <code class="docutils literal notranslate"><span class="pre">aliases</span></code> that map the alternative names used in other standards to the canonical claim, and the nested structure of an <code class="docutils literal notranslate"><span class="pre">object</span></code> or an <code class="docutils literal notranslate"><span class="pre">array</span></code> claim.
+The canonical name and the aliases are aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a>.
+The input is not the registration data of an Entity and it does not follow a profile of the <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>, because a claim is a semantic definition and not an Entity.
+The registry-level fields, that is the identifier of the registry, its version, its last-modification time and its localization configuration, are generated by the Claims and Schema Management.</p>
+<p><strong>Outcome</strong></p>
+<p>The claim definition in the Claims Registry, that the Authentic Sources, the schemas and the Credential types can reference.
+A claim is never removed from the Claims Registry, because the Credentials already issued keep referencing it, so a claim that is deprecated is superseded by a new version, as described in <a class="reference internal" href="#claims-and-schemas-lifecycle"><span class="std std-ref">Claims and Schemas Lifecycle</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>An Authentic Source, during its <a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>, or a Credential Issuer, during a <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, needs a claim that is not yet in the Claims Registry.</p></li>
+<li><p>The definition of the claim is established, that is its canonical name, its <code class="docutils literal notranslate"><span class="pre">type</span></code>, its <code class="docutils literal notranslate"><span class="pre">format</span></code>, its <code class="docutils literal notranslate"><span class="pre">aliases</span></code> and its nested structure, aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a> and without conflicts with the claims already registered.</p></li>
+<li><p>The Claims and Schema Management registers the definition in the Claims Registry.</p></li>
+<li><p>The claim becomes available and it enables the <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a> and the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a> that use it.</p></li>
+</ol>
 </section>
 <section id="schema-provisioning">
 <h4><span class="section-number">8.3.5.2. </span>Schema Provisioning<a class="headerlink" href="#schema-provisioning" title="Link to this heading">¶</a></h4>
