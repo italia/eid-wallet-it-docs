@@ -1506,22 +1506,52 @@ It is distinct from the semantic components of the Registry Infrastructure, that
 </section>
 <section id="entity-update">
 <h4><span class="section-number">8.3.3.2. </span>Entity Update<a class="headerlink" href="#entity-update" title="Link to this heading">¶</a></h4>
+<p>Entity Update process changes the registered information of an Entity, in its Identity Information, its Technical Configuration, including the rotation and the request of keys, and its Authorization Information.
+The Entity is responsible for the accuracy of its information and updates it without undue delay.
+This process describes what the Entity submits and which steps the components execute, while the relationship between the categories of registered data and the Trust Artifacts is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The updated registration data defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
+For a change of the Technical Configuration related to the new key material, the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> and <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> are provided respectively for the federation identity and for the X.509 certificates.
+For a change of the Authorization Information the input is the new <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_use</span></code>, <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> or <code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code>, depending on the role.</p>
+<p><strong>Outcome</strong></p>
+<p>The updated registered information of the Entity. A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Entity submits the change of one or more categories of its registration data.</p></li>
+<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.</p></li>
+<li><p>For a change of the Technical Configuration, the rotation of the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> is handled by the National Federation Management, that re-issues the Subordinate Statement, while the rotation or the request of the certificate keys is handled by the Certificate Management, that re-issues the X.509 certificates from the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>.</p></li>
+<li><p>A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of a Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.</p></li>
+<li><p>The update produces the corresponding event, a <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> for a change of the Identity Information or the Technical Configuration and a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> for a key rotation, published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The informational parameters of the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata, not included in the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>, can be managed autonomously by the Entity in its self-signed Entity Configuration.
+The protocol signature keys (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>), the service endpoints and the request, response and redirect URIs are instead bound by the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> of the Subordinate Statement to the values approved at onboarding, as defined in <a class="reference internal" href="infrastructure-trust.html#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>, then a change of them is an Entity Update that re-issues the Subordinate Statement.</p>
 </div>
-<p>Process that changes the registered information of an entity, covering its identity information, its technical configuration including the rotation and the request of keys, and its authorization information.
-The effects of an update on the Trust Artifacts are given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>.
-The change of the Credential provision capabilities of a Credential Issuer, which adds or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of a versioned entry of the catalog, is part of this process.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rotation of a protocol key, the one provided within the protocol metadata, is carried out through the update of the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> and MUST follow the common practice: the new key is added to the fixed <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and it coexists with the previous one until the Trust Chains built before the rotation have expired, and only then the previous key is removed.
+The coexistence covers the validity window of those Trust Chains, so that a verifier that still relies on a Trust Chain with the old key can validate until it rebuilds it.</p>
+</div>
 </section>
 <section id="entity-suspension-and-removal">
 <h4><span class="section-number">8.3.3.3. </span>Entity Suspension and Removal<a class="headerlink" href="#entity-suspension-and-removal" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that suspends, reactivates or cancels the registration of an entity, covering all the cases and both the request by the competent authority and the request by the entity itself, across the two Trust Frameworks.
-The governance of the corresponding events is given in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
+<p>Entity Suspension and Removal process suspends, reactivates or cancels the registration of an Entity, on the request of the competent authority or of the Entity itself, across the two Trust Frameworks.
+This process describes the steps that the components execute, while who is entitled to trigger each event, on which normative basis and within which conditions, is given in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The request of suspension, reactivation or cancellation, from the competent authority or from the Entity, with the reason for it.</p>
+<p><strong>Outcome</strong></p>
+<p>The Entity changed the status to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> on a suspension, returns to its previous state on a reactivation, and moves to <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> on a cancellation, as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.
+A suspension and a cancellation revoke the Trust Artifacts of the Entity and, for a Credential Issuer, deactivate its Credential types.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The request of suspension, reactivation or cancellation is received from the competent authority or from the Entity.</p></li>
+<li><p>On a suspension, the EUDIW Registration Management suspends the record in the Register and the National Federation Management withdraws the valid Subordinate Statement of the Entity, so that its Trust Artifacts are no longer relied upon, and the Entity moves to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>.</p></li>
+<li><p>On a reactivation, once the condition that caused the suspension is removed, the same party that decided the suspension restores the registration, and the Entity returns to its previous state.</p></li>
+<li><p>On a cancellation, the EUDIW Registration Management cancels the record in the Register, the National Federation Management withdraws the Subordinate Statement, the Trust Artifacts of the Entity are revoked, and the Entity moves to <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.</p></li>
+<li><p>For a Credential Issuer, a suspension or a cancellation deactivates its Credential types, and the Credential Issuer notifies the Authentic Sources so that they can withdraw the corresponding authorizations within PDND, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+<li><p>Each event, a <code class="docutils literal notranslate"><span class="pre">suspension</span></code> or a <code class="docutils literal notranslate"><span class="pre">revocation</span></code>, is published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
+</ol>
 </section>
 <section id="authentic-source-registration">
 <h4><span class="section-number">8.3.3.4. </span>Authentic Source Registration<a class="headerlink" href="#authentic-source-registration" title="Link to this heading">¶</a></h4>
@@ -1558,19 +1588,34 @@ Its effect on the lifecycle of the Credential type is described in <a class="ref
 </section>
 <section id="authentic-source-update">
 <h4><span class="section-number">8.3.3.5. </span>Authentic Source Update<a class="headerlink" href="#authentic-source-update" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that changes the entry of an Authentic Source, including the effect on the versioned entries of the Credential types that depend on it.</p>
+<p>Authentic Source Update changes the entry of an Authentic Source in the AS Registry, with the effect on the versioned entries of the Credential types that depend on it.
+An Authentic Source has no lifecycle in IT-Wallet, so the effect that a change produces on the Credential types is the one described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The changed registration data of the Authentic Source, that is a change of its <code class="docutils literal notranslate"><span class="pre">provided_claims_purposes</span></code> or of its <code class="docutils literal notranslate"><span class="pre">visual_identity</span></code>, following its profile in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>The entry of the Authentic Source in the AS Registry is updated.
+When the change reduces the availability of the data on which a Credential type depends, the condition for the activation of that Credential type is no longer satisfied and the Credential type moves to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Authentic Source, or the notification through PDND of the change of an e-Service, submits the change of the entry.</p></li>
+<li><p>The Authentic Source Management updates the entry in the AS Registry, whose structure is defined in <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
+<li><p>The Credential types that depend on the Authentic Source are updated, and a Credential type that loses the availability of the data it depends on moves to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+</ol>
 </section>
 <section id="authentic-source-removal">
 <h4><span class="section-number">8.3.3.6. </span>Authentic Source Removal<a class="headerlink" href="#authentic-source-removal" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that removes the entry of an Authentic Source, with the deactivation of the versioned entries that depend on it.</p>
+<p>Authentic Source Removal process removes the entry of an Authentic Source from the AS Registry, with the deactivation of the versioned entries of the Credential types that depend on it.</p>
+<p><strong>Input</strong></p>
+<p>The request of removal of the Authentic Source.</p>
+<p><strong>Outcome</strong></p>
+<p>The entry of the Authentic Source is removed from the AS Registry.
+The Credential types that lose the Authentic Source as their data source move to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, and they stay registered so that they can be activated again if the data source is restored, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The request of removal of the Authentic Source is received.</p></li>
+<li><p>The Authentic Source Management removes the entry from the AS Registry.</p></li>
+<li><p>The Credential types that depend on the Authentic Source lose their data source and move to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, and they stay registered and can be activated again if the integration is restored, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+</ol>
 </section>
 </section>
 <section id="certificate-and-trust-artifact-issuance">
