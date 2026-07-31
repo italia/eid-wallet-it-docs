@@ -36,6 +36,7 @@
 .. _CIR2024/2980: https://eur-lex.europa.eu/eli/reg_impl/2024/2980/
 .. _CIR2025/848: https://eur-lex.europa.eu/eli/reg_impl/2025/848/
 .. _CIR2025/848-Amendment: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=PI_COM:Ares(2026)1286341
+.. _CIR2025/1569: https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj
 .. _EUMS-LOTL: https://ec.europa.eu/tools/lotl/eu-lotl.xml
 .. _ETSI-LOTE-SCHEMAS: https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities
 .. _OJEU: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944
