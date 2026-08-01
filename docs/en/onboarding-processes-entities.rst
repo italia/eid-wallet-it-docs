@@ -78,21 +78,59 @@ The Register and the notification dataset are kept separate, as described in :re
 Entity Update
 """""""""""""
 
-.. note::
-   Draft. To be written.
+Entity Update process changes the registered information of an Entity, in its Identity Information, its Technical Configuration, including the rotation and the request of keys, and its Authorization Information.
+The Entity is responsible for the accuracy of its information and updates it without undue delay.
+This process describes what the Entity submits and which steps the components execute, while the relationship between the categories of registered data and the Trust Artifacts is given in :ref:`onboarding-system:Entity Updates and Their Effects on Trust Artifacts`.
 
-Process that changes the registered information of an entity, covering its identity information, its technical configuration including the rotation and the request of keys, and its authorization information.
-The effects of an update on the Trust Artifacts are given in :ref:`onboarding-system:Entity Updates and Their Effects on Trust Artifacts`.
-The change of the Credential provision capabilities of a Credential Issuer, which adds or removes it from the ``issuers`` field of a versioned entry of the catalog, is part of this process.
+**Input**
+
+The updated registration data defined in :ref:`onboarding-system:Registration Data Model`.
+For a change of the Technical Configuration related to the new key material, the ``federation_entity_key`` and ``certificate_signing_requests`` are provided respectively for the federation identity and for the X.509 certificates.
+For a change of the Authorization Information the input is the new ``entitlements``, ``intended_use``, ``provided_attestations`` or ``intermediary_relationship``, depending on the role.
+
+**Outcome**
+
+The updated registered information of the Entity. A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+
+**Process**
+
+1. The Entity submits the change of one or more categories of its registration data.
+2. For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.
+3. For a change of the Technical Configuration, the rotation of the ``federation_entity_key`` is handled by the National Federation Management, that re-issues the Subordinate Statement, while the rotation or the request of the certificate keys is handled by the Certificate Management, that re-issues the X.509 certificates from the new ``certificate_signing_requests``, as described in :ref:`onboarding-system:Certificate and Trust Artifact Issuance`.
+4. A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the ``issuers`` field of the versioned entry of a Credential type, as described in :ref:`onboarding-system:Credential Type Registration`.
+5. The update produces the corresponding event, a ``metadata_update`` for a change of the Identity Information or the Technical Configuration and a ``jwks_update`` for a key rotation, published on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
+
+.. note::
+   The informational parameters of the ``federation_entity`` metadata, not included in the ``metadata_policy``, can be managed autonomously by the Entity in its self-signed Entity Configuration.
+   The protocol signature keys (``jwks``), the service endpoints and the request, response and redirect URIs are instead bound by the ``metadata_policy`` of the Subordinate Statement to the values approved at onboarding, as defined in :ref:`infrastructure-trust:National Trust Artifacts`, then a change of them is an Entity Update that re-issues the Subordinate Statement.
+
+.. note::
+   The rotation of a protocol key, the one provided within the protocol metadata, is carried out through the update of the ``metadata_policy`` and MUST follow the common practice: the new key is added to the fixed ``jwks`` and it coexists with the previous one until the Trust Chains built before the rotation have expired, and only then the previous key is removed.
+   The coexistence covers the validity window of those Trust Chains, so that a verifier that still relies on a Trust Chain with the old key can validate until it rebuilds it.
 
 Entity Suspension and Removal
 """""""""""""""""""""""""""""
 
-.. note::
-   Draft. To be written.
+Entity Suspension and Removal process suspends, reactivates or cancels the registration of an Entity, on the request of the competent authority or of the Entity itself, across the two Trust Frameworks.
+This process describes the steps that the components execute, while who is entitled to trigger each event, on which normative basis and within which conditions, is given in :ref:`onboarding-system:Registration Events and Their Governance`.
 
-Process that suspends, reactivates or cancels the registration of an entity, covering all the cases and both the request by the competent authority and the request by the entity itself, across the two Trust Frameworks.
-The governance of the corresponding events is given in :ref:`onboarding-system:Registration Events and Their Governance`.
+**Input**
+
+The request of suspension, reactivation or cancellation, from the competent authority or from the Entity, with the reason for it.
+
+**Outcome**
+
+The Entity changed the status to ``SUSPENDED`` on a suspension, returns to its previous state on a reactivation, and moves to ``CANCELLED`` on a cancellation, as described in :ref:`onboarding-system:Lifecycle Management`.
+A suspension and a cancellation revoke the Trust Artifacts of the Entity and, for a Credential Issuer, deactivate its Credential types.
+
+**Process**
+
+1. The request of suspension, reactivation or cancellation is received from the competent authority or from the Entity.
+2. On a suspension, the EUDIW Registration Management suspends the record in the Register and the National Federation Management withdraws the valid Subordinate Statement of the Entity, so that its Trust Artifacts are no longer relied upon, and the Entity moves to ``SUSPENDED``.
+3. On a reactivation, once the condition that caused the suspension is removed, the same party that decided the suspension restores the registration, and the Entity returns to its previous state.
+4. On a cancellation, the EUDIW Registration Management cancels the record in the Register, the National Federation Management withdraws the Subordinate Statement, the Trust Artifacts of the Entity are revoked, and the Entity moves to ``CANCELLED``.
+5. For a Credential Issuer, a suspension or a cancellation deactivates its Credential types, and the Credential Issuer notifies the Authentic Sources so that they can withdraw the corresponding authorizations within PDND, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
+6. Each event, a ``suspension`` or a ``revocation``, is published on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 Authentic Source Registration
 """""""""""""""""""""""""""""
@@ -134,15 +172,40 @@ The process does not produce a state in IT-Wallet, because the trust, the author
 Authentic Source Update
 """""""""""""""""""""""
 
-.. note::
-   Draft. To be written.
+Authentic Source Update changes the entry of an Authentic Source in the AS Registry, with the effect on the versioned entries of the Credential types that depend on it.
+An Authentic Source has no lifecycle in IT-Wallet, so the effect that a change produces on the Credential types is the one described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
 
-Process that changes the entry of an Authentic Source, including the effect on the versioned entries of the Credential types that depend on it.
+**Input**
+
+The changed registration data of the Authentic Source, that is a change of its ``provided_claims_purposes`` or of its ``visual_identity``, following its profile in :ref:`onboarding-system:Registration Data Model`.
+
+**Outcome**
+
+The entry of the Authentic Source in the AS Registry is updated.
+When the change reduces the availability of the data on which a Credential type depends, the condition for the activation of that Credential type is no longer satisfied and the Credential type moves to ``INACTIVE``, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
+
+**Process**
+
+1. The Authentic Source, or the notification through PDND of the change of an e-Service, submits the change of the entry.
+2. The Authentic Source Management updates the entry in the AS Registry, whose structure is defined in :ref:`registry:Authentic Source Registry`.
+3. The Credential types that depend on the Authentic Source are updated, and a Credential type that loses the availability of the data it depends on moves to ``INACTIVE``, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
 
 Authentic Source Removal
 """"""""""""""""""""""""
 
-.. note::
-   Draft. To be written.
+Authentic Source Removal process removes the entry of an Authentic Source from the AS Registry, with the deactivation of the versioned entries of the Credential types that depend on it.
 
-Process that removes the entry of an Authentic Source, with the deactivation of the versioned entries that depend on it.
+**Input**
+
+The request of removal of the Authentic Source.
+
+**Outcome**
+
+The entry of the Authentic Source is removed from the AS Registry.
+The Credential types that lose the Authentic Source as their data source move to ``INACTIVE``, and they stay registered so that they can be activated again if the data source is restored, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
+
+**Process**
+
+1. The request of removal of the Authentic Source is received.
+2. The Authentic Source Management removes the entry from the AS Registry.
+3. The Credential types that depend on the Authentic Source lose their data source and move to ``INACTIVE``, and they stay registered and can be activated again if the integration is restored, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
