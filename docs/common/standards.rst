@@ -49,6 +49,8 @@ Infrastructure of Trust
       - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", February 2026, Final.
     * - `OID-FED-SUBORDINATE-EVENTS`_
       - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
+    * - `ACME-OIDFED`_
+      - De Marco, G., Pitman, B., "Automatic Certificate Management Environment (ACME) with OpenID Federation 1.0", December 2025, Draft 00.
     * - `ETSI TS 119 461`_
       - ETSI TS 119 461 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service components providing identity proofing of trust service subjects.
     * - `ETSI EN 319 411-1`_
