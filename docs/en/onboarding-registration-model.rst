@@ -43,7 +43,7 @@ The mapping to the destination data models is given in :ref:`onboarding-system:M
      - [`CIR2025/848`_], Annex I
    * - `data_protection_authority`
      - The authority contact email competent for the supervision of the entity under the data-protection law. It MUST be provided for each intended use of the Wallet-Relying Party.
-     - Regulation (EU) 2016/679, Article 46a
+     - [`CIR2025/848`_], Annex I, in compliance with Regulation (EU) 2016/679.
 
 The extended registration data is provided in the table below.
 A given entity provides only the subset that applies to its role, as defined in the corresponding profile in :ref:`onboarding-system:Registration Profiles`.
