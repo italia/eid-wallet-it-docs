@@ -29,7 +29,7 @@ The data is organized in the three categories of registered data defined in :ref
    - ``service_policies``,
    - ``data_protection_authority``.
    
-- *Technical Configuration*, provided by the Entity, in particular the ``federation_entity_identifier`` and the ``federation_entity_key`` of its Entity Configuration, and the ``certificate_signing_requests`` from which the certificates are later issued.
+- *Technical Configuration*, provided by the Entity, in particular the ``federation_entity_identifier`` and the ``federation_entity_key`` of its Entity Configuration.
 - *Authorization Information*, provided by the Entity, i.e.:
 
    - ``entitlements``, 
@@ -38,7 +38,7 @@ The data is organized in the three categories of registered data defined in :ref
    - ``intermediary_relationship`` where applicable, 
    - ``conformity_assessment`` for the categories that need it.
 
-The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration, the first one by this process and the others by the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes.
+The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration. In particular, the ``certificate_signing_requests`` are not a direct input of this process but of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance processes`.`
 For a PID Provider and a Wallet Provider the ``signing_trust_anchor`` derives from the national issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.
 
 The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
@@ -96,7 +96,7 @@ The updated registered information of the Entity. A change that affects the Auth
 
 1. The Entity submits the change of one or more categories of its registration data.
 2. For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.
-3. For a change of the Technical Configuration, the rotation of the ``federation_entity_key`` is handled by the National Federation Management, that re-issues the Subordinate Statement, while the rotation or the request of the certificate keys is handled by the Certificate Management, that re-issues the X.509 certificates from the new ``certificate_signing_requests``, as described in :ref:`onboarding-system:Certificate and Trust Artifact Issuance`.
+3. For a change of the technical configuration, the rotation of the federation_entity_key is handled by the National Federation Management, that re-issues the Subordinate Statement. The rotation of the keys of the X.509 certificates is a re-issuance handled by the :ref:`onboarding-system:Certificate and Trust Artifact Issuance processes`, where the Entity provides the new ``certificate_signing_requests`` in the ACME order.
 4. A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the ``issuers`` field of the versioned entry of a Credential type, as described in :ref:`onboarding-system:Credential Type Registration`.
 5. The update produces the corresponding event, a ``metadata_update`` for a change of the Identity Information or the Technical Configuration and a ``jwks_update`` for a key rotation, published on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
 
