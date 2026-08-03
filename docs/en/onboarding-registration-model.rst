@@ -462,7 +462,7 @@ Besides the base registration data, a Relying Party provides the extended regist
    * - `intended_use`
      - The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.
    * - `intermediary_relationship`
-     - REQUIRED only where the Relying Party operates through a RP Intermediary. In that case it references its RP intermediary identifier. The RP intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
+     - In the EUDIW Trust Framework, REQUIRED where the Relying Party operates through a RP Intermediary, and in that case it references its RP Intermediary identifier. In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its ``authority_hints`` to the RP Intermediary that federates it. The RP Intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the Relying Party in the National Trust Framework.
    * - `federation_entity_key`
@@ -478,7 +478,9 @@ Besides the base registration data, a Relying Party provides the extended regist
 Relying Party Intermediary
 """"""""""""""""""""""""""
 
+A Relying Party Intermediary declares that it acts as an intermediary in both the National and EUDIW Trust Frameworks.
 In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
+In the EUDIW Trust Framework it is registered with ``isIntermediary`` set, and it federates its intermediated Relying Parties that operate cross-border.
 It provides the same Data Identifiers as a :ref:`onboarding-system:Relying Party`, with the differences in the table below.
 The Data Identifiers not listed here are provided as for a Relying Party.
 
@@ -492,7 +494,7 @@ The Data Identifiers not listed here are provided as for a Relying Party.
    * - `intended_use`
      - It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.
    * - `intermediary_relationship`
-     - Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary.
+     - Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary. It is declared in both the frameworks.
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the Relying Party Intermediary within the National Trust Framework.
    * - `federation_entity_key`
