@@ -14,11 +14,11 @@ HIDE_STEREOTYPE()
 
 title L2+ eID Substantial Authentication with MRTD Verification Architecture
 
-Component_Ext(wallet, "Wallet Instance", "Mobile App", "Handles PID request based on the IT-Wallet technology standard stack. It provides **cryptographic capabilities for MRTD/IAS Electronic Document reading** (ICAO 9303, BSI-03110)",$sprite="wallet")
+Component_Ext(wallet, "Wallet Instance", "Mobile App", "Handles IT-Wallet ID request based on the IT-Wallet technology standard stack. It provides **cryptographic capabilities for MRT/IAS Electronic Document reading** (ICAO 9303, BSI-03110)",$sprite="wallet")
 
-Boundary(issuer, "PID Provider") {
+Boundary(issuer, "EAA Provider") {
     Boundary(multi_step_authz, "eID Substantial Authentication with MRTD Verification System", "Orchestrates multi-step authentication flow and remote identity proofing") {
-        Component(pid_authz_server, "Authorization Server", "OAuth2 Authorization Framework and OID4VCI", "Handles PID request and authorization flow coordination",$sprite="server")
+        Component(eaa_authz_server, "Authorization Server", "OAuth2 Authorization Framework and OID4VCI", "Handles IT-Wallet ID request and authorization flow coordination",$sprite="server")
         Component(doc_pop_service, "MRTD PoP Service", "Validation Service", "Handles electronic document proof of possession with cryptographic document validation",$sprite="id_card")
     }
 }
@@ -27,13 +27,13 @@ Component_Ext(loa3_idp, "LoA3 Identity Provider", "eIDAS LoA3 eID Scheme", "Prov
 
 Component_Ext(cie_registry, "CIE National Registry", "CIE Database", "Acts as the authoritative source for the CIE. Provides information related to the validity status of the document. It also optionally provides the MRZ data (document number, date of birth, expiry date, citizenship and gender) to improve the user experience.",$sprite="database")
 
-Rel(wallet, pid_authz_server, "OAuth2 flow \nfor PID Issuance", "Browser-based")
+Rel(wallet, eaa_authz_server, "OAuth2 flow \nfor IT-Wallet ID Issuance", "Browser-based")
 
 Rel(wallet, doc_pop_service, "Document proof submission", "API")
 
-pid_authz_server <-> doc_pop_service : "**Identity Matching**"
+eaa_authz_server <-> doc_pop_service : "**Identity Matching**"
 
-Rel_Back(pid_authz_server, loa3_idp, "SAML/OIDC authentication", "Browser-based")
+Rel_Back(eaa_authz_server, loa3_idp, "SAML/OIDC authentication", "Browser-based")
 
 Rel_Back(doc_pop_service, cie_registry, "Additional Document related data", "API")
 @enduml

@@ -83,13 +83,13 @@ still valid temporally and contains a valid Credential Issuer signature. Revocat
   * revocation of Wallet Instance to which the Digital Credential was issued;
   * illegal activities of the User reported by Judicial or Supervisory Bodies.
 
-In the case of PID only, the following cases are in addition to those listed above:
+In the case of PID and IT-Wallet ID only, the following cases are in addition to those listed above:
 
-  * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID Issuance;
-  * as a result of obtaining a new PID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID previously issued.
+  * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID/IT-Wallet ID Issuance;
+  * as a result of obtaining a new PID/IT-Wallet ID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID/IT-Wallet ID previously issued.
 
 .. note::
-  A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID revocation.
+  A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID/IT-Wallet ID revocation.
 
 When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential
 has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
@@ -169,7 +169,7 @@ While the Credential Issuer MUST directly manage the validity status of Digital 
 
   - The Authentic Source when Credential attributes are updated or change validity status
   - The Wallet Provider when revoking a Wallet Instance
-  - The Identity Provider if the Digital Identity used for PID issuance is stolen or compromised
+  - The Identity Provider if the Digital Identity used for PID/IT-Wallet ID issuance is stolen or compromised
   - Legal authorities or the Supervisory Body in cases of proven illegal activities
 
 The following figure shows an entity relationships diagram relating to the Update Flow status.
@@ -220,10 +220,10 @@ Users MAY change their Digital Credential validity status by:
 In addition, when Users detect incorrect data in an issued Digital Credential, the Wallet Instance SHOULD initiate a data correction request via the Notification Endpoint as specified in :ref:`credential-issuance-endpoint:Data Correction using credential_failure`. Upon confirmation of the discrepancy, the Issuer SHOULD follow the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 .. note::
-  If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
+  If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID/IT-Wallet ID, the previous PID/IT-Wallet ID MUST be revoked. In case of PID revocation the previous Wallet Instance MUST transition to operational status.
 
 In case of the death of the User, Issuers MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
-The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID revocation. Therefore, the Authentic Source of the PID (ANPR) MUST notify the PID Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID Provider MUST use the mechanisms provided in the Section :ref:`credential-revocation:Status Update by Authentic Sources`.
+The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID/IT-Wallet ID revocation. Therefore, the Authentic Source of the PID/IT-Wallet ID (ANPR) MUST notify the PID/EAA Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID/EAA Provider MUST use the mechanisms provided in the Section :ref:`credential-revocation:Status Update by Authentic Sources`.
 
 .. note::
   Future versions of this technical specification will define how the information to (Q)EAA Issuers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
@@ -237,8 +237,8 @@ The Wallet Instance MAY inform the User, prior to deletion, that deletion is a l
 
 If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which MUST then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
-When the revoked Credential is the PID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
-For any other Credential different from the PID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
+When the revoked Credential is the PID/It-Wallet ID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
+For any other Credential different from the PID/IT-Wallet ID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
 
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""

@@ -11,7 +11,7 @@ The following diagram depicts the Issuer Solution High Level Architecture.
 .. plantuml:: plantuml/ci-solution-architecture.puml
     :width: 99%
     :alt: The image illustrates the Issuer Solution and its relations and interactions within the ecosystem.
-    :caption: `Credential Issuer Solution High Level Architecture. <https://www.plantuml.com/plantuml/svg/fLPHRzis47xthxYfmve0pRmsIP42Qr7NIJ4FxUh5QVSeqEHP9Yg96aavyORzznqfAfOinH5QlrWYZzzzT_hkU6-DPTgMMGfJZG9pAraACsDArB1GQMcboc6Y-LfQvBRKEFf1vZmj1SAlqxFnz2oUggnGEPryCnezXKjSoHnXCR-UtLmj6iQsB9ZGfsEkiapbRtfsLYgt9-mMZShmv7pCKLkvafnP760jc6LBPeQOfef_7M1M6jHc24-L334Zj0tg0OPVSJkGtG0pAMBEj1XWYNTypV84OvRQ8Vb6yzMgOe3bBKjJV1HoB7DZfVLwyqAQbiQg38pTfcX64o6kKimmjpSiEOhmpgBEMHezWn-NoLIbIh-EdhpoFxVcaCFghLEkjrDQe0whYSPjTBmFMsYPCRrjepv__l9YAGQXFlbbUNPnSTO5DiXLBZhGB_doz7Gr3FgCNPo-UDM5jfeIrOQzc9o-kdW_3FRy_CNf-OHWTxLhrmYCMwKDi5n0dMimMsCnCwCvQgFo8wV0Pn1zfh-8_gjLMAjKo3o1Ivb8ovfTnJZdXb9iyNNaYukyBZncV7LdZogTn4u7BET8a7_v5PY5bIXuUsfWTdDIRJfConBpkYM9sajGVzjFpgnKP1YZ58JuHtW5d5r2PHOrbqK8HFemx3QauR1Zgk6sKrRQjJlFOwDAxQERr4kmy4ic2ekACCZx1i4rDJ1Xzw33klsrlNfjn9GxmYJm6_SA4__gd5qhPK6jm9l1IcaWHhlSmdiKg7qU3ZjlTEfkrB5TIotYWf4Dcbs8_w206xS5yshBCOBVIo6vkuA8pA8iK6-aKNeBxvIGMEdn0oQqpqAYv6EPQVILNhqLMcsaGBtJspoiH6sojH2C8yKT6SxH619xtJlfqN-odmypgXmJcNRDTMxTfIfzpnYz2mz7qbl49bWGlswPDM12qF3l2EXtVq_NC2kjSekvAuBtuN5d5BbyuB8HBUswweFwcBC8gQ9T8QJprioFNMjL9cjWG43LMKadzOfnX2CdDxnZMP4YBDRgreo_e2OLeHb_P3bBwFyQ_oxHsBvUShnBSMZQpGo7ooawze7lHS_lKU8g4HH7DtsjH7mgC9zTddsPpgBAcDcG4OzW-XY2LL1zQGWjhQdKS26qQLSZ0h5kCGvbL6qs9CcyI1P-sPDq6o_Sqs_4B7K4wmvJcJg-h7LubQhRRoMbCTsIu7rXRrqpgTvXxjxxqpU7CNoQNKxfRp7v-25gDa6VKNyhmAsqQsYrvN3pLAAPpowFGUdAZ5wgrQC_Zwyca-Dl3AOGkOYnLgxZDP_1h1Ph51RmfBRuZjPmc61p2klGR4etbIlaMvvYMxqVwcMeYYWBds1HCMkgOmS66XDfh6PLKp6MsPAIG7Qqir6yVGM4YQD1sat07RBXyZ78IxBQtby_Fy4YB0NRBiDG_q2tAD5et2w1L8q9cSgbLPgIUu2T6_U9tNzxtLPZwkCoQrcO4Qat33JTCOGw5uNNCEdqpwv9SyZeoDmfDrXtlFLrfz07JVWY7ENcWPvJEir1erqzuANTKJujBQEzTdEeiHpr0DCk-VuOkwNSVxX3wR7pBShxpUSBIwMuFtS_guMZdPpk9w2-UTePC0yVxol4Xd2zcUZvGWSWs-KIDEM7CgwtXLM9PiLQSb05wWwzBfTEH_DmcofGKKsM9E0iW7Ga_JqHlfCESfz1pmXyZLPBt3I9kU_NOjSFrXtUVBTct3P54t_k7K7RO0-UxOvRU_Dqc8_3AA125JMRQRDvrG6zfVoMMVe_>`_
+    :caption: `Credential Issuer Solution High Level Architecture. <https://www.plantuml.com/plantuml/svg/fLTXRzis4FtkNt5JXpK1chfjaY85rgAkas8UsjMBq-wZG9DdcQWaQYJbn1lsttUag5Yo55TeyqKMUNnyTtfylBmrbcbRPkde9vdpj1G8lqxFnjEpUAgoGkMOspUZqMEun9NC4HRpwzdDrQ8HRCk22NqwvYhBLFwcPsQbSdl2Rj6e34_EnnorbIl9cSK1qO9PjcHcI6Yg-DS1OQL1RORmLCcGC4BRe1uG-1Mt0zaD29CYvaoB0P5unzSiJp1cgHrIRpHVhIe6HDwoDCLlGevbRgoqfPKgzqAQbiQg38pTfcX64o6kKimmjpSiEOhmpgBEMHezWP-NoLIbIh-E7htoVsxC8OVHsxMqwEEK5gZ3QA9n6ntlmnPQPanlswZFdx-yM8f1g8-UBSykBiwwm0QvoaK7-YLVdfwkXa6ViOlJ5w-wq5PJeTgm5vFJLnVlXy6UdxyuFPyGxExisZK2urPf0omNKDSQpDPOpCneZjge_CWfy0b4d-aHqRCQXRLAXSmJk9I9jBHegb4GLSbIupOtL6ABhoD_k6ZNXSUCh-xiKQMJsEc0vHm9yYy_0hCm4eNT7XkOtPnKamxJiiIyRacYtYMelxrFpgnK51YZ58JuHtW5d5r25HOrXqL8HFeqx3QKuV36T8RRcxBIhjrw7XjLQf_Tf1w2XHyoKHXKX46xRn2SgO49imSthEsllQlNHaor8qm2lt6lCF6lRhDhfIoe5VWmM2aDn6XNMtYF0hMlm-7D6qxTpJgsQwb5N32AGRDByHyKSEEcO5vDEKRmUoaabom58hCe2zGRQPJUmZib95Pw_809pRDGAFcjoZHyfLTlXLORINdkz3OF8r6RR2q4uqXnHuPpD8R4Ndid_VIVxEbXHjN6H6RlpCsCAP7ILgbd2qjLUiyOlGi_ZgIFY4s887xTOzQ02Kd3loEWl_jxkePPQPLRpDqXU1z-xe8YLmzSDhAbMNVwe5xc8aAfQ5O8wNPhriUkjIgJDJ0We6gjf9LwnJZ2aPCRth6iI14MQtLhnbzGauhGZ3-od2NqlCQ_IpIspqkEToKEfjsiSBYSecEV-5xs_1ubhWf1UNJArox4fmBpsUNPb-aigeAP3HNn2AQF8LW5rPU6O6bDfOOBeKsxQX68TOjnE4RLP4EIp8jauOSzIJS1Bvu-So-_4RdKSQnDnaTxogorVfMgs-_bfJ7TakRzsTuwFwdUOUxU-oiuXp5ycbrEwR6OVFmGDNtG5zLV370hAPMMCuVBfzBDV7OvtjdKxF8ObFPhEZDL_D6VnrUJoV5tfbc8NCHOozendizWLYiv2WDuKaVyW6yS9jXiqGBDVbsdSeLyorDiI_j3FGpL2Sl2nrbKp9gwsO61naGQgrdbECOoMr8HA8vcDegtxuVGZZH8k_QuGpRSJ9HbIL7R-xlf5rY4eH3RPHZC0UYA9HgDgoUGgZ4XKxcqIbDn3x1p_miGk__sh5XZwlCoQrcO4UawT3lT7eLiZT9hX7JDjHFIx40w1y39E4HtTkkphc2I9dmHZdBpW26LJdFGyB87TcdRpQUbPJItPni1or4FC6qpwC-nUyZx5tSeVMjzY_A-BNrXgHJtw-uRkR2qMzEz0eHhQQy2vk7bVGUn8LmV9dg-q078zd49cl8T6zVRmgf4is8jEQW2TOTUbql7qJpSfafKL6qd2JWB81r9_qY6xwI3t6VGqnzVezKIDqrYxlkrsFM3TJixxzQCswPeui-z_MaRxC6rtLvihzaEpNFe4rGuHKqpRPfNdT1Rgc-PfVy3>`_
 
 
 .. .. figure:: ../../images/issuer-solution.svg
@@ -35,10 +35,11 @@ The Digital Credential Issuer Solution MUST:
    7. Maintain comprehensive audit trails while respecting privacy regulations.
    8. Issue Digital Credentials that support Selective Disclosure.
    9. Periodically renew its trust with the Federation.
-   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
+   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID and IT-Wallet ID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
    11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
-   12. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
-   13. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
+   12. For IT-Wallet ID issuance, authenticate Users using national Digital Identity infrastructure with LoA High or with eID Substantial Authentication with MRTD Verification.
+   13. For (Q)EAA issuance requiring authentication, verify a valid PID or IT-Wallet ID from the User's Wallet Instance via `OpenID4VP`_.
+   14. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
    For the Frontend Component (if implemented):
 
@@ -85,8 +86,8 @@ Relying Party Component
 
 When User authentication is required, this component MUST authenticate Users:
 
-   - For PID issuance, via national Digital Identity Providers.
-   - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`.
+   - For PID/IT-Wallet ID issuance, via national Digital Identity Providers.
+   - For (Q)EAA issuance, requesting, obtaining and validating PIDs or IT-Wallet IDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`.
 
 API Interface
 ^^^^^^^^^^^^^
@@ -128,7 +129,7 @@ The Digital Credential Issuer Solution supports these interaction patterns:
    1. **User to Frontend**: Web-based interactions for Digital Credential management.
    2. **Frontend to Credential Issuer**: Converts user requests into OpenID4VCI protocol messages.
    3. **Wallet Instance to Credential Issuer**: Direct protocol-based interactions following the issuance flow.
-   4. **Relying Party to Identity Providers**: Authentication interactions with national eID systems or PID verification.
+   4. **Relying Party to Identity Providers**: Authentication interactions with national eID systems or PID/IT-Wallet ID verification.
    5. **API Interface to Authentic Sources**: Secure API calls to retrieve verified User data.
 
 All interactions must follow the security considerations in Section :ref:`credential-issuance:Digital Credential Issuance`, including proper handling of tokens, proofs, and cryptographic materials.

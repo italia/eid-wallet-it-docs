@@ -375,6 +375,10 @@ Below is the description of acronyms and definitions which are useful for furthe
       Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
+    **IT-Wallet ID**
+    **National EID**
+      An Electronic Attestation of Attributes containing personal data of a natural person, issued for national use cases and valid exclusively within the national jurisdiction. It provides verified personal attributes but does not constitute a PID for cross-border identification purposes under eIDAS regulation.
+
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.
 

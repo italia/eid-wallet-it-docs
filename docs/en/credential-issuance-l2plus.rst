@@ -1,17 +1,17 @@
 .. include:: ../common/common_definitions.rst
 
 
-eID Substantial Authentication with MRTD Verification for PID Issuance
-=======================================================================
+eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance
+===============================================================================
 
-This Section defines an eID Substantial Authentication with MRTD Verification protocol that integrates within the PID issuance flow as defined in the Section :ref:`credential-issuance-low-level:Credential Issuance Low-Level Flows` extending OAuth 2.0 flows to include:
+This Section defines an eID Substantial Authentication with MRTD Verification protocol that integrates within the IT-Wallet ID issuance flow as defined in the Section :ref:`credential-issuance-low-level:Credential Issuance Low-Level Flows` extending OAuth 2.0 flows to include:
 
 	- Electronic identification with Level of Assurance "Substantial" (LoA3).
 	- Electronic document verification as an additional identity verification layer.
 	- Session correlation and security binding between authentication steps.
 	- Integration with Credential issuance flows.
 
-While CIEid with LoA High authentication remains the primary method for Wallet activation and PID issuance, the eID Substantial Authentication with MRTD Verification mechanism defined in this Section provides an alternative approach to enhance service accessibility and usability, without compromising the overall security of the IT-Wallet ecosystem.
+While CIEid with LoA High authentication remains the primary method for Wallet activation and IT-Wallet ID issuance, the eID Substantial Authentication with MRTD Verification mechanism defined in this Section provides an alternative approach to enhance service accessibility and usability, without compromising the overall security of the IT-Wallet ecosystem.
 
 .. note::
   This Section currently only supports the CIE id card for the MRTD verification protocol, the protocol described in this Section MAY be extended to support other MRTD Documents such as Electronic Passports.
@@ -31,10 +31,10 @@ System Architecture
 
 The system architecture comprises the following main components:
 
-	- **Wallet Instance:** It handles the PID request according to IT-Wallet Specification, supporting additional cryptographic capabilities for MRTD/IAS Electronic Document reading according to `ICAO 9303`_ and `BSI-03110`_ specifications.
-	- **eID Substantial Authentication with MRTD Verification System:** Orchestrates the authentication flow, integrating LoA3 Identity Providers, Electronic Document Verification Service, and performing all the identity correlation checks to guarantee that the User requesting a PID matches with the authenticated one.
+	- **Wallet Instance:** It handles the IT-Wallet ID request according to IT-Wallet Specification, supporting additional cryptographic capabilities for MRTD/IAS Electronic Document reading according to `ICAO 9303`_ and `BSI-03110`_ specifications.
+	- **eID Substantial Authentication with MRTD Verification System:** Orchestrates the authentication flow, integrating LoA3 Identity Providers, Electronic Document Verification Service, and performing all the identity correlation checks to guarantee that the User requesting a IT-Wallet ID matches with the authenticated one.
 
-		- **PID Authorization Server:** Handles the authorization flow for PID Issuance, coordinating the User authentication and the remote identity proofing.
+		- **EAA Authorization Server:** Handles the authorization flow for IT-Wallet ID Issuance, coordinating the User authentication and the remote identity proofing.
 		- **MRTD PoP Service:** Handles electronic document proof of possession with cryptographic document validation.
 
 	- **LoA3 Identity Provider:** Provides Electronic Identification Schemes with eIDAS LoA3 compliance (CIEid and SPID).
@@ -44,7 +44,7 @@ The system architecture comprises the following main components:
 .. plantuml:: plantuml/l2plus-system-architecture.puml
     :width: 99%
     :alt: The figure illustrates the eID Substantial Authentication with MRTD Verification System Architecture.
-    :caption: `eID Substantial Authentication with MRTD Verification System Architecture. <https://www.plantuml.com/plantuml/png/dLJlRzis4Ftkl-9g38ZZnN5QPnysT44Tsri4n8rXUIaw311eyXmJfKIDF-8wG__t7Ib5TTGC2shaWt8yFhwxz-xUMSUCyxc2wpS_mjmh9mUfmnB6tcsraG_CILt0sF2jTCYTDzWvUkMsc2DmD5uXAmRQEoKBxBoI1LTU8BoTd0ydvzb4vwKki70NdQjaEilIrMmvkrbzNCnwnvsZw_77cpzMsOTaTPLTptwVlPzIj7C4KzmG6AIBPRAQfGUWpfTCcD6GwppNnSKp9njTk07ReTKv3duQ2kROcbbyGQf5Su_c1ObIP9mPyOBC7LCAtVyb3cLXdNJUoL1IXpuLHYqmcKBgrwHFuIHJKH2aJrufifDk2_FbQWgtQEGcXjj2THe1ijbdrwi8dK3tG_o0f0ZW7BiKckkrf8V7PHd-ksA5K6XXGHmC_ktHEWYD541F40r8LeCQXDxQ5bhfkpq4D46z2H_yqoabGMdqlHI4rEzpio-TlZEit4eEd9MCNfHEqk56cr3AC1cdC5D4tkY2SgQQ-vp84mKcP77NxqClcOnluEVHsUW4BjDaS3Pw_Vhik7loWosDTFXhjwgnIqQwr3wmsVUajHuDLHMgMLI4JFSO_ka0_PgqF7W_imxBZ56h7-Z2zqcGxWaa3ssy8J7GEiCSMeZuWu0Fx2dEHkaTKEl0OAuTWXJXqEr3z_I62c_8Xb-ZQQ-KegAQLUwb5vzERHh3aKauUDCQwjyCot6dpQVu-4qoFR-T9FyXVqnXpVM6DjVQa3OnSY1394HDVeQrq3mhTHavIuxqN6pXGYyYNrdvyPOfAIBgGRGXXbzD8XvD4fi5z5TgQz7QHg6dnclox-CBBTxrTDV4ltI-j6T8QJRAf2Y9pBKUZo1vrAenLkKRSd8yZnOY5-IHVvra3rqU4HhtrCaMUfDa9aLiUqew77hyO6CGqHP1BZ4pU2UjCtjwaL3WVKHc2fPrl5iVJAlz6AcDkRF0R9pkMcT7z-uHhFQ6OnZIU4WNJw4fH1OKpolg1XLpAC3fc1WRB5tS2yvRaYQ46m5eFpXWochGPSLFxPjz4JFdopyXh73eDQ8LFb-JqKCO0-1Q6hSz0VnSIhEFqHFWqia7BEnMbh5zTrYGBiU1bip30nZHlKKJBgAHM70yFMYmgFiIkhj4rIpEzi0rWrNDmb-X5t5e4clzusQzD7f7wOEuFzk8tmx3zAcVhL_dCfevYhH80aAR1xmTNBIXu1VezlkDFUVCyMtSeTt88Bka5VtC1ZdmTpgUNmzfAqnQ--hPeXh8Rofg6N8iXApjs9HQ6oUA_RNCTwIRpzM_>`_
+    :caption: `eID Substantial Authentication with MRTD Verification System Architecture. <https://www.plantuml.com/plantuml/svg/dLHXRzis4FtkNt4r1iJnuZYjimyRkg2AhIq2uiQml1GT1WWqUOw9KgH6dk8wG__xICfH7JT0Wnhvm1nFZ-_klRjtZfYbkbHm_UPdcDQAv20dh22fQMsiV60aZOR4yhKav5HRx1ozeZMM21njhP3fWQb9IOsTLr9pLGk4j-FpuVYy69koCXerNNIkiabQv8jqdjuiFixItd7dw3hvUFFNelYGBQwAw_JFzFt4Hpj7CC6L1uDyDiyMQRu7IdN5X1qDkIbBeo-UkLaPJGEsGMTA7Fmo58pOaZbyGQf3Uu_s1ObI59nPyOBC3LCAwNk9GwaTIQf9Xf8w_gWmQe7P1F9wwOXfaan5GT0VUQF8Hj8QflF516xHofNapmZLQGKeqi_KQmYTGFT3F42c0pZ7hWzDpL8gXAIgmdzNJ0k53hB5u35t0XR_hT4HX8uAC1eydxqCGhxMHfcxBGHOmQm81_xf53A2offxAT11ly_jjY9pPrcrbXmugvX_MfBqbojZGqt3BCaXLSZ96krp9eRN9Me2Yqn8VTVlGoyR9pVmw-XiT0ANUJOu6xr-VNRSFVd9LLOI_jvjYkrwHrsQEh3PzgHpDLfVNfeaC6i8sUun_DS1_slJoZ04XIEi2kPx_k0_-34jygq7AKC_RxmgwCWoGWSHVn3mWJt5MIcp0QO5M2mD8KWHBcaRkcTMll2MRFYrulQGiOPg4MqSIdmwldaCHoRXuit1TFzXMOaROp_5ns-ooVdjEFkk3q8kQt5Q_jmOAwIEaJqzN4FX-1dwml2YCbKaBpdwTsClPsOMYSl6eRTCIH5Hs-WUG_pg5h5pIzCry7-LSGwTQwLwwi0s_pwySCXxD-yxubywNmwdIXasAgIeF9bhaumWUnIjTLXZ86_fU1-znCC23HUx9BTlzmQXjL6JxA0tpb8fOjlpMJRPD_lU3l543mXoYON5E-d8RlsB7WNUHsIcOBwBTtSNasPZHce99mVCnJ7VwKoCv3s2CxNb6ASrNFeFJw4jH6eVBnlg5XKZ540c9iO6IueBWchdfGdXLe2uA9Xo1apLy5FRTd74pEdyRmXB7NgjQBekbzxn8Om1S2ajhKy0FrVIRcFq1BWa-O3QhMKLstU7Mg0z3hHa6Hx0Y5uxjE53j18rnzEz1ejTNq9tvwZQLNeuUUs4DRFmJ-Z5q-d9dAiVb-wbDHk7TX0twY7qjrCnUMfiLozB6LqTrPfb0U6G4BmTN1n2mM_GxVTRdquPyNNSgjt8eBZqI_kPdR9dz3oPNW_zdXWVRB1dYseXlwdem9c94BBHlTtuhOE205_BV8TQrANw7m00>`_
 
 High-Level Flow
 ---------------
@@ -71,7 +71,7 @@ The Authorization Server MUST maintain a unified session across all authenticati
 	- **State Correlation**: Authentication results from each step are correlated.
 	- **Security Binding**: Binding between authentication steps.
 
-Since the PID Authorization Server and the MRTD PoP Service operate within the PID Provider boundary implementation, it is RECOMMENDED that the OAuth 2.0 session and the nonces used within the protocol flow are properly handled by both components seamlessly.
+Since the EAA Authorization Server and the MRTD PoP Service operate within the EAA Provider boundary implementation, it is RECOMMENDED that the OAuth 2.0 session and the nonces used within the protocol flow are properly handled by both components seamlessly.
 
 When both services operate within the same trust boundary, the following mechanisms are available for session correlation:
 
@@ -80,18 +80,18 @@ When both services operate within the same trust boundary, the following mechani
 	- Synchronized nonce validation without external communication overhead.
 	- Unified audit logging and security event correlation.
 
-When the PID Authorization Server or MRTD PoP Service is deployed outside the PID Provider boundary implementation, the :ref:`credential-issuance-l2plus:Security Considerations` MUST be taken into account to harden the User authentication sessions management. These measures include but are not limited to secure session token handling, distributed session validation, and enhanced audit trail mechanisms.
+When the EAA Authorization Server or MRTD PoP Service is deployed outside the EAA Provider boundary implementation, the :ref:`credential-issuance-l2plus:Security Considerations` MUST be taken into account to harden the User authentication sessions management. These measures include but are not limited to secure session token handling, distributed session validation, and enhanced audit trail mechanisms.
 
 Low-Level Flow
 --------------
 
-This section provides technical details about the PID Issuance using Level of Assurance Substantial and remote identity proofing through verification of the electronic document using a MRTD Verification service.
+This section provides technical details about the IT-Wallet ID Issuance using Level of Assurance Substantial and remote identity proofing through verification of the electronic document using a MRTD Verification service.
 
 .. _fig_eID_MRTD_Detailed_Flow:
 .. plantuml:: plantuml/l2plus-detailed-flow.puml
     :width: 99%
     :alt: The figure illustrates the eID Substantial Authentication with MRTD Verification Detailed Flow.
-    :caption: `eID Substantial Authentication with MRTD Verification Detailed Flow. <https://www.plantuml.com/plantuml/png/nLPjRnf74Fw-lsBgAAbDV13R-L2X4EU2NqoLs2V0YTgwGilT0DiikzVTFMpwwxkpTnmlAL6aLgg44DpDopFFp3wpxwpZnXLpoNxymSrmZf2YAIHo5Ud2IQ6GyS9fLSp7Q5ZkRKKgSguS7DnRD0V0BTnlF__CfKG7FUL3gnI3IRnjqkrTXiTTDjPF00T9xm8IenSYev3FFeZfpBsN1MvxaLLSk9asuY_kX5OmGBEeGCI3RUEF_Q6FgPDW8oeO5ybTCc2eCl1vlu84jo4gbz37gR3EB8FJnzxjjkdAx47rCbHEk6KDFZZqBXB6c7yk4T1Z_g3Zim2SZDCI-KimEDSEGQn2v4RhYL1J40fwmwXYaMhkMLiGat0bzIDZzn2zXRWDdmcCqy1J9nRS8VW4KBazgC9IB4e_ACRK2IUuX4VXPX2e-OH6J2eqZ7Kw7KXct2ASjE6EiEumtSS_2xGEEXqMX_m3Q4CIz-iNXm2f5AZSI6J7OCgdT-C_C7L77Ww4r6Neg1iCezWvRrF6vohR-pAYDWeLwhj1xcacSuhPQ8IeV1FgA4F7XGItp14EX1l9qvUPJeivOGia7pGQZFa28ggZBiFcMbc4mmhwg33Y6F0f5mRjIAYZLTrjwiaUTWZJzUKGMYj4U5wJqcascoysWjD_ih_HrhKX5rcKLqFKn2S-poKsjPbkjkRKfpPYpiroTvgYq6WwaBjlY1yQmAqfe2OEg1e_gMrotVQgws7-FRmXckxRPNI-EyKfaQPAoq3FddWbkvlLdBMXFgEVk1HPCAsnqOJV38T9wwHv0cUlJk5A5zHqNqmPj0qpvtBRRhM2X3KVm-HlSjTAP_HCJV6yqPWRbvNjxxnP_nxz_7duDem3fGpoqFPJLGEhY6Wq7bHoD_2DnKodKN1j2ILS3T43-tOZ7zH_UG0OqxbZ010m4ryaKstmW9qHk43FxQ_UPQBDF8GWMpA1gAvpruHqaR4g7ZLWaucwXKH5tPTJtvSuJJ5tc5K5bjpgVAIqIl4OwXuS-tuLz3KFjHxgl5HHkJmAI7p_EMDSEkXDIcWMb7R05rn8FfO8JWS6TlPBg2o6CAIhVf6fy62DWsvy6onMgjbRFqPf4KITJ8yT5mepu0u63dCuEQbZa-VbapCyTG4eJ8oUasD9sjJe8g_srYyelKp3xLNNvt98BlL19FZX77dIuQ8I9KXedC1_4cqjMalc_fdJgPP1ymd52iflpwO6KVt-5hfGDoZESxdMWYJkNbAR-iWpkBW-EQOl_psuknYHUGZLXQYE5MJmdoo1xKlRYmURMUjqCHrwgHKjdwGO-_Vm1PTbHFBPa_jxt7PWR3i5gXMNEyhpe6ou8gp7S0-0_Y2EJb-z_Wcic2hk2eFK4EfNxKcjtYiKQmNxfcOiQEik_pVL063RUa50Le33K2we3hgEK932haXuKAiLIWjoKKcmvmRJBqUCxGZBXZwyWhil-qLbpTftwul1J1XCmmeDvGV1yR3NeXEQ559HCxzX45hutkX7YoOQSuiPN0aQegvM4s7czMZxdLvlctsjQgNZywzJZGW2PYyqRSvHTRhBrN_ePaONqncCImH7czlnzRvhMCdInfga6kX6iiSma1OYTNKMsFsNM_NSMwS-L5a4lA11gVy8QpiXmFEp-FdfbV_ilzWOfHs2fjCP7yS3Bv-zwvlXTV_oyfODPmWJKhvKAoTKWHPuccgJqLbtUljQ70ovXGmdfD-hcLzVecsEwVgoYoeBgTax_wkOoxy1>`_
+    :caption: `eID Substantial Authentication with MRTD Verification Detailed Flow. <https://www.plantuml.com/plantuml/svg/nLPjRnf74Fw-lsBgAAbDV13R-L2X4ES2sAPAx1FWH6rTeULkW6sEtUlk7ZRzzTtPEuwNzA98hLG98RYRbsUUcNrctndBjSsNAVln1xl09KACEa-Hoq3bDXKI6S-jalboYffbpbR48kFImj6zGNq4tC3z_lFFF4tHma2wq396RnBkctG7VV-uowRg2U2e7uOGQRKI2OLyza7C5_PzckE-5rc5kLqeBVxYLYW98zIh4aGusZV-E1pt85AHjn4bZ5vq5uqOoWHStgyWmQsFobCOubmOgzVUwUFWTjzqO_OW1mbAA-ow0kyT1hs8CUQUfmWuwC475Lvuu6GS5yXVWiQbiWXY4oBJIis4d8EGC1W76nPxC30c9oBXAbMFZDr3y1R2DdmcB5O1ZwrOSOlWuaFfzI1pGw4e-oYVKYEiu2ay2hi0pymdr69MWc6iq-b0jE06uQmDTmJrWEWX_fcZiT3fiD3d7q4Red1OlJW6Y5E1qav4SWgwU7et_GDZU-BWG97QXmwwtZ08hNKsHNmkazgN0NLHI5_V3NB7CfbJp4R3H-MxK2S9MYvIiEiCuKZOINh-Cb5nlYHidkEZHeCnLq10TLHbc4n9Wt1SGf_aMfm2FcL2eva8URAfkxtNd1gQ2DnrVmoj3JIyhDZfD9lD5pjPw3_PtoXZsu2S1ravJ4ryuiiinQRIyzqUdJlCMYovNXzELU0xJWVpy0qHHOEuDmxKpP4hYoQsJQxxNbKzpBs7DyJNVRk8pW-dEIRsP67fUQg9Lz2yMyr56wgp-ecd8l6c5JOQzPlnE6gTDS_WujKvNAdST_-3AeAsOM5jPjgjbfUovgFlpIvthNX1p-GSBnkDfRP9CGUTDzlVavy_Zz_wkQ2KNYRQRhmgO2KHZSQ3ZEv6hh6Og3ZmhYqXXQqWEc3VRkI3_2zF0cCgimm0F6RYY-Ig3GwmrG9NwBZzrRdCb5xw46HB9X1iwpmqGPamLiQZ1kmpKRQGgAZwSkxw4iOnPXQJii22MvLDf98ndaBLWrFNhvo-bhxMOvKLQfgkJpmIrt_E64yj36O5D0DIMU0hBb8-JH6iyWmSx1bVMGX-I3Vz8bFXm6eBtV3MMspaSx1zZAb145KoDRLSI4o0MnXPpE3ih8fDdlqdgtbiFL2OQRKanuAqkLPvLkwlNp1rUWstLrsNooAvL0UHuFjpv4Y7NgbE4D4uWVj4oXWqnfdJCwjYbNhn9nGRAByzcsj4-VjRw4BLe33BqgqMH66tJsqQ8a-WTtrsIb_kUtJNcv2v3zM5e8hbzV2VB87LfHs4ezsiLRgG3dsg96sXA9-wz_05rqL4ygd9_Lrk-p3sdJpLagS7olCWZRygRCUm1i1m50Rdhrx_14RC9RUvHcg82xNrf5RN2iLMmRwf6IjQl-l_JJK0sBvU490DO3-KAwg3hYKK93SR4XxaPfVIfboL4koumVZB2MC7mhAZ3w_Wxakzg6nP-svzqPW8ZR5VeRvyBpWEzbPqg4a-bM_cDmny2zzhzMXG1rDkC84hGKFKLN8czB8QRRVJgsrJrwfMFBtyEjM4863oGj7cd9IdkrZzntQXLJvVmBH0SBAx7L_NtSSAbhPhqXDQVpNPUdZsVCYkIZpD_tAzNZhhs8Kgge4ND37L7s5CnmTuVX4-Fxzod_eRZfRA8YWwfk5fE78wEhY-6LyF-_rRDbuWp4W2OoMja3aQu76iT4A7tggQ6xFtu0OId7b5Bq_1rjXa66_lmIWJZu6zSx_oPVet>`_
 
 Phase 1: OAuth Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,14 +101,14 @@ The Wallet Instance initiates the eID Substantial Authentication with MRTD Verif
 Authorization Details
 """""""""""""""""""""
 
-The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. When the User requests a PID using eID Substantial Authentication with MRTD Verification, the Wallet Instance MUST include an additional **Authorization Details Object** in the ``authorization_details`` parameter, with the structure and claims as defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
+The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. When the User requests a IT-Wallet ID using eID Substantial Authentication with MRTD Verification, the Wallet Instance MUST include an additional **Authorization Details Object** in the ``authorization_details`` parameter, with the structure and claims as defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
 
 Below a non-normative example of PAR:
 
 .. code-block:: http
 
     POST /as/par HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -116,7 +116,7 @@ Below a non-normative example of PAR:
     client_id=47b982369791d08003a7283f059cb0d1&
     request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
-When the ``it_l2+document_proof`` object is not present in the authorization_details array, the PID Provider MUST authenticate the User with CIEid LoA High.
+When the ``it_l2+document_proof`` object is not present in the authorization_details array, the EAA Provider MUST authenticate the User with CIEid LoA High.
 The PAR Response and the Authorization Request are the same as in the IT-Wallet Specification.
 
 Phase 2: Primary Authentication
@@ -124,7 +124,7 @@ Phase 2: Primary Authentication
 
 Upon successful processing of the PAR, the Authorization Server redirects the User Agent to the configured LoA3 Identity Provider for primary authentication. The User completes the LoA3 authentication flow (SPID or CIEid Substantial) and the Authorization Server correlates the authenticated identity with the active OAuth session.
 
-The PID Authorization Server MUST ensure that the ``mrtd_auth_session`` parameter is maintained throughout this phase for proper session correlation with subsequent authentication steps.
+The EAA Authorization Server MUST ensure that the ``mrtd_auth_session`` parameter is maintained throughout this phase for proper session correlation with subsequent authentication steps.
 
 .. note::
   In the case the User performs a LoA High authentication the phase 3 MUST be skipped.
@@ -155,7 +155,7 @@ The Authorization Server MUST provide a signed JWT containing the challenge requ
      - REQUIRED. It MUST be ``mrtd-ias+jwt``.
    * - **kid**
      - string
-     - REQUIRED. Identifier of the PID Provider's key that MUST be used to verify the signature of this JWT.
+     - REQUIRED. Identifier of the EAA Provider's key that MUST be used to verify the signature of this JWT.
 
 .. _table_eID_MRTD_Proof_JWT_Payload:
 .. list-table:: MRTD Proof JWT Payload
@@ -167,7 +167,7 @@ The Authorization Server MUST provide a signed JWT containing the challenge requ
      - **Description**
    * - **iss**
      - string
-     - REQUIRED. PID Provider identifier.
+     - REQUIRED. EAA Provider identifier.
    * - **aud**
      - string
      - REQUIRED. Wallet Instance identifier.
@@ -218,7 +218,7 @@ The Authorization Server MUST:
 
 The Wallet Instance MUST:
 
-- Validate the JWT signature using the PID Provider's public key obtained through trust evaluation.
+- Validate the JWT signature using the EAA Provider's public key obtained through trust evaluation.
 - Verify ``aud`` claim matches its ``client_id``.
 - Verify ``iat`` and ``exp`` claims indicate the token has a correct issuance date and has not expired.
 - Verify that the ``status`` field is set to "require_interaction".
@@ -252,7 +252,7 @@ Below a non-normative example of an MRTD PoP Request:
 .. code-block:: http
 
     POST /edoc-proof/init HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/json
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -264,7 +264,7 @@ Below a non-normative example of an MRTD PoP Request:
 
 **The Wallet Instance MUST:**
 
-- Validate the MRTD Proof JWT signature using the PID Provider's public key.
+- Validate the MRTD Proof JWT signature using the EAA Provider's public key.
 - Verify the JWT ``aud`` claim matches its ``client_id``.
 - Ensure the JWT ``exp`` claim indicates the token has not expired.
 - Extract the ``mrtd_auth_session`` and ``mrtd_pop_jwt_nonce`` values for correlation.
@@ -300,7 +300,7 @@ If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a 
      - REQUIRED. It MUST be ``mrtd-ias-pop+jwt``.
    * - **kid**
      - string
-     - REQUIRED. Identifier of the PID Provider's key that MUST be used to verify the signature of this JWT.
+     - REQUIRED. Identifier of the EAA Provider's key that MUST be used to verify the signature of this JWT.
 
 .. _table_eID_MRTD_PoP_Response_Payload:
 .. list-table:: MRTD PoP Response Parameters
@@ -312,7 +312,7 @@ If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a 
      - **Description**
    * - **iss**
      - string
-     - REQUIRED. PID Provider identifier.
+     - REQUIRED. EAA Provider identifier.
    * - **aud**
      - string
      - REQUIRED. Wallet Instance identifier.
@@ -362,7 +362,7 @@ JWT decoded body:
 .. code-block:: json
 
     {
-      "iss":"https://pid-provider.example.org",
+      "iss":"https://eaa-provider.example.org",
       "aud":"https://wallet.example.org/instance/12345",
       "iat": 1753555800,
       "exp": 1753556000,
@@ -395,12 +395,12 @@ JWT decoded body:
 - Store challenge data temporarily.
 - Prepare NFC reading session.
 
-The Wallet Instance performs NFC-based electronic document reading and validation, then submits the evidence to the PID Provider for final verification and identity correlation with the LoA3 authentication result.
+The Wallet Instance performs NFC-based electronic document reading and validation, then submits the evidence to the EAA Provider for final verification and identity correlation with the LoA3 authentication result.
 
 MRTD PoP Validation Request
 """""""""""""""""""""""""""
 
-Upon all the evidence has been collected through NFC interaction with the Electronic Document, the Wallet Instance MUST send all data to the PID Provider Authorization Server for the final validation and identity cross checks. The Wallet Instance MUST send a HTTP POST Request with ``application/json`` as content type, including Wallet Attestation and Wallet Attestation JWT PoP in the header according to `OAUTH-ATTESTATION-CLIENT-AUTH`_. The payload of the Request contains the following parameters.
+Upon all the evidence has been collected through NFC interaction with the Electronic Document, the Wallet Instance MUST send all data to the EAA Provider Authorization Server for the final validation and identity cross checks. The Wallet Instance MUST send a HTTP POST Request with ``application/json`` as content type, including Wallet Attestation and Wallet Attestation JWT PoP in the header according to `OAUTH-ATTESTATION-CLIENT-AUTH`_. The payload of the Request contains the following parameters.
 
 .. _table_eID_MRTD_PoP_Validation_Request:
 .. list-table:: MRTD PoP Validation Request Parameters
@@ -456,7 +456,7 @@ The Validation JWT (``mrtd_validation_jwt``) structure is given in the following
      - REQUIRED. Wallet Instance identifier.
    * - **aud**
      - string
-     - REQUIRED. PID Provider identifier.
+     - REQUIRED. EAA Provider identifier.
    * - **iat**
      - integer
      - REQUIRED. Issuance time (Unix timestamp).
@@ -524,7 +524,7 @@ Below a non-normative example of an MRTD PoP Validation Request:
 .. code-block:: http
 
     POST /edoc-proof/verify HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/json
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -599,7 +599,7 @@ Below a non-normative example of an MRTD PoP Validation Response:
       "status": "require_interaction",
  	    "type": "redirect_to_web",
       "mrtd_val_pop_nonce": "0f2bff024317345b6927ce17e776361d",
-      "redirect_uri":"https://pid-provider.example.org/cb"
+      "redirect_uri":"https://eaa-provider.example.org/cb"
     }
 
 **The MRTD PoP Service MUST:**
@@ -619,7 +619,7 @@ Upon successful MRTD PoP validation, the Wallet Instance MUST redirect the User 
 
 .. code-block:: text
 
-    https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
+    https://eaa-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
 
 The Wallet Instance MUST validate that the ``mrtd_val_pop_nonce`` matches the value received from the MRTD PoP Validation Response.
 
@@ -714,7 +714,7 @@ In particular, each authentication step MUST validate the correlation between:
 - Document evidence correlation with authenticated identity.
 - Temporal sequence validation to prevent out-of-order attacks.
 
-When components operate outside the PID Provider boundary, the following additional security measures MUST be implemented:
+When components operate outside the EAA Provider boundary, the following additional security measures MUST be implemented:
 
 - Secure Inter-Service Communication (for example, through Certificate pinning, mutual TLS, etc.).
 - Encryption and integrity of sensitive session data and/or personal identity information (for example, using JWE/JWS tokens).
@@ -724,7 +724,7 @@ When components operate outside the PID Provider boundary, the following additio
 .. plantuml:: plantuml/l2plus-security-controls.puml
     :width: 99%
     :alt: The figure illustrates the eID Substantial Authentication with MRTD Verification Security Controls.
-    :caption: `eID Substantial Authentication with MRTD Verification Security Controls. <https://www.plantuml.com/plantuml/png/nLT_Rzl84Vr_FyNKGL9RCUt8JjjKYEmmyW-hI6p1aXkqTI6io96q3RNBxYvb-pxzxOmeIfHFWGztm046GIzdPzwycNqx-kIyjBwOPUBFV_9Jd24aQ8iCfOvCuJEbKSZ26rtCHcX57cnLedAfFUpSERGx81tSrTU_oIn33rqTNEi4sIIkctIwvxpS4IFp2B3Jwvv1pvgvIidbgozgClMVimBhkyWgBlpKMFMJzCfewAETbo3YVjtuw-qW-3Gzjb4bZBFUJQylKASGuZw31DViLMPmYnFbl7tYJL-xrtNJfTczxgQelV9F5NZUq3th2I72UeQ00VCN4nypS39E5iZVWiMPyGXgwIAtneoLde3Iq1r49OkKSzUvWfY4Yymy2747qGd4BVX6OBm1cNWrbnuX181osxqk7FcQ5PbNaVEOWwm3c64WCXMYtMv3RoeTGhC5DuHoW-DR_7-1paExBMAEt8SMzEBRwiCkG9Afu7geqdsmYzMRqVymyNi12C232axPTTHXmoZsFjWi_4kTRlqOKG6LviokK0Q2oPnyDXhiLQv37QRefSh0F-K8EyeFiwEtgKcA6M5ZUdSQ3I520X7bKQNXSgCTmcu9VLXOjG_uc2kBRgZqtZBl5bLZ2pk4wV9y08TBH7XQaT8-E3Xui-QS_YVxA-Dy2tALHddPFWVuA6TvXWV6JjPBSnH2MpMJzccpZoBkC3gAcr-87sezw1SZEebUoOoAQ3MrdPdJZduuQtAEEeGEnyrDHRzpJCU3RPYe4-hc5WMf-wyo5-4xV2H2xreB77ApqnEYLxFbaiZd_gewl1pWEaF7BQXE_3zbfb9soatRBy_BrM3GEsmUDE7utH5Sc88RwOjPX6_1rFlSjGuFMH0F7lWShTVZC9dIcfxWQQCnipvTj5Jxu-fz-8zlWvFGOhKKdcVmjxKCkBLObbgXfwiKId8RZNlTk-c7jiBGo147ELHQ-IgPaCAFs-XU_vx7hvOQmtwUtb_teT_vG8-_hoLgSYy0W3THHKXMMn0IzLRX74Fr_Xr2ZOsTSMYo9HE8AdusJSYv4AK_Ad6TmRATYCAgyaUXyd6IOEunBObPLC_aGsrqWljGLPcPsJNvGkkpfpsEdqelXP2PX-vu0SX1I13aNAfCZZ84RvYlZLkGyuc1ZycokcIg0aJheHDViyLIsxkhPSmSWgg2cP6NIcCAqaEVTBtPh7pJplD7RsNY6IYChPdHnWLL4skAlBnT_uLPk4pW-g8JOdcaBPLe47m-oO5gE2i557hKV13-UiOvT2wOqvetYSduPY8KIoZ_UJMnYFg_9z21gYnndcShtUh5dNCgpYtA5Cukc_lq2C_-pTcGpDbL1wBA5qlsBrc2s1Qs6_VNerRXOfATp6Yw8dl5A7o7x_Yqy4XxjiH-qROwZFecfZfqquRstMl7Wyog-RO0kEt7qT6xzn_0gOcMlh181GckLZkfr5jbPQMCFrIO04MDd_umZG7uTIf3Zz0F8ZoF-FsOd-_NrAUkEfJOaW1kyZdnGaCOWIhSajHxlHmVQ3YObrT5u1gJxtj2RCZJcigyWvllBv7AvbyOAUVIN5qBsrLjLS0N2vp5L5bCUFBWIh3YXOnNgYT4gHxSLpymu6xwRCs3GnkDfCCKBXJrSyVeiRApwfI5KQYwKBTrpM4oEcNlxUS1XmG4qpU6XebXAJSyHr65S351xVgfDSLa2gC5ehtwnVlYgsarHRpVCWANLDV6YKQ3fi4jXimyU-gOb4lq6wUFqs2TcBJC7DPfW3VAkJOxU7qSlpww27_REAypjCySTI-l1fUtv-VNOZ1569EI9qPxfGjq89F4s9IqovlwZn4sb0vI7FDzL9xXrKyNbsEYngN4hUZ-5DwAMVOp>`_
+    :caption: `eID Substantial Authentication with MRTD Verification Security Controls. <https://www.plantuml.com/plantuml/svg/nLTzRzks4_vVd-9-ATfVuiP9dNHRPzH9LJil7jh4Y9mMsp8Oj7IskSgaHb9Eiay_tacMxAGkCcp004EmgNjvxdcEH_gTTSAuV9u6__-Vc-4S8KQJfoXKK-SkbGe3aJkjylaOJP1vMndBJ2W7MzSMpHO82zVhwvz5cgA3llAXLOni4gwRTFidlDmDnleEOEia365Wz48c5FBP1pcTkVTfZkjUP1NcRgQD_5CugHL4Q1ObY31QD_vuDUp1G0_OHfOmUeFBGHIWIi3dVGG9BZYgIE4Afz8wSyzE7_iNwwPBinlLJr0vwUvhyEJGxms28F3hAGBsU_11XuSCd8pZ0lbBC3ZN3a4kGsH6wubKKv0A-iFcaiKUzAtDYKWuJVLj45n3ymZ2DdmcB4w3Y9rS28VWuqFfTQDoIw4eUvIFIGWdHVeGnArqCs2YFg6Hat8v23gT3WncmYAqsd19JWzuly8_ShGEEfqWP3WHj64GNbKljW7YLA9o8vdiWYbMByU_O-nsF3eeKdFePfSDcw5ptgQ8BrIoyMMJH9MAopr7uKadSuhPQ71KiGfrbA0JCWLtdo5iIJTA3rucEixdX8qftseqWi0NqAGwgZ9iffL5s2wXZt8ZTm7lCcdGZgJQMTRTNjDg0qq4xkna2FjBQ7XSiTFPszjxiPA5VfFzkRQk3IX4CojxQm_ln3nBSK-RwQf61nwpaNDXxX_gs-G6e7twDUMfBrUxWzGqYdfIByWZyXjHB53vr7ulsbaGTGzfxx0DCtP4hTwc9Elngye3_nxU4hFNxGA7UBWDOk9PiMN1w8PuXI1F1xZAq64Rgd7mIQGouQ3SlL6vcyw7my5-Qwy5XwyEu5Jdt54VT96-3JFdCjlUt-TfkNVBUg_giH_FQ4rDyRZHc1kN5BtLULj_7_tqUNX4lRPQmkCAVbYfW7kCPrRRDtTLGabket6Z1fUHRojCTDpa9FjIILSLuqluTXlTg7zp7wwLnh0Vb_VzBaJTD_JuSQLGdRa00DY95A6PsmPVg3CI5-ZL-mMaccWpvzHaIoRGhFXvQ4B1Ww2CHnAlCbYr4r5OAN_WbG_Z63E7IKbCePxEHagh67UXKfcPsTPPSH2azpkSFn5E18587VGd1I0BIZiG2o5JCKuHd6Q-7XoHN4y8l4sMwfAfz12DWsvumHRBoT-lbp6r2B9AfiTEI8K920UHmmnQhIesUPxSEIDYnq1XOlIS70kgfaRdMNdq_eofFshWuhJhSpaabsfe47pUoPvgw9MJ50RKVE0_0sqjMalcVitfMATyRX6A9PHVdqqDelhj2BfGoH9cMLhFhK7OFI5nhb0aq3jhxTB3FwFBteZCELGNcdKicjrViuHWKzf-6ArchTA5D7PIhUW07UHZ_nw-u7qHaNmsv7wIspgCTIUcMZqwfM-KvLjEtNmR05n5OVFWrUitOELK2PSR945ygDgJfDuuLkh9-Cq9iw2hmlr_DcC0_jwKeOVlXy0_3_Zx8JzVhqoVzQb3XIq9u2PV42zqGoDGkLsIUgEMzmYw9IpAey9pZV6NdI1uC9vMfimhkFpob57P-ewHSYsj-bZOFDLg0Pyyu0mcqc3CDmzMWYUUhxYUUjmld8hwwXi6t4tlZRwrQ9fZOJ61KqdztDLg8isyscLq5LeUg9kwPZyU7tFqpkE48mA2oGjDbubHEMxu7aKAON63sdOpe_Ff3CO5eftrW_V9HrDzYtYzwIvSK5rV9rYLpTV2seCbu91TdR1M__0QSkojOvsK543D1_sGrdOumFF3yFd1gVzi8d-TgbqcgtzsFZoxEZcv28OpX0cDz5Wh9rME5aGSQvFG47DwmvyNzX0M4fpG2RNSrRMnpJ2k_eFK0hppt_9v-XS0>`_
 
 Cryptographic Challenge Generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -734,7 +734,7 @@ The MRTD PoP Service MUST generate cryptographically secure challenges with suff
 Nonce Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each step in the eID Substantial Authentication with MRTD Verification flow MUST use unique nonce values (minimum 128 bits) to prevent replay attacks. Nonce values MUST have appropriate expiration times and MUST be invalidated after successful use. The PID Authorization Server and MRTD PoP Service MUST maintain synchronized nonce validation to ensure session integrity.
+Each step in the eID Substantial Authentication with MRTD Verification flow MUST use unique nonce values (minimum 128 bits) to prevent replay attacks. Nonce values MUST have appropriate expiration times and MUST be invalidated after successful use. The EAA Authorization Server and MRTD PoP Service MUST maintain synchronized nonce validation to ensure session integrity.
 
 Moreover, each nonce serves a specific security purpose.
 - ``mrtd_pop_jwt_nonce`` MUST be correlated with the MRTD Proof JWT.
@@ -750,10 +750,10 @@ Moreover, each nonce serves a specific security purpose.
 - Include anti-replay timestamp validation.
 - Be verified against the entire nonce chain for integrity.
 
-PID Provider Metadata
+EAA Provider Metadata
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to the ``trust_frameworks_supported`` values defined in section :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`, the PID Provider Metadata for ``openid_credential_issuer`` MUST also support the value ``it_l2+document_proof`` indicating the multi-step Authentication protocol described in this Specification.
+In addition to the ``trust_frameworks_supported`` values defined in section :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`, the EAA Provider Metadata for ``openid_credential_issuer`` MUST also support the value ``it_l2+document_proof`` indicating the multi-step Authentication protocol described in this Specification.
 
 Security Controls
 ^^^^^^^^^^^^^^^^^
@@ -772,28 +772,28 @@ The following security controls MUST be implemented in the protocol:
      - The network communication channels are protected by using TLS with secure ciphers (at the time of this release, it is at least TLS v1.2).
      - All
    * - **SC2**
-     - The Wallet Instance ensures the authenticity of the PID Provider and the eID Identity Provider by pinning the leaf certificate of each server.
+     - The Wallet Instance ensures the authenticity of the EAA Provider and the eID Identity Provider by pinning the leaf certificate of each server.
      - All
    * - **SC3**
-     - The PID Authorization Server verifies that the eID Identity Provider used within the *eID LoA3* phase is trustworthy.
+     - The EAA Authorization Server verifies that the eID Identity Provider used within the *eID LoA3* phase is trustworthy.
      - Phase 2
    * - **SC4**
-     - The PID Authorization Server verifies the authenticity and integrity of the data extracted from the *eID LoA3* assertion, by checking the digital signature.
+     - The EAA Authorization Server verifies the authenticity and integrity of the data extracted from the *eID LoA3* assertion, by checking the digital signature.
      - Phase 2
    * - **SC5**
      - The challenge value and all nonce values are generated with safeguards to prevent bruteforce or guessing attacks.
      - Phase 3
    * - **SC6**
-     - The PID Provider verifies all the nonce values to detect replay attacks.
+     - The EAA Provider verifies all the nonce values to detect replay attacks.
      - Phase 3
    * - **SC7**
-     - The Wallet Instance verifies that ``challenge_info`` is properly signed by the PID Authorization Server. Moreover, it checks that ``challenge_info`` contains: an ``iss`` value corresponding to the value of the PID Authorization Server; an ``aud`` value equal to the ``client_id`` of the Wallet Instance; and a ``state`` value equal to the one in the PAR request, to be sure that the response is bound to the initial request that is made by the Wallet Instance in Step 2. Therefore the information provided as part of ``challenge_info``, in particular the ``htu`` that corresponds to the redirect url to follow for the *MRTD PoP*, is not tampered with.
+     - The Wallet Instance verifies that ``challenge_info`` is properly signed by the EAA Authorization Server. Moreover, it checks that ``challenge_info`` contains: an ``iss`` value corresponding to the value of the EAA Authorization Server; an ``aud`` value equal to the ``client_id`` of the Wallet Instance; and a ``state`` value equal to the one in the PAR request, to be sure that the response is bound to the initial request that is made by the Wallet Instance in Step 2. Therefore the information provided as part of ``challenge_info``, in particular the ``htu`` that corresponds to the redirect url to follow for the *MRTD PoP*, is not tampered with.
      - Phase 3
    * - **SC8**
-     - The PID Provider checks that the ``mrtd_auth_session`` is associated with the same Wallet Instance in all the requests within the *MRTD PoP* phase. Therefore the PID Provider can be sure that the Wallet Instance performing the *MRTD PoP* phase: is trusted; is always the same across the protocol; and has previously started the PID issuance (PAR request). This can be implemented by requesting the Wallet Instance to perform a proof of possession of its private key (e.g., within OAuth-Client-Attestation or by signing a nonce value).
+     - The EAA Provider checks that the ``mrtd_auth_session`` is associated with the same Wallet Instance in all the requests within the *MRTD PoP* phase. Therefore the EAA Provider can be sure that the Wallet Instance performing the *MRTD PoP* phase: is trusted; is always the same across the protocol; and has previously started the IT-Wallet ID issuance (PAR request). This can be implemented by requesting the Wallet Instance to perform a proof of possession of its private key (e.g., within OAuth-Client-Attestation or by signing a nonce value).
      - Phase 3
    * - **SC9**
-     - The PID Provider checks that the ``mrtd_auth_session`` is not expired (validity timeout typically of 5 minutes), i.e., that the operation has been concluded within a certain amount of time.
+     - The EAA Provider checks that the ``mrtd_auth_session`` is not expired (validity timeout typically of 5 minutes), i.e., that the operation has been concluded within a certain amount of time.
      - Phase 3
    * - **SC10**
      - The integrity and confidentiality of the channel between the *physical CIE* and the *physical device_wallet* is secured with the PACE protocol (via the algorithm and key derivation functions supported by the card).
@@ -833,7 +833,7 @@ Implementation Considerations
 
 Implementations SHOULD incorporate rate-limiting mechanisms to protect against automated attacks and resource exhaustion, and a timeout configuration balancing user experience and security posture, accommodating the variability inherent in NFC-based document reading.
 
-PID Provider SHOULD implement session timeouts approach with proper cleanup mechanisms, ensuring session resources are released and temporary cryptographic material is securely deleted when sessions expire.
+EAA Provider SHOULD implement session timeouts approach with proper cleanup mechanisms, ensuring session resources are released and temporary cryptographic material is securely deleted when sessions expire.
 
 All security-relevant events throughout the eID Substantial Authentication with MRTD Verification flow MUST be logged with sufficient detail for auditing purposes while preserving the privacy of the User, ensuring that personally identifiable information, when stored, is appropriately hashed. The audit logs SHOULD have consistent correlation identifiers, enabling end-to-end tracing across all protocol phases, with cryptographic integrity protection to prevent tampering.
 
