@@ -96,7 +96,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `conformity_assessment`
-     - The outcome of the conformity assessment of the entity, such as Confomity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
+     - The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
      - [`EIDAS-ARF`_], Annex 2
    * - `service_supply_point`
      - The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. It MUST be provided by the notified categories that issue an Attestation requested by the Wallet Unit.
@@ -440,7 +440,7 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 Relying Party
 """""""""""""
 
-At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artefacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
+At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 Besides the base registration data, a Relying Party provides the extended registration data below.
 
 .. list-table:: Relying Party Registration Data

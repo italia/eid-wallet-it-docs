@@ -6,7 +6,7 @@ Lifecycle Management
 
 After the registration event, an Entity can be updated, suspended, reactivated or cancelled, and a Credential type can become issuable or stop being issuable, and these changes reflect on the Trust Artifacts and on the registries.
 
-This section describes the states and events that cause an entity or credential type to change state. It also maps each event to the registries and trust artefacts impacted by the event. (:ref:`onboarding-system:Events, Registries and Trust Artifacts`).
+This section describes the states and events that cause an entity or credential type to change state. It also maps each event to the registries and trust artifacts impacted by the event. (:ref:`onboarding-system:Events, Registries and Trust Artifacts`).
 
 The formats, the parameters and the states of the Trust Artifacts are defined in :ref:`infrastructure-trust:Trust Artifacts Lifecycle State Machine`, and the revocation mechanisms are defined in :ref:`infrastructure-trust:Revocation Mechanisms`.
 The lifecycle of the single Digital Credentials issued to the Users is a different matter and it is defined in :ref:`credential-revocation:Digital Credential Lifecycle`.

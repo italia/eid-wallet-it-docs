@@ -128,6 +128,3 @@ A Wallet Provider instead is responsible for:
 
 .. note::
   A Wallet Provider SHALL choose the technical validity period of the Wallet Instance Attestation and SHALL maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the ``client_status.exp`` claim in the Wallet Instance Attestation.
-
-
-  
