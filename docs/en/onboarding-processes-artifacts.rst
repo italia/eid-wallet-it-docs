@@ -32,6 +32,62 @@ The Wallet-Relying Party Registration Certificate and the registration Trust Mar
    :caption: `Issuance of an X.509 certificate through ACME and the OpenID Federation profile. <https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0>`_
    
 
+Certificate Signing Request Profile
+"""""""""""""""""""""""""""""""""""
+
+This section defines the profile that the ``certificate_signing_requests`` provided at registration MUST follow, see :ref:`onboarding-system:Registration Data Model`.
+The Entity provides one Certificate Signing Request for each X.509 certificate it needs, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate, and it presents each of them in the ACME order of the corresponding service.
+The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify a key, so they are not requested through a Certificate Signing Request, see :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance` and :ref:`onboarding-system:Registration Trust Mark Issuance`.
+
+A Certificate Signing Request does not determine the content of the issued certificate, but solely carries the public key to be certified and proves possession of the corresponding private key.
+
+The Certificate Signing Request MUST be a ``CertificationRequest`` as defined in :rfc:`2986` (PKCS #10), DER-encoded, and it is carried in the ACME order as required by :rfc:`8555#section-7.4`.
+
+.. list-table:: Certificate Signing Request Fields
+   :class: longtable
+   :header-rows: 1
+   :widths: 20 60 20
+
+   * - **Field**
+     - **Description**
+     - **Reference**
+
+   * - ``version``
+     - REQUIRED. It MUST be ``0``, which denotes a PKCS #10 version 1 request.
+     - :rfc:`2986#section-4.1`
+
+   * - ``subject``
+     - REQUIRED. Its attributes MUST be consistent with the registration data of the Entity and with [`ETSI EN 319 412-2`_] for legal persons.
+       The subject is not authoritative, so the Certification Authority MAY replace it with the value derived from the record of the Entity in the Register or, in its absence, from the registration Trust Mark.
+     - :rfc:`2986#section-4.1`, [`ETSI EN 319 412-2`_]
+
+   * - ``subjectPKInfo``
+     - REQUIRED. It carries the public key to be certified.
+       The key MUST use one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
+       It MUST be distinct from the Federation Entity Key, and a distinct key MUST be used for each requested certificate.
+     - :rfc:`2986#section-4.1`
+
+   * - ``attributes``
+     - OPTIONAL. The Entity SHOULD NOT request certificate extensions through the ``extensionRequest`` attribute, because the extensions of the issued certificate are fixed by the applicable certificate profile and set by the Certification Authority, which MAY ignore any requested extension.
+     - :rfc:`2985#section-5.4.2`
+
+   * - ``signatureAlgorithm``
+     - REQUIRED. It MUST correspond to the algorithm of ``subjectPKInfo`` and it MUST be one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
+     - :rfc:`2986#section-4.2`
+
+   * - ``signature``
+     - REQUIRED. The request MUST be signed with the private key corresponding to ``subjectPKInfo``, which proves possession of that key.
+     - :rfc:`2986#section-4.2`
+
+.. note::
+   The Certificate Signing Request certifies a key that is separate from the Federation Entity Key.
+   The Federation Entity Key is bound to the Entity through the Entity Configuration and the Subordinate Statement, validated through the Federation Trust Chain and not through a certification path, see :ref:`infrastructure-trust:PKI Architecture`.
+
+The following is a non-normative example of a Certificate Signing Request for a WRPAC, with test data.
+
+.. literalinclude:: ../../examples/csr-wrpac.txt
+  :language: text
+
 Wallet-Relying Party Access Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""
 
