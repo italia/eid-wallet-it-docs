@@ -319,13 +319,13 @@ The subsections marked as draft below contain only a short description of what t
 <li><p><strong>Entities</strong>: the Wallet-Relying Parties, the Wallet Providers and the Authentic Sources, from their registration until the cancellation of that registration. An Entity is registered, updated, possibly suspended and reactivated, and finally removed.</p></li>
 <li><p><strong>Trust Artifacts</strong>: the certificates, the registration certificates and the federation statements that are issued as a result of a registration, and that are always derived from it.</p></li>
 <li><p><strong>Credential types</strong>: the versioned definitions published in the Digital Credentials Catalog, with the claims, the schemas and the Authentic Sources they depend on. A Credential type is registered, activated, versioned and deactivated.</p></li>
-<li><p><strong>Registries and catalogs</strong>: the national registries that the system writes, and the European catalogs and Lists of Trusted Entities towards which the system aligns or notifies.</p></li>
+<li><p><strong>Registries and catalogs</strong>: the National registries that the system writes, and the European catalogs and Lists of Trusted Entities towards which the system aligns or notifies.</p></li>
 </ul>
 </div></blockquote>
 <p>For each of these, the Onboarding System covers the whole lifecycle and not only the first onboarding.</p>
 <p>All events related to Entities and Credential types produce effects on the Trust Artifacts and on the registries, and those effects are described in this Section, together with the events that cause them.</p>
-<p>As defined in in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operates on both of them.
-The National Trust Framework is the registration layer for all the Entities of the ecosystem and provides the mechanisms that the components of the Onboarding System use to authenticate each other.</p>
+<p>As defined in in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operates on both of them.</p>
+<p>The National Trust Framework is the registration layer for all the Entities of the ecosystem and provides the mechanisms that the components of the Onboarding System use to authenticate each other.</p>
 <p>The data structures of the registries are defined in <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>, the profiles of the Trust Artifacts in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>, the technical mechanisms that publish the status of a certificate in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>, and the way the artifacts are consumed at runtime in <a class="reference internal" href="trust-evaluation.html#trust-evaluation-process"><span class="std std-ref">Trust Evaluation Process</span></a>.</p>
 <p>The section is organized in four parts.
 The <strong>Overview</strong> gives the actors, the components and the way the two Trust Frameworks are used.
@@ -346,8 +346,8 @@ The trust-infrastructure roles are realized by the components and services of th
 <li><p><strong>Authentic Sources</strong>: onboard to make their data available to the Credential Issuers, so that the data can be included in the Attestations.</p></li>
 <li><p><strong>Wallet-Relying Parties</strong>: onboard to be authorized to rely on the Wallet Units and to obtain the Trust Artifacts they need to operate. They are further split into:</p>
 <ul>
-<li><p><strong>Credential Issuers</strong>, that onboard to be authorized to issue the Credential types they declare;</p></li>
-<li><p><strong>Relying Parties</strong> and <strong>Relying Party Intermediaries</strong>, that onboard to be authorized to request User attributes from the Wallet Units.</p></li>
+<li><p><strong>Credential Issuers</strong>, which onboard to be authorized to issue the Credential types they declare;</p></li>
+<li><p><strong>Relying Parties</strong> and <strong>Relying Party Intermediaries</strong>, which onboard to be authorized to request User attributes from the Wallet Units.</p></li>
 </ul>
 </li>
 <li><p><strong>Wallet Providers</strong>: onboard to have their Wallet Solution recognized in the ecosystem and to be notified.</p></li>
@@ -356,11 +356,11 @@ The trust-infrastructure roles are realized by the components and services of th
 <p><strong>Trust-infrastructure entities</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Supervisory Body</strong>: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the national single point of contact for the notification to the European Commission.</p></li>
+<li><p><strong>Supervisory Body</strong>: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the National single point of contact for the notification to the European Commission.</p></li>
 <li><p><strong>Registrar</strong> and <strong>Register</strong>: the Registrar performs the technical registration of the Wallet-Relying Parties and writes their records into the <strong>Register</strong> as defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></li>
 <li><p><strong>Provider of WRPAC</strong> and <strong>Provider of WRPRC</strong>: issue, respectively, the WRPAC and the WRPRC.</p></li>
-<li><p><strong>National Federation Authorities</strong>: the <strong>Federation Trust Anchor</strong> and its <strong>Federation Intermediates</strong>, that register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
-In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the national X.509 signing PKI, whose root certificate and its distribution are described in <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>.</p></li>
+<li><p><strong>National Federation Authorities</strong>: the <strong>Federation Trust Anchor</strong> and its <strong>Federation Intermediates</strong>, which register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
+In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the National X.509 signing PKI, whose root certificate and its distribution are described in <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -374,7 +374,7 @@ A Wallet Instance is registered indirectly, through its Wallet Provider, see <a 
 <section id="system-components-and-services">
 <h3><span class="section-number">8.1.2. </span>System Components and Services<a class="headerlink" href="#system-components-and-services" title="Link to this heading">¶</a></h3>
 <p>The trust-infrastructure roles are realized, within the Onboarding System, by a set of components, each providing one or more services.
-An onboarding entity interacts with the system through a single entry point, the Onboarding UI, that orchestrates the flow and routes each request to the responsible component, and that is therefore not shown as a separate component in the diagram below.</p>
+An onboarding entity interacts with the system through a single entry point, the Onboarding UI, which orchestrates the flow and routes each request to the responsible component, and which is therefore not shown as a separate component in the diagram below.</p>
 <p>The table below lists the components, the services each of them provides, and the onboarding process that each service realizes.</p>
 <table class="longtable docutils align-default" id="id806">
 <caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Components, Services and Processes</span><a class="headerlink" href="#id806" title="Link to this table">¶</a></caption>
@@ -424,11 +424,11 @@ An onboarding entity interacts with the system through a single entry point, the
 </tr>
 </tbody>
 </table>
-<p>The components write the national registries and data stores described in <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>, and interact, at EU level, with the European Commission for the notification and the alignment of the Catalogs.
-Two data stores are kept separate on purpose, the Register, that holds the Wallet-Relying Party registration records defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] and drives the issuance of the certificates, and the notification dataset, that holds the notifiable information defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and feeds the Publication Service.
+<p>The components write to the National registries and data stores described in :ref:registry:Registry Infrastructure. At the EU level, they interact with the European Commission for catalog notification and alignment.</p>
+<p>Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and feeds the Publication Service.
 They overlap only in the identification data, so the split keeps the registration distinct from the notification.</p>
 <p>The diagram below shows the components, the actors that interact with them and the data stores they write.
-The Authentic Sources register in the AS Registry only, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
+The Authentic Sources register only in the AS Registry, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.</p>
 <figure class="align-default" id="id807">
 <p class="plantuml">
@@ -513,11 +513,11 @@ pkgent --&gt; pub
 <p>This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains. It is organized as a common part and a profile for each role.</p>
 <section id="registration-data-model">
 <h3><span class="section-number">8.2.1. </span>Registration Data Model<a class="headerlink" href="#registration-data-model" title="Link to this heading">¶</a></h3>
-<p>This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic <strong>Data Identifier</strong>.
-The following tables provide:</p>
+<p>This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic <strong>Data Identifier</strong>.</p>
+<p>The following tables provide:</p>
 <ul class="simple">
-<li><p>A base registration data provided by every entity, whatever its role.</p></li>
-<li><p>An extended registration data provided by an entity depending on its role, and each <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> is an instance that states which extended data the role provides and how the entity valorizes it.</p></li>
+<li><p><em>Base registration data</em> provided by every entity, whatever its role.</p></li>
+<li><p><em>Extended registration data</em> provided by an entity depending on its role, where each <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> instance specifies which extended data the role provides and how the entity populates it.</p></li>
 </ul>
 <p>Depending on the role, the data is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), the Digital Credentials Catalog for the Credential types (<a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), and the notification dataset for a Wallet Provider.
 The mapping to the destination data models is given in <a class="reference internal" href="#mapping-to-the-registry-data-models"><span class="std std-ref">Mapping to the Registry Data Models</span></a>.</p>
@@ -540,7 +540,7 @@ The mapping to the destination data models is given in <a class="reference inter
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>identifier</cite></p></td>
-<td><p>One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its national identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></td>
+<td><p>One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its National identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></td>
 <td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 2</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>legal_nature</cite></p></td>
@@ -557,7 +557,7 @@ The mapping to the destination data models is given in <a class="reference inter
 </tr>
 <tr class="row-odd"><td><p><cite>data_protection_authority</cite></p></td>
 <td><p>The authority contact email competent for the supervision of the entity under the data-protection law. It MUST be provided for each intended use of the Wallet-Relying Party.</p></td>
-<td><p>Regulation (EU) 2016/679, Article 46a</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I, in compliance with Regulation (EU) 2016/679.</p></td>
 </tr>
 </tbody>
 </table>
@@ -606,7 +606,7 @@ A given entity provides only the subset that applies to its role, as defined in 
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
-<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key.</p></td>
+<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. They are the input of the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>, where they are presented in the ACME order.</p></td>
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a></p></td>
 </tr>
 <tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
@@ -630,7 +630,7 @@ A given entity provides only the subset that applies to its role, as defined in 
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
-<td><p>The outcome of the conformity assessment of the entity, such as Confomity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.</p></td>
+<td><p>The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
@@ -638,7 +638,7 @@ A given entity provides only the subset that applies to its role, as defined in 
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
-<td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
+<td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the National Root Certification Authority, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
 </tbody>
@@ -763,8 +763,8 @@ A given entity provides only the subset that applies to its role, as defined in 
 </section>
 <section id="eligibility-and-compliance-preconditions">
 <h3><span class="section-number">8.2.3. </span>Eligibility and Compliance Preconditions<a class="headerlink" href="#eligibility-and-compliance-preconditions" title="Link to this heading">¶</a></h3>
-<p>Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the national point of contact toward the European Commission.
-Where a national and an EUDIW obligation overlap, the EUDIW obligation is authoritative.</p>
+<p>Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the National point of contact toward the European Commission.
+Where a National and an EUDIW obligation overlap, the EUDIW obligation is authoritative.</p>
 <p>The verification applies to Authentic Sources, Wallet Providers and Wallet-Relying Parties, and its content depends on the role.</p>
 <blockquote>
 <div><ul class="simple">
@@ -773,8 +773,8 @@ The trust of an Authentic Source is governed by the PDND framework and it is out
 <li><p><strong>Wallet Providers</strong>: the eligibility is established and the conformity assessment of the Wallet Solution is driven.
 The assessment covers the security of the wallet architecture, its data-protection mechanisms and its user-privacy features, and it is the precondition for the Wallet Solution to be certified.
 The certification of the Wallet Solution is an external process, and this phase uses its outcome as an input.
-The certification follows the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).</p></li>
-<li><p><strong>PID Providers</strong>: validated per national designation as providers of Person Identification Data, subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).</p></li>
+The certification follows the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).</p></li>
+<li><p><strong>PID Providers</strong>: validated per National designation as providers of Person Identification Data, subject to the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).</p></li>
 <li><p><strong>QEAA Providers</strong>: validated through the qualification and the supervision of the issuing Qualified Trust Service Provider.</p></li>
 <li><p><strong>PuB-EAA Providers</strong>: validated through the conformity assessment required by Article 45f of the eIDAS2 Regulation.</p></li>
 <li><p><strong>Non-qualified EAA Providers</strong>: validated for the eligibility to issue.
@@ -795,7 +795,7 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 <h3><span class="section-number">8.2.4. </span>Registration Outcomes<a class="headerlink" href="#registration-outcomes" title="Link to this heading">¶</a></h3>
 <p>A successful registration produces, depending on the role and on the scope of operation, the entry in the Register, the Trust Artifacts and the entry in the trusted list.
 The way each artifact is produced is described in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the effects of the later changes in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
-<p>The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the national artifacts of the National Trust Framework.</p>
+<p>The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the National artifacts of the National Trust Framework.</p>
 <table class="longtable docutils align-default" id="id811">
 <caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id811" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -873,8 +873,8 @@ The way each artifact is produced is described in <a class="reference internal" 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
-It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its national certificate, that is the Sign/Seal Certificate for a national Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.</p>
+<p>An entity operating only at National level obtains no Register record, no WRPAC and no WRPRC.
+It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its National certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.</p>
 </div>
 </section>
 <section id="registration-profiles">
@@ -909,7 +909,7 @@ In addition to the base registration data, a PID Provider provides the extended 
 <td><p>The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
-<td><p>The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
+<td><p>The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
 <td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.</p></td>
@@ -973,7 +973,7 @@ In addition to the base registration data, a QEAA Provider provides the extended
 <td><p>The conditions of use of each QEAA type, that is its validity and its purposes.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
-<td><p>The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
+<td><p>The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the QEAA Provider in the National Trust Framework.</p></td>
@@ -1028,7 +1028,7 @@ In addition to the base registration data, a PuB-EAA Provider provides the exten
 <td><p>The conditions of use of each PuB-EAA type, that is its validity and its purposes.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
-<td><p>The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
+<td><p>The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the PuB-EAA Provider in the National Trust Framework.</p></td>
@@ -1044,8 +1044,8 @@ In addition to the base registration data, a PuB-EAA Provider provides the exten
 </section>
 <section id="non-qualified-eaa-provider">
 <h4><span class="section-number">8.2.5.4. </span>Non-Qualified EAA Provider<a class="headerlink" href="#non-qualified-eaa-provider" title="Link to this heading">¶</a></h4>
-<p>A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+<p>A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the National boundary, and this choice affects the artifacts it obtains, as described in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
+A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the National boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
 In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.</p>
 <table class="longtable docutils align-default" id="id815">
 <caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Non-Qualified EAA Provider Registration Data</span><a class="headerlink" href="#id815" title="Link to this table">¶</a></caption>
@@ -1091,7 +1091,7 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 </section>
 <section id="relying-party">
 <h4><span class="section-number">8.2.5.5. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
-<p>At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artefacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
+<p>At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within National boundaries. This choice affects the artifacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
 Besides the base registration data, a Relying Party provides the extended registration data below.</p>
 <table class="longtable docutils align-default" id="id816">
 <caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Relying Party Registration Data</span><a class="headerlink" href="#id816" title="Link to this table">¶</a></caption>
@@ -1131,7 +1131,7 @@ Besides the base registration data, a Relying Party provides the extended regist
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.</p>
+An intermediated Relying Party that operates only at National level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.</p>
 </div>
 </section>
 <section id="relying-party-intermediary">
@@ -1194,7 +1194,7 @@ Besides the base registration data, a Wallet Provider provides the extended regi
 <td><p>The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
-<td><p>The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
+<td><p>The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the Wallet Provider in the National Trust Framework.</p></td>
@@ -1296,7 +1296,7 @@ The table below maps the dependencies between the onboarding processes where wha
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a></p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>The first registration, or a re-issuance, for the categories whose Sign/Seal Certificate is issued by the national PKI.</p></td>
+<td><p>The first registration, or a re-issuance, for the categories whose Sign/Seal Certificate is issued by the National PKI.</p></td>
 <td><p>The signature of the Attestations or of the Wallet Unit Attestations the entity issues.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#national-authentication-certificate-issuance"><span class="std std-ref">National Authentication Certificate Issuance</span></a></p></td>
@@ -1351,7 +1351,7 @@ The table below maps the dependencies between the onboarding processes where wha
 </tr>
 </tbody>
 </table>
-<p>The <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> is transversal and follows the registration of the notified categories.</p>
+<p>The <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> process is transversal and follows the registration of the notified categories.</p>
 <p>The following conditions are external to the Onboarding System and are not processes defined within IT-Wallet, but they are preconditions or triggers.</p>
 <ul class="simple">
 <li><p>The subscription of an Authentic Source to PDND and the publication of its e-Service.</p></li>
@@ -1360,14 +1360,13 @@ The table below maps the dependencies between the onboarding processes where wha
 <li><p>The availability of the applicable Rulebook, for a Credential Type Registration.</p></li>
 <li><p>The identity proofing and the eligibility and compliance verification, described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, that precede every registration.</p></li>
 </ul>
-<p>The diagram below gives the activations between the processes.
-The processes on the left are the starting processes, triggered from outside the Onboarding System.
-The processes on the right are activated by a starting process or by a lifecycle process.
+<p>The diagram below shows the activations between the various processes. Those on the left are the <em>starting processes</em>, triggered from outside the Onboarding System.
+Those on the right are activated by a starting process or by a lifecycle process.
 The processes that act on the lifecycle of an entity or of a Credential type are governed as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>, and the effects of an update are described there as well.</p>
 <figure class="align-center" id="id821">
 <span id="fig-onboarding-dep-map"></span><p class="plantuml">
 <object data="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png"><img src="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png" alt="The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority." style="width: 99.0%"/></a>
+<a href="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png"><img src="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png" alt="The figure illustrates the activations between the various processes. On the left the *starting processes* are illustrated, triggered from outside the Onboarding System. Those on the right are activated by a starting process or by a lifecycle process." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -1379,7 +1378,7 @@ The processes that act on the lifecycle of an entity or of a Credential type are
 <h3><span class="section-number">8.3.2. </span>Notification and Publication<a class="headerlink" href="#notification-and-publication" title="Link to this heading">¶</a></h3>
 <p>This Section describes the notification of the entities that are subject to it towards the European Commission, and the resulting publication in the Lists of Trusted Entities. This process applies to more than one family of processes.</p>
 <p>The notification is an act of the Member State towards the Commission, and not of the entity itself.
-Within IT-Wallet the Supervisory Body is the national point of contact towards the Commission, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, and it relies on the Registrar for the entities the Registrar registers.
+Within IT-Wallet the Supervisory Body is the National point of contact towards the Commission, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, and it relies on the Registrar for the entities the Registrar registers.
 Its outcome is the inclusion of the entity in the List of Trusted Entities of its type, whose structure and signature are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
 <p>The notifiable categories according to [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>], adopted under Article 5a(23) of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>] are the following.</p>
 <ul class="simple">
@@ -1401,7 +1400,7 @@ The information is a projection of the <a class="reference internal" href="#regi
 <li><p><code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code></p></li>
 </ul>
-<p>For a PID Provider and a Wallet Provider the Sign/Seal Certificate is issued by the national PKI, so the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> is not provided as an input by the entity but derives from the issuance described in <a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a>.</p>
+<p>For a PID Provider and a Wallet Provider the Sign/Seal Certificate is issued by the National PKI, so the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> is not provided as an input by the entity but derives from the issuance described in <a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a>.</p>
 <p>For a PuB-EAA Provider the Sign/Seal Certificate is a qualified certificate issued by a Qualified Trust Service Provider, and its Trust Anchor is conveyed by the eIDAS Trusted Lists that are outside of this process.
 Therefore, the Sign/Seal Trust Anchor is not required as an input for a PuB-EAA Provider, and the qualified status of its certificate is evaluated in the conformity assessment required for eligibility and compliance, see <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
 <p>The notifiable information is collected in the notification dataset, that is kept separate from the Register as described in <a class="reference internal" href="#registration-outcomes"><span class="std std-ref">Registration Outcomes</span></a>.</p>
@@ -1417,7 +1416,7 @@ The inclusion is the assertion, at Union level, of the role and of the authoriza
 <li><p>The entity MUST have completed its <a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and for the notified categories the conformity assessment MUST have been verified as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
 The completion of the registration is the precondition of the notification.</p></li>
 <li><p>The Onboarding System collects the notifiable information of the category from the notification dataset, following Annex II of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] or, for the PuB-EAA Providers, Annex III of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].</p></li>
-<li><p>The Supervisory Body, as the national point of contact, submits the information to the secure electronic notification system that the Commission makes available. The submission MUST be made at least in English.
+<li><p>The Supervisory Body, as the National point of contact, submits the information to the secure electronic notification system that the Commission makes available. The submission MUST be made at least in English.
 The system and its requirements are defined in Annex I of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>].</p></li>
 <li><p>The Commission may request additional information or clarifications to verify the completeness and the consistency of the notified information.</p></li>
 <li><p>The Commission publishes the List of Trusted Entities that compiles the notified information.
@@ -1436,7 +1435,7 @@ They are described together in <a class="reference internal" href="infrastructur
 Each process is described with its Input, its Outcome and its Process, while the governance of the corresponding events, that is who is entitled to decide and within which conditions, is given in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
 <section id="entity-registration">
 <h4><span class="section-number">8.3.3.1. </span>Entity Registration<a class="headerlink" href="#entity-registration" title="Link to this heading">¶</a></h4>
-<p>Entity Registration process takes in input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
+<p>Entity Registration process takes as input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
 The process is parameterized by the registration profile of the role, and its outcome is the transition of the Entity to the <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> state.
 It enables the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes, that bring the Entity to <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, and, for a Credential Issuer, the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.
 The issuance of the certificates and of the registration Trust Mark, and the governance of the states, are described in the referenced processes and in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.</p>
@@ -1456,7 +1455,7 @@ The data is organized in the three categories of registered data defined in <a c
 </ul>
 </div></blockquote>
 </li>
-<li><p><em>Technical Configuration</em>, provided by the Entity, in particular the <code class="docutils literal notranslate"><span class="pre">federation_entity_identifier</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> of its Entity Configuration, and the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> from which the certificates are later issued.</p></li>
+<li><p><em>Technical Configuration</em>, provided by the Entity, in particular the <code class="docutils literal notranslate"><span class="pre">federation_entity_identifier</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> of its Entity Configuration.</p></li>
 <li><p><em>Authorization Information</em>, provided by the Entity, i.e.:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1469,8 +1468,8 @@ The data is organized in the three categories of registered data defined in <a c
 </div></blockquote>
 </li>
 </ul>
-<p>The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration, the first one by this process and the others by the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes.
-For a PID Provider and a Wallet Provider the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> derives from the national issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.</p>
+<p>The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration. In particular, the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> are not a direct input of this process but of the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes.
+For a PID Provider and a Wallet Provider the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> derives from the National issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.</p>
 <p>The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
 <p><strong>Outcome</strong></p>
 <p>The outcome is the Entity in the <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> state, that is the moment in which the registration record exists and has been verified, as defined in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.
@@ -1500,7 +1499,7 @@ At the end of the process the Entity is <code class="docutils literal notranslat
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Register is the national register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] and operates through the Registrar.
+<p>The Register is the National register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] and operates through the Registrar.
 It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as <a class="reference internal" href="registry.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p>
 </div>
 </section>
@@ -1519,7 +1518,7 @@ For a change of the Authorization Information the input is the new <code class="
 <ol class="arabic simple">
 <li><p>The Entity submits the change of one or more categories of its registration data.</p></li>
 <li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.</p></li>
-<li><p>For a change of the Technical Configuration, the rotation of the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> is handled by the National Federation Management, that re-issues the Subordinate Statement, while the rotation or the request of the certificate keys is handled by the Certificate Management, that re-issues the X.509 certificates from the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>.</p></li>
+<li><p>For a change of the technical configuration, the rotation of the federation_entity_key is handled by the National Federation Management, that re-issues the Subordinate Statement. The rotation of the keys of the X.509 certificates is a re-issuance handled by the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes, where the Entity provides the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> in the ACME order.</p></li>
 <li><p>A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of a Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.</p></li>
 <li><p>The update produces the corresponding event, a <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> for a change of the Identity Information or the Technical Configuration and a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> for a key rotation, published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
 </ol>
@@ -1555,7 +1554,7 @@ A suspension and a cancellation revoke the Trust Artifacts of the Entity and, fo
 </section>
 <section id="authentic-source-registration">
 <h4><span class="section-number">8.3.3.4. </span>Authentic Source Registration<a class="headerlink" href="#authentic-source-registration" title="Link to this heading">¶</a></h4>
-<p>Authentic Source Registration process writes an Authentic Source information into the AS Registry, so that the Credential Issuers can discover which data are available and through which e-Service.
+<p>Authentic Source Registration process writes Authentic Source information into the AS Registry so that Credential Issuers can discover which data is available and through which e-Service.
 An Authentic Source is neither a Wallet-Relying Party nor a Federation Entity, so it does not go through the federation registration nor the Wallet-Relying Party registration, and it obtains no Trust Artifact.
 Its trust, its authorization and its operational aspects are governed by the PDND framework, see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>, and IT-Wallet does not define a lifecycle of the Authentic Sources, so this process does not produce a state transition.
 It enables the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, as the data source a Credential type references, and it can activate the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a> when a declared claim is not yet in the Claims Registry.</p>
@@ -1606,7 +1605,7 @@ When the change reduces the availability of the data on which a Credential type 
 <h4><span class="section-number">8.3.3.6. </span>Authentic Source Removal<a class="headerlink" href="#authentic-source-removal" title="Link to this heading">¶</a></h4>
 <p>Authentic Source Removal process removes the entry of an Authentic Source from the AS Registry, with the deactivation of the versioned entries of the Credential types that depend on it.</p>
 <p><strong>Input</strong></p>
-<p>The request of removal of the Authentic Source.</p>
+<p>The request for removal of the Authentic Source.</p>
 <p><strong>Outcome</strong></p>
 <p>The entry of the Authentic Source is removed from the AS Registry.
 The Credential types that lose the Authentic Source as their data source move to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, and they stay registered so that they can be activated again if the data source is restored, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
@@ -1621,7 +1620,7 @@ The Credential types that lose the Authentic Source as their data source move to
 <section id="certificate-and-trust-artifact-issuance">
 <h3><span class="section-number">8.3.4. </span>Certificate and Trust Artifact Issuance<a class="headerlink" href="#certificate-and-trust-artifact-issuance" title="Link to this heading">¶</a></h3>
 <p>This section describes the processes that issue the Trust Artifacts.
-Each process covers both the first issuance and the re-issuance, for example after a key rotation or a request of additional keys, and it is described with its Input, its Outcome and its Process.</p>
+Each process covers both the first issuance and the re-issuance, for example after a key rotation or a request for additional keys, and it is described with its Input, its Outcome and its Process.</p>
 <section id="issuance-of-the-x-509-certificates-through-acme-and-openid-federation">
 <h4><span class="section-number">8.3.4.1. </span>Issuance of the X.509 Certificates through ACME and OpenID Federation<a class="headerlink" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation" title="Link to this heading">¶</a></h4>
 <p>The WRPAC, the Signature/Seal Certificate and the National Authentication Certificate are issued through ACME <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8555.html"><strong>RFC 8555</strong></a> with the OpenID Federation profile of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-acme-openid-federation/">ACME-OIDFED</a>].</p>
@@ -1701,8 +1700,8 @@ The WRPRC is issued during the registration or the update of the Entity.</p>
 </section>
 <section id="signature-and-seal-certificate-issuance">
 <h4><span class="section-number">8.3.4.4. </span>Signature and Seal Certificate Issuance<a class="headerlink" href="#signature-and-seal-certificate-issuance" title="Link to this heading">¶</a></h4>
-<p>Signature and Seal Certificate Issuance covers the certificates issued by the national PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.
-The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the national Root and outside this process, and its qualified status is evaluated in the eligibility, see <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p>Signature and Seal Certificate Issuance covers the certificates issued by the National PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.
+The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the National Root and outside this process, and its qualified status is evaluated in the eligibility, see <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
 <p><strong>Input</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the Sign/Seal Certificate, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.
 The attributes of the certificate come from the record of the Entity in the Register or, in its absence, from the registration Trust Mark.</p>
@@ -1762,7 +1761,7 @@ The canonical name and the aliases are aligned to the <a class="reference intern
 A claim is a semantic definition and not an Entity, so the input is not registration data and it does not follow a profile of the <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
 The registry-level fields, meaning the identifier of the registry, its version, its last-modification time and its localization configuration, are generated by the Claims and Schema Management.</p>
 <p><strong>Outcome</strong></p>
-<p>The claim definition in the Claims Registry, that the Authentic Sources, the schemas and the Credential types can reference.
+<p>The outcome is the claim definition in the Claims Registry, which the Authentic Sources, the schemas and the Credential types can reference.
 A claim is never removed from the Claims Registry, because the Credentials already issued keep referencing it, so a deprecated claim is superseded by a new version, as described in <a class="reference internal" href="#claims-and-schemas-lifecycle"><span class="std std-ref">Claims and Schemas Lifecycle</span></a>.</p>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
@@ -1774,25 +1773,25 @@ A claim is never removed from the Claims Registry, because the Credentials alrea
 </section>
 <section id="schema-provisioning">
 <h4><span class="section-number">8.3.5.2. </span>Schema Provisioning<a class="headerlink" href="#schema-provisioning" title="Link to this heading">¶</a></h4>
-<p>Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at national level, or by registering it in alignment with an external Rulebook or standard.
+<p>Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at National level, or by registering it in alignment with an external Rulebook or standard.
 The schema is one of the requirements for the activation of a Credential type, so this process is a precondition of the <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p>
 <p><strong>Input</strong></p>
 <p>The schema of the Credential type follows the Schema Definition Parameters of <a class="reference internal" href="registry.html#schema-registry"><span class="std std-ref">Schema Registry</span></a>: its <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code>, the <code class="docutils literal notranslate"><span class="pre">format</span></code> it applies to, a JSON Schema for the SD-JWT VC format or a CBOR Schema for the mdoc-CBOR format, and the <code class="docutils literal notranslate"><span class="pre">schema_uri</span></code> with its integrity digest.
 The schema is composed of the claims defined in <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a>, and a claim still missing activates the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p>
 <p><strong>Outcome</strong></p>
-<p>The schema in the Schema Registry, for at least one of the supported formats, that the Credential type references.
+<p>The outcome is the schema in the Schema Registry, for at least one of the supported formats, that the Credential type references.
 This satisfies the schema requirement of the activation of the Credential type, as described in <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
 <li><p>The claims that compose the schema are available in the Claims Registry, otherwise the Claim Registration is activated for the missing claim.</p></li>
-<li><p>The schema is generated from the data model for a Credential defined at national level, or it is registered in alignment with the external Rulebook.</p></li>
+<li><p>The schema is generated from the data model for a Credential defined at National level, or it is registered in alignment with the external Rulebook.</p></li>
 <li><p>The Claims and Schema Management registers the schema in the Schema Registry, with its integrity digest, for each supported format.</p></li>
 </ol>
 </section>
 <section id="credential-type-registration">
 <h4><span class="section-number">8.3.5.3. </span>Credential Type Registration<a class="headerlink" href="#credential-type-registration" title="Link to this heading">¶</a></h4>
 <p>Credential Type Registration process creates a versioned entry of a Credential type in the Digital Credentials Catalog, in the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state, with its data source and the reference to the applicable Rulebook.
-The versioned entry is the pair given by the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and the <code class="docutils literal notranslate"><span class="pre">version</span></code>, that MUST be unique in the catalog.</p>
+The versioned entry is the pair given by the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and the <code class="docutils literal notranslate"><span class="pre">version</span></code>, which MUST be unique in the catalog.</p>
 <p><strong>Input</strong></p>
 <p>The definition of the Credential type, that a Credential Issuer provides through the <code class="docutils literal notranslate"><span class="pre">credential_type_declaration</span></code>, the <code class="docutils literal notranslate"><span class="pre">credential_technical_specification</span></code> and the <code class="docutils literal notranslate"><span class="pre">credential_policies</span></code> of its profile in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
 It carries the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code>, the User authentication methods and the minimum Level of Assurance, the reference to the schemes and the formats, the reference to the Rulebook, and the data source, given by one or more <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> or, when another Credential type provides the data, by one or more <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code>.
@@ -1810,7 +1809,7 @@ It enables the <a class="reference internal" href="#credential-type-activation-a
 </section>
 <section id="credential-type-activation-and-deactivation">
 <h4><span class="section-number">8.3.5.4. </span>Credential Type Activation and Deactivation<a class="headerlink" href="#credential-type-activation-and-deactivation" title="Link to this heading">¶</a></h4>
-<p>Credential Type Activation and Deactivation process verifies the conditions for the issuance of a Credential type and changes its versioned entry between the <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> and the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state.
+<p>Credential Type Activation and Deactivation process verifies the conditions for the issuance of a Credential type and changes its versioned entry between the <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> and the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> states.
 A Credential type can be issued from a versioned entry only if that entry is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, and only one versioned entry of the same <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> MUST be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> at a given time.</p>
 <p><strong>Input</strong></p>
 <p>The state of the three conditions of the versioned entry, i.e. its <code class="docutils literal notranslate"><span class="pre">issuers</span></code>, its data source and its schema.</p>
@@ -1850,12 +1849,12 @@ The Credentials already issued from the previous version keep their own status a
 <section id="lifecycle-management">
 <h2><span class="section-number">8.4. </span>Lifecycle Management<a class="headerlink" href="#lifecycle-management" title="Link to this heading">¶</a></h2>
 <p>After the registration event, an Entity can be updated, suspended, reactivated or cancelled, and a Credential type can become issuable or stop being issuable, and these changes reflect on the Trust Artifacts and on the registries.</p>
-<p>This section describes the states and events that cause an entity or credential type to change state. It also maps each event to the registries and trust artefacts impacted by the event. (<a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>).</p>
+<p>This section describes the states and events that cause an entity or credential type to change state. It also maps each event to the registries and trust artifacts impacted by the event. (<a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>).</p>
 <p>The formats, the parameters and the states of the Trust Artifacts are defined in <a class="reference internal" href="infrastructure-trust.html#trust-artifacts-lifecycle-state-machine"><span class="std std-ref">Trust Artifacts Lifecycle State Machine</span></a>, and the revocation mechanisms are defined in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.
 The lifecycle of the single Digital Credentials issued to the Users is a different matter and it is defined in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p>
 <section id="entity-lifecycle-state-machine">
 <h3><span class="section-number">8.4.1. </span>Entity Lifecycle State Machine<a class="headerlink" href="#entity-lifecycle-state-machine" title="Link to this heading">¶</a></h3>
-<p>This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.4</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
+<p>This section applies to WRPs and WPs as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.4</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
 <figure class="align-default" id="id823">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
@@ -1890,7 +1889,7 @@ Wallet Providers are <code class="docutils literal notranslate"><span class="pre
 </ul>
 <p><strong>Transition from OPERATIONAL to REGISTERED</strong></p>
 <p>An Entity goes back to <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> when it no longer holds valid Trust Artifacts.
-This can be triggered by their expiration or by their revocation following an update of the Entity.
+This can be triggered by its expiration or revocation following an update of the Entity.
 To return to <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> a new issuance of the Trust Artifacts is required.</p>
 <p><strong>Transition from REGISTERED or OPERATIONAL to SUSPENDED</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> indicates that the registration is temporarily not valid.
@@ -1904,9 +1903,9 @@ Because the Trust Artifacts affected by the suspension have been revoked, the En
 <p><code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> indicates that the registration has ended.
 The state is the same whether the cancellation was requested by the Entity itself or decided by the competent authority, and only the triggering event differs.</p>
 <ul class="simple">
-<li><p><em>EUDIW Trust Framework</em>: for WRPs it results in the revocation of the WRPAC, of the WRPRC and of the Sign/Seal Certificates, in the removal of the entry from the Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
+<li><p><em>EUDIW Trust Framework</em>: for WRPs it results in the revocation of the WRPAC, the WRPRC and, where applicable, the Sign/Seal Certificates, in the removal of the entry from the Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
 For Wallet Providers it results in the update of the Wallet Providers LoTE.</p></li>
-<li><p><em>National Trust Framework</em>: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement and of the registration Trust Mark, and in the revocation of the Sign/Seal Certificates.</p></li>
+<li><p><em>National Trust Framework</em>: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement and of the registration Trust Mark, and in the revocation of the National X509 Certificates.</p></li>
 </ul>
 <p>An Entity MUST reject new interactions or transactions started by a <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> Entity, and all the cryptographic keys, the active attestations and the operational capabilities associated with the Entity MUST be revoked.
 Entities MAY however continue to validate historical data, signatures and Credentials generated before the cancellation timestamp, subject to local risk policies.
@@ -1958,7 +1957,7 @@ The events that concern the Credential types and the Authentic Sources are descr
 <td><p>Without undue delay.</p></td>
 </tr>
 <tr class="row-even"><td><p>Suspension</p></td>
-<td><p>Request of a Supervisory Body, request of the WRP itself, or initiative of the Registrar in the cases listed after this table.</p></td>
+<td><p>Request from a Supervisory Body, request from the WRP itself, or initiative of the Registrar in the cases listed after this table.</p></td>
 <td><p>Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.</p></td>
 <td><p>Article 9(1), 9(2) and 9(3) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></td>
 <td><p>Notification within 24 hours.</p></td>
@@ -1970,7 +1969,7 @@ The events that concern the Credential types and the Authentic Sources are descr
 <td><p>Not defined.</p></td>
 </tr>
 <tr class="row-even"><td><p>Cancellation</p></td>
-<td><p>Request of a Supervisory Body, request of the WRP itself including when it no longer intends to rely upon Wallet Units, or initiative of the Registrar in the cases listed after this table.</p></td>
+<td><p>Request from a Supervisory Body, request from the WRP itself including when it no longer intends to rely upon Wallet Units, or initiative of the Registrar in the cases listed after this table.</p></td>
 <td><p>Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.</p></td>
 <td><p>Article 9(1), 9(2) and 9(3) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></td>
 <td><p>Notification within 24 hours.</p></td>
@@ -1988,7 +1987,7 @@ The Registrar MAY suspend or cancel the registration on its own initiative where
 <li><p>the registration contains information which is inaccurate, out of date or misleading;</p></li>
 <li><p>the WRP is not compliant with the registration policy;</p></li>
 <li><p>the WRP is requesting more attributes than the ones it registered;</p></li>
-<li><p>the WRP is otherwise acting in breach of Union or national law in a manner related to its role.</p></li>
+<li><p>the WRP is otherwise acting in breach of Union or National law in a manner related to its role.</p></li>
 </ul>
 </div></blockquote>
 <p>Before suspending or cancelling a registration on its own initiative, the Registrar MUST conduct a proportionality assessment, taking into account the impact on the fundamental rights, the privacy, the security and the confidentiality of the Users of the ecosystem, the severity of the disruption caused by the measure and the associated costs, both for the WRP and for the User.</p>
@@ -2478,7 +2477,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 02/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 03/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
