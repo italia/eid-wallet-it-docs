@@ -1120,7 +1120,7 @@ Besides the base registration data, a Relying Party provides the extended regist
 <td><p>The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
-<td><p>REQUIRED only where the Relying Party operates through a RP Intermediary. In that case it references its RP intermediary identifier. The RP intermediary side is described in <a class="reference internal" href="#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p></td>
+<td><p>In the EUDIW Trust Framework, REQUIRED where the Relying Party operates through a RP Intermediary, and in that case it references its RP Intermediary identifier. In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> to the RP Intermediary that federates it. The RP Intermediary side is described in <a class="reference internal" href="#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the Relying Party in the National Trust Framework.</p></td>
@@ -1141,7 +1141,9 @@ An intermediated Relying Party that operates only at national level is registere
 </section>
 <section id="relying-party-intermediary">
 <h4><span class="section-number">8.2.5.6. </span>Relying Party Intermediary<a class="headerlink" href="#relying-party-intermediary" title="Link to this heading">¶</a></h4>
-<p>In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
+<p>A Relying Party Intermediary declares that it acts as an intermediary in both the National and EUDIW Trust Frameworks.
+In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
+In the EUDIW Trust Framework it is registered with <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code> set, and it federates its intermediated Relying Parties that operate cross-border.
 It provides the same Data Identifiers as a <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a>, with the differences in the table below.
 The Data Identifiers not listed here are provided as for a Relying Party.</p>
 <table class="longtable docutils align-default" id="id817">
@@ -1160,7 +1162,7 @@ The Data Identifiers not listed here are provided as for a Relying Party.</p>
 <td><p>It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
-<td><p>Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary.</p></td>
+<td><p>Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary. It is declared in both the frameworks.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the Relying Party Intermediary within the National Trust Framework.</p></td>
