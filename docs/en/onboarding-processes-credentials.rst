@@ -24,7 +24,7 @@ The registry-level fields, meaning the identifier of the registry, its version, 
 
 **Outcome**
 
-The claim definition in the Claims Registry, that the Authentic Sources, the schemas and the Credential types can reference.
+The outcome is the claim definition in the Claims Registry, which the Authentic Sources, the schemas and the Credential types can reference.
 A claim is never removed from the Claims Registry, because the Credentials already issued keep referencing it, so a deprecated claim is superseded by a new version, as described in :ref:`onboarding-system:Claims and Schemas Lifecycle`.
 
 **Process**
@@ -37,7 +37,7 @@ A claim is never removed from the Claims Registry, because the Credentials alrea
 Schema Provisioning
 """""""""""""""""""
 
-Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at national level, or by registering it in alignment with an external Rulebook or standard.
+Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at National level, or by registering it in alignment with an external Rulebook or standard.
 The schema is one of the requirements for the activation of a Credential type, so this process is a precondition of the :ref:`onboarding-system:Credential Type Activation and Deactivation`.
 
 **Input**
@@ -47,20 +47,20 @@ The schema is composed of the claims defined in :ref:`registry:Claims Registry`,
 
 **Outcome**
 
-The schema in the Schema Registry, for at least one of the supported formats, that the Credential type references.
+The outcome is the schema in the Schema Registry, for at least one of the supported formats, that the Credential type references.
 This satisfies the schema requirement of the activation of the Credential type, as described in :ref:`onboarding-system:Credential Type Activation and Deactivation`.
 
 **Process**
 
 1. The claims that compose the schema are available in the Claims Registry, otherwise the Claim Registration is activated for the missing claim.
-2. The schema is generated from the data model for a Credential defined at national level, or it is registered in alignment with the external Rulebook.
+2. The schema is generated from the data model for a Credential defined at National level, or it is registered in alignment with the external Rulebook.
 3. The Claims and Schema Management registers the schema in the Schema Registry, with its integrity digest, for each supported format.
 
 Credential Type Registration
 """"""""""""""""""""""""""""
 
 Credential Type Registration process creates a versioned entry of a Credential type in the Digital Credentials Catalog, in the ``INACTIVE`` state, with its data source and the reference to the applicable Rulebook.
-The versioned entry is the pair given by the ``credential_type`` and the ``version``, that MUST be unique in the catalog.
+The versioned entry is the pair given by the ``credential_type`` and the ``version``, which MUST be unique in the catalog.
 
 **Input**
 
@@ -83,7 +83,7 @@ It enables the :ref:`onboarding-system:Credential Type Activation and Deactivati
 Credential Type Activation and Deactivation
 """""""""""""""""""""""""""""""""""""""""""
 
-Credential Type Activation and Deactivation process verifies the conditions for the issuance of a Credential type and changes its versioned entry between the ``ACTIVE`` and the ``INACTIVE`` state.
+Credential Type Activation and Deactivation process verifies the conditions for the issuance of a Credential type and changes its versioned entry between the ``ACTIVE`` and the ``INACTIVE`` states.
 A Credential type can be issued from a versioned entry only if that entry is ``ACTIVE``, and only one versioned entry of the same ``credential_type`` MUST be ``ACTIVE`` at a given time.
 
 **Input**

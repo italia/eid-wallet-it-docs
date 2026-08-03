@@ -14,7 +14,7 @@ The lifecycle of the single Digital Credentials issued to the Users is a differe
 Entity Lifecycle State Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in :numref:`fig_Entity_Lifecycle_States`, an Entity has five distinct and mutually exclusive states: ``UNREGISTERED``, ``REGISTERED``, ``OPERATIONAL``, ``SUSPENDED`` and ``CANCELLED``.
+This section applies to WRPs and WPs as they are directly involved in the operational phases. As shown in :numref:`fig_Entity_Lifecycle_States`, an Entity has five distinct and mutually exclusive states: ``UNREGISTERED``, ``REGISTERED``, ``OPERATIONAL``, ``SUSPENDED`` and ``CANCELLED``.
 Each state determines the authorization level and the operational capabilities of the Entity.
 
 .. _fig_Entity_Lifecycle_States:
@@ -46,7 +46,7 @@ Each state determines the authorization level and the operational capabilities o
 **Transition from OPERATIONAL to REGISTERED**
 
 An Entity goes back to ``REGISTERED`` when it no longer holds valid Trust Artifacts.
-This can be triggered by their expiration or by their revocation following an update of the Entity.
+This can be triggered by its expiration or revocation following an update of the Entity.
 To return to ``OPERATIONAL`` a new issuance of the Trust Artifacts is required.
 
 **Transition from REGISTERED or OPERATIONAL to SUSPENDED**
@@ -67,9 +67,9 @@ Because the Trust Artifacts affected by the suspension have been revoked, the En
 ``CANCELLED`` indicates that the registration has ended.
 The state is the same whether the cancellation was requested by the Entity itself or decided by the competent authority, and only the triggering event differs.
 
-- *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC, of the WRPRC and of the Sign/Seal Certificates, in the removal of the entry from the Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
+- *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC, the WRPRC and, where applicable, the Sign/Seal Certificates, in the removal of the entry from the Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
   For Wallet Providers it results in the update of the Wallet Providers LoTE.
-- *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement and of the registration Trust Mark, and in the revocation of the Sign/Seal Certificates.
+- *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement and of the registration Trust Mark, and in the revocation of the National X509 Certificates.
 
 An Entity MUST reject new interactions or transactions started by a ``CANCELLED`` Entity, and all the cryptographic keys, the active attestations and the operational capabilities associated with the Entity MUST be revoked.
 Entities MAY however continue to validate historical data, signatures and Credentials generated before the cancellation timestamp, subject to local risk policies.
@@ -115,7 +115,7 @@ The events that concern the Credential types and the Authentic Sources are descr
      - Without undue delay.
 
    * - Suspension
-     - Request of a Supervisory Body, request of the WRP itself, or initiative of the Registrar in the cases listed after this table.
+     - Request from a Supervisory Body, request from the WRP itself, or initiative of the Registrar in the cases listed after this table.
      - Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.
      - Article 9(1), 9(2) and 9(3) of [`CIR2025/848`_].
      - Notification within 24 hours.
@@ -127,7 +127,7 @@ The events that concern the Credential types and the Authentic Sources are descr
      - Not defined.
 
    * - Cancellation
-     - Request of a Supervisory Body, request of the WRP itself including when it no longer intends to rely upon Wallet Units, or initiative of the Registrar in the cases listed after this table.
+     - Request from a Supervisory Body, request from the WRP itself including when it no longer intends to rely upon Wallet Units, or initiative of the Registrar in the cases listed after this table.
      - Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.
      - Article 9(1), 9(2) and 9(3) of [`CIR2025/848`_].
      - Notification within 24 hours.
@@ -143,7 +143,7 @@ The Registrar MAY suspend or cancel the registration on its own initiative where
   - the registration contains information which is inaccurate, out of date or misleading;
   - the WRP is not compliant with the registration policy;
   - the WRP is requesting more attributes than the ones it registered;
-  - the WRP is otherwise acting in breach of Union or national law in a manner related to its role.
+  - the WRP is otherwise acting in breach of Union or National law in a manner related to its role.
 
 Before suspending or cancelling a registration on its own initiative, the Registrar MUST conduct a proportionality assessment, taking into account the impact on the fundamental rights, the privacy, the security and the confidentiality of the Users of the ecosystem, the severity of the disruption caused by the measure and the associated costs, both for the WRP and for the User.
 

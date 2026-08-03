@@ -10,10 +10,11 @@ Registration Data Model
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic **Data Identifier**.
+
 The following tables provide:
 
-- A base registration data provided by every entity, whatever its role.
-- An extended registration data provided by an entity depending on its role, and each :ref:`onboarding-system:Registration Profiles` is an instance that states which extended data the role provides and how the entity valorizes it.
+- *Base registration data* provided by every entity, whatever its role.
+- *Extended registration data* provided by an entity depending on its role, where each :ref:`onboarding-system:Registration Profiles` instance specifies which extended data the role provides and how the entity populates it.
 
 Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), the Digital Credentials Catalog for the Credential types (:ref:`registry:Digital Credentials Catalog`), and the notification dataset for a Wallet Provider.
 The mapping to the destination data models is given in :ref:`onboarding-system:Mapping to the Registry Data Models`.
@@ -30,7 +31,7 @@ The mapping to the destination data models is given in :ref:`onboarding-system:M
      - The name of the organization as it appears in the official records.
      - [`CIR2025/848`_], Annex I
    * - `identifier`
-     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the ``organizationIdentifier`` defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
+     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its National identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the ``organizationIdentifier`` defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
      - [`ETSI TS 119 475`_], Table 2
    * - `legal_nature`
      - Whether the entity is a public sector body or a private entity.
@@ -96,13 +97,13 @@ A given entity provides only the subset that applies to its role, as defined in 
      - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `conformity_assessment`
-     - The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
+     - The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
      - [`EIDAS-ARF`_], Annex 2
    * - `service_supply_point`
      - The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. It MUST be provided by the notified categories that issue an Attestation requested by the Wallet Unit.
      - [`EIDAS-ARF`_], Annex 2
    * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
+     - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the National Root Certification Authority, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
      - [`EIDAS-ARF`_], Annex 2
 
 Mapping to the Registry Data Models
@@ -184,8 +185,8 @@ The Onboarding System collects the registration data, and it is then encoded in 
 Eligibility and Compliance Preconditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the national point of contact toward the European Commission.
-Where a national and an EUDIW obligation overlap, the EUDIW obligation is authoritative.
+Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the National point of contact toward the European Commission.
+Where a National and an EUDIW obligation overlap, the EUDIW obligation is authoritative.
 
 The verification applies to Authentic Sources, Wallet Providers and Wallet-Relying Parties, and its content depends on the role.
 
@@ -194,8 +195,8 @@ The verification applies to Authentic Sources, Wallet Providers and Wallet-Relyi
   - **Wallet Providers**: the eligibility is established and the conformity assessment of the Wallet Solution is driven.
     The assessment covers the security of the wallet architecture, its data-protection mechanisms and its user-privacy features, and it is the precondition for the Wallet Solution to be certified.
     The certification of the Wallet Solution is an external process, and this phase uses its outcome as an input.
-    The certification follows the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).
-  - **PID Providers**: validated per national designation as providers of Person Identification Data, subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).
+    The certification follows the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).
+  - **PID Providers**: validated per National designation as providers of Person Identification Data, subject to the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).
   - **QEAA Providers**: validated through the qualification and the supervision of the issuing Qualified Trust Service Provider.
   - **PuB-EAA Providers**: validated through the conformity assessment required by Article 45f of the eIDAS2 Regulation.
   - **Non-qualified EAA Providers**: validated for the eligibility to issue.
@@ -218,7 +219,7 @@ Registration Outcomes
 A successful registration produces, depending on the role and on the scope of operation, the entry in the Register, the Trust Artifacts and the entry in the trusted list.
 The way each artifact is produced is described in :ref:`onboarding-system:Onboarding Processes`, and the effects of the later changes in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
-The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the national artifacts of the National Trust Framework.
+The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the National artifacts of the National Trust Framework.
 
 .. list-table:: Registration Outcomes by Entity Type
    :class: longtable
@@ -278,8 +279,8 @@ The table shows the artifacts that vary by role, that is the EUDIW artifacts obt
    The federation registration is common to every entity and, as a result of it, every entity obtains a Subordinate Statement issued by its Federation Authority, and a registration Trust Mark.
 
 .. note::
-   An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
-   It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its national certificate, that is the Sign/Seal Certificate for a national Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.
+   An entity operating only at National level obtains no Register record, no WRPAC and no WRPRC.
+   It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its National certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.
 
 Registration Profiles
 ^^^^^^^^^^^^^^^^^^^^^
@@ -309,7 +310,7 @@ In addition to the base registration data, a PID Provider provides the extended 
    * - `provided_attestations`
      - The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.
    * - `conformity_assessment`
-     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
+     - The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
    * - `service_supply_point`
      - The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.
    * - `credential_type_declaration`
@@ -354,7 +355,7 @@ In addition to the base registration data, a QEAA Provider provides the extended
    * - `credential_policies`
      - The conditions of use of each QEAA type, that is its validity and its purposes.
    * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
+     - The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the QEAA Provider in the National Trust Framework.
    * - `federation_entity_key`
@@ -393,7 +394,7 @@ In addition to the base registration data, a PuB-EAA Provider provides the exten
    * - `credential_policies`
      - The conditions of use of each PuB-EAA type, that is its validity and its purposes.
    * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
+     - The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the PuB-EAA Provider in the National Trust Framework.
    * - `federation_entity_key`
@@ -405,8 +406,8 @@ In addition to the base registration data, a PuB-EAA Provider provides the exten
 Non-Qualified EAA Provider
 """"""""""""""""""""""""""
 
-A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the National boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the National boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
 In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.
 
 .. list-table:: Non-Qualified EAA Provider Registration Data
@@ -440,7 +441,7 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 Relying Party
 """""""""""""
 
-At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
+At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within National boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 Besides the base registration data, a Relying Party provides the extended registration data below.
 
 .. list-table:: Relying Party Registration Data
@@ -467,7 +468,7 @@ Besides the base registration data, a Relying Party provides the extended regist
 
 .. note::
    An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-   An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
+   An intermediated Relying Party that operates only at National level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
 
 
 Relying Party Intermediary
@@ -516,7 +517,7 @@ Besides the base registration data, a Wallet Provider provides the extended regi
    * - `entitlements`
      - The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.
    * - `conformity_assessment`
-     - The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
+     - The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
    * - `federation_entity_identifier`
      - The Federation Entity Identifier of the Wallet Provider in the National Trust Framework.
    * - `federation_entity_key`
