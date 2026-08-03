@@ -403,17 +403,17 @@ The relationship between an Entity update and the Trust Artifacts it affects is 
      - Revocation and re-issuance of the certificate holding the key, see :ref:`table_entity_data_and_trust_artifacts`.
 
    * - Suspension of an Entity
-     - Registrar
+     - Registrar, Federation Authority
      - Register (registration status no longer valid).
      - Revocation of the affected WRPAC, WRPRC and registration Trust Mark, and update of the Subordinate Statement.
 
    * - Reactivation of an Entity
-     - Registrar
+     - Registrar, Federation Authority
      - Register (registration status valid again).
      - New issuance of the Trust Artifacts revoked at suspension time.
 
    * - Cancellation of an Entity
-     - Registrar
+     - Registrar, Federation Authority
      - Register (entry removed). Update of the LoTE or of the EUMS TL for the notified categories.
      - Revocation of the WRPAC, WRPRC and Sign/Seal Certificates, and removal of the Subordinate Statement and of the registration Trust Mark.
 

@@ -129,7 +129,7 @@ A suspension and a cancellation revoke the Trust Artifacts of the Entity and, fo
 
 1. The request of suspension, reactivation or cancellation is received from the competent authority or from the Entity.
 2. On a suspension, the EUDIW Registration Management suspends the record in the Register and the National Federation Management withdraws the valid Subordinate Statement of the Entity, so that its Trust Artifacts are no longer relied upon, and the Entity moves to ``SUSPENDED``.
-3. On a reactivation, once the condition that caused the suspension is removed, the same party that decided the suspension restores the registration, and the Entity returns to its previous state.
+3. On a reactivation, once the condition that caused the suspension is removed, the same party that decided the suspension restores the registration, and the Entity returns to ``REGISTERED``.
 4. On a cancellation, the EUDIW Registration Management cancels the record in the Register, the National Federation Management withdraws the Subordinate Statement, the Trust Artifacts of the Entity are revoked, and the Entity moves to ``CANCELLED``.
 5. For a Credential Issuer, a suspension or a cancellation deactivates its Credential types, and the Credential Issuer notifies the Authentic Sources so that they can withdraw the corresponding authorizations within PDND, as described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
 6. Each event, a ``suspension`` or a ``revocation``, is published on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
