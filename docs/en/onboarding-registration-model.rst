@@ -33,7 +33,7 @@ The mapping to the destination data models is given in :ref:`onboarding-system:M
      - The name of the organization as it appears in the official records.
      - [`CIR2025/848`_], Annex I
    * - `identifier`
-     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its National identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the ``organizationIdentifier`` defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
+     - One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its national identifier of type ``NTR``, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the ``organizationIdentifier`` defined in clause 5.1.4 of [`ETSI EN 319 412-1`_].
      - [`ETSI TS 119 475`_], Table 2
    * - `legal_nature`
      - Whether the entity is a public sector body or a private entity.
@@ -81,7 +81,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The public key with which the Federation Entity signs its Entity Configuration. It MUST be provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
      - `OID-FED`_, Section 3
    * - `certificate_signing_requests`
-     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. They are the input of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, where they are presented in the ACME order.
+     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. Their profile is defined in :ref:`onboarding-system:Certificate Signing Request Profile` and they are the input of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, where they are presented in the ACME order.
      - :rfc:`2986`
    * - `provided_claims_purposes`
      - The claims composing an Attestation, selected from the Claims Registry, and the purposes it uses, selected from the Taxonomy, together with the data-provision capabilities. It groups the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`.
