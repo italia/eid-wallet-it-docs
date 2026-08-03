@@ -289,7 +289,7 @@ The table below provides the relationship between the categories of registered d
 .. note::
   The inclusion of Wallet Providers and Credential Issuers in the LoTE is an implicit assertion of their role and of their authorization within the ecosystem.
   In particular, their inclusion is the result of the successful completion of the registration and notification procedures as defined in [`CIR2025/848`_] for the registration of the WRPs and in [`CIR2024/2980`_] for the notification of WRPs and Wallet Providers.
-  Similarly, the possibility to fetch the Subordinate Statement of an Entity means that the Entity is currently part of the National ecosystem.
+  Similarly, the ability to fetch the Subordinate Statement of an Entity means that the Entity is currently part of the National ecosystem.
 
 .. note::
   QEAAs are provided by Qualified Trust Service Providers.

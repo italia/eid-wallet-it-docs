@@ -13,7 +13,7 @@ This section defines the complete set of the data the entities provide to the On
 The following tables provide:
 
 - A base registration data provided by every entity, whatever its role.
-- An extended registration data provided by an entity depending on its role, and each :ref:`onboarding-system:Registration Profiles` is an instance that states which extended data the role provides and how the entity valorizes it.
+- An extended registration data provided by an entity depending on its role, and each :ref:`onboarding-system:Registration Profiles` is an instance that states which extended data the role provides and how the entity populates it.
 
 Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), the Digital Credentials Catalog for the Credential types (:ref:`registry:Digital Credentials Catalog`), and the notification dataset for a Wallet Provider.
 The mapping to the destination data models is given in :ref:`onboarding-system:Mapping to the Registry Data Models`.
@@ -78,7 +78,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The public key with which the Federation Entity signs its Entity Configuration. It MUST be provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the ``.well-known/openid-federation`` endpoint.
      - `OID-FED`_, Section 3
    * - `certificate_signing_requests`
-     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. They are the input of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance processes`, where they are presented in the ACME order.
+     - An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. Their profile is defined in :ref:`onboarding-system:Certificate Signing Request Profile` and they are the input of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes, where they are presented in the ACME order.
      - :rfc:`2986`
    * - `provided_claims_purposes`
      - The claims composing an Attestation, selected from the Claims Registry, and the purposes it uses, selected from the Taxonomy, together with the data-provision capabilities. It groups the ``data_capabilities`` of the AS Registry entry, see :ref:`registry:Authentic Source Registry`.
@@ -285,7 +285,7 @@ Registration Profiles
 ^^^^^^^^^^^^^^^^^^^^^
 
 This Section describes the registration of each role as a profile.
-Every profile provides the base registration data defined in :ref:`onboarding-system:Registration Data Model`, and each profile below states only the extended registration data the role provides and how the entity valorizes it, together with any specialization of the base data.
+Every profile provides the base registration data defined in :ref:`onboarding-system:Registration Data Model`, and each profile below states only the extended registration data the role provides and how the entity populates it, together with any specialization of the base data.
 An entity can hold more than one entitlement in a single registration record and for more than one role, so the profiles are not mutually exclusive and they compose.
 For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.
 
@@ -483,13 +483,13 @@ The Data Identifiers not listed here are provided as for a Relying Party.
    :header-rows: 1
 
    * - **Data Identifier**
-     - **Values**
+     - **Value**
    * - `intended_use`
      - It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.
    * - `intermediary_relationship`
-     - Valorized on the intermediary side, that is the Relying Party declares that it is a designated intermediary.
+     - Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary.
    * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the Relying Party Intermediary in the National Trust Framework.
+     - The Federation Entity Identifier of the Relying Party Intermediary within the National Trust Framework.
    * - `federation_entity_key`
      - The Federation Entity Key of the Relying Party Intermediary.
 

@@ -34,7 +34,7 @@ Otherwise, the EUDIW Trust Framework is necessary.
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
     PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0.
 
-In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`), then used during the trust evaluation processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
+In both cases, the onboarding and, where applicable, the European notification processes result in the release or update of the trust artifacts (detailed in sections :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`), then used during the trust evaluation processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 
 
 .. include:: trust-pki-architecture.rst

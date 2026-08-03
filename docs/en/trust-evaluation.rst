@@ -127,7 +127,7 @@ The failure of the trust evaluation under the selected framework MUST NOT be eva
 
 In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
 During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance.
-Unlike the presentation case, no User choice option is foreseen at issuance.
+Unlike the presentation case, no User choice is offered at issuance.
 
 This behavior follows the requirements defined in the ARF Annex 2 (`EIDAS-ARF`_), and applies for both EUDIW and National Trust Frameworks.
 

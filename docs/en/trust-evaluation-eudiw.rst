@@ -588,7 +588,7 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 5. **Path validation**: validate the certificate chain of the Wallet-Relying Party Registration Certificate as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_n`` is the certificate issued by the Provider of WRPRC, ``C_1`` is the Wallet-Relying Party Registration Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
 6. **Temporal validity**: check ``iat`` and ``exp`` if present.
 7. **Status verification**: check the revocation status through the ``status`` field of the Wallet-Relying Party Registration Certificate, as defined in [`ETSI TS 119 475`_], following :ref:`credential-revocation:Checking Credentials Statuses`.
-8. **Coherence check**: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are coherent with the interaction.
+8. **Consistency check**: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are consistent with the interaction.
 
 .. note::
 
