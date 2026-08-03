@@ -333,7 +333,7 @@ Otherwise, the EUDIW Trust Framework is necessary.</p>
 <p>As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
 PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0.</p>
 </div>
-<p>In both cases, the onboarding and, eventually, European notification processes result in the release or update of different trust artifacts (detailed in sections <a class="reference internal" href="#common-trust-artifacts"><span class="std std-ref">Common Trust Artifacts</span></a>, <a class="reference internal" href="#eudiw-trust-artifacts"><span class="std std-ref">EUDIW Trust Artifacts</span></a> and <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>), then used during the trust evaluation processes (detailed in section <a class="reference internal" href="trust-evaluation.html#trust-evaluation-process"><span class="std std-ref">Trust Evaluation Process</span></a>).</p>
+<p>In both cases, the onboarding and, where applicable, the European notification processes result in the release or update of the trust artifacts (detailed in sections <a class="reference internal" href="#common-trust-artifacts"><span class="std std-ref">Common Trust Artifacts</span></a>, <a class="reference internal" href="#eudiw-trust-artifacts"><span class="std std-ref">EUDIW Trust Artifacts</span></a> and <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>), then used during the trust evaluation processes (detailed in section <a class="reference internal" href="trust-evaluation.html#trust-evaluation-process"><span class="std std-ref">Trust Evaluation Process</span></a>).</p>
 </section>
 <section id="pki-architecture">
 <h2><span class="section-number">5.2. </span>PKI Architecture<a class="headerlink" href="#pki-architecture" title="Link to this heading">¶</a></h2>
@@ -4130,8 +4130,8 @@ The CRL is published and made available to any entity via a publicly accessible 
 The CRL MUST be digitally signed by the <strong>CRL issuer</strong>.</p>
 <p>CRLs MAY be used for the following types of certificates:</p>
 <ul class="simple">
-<li><p>Wallet Relying Party Access Certificates by including the <code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code> extension in the certificate, as described in <cite>:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate</cite>.</p></li>
-<li><p>Sign/Seal Certificates by including the <code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code> extension in the certificate, as described in <cite>:ref:trust-artifact-eudiw:Sign/Seal Certificate</cite>.</p></li>
+<li><p>Wallet Relying Party Access Certificates by including the <code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code> extension in the certificate, as described in <a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>.</p></li>
+<li><p>Sign/Seal Certificates by including the <code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code> extension in the certificate, as described in <a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>.</p></li>
 </ul>
 <p>If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate <code class="docutils literal notranslate"><span class="pre">subject</span></code> field.</p>
 <p>The CRL issuer MAY also generate delta CRLs.

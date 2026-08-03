@@ -419,7 +419,7 @@ The Wallet Unit MUST determine the applicable framework before the Authorization
 <p>The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.</p>
 <p>In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
 During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance.
-Unlike the presentation case, no User choice option is foreseen at issuance.</p>
+Unlike the presentation case, no User choice is offered at issuance.</p>
 <p>This behavior follows the requirements defined in the ARF Annex 2 (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>), and applies for both EUDIW and National Trust Frameworks.</p>
 </section>
 </section>
@@ -593,12 +593,14 @@ The frequency of updates and the types of lists to cache represent a trade-off b
 <h4><span class="section-number">6.2.2.1. </span>List Key Rotation and Historical Verification<a class="headerlink" href="#list-key-rotation-and-historical-verification" title="Link to this heading">¶</a></h4>
 <p>To support continuous key rotation and regular updates, the LoTE and LOTL implement a <em>pivoting mechanism</em>.
 This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at other distinct URIs called <em>pivots</em>.
-Each List version is signed with a public key referenced within the immediately preceding pivot. The last pivot is signed with the key referenced in the OJEU.
+Each List version is signed with a public key referenced within the immediately preceding pivot.
+The last pivot is signed with the key referenced in the OJEU.
 The newest List version explicitly contains the URIs where all historical versions are hosted.</p>
 <p>An Entity validates this chain of pivots from the newest version back to the oldest by verifying that each subsequent artifact is correctly signed by the public key authorized in the prior version.
 Final validation is achieved by verifying the trustworthiness of the oldest public key, either via a lookup in the OJEU or directly against a cached, previously validated version of the List.
 This ensures that an entity possessing the last known valid version can reliably discover the next version and validate it via an unbroken chain of trust rooted in the OJEU.</p>
-<p>While the pivoting mechanism enables continuous updates to LoTE parameters, certain updates may require adding a <code class="docutils literal notranslate"><span class="pre">ServiceHistory</span></code> object to the LoTE to preserve the historical keys and configurations needed to validate legacy signatures. The specific scenarios in which an Entity update triggers a migration of its configuration into <code class="docutils literal notranslate"><span class="pre">ServiceHistory</span></code> are detailed in Section :ref:infrastructure-trust:Trust Management and Lifecycle.</p>
+<p>While the pivoting mechanism enables continuous updates to LoTE parameters, certain updates may require adding a <code class="docutils literal notranslate"><span class="pre">ServiceHistory</span></code> object to the LoTE to preserve the historical keys and configurations needed to validate legacy signatures.
+The specific scenarios in which an Entity update triggers a migration of its configuration into <code class="docutils literal notranslate"><span class="pre">ServiceHistory</span></code> are detailed in <a class="reference internal" href="infrastructure-trust.html#trust-management-and-lifecycle"><span class="std std-ref">Trust Management and Lifecycle</span></a>.</p>
 <p>Regardless of an Entity's objective when validating the LoTE (whether retrieving a current or historical configuration), the validation mechanism MUST strictly follow Section <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>.</p>
 </section>
 <section id="list-of-trusted-entities-validation">
@@ -1060,7 +1062,7 @@ When using this service the Wallet Unit SHOULD inform the User that an external 
 <li><p><strong>Path validation</strong>: validate the certificate chain of the Wallet-Relying Party Registration Certificate as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, where <code class="docutils literal notranslate"><span class="pre">C_n</span></code> is the certificate issued by the Provider of WRPRC, <code class="docutils literal notranslate"><span class="pre">C_1</span></code> is the Wallet-Relying Party Registration Certificate, and the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> is the Trust Anchor obtained at the previous step.</p></li>
 <li><p><strong>Temporal validity</strong>: check <code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code> if present.</p></li>
 <li><p><strong>Status verification</strong>: check the revocation status through the <code class="docutils literal notranslate"><span class="pre">status</span></code> field of the Wallet-Relying Party Registration Certificate, as defined in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], following <a class="reference internal" href="credential-revocation.html#checking-credentials-statuses"><span class="std std-ref">Checking Credentials Statuses</span></a>.</p></li>
-<li><p><strong>Coherence check</strong>: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are coherent with the interaction.</p></li>
+<li><p><strong>Consistency check</strong>: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are consistent with the interaction.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
