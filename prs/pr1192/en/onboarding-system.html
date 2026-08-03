@@ -799,23 +799,22 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 <h3><span class="section-number">8.2.4. </span>Registration Outcomes<a class="headerlink" href="#registration-outcomes" title="Link to this heading">¶</a></h3>
 <p>A successful registration produces, depending on the role and on the scope of operation, the entry in the Register and the Trust Artifacts. For the notified categories, the entry in a List of Trusted Entities follows from the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>, which is a separate process.
 The way each artifact is produced is described in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the effects of the later changes in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
-<p>The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the National artifacts of the National Trust Framework.</p>
+<p>The table shows the artifacts that vary by role.
+The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate, while the WRPRC is shown on its own because it is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.</p>
 <table class="longtable docutils align-default" id="id811">
 <caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id811" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 22.0%" />
+<col style="width: 20.0%" />
 <col style="width: 12.0%" />
 <col style="width: 10.0%" />
-<col style="width: 12.0%" />
-<col style="width: 20.0%" />
+<col style="width: 34.0%" />
 <col style="width: 24.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Entity type</strong></p></th>
 <th class="head"><p><strong>Register record</strong></p></th>
-<th class="head"><p><strong>WRPAC</strong></p></th>
 <th class="head"><p><strong>WRPRC</strong></p></th>
-<th class="head"><p><strong>National X.509 certificate</strong></p></th>
+<th class="head"><p><strong>X.509 certificate</strong></p></th>
 <th class="head"><p><strong>LoTE entry</strong></p></th>
 </tr>
 </thead>
@@ -823,50 +822,43 @@ The way each artifact is produced is described in <a class="reference internal" 
 <tr class="row-even"><td><p>PID Provider</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>the WRPAC, and the Sign/Seal Certificate</p></td>
 <td><p>PID Providers LoTE</p></td>
 </tr>
 <tr class="row-odd"><td><p>QEAA Provider</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>the WRPAC. The Sign/Seal Certificate is the qualified certificate issued by the QTSP</p></td>
 <td><p>EUMS TL, referenced in the LOTL</p></td>
 </tr>
 <tr class="row-even"><td><p>PuB-EAA Provider</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>the WRPAC. The Sign/Seal Certificate is the qualified certificate issued by the QTSP</p></td>
 <td><p>PuB-EAA Providers LoTE</p></td>
 </tr>
 <tr class="row-odd"><td><p>Non-qualified EAA Provider</p></td>
 <td><p>yes only if it issues an Attestation published in a EU Rulebook</p></td>
 <td><p>yes only if it issues an Attestation published in a EU Rulebook</p></td>
-<td><p>yes only if it issues an Attestation published in a EU Rulebook</p></td>
-<td><p>Sign/Seal Certificate, for the Attestations anchored to the National Trust Framework</p></td>
+<td><p>the WRPAC only if it issues an Attestation published in a EU Rulebook, and the Sign/Seal Certificate</p></td>
 <td><p>None, trust anchor distribution defined in the applicable Attestation Rulebook</p></td>
 </tr>
 <tr class="row-even"><td><p>Relying Party</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>Authentication Certificate, where the Relying Party operates in the Proximity Flow</p></td>
+<td><p>yes, only for RP operating in EUDIW</p></td>
+<td><p>yes, only for RP operating in EUDIW</p></td>
+<td><p>the WRPAC if it has a register record, and the Authentication Certificate where the RP has no register record and it operates in the Proximity Flow</p></td>
 <td><p>None</p></td>
 </tr>
 <tr class="row-odd"><td><p>Relying Party Intermediary</p></td>
 <td><p>yes</p></td>
-<td><p>yes</p></td>
 <td><p>No</p></td>
-<td><p>No</p></td>
+<td><p>the WRPAC</p></td>
 <td><p>None</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>no</p></td>
 <td><p>no</p></td>
-<td><p>no</p></td>
-<td><p>Sign/Seal Certificate</p></td>
+<td><p>the Sign/Seal Certificate</p></td>
 <td><p>Wallet Providers LoTE</p></td>
 </tr>
 </tbody>
@@ -878,7 +870,7 @@ The way each artifact is produced is described in <a class="reference internal" 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
-It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its National certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.</p>
+It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its X.509 certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.</p>
 </div>
 </section>
 <section id="registration-profiles">
