@@ -376,8 +376,8 @@ A Wallet Instance is registered indirectly, through its Wallet Provider, see <a 
 <p>The trust-infrastructure roles are realized, within the Onboarding System, by a set of components, each providing one or more services.
 An onboarding entity interacts with the system through a single entry point, the Onboarding UI, that orchestrates the flow and routes each request to the responsible component, and that is therefore not shown as a separate component in the diagram below.</p>
 <p>The table below lists the components, the services each of them provides, and the onboarding process that each service realizes.</p>
-<table class="longtable docutils align-default" id="id757">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Components, Services and Processes</span><a class="headerlink" href="#id757" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id806">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Components, Services and Processes</span><a class="headerlink" href="#id806" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 30.0%" />
@@ -402,7 +402,7 @@ An onboarding entity interacts with the system through a single entry point, the
 <td><p>Verification and registration of the Wallet-Relying Parties in the Register</p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>X.509 Certificate Management</p></td>
+<tr class="row-odd"><td><p>Certificate Management</p></td>
 <td><p>Issuance and update of WRPAC, WRPRC, Sign/Seal and National Authentication certificates</p></td>
 <td><p><a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a></p></td>
 </tr>
@@ -430,10 +430,10 @@ They overlap only in the identification data, so the split keeps the registratio
 <p>The diagram below shows the components, the actors that interact with them and the data stores they write.
 The Authentic Sources register in the AS Registry only, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.</p>
-<figure class="align-default" id="id758">
+<figure class="align-default" id="id807">
 <p class="plantuml">
-<object data="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.png"><img src="_images/plantuml-5a5e9ddcffb9fd9e6ada5659c761107a0acc1101.png" alt="&#64;startuml IT-Wallet Onboarding System
+<object data="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.png"><img src="_images/plantuml-85360b924a43fefff3f64af05b3104fa2b4a1521.png" alt="&#64;startuml IT-Wallet Onboarding System
 left to right direction
 skinparam shadowing false
 skinparam defaultTextAlignment center
@@ -461,7 +461,7 @@ package &quot;IT-Wallet Onboarding System&quot; {
   package &quot;Entity Onboarding&quot; as pkgent #F5F5F5 {
     rectangle &quot;**National Federation Management**\n..\nAll Entities&quot; as fed #C8E6C9
     rectangle &quot;**EUDIW Registration Management**\n..\nCredential Issuers, Relying Parties,\nRelying Party Intermediaries\noperating in EUDIW boundary&quot; as reg #BBDEFB
-    rectangle &quot;**Certificate** \n**Management**\n..\nJWT and X.509 Artifacts&quot; as x509 #FFE0B2
+    rectangle &quot;**Certificate Management**\n..\nX.509 and JWT Artifacts (WRPAC/WRPRC)&quot; as x509 #BBDEFB
   }
 
   rectangle &quot;**EU Notification Management**\n..\nPID / QEAA / PuB-EAA Providers,\nWallet Providers&quot; as pub #BBDEFB
@@ -494,7 +494,7 @@ pub --&gt; notif
 pub ..&gt; ec
 
 ' ---- certificate issuance ----
-fed --&gt; x509
+' fed --&gt; x509
 reg --&gt; x509
 
 pkgent --&gt; pub
@@ -503,7 +503,7 @@ pkgent --&gt; pub
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/bLPHRnit37xNho3iXsr6x3RhqhLzA6exPo05rcLpXkp1B_8TVHQiamwIBeatzB-Fr9slYkEac0pO9v7yIF4ZUVxaWtIXgJHStOnlfTOOu7Upjj8LofImtFk0bT2u2H0iE5Lk0nJAOHwKDSBlbAcbanNuhIpiFPjifFQOI0hSo4Q76tm8KwrAKw49aDCNkaIhblbEbhWCUut0yDAKEeMPEcVlvrPR1yEtSHqB5zQ4fVe7uVmy4MbbCEnh1El2rYO2OmlqMCFvk-JGIRFZmrykqiD3E3Fh2dHT46_YIjLiOugvTGOTf9Y5378j_NUiPHwiEwKYeWG6owP6TwUyTNkOsM8_0Eb15XKCi_DPblqgH9T36Bn0vG3-5GAWLvs6W5G2p6QY7B7hNIb3WE7YWZza1xJwNC1WD9esOKj4gXoMjd4vZaQmCgFHRz8GDlCy6gtCPB8onug-3TvN9Trp_YvxEt__57skfQf8onImpBTOoVy9x_Fjo_Z4YxObWy19LArXxh1WP4dzuNs3heNEPNWC_VLHKZEo2FiJ-UJIVo6VNo8Fv6j1NbrBokcueWVLNNI3nVEtpFwwlBg5Fx5KFZmB-VIQPsIYzrmtrpGVoDFPogGdUxZY3gwmKDAHU6Li7KCckJBGUbrpHqZNbgh34eQpsMMsc9tW0id9Hb5Udo-YpxStiHZ-dboyVayjJmRK6cqA7lXek5XahsS_7-WuIWDyiPsBqpculhg4L_17DftIptKp6_FJjRDtgk1yh4pNKlrHIsgpxc-Lba2NSCfCZFcIQWsMrCSTPLGBF1QEYk4mAM1mg0HYUtaWh-ju7nEPqFtK2hhMURKoRUSmnEGCRkI3DRRg-NZp7PoqC3nq_N9eW6Ti8_DSAnmpkgXzx-fZzfyOF6A7q-KnH6F3WiJsgo1sSssRuj7q8fUDnhMrk_PsH4iMrq4tQnoLg2J5kQqgvJqPHLNCUrNn0unfWKzcxPfcBT0a92PP9dZaZiSV3-Fn0zWxAWPiYLwPahV6fshSzHy0wUMdrahpP8YQkQrghQJ9iVVhkYiGEHjqIABM9zrcCldOZPrUcm6iONHwDNikBlZntYcAzASkr3XWEOfODQARY7p0x8jkZF6U7WLpnCyjNO9BcxUHWBZZ633_vlzRqmBbiv5zl3oHs9JRieUD6z7b8wQcMGln2Kr1Vp_4Vm00">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id758" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/bLPHRnit37xNho3iXsr6x3RhqhLzA6exPo05rcLpXkp1B_8TVHQiamwIBeatzB-Fr9slYkEac0pO9v7yIF4ZUVxaWtIXgJHStOnlfTOOu7Upjj8LofImtFk0bT2u2H0iE5Lk0nJAOHwKDSBlbAcbanNuhIpiFPjifFQOI0hSo4Q76tm8KwrAKw49aDCNkaIhblbEbhWCUut0yDAKEeMPEcVlvrPR1yEtSHqB5zQ4fVe7uVmy4MbbCEnh1El2rYO2OmlqMCFvk-JGIRFZmrykqiD3E3Fh2dHT46_YIjLiOugvTGOTf9Y5378j_NUiPHwiEwKYeWG6owP6TwUyTNkOsM8_0Eb15XKCi_DPblqgH9T36Bn0vG3-5GAWLvs6W5G2p6QY7B7hNIb3WE7YWZza1xJwNC1WD9esOKj4gXoMjd4vZaQmCgFHRz8GDlCy6gtCPB8onug-3TvN9Trp_YvxEt__57skfQf8onImpBTOoVy9x_Fjo_Z4YxObWy19LArXxh1WP4dzuNs3heNEPNWC_VLHKZEo2FiJ-UJIVo6VNo8Fv6j1NbrBokcueWVLNNI3nVEtpFwwlBg5Fx5KFZmB-VIQPsIYzrmtrpGVoDFPogGdUxZY3gwmKDAHU6Li7KCckJBGUbrpHqZNbgh34eQpsMMsc9tW0id9Hb5Udo-YpxStiHZ-dboyVayjJmRK6cqA7lXek5XahsS_7-WuIWDyiPsBqpculhg4L_17DftIptKp6_FJjRDtgk1yh4pNKlrHIsgpxc-Lba2NSCfCZFcIQWsMrCSTPLGBF1QEYk4mAM1mg0HYUtaWh-ju7nEPqFtK2hhMURKoRUSmnEGCRkI3DRRg-NZp7PoqC3nq_N9eW6Ti8_DSAnmpkgXzx-fZzfyOF6A7q-KnH6F3WiJsgo1sSssRuj7q8fUDnhMrk_PsH4iMrq4tQnoLg2J5kQqgvJqPHLNCUrNn0unfWKzcxPfcBT0a92PP9dZaZiSV3-Fn0zWxAWPiYLwPahV6fshSzHy0wUMdrahpP8YQkQrghQJ9iVVhkYiGEHjqIABM9zrcCldOZPrUcm6iONHwDNikBlZntYcAzASkr3XWEOfODQARY7p0x8jkZF6U7WLpnCyjNO9BcxUHWBZZ633_vlzRqmBbiv5zl3oHs9JRieUD6z7b8wQcMGln2Kr1Vp_4Vm00">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id807" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -513,16 +513,19 @@ pkgent --&gt; pub
 <p>This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains. It is organized as a common part and a profile for each role.</p>
 <section id="registration-data-model">
 <h3><span class="section-number">8.2.1. </span>Registration Data Model<a class="headerlink" href="#registration-data-model" title="Link to this heading">¶</a></h3>
-<p>This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference.</p>
-<p>Depending on the role, the data is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), the Digital Credentials Catalog for the Credential types (<a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), and the notification dataset for a Wallet Provider.</p>
-<p>The table below is the reference catalog of the data, identified by a format-agnostic <strong>Data Identifier</strong>.
-A Data Identifier can group a set of detailed fields of a destination data model that are semantically close and are provided together, in which case the Description lists the fields it provides.
-Each <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> is an instance of this catalog, that states which Data Identifiers are required for a role and how the entity valorizes them.</p>
-<table class="longtable docutils align-default" id="id759">
-<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Registration Data Model</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
+<p>This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic <strong>Data Identifier</strong>.
+The following tables provide:</p>
+<ul class="simple">
+<li><p>A base registration data provided by every entity, whatever its role.</p></li>
+<li><p>An extended registration data provided by an entity depending on its role, and each <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> is an instance that states which extended data the role provides and how the entity valorizes it.</p></li>
+</ul>
+<p>Depending on the role, the data is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), the Digital Credentials Catalog for the Credential types (<a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), and the notification dataset for a Wallet Provider.
+The mapping to the destination data models is given in <a class="reference internal" href="#mapping-to-the-registry-data-models"><span class="std std-ref">Mapping to the Registry Data Models</span></a>.</p>
+<table class="longtable docutils align-default" id="id808">
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Base Registration Data</span><a class="headerlink" href="#id808" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 22.0%" />
-<col style="width: 50.0%" />
+<col style="width: 26.0%" />
+<col style="width: 46.0%" />
 <col style="width: 28.0%" />
 </colgroup>
 <thead>
@@ -533,19 +536,19 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>legal_name</cite></p></td>
-<td><p>The name of the organization as it appears in the official records. In the Register it is the <code class="docutils literal notranslate"><span class="pre">legalName</span></code>, in the AS Registry the <code class="docutils literal notranslate"><span class="pre">organization_name_l10n_id</span></code>.</p></td>
+<td><p>The name of the organization as it appears in the official records.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>identifier</cite></p></td>
-<td><p>One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is required for every entity, and a public body additionally provides its national identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations. The other identifier types of Table 2, such as EUID and LEI, are optional and are not supported in the current version. The syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> is defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></td>
+<td><p>One or more official identifiers of the organization. Within IT-Wallet the Value Added Tax Identification Number (VATIN) is REQUIRED for every entity, and a public body additionally MUST provide its national identifier of type <code class="docutils literal notranslate"><span class="pre">NTR</span></code>, valued with its IPA code, that is the code of the Italian Index of Public Administrations. An organization that has a European Unique Identifier (EUID) MUST provide it. The other identifier types of Table 2, such as Legal Entity Identifier (LEI), are OPTIONAL and are not supported in the current version. For more details refer to the syntax of the <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>].</p></td>
 <td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 2</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>legal_nature</cite></p></td>
-<td><p>Whether the entity is a public sector body or a private entity. In the Register it is the <code class="docutils literal notranslate"><span class="pre">isPSB</span></code> flag, in the AS Registry the <code class="docutils literal notranslate"><span class="pre">organization_type</span></code>.</p></td>
+<td><p>Whether the entity is a public sector body or a private entity.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>contact_information</cite></p></td>
-<td><p>The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service. In the Register the support contact is the <code class="docutils literal notranslate"><span class="pre">supportURI</span></code> field.</p></td>
+<td><p>The postal address, the information web page and the contacts of the organization. The contacts include at least an institutional contact for the administrative communications, for which a certified electronic mail address (PEC) is RECOMMENDED, and a technical contact for the user support of the service.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>service_policies</cite></p></td>
@@ -553,23 +556,41 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>data_protection_authority</cite></p></td>
-<td><p>The authority competent for the supervision of the entity under the data-protection law, with the contact information the Users employ to report suspicious actions. In the Register it is the <code class="docutils literal notranslate"><span class="pre">supervisoryAuthority</span></code> field (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), in the AS Registry the <code class="docutils literal notranslate"><span class="pre">dpa_contact</span></code>.</p></td>
+<td><p>The authority contact email competent for the supervision of the entity under the data-protection law. It MUST be provided for each intended use of the Wallet-Relying Party.</p></td>
 <td><p>Regulation (EU) 2016/679, Article 46a</p></td>
 </tr>
+</tbody>
+</table>
+<p>The extended registration data is provided in the table below.
+A given entity provides only the subset that applies to its role, as defined in the corresponding profile in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
+<table class="longtable docutils align-default" id="id809">
+<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Extended Registration Data</span><a class="headerlink" href="#id809" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 46.0%" />
+<col style="width: 28.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Normative reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p><cite>entitlements</cite></p></td>
-<td><p>The entitlements the entity requests, which state the roles it intends to play in the ecosystem and which drive the role-specific information below.</p></td>
+<td><p>The entitlements the entity requests, which state the roles it intends to play in the ecosystem.</p></td>
 <td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Annex A.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>service_description</cite></p></td>
-<td><p>The user-facing trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units, so that the User can recognize the entity.</p></td>
+<td><p>The trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>intended_use</cite></p></td>
-<td><p>The attributes a Relying Party intends to request from the Wallet Units. Provided by the entities that request attributes from the Wallet Units.</p></td>
+<td><p>The attributes a Relying Party intends to request from the Wallet Units.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>provided_attestations</cite></p></td>
-<td><p>The attestation types an Attestation Provider intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
+<td><p>The Attestation types a Credential Issuer intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>intermediary_relationship</cite></p></td>
@@ -577,52 +598,171 @@ Each <a class="reference internal" href="#registration-profiles"><span class="st
 <td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 10</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
-<td><p>The identifier of the entity in the National Trust Framework, that is the <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> of its Entity Configuration. Provided by every Federation Entity, that is every entity except an Authentic Source.</p></td>
+<td><p>The identifier of the Federation Entity in the National Trust Framework, that is the <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> of its Entity Configuration.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>federation_entity_key</cite></p></td>
-<td><p>The public key with which the entity signs its federation statements, provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> endpoint.</p></td>
+<td><p>The public key with which the Federation Entity signs its Entity Configuration. It MUST be provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> endpoint.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
-<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified, distinct from the Federation Entity Key.</p></td>
+<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is the WRPAC and, depending on the role, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key.</p></td>
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a></p></td>
 </tr>
 <tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
-<td><p>The claims composing an Attestation, selected from the Claims Registry, and the purposes it serves, selected from the Taxonomy, together with the data-provision capabilities. It is stored in the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the AS Registry entry, that is the <code class="docutils literal notranslate"><span class="pre">available_claims</span></code>, the <code class="docutils literal notranslate"><span class="pre">intended_purposes</span></code> and the related integration details, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></td>
-<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+<td><p>The claims composing an Attestation, selected from the Claims Registry, and the purposes it uses, selected from the Taxonomy, together with the data-provision capabilities. It groups the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the AS Registry entry, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></td>
+<td><p>This specification</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
+<td><p>The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text.</p></td>
+<td><p>This specification</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_type_declaration</cite></p></td>
 <td><p>For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<tr class="row-odd"><td><p><cite>credential_technical_specification</cite></p></td>
 <td><p>Technical definition of a Credential type, that groups the Technical Specification fields of the Digital Credentials Catalog, that is the Credential schemes, the Credential formats and the authentication policy, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<tr class="row-even"><td><p><cite>credential_policies</cite></p></td>
 <td><p>Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
-<td><p>The outcome of the conformity assessment of the entity. For a PuB-EAA Provider it is the conformity assessment report issued by a conformity assessment body under Article 45f of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]. For a Wallet Provider and a PID Provider it is the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN). Provided by the notified categories.</p></td>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the conformity assessment of the entity, such as Confomity Assessment Report or the assessments performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>service_supply_point</cite></p></td>
-<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. Provided by the notified categories that issue an Attestation requested by the Wallet Unit, that is the PID Providers and the PuB-EAA Providers.</p></td>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. It MUST be provided by the notified categories that issue an Attestation requested by the Wallet Unit.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
-<td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It is provided as an input by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, that is the QEAA Providers and the PuB-EAA Providers, whose Qualified Certification Authority belongs to the perimeter of a Qualified Trust Service Provider, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
+<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
+<td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the national Root Certification Authority, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
 </tbody>
 </table>
-<p>The table gives the whole set.
-A given entity provides only the subset that applies to its role, as defined in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
+</section>
+<section id="mapping-to-the-registry-data-models">
+<h3><span class="section-number">8.2.2. </span>Mapping to the Registry Data Models<a class="headerlink" href="#mapping-to-the-registry-data-models" title="Link to this heading">¶</a></h3>
+<p>The Onboarding System collects the registration data, and it is then encoded in the data model of the destination that depends on the role. The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.</p>
+<table class="longtable docutils align-default" id="id810">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Mapping of the Data Identifiers to the destination data models</span><a class="headerlink" href="#id810" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Destination fields</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>legal_name</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">legalName</span></code>. In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">organization_name_l10n_id</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>legal_nature</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">isPSB</span></code> flag. In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">organization_type</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>contact_information</cite></p></td>
+<td><p>In the Register:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">postalAddress</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">infoURI</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">supportURI</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>In the AS Registry:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contacts</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">homepage_uri</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><cite>data_protection_authority</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">supervisoryAuthority</span></code>. In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">dpa_contact</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
+<td><p>In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code>, that is</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">available_claims</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intended_purposes</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integration_method</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integration_endpoint</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api_specification</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_provision</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_frequency</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service_documentation_uri</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
+<td><p>In the AS Registry the</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> of the <code class="docutils literal notranslate"><span class="pre">organization_info</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background_color</span></code> of the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code>,</p></li>
+</ul>
+</div></blockquote>
+<p>each with its integrity digest and its alternative text.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>In the Digital Credentials Catalog:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">credential_type</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">credential_name_l10n_id</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">authentication</span></code>,</p></li>
+</ul>
+</div></blockquote>
+<p>and the reference to the Authentic Sources through the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>In the Digital Credentials Catalog:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">schema_uri</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vct</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docType</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_policies</cite></p></td>
+<td><p>In the Digital Credentials Catalog:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">validity_info</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restriction_policy</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pricing_policy</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_type</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>In the notification dataset, the conformity assessment report.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>In the notification dataset, the service supply point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
+<td><p>In the notification dataset, the trust anchor.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="eligibility-and-compliance-preconditions">
-<h3><span class="section-number">8.2.2. </span>Eligibility and Compliance Preconditions<a class="headerlink" href="#eligibility-and-compliance-preconditions" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.2.3. </span>Eligibility and Compliance Preconditions<a class="headerlink" href="#eligibility-and-compliance-preconditions" title="Link to this heading">¶</a></h3>
 <p>Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the national point of contact toward the European Commission.
 Where a national and an EUDIW obligation overlap, the EUDIW obligation is authoritative.</p>
 <p>The verification applies to Authentic Sources, Wallet Providers and Wallet-Relying Parties, and its content depends on the role.</p>
@@ -634,7 +774,7 @@ The trust of an Authentic Source is governed by the PDND framework and it is out
 The assessment covers the security of the wallet architecture, its data-protection mechanisms and its user-privacy features, and it is the precondition for the Wallet Solution to be certified.
 The certification of the Wallet Solution is an external process, and this phase uses its outcome as an input.
 The certification follows the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).</p></li>
-<li><p><strong>PID Providers</strong>: validated per national designation as providers of Person Identification Data, and subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN).</p></li>
+<li><p><strong>PID Providers</strong>: validated per national designation as providers of Person Identification Data, subject to the national certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).</p></li>
 <li><p><strong>QEAA Providers</strong>: validated through the qualification and the supervision of the issuing Qualified Trust Service Provider.</p></li>
 <li><p><strong>PuB-EAA Providers</strong>: validated through the conformity assessment required by Article 45f of the eIDAS2 Regulation.</p></li>
 <li><p><strong>Non-qualified EAA Providers</strong>: validated for the eligibility to issue.
@@ -652,12 +792,12 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 <p>For the notified entities the certifications are a mandatory input to the onboarding, and in every case the eligibility and compliance verification is a mandatory precondition for the technical registration.</p>
 </section>
 <section id="registration-outcomes">
-<h3><span class="section-number">8.2.3. </span>Registration Outcomes<a class="headerlink" href="#registration-outcomes" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.2.4. </span>Registration Outcomes<a class="headerlink" href="#registration-outcomes" title="Link to this heading">¶</a></h3>
 <p>A successful registration produces, depending on the role and on the scope of operation, the entry in the Register, the Trust Artifacts and the entry in the trusted list.
 The way each artifact is produced is described in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the effects of the later changes in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
 <p>The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the national artifacts of the National Trust Framework.</p>
-<table class="longtable docutils align-default" id="id760">
-<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id811">
+<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Registration Outcomes by Entity Type</span><a class="headerlink" href="#id811" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 12.0%" />
@@ -671,7 +811,7 @@ The way each artifact is produced is described in <a class="reference internal" 
 <th class="head"><p><strong>Register record</strong></p></th>
 <th class="head"><p><strong>WRPAC</strong></p></th>
 <th class="head"><p><strong>WRPRC</strong></p></th>
-<th class="head"><p><strong>National x.509 certificate</strong></p></th>
+<th class="head"><p><strong>National X.509 certificate</strong></p></th>
 <th class="head"><p><strong>LoTE entry</strong></p></th>
 </tr>
 </thead>
@@ -738,183 +878,872 @@ It holds its Entity Statement and its registration Trust Mark from the federatio
 </div>
 </section>
 <section id="registration-profiles">
-<h3><span class="section-number">8.2.4. </span>Registration Profiles<a class="headerlink" href="#registration-profiles" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.2.5. </span>Registration Profiles<a class="headerlink" href="#registration-profiles" title="Link to this heading">¶</a></h3>
 <p>This Section describes the registration of each role as a profile.
+Every profile provides the base registration data defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>, and each profile below states only the extended registration data the role provides and how the entity valorizes it, together with any specialization of the base data.
 An entity can hold more than one entitlement in a single registration record and for more than one role, so the profiles are not mutually exclusive and they compose.
 For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.</p>
 <section id="pid-provider">
-<h4><span class="section-number">8.2.4.1. </span>PID Provider<a class="headerlink" href="#pid-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.1. </span>PID Provider<a class="headerlink" href="#pid-provider" title="Link to this heading">¶</a></h4>
+<p>A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
+In addition to the base registration data, a PID Provider provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id812">
+<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">PID Provider Registration Data</span><a class="headerlink" href="#id812" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the PID Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the PID issuance service. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>The PID type the PID Provider issues, anchored to the PID Rulebook.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>The technical definition of the PID, that is its schemes and its formats, the PID being provided in both the SD-JWT VC and the mdoc-CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<td><p>The conditions of use of the PID, that is its validity and its purposes.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the PID Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the PID Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units, and one for the Sign/Seal Certificate, with which it signs the issued PID.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="qeaa-provider">
-<h4><span class="section-number">8.2.4.2. </span>QEAA Provider<a class="headerlink" href="#qeaa-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.2. </span>QEAA Provider<a class="headerlink" href="#qeaa-provider" title="Link to this heading">¶</a></h4>
+<p>A QEAA Provider is a Federation Entity that issues Qualified Electronic Attestations of Attributes, and its Sign/Seal Certificate is the qualified certificate issued by the Qualified Trust Service Provider it belongs to.
+In addition to the base registration data, a QEAA Provider provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id813">
+<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">QEAA Provider Registration Data</span><a class="headerlink" href="#id813" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the QEAA Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the QEAA issuance service. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>The declaration that the QEAA Provider issues its QEAA types, with the format and the attributes of each type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the conformity assessment supporting the qualification of the Qualified Trust Service Provider that issues the QEAA.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>The QEAA types the QEAA Provider issues, each anchored to its Rulebook.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>The technical definition of each QEAA type, that is its schemes and its formats.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_policies</cite></p></td>
+<td><p>The conditions of use of each QEAA type, that is its validity and its purposes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
+<td><p>The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the QEAA Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the QEAA Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="pub-eaa-provider">
-<h4><span class="section-number">8.2.4.3. </span>PuB-EAA Provider<a class="headerlink" href="#pub-eaa-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.3. </span>PuB-EAA Provider<a class="headerlink" href="#pub-eaa-provider" title="Link to this heading">¶</a></h4>
+<p>A PuB-EAA Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PuB-EAA Providers LoTE.
+In addition to the base registration data, a PuB-EAA Provider provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id814">
+<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">PuB-EAA Provider Registration Data</span><a class="headerlink" href="#id814" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the PuB-EAA issuance service. The trade name is provided where available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the PuB-EAA Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>The declaration that the PuB-EAA Provider issues its PuB-EAA types, with the format and the attributes of each type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining a PuB-EAA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>The PuB-EAA types the PuB-EAA Provider issues, each anchored to its Rulebook.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>The technical definition of each PuB-EAA type, that is its schemes and its formats.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<td><p>The conditions of use of each PuB-EAA type, that is its validity and its purposes.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
+<td><p>The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the national Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the PuB-EAA Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the PuB-EAA Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="non-qualified-eaa-provider">
-<h4><span class="section-number">8.2.4.4. </span>Non-Qualified EAA Provider<a class="headerlink" href="#non-qualified-eaa-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.4. </span>Non-Qualified EAA Provider<a class="headerlink" href="#non-qualified-eaa-provider" title="Link to this heading">¶</a></h4>
+<p>A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
+A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id815">
+<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Non-Qualified EAA Provider Registration Data</span><a class="headerlink" href="#id815" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the EAA issuance service. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the Non-Qualified EAA Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>The declaration that the Non-Qualified EAA Provider issues its EAA types, with the format and the attributes of each type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
+<td><p>The EAA types the Non-Qualified EAA Provider issues, each anchored to its Rulebook.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
+<td><p>The technical definition of each EAA type, that is its schemes and its formats.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
+<td><p>The conditions of use of each EAA type, that is its validity and its purposes.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the Non-Qualified EAA Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the Non-Qualified EAA Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="relying-party">
-<h4><span class="section-number">8.2.4.5. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.2.5.5. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
+<p>At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artefacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
+Besides the base registration data, a Relying Party provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id816">
+<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Relying Party Registration Data</span><a class="headerlink" href="#id816" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the service the Relying Party offers, one description per service. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the Relying Party role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>intended_use</cite></p></td>
+<td><p>The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
+<td><p>REQUIRED only where the Relying Party operates through a RP Intermediary. In that case it references its RP intermediary identifier. The RP intermediary side is described in <a class="reference internal" href="#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the Relying Party in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>REQUIRED for a Relying Party that operates without an intermediary. A Relying Party operating through a RP Intermediary MUST NOT provide it, because it is registered by its RP Intermediary according to the National Trust Framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
+An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.</p>
 </div>
 </section>
 <section id="relying-party-intermediary">
-<h4><span class="section-number">8.2.4.6. </span>Relying Party Intermediary<a class="headerlink" href="#relying-party-intermediary" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.2.5.6. </span>Relying Party Intermediary<a class="headerlink" href="#relying-party-intermediary" title="Link to this heading">¶</a></h4>
+<p>In the National Trust Framework the Relying Party Intermediary is a Federation Intermediate, that is it onboards its intermediated Relying Parties autonomously, publishing their Subordinate Statements, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
+It provides the same Data Identifiers as a <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a>, with the differences in the table below.
+The Data Identifiers not listed here are provided as for a Relying Party.</p>
+<table class="longtable docutils align-default" id="id817">
+<caption><span class="caption-number">Table 8.11 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id817" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>intended_use</cite></p></td>
+<td><p>It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
+<td><p>Valorized on the intermediary side, that is the Relying Party declares that it is a designated intermediary.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the Relying Party Intermediary in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the Relying Party Intermediary.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The registration of a Relying Party Intermediary and the registration of its intermediated Relying Parties are linked, the Intermediary declares that it acts as an intermediary, and each intermediated Relying Party references it in its own <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a> profile.</p>
 </div>
 </section>
 <section id="wallet-provider">
-<h4><span class="section-number">8.2.4.7. </span>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.7. </span>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h4>
+<p>A Wallet Provider is a Federation Entity that is notified, but it is not registered in the Register, because it does not act as a Wallet-Relying Party.
+Its registration data is part of the notification dataset, and its Sign/Seal trust anchor is published in the Wallet Providers LoTE.
+Besides the base registration data, a Wallet Provider provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id818">
+<caption><span class="caption-number">Table 8.12 </span><span class="caption-text">Wallet Provider Registration Data</span><a class="headerlink" href="#id818" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>service_description</cite></p></td>
+<td><p>The localized description of the Wallet Solution. The user-facing trade name is provided where available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
+<td><p>The outcome of the assessment performed under the national certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
+<td><p>The Federation Entity Identifier of the Wallet Provider in the National Trust Framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>federation_entity_key</cite></p></td>
+<td><p>The Federation Entity Key of the Wallet Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One Certificate Signing Request for the Sign/Seal Certificate, with which the Wallet Provider signs the Wallet Unit Attestations.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="authentic-source">
-<h4><span class="section-number">8.2.4.8. </span>Authentic Source<a class="headerlink" href="#authentic-source" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.2.5.8. </span>Authentic Source<a class="headerlink" href="#authentic-source" title="Link to this heading">¶</a></h4>
+<p>An Authentic Source is out of the EUDIW and the National Trust Frameworks, and its trust is governed by the PDND framework.
+It is not registered in the Register and it is not a Federation Entity, so it does not provide the federation data and it obtains no Trust Artifact.
+Its registration data is the entry of the AS Registry.
+In addition to the base registration data, an Authentic Source provides the extended registration data below.</p>
+<table class="longtable docutils align-default" id="id819">
+<caption><span class="caption-number">Table 8.13 </span><span class="caption-text">Authentic Source Registration Data</span><a class="headerlink" href="#id819" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Identifier</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
+<td><p>The claims the Authentic Source provides, selected from the Claims Registry, the purposes it serves, selected from the Taxonomy, and the data-provision capabilities, that is the integration through the PDND framework, the data-provision mode and the update frequency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
+<td><p>The logo of the Authentic Source organization and the logo and the background color associated with each provided dataset, each with its integrity digest and its alternative text.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>
 <section id="onboarding-processes">
 <h2><span class="section-number">8.3. </span>Onboarding Processes<a class="headerlink" href="#onboarding-processes" title="Link to this heading">¶</a></h2>
 <p>This part gives the dynamic view of the onboarding.
-Each process is described with its Input, its Outcome and its Process (the sequence of steps).</p>
-<p>A process is described here only where the Onboarding System is the actor that carries it out and its outcome is a write on a registry or the issuance of a Trust Artifact.
-Everything else, such as the subscription of an Authentic Source to PDND, the publication of an e-Service, the qualified status of a trust service provider, the certification of a Wallet Solution and the availability of the applicable Rulebook, is a precondition or a trigger and not a process.
-The order of the processes in this part is thematic and not chronological, and the temporal order is given by the dependency map below.</p>
+Each process is described with its Input, its Outcome and its Process, that is the sequence of steps.</p>
+<p>The processes are organized in three families.</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> covers the registration of an entity and of an Authentic Source, and their update, suspension and removal.</p></li>
+<li><p>The <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> covers the issuance of the certificates and of the Trust Marks an entity obtains.</p></li>
+<li><p>The <a class="reference internal" href="#attestation-onboarding"><span class="std std-ref">Attestation Onboarding</span></a> covers the registration of the claims, of the schemas and of the Credential types, and the lifecycle of the Credential types.</p></li>
+</ul>
+<p>The Sections <a class="reference internal" href="#process-dependency-map"><span class="std std-ref">Process Dependency Map</span></a> and <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> below provide respectively the order of the processes and the dependencies between them, and the notification process of the entities that are subject to it.</p>
 <section id="process-dependency-map">
 <h3><span class="section-number">8.3.1. </span>Process Dependency Map<a class="headerlink" href="#process-dependency-map" title="Link to this heading">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>This section gives, for each process, its prerequisites and triggers and what it enables, together with the preconditions that are external to the Onboarding System.</p>
+<p>This section describes, for each process, its prerequisites, the dependencies, the triggers and what it enables, together with the preconditions that are external to the Onboarding System.</p>
+<p>The processes are carried out by the components described in <a class="reference internal" href="#system-components-and-services"><span class="std std-ref">System Components and Services</span></a>.
+The table below maps the dependencies between the onboarding processes where what a process enables is another process that becomes possible after it.</p>
+<table class="longtable docutils align-default" id="id820">
+<caption><span class="caption-number">Table 8.14 </span><span class="caption-text">Process Dependency Map</span><a class="headerlink" href="#id820" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Process</strong></p></th>
+<th class="head"><p><strong>Depends on</strong></p></th>
+<th class="head"><p><strong>Trigger</strong></p></th>
+<th class="head"><p><strong>Enables</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>None</p></td>
+<td><p>An entity that passed the eligibility and compliance verification requests the registration.</p></td>
+<td><p>The Certificate and Trust Artifact Issuance processes, and for a Credential Issuer the Credential Type Registration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
+<td><p>None</p></td>
+<td><p>An Authentic Source that passed the eligibility verification requests the registration.</p></td>
+<td><p>The Credential Type Registration, as the data source a Credential type references.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
+<td><p>None</p></td>
+<td><p>A claim that a Credential type or an Authentic Source needs is not yet in the Claims Registry.</p></td>
+<td><p>The Schema Provisioning and the Credential Type Registration that use the claim.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Access Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The first registration, or a new issuance or re-issuance, for example after a key rotation.</p></td>
+<td><p>The authentication of the entity towards the Wallet Units.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The first registration, or a re-issuance, where the certificate applies to the role.</p></td>
+<td><p>The presentation of the registration data of the entity to the Wallet Units.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The first registration, or a re-issuance, for the categories whose Sign/Seal Certificate is issued by the national PKI.</p></td>
+<td><p>The signature of the Attestations or of the Wallet Unit Attestations the entity issues.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#national-authentication-certificate-issuance"><span class="std std-ref">National Authentication Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>An entity that operates in the Proximity Flow.</p></td>
+<td><p>The authentication of the entity in the Proximity Flow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#registration-trust-mark-issuance"><span class="std std-ref">Registration Trust Mark Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The completion of the federation registration.</p></td>
+<td><p>The recognition of the entity as a registered participant of the National Trust Framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a></p></td>
+<td><p><a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
+<td><p>A Credential type needs its schema to be available.</p></td>
+<td><p>The activation of a Credential type, as one of its requirements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>, <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a>, <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
+<td><p>A Credential Issuer declares a Credential type it intends to issue.</p></td>
+<td><p>The Credential Type Activation, and the Notification and Publication for the notified categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a></p></td>
+<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p>The verification of the issuance conditions of the Credential type.</p></td>
+<td><p>The issuance of the Credential type by the Credential Issuer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#credential-type-update"><span class="std std-ref">Credential Type Update</span></a></p></td>
+<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p>The publication of a new version of a Credential type.</p></td>
+<td><p>The activation of the new version.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#entity-update"><span class="std std-ref">Entity Update</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>A change of the registered information, that is the identity, the technical configuration, or the authorization information.</p></td>
+<td><p>The re-issuance of a certificate, or the re-verification of the eligibility where the change affects the authorization information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>A request of the competent authority or of the entity.</p></td>
+<td><p>The revocation of the Trust Artifacts of the entity, and the deactivation of its Credential types where it is a Credential Issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#authentic-source-update"><span class="std std-ref">Authentic Source Update</span></a></p></td>
+<td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
+<td><p>A change of the AS Registry entry.</p></td>
+<td><p>The update of the Credential types that depend on the Authentic Source.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#authentic-source-removal"><span class="std std-ref">Authentic Source Removal</span></a></p></td>
+<td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
+<td><p>A request of removal.</p></td>
+<td><p>The deactivation of the Credential types that lose the Authentic Source as their data source.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> is transversal and follows the registration of the notified categories.</p>
+<p>The following conditions are external to the Onboarding System and are not processes defined within IT-Wallet, but they are preconditions or triggers.</p>
+<ul class="simple">
+<li><p>The subscription of an Authentic Source to PDND and the publication of its e-Service.</p></li>
+<li><p>The qualified status of a Qualified Trust Service Provider, for a QEAA Provider and a PuB-EAA Provider.</p></li>
+<li><p>The certification of a Wallet Solution.</p></li>
+<li><p>The availability of the applicable Rulebook, for a Credential Type Registration.</p></li>
+<li><p>The identity proofing and the eligibility and compliance verification, described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, that precede every registration.</p></li>
+</ul>
+<p>The diagram below gives the activations between the processes.
+The processes on the left are the starting processes, triggered from outside the Onboarding System.
+The processes on the right are activated by a starting process or by a lifecycle process.
+The processes that act on the lifecycle of an entity or of a Credential type are governed as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>, and the effects of an update are described there as well.</p>
+<figure class="align-center" id="id821">
+<span id="fig-onboarding-dep-map"></span><p class="plantuml">
+<object data="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png"><img src="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png" alt="The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLRRQXin47qt-1-6vA5FfabBqpJG4dkpRWEnCRikUV6BiZjUYsWb8sdZk2N_tj5ginTVaifWp5pEp9mv4husbcbRv09cMYLe30mJov-OvKh2XAtxFO5B2rQ1vjdAGier9ixPxvb7BjTCinmUMFAOQLN8D512QR2QIKCkbBOTPbOiLHikCrWoOR3jId792c7d-6o7WcSofrH8w0jrEsnDXLY6iTqA1DS8avde00srLXlVnUb5UVQyOoLjpFyWd9-tVJNSIEaKTONnkJoTE3-dbgZXij_hzpx0TtTA8jrmQqya6c_lzsfaE0cbvNQxa15ct11DZicFlzSfitW2p40OmUbeT1EEHvsqOM5NH0PF85Q5Jh0BK6OEuyEfWSRKfJ81y-qQZvSEvWGGN8ONmRVMLC2y733TdwlQ1fpCTM4iaMlvai99DfBCReKbyDqPd8w_k0_yxVU0JgkzTZTGuYpaXEb7k3McO3BnlSqd134EpqQVzW3kezamw4Pxqx64cEJ5RA4Hc4mXHYOMCa3NEqzepYvK7BzLEDel71qlF2s7f3tKsomDRrIVjiTuQH5UiROjHmYOPK9bZhSkx-Tly1u8nlC3CWfQ8jWbBbbXpXQI7eedRYY1nEv9cXtDsL5Vwt5PIDVx3RBQKgbms82zT9GyLHLBJYgKJ9qK3w8oUBweaV1y58PVsmgERd_-cb-1u4jCjWaXlNz18IxC6gMf-ummLqzC-3jwvAOTkgHD5jtFIPFckXiC1b2LEt0deI76kD1-Zzw6mU27kmjNmCI6RKrjyug_0hvqFsipgRUqSH8LlLPAB-Gz4m8jb3jCtUFQ84G74AQli9Jmp7FNwrYeJUEVURSiTuDfxN1xzBNf7LVvcegY8Ix1aWoQ-NSvwp2nJu5xv4hqo8CpIBoEkO6SfYH5DjYxslilajqh-6w5rw1uzXfaghjnAEe85JJu3XbtjKBtTn_lOfKhRHpxYoW5rydnv2-aK4xxt1em9UckWskKAVqB-0S0">Onboarding Process Dependency Map.</a></span><a class="headerlink" href="#id821" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="notification-and-publication">
 <h3><span class="section-number">8.3.2. </span>Notification and Publication<a class="headerlink" href="#notification-and-publication" title="Link to this heading">¶</a></h3>
+<p>This Section describes the notification of the entities that are subject to it towards the European Commission, and the resulting publication in the Lists of Trusted Entities. This process applies to more than one family of processes.</p>
+<p>The notification is an act of the Member State towards the Commission, and not of the entity itself.
+Within IT-Wallet the Supervisory Body is the national point of contact towards the Commission, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, and it relies on the Registrar for the entities the Registrar registers.
+Its outcome is the inclusion of the entity in the List of Trusted Entities of its type, whose structure and signature are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
+<p>The notifiable categories according to [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>], adopted under Article 5a(23) of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>] are the following.</p>
+<ul class="simple">
+<li><p>Wallet Providers,</p></li>
+<li><p>PID Providers,</p></li>
+<li><p>Providers of WRPAC</p></li>
+<li><p>Registrars of the Wallet-Relying Parties, together with the registers,</p></li>
+</ul>
+<p>The PuB-EAA Providers are notified under Article 45f(3) of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], and the modalities are laid down in [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
+The Wallet-Relying Parties that are not a notified category are not notified individually, and they are made available through their register.</p>
+<p><strong>Input</strong></p>
+<p>The input is the notifiable information of the entity, that is the subset of its registration data that applies to the category, defined by Annex II of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and, for the PuB-EAA Providers, by Annex III of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
+The information is a projection of the <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contact_information</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service_policies</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code></p></li>
+</ul>
+<p>For a PID Provider and a Wallet Provider the Sign/Seal Certificate is issued by the national PKI, so the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> is not provided as an input by the entity but derives from the issuance described in <a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a>.</p>
+<p>For a PuB-EAA Provider the Sign/Seal Certificate is a qualified certificate issued by a Qualified Trust Service Provider, and its Trust Anchor is conveyed by the eIDAS Trusted Lists that are outside of this process.
+Therefore, the Sign/Seal Trust Anchor is not required as an input for a PuB-EAA Provider, and the qualified status of its certificate is evaluated in the conformity assessment required for eligibility and compliance, see <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p>The notifiable information is collected in the notification dataset, that is kept separate from the Register as described in <a class="reference internal" href="#registration-outcomes"><span class="std std-ref">Registration Outcomes</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The Sign/Seal Trust Anchor is not the certificate the entity uses to sign, whose public key is conveyed by the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>.</p>
 </div>
-<p>This section describes the notification of the Entities that are subject to it towards the responsible bodies, and the resulting publication.
-It applies to more than one family of processes and it is therefore described once here.</p>
+<p><strong>Outcome</strong></p>
+<p>The outcome is the inclusion of the entity in the List of Trusted Entities of its type.
+The inclusion is the assertion, at Union level, of the role and of the authorization of the entity, and it is what allows a Wallet Unit or a Wallet-Relying Party of another Member State to validate the entity.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The entity MUST have completed its <a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and for the notified categories the conformity assessment MUST have been verified as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
+The completion of the registration is the precondition of the notification.</p></li>
+<li><p>The Onboarding System collects the notifiable information of the category from the notification dataset, following Annex II of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] or, for the PuB-EAA Providers, Annex III of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].</p></li>
+<li><p>The Supervisory Body, as the national point of contact, submits the information to the secure electronic notification system that the Commission makes available. The submission MUST be made at least in English.
+The system and its requirements are defined in Annex I of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>].</p></li>
+<li><p>The Commission may request additional information or clarifications to verify the completeness and the consistency of the notified information.</p></li>
+<li><p>The Commission publishes the List of Trusted Entities that compiles the notified information.
+The entity appears in the List of Trusted Entities of its type, whose data model, format and signature are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p></li>
+<li><p>Where the registration of the entity later changes, in particular where it is suspended or cancelled, the Onboarding System MUST reflect the change in the notification, and for a suspension or a cancellation the change MUST be notified within 24 hours, as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Lists of Trusted Entities defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and the Trusted Lists defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj">CID2015/1505</a>] are two different artifacts.
+They are described together in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
+</div>
 </section>
 <section id="entity-onboarding">
 <h3><span class="section-number">8.3.3. </span>Entity Onboarding<a class="headerlink" href="#entity-onboarding" title="Link to this heading">¶</a></h3>
-<p>This section describes the processes that manage the lifecycle of the Entities and of the Authentic Sources.
-Each process is described with its Input, its Outcome and its Process, while the governance of the corresponding events is given in the Lifecycle Management.</p>
+<p>This section describes the processes that manage the lifecycle of the entities and of the Authentic Sources.
+Each process is described with its Input, its Outcome and its Process, while the governance of the corresponding events, that is who is entitled to decide and within which conditions, is given in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
 <section id="entity-registration">
 <h4><span class="section-number">8.3.3.1. </span>Entity Registration<a class="headerlink" href="#entity-registration" title="Link to this heading">¶</a></h4>
+<p>Entity Registration process takes in input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
+The process is parameterized by the registration profile of the role, and its outcome is the transition of the Entity to the <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> state.
+It enables the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes, that bring the Entity to <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, and, for a Credential Issuer, the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.
+The issuance of the certificates and of the registration Trust Mark, and the governance of the states, are described in the referenced processes and in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The input is the registration data of the Entity, following the profile of its role defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a> and in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.
+The data is organized in the three categories of registered data defined in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>, and for each category a part is provided by the Entity and a part is derived by the Onboarding System.</p>
+<ul>
+<li><p><em>Identity Information</em>, provided by the Entity:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_name</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_nature</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contact_information</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service_policies</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_protection_authority</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>Technical Configuration</em>, provided by the Entity, in particular the <code class="docutils literal notranslate"><span class="pre">federation_entity_identifier</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> of its Entity Configuration, and the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> from which the certificates are later issued.</p></li>
+<li><p><em>Authorization Information</em>, provided by the Entity, i.e.:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">entitlements</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intended_use</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> for a Credential Issuer,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code> where applicable,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code> for the categories that need it.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration, the first one by this process and the others by the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes.
+For a PID Provider and a Wallet Provider the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> derives from the national issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.</p>
+<p>The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>The outcome is the Entity in the <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> state, that is the moment in which the registration record exists and has been verified, as defined in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.
+The registration is recorded across the two Trust Frameworks according to the role and to the declaration of the Entity.</p>
+<ul class="simple">
+<li><p>In the National Trust Framework the Entity is registered in the federation, and its Subordinate Statement, that carries the registration Trust Mark, is published by the National Federation Management.</p></li>
+<li><p>In the EUDIW Trust Framework, for the Wallet-Relying Parties, a signed record is written in the Register, and it drives the later issuance of the WRPAC and of the WRPRC.</p></li>
+</ul>
+<p>The National Trust Framework is always the registration layer, while the EUDIW Trust Framework is added for the notified categories and for the Entities that declare the cross-border operation, as described in <a class="reference internal" href="infrastructure-trust.html#overview"><span class="std std-ref">Overview</span></a>.
+The Register and the notification dataset are kept separate, as described in <a class="reference internal" href="#registration-outcomes"><span class="std std-ref">Registration Outcomes</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The eligibility and the compliance of the Entity MUST have been verified, including the identity proofing and the verification of the entitlements, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
+This verification is the precondition of the registration.</p></li>
+<li><p>The Onboarding System collects the registration data of the profile, validates it, and routes each part to the component responsible for it.</p></li>
+<li><p>The National Federation Management registers the Entity in the federation.
+It validates the Entity Configuration published by the Entity, given by the <code class="docutils literal notranslate"><span class="pre">federation_entity_identifier</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code>, and it prepares the metadata policy that binds the protocol metadata of the Entity to the values approved at onboarding.
+It then invokes the <a class="reference internal" href="#registration-trust-mark-issuance"><span class="std std-ref">Registration Trust Mark Issuance</span></a> to obtain the registration Trust Mark, and it publishes the Subordinate Statement about the Entity, that carries the metadata policy and the Trust Mark.
+Then, the Entity MUST include the received Trust Mark in its Entity Configuration, that points to its immediate superior through the <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code>.
+During the same registration the Federation Trust Anchor public keys are made available to the Entity out-of-band, through the contact channel of the registration, and this bootstraps the trust of the Entity in the Trust Anchor, see <a class="reference internal" href="trust-evaluation.html#federation-trust-anchor-distribution-and-validation"><span class="std std-ref">Federation Trust Anchor Distribution and Validation</span></a>.
+The structure of the Entity Configuration and of the Subordinate Statement is defined in <a class="reference internal" href="infrastructure-trust.html#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>.</p></li>
+<li><p>Where the role and the declaration of the Entity require the EUDIW Trust Framework, the EUDIW Registration Management verifies the Entity and writes its record in the Register, and the Registrar signs or seals it.
+The record drives the later issuance of the WRPAC and of the WRPRC, and its data model and its public API are defined in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.
+For a Credential Issuer, the <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> declared at registration add the Credential Issuer to the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of each declared Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, and the same declaration is carried in the record and in the WRPRC.</p></li>
+<li><p>The registration produces the <code class="docutils literal notranslate"><span class="pre">registration</span></code> event, that the Federation Authority publishes on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.
+At the end of the process the Entity is <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, the record enables the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes that bring it to <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, and, for a Credential Issuer, the declaration can activate the declared Credential types, as described in <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The Register is the national register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] and operates through the Registrar.
+It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as <a class="reference internal" href="registry.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p>
 </div>
-<p>Process that registers an Entity into the ecosystem, parameterized by the registration profile of its role.</p>
 </section>
 <section id="entity-update">
 <h4><span class="section-number">8.3.3.2. </span>Entity Update<a class="headerlink" href="#entity-update" title="Link to this heading">¶</a></h4>
+<p>Entity Update process changes the registered information of an Entity, in its Identity Information, its Technical Configuration, including the rotation and the request of keys, and its Authorization Information.
+The Entity is responsible for the accuracy of its information and updates it without undue delay.
+This process describes what the Entity submits and which steps the components execute, while the relationship between the categories of registered data and the Trust Artifacts is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The updated registration data defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
+For a change of the Technical Configuration related to the new key material, the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> and <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> are provided respectively for the federation identity and for the X.509 certificates.
+For a change of the Authorization Information the input is the new <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_use</span></code>, <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> or <code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code>, depending on the role.</p>
+<p><strong>Outcome</strong></p>
+<p>The updated registered information of the Entity. A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Entity submits the change of one or more categories of its registration data.</p></li>
+<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.</p></li>
+<li><p>For a change of the Technical Configuration, the rotation of the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> is handled by the National Federation Management, that re-issues the Subordinate Statement, while the rotation or the request of the certificate keys is handled by the Certificate Management, that re-issues the X.509 certificates from the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>.</p></li>
+<li><p>A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of a Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.</p></li>
+<li><p>The update produces the corresponding event, a <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> for a change of the Identity Information or the Technical Configuration and a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> for a key rotation, published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The informational parameters of the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata, not included in the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>, can be managed autonomously by the Entity in its self-signed Entity Configuration.
+The protocol signature keys (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>), the service endpoints and the request, response and redirect URIs are instead bound by the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> of the Subordinate Statement to the values approved at onboarding, as defined in <a class="reference internal" href="infrastructure-trust.html#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>, then a change of them is an Entity Update that re-issues the Subordinate Statement.</p>
 </div>
-<p>Process that changes the registered information of an Entity, covering its identity information, its technical configuration including the rotation and the request of keys, and its authorization information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rotation of a protocol key, the one provided within the protocol metadata, is carried out through the update of the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> and MUST follow the common practice: the new key is added to the fixed <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and it coexists with the previous one until the Trust Chains built before the rotation have expired, and only then the previous key is removed.
+The coexistence covers the validity window of those Trust Chains, so that a verifier that still relies on a Trust Chain with the old key can validate until it rebuilds it.</p>
+</div>
 </section>
 <section id="entity-suspension-and-removal">
 <h4><span class="section-number">8.3.3.3. </span>Entity Suspension and Removal<a class="headerlink" href="#entity-suspension-and-removal" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that suspends, reactivates or cancels the registration of an Entity, covering all the cases and both the request by the authority and the request by the Entity itself, across the two Trust Frameworks.</p>
+<p>Entity Suspension and Removal process suspends, reactivates or cancels the registration of an Entity, on the request of the competent authority or of the Entity itself, across the two Trust Frameworks.
+This process describes the steps that the components execute, while who is entitled to trigger each event, on which normative basis and within which conditions, is given in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The request of suspension, reactivation or cancellation, from the competent authority or from the Entity, with the reason for it.</p>
+<p><strong>Outcome</strong></p>
+<p>The Entity changed the status to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> on a suspension, returns to its previous state on a reactivation, and moves to <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> on a cancellation, as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>.
+A suspension and a cancellation revoke the Trust Artifacts of the Entity and, for a Credential Issuer, deactivate its Credential types.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The request of suspension, reactivation or cancellation is received from the competent authority or from the Entity.</p></li>
+<li><p>On a suspension, the EUDIW Registration Management suspends the record in the Register and the National Federation Management withdraws the valid Subordinate Statement of the Entity, so that its Trust Artifacts are no longer relied upon, and the Entity moves to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>.</p></li>
+<li><p>On a reactivation, once the condition that caused the suspension is removed, the same party that decided the suspension restores the registration, and the Entity returns to its previous state.</p></li>
+<li><p>On a cancellation, the EUDIW Registration Management cancels the record in the Register, the National Federation Management withdraws the Subordinate Statement, the Trust Artifacts of the Entity are revoked, and the Entity moves to <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.</p></li>
+<li><p>For a Credential Issuer, a suspension or a cancellation deactivates its Credential types, and the Credential Issuer notifies the Authentic Sources so that they can withdraw the corresponding authorizations within PDND, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+<li><p>Each event, a <code class="docutils literal notranslate"><span class="pre">suspension</span></code> or a <code class="docutils literal notranslate"><span class="pre">revocation</span></code>, is published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
+</ol>
 </section>
 <section id="authentic-source-registration">
 <h4><span class="section-number">8.3.3.4. </span>Authentic Source Registration<a class="headerlink" href="#authentic-source-registration" title="Link to this heading">¶</a></h4>
+<p>Authentic Source Registration process writes an Authentic Source information into the AS Registry, so that the Credential Issuers can discover which data are available and through which e-Service.
+An Authentic Source is neither a Wallet-Relying Party nor a Federation Entity, so it does not go through the federation registration nor the Wallet-Relying Party registration, and it obtains no Trust Artifact.
+Its trust, its authorization and its operational aspects are governed by the PDND framework, see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>, and IT-Wallet does not define a lifecycle of the Authentic Sources, so this process does not produce a state transition.
+It enables the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, as the data source a Credential type references, and it can activate the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a> when a declared claim is not yet in the Claims Registry.</p>
+<p><strong>Input</strong></p>
+<p>The input is the registration data of the Authentic Source, following its profile in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a> and in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>, that is the base registration data and, in addition, the <code class="docutils literal notranslate"><span class="pre">provided_claims_purposes</span></code> and the <code class="docutils literal notranslate"><span class="pre">visual_identity</span></code>.
+The Authentic Source selects from the <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> the standardized claim identifiers it provides, and from the Taxonomy the purposes it serves.
+An Authentic Source does not provide the federation data nor the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>, and it has no <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>.
+From this data the Authentic Source Management composes the entry of the Authentic Source in the AS Registry, whose structure is defined in <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>, and it generates the registry-level fields, i.e. the identifier of the registry, its version, its last-modification time and its localization configuration.
+The eligibility of the Authentic Source, that validates its legal standing and its data authority and classifies it as public or private, is a precondition and is described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>An entry in the AS Registry, that makes the Authentic Source discoverable by the Credential Issuers, with its organization information, its declared data capabilities, its integration method and its intended purposes.
+The registration of the Authentic Source is complete and independent of the integration of any Credential Issuer, because an Authentic Source declares its capabilities before any Credential type exists.
+The process does not produce a state in IT-Wallet, because the trust, the authorization and the operational aspects of the Authentic Source stay within the PDND framework, and the effects that the PDND lifecycle produces inside IT-Wallet are described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The eligibility and the compliance of the Authentic Source MUST have been verified by the Supervisory Body, that validates its legal standing and its data authority and classifies it as public or private, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
+This verification is the precondition of the registration.</p></li>
+<li><p>The Authentic Source declares its registration data.</p></li>
+<li><p>The declared claims are verified against the <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> and the declared purposes against the Taxonomy.
+A claim that is not yet in the Claims Registry activates the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p></li>
+<li><p>The Authentic Source Management writes the entry in the AS Registry, whose structure is defined in <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.
+The Authentic Source becomes discoverable by the Credential Issuers.</p></li>
+<li><p>The entry enables the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, as the Authentic Source is the data source that a Credential type references.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
+<p>The integration between an Authentic Source and a Credential Issuer takes place within PDND and is a precondition for the activation of a Credential type, not a process of the Onboarding System.
+Its effect on the lifecycle of the Credential type is described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
 </div>
-<p>Process that registers an Authentic Source in the Authentic Source Registry, so that the Credential Issuers can discover which data are available and through which e-Service.</p>
 </section>
 <section id="authentic-source-update">
 <h4><span class="section-number">8.3.3.5. </span>Authentic Source Update<a class="headerlink" href="#authentic-source-update" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that changes the entry of an Authentic Source, including the effect on the Credential types that depend on it.</p>
+<p>Authentic Source Update changes the entry of an Authentic Source in the AS Registry, with the effect on the versioned entries of the Credential types that depend on it.
+An Authentic Source has no lifecycle in IT-Wallet, so the effect that a change produces on the Credential types is the one described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The changed registration data of the Authentic Source, that is a change of its <code class="docutils literal notranslate"><span class="pre">provided_claims_purposes</span></code> or of its <code class="docutils literal notranslate"><span class="pre">visual_identity</span></code>, following its profile in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>The entry of the Authentic Source in the AS Registry is updated.
+When the change reduces the availability of the data on which a Credential type depends, the condition for the activation of that Credential type is no longer satisfied and the Credential type moves to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Authentic Source, or the notification through PDND of the change of an e-Service, submits the change of the entry.</p></li>
+<li><p>The Authentic Source Management updates the entry in the AS Registry, whose structure is defined in <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
+<li><p>The Credential types that depend on the Authentic Source are updated, and a Credential type that loses the availability of the data it depends on moves to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+</ol>
 </section>
 <section id="authentic-source-removal">
 <h4><span class="section-number">8.3.3.6. </span>Authentic Source Removal<a class="headerlink" href="#authentic-source-removal" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that removes the entry of an Authentic Source, including the effect on the Credential types that depend on it.</p>
+<p>Authentic Source Removal process removes the entry of an Authentic Source from the AS Registry, with the deactivation of the versioned entries of the Credential types that depend on it.</p>
+<p><strong>Input</strong></p>
+<p>The request of removal of the Authentic Source.</p>
+<p><strong>Outcome</strong></p>
+<p>The entry of the Authentic Source is removed from the AS Registry.
+The Credential types that lose the Authentic Source as their data source move to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, and they stay registered so that they can be activated again if the data source is restored, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The request of removal of the Authentic Source is received.</p></li>
+<li><p>The Authentic Source Management removes the entry from the AS Registry.</p></li>
+<li><p>The Credential types that depend on the Authentic Source lose their data source and move to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, and they stay registered and can be activated again if the integration is restored, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+</ol>
 </section>
 </section>
 <section id="certificate-and-trust-artifact-issuance">
 <h3><span class="section-number">8.3.4. </span>Certificate and Trust Artifact Issuance<a class="headerlink" href="#certificate-and-trust-artifact-issuance" title="Link to this heading">¶</a></h3>
 <p>This section describes the processes that issue the Trust Artifacts.
 Each process covers both the first issuance and the re-issuance, for example after a key rotation or a request of additional keys, and it is described with its Input, its Outcome and its Process.</p>
+<section id="issuance-of-the-x-509-certificates-through-acme-and-openid-federation">
+<h4><span class="section-number">8.3.4.1. </span>Issuance of the X.509 Certificates through ACME and OpenID Federation<a class="headerlink" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation" title="Link to this heading">¶</a></h4>
+<p>The WRPAC, the Signature/Seal Certificate and the National Authentication Certificate are issued through ACME <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8555.html"><strong>RFC 8555</strong></a> with the OpenID Federation profile of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-acme-openid-federation/">ACME-OIDFED</a>].</p>
+<p>The Entity authenticates to the Certification Authority with its Federation Trust Chain, through the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.
+The authentication reuses the trust evaluation of the National Trust Framework, so the validation of the Trust Chain and the authentication of the Entity follow <a class="reference internal" href="trust-evaluation.html#trust-chain-validation"><span class="std std-ref">Trust Chain Validation</span></a> and <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p>
+<p>Once the Entity is authenticated, the Certification Authority applies its policy and reads the entitlements and the profile values first from the record of the Entity in the Register, through the <a class="reference internal" href="infrastructure-trust.html#register-open-apis"><span class="std std-ref">Register Open APIs</span></a>, and, when the Entity has no record there, from the registration Trust Mark included in the Resolved Metadata of the Trust Chain.
+Both sources provide the authorization data with the same logic of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p>
+<p>The issuance of these certificates is a process on its own, separate from the registration and performed machine-to-machine, so the Entity presents its <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> in the ACME order only after the registration process has been successfully completed.</p>
+<p>A distinct ACME service is provided for each purpose, so the type of the certificate is determined by the service, and the profile of each certificate is fixed by its type.</p>
+<p>Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
+A certificate has its own <code class="docutils literal notranslate"><span class="pre">notBefore</span></code> and <code class="docutils literal notranslate"><span class="pre">notAfter</span></code> and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see <a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a>, and not by the expiration of the Trust Chain.</p>
+<p>The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME but during the registration or the update of the Entity.</p>
+<figure class="align-default" id="id822">
+<p class="plantuml">
+<object data="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png"><img src="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png" alt="&#64;startuml
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam ArrowColor #666666
+skinparam ParticipantBorderColor #333333
+skinparam ActorBorderColor #333333
+skinparam databaseBorderColor #333333
+
+actor Entity as E
+participant &quot;ACME service of the\nCertification Authority&quot; as CA
+database Register as REG
+
+E -&gt; CA : newOrder (identifier type openid-federation)
+CA --&gt; E : openid-federation-01 challenge
+E -&gt; E : sign the key authorization\nwith an acme_requestor key
+E -&gt; CA : challenge response (signature and Trust Chain)
+CA -&gt; CA : validate the Trust Chain\n(Federation Entity Authentication)
+CA -&gt; REG : read entitlements and profile
+note right of CA : Register first,\nregistration Trust Mark as fallback
+CA --&gt; E : order ready
+E -&gt; CA : finalize (CSR)
+CA --&gt; E : X.509 certificate
+&#64;enduml
+" style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id822" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="wallet-relying-party-access-certificate-issuance">
-<h4><span class="section-number">8.3.4.1. </span>Wallet-Relying Party Access Certificate Issuance<a class="headerlink" href="#wallet-relying-party-access-certificate-issuance" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.3.4.2. </span>Wallet-Relying Party Access Certificate Issuance<a class="headerlink" href="#wallet-relying-party-access-certificate-issuance" title="Link to this heading">¶</a></h4>
+<p>Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defined in the <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.
+The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], and the fallback to the Trust Mark does not apply to it.</p>
+<p><strong>Input</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the WRPAC, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.
+The attributes of the certificate come from the record of the Entity in the Register.</p>
+<p><strong>Outcome</strong></p>
+<p>The WRPAC, issued by the WRPAC Certification Authority, that the Entity uses to authenticate towards the Wallet Units.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting its <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> and authenticating with its Federation Trust Chain, validated as in <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
+<li><p>The Certification Authority checks that the Entity has a record in the Register and derives the attributes of the certificate from it.</p></li>
+<li><p>The Certification Authority issues the WRPAC and the Entity retrieves it.</p></li>
+</ol>
 </section>
 <section id="wallet-relying-party-registration-certificate-issuance">
-<h4><span class="section-number">8.3.4.2. </span>Wallet-Relying Party Registration Certificate Issuance<a class="headerlink" href="#wallet-relying-party-registration-certificate-issuance" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.3.4.3. </span>Wallet-Relying Party Registration Certificate Issuance<a class="headerlink" href="#wallet-relying-party-registration-certificate-issuance" title="Link to this heading">¶</a></h4>
+<p>Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.
+The WRPRC is issued during the registration or the update of the Entity.</p>
+<p><strong>Input</strong></p>
+<p>The registration data of the Entity held in the Register.</p>
+<p><strong>Outcome</strong></p>
+<p>The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that the Entity presents to the Wallet Units together with its registration data.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>During the Entity Registration, or an Entity Update that changes the registration data, the Provider of WRPRC builds the WRPRC from the record of the Entity in the Register.</p></li>
+<li><p>The Provider of WRPRC signs the WRPRC with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.</p></li>
+</ol>
 </section>
 <section id="signature-and-seal-certificate-issuance">
-<h4><span class="section-number">8.3.4.3. </span>Signature and Seal Certificate Issuance<a class="headerlink" href="#signature-and-seal-certificate-issuance" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.3.4.4. </span>Signature and Seal Certificate Issuance<a class="headerlink" href="#signature-and-seal-certificate-issuance" title="Link to this heading">¶</a></h4>
+<p>Signature and Seal Certificate Issuance covers the certificates issued by the national PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.
+The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the national Root and outside this process, and its qualified status is evaluated in the eligibility, see <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the Sign/Seal Certificate, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.
+The attributes of the certificate come from the record of the Entity in the Register or, in its absence, from the registration Trust Mark.</p>
+<p><strong>Outcome</strong></p>
+<p>The Sign/Seal Certificate, issued by the Certification Authority of the role of the Entity, that the Entity uses to sign or seal the Attestations it issues.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Entity requests the Sign/Seal Certificate to the ACME service of the Certification Authority of its role, presenting its <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> and authenticating with its Federation Trust Chain, validated as in <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
+<li><p>The Certification Authority applies its policy, reading the attributes from the record in the Register or, in its absence, from the registration Trust Mark.</p></li>
+<li><p>The Certification Authority issues the Sign/Seal Certificate and the Entity retrieves it.</p></li>
+</ol>
 </section>
 <section id="national-authentication-certificate-issuance">
-<h4><span class="section-number">8.3.4.4. </span>National Authentication Certificate Issuance<a class="headerlink" href="#national-authentication-certificate-issuance" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.3.4.5. </span>National Authentication Certificate Issuance<a class="headerlink" href="#national-authentication-certificate-issuance" title="Link to this heading">¶</a></h4>
+<p>National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].
+The certificate follows the same profile of the WRPAC and it is issued by the National Authentication Certification Authority, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the National Authentication Certificate, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.</p>
+<p><strong>Outcome</strong></p>
+<p>The National Authentication Certificate, issued by the National Authentication Certification Authority, that the Entity uses to authenticate in the Proximity Flow.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Entity requests the certificate to the ACME service of the National Authentication Certification Authority, presenting its <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> and authenticating with its Federation Trust Chain, validated as in <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
+<li><p>The Certification Authority applies its policy, reading the attributes from the record in the Register or, in its absence, from the registration Trust Mark.</p></li>
+<li><p>The Certification Authority issues the National Authentication Certificate and the Entity retrieves it.</p></li>
+</ol>
 </section>
 <section id="registration-trust-mark-issuance">
-<h4><span class="section-number">8.3.4.5. </span>Registration Trust Mark Issuance<a class="headerlink" href="#registration-trust-mark-issuance" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
+<h4><span class="section-number">8.3.4.6. </span>Registration Trust Mark Issuance<a class="headerlink" href="#registration-trust-mark-issuance" title="Link to this heading">¶</a></h4>
+<p>Registration Trust Mark Issuance issues the registration Trust Mark, defined in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
+The Trust Mark is issued during the registration of the Entity and not through ACME, and it is invoked by the Entity Registration at the completion of the federation registration.</p>
+<p><strong>Input</strong></p>
+<p>The authorization data of the Entity: its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request, following the logic of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p>
+<p><strong>Outcome</strong></p>
+<p>The registration Trust Mark, issued by the Federation Trust Anchor and carried in the Subordinate Statement about the Entity.
+It makes the Entity recognizable as a registered participant of the National Trust Framework, and it is the source of the authorization data when the Entity has no record in the Register.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>At the completion of the federation registration, the National Federation Management builds the registration Trust Mark with the authorization data of the Entity.</p></li>
+<li><p>The Federation Trust Anchor signs the Trust Mark, which is carried in the Subordinate Statement, as described in <a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>.</p></li>
+</ol>
 </section>
 </section>
 <section id="attestation-onboarding">
@@ -923,43 +1752,98 @@ Each process covers both the first issuance and the re-issuance, for example aft
 Each process is described with its Input, its Outcome and its Process.</p>
 <section id="claim-registration">
 <h4><span class="section-number">8.3.5.1. </span>Claim Registration<a class="headerlink" href="#claim-registration" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that adds a claim to the Claims Registry when a needed claim is not available, and aligns it towards the corresponding European catalog.</p>
+<p>Claim Registration adds a standardized claim definition to the Claims Registry, when a claim that an Authentic Source or a Credential type needs is not yet available.
+The Claims Registry is maintained by the Supervisory Body and it provides semantic definitions of the Credential attributes, such as their data type, their validation rules and their interoperability mappings.
+The claim definitions are aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a>.
+This process enables the <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a> and the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a> that use the claim.</p>
+<p><strong>Input</strong></p>
+<p>The input is the definition of the claim to register, following the Claim Entry Parameters of the <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a>: the canonical name of the claim, its description, its <code class="docutils literal notranslate"><span class="pre">type</span></code> (<code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">array</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code>), the <code class="docutils literal notranslate"><span class="pre">format</span></code> and the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> used when a string carries a qualified value, the <code class="docutils literal notranslate"><span class="pre">aliases</span></code> that map the alternative names used in other standards to the canonical claim, and the nested structure of an <code class="docutils literal notranslate"><span class="pre">object</span></code> or an <code class="docutils literal notranslate"><span class="pre">array</span></code> claim.
+The canonical name and the aliases are aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a>.
+A claim is a semantic definition and not an Entity, so the input is not registration data and it does not follow a profile of the <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
+The registry-level fields, meaning the identifier of the registry, its version, its last-modification time and its localization configuration, are generated by the Claims and Schema Management.</p>
+<p><strong>Outcome</strong></p>
+<p>The claim definition in the Claims Registry, that the Authentic Sources, the schemas and the Credential types can reference.
+A claim is never removed from the Claims Registry, because the Credentials already issued keep referencing it, so a deprecated claim is superseded by a new version, as described in <a class="reference internal" href="#claims-and-schemas-lifecycle"><span class="std std-ref">Claims and Schemas Lifecycle</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>An Authentic Source, during its <a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>, or a Credential Issuer, during a <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, needs a claim not yet in the Claims Registry.</p></li>
+<li><p>The definition of the claim is established with its canonical name, its <code class="docutils literal notranslate"><span class="pre">type</span></code>, its <code class="docutils literal notranslate"><span class="pre">format</span></code>, its <code class="docutils literal notranslate"><span class="pre">aliases</span></code> and its nested structure, aligned to the <a class="reference internal" href="registry.html#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a> and without conflicts with the claims already registered.</p></li>
+<li><p>The Claims and Schema Management registers the definition in the Claims Registry.</p></li>
+<li><p>The claim becomes available and it enables the <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a> and the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a> that use it.</p></li>
+</ol>
 </section>
 <section id="schema-provisioning">
 <h4><span class="section-number">8.3.5.2. </span>Schema Provisioning<a class="headerlink" href="#schema-provisioning" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for nationally defined Credentials, or by registering it in alignment with an external Rulebook or standard.</p>
+<p>Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at national level, or by registering it in alignment with an external Rulebook or standard.
+The schema is one of the requirements for the activation of a Credential type, so this process is a precondition of the <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p>
+<p><strong>Input</strong></p>
+<p>The schema of the Credential type follows the Schema Definition Parameters of <a class="reference internal" href="registry.html#schema-registry"><span class="std std-ref">Schema Registry</span></a>: its <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code>, the <code class="docutils literal notranslate"><span class="pre">format</span></code> it applies to, a JSON Schema for the SD-JWT VC format or a CBOR Schema for the mdoc-CBOR format, and the <code class="docutils literal notranslate"><span class="pre">schema_uri</span></code> with its integrity digest.
+The schema is composed of the claims defined in <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a>, and a claim still missing activates the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>The schema in the Schema Registry, for at least one of the supported formats, that the Credential type references.
+This satisfies the schema requirement of the activation of the Credential type, as described in <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The claims that compose the schema are available in the Claims Registry, otherwise the Claim Registration is activated for the missing claim.</p></li>
+<li><p>The schema is generated from the data model for a Credential defined at national level, or it is registered in alignment with the external Rulebook.</p></li>
+<li><p>The Claims and Schema Management registers the schema in the Schema Registry, with its integrity digest, for each supported format.</p></li>
+</ol>
 </section>
 <section id="credential-type-registration">
 <h4><span class="section-number">8.3.5.3. </span>Credential Type Registration<a class="headerlink" href="#credential-type-registration" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that creates a versioned entry of a Credential type in the Digital Credentials Catalog, with its data source and the reference to the applicable Rulebook.</p>
+<p>Credential Type Registration process creates a versioned entry of a Credential type in the Digital Credentials Catalog, in the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state, with its data source and the reference to the applicable Rulebook.
+The versioned entry is the pair given by the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and the <code class="docutils literal notranslate"><span class="pre">version</span></code>, that MUST be unique in the catalog.</p>
+<p><strong>Input</strong></p>
+<p>The definition of the Credential type, that a Credential Issuer provides through the <code class="docutils literal notranslate"><span class="pre">credential_type_declaration</span></code>, the <code class="docutils literal notranslate"><span class="pre">credential_technical_specification</span></code> and the <code class="docutils literal notranslate"><span class="pre">credential_policies</span></code> of its profile in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
+It carries the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code>, the User authentication methods and the minimum Level of Assurance, the reference to the schemes and the formats, the reference to the Rulebook, and the data source, given by one or more <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> or, when another Credential type provides the data, by one or more <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code>.
+The structure of the versioned entry is defined in <a class="reference internal" href="registry.html#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a>.</p>
+<p><strong>Outcome</strong></p>
+<p>A versioned entry of the Credential type in the Digital Credentials Catalog, in the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state when it has no <code class="docutils literal notranslate"><span class="pre">issuers</span></code> yet.
+It enables the <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a> and, for the notified categories, the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Credential type is registered with its data source, its <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> or its <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code>, together with the reference to its schema in the Schema Registry and to its Rulebook.</p></li>
+<li><p>The Catalog Management creates the versioned entry in the Digital Credentials Catalog in the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state.</p></li>
+<li><p>A Credential type can be registered before any Credential Issuer, to make its identifier available. A Credential Issuer MUST declare the Credential types it intends to issue at the time of its <a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and this declaration adds it to the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry.</p></li>
+<li><p>The versioned entry is activated when the conditions of the <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a> are satisfied.</p></li>
+</ol>
 </section>
 <section id="credential-type-activation-and-deactivation">
 <h4><span class="section-number">8.3.5.4. </span>Credential Type Activation and Deactivation<a class="headerlink" href="#credential-type-activation-and-deactivation" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that verifies the conditions for the issuance of a Credential type and moves its versioned entry between the active and the inactive state.</p>
+<p>Credential Type Activation and Deactivation process verifies the conditions for the issuance of a Credential type and changes its versioned entry between the <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> and the <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> state.
+A Credential type can be issued from a versioned entry only if that entry is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, and only one versioned entry of the same <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> MUST be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> at a given time.</p>
+<p><strong>Input</strong></p>
+<p>The state of the three conditions of the versioned entry, i.e. its <code class="docutils literal notranslate"><span class="pre">issuers</span></code>, its data source and its schema.</p>
+<p><strong>Outcome</strong></p>
+<p>The versioned entry is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> while all the three conditions are satisfied, and it changes to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> as soon as one of them stops holding, as defined in <a class="reference internal" href="registry.html#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a>.
+The deactivation prevents a new issuance from the versioned entry, but it does not revoke the Credentials already issued from it, which keep their own status, as described in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The Catalog Management verifies the three conditions of the versioned entry, consulting the corresponding registries.</p>
+<ul class="simple">
+<li><p>At least one Credential Issuer is listed in the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field, and each of them holds the entitlement corresponding to the <code class="docutils literal notranslate"><span class="pre">legal_type</span></code> of the Credential type.</p></li>
+<li><p>The Authentic Source that provides the data, or the parent Credential type, is registered and available. For an Authentic Source integrated through PDND, the e-Service is published and the enrolment of the Credential Issuer is approved, as described in <a class="reference internal" href="#authentic-source-lifecycle-and-pdnd-alignment"><span class="std std-ref">Authentic Source Lifecycle and PDND Alignment</span></a>.</p></li>
+<li><p>The schema of the Credential type is registered in the Schema Registry for at least one of the supported formats.</p></li>
+</ul>
+</li>
+<li><p>The versioned entry becomes <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> when all the three conditions are satisfied, and it returns to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code> as soon as one of them stops holding. The state follows the conditions and it is not an explicit action.</p></li>
+</ol>
 </section>
 <section id="credential-type-update">
 <h4><span class="section-number">8.3.5.5. </span>Credential Type Update<a class="headerlink" href="#credential-type-update" title="Link to this heading">¶</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Draft. To be written.</p>
-</div>
-<p>Process that publishes a new version of a Credential type, activating the new versioned entry and deactivating the previous one.</p>
+<p>Credential Type Update publishes a new version of a Credential type, activating the new versioned entry and deactivating the previous one.
+A Credential type is never modified in place, so a change of its definition becomes a new versioned entry, with a new <code class="docutils literal notranslate"><span class="pre">version</span></code>.</p>
+<p><strong>Input</strong></p>
+<p>The updated definition of the Credential type, provided as for the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, with a new <code class="docutils literal notranslate"><span class="pre">version</span></code>.</p>
+<p><strong>Outcome</strong></p>
+<p>A new versioned entry of the Credential type, activated when its conditions are satisfied, while the versioned entry of the previous version MUST become <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>.
+The Credentials already issued from the previous version keep their own status and are not revoked by the versioning, and the Credential Issuer can drive their re-issuance, as described in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The definition of the Credential type changes.</p></li>
+<li><p>The Catalog Management registers a new versioned entry, with the new <code class="docutils literal notranslate"><span class="pre">version</span></code>, as in the Credential Type Registration.</p></li>
+<li><p>The new versioned entry is activated when the conditions of the <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a> are satisfied, and the versioned entry of the previous version changes to <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>.</p></li>
+</ol>
 </section>
 </section>
 </section>
@@ -971,16 +1855,16 @@ Each process is described with its Input, its Outcome and its Process.</p>
 The lifecycle of the single Digital Credentials issued to the Users is a different matter and it is defined in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p>
 <section id="entity-lifecycle-state-machine">
 <h3><span class="section-number">8.4.1. </span>Entity Lifecycle State Machine<a class="headerlink" href="#entity-lifecycle-state-machine" title="Link to this heading">¶</a></h3>
-<p>This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.2</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
+<p>This section applies to WRPs and WPs Entities as they are directly involved in the operational phases. As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.4</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
-<figure class="align-default" id="id761">
+<figure class="align-default" id="id823">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id761" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id823" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -1043,8 +1927,8 @@ The Authentic Sources follow the PDND framework, and the effects that their life
 <p>Every transition of the state machine of the Entities is caused by an event.
 For each event, this section states who is entitled to trigger it, who is responsible for it, and, when applicable, on which normative basis and within which conditions.
 The events that concern the Credential types and the Authentic Sources are described in the dedicated sections below.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id762">
-<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id762" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id824">
+<caption><span class="caption-number">Table 8.15 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id824" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -1124,8 +2008,8 @@ This is set by Annex IV of [<a class="reference external" href="https://eur-lex.
 The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id763">
-<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id763" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id825">
+<caption><span class="caption-number">Table 8.16 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id825" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -1183,8 +2067,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id764">
-<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id764" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id826">
+<caption><span class="caption-number">Table 8.17 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id826" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -1329,8 +2213,8 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 <p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
 The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id765">
-<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id765" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id827">
+<caption><span class="caption-number">Table 8.18 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id827" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />
@@ -1502,17 +2386,18 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
 </li>
 <li><a class="reference internal" href="#registration-model">8.2. Registration Model</a><ul>
 <li><a class="reference internal" href="#registration-data-model">8.2.1. Registration Data Model</a></li>
-<li><a class="reference internal" href="#eligibility-and-compliance-preconditions">8.2.2. Eligibility and Compliance Preconditions</a></li>
-<li><a class="reference internal" href="#registration-outcomes">8.2.3. Registration Outcomes</a></li>
-<li><a class="reference internal" href="#registration-profiles">8.2.4. Registration Profiles</a><ul>
-<li><a class="reference internal" href="#pid-provider">8.2.4.1. PID Provider</a></li>
-<li><a class="reference internal" href="#qeaa-provider">8.2.4.2. QEAA Provider</a></li>
-<li><a class="reference internal" href="#pub-eaa-provider">8.2.4.3. PuB-EAA Provider</a></li>
-<li><a class="reference internal" href="#non-qualified-eaa-provider">8.2.4.4. Non-Qualified EAA Provider</a></li>
-<li><a class="reference internal" href="#relying-party">8.2.4.5. Relying Party</a></li>
-<li><a class="reference internal" href="#relying-party-intermediary">8.2.4.6. Relying Party Intermediary</a></li>
-<li><a class="reference internal" href="#wallet-provider">8.2.4.7. Wallet Provider</a></li>
-<li><a class="reference internal" href="#authentic-source">8.2.4.8. Authentic Source</a></li>
+<li><a class="reference internal" href="#mapping-to-the-registry-data-models">8.2.2. Mapping to the Registry Data Models</a></li>
+<li><a class="reference internal" href="#eligibility-and-compliance-preconditions">8.2.3. Eligibility and Compliance Preconditions</a></li>
+<li><a class="reference internal" href="#registration-outcomes">8.2.4. Registration Outcomes</a></li>
+<li><a class="reference internal" href="#registration-profiles">8.2.5. Registration Profiles</a><ul>
+<li><a class="reference internal" href="#pid-provider">8.2.5.1. PID Provider</a></li>
+<li><a class="reference internal" href="#qeaa-provider">8.2.5.2. QEAA Provider</a></li>
+<li><a class="reference internal" href="#pub-eaa-provider">8.2.5.3. PuB-EAA Provider</a></li>
+<li><a class="reference internal" href="#non-qualified-eaa-provider">8.2.5.4. Non-Qualified EAA Provider</a></li>
+<li><a class="reference internal" href="#relying-party">8.2.5.5. Relying Party</a></li>
+<li><a class="reference internal" href="#relying-party-intermediary">8.2.5.6. Relying Party Intermediary</a></li>
+<li><a class="reference internal" href="#wallet-provider">8.2.5.7. Wallet Provider</a></li>
+<li><a class="reference internal" href="#authentic-source">8.2.5.8. Authentic Source</a></li>
 </ul>
 </li>
 </ul>
@@ -1530,11 +2415,12 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
 </ul>
 </li>
 <li><a class="reference internal" href="#certificate-and-trust-artifact-issuance">8.3.4. Certificate and Trust Artifact Issuance</a><ul>
-<li><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance">8.3.4.1. Wallet-Relying Party Access Certificate Issuance</a></li>
-<li><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance">8.3.4.2. Wallet-Relying Party Registration Certificate Issuance</a></li>
-<li><a class="reference internal" href="#signature-and-seal-certificate-issuance">8.3.4.3. Signature and Seal Certificate Issuance</a></li>
-<li><a class="reference internal" href="#national-authentication-certificate-issuance">8.3.4.4. National Authentication Certificate Issuance</a></li>
-<li><a class="reference internal" href="#registration-trust-mark-issuance">8.3.4.5. Registration Trust Mark Issuance</a></li>
+<li><a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation">8.3.4.1. Issuance of the X.509 Certificates through ACME and OpenID Federation</a></li>
+<li><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance">8.3.4.2. Wallet-Relying Party Access Certificate Issuance</a></li>
+<li><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance">8.3.4.3. Wallet-Relying Party Registration Certificate Issuance</a></li>
+<li><a class="reference internal" href="#signature-and-seal-certificate-issuance">8.3.4.4. Signature and Seal Certificate Issuance</a></li>
+<li><a class="reference internal" href="#national-authentication-certificate-issuance">8.3.4.5. National Authentication Certificate Issuance</a></li>
+<li><a class="reference internal" href="#registration-trust-mark-issuance">8.3.4.6. Registration Trust Mark Issuance</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#attestation-onboarding">8.3.5. Attestation Onboarding</a><ul>
@@ -1592,7 +2478,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 03/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

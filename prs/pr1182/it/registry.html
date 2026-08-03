@@ -3403,8 +3403,32 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </pre></div>
 </div>
 </section>
+<section id="registro-delle-wrp">
+<h2><span class="section-number">7.9. </span>Registro delle WRP<a class="headerlink" href="#registro-delle-wrp" title="Link to this heading">¶</a></h2>
+<p>Il <strong>Registro delle WRP</strong> è il registro delle entità del modello di trust <strong>EUDIW</strong>.
+Ciascuno Stato membro lo istituisce e lo gestisce ai sensi del <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> (articolo 3), tramite il <strong>Registrar</strong>.
+Il Registrar conserva i <em>record di registrazione</em> delle Wallet-Relying Party (identificazione, uso previsto, entitlements e materiale crittografico) che guidano l'emissione di WRPAC e WRPRC e supportano l'autorizzazione della Relying Party.</p>
+<p>Il Registrar scrive un record quando una WRP completa la registrazione tecnica durante l'onboarding; ciascun record è firmato o sigillato elettronicamente per conto del Registrar, così che i provider dei certificati e il Wallet possano farvi affidamento.
+Nel modello di trust duale questa registrazione <strong>EUDIW</strong> è additiva rispetto all'identità nazionale OID Federation dell'entità.</p>
+<p>Il modello dati completo e le API pubbliche di lettura sono specificati nelle sezioni dedicate dell'infrastruttura di trust e non sono ripresi qui.</p>
+</section>
+<section id="cataloghi-eudiw">
+<h2><span class="section-number">7.10. </span>Cataloghi EUDIW<a class="headerlink" href="#cataloghi-eudiw" title="Link to this heading">¶</a></h2>
+<p>A livello UE la Commissione europea mantiene due cataloghi <strong>EUDIW</strong> che sono le controparti transfrontaliere dei registri semantici nazionali, definiti in ARF TS11 (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>) (Interfacce e formati per il Catalogue of Attributes e il Catalogue of Schemes).
+Una tipologia di Credenziale presente in questi cataloghi è riconosciuta tra gli Stati membri ed è valutata nel Trust Framework <strong>EUDIW</strong>, mentre una Credenziale presente solo nei registri nazionali è valutata nel Trust Framework <strong>Nazionale</strong>.</p>
+<section id="catalogue-of-attributes">
+<h3><span class="section-number">7.10.1. </span>Catalogue of Attributes<a class="headerlink" href="#catalogue-of-attributes" title="Link to this heading">¶</a></h3>
+<p>Il <strong>Catalogue of Attributes</strong> è il catalogo a livello UE delle definizioni standardizzate di attributi e dei namespace utilizzati nelle attestazioni.
+Il <a class="reference internal" href="#registro-dei-claims"><span class="std std-ref">Registro dei Claims</span></a> nazionale allinea i propri identificatori di claim a questo catalogo, affinché gli attributi definiti a livello nazionale restino interoperabili a livello transfrontaliero.</p>
+</section>
+<section id="catalogue-of-schemes">
+<h3><span class="section-number">7.10.2. </span>Catalogue of Schemes<a class="headerlink" href="#catalogue-of-schemes" title="Link to this heading">¶</a></h3>
+<p>Il <strong>Catalogue of Schemes</strong> è il catalogo a livello UE degli schemi di attestazione (<code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code>): i metadati machine-readable che legano una tipologia di attestazione al relativo Rulebook e schema.
+Il Registro degli Schemi nazionale si allinea a esso, e uno schema ivi referenziato ancora un'attestazione agli ancoraggi di trust EUDIW piuttosto che all'Attestation Rulebook nazionale.</p>
+</section>
+</section>
 <section id="integrazione-del-registro-e-riferimenti-incrociati">
-<h2><span class="section-number">7.9. </span>Integrazione del Registro e Riferimenti Incrociati<a class="headerlink" href="#integrazione-del-registro-e-riferimenti-incrociati" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.11. </span>Integrazione del Registro e Riferimenti Incrociati<a class="headerlink" href="#integrazione-del-registro-e-riferimenti-incrociati" title="Link to this heading">¶</a></h2>
 <p>I componenti del registro sono interconnessi e operano congiuntamente per supportare il completo ecosistema delle Credenziali:</p>
 <ol class="arabic simple">
 <li><p><strong>Registro FA</strong> ↔ <strong>Tassonomia</strong>: Le entità FA dichiarano le capacità utilizzando le classificazioni della tassonomia per una categorizzazione standardizzata.</p></li>
@@ -3415,11 +3439,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ol>
 </section>
 <section id="percorsi-di-utilizzo-dell-infrastruttura-del-registro">
-<h2><span class="section-number">7.10. </span>Percorsi di Utilizzo dell'Infrastruttura del Registro<a class="headerlink" href="#percorsi-di-utilizzo-dell-infrastruttura-del-registro" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.12. </span>Percorsi di Utilizzo dell'Infrastruttura del Registro<a class="headerlink" href="#percorsi-di-utilizzo-dell-infrastruttura-del-registro" title="Link to this heading">¶</a></h2>
 <p>I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità.
 I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura del Registro.</p>
 <section id="navigazione-del-catalogo">
-<h3><span class="section-number">7.10.1. </span>Navigazione del Catalogo<a class="headerlink" href="#navigazione-del-catalogo" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.12.1. </span>Navigazione del Catalogo<a class="headerlink" href="#navigazione-del-catalogo" title="Link to this heading">¶</a></h3>
 <p>Questo percorso di <em>Navigazione del Catalogo</em> supporta gli Utenti (sia utenti umani tramite un'<strong>Istanza Wallet</strong> che sistemi automatizzati come <strong>Relying Party</strong> o portali web) nella discovery e nella selezione delle Credenziali Digitali disponibili.</p>
 <ol class="arabic simple">
 <li><p><strong>Accesso all'Endpoint di Discovery</strong>: L'entità (es. un Fornitore di Wallet o un portale informativo) accede all'<cite>Endpoint di Discovery del Registro</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) per ottenere l'URI del <strong>Catalogo delle Credenziali Digitali</strong> e della <strong>Tassonomia</strong>.</p></li>
@@ -3437,7 +3461,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 </ol>
 </section>
 <section id="emissione-di-credenziali">
-<h3><span class="section-number">7.10.2. </span>Emissione di Credenziali<a class="headerlink" href="#emissione-di-credenziali" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.12.2. </span>Emissione di Credenziali<a class="headerlink" href="#emissione-di-credenziali" title="Link to this heading">¶</a></h3>
 <p>Questo percorso definisce come un Emittente di Credenziali utilizza l'Infrastruttura del Registro per preparare ed emettere una Credenziale Digitale conforme.</p>
 <ol class="arabic simple">
 <li><p><strong>Identificazione dei Requisiti</strong>: L'EI consulta il <strong>Catalogo delle Credenziali Digitali</strong> per i requisiti tecnici della tipologia di Credenziale da emettere (es. <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
@@ -3463,7 +3487,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 </ol>
 </section>
 <section id="presentazione-e-verifica-delle-credenziali">
-<h3><span class="section-number">7.10.3. </span>Presentazione e Verifica delle Credenziali<a class="headerlink" href="#presentazione-e-verifica-delle-credenziali" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.12.3. </span>Presentazione e Verifica delle Credenziali<a class="headerlink" href="#presentazione-e-verifica-delle-credenziali" title="Link to this heading">¶</a></h3>
 <p>Questo percorso descrive come un'<strong>Istanza Wallet</strong> e una <strong>Relying Party (RP)</strong> interagiscono con l'Infrastruttura del Registro quando una Credenziale Digitale deve essere presentata da un Utente.</p>
 <ol class="arabic simple">
 <li><p><strong>Autorizzazione e Selezione del Wallet</strong>:</p></li>
@@ -3611,11 +3635,17 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 </li>
 <li><a class="reference internal" href="#tassonomia">7.7. Tassonomia</a></li>
 <li><a class="reference internal" href="#registro-degli-schema">7.8. Registro degli Schema</a></li>
-<li><a class="reference internal" href="#integrazione-del-registro-e-riferimenti-incrociati">7.9. Integrazione del Registro e Riferimenti Incrociati</a></li>
-<li><a class="reference internal" href="#percorsi-di-utilizzo-dell-infrastruttura-del-registro">7.10. Percorsi di Utilizzo dell'Infrastruttura del Registro</a><ul>
-<li><a class="reference internal" href="#navigazione-del-catalogo">7.10.1. Navigazione del Catalogo</a></li>
-<li><a class="reference internal" href="#emissione-di-credenziali">7.10.2. Emissione di Credenziali</a></li>
-<li><a class="reference internal" href="#presentazione-e-verifica-delle-credenziali">7.10.3. Presentazione e Verifica delle Credenziali</a></li>
+<li><a class="reference internal" href="#registro-delle-wrp">7.9. Registro delle WRP</a></li>
+<li><a class="reference internal" href="#cataloghi-eudiw">7.10. Cataloghi EUDIW</a><ul>
+<li><a class="reference internal" href="#catalogue-of-attributes">7.10.1. Catalogue of Attributes</a></li>
+<li><a class="reference internal" href="#catalogue-of-schemes">7.10.2. Catalogue of Schemes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integrazione-del-registro-e-riferimenti-incrociati">7.11. Integrazione del Registro e Riferimenti Incrociati</a></li>
+<li><a class="reference internal" href="#percorsi-di-utilizzo-dell-infrastruttura-del-registro">7.12. Percorsi di Utilizzo dell'Infrastruttura del Registro</a><ul>
+<li><a class="reference internal" href="#navigazione-del-catalogo">7.12.1. Navigazione del Catalogo</a></li>
+<li><a class="reference internal" href="#emissione-di-credenziali">7.12.2. Emissione di Credenziali</a></li>
+<li><a class="reference internal" href="#presentazione-e-verifica-delle-credenziali">7.12.3. Presentazione e Verifica delle Credenziali</a></li>
 </ul>
 </li>
 </ul>
@@ -3653,7 +3683,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 03/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -62,7 +62,7 @@ Upon a successful request, the Application Provider generates and returns the ``
   If the Keystore fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
 .. note::
-  **WSCA/WSCD**: For PID issuance at Level of Assurance High, the Wallet Instance interacts with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for LoA High. The WSCA/Remote WSCD is exclusively required for the PID; all other Digital Credentials use the Keystore.
+  **WSCA/WSCD**: For PID issuance at Level of Assurance High, the Wallet Instance interacts with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for LoA High.
 
 **Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation (:ref:`WP_133b <wallet-instance-optional-testcases>`).
 

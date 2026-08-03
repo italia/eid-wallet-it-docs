@@ -1208,10 +1208,10 @@ Decentralization of Display and Claim Information
 
 The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata (Entity Configuration)**.
 
-The overall logic for presenting a Credential is:
+The overall logic for presenting a Digital Credential is the following:
 
-1. The Wallet/Relying Party retrieves the lightweight **Digital Credentials Catalog** to discover the available `credential_type` and the `entity_id` of their Credential Issuers.
-2. It retrieves the full **Credential Issuer Metadata** (Entity Configuration) from the discovered `entity_id`.
+1. Depending on the required Trust Framework, the Wallet or Relying Party retrieves the :ref:`registry:Digital Credentials Catalog` (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available `credential_type` and the `entity_id` of their Credential Issuers.
+2. It retrieves the full Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
 3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
 
 Taxonomy
@@ -1393,8 +1393,9 @@ A non-normative example of the Schema Registry payload:
 Register of WRPs
 ----------------
 
-The **Register of WRPs** is the entity register of the **EUDIW** trust model: each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
-Unlike the national semantic registries above, it does not hold Credential semantics: it holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
+The **Register of WRPs** is the entity register of the **EUDIW** trust model.
+Each Member State establishes and operates it under `CIR2025/848`_ (Article 3), through the **Registrar**.
+The Registrar holds the *registration records* of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.
 
 The Registrar writes a record when a WRP completes technical registration during onboarding (see :ref:`onboarding-system:Entity Registration`); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
 In the dual trust model this **EUDIW** registration is additive on top of the entity's **national** OID Federation identity (see :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
@@ -1404,7 +1405,7 @@ The full data model and the public read API are specified in :ref:`infrastructur
 EUDIW Catalogues
 ----------------
 
-At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
+At EU level the European Commission maintains two **EUDIW** catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (`EUDI-TS 11`_) (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
 A Credential type present in these catalogues is recognised across Member States and is evaluated under the **EUDIW** Trust Framework, whereas a Credential present only in the national registries is evaluated under the **National** Trust Framework (see :ref:`onboarding-system:Onboarding System and Lifecycle Management` and :ref:`trust-evaluation:Trust Framework Selection`).
 
 Catalogue of Attributes
@@ -1448,7 +1449,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 2.  **Navigation and Selection**:
 
   * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
-  * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
+  * **Issuer Metadata**: The entity extracts the Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
   * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
 
 3.  **Final Action**: The entity can then use the metadata to display the catalog information to a User, or use it in other ways.
@@ -1458,41 +1459,65 @@ Credential Issuance
 
 This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
 
-1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
+1.  **Identifying Requirements**: The Credential Issuer consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
 
 2.  **Schema and Claim Resolution**:
 
-  * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
-  * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
+  The Credential Issuer consults: 
+  
+    * :ref:`registry:Catalogue of Schemes` to obtain the schema of the sought EUDIW-anchored Digital Credential (``schemaURIs``), or
+    * :ref:`registry:Schema Registry` to obtain the schema of the sought National-anchored Digital Credential (``schema_uri``).
+    
+  and, in both cases, verifies its integrity. Then, depending on the Trust Framework anchoring the Digital Credential, it accesses the :ref:`registry:Catalogue of Attributes` or :ref:`registry:Claims Registry` to retrieve the standardized semantic definitions and data formats of the necessary attributes (claims).
 
 3.  **Authentic Data Retrieval**:
 
-  * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
-  * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
+  * The Credential Issuer consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
+  * The Credential Issuer consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
 
-4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
+4.  **Credential Issuance**: The Credential Issuer uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
 
 Credential Presentation and Verification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This journey describes how a **Wallet Instance** and a **Relying Party (RP)** interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.
 
-1.  **Wallet Authorization and Selection**:
+1.  **Wallet Unit Authorization and Selection**:
 
-  * The Wallet receives a Presentation Request from the RP and verifies that the RP is authorized to make it, comparing the requested *claims* with the RP entitlements and *Authorization Policies* held in the :ref:`registry:Register of WRPs` (surfaced through the RP WRPAC and WRPRC).
-  * The Wallet consults the **Digital Credentials Catalog** and the **Taxonomy** to verify the *Domains*, the *Classes* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
-  * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
+  * The Wallet Unit receives a Presentation Request from the RP. The Wallet Unit MUST evaluate trust with the RP issuing the Presentation Request as follows:
+
+    * **(EUDIW Trust Framework)**: 
+    
+      * The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in :ref:`trust-evaluation:EUDIW Authentication`.
+      * The Wallet Unit validates whether the RP is entitled to this presentation as described in :ref:`trust-evaluation:EUDIW Authorization`.
+
+    * **(National Trust Framework)**: 
+    
+      * The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in :ref:`trust-evaluation:Authentication`.
+      * The Wallet Unit validates whether the RP is entitled to this presentation as described in :ref:`trust-evaluation:Authorization`.
+  
+   Regardless of the Trust Framework, the final decision on whether the RP is Authorized during presentation is made according to :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+  
   * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
 
 2.  **Discovery and Integrity**:
 
   * The RP receives the Digital Credential from the User.
-  * The RP consults the federation endpoints via the Trust Anchor (``/fetch``, ``/trust_mark_status``) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider, as described in :ref:`infrastructure-trust:Federation API Endpoints`.
-  * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+  * Depending on the trust framework the RP subscribes to (i.e., the National or EUDIW Trust Framework): 
+    
+    * **(EUDIW Trust Framework)**: 
+    
+      * The RP validates the Digital Credential signature and evaluates trust with its issuer as described in :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+      * The RP consults the :ref:`registry:Catalogue of Schemes` to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+    
+    * **(National Trust Framework)**: 
+    
+      * The RP validates the Digital Credential signature and evaluates trust with its issuer as described in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`.
+      * The RP consults the :ref:`registry:Schema Registry` to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:
 
   * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
   * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
-4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
+4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Digital Credential for service access.

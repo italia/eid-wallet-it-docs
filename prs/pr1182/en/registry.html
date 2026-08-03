@@ -2603,10 +2603,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <section id="decentralization-of-display-and-claim-information">
 <h3><span class="section-number">7.5.3. </span>Decentralization of Display and Claim Information<a class="headerlink" href="#decentralization-of-display-and-claim-information" title="Link to this heading">¶</a></h3>
 <p>The canonical source for display characteristics and claim structure is determined by the <strong>Credential Issuer's Metadata (Entity Configuration)</strong>.</p>
-<p>The overall logic for presenting a Credential is:</p>
+<p>The overall logic for presenting a Digital Credential is the following:</p>
 <ol class="arabic simple">
-<li><p>The Wallet/Relying Party retrieves the lightweight <strong>Digital Credentials Catalog</strong> to discover the available <cite>credential_type</cite> and the <cite>entity_id</cite> of their Credential Issuers.</p></li>
-<li><p>It retrieves the full <strong>Credential Issuer Metadata</strong> (Entity Configuration) from the discovered <cite>entity_id</cite>.</p></li>
+<li><p>Depending on the required Trust Framework, the Wallet or Relying Party retrieves the <a class="reference internal" href="#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available <cite>credential_type</cite> and the <cite>entity_id</cite> of their Credential Issuers.</p></li>
+<li><p>It retrieves the full Credential Issuer Metadata (see <a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer"><span class="std std-ref">Metadata for openid_credential_issuer</span></a>) as described in Section 12.2.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
 <li><p>The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).</p></li>
 </ol>
 </section>
@@ -3443,15 +3443,16 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </section>
 <section id="register-of-wrps">
 <h2><span class="section-number">7.8. </span>Register of WRPs<a class="headerlink" href="#register-of-wrps" title="Link to this heading">¶</a></h2>
-<p>The <strong>Register of WRPs</strong> is the entity register of the <strong>EUDIW</strong> trust model: each Member State establishes and operates it under <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> (Article 3), through the <strong>Registrar</strong>.
-Unlike the national semantic registries above, it does not hold Credential semantics: it holds the <em>registration records</em> of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.</p>
+<p>The <strong>Register of WRPs</strong> is the entity register of the <strong>EUDIW</strong> trust model.
+Each Member State establishes and operates it under <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> (Article 3), through the <strong>Registrar</strong>.
+The Registrar holds the <em>registration records</em> of Wallet-Relying Parties (identification, intended use, entitlements, and key material) that drive the issuance of the WRPAC and WRPRC and support Relying Party authorization.</p>
 <p>The Registrar writes a record when a WRP completes technical registration during onboarding (see <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>); each record is electronically signed or sealed on behalf of the Registrar so that the certificate providers and the Wallet can rely on it.
 In the dual trust model this <strong>EUDIW</strong> registration is additive on top of the entity's <strong>national</strong> OID Federation identity (see <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a>).</p>
 <p>The full data model and the public read API are specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a> and <a class="reference internal" href="infrastructure-trust.html#register-open-apis"><span class="std std-ref">Register Open APIs</span></a>, and are not restated here.</p>
 </section>
 <section id="eudiw-catalogues">
 <h2><span class="section-number">7.9. </span>EUDIW Catalogues<a class="headerlink" href="#eudiw-catalogues" title="Link to this heading">¶</a></h2>
-<p>At EU level the European Commission maintains two <strong>EUDIW</strong> catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
+<p>At EU level the European Commission maintains two <strong>EUDIW</strong> catalogues that are the cross-border counterparts of the national semantic registries, defined in ARF TS11 (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>) (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes).
 A Credential type present in these catalogues is recognised across Member States and is evaluated under the <strong>EUDIW</strong> Trust Framework, whereas a Credential present only in the national registries is evaluated under the <strong>National</strong> Trust Framework (see <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a> and <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>).</p>
 <section id="catalogue-of-attributes">
 <h3><span class="section-number">7.9.1. </span>Catalogue of Attributes<a class="headerlink" href="#catalogue-of-attributes" title="Link to this heading">¶</a></h3>
@@ -3491,7 +3492,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
-<li><p><strong>Issuer Metadata</strong>: The entity extracts the <strong>Issuer Identifier</strong> (<cite>entity_id</cite> within the <cite>issuers</cite> field) associated with the desired Credential.</p></li>
+<li><p><strong>Issuer Metadata</strong>: The entity extracts the Credential Issuer Metadata (see <a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer"><span class="std std-ref">Metadata for openid_credential_issuer</span></a>) as described in Section 12.2.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information and specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
 </ul>
 </div></blockquote>
@@ -3503,39 +3504,61 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <h3><span class="section-number">7.11.2. </span>Credential Issuance<a class="headerlink" href="#credential-issuance" title="Link to this heading">¶</a></h3>
 <p>This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.</p>
 <ol class="arabic simple">
-<li><p><strong>Identifying Requirements</strong>: The CI consults the <strong>Digital Credentials Catalog</strong> for the technical requirements of the Credential type to be issued (e.g., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
+<li><p><strong>Identifying Requirements</strong>: The Credential Issuer consults the <strong>Digital Credentials Catalog</strong> for the technical requirements of the Credential type to be issued (e.g., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
 <li><p><strong>Schema and Claim Resolution</strong>:</p></li>
 </ol>
 <blockquote>
+<div><p>The Credential Issuer consults:</p>
+<blockquote>
 <div><ul class="simple">
-<li><p>The CI consults the <strong>Schema Registry</strong> to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (<cite>schema_uri#integrity</cite>).</p></li>
-<li><p>The CI accesses the <strong>Claims Registry</strong> to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).</p></li>
+<li><p><a class="reference internal" href="#catalogue-of-schemes"><span class="std std-ref">Catalogue of Schemes</span></a> to obtain the schema of the sought EUDIW-anchored Digital Credential (<code class="docutils literal notranslate"><span class="pre">schemaURIs</span></code>), or</p></li>
+<li><p><a class="reference internal" href="#schema-registry"><span class="std std-ref">Schema Registry</span></a> to obtain the schema of the sought National-anchored Digital Credential (<code class="docutils literal notranslate"><span class="pre">schema_uri</span></code>).</p></li>
 </ul>
+</div></blockquote>
+<p>and, in both cases, verifies its integrity. Then, depending on the Trust Framework anchoring the Digital Credential, it accesses the <a class="reference internal" href="#catalogue-of-attributes"><span class="std std-ref">Catalogue of Attributes</span></a> or <a class="reference internal" href="#claims-registry"><span class="std std-ref">Claims Registry</span></a> to retrieve the standardized semantic definitions and data formats of the necessary attributes (claims).</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li><p><strong>Authentic Data Retrieval</strong>:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>The CI consults the <strong>Authentic Source (AS) Registry</strong> to identify the authorized <strong>Authentic Source</strong> (AS) for the required dataset. The AS Registry provides the AS's <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> and the technical details of the interface (<cite>integration_endpoint</cite>, <cite>integration_method</cite>).</p></li>
-<li><p>The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.</p></li>
+<li><p>The Credential Issuer consults the <strong>Authentic Source (AS) Registry</strong> to identify the authorized <strong>Authentic Source</strong> (AS) for the required dataset. The AS Registry provides the AS's <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> and the technical details of the interface (<cite>integration_endpoint</cite>, <cite>integration_method</cite>).</p></li>
+<li><p>The Credential Issuer consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p><strong>Credential Issuance</strong>: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).</p></li>
+<li><p><strong>Credential Issuance</strong>: The Credential Issuer uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).</p></li>
 </ol>
 </section>
 <section id="credential-presentation-and-verification">
 <h3><span class="section-number">7.11.3. </span>Credential Presentation and Verification<a class="headerlink" href="#credential-presentation-and-verification" title="Link to this heading">¶</a></h3>
 <p>This journey describes how a <strong>Wallet Instance</strong> and a <strong>Relying Party (RP)</strong> interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.</p>
 <ol class="arabic simple">
-<li><p><strong>Wallet Authorization and Selection</strong>:</p></li>
+<li><p><strong>Wallet Unit Authorization and Selection</strong>:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>The Wallet receives a Presentation Request from the RP and verifies that the RP is authorized to make it, comparing the requested <em>claims</em> with the RP entitlements and <em>Authorization Policies</em> held in the <a class="reference internal" href="#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a> (surfaced through the RP WRPAC and WRPRC).</p></li>
-<li><p>The Wallet consults the <strong>Digital Credentials Catalog</strong> and the <strong>Taxonomy</strong> to verify the <em>Domains</em>, the <em>Classes</em> and <em>Purposes</em> associated with the Credential types it holds, evaluating which Credentials are suitable for the request.</p></li>
-<li><p>The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (<strong>Credential-Specific</strong> or <strong>Credential-Agnostic</strong> scenarios).</p></li>
+<li><p>The Wallet Unit receives a Presentation Request from the RP. The Wallet Unit MUST evaluate trust with the RP issuing the Presentation Request as follows:</p>
+<ul>
+<li><p><strong>(EUDIW Trust Framework)</strong>:</p>
+<ul>
+<li><p>The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.</p></li>
+<li><p>The Wallet Unit validates whether the RP is entitled to this presentation as described in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p></li>
+</ul>
+</li>
+<li><p><strong>(National Trust Framework)</strong>:</p>
+<ul>
+<li><p>The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in <a class="reference internal" href="trust-evaluation.html#authentication"><span class="std std-ref">Authentication</span></a>.</p></li>
+<li><p>The Wallet Unit validates whether the RP is entitled to this presentation as described in <a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>Regardless of the Trust Framework, the final decision on whether the RP is Authorized during presentation is made according to <a class="reference internal" href="trust-evaluation.html#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.</p>
+</div></blockquote>
+<ul class="simple">
 <li><p>The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.</p></li>
 </ul>
 </div></blockquote>
@@ -3545,8 +3568,22 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <blockquote>
 <div><ul class="simple">
 <li><p>The RP receives the Digital Credential from the User.</p></li>
-<li><p>The RP consults the federation endpoints via the Trust Anchor (<code class="docutils literal notranslate"><span class="pre">/fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>) to verify the <strong>cryptographic trust</strong> (Trust Mark) of the Issuer and Wallet Provider, as described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p></li>
-<li><p>The RP consults the <strong>Schema Registry</strong> to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>).</p></li>
+<li><p>Depending on the trust framework the RP subscribes to (i.e., the National or EUDIW Trust Framework):</p>
+<ul>
+<li><p><strong>(EUDIW Trust Framework)</strong>:</p>
+<ul>
+<li><p>The RP validates the Digital Credential signature and evaluates trust with its issuer as described in <a class="reference internal" href="trust-evaluation.html#eudiw-attestation-signature-validation"><span class="std std-ref">EUDIW Attestation Signature Validation</span></a>.</p></li>
+<li><p>The RP consults the <a class="reference internal" href="#catalogue-of-schemes"><span class="std std-ref">Catalogue of Schemes</span></a> to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>).</p></li>
+</ul>
+</li>
+<li><p><strong>(National Trust Framework)</strong>:</p>
+<ul>
+<li><p>The RP validates the Digital Credential signature and evaluates trust with its issuer as described in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-validation-procedure"><span class="std std-ref">Signing Trust Anchor Validation Procedure</span></a>.</p></li>
+<li><p>The RP consults the <a class="reference internal" href="#schema-registry"><span class="std std-ref">Schema Registry</span></a> to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>).</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="3">
@@ -3559,7 +3596,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p><strong>Acceptance or Rejection</strong>: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.</p></li>
+<li><p><strong>Acceptance or Rejection</strong>: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Digital Credential for service access.</p></li>
 </ol>
 </section>
 </section>
@@ -3717,7 +3754,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 03/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

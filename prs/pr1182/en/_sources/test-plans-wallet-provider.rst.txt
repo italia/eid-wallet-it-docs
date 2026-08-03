@@ -170,7 +170,7 @@ This section lists the test cases from Sections:
    * - WP_014
      - Trust, Security
      - Keystore implementation
-     - Wallet Instance uses the hardware-backed Keystore (Strongbox or TEE on Android; Secure Enclave on iOS) for all required cryptographic operations, such as generating signatures and performing key management, for all Digital Credentials except the PID. For PID issuance and management, the Wallet Instance interacts with the WSCA operating within the Remote WSCD (remote HSM) to conform with Level of Assurance High requirements.
+     - Wallet Instance uses the hardware-backed Keystore (Strongbox or TEE on Android; Secure Enclave on iOS) for all required cryptographic operations, such as generating signatures and performing key management. For PID issuance and management, the Wallet Instance interacts with the WSCA operating within the Remote WSCD (remote HSM) to conform with Level of Assurance High requirements.
    * - WP_015
      - Lifecycle, UX
      - Android/iOS compatibility

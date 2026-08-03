@@ -411,13 +411,13 @@ Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 <dt id="term-IT-Wallet-System-Register"><strong>IT-Wallet System Register</strong><a class="headerlink" href="#term-IT-Wallet-System-Register" title="Link to this term">¶</a></dt><dd><p>Register of entities participating in the IT-Wallet System.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
-<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dt id="term-KA"><strong>KA</strong><a class="headerlink" href="#term-KA" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment. For PID issuance at Level of Assurance High, the Key Attestation describes the properties of the WSCA and of the Remote WSCD (remote HSM). For all other device-bound Digital Credentials, the Key Attestation describes the properties of the Keystore using the OEM Key Attestation APIs.
+<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dt id="term-KA"><strong>KA</strong><a class="headerlink" href="#term-KA" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment.
 Aligned with Technical Specification 3.</p>
 </dd>
-<dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation for non-PID credentials.
+<dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
-<dt id="term-Keystore"><strong>Keystore</strong><a class="headerlink" href="#term-Keystore" title="Link to this term">¶</a></dt><dd><p>A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials, except for the PID which requires a WSCA/WSCD. The properties of the Keystore are attested through the OEM Key Attestation APIs.
+<dt id="term-Keystore"><strong>Keystore</strong><a class="headerlink" href="#term-Keystore" title="Link to this term">¶</a></dt><dd><p>A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials. The properties of the Keystore are attested through the OEM Key Attestation APIs.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Level-of-Assurance"><strong>Level of Assurance</strong><a class="headerlink" href="#term-Level-of-Assurance" title="Link to this term">¶</a></dt><dd><p>In the Union <strong>electronic identification</strong> framework, <strong>levels of assurance</strong> express the degree of confidence in the <strong>correctness of the identification</strong> of natural or legal persons and in the possibility to <strong>rely on electronic identification means</strong>. For <strong>notified electronic identification schemes</strong>, <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a> (as amended, including the European Digital Identity Framework codified by <a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>) defines the levels <strong>low</strong>, <strong>substantial</strong>, and <strong>high</strong>.
@@ -652,17 +652,29 @@ Aligned with ISO 9241-210:2010.</p>
 <tr class="row-even"><td><p><strong>EAA</strong></p></td>
 <td><p>Electronic Attestation of Attributes</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>IAM</strong></p></td>
+<tr class="row-odd"><td><p><strong>EUMS TL</strong></p></td>
+<td><p>European Union Member State Trusted List (national Trusted List under Article 22 of eIDAS)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>IAM</strong></p></td>
 <td><p>Identity and Access Management</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>LoA</strong></p></td>
+<tr class="row-odd"><td><p><strong>LoA</strong></p></td>
 <td><p>Level of Assurance</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>NAB</strong></p></td>
+<tr class="row-even"><td><p><strong>LOTL</strong></p></td>
+<td><p>List of Trusted Lists</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LoTE</strong></p></td>
+<td><p>List of Trusted Entities</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NAB</strong></p></td>
 <td><p>National Accreditation Body</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>OID4VP</strong></p></td>
+<tr class="row-odd"><td><p><strong>OID4VP</strong></p></td>
 <td><p>OpenID for Verifiable Presentation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>OJEU</strong></p></td>
+<td><p>Official Journal of the European Union</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>PDND</strong></p></td>
 <td><p>Piattaforma Digitale Nazionale Dati (National Digital Data Platform)</p></td>
@@ -687,6 +699,12 @@ Aligned with ISO 9241-210:2010.</p>
 </tr>
 <tr class="row-even"><td><p><strong>VP</strong></p></td>
 <td><p>Verifiable Presentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>WRPAC</strong></p></td>
+<td><p>Wallet-Relying Party Access Certificate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>WRPRC</strong></p></td>
+<td><p>Wallet-Relying Party Registration Certificate</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>WSCA</strong></p></td>
 <td><p>Wallet Secure Cryptographic Application</p></td>
@@ -809,7 +827,7 @@ Aligned with ISO 9241-210:2010.</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 28/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 03/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
