@@ -29,7 +29,7 @@ package "IT-Wallet Onboarding System" {
     rectangle "**Certificate Management**\n..\nX.509 and JWT Artifacts (WRPAC/WRPRC)" as x509 #BBDEFB
   }
 
-  rectangle "**EU Notification Management**\n..\nPID / QEAA / PuB-EAA Providers,\nWallet Providers" as pub #BBDEFB
+  rectangle "**EU Notification Management**\n..\nPID / PuB-EAA Providers,\nWallet Providers" as pub #BBDEFB
 
   package "Registries and Data Stores" as pkgdata #F5F5F5 {
     database "National\nAS Registry" as asreg #C8E6C9
