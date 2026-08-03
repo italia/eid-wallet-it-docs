@@ -222,60 +222,53 @@ Registration Outcomes
 A successful registration produces, depending on the role and on the scope of operation, the entry in the Register and the Trust Artifacts. For the notified categories, the entry in a List of Trusted Entities follows from the :ref:`onboarding-system:Notification and Publication`, which is a separate process.
 The way each artifact is produced is described in :ref:`onboarding-system:Onboarding Processes`, and the effects of the later changes in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
-The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the National artifacts of the National Trust Framework.
+The table shows the artifacts that vary by role.
+The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate, while the WRPRC is shown on its own because it is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.
 
 .. list-table:: Registration Outcomes by Entity Type
    :class: longtable
-   :widths: 22 12 10 12 20 24
+   :widths: 20 12 10 34 24
    :header-rows: 1
 
    * - **Entity type**
      - **Register record**
-     - **WRPAC**
      - **WRPRC**
-     - **National X.509 certificate**
+     - **X.509 certificate**
      - **LoTE entry**
    * - PID Provider
      - yes
      - yes
-     - yes
-     - no
+     - the WRPAC, and the Sign/Seal Certificate
      - PID Providers LoTE
    * - QEAA Provider
      - yes
      - yes
-     - yes
-     - no
+     - the WRPAC. The Sign/Seal Certificate is the qualified certificate issued by the QTSP
      - EUMS TL, referenced in the LOTL
    * - PuB-EAA Provider
      - yes
      - yes
-     - yes
-     - no
+     - the WRPAC. The Sign/Seal Certificate is the qualified certificate issued by the QTSP
      - PuB-EAA Providers LoTE
    * - Non-qualified EAA Provider
      - yes only if it issues an Attestation published in a EU Rulebook
      - yes only if it issues an Attestation published in a EU Rulebook
-     - yes only if it issues an Attestation published in a EU Rulebook
-     - Sign/Seal Certificate, for the Attestations anchored to the National Trust Framework
+     - the WRPAC only if it issues an Attestation published in a EU Rulebook, and the Sign/Seal Certificate
      - None, trust anchor distribution defined in the applicable Attestation Rulebook
    * - Relying Party
-     - yes
-     - yes
-     - yes
-     - Authentication Certificate, where the Relying Party operates in the Proximity Flow
+     - yes, only for RP operating in EUDIW
+     - yes, only for RP operating in EUDIW
+     - the WRPAC if it has a register record, and the Authentication Certificate where the RP has no register record and it operates in the Proximity Flow
      - None
    * - Relying Party Intermediary
      - yes
-     - yes
      - No
-     - No
+     - the WRPAC
      - None
    * - Wallet Provider
      - no
      - no
-     - no
-     - Sign/Seal Certificate
+     - the Sign/Seal Certificate
      - Wallet Providers LoTE
 
 .. note::
@@ -283,7 +276,7 @@ The table shows the artifacts that vary by role, that is the EUDIW artifacts obt
 
 .. note::
    An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
-   It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its National certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.
+   It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its X.509 certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.
 
 Registration Profiles
 ^^^^^^^^^^^^^^^^^^^^^
