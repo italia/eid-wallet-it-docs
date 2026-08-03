@@ -100,11 +100,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation for non-PID credentials.
+      A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Keystore**
-      A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials, except for the PID which requires a WSCA/WSCD. The properties of the Keystore are attested through the OEM Key Attestation APIs.
+      A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials. The properties of the Keystore are attested through the OEM Key Attestation APIs.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Level of Assurance**
@@ -356,7 +356,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Key Attestation**
     **KA**
-      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment. For PID issuance at Level of Assurance High, the Key Attestation describes the properties of the WSCA and of the Remote WSCD (remote HSM). For all other device-bound Digital Credentials, the Key Attestation describes the properties of the Keystore using the OEM Key Attestation APIs.
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment.
       Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
