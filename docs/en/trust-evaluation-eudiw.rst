@@ -146,14 +146,16 @@ List Key Rotation and Historical Verification
 
 To support continuous key rotation and regular updates, the LoTE and LOTL implement a *pivoting mechanism*.
 This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at other distinct URIs called *pivots*.
-Each List version is signed with a public key referenced within the immediately preceding pivot. The last pivot is signed with the key referenced in the OJEU.
+Each List version is signed with a public key referenced within the immediately preceding pivot.
+The last pivot is signed with the key referenced in the OJEU.
 The newest List version explicitly contains the URIs where all historical versions are hosted.
 
 An Entity validates this chain of pivots from the newest version back to the oldest by verifying that each subsequent artifact is correctly signed by the public key authorized in the prior version.
 Final validation is achieved by verifying the trustworthiness of the oldest public key, either via a lookup in the OJEU or directly against a cached, previously validated version of the List.
 This ensures that an entity possessing the last known valid version can reliably discover the next version and validate it via an unbroken chain of trust rooted in the OJEU.
 
-While the pivoting mechanism enables continuous updates to LoTE parameters, certain updates may require adding a ``ServiceHistory`` object to the LoTE to preserve the historical keys and configurations needed to validate legacy signatures. The specific scenarios in which an Entity update triggers a migration of its configuration into ``ServiceHistory`` are detailed in Section :ref:infrastructure-trust:Trust Management and Lifecycle.
+While the pivoting mechanism enables continuous updates to LoTE parameters, certain updates may require adding a ``ServiceHistory`` object to the LoTE to preserve the historical keys and configurations needed to validate legacy signatures.
+The specific scenarios in which an Entity update triggers a migration of its configuration into ``ServiceHistory`` are detailed in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
 
 Regardless of an Entity's objective when validating the LoTE (whether retrieving a current or historical configuration), the validation mechanism MUST strictly follow Section :ref:`trust-evaluation:List of Trusted Entities Validation`.
 

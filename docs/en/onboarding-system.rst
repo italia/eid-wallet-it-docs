@@ -23,7 +23,7 @@ For each of these, the Onboarding System covers the whole lifecycle and not only
 
 All events related to Entities and Credential types produce effects on the Trust Artifacts and on the registries, and those effects are described in this Section, together with the events that cause them.
 
-As defined in in :ref:`infrastructure-trust:Infrastructure of Trust`, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operates on both of them.
+As defined in :ref:`infrastructure-trust:Infrastructure of Trust`, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operate on both of them.
 
 The National Trust Framework is the registration layer for all the Entities of the ecosystem and provides the mechanisms that the components of the Onboarding System use to authenticate each other.
 

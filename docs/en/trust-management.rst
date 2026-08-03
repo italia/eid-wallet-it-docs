@@ -67,8 +67,8 @@ The CRL MUST be digitally signed by the **CRL issuer**.
 
 CRLs MAY be used for the following types of certificates:
 
-- Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate`.
-- Sign/Seal Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
+- Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
+- Sign/Seal Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 
 If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field.
 

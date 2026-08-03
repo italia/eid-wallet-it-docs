@@ -4,12 +4,14 @@
 Registration Model
 ------------------
 
-This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains. It is organized as a common part and a profile for each role.
+This section provides the static view of the registration with the aim of defining the information each entity has to provide, which conditions it has to meet and which artifacts and registry entries it obtains.
+It is organized as a common part and a profile for each role.
 
 Registration Data Model
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference. The data is identified by a format-agnostic **Data Identifier**.
+This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference.
+The data is identified by a format-agnostic **Data Identifier**.
 
 The following tables provide:
 
@@ -109,7 +111,8 @@ A given entity provides only the subset that applies to its role, as defined in 
 Mapping to the Registry Data Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Onboarding System collects the registration data, and it is then encoded in the data model of the destination that depends on the role. The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.
+The Onboarding System collects the registration data, and it is then encoded in the data model of the destination that depends on the role.
+The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.
 
 .. list-table:: Mapping of the Data Identifiers to the destination data models
    :class: longtable
@@ -279,7 +282,7 @@ The table shows the artifacts that vary by role, that is the EUDIW artifacts obt
    The federation registration is common to every entity and, as a result of it, every entity obtains a Subordinate Statement issued by its Federation Authority, and a registration Trust Mark.
 
 .. note::
-   An entity operating only at National level obtains no Register record, no WRPAC and no WRPRC.
+   An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
    It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its National certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.
 
 Registration Profiles
@@ -406,8 +409,8 @@ In addition to the base registration data, a PuB-EAA Provider provides the exten
 Non-Qualified EAA Provider
 """"""""""""""""""""""""""
 
-A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the National boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the National boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
 In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.
 
 .. list-table:: Non-Qualified EAA Provider Registration Data
@@ -441,7 +444,8 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 Relying Party
 """""""""""""
 
-At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within National boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
+At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries.
+This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 Besides the base registration data, a Relying Party provides the extended registration data below.
 
 .. list-table:: Relying Party Registration Data
@@ -468,7 +472,7 @@ Besides the base registration data, a Relying Party provides the extended regist
 
 .. note::
    An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-   An intermediated Relying Party that operates only at National level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
+   An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
 
 
 Relying Party Intermediary

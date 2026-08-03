@@ -38,7 +38,8 @@ The data is organized in the three categories of registered data defined in :ref
    - ``intermediary_relationship`` where applicable, 
    - ``conformity_assessment`` for the categories that need it.
 
-The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration. In particular, the ``certificate_signing_requests`` are not a direct input of this process but of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes.
+The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration.
+In particular, the ``certificate_signing_requests`` are not a direct input of this process but of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes.
 For a PID Provider and a Wallet Provider the ``signing_trust_anchor`` derives from the National issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.
 
 The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
@@ -90,7 +91,8 @@ For a change of the Authorization Information the input is the new ``entitlement
 
 **Outcome**
 
-The updated registered information of the Entity. A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+The updated registered information of the Entity.
+A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
 
 **Process**
 

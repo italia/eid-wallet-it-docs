@@ -107,7 +107,8 @@ The following conditions are external to the Onboarding System and are not proce
 - The availability of the applicable Rulebook, for a Credential Type Registration.
 - The identity proofing and the eligibility and compliance verification, described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, that precede every registration.
 
-The diagram below shows the activations between the various processes. Those on the left are the *starting processes*, triggered from outside the Onboarding System.
+The diagram below shows the activations between the various processes.
+Those on the left are the *starting processes*, triggered from outside the Onboarding System.
 Those on the right are activated by a starting process or by a lifecycle process.
 The processes that act on the lifecycle of an entity or of a Credential type are governed as described in :ref:`onboarding-system:Lifecycle Management`, and the effects of an update are described there as well.
 
@@ -122,7 +123,8 @@ The processes that act on the lifecycle of an entity or of a Credential type are
 Notification and Publication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This Section describes the notification of the entities that are subject to it towards the European Commission, and the resulting publication in the Lists of Trusted Entities. This process applies to more than one family of processes.
+This Section describes the notification of the entities that are subject to it towards the European Commission, and the resulting publication in the Lists of Trusted Entities.
+This process applies to more than one family of processes.
 
 The notification is an act of the Member State towards the Commission, and not of the entity itself.
 Within IT-Wallet the Supervisory Body is the National point of contact towards the Commission, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, and it relies on the Registrar for the entities the Registrar registers.

@@ -80,7 +80,8 @@ The table below lists the components, the services each of them provides, and th
      - Registration, activation and versioning of the Credential types in the Digital Credentials Catalog
      - :ref:`onboarding-system:Attestation Onboarding`
  
- The components write to the National registries and data stores described in :ref:registry:Registry Infrastructure. At the EU level, they interact with the European Commission for catalog notification and alignment.
+The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`.
+At the EU level, they interact with the European Commission for catalog notification and alignment.
 
 Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [`CIR2024/2980`_] and feeds the Publication Service.
 They overlap only in the identification data, so the split keeps the registration distinct from the notification.

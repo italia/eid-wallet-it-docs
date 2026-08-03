@@ -37,7 +37,7 @@ A claim is never removed from the Claims Registry, because the Credentials alrea
 Schema Provisioning
 """""""""""""""""""
 
-Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at National level, or by registering it in alignment with an external Rulebook or standard.
+Schema Provisioning makes the schema of a Credential type available in the Schema Registry, either by generating it from the data model for the Credentials defined at national level, or by registering it in alignment with an external Rulebook or standard.
 The schema is one of the requirements for the activation of a Credential type, so this process is a precondition of the :ref:`onboarding-system:Credential Type Activation and Deactivation`.
 
 **Input**
@@ -53,7 +53,7 @@ This satisfies the schema requirement of the activation of the Credential type, 
 **Process**
 
 1. The claims that compose the schema are available in the Claims Registry, otherwise the Claim Registration is activated for the missing claim.
-2. The schema is generated from the data model for a Credential defined at National level, or it is registered in alignment with the external Rulebook.
+2. The schema is generated from the data model for a Credential defined at national level, or it is registered in alignment with the external Rulebook.
 3. The Claims and Schema Management registers the schema in the Schema Registry, with its integrity digest, for each supported format.
 
 Credential Type Registration
