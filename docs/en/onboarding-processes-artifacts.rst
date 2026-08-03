@@ -5,7 +5,7 @@ Certificate and Trust Artifact Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the processes that issue the Trust Artifacts.
-Each process covers both the first issuance and the re-issuance, for example after a key rotation or a request of additional keys, and it is described with its Input, its Outcome and its Process.
+Each process covers both the first issuance and the re-issuance, for example after a key rotation or a request for additional keys, and it is described with its Input, its Outcome and its Process.
 
 Issuance of the X.509 Certificates through ACME and OpenID Federation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,8 +131,8 @@ The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""
 
-Signature and Seal Certificate Issuance covers the certificates issued by the national PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
-The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the national Root and outside this process, and its qualified status is evaluated in the eligibility, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+Signature and Seal Certificate Issuance covers the certificates issued by the National PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the National Root and outside this process, and its qualified status is evaluated in the eligibility, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
 
 **Input**
 

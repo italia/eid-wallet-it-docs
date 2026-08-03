@@ -10,7 +10,7 @@ Each process is described with its Input, its Outcome and its Process, while the
 Entity Registration
 """""""""""""""""""
 
-Entity Registration process takes in input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
+Entity Registration process takes as input the registration data of an Entity, verifies it, records it, and registers the Entity in the National Trust Framework and, where its role and its declaration require it, in the EUDIW Register.
 The process is parameterized by the registration profile of the role, and its outcome is the transition of the Entity to the ``REGISTERED`` state.
 It enables the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes, that bring the Entity to ``OPERATIONAL``, and, for a Credential Issuer, the :ref:`onboarding-system:Credential Type Registration`.
 The issuance of the certificates and of the registration Trust Mark, and the governance of the states, are described in the referenced processes and in :ref:`onboarding-system:Lifecycle Management`.
@@ -39,7 +39,7 @@ The data is organized in the three categories of registered data defined in :ref
    - ``conformity_assessment`` for the categories that need it.
 
 The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration. In particular, the ``certificate_signing_requests`` are not a direct input of this process but of the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes.
-For a PID Provider and a Wallet Provider the ``signing_trust_anchor`` derives from the national issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.
+For a PID Provider and a Wallet Provider the ``signing_trust_anchor`` derives from the National issuance, and for a QEAA Provider and a PuB-EAA Provider it is provided within the eIDAS Trusted Lists, so it is not provided as an input by the Entity.
 
 The eligibility and the compliance of the Entity are a precondition and not a part of this process, and they are described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
 
@@ -72,7 +72,7 @@ The Register and the notification dataset are kept separate, as described in :re
    At the end of the process the Entity is ``REGISTERED``, the record enables the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes that bring it to ``OPERATIONAL``, and, for a Credential Issuer, the declaration can activate the declared Credential types, as described in :ref:`onboarding-system:Credential Type Activation and Deactivation`.
 
 .. note::
-   The Register is the national register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [`CIR2025/848`_] and operates through the Registrar.
+   The Register is the National register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [`CIR2025/848`_] and operates through the Registrar.
    It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as :ref:`registry:Register of WRPs`.
 
 Entity Update
@@ -135,7 +135,7 @@ A suspension and a cancellation revoke the Trust Artifacts of the Entity and, fo
 Authentic Source Registration
 """""""""""""""""""""""""""""
 
-Authentic Source Registration process writes an Authentic Source information into the AS Registry, so that the Credential Issuers can discover which data are available and through which e-Service.
+Authentic Source Registration process writes Authentic Source information into the AS Registry so that Credential Issuers can discover which data is available and through which e-Service.
 An Authentic Source is neither a Wallet-Relying Party nor a Federation Entity, so it does not go through the federation registration nor the Wallet-Relying Party registration, and it obtains no Trust Artifact.
 Its trust, its authorization and its operational aspects are governed by the PDND framework, see :ref:`e-service-pdnd:e-Service PDND`, and IT-Wallet does not define a lifecycle of the Authentic Sources, so this process does not produce a state transition.
 It enables the :ref:`onboarding-system:Credential Type Registration`, as the data source a Credential type references, and it can activate the :ref:`onboarding-system:Claim Registration` when a declared claim is not yet in the Claims Registry.
@@ -197,7 +197,7 @@ Authentic Source Removal process removes the entry of an Authentic Source from t
 
 **Input**
 
-The request of removal of the Authentic Source.
+The request for removal of the Authentic Source.
 
 **Outcome**
 

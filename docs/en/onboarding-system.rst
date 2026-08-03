@@ -17,13 +17,14 @@ The Onboarding System covers:
   - **Entities**: the Wallet-Relying Parties, the Wallet Providers and the Authentic Sources, from their registration until the cancellation of that registration. An Entity is registered, updated, possibly suspended and reactivated, and finally removed.
   - **Trust Artifacts**: the certificates, the registration certificates and the federation statements that are issued as a result of a registration, and that are always derived from it.
   - **Credential types**: the versioned definitions published in the Digital Credentials Catalog, with the claims, the schemas and the Authentic Sources they depend on. A Credential type is registered, activated, versioned and deactivated.
-  - **Registries and catalogs**: the national registries that the system writes, and the European catalogs and Lists of Trusted Entities towards which the system aligns or notifies.
+  - **Registries and catalogs**: the National registries that the system writes, and the European catalogs and Lists of Trusted Entities towards which the system aligns or notifies.
 
 For each of these, the Onboarding System covers the whole lifecycle and not only the first onboarding.
 
 All events related to Entities and Credential types produce effects on the Trust Artifacts and on the registries, and those effects are described in this Section, together with the events that cause them.
 
-As defined in :ref:`infrastructure-trust:Infrastructure of Trust`, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operate on both of them.
+As defined in in :ref:`infrastructure-trust:Infrastructure of Trust`, two Trust Frameworks coexist in IT-Wallet, EUDIW and National Trust Framework, and the Onboarding System makes the registered Entities able to operates on both of them.
+
 The National Trust Framework is the registration layer for all the Entities of the ecosystem and provides the mechanisms that the components of the Onboarding System use to authenticate each other.
 
 The data structures of the registries are defined in :ref:`registry:Registry Infrastructure`, the profiles of the Trust Artifacts in :ref:`infrastructure-trust:Infrastructure of Trust`, the technical mechanisms that publish the status of a certificate in :ref:`infrastructure-trust:Revocation Mechanisms`, and the way the artifacts are consumed at runtime in :ref:`trust-evaluation:Trust Evaluation Process`.
