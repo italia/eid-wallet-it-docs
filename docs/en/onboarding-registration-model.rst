@@ -163,7 +163,7 @@ The table below maps each Data Identifier to the fields of the destination data 
          - ``credential_name_l10n_id``, 
          - ``authentication``,
        
-       and the reference to the Authentic Sources through the ``issuers`` field.
+       and the reference to the Authentic Sources that provide the data of the Credential type.
    * - `credential_technical_specification`
      - In the Digital Credentials Catalog:
      
@@ -219,7 +219,7 @@ For the notified entities the certifications are a mandatory input to the onboar
 Registration Outcomes
 ^^^^^^^^^^^^^^^^^^^^^
 
-A successful registration produces, depending on the role and on the scope of operation, the entry in the Register, the Trust Artifacts and the entry in the trusted list.
+A successful registration produces, depending on the role and on the scope of operation, the entry in the Register and the Trust Artifacts. For the notified categories, the entry in a List of Trusted Entities follows from the :ref:`onboarding-system:Notification and Publication`, which is a separate process.
 The way each artifact is produced is described in :ref:`onboarding-system:Onboarding Processes`, and the effects of the later changes in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
 The table shows the artifacts that vary by role, that is the EUDIW artifacts obtained when the entity registers as a Wallet-Relying Party, and the National artifacts of the National Trust Framework.
