@@ -79,7 +79,7 @@ The table below lists the components, the services each of them provides, and th
    * - Catalog Management
      - Registration, activation and versioning of the Credential types in the Digital Credentials Catalog
      - :ref:`onboarding-system:Attestation Onboarding`
- 
+
 The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`.
 At the EU level, they interact with the European Commission for catalog notification and alignment.
 
