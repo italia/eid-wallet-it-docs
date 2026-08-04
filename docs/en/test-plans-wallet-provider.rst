@@ -956,8 +956,8 @@ This section lists the test cases from Sections:
      - Wallet Instance UI provides functions for the User to request attribute deletion, view transaction logs, and see a list of Relying Parties that hold their attributes.
    * - WP_115a
      - Attribute Deletion, Lifecycle, Privacy
-     - Filtered transaction logs for identifying attributes
-     - The transaction log view is filtered to show only Relying Parties that accessed attributes uniquely identifying the User.
+     - Transaction logs for attribute deletion
+     - The transaction log view shows Relying Parties in possession of the User's attributes.
    * - WP_116
      - Attribute Deletion, Lifecycle, Security
      - Relying Party metadata validation for deletion
