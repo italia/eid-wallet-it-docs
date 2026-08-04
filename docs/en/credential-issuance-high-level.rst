@@ -28,7 +28,7 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
 High-Level IT-Wallet ID flow
 ----------------------------
 
-The :numref:`fig_High-Level-Flow-ITWallet-ID-Issuance` shows a general architecture and highlights the main operations involved in the issuance of a IT-Wallet ID.
+The :numref:`fig_High-Level-Flow-ITWallet-ID-Issuance` shows a general architecture and highlights the main operations involved in the issuance of an IT-Wallet ID.
 
 .. _fig_High-Level-Flow-ITWallet-ID-Issuance:
 
@@ -42,7 +42,7 @@ The high-level flow begins with the User who wants to obtain a IT-Wallet ID and 
     1. **IT-Wallet ID Provider Discovery and Trust**: the Wallet Instance discovers the trusted IT-Wallet ID EAA Provider using the Digital Credential Catalogue and Federation Services, establishing the trust to the IT-Wallet EAA Provider according to the Trust Model and obtaining its metadata that discloses the formats of the IT-Wallet ID, the algorithms supported, and any other parameter required for interoperability needs (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **IT-Wallet ID Request**: using the Authorization Code Flow defined in [`OpenID4VCI`_] the Wallet Instance requests the IT-Wallet ID to the EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Wallet Provider Discovery and Trust**: the IT-Wallet ID EAA Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
-    4. **User Authentication**: For IT-Wallet ID the primary authentication method is based on CieID LoA High (L3). For Scenarios where CIE PIN is not immediately available, an alternative authentication method is available combining eID Substantial Authentication along with MRTD Verification. For complete technical specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
+    4. **User Authentication**: For IT-Wallet ID the primary authentication method is based on CieID LoA High (L3). For scenarios where CIE PIN is not immediately available, an alternative authentication method is available combining eID Substantial Authentication along with MRTD Verification. For complete technical specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
     5. **Fetch of IT-Wallet ID data from National Public Registry**: the IT-Wallet ID EAA Provider obtains the required IT-Wallet ID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **IT-Wallet ID Issuance**: the IT-Wallet ID EAA Provider releases a IT-Wallet ID bound to the key material held by the requesting Wallet Instance.
 

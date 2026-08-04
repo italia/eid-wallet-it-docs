@@ -237,7 +237,7 @@ The Wallet Instance MAY inform the User, prior to deletion, that deletion is a l
 
 If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which MUST then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
-When the revoked Credential is the PID/It-Wallet ID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
+When the revoked Credential is the PID/IT-Wallet ID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
 For any other Credential different from the PID/IT-Wallet ID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
 
 Status Update by Wallet Providers
