@@ -146,7 +146,7 @@ Extensions not listed in the table MUST NOT be present.
        For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - REQUIRED. TBD.
+     - REQUIRED. (only for QEAA). As described in §6.6.1 of [`ETSI EN 319 411-2`_].
 
    * - ``subjectAltName``
      - REQUIRED.

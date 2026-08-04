@@ -567,10 +567,6 @@ AS-CI Coordination
 
 Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`onboarding-system:Authentic Source Registration`.
 
-.. note::
-   Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the **National Trust Framework** federation, whose endpoints (``/list``, ``/fetch``, ``/trust_mark_status``, ``/federation_historical_keys``, and ``/federation_subordinate_events_endpoint``) are described in :ref:`infrastructure-trust:Federation API Endpoints`.
-   These endpoints are also surfaced through the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` for standard OpenID Federation 1.0 compliance.
-
 Digital Credentials Catalog
 ---------------------------
 
@@ -1206,7 +1202,7 @@ A non-normative example of the Italian localization URI for the bundle would be 
 Decentralization of Display and Claim Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata (Entity Configuration)**.
+The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata**.
 
 The overall logic for presenting a Digital Credential is the following:
 
@@ -1450,7 +1446,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
   * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
   * **Issuer Metadata**: The entity extracts the Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
-  * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
+  * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** using the retrieved identifier.
 
 3.  **Final Action**: The entity can then use the metadata to display the catalog information to a User, or use it in other ways.
 

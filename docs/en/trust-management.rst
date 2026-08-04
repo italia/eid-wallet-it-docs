@@ -564,7 +564,7 @@ The Provider of WRPRC MUST use the following values for the possible statuses of
 
 - ``0x00`` - ``VALID`` - The WRPRC is valid.
 - ``0x01`` - ``INVALID`` - The WRPRC is revoked.
-
+- ``0x02`` - ``SUSPENDED`` - The status of the Referenced Token is temporarily invalid, hanging, debarred from privilege. This status is usually temporary.
 
 Once the Wallet Unit receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.
 
