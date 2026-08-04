@@ -81,6 +81,24 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
       - OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica generato da ANPR in formato stringa.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
 
+.. note::
+   **Identity Matching**
+
+   Conformemente al Regolamento di esecuzione `EU_2024/2977`_ e all'ARF PID Rulebook, l'attributo ``personal_administrative_number`` è OPZIONALE nel PID. Di conseguenza, le Relying Party NON DEVONO assumere che un identificativo amministrativo nazionale univoco sia sempre disponibile nel PID ai fini dell'identificazione univoca dell'Utente o della correlazione di attributi tra attestati.
+
+   Qualora tale identificativo non sia presente, l'identity matching DEVE essere assicurato come previsto dall'Architecture Reference Framework del EUDI Wallet [`EIDAS-ARF`_], in particolare:
+
+   - **ARF Topic 17 (Identity matching)**: le Relying Party che erogano servizi cross-border DEVONO assicurare l'identity matching per le persone fisiche, secondo un approccio risk-based (HLR **IM_01**). Gli Stati Membri DEVONO facilitare tale matching fornendo nei PID delle persone fisiche almeno quattro attributi opzionali di propria scelta (HLR **IM_01**). Procedure complementari di identificazione univoca POSSONO essere richieste a livello nazionale ove necessario (HLR **IM_03**).
+
+   - **ARF Topic 18 / Discussion Topic K (Combined presentation of attestations)**: quando attributi provenienti da un PID e/o da (Q)EAA sono presentati congiuntamente, la Relying Party DEVE poter verificare che tutti gli attributi presentati si riferiscano al medesimo Utente. Nelle more della piena disponibilità del Cryptographic Binding of Attestations (HLR **ACP_01**–**ACP_07**), l'identity matching PUÒ essere realizzato mediante i meccanismi riconosciuti dal framework EUDIW, tra cui:
+
+     - *Attribute-Based Binding*, utilizzando dati di identificazione personale ridondanti presenti nel PID e in altri attestati (ad esempio ``given_name``, ``family_name`` e ``birthdate`` / ``birth_date``);
+     - *Session-Based Binding*, in cui gli attributi rilasciati in una singola presentation response sono considerati appartenenti al medesimo Utente;
+     - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*, ove applicabili;
+     - *Cryptographic Binding*, dimostrando che le chiavi private degli attestati presentati sono gestite dallo stesso WSCA/WSCD, una volta che tale schema sia disponibile in conformità al Topic 18.
+
+   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF.
+
 Tutti gli attributi Utente elencati sopra DEVONO essere divulgabili selettivamente.
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
 
