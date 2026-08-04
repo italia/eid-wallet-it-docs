@@ -4,7 +4,7 @@
 Eliminazione degli Attributi dell'Utente
 ========================================
 
-Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo tax_id_code dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo ``personal_administrative_number`` dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%

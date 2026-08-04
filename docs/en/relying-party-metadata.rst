@@ -32,7 +32,7 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**
-    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim.
+    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the ``personal_administrative_number`` claim.
 
 
 .. note::

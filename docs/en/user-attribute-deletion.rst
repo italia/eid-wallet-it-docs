@@ -4,7 +4,7 @@
 User's Attributes Deletion
 ==========================
 
-This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the tax_id_code claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the ``personal_administrative_number`` claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%

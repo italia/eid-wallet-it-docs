@@ -87,14 +87,6 @@
             24(<<
                 {
                 "digestID": 11,
-                "random": h'22bb8384b3e3ebb084f6a62f1d45d3fccf',
-                "elementIdentifier": "tax_id_code",
-                "elementValue": "TINIT-RSSMRA56A12H501U"
-                }
-            >>),
-            24(<<
-                {
-                "digestID": 12,
                 "random": h'33cc9495c4f4fcc195g7b73g2e56e4gddg',
                 "elementIdentifier": "verification",
                 "elementValue": {
