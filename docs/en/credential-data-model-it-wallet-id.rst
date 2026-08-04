@@ -70,6 +70,7 @@ The IT-Wallet ID in SD-JWT VC format includes the following User Attributes:
 
 All the User attributes listed above MUST be selectively disclosable.
 In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for an IT-Wallet ID:
+
   - **date_of_expiry**
   - **sub** (domestic extension)
   - **iat**
