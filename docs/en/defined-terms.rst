@@ -376,7 +376,6 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **IT-Wallet ID**
-    **National EID**
       An Electronic Attestation of Attributes containing personal data of a natural person, issued for national use cases and valid exclusively within the national jurisdiction. It provides verified personal attributes but does not constitute a PID for cross-border identification purposes under eIDAS regulation.
 
 .. note::
