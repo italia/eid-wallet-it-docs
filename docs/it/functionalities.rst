@@ -48,20 +48,20 @@ Per garantire un’implementazione corretta e coerente, gli Attori Primari:
 Attivazione dell'Istanza del Wallet
 -----------------------------------
 
-L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale che consente la generazione del PID.
+L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale e porta l'Istanza del Wallet nello stato **Operativo** (vedere :ref:`wallet-instance-lifecycle:Ciclo di vita dell'Istanza del Wallet`). Dopo l'attivazione, l'Utente PUÒ ottenere un attestato di identificazione personale — il **PID** EUDI oppure l'**IT-Wallet ID** nazionale — come descritto in :ref:`functionalities:Focus sugli Attestati di Identificazione Personale`.
 
 Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
 
 - l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet;
 - l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;
-- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del PID Provider e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
+- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e dell'emittente dell'attestato di identificazione personale (PID Provider o EAA Provider dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
 - l'Utente sceglie una tra le modalità di Autenticazione disponibili;
-- l‘Utente conclude il flusso di Autenticazione sul servizio del National Identity Provider;
-- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima del proprio PID. L'Utente conferma le informazioni mostrate in anteprima per procedere all'attivazione dell'Istanza del Wallet oppure annulla l'operazione;
+- l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale;
+- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo e se nello stesso percorso viene rilasciato un attestato di identificazione personale, visualizza l'anteprima di tale attestato (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione;
 - l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - l'Utente visualizza l'esito positivo dell'avvenuta attivazione dell'Istanza del Wallet.
 
-Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere il PID ottenuto durante la fase di Attivazione. Inoltre, il PID Provider DOVREBBE permettere all'Utente di revocare il PID ottenuto, tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
+Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un attestato di identificazione personale ottenuto in connessione con l'attivazione. Inoltre, il relativo emittente (PID Provider o EAA Provider dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
@@ -93,29 +93,50 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet - 02
 
 
-Focus sul PID – Dati di Identificazione della Persona
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Focus sugli Attestati di Identificazione Personale
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza del Wallet.
+Questa sezione definisce i requisiti di Esperienza Utente per gli attestati di identificazione personale detenuti nell'Istanza del Wallet: il **PID** EUDI e l'**IT-Wallet ID** nazionale (Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale). Entrambi veicolano un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`), ma differiscono per ambito giuridico, ruolo dell'emittente, impatto sul ciclo di vita dell'Istanza del Wallet e vincoli di presentazione.
 
-Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo del PID uniforme e coerente. Il Fornitore di Wallet:
+Requisiti comuni
+~~~~~~~~~~~~~~~~
 
-- DEVE mostrare il PID correttamente su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
-- DEVE mostrare lo stato del PID, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato del PID, se non valido, POSSONO essere forniti (ad esempio, il motivo per cui il PID è stato revocato);
-- DEVE includere Action Button per consentire la gestione del ciclo di vita del PID e permettere all'Utente di revocare il PID, quindi l'intera Istanza del Wallet con tutte le EAA emesse, o di aggiornare il PID in qualsiasi momento  (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
-- DEVE garantire che il PID sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso un Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità e per richiedere l'emissione di ulteriori EAA (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
-- DEVE mostrare un metodo di assistenza reso disponibile da parte del Fornitore PID (vedere :ref:`functionalities:Assistenza Utente`);
-- DEVE garantire che il PID sia riconoscibile dall'Utente e distinguibile da altri EAA.
+Salvo diversa indicazione nelle sottosezioni seguenti, il Fornitore di Wallet:
 
-Per assicurare un’identificazione e una rappresentazione del PID coerente tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
+- DEVE mostrare correttamente l'attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
+- DEVE mostrare lo stato dell'attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca);
+- DEVE includere Action Button per consentire la gestione del ciclo di vita dell'attestato e permettere all'Utente di revocarlo o aggiornarlo in qualsiasi momento (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
+- DEVE garantire che l'attestato sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso una Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità ove applicabile e per richiedere l'emissione di ulteriori EAA ove l'emittente richieda dati di identificazione personale (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
+- DEVE mostrare un metodo di assistenza reso disponibile dal relativo emittente (vedere :ref:`functionalities:Assistenza Utente`);
+- DEVE garantire che l'attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.
 
-- DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” per riferirsi al PID nelle sue Soluzioni Wallet e NON DEVE utilizzare personalizzazioni o termini tecnici come "Dati di Identificazione della Persona" o l’acronimo "PID";
-- DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite;
-- DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data;
-- NON DEVE alterare, distorcere, modificare o sostituire l’elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;
-- DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;
-- NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
-- NON DEVE utilizzare l’elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`.
+PID
+~~~
+
+Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID`). È rilasciato dal PID Provider.
+
+- L'Istanza del Wallet DEVE essere nello stato **Operativo** per richiedere l'emissione del PID. A seguito del rilascio con esito positivo di un PID valido, l'Istanza del Wallet DEVE transitare nello stato **Valido** (vedere :ref:`wallet-instance-lifecycle:Transizione a Valido`).
+- Finché l'Istanza del Wallet è **Valida** e il PID è attivo/valido, l'Utente PUÒ presentare il PID e usarlo per l'autenticazione e per ulteriori emissioni di attestati secondo la presente specifica e il quadro EUDI.
+- La revoca, la scadenza o la cancellazione del PID DEVONO far transitare l'Istanza del Wallet di nuovo nello stato **Operativo** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
+- Qualora l'Utente revochi il PID, il Fornitore di Wallet DEVE gestire le conseguenze sul ciclo di vita dell'Istanza del Wallet e sulle EAA dipendenti come definito nella presente specifica.
+- Il PID è destinato anche a interazioni cross-border nell'ecosistema EUDI Wallet, oltre che a usi nazionali.
+
+IT-Wallet ID
+~~~~~~~~~~~~
+
+L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un EAA Provider e NON DEVE essere presentato come PID.
+
+- L'Istanza del Wallet DEVE essere nello stato **Operativo** (a seguito dell'attivazione) per richiedere e ottenere un IT-Wallet ID. L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa**.
+- L'IT-Wallet ID DEVE essere utilizzato solo con Relying Party italiane e NON DEVE essere utilizzato per interazioni cross-border.
+- Per assicurare un'identificazione e una rappresentazione coerente dell'IT-Wallet ID tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
+
+  - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” nelle sue Soluzioni Wallet e NON DEVE utilizzare denominazioni che ne implichino lo status di PID EUDI / cross-border;
+  - DEVE utilizzare l'elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite;
+  - DEVE utilizzare l'elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data;
+  - NON DEVE alterare, distorcere, modificare o sostituire l'elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;
+  - DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;
+  - NON DEVE ridimensionare l'elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
+  - NON DEVE utilizzare l'elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`.
 
 .. only:: format_html
 
@@ -1450,11 +1471,11 @@ Errori di Attivazione dell'Istanza del Wallet
     - Fornitore di Wallet
   * - I servizi del PID Provider non rispondono (e.g. errori tecnici)
     - PID Provider
-  * - Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
-    - National Identity Provider
+  * - Il processo di Autenticazione sul servizio del Gestore di Identità Digitale non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
+    - Gestore di Identità Digitale
 
 .. note::
-   Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del National Identity Provider, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
+   Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del Gestore di Identità Digitale, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
 
 Errori di ottenimento degli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

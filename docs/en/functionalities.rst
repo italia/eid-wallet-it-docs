@@ -48,20 +48,20 @@ To ensure a correct and consistent implementation, Primary Actors:
 Activation of the Wallet Instance
 ----------------------------------
 
-Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID.
+Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity and brings the Wallet Instance to the **Operational** state (see :ref:`wallet-instance-lifecycle:Wallet Instance Lifecycle`). After activation, the User MAY obtain a person identification attestation — either the EUDI **PID** or the national **IT-Wallet ID** — as described in :ref:`functionalities:Focus on Person Identification Attestations`.
 
 Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:
 
 - The User downloads the Wallet Solution onto their device to generate their Wallet Instance;
 - The User sets an unlock PIN for their Wallet Instance if one has not been previously set in the app. In addition to the PIN, the User can decide to use their own unlock mechanism used within the device and managed at the operating system level (e.g., biometric authentication) as an alternative to the PIN. The User uses the unlock method whenever an authorization is required to ensure security and protect their information;
-- The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Provider and PID Provider and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation;
+- The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Wallet Provider and from the issuer of the person identification attestation (PID Provider or IT-Wallet ID EAA Provider) and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation;
 - The User selects an Authentication option from those available;
 - The User completes the Authentication flow with the National Identity Provider's service;
-- The User receives confirmation of the Authentication process outcome. If successful, the User views a preview of their PID. The User confirms the previewed information to proceed with Wallet Instance activation, or cancels the operation;
+- The User receives confirmation of the Authentication process outcome. If successful and a person identification attestation is issued in the same journey, the User views a preview of that attestation (PID or IT-Wallet ID). The User confirms the previewed information to proceed, or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful activation of the Wallet Instance.
 
-The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the :ref:`functionalities:Deactivation of the Wallet Instance` and :ref:`functionalities:Management of Electronic Attestations` sections.
+The Wallet Provider MUST allow the User to remove a person identification attestation issued in connection with activation. In addition, the relevant issuer (PID Provider or IT-Wallet ID EAA Provider) SHOULD allow the User to revoke that attestation through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the :ref:`functionalities:Deactivation of the Wallet Instance` and :ref:`functionalities:Management of Electronic Attestations` sections.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
@@ -93,29 +93,50 @@ The flow is shown below with illustrative wireframes.
     Example of User Experience in Activating a Wallet Instance - 02
 
 
-Focus on PID – Person Identification Data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Focus on Person Identification Attestations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The PID (Person Identification Data) refers to a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
+This section defines User Experience requirements for person identification attestations held in the Wallet Instance: the EUDI **PID** and the national **IT-Wallet ID** (Electronic Attestation of Person Identification Data). Both convey a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`), but they differ in legal scope, issuer role, Wallet Instance lifecycle impact, and presentation constraints.
 
-Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the PID. The Wallet Provider:
+Common requirements
+~~~~~~~~~~~~~~~~~~~
 
-- MUST correctly display the PID across all devices, ensuring a consistent experience on screens of varying sizes;
-- MUST display the PID status, if different from valid to provide transparency on its lifecycle, and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked);
-- MUST include Action Buttons to enable the PID lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see :ref:`functionalities:Management of Electronic Attestations`);
-- MUST guarantee that the PID is a functional element, for the User to be authenticated by a Relying Party in a digital context (see :ref:`functionalities:Authentication`), to access services in proximity contexts, and to request the issuance of additional EAAs (see :ref:`functionalities:Issuance of Electronic Attestations of Attributes`);
-- MUST display a method of assistance given by the PID Provider (see :ref:`functionalities:User Assistance`);
-- MUST guarantee that the PID is recognizable by the User and distinguishable from other EAAs.
+Unless otherwise specified in the subsections below, the Wallet Provider:
 
-To ensure a consistent identification and representation of the PID across different Wallet Solutions, the Wallet Provider:
+- MUST correctly display the person identification attestation across all devices, ensuring a consistent experience on screens of varying sizes;
+- MUST display the attestation status if different from valid, to provide transparency on its lifecycle, and MAY display it if valid. Specific details about an invalid status MAY be provided (e.g., the reason why the attestation was revoked);
+- MUST include Action Buttons to enable lifecycle management of the attestation and allow the User to revoke or update it at any time (see :ref:`functionalities:Management of Electronic Attestations`);
+- MUST guarantee that the attestation is a functional element for the User to be authenticated by a Relying Party in a digital context (see :ref:`functionalities:Authentication`), to access services in proximity contexts where applicable, and to request the issuance of additional EAAs where the issuer requires person identification data (see :ref:`functionalities:Issuance of Electronic Attestations of Attributes`);
+- MUST display a method of assistance provided by the relevant issuer (see :ref:`functionalities:User Assistance`);
+- MUST guarantee that the attestation is recognizable by the User and distinguishable from other EAAs.
 
-- MUST use the official naming “IT-Wallet ID” to refer to PID in their Wallet Solutions and MUST NOT use custom or technical terms such as "Person Identification Data" or its acronym "PID";
-- MUST use the IT-Wallet ID official graphic asset available in the :ref:`official-resources:Official Resources` and MUST comply with the related usage specifications provided;
-- MUST use the IT-Wallet ID graphic asset in the ``application/svg+xml`` data format;
-- MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets;
-- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Official Resources` to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;
-- MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the :ref:`official-resources:Official Resources` to maintain legibility across formats and devices;
-- MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the :ref:`official-resources:Official Resources`.
+PID
+~~~
+
+The **PID** is the Person Identification Data attestation under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model`). It is issued by the PID Provider.
+
+- The Wallet Instance MUST be in the **Operational** state to request PID issuance. Upon successful issuance of a valid PID, the Wallet Instance MUST transition to the **Valid** state (see :ref:`wallet-instance-lifecycle:Transition to Valid`).
+- While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further credential issuance according to this specification and the EUDI framework.
+- Revocation, expiry, or deletion of the PID MUST transition the Wallet Instance back to **Operational** (see :ref:`wallet-instance-lifecycle:Transition to Operational`).
+- Where the User revokes the PID, the Wallet Provider MUST handle the consequences on the Wallet Instance lifecycle and on dependent EAAs as defined in this specification.
+- The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.
+
+IT-Wallet ID
+~~~~~~~~~~~~
+
+The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an EAA Provider and MUST NOT be presented as a PID.
+
+- The Wallet Instance MUST be in the **Operational** state (following activation) to request and obtain an IT-Wallet ID. Issuance of the IT-Wallet ID does **not** transition the Wallet Instance to the **Valid** state; the Wallet Instance remains **Operational**.
+- The IT-Wallet ID MUST be used only with Italian Relying Parties and MUST NOT be used for cross-border interactions.
+- To ensure a consistent identification and representation of the IT-Wallet ID across different Wallet Solutions, the Wallet Provider:
+
+  - MUST use the official naming “IT-Wallet ID” in their Wallet Solutions and MUST NOT use custom terms that imply EUDI PID / cross-border status;
+  - MUST use the IT-Wallet ID official graphic asset available in the :ref:`official-resources:Official Resources` and MUST comply with the related usage specifications provided;
+  - MUST use the IT-Wallet ID graphic asset in the ``application/svg+xml`` data format;
+  - MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets;
+  - MUST maintain the minimum clear space as defined in the :ref:`official-resources:Official Resources` to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;
+  - MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the :ref:`official-resources:Official Resources` to maintain legibility across formats and devices;
+  - MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html
 
