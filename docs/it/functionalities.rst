@@ -48,20 +48,20 @@ Per garantire un’implementazione corretta e coerente, gli Attori Primari:
 Attivazione dell'Istanza del Wallet
 -----------------------------------
 
-L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale che consente la generazione del PID.
+L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale (vedere :ref:`wallet-instance-lifecycle:Ciclo di vita dell'Istanza del Wallet`). Dopo l'Autenticazione, l'Utente ottiene un Attestato di identificazione personale — il **PID** EUDI oppure l'**IT-Wallet ID** nazionale — come descritto in :ref:`functionalities:Focus sugli Attestati di Identificazione Personale`.
 
 Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
 
 - l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet;
 - l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;
-- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del PID Provider e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
+- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'Attestato di identificazione personale (PID Provider o fornitore dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
 - l'Utente sceglie una tra le modalità di Autenticazione disponibili;
-- l‘Utente conclude il flusso di Autenticazione sul servizio del National Identity Provider;
-- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima del proprio PID. L'Utente conferma le informazioni mostrate in anteprima per procedere all'attivazione dell'Istanza del Wallet oppure annulla l'operazione;
+- l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale;
+- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima dell'Attestato di identificazione personale, (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione;
 - l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - l'Utente visualizza l'esito positivo dell'avvenuta attivazione dell'Istanza del Wallet.
 
-Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere il PID ottenuto durante la fase di Attivazione. Inoltre, il PID Provider DOVREBBE permettere all'Utente di revocare il PID ottenuto, tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
+Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato di identificazione personale ottenuto in fase di attivazione. Inoltre, il relativo fornitore (PID Provider o fornitore dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale Attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
@@ -69,7 +69,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Attivazione-IT-Wallet.svg
+  .. figure:: ./images/svg/Attivazione-IT-Wallet-1.svg
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet
     :width: 100%
     :align: center
@@ -78,7 +78,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Attivazione-01.pdf
+  .. figure:: ./images/pdf/A4-Attivazione-01-1.pdf
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
     :width: 100%
 
@@ -86,36 +86,56 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Attivazione-02.pdf
+  .. figure:: ./images/pdf/A4-Attivazione-02-1.pdf
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
     :width: 100%
 
     Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet - 02
 
 
-Focus sul PID – Dati di Identificazione della Persona
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Focus sugli Attestati di Identificazione Personale
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza del Wallet.
+Questa sezione definisce i requisiti di Esperienza Utente per gli Attestati di identificazione personale ottenuti nell'Istanza del Wallet: il **PID** EUDI e l'**IT-Wallet ID** nazionale (Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale). Entrambi veicolano un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`), ma differiscono per ambito giuridico, tipologia di fornitore, impatto sul ciclo di vita dell'Istanza del Wallet e di casi d'uso di presentazione supportati.
 
-Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo del PID uniforme e coerente. Il Fornitore di Wallet:
+Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo dell'Attestato di identificazione personale (PID e/o IT-Wallet ID) uniforme e coerente. Il Fornitore di Wallet:
 
-- DEVE mostrare il PID correttamente su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
-- DEVE mostrare lo stato del PID, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato del PID, se non valido, POSSONO essere forniti (ad esempio, il motivo per cui il PID è stato revocato);
-- DEVE includere Action Button per consentire la gestione del ciclo di vita del PID e permettere all'Utente di revocare il PID, quindi l'intera Istanza del Wallet con tutte le EAA emesse, o di aggiornare il PID in qualsiasi momento  (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
-- DEVE garantire che il PID sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso un Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità e per richiedere l'emissione di ulteriori EAA (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
-- DEVE mostrare un metodo di assistenza reso disponibile da parte del Fornitore PID (vedere :ref:`functionalities:Assistenza Utente`);
-- DEVE garantire che il PID sia riconoscibile dall'Utente e distinguibile da altri EAA.
+- DEVE mostrare correttamente l'Attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
+- DEVE mostrare lo stato dell'Attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca dell'Attestato);
+- DEVE includere Action Button per consentire la gestione del ciclo di vita dell'Attestato e permettere all'Utente di revocarlo o aggiornarlo in qualsiasi momento (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
+- DEVE garantire che l'Attestato sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso una Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità ove applicabile e per richiedere l'emissione di ulteriori EAA ove il relativo fornitore richieda dati di identificazione personale (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
+- DEVE mostrare un metodo di assistenza reso disponibile dal relativo fornitore dell'Attestato (vedere :ref:`functionalities:Assistenza Utente`);
+- DEVE garantire che l'Attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.
 
-Per assicurare un’identificazione e una rappresentazione del PID coerente tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
+PID
+"""
 
-- DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” per riferirsi al PID nelle sue Soluzioni Wallet e NON DEVE utilizzare personalizzazioni o termini tecnici come "Dati di Identificazione della Persona" o l’acronimo "PID";
-- DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite;
-- DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data;
-- NON DEVE alterare, distorcere, modificare o sostituire l’elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;
-- DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;
-- NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
-- NON DEVE utilizzare l’elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`.
+Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID`). È rilasciato dal PID Provider.
+
+- L'Istanza del Wallet in stato **Operativo** consente l'emissione del PID. A seguito del rilascio con esito positivo di un PID valido, l'Istanza del Wallet DEVE transitare nello stato **Valido** (vedere :ref:`wallet-instance-lifecycle:Transizione a Valido`).
+- Finché l'Istanza del Wallet è **Valida** e il PID è attivo/valido, l'Utente PUÒ presentare il PID e usarlo per l'autenticazione e per ulteriori emissioni di Attestati secondo la presente specifica e il quadro EUDI.
+- La revoca, la scadenza o la cancellazione del PID DEVONO far transitare l'Istanza del Wallet di nuovo nello stato **Operativo** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
+- Qualora l'Utente revochi il PID, il Fornitore di Wallet DEVE gestire le conseguenze sul ciclo di vita dell'Istanza del Wallet e sulle EAA dipendenti come definito nella presente specifica.
+- Il PID è destinato anche a interazioni cross-border nell'ecosistema EUDI Wallet, oltre che a usi nazionali.
+
+IT-Wallet ID
+""""""""""""
+
+L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.
+
+- L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
+- L'IT-Wallet ID è destinato esclusivamente ad interazioni nazionali e non cross-border.
+- Per assicurare un'identificazione e una rappresentazione coerente dell'IT-Wallet ID tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
+
+  - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” nelle sue Soluzioni Wallet;
+  - DEVE utilizzare l'elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite;
+  - DEVE utilizzare l'elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data;
+  - NON DEVE alterare, distorcere, modificare o sostituire l'elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;
+  - DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;
+  - NON DEVE ridimensionare l'elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
+  - NON DEVE utilizzare l'elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`.
+
+  Sebbene il termine IT-Wallet ID rappresenti l'Attestato Elettronico di Dati di Identificazione personale, la risorsa grafica IT-Wallet ID PUÒ essere utilizzata dal Fornitore di Wallet per facilitare l'Utente nell'individuazione, più in generale, dei suoi Attestati di identificazione personale (IT-Wallet ID / PID).
 
 .. only:: format_html
 
@@ -167,7 +187,7 @@ Di seguito, sono illustrati i requisiti dell'Esperienza Utente del flusso di ott
 - l'Utente seleziona l'Attestato Elettronico di Attributi che intende aggiungere alla sua Istanza del Wallet scegliendo tra quelli disponibili nel Catalogo;
 - l’Utente seleziona da quale Fornitore di Attestati Elettronici vuole ottenere l’Attestato Elettronico di Attributi, se presente più di uno;
 - l’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi, provenienti dalla Fonte Autentica;
-- l'Utente prende visione dei dati del PID, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati del PID o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
+- l'Utente prende visione dei suoi dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
 - l'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;
 - l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - l'Utente visualizza l'esito positivo dell'ottenimento avvenuto;
@@ -207,7 +227,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Ottenimento-da-catalogo.svg
+  .. figure:: ./images/svg/Ottenimento-da-catalogo-1.svg
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo
     :width: 100%
     :align: center
@@ -216,7 +236,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-01.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-01-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
     :width: 100%
     :align: center
@@ -225,7 +245,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-02.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-02-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
     :width: 100%
     :align: center
@@ -234,7 +254,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-03.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-03-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo - 03
     :width: 100%
     :align: center
@@ -249,7 +269,7 @@ Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di otte
 - L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
 - (*solo cross-device*) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`; in alternativa l’Utente può uscire da flusso.
 - L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente prende visione dei dati del PID, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati del PID o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
+- L'Utente prende visione dei propri dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
 - L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi;
 - L'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
@@ -262,7 +282,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Ottenimento-da-fonte-autentica.svg
+  .. figure:: ./images/svg/Ottenimento-da-fonte-autentica-1.svg
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
     :width: 100%
     :align: center
@@ -271,7 +291,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-01.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-01-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 01
      :width: 100%
     :align: center
@@ -280,7 +300,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-02.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-02-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 02
      :width: 100%
     :align: center
@@ -289,7 +309,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-01.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-01-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 01
      :width: 100%
     :align: center
@@ -299,7 +319,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-02.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-02-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 02
      :width: 100%
     :align: center
@@ -309,7 +329,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-03.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-03-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 03
      :width: 100%
     :align: center
@@ -318,7 +338,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-04.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-04-1.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 04
      :width: 100%
     :align: center
@@ -543,20 +563,20 @@ Presentazione degli Attestati Elettronici
 
 Il processo di presentazione permette all'Utente di accedere a un servizio oppure di dimostrare la titolarità di un dato o l'idoneità a effettuare una determinata azione. La presentazione degli Attestati Elettronici e la loro conseguente verifica, prevede l'interazione tra un'Istanza del Wallet, gestita dall'Utente, e un'Istanza di Relying Party (o App di Verifica). A seconda delle circostanze e del contesto di interazione si possono delineare i seguenti scenari:
 
-- **Presentazione in prossimità**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposti alla verifica in presenza;
+- **Presentazione in prossimità**: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposto alla verifica in presenza;
 
-- **Presentazione da remoto**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.
+- **Presentazione da remoto**: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.
 
 Indipendentemente dal tipo di presentazione, il Fornitore di Wallet DEVE consentire all'Istanza del Wallet di informare l'Utente sull'identità della Relying Party. Nel caso di un Intermediario di Relying Party, l'Utente DEVE essere informato del coinvolgimento dell'intermediario durante la fase di richiesta della presentazione. L'identità della Relying Party primaria DEVE essere sempre visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario di Relying Party.
 
 Presentazione in prossimità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La presentazione in prossimità consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità:
+La presentazione in prossimità consente all'Utente di esibire i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità:
 
-- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Mobile`);
+- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Mobile`);
 
-- **Modalità non supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded).
+- **Modalità non supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded).
 
 Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità che il Fornitori di Wallet DEVE garantire attraverso la propria Soluzione Wallet.
 
@@ -565,7 +585,7 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 - L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente accede alla funzionalità dedicata alla generazione del QR Code;
 - L'Utente mostra il QR Code generato al soggetto che opera per conto del Verificatore di Attestati Elettronici, il quale provvede a scansionarlo tramite apposita app o sistema di verifica;
-- L'Utente prende visione dei dati del PID e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente visualizza l'esito positivo della presentazione avvenuta.
 
@@ -576,7 +596,7 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 - L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente accede alla funzionalità dedicata alla generazione del QR Code;
 - L'Utente mostra il QR Code generato al dispositivo preposto (ad esempio un tornello) del Verificatore di Attestati Elettronici per permetterne la scansione;
-- L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID o degli Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente visualizza l'esito positivo della presentazione avvenuta.
 
@@ -586,7 +606,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-prossimita.svg
+  .. figure:: ./images/svg/Presentazione-prossimita-1.svg
     :alt: Esempio di Esperienza Utente nella presentazione in prossimità
     :width: 100%
     :align: center
@@ -595,7 +615,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-prossimita.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-prossimita-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione in prossimità
     :width: 100%
     :align: center
@@ -605,7 +625,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 Presentazione da remoto
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-La presentazione da remoto consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici, facendo interagire la propria Istanza del Wallet con il Touchpoint di un Verificatore di Attestati Elettronici, tramite l'apposito :ref:`functionalities:Engagement Button`.
+La presentazione da remoto consente all'Utente di esibire i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, facendo interagire la propria Istanza del Wallet con il Touchpoint di un Verificatore di Attestati Elettronici, tramite l'apposito :ref:`functionalities:Engagement Button`.
 
 Tale presentazione può avvenire in due diverse modalità, sulla base del tipo di dispositivo utilizzato per accedere al servizio di interesse:
 
@@ -619,7 +639,7 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 - L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici;
 - L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
 - L'Utente accede all'Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;
 - L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata.
@@ -630,7 +650,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-remoto-same-device.svg
+  .. figure:: ./images/svg/Presentazione-remoto-same-device-1.svg
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device
     :width: 100%
     :align: center
@@ -639,7 +659,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-01.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-01-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device - 01
     :width: 100%
     :align: center
@@ -648,7 +668,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-02.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-02-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device - 02
     :width: 100%
     :align: center
@@ -660,7 +680,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 - L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet;
 - L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
 - L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet o la fotocamera del proprio dispositivo; l’interfaccia del QR Code DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`;
-- L'Utente prende visione dei dati del PID e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;
 - L'Utente torna sul Touchpoint del Verificatore di Attestati Elettronici e visualizza l'esito della presentazione completata.
@@ -671,7 +691,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-remoto-cross-device.svg
+  .. figure:: ./images/svg/Presentazione-remoto-cross-device-1.svg
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device
     :width: 100%
     :align: center
@@ -681,7 +701,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-01.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-01-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 01
     :width: 100%
     :align: center
@@ -690,7 +710,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-02.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-02-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 02
     :width: 100%
     :align: center
@@ -699,7 +719,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-03.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-03-1.pdf
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
     :width: 100%
     :align: center
@@ -738,7 +758,7 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’:ref:`fun
 Autenticazione
 """"""""""""""
 
-L'Autenticazione è un caso d'uso specifico della presentazione remota e consente all'Utente di accedere in modo sicuro ai servizi resi disponibili da Verificatori di Attestati Elettronici pubblici e privati, presentando il PID ed eventualmente un set di Attributi contenuti negli Attestati Elettronici di Attributi ottenuti. Questo garantisce all'Utente il pieno controllo sui propri dati e la possibilità di condividere anche i soli dati strettamente necessari alla verifica da parte del Verificatore di Attestati Elettronici.
+L'Autenticazione è un caso d'uso specifico della presentazione remota e consente all'Utente di accedere in modo sicuro ai servizi resi disponibili da Verificatori di Attestati Elettronici pubblici e privati, presentando i propri dati di identificazione personale ed eventualmente un set di Attributi contenuti negli Attestati Elettronici di Attributi ottenuti. Questo garantisce all'Utente il pieno controllo sui propri dati e la possibilità di condividere anche i soli dati strettamente necessari alla verifica da parte del Verificatore di Attestati Elettronici.
 
 Il processo di Autenticazione può avvenire in entrambe le modalità same-device e cross-device descritte sopra. Per quanto riguarda i requisiti funzionali a supporto dell'Esperienza Utente, si DEVONO rispettare gli stessi requisiti previsti per la :ref:`presentazione in remoto <functionalities:Presentazione da remoto>` nelle due modalità (same-device e cross-device).
 
@@ -750,7 +770,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Autenticazione-same-device.svg
+  .. figure:: ./images/svg/Autenticazione-same-device-1.svg
     :alt: Esempio di Esperienza Utente di Autenticazione same-device
     :width: 100%
     :align: center
@@ -759,7 +779,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-same-device-01.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-01-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione same-device - 01
     :width: 100%
     :align: center
@@ -768,7 +788,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-same-device-02.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-02-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione same-device - 02
     :width: 100%
     :align: center
@@ -777,7 +797,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Autenticazione-cross-device.svg
+  .. figure:: ./images/svg/Autenticazione-cross-device-1.svg
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device
     :width: 100%
     :align: center
@@ -786,7 +806,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-01.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-01-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 01
     :width: 100%
     :align: center
@@ -795,7 +815,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-02.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-02-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 02
     :width: 100%
     :align: center
@@ -804,7 +824,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-03.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-03-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 03
     :width: 100%
     :align: center
@@ -813,7 +833,7 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-04.pdf
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-04-1.pdf
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 04
     :width: 100%
     :align: center
@@ -1324,7 +1344,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Revoca-EAA-da-wallet.svg
+  .. figure:: ./images/svg/Revoca-EAA-da-wallet-1.svg
      :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
      :width: 100%
      :align: center
@@ -1336,7 +1356,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Revoca-EAA-da-wallet.pdf
+  .. figure:: ./images/pdf/A4-Revoca-EAA-da-wallet-1.pdf
     :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico da Wallet
     :width: 100%
     :align: center
@@ -1448,13 +1468,13 @@ Errori di Attivazione dell'Istanza del Wallet
     - Fornitore di Wallet
   * - I servizi del Fornitore di Wallet non rispondono (e.g. errori tecnici o assenza connessione)
     - Fornitore di Wallet
-  * - I servizi del PID Provider non rispondono (e.g. errori tecnici)
-    - PID Provider
-  * - Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
-    - National Identity Provider
+  * - I servizi del PID Provider o del fornitore dell'IT-Wallet ID non rispondono (e.g. errori tecnici)
+    - PID Provider o fornitore dell'IT-Wallet ID
+  * - Il processo di Autenticazione sul servizio del Gestore di Identità Digitale non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
+    - Gestore di Identità Digitale
 
 .. note::
-   Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del National Identity Provider, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
+   Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del Gestore di Identità Digitale, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
 
 Errori di ottenimento degli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1465,7 +1485,7 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
 
   * - Tipologia di errore
     - Attore responsabile
-  * - L'Istanza del Wallet e/o il PID non risultano attivi
+  * - L'Istanza del Wallet e/o il PID / IT-Wallet ID non risultano validi
     - Fornitore di Wallet
   * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)
     - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica

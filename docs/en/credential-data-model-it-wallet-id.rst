@@ -4,9 +4,11 @@
 IT-Wallet ID Data Model
 ==============================
 
-The IT-Wallet ID is issued by the EAA Provider according to national laws and it MUST be provided only in SD-JWT VC.
+The **IT-Wallet ID** (*Electronic Attestation of Person Identification Data*) is an Electronic Attestation of Attributes (EAA) issued by the EAA Provider according to national laws. It is provided in SD-JWT VC format.
 
-The main scope of the IT-Wallet ID is allowing natural persons to be authenticated for access to a service or to a protected resource.
+The IT-Wallet ID is intended **exclusively for national use** with Italian Relying Parties to access online services. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework.
+
+The main scope of the IT-Wallet ID is allowing natural persons to be authenticated for access to a service or to a protected resource within the national jurisdiction.
 The User attributes provided within the IT-Wallet ID are the ones listed below:
 
 - Current Family Name
@@ -33,7 +35,7 @@ The identity proofing information is REQUIRED for IT-Wallet ID to ensure:
 IT-Wallet ID Data Model in SD-JWT VC Format
 -------------------------------------------
 
-The SD-JWT VC IT-Wallet ID defined in this specification MUST use the ``vct`` claim value set with ``urn:it-wallet:eid:1``.
+The SD-JWT VC IT-Wallet ID defined in this specification MUST use the ``vct`` claim value set with ``urn:it-wallet:eid:1``, where ``eid`` is the catalogue ``credential_type`` of IT-Wallet ID.
 
 The IT-Wallet ID in SD-JWT VC format includes the following User Attributes:
 

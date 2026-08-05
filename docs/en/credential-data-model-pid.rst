@@ -7,9 +7,8 @@ PID Data Model
 The Person Identification Data (PID) is issued by the PID Provider according to national laws and it MUST be provided in both SD-JWT VC and mdoc-CBOR data format.
 
 .. note::
-   **Transitional Phase:**
-
-   During the transitional phase, until the EUDIW becomes fully operational, an IT-Wallet ID will be provided in place of the PID.
+  The PID will be issued when the IT-Wallet will be fully operational and notified as EUDIW, the **IT-Wallet ID** is intended for access online services of national RPs only.
+  
 
 The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
 The PID MUST be provided according to data model requirements defined in  `EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the User attributes provided within the Italian PID are the ones listed below:
