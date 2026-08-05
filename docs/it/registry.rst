@@ -1346,7 +1346,7 @@ Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-
    * - **version**
      - OBBLIGATORIO. La versione della definizione dello schema (es. ``1.0.0``).
    * - **credential_type**
-      - OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. ``mDL``, ``pid``, ``eid``).
+     - OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. ``mDL``, ``pid``, ``eid``).
    * - **format**
      - OBBLIGATORIO. Il formato tecnico dello schema (es. ``mso_mdoc``, ``dc+sd-jwt``).
    * - **vct**
@@ -1393,7 +1393,7 @@ Questo percorso di *Navigazione del Catalogo* supporta gli Utenti (sia utenti um
 
 2.  **Navigazione e Selezione**:
 
-   * **Discovery delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare le tipologie di Credenziale rilevanti (es. ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Tassonomia** per navigare la gerarchia e fornire diverse localizzazioni.
+  * **Discovery delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare le tipologie di Credenziale rilevanti (es. ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Tassonomia** per navigare la gerarchia e fornire diverse localizzazioni.
   * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` nel campo `issuers`) associato alla Credenziale desiderata.
   * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede alla **Configurazione dell'Entità** (Metadati dell'Emittente) utilizzando l'identificatore recuperato.
 
