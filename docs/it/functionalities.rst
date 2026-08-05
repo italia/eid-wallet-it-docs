@@ -54,14 +54,14 @@ Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantir
 
 - l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet;
 - l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;
-- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e dell'emittente dell'attestato di identificazione personale (PID Provider o EAA Provider dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
+- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'attestato di identificazione personale (PID Provider o EAA Provider dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
 - l'Utente sceglie una tra le modalità di Autenticazione disponibili;
 - l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale;
 - l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo e se nello stesso percorso viene rilasciato un attestato di identificazione personale, visualizza l'anteprima di tale attestato (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione;
 - l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
 - l'Utente visualizza l'esito positivo dell'avvenuta attivazione dell'Istanza del Wallet.
 
-Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un attestato di identificazione personale ottenuto in connessione con l'attivazione. Inoltre, il relativo emittente (PID Provider o EAA Provider dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
+Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un attestato di identificazione personale ottenuto in connessione con l'attivazione. Inoltre, il relativo fornitore (PID Provider o EAA Provider dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
@@ -126,7 +126,7 @@ IT-Wallet ID
 
 L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un EAA Provider e NON DEVE essere presentato come PID.
 
-- L'Istanza del Wallet DEVE essere nello stato **Operativo** (a seguito dell'attivazione) per richiedere e ottenere un IT-Wallet ID. L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa**.
+- L'Istanza del Wallet DEVE essere nello stato **Attivato** prima di poter richiedere e ottenere un IT-Wallet ID, che quindi PUÒ essere richiesto e ottenuto in stato **Operativo** (a seguito dell'attivazione). L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa**.
 - L'IT-Wallet ID DEVE essere utilizzato solo con Relying Party italiane e NON DEVE essere utilizzato per interazioni cross-border.
 - Per assicurare un'identificazione e una rappresentazione coerente dell'IT-Wallet ID tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
 

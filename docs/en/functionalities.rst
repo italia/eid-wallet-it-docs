@@ -126,7 +126,7 @@ IT-Wallet ID
 
 The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an EAA Provider and MUST NOT be presented as a PID.
 
-- The Wallet Instance MUST be in the **Operational** state (following activation) to request and obtain an IT-Wallet ID. Issuance of the IT-Wallet ID does **not** transition the Wallet Instance to the **Valid** state; the Wallet Instance remains **Operational**.
+- The Wallet Instance MUST be activated before requesting and obtaining an IT-Wallet ID. IT-Wallet ID can be requested and obtained in the **Operational** state. Issuance of the IT-Wallet ID does **not** transition the Wallet Instance to the **Valid** state; the Wallet Instance remains **Operational**.
 - The IT-Wallet ID MUST be used only with Italian Relying Parties and MUST NOT be used for cross-border interactions.
 - To ensure a consistent identification and representation of the IT-Wallet ID across different Wallet Solutions, the Wallet Provider:
 
