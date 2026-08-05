@@ -1077,7 +1077,7 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e
      - Istanza del Wallet verifica con successo la firma del JWT backup utilizzando la chiave pubblica contenuta nel parametro ``cnf.jwk`` del JWT valorizzato nel parametro ``wallet_attestation``.
    * - WP_130
      - Backup e Ripristino, Interoperabilità
-     - re-Issuance di Attestato Elettronico da backup ripristinato
+     - Emissione di Attestato Elettronico da backup ripristinato
      - Per ogni voce Attestato Elettronico nel JWT backup, Istanza del Wallet estrae con successo l'URL Fornitore di Attestati, e il ``credential_configuration_id``.
    * - WP_130a
      - Backup e Ripristino, Interoperabilità
@@ -1085,8 +1085,8 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e
      - Per ogni URL Fornitore di Attestato Elettronico, Istanza del Wallet recupera con successo i metadata del Fornitore di Attestato Elettronico corrispondenti.
    * - WP_130b
      - Backup e Ripristino, Interoperabilità
-     - Richiesta re-Issuance Attestato Elettronico
-     - Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo una richiesta re-Issuance per l'Attestato Elettronico utilizzando una nuova associazione chiave di binding con il dispositivo.
+     - Richiesta emissione Attestato Elettronico
+     - Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo un nuovo Wallet-Initiated Authorization Code Issuance Flow legato alla nuova chiave dell'Istanza del Wallet (nuova Associazione Crittografica con l'Utente), e non un rinnovo del token né una richiesta di Re-issuance Flow.
 
 .. _wallet-instance-optional-testcases:
 
