@@ -39,20 +39,11 @@
                     },
                     {
                         "filter": {
-                            "const": "bith_date",
+                            "const": "birthdate",
                             "type": "string"
                         },
                         "path": [
-                            "$.credentialSubject.bith_date"
-                        ]
-                    },
-                    {
-                        "filter": {
-                            "const": "personal_administrative_number",
-                            "type": "string"
-                        },
-                        "path": [
-                            "$.credentialSubject.personal_administrative_number"
+                            "$.credentialSubject.birthdate"
                         ]
                     }
                 ]

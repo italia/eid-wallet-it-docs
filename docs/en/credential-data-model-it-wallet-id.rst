@@ -70,8 +70,13 @@ The IT-Wallet ID in SD-JWT VC format includes the following User Attributes:
       - REQUIRED if ``personal_administrative_number`` is not present, OPTIONAL otherwise. *String*. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``.
       - Domestic extension
 
-All the User attributes listed above MUST be selectively disclosable.
-In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for an IT-Wallet ID:
+.. note::
+   **Identity Matching**
+
+   For the IT-Wallet ID, the Relying Party MUST first perform identity matching using ``tax_id_code``. Only after a successful identity matching, the Relying Party MAY perform identity reconciliation, linking that natural person to a previous User session or stored User record.
+
+All the User attributed listed above MUST be selectively disclosable.
+In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a IT-Wallet ID:
 
   - **date_of_expiry**
   - **sub** (domestic extension)
