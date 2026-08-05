@@ -6,7 +6,7 @@ IT-Wallet ID Data Model
 
 The **IT-Wallet ID** (*Electronic Attestation of Person Identification Data*) is an Electronic Attestation of Attributes (EAA) issued by the EAA Provider according to national laws. It is provided in SD-JWT VC format.
 
-The IT-Wallet ID is intended **exclusively for national use** with Italian Relying Parties. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework.
+The IT-Wallet ID is intended **exclusively for national use** with Italian Relying Parties to access online services. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework.
 
 The main scope of the IT-Wallet ID is allowing natural persons to be authenticated for access to a service or to a protected resource within the national jurisdiction.
 The User attributes provided within the IT-Wallet ID are the ones listed below:
