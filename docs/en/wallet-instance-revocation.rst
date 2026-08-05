@@ -11,7 +11,7 @@ The Wallet Provider MUST ensure the security and reliability of Wallet Instances
 As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigger the Wallet Instance revocation process (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
 - **Users**, connecting to the Wallet Provider's web portal from their Wallet Instance or using an external browser.
-- **PID Providers and IT-Wallet ID EAA Providers** when notified by the Authentic Source of the PID/It-Wallet ID (ANPR) of the User's death.
+- **PID Providers and IT-Wallet ID EAA Providers** when notified by the Authentic Source of the PID/IT-Wallet ID (ANPR) of the User's death.
 - **Legal Authorities or the Supervisory Body** in cases of proven illegal activities.
 
 .. _fig_Wallet_Instance_Revoc_Entities:

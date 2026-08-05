@@ -69,9 +69,9 @@
         24(<<
             {
             "digestID": 9,
-            "random": h'71EAC48D2F9B635A0C17D4E82ABF5',
+            "random": h'71EAC48D2F9B635A0C17D4E82ABF05',
             "elementIdentifier": "portrait",
-            "elementValue": h'FFD8FFE000104A46494600010100000100010000...,
+            "elementValue": h'FFD8FFE000104A46494600010100000100010000...'
             }
         >>)
         ],
