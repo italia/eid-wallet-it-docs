@@ -23,7 +23,7 @@ The following official graphic assets are available for download in the `officia
 
 - **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <_static/IT-Wallet-Logo/IT-Wallet-Logo-Primary-BlueItalia.svg>`_
 - **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <_static/IT-Wallet-Symbol/IT-Wallet-Symbol-Primary-BlueItalia.svg>`_
-- **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the IT-Wallet ID (Electronic Attestation of Person Identification Data) across all Wallet Solutions - `Download IT-Wallet ID <_static/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg>`_
+- **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the personal identification data Attestation (IT-Wallet ID / PID) across all Wallet Solutions - `Download IT-Wallet ID <_static/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg>`_
 - **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <_static/IT-Wallet-Trust-Mark/ENG/Trust-Mark-ENG-Primary-BlueItalia.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
 - **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <_static/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Standard-Default.svg>`_
 - **Pages templates**: the models of the pages that belong to the Authentication flow: Discovery page, Selection page, QR code page, Thank you page and Error page  – Go to `Pages-templates/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/Pages-templates>`_
