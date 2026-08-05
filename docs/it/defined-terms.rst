@@ -132,12 +132,15 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Dati di Identificazione Personale**
-      Insieme di dati che permettono di stabilire l'identità di una persona fisica o giuridica, o di una persona fisica che rappresenta un'altra persona fisica o giuridica.
-      Conforme con ARF 2.7.3.
+    **Person Identification Data**
+    **PID**
+      Insieme di dati rilasciati in conformità al diritto dell'Unione o nazionale che consentono di stabilire l'identità di una persona fisica o giuridica, o di una persona fisica che rappresenta un'altra persona fisica o giuridica.
+      Conforme con ARF 2.7.3 / `EU_2024_1183`_. Nelle presenti Specifiche Tecniche, i riferimenti all'emissione, alla presentazione o alla revoca di un PID denotano il PID tecnico (la struttura dati firmata che contiene i Dati di Identificazione Personale), come utilizzato nell'ARF. Il termine italiano «Attestato Elettronico di Dati di Identificazione Personale», ove impiegato come sinonimo di PID, va inteso in questo senso e **non** come Attestato Elettronico di Attributi (EAA).
 
     **Fornitore di Attestati Elettronici di Dati di Identificazione Personale**
     **PID Provider**
-      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, che garantisce l'associazione crittografica con la Wallet Unit.
+    **Provider of Person Identification Data**
+      Persona fisica o giuridica responsabile dell'emissione e della revoca dei Dati di Identificazione Personale e della garanzia che i Dati di Identificazione Personale di un Utente siano associati crittograficamente a una Wallet Unit.
       Conforme con ARF 2.7.3.
 
     **Policy Language**
@@ -169,13 +172,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Attestato Elettronico di Dati di Identificazione Personale**
-      Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
-      Conforme con ARF 2.7.3.
-
     **IT-Wallet ID**
     **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
-      Attestato Elettronico di Attributi (EAA) che contiene Dati di Identificazione Personale di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dal termine ARF **Attestato Elettronico di Dati di Identificazione Personale** (PID). Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi del quadro europeo di Identità Digitale (`EU_2024_1183`_ / `EU_2024/2977`_). NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Gli identificatori tecnici (``vct`` e ``credential_type``) sono definiti nella sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Gli identificatori tecnici (``vct`` e ``credential_type``) sono definiti nella sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
@@ -485,7 +484,7 @@ Di seguito gli acronimi usati più di frequente nel documento:
   * - **PDND**
     - Piattaforma Digitale Nazionale Dati
   * - **PID**
-    - Person Identification Data (Attestato Elettronico di Dati di Identificazione Personale)
+    - Person Identification Data (Dati di Identificazione Personale)
   * - **PII**
     - Personally Identifiable Information (Informazioni di Identificazione Personale)
   * - **QEAA**

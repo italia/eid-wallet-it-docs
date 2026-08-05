@@ -96,7 +96,7 @@ The flow is shown below with illustrative wireframes.
 Focus on Person Identification Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines User Experience requirements for person identification Attestations held in the Wallet Instance: the EUDI **PID** and the national **IT-Wallet ID** (Electronic Attestation of Person Identification Data). Both convey a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`), but they differ in legal scope, issuer type, Wallet Instance lifecycle impact, and use cases for presentation supported.
+This section defines User Experience requirements for person identification Attestations held in the Wallet Instance: the EUDI **PID** and the national **IT-Wallet ID** (Electronic Attestation of Person Identification Data with national scope). Both convey a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`), but they differ in legal scope, issuer type, Wallet Instance lifecycle impact, and use cases for presentation supported.
 
 Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the personal identification Attestation (PID and/or IT-Wallet ID). The Wallet Provider:
 
@@ -110,7 +110,7 @@ Below are illustrated the User Experience requirements to ensure a uniform and c
 PID
 """
 
-The **PID** is the Person Identification Data attestation under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model`). It is issued by the PID Provider.
+The **PID** is the Person Identification Data under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model` and :term:`Person Identification Data`). It is issued by the PID Provider as a technical PID (signed data structure) for presentation from the Wallet Instance.
 
 - The Wallet Instance in the **Operational** state allows the PID issuance. Upon successful issuance of a valid PID, the Wallet Instance MUST transition to the **Valid** state (see :ref:`wallet-instance-lifecycle:Transition to Valid`).
 - While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further credential issuance according to this specification and the EUDI framework.
@@ -121,7 +121,7 @@ The **PID** is the Person Identification Data attestation under the European Dig
 IT-Wallet ID
 """"""""""""
 
-The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an Electronic Attestation of Attributes Provider, unlike the PID.
+The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data with national scope, issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an Electronic Attestation of Attributes Provider, unlike the PID.
 
 - Issuance of the IT-Wallet ID does **not** transition the Wallet Instance to the **Valid** state; the Wallet Instance remains **Operational** (see :ref:`wallet-instance-lifecycle:Transition to Operational`).
 - The IT-Wallet ID is exclusively intended for national use and not for cross-border interactions.

@@ -110,7 +110,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 PID
 """
 
-Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID`). È rilasciato dal PID Provider.
+Il **PID** è l'insieme dei Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID` e :term:`Dati di Identificazione Personale`). È rilasciato dal PID Provider come PID tecnico (struttura dati firmata) per la presentazione dall'Istanza del Wallet.
 
 - L'Istanza del Wallet in stato **Operativo** consente l'emissione del PID. A seguito del rilascio con esito positivo di un PID valido, l'Istanza del Wallet DEVE transitare nello stato **Valido** (vedere :ref:`wallet-instance-lifecycle:Transizione a Valido`).
 - Finché l'Istanza del Wallet è **Valida** e il PID è attivo/valido, l'Utente PUÒ presentare il PID e usarlo per l'autenticazione e per ulteriori emissioni di Attestati secondo la presente specifica e il quadro EUDI.
