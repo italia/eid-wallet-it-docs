@@ -78,7 +78,7 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
       - OBBLIGATORIO. *Stringa*. Immagine facciale codificata come data URL contenente il ritratto JPEG in base64, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Salvo il caso in cui l'Utente eserciti esplicitamente l'opt-out, ove applicabile; in caso di opt-out, il valore DEVE essere vuoto, come specificato nell'ARF HLR **PID_03**. L'inclusione obbligatoria dell'attributo portrait si applica a decorrere da 24 mesi dall'entrata in vigore del Regolamento che modifica `EU_2024/2977`_.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_ e ARF PID Rulebook
     * - **personal_administrative_number**
-      - OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica generato da ANPR in formato stringa.
+      - OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica. DEVE essere conforme con ETSI EN 319 412-1 Sezione 5.1.3. Gli unici identificativi semantici per persone fisiche (**NAT-5.1.3-03**) supportati all'interno di IT-Wallet sono ``PNO`` e ``TIN``. Per IDANPR, DEVE essere usato ``PNO``, mentre per il Codice Fiscale, DEVE essere usato ``TIN``. 
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
 
 .. note::
@@ -97,7 +97,7 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
    - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*: utilizzando un identificativo attestato dall'Issuer o precedentemente stabilito con la Relying Party;
    - *Cryptographic Binding*: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso WSCA/WSCD, quando disponibile.
 
-   Questo approccio è coerente con i requisiti di identity matching descritti nell'Architecture Reference Framework del EUDI Wallet [`EIDAS-ARF`_] (Topic 17 e 18).
+   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pianmente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
 
 Tutti gli attributi Utente elencati sopra DEVONO essere divulgabili selettivamente.
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
