@@ -35,7 +35,7 @@ The Wallet-Relying Party Registration Certificate and the registration Trust Mar
 Certificate Signing Request Profile
 """""""""""""""""""""""""""""""""""
 
-This section defines the profile that the ``certificate_signing_requests`` provided at registration MUST follow, see :ref:`onboarding-system:Registration Data Model`.
+This section defines the profile that the ``certificate_signing_requests`` MUST follow, see :ref:`onboarding-system:Registration Data Model`.
 The Entity provides one Certificate Signing Request for each X.509 certificate it needs, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate, and it presents each of them in the ACME order of the corresponding service.
 The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify a key, so they are not requested through a Certificate Signing Request, see :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance` and :ref:`onboarding-system:Registration Trust Mark Issuance`.
 
