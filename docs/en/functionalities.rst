@@ -108,7 +108,7 @@ Below are illustrated the User Experience requirements to ensure a uniform and c
 - MUST guarantee that the Attestation is recognizable by the User and distinguishable from other EAAs.
 
 PID
-~~~
+"""
 
 The **PID** is the Person Identification Data attestation under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model`). It is issued by the PID Provider.
 
@@ -119,7 +119,7 @@ The **PID** is the Person Identification Data attestation under the European Dig
 - The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.
 
 IT-Wallet ID
-~~~~~~~~~~~~
+""""""""""""
 
 The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an Electionic Attestation of Attributes Provider, unlike the PID.
 

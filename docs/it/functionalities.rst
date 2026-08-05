@@ -108,7 +108,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 - DEVE garantire che l'Attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.
 
 PID
-~~~
+"""
 
 Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID`). È rilasciato dal PID Provider.
 
@@ -119,7 +119,7 @@ Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel q
 - Il PID è destinato anche a interazioni cross-border nell'ecosistema EUDI Wallet, oltre che a usi nazionali.
 
 IT-Wallet ID
-~~~~~~~~~~~~
+""""""""""""
 
 L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.
 

@@ -116,7 +116,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **National Identity Provider**
-      Preexisting notified electronic identification means and related Identity Providers used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
       Not present in ARF 2.7.3.
 
     **National Trust Anchor**
@@ -377,7 +377,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **IT-Wallet ID**
     **Electronic Attestation of Person Identification Data**
-      An Electronic Attestation of Attributes (EAA) that contains Person Identification Data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data** refer to the same national EAA. It enables User authentication and identification towards Italian Relying Parties within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework (`EU_2024_1183`_ / `EU_2024/2977`_). It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID) used only for authentication. The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Technically it is identified by ``vct`` ``urn:it-wallet:eid:1`` and catalogue ``credential_type`` ``eid``. Not present in ARF 2.7.3; specific to IT-Wallet.
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data** refer to the same national EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework (`EU_2024_1183`_ / `EU_2024/2977`_). It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID). The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Technical identifiers (``vct`` and ``credential_type``) are defined in the section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`. Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.
