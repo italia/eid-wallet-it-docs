@@ -82,22 +82,22 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
 
 .. note::
-   **Identity Matching**
+   **Identity Matching and Identity Reconciliation**
 
-   Conformemente al Regolamento di esecuzione `EU_2024/2977`_ e all'ARF PID Rulebook, l'attributo ``personal_administrative_number`` è OPZIONALE nel PID. Di conseguenza, le Relying Party NON DEVONO assumere che un identificativo amministrativo nazionale univoco sia sempre disponibile nel PID ai fini dell'identificazione univoca dell'Utente o della correlazione di attributi tra attestati.
+   L'identity matching non è da intendersi come una funzionalità specifica del EUDI Wallet. È lo stesso approccio pratico già utilizzato in qualsiasi infrastruttura legacy di autenticazione e autorizzazione.
 
-   Qualora tale identificativo non sia presente, l'identity matching DEVE essere assicurato come previsto dall'Architecture Reference Framework del EUDI Wallet [`EIDAS-ARF`_], in particolare:
+   La Relying Party DEVE prima effettuare l'**identity matching**, per accertare che gli attributi di identificazione personale presentati nella transazione corrente si riferiscano alla stessa persona fisica. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'**identity reconciliation**, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
 
-   - **ARF Topic 17 (Identity matching)**: le Relying Party che erogano servizi cross-border DEVONO assicurare l'identity matching per le persone fisiche, secondo un approccio risk-based (HLR **IM_01**). Gli Stati Membri DEVONO facilitare tale matching fornendo nei PID delle persone fisiche almeno quattro attributi opzionali di propria scelta (HLR **IM_01**). Procedure complementari di identificazione univoca POSSONO essere richieste a livello nazionale ove necessario (HLR **IM_03**).
+   Tipi diversi di Attestato Elettronico POSSONO definire pattern di identity matching differenti. Questa Sezione definisce il pattern per il PID. Per il pattern dell'IT-Wallet ID, vedere il modello dati dell'IT-Wallet ID.
 
-   - **ARF Topic 18 / Discussion Topic K (Combined presentation of attestations)**: quando attributi provenienti da un PID e/o da (Q)EAA sono presentati congiuntamente, la Relying Party DEVE poter verificare che tutti gli attributi presentati si riferiscano al medesimo Utente. Nelle more della piena disponibilità del Cryptographic Binding of Attestations (HLR **ACP_01**–**ACP_07**), l'identity matching PUÒ essere realizzato mediante i meccanismi riconosciuti dal framework EUDIW, tra cui:
+   Per il PID, ``personal_administrative_number`` è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile. Quando è presentato, la Relying Party DOVREBBE utilizzarlo per l'identity matching. Quando non è presentato, la Relying Party DEVE effettuare l'identity matching mediante una o più delle seguenti modalità:
 
-     - *Attribute-Based Binding*, utilizzando dati di identificazione personale ridondanti presenti nel PID e in altri attestati (ad esempio ``given_name``, ``family_name`` e ``birthdate`` / ``birth_date``);
-     - *Session-Based Binding*, in cui gli attributi rilasciati in una singola presentation response sono considerati appartenenti al medesimo Utente;
-     - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*, ove applicabili;
-     - *Cryptographic Binding*, dimostrando che le chiavi private degli attestati presentati sono gestite dallo stesso WSCA/WSCD, una volta che tale schema sia disponibile in conformità al Topic 18.
+   - *Attribute-Based Binding*: confrontando gli attributi di identificazione personale disponibili nella presentation del PID (ad esempio ``given_name``, ``family_name`` e ``birthdate`` / ``birth_date``);
+   - *Session-Based Binding*: considerando gli attributi rilasciati nella stessa presentation response come appartenenti al medesimo Utente;
+   - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*: utilizzando un identificativo attestato dall'Issuer o precedentemente stabilito con la Relying Party;
+   - *Cryptographic Binding*: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso WSCA/WSCD, quando disponibile.
 
-   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF.
+   Questo approccio è coerente con i requisiti di identity matching descritti nell'Architecture Reference Framework del EUDI Wallet [`EIDAS-ARF`_] (Topic 17 e 18).
 
 Tutti gli attributi Utente elencati sopra DEVONO essere divulgabili selettivamente.
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
