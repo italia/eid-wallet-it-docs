@@ -99,7 +99,7 @@ Focus sugli Attestati di Identificazione Personale
 Questa sezione definisce i requisiti di Esperienza Utente per gli attestati di identificazione personale detenuti nell'Istanza del Wallet: il **PID** EUDI e l'**IT-Wallet ID** nazionale (Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale). Entrambi veicolano un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`), ma differiscono per ambito giuridico, ruolo dell'emittente, impatto sul ciclo di vita dell'Istanza del Wallet e vincoli di presentazione.
 
 Requisiti comuni
-~~~~~~~~~~~~~~~~
+""""""""""""""""
 
 Salvo diversa indicazione nelle sottosezioni seguenti, il Fornitore di Wallet:
 
@@ -111,7 +111,7 @@ Salvo diversa indicazione nelle sottosezioni seguenti, il Fornitore di Wallet:
 - DEVE garantire che l'attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.
 
 PID
-~~~
+"""
 
 Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere :ref:`credential-data-model-pid:Modello di Dati del PID`). È rilasciato dal PID Provider.
 
@@ -122,7 +122,7 @@ Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel q
 - Il PID è destinato anche a interazioni cross-border nell'ecosistema EUDI Wallet, oltre che a usi nazionali.
 
 IT-Wallet ID
-~~~~~~~~~~~~
+""""""""""""
 
 L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un EAA Provider e NON DEVE essere presentato come PID.
 

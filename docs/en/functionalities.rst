@@ -99,7 +99,7 @@ Focus on Person Identification Attestations
 This section defines User Experience requirements for person identification attestations held in the Wallet Instance: the EUDI **PID** and the national **IT-Wallet ID** (Electronic Attestation of Person Identification Data). Both convey a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`), but they differ in legal scope, issuer role, Wallet Instance lifecycle impact, and presentation constraints.
 
 Common requirements
-~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""
 
 Unless otherwise specified in the subsections below, the Wallet Provider:
 
@@ -111,7 +111,7 @@ Unless otherwise specified in the subsections below, the Wallet Provider:
 - MUST guarantee that the attestation is recognizable by the User and distinguishable from other EAAs.
 
 PID
-~~~
+"""
 
 The **PID** is the Person Identification Data attestation under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model`). It is issued by the PID Provider.
 
@@ -122,7 +122,7 @@ The **PID** is the Person Identification Data attestation under the European Dig
 - The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.
 
 IT-Wallet ID
-~~~~~~~~~~~~
+""""""""""""
 
 The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an EAA Provider and MUST NOT be presented as a PID.
 
