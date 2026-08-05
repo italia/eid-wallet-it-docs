@@ -35,7 +35,7 @@ The identity proofing information is REQUIRED for IT-Wallet ID to ensure:
 IT-Wallet ID Data Model in SD-JWT VC Format
 -------------------------------------------
 
-The SD-JWT VC IT-Wallet ID defined in this specification MUST use the ``vct`` claim value set with ``urn:it-wallet:eid:1``.
+The SD-JWT VC IT-Wallet ID defined in this specification MUST use the ``vct`` claim value set with ``urn:it-wallet:eid:1``, where ``eid`` is the catalogue ``credential_type`` of IT-Wallet ID.
 
 The IT-Wallet ID in SD-JWT VC format includes the following User Attributes:
 
