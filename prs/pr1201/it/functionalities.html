@@ -311,7 +311,7 @@
 <section id="principi-di-design">
 <h2><span class="section-number">5.1. </span>Principi di Design<a class="headerlink" href="#principi-di-design" title="Link to this heading">¶</a></h2>
 <p>Il Sistema IT-Wallet si basa sul paradigma del Portafoglio di Identità Digitale e ha l'obiettivo di fornire agli Utenti un'esperienza di accesso ai servizi più semplice, veloce e sicura.</p>
-<p>La Soluzione Wallet rappresenta il principale Touchpoint e consente agli Utenti di utilizzare e gestire il proprio PID e i propri Attributi nelle interazioni con soggetti pubblici o privati, sia in contesti fisici che digitali. Il corretto funzionamento del servizio, tuttavia, si fonda su un'ampia rete di interazioni tra diversi Touchpoint e Soluzioni Tecniche, che ne supportano l'erogazione e incidono direttamente sull'Esperienza Utente.</p>
+<p>La Soluzione Wallet rappresenta il principale Touchpoint e consente agli Utenti di utilizzare e gestire i propri dati di identificazione personale e i propri Attributi nelle interazioni con soggetti pubblici o privati, sia in contesti fisici che digitali. Il corretto funzionamento del servizio, tuttavia, si fonda su un'ampia rete di interazioni tra diversi Touchpoint e Soluzioni Tecniche, che ne supportano l'erogazione e incidono direttamente sull'Esperienza Utente.</p>
 <p>Per garantire un'elevata qualità del servizio dal punto di vista dell'Esperienza Utente, gli Attori Primari, siano essi enti pubblici o privati, DEVONO assicurare l'usabilità e l'accessibilità delle proprie Soluzioni Tecniche, in allineamento con gli elementi distintivi del Sistema IT-Wallet. Nello specifico:</p>
 <ul class="simple">
 <li><p><strong>Usabilità</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute per garantire elevanti standard di usabilità, allo scopo di facilitare l'adozione del servizio e ridurre la necessità di supporto. Gli enti pubblici DEVONO aderire alle [LG_DESIGN], mentre gli enti privati POSSONO prenderle a riferimento come buone pratiche;</p></li>
@@ -340,48 +340,68 @@
 </section>
 <section id="attivazione-dell-istanza-del-wallet">
 <h2><span class="section-number">5.3. </span>Attivazione dell'Istanza del Wallet<a class="headerlink" href="#attivazione-dell-istanza-del-wallet" title="Link to this heading">¶</a></h2>
-<p>L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale che consente la generazione del PID.</p>
+<p>L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale (vedere <a class="reference internal" href="wallet-instance-lifecycle.html#ciclo-di-vita-dell-istanza-del-wallet"><span class="std std-ref">Ciclo di vita dell'Istanza del Wallet</span></a>). Dopo l'Autenticazione, l'Utente ottiene un Attestato di identificazione personale — il <strong>PID</strong> EUDI oppure l'<strong>IT-Wallet ID</strong> nazionale — come descritto in <a class="reference internal" href="#focus-sugli-attestati-di-identificazione-personale"><span class="std std-ref">Focus sugli Attestati di Identificazione Personale</span></a>.</p>
 <p>Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:</p>
 <ul class="simple">
 <li><p>l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet;</p></li>
 <li><p>l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;</p></li>
-<li><p>l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del PID Provider e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;</p></li>
+<li><p>l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'Attestato di identificazione personale (PID Provider o fornitore dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;</p></li>
 <li><p>l'Utente sceglie una tra le modalità di Autenticazione disponibili;</p></li>
-<li><p>l‘Utente conclude il flusso di Autenticazione sul servizio del National Identity Provider;</p></li>
-<li><p>l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima del proprio PID. L'Utente conferma le informazioni mostrate in anteprima per procedere all'attivazione dell'Istanza del Wallet oppure annulla l'operazione;</p></li>
+<li><p>l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale;</p></li>
+<li><p>l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima dell'Attestato di identificazione personale, (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione;</p></li>
 <li><p>l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>l'Utente visualizza l'esito positivo dell'avvenuta attivazione dell'Istanza del Wallet.</p></li>
 </ul>
-<p>Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere il PID ottenuto durante la fase di Attivazione. Inoltre, il PID Provider DOVREBBE permettere all'Utente di revocare il PID ottenuto, tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni <a class="reference internal" href="#disattivazione-dell-istanza-del-wallet"><span class="std std-ref">Disattivazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p>
+<p>Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato di identificazione personale ottenuto in fase di attivazione. Inoltre, il relativo fornitore (PID Provider o fornitore dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale Attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni <a class="reference internal" href="#disattivazione-dell-istanza-del-wallet"><span class="std std-ref">Disattivazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p>
 <p>In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id98">
-<a class="reference internal image-reference" href="_images/Attivazione-IT-Wallet.svg"><img alt="Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet" src="_images/Attivazione-IT-Wallet.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Attivazione-IT-Wallet-1.svg"><img alt="Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet" src="_images/Attivazione-IT-Wallet-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet.</span><a class="headerlink" href="#id98" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<section id="focus-sul-pid-dati-di-identificazione-della-persona">
-<h3><span class="section-number">5.3.1. </span>Focus sul PID – Dati di Identificazione della Persona<a class="headerlink" href="#focus-sul-pid-dati-di-identificazione-della-persona" title="Link to this heading">¶</a></h3>
-<p>Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere <a class="reference internal" href="credential-data-model.html#modello-di-dati-degli-attestati-elettronici"><span class="std std-ref">Modello di Dati degli Attestati Elettronici</span></a>) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza del Wallet.</p>
-<p>Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo del PID uniforme e coerente. Il Fornitore di Wallet:</p>
+<section id="focus-sugli-attestati-di-identificazione-personale">
+<h3><span class="section-number">5.3.1. </span>Focus sugli Attestati di Identificazione Personale<a class="headerlink" href="#focus-sugli-attestati-di-identificazione-personale" title="Link to this heading">¶</a></h3>
+<p>Questa sezione definisce i requisiti di Esperienza Utente per gli Attestati di identificazione personale ottenuti nell'Istanza del Wallet: il <strong>PID</strong> EUDI e l'<strong>IT-Wallet ID</strong> nazionale (Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale). Entrambi veicolano un set minimo verificato di informazioni sull'identità dell'Utente (vedere <a class="reference internal" href="credential-data-model.html#modello-di-dati-degli-attestati-elettronici"><span class="std std-ref">Modello di Dati degli Attestati Elettronici</span></a>), ma differiscono per ambito giuridico, tipologia di fornitore, impatto sul ciclo di vita dell'Istanza del Wallet e di casi d'uso di presentazione supportati.</p>
+<p>Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo dell'Attestato di identificazione personale (PID e/o IT-Wallet ID) uniforme e coerente. Il Fornitore di Wallet:</p>
 <ul class="simple">
-<li><p>DEVE mostrare il PID correttamente su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;</p></li>
-<li><p>DEVE mostrare lo stato del PID, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato del PID, se non valido, POSSONO essere forniti (ad esempio, il motivo per cui il PID è stato revocato);</p></li>
-<li><p>DEVE includere Action Button per consentire la gestione del ciclo di vita del PID e permettere all'Utente di revocare il PID, quindi l'intera Istanza del Wallet con tutte le EAA emesse, o di aggiornare il PID in qualsiasi momento  (vedere <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>);</p></li>
-<li><p>DEVE garantire che il PID sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso un Relying Party in un contesto digitale (vedere <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>), per accedere ai servizi in contesti di prossimità e per richiedere l'emissione di ulteriori EAA (vedere <a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a>);</p></li>
-<li><p>DEVE mostrare un metodo di assistenza reso disponibile da parte del Fornitore PID (vedere <a class="reference internal" href="#assistenza-utente"><span class="std std-ref">Assistenza Utente</span></a>);</p></li>
-<li><p>DEVE garantire che il PID sia riconoscibile dall'Utente e distinguibile da altri EAA.</p></li>
+<li><p>DEVE mostrare correttamente l'Attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;</p></li>
+<li><p>DEVE mostrare lo stato dell'Attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca dell'Attestato);</p></li>
+<li><p>DEVE includere Action Button per consentire la gestione del ciclo di vita dell'Attestato e permettere all'Utente di revocarlo o aggiornarlo in qualsiasi momento (vedere <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>);</p></li>
+<li><p>DEVE garantire che l'Attestato sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso una Relying Party in un contesto digitale (vedere <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>), per accedere ai servizi in contesti di prossimità ove applicabile e per richiedere l'emissione di ulteriori EAA ove il relativo fornitore richieda dati di identificazione personale (vedere <a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a>);</p></li>
+<li><p>DEVE mostrare un metodo di assistenza reso disponibile dal relativo fornitore dell'Attestato (vedere <a class="reference internal" href="#assistenza-utente"><span class="std std-ref">Assistenza Utente</span></a>);</p></li>
+<li><p>DEVE garantire che l'Attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.</p></li>
 </ul>
-<p>Per assicurare un’identificazione e una rappresentazione del PID coerente tra tutte le Soluzioni Wallet, il Fornitore di Wallet:</p>
+<section id="pid">
+<h4><span class="section-number">5.3.1.1. </span>PID<a class="headerlink" href="#pid" title="Link to this heading">¶</a></h4>
+<p>Il <strong>PID</strong> è l'insieme dei Dati di Identificazione Personale nel quadro dell'Identità Digitale Europea (vedere <a class="reference internal" href="credential-data-model-pid.html#modello-di-dati-del-pid"><span class="std std-ref">Modello di Dati del PID</span></a> e <a class="reference internal" href="defined-terms.html#term-Dati-di-Identificazione-Personale"><span class="xref std std-term">Dati di Identificazione Personale</span></a>). È rilasciato dal PID Provider come PID tecnico (struttura dati firmata) per la presentazione dall'Istanza del Wallet.</p>
 <ul class="simple">
-<li><p>DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” per riferirsi al PID nelle sue Soluzioni Wallet e NON DEVE utilizzare personalizzazioni o termini tecnici come &quot;Dati di Identificazione della Persona&quot; o l’acronimo &quot;PID&quot;;</p></li>
-<li><p>DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a> e DEVE rispettare tutte le relative specifiche di utilizzo fornite;</p></li>
-<li><p>DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data;</p></li>
-<li><p>NON DEVE alterare, distorcere, modificare o sostituire l’elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;</p></li>
+<li><p>L'Istanza del Wallet in stato <strong>Operativo</strong> consente l'emissione del PID. A seguito del rilascio con esito positivo di un PID valido, l'Istanza del Wallet DEVE transitare nello stato <strong>Valido</strong> (vedere <a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-valido"><span class="std std-ref">Transizione a Valido</span></a>).</p></li>
+<li><p>Finché l'Istanza del Wallet è <strong>Valida</strong> e il PID è attivo/valido, l'Utente PUÒ presentare il PID e usarlo per l'autenticazione e per ulteriori emissioni di Attestati secondo la presente specifica e il quadro EUDI.</p></li>
+<li><p>La revoca, la scadenza o la cancellazione del PID DEVONO far transitare l'Istanza del Wallet di nuovo nello stato <strong>Operativo</strong> (vedere <a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-operativo"><span class="std std-ref">Transizione a Operativo</span></a>).</p></li>
+<li><p>Qualora l'Utente revochi il PID, il Fornitore di Wallet DEVE gestire le conseguenze sul ciclo di vita dell'Istanza del Wallet e sulle EAA dipendenti come definito nella presente specifica.</p></li>
+<li><p>Il PID è destinato anche a interazioni cross-border nell'ecosistema EUDI Wallet, oltre che a usi nazionali.</p></li>
+</ul>
+</section>
+<section id="it-wallet-id">
+<h4><span class="section-number">5.3.1.2. </span>IT-Wallet ID<a class="headerlink" href="#it-wallet-id" title="Link to this heading">¶</a></h4>
+<p>L'<strong>IT-Wallet ID</strong> è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere <a class="reference internal" href="credential-data-model-it-wallet-id.html#modello-di-dati-dell-it-wallet-id"><span class="std std-ref">Modello di Dati dell'IT-Wallet ID</span></a> e <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.</p>
+<ul>
+<li><p>L'emissione dell'IT-Wallet ID <strong>non</strong> fa transitare l'Istanza del Wallet nello stato <strong>Valido</strong>; l'Istanza del Wallet rimane <strong>Operativa</strong> (vedere <a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-operativo"><span class="std std-ref">Transizione a Operativo</span></a>).</p></li>
+<li><p>L'IT-Wallet ID è destinato esclusivamente ad interazioni nazionali e non cross-border.</p></li>
+<li><p>Per assicurare un'identificazione e una rappresentazione coerente dell'IT-Wallet ID tra tutte le Soluzioni Wallet, il Fornitore di Wallet:</p>
+<ul class="simple">
+<li><p>DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” nelle sue Soluzioni Wallet;</p></li>
+<li><p>DEVE utilizzare l'elemento grafico ufficiale di IT-Wallet ID disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a> e DEVE rispettare tutte le relative specifiche di utilizzo fornite;</p></li>
+<li><p>DEVE utilizzare l'elemento grafico di IT-Wallet ID in formato <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data;</p></li>
+<li><p>NON DEVE alterare, distorcere, modificare o sostituire l'elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;</p></li>
 <li><p>DEVE garantire l'area di rispetto minima definita nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;</p></li>
-<li><p>NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;</p></li>
-<li><p>NON DEVE utilizzare l’elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p></li>
+<li><p>NON DEVE ridimensionare l'elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;</p></li>
+<li><p>NON DEVE utilizzare l'elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p></li>
+</ul>
+<p>Sebbene il termine IT-Wallet ID rappresenti l'Attestato Elettronico di Dati di Identificazione personale, la risorsa grafica IT-Wallet ID PUÒ essere utilizzata dal Fornitore di Wallet per facilitare l'Utente nell'individuazione, più in generale, dei suoi Attestati di identificazione personale (IT-Wallet ID / PID).</p>
+</li>
 </ul>
 <figure class="align-center" id="id101">
 <a class="reference internal image-reference" href="_images/IT-Wallet-ID-Primary-BlueItalia.svg"><img alt="Elemento grafico “IT-Wallet ID” su sfondo chiaro" src="_images/IT-Wallet-ID-Primary-BlueItalia.svg" style="width: 100%;" /></a>
@@ -389,7 +409,8 @@
 <p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Elemento grafico “IT-Wallet ID” su sfondo chiaro</span><a class="headerlink" href="#id101" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>La Risorsa Ufficiale dell’“IT-Wallet ID” è disponibile all’interno della Sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>. Maggiore documentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale, indicato nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+<p>La Risorsa Ufficiale dell’“IT-Wallet ID” è disponibile all’interno della Sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>. Ulteriore documentazione sull'elemento grafico dell'IT-Wallet ID è disponibile nel Brand Manual, indicato nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+</section>
 </section>
 </section>
 <section id="ottenimento-degli-attestati-elettronici-di-attributi">
@@ -415,7 +436,7 @@
 <li><p>l'Utente seleziona l'Attestato Elettronico di Attributi che intende aggiungere alla sua Istanza del Wallet scegliendo tra quelli disponibili nel Catalogo;</p></li>
 <li><p>l’Utente seleziona da quale Fornitore di Attestati Elettronici vuole ottenere l’Attestato Elettronico di Attributi, se presente più di uno;</p></li>
 <li><p>l’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi, provenienti dalla Fonte Autentica;</p></li>
-<li><p>l'Utente prende visione dei dati del PID, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati del PID o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;</p></li>
+<li><p>l'Utente prende visione dei suoi dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;</p></li>
 <li><p>l'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;</p></li>
 <li><p>l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>l'Utente visualizza l'esito positivo dell'ottenimento avvenuto;</p></li>
@@ -446,7 +467,7 @@
 <p>In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id103">
-<a class="reference internal image-reference" href="_images/Ottenimento-da-catalogo.svg"><img alt="Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo" src="_images/Ottenimento-da-catalogo.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Ottenimento-da-catalogo-1.svg"><img alt="Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo" src="_images/Ottenimento-da-catalogo-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo.</span><a class="headerlink" href="#id103" title="Link to this image">¶</a></p>
 </figcaption>
@@ -460,7 +481,7 @@
 <li><p>L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>;</p></li>
 <li><p>(<em>solo cross-device</em>) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>; in alternativa l’Utente può uscire da flusso.</p></li>
 <li><p>L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
-<li><p>L'Utente prende visione dei dati del PID, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati del PID o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;</p></li>
+<li><p>L'Utente prende visione dei propri dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;</p></li>
 <li><p>L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi;</p></li>
 <li><p>L'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;</p></li>
 <li><p>L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
@@ -470,7 +491,7 @@
 <p>In caso di errori nell'ottenimento dell'Attestato Elettronico di Attributi, la Fonte Autentica DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id107">
-<a class="reference internal image-reference" href="_images/Ottenimento-da-fonte-autentica.svg"><img alt="Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica" src="_images/Ottenimento-da-fonte-autentica.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Ottenimento-da-fonte-autentica-1.svg"><img alt="Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica" src="_images/Ottenimento-da-fonte-autentica-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica</span><a class="headerlink" href="#id107" title="Link to this image">¶</a></p>
 </figcaption>
@@ -662,16 +683,16 @@
 <h2><span class="section-number">5.5. </span>Presentazione degli Attestati Elettronici<a class="headerlink" href="#presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
 <p>Il processo di presentazione permette all'Utente di accedere a un servizio oppure di dimostrare la titolarità di un dato o l'idoneità a effettuare una determinata azione. La presentazione degli Attestati Elettronici e la loro conseguente verifica, prevede l'interazione tra un'Istanza del Wallet, gestita dall'Utente, e un'Istanza di Relying Party (o App di Verifica). A seconda delle circostanze e del contesto di interazione si possono delineare i seguenti scenari:</p>
 <ul class="simple">
-<li><p><strong>Presentazione in prossimità</strong>: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposti alla verifica in presenza;</p></li>
-<li><p><strong>Presentazione da remoto</strong>: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.</p></li>
+<li><p><strong>Presentazione in prossimità</strong>: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposto alla verifica in presenza;</p></li>
+<li><p><strong>Presentazione da remoto</strong>: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.</p></li>
 </ul>
 <p>Indipendentemente dal tipo di presentazione, il Fornitore di Wallet DEVE consentire all'Istanza del Wallet di informare l'Utente sull'identità della Relying Party. Nel caso di un Intermediario di Relying Party, l'Utente DEVE essere informato del coinvolgimento dell'intermediario durante la fase di richiesta della presentazione. L'identità della Relying Party primaria DEVE essere sempre visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario di Relying Party.</p>
 <section id="presentazione-in-prossimita">
 <h3><span class="section-number">5.5.1. </span>Presentazione in prossimità<a class="headerlink" href="#presentazione-in-prossimita" title="Link to this heading">¶</a></h3>
-<p>La presentazione in prossimità consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità:</p>
+<p>La presentazione in prossimità consente all'Utente di esibire i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità:</p>
 <ul class="simple">
-<li><p><strong>Modalità supervisionata</strong>: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (<a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile"><span class="std std-ref">App di Verifica Mobile</span></a>);</p></li>
-<li><p><strong>Modalità non supervisionata</strong>: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded).</p></li>
+<li><p><strong>Modalità supervisionata</strong>: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (<a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile"><span class="std std-ref">App di Verifica Mobile</span></a>);</p></li>
+<li><p><strong>Modalità non supervisionata</strong>: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded).</p></li>
 </ul>
 <p>Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità che il Fornitori di Wallet DEVE garantire attraverso la propria Soluzione Wallet.</p>
 <p><strong>Modalità supervisionata</strong></p>
@@ -679,7 +700,7 @@
 <li><p>L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente accede alla funzionalità dedicata alla generazione del QR Code;</p></li>
 <li><p>L'Utente mostra il QR Code generato al soggetto che opera per conto del Verificatore di Attestati Elettronici, il quale provvede a scansionarlo tramite apposita app o sistema di verifica;</p></li>
-<li><p>L'Utente prende visione dei dati del PID e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
+<li><p>L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
 <li><p>L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente visualizza l'esito positivo della presentazione avvenuta.</p></li>
 </ul>
@@ -689,14 +710,14 @@
 <li><p>L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente accede alla funzionalità dedicata alla generazione del QR Code;</p></li>
 <li><p>L'Utente mostra il QR Code generato al dispositivo preposto (ad esempio un tornello) del Verificatore di Attestati Elettronici per permetterne la scansione;</p></li>
-<li><p>L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID o degli Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
+<li><p>L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
 <li><p>L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente visualizza l'esito positivo della presentazione avvenuta.</p></li>
 </ul>
 <p>In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id120">
-<a class="reference internal image-reference" href="_images/Presentazione-prossimita.svg"><img alt="Esempio di Esperienza Utente nella presentazione in prossimità" src="_images/Presentazione-prossimita.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Presentazione-prossimita-1.svg"><img alt="Esempio di Esperienza Utente nella presentazione in prossimità" src="_images/Presentazione-prossimita-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.25 </span><span class="caption-text">Esempio di Esperienza Utente nella presentazione in prossimità</span><a class="headerlink" href="#id120" title="Link to this image">¶</a></p>
 </figcaption>
@@ -704,7 +725,7 @@
 </section>
 <section id="presentazione-da-remoto">
 <h3><span class="section-number">5.5.2. </span>Presentazione da remoto<a class="headerlink" href="#presentazione-da-remoto" title="Link to this heading">¶</a></h3>
-<p>La presentazione da remoto consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici, facendo interagire la propria Istanza del Wallet con il Touchpoint di un Verificatore di Attestati Elettronici, tramite l'apposito <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p>
+<p>La presentazione da remoto consente all'Utente di esibire i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, facendo interagire la propria Istanza del Wallet con il Touchpoint di un Verificatore di Attestati Elettronici, tramite l'apposito <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p>
 <p>Tale presentazione può avvenire in due diverse modalità, sulla base del tipo di dispositivo utilizzato per accedere al servizio di interesse:</p>
 <ul class="simple">
 <li><p><strong>Same-device</strong>: nel caso in cui l'Utente voglia accedere a un servizio digitale online integrato con un apposito sistema di verifica (<a class="reference internal" href="relying-party-instance.html#app-di-verifica-web"><span class="std std-ref">App di Verifica Web</span></a>) utilizzando lo stesso dispositivo su cui ha installato l'Istanza del Wallet;</p></li>
@@ -716,7 +737,7 @@
 <li><p>L'Utente clicca l'<a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici;</p></li>
 <li><p>L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>;</p></li>
 <li><p>L'Utente accede all'Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
-<li><p>L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
+<li><p>L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
 <li><p>L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;</p></li>
 <li><p>L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata.</p></li>
@@ -724,7 +745,7 @@
 <p>In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id122">
-<a class="reference internal image-reference" href="_images/Presentazione-remoto-same-device.svg"><img alt="Esempio di Esperienza Utente nella presentazione da remoto, same-device" src="_images/Presentazione-remoto-same-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Presentazione-remoto-same-device-1.svg"><img alt="Esempio di Esperienza Utente nella presentazione da remoto, same-device" src="_images/Presentazione-remoto-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.27 </span><span class="caption-text">Esempio di Esperienza Utente nella presentazione da remoto, same-device</span><a class="headerlink" href="#id122" title="Link to this image">¶</a></p>
 </figcaption>
@@ -734,7 +755,7 @@
 <li><p>L'Utente clicca l'<a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet;</p></li>
 <li><p>L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>;</p></li>
 <li><p>L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet o la fotocamera del proprio dispositivo; l’interfaccia del QR Code DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>;</p></li>
-<li><p>L'Utente prende visione dei dati del PID e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
+<li><p>L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;</p></li>
 <li><p>L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;</p></li>
 <li><p>L'Utente torna sul Touchpoint del Verificatore di Attestati Elettronici e visualizza l'esito della presentazione completata.</p></li>
@@ -742,7 +763,7 @@
 <p>In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id125">
-<a class="reference internal image-reference" href="_images/Presentazione-remoto-cross-device.svg"><img alt="Esempio di Esperienza Utente nella presentazione da remoto, cross-device" src="_images/Presentazione-remoto-cross-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Presentazione-remoto-cross-device-1.svg"><img alt="Esempio di Esperienza Utente nella presentazione da remoto, cross-device" src="_images/Presentazione-remoto-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Esempio di Esperienza Utente nella presentazione da remoto, cross-device</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
 </figcaption>
@@ -756,19 +777,19 @@
 </figure>
 <section id="autenticazione">
 <h4><span class="section-number">5.5.2.1. </span>Autenticazione<a class="headerlink" href="#autenticazione" title="Link to this heading">¶</a></h4>
-<p>L'Autenticazione è un caso d'uso specifico della presentazione remota e consente all'Utente di accedere in modo sicuro ai servizi resi disponibili da Verificatori di Attestati Elettronici pubblici e privati, presentando il PID ed eventualmente un set di Attributi contenuti negli Attestati Elettronici di Attributi ottenuti. Questo garantisce all'Utente il pieno controllo sui propri dati e la possibilità di condividere anche i soli dati strettamente necessari alla verifica da parte del Verificatore di Attestati Elettronici.</p>
+<p>L'Autenticazione è un caso d'uso specifico della presentazione remota e consente all'Utente di accedere in modo sicuro ai servizi resi disponibili da Verificatori di Attestati Elettronici pubblici e privati, presentando i propri dati di identificazione personale ed eventualmente un set di Attributi contenuti negli Attestati Elettronici di Attributi ottenuti. Questo garantisce all'Utente il pieno controllo sui propri dati e la possibilità di condividere anche i soli dati strettamente necessari alla verifica da parte del Verificatore di Attestati Elettronici.</p>
 <p>Il processo di Autenticazione può avvenire in entrambe le modalità same-device e cross-device descritte sopra. Per quanto riguarda i requisiti funzionali a supporto dell'Esperienza Utente, si DEVONO rispettare gli stessi requisiti previsti per la <a class="reference internal" href="#presentazione-da-remoto"><span class="std std-ref">presentazione in remoto</span></a> nelle due modalità (same-device e cross-device).</p>
 <p>Infatti, a livello di Esperienza Utente, il processo di Autenticazione si distingue da un generico flusso di presentazione principalmente per le modalità di avvio del processo, in questo caso reso possibile a partire da uno specifico pulsante, l'<a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>.</p>
 <p>Al fine di garantire un processo di Autenticazione adeguato e coerente tra tutti i Verificatori di Attestati Elettronici, ciascun Verificatore di Attestati Elettronici DEVE rispettare i requisiti relativi all'aspetto grafico e all'Esperienza Utente descritti di seguito, unitamente al rispetto di [RIF_ACCESSIBILITÀ] e, nel caso di enti pubblici, delle [LG_DESIGN].</p>
 <p>Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id132">
-<a class="reference internal image-reference" href="_images/Autenticazione-same-device.svg"><img alt="Esempio di Esperienza Utente di Autenticazione same-device" src="_images/Autenticazione-same-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Autenticazione-same-device-1.svg"><img alt="Esempio di Esperienza Utente di Autenticazione same-device" src="_images/Autenticazione-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Esempio di Esperienza Utente di Autenticazione same-device.</span><a class="headerlink" href="#id132" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id135">
-<a class="reference internal image-reference" href="_images/Autenticazione-cross-device.svg"><img alt="Esempio di Esperienza Utente di Autenticazione cross-device" src="_images/Autenticazione-cross-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Autenticazione-cross-device-1.svg"><img alt="Esempio di Esperienza Utente di Autenticazione cross-device" src="_images/Autenticazione-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Esempio di Esperienza Utente di Autenticazione cross-device</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
@@ -1108,7 +1129,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 - l’Utente visualizza l'esito positivo della revoca avvenuta.</p>
 <p>Il flusso è rappresentato di seguito con wireframe esemplificativi.</p>
 <figure class="align-center" id="id163">
-<a class="reference internal image-reference" href="_images/Revoca-EAA-da-wallet.svg"><img alt="Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico" src="_images/Revoca-EAA-da-wallet.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Revoca-EAA-da-wallet-1.svg"><img alt="Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico" src="_images/Revoca-EAA-da-wallet-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.68 </span><span class="caption-text">Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
 <div class="legend">
@@ -1217,17 +1238,17 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 <tr class="row-odd"><td><p>I servizi del Fornitore di Wallet non rispondono (e.g. errori tecnici o assenza connessione)</p></td>
 <td><p>Fornitore di Wallet</p></td>
 </tr>
-<tr class="row-even"><td><p>I servizi del PID Provider non rispondono (e.g. errori tecnici)</p></td>
-<td><p>PID Provider</p></td>
+<tr class="row-even"><td><p>I servizi del PID Provider o del fornitore dell'IT-Wallet ID non rispondono (e.g. errori tecnici)</p></td>
+<td><p>PID Provider o fornitore dell'IT-Wallet ID</p></td>
 </tr>
-<tr class="row-odd"><td><p>Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)</p></td>
-<td><p>National Identity Provider</p></td>
+<tr class="row-odd"><td><p>Il processo di Autenticazione sul servizio del Gestore di Identità Digitale non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)</p></td>
+<td><p>Gestore di Identità Digitale</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del National Identity Provider, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere <a class="reference internal" href="credential-issuance-l2plus.html#gestione-errori"><span class="std std-ref">Gestione Errori</span></a>.</p>
+<p>Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del Gestore di Identità Digitale, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere <a class="reference internal" href="credential-issuance-l2plus.html#gestione-errori"><span class="std std-ref">Gestione Errori</span></a>.</p>
 </div>
 </section>
 <section id="errori-di-ottenimento-degli-attestati-elettronici-di-attributi">
@@ -1243,7 +1264,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>L'Istanza del Wallet e/o il PID non risultano attivi</p></td>
+<tr class="row-even"><td><p>L'Istanza del Wallet e/o il PID / IT-Wallet ID non risultano validi</p></td>
 <td><p>Fornitore di Wallet</p></td>
 </tr>
 <tr class="row-odd"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)</p></td>
@@ -1466,7 +1487,11 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 <li><a class="reference internal" href="#principi-di-design">5.1. Principi di Design</a></li>
 <li><a class="reference internal" href="#panoramica-delle-funzionalita">5.2. Panoramica delle Funzionalità</a></li>
 <li><a class="reference internal" href="#attivazione-dell-istanza-del-wallet">5.3. Attivazione dell'Istanza del Wallet</a><ul>
-<li><a class="reference internal" href="#focus-sul-pid-dati-di-identificazione-della-persona">5.3.1. Focus sul PID – Dati di Identificazione della Persona</a></li>
+<li><a class="reference internal" href="#focus-sugli-attestati-di-identificazione-personale">5.3.1. Focus sugli Attestati di Identificazione Personale</a><ul>
+<li><a class="reference internal" href="#pid">5.3.1.1. PID</a></li>
+<li><a class="reference internal" href="#it-wallet-id">5.3.1.2. IT-Wallet ID</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi">5.4. Ottenimento degli Attestati Elettronici di Attributi</a><ul>
@@ -1544,7 +1569,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 05/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

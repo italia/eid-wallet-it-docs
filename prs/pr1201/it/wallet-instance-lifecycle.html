@@ -380,19 +380,19 @@ Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una W
 <p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
 personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>.</p>
-<p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID ISS</strong>) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
-(<strong>(Q)EEA ISS</strong>). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate
-senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>(Q)EEA PRE</strong>).</p>
-<p>Un'Istanza del Wallet <strong>Valida</strong> DEVE transitare nuovamente allo stato <strong>Operativo</strong> a causa della transizione <strong>PID EXP/REV/DEL</strong>, quando l'Attestato Elettronico di Dati di Identificazione Personale associato scade, viene revocato dal suo Fornitore o viene eliminato dall'Utente.</p>
+<p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione del PID (<strong>PID ISS</strong>), dell'<strong>IT-Wallet ID</strong> (che <strong>non</strong> causa la transizione allo stato <strong>Valido</strong>), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
+(<strong>(Q)EEA ISS</strong>). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono il PID, possono essere presentate
+senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>(Q)EEA PRE</strong>). L'IT-Wallet ID PUÒ altresì essere presentato mentre l'Istanza del Wallet rimane <strong>Operativa</strong>.</p>
+<p>Un'Istanza del Wallet <strong>Valida</strong> DEVE transitare nuovamente allo stato <strong>Operativo</strong> a causa della transizione <strong>PID EXP/REV/DEL</strong>, quando il PID associato scade, viene revocato dal suo Fornitore o viene eliminato dall'Utente.</p>
 </section>
 <section id="transizione-a-valido">
 <h2><span class="section-number">10.1.4.1.3. </span>Transizione a Valido<a class="headerlink" href="#transizione-a-valido" title="Link to this heading">¶</a></h2>
-<p>Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un Attestato Elettronico di Dati di Identificazione Personale valido (<strong>PID ISS</strong>). In questo stato, gli Utenti possono ottenere e presentare
-nuovi Attestati Elettronici di Attributi (Qualificati) (<strong>(Q)EAA ISS/PRE</strong>), e presentare l'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID PRE</strong>). Si prega di fare riferimento a <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a> e <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>.</p>
+<p>Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (<strong>PID ISS</strong>). L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato <strong>Valido</strong>, gli Utenti possono ottenere e presentare
+nuovi Attestati Elettronici di Attributi (Qualificati) (<strong>(Q)EAA ISS/PRE</strong>), e presentare il PID (<strong>PID PRE</strong>). Si prega di fare riferimento a <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a> e <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Gli Utenti possono avere solo un'Istanza del Wallet in stato <strong>Valido</strong> per la stessa Soluzione Wallet. Pertanto, quando un Utente installa e ottiene un Attestato Elettronico di Dati di Identificazione Personale su una nuova Istanza
-del Wallet della stessa Soluzione Wallet dallo stesso Fornitore di Wallet, l'Attestato Elettronico di Dati di Identificazione Personale nella precedente Istanza del Wallet DEVE essere revocato e l'Istanza del Wallet diventa
+<p>Gli Utenti possono avere solo un'Istanza del Wallet in stato <strong>Valido</strong> per la stessa Soluzione Wallet. Pertanto, quando un Utente installa e ottiene un PID su una nuova Istanza
+del Wallet della stessa Soluzione Wallet dallo stesso Fornitore di Wallet, il PID nella precedente Istanza del Wallet DEVE essere revocato e l'Istanza del Wallet diventa
 <strong>Operativa</strong>.</p>
 </div>
 </section>
@@ -543,7 +543,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 05/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

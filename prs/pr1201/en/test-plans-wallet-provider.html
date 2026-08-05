@@ -1503,8 +1503,8 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_115a</p></td>
 <td><p>Attribute Deletion, Lifecycle, Privacy</p></td>
-<td><p>Filtered transaction logs for identifying attributes</p></td>
-<td><p>The transaction log view is filtered to show only Relying Parties that accessed attributes uniquely identifying the User.</p></td>
+<td><p>Transaction logs for attribute deletion</p></td>
+<td><p>The transaction log view shows Relying Parties in possession of the User's attributes.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Attribute Deletion, Lifecycle, Security</p></td>
@@ -1654,7 +1654,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_130</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
-<td><p>Credential re-issuance from restored backup</p></td>
+<td><p>Credential issuance from restored backup</p></td>
 <td><p>For each Credential entry in the backup JWT, Wallet Instance successfully extracts the Issuer URL, and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_130a</p></td>
@@ -1664,8 +1664,8 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_130b</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
-<td><p>Credential re-issuance request</p></td>
-<td><p>For each Credential, Wallet Instance successfully initiates a re-issuance request for the Credential using a new holder key binding.</p></td>
+<td><p>Credential issuance request</p></td>
+<td><p>For each Credential, Wallet Instance successfully initiates a new Wallet-Initiated Authorization Code Issuance Flow bound to the new Wallet Instance key (fresh Holder Key Binding), and not a token renewal or a Re-Issuance Flow request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2035,7 +2035,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 05/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
