@@ -13,7 +13,7 @@ Boundary(wallet_system, "Wallet System") {
 Component(authentic_source, "Authentic Source", "", "Provides User attributes to the Issuer and manages the validity status")
 Component_Ext(authorized_body, "Authorized Entities", "", "Supervisory Body and Judicial Authority")
 
-Component(issuer, "PID Provider", "", "Issues and manages PID and provides web services")
+Component(issuer, "PID/IT-Wallet ID Provider", "", "Issues and manages PID/IT-Wallet ID and provides web services")
 
 
 Rel(user, wallet_provider, "Wallet Instance Revocation Request")

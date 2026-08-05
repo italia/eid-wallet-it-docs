@@ -16,33 +16,42 @@ La :numref:`fig_High-Level-Flow-ITWallet-PID-Issuance` mostra un'architettura ge
     :alt: La figura illustra l'architettura generale e il flusso ad alto livello per l'emissione del PID.
     :caption: `Emissione del PID - Architettura generale e flusso ad alto livello. <https://www.plantuml.com/plantuml/svg/ZLHnR-gs5_q_dy8_LEb7fLQqQz-RD57qU86kaTW3XNJLaof59huD5ecTsJUqsRJllcie45ZwbgfIyFNnESVNn_vYaHiiyypxdrH9LWfWVV-svz_6lbR8fG8pyBo7O3IEvz4u74-ZxxDnzzoR3BzF7wDuChwFuZ3uzI6YccTNKXNSy9nbj12h0fWskDIr2QK5M2ZOzTLLhMguMcsgFrzvtl_P25veFPlFmY0QpslEi2ouC3UzHEUvLeE6cHToVSbVmUeSBZ_r4Z0eNsJ24LgW1KU-uBODDDF9gWMij61i6vywRGCZjZMO5i0LL2tTjO194IVSY1P8U4kMNAKGympRz1li2dNH0ldAimp-ax8dbKM99KeN3cyeH0XPnDDkXzjA9PqBTeRmXhxEjBax6uRXz2c-dtwBOdywcOOqws9xD5kVc6ELmTs8soM82OsxvnJv6HYhLTTrye9r7kdJeU_JnYuBo0vN2R2bpWJDd7lxIzLzbV_6kQNJO7Jxkn-udymPjeMH27UTRGU8ugikbU2cwXPIp8nUIx6HdWKZzZua8VQNn-Zl8BTEd1uHKoqlj0A5zaIkSx4NUpznKZjcCGNXgAULL2cRSOFLWUwTpMSzDX_-DZbXT04dkhyFzWD1YoHMjJtumLWADfAfH9wn7U1PiNiW07V7kj_QlB88UJn-mwuKpjOEVkW25K-vc4sMa0DpjrmmhTXMSgA7x46cIzQTt9pNkruBb7D_EB-DCBSaCInnwSWJDjUbsHxYyDiiF6d0xcqXccCIv0GyR93DmQnb0fPnTUY5Rs2p0vvPvdEgwBJSnUNoVZnY1b9fqLGdgkwP8aMFpcoRKOfTfs_bd_3BzUT1Ft5PPyGzw2y6L_tUOj3lRMhqTQ31ithY2iaBetnrBZh4vQY81Vc7HDUDHFM0qhviejTWw73TDYDJMZoYNoSV6_sfaJ-4FqgmQ8-T4i-FhDuqKcslPODRrc2MxWG5y4E5sqQ5VMWuWdrMD63kxTYpneyRvzn-oFkfaNUwSCco981evA8azYtdLxdhXYceuFxFaAVsRliq7hhreuHyRjGCh2sXrlOle4IPP_y0>`_
 
-.. .. figure:: ../../images/High-Level-Flow-ITWallet-PID-Issuance.svg
-..     :figwidth: 90%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/nLLjRzf84FxEhzYYI2LIgA6GbrP9L0gaiKHY1AHHfKZMUdTYLZ6xljqr2NUw_twpTWmaXShV3Y7PEpFxp3ClC_vcBDKsMoIr3qAo9ED0vjQcvgldQVhyAHPsdaMP0SsKj23j9wOMNffGwUuqZUM9YBn-jpbsehkRaRUWne96KTXNYrH9ToTr-DV-O1XEPyF9C9Zz6WyRXxLHxrTmDmj7mwjPEF5_NCzGzf6yIcV1E1m4zxSegvad8LEgwO8aGe9TfK2KjdErhP6AWu6Kj5kjBQccyYcNdhPgY3s0HmGWq_74dmsdjG-yEFVzeJ-ucumgX2uiJGJrc81ch6aw5ynudQZJvUtEMHTEZwEpzbatYavE7rkjgFtvosdhv95zwV0M7BUzwSyV7W9f6Y9aY1YVp39Ui_3xmMqr4ZPBATUTJHq4QfkFQD4qgHOMp6iPogAkmJsylb0ohyZloXo1FeDH2sWUUmoq5O-2KGlLBd1gQKHDHUj4iQTgbYv-Kv6pYYjQ8kOIT3NR9rXLPrhDKl2GKSsh6SCBcrCPGqWJMx4KO9wiIgiPFzCaWIh0df362fjPKVPGhSVv198PZHjrQbQIrO_8WOKNsrU9qXS7lSaak0-lWjjPs0z6mGIrReQtjMyKKxjAu690pHpu2C-DGvp_CMYZPCCbzuZKx_1Hn-TzpfhuI8bA1cIk4ewQmwr1DojZOK4YbKbEzGeLtrzV6qNCKvNamMpWIadzaFnJ8_ZxI6wea8ILsypaqlLoQpoBtxauUe4_wFxi--wrVdHGpEL5lN1RaFotLblJIGKVQxKKF0znx0z8UQnCPCaS4tIvaPdzH5xx3vcyHT4fsc55LqB6P4orNMsKhsXzuf5fxsRq3j6D7i9XL9kmV8xNX5rjnORBLd0o4B5RfQGqU93a2j20lilz_xAHdUjftZhXyCKs17SvAPbk2eF2zs4Gm-Qm0EAs82TAaYBQaUgHQn7FIMFKESHxcofivgb8tJhNkMTgq4SlitE7ph0tCrqqL-zsF7cN_dBv8ivR44lHS9DSCWMz50mCeN9JXxw6F0IQ6DAdA55nLhPnyseu81fYOQnUlVFgbhZhvXgsJ36WE0_rSoF-Xg_jayjpvWQT8FZbUNJPElUYotClb-7J6Lq-o7igBP8XsFJrepg2EIX4iNGlK7idqFRKO626gILex2mNvqndnhw1NxBzH3_ln9_0NnaOQzuoHPm_KUtiX2hsnGwsP0TP74bimRqUkZizhBk6MZ0F4W-aM9mErS66TpbrQlO27-y43Y9BiMtHWxLQH1d25w3VHPaEdQB0_GyiZSr5yM5mRak3F_J8oKwdlZ4PR2N-6qYEdv__0000
-
-..     PID Issuance - General architecture and high level flow.
-
 Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avvia la propria Istanza del Wallet (Passo 0). Di seguito la descrizione dei passaggi rappresentati nell'immagine precedente:
 
     1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso il PID Provider secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del PID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede il PID al PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
-    4. **Autenticazione dell'Utente**: Il Fornitore PID autentica l'Utente utilizzando un Gestore di Identità Digitale (ad esempio CieID). 
+    4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente utilizzando CieID nazionale con LoA High (L3).
     5. **Recupero dei dati PID dal Registro Pubblico Nazionale**: il PID Provider ottiene i dati PID richiesti dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione del PID**: il PID Provider rilascia un PID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
-.. note::
-    Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
+Flusso ad Alto Livello per IT-Wallet ID
+---------------------------------------
 
-    Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+La :numref:`fig_High-Level-Flow-ITWallet-ID-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un IT-Wallet ID.
+
+.. _fig_High-Level-Flow-ITWallet-ID-Issuance:
+
+.. plantuml:: plantuml/it-wallet-id-issuance-high-level-flow.puml
+    :width: 99%
+    :alt: La figura illustra l'architettura generale e il flusso ad alto livello per l'emissione dell'IT-Wallet ID.
+    :caption: `Emissione dell'IT-Wallet ID - Architettura generale e flusso ad alto livello. <https://www.plantuml.com/plantuml/svg/ZLHXR-964FtkNp559vL8YKYQt5Mg23hEE0qITo3ZN7HI96kn9x32tgMxOnAtwd_lB0Hmg9CpNundtxxtPlPvFriIXeeyytwHAicA5A7hNtNygzZNYeHKQ7gUTpiS1F4q2i9W7FsO1EqJRzJ_CRwBub5m4yNXyC_RY6kUNKgr4aRaaF56AbS8sj12LnQKJj7Y2YxEpojL8zHoK_tztFD-XG4-ydwOJi9X54mhpgXOYTHSTXATvrhrQbOUsVMPU4AhSppxs4dGa7oKYI1iW4u5YPcmJQ2PJfODO8L5OvlurFCcC6PResa0N6BPq5q3c4pZH9Yq0HAVauLGSun5HatcZNP9UjK0-IIo37zAsP7AagI2f0k7rq_J4BD8pDijOKkLj4xX0-4p-JhJvlf3Fmp7z_7D-5iK--FHEEHL5zjNgzM5APKPNW-4NM0wulVs2KT-WiPgrNQJF8NM7JzQ_BpVs8KXsn4gGLZeBEML4s__KRMVvFznRkjuEBZwxW_TNt26xSf8mklMTW9CyKKNAXMcRACG4wFNCjr83wEp7Ti0WduVNjPO5VxnW7y7xNNYn5c5Q_bAArHaZxHRftlbb-DdwTSiPiKu7d0frHmcmb1ve7jXyw43q_xNqH6ZIplJ_NlePPZo9abbfI5_6CWK1d8kIMIm0pmek44627V6-zQcfINCu-2PsZ9rjdRmmnIuUCm5DbbWZk0--HIqWgtaIFVXLiuNq1vTde0sW3pHQJ5pPqIIz_SBMZY6P6C2dYGju6iO3U0x6lduKgwUNIMMhkr32ZQEXMLlUqwOwi9iez3_DWcF9hUxePZcDGa91Xuc0rCqQvcW1Q4EG_GD0pOzMF05L_Iys8Nkx2OOWC6vj6JA8rLtsR6YnuUzJJg7jzMryc_yu-9JhvkuBmQOkzUTzSwxdLclszdK-Eb0lGTrBnIn5tXGrPosJbjCwrYPaCIRd1Urd5Kc9gvcdby7qYPwZOOJuqOGcSBIAxrrydOJlzKAXlXNWPOirFV0XEyrSLdBkUMfDGurllcRuu2_gN5Lgr79Aze7nI_WBgezQtotyIxicxmVQtd7CnT0om94HiuAPjzoVf6xUR1V3fBB4ecvlTxUmuTvlHUaJ_M7Rcs1TIVm6LLQvDb_>`_
+
+Il flusso ad alto livello inizia con l'Utente che desidera ottenere un IT-Wallet ID e avvia la propria Istanza del Wallet (Passo 0). Di seguito la descrizione dei passaggi rappresentati nell'immagine precedente:
+
+    1. **Individuazione e Trust del Provider di IT-Wallet ID**: l'Istanza del Wallet individua l'EAA Provider di IT-Wallet ID fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso l'EAA Provider di IT-Wallet secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati dell'IT-Wallet ID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
+    2. **Richiesta dell'IT-Wallet ID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede l'IT-Wallet ID all'EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
+    3. **Individuazione e Trust del Fornitore di Wallet**: l'EAA Provider di IT-Wallet ID verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
+    4. **Autenticazione dell'Utente**: Per l'IT-Wallet ID il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un metodo di autenticazione alternativo che combina Autenticazione eID Substantial con Verifica MRTD. Per le specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
+    5. **Recupero dei dati dell'IT-Wallet ID dal Registro Pubblico Nazionale**: l'EAA Provider di IT-Wallet ID ottiene i dati richiesti dell'IT-Wallet ID dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
+    6. **Emissione dell'IT-Wallet ID**: l'EAA Provider di IT-Wallet ID rilascia un IT-Wallet ID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
 Flusso ad Alto Livello per (Q)EAA
 ---------------------------------
 
 La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA, seguendo le ipotesi elencate di seguito:
 
-  - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet;
+  - l'Utente ha un PID o un IT-Wallet ID valido memorizzato nella propria Istanza del Wallet;
   - il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.
 
 .. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
@@ -59,13 +68,12 @@ La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura g
 
 ..     (Q)EAA Issuance - General architecture and high level flow
 
-Analogamente al flusso ad alto livello del PID, il diagramma sopra illustra un flusso ad alto livello per (Q)EAA che inizia dall'Utente che desidera ottenere un (Q)EAA (passo 0). Di seguito la descrizione delle operazioni più rilevanti coinvolte nell'emissione del (Q)EAA:
+Analogamente al flusso ad alto livello del PID e dell'IT-Wallet ID, il diagramma sopra illustra un flusso ad alto livello per (Q)EAA che inizia dall'Utente che desidera ottenere un (Q)EAA (passo 0). Di seguito la descrizione delle operazioni più rilevanti coinvolte nell'emissione del (Q)EAA:
 
     1. **Individuazione e Trust del (Q)EAA Provider**: l'Istanza del Wallet ottiene l'elenco dei (Q)EAA Provider fidati utilizzando il Catalogo degli Attestati Elettronici e le API di Federazione (ad esempio, utilizzando l'endpoint Subordinate Listing del Trust Anchor e dei suoi Intermediari), quindi ispeziona i Metadata alla ricerca della disponibilità di Attestati Elettronici di ciascun (Q)EAA Provider (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del (Q)EAA**: utilizzando l'Authorization Code Flow, definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede un (Q)EAA al (Q)EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il (Q)EAA Provider verifica l'autenticità e la validità dell'Istanza del Wallet. Durante questo passaggio, il (Q)EAA Provider stabilisce la trust con il Fornitore di Wallet e recupera i Metadata del Wallet contenenti i parametri necessari per l'interoperabilità, come definito dal Trust Model.
-    4. **Autenticazione dell'Utente**: il (Q)EAA Provider, agendo come App di Verifica, autentica l'Utente verificando la presentazione del PID.
+    4. **Autenticazione dell'Utente**: il (Q)EAA Provider, agendo come App di Verifica, autentica l'Utente verificando la presentazione del PID o dell'IT-Wallet ID.
     5. **Ottenimento degli Attributi**: il (Q)EAA Provider recupera gli Attributi dell'Utente dalla relativa Fonte Autentica.
     6. **Emissione del (Q)EAA**: il (Q)EAA Provider rilascia un (Q)EAA vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
-
 

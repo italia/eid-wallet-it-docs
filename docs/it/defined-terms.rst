@@ -116,7 +116,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Gestore di Identità Digitale**
-      Mezzi di identificazione elettronica preesistenti notificati eIDAS e relativi Identity Provider utilizzati per l'autenticazione dell'Utente (ad esempio CieID / SPID).
+      Entità organizzativa che fornisce mezzi di identificazione elettronica preesistenti notificati utilizzati per l'autenticazione dell'Utente (ad esempio CieID / SPID), distinta dall'attestato **IT-Wallet ID** detenuto nel Wallet.
       Non presente in ARF 2.7.3.
 
     **National Trust Anchor**

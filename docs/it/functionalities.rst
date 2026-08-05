@@ -121,7 +121,7 @@ Il **PID** è l'Attestato Elettronico di Dati di Identificazione Personale nel q
 IT-Wallet ID
 """"""""""""
 
-L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :term:`IT-Wallet ID`). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.
+L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID` e :term:`IT-Wallet ID`). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.
 
 - L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
 - L'IT-Wallet ID è destinato esclusivamente ad interazioni nazionali e non cross-border.
@@ -154,7 +154,7 @@ L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Persona
 
     Elemento grafico “IT-Wallet ID” su sfondo chiaro
 
-La Risorsa Ufficiale dell’“IT-Wallet ID” è disponibile all’interno della Sezione :ref:`official-resources:Risorse Ufficiali`. Maggiore documentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
+La Risorsa Ufficiale dell’“IT-Wallet ID” è disponibile all’interno della Sezione :ref:`official-resources:Risorse Ufficiali`. Ulteriore documentazione sull'elemento grafico dell'IT-Wallet ID è disponibile nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
 
 
 Ottenimento degli Attestati Elettronici di Attributi

@@ -29,7 +29,7 @@ In aggiunta agli attributi dell'Utente elencati sopra, l'IT-Wallet ID include an
 Le informazioni di identity proofing sono OBBLIGATORIE per l'IT-Wallet ID al fine di garantire:
 
 - La valutazione del metodo di autenticazione dell'Utente utilizzato.
-- La conformità al livello di garanzia dell'identity proofing durante il processo di enrollment, secondo il LoA definito dal Regolamento eIDAS.
+- La conformità al livello di garanzia dell'identity proofing durante il processo di iscrizione (*enrollment*), secondo il LoA definito dal Regolamento eIDAS.
 - L'auditabilità dei processi di verifica degli attributi dell'Utente.
 
 Modello di Dati dell'IT-Wallet ID in formato SD-JWT VC
@@ -70,7 +70,12 @@ L'IT-Wallet ID in formato SD-JWT VC include i seguenti Attributi Utente:
       - OBBLIGATORIO se ``personal_administrative_number`` non è presente, OPZIONALE altrimenti. *Stringa*. Codice fiscale nazionale della persona fisica in formato stringa. DEVE essere impostato secondo ETSI EN 319 412-1. Ad esempio ``TINIT-<ItalianTaxIdentificationNumber>``.
       - Estensione domestica
 
-Tutti gli attributi dell'Utente elencati sopra DEVONO essere selectively disclosable.
+.. note::
+   **Identity Matching**
+
+   Per l'IT-Wallet ID, la Relying Party DEVE prima effettuare l'identity matching utilizzando ``tax_id_code``. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'identity reconciliation, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
+
+Tutti gli attributi dell'Utente elencati sopra DEVONO essere divulgabili selettivamente (*selectively disclosable*).
 In aggiunta agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un IT-Wallet ID:
 
   - **date_of_expiry**
