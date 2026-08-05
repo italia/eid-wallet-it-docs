@@ -97,7 +97,7 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
      - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*, ove applicabili;
      - *Cryptographic Binding*, dimostrando che le chiavi private degli attestati presentati sono gestite dallo stesso WSCA/WSCD, una volta che tale schema sia disponibile in conformità al Topic 18.
 
-   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF.
+   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pianmente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
 
 Tutti gli attributi Utente elencati sopra DEVONO essere divulgabili selettivamente.
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
