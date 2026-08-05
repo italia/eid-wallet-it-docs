@@ -121,7 +121,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
         When the Wallet Instance intends to indicate eID Substantial Authentication with MRTD Verification as an optional hint, an additional JSON Object MAY be included with the following claims:
 
             - **type**: REQUIRED. MUST be ``it_l2+document_proof``,
-            - **idphinting**: REQUIRED. URL of the Identity Provider to be used as an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`,
+            - **idphinting**: OPTIONAL. URL of the Identity Provider to be used as an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`,
             - **challenge_method**: REQUIRED. Specifies the MRTD verification method. The value MUST be ``mrtd+ias``. Additional verification methods MAY be defined in future releases of this Specification,
             - **challenge_redirect_uri**: REQUIRED. Redirect URI, recognized by Wallet Instance, for handling the challenge response.
       - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
@@ -281,13 +281,14 @@ For PID issuance:
   * The Wallet Instance MAY include in the Pushed Authorization Request one or more optional hints related to the User's preferred authentication method, as defined below. Such hints MUST NOT be interpreted as a binding imposition of the authentication method by the Wallet Instance.
   * If the Authorization Server receives a hint that it supports and accepts, it SHOULD honor it and MAY omit presenting a discovery page and/or autonomously applying only its default authentication method.
   * If the hint is absent, unsupported, or not accepted, the Authorization Server MUST apply its authentication policies, including any discovery page and the default authentication method.
+  * The Authorization Server MUST NOT offer on a discovery page, select, or otherwise apply eID Substantial Authentication with MRTD Verification unless the Pushed Authorization Request includes an ``it_l2+document_proof`` object containing the required technical parameters ``challenge_method`` and ``challenge_redirect_uri``. Without those parameters the Authorization Server cannot complete the subsequent multi-step flow and browser confirmation.
   * A Wallet Instance MUST NOT be required to implement an authentication-method discovery interface as an interoperability prerequisite for PID issuance. Any Wallet-side pre-selection interfaces (for example to improve User experience) remain optional and MUST be limited to providing hints to the Authorization Server.
 
 The authentication hints recognized for PID issuance are the following:
 
   * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification;
-  * the ``idphinting`` claim within that object constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
-  * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies. In the absence of a User selection via a Credential Issuer discovery page, the PID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
+  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
+  * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies, and MUST NOT offer or apply eID Substantial Authentication with MRTD Verification for that request. In the absence of a User selection via a Credential Issuer discovery page, the PID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
 
 .. note::
    This Section concerns authentication method selection during PID issuance and does not apply to the Relying Party Touchpoint Discovery Page described in :ref:`functionalities:User Experience Design`, which has a distinct purpose (selection of the method to access a service).
