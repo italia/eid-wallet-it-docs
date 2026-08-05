@@ -121,10 +121,10 @@ The **PID** is the Person Identification Data attestation under the European Dig
 IT-Wallet ID
 """"""""""""
 
-The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an Electionic Attestation of Attributes Provider, unlike the PID.
+The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data issued for national use only (see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`). It is an EAA issued by an Electronic Attestation of Attributes Provider, unlike the PID.
 
 - Issuance of the IT-Wallet ID does **not** transition the Wallet Instance to the **Valid** state; the Wallet Instance remains **Operational** (see :ref:`wallet-instance-lifecycle:Transition to Operational`).
-- The IT-Wallet is exclusively inteded for national use and not for cross-border interactions.
+- The IT-Wallet ID is exclusively intended for national use and not for cross-border interactions.
 - To ensure a consistent identification and representation of the IT-Wallet ID across different Wallet Solutions, the Wallet Provider:
 
   - MUST use the official naming “IT-Wallet ID” in their Wallet Solutions;
@@ -166,7 +166,7 @@ The Electronic Attestations of Attributes is a dynamic object that enables the U
 
 - **is defined by an Authentic Source**, the entity holding the source data;
 
-- **consists of a set of Attributes**, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) ora a status (e.g. “student”);
+- **consists of a set of Attributes**, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) or a status (e.g. “student”);
 
 - **is issued by a Provider of Electronic Attestation of Attributes**, the entity that emits it on the basis of the information acquired and manages its lifecycle.
 
@@ -639,7 +639,7 @@ Below are the User Experience requirements related to both methods that the Wall
 - The User clicks the :ref:`functionalities:Engagement Button` provided on the Relying Party's Touchpoint;
 - The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User accesses their Wallet Instance using the unlock method previously set;
-- The User reviews the requested personal identitification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
+- The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.
@@ -680,7 +680,7 @@ The flow is shown below with illustrative wireframes.
 - The User clicks the :ref:`functionalities:Engagement Button` provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
 - The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the :ref:`functionalities:Authentication` section;
-- The User reviews the requested personal identitification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
+- The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.

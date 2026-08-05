@@ -98,7 +98,7 @@ Focus sugli Attestati di Identificazione Personale
 
 Questa sezione definisce i requisiti di Esperienza Utente per gli Attestati di identificazione personale ottenuti nell'Istanza del Wallet: il **PID** EUDI e l'**IT-Wallet ID** nazionale (Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale). Entrambi veicolano un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`), ma differiscono per ambito giuridico, tipologia di fornitore, impatto sul ciclo di vita dell'Istanza del Wallet e di casi d'uso di presentazione supportati.
 
-Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo dell'Attestato di identificazione personale (PID e/o IT-Walled ID) uniforme e coerente. Il Fornitore di Wallet:
+Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo dell'Attestato di identificazione personale (PID e/o IT-Wallet ID) uniforme e coerente. Il Fornitore di Wallet:
 
 - DEVE mostrare correttamente l'Attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
 - DEVE mostrare lo stato dell'Attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca dell'Attestato);
