@@ -468,8 +468,12 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 <p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130</span></a>):</p>
 <ul class="simple">
 <li><p>Estrae l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130a</span></a>).</p></li>
-<li><p>Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130b</span></a>).</p></li>
+<li><p>Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di emissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130b</span></a>).</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Durante il ripristino, l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione <a class="reference internal" href="credential-issuance-low-level.html#issuance-flow"><span class="std std-ref">Issuance Flow</span></a>, utilizzando una nuova Associazione Crittografica con l'Utente. Per le (Q)EAA, ciò include il gate di presentazione del PID presso il Fornitore di Credenziali che agisce come Relying Party. Questo NON DEVE essere interpretato come il Re-issuance Flow definito nella Sezione <a class="reference internal" href="credential-issuance-low-level.html#re-issuance-flow"><span class="std std-ref">Re-issuance Flow</span></a>, che si applica solo all'aggiornamento della Credenziale sulla stessa istanza (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> / <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) e richiede un Refresh Token associato all'Istanza del Wallet originale. Dal punto di vista del Fornitore di Credenziali, il ripristino è indistinguibile da una prima emissione Wallet-Initiated. Le Credenziali ripristinate da Fornitori distinti RICHIEDONO un Authorization Code Issuance Flow separato per ciascun Fornitore.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Instance Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128a</span></a>).</p>
@@ -588,7 +592,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 05/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
