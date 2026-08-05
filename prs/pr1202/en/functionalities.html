@@ -310,7 +310,7 @@
 <section id="design-principles">
 <h2><span class="section-number">5.1. </span>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h2>
 <p>The IT-Wallet System adheres to the Digital Identity Wallet Paradigm, aiming to provide Users with a simple, fast, and more secure experience when accessing services.</p>
-<p>The Wallet Solution serves as the primary Touchpoint, enabling Users to manage and use their PID and Attributes when interacting with public or private entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience.</p>
+<p>The Wallet Solution serves as the primary Touchpoint, enabling Users to manage and use their personal identification data and Attributes when interacting with public or private entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience.</p>
 <p>To ensure service quality from a User Experience perspective, Primary Actors, both public and private entities, MUST ensure the usability and accessibility of their Technical Solutions while aligning with the distinctive elements of the IT-Wallet System. Specifically:</p>
 <ul class="simple">
 <li><p><strong>Usability</strong>: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public entities MUST adhere to [GL_DESIGN], whereas private entities MAY refer to it as a best practice.</p></li>
@@ -339,48 +339,68 @@
 </section>
 <section id="activation-of-the-wallet-instance">
 <h2><span class="section-number">5.3. </span>Activation of the Wallet Instance<a class="headerlink" href="#activation-of-the-wallet-instance" title="Link to this heading">¶</a></h2>
-<p>Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID.</p>
+<p>Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity (see <a class="reference internal" href="wallet-instance-lifecycle.html#wallet-instance-lifecycle"><span class="std std-ref">Wallet Instance Lifecycle</span></a>). After Authentication, the User obtains a person identification Attestation — either the EUDI <strong>PID</strong> or the national <strong>IT-Wallet ID</strong> — as described in <a class="reference internal" href="#focus-on-person-identification-attestations"><span class="std std-ref">Focus on Person Identification Attestations</span></a>.</p>
 <p>Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:</p>
 <ul class="simple">
 <li><p>The User downloads the Wallet Solution onto their device to generate their Wallet Instance;</p></li>
 <li><p>The User sets an unlock PIN for their Wallet Instance if one has not been previously set in the app. In addition to the PIN, the User can decide to use their own unlock mechanism used within the device and managed at the operating system level (e.g., biometric authentication) as an alternative to the PIN. The User uses the unlock method whenever an authorization is required to ensure security and protect their information;</p></li>
-<li><p>The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Provider and PID Provider and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation;</p></li>
+<li><p>The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Wallet Provider and from the issuer of the person identification Attestation (PID Provider or IT-Wallet ID provider) and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation;</p></li>
 <li><p>The User selects an Authentication option from those available;</p></li>
 <li><p>The User completes the Authentication flow with the National Identity Provider's service;</p></li>
-<li><p>The User receives confirmation of the Authentication process outcome. If successful, the User views a preview of their PID. The User confirms the previewed information to proceed with Wallet Instance activation, or cancels the operation;</p></li>
+<li><p>The User receives confirmation of the Authentication process outcome. If successful the User views a preview of the person identification Attestation (PID or IT-Wallet ID). The User confirms the previewed information to proceed, or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful activation of the Wallet Instance.</p></li>
 </ul>
-<p>The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance"><span class="std std-ref">Deactivation of the Wallet Instance</span></a> and <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a> sections.</p>
+<p>The Wallet Provider MUST allow the User to remove a person identification Attestation issued within the Authentication phase. In addition, the relevant issuer (PID Provider or IT-Wallet ID provider) SHOULD allow the User to revoke that Attestation through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance"><span class="std std-ref">Deactivation of the Wallet Instance</span></a> and <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a> sections.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id98">
-<a class="reference internal image-reference" href="_images/IT-Wallet-Activation.svg"><img alt="Example of User Experience in Activating a Wallet Instance" src="_images/IT-Wallet-Activation.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/IT-Wallet-Activation-1.svg"><img alt="Example of User Experience in Activating a Wallet Instance" src="_images/IT-Wallet-Activation-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Example of User Experience in Activating a Wallet Instance</span><a class="headerlink" href="#id98" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<section id="focus-on-pid-person-identification-data">
-<h3><span class="section-number">5.3.1. </span>Focus on PID – Person Identification Data<a class="headerlink" href="#focus-on-pid-person-identification-data" title="Link to this heading">¶</a></h3>
-<p>The PID (Person Identification Data) refers to a verified minimum set of information about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>) issued as a result of the activation process and made available in the Wallet Instance.</p>
-<p>Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the PID. The Wallet Provider:</p>
+<section id="focus-on-person-identification-attestations">
+<h3><span class="section-number">5.3.1. </span>Focus on Person Identification Attestations<a class="headerlink" href="#focus-on-person-identification-attestations" title="Link to this heading">¶</a></h3>
+<p>This section defines User Experience requirements for person identification Attestations held in the Wallet Instance: the EUDI <strong>PID</strong> and the national <strong>IT-Wallet ID</strong> (Electronic Attestation of Person Identification Data). Both convey a verified minimum set of information about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>), but they differ in legal scope, issuer type, Wallet Instance lifecycle impact, and use cases for presentation supported.</p>
+<p>Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the personal identification Attestation (PID and/or IT-Wallet ID). The Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST correctly display the PID across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
-<li><p>MUST display the PID status, if different from valid to provide transparency on its lifecycle, and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked);</p></li>
-<li><p>MUST include Action Buttons to enable the PID lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
-<li><p>MUST guarantee that the PID is a functional element, for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts, and to request the issuance of additional EAAs (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>);</p></li>
-<li><p>MUST display a method of assistance given by the PID Provider (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
-<li><p>MUST guarantee that the PID is recognizable by the User and distinguishable from other EAAs.</p></li>
+<li><p>MUST correctly display the person identification Attestation across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
+<li><p>MUST display the Attestation status if different from valid, to provide transparency on its lifecycle, and MAY display it if valid. Specific details about an invalid status MAY be provided (e.g., the reason why the Attestation was revoked);</p></li>
+<li><p>MUST include Action Buttons to enable lifecycle management of the Attestation and allow the User to revoke or update it at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
+<li><p>MUST guarantee that the Attestation is a functional element for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts where applicable, and to request the issuance of additional EAAs where the related issuer requires person identification data (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>);</p></li>
+<li><p>MUST display a method of assistance provided by the relevant issuer of the Attestation (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>MUST guarantee that the Attestation is recognizable by the User and distinguishable from other EAAs.</p></li>
 </ul>
-<p>To ensure a consistent identification and representation of the PID across different Wallet Solutions, the Wallet Provider:</p>
+<section id="pid">
+<h4><span class="section-number">5.3.1.1. </span>PID<a class="headerlink" href="#pid" title="Link to this heading">¶</a></h4>
+<p>The <strong>PID</strong> is the Person Identification Data attestation under the European Digital Identity framework (see <a class="reference internal" href="credential-data-model-pid.html#pid-data-model"><span class="std std-ref">PID Data Model</span></a>). It is issued by the PID Provider.</p>
 <ul class="simple">
-<li><p>MUST use the official naming “IT-Wallet ID” to refer to PID in their Wallet Solutions and MUST NOT use custom or technical terms such as &quot;Person Identification Data&quot; or its acronym &quot;PID&quot;;</p></li>
+<li><p>The Wallet Instance in the <strong>Operational</strong> state allows the PID issuance. Upon successful issuance of a valid PID, the Wallet Instance MUST transition to the <strong>Valid</strong> state (see <a class="reference internal" href="wallet-instance-lifecycle.html#transition-to-valid"><span class="std std-ref">Transition to Valid</span></a>).</p></li>
+<li><p>While the Wallet Instance is <strong>Valid</strong> and the PID is active/valid, the User MAY present the PID and use it for authentication and further credential issuance according to this specification and the EUDI framework.</p></li>
+<li><p>Revocation, expiry, or deletion of the PID MUST transition the Wallet Instance back to <strong>Operational</strong> (see <a class="reference internal" href="wallet-instance-lifecycle.html#id1"><span class="std std-ref">Transition to Operational</span></a>).</p></li>
+<li><p>Where the User revokes the PID, the Wallet Provider MUST handle the consequences on the Wallet Instance lifecycle and on dependent EAAs as defined in this specification.</p></li>
+<li><p>The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.</p></li>
+</ul>
+</section>
+<section id="it-wallet-id">
+<h4><span class="section-number">5.3.1.2. </span>IT-Wallet ID<a class="headerlink" href="#it-wallet-id" title="Link to this heading">¶</a></h4>
+<p>The <strong>IT-Wallet ID</strong> is the Electronic Attestation of Person Identification Data issued for national use only (see <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a> and <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>). It is an EAA issued by an Electronic Attestation of Attributes Provider, unlike the PID.</p>
+<ul>
+<li><p>Issuance of the IT-Wallet ID does <strong>not</strong> transition the Wallet Instance to the <strong>Valid</strong> state; the Wallet Instance remains <strong>Operational</strong> (see <a class="reference internal" href="wallet-instance-lifecycle.html#id1"><span class="std std-ref">Transition to Operational</span></a>).</p></li>
+<li><p>The IT-Wallet ID is exclusively intended for national use and not for cross-border interactions.</p></li>
+<li><p>To ensure a consistent identification and representation of the IT-Wallet ID across different Wallet Solutions, the Wallet Provider:</p>
+<ul class="simple">
+<li><p>MUST use the official naming “IT-Wallet ID” in their Wallet Solutions;</p></li>
 <li><p>MUST use the IT-Wallet ID official graphic asset available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST comply with the related usage specifications provided;</p></li>
 <li><p>MUST use the IT-Wallet ID graphic asset in the <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data format;</p></li>
 <li><p>MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets;</p></li>
 <li><p>MUST maintain the minimum clear space as defined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;</p></li>
 <li><p>MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to maintain legibility across formats and devices;</p></li>
 <li><p>MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
+</ul>
+<p>Although the term IT-Wallet ID refers to the Electronic Attestation of Personal Identification Data, the IT-Wallet ID graphical asset MAY be used by the Wallet Provider to facilitate the User in identifying, more generally, their personal identification Attestations (IT-Wallet ID / PID).</p>
+</li>
 </ul>
 <figure class="align-center" id="id101">
 <a class="reference internal image-reference" href="_images/IT-Wallet-ID-Primary-BlueItalia.svg"><img alt="IT-Wallet ID official graphic asset on a light background" src="_images/IT-Wallet-ID-Primary-BlueItalia.svg" style="width: 100%;" /></a>
@@ -391,13 +411,14 @@
 <p>The IT-Wallet ID Official Resource is provided in the related <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> Section. Additional documentation on the IT-Wallet ID graphic asset is available in the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section.</p>
 </section>
 </section>
+</section>
 <section id="issuance-of-electronic-attestations-of-attributes">
 <h2><span class="section-number">5.4. </span>Issuance of Electronic Attestations of Attributes<a class="headerlink" href="#issuance-of-electronic-attestations-of-attributes" title="Link to this heading">¶</a></h2>
 <p>Once activation is complete, the User MAY request and obtain one or more Electronic Attestations of Attributes within their Wallet Instance.</p>
 <p>The Electronic Attestations of Attributes is a dynamic object that enables the User to demonstrate or certify in a reliable and verifiable manner, a condition, status or right, based on the information it contains. In particular, the Electronic Attestations of Attributes:</p>
 <ul class="simple">
 <li><p><strong>is defined by an Authentic Source</strong>, the entity holding the source data;</p></li>
-<li><p><strong>consists of a set of Attributes</strong>, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) ora a status (e.g. “student”);</p></li>
+<li><p><strong>consists of a set of Attributes</strong>, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) or a status (e.g. “student”);</p></li>
 <li><p><strong>is issued by a Provider of Electronic Attestation of Attributes</strong>, the entity that emits it on the basis of the information acquired and manages its lifecycle.</p></li>
 </ul>
 <p>Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:</p>
@@ -414,7 +435,7 @@
 <li><p>The User selects the Electronic Attestation of Attributes they wish to request from the available options in the Catalog;</p></li>
 <li><p>The User selects from which Electronic Attestation Provider they want to obtain the Electronic Attribute Attestation, if there is more than one;</p></li>
 <li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes from the Authentic Source;</p></li>
-<li><p>The User views the PID data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
+<li><p>The User views their personal identification data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
 <li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User views the positive outcome of the request;</p></li>
@@ -445,7 +466,7 @@
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id103">
-<a class="reference internal image-reference" href="_images/Issuance-from-catalog.svg"><img alt="Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog" src="_images/Issuance-from-catalog.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Issuance-from-catalog-1.svg"><img alt="Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog" src="_images/Issuance-from-catalog-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog</span><a class="headerlink" href="#id103" title="Link to this image">¶</a></p>
 </figcaption>
@@ -453,13 +474,13 @@
 </section>
 <section id="issuance-from-a-touchpoint-of-the-authentic-source">
 <h3><span class="section-number">5.4.2. </span>Issuance from a Touchpoint of the Authentic Source<a class="headerlink" href="#issuance-from-a-touchpoint-of-the-authentic-source" title="Link to this heading">¶</a></h3>
-<p>Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from a Touchpoint of the Authentic Source (also known as <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a> that the Authentic Source MUST guarantee through their Touchpoint:</p>
+<p>Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from a Touchpoint of the Authentic Source (also known as <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>) that the Authentic Source MUST guarantee through their Touchpoint:</p>
 <ul class="simple">
 <li><p>The User interacts with the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> clearly displayed in the Touchpoint interface;</p></li>
 <li><p>The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the <em>Selection Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
 <li><p>(<em>cross-device only</em>) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the <em>QR Code Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section; alternatively the User can exit the flow.</p></li>
 <li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User views the PID data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
+<li><p>The User views their personal identification data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
 <li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes;</p></li>
 <li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
@@ -469,7 +490,7 @@
 <p>In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id107">
-<a class="reference internal image-reference" href="_images/Issuance-from-Authentic-Source.svg"><img alt="Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source" src="_images/Issuance-from-Authentic-Source.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Issuance-from-Authentic-Source-1.svg"><img alt="Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source" src="_images/Issuance-from-Authentic-Source-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.</span><a class="headerlink" href="#id107" title="Link to this image">¶</a></p>
 </figcaption>
@@ -668,16 +689,16 @@
 <h2><span class="section-number">5.5. </span>Presentation of Electronic Attestations<a class="headerlink" href="#presentation-of-electronic-attestations" title="Link to this heading">¶</a></h2>
 <p>The presentation process allows the User to access a service or demonstrate ownership of certain data or their eligibility to perform a specific action. The presentation of Electronic Attestations and their subsequent verification involves interaction between the Wallet Instance, managed by the User, and a Relying Party Instance. Depending on the circumstances and context of the interaction, the following scenarios can be outlined:</p>
 <ul class="simple">
-<li><p><strong>Proximity Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, directly to a Verifier or to a device designated for in-person verification.</p></li>
-<li><p><strong>Remote Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.</p></li>
+<li><p><strong>Proximity Presentation</strong>: the User presents their personal identification data and/or EAA data through the Wallet Instance, directly to a Verifier or to a device designated for in-person verification.</p></li>
+<li><p><strong>Remote Presentation</strong>: the User presents their personal identification data and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.</p></li>
 </ul>
 <p>Regardless of the type of presentation, the Wallet Provider MUST allow the Wallet Instance to inform the User of the identity of the Relying Party. In case of a Relying Party Intermediary, the User MUST be informed of the intermediary’s involvement during the presentation request phase. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.</p>
 <section id="proximity-presentation">
 <h3><span class="section-number">5.5.1. </span>Proximity Presentation<a class="headerlink" href="#proximity-presentation" title="Link to this heading">¶</a></h3>
-<p>Proximity presentation allows the User to present the PID and/or EAA data via their Wallet Instance, using one of two methods:</p>
+<p>Proximity presentation allows the User to present their personal identification data and/or EAA data via their Wallet Instance, using one of two methods:</p>
 <ul class="simple">
-<li><p><strong>Supervised mode</strong>: the User presents the PID and/or EAA data through the Wallet Instance to a Verifier (e.g., law enforcement officer, desk operator) equipped with a dedicated verification system (<a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance"><span class="std std-ref">Mobile Relying Party Instance</span></a>).</p></li>
-<li><p><strong>Unsupervised mode</strong>: the User presents the PID and/or EAA data through the Wallet Instance to a designated device (e.g., turnstile, totem) provided with a dedicated verification system (Embedded Relying Party Instance).</p></li>
+<li><p><strong>Supervised mode</strong>: the User presents their personal identification data and/or EAA data through the Wallet Instance to a Verifier (e.g., law enforcement officer, desk operator) equipped with a dedicated verification system (<a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance"><span class="std std-ref">Mobile Relying Party Instance</span></a>).</p></li>
+<li><p><strong>Unsupervised mode</strong>: the User presents their personal identification data and/or EAA data through the Wallet Instance to a designated device (e.g., turnstile, totem) provided with a dedicated verification system (Embedded Relying Party Instance).</p></li>
 </ul>
 <p>Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution.</p>
 <p><strong>Supervised Mode</strong></p>
@@ -685,7 +706,7 @@
 <li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
 <li><p>The User navigates to the feature dedicated to QR Code generation;</p></li>
 <li><p>The User presents the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system;</p></li>
-<li><p>The User reviews the requested PID and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
+<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
@@ -695,14 +716,14 @@
 <li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
 <li><p>The User navigates to the feature dedicated to QR Code generation;</p></li>
 <li><p>The User presents the generated QR Code to the designated device (e.g., a turnstile) of the Relying Party for scanning;</p></li>
-<li><p>The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
+<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id120">
-<a class="reference internal image-reference" href="_images/proximity-presentation.svg"><img alt="Example of User Experience in proximity presentation" src="_images/proximity-presentation.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/proximity-presentation-1.svg"><img alt="Example of User Experience in proximity presentation" src="_images/proximity-presentation-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.25 </span><span class="caption-text">Example of User Experience in proximity presentation.</span><a class="headerlink" href="#id120" title="Link to this image">¶</a></p>
 </figcaption>
@@ -710,7 +731,7 @@
 </section>
 <section id="remote-presentation">
 <h3><span class="section-number">5.5.2. </span>Remote Presentation<a class="headerlink" href="#remote-presentation" title="Link to this heading">¶</a></h3>
-<p>Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through the designated <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p>
+<p>Remote presentation allows the User to present their personal identification data and/or EAA data by interacting with a Relying Party's Touchpoint through the designated <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p>
 <p>This presentation can occur in two different modes, depending on the type of device used to access the service:</p>
 <ul class="simple">
 <li><p><strong>Same-device mode</strong>: when the User accesses an online digital service integrated with a special verification system (<a class="reference internal" href="relying-party-instance.html#web-relying-party-instance"><span class="std std-ref">Web Relying Party Instance</span></a>) using the same device which the Wallet Instance is installed on;</p></li>
@@ -722,7 +743,7 @@
 <li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Relying Party's Touchpoint;</p></li>
 <li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
 <li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
+<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful presentation within the Wallet Instance;</p></li>
 <li><p>The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.</p></li>
@@ -730,7 +751,7 @@
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id122">
-<a class="reference internal image-reference" href="_images/Remote-presentation-same-device.svg"><img alt="Example of User Experience in remote, same-device presentation" src="_images/Remote-presentation-same-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Remote-presentation-same-device-1.svg"><img alt="Example of User Experience in remote, same-device presentation" src="_images/Remote-presentation-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.27 </span><span class="caption-text">Example of User Experience in remote, same-device presentation.</span><a class="headerlink" href="#id122" title="Link to this image">¶</a></p>
 </figcaption>
@@ -740,7 +761,7 @@
 <li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;</p></li>
 <li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
 <li><p>The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
-<li><p>The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory personal data (Selective Disclosure). The User provides consent to proceed or cancels the operation.</p></li>
+<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful presentation within the Wallet Instance;</p></li>
 <li><p>The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.</p></li>
@@ -748,7 +769,7 @@
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id125">
-<a class="reference internal image-reference" href="_images/Remote-presentation-cross-device.svg"><img alt="Example of User Experience in remote, cross-device presentation" src="_images/Remote-presentation-cross-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Remote-presentation-cross-device-1.svg"><img alt="Example of User Experience in remote, cross-device presentation" src="_images/Remote-presentation-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Example of User Experience in remote, cross-device presentation.</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
 </figcaption>
@@ -762,19 +783,19 @@
 </figure>
 <section id="authentication">
 <h4><span class="section-number">5.5.2.1. </span>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">¶</a></h4>
-<p>Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties.</p>
+<p>Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting their personal identification data and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties.</p>
 <p>The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for <a class="reference internal" href="#remote-presentation"><span class="std std-ref">remote presentation</span></a> in same-device and cross-device modes.</p>
 <p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>.</p>
 <p>To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].</p>
 <p>Both flows are shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id132">
-<a class="reference internal image-reference" href="_images/Authentication-same-device.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Authentication-same-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Authentication-same-device-1.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Authentication-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id132" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id135">
-<a class="reference internal image-reference" href="_images/Authentication-cross-device.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Authentication-cross-device.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Authentication-cross-device-1.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Authentication-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
@@ -1114,7 +1135,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 - The User sees the successful outcome of the revocation.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
 <figure class="align-center" id="id165">
-<a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet-1.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet-1.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id165" title="Link to this image">¶</a></p>
 <div class="legend">
@@ -1223,8 +1244,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <tr class="row-odd"><td><p>The Wallet Provider's services are unresponsive (e.g. technical errors or lack of connection)</p></td>
 <td><p>Wallet Provider</p></td>
 </tr>
-<tr class="row-even"><td><p>The PID Provider's services are unresponsive (e.g. technical errors)</p></td>
-<td><p>PID Provider</p></td>
+<tr class="row-even"><td><p>The PID Provider or the IT-Wallet ID provider's services are unresponsive (e.g. technical errors)</p></td>
+<td><p>PID Provider or IT-Wallet ID provider</p></td>
 </tr>
 <tr class="row-odd"><td><p>The Authentication process on the National Identity Provider's service was unsuccessful (e.g. technical errors, unrecognized identity, etc.)</p></td>
 <td><p>National Identity Provider</p></td>
@@ -1249,7 +1270,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>The Wallet Instance and/or the PID are not active</p></td>
+<tr class="row-even"><td><p>The Wallet Instance and/or the PID / IT-Wallet ID are not valid</p></td>
 <td><p>Wallet Instance</p></td>
 </tr>
 <tr class="row-odd"><td><p>The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)</p></td>
@@ -1472,7 +1493,11 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><a class="reference internal" href="#design-principles">5.1. Design Principles</a></li>
 <li><a class="reference internal" href="#functionalities-overview">5.2. Functionalities Overview</a></li>
 <li><a class="reference internal" href="#activation-of-the-wallet-instance">5.3. Activation of the Wallet Instance</a><ul>
-<li><a class="reference internal" href="#focus-on-pid-person-identification-data">5.3.1. Focus on PID – Person Identification Data</a></li>
+<li><a class="reference internal" href="#focus-on-person-identification-attestations">5.3.1. Focus on Person Identification Attestations</a><ul>
+<li><a class="reference internal" href="#pid">5.3.1.1. PID</a></li>
+<li><a class="reference internal" href="#it-wallet-id">5.3.1.2. IT-Wallet ID</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes">5.4. Issuance of Electronic Attestations of Attributes</a><ul>

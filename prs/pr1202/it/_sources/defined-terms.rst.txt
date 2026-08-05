@@ -116,7 +116,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Gestore di Identità Digitale**
-      Sistemi di identità preesistenti (ad esempio CIE) notificati eIDAS.
+      Mezzi di identificazione elettronica preesistenti notificati eIDAS e relativi Identity Provider utilizzati per l'autenticazione dell'Utente (ad esempio CieID / SPID).
       Non presente in ARF 2.7.3.
 
     **National Trust Anchor**
@@ -172,6 +172,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico di Dati di Identificazione Personale**
       Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 2.7.3.
+
+    **IT-Wallet ID**
+    **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
+      Attestato Elettronico di Attributi (EAA) che contiene Dati di Identificazione Personale di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dal termine ARF **Attestato Elettronico di Dati di Identificazione Personale** (PID). Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi del quadro europeo di Identità Digitale (`EU_2024_1183`_ / `EU_2024/2977`_). NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Gli identificatori tecnici (``vct`` e ``credential_type``) sono definiti nella sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
