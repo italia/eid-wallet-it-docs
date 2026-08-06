@@ -110,7 +110,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``pid`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space.
+      - JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``pid``, for IT-Wallet ID it may be set to ``eid`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space.
       - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
@@ -124,7 +124,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
             - **idphinting**: REQUIRED. URL of the Identity Provider to be used as a hint,
             - **challenge_method**: REQUIRED. Specifies the MRTD verification method. The value MUST be ``mrtd+ias``. Additional verification methods MAY be defined in future releases of this Specification,
             - **challenge_redirect_uri**: REQUIRED. Redirect URI, recognized by Wallet Instance, for handling the challenge response.
-      - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
+      - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
     * - **redirect_uri**
       - Redirection URI to which the response is intended to be sent. It MUST be a universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See [`OIDC`_] Section 3.1.2.1.

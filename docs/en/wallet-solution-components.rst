@@ -25,7 +25,7 @@ API Interface
 This component MUST:
 
 - forward the request from the Frontend Component or the Wallet Instance to the Wallet Instance Lifecycle Management component.
-- use PDND according to rules in Section :ref:`e-service-pdnd:e-Service PDND` to be notified by the PID Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
+- use PDND according to rules in Section :ref:`e-service-pdnd:e-Service PDND` to be notified by the PID/IT-Wallet ID Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
 
 Wallet Instance Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,7 +86,7 @@ Backup and Restore Component
 For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section :ref:`backup-restore:Backup and Restore`.
 
 .. note::
-   Currently the issuance of the PID during restore is not managed by the Backup and Restore Component.
+   Currently the re-issuance of the PID and IT-Wallet ID is not managed by the Backup and Restore Component.
 
 Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +109,7 @@ The Wallet Solution supports these interaction patterns:
 
 1. **User to Wallet Backend Frontend**: Web-based interactions for Wallet Instance management.
 2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet Instance Attestation and Key Attestation issuance.
-3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
+3. **PID/IT-Wallet ID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Instance to Relying Party**: for Digital Credential presentation.
 

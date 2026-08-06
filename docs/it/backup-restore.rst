@@ -143,6 +143,8 @@ Flusso di ripristino per Credenziale con associazione hardware
 ..   Restore flow.
 
 Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
+
+Allo stesso modo del PID, anche l'IT-Wallet ID NON DEVE essere incluso nel file di backup.
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
 **Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.

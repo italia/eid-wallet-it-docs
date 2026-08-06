@@ -143,6 +143,9 @@ Restore flow for Hardware Binding Credential
 ..   Restore flow.
 
 Considering that the :term:`User` has initialized the new :term:`Wallet Instance` and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
+
+In the same way as the PID, IT-Wallet ID also MUST not be included in the backup file.
+
 Below, the description of the steps of :numref:`fig_Restore_flow`:
 
 **Steps 1-6**: The :term:`User` wants to restore the Digital Credentials using the backup previously created with their :term:`Wallet Instance`.

@@ -116,7 +116,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **National Identity Provider**
-      Preexisting identity systems (e.g. CIE) notified to eIDAS.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
       Not present in ARF 2.7.3.
 
     **National Trust Anchor**
@@ -131,12 +131,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Legal person (organization or public entity) recognized to operate a role in the IT-Wallet ecosystem.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Personal Identification Data**
-      A set of data which allow to establish the identity of a natural or legal person, or of a natural person representing another natural or legal person, to be established.
-      Aligned with ARF 2.7.3.
+    **Person Identification Data**
+    **PID**
+      A set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person.
+      Aligned with ARF 2.7.3 / `EU_2024_1183`_. In these Technical Specifications, references to issuance, presentation, or revocation of a PID denote the technical PID (the signed data structure containing Person Identification Data) as used in the ARF.
 
     **PID Provider**
-      Credential Issuer responsible for issuing/revoking PID, ensuring cryptographic binding to Wallet Unit.
+    **Provider of Person Identification Data**
+      Natural or legal person responsible for issuing and revoking the Person Identification Data and ensuring that the Person Identification Data of a User is cryptographically bound to a Wallet Unit.
       Aligned with ARF 2.7.3.
 
     **Policy Language**
@@ -168,10 +170,6 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Credential of Public Interest**
       Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.
       Not present in ARF 2.7.3; specific to IT-Wallet.
-
-    **Person Identification Data**
-      Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
-      Aligned with ARF 2.7.3.
 
     **Qualified Electronic Attestation of Attributes Provider**
       Organizational Entity providing QEAAs.
@@ -374,6 +372,10 @@ Below is the description of acronyms and definitions which are useful for furthe
     **IT-Wallet Intermediary**
       Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
       Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **IT-Wallet ID**
+    **Electronic Attestation of Person Identification Data**
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID). The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Technical identifiers (``vct`` and ``credential_type``) are defined in the section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`. Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.

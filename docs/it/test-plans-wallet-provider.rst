@@ -956,8 +956,8 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - L'UI dell'Istanza del Wallet fornisce funzioni per consentire all'Utente di richiedere l'eliminazione di attributi, visualizzare log transazioni, e vedere un elenco delle Relying Party verso le quali ha presentato degli Attributi.
    * - WP_115a
      - Eliminazione Attributi, Ciclo di vita, Privacy
-     - Log transazioni filtrati per identificare attributi
-     - La vista dei log delle transazioni è filtrata per mostrare solo Relying Party che hanno acceduto ad Attributi che identificano univocamente l'Utente.
+     - Log transazioni per eliminazione attributi
+     - La vista dei log delle transazioni mostra le Relying Party in possesso degli attributi dell'Utente.
    * - WP_116
      - Eliminazione Attributi, Ciclo di vita, Sicurezza
      - Validazione metadata Relying Party per eliminazione

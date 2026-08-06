@@ -838,7 +838,7 @@ The Wallet Provider issues the Wallet Attestation, certifying the operational st
 
 The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
 
-The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).
+The Wallet Instance provides its Wallet Attestation within the signed request during the PID/IT-Wallet ID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).
 
 Non-repudiability of the Long Lived Attestations
 ------------------------------------------------
