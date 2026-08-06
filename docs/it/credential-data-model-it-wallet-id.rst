@@ -70,6 +70,11 @@ L'IT-Wallet ID in formato SD-JWT VC include i seguenti Attributi Utente:
       - OBBLIGATORIO se ``personal_administrative_number`` non è presente, OPZIONALE altrimenti. *Stringa*. Codice fiscale nazionale della persona fisica in formato stringa. DEVE essere impostato secondo ETSI EN 319 412-1. Ad esempio ``TINIT-<ItalianTaxIdentificationNumber>``.
       - Estensione domestica
 
+.. note::
+   **Identity Matching**
+
+   Per l'IT-Wallet ID, la Relying Party DEVE prima effettuare l'identity matching utilizzando ``tax_id_code``. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'identity reconciliation, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
+
 Tutti gli attributi dell'Utente elencati sopra DEVONO essere divulgabili selettivamente (*selectively disclosable*).
 In aggiunta agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un IT-Wallet ID:
 

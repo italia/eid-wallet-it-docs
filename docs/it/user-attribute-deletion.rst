@@ -4,7 +4,7 @@
 Eliminazione degli Attributi dell'Utente
 ========================================
 
-Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo ``personal_administrative_number`` dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati Attestati Elettronici. Successivamente, gli Utenti possono richiedere l'eliminazione degli attributi di uno o più Attestati Elettronici presentati a una Relying Party di loro scelta. La Relying Party DEVE individuare univocamente tali Attestati Elettronici applicando l'identity matching. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%
@@ -21,7 +21,7 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 
 **Passo 1:** L'Utente richiede l'eliminazione degli attributi invocando la funzione di eliminazione degli attributi dell'Istanza del Wallet.
 
-**Passo 2:** L'Istanza del Wallet raccoglie tutti i dati delle transazioni e mostra all'Utente l'elenco delle Relying Party con cui ha avuto interazioni durante il ciclo di vita dell'Istanza del Wallet e che sono in possesso degli attributi dell'Utente. L'Istanza del Wallet DOVREBBE filtrare i log delle transazioni in modo che vengano mostrate solo le Relying Party che hanno avuto accesso ad attributi che identificano univocamente l'Utente (:ref:`WP_115a <user-attribute-deletion-testcases>`).
+**Passo 2:** L'Istanza del Wallet raccoglie tutti i dati delle transazioni e mostra all'Utente l'elenco delle Relying Party con cui ha avuto interazioni durante il ciclo di vita dell'Istanza del Wallet e che sono in possesso degli attributi dell'Utente (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Passo 3:** L'Utente seleziona la Relying Party di destinazione per l'eliminazione degli attributi.
 
@@ -37,7 +37,7 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 .. note::
   La pagina web della Relying Party autenticherà l'Utente con un Livello di Garanzia appropriato utilizzando qualsiasi metodo come CIE o la presentazione del PID/IT-Wallet ID. Il meccanismo specifico utilizzato per l'autenticazione è lasciato alla Relying Party. Dopo aver autenticato l'Utente, la Relying Party PUÒ richiedere all'Utente di eseguire ulteriori passaggi necessari per l'eliminazione degli attributi, ad esempio, potrebbe richiedere all'Utente di confermare l'operazione di eliminazione.
 
-**Passo 9:** Dopo aver autenticato con successo l'Utente, la Relying Party DEVE eliminare tutti gli attributi legati all'Utente in suo possesso.
+**Passo 9:** Dopo aver autenticato con successo l'Utente, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici per i quali l'Utente richiede la rimozione applicando l'identity matching, e DEVE eliminare i relativi attributi in suo possesso.
 
 **Passo 10:** La Relying Party restituisce la Risposta di Cancellazione sotto forma di Risposta HTTP all'User-Agent e include l'URL di callback se fornito nella Richiesta di Cancellazione. I dettagli sulla Risposta di Cancellazione si trovano in :ref:`relying-party-provider-backend-endpoint:Endpoint di Cancellazione della Relying Party del Provider Backend`.
 

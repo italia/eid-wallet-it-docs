@@ -4,7 +4,7 @@
 User's Attributes Deletion
 ==========================
 
-This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the ``personal_administrative_number`` claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which Digital Credentials have been presented. Subsequently Users may request deletion of the attributes of one or more Digital Credentials presented to a Relying Party of their choice. The Relying Party MUST uniquely identify those Digital Credentials by applying identity matching. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%
@@ -21,7 +21,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 
 **Step 1:** The User requests the deletion of attributes invoking the Wallet Instance's attribute deletion function.
 
-**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are shown (:ref:`WP_115a <user-attribute-deletion-testcases>`).
+**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Step 3:** The User selects the target Relying Party for attributes deletion.
 
@@ -37,7 +37,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 .. note::
   The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID/IT-Wallet ID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
 
-**Step 9:** Upon successful authentication of the User the Relying Party MUST delete all attributes bound to the User in its possession.
+**Step 9:** Upon successful authentication of the User, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion by applying identity matching, and MUST delete the related attributes in its possession.
 
 **Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint`.
 
