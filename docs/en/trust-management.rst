@@ -38,6 +38,22 @@ The diagram :numref:`fig_Trust_Artifacts_States` highlights the state machine of
     :caption: `Trust Artifacts States. <https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0>`_
 
 
+Federation Entity Key Rotation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Federation Entity Key of an Entity is attested by the Subordinate Statement that its immediate superior publishes about it, and the Entity Configuration of the Entity MUST be signed with a key that the Subordinate Statement attests.
+A new Federation Entity Key becomes trusted only when the superior attests it in the Subordinate Statement.
+
+The Federation Entity key rotation MUST be perfomed as defined in the following steps:
+
+- The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
+- In the Entity Update process (see :ref:`onboarding-processes-entities:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issues the Subordinate Statement attesting the new key.
+- The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
+- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key 
+- Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the the Entity Update process (see :ref:`onboarding-processes-entities:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
+- The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
+
+
 Revocation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^
 
