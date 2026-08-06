@@ -80,24 +80,6 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
       - OPTIONAL. *String*. National unique identifier of a natural person. It MUST be set according to ETSI EN 319 412-1 Section 5.1.3. The only natural person semantic identifiers (**NAT-5.1.3-03**) supported whithin IT-Wallet are ``PNO`` and ``TIN``. For IDANPR, ``PNO`` MUST be used, while for Fiscal Code, ``TIN`` MUST be used. 
       - Commission Implementing Regulation `EU_2024/2977`_
 
-.. note::
-   **Identity Matching and Identity Reconciliation**
-
-   Identity matching is not a specific EUDI Wallet feature. It is the same practical approach used in any legacy authentication and authorization infrastructure.
-
-   The Relying Party MUST first perform **identity matching**, to establish that the person identification attributes presented in the current transaction refer to the same natural person. Only after a successful identity matching, the Relying Party MAY perform **identity reconciliation**, linking that natural person to a previous User session or stored User record.
-
-   Different Digital Credential types MAY define different identity matching patterns. This Section defines the pattern for the PID. For the IT-Wallet ID pattern, see Section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`.
-
-   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available. When it is presented, the Relying Party SHOULD use it for identity matching. When it is not presented, the Relying Party MUST perform identity matching using one or more of the following ways:
-
-   - *Attribute-Based Binding*: comparing the person identification attributes available in the PID presentation (for example ``given_name``, ``family_name`` and ``birthdate`` / ``birth_date``);
-   - *Session-Based Binding*: treating attributes released in the same presentation response as belonging to the same User;
-   - *Issuer-Attested Binding* or *Relying Party-Specific Identifiers*: using an identifier attested by the Issuer or previously established with the Relying Party;
-   - *Cryptographic Binding*: proving that the private keys of the presented Digital Credentials are managed by the same WSCA/WSCD, when available.
-
-   Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF, to be fully applicable when the IT-Wallet will be notified as an EUDIW solution.
-
 All the User attributed listed above MUST be selectively disclosable.
 In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID:
 
