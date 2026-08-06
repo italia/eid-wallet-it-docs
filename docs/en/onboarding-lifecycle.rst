@@ -82,7 +82,7 @@ An Entity in ``CANCELLED`` state that wants to participate again in the ecosyste
   Within IT-Wallet the **Registered** state is split into ``REGISTERED`` and ``OPERATIONAL``, to distinguish the moment in which the registration record exists from the moment in which the Entity holds all the Trust Artifacts it needs to operate.
 
 .. note::
-  The lifecycle of the Authentic Sources and of the Trust-infrastructure Entities, such as the Registrar and the Providers of WRPACs, is not defined in this section.
+  The lifecycle of the Authentic Sources and of the Trust-infrastructure Entities, such as the Registrar and the Providers of WRPACs and of WRPRCs, is not defined in this section.
   The Authentic Sources follow the PDND framework, and the effects that their lifecycle produces inside IT-Wallet are described in :ref:`onboarding-system:Authentic Source Lifecycle and PDND Alignment`.
 
 Registration Events and Their Governance
@@ -159,6 +159,11 @@ Within IT-Wallet the same retention applies to the Federation Authority for the 
   The obligations described above are set by Articles 9 and 10 of [`CIR2025/848`_] and apply to the Registrar and to the registration of the WRPs.
   Within IT-Wallet the retention obligation is extended by analogy to the Federation Authority for the records it keeps for the National Trust Framework, since [`CIR2025/848`_] does not address the National Trust Framework.
   Wallet Providers are not registered as WRPs, so the suspension and cancellation of a Wallet Provider follow from the certification of its Wallet Solution and from the notification, and not from Article 9.
+
+Beyond the Supervisory Body, the Registrar and the Entity itself, a suspension or a cancellation of an Entity MAY also be requested or triggered by other parties external to the Onboarding System, for example a judicial authority, an administrative authority competent for the Entity, an authority competent for cybersecurity, a conformity assessment body that withdraws a certification, or the Member State that withdraws a notification.
+In every case the suspension or the cancellation is carried out through the mechanisms described above, where the Federation Authority that registered the Entity acts on its Subordinate Statement and on the registration Trust Mark, and the Trust Artifacts of the Entity are revoked.
+For an Entity registered through a Federation Intermediate, the Subordinate Statement is served by the Intermediate, which withdraws it to suspend or cancel the Entity, while the registration Trust Mark remains issued by the Federation Trust Anchor which is responsible for any effects on the lifecycle of the registration Trust Mark.
+The suspension or the cancellation of a Federation Intermediate MUST propagate to its affiliated Entities, whose Trust Chain runs through it, as described in :ref:`trust-evaluation:Federation Trust Chain`.
 
 Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
 This is set by Annex IV of [`CIR2025/848`_] for the Providers of WRPACs and by Annex V of [`CIR2025/848`_] for the Providers of WRPRCs.

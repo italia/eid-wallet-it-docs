@@ -113,7 +113,7 @@ A change that affects the Authorization Information triggers the re-verification
 Entity Suspension and Removal
 """""""""""""""""""""""""""""
 
-Entity Suspension and Removal process suspends, reactivates or cancels the registration of an Entity, on the request of the competent authority or of the Entity itself, across the two Trust Frameworks.
+Entity Suspension and Removal process suspends, reactivates or cancels the registration of an Entity, on the request of a Supervisory Body, of the Entity itself, or of another external party entitled to it as described in :ref:`onboarding-system:Registration Events and Their Governance`, across the two Trust Frameworks.
 This process describes the steps that the components execute, while who is entitled to trigger each event, on which normative basis and within which conditions, is given in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 **Input**
