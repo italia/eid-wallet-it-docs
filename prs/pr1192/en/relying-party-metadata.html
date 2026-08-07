@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -353,7 +353,7 @@
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>erasure_endpoint</strong></p></td>
-<td><p>[CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the <em>https</em> scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.</p></td>
+<td><p>[CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the <em>https</em> scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching.</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +413,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

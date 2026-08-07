@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -447,7 +447,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il processo di emissione utilizza flussi basati su OAuth 2.0, in particolare il flusso Authorization Code, per autenticare in modo sicuro l'Utente. Inoltre, l'autenticazione dell'Utente viene eseguita utilizzando lo schema CieID con alto LoA o il PID.</p>
+<p>Il processo di emissione utilizza flussi basati su OAuth 2.0, in particolare il flusso Authorization Code, per autenticare in modo sicuro l'Utente. Inoltre, l'autenticazione dell'Utente viene eseguita utilizzando lo schema CieID con alto LoA, l'Autenticazione eID Substantial con Verifica MRTD oppure il PID/IT-Wallet ID.</p>
 </section>
 <section id="sr-i-20">
 <h3><span class="section-number">15.1.8. </span>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
@@ -492,9 +492,9 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 12.4</span></a>):</p>
+<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 12.5</span></a>):</p>
 <ul class="simple">
-<li><p>Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Credenziali autentica l'Utente utilizzando uno schema CieID o un PID valido, fornendo il Token di Accesso all'Utente.</p></li>
+<li><p>Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Credenziali autentica l'Utente utilizzando uno schema CieID o un PID/IT-Wallet ID valido, fornendo il Token di Accesso all'Utente.</p></li>
 <li><p>Prova di Possesso della Chiave (Passi 12-13, 16-17): Il Wallet crea un DPoP Proof JWT, legando il Token di Accesso all'Istanza del Wallet. La stessa chiave viene poi utilizzata successivamente per richiedere la Credenziale, garantendo la continuità della proprietà.</p></li>
 <li><p>Emissione della Credenziale (Passi 18-21): La richiesta di Credenziale viene verificata utilizzando la prova di possesso, che è crittograficamente legata all'Utente. L'uso della stessa chiave nel DPoP garantisce che il materiale chiave sia controllato dall'Istanza del Wallet, e non da una terza parte.</p></li>
 </ul>
@@ -513,7 +513,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tbody>
 </table>
 <p>Un Wallet Attestation affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
-Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 12.4</span></a>, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
+Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 12.5</span></a>, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
 firmata con la chiave privata del Wallet. Questo attestato conferma che l'Istanza del Wallet è genuina ed è stata verificata dal Fornitore di Wallet.</p>
 <p>Il Fornitore di Credenziali verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
 Successivamente, tutte le chiavi crittografiche generate e utilizzate nel processo provengono da questa Istanza del Wallet attestata.</p>
@@ -1106,7 +1106,7 @@ Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificat
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

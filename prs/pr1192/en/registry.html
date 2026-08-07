@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -1617,11 +1617,6 @@ Content-Type: application/json
 <section id="as-ci-coordination">
 <h3><span class="section-number">7.4.4. </span>AS-CI Coordination<a class="headerlink" href="#as-ci-coordination" title="Link to this heading">¶</a></h3>
 <p>Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in <a class="reference internal" href="onboarding-system.html#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Cryptographic trust validation of ecosystem participants is not a registry component: it is provided by the <strong>National Trust Framework</strong> federation, whose endpoints (<code class="docutils literal notranslate"><span class="pre">/list</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>, <code class="docutils literal notranslate"><span class="pre">/federation_historical_keys</span></code>, and <code class="docutils literal notranslate"><span class="pre">/federation_subordinate_events_endpoint</span></code>) are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.
-These endpoints are also surfaced through the Trust Anchor's Entity Configuration at <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> for standard OpenID Federation 1.0 compliance.</p>
-</div>
 </section>
 </section>
 <section id="digital-credentials-catalog">
@@ -2202,7 +2197,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification.</p></li>
+<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification or <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;eid&quot;</span></code> for IT-Wallet ID-specific identity verification.</p></li>
 <li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> for driving license verification.</p></li>
 <li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
 <li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> for EU-compliant disability benefit access.</p></li>
@@ -2312,7 +2307,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. Version of the Digital Credential definition.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code> and for IT-Wallet ID MUST be <code class="docutils literal notranslate"><span class="pre">eid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:</p>
@@ -2602,7 +2597,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </section>
 <section id="decentralization-of-display-and-claim-information">
 <h3><span class="section-number">7.5.3. </span>Decentralization of Display and Claim Information<a class="headerlink" href="#decentralization-of-display-and-claim-information" title="Link to this heading">¶</a></h3>
-<p>The canonical source for display characteristics and claim structure is determined by the <strong>Credential Issuer's Metadata (Entity Configuration)</strong>.</p>
+<p>The canonical source for display characteristics and claim structure is determined by the <strong>Credential Issuer's Metadata</strong>.</p>
 <p>The overall logic for presenting a Digital Credential is the following:</p>
 <ol class="arabic simple">
 <li><p>Depending on the required Trust Framework, the Wallet or Relying Party retrieves the <a class="reference internal" href="#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available <cite>credential_type</cite> and the <cite>entity_id</cite> of their Credential Issuers.</p></li>
@@ -3388,7 +3383,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. The version of the schema definition (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>).</p></td>
+<td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>format</strong></p></td>
 <td><p>REQUIRED. The technical format of the schema (e.g., <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>).</p></td>
@@ -3487,16 +3482,13 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <p>This <em>Catalog Browsing</em> journey supports Users (both human users via a <strong>Wallet Instance</strong> and automated systems like <strong>Relying Parties</strong> or web portals) in discovering and selecting available Digital Credentials.</p>
 <ol class="arabic simple">
 <li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong> and of the <strong>Taxonomy</strong>.</p></li>
-<li><p><strong>Navigation and Selection</strong>:</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
+<li><p><strong>Navigation and Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the Credential Issuer Metadata (see <a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer"><span class="std std-ref">Metadata for openid_credential_issuer</span></a>) as described in Section 12.2.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
-<li><p><strong>Detail Consultation</strong>: To obtain complete information and specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
+<li><p><strong>Detail Consultation</strong>: To obtain complete information and specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> using the retrieved identifier.</p></li>
 </ul>
-</div></blockquote>
-<ol class="arabic simple" start="3">
+</li>
 <li><p><strong>Final Action</strong>: The entity can then use the metadata to display the catalog information to a User, or use it in other ways.</p></li>
 </ol>
 </section>
@@ -3754,7 +3746,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

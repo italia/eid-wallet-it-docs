@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -341,7 +341,7 @@
 <p>This component MUST:</p>
 <ul class="simple">
 <li><p>forward the request from the Frontend Component or the Wallet Instance to the Wallet Instance Lifecycle Management component.</p></li>
-<li><p>use PDND according to rules in Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> to be notified by the PID Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></li>
+<li><p>use PDND according to rules in Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> to be notified by the PID/IT-Wallet ID Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></li>
 </ul>
 </section>
 <section id="wallet-instance-lifecycle-management">
@@ -394,10 +394,10 @@
 </section>
 <section id="backup-and-restore-component">
 <h3><span class="section-number">9.1.2.2.5. </span>Backup and Restore Component<a class="headerlink" href="#backup-and-restore-component" title="Link to this heading">¶</a></h3>
-<p>For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request re-issuance of that Digital Credential as specified in Section <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p>
+<p>For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently the re-issuance of the PID is not managed by the Backup and Restore Component.</p>
+<p>Currently the re-issuance of the PID and IT-Wallet ID is not managed by the Backup and Restore Component.</p>
 </div>
 </section>
 <section id="dashboard-and-transaction-log">
@@ -421,7 +421,7 @@
 <ol class="arabic simple">
 <li><p><strong>User to Wallet Backend Frontend</strong>: Web-based interactions for Wallet Instance management.</p></li>
 <li><p><strong>Wallet Instance to Wallet Backend API</strong>: for Wallet Instance registration, Wallet Instance Attestation and Key Attestation issuance.</p></li>
-<li><p><strong>PID Provider to Wallet Backend API</strong>: Secure API calls to request Wallet Instance revocation.</p></li>
+<li><p><strong>PID/IT-Wallet ID Provider to Wallet Backend API</strong>: Secure API calls to request Wallet Instance revocation.</p></li>
 <li><p><strong>User to Wallet Instance User Interface</strong>: for Digital Credential management (issuance, presentation, backup, restore, deletion).</p></li>
 <li><p><strong>Wallet Instance to Relying Party</strong>: for Digital Credential presentation.</p></li>
 </ol>
@@ -554,7 +554,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

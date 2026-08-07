@@ -29,6 +29,7 @@ During this phase, Non-Qualified EAA Providers and Relying Parties MUST declare 
 This choice affects both the onboarding and the trust evaluation procedures.
 If only the national boundary is requested, the infrastructure of trust complies with the National Trust Framework.
 Otherwise, the EUDIW Trust Framework is necessary.
+For example, the national-scope IT-Wallet ID is issued and validated under the National Trust Framework, whereas the EUDI Person Identification Data belongs to the EUDIW Trust Framework (see :term:`IT-Wallet ID`).
 
 .. note::
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.

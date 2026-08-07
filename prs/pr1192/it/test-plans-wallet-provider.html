@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -1504,8 +1504,8 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_115a</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Privacy</p></td>
-<td><p>Log transazioni filtrati per identificare attributi</p></td>
-<td><p>La vista dei log delle transazioni è filtrata per mostrare solo Relying Party che hanno acceduto ad Attributi che identificano univocamente l'Utente.</p></td>
+<td><p>Log transazioni per eliminazione attributi</p></td>
+<td><p>La vista dei log delle transazioni mostra le Relying Party in possesso degli attributi dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Sicurezza</p></td>
@@ -1655,7 +1655,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_130</p></td>
 <td><p>Backup e Ripristino, Interoperabilità</p></td>
-<td><p>re-Issuance di Attestato Elettronico da backup ripristinato</p></td>
+<td><p>Emissione di Attestato Elettronico da backup ripristinato</p></td>
 <td><p>Per ogni voce Attestato Elettronico nel JWT backup, Istanza del Wallet estrae con successo l'URL Fornitore di Attestati, e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_130a</p></td>
@@ -1665,8 +1665,8 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_130b</p></td>
 <td><p>Backup e Ripristino, Interoperabilità</p></td>
-<td><p>Richiesta re-Issuance Attestato Elettronico</p></td>
-<td><p>Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo una richiesta re-Issuance per l'Attestato Elettronico utilizzando una nuova associazione chiave di binding con il dispositivo.</p></td>
+<td><p>Richiesta emissione Attestato Elettronico</p></td>
+<td><p>Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo un nuovo Wallet-Initiated Authorization Code Issuance Flow legato alla nuova chiave dell'Istanza del Wallet (nuova Associazione Crittografica con l'Utente), e non un rinnovo del token né una richiesta di Re-issuance Flow.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2036,7 +2036,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

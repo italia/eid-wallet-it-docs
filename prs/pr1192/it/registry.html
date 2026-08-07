@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -2173,7 +2173,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> per la verifica dell'identità specifica con PID.</p></li>
+<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> per la verifica dell'identità specifica con PID oppure <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;eid&quot;</span></code> per la verifica dell'identità specifica con IT-Wallet ID.</p></li>
 <li><p><strong>Controlli di Polizia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> per la verifica della patente di guida.</p></li>
 <li><p><strong>KYC Bancario</strong>: Tipologie specifiche di credenziale previste dalla normativa finanziaria.</p></li>
 <li><p><strong>Servizi Sanitari</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> per l'accesso ai benefici per disabilità conformi EU.</p></li>
@@ -2283,7 +2283,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. Versione della definizione della Credenziale Digitale.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere <code class="docutils literal notranslate"><span class="pre">pid</span></code> e per l'IT-Wallet ID DEVE essere <code class="docutils literal notranslate"><span class="pre">eid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_name_l10n_id</strong></p></td>
 <td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile della Credenziale Digitale nel bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">mDL.name</span></code>).</p></td>
@@ -3350,7 +3350,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. La versione della definizione dello schema (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>).</p></td>
+<td><p>OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>format</strong></p></td>
 <td><p>OBBLIGATORIO. Il formato tecnico dello schema (es. <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>).</p></td>
@@ -3451,7 +3451,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Discovery delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare le tipologie di Credenziale rilevanti (es. <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) e, se necessario, utilizza le informazioni sulla <strong>Tassonomia</strong> per navigare la gerarchia e fornire diverse localizzazioni.</p></li>
+<li><p><strong>Discovery delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare le tipologie di Credenziale rilevanti (es. <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) e, se necessario, utilizza le informazioni sulla <strong>Tassonomia</strong> per navigare la gerarchia e fornire diverse localizzazioni.</p></li>
 <li><p><strong>Metadati dell'Emittente</strong>: L'entità estrae l'<strong>Identificatore dell'Emittente</strong> (<cite>entity_id</cite> nel campo <cite>issuers</cite>) associato alla Credenziale desiderata.</p></li>
 <li><p><strong>Consultazione dei Dettagli</strong>: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede alla <strong>Configurazione dell'Entità</strong> (Metadati dell'Emittente) utilizzando l'identificatore recuperato.</p></li>
 </ul>
@@ -3683,7 +3683,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

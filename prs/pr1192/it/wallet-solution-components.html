@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -343,7 +343,7 @@
 <p>Questo componente DEVE:</p>
 <ul class="simple">
 <li><p>inoltrare la richiesta dal Componente Frontend o dall'Istanza del Wallet al componente di Gestione del Ciclo di Vita dell'Istanza del Wallet.</p></li>
-<li><p>utilizzare PDND secondo le regole nella Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> per essere notificato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale della necessità di revocare l'Istanza del Wallet e cancellare l'account dell'Utente a causa del decesso dell'Utente.</p></li>
+<li><p>utilizzare PDND secondo le regole nella Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> per essere notificato dal Provider di PID/IT-Wallet ID della necessità di revocare l'Istanza del Wallet e cancellare l'account dell'Utente a causa del decesso dell'Utente.</p></li>
 </ul>
 </section>
 <section id="gestione-del-ciclo-di-vita-dell-istanza-del-wallet">
@@ -396,10 +396,10 @@
 </section>
 <section id="componente-di-backup-e-ripristino">
 <h3><span class="section-number">10.1.2.2.5. </span>Componente di Backup e Ripristino<a class="headerlink" href="#componente-di-backup-e-ripristino" title="Link to this heading">¶</a></h3>
-<p>Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere la riemissione di quella Credenziale Elettronica come specificato nella Sezione <a class="reference internal" href="backup-restore.html#backup-e-ripristino"><span class="std std-ref">Backup e Ripristino</span></a>.</p>
+<p>Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino come specificato nella Sezione <a class="reference internal" href="backup-restore.html#backup-e-ripristino"><span class="std std-ref">Backup e Ripristino</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Attualmente la riemissione del PID non è gestita dal Componente di Backup e Ripristino.</p>
+<p>Attualmente la riemissione del PID e dell'IT-Wallet ID non è gestita dal Componente di Backup e Ripristino.</p>
 </div>
 </section>
 <section id="dashboard-e-registro-delle-transazioni">
@@ -423,7 +423,7 @@
 <ol class="arabic simple">
 <li><p><strong>Utente verso Frontend del Backend del Wallet</strong>: Interazioni basate sul web per la gestione dell'Istanza del Wallet.</p></li>
 <li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e key Attestation.</p></li>
-<li><p><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
+<li><p><strong>Provider di PID/IT-Wallet ID verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
 <li><p><strong>Utente verso Interfaccia Utente dell'Istanza del Wallet</strong>: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).</p></li>
 <li><p><strong>Istanza del Wallet verso Relying Party</strong>: per la presentazione delle Credenziali Elettroniche.</p></li>
 </ol>
@@ -556,7 +556,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -327,7 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html#design-principles">4.1. Design Principles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html#functionalities-overview">4.2. Functionalities Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html#activation-of-the-wallet-instance">4.3. Activation of the Wallet Instance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="functionalities.html#focus-on-pid-person-identification-data">4.3.1. Focus on PID – Person Identification Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#focus-on-person-identification-attestations">4.3.1. Focus on Person Identification Attestations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html#issuance-of-electronic-attestations-of-attributes">4.4. Issuance of Electronic Attestations of Attributes</a><ul>
@@ -395,7 +395,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="infrastructure-trust.html#trust-management-and-lifecycle">5.7. Trust Management and Lifecycle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="infrastructure-trust.html#trust-artifacts-lifecycle-state-machine">5.7.1. Trust Artifacts Lifecycle State Machine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms">5.7.2. Revocation Mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="infrastructure-trust.html#federation-entity-key-rotation">5.7.2. Federation Entity Key Rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms">5.7.3. Revocation Mechanisms</a></li>
 </ul>
 </li>
 </ul>
@@ -549,11 +550,15 @@
 <li class="toctree-l3"><a class="reference internal" href="credential-data-model-pid.html#pid-data-model-in-mdoc-cbor-format">10.2.2. PID Data Model in mdoc-CBOR Format</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">10.3. Digital Credential Lifecycle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-transitions">10.3.1. Credential Transitions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle-in-a-batch">10.3.2. Digital Credential Lifecycle in a Batch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-lifecycle-management">10.3.3. Credential Lifecycle Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">10.3.4. Validity Verification Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-data-model-it-wallet-id.html">10.3. IT-Wallet ID Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model-in-sd-jwt-vc-format">10.3.1. IT-Wallet ID Data Model in SD-JWT VC Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">10.4. Digital Credential Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-transitions">10.4.1. Credential Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle-in-a-batch">10.4.2. Digital Credential Lifecycle in a Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-lifecycle-management">10.4.3. Credential Lifecycle Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">10.4.4. Validity Verification Mechanisms</a></li>
 </ul>
 </li>
 </ul>
@@ -562,7 +567,7 @@
 <li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">11.1. Digital Credential Issuance</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuance-high-level.html">11.1.1. Credential Issuance High-Level Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuance-low-level.html">11.1.2. Credential Issuance Low-Level Flows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuance-l2plus.html">11.1.3. eID Substantial Authentication with MRTD Verification for PID Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuance-l2plus.html">11.1.3. eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-presentation.html">11.2. Digital Credential Presentation</a><ul>
@@ -781,7 +786,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

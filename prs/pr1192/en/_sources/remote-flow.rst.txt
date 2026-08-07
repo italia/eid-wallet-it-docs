@@ -223,7 +223,7 @@ The details of each step shown in the previous picture are described below.
             "claims": [
               {"path": ["given_name"]},
               {"path": ["family_name"]},
-              {"path": ["personal_administrative_number"]}
+              {"path": ["birthdate"]}
             ]
           },
           {

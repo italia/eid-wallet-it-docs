@@ -957,8 +957,8 @@ This section lists the test cases from Sections:
      - Wallet Instance UI provides functions for the User to request attribute deletion, view transaction logs, and see a list of Relying Parties that hold their attributes.
    * - WP_115a
      - Attribute Deletion, Lifecycle, Privacy
-     - Filtered transaction logs for identifying attributes
-     - The transaction log view is filtered to show only Relying Parties that accessed attributes uniquely identifying the User.
+     - Transaction logs for attribute deletion
+     - The transaction log view shows Relying Parties in possession of the User's attributes.
    * - WP_116
      - Attribute Deletion, Lifecycle, Security
      - Relying Party metadata validation for deletion
@@ -1078,7 +1078,7 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
      - Wallet Instance successfully verifies the signature of the backup JWT using the Wallet Attestation public key from the ``cnf.jwk`` claim within the ``wallet_attestation`` claim.
    * - WP_130
      - Backup and Restore, Interoperability
-     - Credential re-issuance from restored backup
+     - Credential issuance from restored backup
      - For each Credential entry in the backup JWT, Wallet Instance successfully extracts the Issuer URL, and the ``credential_configuration_id``.
    * - WP_130a
      - Backup and Restore, Interoperability
@@ -1086,8 +1086,8 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
      - For each Issuer URL, Wallet Instance successfully fetches the corresponding Issuer metadata.
    * - WP_130b
      - Backup and Restore, Interoperability
-     - Credential re-issuance request
-     - For each Credential, Wallet Instance successfully initiates a re-issuance request for the Credential using a new holder key binding.
+     - Credential issuance request
+     - For each Credential, Wallet Instance successfully initiates a new Wallet-Initiated Authorization Code Issuance Flow bound to the new Wallet Instance key (fresh Holder Key Binding), and not a token renewal or a Re-Issuance Flow request.
 
 .. _wallet-instance-optional-testcases:
 

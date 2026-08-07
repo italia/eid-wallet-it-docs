@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -445,7 +445,7 @@ In the following, the requirements are grouped based on their category.</p>
 </tr>
 </tbody>
 </table>
-<p>The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using CieID scheme with high LoA or the PID.</p>
+<p>The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using CieID scheme with high LoA, eID Substantial Authentication with MRTD Verification or the PID/IT-Wallet ID.</p>
 </section>
 <section id="sr-i-20">
 <h3><span class="section-number">14.1.8. </span>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
@@ -490,9 +490,9 @@ In the following, the requirements are grouped based on their category.</p>
 </tr>
 </tbody>
 </table>
-<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.4</span></a>):</p>
+<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.5</span></a>):</p>
 <ul class="simple">
-<li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID, providing the Access Token to the User.</p></li>
+<li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID/IT-Wallet ID, providing the Access Token to the User.</p></li>
 <li><p>Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.</p></li>
 <li><p>Credential Issuance (Steps 18-21): The Credential request is verified using proof of possession, which is cryptographically bound to the User. The use of the same key in the DPoP ensures that the key material is controlled by the Wallet Instance, and not by a third party.</p></li>
 </ul>
@@ -511,7 +511,7 @@ In the following, the requirements are grouped based on their category.</p>
 </tbody>
 </table>
 <p>A trusted Wallet Attestation ensures that the Wallet Instance is secure and meets the required security standards before any Credentials are issued or stored.
-In Steps 5-6 of <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.4</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
+In Steps 5-6 of <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.5</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
 signed with the Wallet's private key. This attestation confirms that the Wallet Instance is genuine and has been verified by the Wallet Provider.</p>
 <p>The Issuer verifies this attestation before allowing the Wallet to participate in the issuance process, ensuring that the Wallet adheres to specific security standards.
 Afterward, all cryptographic keys generated and used in the process come from this attested Wallet Instance.</p>
@@ -1104,7 +1104,7 @@ In addition, privacy-preserving Status List mechanism ensure that while the Veri
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 04/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
