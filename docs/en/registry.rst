@@ -1443,9 +1443,10 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog** and of the **Taxonomy**.
 
 2.  **Navigation and Selection**:
-  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``eid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
-  * **Issuer Metadata**: The entity extracts the Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
-  * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** using the retrieved identifier.
+
+    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``eid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
+    * **Issuer Metadata**: The entity extracts the Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
+    * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** using the retrieved identifier.
 
 3.  **Final Action**: The entity can then use the metadata to display the catalog information to a User, or use it in other ways.
 

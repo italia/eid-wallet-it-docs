@@ -47,10 +47,10 @@ A new Federation Entity Key becomes trusted only when the superior attests it in
 The Federation Entity key rotation MUST be perfomed as defined in the following steps:
 
 - The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
-- In the Entity Update process (see :ref:`onboarding-processes-entities:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issues the Subordinate Statement attesting the new key.
+- In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.
 - The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
 - Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key 
-- Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the the Entity Update process (see :ref:`onboarding-processes-entities:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
+- Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
 - The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
 
 

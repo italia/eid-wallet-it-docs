@@ -54,7 +54,9 @@ Infrastructure of Trust
     * - `ETSI TS 119 461`_
       - ETSI TS 119 461 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service components providing identity proofing of trust service subjects.
     * - `ETSI EN 319 411-1`_
-      - ETSI EN 319 411-1 v1.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements. IT-Wallet adopts v1.5.1, which does not introduce breaking changes with respect to v1.4.1 referenced by CIR (EU) 2025/848. 
+      - ETSI EN 319 411-1 v1.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements. IT-Wallet adopts v1.5.1, which does not introduce breaking changes with respect to v1.4.1 referenced by CIR (EU) 2025/848.
+    * - `ETSI EN 319 411-2`_
+      - ETSI EN 319 411-2 v2.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 2: Requirements for trust service providers issuing EU qualified certificates.
     * - `ETSI TS 119 411-8`_
       - ETSI TS 119 411-8 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service providers issuing certificates; Part 8: Access certificate policy for EUDI Wallet Relying Parties.
     * - `ETSI EN 319 412-1`_

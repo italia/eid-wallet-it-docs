@@ -404,6 +404,8 @@ Non-Qualified EAA Provider
 
 A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
 A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
+The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`.
+It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.
 
 .. list-table:: Non-Qualified EAA Provider Registration Data
