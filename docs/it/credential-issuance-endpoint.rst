@@ -118,10 +118,10 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
             - **type**: DEVE essere valorizzato con ``openid_credential``,
             - **credential_configuration_id**: Stringa JSON. Stringa che indica un identificativo univoco dell'Attestato Elettronico in uno specifico formato che DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, ``dc_sd_jwt_pid`` può essere utilizzato per il PID in formato SD-JWT VC, ``dc_sd_jwt_mDL`` per la patente di guida in formato SD-JWT VC e ``mso_mdoc_mDL`` per la patente di guida in formato mdoc.
 
-        Inoltre, nel caso in cui l'Autenticazione eID Substantial con Verifica MRTD viene richiesta, DEVE essere incluso un Oggetto JSON opzionale con i seguenti claim:
+        Inoltre, nel caso in cui l'Istanza del Wallet intenda indicare come *hint* opzionale l'Autenticazione eID Substantial con Verifica MRTD, PUÒ essere incluso un Oggetto JSON aggiuntivo con i seguenti claim:
 
             - **type**: OBBLIGATORIO. DEVE essere ``it_l2+document_proof``,
-            - **idphinting**: OBBLIGATORIO. URL del Provider di Identità da utilizzare come suggerimento,
+            - **idphinting**: OPZIONALE. URL del Provider di Identità da utilizzare come *hint* opzionale per l'*Authorization Server*, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`,
             - **challenge_method**: OBBLIGATORIO. Specifica il metodo di verifica MRTD. Il valore DEVE essere ``mrtd+ias``. Metodi di verifica aggiuntivi POSSONO essere definiti in future release di questa Specifica,
             - **challenge_redirect_uri**: OBBLIGATORIO. Redirect URI per il processo di challenge. Il valore DEVE essere l'Universal Link registrato dall'Istanza del Wallet.
       - Vedi [RAR :rfc:`9396`], [`OpenID4VCI`_] e :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
@@ -267,6 +267,33 @@ Authorization endpoint
 
 L'authorization endpoint viene utilizzato per interagire con il Credential Issuer e ottenere un *authorization grant*.
 L'authorization server DEVE prima verificare l'identità dell'Utente proprietario dell'Attestato Elettronico.
+
+
+Selezione del Metodo di Autenticazione dell'Utente
+..................................................
+
+L'*Authorization Server* del Credential Issuer è responsabile dell'autenticazione dell'Utente secondo le proprie politiche di autenticazione e il Trust Framework applicabile. La decisione su quale metodo di autenticazione applicare, e l'eventuale disposizione di una pagina di *discovery* dei metodi supportati, DEVE restare in capo all'*Authorization Server* del Credential Issuer.
+
+Per l'emissione di un PID:
+
+  * L'*Authorization Server* DEVE autenticare l'Utente utilizzando uno dei metodi da esso supportati, tra cui CieID con Livello di Garanzia Alto (CIE L3) e, se supportato, l'Autenticazione eID Substantial con Verifica MRTD definita in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+  * L'*Authorization Server* PUÒ disporre una pagina di *discovery* che consente all'Utente di selezionare tra i metodi di autenticazione da esso supportati e ammessi per la richiesta in corso.
+  * L'Istanza del Wallet PUÒ includere nella *Pushed Authorization Request* uno o più *hint* opzionali relativi al metodo di autenticazione preferito dall'Utente, secondo quanto definito di seguito. Tali *hint* NON DEVONO essere interpretati come imposizione vincolante del metodo di autenticazione da parte dell'Istanza del Wallet.
+  * Se l'*Authorization Server* riceve un *hint* che supporta e accetta, DOVREBBE onorarlo e PUÒ omettere la disposizione di una pagina di *discovery* e/o l'applicazione autonoma del solo metodo di autenticazione di *default*.
+  * Se l'*hint* è assente, non supportato o non accettato, l'*Authorization Server* DEVE applicare le proprie politiche di autenticazione, inclusa l'eventuale pagina di *discovery* e il metodo di autenticazione di *default*.
+  * L'*Authorization Server* NON DEVE offrire in una pagina di *discovery*, selezionare o altrimenti applicare l'Autenticazione eID Substantial con Verifica MRTD a meno che la *Pushed Authorization Request* includa un oggetto ``it_l2+document_proof`` contenente i parametri tecnici obbligatori ``challenge_method`` e ``challenge_redirect_uri``. In assenza di tali parametri l'*Authorization Server* non può completare il successivo flusso multi-step e la conferma via browser.
+  * Un'Istanza del Wallet NON DEVE essere obbligata a implementare una interfaccia di *discovery* del metodo di autenticazione come prerequisito di interoperabilità per l'emissione del PID. Eventuali interfacce di pre-selezione lato Wallet (ad esempio per migliorare l'esperienza utente) RESTANO opzionali e DEVONO limitarsi a fornire *hint* all'*Authorization Server*.
+
+Gli *hint* di autenticazione riconosciuti per l'emissione PID sono i seguenti:
+
+  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD;
+  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo;
+  * l'assenza dell'oggetto ``it_l2+document_proof`` NON costituisce, di per sé, un mandato dell'Istanza del Wallet sul metodo di autenticazione: in tal caso l'*Authorization Server* applica le proprie politiche e NON DEVE offrire o applicare l'Autenticazione eID Substantial con Verifica MRTD per quella richiesta. In assenza di selezione dell'Utente tramite pagina di *discovery* del Credential Issuer, il metodo di autenticazione di *default* del PID Provider DEVE essere CieID con Livello di Garanzia Alto (CIE L3).
+
+.. note::
+   La presente Sezione riguarda la selezione del metodo di autenticazione in sede di emissione PID e NON si applica alla *Discovery Page* dei Touchpoint delle Relying Party descritta in :ref:`functionalities:Design dell'Esperienza Utente`, che ha scopo distinto (scelta del metodo di accesso a un servizio).
+
+Per l'emissione di un (Q)EAA, l'*Authorization Server* DEVE autenticare l'Utente richiedendo la presentazione di un PID valido all'Istanza del Wallet mediante [`OpenID4VP`_], come descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. In tale contesto NON si applica la *discovery* dei metodi SPID, CIE L3 o L2+.
 
 
 Authorization Request
