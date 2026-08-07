@@ -4,12 +4,11 @@
 Modello di Dati del PID
 =======================
 
-L'Attestato Elettronico di Dati di Identificazione Personale (PID) è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT VC e mdoc-CBOR.
+Il PID è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT VC e mdoc-CBOR.
 
 .. note::
-   **Fase Transitoria:**
-
-   Durante la fase transitoria prima della piena operatività EUDIW, il PID sarà fornito solo in formato SD-JWT-VC.
+  Il PID non sarà rilasciato finché l’IT-Wallet non sarà notificato EUDIW; l’**IT-Wallet ID** ha lo scopo di consentire l’accesso ai servizi online dei RP nazionali al posto del PID.
+  
 
 Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
 Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], gli attributi dell'Utente forniti all'interno del PID italiano sono quelli elencati di seguito:
@@ -19,7 +18,8 @@ Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_
 - Data di Nascita
 - Luogo di Nascita
 - Nazionalità
-- Numero di identificazione dell'Utente nei servizi delle Relying Party pubbliche (ad esempio il *codice fiscale*)
+- Ritratto
+- Numero amministrativo personale
 
 In aggiunta agli attributi dell'Utente elencati sopra, il PID include anche le seguenti informazioni (`EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
 
@@ -29,7 +29,7 @@ In aggiunta agli attributi dell'Utente elencati sopra, il PID include anche le s
 - Informazioni sullo stato di validità
 - Informazioni di verifica dell'identità e dei dati
 
-Alcuni attributi di dati, come il *codice di identificazione fiscale* e le *informazioni di verifica dell'identità e dei dati*, sono forniti come **estensioni domestiche** definite dalla specifica IT-Wallet italiana. Questi non fanno parte dell'ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), ma **consentiti, vedi ARF HLR PID_06**, il che consente agli Stati Membri di definire attributi domestici aggiuntivi oltre a quelli specificati nel Regolamento di Esecuzione della Commissione (CIR) 2024/2977 (`EU_2024/2977`_). In particolare, le informazioni di verifica dell'identità sono OBBLIGATORIE per i PID italiani per garantire:
+Alcuni attributi di dati, come le *informazioni di verifica dell'identità e dei dati*, sono forniti come **estensioni domestiche** definite dalla specifica IT-Wallet italiana. Questi non fanno parte dell'ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), ma **consentiti, vedi ARF HLR PID_06**, il che consente agli Stati Membri di definire attributi domestici aggiuntivi oltre a quelli specificati nel Regolamento di Esecuzione della Commissione (CIR) 2024/2977 (`EU_2024/2977`_). In particolare, le informazioni di verifica dell'identità sono OBBLIGATORIE per i PID italiani per garantire:
 
 - Tracciabilità del metodo di autenticazione dell'Utente.
 - Conformità al livello di garanzia dell'identity proofing durante il processo di enrollment (LoA come definito dal Regolamento eIDAS).
@@ -73,12 +73,30 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
     * - **nationalities**
       - OBBLIGATORIO. *Array di stringhe*. Uno o più codici paese alpha-2 come specificato in ISO 3166-1.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **picture**
+      - OBBLIGATORIO. *Stringa*. Immagine facciale codificata come data URL contenente il ritratto JPEG in base64, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Salvo il caso in cui l'Utente eserciti esplicitamente l'opt-out, ove applicabile; in caso di opt-out, il valore DEVE essere vuoto, come specificato nell'ARF HLR **PID_03**. L'inclusione obbligatoria dell'attributo portrait si applica a decorrere da 24 mesi dall'entrata in vigore del Regolamento che modifica `EU_2024/2977`_.
+      - Regolamento di esecuzione della Commissione `EU_2024/2977`_ e ARF PID Rulebook
     * - **personal_administrative_number**
-      - OBBLIGATORIO se ``tax_id_code`` non è presente, altrimenti OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica generato da ANPR in formato stringa.
+      - OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica. DEVE essere conforme con ETSI EN 319 412-1 Sezione 5.1.3. Gli unici identificativi semantici per persone fisiche (**NAT-5.1.3-03**) supportati all'interno di IT-Wallet sono ``PNO`` e ``TIN``. Per IDANPR, DEVE essere usato ``PNO``, mentre per il Codice Fiscale, DEVE essere usato ``TIN``. 
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
-    * - **tax_id_code**
-      - OBBLIGATORIO se ``personal_administrative_number`` non è presente, altrimenti OPZIONALE. *Stringa*. Codice di identificazione fiscale nazionale della persona fisica in formato Stringa. DEVE essere impostato secondo ETSI EN 319 412-1. Ad esempio ``TINIT-<ItalianTaxIdentificationNumber>``.
-      - Estensione domestica
+
+.. note::
+   **Identity Matching and Identity Reconciliation**
+
+   L'identity matching non è da intendersi come una funzionalità specifica del EUDI Wallet. È lo stesso approccio pratico già utilizzato in qualsiasi infrastruttura legacy di autenticazione e autorizzazione.
+
+   La Relying Party DEVE prima effettuare l'**identity matching**, per accertare che gli attributi di identificazione personale presentati nella transazione corrente si riferiscano alla stessa persona fisica. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'**identity reconciliation**, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
+
+   Tipi diversi di Attestato Elettronico POSSONO definire pattern di identity matching differenti. Questa Sezione definisce il pattern per il PID. Per il pattern dell'IT-Wallet ID, vedere la Sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`.
+
+   Per il PID, ``personal_administrative_number`` è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile. Quando è presentato, la Relying Party DOVREBBE utilizzarlo per l'identity matching. Quando non è presentato, la Relying Party DEVE effettuare l'identity matching mediante una o più delle seguenti modalità:
+
+   - *Attribute-Based Binding*: confrontando gli attributi di identificazione personale disponibili nella presentation del PID (ad esempio ``given_name``, ``family_name`` e ``birthdate`` / ``birth_date``);
+   - *Session-Based Binding*: considerando gli attributi rilasciati nella stessa presentation response come appartenenti al medesimo Utente;
+   - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*: utilizzando un identificativo attestato dall'Issuer o precedentemente stabilito con la Relying Party;
+   - *Cryptographic Binding*: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso WSCA/WSCD, quando disponibile.
+
+   La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pienamente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
 
 Tutti gli attributi Utente elencati sopra DEVONO essere divulgabili selettivamente.
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
@@ -138,17 +156,6 @@ L'elenco delle disclosure è presentato di seguito.
    ``["YWtI06xDdCyvTalcInTE3A", "birthdate", "1980-01-10"]``
 
 
-**Claim** ``tax_id_code``:
-
- * Hash SHA-256: ``_C7hoKFt0kV190v2GXIwLUIiDbc_7LcyofQmgDfute8``
- * Disclosure:
-   ``WyItejM0Y0oxZ0M1VUJQQ0l4OE9oTmlRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
-   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
- * Contenuto:
-   ``["-z34cJ1gC5UBPCIx8OhNiQ", "tax_id_code",``
-   ``"TINIT-XXXXXXXXXXXXXXXX"]``
-
-
 **Claim** ``place_of_birth``:
 
  * Hash SHA-256: ``tI5s2A_Ez6oZv6plZzUPjYAL-SJGiAUFyRbhzLsluGU``
@@ -168,6 +175,16 @@ L'elenco delle disclosure è presentato di seguito.
    ``IklUIl1d``
  * Contenuto:
    ``["KNc5-Gk9CQh_TdGbqBKI7A", "nationalities", ["IT"]]``
+
+**Claim** ``picture``:
+
+ * Hash SHA-256: ``R6x9o0j4m3L4Pq6xYdK3rP4nNq8vJ2b7sFqT9cUwI7A``
+ * Disclosure:
+   ``WyJRaDhMbU40eFI3dlAyY0tqVDVzWllBIiwgInBpY3R1cmUiLCAiZGF0YTppbWFn``
+   ``ZS9qcGVnO2Jhc2U2NCwvOWovNEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQuLi4iXQ``
+ * Contenuto:
+   ``["Qh8LmN4xR7vP2cKjT5sZYA", "picture",``
+   ``"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."]``
 
 Il formato combinato per l'emissione del PID è dato da:
 
@@ -211,12 +228,12 @@ In base a `EU_2024/2977`_ e alla **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDA
     * - **nationality**
       - OBBLIGATORIO. *(array di tstr)*. Uno o più codici paese alpha-2 come specificato in ISO 3166-1. Codificato come tipo CDDL ``nationalities`` (array di codici paese).
       - ``eu.europa.ec.eudi.pid.1``
-    * - **personal_administrative_number**
-      - OBBLIGATORIO se ``tax_id_code`` non è presente, altrimenti OPZIONALE. *(tstr)*. Identificativo univoco nazionale di una persona fisica generato da ANPR.
+    * - **portrait**
+      - OBBLIGATORIO. *(bstr)*. Immagine facciale in formato JPEG, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Salvo il caso in cui l'Utente eserciti esplicitamente l'opt-out, ove applicabile; in caso di opt-out, il valore DEVE essere vuoto, come specificato nell'ARF HLR **PID_03**. L'inclusione obbligatoria dell'attributo portrait si applica a decorrere da 24 mesi dall'entrata in vigore del Regolamento che modifica `EU_2024/2977`_.
       - ``eu.europa.ec.eudi.pid.1``
-    * - **tax_id_code**
-      - OBBLIGATORIO se ``personal_administrative_number`` non è presente, altrimenti OPZIONALE. *(tstr)*. Codice Fiscale italiano. Formato: ETSI EN 319 412-1 (es., ``TINIT-RSSMRA80A10H501U``). Lunghezza massima: 150 caratteri.
-      - ``eu.europa.ec.eudi.pid.it.1``
+    * - **personal_administrative_number**
+      - OPZIONALE. *(tstr)*. Identificativo univoco nazionale di una persona fisica generato da ANPR.
+      - ``eu.europa.ec.eudi.pid.1``
 
 Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella MobileSecurityObject <table_MobileSecurityObject_attributes>` e nella :ref:`Tabella Attributi Metadata mdoc-CBOR <table_element_identifiers_mdoc>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
 
@@ -246,6 +263,7 @@ Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Mobile
    - mdoc usa ``birth_date`` (non ``birthdate`` come in SD-JWT)
    - mdoc usa ``expiry_date`` (non ``date_of_expiry`` come in SD-JWT)
    - mdoc usa ``nationality`` (non ``nationalities`` come in SD-JWT). Nota: entrambi i formati codificano il valore come array di codici paese.
+   - mdoc usa ``portrait`` (non ``picture`` come in SD-JWT). Nota: SD-JWT codifica il valore come data URL; mdoc codifica i byte JPEG come ``bstr``.
 
    Vedere la Sezione 3.1.1 (codifica mdoc) e la Sezione 4.1.1 (codifica SD-JWT) dell'ARF PID Rulebook v1.3 per la mappatura completa.
 
