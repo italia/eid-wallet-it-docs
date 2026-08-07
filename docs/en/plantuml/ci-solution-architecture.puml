@@ -41,7 +41,7 @@ Boundary(issuer_solution, "Digital Credential Issuer Solution") {
 
     Component(auth_server, "Authorization Server", "OAuth 2.0", "Handles authentication and authorization flows", $tags="secondary", $sprite="server")
 
-    Component(relying_party, "Relying Party Component", "OpenID4VP / OIDC / SAML", "Authenticates users with National eID systems (for PID) or with PID (for (Q)EAA)", $tags="secondary", $sprite="server")
+    Component(relying_party, "Relying Party Component", "OpenID4VP / OIDC / SAML", "Authenticates users with National eID systems (for PID/IT-Wallet ID) or with PID/IT-Wallet ID (for (Q)EAA)", $tags="secondary", $sprite="server")
 
     Component(pdnd_eservices, "API Interface", "API e-services", "Authorized digital services accessing/exchanging data.", $tags="secondary", $sprite="exchange_alt")
 

@@ -1,17 +1,17 @@
 .. include:: ../common/common_definitions.rst
 
 
-Autenticazione eID Substantial con Verifica MRTD per Emissione PID
-==================================================================
+Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID
+===========================================================================
 
-Questa Sezione definisce un protocollo di Autenticazione eID Substantial con Verifica MRTD che si integra nel flusso di emissione PID come definito nella Sezione :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici` estendendo i flussi OAuth 2.0 per includere:
+Questa Sezione definisce un protocollo di Autenticazione eID Substantial con Verifica MRTD che si integra nel flusso di emissione dell'IT-Wallet ID come definito nella Sezione :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici` estendendo i flussi OAuth 2.0 per includere:
 
 	- Identificazione elettronica con Livello di Garanzia "Substantial" (LoA3) come step di autenticazione primaria.
 	- Verifica di documento elettronico come livello aggiuntivo di verifica dell'identità.
 	- Correlazione di sessione e binding di sicurezza tra gli step di autenticazione.
 	- Integrazione con i flussi di emissione Attestati Elettronici.
 
-Mentre l'autenticazione CIEid con LoA High rimane il metodo primario per l'attivazione Wallet e l'emissione PID, il meccanismo di Autenticazione eID Substantial con Verifica MRTD definito in questa Sezione fornisce un approccio alternativo per migliorare l'accessibilità e l'usabilità del servizio, senza compromettere la sicurezza complessiva dell'ecosistema IT-Wallet.
+Mentre l'autenticazione CIEid con LoA High rimane il metodo primario per l'attivazione Wallet e l'emissione dell'IT-Wallet ID, il meccanismo di Autenticazione eID Substantial con Verifica MRTD definito in questa Sezione fornisce un approccio alternativo per migliorare l'accessibilità e l'usabilità del servizio, senza compromettere la sicurezza complessiva dell'ecosistema IT-Wallet.
 
 .. note::
   Questa Sezione attualmente supporta solo la carta d'identità CIE per il protocollo di verifica MRTD, ma il protocollo descritto in questa Sezione PUÒ essere esteso per supportare altri Documenti MRTD come i Passaporti Elettronici.
@@ -31,10 +31,10 @@ Architettura di Sistema
 
 L'architettura di sistema comprende i seguenti componenti principali:
 
-	- **Istanza del Wallet:** Gestisce la richiesta PID secondo le Specifiche IT-Wallet, supportando capacità crittografiche aggiuntive per la lettura di Documenti Elettronici MRTD/IAS secondo le specifiche `ICAO 9303`_ e `BSI-03110`_.
-	- **Sistema di Autenticazione eID Substantial con Verifica MRTD:** Orchestra il flusso di autenticazione, integrando Provider di Identità LoA3, Servizio di Verifica di Documento Elettronico, ed eseguendo tutti i controlli di correlazione di identità per garantire che l'Utente che richiede un PID sia lo stesso Utente autenticato.
+	- **Istanza del Wallet:** Gestisce la richiesta IT-Wallet ID secondo le Specifiche IT-Wallet, supportando capacità crittografiche aggiuntive per la lettura di Documenti Elettronici MRTD/IAS secondo le specifiche `ICAO 9303`_ e `BSI-03110`_.
+	- **Sistema di Autenticazione eID Substantial con Verifica MRTD:** Orchestra il flusso di autenticazione, integrando Provider di Identità LoA3, Servizio di Verifica di Documento Elettronico, ed eseguendo tutti i controlli di correlazione di identità per garantire che l'Utente che richiede un IT-Wallet ID sia lo stesso Utente autenticato.
 
-		- **Server di Autorizzazione PID:** Gestisce il flusso di autorizzazione per l'Emissione PID, coordinando l'autenticazione Utente e l'identity proofing remoto.
+		- **Server di Autorizzazione EAA:** Gestisce il flusso di autorizzazione per l'Emissione IT-Wallet ID, coordinando l'autenticazione Utente e l'identity proofing remoto.
 		- **Servizio MRTD PoP:** Gestisce il proof of possession di documento elettronico con validazione crittografica del documento.
 
 	- **Provider di Identità LoA3:** Fornisce Schemi di Identificazione Elettronica con conformità eIDAS LoA3 (CIEid e SPID).
@@ -44,7 +44,7 @@ L'architettura di sistema comprende i seguenti componenti principali:
 .. plantuml:: plantuml/l2plus-system-architecture.puml
     :width: 99%
     :alt: La figura illustra l'Architettura del Sistema di Autenticazione eID Substantial con Verifica MRTD.
-    :caption: `Architettura del Sistema di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/png/bLJXRjj63Fxlfs2D0N6yk4xhxCU6BgXYAws0f3PiBqM70GAZevr3JtV2tSbPFFHTzYvxiV4aJrQTe4kDDf0eykD7yYFVEe_Mbxdg7BtmTvGJP6HBHQW7flHAQkgya3fJfI1uCpuRZi_IiSaBeqdxyyxxP1AdYsKyZwVBJxEuTzmvkee-JNzRfX-JvVlqAduNVvYmjNC44ren62ncysGPBrgWlYnGsD4mCtbkzFaJNrP6-m7UapCv3NuQ2lHuYuwUuUh8RiW-mr6AD4Chdk5vZqgH_p_7eTJEIrzw6KhgyACYY6ns9prvNrg4gzS_GbHwqbvck6Kt0aeci2XldKSseeBCQBWXArVi0TVpvQJJQNgVnd_wNitb1Bf9YDaY25BmiJ9ssHeL1LoRMwaelBqZPkGo0YkP1hyWp3WXTnBvqPLA6M1ZzXa2c40hm5EcZJ9hcHb8beCQ-ILS6gihf7u_mm8pwV_v6p8hlJThYok69oZ8WjgLEZ5PcJDd0t4mMQC381SqJA95lm-zP1nDuUVHwUW4BXR9u7JqwjNfSVVa1rSmAFtQhUliieukJ1ceFVIaSoLPBcjcpKOAig6OxZ7yrG7-DMvvgRnCdQSYnTBVRJbW8Varn-zkVkZXr79jpbk4bIgTCu1VWrJf1Y4T44WHFla7AAmnBFurMCgDDmtBy6i6sYkag3ccjMe3rUe1X0naZPNRRPqdKBcqcDEziPzX6d7KQmX_Wmy6pG71D9cStOoJRuoUk4XZXTHOJwUkAQJ3WtJD96fgF8d7_8N9qi8K5NkPqOw-P8IgVJ0pisxRo6bkK4dHbDJGh1i6_Aympf5peI3HY8XQ8WfJsknHlb8XxcDQ5UmsVLV2bywNmwLI1aUf54LRMqazIfRvbOb6LHaiX1o3QiB_QD5yQ9QZyf2Xp3fwrQXalmK8lN4IIm7ipXDfQxvrG9Zh0STCKcffBPst3vnpNZyQ-51bG4N0i87DfBwLpNkqhhXb9YS8zuhs2gvN5eDdQyMbNXcRLx0IB2dqSiD1ksFXmnZh0LJT4QJsJM-Xe0utmHGrk_2LaK4m66lZT-XfZh1c7teIlc70rkWowN5lS1aAqbksiDrZK2-_0S6QD5awhih8vLf9Oz4Ig2DoR98KlAfQwMMhpMBNeD3ZEQdcf3wnZPVrUkpMxGyT4iMvhEH9rVbXfmjqeIkkX0jhxZds4FZncYHw8qsj-RPYULYp94GVKe4tW_D36FW5klr-yj_5kKRFYwxN_NwtofvUy5r_uiAqj7vm3XVHzTMGJyZuMqNLi8ygEb3d98mPrsjPClwcKH7R54mUr_kMj2XpzIy0>`_
+    :caption: `Architettura del Sistema di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/svg/dLHXRzis4FtkNt4r1iJnuZYjimyRkg2AhIq2uiQml1GT1WWqUOw9KgH6dk8wG__xICfH7JT0Wnhvm1nFZ-_klRjtZfYbkbHm_UPdcDQAv20dh22fQMsiV60aZOR4yhKav5HRx1ozeZMM21njhP3fWQb9IOsTLr9pLGk4j-FpuVYy69koCXerNNIkiabQv8jqdjuiFixItd7dw3hvUFFNelYGBQwAw_JFzFt4Hpj7CC6L1uDyDiyMQRu7IdN5X1qDkIbBeo-UkLaPJGEsGMTA7Fmo58pOaZbyGQf3Uu_s1ObI59nPyOBC3LCAwNk9GwaTIQf9Xf8w_gWmQe7P1F9wwOXfaan5GT0VUQF8Hj8QflF516xHofNapmZLQGKeqi_KQmYTGFT3F42c0pZ7hWzDpL8gXAIgmdzNJ0k53hB5u35t0XR_hT4HX8uAC1eydxqCGhxMHfcxBGHOmQm81_xf53A2offxAT11ly_jjY9pPrcrbXmugvX_MfBqbojZGqt3BCaXLSZ96krp9eRN9Me2Yqn8VTVlGoyR9pVmw-XiT0ANUJOu6xr-VNRSFVd9LLOI_jvjYkrwHrsQEh3PzgHpDLfVNfeaC6i8sUun_DS1_slJoZ04XIEi2kPx_k0_-34jygq7AKC_RxmgwCWoGWSHVn3mWJt5MIcp0QO5M2mD8KWHBcaRkcTMll2MRFYrulQGiOPg4MqSIdmwldaCHoRXuit1TFzXMOaROp_5ns-ooVdjEFkk3q8kQt5Q_jmOAwIEaJqzN4FX-1dwml2YCbKaBpdwTsClPsOMYSl6eRTCIH5Hs-WUG_pg5h5pIzCry7-LSGwTQwLwwi0s_pwySCXxD-yxubywNmwdIXasAgIeF9bhaumWUnIjTLXZ86_fU1-znCC23HUx9BTlzmQXjL6JxA0tpb8fOjlpMJRPD_lU3l543mXoYON5E-d8RlsB7WNUHsIcOBwBTtSNasPZHce99mVCnJ7VwKoCv3s2CxNb6ASrNFeFJw4jH6eVBnlg5XKZ540c9iO6IueBWchdfGdXLe2uA9Xo1apLy5FRTd74pEdyRmXB7NgjQBekbzxn8Om1S2ajhKy0FrVIRcFq1BWa-O3QhMKLstU7Mg0z3hHa6Hx0Y5uxjE53j18rnzEz1ejTNq9tvwZQLNeuUUs4DRFmJ-Z5q-d9dAiVb-wbDHk7TX0twY7qjrCnUMfiLozB6LqTrPfb0U6G4BmTN1n2mM_GxVTRdquPyNNSgjt8eBZqI_kPdR9dz3oPNW_zdXWVRB1dYseXlwdem9c94BBHlTtuhOE205_BV8TQrANw7m00>`_
 
 Flusso High-Level
 -----------------
@@ -71,7 +71,7 @@ Il Server di Autorizzazione DEVE mantenere una sessione unificata attraverso tut
 	- **Correlazione di Stato**: I risultati di autenticazione da ogni step sono correlati.
 	- **Binding di Sicurezza**: Binding tra gli step di autenticazione.
 
-Poiché il Server di Autorizzazione PID e il Servizio MRTD PoP operano all'interno dell'implementazione dei confini del Provider PID, è RACCOMANDATO che la sessione OAuth 2.0 e i nonce utilizzati nel flusso del protocollo siano gestiti correttamente da entrambi i componenti.
+Poiché il Server di Autorizzazione EAA e il Servizio MRTD PoP operano all'interno dell'implementazione dei confini del Provider EAA, è RACCOMANDATO che la sessione OAuth 2.0 e i nonce utilizzati nel flusso del protocollo siano gestiti correttamente da entrambi i componenti.
 
 Quando entrambi i servizi operano all'interno dello stesso confine di fiducia, i seguenti meccanismi sono disponibili per la correlazione di sessione:
 
@@ -80,18 +80,18 @@ Quando entrambi i servizi operano all'interno dello stesso confine di fiducia, i
 	- Validazione nonce sincronizzata senza overhead di comunicazione esterna.
 	- Logging di audit unificato e correlazione di eventi di sicurezza.
 
-Quando il Server di Autorizzazione PID o il Servizio MRTD PoP sono erogati al di fuori dell'implementazione dei confini del Provider PID, le :ref:`credential-issuance-l2plus:Considerazioni di Sicurezza` DEVONO essere prese in considerazione per rafforzare la gestione delle sessioni di autenticazione Utente. Queste misure includono ma non sono limitate alla gestione sicura dei token di sessione, validazione di sessione distribuita, e meccanismi di audit trail migliorati.
+Quando il Server di Autorizzazione EAA o il Servizio MRTD PoP sono erogati al di fuori dell'implementazione dei confini del Provider EAA, le :ref:`credential-issuance-l2plus:Considerazioni di Sicurezza` DEVONO essere prese in considerazione per rafforzare la gestione delle sessioni di autenticazione Utente. Queste misure includono ma non sono limitate alla gestione sicura dei token di sessione, validazione di sessione distribuita, e meccanismi di audit trail migliorati.
 
 Flusso Low-Level
 ----------------
 
-Questa sezione fornisce dettagli tecnici sull'Emissione PID utilizzando Livello di Garanzia Substantial e identity proofing remoto attraverso verifica del documento elettronico utilizzando un servizio di Verifica MRTD.
+Questa sezione fornisce dettagli tecnici sull'Emissione dell'IT-Wallet ID utilizzando Livello di Garanzia Substantial e identity proofing remoto attraverso verifica del documento elettronico utilizzando un servizio di Verifica MRTD.
 
 .. _fig_eID_MRTD_Detailed_Flow:
 .. plantuml:: plantuml/l2plus-detailed-flow.puml
     :width: 99%
     :alt: La figura illustra il Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD.
-    :caption: `Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/png/nLR_Rjis4FvVJt5BqJPnewH9-iTWr4rLEpyyj8aG9IssUJ1ewUpSHf4QIQLjdcZliHSRUR9bEvcn0Ximm10ayxkxxxux7ldMEc5SNShe-NVk5ak474qjKQXOrqwImaZKJgkwdA29Ae-bd2gX76pTE5GEjq1Ok5bV6Ngdwbx09o4bEaOawuZ-y8J_xaSJ_GLWApNwZWeqa0u7M_3aFSrktJjPuxfLXkREOn9FoD3zlRWdhP1DE4Js64qU0X-khWUGwfHHW_GopI9K1VZ8wmPNE2FhZ8OBzYmameBdX-756hObF5B30fKZ9vPMR34Sf54K-GM9WN30v7F2E1p0UvqSmGkWnlWhL4RhAQaP62orqw1GmgcihTLmKfArYqnXU1qtiaRH3SHl8Ed2nrfB1E4StGc3G78kF8nKROKgD4VCwaaeYoCX8TSAFgAXgUV4yaHHhzU3Ks4H3hfmHVajeKS_bFhIVzz2hnSb73g3LMoQNC4sG2u9bHjJiGi6Vw_zqkNaLypTZgS379czn7t6nObpmTgHNy2DIx4lNz14FZz74Ve4WxDE9xWJtYIGPE2uG2T8WljQ8MoH6yl35uNEwp9mOf6tEfqeyjJZa04dO2lTyfzJ7jU6TW6_L6JGZadjB3BUB0vN9x0wExc6_GKfF6xrwEtjxJrRyH--0_xSH-z2HKLSpPjg3x-8ifAufyrifJA7tOUTb1egXI41ySCLtfpSQYovRxVL1k0IPY4ZtwRhAJtirCWZu7KGw-PHUFv2U152M5HMCtYk4-kwmUSofoFVla9IqIosMxKb6Fhx_FewtJ_OEu2ZbuTmgcjLZ496EHUy2xVELRQxly-JREypj_wgWllvRVXFpV2uqocDAve-wBrUlez_-7JzXliYXEGHqVNTrUhIykfqHYgzp7o1iT1vpCRxfCYr94Vg7mewKl_H7eWYNRa809WmY-N7L1VW2lEwGYE0r5IRagKbdy9F3FOOY9TP3XzYK1LHDFV8-hCGNCjr7Tgo7Fgo97cEbSEYoQvHLbTZfLMEkz1MODTNgmwF4X2sTTLCpB0vSGSAuHeAaP0ECWplu3t0dtz04HWecb2OT5w2zIE64-FQtQnsSq50og8XWz1FBXYr69f3Nh1viuBI8j2K8_fesZbKjTC-56GEApWuQ4C4unFhZ40cx1zBsMP6rzNy-FeHfTIVVHo7PjxT5wTzteto-NnxLcWMKpurskbSIyclUWh-bsfhaMS_3EOpJ2zu_FnaPX3LBs-W3w54ILL9obUtKGnfqZy9bNgFind1uEnWDppyCxiSZ0E6dVKXRhtnIFnRv3V57IRPCbx_biGTGbLF9W41IHW2KYjIiyQlHsyWyCscwuGU3IWMNwtPZrJRZ63vFh61mocPKi1LbiI7Brzz3mLAQ2svsXk7nSE1jd5m-E0q_Vg_Z8xraT5oPoxSbimjQ1zSQBWBEP4JhCD85OjsXEqMQF1Evs8dYXvCc9KvyH8kVziqNDPq-zP1Ox0WWpcVfu3DtF5KbxE7gyI1fbpFpGWkOb-hAGRSAV7zxvsmmWcmDRmp-hD54_Zu0xuzT3QLQZ-V73-EDROqKrWyq-5wC9xlxUOUiEsCACaXJ9f0Eok7vAlbQRhvHfR1cg0RBYX1jBukA4S8bYpllpjUZpqwrmKsQS2pq2_j1rdROmTFZvAdXwV-j_cUOvHs29fl-Bj9viVeyEpy-kpgvEGY6agOyfmC2JXIjG2B_hNGGBpq-AASwnAXm2afSfgRtzjKc7EphboZKHKSENhht-fI_WK0>`_
+    :caption: `Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/svg/nLPjRnf74Fw-lsBgAAbDV13R-L2X4ES2sAPAx1FWH6rTeULkW6sEtUlk7ZRzzTtPEuwNzA98hLG98RYRbsUUcNrctndBjSsNAVln1xl09KACEa-Hoq3bDXKI6S-jalboYffbpbR48kFImj6zGNq4tC3z_lFFF4tHma2wq396RnBkctG7VV-uowRg2U2e7uOGQRKI2OLyza7C5_PzckE-5rc5kLqeBVxYLYW98zIh4aGusZV-E1pt85AHjn4bZ5vq5uqOoWHStgyWmQsFobCOubmOgzVUwUFWTjzqO_OW1mbAA-ow0kyT1hs8CUQUfmWuwC475Lvuu6GS5yXVWiQbiWXY4oBJIis4d8EGC1W76nPxC30c9oBXAbMFZDr3y1R2DdmcB5O1ZwrOSOlWuaFfzI1pGw4e-oYVKYEiu2ay2hi0pymdr69MWc6iq-b0jE06uQmDTmJrWEWX_fcZiT3fiD3d7q4Red1OlJW6Y5E1qav4SWgwU7et_GDZU-BWG97QXmwwtZ08hNKsHNmkazgN0NLHI5_V3NB7CfbJp4R3H-MxK2S9MYvIiEiCuKZOINh-Cb5nlYHidkEZHeCnLq10TLHbc4n9Wt1SGf_aMfm2FcL2eva8URAfkxtNd1gQ2DnrVmoj3JIyhDZfD9lD5pjPw3_PtoXZsu2S1ravJ4ryuiiinQRIyzqUdJlCMYovNXzELU0xJWVpy0qHHOEuDmxKpP4hYoQsJQxxNbKzpBs7DyJNVRk8pW-dEIRsP67fUQg9Lz2yMyr56wgp-ecd8l6c5JOQzPlnE6gTDS_WujKvNAdST_-3AeAsOM5jPjgjbfUovgFlpIvthNX1p-GSBnkDfRP9CGUTDzlVavy_Zz_wkQ2KNYRQRhmgO2KHZSQ3ZEv6hh6Og3ZmhYqXXQqWEc3VRkI3_2zF0cCgimm0F6RYY-Ig3GwmrG9NwBZzrRdCb5xw46HB9X1iwpmqGPamLiQZ1kmpKRQGgAZwSkxw4iOnPXQJii22MvLDf98ndaBLWrFNhvo-bhxMOvKLQfgkJpmIrt_E64yj36O5D0DIMU0hBb8-JH6iyWmSx1bVMGX-I3Vz8bFXm6eBtV3MMspaSx1zZAb145KoDRLSI4o0MnXPpE3ih8fDdlqdgtbiFL2OQRKanuAqkLPvLkwlNp1rUWstLrsNooAvL0UHuFjpv4Y7NgbE4D4uWVj4oXWqnfdJCwjYbNhn9nGRAByzcsj4-VjRw4BLe33BqgqMH66tJsqQ8a-WTtrsIb_kUtJNcv2v3zM5e8hbzV2VB87LfHs4ezsiLRgG3dsg96sXA9-wz_05rqL4ygd9_Lrk-p3sdJpLagS7olCWZRygRCUm1i1m50Rdhrx_14RC9RUvHcg82xNrf5RN2iLMmRwf6IjQl-l_JJK0sBvU490DO3-KAwg3hYKK93SR4XxaPfVIfboL4koumVZB2MC7mhAZ3w_Wxakzg6nP-svzqPW8ZR5VeRvyBpWEzbPqg4a-bM_cDmny2zzhzMXG1rDkC84hGKFKLN8czB8QRRVJgsrJrwfMFBtyEjM4863oGj7cd9IdkrZzntQXLJvVmBH0SBAx7L_NtSSAbhPhqXDQVpNPUdZsVCYkIZpD_tAzNZhhs8Kgge4ND37L7s5CnmTuVX4-Fxzod_eRZfRA8YWwfk5fE78wEhY-6LyF-_rRDbuWp4W2OoMja3aQu76iT4A7tggQ6xFtu0OId7b5Bq_1rjXa66_lmIWJZu6zSx_oPVet>`_
 
 Fase 1: Richiesta di Autorizzazione OAuth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,14 +101,14 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un PID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
 
 Di seguito un esempio non normativo di PAR:
 
 .. code-block:: http
 
     POST /as/par HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -116,7 +116,7 @@ Di seguito un esempio non normativo di PAR:
     client_id=47b982369791d08003a7283f059cb0d1&
     request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
-Quando l'oggetto ``it_l2+document_proof`` non è presente nell'array authorization_details, il Provider PID DEVE autenticare l'Utente con CIEid LoA High.
+Quando l'oggetto ``it_l2+document_proof`` non è presente nell'array authorization_details, il Provider EAA DEVE autenticare l'Utente con CIEid LoA High.
 La Risposta PAR e la Richiesta di Autorizzazione sono le stesse delle Specifiche IT-Wallet.
 
 Fase 2: Autenticazione Primaria
@@ -124,7 +124,7 @@ Fase 2: Autenticazione Primaria
 
 Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità LoA3 configurato per l'autenticazione primaria. L'Utente completa il flusso di autenticazione LoA3 (SPID o CIEid Substantial) e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
-Il Server di Autorizzazione PID DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
+Il Server di Autorizzazione EAA DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
 
 .. note::
   Nel caso in cui l'Utente dovesse eseguire un'autenticazione LoA High, la successiva fase 3 DEVE essere saltata.
@@ -155,7 +155,7 @@ Il Server di Autorizzazione DEVE fornire un JWT firmato contenente i requisiti d
      - OBBLIGATORIO. DEVE essere ``mrtd-ias+jwt``.
    * - **kid**
      - string
-     - OBBLIGATORIO. Identificatore della chiave del Provider PID che DEVE essere utilizzata per verificare la firma di questo JWT.
+     - OBBLIGATORIO. Identificatore della chiave del Provider EAA che DEVE essere utilizzata per verificare la firma di questo JWT.
 
 .. _table_eID_MRTD_Proof_JWT_Payload:
 .. list-table:: Payload JWT di Prova MRTD
@@ -167,7 +167,7 @@ Il Server di Autorizzazione DEVE fornire un JWT firmato contenente i requisiti d
      - **Descrizione**
    * - **iss**
      - string
-     - OBBLIGATORIO. Identificatore Provider PID.
+     - OBBLIGATORIO. Identificatore Provider EAA.
    * - **aud**
      - string
      - OBBLIGATORIO. Identificatore Istanza del Wallet.
@@ -218,7 +218,7 @@ Il server di autorizzazione DEVE:
 
 L'Istanza del Wallet DEVE:
 
-- Validare la firma JWT utilizzando la chiave pubblica del Provider PID ottenuta tramite valutazione di fiducia.
+- Validare la firma JWT utilizzando la chiave pubblica del Provider EAA ottenuta tramite valutazione di fiducia.
 - Verificare che il claim ``aud`` corrisponda al suo ``client_id``.
 - Verificare che i claim ``iat`` ed ``exp`` indichino che il token abbia una data di emissione corretta e non sia scaduto.
 - Verificare che il campo ``status`` sia impostato a "require_interaction".
@@ -252,7 +252,7 @@ Di seguito un esempio non normativo di una Richiesta MRTD PoP:
 .. code-block:: http
 
     POST /edoc-proof/init HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/json
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -264,7 +264,7 @@ Di seguito un esempio non normativo di una Richiesta MRTD PoP:
 
 **L'Istanza del Wallet DEVE:**
 
-- Validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider PID.
+- Validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider EAA.
 - Verificare che il claim JWT ``aud`` corrisponda al suo ``client_id``.
 - Assicurare che il claim JWT ``exp`` indichi che il token non è scaduto.
 - Estrarre i valori ``mrtd_auth_session`` e ``mrtd_pop_jwt_nonce`` per correlazione.
@@ -300,7 +300,7 @@ Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviar
      - OBBLIGATORIO. DEVE essere ``mrtd-ias-pop+jwt``.
    * - **kid**
      - string
-     - OBBLIGATORIO. Identificatore della chiave del Provider PID che DEVE essere utilizzata per verificare la firma di questo JWT.
+     - OBBLIGATORIO. Identificatore della chiave del Provider EAA che DEVE essere utilizzata per verificare la firma di questo JWT.
 
 .. _table_eID_MRTD_PoP_Response_Payload:
 .. list-table:: Parametri Risposta MRTD PoP
@@ -312,7 +312,7 @@ Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviar
      - **Descrizione**
    * - **iss**
      - string
-     - OBBLIGATORIO. Identificatore Provider PID.
+     - OBBLIGATORIO. Identificatore Provider EAA.
    * - **aud**
      - string
      - OBBLIGATORIO. Identificatore Istanza del Wallet.
@@ -362,7 +362,7 @@ Body JWT decodificato:
 .. code-block:: json
 
     {
-      "iss":"https://pid-provider.example.org",
+      "iss":"https://eaa-provider.example.org",
       "aud":"https://wallet.example.org/instance/12345",
       "iat": 1753555800,
       "exp": 1753556000,
@@ -395,12 +395,12 @@ Body JWT decodificato:
 - Memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
 - Preparare sessione di lettura NFC.
 
-L'Istanza del Wallet esegue lettura e validazione di documento elettronico basata su NFC, poi invia l'evidenza al Provider PID per verifica finale e correlazione di identità con il risultato di autenticazione LoA3.
+L'Istanza del Wallet esegue lettura e validazione di documento elettronico basata su NFC, poi invia l'evidenza al Provider EAA per verifica finale e correlazione di identità con il risultato di autenticazione LoA3.
 
 Richiesta di Validazione MRTD PoP
 """""""""""""""""""""""""""""""""
 
-Dopo che tutte le evidenze sono state raccolte tramite interazione NFC con il Documento Elettronico, l'Istanza del Wallet DEVE inviare tutti i dati al Server di Autorizzazione del Provider PID per la validazione finale e controlli incrociati di identità. L'Istanza del Wallet DEVE inviare una Richiesta HTTP POST con ``application/json`` come content type, includendo Wallet Attestation e Wallet Attestation JWT PoP nell'header secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_. Il payload della Richiesta contiene i seguenti parametri.
+Dopo che tutte le evidenze sono state raccolte tramite interazione NFC con il Documento Elettronico, l'Istanza del Wallet DEVE inviare tutti i dati al Server di Autorizzazione del Provider EAA per la validazione finale e controlli incrociati di identità. L'Istanza del Wallet DEVE inviare una Richiesta HTTP POST con ``application/json`` come content type, includendo Wallet Attestation e Wallet Attestation JWT PoP nell'header secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_. Il payload della Richiesta contiene i seguenti parametri.
 
 .. _table_eID_MRTD_PoP_Validation_Request:
 .. list-table:: Parametri Richiesta di Validazione MRTD PoP
@@ -456,7 +456,7 @@ La struttura del JWT di Validazione (``mrtd_validation_jwt``) è data nella segu
      - OBBLIGATORIO. Identificatore Istanza del Wallet.
    * - **aud**
      - string
-     - OBBLIGATORIO. Identificatore Provider PID.
+     - OBBLIGATORIO. Identificatore Provider EAA.
    * - **iat**
      - integer
      - OBBLIGATORIO. Tempo di emissione (Unix timestamp).
@@ -524,7 +524,7 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 .. code-block:: http
 
     POST /edoc-proof/verify HTTP/1.1
-    Host: pid-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/json
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
@@ -599,7 +599,7 @@ Di seguito un esempio non normativo di una Risposta di Validazione MRTD PoP:
       "status": "require_interaction",
  	    "type": "redirect_to_web",
       "mrtd_val_pop_nonce": "0f2bff024317345b6927ce17e776361d",
-      "redirect_uri":"https://pid-provider.example.org/cb"
+      "redirect_uri":"https://eaa-provider.example.org/cb"
     }
 
 **Il servizio MRTD PoP DEVE:**
@@ -619,7 +619,7 @@ Dopo validazione MRTD PoP con successo, l'Istanza del Wallet DEVE reindirizzare 
 
 .. code-block:: text
 
-    https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
+    https://eaa-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
 
 L'Istanza del Wallet DEVE validare che il ``mrtd_val_pop_nonce`` corrisponda al valore ricevuto dalla Risposta di Validazione MRTD PoP.
 
@@ -714,7 +714,7 @@ In particolare, ogni fase di autenticazione DEVE convalidare la correlazione tra
 - Correlazione delle prove documentali con l'identità autenticata.
 - Validazione della sequenza temporale per prevenire attacchi fuori ordine.
 
-Quando i componenti operano al di fuori dei confini del provider PID, DEVONO essere implementate le seguenti misure di sicurezza aggiuntive:
+Quando i componenti operano al di fuori dei confini del Provider EAA, DEVONO essere implementate le seguenti misure di sicurezza aggiuntive:
 
 - Comunicazione sicura tra servizi (ad esempio, tramite pinning del certificato, TLS reciproco, ecc.).
 - Crittografia e integrità dei dati sensibili della sessione e/o delle informazioni di identità personale (ad esempio, utilizzando token JWE/JWS).
@@ -724,7 +724,7 @@ Quando i componenti operano al di fuori dei confini del provider PID, DEVONO ess
 .. plantuml:: plantuml/l2plus-security-controls.puml
     :width: 99%
     :alt: La figura illustra i Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD.
-    :caption: `Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/png/pLR_Rjl84VwVJp5raCHMB3koqpOL8ZkAv1yg4bimxGHjNGWhSYHDkzhbBPTEuYUwzxWNkzcXB8fMT31mzyS11a5vl_dzpSTzdtlbV37NqSk_-1dE4H9qXKPbchRmcWn6gl3M5FCnkYXZB2MKAUDXwyQZyRW5AeUR-ic0dPfx1L-KrkW5qQqZUeCJ-NSl6jjl05j3P-yeHGV3GNyBddsawSn_q0NMhM9qTupfSaAExk_LFLc3OY8XudKqCGG-NLttOMY7WkeFBuTnX2O5ZbmtkC8fvTvPk13FIYCyvFbfSB6AhHA-DOCKZIUlAYkn6FI7KHJnWSQGSC0aYuHnq8UFjdi8hu1Au--GEMidPARWS6wzvQF46iv5QuASai8Xrnj5Dz0yWcuRFXTM8oZlwKuv1DABNiEjAN9bKlkZc74n3eFnf7Jm3f_HqOGHqg0ewdGwSAfoX5ORhYYP4JBwSRCl-VSCEfseAvd4i8eTTgzW6o3HnA57bEw2mvyAFheS_myJlyFPWKGMBysUu9fTxuEr9px0ZKTD7Y0OrFhbEQh050pE6etWJh59I5A0enIz8Wt-UuQmHNwa3rwbDYdc8ITfyrQZ4KMSUZDK80NacLtclqXvL3ZQ1VoMaSDyH6RdeUADpH4cIebd9zUm_v0K7Y_xqTdRstknuZ_y3lXpZjw6ZD9cjg3L7dvJyqpZddNJbSaSj1_FTUXehXmfQ3u-aVMKmKlBcN0r0l08dR4CiB9ICI-TkaF3iNdlybaKzmx3bWX6cdKKA5qhVerX4IFWNMZhpLgYyWjBNkTeSXl0LKTv0XjyFZtBga-7l25AKrgwMGg0y3PUhD3vzVLmlxNNWiFN1t1g2vFUXYubGg8spBpFylR-lkZZtbVPhjMfx2Upy3ypnUD6O-vyMdAhywvw7_tpo_KHSwrMmde5Vr-fG3Wc4jLcRbUzVgYWqRWrmykOwONCwQQ4sIT3VbaE5_7RTBerVz06rkgIdDTh-ziknBstuV6FbIfjvYC042CP1yjh6-0Aao93fu3CnBgv38-uz7yBc37GhBepU8nXzr6qy2WJbWOAh-hzMmx-W0VVJHBCFAPbLyhPsMnah4bm5vOp1eHjcvNw7eG4To1LlWmSAUqXnl0ER0U__0nfY6jeJ46akM7r3wAK8vE-MTsdb81CZeuSGgzx8QW7lH_8GPwK9wXp19f8H8vclKTJUCkX8FQOGQjLXM3ZazmxXP8mFwfcJPqjiiN7zb-ejVtASJownTPSdFP4EVJBXPJmRE2K1vjR63hhRMArbbSx0VuRsZp7F0yawY_qrZxayPzdKuTe_di4FGY3wMQPfcHrFPkilhsJC9-FE9qIzCzQk-71p_YoFmeOSTQ3PkLDvFj7o2V57NJZAbvlHinTo8hnE22W6sH8MqDcMlfbz8O4dcnQJsXD8gNvfcP_QoeAvdBxsP33AV4om5NSRHwyVlCMKjGLUMNQcwHbJIWtoWm7fydtFx_GX0UJ8UBdWRmVolFDYW3LXQVgHQXDQ2wrXbc6b2pSXHwHLzBNMvC-q1ksbq27TpPHEr7qIATMrEOrNFx_ARMq_Ye9IqcjwkkmMTtg8toIqZbCoM4Yrn30KlYuoahyX30IQ2BKsemGFlMicM30dP9Sd3-eN7a5UG4VdFsQemlvyBre-LtTn9hzP7mixZlh4KSvJGscBsouMuqMOYENgZ0cBAzJszwfENc4SHbuf_xzVUf7ghfClAdk9vjlmp7KfhBXSXWwtxCf9GZ1KcRq-wuXnunERBge7Qf6X1-KvnrnyFom-_pWbFysTRtUertfqk3i_FhiwkJa8Xfec8ZkXm8ycK91ZloQMg3bqScSmwrKEaT8SKA6l9LbPfiCat9P1jVDybDOzVizlnLp_Ii0>`_
+    :caption: `Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/svg/nLTzRzks4_vVd-9-ATfVuiP9dNHRPzH9LJil7jh4Y9mMsp8Oj7IskSgaHb9Eiay_tacMxAGkCcp004EmgNjvxdcEH_gTTSAuV9u6__-Vc-4S8KQJfoXKK-SkbGe3aJkjylaOJP1vMndBJ2W7MzSMpHO82zVhwvz5cgA3llAXLOni4gwRTFidlDmDnleEOEia365Wz48c5FBP1pcTkVTfZkjUP1NcRgQD_5CugHL4Q1ObY31QD_vuDUp1G0_OHfOmUeFBGHIWIi3dVGG9BZYgIE4Afz8wSyzE7_iNwwPBinlLJr0vwUvhyEJGxms28F3hAGBsU_11XuSCd8pZ0lbBC3ZN3a4kGsH6wubKKv0A-iFcaiKUzAtDYKWuJVLj45n3ymZ2DdmcB4w3Y9rS28VWuqFfTQDoIw4eUvIFIGWdHVeGnArqCs2YFg6Hat8v23gT3WncmYAqsd19JWzuly8_ShGEEfqWP3WHj64GNbKljW7YLA9o8vdiWYbMByU_O-nsF3eeKdFePfSDcw5ptgQ8BrIoyMMJH9MAopr7uKadSuhPQ71KiGfrbA0JCWLtdo5iIJTA3rucEixdX8qftseqWi0NqAGwgZ9iffL5s2wXZt8ZTm7lCcdGZgJQMTRTNjDg0qq4xkna2FjBQ7XSiTFPszjxiPA5VfFzkRQk3IX4CojxQm_ln3nBSK-RwQf61nwpaNDXxX_gs-G6e7twDUMfBrUxWzGqYdfIByWZyXjHB53vr7ulsbaGTGzfxx0DCtP4hTwc9Elngye3_nxU4hFNxGA7UBWDOk9PiMN1w8PuXI1F1xZAq64Rgd7mIQGouQ3SlL6vcyw7my5-Qwy5XwyEu5Jdt54VT96-3JFdCjlUt-TfkNVBUg_giH_FQ4rDyRZHc1kN5BtLULj_7_tqUNX4lRPQmkCAVbYfW7kCPrRRDtTLGabket6Z1fUHRojCTDpa9FjIILSLuqluTXlTg7zp7wwLnh0Vb_VzBaJTD_JuSQLGdRa00DY95A6PsmPVg3CI5-ZL-mMaccWpvzHaIoRGhFXvQ4B1Ww2CHnAlCbYr4r5OAN_WbG_Z63E7IKbCePxEHagh67UXKfcPsTPPSH2azpkSFn5E18587VGd1I0BIZiG2o5JCKuHd6Q-7XoHN4y8l4sMwfAfz12DWsvumHRBoT-lbp6r2B9AfiTEI8K920UHmmnQhIesUPxSEIDYnq1XOlIS70kgfaRdMNdq_eofFshWuhJhSpaabsfe47pUoPvgw9MJ50RKVE0_0sqjMalcVitfMATyRX6A9PHVdqqDelhj2BfGoH9cMLhFhK7OFI5nhb0aq3jhxTB3FwFBteZCELGNcdKicjrViuHWKzf-6ArchTA5D7PIhUW07UHZ_nw-u7qHaNmsv7wIspgCTIUcMZqwfM-KvLjEtNmR05n5OVFWrUitOELK2PSR945ygDgJfDuuLkh9-Cq9iw2hmlr_DcC0_jwKeOVlXy0_3_Zx8JzVhqoVzQb3XIq9u2PV42zqGoDGkLsIUgEMzmYw9IpAey9pZV6NdI1uC9vMfimhkFpob57P-ewHSYsj-bZOFDLg0Pyyu0mcqc3CDmzMWYUUhxYUUjmld8hwwXi6t4tlZRwrQ9fZOJ61KqdztDLg8isyscLq5LeUg9kwPZyU7tFqpkE48mA2oGjDbubHEMxu7aKAON63sdOpe_Ff3CO5eftrW_V9HrDzYtYzwIvSK5rV9rYLpTV2seCbu91TdR1M__0QSkojOvsK543D1_sGrdOumFF3yFd1gVzi8d-TgbqcgtzsFZoxEZcv28OpX0cDz5Wh9rME5aGSQvFG47DwmvyNzX0M4fpG2RNSrRMnpJ2k_eFK0hppt_9v-XS0>`_
 
 Generazione Challenge Crittografico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -734,7 +734,7 @@ Il Servizio MRTD PoP DEVE generare challenge crittograficamente sicuri con entro
 Gestione Ciclo di Vita Nonce
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ogni step nel flusso di Autenticazione eID Substantial con Verifica MRTD DEVE utilizzare valori nonce unici per prevenire attacchi replay. I valori nonce DEVONO avere tempi di scadenza appropriati e DEVONO essere invalidati dopo uso con successo. Il Server di Autorizzazione PID e il Servizio MRTD PoP DEVONO mantenere validazione nonce sincronizzata per assicurare integrità di sessione.
+Ogni step nel flusso di Autenticazione eID Substantial con Verifica MRTD DEVE utilizzare valori nonce unici per prevenire attacchi replay. I valori nonce DEVONO avere tempi di scadenza appropriati e DEVONO essere invalidati dopo uso con successo. Il Server di Autorizzazione EAA e il Servizio MRTD PoP DEVONO mantenere validazione nonce sincronizzata per assicurare integrità di sessione.
 
 Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
 - ``mrtd_pop_jwt_nonce`` DEVE essere correlato con il JWT di prova MRTD.
@@ -750,10 +750,10 @@ Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
  - Includere la convalida del timestamp anti-replay.
  - Essere verificato rispetto all'intera catena di nonce per verificarne l'integrità.
 
-Metadati del Provider PID
+Metadati del Provider EAA
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
+In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`, i Metadati del Provider EAA per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
 
 Controlli di Sicurezza
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -772,28 +772,28 @@ I seguenti controlli di sicurezza DEVONO essere implementati nel protocollo:
      - I canali di comunicazione di rete sono protetti utilizzando TLS v1.2+ con cifrari sicuri.
      - Tutte
    * - **SC2**
-     - L'Istanza del Wallet assicura l'autenticità del Provider PID e del Provider di Identità eID tramite pinning del certificato leaf di ogni server.
+     - L'Istanza del Wallet assicura l'autenticità del Provider EAA e del Provider di Identità eID tramite pinning del certificato leaf di ogni server.
      - Tutte
    * - **SC3**
-     - Il Server di Autorizzazione PID verifica che il Provider di Identità eID utilizzato nella fase *eID LoA3* sia accreditato.
+     - Il Server di Autorizzazione EAA verifica che il Provider di Identità eID utilizzato nella fase *eID LoA3* sia accreditato.
      - Fase 2
    * - **SC4**
-     - Il Server di Autorizzazione PID verifica l'autenticità e integrità dei dati estratti dall'asserzione *eID LoA3*, controllando la firma digitale.
+     - Il Server di Autorizzazione EAA verifica l'autenticità e integrità dei dati estratti dall'asserzione *eID LoA3*, controllando la firma digitale.
      - Fase 2
    * - **SC5**
      - Il valore challenge e tutti i valori nonce sono generati con protezioni per prevenire attacchi bruteforce o di indovinamento.
      - Fase 3
    * - **SC6**
-     - Il Provider PID verifica tutti i valori nonce per rilevare attacchi replay.
+     - Il Provider EAA verifica tutti i valori nonce per rilevare attacchi replay.
      - Fase 3
    * - **SC7**
-     - L'Istanza del Wallet verifica che ``challenge_info`` sia firmato appropriatamente dal Server di Autorizzazione PID. Inoltre, controlla che ``challenge_info`` contenga: un valore ``iss`` corrispondente al valore del Server di Autorizzazione PID; un valore aud uguale al ``client_id`` dell'Istanza del Wallet; e un valore ``state`` uguale a quello nella richiesta PAR, per essere sicuri che la risposta sia legata alla richiesta iniziale fatta dall'Istanza del Wallet nello Step 2. Quindi le informazioni fornite come parte di ``challenge_info``, in particolare l'``htu`` che corrisponde all'url di redirect da seguire per il *MRTD PoP*, non sono manomesse.
+     - L'Istanza del Wallet verifica che ``challenge_info`` sia firmato appropriatamente dal Server di Autorizzazione EAA. Inoltre, controlla che ``challenge_info`` contenga: un valore ``iss`` corrispondente al valore del Server di Autorizzazione EAA; un valore aud uguale al ``client_id`` dell'Istanza del Wallet; e un valore ``state`` uguale a quello nella richiesta PAR, per essere sicuri che la risposta sia legata alla richiesta iniziale fatta dall'Istanza del Wallet nello Step 2. Quindi le informazioni fornite come parte di ``challenge_info``, in particolare l'``htu`` che corrisponde all'url di redirect da seguire per il *MRTD PoP*, non sono manomesse.
      - Fase 3
    * - **SC8**
-     - Il Provider PID controlla che l'``mrtd_auth_session`` sia associata alla stessa Istanza del Wallet in tutte le richieste nella fase *MRTD PoP*. Quindi il Provider PID può essere sicuro che l'Istanza del Wallet che esegue la fase *MRTD PoP*: sia fidata; sia sempre la stessa attraverso il protocollo; e abbia precedentemente iniziato l'emissione PID (richiesta PAR). Questo può essere implementato richiedendo all'Istanza del Wallet di eseguire un proof of possession della sua chiave privata (es., all'interno di OAuth-Client-Attestation o firmando un valore nonce).
+     - Il Provider EAA controlla che l'``mrtd_auth_session`` sia associata alla stessa Istanza del Wallet in tutte le richieste nella fase *MRTD PoP*. Quindi il Provider EAA può essere sicuro che l'Istanza del Wallet che esegue la fase *MRTD PoP*: sia fidata; sia sempre la stessa attraverso il protocollo; e abbia precedentemente iniziato l'emissione IT-Wallet ID (richiesta PAR). Questo può essere implementato richiedendo all'Istanza del Wallet di eseguire un proof of possession della sua chiave privata (es., all'interno di OAuth-Client-Attestation o firmando un valore nonce).
      - Fase 3
    * - **SC9**
-     - Il Provider PID controlla che l'``mrtd_auth_session`` non sia scaduta (timeout di validità tipicamente di 5 minuti), cioè che l'operazione sia stata conclusa entro una certa quantità di tempo.
+     - Il Provider EAA controlla che l'``mrtd_auth_session`` non sia scaduta (timeout di validità tipicamente di 5 minuti), cioè che l'operazione sia stata conclusa entro una certa quantità di tempo.
      - Fase 3
    * - **SC10**
      - L'integrità e riservatezza del canale tra la *CIE fisica* e il *device_wallet fisico* è protetta con il protocollo PACE (tramite l'algoritmo e le funzioni di derivazione chiave supportate dalla carta).
@@ -833,7 +833,7 @@ Considerazioni Implementative
 
 Le implementazioni DOVREBBERO incorporare meccanismi di rate-limiting per proteggere contro attacchi automatizzati ed esaurimento risorse, e una configurazione di timeout che bilanci esperienza utente e postura di sicurezza, accomodando la variabilità inerente nella lettura di documenti basata su NFC.
 
-Il Provider PID DOVREBBE implementare un approccio di timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
+Il Provider EAA DOVREBBE implementare un approccio di timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
 
 Tutti gli eventi rilevanti per la sicurezza durante il flusso di Autenticazione eID Substantial con Verifica MRTD DEVONO essere loggati con dettaglio sufficiente per scopi di auditing preservando la privacy dell'Utente, assicurando che le informazioni di identificazione personale, quando memorizzate, siano hashate appropriatamente. I log di audit DOVREBBERO avere identificatori di correlazione consistenti, abilitando tracciamento end-to-end attraverso tutte le fasi del protocollo, con protezione di integrità crittografica per prevenire manomissioni.
 

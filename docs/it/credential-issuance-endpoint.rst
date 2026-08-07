@@ -110,7 +110,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Metodo utilizzato per derivare il **code challenge**. DEVE essere valorizzato con ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
+      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``, per l'IT-Wallet ID può essere valorizzato con ``eid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
       - :rfc:`6749`
     * - **authorization_details**
       - Array di Oggetti JSON. Ogni Oggetto JSON DEVE includere i seguenti claim:
@@ -124,7 +124,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
             - **idphinting**: OBBLIGATORIO. URL del Provider di Identità da utilizzare come suggerimento,
             - **challenge_method**: OBBLIGATORIO. Specifica il metodo di verifica MRTD. Il valore DEVE essere ``mrtd+ias``. Metodi di verifica aggiuntivi POSSONO essere definiti in future release di questa Specifica,
             - **challenge_redirect_uri**: OBBLIGATORIO. Redirect URI per il processo di challenge. Il valore DEVE essere l'Universal Link registrato dall'Istanza del Wallet.
-      - Vedi [RAR :rfc:`9396`], [`OpenID4VCI`_] e :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+      - Vedi [RAR :rfc:`9396`], [`OpenID4VCI`_] e :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
     * - **redirect_uri**
       - *Redirection URI* a cui è indirizzata la response. DEVE essere un *universal link* oppure un *app link* registrato nel sistema operativo locale, in modo tale che quest'ultimo potrà fornirà la response all'Istanza del Wallet.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.

@@ -1002,7 +1002,7 @@ Each Credential MUST specify domains, classes and purposes to enable both **Cred
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific Credential types for compliance and audit requirements, including for example:
 
-    - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification.
+    - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification or ``"credential_type":"eid"`` for IT-Wallet ID-specific identity verification.
     - **Police Controls**: ``"credential_type":"mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
     - **Healthcare Services**: ``"credential_type":"european_disability_card"`` for EU-compliant disability benefit access.
@@ -1081,7 +1081,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **version**
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
+    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid`` and for IT-Wallet ID MUST be ``eid``.
   * - **state**
     - REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:
 
@@ -1365,7 +1365,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - **version**
      - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
    * - **credential_type**
-     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``).
+     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``, ``eid``).
    * - **format**
      - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
    * - **vct**
@@ -1443,8 +1443,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog** and of the **Taxonomy**.
 
 2.  **Navigation and Selection**:
-
-  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
+  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``eid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
   * **Issuer Metadata**: The entity extracts the Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
   * **Detail Consultation**: To obtain complete information and specific technical requirements, the entity accesses the **Entity Configuration** using the retrieved identifier.
 

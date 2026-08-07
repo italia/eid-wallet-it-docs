@@ -990,7 +990,7 @@ Ogni Credenziale DEVE specificare domini, classi e finalità per abilitare sia g
 
   1. **Scenari Credential-Specific** (Primari per il settore governativo/regolamentato): Le RP richiedono tipologie specifiche di Credenziale per requisiti di conformità e audit, inclusi ad esempio:
 
-    - **Servizi Governativi**: ``"credential_type":"pid"`` per la verifica dell'identità specifica con PID.
+    - **Servizi Governativi**: ``"credential_type":"pid"`` per la verifica dell'identità specifica con PID oppure ``"credential_type":"eid"`` per la verifica dell'identità specifica con IT-Wallet ID.
     - **Controlli di Polizia**: ``"credential_type":"mDL"`` per la verifica della patente di guida.
     - **KYC Bancario**: Tipologie specifiche di credenziale previste dalla normativa finanziaria.
     - **Servizi Sanitari**: ``"credential_type":"european_disability_card"`` per l'accesso ai benefici per disabilità conformi EU.
@@ -1069,7 +1069,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **version**
     - OBBLIGATORIO. Versione della definizione della Credenziale Digitale.
   * - **credential_type**
-    - OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere ``pid``.
+    - OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere ``pid`` e per l'IT-Wallet ID DEVE essere ``eid``.
   * - **credential_name_l10n_id**
     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile della Credenziale Digitale nel bundle di localizzazione (es. ``mDL.name``).
   * - **legal_type**
@@ -1346,7 +1346,7 @@ Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-
    * - **version**
      - OBBLIGATORIO. La versione della definizione dello schema (es. ``1.0.0``).
    * - **credential_type**
-     - OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. ``mDL``, ``pid``).
+     - OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. ``mDL``, ``pid``, ``eid``).
    * - **format**
      - OBBLIGATORIO. Il formato tecnico dello schema (es. ``mso_mdoc``, ``dc+sd-jwt``).
    * - **vct**
@@ -1423,7 +1423,7 @@ Questo percorso di *Navigazione del Catalogo* supporta gli Utenti (sia utenti um
 
 2.  **Navigazione e Selezione**:
 
-  * **Discovery delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare le tipologie di Credenziale rilevanti (es. ``pid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Tassonomia** per navigare la gerarchia e fornire diverse localizzazioni.
+  * **Discovery delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare le tipologie di Credenziale rilevanti (es. ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Tassonomia** per navigare la gerarchia e fornire diverse localizzazioni.
   * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` nel campo `issuers`) associato alla Credenziale desiderata.
   * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede alla **Configurazione dell'Entità** (Metadati dell'Emittente) utilizzando l'identificatore recuperato.
 

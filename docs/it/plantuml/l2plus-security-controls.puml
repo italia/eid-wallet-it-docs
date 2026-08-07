@@ -4,8 +4,8 @@ autonumber
 participant "Utente" as U
 participant "Istanza Wallet" as A
 participant "CIE" as C
-box  "Provider PID" #LightBlue
-participant "Server Autorizzazione PID" as AS
+box  "Provider EAA" #LightBlue
+participant "Server Autorizzazione EAA" as AS
 participant "Servizio MRTD PoP" as DPOPS
 end box
 participant "Registro Nazionale CIE" as MIN
@@ -20,7 +20,7 @@ U -> A: Vuole attivare il Wallet \nusando Autenticazione eID Substantial con Ver
 A -> AS : Richiesta PAR (  client_id, requestObject) \n  con OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header e\n  **con authorization_detail type "it_l2+document_proof"**
 
 AS --> A : Risposta PAR (request_uri, expires_in)
-A -> AS: Richiesta Autorizzazione PID \n  GET /authorize?client_id=...&request_uri=...\n  Host: pid-provider.example.org
+A -> AS: Richiesta Autorizzazione IT-Wallet ID \n  GET /authorize?client_id=...&request_uri=...\n  Host: eaa-provider.example.org
 
 === Fase 2: Autenticazione Primaria - Autenticazione Utente eID con LoA Substantial ==
 rnote over AS #LavenderBlush
@@ -40,7 +40,7 @@ rnote over A #LavenderBlush
 SC7
 endrnote
 
-A -> DPOPS: **Richiesta MRTD PoP**\nPOST /edoc-proof/init HTTP/1.1\n Host: pid-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
+A -> DPOPS: **Richiesta MRTD PoP**\nPOST /edoc-proof/init HTTP/1.1\n Host: eaa-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
 
 rnote over DPOPS #LavenderBlush
 SC6, SC8, SC9
@@ -70,7 +70,7 @@ group #LightYellow Interazione NFC con l'Utente per Flusso Protocollo Proof of P
     C --[#green]> A : Firma RSA-2048 del challenge
 end
 
-A -> DPOPS: **Richiesta Validazione MRTD PoP**\nPOST /edoc-proof/verify HTTP/1.1\n Host: pid-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
+A -> DPOPS: **Richiesta Validazione MRTD PoP**\nPOST /edoc-proof/verify HTTP/1.1\n Host: eaa-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
 
 rnote over DPOPS #LavenderBlush
 SC6, SC8, SC9, SC11,
@@ -89,16 +89,16 @@ DPOPS --> A: **Risposta Validazione MRTD PoP**\nHTTP/1.1 202 Accepted\ncon redir
 
 A -> A: firma mrtd_val_pop_nonce
 
-A -> AS: **Conferma Finale Basata su Browser**\nGET https://pid-provider.example.org/cb?nonce=mrtd_val_pop_nonce_signed&oauth_session=...&state=...\n(tramite browser)
+A -> AS: **Conferma Finale Basata su Browser**\nGET https://eaa-provider.example.org/cb?nonce=mrtd_val_pop_nonce_signed&oauth_session=...&state=...\n(tramite browser)
 
 rnote over AS #LavenderBlush
 SC6, SC8, SC9
 endrnote
 
 === Fase 4: Risposta Autorizzazione OAuth ==
-AS -> A: **Risposta Autorizzazione PID con Codice Auth**\nHTTP/1.1 302 Found\n Location: https://start.wallet.example.org?\n code=...\n &state=...\n &iss=https%3A%2F%2Fpid-provider.example.org
+AS -> A: **Risposta Autorizzazione IT-Wallet ID con Codice Auth**\nHTTP/1.1 302 Found\n Location: https://start.wallet.example.org?\n code=...\n &state=...\n &iss=https%3A%2F%2Feaa-provider.example.org
 
 rnote over A,AS #LIGHTGREEN
-Il flusso continua secondo il flusso Emissione PID come definito nella specifica IT-Wallet
+Il flusso continua secondo il flusso Emissione IT-Wallet ID come definito nella specifica IT-Wallet
 endrnote
 @enduml

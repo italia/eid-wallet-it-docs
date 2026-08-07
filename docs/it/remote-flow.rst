@@ -222,7 +222,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "claims": [
               {"path": ["given_name"]},
               {"path": ["family_name"]},
-              {"path": ["personal_administrative_number"]}
+              {"path": ["birthdate"]}
             ]
              },
             {
