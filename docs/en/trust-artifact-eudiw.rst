@@ -346,6 +346,10 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
      - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
 
+.. note::
+  
+  As suggested in the `EIDAS-ARF`_, for efficiency, implementations MAY routinely check Trust Anchors in Lists of Trusted Entities or Trusted Lists and store them locally. This allows, for example, Relying Party Instances running on mobile apps to facilitate offline presentations.
+  
 The example below shows a non-normative example of payload of a List of Trusted Entities for PID Providers.
 
 .. literalinclude:: ../../examples/lote-pid.json
@@ -524,5 +528,4 @@ The timing of detection depends on when the Wallet Unit checks the Digital Crede
 
     - It enables Attestation Provider to unilaterally change an EDP, and it may introduce privacy risks and management overhead (as stated in the Discussion Topic D)
     - Technical details of this mechanism are not defined within ETSI standard.
-
 
