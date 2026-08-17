@@ -1237,8 +1237,34 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div>
 </section>
 </section>
+<section id="token-status-list-wallet-unit-attestation-profile">
+<h2><span class="section-number">12.1.6. </span>Token Status List (Wallet Unit Attestation Profile)<a class="headerlink" href="#token-status-list-wallet-unit-attestation-profile" title="Link to this heading">¶</a></h2>
+<p>This section profiles the Token Status List (TSL) mechanism of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> for Wallet Unit Attestations. A TSL conveys the current status of many Wallet Unit Attestations in a compact, signed Status List Token (SLT).</p>
+<p>The SLT Provider MUST be the Wallet Provider.</p>
+<p><strong>Status List</strong></p>
+<p>A Status List contains a compressed byte array whose entries represent the statuses of many Wallet Instance Attestations (WIAs) or Key Attestations (KAs). A WIA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list</span></code>, and a KA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list</span></code>. Each Status List reference MUST contain <code class="docutils literal notranslate"><span class="pre">idx</span></code> and <code class="docutils literal notranslate"><span class="pre">uri</span></code>. Both WIAs and KAs are JWTs; therefore, <code class="docutils literal notranslate"><span class="pre">idx</span></code> is a JSON integer and <code class="docutils literal notranslate"><span class="pre">uri</span></code> is a JSON string in each reference. In both cases, <code class="docutils literal notranslate"><span class="pre">uri</span></code> MUST be a URI conforming to <span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>According to this specification, a WIA or KA can have one of the following statuses:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VALID</span></code>. The WIA or KA is valid. This status is represented by <code class="docutils literal notranslate"><span class="pre">0x00</span></code> in the SLT.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVALID</span></code>. The WIA or KA is revoked. This status is represented by <code class="docutils literal notranslate"><span class="pre">0x01</span></code> in the SLT.</p></li>
+</ul>
+</div></blockquote>
+<p>As a result, the Wallet Provider MUST set the <code class="docutils literal notranslate"><span class="pre">bits</span></code> parameter in the SLT's <code class="docutils literal notranslate"><span class="pre">status_list</span></code> object to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.</p>
+<p><strong>Status List Token</strong></p>
+<p>The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> member or the KA's <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code> member, using <code class="docutils literal notranslate"><span class="pre">application/statuslist+jwt</span></code> for a JWT SLT or <code class="docutils literal notranslate"><span class="pre">application/statuslist+cwt</span></code> for a CWT SLT.</p>
+<p>The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a>.</p>
+<p>Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:</p>
+<ul class="simple">
+<li><p>a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework; or</p></li>
+<li><p>a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.</p></li>
+</ul>
+<p><strong>Privacy Considerations</strong></p>
+<p>To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST integrate the status information for many WIAs or KAs into the same list and MUST publish the SLT at the same <code class="docutils literal notranslate"><span class="pre">uri</span></code> for all those attestations. This specification requires Wallet Providers to configure Status Lists with at least 100,000 status entries. If more attestations are issued, the Wallet Provider MAY create additional SLTs or increase the number of entries in the array, depending on practical considerations such as the total size of each SLT and the management of multiple endpoints.</p>
+</section>
 <section id="e-service-pdnd-wallet-provider-catalog">
-<h2><span class="section-number">12.1.6. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.7. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
 <p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of the PID/IT-Wallet ID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
 <div class="admonition note">
@@ -1246,7 +1272,7 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
 <p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
 </div>
 <section id="notify-user-death">
-<h3><span class="section-number">12.1.6.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.7.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1368,8 +1394,9 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
 <li><a class="reference internal" href="#key-attestation-jwt">12.1.5.3. Key Attestation JWT</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#e-service-pdnd-wallet-provider-catalog">12.1.6. e-Service PDND Wallet Provider Catalog</a><ul>
-<li><a class="reference internal" href="#notify-user-death">12.1.6.1. Notify User Death</a></li>
+<li><a class="reference internal" href="#token-status-list-wallet-unit-attestation-profile">12.1.6. Token Status List (Wallet Unit Attestation Profile)</a></li>
+<li><a class="reference internal" href="#e-service-pdnd-wallet-provider-catalog">12.1.7. e-Service PDND Wallet Provider Catalog</a><ul>
+<li><a class="reference internal" href="#notify-user-death">12.1.7.1. Notify User Death</a></li>
 </ul>
 </li>
 </ul>
@@ -1407,7 +1434,7 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 11/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

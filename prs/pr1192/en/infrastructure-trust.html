@@ -344,7 +344,7 @@ It defines which of them are operated within IT-Wallet, which certificates each 
 <p>The content of the certificates is not defined here.
 The common requirements are defined in <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> and the specific requirements of each certificate are defined together with the artifact that uses it.
 The issuance of the certificates is part of the onboarding (see <a class="reference internal" href="onboarding-system.html#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>).
-The use of the Trust Anchors at runtime is defined in <a class="reference internal" href="trust-evaluation.html#eudiw-trust-anchor-validation"><span class="std std-ref">EUDIW Trust Anchor Validation</span></a> for the EUDIW Trust Framework and in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a> and <a class="reference internal" href="trust-evaluation.html#authentication-trust-anchor-distribution"><span class="std std-ref">Authentication Trust Anchor Distribution</span></a> for the National Trust Framework.</p>
+The use of the Trust Anchors at runtime is defined in <a class="reference internal" href="trust-evaluation.html#eudiw-trust-anchor-validation"><span class="std std-ref">EUDIW Trust Anchor Validation</span></a> for the EUDIW Trust Framework and in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>, <a class="reference internal" href="trust-evaluation.html#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a> and <a class="reference internal" href="trust-evaluation.html#authentication-trust-anchor-distribution"><span class="std std-ref">Authentication Trust Anchor Distribution</span></a> for the National Trust Framework.</p>
 <section id="certification-hierarchies">
 <h3><span class="section-number">5.2.1. </span>Certification Hierarchies<a class="headerlink" href="#certification-hierarchies" title="Link to this heading">¶</a></h3>
 <p>Within IT-Wallet a single national Root Certification Authority is operated.
@@ -352,12 +352,12 @@ It issues the certificates of the subordinate Certification Authorities and it i
 Each subordinate Certification Authority serves one service, and its certificate is the Trust Anchor published for that service.</p>
 <figure class="align-center" id="id698">
 <span id="fig-pki-architecture"></span><p class="plantuml">
-<object data="_images/plantuml-13e50e33a89b76cd29aea0a9b017fe08b0b4c244.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-13e50e33a89b76cd29aea0a9b017fe08b0b4c244.png"><img src="_images/plantuml-13e50e33a89b76cd29aea0a9b017fe08b0b4c244.png" alt="The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority." style="width: 99.0%"/></a>
+<object data="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png"><img src="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png" alt="The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHJoCt47xVNp6wUyXBoRQebTfxEDqIGez2kIK9IX-GAhCxsRLmR6HxWr9q_xqUEt7N2I6zMoIGn_DztupzsUQJiKpRRYco0OnGMxxW5RDSIMWvQgOhzyS0apKyTGzYErUrJ4eKe1PWMuGQDLzX3JFT6Gk5h5gbpJ3Bp2ENJqop9PYMrUgPomOMJ1ZipTIuO9sm5qhQ6xP4-8nYXTO9lPupvVyW_7JQcooqLiyZ9PI6zp_xhpUfiR9CDWBX9GCuOzLZerKdwv0_Rxb5YYljMaWvllPOdXoEDQzplByew6UNvLV_kQWlsgu5meCIjQFD12uiM0MQDws5cbEDNCaisygyks4KO0BAgyjtm0pS53Cdda7ifvyqKSh2gBYNUQuM2y4b_W2giuRNw7TdnGIlVR9hnBPvxYadNxxCTXZBotCejLeve8OfRsG-HIOsr8ScesVG16QN_xTBdgRSSoO4siFqwVnnXNdf-7Sa9cKnydH5LQ4nKFMGPDMWSJ91iIOdbinDkvb8IVW3QrnqjaLfj_uFDVU9ri3IbEhLiekxsUUzgYUZlUM8uxqcd4XS9HfxV6zTQ9WgJB3Xncgsl-XnvkXoJyQ_7rYPSL7iyPwhgbkYj7u2zO6rSCZiQy_rjnqJBYlU8rFKArxzrwt7tSwc9RoajKJWHlxMCVz_9zs-JLPsPoVVn5VUdILjZU_EB-URbYuqM-Apqey-sMMEx-3by24qz_AQEvXQ13pMC9QMasizmJKTj3VFsL66S906IGLfnySvgEMqYWWba3zNHpbyrjiiawCiRzh_67ZVv7_Yye5st3AB4KGaP8n2MrwvhDDJeiJBysAQvnkcsNLYWNXO3hWWNE-9z0MwnZqiULNlfQzv3ICb5xpfGif6zM9CPf3AqbjZhLgw4S2iHUYnRV1Nk3R0D8PdtRHO4ySVyokFuTBVCwzfcI4nhWbBKl3Ny9SVVoDGUbCnMSSKRapd-1ySAFqVmyFeQbNQwGpT46KT6W1QG7gZuEJaOtnI-e5vcGx9Fqc4xjhTb4cIGZkUZEbAoZPYC1n-t9mmhnR691iEUHZJLc_LAHATd0OZ3PKGywYSKCKcHFNGbPHmKnyXG3iC7o3Fq-SeSKYUPw6H119U52wRtTniq3SCEJduqSM_tJg3xx7EuFkiCqYjCuZMoJA13GtY6PWgmObIg-SFWT5GZNtLxSjgkWUbQoufbEYbDZrdhkr8QTk3oOa6DycI9Li1N0upLtMeFVlaVdLByIy0">PKI Architecture of the IT-Wallet Ecosystem.</a></span><a class="headerlink" href="#id698" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0">PKI Architecture of the IT-Wallet Ecosystem.</a></span><a class="headerlink" href="#id698" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The following table lists the Certification Authorities, the certificates that are issued by each of them, and the channel through which the derived Trust Anchor is distributed.
@@ -382,7 +382,7 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
 </tr>
 <tr class="row-odd"><td><p>Wallet Provider Sign/Seal CA</p></td>
 <td><p><a class="reference internal" href="#wallet-provider-sign-seal-certificate"><span class="std std-ref">Wallet Provider Sign/Seal Certificate</span></a></p></td>
-<td><p>Wallet Providers LoTE.</p></td>
+<td><p>Wallet Providers LoTE in the EUDIW Trust Framework, and the Federation Trust Anchor Entity Configuration as the distribution channel for the National Wallet Trust Anchor in the National Trust Framework (see <a class="reference internal" href="trust-evaluation.html#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WRPAC CA</p></td>
 <td><p>Access certificates following the <a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>, issued to the Wallet-Relying Parties.</p></td>
@@ -420,6 +420,15 @@ For an EAA issued in the EUDIW Trust Framework the Trust Anchor is referenced in
 <p>The Qualified CA of the QEAA Provider and the PuB-EAA Provider Sign/Seal CA are not subordinate to the national Root Certification Authority.
 Both belong to the perimeter of a Qualified Trust Service Provider and follow its own supervision and publication regime.
 The Sign/Seal Certificate of a PuB-EAA Provider is a qualified electronic seal issued by a Qualified Trust Service Provider (Article 45f of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]).</p>
+<section id="revocation-trust-anchors">
+<h4><span class="section-number">5.2.1.1. </span>Revocation Trust Anchors<a class="headerlink" href="#revocation-trust-anchors" title="Link to this heading">¶</a></h4>
+<p>Within these specifications, the following additional conditions apply regarding revocation Trust Anchors:</p>
+<ul class="simple">
+<li><p>Within the EUDIW Trust Framework, the Trust Anchors used to validate the revocation mechanisms for WRPRC, PID and PuB-EAA certificate chains are the same notified Trust Anchors used by the corresponding signing PKIs.</p></li>
+<li><p>Within the National Trust Framework, the Signing Trust Anchors of EAA Providers are also the Trust Anchors used to validate the revocation status of EAA signing certificate chains.</p></li>
+<li><p>For Wallet Instance Attestations and Key Attestations, the Wallet Provider MUST use the same Trust Anchor for signature validation and for validation of the applicable status or revocation information. In the EUDIW Trust Framework, this Trust Anchor is published in the Wallet Providers LoTE; in the National Trust Framework, the same key material is distributed as the National Wallet Trust Anchor through the Federation Trust Anchor Entity Configuration (see <a class="reference internal" href="trust-evaluation.html#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>).</p></li>
+<li><p>When a Wallet Provider operates in both Trust Frameworks, its National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission and published in the Wallet Providers LoTE under the Wallet Provider's <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code>. The national Entity Configuration is an additional distribution channel and MUST NOT introduce a second Trust Anchor.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.</p>
@@ -430,6 +439,7 @@ The Sign/Seal Certificate of a PuB-EAA Provider is a qualified electronic seal i
 The binding between a Federation Entity and its keys is provided by the Entity Configuration and by the Subordinate Statement issued by its superior, which are validated through the Federation Trust Chain and not with a certification path (see <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>).
 The Entity Configuration of the Federation Trust Anchor is used as a distribution channel for the Trust Anchors of the X.509 hierarchies.</p>
 </div>
+</section>
 </section>
 <section id="design-principles">
 <h3><span class="section-number">5.2.2. </span>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h3>
@@ -4132,7 +4142,7 @@ The main distinction is the following:</p>
 </li>
 <li><p>To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:</p>
 <ul>
-<li><p>make available an endpoint to request <a class="reference internal" href="#status-list-token-slt"><span class="std std-ref">Status List Token (SLT)</span></a>;</p></li>
+<li><p>make available an endpoint to request <a class="reference internal" href="#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>;</p></li>
 <li><p>issue WRPRCs with the appropriate parameter <code class="docutils literal notranslate"><span class="pre">status</span></code> as described in <a class="reference internal" href="#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.</p></li>
 </ul>
 </li>
@@ -4765,61 +4775,19 @@ Contains the <code class="docutils literal notranslate"><span class="pre">Revoke
 </div>
 </section>
 </section>
-<section id="token-status-list-tsl">
-<h4><span class="section-number">5.7.3.3. </span>Token Status List (TSL)<a class="headerlink" href="#token-status-list-tsl" title="Link to this heading">¶</a></h4>
-<p>This section defines a Status List data structure, which is used to convey information regarding the individual statuses of multiple WRPRCs.
-A Status List describes the status of the WRPRCs by encoding their validity in a bit array.
-Each WRPRC is allocated an index during issuance; this index represents its position within the bit array.
-The value of the bit(s) at this index corresponds to the WRPRC's status.</p>
-<p>A Status List is provided within a cryptographically signed Status List Token in JWT format.
-The format, request and response structures are found in <a class="reference internal" href="credential-revocation.html#token-status-lists"><span class="std std-ref">Token Status Lists</span></a>.</p>
-<p>In this specification, the roles of the Provider of WRPRC and Status Issuer (i.e., the entity that issues the Status List Token about the status information of the WRPRC) MUST coincide.
-Moreover, the Status Provider (i.e., the entity that provides the Status List Token on a public endpoint) MUST be the Provider of WRPRC itself.</p>
-<p>The Provider of WRPRC MUST use the following values for the possible statuses of the issued WRPRCs:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0x00</span></code> - <code class="docutils literal notranslate"><span class="pre">VALID</span></code> - The WRPRC is valid.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x01</span></code> - <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> - The WRPRC is revoked.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x02</span></code> - <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> - The status of the Referenced Token is temporarily invalid, hanging, debarred from privilege. This status is usually temporary.</p></li>
-</ul>
-<p>Once the Wallet Unit receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.</p>
-<section id="status-list-token-slt">
-<h5><span class="section-number">5.7.3.3.1. </span>Status List Token (SLT)<a class="headerlink" href="#status-list-token-slt" title="Link to this heading">¶</a></h5>
-<p>The <strong>Status List Token</strong> is available at the Status List Endpoint.
-It is formatted as a JSON Web Token (JWT) signed by the Provider of WRPRC and contains the parameters described in <a class="reference internal" href="credential-revocation.html#status-list-token"><span class="std std-ref">Status List Token</span></a>.
-The only difference is the <code class="docutils literal notranslate"><span class="pre">status_list</span></code> claim, which is a JSON object containing the following parameters:</p>
-<table class="longtable docutils align-default" id="table-wrprc-status-list-structure">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>bits</strong></p></td>
-<td><p>REQUIRED.
-JSON Integer specifying the number of bits per WRPRC in the compressed byte array (<code class="docutils literal notranslate"><span class="pre">lst</span></code>).
-The allowed values for bits are 1,2,4 and 8.</p></td>
-<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>lst</strong></p></td>
-<td><p>REQUIRED.
-JSON String that contains the status values for all the WRPRCs it conveys statuses for.
-The value MUST be the base64url-encoded compressed byte array.</p></td>
-<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>aggregation_uri</strong></p></td>
-<td><p>OPTIONAL.
-JSON String that contains a URI to retrieve the Status List Aggregation for this type of WRPRC or Issuer.</p></td>
-<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a></p></td>
-</tr>
-</tbody>
-</table>
-</section>
+<section id="token-status-list-wrprc-profile">
+<h4><span class="section-number">5.7.3.3. </span>Token Status List (WRPRC Profile)<a class="headerlink" href="#token-status-list-wrprc-profile" title="Link to this heading">¶</a></h4>
+<p>This section profiles the Token Status List (TSL) mechanism of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> for Wallet-Relying Party Registration Certificates (WRPRCs). A TSL conveys the current status of many WRPRCs in a compact, signed Status List Token (SLT).</p>
+<p>The SLT Provider MAY be the Provider of WRPRC or a designated entity.</p>
+<p><strong>Status List</strong></p>
+<p>A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative <code class="docutils literal notranslate"><span class="pre">idx</span></code> value to each issued WRPRC and include it, together with the SLT <code class="docutils literal notranslate"><span class="pre">uri</span></code>, in the WRPRC's <code class="docutils literal notranslate"><span class="pre">status.status_list</span></code> member. For a JWT-encoded WRPRC, <code class="docutils literal notranslate"><span class="pre">idx</span></code> is a JSON integer and <code class="docutils literal notranslate"><span class="pre">uri</span></code> is a JSON string; for a CWT-encoded WRPRC, <code class="docutils literal notranslate"><span class="pre">idx</span></code> is a CBOR unsigned integer and <code class="docutils literal notranslate"><span class="pre">uri</span></code> is a CBOR text string. In both cases, <code class="docutils literal notranslate"><span class="pre">uri</span></code> MUST be a URI conforming to <span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>According to the ARF and [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], the WRPRC status is either <code class="docutils literal notranslate"><span class="pre">VALID</span></code> or <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>; therefore, the Provider of WRPRC MUST set the <code class="docutils literal notranslate"><span class="pre">bits</span></code> parameter in the SLT's <code class="docutils literal notranslate"><span class="pre">status_list</span></code> object to <code class="docutils literal notranslate"><span class="pre">1</span></code>. The value <code class="docutils literal notranslate"><span class="pre">0x00</span></code> represents <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, and <code class="docutils literal notranslate"><span class="pre">0x01</span></code> represents <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>.</p>
+<p>The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.</p>
+<p><strong>Status List Token</strong></p>
+<p>The SLT Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the WRPRC's <code class="docutils literal notranslate"><span class="pre">status.status_list.uri</span></code> member, using <code class="docutils literal notranslate"><span class="pre">application/statuslist+jwt</span></code> for a JWT SLT or <code class="docutils literal notranslate"><span class="pre">application/statuslist+cwt</span></code> for a CWT SLT. The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature.</p>
+<p>A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as described in Section 5.2, of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a>.</p>
+<p>Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.</p>
+<p>For a JWT SLT, the signing certificate chain MUST be carried in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> JOSE header; for a CWT SLT, it MUST be carried in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> COSE header (label <code class="docutils literal notranslate"><span class="pre">33</span></code>).</p>
 </section>
 </section>
 </section>
@@ -4901,7 +4869,10 @@ JSON String that contains a URI to retrieve the Status List Aggregation for this
 <li><a class="reference internal" href="#">5. Infrastructure of Trust</a><ul>
 <li><a class="reference internal" href="#overview">5.1. Overview</a></li>
 <li><a class="reference internal" href="#pki-architecture">5.2. PKI Architecture</a><ul>
-<li><a class="reference internal" href="#certification-hierarchies">5.2.1. Certification Hierarchies</a></li>
+<li><a class="reference internal" href="#certification-hierarchies">5.2.1. Certification Hierarchies</a><ul>
+<li><a class="reference internal" href="#revocation-trust-anchors">5.2.1.1. Revocation Trust Anchors</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#design-principles">5.2.2. Design Principles</a></li>
 </ul>
 </li>
@@ -4976,10 +4947,7 @@ JSON String that contains a URI to retrieve the Status List Aggregation for this
 <li><a class="reference internal" href="#online-certificate-status-protocol-response-format">5.7.3.2.2. Online Certificate Status Protocol Response Format</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#token-status-list-tsl">5.7.3.3. Token Status List (TSL)</a><ul>
-<li><a class="reference internal" href="#status-list-token-slt">5.7.3.3.1. Status List Token (SLT)</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#token-status-list-wrprc-profile">5.7.3.3. Token Status List (WRPRC Profile)</a></li>
 </ul>
 </li>
 </ul>
@@ -5019,7 +4987,7 @@ JSON String that contains a URI to retrieve the Status List Aggregation for this
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 11/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
