@@ -564,7 +564,7 @@ This section lists the test cases from Sections:
    * - WP_069
      - Issuance, Security
      - Check Digital Credential status
-     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`).
+     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating a Status List Token as described in `TOKEN-STATUS-LIST`_ and the profiles specified in `:ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)

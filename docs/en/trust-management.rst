@@ -67,7 +67,7 @@ The main distinction is the following:
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
+  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
@@ -558,61 +558,30 @@ Each ``SingleResponse`` is an ASN.1 *SEQUENCE* that carries the following parame
 
 Below is a non-normative example of an OCSP response with a single ``good`` status.
 
-
 .. literalinclude:: ../../examples/ocsp-response.txt
   :language: text
 
-Token Status List (TSL)
-""""""""""""""""""""""""
+Token Status List (WRPRC Profile)
+""""""""""""""""""""""""""""""""""
 
-This section defines a Status List data structure, which is used to convey information regarding the individual statuses of multiple WRPRCs.
-A Status List describes the status of the WRPRCs by encoding their validity in a bit array.
-Each WRPRC is allocated an index during issuance; this index represents its position within the bit array.
-The value of the bit(s) at this index corresponds to the WRPRC's status.
+This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIST`_ for Wallet-Relying Party Registration Certificates (WRPRCs). A TSL conveys the current status of many WRPRCs in a compact, signed Status List Token (SLT).
 
-A Status List is provided within a cryptographically signed Status List Token in JWT format.
-The format, request and response structures are found in :ref:`credential-revocation:Token Status Lists`.
+The SLT Provider MAY be the Provider of WRPRC or a designated entity.
 
-In this specification, the roles of the Provider of WRPRC and Status Issuer (i.e., the entity that issues the Status List Token about the status information of the WRPRC) MUST coincide.
-Moreover, the Status Provider (i.e., the entity that provides the Status List Token on a public endpoint) MUST be the Provider of WRPRC itself.
+**Status List**
 
-The Provider of WRPRC MUST use the following values for the possible statuses of the issued WRPRCs:
+A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative ``idx`` value to each issued WRPRC and include it, together with the SLT ``uri``, in the WRPRC's ``status.status_list`` member. For a JWT-encoded WRPRC, ``idx`` is a JSON integer and ``uri`` is a JSON string; for a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
 
-- ``0x00`` - ``VALID`` - The WRPRC is valid.
-- ``0x01`` - ``INVALID`` - The WRPRC is revoked.
-- ``0x02`` - ``SUSPENDED`` - The status of the Referenced Token is temporarily invalid, hanging, debarred from privilege. This status is usually temporary.
+According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``; therefore, the Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
 
-Once the Wallet Unit receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.
+The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
 
-Status List Token (SLT)
-........................
+**Status List Token**
 
-The **Status List Token** is available at the Status List Endpoint.
-It is formatted as a JSON Web Token (JWT) signed by the Provider of WRPRC and contains the parameters described in :ref:`credential-revocation:Status List Token`.
-The only difference is the ``status_list`` claim, which is a JSON object containing the following parameters:
+The SLT Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the WRPRC's ``status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT. The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature.
 
-.. _table_wrprc_status_list_structure:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
+A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as described in Section 5.2, of `TOKEN-STATUS-LIST`_.
 
-  * - **Parameter**
-    - **Description**
-    - **Reference**
-  * - **bits**
-    - REQUIRED.
-      JSON Integer specifying the number of bits per WRPRC in the compressed byte array (``lst``).
-      The allowed values for bits are 1,2,4 and 8.
-    - `TOKEN-STATUS-LIST`_
-  * - **lst**
-    - REQUIRED.
-      JSON String that contains the status values for all the WRPRCs it conveys statuses for.
-      The value MUST be the base64url-encoded compressed byte array.
-    - `TOKEN-STATUS-LIST`_
-  * - **aggregation_uri**
-    - OPTIONAL.
-      JSON String that contains a URI to retrieve the Status List Aggregation for this type of WRPRC or Issuer.
-    - `TOKEN-STATUS-LIST`_
+Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.
 
-
+For a JWT SLT, the signing certificate chain MUST be carried in the ``x5c`` JOSE header; for a CWT SLT, it MUST be carried in the ``x5chain`` COSE header (label ``33``).

@@ -347,6 +347,10 @@ Within the EUDIW Trust Framework the following applies.
   - The ``trust_anchor`` is the trusted certificate obtained from the ``ServiceDigitalIdentity`` component of the applicable, validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) or Trusted List (see :ref:`trust-evaluation:Trusted List Validation`), that is the Provider of WRPAC LoTE for the Wallet-Relying Party Access Certificate, the Provider of WRPRC LoTE for the Wallet-Relying Party Registration Certificate, and the Registrar LoTE for the Registrar Sign/Seal Certificate.
   - The revocation status checking MAY be skipped for a certificate that carries both the ``noRevAvail`` and the ``ETSIValAssuredCertMod`` extensions (see :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`), whose status is then determined solely by its validity period.
 
+.. note::
+
+  As defined in :ref:`infrastructure-trust:Revocation Trust Anchors`, the Trust Anchor retrieved from the applicable LoTE or Trusted List is the notified Trust Anchor for the corresponding certificate chain. The same Trust Anchor MUST be used to validate the signatures of CRLs or OCSP responses used for revocation checking, as specified in :rfc:`5280#section-6` and :rfc:`6960`.
+
 **Input**
 
 - ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` is the first certificate of the chain and ``C_n`` is the end-entity certificate.
@@ -586,16 +590,22 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 1. **Format verification**: confirm that ``typ`` is ``rc-wrp+jwt`` in the Remote Flow, or ``rc-wrp+cwt`` in the Proximity Flow, as defined in Section 5.2.1 of [`ETSI TS 119 475`_].
 2. **Algorithm verification**: verify that the signature algorithm is conformant, that is ``alg`` is neither ``none`` nor a deprecated algorithm.
 3. **Signature validation**: verify that the Wallet-Relying Party Registration Certificate signature is valid.
-4. **Trust Anchor validation**: validate the Providers of WRPRC List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
-5. **Path validation**: validate the certificate chain of the Wallet-Relying Party Registration Certificate as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_n`` is the certificate issued by the Provider of WRPRC, ``C_1`` is the Wallet-Relying Party Registration Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
+4. **Trust Anchor validation**: validate the Providers of WRPRC LoTE (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
+5. **Path validation**: validate the Wallet-Relying Party Registration Certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, using the ``trust_anchor`` obtained in the previous step. For the WRPRC, the Trust Anchor used for signature validation, certificate path validation, and revocation checking MUST be retrieved from the applicable service entry in the Providers of WRPRC LoTE (i.e., under the ``ServiceDigitalIdentity`` corresponding to the ``ServiceTypeIdentifier`` with value ``http://uri.etsi.org/19602/SvcType/WRPRC/Issuance``).
 6. **Temporal validity**: check ``iat`` and ``exp`` if present.
-7. **Status verification**: check the revocation status through the ``status`` field of the Wallet-Relying Party Registration Certificate, as defined in [`ETSI TS 119 475`_], following :ref:`credential-revocation:Checking Credentials Statuses`.
+7. **Status verification**: check the revocation status through the ``status`` field of the Wallet-Relying Party Registration Certificate, as defined in [`ETSI TS 119 475`_]:
+
+   - fetch the SLT (see :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`) at the URI specified by the WRPRC's ``status.status_list.uri`` member;
+   - validate the SLT signing certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, using the Trust Anchor retrieved from the applicable service entry in the Providers of WRPRC LoTE (i.e., under the ``ServiceDigitalIdentity`` corresponding to the ``ServiceTypeIdentifier`` with value ``http://uri.etsi.org/19602/SvcType/WRPRC/Revocation`` for the service provided by the Provider of WRPRC);
+   - validate the SLT signature using the validated signing certificate chain, following :ref:`trust-evaluation:EUDIW Attestation Signature Validation`;
+   - validate the SLT data model according to :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
+   - decompress the ``status_list.lst`` value, retrieve the one-bit entry corresponding to the WRPRC's ``status.status_list.idx`` member, and interpret ``0x00`` as ``VALID`` and ``0x01`` as ``INVALID``.
+
 8. **Consistency check**: verify that the subject and the fields of the Wallet-Relying Party Registration Certificate are consistent with the interaction.
 
 .. note::
 
-  In Step 5.
-  **Path Validation**, the Trust Anchor Certificate needed for the validation of the WRPRC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.
+   In Step 5 (**Path validation**), the Trust Anchor Certificate needed to validate the WRPRC MUST NOT be included in the certificate chain and MUST always be retrieved from the appropriate LoTE.
 
 **Outcome**
 
@@ -807,4 +817,3 @@ The authenticity of the retrieved metadata is established through the Wallet-Rel
 During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the ``x5c`` header of the JOSE signature.
 During Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same ``x5c`` header.
 In both cases the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation:EUDIW Authentication`, and MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.
-

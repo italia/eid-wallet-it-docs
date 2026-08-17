@@ -104,8 +104,8 @@ When a Federation Trust Anchor validation is required, all the Entities MUST com
 Entities MAY additionally pin the Federation Trust Anchor public keys, in their local configuration.
 A pinned configuration MAY be used only while it is valid and MUST be updated when a key rotation occurs.
 
-The Federation Trust Anchor Entity Configuration also provides the Signing Trust Anchors of the X.509 signing PKI, used to verify the Credentials anchored to this framework.
-Their distribution and validation are defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`, as they concern the verification of an attestation and not the validation of the Federation Trust Anchor.
+The Federation Trust Anchor Entity Configuration also provides the Signing Trust Anchors of the X.509 signing PKI, used to verify the Credentials anchored to this framework, and the National Wallet Trust Anchors used to verify Wallet Unit Attestations and Key Attestations.
+Their distribution and validation are defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution` and :ref:`trust-evaluation:Wallet Trust Anchor Distribution`, respectively, as they concern the verification of an attestation and not the validation of the Federation Trust Anchor.
 
 Federation Trust Anchor Validation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -323,6 +323,51 @@ The lifecycle of the signing certificates MUST be kept aligned with the federati
 When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly.
 Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.
 
+Wallet Trust Anchor Distribution and Validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This process establishes and validates the National Wallet Trust Anchor used to validate Wallet Instance Attestations and Key Attestations issued by a Wallet Provider in the National Trust Framework.
+
+The National Wallet Trust Anchor is the root of the X.509 PKI used by the Wallet Provider to sign Wallet Unit Attestations. It is distinct from the Federation Trust Anchor, which is the root of the federation statements, and from the Signing Trust Anchor used by a Credential Issuer for Digital Credentials.
+
+Wallet Trust Anchor Validation
+""""""""""""""""""""""""""""""""""""""
+
+For a Wallet Instance Attestation or Key Attestation that carries an X.509 signing certificate chain, the Trust Evaluator MUST validate the chain against the applicable National Wallet Trust Anchor before accepting the attestation signature.
+
+**Input**
+
+- The signed Wallet Instance Attestation or Key Attestation and its signing certificate chain.
+- The validated Trust Chain of the Wallet Provider.
+- The applicable National Wallet Trust Anchor obtained as defined in :ref:`trust-evaluation:Wallet Trust Anchor Distribution`.
+
+**Outcome**
+
+- The validated Wallet Provider signing certificate and attestation.
+- Confirmation that the signing certificate belongs to the Wallet Provider identified by the validated Trust Chain.
+
+**Process**
+
+1. Validate the Trust Chain of the Wallet Provider and derive its final metadata as defined in :ref:`trust-evaluation:Federation Trust Chain` and :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+2. Extract the signing certificate chain from the ``x5c`` JOSE header of the Wallet Instance Attestation or Key Attestation. The National Wallet Trust Anchor MUST NOT be included in this chain.
+3. Validate the certificate chain against the applicable National Wallet Trust Anchor as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
+4. Verify the attestation signature with the validated end-entity certificate.
+5. Verify that the Federation Entity Identifier extracted from the end-entity certificate corresponds to the Wallet Provider identified by the Trust Chain.
+6. Check the temporal validity and revocation status of the attestation as required by the applicable attestation profile.
+
+If any step fails, the Wallet Instance Attestation or Key Attestation MUST NOT be considered issued by a trusted Wallet Provider.
+
+Wallet Trust Anchor Distribution
+""""""""""""""""""""""""""""""""
+
+The National Wallet Trust Anchor MUST be distributed through the Federation Trust Anchor Entity Configuration. It MUST be represented by a dedicated JWK whose ``x5c`` parameter contains the National Wallet Trust Anchor certificate. The dedicated JWK MUST be distinct from the Federation Entity Keys used to sign federation statements.
+
+The Trust Evaluator MUST validate the Federation Trust Anchor Entity Configuration and the Wallet Provider's Trust Chain before accepting the National Wallet Trust Anchor. The resulting configuration MUST associate the National Wallet Trust Anchor with the Wallet Provider's Federation Entity Identifier.
+
+Entities MAY pin the National Wallet Trust Anchor in their local configuration. A pinned National Wallet Trust Anchor MAY be used only while it is valid and MUST be updated when the National Wallet Trust Anchor is rotated.
+
+When a Wallet Provider operates in both the National Trust Framework and the EUDIW Trust Framework, the National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission and published in the Wallet Providers LoTE under the Wallet Provider's ``ServiceDigitalIdentity``.
+
 Authentication Trust Anchor Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -386,7 +431,7 @@ In the issuance flow this is realized with the OAuth 2.0 Attestation-Based Clien
 To establish trust in the Wallet Unit, the Trust Evaluator MUST:
 
 - Establish trust in the Wallet Provider that issued the Wallet Instance Attestation.
-- Validate the attestation with the Wallet Provider keys obtained through the Federation Trust Chain.
+- Validate the Wallet Instance Attestation as defined in :ref:`trust-evaluation:Wallet Trust Anchor Validation` using the National Wallet Trust Anchor.
 
 **Input**
 
@@ -401,7 +446,7 @@ The Trust Evaluator MUST output ``AUTHENTICATED`` or ``NON_AUTHENTICATED`` for t
 **Process**
 
 1. Validate the Trust Chain about the Wallet Provider that issued the Wallet Instance Attestation and derive its final metadata (see :ref:`trust-evaluation:Federation Trust Chain` and :ref:`trust-evaluation:Metadata Retrieval and Validation`).
-2. Verify the Wallet Instance Attestation signature with one of the Wallet Provider keys published in the final metadata.
+2. Validate the Wallet Instance Attestation as defined in :ref:`trust-evaluation:Wallet Trust Anchor Validation` using the National Wallet Trust Anchor.
 3. Check the temporal validity and the revocation status of the Wallet Instance Attestation.
 4. Verify the proof of possession of the attested key, according to the protocol in use.
 

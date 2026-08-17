@@ -144,7 +144,7 @@ Digital Credential Revocation Check Mechanisms
     :header-rows: 0
 
     * - `TOKEN-STATUS-LIST`_
-      - Looker, T., Bastian, P., Bormann, C., "Token Status List (TSL)", October 2025, Draft 13.
+      - Looker, T., Bastian, P., Bormann, C., "Token Status List (TSL)", June 2026, Draft 21.
 
 National Data Interoperability Platform Specifications
 ------------------------------------------------------
