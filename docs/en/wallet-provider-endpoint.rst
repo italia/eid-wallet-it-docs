@@ -785,6 +785,13 @@ As a result, the Wallet Provider MUST set the ``bits`` parameter in the SLT's ``
 
 The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
 
+**Key Attestation Index Assignment**
+
+According to R_KA_1 of `CIR2026/1731`_, a Wallet Provider MUST choose one of the following index-assignment options for the ``key_storage_status.status`` claim in a KA. The selected option determines whether the status-list index is shared by KAs for the same type of key storage or is specific to an individual KA:
+
+* **Type-shared index.** All KAs attesting keys stored in the same type of WSCD or keystore MUST contain the same index value in ``key_storage_status.status``. Consequently, the status represented by that index is shared by all such KAs.
+* **Per-key-attestation index.** A KA attesting keys stored in an individual WSCD or keystore MUST contain a pairwise-unique index value in ``key_storage_status.status``. Consequently, each KA has a distinct status-list entry and its revocation status can be managed independently.
+
 **Status List Token**
 
 The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's ``client_status.status.status_list.uri`` member or the KA's ``key_storage_status.status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
