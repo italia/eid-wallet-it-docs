@@ -1252,6 +1252,12 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </div></blockquote>
 <p>As a result, the Wallet Provider MUST set the <code class="docutils literal notranslate"><span class="pre">bits</span></code> parameter in the SLT's <code class="docutils literal notranslate"><span class="pre">status_list</span></code> object to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p>The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.</p>
+<p><strong>Key Attestation Index Assignment</strong></p>
+<p>According to R_KA_1 of <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>, a Wallet Provider MUST choose one of the following index-assignment options for the <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code> claim in a KA. The selected option determines whether the status-list index is shared by KAs for the same type of key storage or is specific to an individual KA:</p>
+<ul class="simple">
+<li><p><strong>Type-shared index.</strong> All KAs attesting keys stored in the same type of WSCD or keystore MUST contain the same index value in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code>. Consequently, the status represented by that index is shared by all such KAs.</p></li>
+<li><p><strong>Per-key-attestation index.</strong> A KA attesting keys stored in an individual WSCD or keystore MUST contain a pairwise-unique index value in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code>. Consequently, each KA has a distinct status-list entry and its revocation status can be managed independently.</p></li>
+</ul>
 <p><strong>Status List Token</strong></p>
 <p>The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> member or the KA's <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code> member, using <code class="docutils literal notranslate"><span class="pre">application/statuslist+jwt</span></code> for a JWT SLT or <code class="docutils literal notranslate"><span class="pre">application/statuslist+cwt</span></code> for a CWT SLT.</p>
 <p>The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a>.</p>
@@ -1434,7 +1440,7 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 21/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
