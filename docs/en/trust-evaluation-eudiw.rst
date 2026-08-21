@@ -95,10 +95,11 @@ Depending on the Trust Artifact or Attestation being verified, the Trust Evaluat
    - **Wallet Unit Attestation Sign/Seal Certificates** in the Wallet Providers LoTE.
    - **PID Sign/Seal Certificates** in the PID Providers LoTE.
    - **Registrar Sign/Seal Certificates** in the Registrar LoTE.
-   - **PuB-EAA Sign/Seal Certificates** in the PuB-EAA Providers LoTE.
+
 2. *Trusted Lists* are used to retrieve Trust Anchors for validating:
 
    - **QEAA Sign/Seal Certificates** in the corresponding Member State Trusted List.
+   - **PuB-EAA Sign/Seal Certificates** in the corresponding Member State Trusted List.
 
 To verify the authenticity of the retrieved Lists, the Entity MUST perform the following validations:
 
