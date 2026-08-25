@@ -122,7 +122,17 @@
                     "id": "https://motorizzazione.gov.example",
                     "dataset_id": "38832801"
                 }
-            ]
+            ],
+            "trustedAuthorities": [
+                {
+                "frameworkType": "etsi_tl",
+                "value:": "https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers",
+                "isLoTE": true
+                }
+            ],
+            "rulebookURI": "https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/tree/main/rulebooks/mdl",
+            "bindingType": "key",        
+            "attestationLoS": "iso_18045_high"
         }
     ]
 }

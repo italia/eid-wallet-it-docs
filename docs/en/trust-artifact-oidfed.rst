@@ -200,8 +200,6 @@ The table below maps the roles of the ecosystem to their Entity Type Identifiers
      - **Metadata Type**
    * - Trust Anchor
      - ``federation_entity``
-   * - Federation Intermediate
-     - ``federation_entity``
    * - Wallet Provider
      - ``federation_entity``, ``wallet_solution``
    * - Credential Issuer
