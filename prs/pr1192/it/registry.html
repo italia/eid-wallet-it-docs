@@ -1373,7 +1373,11 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;verification_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oots_edelivery&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license/edelivery&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -2361,7 +2365,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>deferred_flow</strong>: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione differita.</p></li>
-<li><p><strong>immediate_flows</strong>: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.</p></li>
+<li><p><strong>immediate_flow</strong>: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.</p></li>
 <li><p><strong>wallet_initiated</strong>: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.</p></li>
 <li><p><strong>issuer_initiated</strong>: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).</p></li>
 <li><p><strong>max_deferred_issuance_time_minutes</strong>: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è impostato a <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
@@ -2521,6 +2525,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <span class="w">                    </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nt">&quot;wallet_initiated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;issuer_initiated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -2535,7 +2540,17 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
 <span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;trustedAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;frameworkType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;etsi_tl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;isLoTE&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;rulebookURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/tree/main/rulebooks/mdl&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;bindingType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;attestationLoS&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iso_18045_high&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -3683,7 +3698,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 21/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 26/08/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
