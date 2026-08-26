@@ -13,10 +13,10 @@ At EU level the European Commission maintains two EUDIW catalogues that are the 
  - **Catalogue of Schemes** is the EU-level catalogue of Attestation schemes (``SchemaMeta``): the machine-readable metadata that binds an Attestation type to its Rulebook and schema.
 
 .. note::
-  This section focus on registries for semantic and discovery of data. The entity trust registers for the EUDIW trust model (**Register of WRPs** operated by a national Registrar under `CIR2025/848`_) and the National trust model (**Federation API Endpoints**) are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+  This section focuses on the registries for the semantic definition and discovery of data. The entity trust registers for the EUDIW trust model (**Register of WRPs** operated by a national Registrar under `CIR2025/848`_) and the National trust model (**Federation API Endpoints**) are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 This section provides first an overview of the IT-Wallet registry infrastructure (:ref:`registry:Registry Architecture Overview`) and its discovery mechanism (:ref:`registry:Registry Discovery Endpoint`).
-Then, it details its components: :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Digital Credentials Catalog`, :ref:`registry:Taxonomy`, :ref:`registry:Schema Registry`). 
+Then, it details its components: :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Digital Credentials Catalog`, :ref:`registry:Taxonomy`, :ref:`registry:Schema Registry`).
 Finally, it describes their relationships (:ref:`registry:Registry Integration and Cross-References`) and usage journeys (:ref:`registry:Registry Infrastructure Usage Journeys`).
 
 Registry Architecture Overview
@@ -554,7 +554,7 @@ Digital Credentials Catalog Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities involved in the Digital Credential Catalog are:
-  
+
   - **Digital Credential Issuers**: The entities authorized to issue Digital Credentials, registering them in the Catalog.
   - **Relying Parties**: They use the Digital Credential Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
@@ -1055,11 +1055,11 @@ Each element of the ``credentials`` array contains at least the following inform
        * **issuance_flows**: REQUIRED. Object. It contains the following parameters:
 
           * **deferred_flow**: REQUIRED. Boolean. Indicates if the deferred issuance is supported.
-          * **immediate_flows**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
+          * **immediate_flow**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
           * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
           * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
           * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
-          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
 
   * - **localization**
     - REQUIRED. Localization configuration object containing:
@@ -1077,20 +1077,20 @@ Each element of the ``credentials`` array contains at least the following inform
     - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
   * - **trustedAuthorities**
     - REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:
- 
+
        * **frameworkType**: type of the applicable trust model. A string from the set of ``etsi_tl`` or ``openid_federation``.
        * **value**: standard URI-formatted identifier for the Trusted List (for type ``etsi_tl``) or Entity Identifier (for type ``openid_federation``).
        * **isLoTE**: a boolean value that MUST be TRUE when the applicable trust framework type is an ETSI Trusted List (``etsi_tl``) but the trusted list behind the value URI is a list of trusted entities (LoTE) according to ETSI TS 119 602. Value MUST be FALSE if the applicable trusted list specification is ETSI TS 119 612. Attribute MUST NOT be used with other framework types.
-    
+
       OpenID Federation MAY only be used in context of non-qualified EAA types. For the others the trust model is based on European Commission managed Lists of Trusted Lists.
 
       .. note::
         Use of ``isLoTE`` will become unnecessary and must be deprecated once OpenID4VCI specifies a new enumeration for Lists of Trusted Entities according to ETSI TS 119 602, the tentative enumeration is ``etsi_lote``.
 
   * - **rulebookURI**
-    - REQUIRED. URI to the human-readable Attestation Rulebook that define all non-machine readable aspects of the Digital Credential type defined.
+    - REQUIRED. URI to the human-readable Attestation Rulebook that defines all the non-machine-readable aspects of the Digital Credential type.
   * - **bindingType**
-    - REQUIRED. Indicates the type of cryptographic key binding required for issuance of the Digital Credential. Allowed value is a string from the set of: ``claim`` (binding to a cryptographic claim presented by the User), ``key`` (binding to a key possessed by the User ), ``biometric`` (binding to presented biometrics of the User) or ``none`` (no cryptograhpich binding). 
+    - REQUIRED. Indicates the type of cryptographic key binding required for issuance of the Digital Credential. Allowed value is a string from the set of: ``claim`` (binding to a cryptographic claim presented by the User), ``key`` (binding to a key possessed by the User), ``biometric`` (binding to presented biometrics of the User) or ``none`` (no cryptographic binding).
   * - **attestationLoS**
     - REQUIRED. Level of security (LoS) the Digital Credential is to be provided at. Allowed value is a string from the set of: ``iso_18045_high``, ``iso_18045_moderate``, ``iso_18045_enhanced-basic`` or ``iso_18045_basic`` (see Annex D.2 of `OpenID4VCI`_ for more details).
 
@@ -1260,7 +1260,7 @@ A non-normative example of the Italian localization URI for the bundle would be 
 Schema Registry
 ---------------
 
-The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. 
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
 
 **Schema Registry Objectives:**
 
@@ -1349,7 +1349,7 @@ As shown in Figure :ref:`fig_registry_relationships`, the registry components ar
 Figure :ref:`fig_eudiw_national_registry_relationships` shows instead the mapping between the EUDIW catalogues and the national counterparts:
 
 - **EUDIW Catalogue of Attributes** corresponds to the national **Claims Registry** for the semantic definition of the attributes and to the **Authentic Source Registry** for the discovery of the verification point. Note that national attribute definitions align to the EU-level catalogue for cross-border interoperability.
-- **EUDIW Catalogue of Schemes** corresponds to the national **Schema Registry**  for the discovery of the attestation schemes and to the **Digital Credential Catalog** for the discovery of the issuance nad presentation requirements. Note that the national registries contain all the information provided in the EUDIW one plus additional informations (e.g., pricing model and validity information).
+- **EUDIW Catalogue of Schemes** corresponds to the national **Schema Registry** for the discovery of the attestation schemes and to the **Digital Credentials Catalog** for the discovery of the issuance and presentation requirements. Note that the national registries contain all the information provided in the EUDIW one plus additional information (e.g., pricing model and validity information).
 
 .. _fig_eudiw_national_registry_relationships:
 .. plantuml:: plantuml/eudiw-national-registry-relationships.puml
@@ -1358,13 +1358,14 @@ Figure :ref:`fig_eudiw_national_registry_relationships` shows instead the mappin
     :caption: `Relationships between National Registries and EUDIW Catalogues <https://www.plantuml.com/plantuml/svg/bL9DRnCn4BtxLmm1YI8QHOHoer7BfeTS46f0712Afkj9OiaVmH-AAjJ_pcIJBXEBY7OFQy-RcUVtxBbA6MCkpgeNnhUsQ8AFpSMekLWqmMs29vydIhs6AIsD9vX_kPrzlPcBubmsgEFxKHkS2txoZymo-3p4BQNWQFXXf37Z7IPYsa-XU8tn_inZDi6ZNKHQcPJZ_JaCFXymk3rWCFFBYBmhRIwH1c_Wj-f5dc6IpTSbhnarBSn3YItr98DpU9KsqMIw71oKC9FWQIqQ9wcQ7P2UJh2n9RtZlhT7Q6hNv53opZla6S8Oj65LY7kdPcKuWYQItjb4cw1vp3z9uVYWy4691FqgQ7VQBpbJmUCzB1wDYZPRwUZcstJs_Q-ELB_GGbheoo0iuJhdQEvAflHVyUaqItUZ9oaUrBErxtg4QXZ2_eRKVk7uU5hKSSZvRXXKz-T8p2XKp3fi_O-NspMh_ZcSW71PazQbrMGfJAThUzBUGLNGmMEbL9BY7k7zmd5zfeY5yN5ddEl5kVnTaTV5sJy0>`_
 
 .. note::
-  As specify in `EIDAS-ARF`_ the registration of attestation scheme in the EUDIW Catalogue of Schemes does not create any obligation for acceptance of the relevant type of attestation by any actor in the EUDI Wallet ecosystem. Neither does it automatically imply cross-border recognition of the type of attestation. It is used to discover the corresponding trust framework.
+  As specified in `EIDAS-ARF`_, the registration of an attestation scheme in the EUDIW Catalogue of Schemes does not create any obligation for acceptance of the relevant type of attestation by any actor in the EUDI Wallet ecosystem. Neither does it automatically imply cross-border recognition of the type of attestation. It is used to discover the corresponding trust framework.
 
 Registry Infrastructure Usage Journeys
 --------------------------------------
 
 The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities.
-The main Journeys below illustrate the interactions with the Registry Infrastructure.
+The main Journeys below illustrate the operational interactions that read the Registry Infrastructure.
+The complementary journey that populates the registries is the onboarding registration, which registers the entities, the Authentic Sources, the claims, the schemas and the Credential types, as described in :ref:`onboarding-system:Onboarding Processes`.
 
 Catalog Browsing
 ^^^^^^^^^^^^^^^^
@@ -1390,11 +1391,11 @@ This journey defines how a Credential Issuer uses the Registry Infrastructure to
 
 2.  **Schema and Claim Resolution**:
 
-  The Credential Issuer consults: 
-  
+  The Credential Issuer consults:
+
     * EUDIW Catalogue of Schemes to obtain the schema of the sought EUDIW-anchored Digital Credential (``schemaURIs``), or
     * :ref:`registry:Schema Registry` to obtain the schema of the sought National-anchored Digital Credential (``schema_uri``).
-    
+
   and, in both cases, verifies its integrity. Then, depending on the Trust Framework anchoring the Digital Credential, it accesses the EUDIW Catalogue of Attributes or :ref:`registry:Claims Registry` to retrieve the standardized semantic definitions and data formats of the necessary attributes (claims).
 
 3.  **Authentic Data Retrieval**:
@@ -1413,32 +1414,32 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 
   * The Wallet Unit receives a Presentation Request from the RP. The Wallet Unit MUST evaluate trust with the RP issuing the Presentation Request as follows:
 
-    * **(EUDIW Trust Framework)**: 
-    
+    * **(EUDIW Trust Framework)**:
+
       * The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in :ref:`trust-evaluation:EUDIW Authentication`.
       * The Wallet Unit validates whether the RP is entitled to this presentation as described in :ref:`trust-evaluation:EUDIW Authorization`.
 
-    * **(National Trust Framework)**: 
-    
+    * **(National Trust Framework)**:
+
       * The Wallet Unit validates the Presentation Request signature and evaluates trust with the Relying Party producing it as described in :ref:`trust-evaluation:Authentication`.
       * The Wallet Unit validates whether the RP is entitled to this presentation as described in :ref:`trust-evaluation:Authorization`.
-  
+
    Regardless of the Trust Framework, the final decision on whether the RP is Authorized during presentation is made according to :ref:`trust-evaluation:Authorization Decision and Override Rules`.
-  
+
   * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
 
 2.  **Discovery and Integrity**:
 
   * The RP receives the Digital Credential from the User.
-  * Depending on the trust framework the RP subscribes to (i.e., the National or EUDIW Trust Framework): 
-    
-    * **(EUDIW Trust Framework)**: 
-    
+  * Depending on the trust framework the RP subscribes to (i.e., the National or EUDIW Trust Framework):
+
+    * **(EUDIW Trust Framework)**:
+
       * The RP validates the Digital Credential signature and evaluates trust with its issuer as described in :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
       * The RP consults the EUDIW Catalogue of Schemes to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
-    
-    * **(National Trust Framework)**: 
-    
+
+    * **(National Trust Framework)**:
+
       * The RP validates the Digital Credential signature and evaluates trust with its issuer as described in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`.
       * The RP consults the :ref:`registry:Schema Registry` to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 

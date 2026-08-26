@@ -74,7 +74,7 @@ The Register and the notification dataset are kept separate, as described in :re
 
 .. note::
    The Register is the National register of the Wallet-Relying Parties that each Member State establishes under Article 3 of [`CIR2025/848`_] and operates through the Registrar.
-   It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as :ref:`registry:Register of WRPs`.
+   It is distinct from the semantic components of the Registry Infrastructure, that hold the Credential semantics and the discovery data, and it is documented as :ref:`infrastructure-trust:Register of WRPs`.
 
 Entity Update
 """""""""""""

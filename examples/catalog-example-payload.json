@@ -108,6 +108,7 @@
                     "issuance_flows": {
                         "wallet_initiated": true,
                         "issuer_initiated": true,
+                        "immediate_flow": false,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [
@@ -125,13 +126,13 @@
             ],
             "trustedAuthorities": [
                 {
-                "frameworkType": "etsi_tl",
-                "value:": "https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers",
-                "isLoTE": true
+                    "frameworkType": "etsi_tl",
+                    "value": "https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers",
+                    "isLoTE": true
                 }
             ],
             "rulebookURI": "https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/tree/main/rulebooks/mdl",
-            "bindingType": "key",        
+            "bindingType": "key",
             "attestationLoS": "iso_18045_high"
         }
     ]

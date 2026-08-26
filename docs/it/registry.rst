@@ -1126,7 +1126,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
        * **issuance_flows**: OBBLIGATORIO. Oggetto. Contiene i seguenti parametri:
 
           * **deferred_flow**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione differita.
-          * **immediate_flows**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.
+          * **immediate_flow**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.
           * **wallet_initiated**: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.
           * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
           * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
