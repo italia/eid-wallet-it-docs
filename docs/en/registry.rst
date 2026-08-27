@@ -561,6 +561,243 @@ As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities involve
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.
 
+Digital Credentials Catalog Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
+
+.. _table_catalog_parameters:
+.. list-table::
+   :class: longtable
+   :header-rows: 1
+   :widths: 25 50 25
+
+   * - **JOSE header**
+     - **Description**
+     - **Reference**
+   * - **typ**
+     - REQUIRED. It MUST be set to ``JOSE``.
+     - [:rfc:`7515` Section 4.1.9].
+   * - **alg**
+     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
+     - [:rfc:`7515` Section 4.1.1].
+   * - **kid**
+     - REQUIRED. Unique identifier of the public key.
+     - [:rfc:`7515` Section 4.1.4].
+   * - **x5c**
+     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
+     - [:rfc:`7515` Section 4.1.6.].
+   * - **cty**
+     - REQUIRED. It MUST be set to ``application/json``.
+     - [:rfc:`7515` Section 4.1.6.].
+
+The JWS payload contains the following parameters:
+
+.. list-table:: First-level Fields of the Digital Credentials Catalog
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``).
+   * - **version**
+     - REQUIRED. Version of the Digital Credential Catalog format.
+   * - **last_modified**
+     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
+   * - **iss**
+     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Version of the localization bundle format.
+   * - **credentials**
+     - REQUIRED. Array containing Digital Credential definitions.
+
+Each element of the ``credentials`` array contains at least the following information:
+
+.. _table_catalog_parameters_first_level:
+.. list-table:: First-level Fields of Each Credential Entry
+  :class: longtable
+  :header-rows: 1
+  :widths: 30 70
+
+  * - **Field Name**
+    - **Description**
+  * - **version**
+    - REQUIRED. Version of the Digital Credential definition.
+  * - **credential_type**
+    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid`` and for IT-Wallet ID MUST be ``eid``.
+  * - **state**
+    - REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:
+
+      * ``ACTIVE``: the Credential type can be issued from this versioned entry. An entry can be ``ACTIVE`` only while at least one Credential Issuer is listed in the **issuers** field, the referenced Authentic Source or parent Credential type is available, and the schema is registered for at least one supported format.
+      * ``INACTIVE``: the Credential type MUST NOT be issued from this versioned entry. An entry is ``INACTIVE`` when it has just been registered, when one of the conditions for the ``ACTIVE`` state stops holding, or when it has been superseded by a more recent version.
+
+      Only one versioned entry of the same ``credential_type`` MUST be ``ACTIVE`` at a given time.
+  * - **credential_name_l10n_id**
+    - REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., ``mDL.name``).
+  * - **legal_type**
+    - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
+  * - **restriction_policy**
+    - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
+
+      * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
+      * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
+      * **presentation_flows**: Type of presentation flows supported; remote and/or proximity flow.
+  * - **pricing_policy**
+    - OPTIONAL. Information about Digital Credential pricing, including:
+
+      * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing
+
+        - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
+        - **price**: Cost associated with the model.
+        - **currency**: Currency of the price.
+
+      * **pricing_model_uri**: URI to the detailed pricing model documentation.
+  * - **validity_info**
+    - Information about Digital Credential validity, including at least:
+
+      * **max_validity_days**: Maximum validity period in days.
+      * **status_methods**: Supported status verification methods (e.g. ``status_list``).
+      * **allowed_states**: Array of objects representing allowed Digital Credential states. Each object contains a hex status code (e.g., ``0x00`` for ``VALID``, ``0x01`` for ``INVALID``, ``0x02`` for ``SUSPENDED``, ``0x03`` for ``UPDATE``, ``0x0F`` for ``ATTRIBUTE_UPDATE``), a ``title_l10n_id`` localization key, and a ``description_l10n_id`` localization key for UI display.
+      * **administrative_expiration_user_info**: OPTIONAL. Object containing ``title_l10n_id`` and ``description_l10n_id`` keys for displaying administrative expiration information to the User.
+  * - **authentication**
+    - REQUIRED. Digital Credential authentication requirements.
+
+      * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
+      * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
+      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it_wallet"]``).
+  * - **domains**
+    - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
+  * - **classes**
+    - REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
+  * - **purposes**
+    - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+  * - **issuers**
+    - CONDITIONAL. It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
+
+       * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
+       * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
+       * **organization_code**: REQUIRED. String. Credential Issuer IPA code for government entities or VAT number for private entities.
+       * **organization_country**: REQUIRED. String. Two-letter ISO 3166-1 alpha-2 country code of the organization.
+       * **contacts**: REQUIRED. String. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
+       * **legal_type**: REQUIRED. String. Legal classification of the Credential Issuer (e.g., pub-eaa, qeaa, eaa).
+       * **homepage_uri**: REQUIRED. String. URL pointing to the organization's homepage.
+       * **logo_uri**: OPTIONAL. String. URL to the organization's logo image.
+       * **policy_uri**: REQUIRED. String. URL to privacy policy document.
+       * **tos_uri**: OPTIONAL. String. URL to terms of service document.
+       * **service_documentation_uri**: OPTIONAL. String. URL pointing to the Credential Issuer service documentation.
+       * **issuance_flows**: REQUIRED. Object. It contains the following parameters:
+
+          * **deferred_flow**: REQUIRED. Boolean. Indicates if the deferred issuance is supported.
+          * **immediate_flow**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
+          * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
+          * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
+          * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
+          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
+
+  * - **authentic_sources**
+    - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
+
+      * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
+      * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
+  * - **parent_credentials**
+    - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
+  * - **trustedAuthorities**
+    - REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:
+
+       * **frameworkType**: type of the applicable trust model. A string from the set of ``etsi_tl`` or ``openid_federation``.
+       * **value**: standard URI-formatted identifier for the Trusted List (for type ``etsi_tl``) or Entity Identifier (for type ``openid_federation``).
+       * **isLoTE**: a boolean value that MUST be TRUE when the applicable trust framework type is an ETSI Trusted List (``etsi_tl``) but the trusted list behind the value URI is a list of trusted entities (LoTE) according to ETSI TS 119 602. Value MUST be FALSE if the applicable trusted list specification is ETSI TS 119 612. Attribute MUST NOT be used with other framework types.
+
+      OpenID Federation MAY only be used in context of non-qualified EAA types. For the others the trust model is based on European Commission managed Lists of Trusted Lists.
+
+      .. note::
+        Use of ``isLoTE`` will become unnecessary and must be deprecated once OpenID4VCI specifies a new enumeration for Lists of Trusted Entities according to ETSI TS 119 602, the tentative enumeration is ``etsi_lote``.
+
+  * - **rulebookURI**
+    - REQUIRED. URI to the human-readable Attestation Rulebook that defines all the non-machine-readable aspects of the Digital Credential type.
+  * - **bindingType**
+    - REQUIRED. Indicates the type of cryptographic key binding required for issuance of the Digital Credential. Allowed value is a string from the set of: ``claim`` (binding to a cryptographic claim presented by the User), ``key`` (binding to a key possessed by the User), ``biometric`` (binding to presented biometrics of the User) or ``none`` (no cryptographic binding).
+  * - **attestationLoS**
+    - REQUIRED. Level of security (LoS) the Digital Credential is to be provided at. Allowed value is a string from the set of: ``iso_18045_high``, ``iso_18045_moderate``, ``iso_18045_enhanced-basic`` or ``iso_18045_basic`` (see Annex D.2 of `OpenID4VCI`_ for more details).
+
+.. note::
+  While ``min_loa`` in the claim ``authentication`` specifies the Digital Credential authentication requirements referring to the eID mean level of assurance required during user authentication in the issuance process, the claim ``attestationLoS`` complements this requirement by specifying the attack potential resistance for both user authentication and key storage.
+
+.. note::
+  The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
+
+The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
+
+.. literalinclude:: ../../examples/catalog-example-header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/catalog-example-payload.json
+  :language: JSON
+
+.. note::
+  For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+
+  - Download the basic version of the Digital Credentials Catalog (compact, without localizations) using the ``.well-known/credential-catalog`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Digital Credentials Catalog structure.
+
+A non-normative example of a localization bundle output is given below:
+
+.. code-block:: json
+
+  {
+    "mDL.name": "Patente di Guida",
+    "mDL.issuer1.name": "Esempio di Credential Issuer",
+    "...": "..."
+  }
+
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
+
+Decentralization of Display and Claim Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata**.
+
+The overall logic for presenting a Digital Credential is the following:
+
+1. Depending on the required Trust Framework, the Wallet or Relying Party retrieves the :ref:`registry:Digital Credentials Catalog` (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available `credential_type` and the `entity_id` of their Credential Issuers.
+2. It retrieves the full Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
+3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
+
+Taxonomy
+--------
+
+The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format.
+
+The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.
+
+**Taxonomy Objectives:**
+
+1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
+2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
+3. **Interoperability**: Ensure consistent interpretation of credential classifications
+4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
+5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
+
+
+Taxonomy Usage
+^^^^^^^^^^^^^^
+
+- **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
+- **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
+- **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
+
+
 Digital Credentials Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -928,252 +1165,10 @@ This approach allows:
   - **Policy-based authorization** by using **Domain / Class / Credential Type / Purpose** mappings.
   - **Flexible RP registration** supporting both government compliance needs and business operational requirements.
 
-Digital Credentials Catalog Structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
-
-.. _table_catalog_parameters:
-.. list-table::
-   :class: longtable
-   :header-rows: 1
-   :widths: 25 50 25
-
-   * - **JOSE header**
-     - **Description**
-     - **Reference**
-   * - **typ**
-     - REQUIRED. It MUST be set to ``JOSE``.
-     - [:rfc:`7515` Section 4.1.9].
-   * - **alg**
-     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
-     - [:rfc:`7515` Section 4.1.1].
-   * - **kid**
-     - REQUIRED. Unique identifier of the public key.
-     - [:rfc:`7515` Section 4.1.4].
-   * - **x5c**
-     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - REQUIRED. It MUST be set to ``application/json``.
-     - [:rfc:`7515` Section 4.1.6.].
-
-The JWS payload contains the following parameters:
-
-.. list-table:: First-level Fields of the Digital Credentials Catalog
-   :class: longtable
-   :header-rows: 1
-   :widths: 30 70
-
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``).
-   * - **version**
-     - REQUIRED. Version of the Digital Credential Catalog format.
-   * - **last_modified**
-     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
-   * - **iss**
-     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
-   * - **credentials**
-     - REQUIRED. Array containing Digital Credential definitions.
-
-Each element of the ``credentials`` array contains at least the following information:
-
-.. _table_catalog_parameters_first_level:
-.. list-table:: First-level Fields of Each Credential Entry
-  :class: longtable
-  :header-rows: 1
-  :widths: 30 70
-
-  * - **Field Name**
-    - **Description**
-  * - **version**
-    - REQUIRED. Version of the Digital Credential definition.
-  * - **credential_type**
-    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid`` and for IT-Wallet ID MUST be ``eid``.
-  * - **state**
-    - REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:
-
-      * ``ACTIVE``: the Credential type can be issued from this versioned entry. An entry can be ``ACTIVE`` only while at least one Credential Issuer is listed in the **issuers** field, the referenced Authentic Source or parent Credential type is available, and the schema is registered for at least one supported format.
-      * ``INACTIVE``: the Credential type MUST NOT be issued from this versioned entry. An entry is ``INACTIVE`` when it has just been registered, when one of the conditions for the ``ACTIVE`` state stops holding, or when it has been superseded by a more recent version.
-
-      Only one versioned entry of the same ``credential_type`` MUST be ``ACTIVE`` at a given time.
-  * - **credential_name_l10n_id**
-    - REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., ``mDL.name``).
-  * - **legal_type**
-    - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
-  * - **restriction_policy**
-    - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
-
-      * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
-      * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
-      * **presentation_flows**: Type of presentation flows supported; remote and/or proximity flow.
-  * - **pricing_policy**
-    - OPTIONAL. Information about Digital Credential pricing, including:
-
-      * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing
-
-        - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
-        - **price**: Cost associated with the model.
-        - **currency**: Currency of the price.
-
-      * **pricing_model_uri**: URI to the detailed pricing model documentation.
-  * - **validity_info**
-    - Information about Digital Credential validity, including at least:
-
-      * **max_validity_days**: Maximum validity period in days.
-      * **status_methods**: Supported status verification methods (e.g. ``status_list``).
-      * **allowed_states**: Array of objects representing allowed Digital Credential states. Each object contains a hex status code (e.g., ``0x00`` for ``VALID``, ``0x01`` for ``INVALID``, ``0x02`` for ``SUSPENDED``, ``0x03`` for ``UPDATE``, ``0x0F`` for ``ATTRIBUTE_UPDATE``), a ``title_l10n_id`` localization key, and a ``description_l10n_id`` localization key for UI display.
-      * **administrative_expiration_user_info**: OPTIONAL. Object containing ``title_l10n_id`` and ``description_l10n_id`` keys for displaying administrative expiration information to the User.
-  * - **authentication**
-    - REQUIRED. Digital Credential authentication requirements.
-
-      * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
-      * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
-      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it_wallet"]``).
-  * - **domains**
-    - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
-  * - **classes**
-    - REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
-  * - **purposes**
-    - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
-  * - **issuers**
-    - CONDITIONAL. It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
-
-       * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
-       * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
-       * **organization_code**: REQUIRED. String. Credential Issuer IPA code for government entities or VAT number for private entities.
-       * **organization_country**: REQUIRED. String. Two-letter ISO 3166-1 alpha-2 country code of the organization.
-       * **contacts**: REQUIRED. String. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
-       * **legal_type**: REQUIRED. String. Legal classification of the Credential Issuer (e.g., pub-eaa, qeaa, eaa).
-       * **homepage_uri**: REQUIRED. String. URL pointing to the organization's homepage.
-       * **logo_uri**: OPTIONAL. String. URL to the organization's logo image.
-       * **policy_uri**: REQUIRED. String. URL to privacy policy document.
-       * **tos_uri**: OPTIONAL. String. URL to terms of service document.
-       * **service_documentation_uri**: OPTIONAL. String. URL pointing to the Credential Issuer service documentation.
-       * **issuance_flows**: REQUIRED. Object. It contains the following parameters:
-
-          * **deferred_flow**: REQUIRED. Boolean. Indicates if the deferred issuance is supported.
-          * **immediate_flow**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
-          * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
-          * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
-          * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
-          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
-
-  * - **localization**
-    - REQUIRED. Localization configuration object containing:
-
-       * **default_locale**: Default locale code (e.g., ``it``).
-       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
-       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
-       * **version**: Version of the localization bundle format.
-  * - **authentic_sources**
-    - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
-
-      * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
-      * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
-  * - **parent_credentials**
-    - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
-  * - **trustedAuthorities**
-    - REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:
-
-       * **frameworkType**: type of the applicable trust model. A string from the set of ``etsi_tl`` or ``openid_federation``.
-       * **value**: standard URI-formatted identifier for the Trusted List (for type ``etsi_tl``) or Entity Identifier (for type ``openid_federation``).
-       * **isLoTE**: a boolean value that MUST be TRUE when the applicable trust framework type is an ETSI Trusted List (``etsi_tl``) but the trusted list behind the value URI is a list of trusted entities (LoTE) according to ETSI TS 119 602. Value MUST be FALSE if the applicable trusted list specification is ETSI TS 119 612. Attribute MUST NOT be used with other framework types.
-
-      OpenID Federation MAY only be used in context of non-qualified EAA types. For the others the trust model is based on European Commission managed Lists of Trusted Lists.
-
-      .. note::
-        Use of ``isLoTE`` will become unnecessary and must be deprecated once OpenID4VCI specifies a new enumeration for Lists of Trusted Entities according to ETSI TS 119 602, the tentative enumeration is ``etsi_lote``.
-
-  * - **rulebookURI**
-    - REQUIRED. URI to the human-readable Attestation Rulebook that defines all the non-machine-readable aspects of the Digital Credential type.
-  * - **bindingType**
-    - REQUIRED. Indicates the type of cryptographic key binding required for issuance of the Digital Credential. Allowed value is a string from the set of: ``claim`` (binding to a cryptographic claim presented by the User), ``key`` (binding to a key possessed by the User), ``biometric`` (binding to presented biometrics of the User) or ``none`` (no cryptographic binding).
-  * - **attestationLoS**
-    - REQUIRED. Level of security (LoS) the Digital Credential is to be provided at. Allowed value is a string from the set of: ``iso_18045_high``, ``iso_18045_moderate``, ``iso_18045_enhanced-basic`` or ``iso_18045_basic`` (see Annex D.2 of `OpenID4VCI`_ for more details).
-
-.. note::
-  While ``min_loa`` in the claim ``authentication`` specifies the Digital Credential authentication requirements referring to the eID mean level of assurance required during user authentication in the issuance process, the claim ``attestationLoS`` complements this requirement by specifying the attack potential resistance for both user authentication and key storage.
-
-.. note::
-  The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
-
-The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
-
-.. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
-
-.. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
-
-.. note::
-  For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
-
-  - Download the basic version of the Digital Credentials Catalog (compact, without localizations) using the ``.well-known/credential-catalog`` endpoint.
-  - Determine the User's preferred language.
-  - Download only the necessary localization bundles.
-  - Dynamically merge localised content with the Digital Credentials Catalog structure.
-
-A non-normative example of a localization bundle output is given below:
-
-.. code-block:: json
-
-  {
-    "mDL.name": "Patente di Guida",
-    "mDL.issuer1.name": "Esempio di Credential Issuer",
-    "...": "..."
-  }
-
-Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
-
-A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
-
-Decentralization of Display and Claim Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata**.
-
-The overall logic for presenting a Digital Credential is the following:
-
-1. Depending on the required Trust Framework, the Wallet or Relying Party retrieves the :ref:`registry:Digital Credentials Catalog` (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available `credential_type` and the `entity_id` of their Credential Issuers.
-2. It retrieves the full Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
-3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
-
-Taxonomy
---------
-
-The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format.
-
-The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.
-
-**Taxonomy Objectives:**
-
-1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
-2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
-3. **Interoperability**: Ensure consistent interpretation of credential classifications
-4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
-5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
-
-
-Taxonomy Usage
-^^^^^^^^^^^^^^
-
-- **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
-- **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
-- **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
-
-
 Taxonomy Structure
 ^^^^^^^^^^^^^^^^^^
 
-The taxonomy maintains a four level hierarchical structure:
-
-- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
-- **Class (Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses, Access)
-- **Credential Type**: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).
-- **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services, Access permit verification).
+The taxonomy maintains a four level hierarchical structure, that is the Domains, the Classes, the Credential Types and the Purposes defined in :ref:`registry:Digital Credentials Hierarchy` above.
 
 .. note::
   Credential Type is a concept defined at the Digital Credentials Catalog level, not within the Taxonomy. The Taxonomy provides the classification vocabulary (Domains, Classes, Purposes) that Credential Types in the Catalog reference.
@@ -1449,3 +1444,17 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
   * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Digital Credential for service access.
+
+Cross-border Attribute Verification by a QTSP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This journey describes how a Qualified Trust Service Provider (QTSP), possibly established in another Member State, verifies the value of an Annex VI attribute against an Italian public-sector Authentic Source in order to issue a QEAA.
+It exercises the EUDIW Catalogue of Attributes and the ``verification_endpoint`` of the :ref:`registry:Authentic Source Registry`, and it does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.
+
+1.  **Verification-point discovery**: The QTSP queries the EUDIW Catalogue of Attributes for the required attribute and resolves the responsible Italian ``Attribute`` entry, obtaining the ``authenticSources[].DataService.endpointURL`` (the ETSI TS 119 478 verification interface declared in the AS Registry ``verification_endpoint``), the ``legalBasis`` and the description of how to initiate the verification request. The national counterpart of the Catalogue of Attributes is the pair Claims Registry, for the semantics, and Authentic Source Registry, for the verification point, see :ref:`registry:Registry Integration and Cross-References`.
+
+2.  **Interface selection**: Depending on ``verification_endpoint.method``, the QTSP uses the ISO 15000/eDelivery interface (``oots_edelivery``) or the REST + OAuth 2.0 interface (``rest_oauth2``) of ETSI TS 119 478 Section 6.
+
+3.  **Verification request**: The QTSP submits the verification request to the endpoint, exposed by the Authentic Source or by the designated national intermediary, which returns the authentic confirmation of the attribute value for the User. As foreseen by Article 45e of [`EIDAS`_], this is an authenticity verification of the attribute and not an access to the underlying data.
+
+4.  **Issuance**: The QTSP issues the QEAA under its own Rulebook and trust anchors, that is the EUDIW Trusted Lists. The trust anchoring of the resulting QEAA does not derive from the presence of any scheme in the Catalogue of Schemes, see the note in :ref:`registry:Registry Integration and Cross-References`.
