@@ -138,7 +138,7 @@ In a single resource, it defines the hierarchy of Domains, Classes and Purposes 
 Taxonomy Usage
 ^^^^^^^^^^^^^^
 
-- **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
+- **Authentic Source Registry**: Authentic Sources declare capabilities using taxonomy classifications
 - **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
 - **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
 
@@ -743,8 +743,8 @@ As shown in Figure :ref:`fig_registry_infrastructure`, the Authentic Source Regi
 **During Operational Activities**:
   - **Credential Issuance**: Credential Issuer systems reference Authentic Source Registry for real-time data access during Credential issuance.
 
-AS Registry Structure
-^^^^^^^^^^^^^^^^^^^^^
+Authentic Source Registry Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 During registration, Authentic Sources declare their capabilities before Credential types exist in the catalog. This declaration establishes the foundation for subsequent CI registration and Credential type creation.
 
