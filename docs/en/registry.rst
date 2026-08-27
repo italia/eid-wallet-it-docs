@@ -16,7 +16,7 @@ At EU level the European Commission maintains two EUDIW catalogues that are the 
   This section focuses on the registries for the semantic definition and discovery of data. The entity trust registers for the EUDIW trust model (**Register of WRPs** operated by a national Registrar under `CIR2025/848`_) and the National trust model (**Federation API Endpoints**) are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 This section provides first an overview of the IT-Wallet registry infrastructure (:ref:`registry:Registry Architecture Overview`) and its discovery mechanism (:ref:`registry:Registry Discovery Endpoint`).
-Then, it details its components: :ref:`registry:Claims Registry`, :ref:`registry:Taxonomy`, :ref:`registry:Schema Registry`, :ref:`registry:Authentic Source Registry` and :ref:`registry:Digital Credentials Catalog`.
+Then, it details its components: :ref:`registry:Taxonomy`, :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Schema Registry` and :ref:`registry:Digital Credentials Catalog`.
 Finally, it describes their relationships (:ref:`registry:Registry Integration and Cross-References`) and usage journeys (:ref:`registry:Registry Infrastructure Usage Journeys`).
 
 Registry Architecture Overview
@@ -24,10 +24,10 @@ Registry Architecture Overview
 
 Five national semantic and discovery registries provide the standardized definitions and discovery data:
 
-1. **Claims Registry**: Standardized semantic definitions for individual Credential attributes and data types.
-2. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
-3. **Schema Registry**: Authoritative list of Credential Schemas.
-4. **Authentic Source Registry**: Registered Authentic Source (AS) with their declared capabilities, available claims and verification endpoints.
+1. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
+2. **Claims Registry**: Standardized semantic definitions for individual Credential attributes and data types.
+3. **Authentic Source Registry**: Registered Authentic Source (AS) with their declared capabilities, available claims and verification endpoints.
+4. **Schema Registry**: Authoritative list of Credential Schemas.
 5. **Digital Credentials Catalog**: Available Credential types with their metadata and issuance information.
 
 The national registries are maintained by the national Trust Anchor under the Supervisory Body to ensure consistency, security, and regulatory compliance.
@@ -118,120 +118,6 @@ JWT payload structure (when decoded):
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
-
-Claims Registry
----------------
-
-The Claims Registry MUST contain:
-
-  - **Standardised Claims**: Semantic definitions for all Credential attributes with data types and validation rules.
-  - **Interoperability Mappings**: Alias definitions for claims that use different terminology across standards (e.g., ISO18013-5 ``place_of_birth`` mapped to canonical ``birth_place``).
-  - **Data Formats**: Standardised data types (string, date, numeric, boolean, email, url, image, array, object) with validation patterns.
-
-The Claims Registry MUST ensure:
-
-  - **Semantic Consistency**: Prevents conflicts between duplicate or overlapping claims across the ecosystem.
-  - **Cross-border Interoperability**: Ensures EU compliance and consistent claim interpretation.
-  - **Schema Validation**: Provides authoritative definitions for claim validation across all Credential scenarios.
-  - **Regulatory Alignment**: Coordinates with national and EU regulatory framework.
-  - **Credential-Agnostic Scenarios**: Supports scenarios where **user convenience** and **business operational efficiency** are prioritized over **regulatory compliance** and **audit trails**.
-
-.. note::
-  The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
-
-Claims Registry Usage
-^^^^^^^^^^^^^^^^^^^^^
-
-As shown in Figure :ref:`fig_registry_infrastructure`, the Claims Registry MUST support the complete ecosystem lifecycle:
-
-**During Onboarding Process**:
-
-  - **AS Registration**: Authentic Sources declare available claims from standardized registry during capability registration.
-  - **CI Registration**: Credential Issuers select Authentic Source entities based on required claims and register Credential types for catalog publication.
-  - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific User's attributes.
-
-**During Operational Activities**:
-
-  - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
-  - **Presentation Requests**: Relying Parties reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
-
-Claims Registry Structure
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided via dedicated localization bundles referenced through the ``localization.base_uri`` field, enabling efficient multilingual support without compromising the registry's structural integrity.
-
-.. list-table:: First-level Fields of the Claims Registry
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - REQUIRED. Unique identifier of the Claims Registry (e.g., ``urn:claims:it-wallet``).
-   * - **version**
-     - REQUIRED. The version of the Claims Registry (e.g., ``1.0.0``).
-   * - **last_modified**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
-   * - **localization**
-     - REQUIRED. Localization configuration object containing:
-
-       * **default_locale**: Default locale code (e.g., ``it``).
-       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
-       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/``).
-       * **version**: Version of the localization bundle format.
-   * - **claims**
-     - REQUIRED. A JSON Object where each key is a claim name and each value is a JSON Object describing that claim. Each claim object contains the parameters defined in the "Claim Entry Parameters" table below.
-
-.. list-table:: Claim Entry Parameters
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Field Name**
-     - **Description**
-   * - **description_l10n_id**
-     - REQUIRED. Localization key referencing the human-readable description of the claim in the localization bundle (e.g., ``claim.given_name.description``).
-   * - **type**
-     - REQUIRED. Data type of the claim. Supported values: ``string``, ``boolean``, ``array``, ``object``.
-   * - **format**
-     - OPTIONAL. Semantic format qualifier for string types (e.g., ``date`` for ISO 8601 dates, ``uri``, ``data`` for Base64-encoded binary).
-   * - **encoding**
-     - OPTIONAL. Encoding applied to the value (e.g., ``base64``). Present when ``format`` is ``data``.
-   * - **aliases**
-     - OPTIONAL. Array of alternative claim names used in other standards that map to this canonical claim (e.g., ``["birthdate"]`` for ``birth_date``, ``["date_of_expiry"]`` for ``expiry_date``).
-   * - **nested_claims**
-     - OPTIONAL. Array of claim names that form the properties of an ``object`` type claim (e.g., ``["country", "locality", "region"]`` for ``place_of_birth``).
-   * - **nested_item_claims**
-     - OPTIONAL. Array of claim names representing the properties of each item in an ``array`` type claim (e.g., ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` for ``driving_privileges``).
-   * - **items**
-     - OPTIONAL. JSON object describing the schema of each element in a simple ``array`` type claim (e.g., ``{"type": "string"}`` for ``nationalities``).
-
-A non-normative example of Claims Registry structure is given below:
-
-.. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
-
-.. note::
-  For a better and more efficient management of the localization of the information contained in the Claims Registry, an Entity consulting it SHOULD:
-
-  - Download the basic version of the Claims Registry (compact, without localizations) using the ``.well-known/claims`` endpoint.
-  - Determine the User's preferred language.
-  - Download only the necessary localization bundles.
-  - Dynamically merge localised content with the Claims Registry structure.
-
-A non-normative example of a localization bundle output is given below:
-
-.. code-block:: json
-
-  {
-    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
-    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
-    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
-    "...": "..."
-  }
-
-Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
 Taxonomy
 --------
@@ -711,33 +597,48 @@ Localization bundles MUST be available at the URI composed by appending the loca
 
 A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
 
-Schema Registry
+Claims Registry
 ---------------
 
-The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
+The Claims Registry MUST contain:
 
-**Schema Registry Objectives:**
+  - **Standardised Claims**: Semantic definitions for all Credential attributes with data types and validation rules.
+  - **Interoperability Mappings**: Alias definitions for claims that use different terminology across standards (e.g., ISO18013-5 ``place_of_birth`` mapped to canonical ``birth_place``).
+  - **Data Formats**: Standardised data types (string, date, numeric, boolean, email, url, image, array, object) with validation patterns.
 
-1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
-2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
-3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
-4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+The Claims Registry MUST ensure:
 
+  - **Semantic Consistency**: Prevents conflicts between duplicate or overlapping claims across the ecosystem.
+  - **Cross-border Interoperability**: Ensures EU compliance and consistent claim interpretation.
+  - **Schema Validation**: Provides authoritative definitions for claim validation across all Credential scenarios.
+  - **Regulatory Alignment**: Coordinates with national and EU regulatory framework.
+  - **Credential-Agnostic Scenarios**: Supports scenarios where **user convenience** and **business operational efficiency** are prioritized over **regulatory compliance** and **audit trails**.
 
-Schema Registry Usage
+.. note::
+  The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
+
+Claims Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interacting with the Schema Registry are:
+As shown in Figure :ref:`fig_registry_infrastructure`, the Claims Registry MUST support the complete ecosystem lifecycle:
 
-  - **Relying Parties**: They use the Schema Registry to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
-  - **Wallet Providers**: They access the Schema Registry to retrieve all necessary information for integrating them into their Wallet Solutions.
+**During Onboarding Process**:
 
-Schema Registry Structure
+  - **AS Registration**: Authentic Sources declare available claims from standardized registry during capability registration.
+  - **CI Registration**: Credential Issuers select Authentic Source entities based on required claims and register Credential types for catalog publication.
+  - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific User's attributes.
+
+**During Operational Activities**:
+
+  - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
+  - **Presentation Requests**: Relying Parties reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
+
+Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided via dedicated localization bundles referenced through the ``localization.base_uri`` field, enabling efficient multilingual support without compromising the registry's structural integrity.
 
-.. list-table:: First-level Fields of the Schema Registry
+.. list-table:: First-level Fields of the Claims Registry
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -745,45 +646,70 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - **Field Name**
      - **Description**
    * - **id**
-     - REQUIRED. Unique identifier of the Schema Registry (e.g., ``urn:schemas:it-wallet``).
+     - REQUIRED. Unique identifier of the Claims Registry (e.g., ``urn:claims:it-wallet``).
    * - **version**
-     - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
+     - REQUIRED. The version of the Claims Registry (e.g., ``1.0.0``).
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
-   * - **schemas**
-     - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
 
-.. list-table:: Schema Definition Parameters
-   :widths: 25 75
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/``).
+       * **version**: Version of the localization bundle format.
+   * - **claims**
+     - REQUIRED. A JSON Object where each key is a claim name and each value is a JSON Object describing that claim. Each claim object contains the parameters defined in the "Claim Entry Parameters" table below.
+
+.. list-table:: Claim Entry Parameters
+   :class: longtable
+   :widths: 30 70
    :header-rows: 1
 
    * - **Field Name**
      - **Description**
-   * - **id**
-     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
-   * - **version**
-     - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
-   * - **credential_type**
-     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``, ``eid``).
+   * - **description_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable description of the claim in the localization bundle (e.g., ``claim.given_name.description``).
+   * - **type**
+     - REQUIRED. Data type of the claim. Supported values: ``string``, ``boolean``, ``array``, ``object``.
    * - **format**
-     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
-   * - **vct**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
-   * - **docType**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
-   * - **schema_uri**
-     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
-   * - **schema_uri#integrity**
-     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
-   * - **description**
-     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
+     - OPTIONAL. Semantic format qualifier for string types (e.g., ``date`` for ISO 8601 dates, ``uri``, ``data`` for Base64-encoded binary).
+   * - **encoding**
+     - OPTIONAL. Encoding applied to the value (e.g., ``base64``). Present when ``format`` is ``data``.
+   * - **aliases**
+     - OPTIONAL. Array of alternative claim names used in other standards that map to this canonical claim (e.g., ``["birthdate"]`` for ``birth_date``, ``["date_of_expiry"]`` for ``expiry_date``).
+   * - **nested_claims**
+     - OPTIONAL. Array of claim names that form the properties of an ``object`` type claim (e.g., ``["country", "locality", "region"]`` for ``place_of_birth``).
+   * - **nested_item_claims**
+     - OPTIONAL. Array of claim names representing the properties of each item in an ``array`` type claim (e.g., ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` for ``driving_privileges``).
+   * - **items**
+     - OPTIONAL. JSON object describing the schema of each element in a simple ``array`` type claim (e.g., ``{"type": "string"}`` for ``nationalities``).
 
-**Schema Registry Example:**
+A non-normative example of Claims Registry structure is given below:
 
-A non-normative example of the Schema Registry payload:
-
-.. literalinclude:: ../../examples/schema-registry-example-payload.json
+.. literalinclude:: ../../examples/claims-registry-example.json
   :language: JSON
+
+.. note::
+  For a better and more efficient management of the localization of the information contained in the Claims Registry, an Entity consulting it SHOULD:
+
+  - Download the basic version of the Claims Registry (compact, without localizations) using the ``.well-known/claims`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Claims Registry structure.
+
+A non-normative example of a localization bundle output is given below:
+
+.. code-block:: json
+
+  {
+    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
+    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
+    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
+    "...": "..."
+  }
+
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
 Authentic Source Registry
 -------------------------
@@ -1051,6 +977,80 @@ A non-normative example of a localization bundle output is given below:
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the registry. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
 A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/it.json**.
+
+Schema Registry
+---------------
+
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
+
+**Schema Registry Objectives:**
+
+1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
+2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
+3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
+4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+
+
+Schema Registry Usage
+^^^^^^^^^^^^^^^^^^^^^
+
+As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interacting with the Schema Registry are:
+
+  - **Relying Parties**: They use the Schema Registry to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
+  - **Wallet Providers**: They access the Schema Registry to retrieve all necessary information for integrating them into their Wallet Solutions.
+
+Schema Registry Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+
+.. list-table:: First-level Fields of the Schema Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Schema Registry (e.g., ``urn:schemas:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **schemas**
+     - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
+
+.. list-table:: Schema Definition Parameters
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
+   * - **version**
+     - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
+   * - **credential_type**
+     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``, ``eid``).
+   * - **format**
+     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
+   * - **vct**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+   * - **docType**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
+   * - **schema_uri**
+     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
+   * - **schema_uri#integrity**
+     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
+   * - **description**
+     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
+
+**Schema Registry Example:**
+
+A non-normative example of the Schema Registry payload:
+
+.. literalinclude:: ../../examples/schema-registry-example-payload.json
+  :language: JSON
 
 Digital Credentials Catalog
 ---------------------------
