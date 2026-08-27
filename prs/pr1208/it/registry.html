@@ -376,7 +376,7 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>OBBLIGATORIO. Versione del formato del documento di discovery (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>last_updated</strong></p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al documento di discovery (es. <code class="docutils literal notranslate"><span class="pre">2024-03-15T10:30:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>endpoints</strong></p></td>
@@ -404,7 +404,7 @@ Content-Type: application/json
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:it-wallet-registry:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;endpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;claims_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/claims&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources&quot;</span><span class="p">,</span>
@@ -492,7 +492,7 @@ Content-Type: application/json
 <td><p>OBBLIGATORIO. La versione del Registro dei Claims (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando il registro è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro dei Claims è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
@@ -1036,7 +1036,7 @@ Content-Type: application/json
 <td><p>OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro delle Fonti Autentiche è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
@@ -2256,12 +2256,22 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali.</p></td>
+<td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>OBBLIGATORIO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>credentials</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
+<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.</p></td>
 </tr>
 </tbody>
@@ -2373,19 +2383,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>localization</strong></p></td>
-<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
-<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
-<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
-<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>.</p></li>
@@ -2393,7 +2391,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>parent_credentials</strong></p></td>
 <td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> è assente. Array degli identificativi di <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.</p></td>
 </tr>
 </tbody>
@@ -3319,13 +3317,16 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco del Registro degli Schemi (es. <code class="docutils literal notranslate"><span class="pre">urn:schemas:it-wallet</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>OBBLIGATORIO. La versione del Registro degli Schemi (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>last_updated</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro degli Schemi è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>schemas</strong></p></td>
+<tr class="row-odd"><td><p><strong>schemas</strong></p></td>
 <td><p>OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella &quot;Parametri di Definizione dello Schema&quot; di seguito, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.</p></td>
 </tr>
 </tbody>
