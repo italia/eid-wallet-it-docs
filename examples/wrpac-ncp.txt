@@ -74,7 +74,7 @@ AccessCertificate cert = {
           GeneralName.uniformResourceIdentifier("https://rp.example.test/support"),
           GeneralName.rfc822Name("support@rp.example.test"),
           GeneralName.otherName(
-            typeId: "2.5.4.20",                           // id-at-telephoneNumber
+            type-id: "2.5.4.20",                          // id-at-telephoneNumber
             value: "+420-111-222-333"
           )
         ]
@@ -88,7 +88,7 @@ AccessCertificate cert = {
             distributionPoint: URI("https://crl.example.test/issuing-ca.crl")
           }
         ]
-      }
+      },
 
       Extension {
         oid: "1.3.6.1.5.5.7.1.1",                         // authorityInfoAccess
@@ -109,7 +109,7 @@ AccessCertificate cert = {
   },
 
   signatureAlgorithm: AlgorithmIdentifier {
-    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
+    oid: "1.2.840.113549.1.1.11",                         // MUST match/align with tbsCertificate.signature
     params: NULL
   },
 
