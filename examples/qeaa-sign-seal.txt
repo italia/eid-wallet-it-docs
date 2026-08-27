@@ -1,7 +1,7 @@
 AccessCertificate cert = {
   tbsCertificate: {
     version: 2,                                           // Integer value 2 for v3
-    serialNumber: "0x6F3A0B91D2...",
+    serialNumber: "0x7364DE67A6...",
 
     signature: AlgorithmIdentifier {
       oid: "1.2.840.113549.1.1.11",                       // sha256WithRSAEncryption
@@ -22,8 +22,8 @@ AccessCertificate cert = {
 
     subject: DistinguishedName {                          // Subject attributes for legal person
       countryName: "IT",
-      organizationName: "Example of (Q)EAA Provider",
-      commonName: "(Q)EAA Provider Example",
+      organizationName: "Example of QEAA Provider",
+      commonName: "QEAA Provider Example",
       organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
     },
 
@@ -41,10 +41,10 @@ AccessCertificate cert = {
         oid: "2.5.29.35",                                 // authorityKeyIdentifier
         critical: false,
         value: AuthorityKeyIdentifier {
-          keyIdentifier: "HEX(20B_KEYID_OF_ISSUING_CA_PUBLIC_KEY)"
+          keyIdentifier: "SHA-1(ISSUER_PUBLIC_KEY_VALUE)"
         }
       },
-      
+
       Extension {
         oid: "2.5.29.15",                                 // keyUsage
         critical: true,
@@ -74,8 +74,8 @@ AccessCertificate cert = {
           GeneralName.uniformResourceIdentifier("https://eaa.example.test/support"),
           GeneralName.rfc822Name("support@eaa.example.test"),
           GeneralName.otherName(
-            typeId: "2.5.4.20",                           // id-at-telephoneNumber
-            value: "+420-111-222-333"
+            type-id: "2.5.4.20",                          // id-at-telephoneNumber
+            value: "+420-111-222-555"
           )
         ]
       },
@@ -88,7 +88,7 @@ AccessCertificate cert = {
             distributionPoint: URI("https://crl.example.test/issuing-ca.crl")
           }
         ]
-      }
+      },
 
       Extension {
         oid: "1.3.6.1.5.5.7.1.1",                         // authorityInfoAccess
@@ -104,12 +104,20 @@ AccessCertificate cert = {
             accessLocation: URI("https://ocsp.example.test")
           }
         ]
-      }
+      },
 
       Extension {
         oid: "1.3.6.1.5.5.7.1.3",                         // qcStatements
         critical: false,
         value: QCStatements [
+          QCStatement {                                   // esi4-qcStatement-1
+            statementId: "0.4.0.1862.1.1",                // id-etsi-qcs-QcCompliance
+          },
+
+          QCStatement {                                   // esi4-qcStatement-4
+            statementId: "0.4.0.1862.1.4",                // id-etsi-qcs-QcSSCD
+          },
+
           QCStatement {
             statementId: "0.4.0.1862.1.6",                // id-etsi-qcs-QcType
             statementInfo: QcType {
@@ -124,7 +132,7 @@ AccessCertificate cert = {
   },
 
   signatureAlgorithm: AlgorithmIdentifier {
-    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
+    oid: "1.2.840.113549.1.1.11",                         // MUST match/align with tbsCertificate.signature
     params: NULL
   },
 

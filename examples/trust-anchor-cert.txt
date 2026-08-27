@@ -1,7 +1,7 @@
 AccessCertificate cert = {
   tbsCertificate: {
     version: 2,                                           // Integer value 2 for v3
-    serialNumber: "0x6F3A0B91D2...",
+    serialNumber: "0x9D846F726A8..",
 
     signature: AlgorithmIdentifier {
       oid: "1.2.840.113549.1.1.11",                       // sha256WithRSAEncryption
@@ -38,6 +38,14 @@ AccessCertificate cert = {
 
     extensions: [
       Extension {
+        oid: "2.5.29.35",                                 // authorityKeyIdentifier
+        critical: false,
+        value: AuthorityKeyIdentifier {
+          keyIdentifier: "SHA-1(ISSUER_PUBLIC_KEY_VALUE)"
+        }
+      },
+
+      Extension {
         oid: "2.5.29.14",                                 // subjectKeyIdentifier
         critical: false,
         value: SubjectKeyIdentifier [
@@ -50,7 +58,7 @@ AccessCertificate cert = {
         critical: true,
         value: KeyUsage {
           keyCertSign: true,
-          cRLSign: trus
+          cRLSign: true
           // All other bits set to false
         }
       },
@@ -59,14 +67,15 @@ AccessCertificate cert = {
         oid: "2.5.29.19",                                 // basicConstraints
         critical: true,
         value: BasicConstraints {
-          cA: true
+          cA: true,
+          pathLenConstraint: 0
         }
       }
     ]
   },
 
   signatureAlgorithm: AlgorithmIdentifier {
-    oid: "1.2.840.113549.1.1.11",                         // Must match/align with tbsCertificate.signature
+    oid: "1.2.840.113549.1.1.11",                         // MUST match/align with tbsCertificate.signature
     params: NULL
   },
 

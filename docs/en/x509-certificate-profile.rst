@@ -11,21 +11,40 @@ This section defines a general **X.509 Certificate Profile**, which is further s
 - :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` (EUDIW Trust Framework);
 - :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile` (EUDIW Trust Framework).
 
-The common profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on :rfc:`5280` and ETSI EN 319 412.
+This profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on :rfc:`5280` and ETSI EN 319 412.
 Each X.509 certificate profile defined by this specification MUST conform to the requirements of this section unless explicitly stated otherwise.
 
-The final certificate is obtained by combining the certificate body (``version`` through ``subjectPublicKeyInfo``) with the certificate extensions required by the selected certificate profile.
-The resulting ASN.1 structure MUST be encoded using the Distinguished Encoding Rules (DER) as specified in :rfc:`5280`.
+.. list-table:: X.509 Certificate Fields
+   :class: longtable
+   :header-rows: 1
+   :widths: 20 60 20
 
-Common Certificate Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
+   * - **Field**
+     - **Description**
+     - **Reference**
 
-The ``TBSCertificate`` structure and its fields MUST conform to :rfc:`5280#section-4.1`.
+   * - ``tbsCertificate``
+     - REQUIRED.
+     - Section 4.1.1.1
 
-The following table defines the certificate fields applicable to the certificate profiles defined in this specification.
-For each field, the table specifies the corresponding :rfc:`5280` reference, its presence requirement, and any additional profile-specific constraints.
+    * - ``signatureAlgorithm``
+     - REQUIRED.
+     - Section 4.1.1.2
 
-.. list-table:: Certificate Profile Fields
+    * - ``signatureValue``
+     - REQUIRED.
+     - Section 4.1.1.3
+
+.. note::
+
+    The rest of the section details the content of the ``tbsCertificate`` field only. For additional information on the ``signatureAlgorithm`` and ``signatureValue`` fields, refer to :rfc:`5280`.
+
+The ``TBSCertificate`` field MUST contain a `TBSCertificate` structure, whose fields MUST conform to :rfc:`5280#section-4.12`.
+
+The following table defines the certificate fields applicable to the certificate profile specified in this document.
+For each field, the table defines its presence requirement, type, description, and corresponding reference in :rfc:`5280`. Individual certificate profiles MAY provide additional contextual notes for these fields, but MUST NOT alter the presence requirements specified herein.
+
+.. list-table:: TBSCertificate Fields
    :class: longtable
    :header-rows: 1
    :widths: 20 60 20
@@ -72,14 +91,10 @@ For each field, the table specifies the corresponding :rfc:`5280` reference, its
 
    * - ``extensions``
      - REQUIRED. It MUST conform to the structure defined in :rfc:`5280#section-4.2`.
-       The applicable extensions and their profile-specific constraints are defined in :ref:`infrastructure-trust:Supported Certificate Extensions` and in the corresponding certificate profile.
+       The applicable extensions and their profile-specific constraints are defined below and in the corresponding certificate profile.
      - Section 4.1.2.9
 
-Supported Certificate Extensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following table lists the certificate extensions supported by the X.509 certificate profiles defined in this specification, together with their object identifiers, default criticality, and normative references.
-Specific certificate profiles define whether an extension is REQUIRED, OPTIONAL, or MUST NOT be present, and MAY further constrain its contents.
+The following table specifies the X.509 certificate extensions supported by this specification, including their Object Identifiers (OIDs), type, criticality, description, and normative references. Individual certificate profiles MUST define the presence requirement (REQUIRED, OPTIONAL, or PROHIBITED) for each extension and MAY further constrain its syntax and contents.
 
 The criticality values used in this specification have the following meaning:
 
@@ -120,6 +135,11 @@ The criticality values used in this specification have the following meaning:
      - ``2.5.29.17``
      - NC
      - :rfc:`5280#section-4.2.1.6`, Clause 4.3.5 of [`ETSI EN 319 412-2`_], Clause 6.6.1, GEN-6.6.1-07 of [`ETSI TS 119 411-8`_]
+
+   * - ``issuerAltName``
+     - ``2.5.29.18``
+     - NC
+     - :rfc:`5280#section-4.2.1.7`
 
    * - ``basicConstraints``
      - ``2.5.29.19``
