@@ -16,7 +16,7 @@ At EU level the European Commission maintains two EUDIW catalogues that are the 
   This section focuses on the registries for the semantic definition and discovery of data. The entity trust registers for the EUDIW trust model (**Register of WRPs** operated by a national Registrar under `CIR2025/848`_) and the National trust model (**Federation API Endpoints**) are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 This section provides first an overview of the IT-Wallet registry infrastructure (:ref:`registry:Registry Architecture Overview`) and its discovery mechanism (:ref:`registry:Registry Discovery Endpoint`).
-Then, it details its components: :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Digital Credentials Catalog`, :ref:`registry:Taxonomy`, :ref:`registry:Schema Registry`).
+Then, it details its components: :ref:`registry:Claims Registry`, :ref:`registry:Taxonomy`, :ref:`registry:Schema Registry`, :ref:`registry:Authentic Source Registry` and :ref:`registry:Digital Credentials Catalog`.
 Finally, it describes their relationships (:ref:`registry:Registry Integration and Cross-References`) and usage journeys (:ref:`registry:Registry Infrastructure Usage Journeys`).
 
 Registry Architecture Overview
@@ -25,13 +25,13 @@ Registry Architecture Overview
 Five national semantic and discovery registries provide the standardized definitions and discovery data:
 
 1. **Claims Registry**: Standardized semantic definitions for individual Credential attributes and data types.
-2. **Authentic Source Registry**: Registered Authentic Source (AS) with their declared capabilities, available claims and verification endpoints.
-3. **Digital Credentials Catalog**: Available Credential types with their metadata and issuance information.
-4. **Schema Registry**: Authoritative list of Credential Schemas.
-5. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
+2. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
+3. **Schema Registry**: Authoritative list of Credential Schemas.
+4. **Authentic Source Registry**: Registered Authentic Source (AS) with their declared capabilities, available claims and verification endpoints.
+5. **Digital Credentials Catalog**: Available Credential types with their metadata and issuance information.
 
 The national registries are maintained by the national Trust Anchor under the Supervisory Body to ensure consistency, security, and regulatory compliance.
-The figure below shows, for each component, the onboarding or operational phase in which it is used and by who, more details are provided in each section.
+The figure below shows, for each component, the onboarding or operational phase in which it is used and by whom. More details are provided in each section.
 
 .. _fig_registry_infrastructure:
 .. plantuml:: plantuml/registry-infrastructure.puml
@@ -85,11 +85,11 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
    * - **Field Name**
      - **Description**
    * - **id**
-     - REQUIRED. Unique identifier of the discovery document (e.g., ``urn:it-wallet-registry:it-wallet``).
+     - REQUIRED. Unique identifier of the Registry Discovery document (e.g., ``urn:it-wallet-registry:it-wallet``).
    * - **version**
-     - REQUIRED. Version of the discovery document format (e.g., ``1.0.0``).
-   * - **last_updated**
-     - REQUIRED. Timestamp of the last modification to the discovery document (e.g., ``2024-03-15T10:30:00Z``).
+     - REQUIRED. The version of the Registry Discovery document (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **endpoints**
      - REQUIRED. JSON object containing the URIs of all registry components. The following endpoint keys MUST be present:
 
@@ -108,7 +108,7 @@ JWT payload structure (when decoded):
   {
     "id": "urn:it-wallet-registry:it-wallet",
     "version": "1.0.0",
-    "last_updated": "2024-03-15T10:30:00Z",
+    "last_modified": "2024-03-15T10:30:00Z",
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
@@ -172,7 +172,7 @@ The Claims Registry maintains language-neutral, technical definitions for semant
    * - **version**
      - REQUIRED. The version of the Claims Registry (e.g., ``1.0.0``).
    * - **last_modified**
-     - REQUIRED. The timestamp indicating when the registry was last updated (e.g., ``2026-03-06T00:00:00Z``).
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **localization**
      - REQUIRED. Localization configuration object containing:
 
@@ -232,6 +232,558 @@ A non-normative example of a localization bundle output is given below:
   }
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
+
+Taxonomy
+--------
+
+The **Taxonomy** is the authoritative vocabulary that organizes Credentials in the IT-Wallet ecosystem, and it is the semantic foundation of their interoperability. It is independent of the Credential format.
+
+In a single resource, it defines the hierarchy of Domains, Classes and Purposes that Credential Types reference, supporting authorization policy evaluation and ecosystem-wide standardization.
+
+**Taxonomy Objectives:**
+
+1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
+2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
+3. **Interoperability**: Ensure consistent interpretation of credential classifications
+4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
+5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
+
+
+Taxonomy Usage
+^^^^^^^^^^^^^^
+
+- **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
+- **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
+- **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
+
+
+Digital Credentials Hierarchy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
+
+The hierarchy is defined as follows:
+
+**Domain**
+
+A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
+Domains provide a top-level organizational layer.
+
+**Credential Class**
+
+A **Credential Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).
+
+Each Class SHOULD define:
+
+- a stable Class identifier (URI),
+- the expected semantics of the Credential Family.
+
+Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.
+
+**Credential Type**
+
+A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
+Each Credential Type MUST include:
+
+- a unique identifier,
+- the Credential Issuer identifier,
+- the set of Attributes that may be included in presentations.
+
+Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
+
+**Purpose (Verification Intent)**
+
+A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+Purposes MUST describe **verification outcomes**.
+Each Credential Type MUST declare its Domain, Class, and supported Purposes.
+
+The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
+Additional Domains, Classes, specific Credentials, and verification Purposes **MAY** be added over time as the IT-Wallet ecosystem evolves.
+
+.. list-table:: Digital Credential Taxonomy: Hierarchy and Classification
+   :class: longtable
+   :header-rows: 1
+   :widths: 15 25 30 30
+
+   * - **Domain**
+     - **Description**
+     - **Credential Class**
+     - **Credential Type**
+
+   * - *IDENTITY*
+     - Credentials that establish or confirm a person's legal identity and personal, civil or legal status.
+     -
+       * Identification Documents
+       * Civil Registry and Personal Status Certificates
+       * Economic and Legal Status
+     -
+       * Digital Travel Credential
+       * Mobile Driving License (Italy only)
+       * Tax Code / Health Insurance Card
+       * Age Certification
+       * Birth Certificate
+       * Residence Certificate
+       * Family Status Certificate
+       * Marriage Certificate
+       * Citizenship Certificate
+       * ISEE (Equivalent Economic Situation Indicator)
+       * Residence Permit
+       * Certificate of Pending Charges
+       * Criminal Record Certificate
+
+   * - *HOME AND FAMILY*
+     - Credentials that attest household composition, residence, and housing-related legal or fiscal relationships.
+     -
+       * Property and Cadastral Documents
+       * Family Documents
+       * Local Tax Documents
+     -
+       * Deed of Sale
+       * Cadastral Survey
+       * Cadastral Floor Plan
+       * Cadastral Certificate
+       * Children's Tax Code / Health Card
+       * Birth Certificate
+       * Family Status Certificate
+       * IMU (Property Tax)
+       * TARI (Waste Tax)
+
+   * - *EDUCATION*
+     - Credentials that attest educational achievements, academic qualifications, and professional training.
+     -
+       * Educational Qualifications
+       * Professional Certifications
+     -
+       * Lower Secondary School Diploma
+       * Upper Secondary School Diploma
+       * Bachelor's Degree
+       * Master's Degree
+       * University Master
+       * PhD
+       * Professional Licenses (e.g. architect, lawyer)
+       * Vocational Training Certificates
+       * Language Certifications (e.g. IELTS)
+       * Academic Qualifications (e.g. Europass)
+
+   * - *HEALTH*
+     - Credentials related to healthcare coverage, medical status, and health-related certifications.
+     -
+       * Certifications and Eligibility
+       * Medical Records
+     -
+       * Health Insurance Card (TEAM)
+       * European Health Card (CED)
+       * Disability Certificate
+       * Vaccination Certificate
+       * Sports Fitness Certificate
+       * Work Fitness Certificate
+       * Medical Prescriptions
+       * Digital Medical Report
+
+   * - *FINANCIAL*
+     - Credentials related to payment instruments, financial authorizations, and proof of payments.
+     -
+       * Payment Instruments
+       * Payment Credentials and Authorisations
+       * Public Payments and Fees
+       * Recurring Payments and Subscriptions
+     -
+       * Digital Payment Card (debit / credit / prepaid)
+       * Virtual Card
+       * Bank Account (IBAN)
+       * Strong Customer Authentication (SCA) Credential
+       * Payment Receipt
+       * Digital Stamp Duty (Bollo digitale)
+       * Tax and Fee Payment Certificate
+       * Subscription Mandate
+       * Recurring Payment Credential
+
+   * - *CULTURE AND LEISURE*
+     - Credentials that attest membership, affiliation, or participation in cultural or recreational programs.
+     -
+       * Cultural Cards and Benefits
+       * Membership and Loyalty Programs
+     -
+       * Culture Card
+       * Annual Museum Passes
+       * Cinema Card
+       * Museum Card
+       * Association Membership Cards
+       * Library Card
+       * City Pass
+
+   * - *EMPLOYMENT*
+     - Credentials that attest employment relationships, professional status, and contribution records.
+     -
+       * Employment Documents
+       * Employment Status
+       * Employment Affiliation
+     -
+       * Digital Employment Contract
+       * Curriculum Vitae (CV)
+       * Residence Permit
+       * Employment Status Certificate
+       * INPS Contribution Record
+       * Physical Access Badge
+
+   * - *MOBILITY AND TRAVEL*
+     - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
+     -
+       * Licenses and Authorizations
+       * Vehicle Documents
+       * Transport Subscriptions
+       * Travel Documents
+       * Travel Insurance
+       * Bookings
+       * Discounts and Benefits
+     -
+       * Mobile Driving License
+       * Boating License
+       * Vehicle Registration Certificate
+       * Digital RCA Insurance
+       * Vehicle Inspection Certificate
+       * Green Card / International Insurance
+       * Public Transport Pass
+       * Road Charging Subscription
+       * Digital Travel Credential
+       * Travel Tickets (air, train, etc.)
+       * Travel Insurance Policy
+       * Hotel Reservation
+       * Discount Cards
+       * Tourist Benefits
+
+   * - *BONUSES*
+     - Credentials that attest entitlement to economic benefits, incentives, or vouchers.
+     -
+       * Economic Benefits and Allowances
+       * Incentives and Vouchers
+       * Health and Wellbeing Bonuses
+     -
+       * Family Allowance Credential
+       * Unemployment Benefit Credential
+       * Digital Voucher
+       * Purchase Incentive Credential
+       * Cashback Eligibility Credential
+       * Healthcare Bonus Credential
+       * Mental Health Support Voucher
+       * Sports and Physical Activity Bonus
+
+.. list-table:: Mapping between Credential Classes and Purposes
+   :class: longtable
+   :header-rows: 1
+   :widths: 40 60
+
+   * - **Credential Class**
+     - **Supported Purposes**
+
+   * - Identification Documents
+     -
+       * Identity verification
+       * Age verification
+       * Person identification
+   * - Civil Registry and Personal Status Certificates
+     -
+       * Civil status verification
+       * Right of residence
+       * Household composition verification
+   * - Economic and Legal Status
+     -
+       * Eligibility for services or benefits
+       * Legal status verification
+       * Criminal record check
+   * - Property and Cadastral Documents
+     -
+       * Residence and household verification
+       * Property ownership verification
+       * Real estate compliance
+   * - Family Documents
+     -
+       * Household composition verification
+       * Eligibility for family-based social services
+   * - Local Tax Documents
+     -
+       * Compliance with local tax obligations
+       * Verification of property tax status
+   * - Educational Qualifications
+     -
+       * Qualification and degree verification
+       * Eligibility for education pathways
+   * - Professional Certifications
+     -
+       * Professional license verification
+       * Skills assessment for work
+   * - Certifications and Eligibility
+     -
+       * Verification of vaccination status
+       * Verification of fitness status
+       * Access to health-restricted areas
+   * - Medical Records
+     -
+       * Access to healthcare services
+       * Sharing of medical records
+       * Medical history validation
+   * - Payment Instruments
+     -
+       * Payment authorization
+       * Payment execution
+       * Proof of payment
+   * - Payment Credentials and Authorisations
+     -
+       * Management of financial authorizations
+       * Strong Customer Authentication (SCA)
+   * - Public Payments and Fees
+     -
+       * Proof of tax payment
+       * Proof of fee payment
+       * Digital stamp duty validation
+   * - Recurring Payments and Subscriptions
+     -
+       * Management of recurring payments
+       * Subscription mandate verification
+   * - Cultural Cards and Benefits
+     -
+       * Access to cultural services
+       * Access to leisure services
+       * Application of member discounts
+   * - Membership and Loyalty Programs
+     -
+       * Verification of affiliation
+       * Verification of participation
+       * Use of loyalty benefits
+   * - Employment Documents
+     -
+       * Employment status verification
+       * Professional profile validation
+   * - Employment Status
+     -
+       * Verification of contribution records
+       * Eligibility for employment-related benefits
+   * - Licenses and Authorizations
+     -
+       * Driving rights verification
+       * Navigation rights verification
+       * Law enforcement controls
+   * - Vehicle Documents
+     -
+       * Vehicle registration verification
+       * Vehicle inspection verification
+       * Insurance status check
+   * - Transport Subscriptions
+     -
+       * Access to transport services
+       * Public transport pass verification
+   * - Travel Documents
+     -
+       * Right to travel or circulate
+       * Cross-border mobility identity check
+   * - Travel Insurance and Bookings
+     -
+       * Verification of travel insurance coverage
+       * Accommodation reservation check
+       * Transport reservation check
+   * - Discounts and Benefits
+     -
+       * Application of member discounts
+       * Access to tourist benefits
+   * - Economic Benefits and Allowances
+     -
+       * Eligibility verification for family benefits
+       * Eligibility verification for unemployment benefits
+       * Allocation of economic support
+   * - Incentives and Vouchers
+     -
+       * Use of digital vouchers
+       * Use of purchase incentives
+       * Cashback eligibility verification
+   * - Health and Wellbeing Bonuses
+     -
+       * Access to healthcare bonuses
+       * Use of mental health vouchers
+       * Use of sports vouchers
+   * - Employment Affiliation
+     -
+       * Access permit verification
+
+Each Credential MUST specify domains, classes and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns, as defined in the mapping tables above.
+
+  1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific Credential types for compliance and audit requirements, including for example:
+
+    - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification or ``"credential_type":"eid"`` for IT-Wallet ID-specific identity verification.
+    - **Police Controls**: ``"credential_type":"mDL"`` for driving license verification.
+    - **Banking KYC**: Specific credential types mandated by financial regulations.
+    - **Healthcare Services**: ``"credential_type":"european_disability_card"`` for EU-compliant disability benefit access.
+
+  2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of Credential source for operational efficiency, such as:
+
+    - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
+    - **Subscriptions**: Any credential, among those to which he is authorized to access, with ``given_name``, ``email`` for personalization.
+    - **Service Personalization**: Business applications requiring basic personal data without strong source requirements.
+
+This approach allows:
+
+  - **Policy-based authorization** by using **Domain / Class / Credential Type / Purpose** mappings.
+  - **Flexible RP registration** supporting both government compliance needs and business operational requirements.
+
+Taxonomy Structure
+^^^^^^^^^^^^^^^^^^
+
+The taxonomy maintains a four level hierarchical structure, that is the Domains, the Classes, the Credential Types and the Purposes defined in :ref:`registry:Digital Credentials Hierarchy` above.
+
+.. note::
+  Credential Type is a concept defined at the Digital Credentials Catalog level, not within the Taxonomy. The Taxonomy provides the classification vocabulary (Domains, Classes, Purposes) that Credential Types in the Catalog reference.
+
+**Localization Support:**
+
+The taxonomy supports multilingual environments through the ``_l10n_id`` suffix pattern, enabling efficient localization management for user interfaces and cross-border implementations.
+
+
+**Taxonomy JSON Structure:**
+
+.. list-table:: First-level Fields of the Taxonomy
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Taxonomy (e.g., ``urn:taxonomy:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Taxonomy (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **name_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable name of the Taxonomy (e.g., ``taxonomy.name``).
+   * - **description_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable description of the Taxonomy (e.g., ``taxonomy.description``).
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/``).
+       * **version**: Version of the localization bundle format.
+   * - **domains**
+     - REQUIRED. Array of Domain objects, each containing:
+
+       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``).
+       * **name_l10n_id**: Localization key for the domain name (e.g., ``domain.identity.name``).
+       * **description_l10n_id**: Localization key for the domain description (e.g., ``domain.identity.description``).
+       * **classes**: Array of Class objects. Each class contains ``id``, ``name_l10n_id``, and ``supported_purposes`` (array of purpose ID strings).
+   * - **purposes**
+     - REQUIRED. Flat array of all Purpose objects defined across the taxonomy, each containing:
+
+       * **id**: Unique Purpose identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY_VERIFICATION``, ``ACCESS_PERMIT``).
+       * **name_l10n_id**: Localization key for the purpose name (e.g., ``purpose.identity_verification.name``).
+
+A non-normative example of Taxonomy structure is given below:
+
+.. literalinclude:: ../../examples/taxonomy-example.json
+  :language: JSON
+
+.. note::
+  For a better and more efficient management of the localization of the Taxonomy, an Entity consulting it SHOULD:
+
+  - Download the basic version of the Taxonomy (compact, without localizations) using the ``.well-known/taxonomy`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Taxonomy structure.
+
+A non-normative example of a localization bundle output is given below:
+
+.. code-block:: json
+
+  {
+    "taxonomy.name": "IT-Wallet Taxonomy",
+    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
+    "domain.identity.name": "Identity",
+    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
+    "class.identification_documents.name": "Identification Documents",
+    "purpose.identity_verification.name": "Identity verification",
+    "domain.authentication.name": "Authentication",
+    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
+    "class.access.name": "Access",
+    "purpose.access_permit.name": "Access permit verification",
+    "...": "..."
+  }
+
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the taxonomy. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
+
+Schema Registry
+---------------
+
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
+
+**Schema Registry Objectives:**
+
+1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
+2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
+3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
+4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+
+
+Schema Registry Usage
+^^^^^^^^^^^^^^^^^^^^^
+
+As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interacting with the Schema Registry are:
+
+  - **Relying Parties**: They use the Schema Registry to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
+  - **Wallet Providers**: They access the Schema Registry to retrieve all necessary information for integrating them into their Wallet Solutions.
+
+Schema Registry Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+
+.. list-table:: First-level Fields of the Schema Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Schema Registry (e.g., ``urn:schemas:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **schemas**
+     - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
+
+.. list-table:: Schema Definition Parameters
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
+   * - **version**
+     - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
+   * - **credential_type**
+     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``, ``eid``).
+   * - **format**
+     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
+   * - **vct**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+   * - **docType**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
+   * - **schema_uri**
+     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
+   * - **schema_uri#integrity**
+     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
+   * - **description**
+     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
+
+**Schema Registry Example:**
+
+A non-normative example of the Schema Registry payload:
+
+.. literalinclude:: ../../examples/schema-registry-example-payload.json
+  :language: JSON
 
 Authentic Source Registry
 -------------------------
@@ -603,9 +1155,9 @@ The JWS payload contains the following parameters:
    * - **id**
      - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``).
    * - **version**
-     - REQUIRED. Version of the Digital Credential Catalog format.
+     - REQUIRED. The version of the Digital Credentials Catalog (e.g., ``1.0.0``).
    * - **last_modified**
-     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **iss**
      - REQUIRED. Issuer identifier of the Digital Credential Catalog.
    * - **localization**
@@ -774,556 +1326,6 @@ The overall logic for presenting a Digital Credential is the following:
 2. It retrieves the full Credential Issuer Metadata (see :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) as described in Section 12.2.2 of `OpenID4VCI`_.
 3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
 
-Taxonomy
---------
-
-The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format.
-
-The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.
-
-**Taxonomy Objectives:**
-
-1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
-2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
-3. **Interoperability**: Ensure consistent interpretation of credential classifications
-4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
-5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
-
-
-Taxonomy Usage
-^^^^^^^^^^^^^^
-
-- **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
-- **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
-- **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
-
-
-Digital Credentials Hierarchy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
-
-The hierarchy is defined as follows:
-
-**Domain**
-
-A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
-Domains provide a top-level organizational layer.
-
-**Credential Class**
-
-A **Credential Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).
-
-Each Class SHOULD define:
-
-- a stable Class identifier (URI),
-- the expected semantics of the Credential Family.
-
-Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.
-
-**Credential Type**
-
-A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
-Each Credential Type MUST include:
-
-- a unique identifier,
-- the Credential Issuer identifier,
-- the set of Attributes that may be included in presentations.
-
-Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
-
-**Purpose (Verification Intent)**
-
-A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
-Purposes MUST describe **verification outcomes**.
-Each Credential Type MUST declare its Domain, Class, and supported Purposes.
-
-The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
-Additional Domains, Classes, specific Credentials, and verification Purposes **MAY** be added over time as the IT-Wallet ecosystem evolves.
-
-.. list-table:: Digital Credential Taxonomy: Hierarchy and Classification
-   :class: longtable
-   :header-rows: 1
-   :widths: 15 25 30 30
-
-   * - **Domain**
-     - **Description**
-     - **Credential Class**
-     - **Credential Type**
-
-   * - *IDENTITY*
-     - Credentials that establish or confirm a person's legal identity and personal, civil or legal status.
-     -
-       * Identification Documents
-       * Civil Registry and Personal Status Certificates
-       * Economic and Legal Status
-     -
-       * Digital Travel Credential
-       * Mobile Driving License (Italy only)
-       * Tax Code / Health Insurance Card
-       * Age Certification
-       * Birth Certificate
-       * Residence Certificate
-       * Family Status Certificate
-       * Marriage Certificate
-       * Citizenship Certificate
-       * ISEE (Equivalent Economic Situation Indicator)
-       * Residence Permit
-       * Certificate of Pending Charges
-       * Criminal Record Certificate
-
-   * - *HOME AND FAMILY*
-     - Credentials that attest household composition, residence, and housing-related legal or fiscal relationships.
-     -
-       * Property and Cadastral Documents
-       * Family Documents
-       * Local Tax Documents
-     -
-       * Deed of Sale
-       * Cadastral Survey
-       * Cadastral Floor Plan
-       * Cadastral Certificate
-       * Children's Tax Code / Health Card
-       * Birth Certificate
-       * Family Status Certificate
-       * IMU (Property Tax)
-       * TARI (Waste Tax)
-
-   * - *EDUCATION*
-     - Credentials that attest educational achievements, academic qualifications, and professional training.
-     -
-       * Educational Qualifications
-       * Professional Certifications
-     -
-       * Lower Secondary School Diploma
-       * Upper Secondary School Diploma
-       * Bachelor's Degree
-       * Master's Degree
-       * University Master
-       * PhD
-       * Professional Licenses (e.g. architect, lawyer)
-       * Vocational Training Certificates
-       * Language Certifications (e.g. IELTS)
-       * Academic Qualifications (e.g. Europass)
-
-   * - *HEALTH*
-     - Credentials related to healthcare coverage, medical status, and health-related certifications.
-     -
-       * Certifications and Eligibility
-       * Medical Records
-     -
-       * Health Insurance Card (TEAM)
-       * European Health Card (CED)
-       * Disability Certificate
-       * Vaccination Certificate
-       * Sports Fitness Certificate
-       * Work Fitness Certificate
-       * Medical Prescriptions
-       * Digital Medical Report
-
-   * - *FINANCIAL*
-     - Credentials related to payment instruments, financial authorizations, and proof of payments.
-     -
-       * Payment Instruments
-       * Payment Credentials and Authorisations
-       * Public Payments and Fees
-       * Recurring Payments and Subscriptions
-     -
-       * Digital Payment Card (debit / credit / prepaid)
-       * Virtual Card
-       * Bank Account (IBAN)
-       * Strong Customer Authentication (SCA) Credential
-       * Payment Receipt
-       * Digital Stamp Duty (Bollo digitale)
-       * Tax and Fee Payment Certificate
-       * Subscription Mandate
-       * Recurring Payment Credential
-
-   * - *CULTURE AND LEISURE*
-     - Credentials that attest membership, affiliation, or participation in cultural or recreational programs.
-     -
-       * Cultural Cards and Benefits
-       * Membership and Loyalty Programs
-     -
-       * Culture Card
-       * Annual Museum Passes
-       * Cinema Card
-       * Museum Card
-       * Association Membership Cards
-       * Library Card
-       * City Pass
-
-   * - *EMPLOYMENT*
-     - Credentials that attest employment relationships, professional status, and contribution records.
-     -
-       * Employment Documents
-       * Employment Status
-       * Employment Affiliation
-     -
-       * Digital Employment Contract
-       * Curriculum Vitae (CV)
-       * Residence Permit
-       * Employment Status Certificate
-       * INPS Contribution Record
-       * Physical Access Badge
-
-   * - *MOBILITY AND TRAVEL*
-     - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
-     -
-       * Licenses and Authorizations
-       * Vehicle Documents
-       * Transport Subscriptions
-       * Travel Documents
-       * Travel Insurance
-       * Bookings
-       * Discounts and Benefits
-     -
-       * Mobile Driving License
-       * Boating License
-       * Vehicle Registration Certificate
-       * Digital RCA Insurance
-       * Vehicle Inspection Certificate
-       * Green Card / International Insurance
-       * Public Transport Pass
-       * Road Charging Subscription
-       * Digital Travel Credential
-       * Travel Tickets (air, train, etc.)
-       * Travel Insurance Policy
-       * Hotel Reservation
-       * Discount Cards
-       * Tourist Benefits
-
-   * - *BONUSES*
-     - Credentials that attest entitlement to economic benefits, incentives, or vouchers.
-     -
-       * Economic Benefits and Allowances
-       * Incentives and Vouchers
-       * Health and Wellbeing Bonuses
-     -
-       * Family Allowance Credential
-       * Unemployment Benefit Credential
-       * Digital Voucher
-       * Purchase Incentive Credential
-       * Cashback Eligibility Credential
-       * Healthcare Bonus Credential
-       * Mental Health Support Voucher
-       * Sports and Physical Activity Bonus
-
-.. list-table:: Table 2: Mapping between Credential Classes and Purposes
-   :class: longtable
-   :header-rows: 1
-   :widths: 40 60
-
-   * - **Credential Class**
-     - **Supported Purposes**
-
-   * - Identification Documents
-     -
-       * Identity verification
-       * Age verification
-       * Person identification
-   * - Civil Registry and Personal Status Certificates
-     -
-       * Civil status verification
-       * Right of residence
-       * Household composition verification
-   * - Economic and Legal Status
-     -
-       * Eligibility for services or benefits
-       * Legal status verification
-       * Criminal record check
-   * - Property and Cadastral Documents
-     -
-       * Residence and household verification
-       * Property ownership verification
-       * Real estate compliance
-   * - Family Documents
-     -
-       * Household composition verification
-       * Eligibility for family-based social services
-   * - Local Tax Documents
-     -
-       * Compliance with local tax obligations
-       * Verification of property tax status
-   * - Educational Qualifications
-     -
-       * Qualification and degree verification
-       * Eligibility for education pathways
-   * - Professional Certifications
-     -
-       * Professional license verification
-       * Skills assessment for work
-   * - Certifications and Eligibility
-     -
-       * Verification of vaccination status
-       * Verification of fitness status
-       * Access to health-restricted areas
-   * - Medical Records
-     -
-       * Access to healthcare services
-       * Sharing of medical records
-       * Medical history validation
-   * - Payment Instruments
-     -
-       * Payment authorization
-       * Payment execution
-       * Proof of payment
-   * - Payment Credentials and Authorisations
-     -
-       * Management of financial authorizations
-       * Strong Customer Authentication (SCA)
-   * - Public Payments and Fees
-     -
-       * Proof of tax payment
-       * Proof of fee payment
-       * Digital stamp duty validation
-   * - Recurring Payments and Subscriptions
-     -
-       * Management of recurring payments
-       * Subscription mandate verification
-   * - Cultural Cards and Benefits
-     -
-       * Access to cultural services
-       * Access to leisure services
-       * Application of member discounts
-   * - Membership and Loyalty Programs
-     -
-       * Verification of affiliation
-       * Verification of participation
-       * Use of loyalty benefits
-   * - Employment Documents
-     -
-       * Employment status verification
-       * Professional profile validation
-   * - Employment Status
-     -
-       * Verification of contribution records
-       * Eligibility for employment-related benefits
-   * - Licenses and Authorizations
-     -
-       * Driving rights verification
-       * Navigation rights verification
-       * Law enforcement controls
-   * - Vehicle Documents
-     -
-       * Vehicle registration verification
-       * Vehicle inspection verification
-       * Insurance status check
-   * - Transport Subscriptions
-     -
-       * Access to transport services
-       * Public transport pass verification
-   * - Travel Documents
-     -
-       * Right to travel or circulate
-       * Cross-border mobility identity check
-   * - Travel Insurance and Bookings
-     -
-       * Verification of travel insurance coverage
-       * Accommodation reservation check
-       * Transport reservation check
-   * - Discounts and Benefits
-     -
-       * Application of member discounts
-       * Access to tourist benefits
-   * - Economic Benefits and Allowances
-     -
-       * Eligibility verification for family benefits
-       * Eligibility verification for unemployment benefits
-       * Allocation of economic support
-   * - Incentives and Vouchers
-     -
-       * Use of digital vouchers
-       * Use of purchase incentives
-       * Cashback eligibility verification
-   * - Health and Wellbeing Bonuses
-     -
-       * Access to healthcare bonuses
-       * Use of mental health vouchers
-       * Use of sports vouchers
-   * - Employment Affiliation
-     -
-       * Access permit verification
-
-Each Credential MUST specify domains, classes and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns, as defined in the mapping tables above.
-
-  1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific Credential types for compliance and audit requirements, including for example:
-
-    - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification or ``"credential_type":"eid"`` for IT-Wallet ID-specific identity verification.
-    - **Police Controls**: ``"credential_type":"mDL"`` for driving license verification.
-    - **Banking KYC**: Specific credential types mandated by financial regulations.
-    - **Healthcare Services**: ``"credential_type":"european_disability_card"`` for EU-compliant disability benefit access.
-
-  2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of Credential source for operational efficiency, such as:
-
-    - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
-    - **Subscriptions**: Any credential, among those to which he is authorized to access, with ``given_name``, ``email`` for personalization.
-    - **Service Personalization**: Business applications requiring basic personal data without strong source requirements.
-
-This approach allows:
-
-  - **Policy-based authorization** by using **Domain / Class / Credential Type / Purpose** mappings.
-  - **Flexible RP registration** supporting both government compliance needs and business operational requirements.
-
-Taxonomy Structure
-^^^^^^^^^^^^^^^^^^
-
-The taxonomy maintains a four level hierarchical structure, that is the Domains, the Classes, the Credential Types and the Purposes defined in :ref:`registry:Digital Credentials Hierarchy` above.
-
-.. note::
-  Credential Type is a concept defined at the Digital Credentials Catalog level, not within the Taxonomy. The Taxonomy provides the classification vocabulary (Domains, Classes, Purposes) that Credential Types in the Catalog reference.
-
-**Localization Support:**
-
-The taxonomy supports multilingual environments through the ``_l10n_id`` suffix pattern, enabling efficient localization management for user interfaces and cross-border implementations.
-
-
-**Taxonomy JSON Structure:**
-
-.. list-table:: First-level Fields of the Taxonomy
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - REQUIRED. Unique identifier of the Taxonomy (e.g., ``urn:taxonomy:it-wallet``).
-   * - **version**
-     - REQUIRED. The version of the Taxonomy (e.g., ``1.0.0``).
-   * - **last_modified**
-     - REQUIRED. The timestamp indicating when the Taxonomy was last updated (e.g., ``2026-03-11T00:00:00Z``).
-   * - **name_l10n_id**
-     - REQUIRED. Localization key referencing the human-readable name of the Taxonomy (e.g., ``taxonomy.name``).
-   * - **description_l10n_id**
-     - REQUIRED. Localization key referencing the human-readable description of the Taxonomy (e.g., ``taxonomy.description``).
-   * - **localization**
-     - REQUIRED. Localization configuration object containing:
-
-       * **default_locale**: Default locale code (e.g., ``it``).
-       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
-       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/``).
-       * **version**: Version of the localization bundle format.
-   * - **domains**
-     - REQUIRED. Array of Domain objects, each containing:
-
-       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``).
-       * **name_l10n_id**: Localization key for the domain name (e.g., ``domain.identity.name``).
-       * **description_l10n_id**: Localization key for the domain description (e.g., ``domain.identity.description``).
-       * **classes**: Array of Class objects. Each class contains ``id``, ``name_l10n_id``, and ``supported_purposes`` (array of purpose ID strings).
-   * - **purposes**
-     - REQUIRED. Flat array of all Purpose objects defined across the taxonomy, each containing:
-
-       * **id**: Unique Purpose identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY_VERIFICATION``, ``ACCESS_PERMIT``).
-       * **name_l10n_id**: Localization key for the purpose name (e.g., ``purpose.identity_verification.name``).
-
-A non-normative example of Taxonomy structure is given below:
-
-.. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
-
-.. note::
-  For a better and more efficient management of the localization of the Taxonomy, an Entity consulting it SHOULD:
-
-  - Download the basic version of the Taxonomy (compact, without localizations) using the ``.well-known/taxonomy`` endpoint.
-  - Determine the User's preferred language.
-  - Download only the necessary localization bundles.
-  - Dynamically merge localised content with the Taxonomy structure.
-
-A non-normative example of a localization bundle output is given below:
-
-.. code-block:: json
-
-  {
-    "taxonomy.name": "IT-Wallet Taxonomy",
-    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
-    "domain.identity.name": "Identity",
-    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
-    "class.identification_documents.name": "Identification Documents",
-    "purpose.identity_verification.name": "Identity verification",
-    "domain.authentication.name": "Authentication",
-    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
-    "class.access.name": "Access",
-    "purpose.access_permit.name": "Access permit verification",
-    "...": "..."
-  }
-
-Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the taxonomy. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
-
-A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
-
-Schema Registry
----------------
-
-The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
-
-**Schema Registry Objectives:**
-
-1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
-2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
-3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
-4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
-
-
-Schema Registry Usage
-^^^^^^^^^^^^^^^^^^^^^
-
-As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interacting with the Schema Registry are:
-
-  - **Relying Parties**: They use the Schema Registry to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
-  - **Wallet Providers**: They access the Schema Registry to retrieve all necessary information for integrating them into their Wallet Solutions.
-
-Schema Registry Structure
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
-
-.. list-table:: First-level Fields of the Schema Registry
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Field Name**
-     - **Description**
-   * - **version**
-     - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
-   * - **last_updated**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
-   * - **schemas**
-     - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
-
-.. list-table:: Schema Definition Parameters
-   :widths: 25 75
-   :header-rows: 1
-
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
-   * - **version**
-     - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
-   * - **credential_type**
-     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``, ``eid``).
-   * - **format**
-     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
-   * - **vct**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
-   * - **docType**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
-   * - **schema_uri**
-     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
-   * - **schema_uri#integrity**
-     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
-   * - **description**
-     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
-
-**Schema Registry Example:**
-
-A non-normative example of the Schema Registry payload:
-
-.. literalinclude:: ../../examples/schema-registry-example-payload.json
-  :language: JSON
-
 Registry Integration and Cross-References
 ------------------------------------------
 
@@ -1448,7 +1450,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 Cross-border Attribute Verification by a QTSP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This journey describes how a Qualified Trust Service Provider (QTSP), possibly established in another Member State, verifies the value of an Annex VI attribute against an Italian public-sector Authentic Source in order to issue a QEAA.
+This journey describes how a Qualified Trust Service Provider (QTSP), possibly established in another Member State, verifies the value of an Annex VI attribute against an Italian public-sector Authentic Source to issue a QEAA.
 It exercises the EUDIW Catalogue of Attributes and the ``verification_endpoint`` of the :ref:`registry:Authentic Source Registry`, and it does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.
 
 1.  **Verification-point discovery**: The QTSP queries the EUDIW Catalogue of Attributes for the required attribute and resolves the responsible Italian ``Attribute`` entry, obtaining the ``authenticSources[].DataService.endpointURL`` (the ETSI TS 119 478 verification interface declared in the AS Registry ``verification_endpoint``), the ``legalBasis`` and the description of how to initiate the verification request. The national counterpart of the Catalogue of Attributes is the pair Claims Registry, for the semantics, and Authentic Source Registry, for the verification point, see :ref:`registry:Registry Integration and Cross-References`.
