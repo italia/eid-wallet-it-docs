@@ -75,7 +75,7 @@ Il payload JWT della risposta dell'Endpoint di Discovery del Registro DEVE conte
      - OBBLIGATORIO. Identificatore univoco del documento di discovery (es. ``urn:it-wallet-registry:it-wallet``).
    * - **version**
      - OBBLIGATORIO. Versione del formato del documento di discovery (es. ``1.0.0``).
-   * - **last_updated**
+   * - **last_modified**
      - OBBLIGATORIO. Timestamp dell'ultima modifica al documento di discovery (es. ``2024-03-15T10:30:00Z``).
    * - **endpoints**
      - OBBLIGATORIO. Oggetto JSON contenente gli URI di tutti i componenti del registro. DEVONO essere presenti le seguenti chiavi di endpoint:
@@ -100,7 +100,7 @@ Struttura del payload JWT (in forma decodificata):
   {
     "id": "urn:it-wallet-registry:it-wallet",
     "version": "1.0.0",
-    "last_updated": "2024-03-15T10:30:00Z",
+    "last_modified": "2024-03-15T10:30:00Z",
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
@@ -174,7 +174,7 @@ Il Registro dei Claims mantiene definizioni tecniche neutrali rispetto alla ling
    * - **version**
      - OBBLIGATORIO. La versione del Registro dei Claims (es. ``1.0.0``).
    * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando il registro è stato aggiornato l'ultima volta (es. ``2026-03-06T00:00:00Z``).
+     - OBBLIGATORIO. Il timestamp che indica quando il Registro dei Claims è stato aggiornato l'ultima volta (es. ``2026-03-06T00:00:00Z``).
    * - **localization**
      - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
@@ -343,7 +343,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **version**
      - OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. ``1.0.0``).
    * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
+     - OBBLIGATORIO. Il timestamp che indica quando il Registro delle Fonti Autentiche è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
    * - **localization**
      - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
@@ -1050,9 +1050,16 @@ Il payload JWS contiene i seguenti parametri:
    * - **version**
      - OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.
    * - **last_modified**
-     - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali.
+     - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali (es. ``2025-03-15T12:00:00Z``).
    * - **iss**
      - OBBLIGATORIO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.
+   * - **localization**
+     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+
+       * **default_locale**: Codice locale predefinito (es. ``it``).
+       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
+       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Versione del formato del bundle di localizzazione.
    * - **credentials**
      - OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.
 
@@ -1132,13 +1139,6 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
           * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
           * **notification_methods**: CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
 
-  * - **localization**
-    - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
-
-       * **default_locale**: Codice locale predefinito (es. ``it``).
-       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
-       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
-       * **version**: Versione del formato del bundle di localizzazione.
   * - **authentic_sources**
     - CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
 
@@ -1328,10 +1328,12 @@ Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-
 
    * - **Nome Campo**
      - **Descrizione**
+   * - **id**
+     - OBBLIGATORIO. Identificatore univoco del Registro degli Schemi (es. ``urn:schemas:it-wallet``).
    * - **version**
      - OBBLIGATORIO. La versione del Registro degli Schemi (es. ``1.0.0``).
-   * - **last_updated**
-     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
+   * - **last_modified**
+     - OBBLIGATORIO. Il timestamp che indica quando il Registro degli Schemi è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella "Parametri di Definizione dello Schema" di seguito, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.
 
