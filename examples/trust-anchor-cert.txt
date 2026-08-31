@@ -12,19 +12,19 @@ AccessCertificate cert = {
       countryName: "IT",
       organizationName: "Example Root CA",
       commonName: "Example CA",
-      organizationIdentifier: "VATCZ-123456789"
+      organizationIdentifier: "VATIT-127263789"
     },
 
     validity: {
-      notBefore: "2026-01-27T00:00:00Z",
-      notAfter:  "2046-01-27T00:00:00Z"
+      notBefore: Time.utcTime("260127000000Z"),
+      notAfter: Time.utcTime("460127000000Z")
     },
 
     subject: DistinguishedName {                          // Subject attributes
       countryName: "IT",
       organizationName: "Example Root CA",
       commonName: "Example CA",
-      organizationIdentifier: "VATCZ-123456789"
+      organizationIdentifier: "VATIT-127263789"
     },
 
     subjectPublicKeyInfo: {
@@ -48,9 +48,7 @@ AccessCertificate cert = {
       Extension {
         oid: "2.5.29.14",                                 // subjectKeyIdentifier
         critical: false,
-        value: SubjectKeyIdentifier [
-          keyIdentifier: "SHA-1(SUBJECT_PUBLIC_KEY_VALUE)"
-        ]
+        value: SubjectKeyIdentifier("SHA-1(SUBJECT_PUBLIC_KEY_VALUE)")
       },
 
       Extension {

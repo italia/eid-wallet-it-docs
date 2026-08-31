@@ -12,19 +12,19 @@ AccessCertificate cert = {
       countryName: "IT",
       organizationName: "Example Trust Services CA",
       commonName: "Example CA",
-      organizationIdentifier: "VATCZ-123456789"
+      organizationIdentifier: "VATIT-123456789"
     },
 
     validity: {
-      notBefore: "2026-01-27T00:00:00Z",
-      notAfter:  "2027-01-27T00:00:00Z"
+      notBefore: Time.utcTime("260127000000Z"),
+      notAfter: Time.utcTime("270127000000Z")
     },
 
     subject: DistinguishedName {                          // Subject attributes for legal person
       countryName: "IT",
       organizationName: "Example of PID Provider",
       commonName: "PID Provider Example",
-      organizationIdentifier: "LEIXYZ-5493001KJTIIGC8Y1R12"
+      organizationIdentifier: "LEIXG-5493001KJAWIGC8Y1R12"
     },
 
     subjectPublicKeyInfo: {
@@ -48,9 +48,7 @@ AccessCertificate cert = {
       Extension {
         oid: "2.5.29.14",                                 // subjectKeyIdentifier
         critical: false,
-        value: SubjectKeyIdentifier [
-          keyIdentifier: "SHA-1(SUBJECT_PUBLIC_KEY_VALUE)"
-        ]
+        value: SubjectKeyIdentifier("SHA-1(SUBJECT_PUBLIC_KEY_VALUE)")
       },
 
       Extension {
@@ -83,7 +81,7 @@ AccessCertificate cert = {
           GeneralName.rfc822Name("support@registrar.example.test"),
           GeneralName.otherName(
             typeId: "2.5.4.20",                           // id-at-telephoneNumber
-            value: "+420-111-222-333"
+            value: "+420111222333"
           )
         ]
       },
