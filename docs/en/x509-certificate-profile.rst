@@ -170,3 +170,8 @@ The criticality values used in this specification have the following meaning:
      - ``1.3.6.1.5.5.7.1.3``
      - NC
      - :rfc:`3739#section-3.2.6`, Clause 4.2 of [`ETSI EN 319 412-5`_]
+
+.. warning::
+  **Preventing Circular Dependencies in URIs**
+
+  To prevent circular validation dependencies during TLS handshakes, URIs defined in the ``cRLDistributionPoints`` and ``authorityInfoAccess`` extensions SHALL use the ``http://`` scheme instead of ``https://`` as suggested by :rfc:`5280#section-8`.
