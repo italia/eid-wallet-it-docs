@@ -64,7 +64,7 @@ The requirements for the Key Attestation are defined below:
 - A Wallet Provider SHALL ensure that the presentation of a KA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in `OpenID4VCI`_, this is achieved by letting the signed KA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the KA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the KA.
 - During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider SHALL verify the KA in accordance with the requirements in `OpenID4VCI`_ Appendix F.4.
 - During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider SHALL receive a proof that the Wallet Unit possesses the private keys corresponding to all public keys in the KA.
-- If the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the KA.
+- If the Keystore or the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the KA.
 - A Wallet Provider SHALL consider all relevant factors, including offline usage, interoperability, and the risk of a KA becoming a vector to track the User, when deciding on the validity period of a KA.
 - The Key Attestation MUST NOT be issued by the Wallet Provider if the trustworthiness of the Keystore or WSCA/WSCD cannot be guaranteed. In this case, the Wallet Instance MUST be revoked.
 

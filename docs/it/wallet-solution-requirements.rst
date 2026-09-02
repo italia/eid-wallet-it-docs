@@ -43,7 +43,7 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
   In questa sezione, i servizi utilizzati per attestare la genuinità dell'Istanza del Wallet e del dispositivo in cui è installata sono indicati come **API del Servizio di Integrità del Dispositivo**. L'API del Servizio di Integrità del Dispositivo è considerata in modo astratto e si presume sia un servizio fornito da una terza parte affidabile (cioè, l'API del Fornitore del Sistema Operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.
 
 
-Requisiti della Key Atestation
+Requisiti della Key Attestation
 """"""""""""""""""""""""""""""""""""""""
 
 La Key Attestation contiene informazioni che garantiscono che le chiavi utilizzate per il key binding delle Credenziali Digitali siano generate e archiviate in modo sicuro in un ambiente hardware affidabile: un **Keystore** per le Credenziali Digitali device-bound standard, oppure un **WSCA** operante in un **Remote WSCD** (HSM remoto) esclusivamente per il PID a Livello di Garanzia Alto. Inoltre, fornisce un metodo per autenticare il componente di archiviazione sicura presso il Credential Issuer e verifica che la Wallet Unit non sia stata revocata.

@@ -239,8 +239,8 @@ first and therefore send the request to the Credential endpoint and bind the Cre
 access token, which means that the access token binds to the device using cryptographic materials.
 
 The second surface for the attack is related to key management. In the case of using software-based keys, it is possible to clone the keys and move them to a device under
-attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports local
-internal WSCD that uses hardware-based keys. However, the lack of a
+attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports a
+hardware-backed Keystore that uses hardware-based keys. However, the lack of a
 certification profile that certifies the Keystore (TEE) against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
 as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ makes the requirement only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side), which provides certification at a higher assurance level.
 
