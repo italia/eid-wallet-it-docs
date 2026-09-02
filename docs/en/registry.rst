@@ -77,7 +77,7 @@ Registry Discovery Endpoint Parameters
 
 The JWT payload of the Registry Discovery response MUST contain the following parameters:
 
-.. list-table:: Registry Discovery Endpoint — JWT Payload Parameters
+.. list-table:: Registry Discovery Endpoint JWT Payload Parameters
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -119,12 +119,102 @@ JWT payload structure (when decoded):
     "content_negotiation": ["application/json", "application/jwt"]
   }
 
+Content Negotiation and Signed Representation
+---------------------------------------------
+
+Every endpoint of the Registry Infrastructure MUST support content negotiation and serve its content in two representations:
+
+- **Default Content-Type**: ``application/jwt`` (signed JWT that provides authenticity and integrity)
+- **Alternative Content-Type**: ``application/json`` (plain JSON for development and debugging)
+
+Both representations are served at the same endpoint URL, not as separate resources or paths. The client selects the representation with the ``Accept`` request header, and the Trust Anchor states the returned representation in the ``Content-Type`` response header. If the request does not ask for a supported type (``Accept`` absent, ``*/*``, or only unsupported types), the endpoint MUST return the ``application/jwt`` representation.
+
+This requirement applies to all the endpoints of the Registry Infrastructure listed in the following table:
+
+.. _table_registry_content_negotiation:
+.. list-table:: Registry endpoints supporting content negotiation
+   :class: longtable
+   :header-rows: 1
+   :widths: 40 60
+
+   * - **Registry component**
+     - **How the endpoint is located**
+   * - Registry Discovery
+     - Fixed well-known path ``.well-known/it-wallet-registry``.
+   * - Claims Registry
+     - Absolute URL published under the ``claims_registry`` key of the discovery document.
+   * - Authentic Source Registry
+     - Absolute URL published under the ``authentic_sources`` key of the discovery document.
+   * - Schema Registry
+     - Absolute URL published under the ``schema_registry`` key of the discovery document.
+   * - Taxonomy
+     - Absolute URL published under the ``taxonomy`` key of the discovery document.
+   * - Digital Credentials Catalog
+     - Absolute URL published under the ``credential_catalog`` key of the discovery document.
+
+The Registry Discovery Endpoint is the only one at a fixed well-known path. A client reads it first to obtain the URL of every other component from its signed ``endpoints`` object (see :ref:`registry:Registry Discovery Endpoint`). A client MUST NOT assume a fixed path for the other components. Content negotiation applies to the discovery endpoint and to every component URL it publishes.
+
+All these endpoints handle content negotiation in the same way: the same request, the same two ``Content-Type`` values, and the same signed representation.
+
+The signed representation is a JWT in compact serialization, served as ``application/jwt``. Its header MUST contain the parameters in the following table.
+
+.. _table_catalog_parameters:
+.. list-table:: JWT header parameters of the signed representation
+   :class: longtable
+   :header-rows: 1
+   :widths: 25 50 25
+
+   * - **Header parameter**
+     - **Description**
+     - **Reference**
+   * - **typ**
+     - REQUIRED. It MUST be set to ``JWT``.
+     - [:rfc:`7515` Section 4.1.9].
+   * - **alg**
+     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
+     - [:rfc:`7515` Section 4.1.1].
+   * - **kid**
+     - REQUIRED. Unique identifier of the public key.
+     - [:rfc:`7515` Section 4.1.4].
+   * - **x5c**
+     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWT. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
+     - [:rfc:`7515` Section 4.1.6.].
+   * - **cty**
+     - REQUIRED. It MUST be set to ``application/json``.
+     - [:rfc:`7515` Section 4.1.6.].
+
+The plain representation is the same content, served as a plain JSON object instead of a signed JWT.
+
+The following non-normative example requests both representations from the Digital Credentials Catalog endpoint. The URL is the one resolved from the discovery document, shortened here for readability.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/jwt
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jwt
+
+    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
 Taxonomy
 --------
 
 The **Taxonomy** is the authoritative vocabulary that organizes Credentials in the IT-Wallet ecosystem, and it is the semantic foundation of their interoperability. It is independent of the Credential format.
 
 In a single resource, it defines the hierarchy of Domains, Classes and Purposes that Credential Types reference, supporting authorization policy evaluation and ecosystem-wide standardization.
+
+The Taxonomy endpoint URL is published under the ``taxonomy`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
 
 **Taxonomy Objectives:**
 
@@ -600,6 +690,8 @@ A non-normative example of the Italian localization URI for the bundle would be 
 Claims Registry
 ---------------
 
+The Claims Registry endpoint URL is published under the ``claims_registry`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
+
 The Claims Registry MUST contain:
 
   - **Standardised Claims**: Semantic definitions for all Credential attributes with data types and validation rules.
@@ -713,6 +805,8 @@ Localization bundles MUST be available at the URI composed by appending the loca
 
 Authentic Source Registry
 -------------------------
+
+The Authentic Source Registry endpoint URL is published under the ``authentic_sources`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
 
 The Authentic Source Registry MUST contain at least:
 
@@ -1002,7 +1096,8 @@ As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interac
 Schema Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+The Schema Registry endpoint URL is published under the ``schema_registry`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
+It allows the discovery of schema URIs and their cryptographic integrity checks.
 
 .. list-table:: First-level Fields of the Schema Registry
    :class: longtable
@@ -1116,34 +1211,8 @@ As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities involve
 Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
-
-.. _table_catalog_parameters:
-.. list-table::
-   :class: longtable
-   :header-rows: 1
-   :widths: 25 50 25
-
-   * - **JOSE header**
-     - **Description**
-     - **Reference**
-   * - **typ**
-     - REQUIRED. It MUST be set to ``JOSE``.
-     - [:rfc:`7515` Section 4.1.9].
-   * - **alg**
-     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
-     - [:rfc:`7515` Section 4.1.1].
-   * - **kid**
-     - REQUIRED. Unique identifier of the public key.
-     - [:rfc:`7515` Section 4.1.4].
-   * - **x5c**
-     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - REQUIRED. It MUST be set to ``application/json``.
-     - [:rfc:`7515` Section 4.1.6.].
-
-The JWS payload contains the following parameters:
+The Digital Credentials Catalog endpoint URL is published under the ``credential_catalog`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
+Its signed representation is a JWT. The header parameters MUST be as defined in the :ref:`corresponding table <table_catalog_parameters>`, and the payload contains the following parameters:
 
 .. list-table:: First-level Fields of the Digital Credentials Catalog
    :class: longtable
