@@ -356,7 +356,7 @@ This section lists the test cases from Sections:
    * - WP_045a
      - Trust, Issuance, Interoperability
      - Fetch the Digital Credential catalogue
-     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using the ``application/jose`` media type.
+     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using either the ``application/jwt`` (signed) or the ``application/json`` (plain) media type.
    * - WP_046
      - Issuance, Interoperability
      - Discover Credential Issuer dynamically from federation metadata
