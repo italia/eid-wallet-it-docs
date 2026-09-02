@@ -27,11 +27,11 @@ Each X.509 certificate profile defined by this specification MUST conform to the
      - REQUIRED.
      - Section 4.1.1.1
 
-    * - ``signatureAlgorithm``
+   * - ``signatureAlgorithm``
      - REQUIRED.
      - Section 4.1.1.2
 
-    * - ``signatureValue``
+   * - ``signatureValue``
      - REQUIRED.
      - Section 4.1.1.3
 

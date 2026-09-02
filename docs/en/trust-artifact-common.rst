@@ -65,7 +65,7 @@ Extensions not listed in the table MUST NOT be present.
    * - ``qcStatements``
      - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``); the corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
      
-       It MAY contain additional ``QCStatement`` structures among those defined in Clause 4.2 of [`ETSI TS 119 412-5`_]. In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
+       It MAY contain additional ``QCStatement`` structures among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_]. In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
 The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons.
 
