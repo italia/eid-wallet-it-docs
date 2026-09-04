@@ -1,0 +1,29 @@
+CertificationRequest csr = {
+  certificationRequestInfo: {
+    version: 0,
+
+    subject: DistinguishedName {
+      countryName: "IT",
+      organizationName: "Example of Relying Party",
+      commonName: "Relying Party Example",
+      organizationIdentifier: "VATIT-12345678901"
+    },
+
+    subjectPKInfo: {
+      algorithm: AlgorithmIdentifier {
+        oid: "1.2.840.10045.2.1",
+        params: "1.2.840.10045.3.1.7"
+      },
+
+      subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
+    },
+
+    attributes: []
+  },
+
+  signatureAlgorithm: AlgorithmIdentifier {
+    oid: "1.2.840.10045.4.3.2"
+  },
+
+  signature: "BASE64(SIGN(subjectPrivateKey, DER(certificationRequestInfo)))"
+}
