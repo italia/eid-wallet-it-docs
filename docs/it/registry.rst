@@ -254,7 +254,7 @@ Il Registro FA DEVE garantire:
   - **Conformità Normativa**: Supporta i requisiti di trasparenza della pubblica amministrazione e di coordinamento del settore privato.
 
 .. note::
-   Il Registro delle Fonti Autentiche è un registro tecnico e non pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.
+   Il Registro delle Fonti Autentiche è un registro pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.
 
 Utilizzo del Registro delle Fonti Autentiche
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
