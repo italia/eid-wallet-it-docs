@@ -823,7 +823,7 @@ The Authentic Source Registry MUST ensure:
   - **Regulatory Compliance**: Supports public administration transparency and private sector coordination requirements.
 
 .. note::
-   Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
+   The Authentic Source Registry is a public registry that provides the Credential Issuer with guidance for Credential provisioning.
 
 Authentic Source Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
