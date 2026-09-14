@@ -7,13 +7,13 @@
 
     <title>7. Registry Infrastructure &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -36,8 +36,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -370,7 +375,7 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>REQUIRED. Version of the discovery document format (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>last_updated</strong></p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
 <td><p>REQUIRED. Timestamp of the last modification to the discovery document (e.g., <code class="docutils literal notranslate"><span class="pre">2024-03-15T10:30:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>endpoints</strong></p></td>
@@ -398,7 +403,7 @@ Content-Type: application/json
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:it-wallet-registry:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;endpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;claims_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/claims&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources&quot;</span><span class="p">,</span>
@@ -486,7 +491,7 @@ Content-Type: application/json
 <td><p>REQUIRED. The version of the Claims Registry (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>REQUIRED. The timestamp indicating when the registry was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
+<td><p>REQUIRED. The timestamp indicating when the Claims Registry was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>REQUIRED. Localization configuration object containing:</p>
@@ -930,7 +935,7 @@ Content-Type: application/json
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.</p>
+<p>The Authentic Source Registry is a public registry that provides the Credential Issuer with guidance for Credential provisioning.</p>
 </div>
 <section id="authentic-source-registry-usage">
 <h3><span class="section-number">7.4.1. </span>Authentic Source Registry Usage<a class="headerlink" href="#authentic-source-registry-usage" title="Link to this heading">¶</a></h3>
@@ -1030,7 +1035,7 @@ Content-Type: application/json
 <td><p>REQUIRED. The version of the Authentic Source Registry (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>REQUIRED. The timestamp indicating when the list was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<td><p>REQUIRED. The timestamp indicating when the Authentic Source Registry was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>REQUIRED. Localization configuration object containing:</p>
@@ -1226,8 +1231,16 @@ Content-Type: application/json
 <td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).</p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPTIONAL. Array containing customer service contacts or user support channels related to the specific dataset. Each object contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>type</strong>: REQUIRED. Indicates the type of contact information and MUST be set to <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">telephone</span></code> or <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p></li>
+<li><p><strong>value</strong>: REQUIRED. Contains the value of the contact information corresponding to the specified type.</p></li>
+<li><p><strong>description</strong>: OPTIONAL. A textual description associated with the contact information.</p></li>
+</ul>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1347,7 +1360,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1449,7 +1465,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1505,7 +1524,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -2167,7 +2189,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification.</p></li>
+<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification or <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;eid&quot;</span></code> for IT-Wallet ID-specific identity verification.</p></li>
 <li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> for driving license verification.</p></li>
 <li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
 <li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> for EU-compliant disability benefit access.</p></li>
@@ -2250,12 +2272,22 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. Version of the Digital Credential Catalog format.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.</p></td>
+<td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalog (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>credentials</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<td><p>REQUIRED. Localization configuration object containing:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Default locale code (e.g., <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array of supported locale codes (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: Base URI for localization bundle retrieval (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
+<li><p><strong>version</strong>: Version of the localization bundle format.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
 </tr>
 </tbody>
@@ -2277,7 +2309,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. Version of the Digital Credential definition.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code> and for IT-Wallet ID MUST be <code class="docutils literal notranslate"><span class="pre">eid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_name_l10n_id</strong></p></td>
 <td><p>REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., <code class="docutils literal notranslate"><span class="pre">mDL.name</span></code>).</p></td>
@@ -2367,19 +2399,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>localization</strong></p></td>
-<td><p>REQUIRED. Localization configuration object containing:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>default_locale</strong>: Default locale code (e.g., <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
-<li><p><strong>available_locales</strong>: Array of supported locale codes (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
-<li><p><strong>base_uri</strong>: Base URI for localization bundle retrieval (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
-<li><p><strong>version</strong>: Version of the localization bundle format.</p></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: String identifier referencing the Authentic Source entity_id as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
@@ -2387,7 +2407,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>parent_credentials</strong></p></td>
 <td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> is absent. Array of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.</p></td>
 </tr>
 </tbody>
@@ -3313,13 +3333,16 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the Schema Registry (e.g., <code class="docutils literal notranslate"><span class="pre">urn:schemas:it-wallet</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>REQUIRED. The version of the Schema Registry (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>last_updated</strong></p></td>
-<td><p>REQUIRED. The timestamp indicating when the list was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>REQUIRED. The timestamp indicating when the Schema Registry was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>schemas</strong></p></td>
+<tr class="row-odd"><td><p><strong>schemas</strong></p></td>
 <td><p>REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the &quot;Schema Definition Parameters&quot; table below, including schema identification, format specifications, URIs, and integrity verification data.</p></td>
 </tr>
 </tbody>
@@ -3343,7 +3366,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. The version of the schema definition (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>).</p></td>
+<td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>format</strong></p></td>
 <td><p>REQUIRED. The technical format of the schema (e.g., <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>).</p></td>
@@ -3368,8 +3391,9 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p><strong>Schema Registry Example:</strong></p>
 <p>A non-normative example of the Schema Registry payload:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:schemas:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL+mso_mdoc+org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
@@ -3420,7 +3444,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
+<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the <strong>Issuer Identifier</strong> (<cite>entity_id</cite> within the <cite>issuers</cite> field) associated with the desired Credential.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information oand specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
 </ul>
@@ -3518,8 +3542,16 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -3545,7 +3577,19 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
 <li><a class="reference internal" href="#">7. Registry Infrastructure</a><ul>
@@ -3626,7 +3670,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 20/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 14/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

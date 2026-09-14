@@ -7,13 +7,13 @@
 
     <title>20.4.1.4. Wallet Provider Test Matrix &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=c97b86a3"></script>
+    <script src="_static/documentation_options.js?v=fe830cc9"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -36,8 +36,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -817,7 +822,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Specify Digital Credential types</p></td>
-<td><p>Wallet Instance embeds correct Digital Credential types in the Request Object using the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (or <code class="docutils literal notranslate"><span class="pre">scope</span></code>) parameter (per RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
+<td><p>Wallet Instance embeds correct Digital Credential types in the Request Object using both the <code class="docutils literal notranslate"><span class="pre">scope</span></code> parameter (per [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) and the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> parameter (per RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_053</p></td>
 <td><p>Issuance, Security</p></td>
@@ -1498,8 +1503,8 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_115a</p></td>
 <td><p>Attribute Deletion, Lifecycle, Privacy</p></td>
-<td><p>Filtered transaction logs for identifying attributes</p></td>
-<td><p>The transaction log view is filtered to show only Relying Parties that accessed attributes uniquely identifying the User.</p></td>
+<td><p>Transaction logs for attribute deletion</p></td>
+<td><p>The transaction log view shows Relying Parties in possession of the User's attributes.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Attribute Deletion, Lifecycle, Security</p></td>
@@ -1649,7 +1654,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_130</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
-<td><p>Credential re-issuance from restored backup</p></td>
+<td><p>Credential issuance from restored backup</p></td>
 <td><p>For each Credential entry in the backup JWT, Wallet Instance successfully extracts the Issuer URL, and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_130a</p></td>
@@ -1659,8 +1664,8 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_130b</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
-<td><p>Credential re-issuance request</p></td>
-<td><p>For each Credential, Wallet Instance successfully initiates a re-issuance request for the Credential using a new holder key binding.</p></td>
+<td><p>Credential issuance request</p></td>
+<td><p>For each Credential, Wallet Instance successfully initiates a new Wallet-Initiated Authorization Code Issuance Flow bound to the new Wallet Instance key (fresh Holder Key Binding), and not a token renewal or a Re-Issuance Flow request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1937,8 +1942,16 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -1964,7 +1977,19 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
 <li><a class="reference internal" href="#">20.4.1.4. Wallet Provider Test Matrix</a><ul>
@@ -2010,7 +2035,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 20/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 14/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

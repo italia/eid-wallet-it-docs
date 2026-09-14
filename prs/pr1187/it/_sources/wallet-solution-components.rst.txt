@@ -25,7 +25,7 @@ Interfaccia API
 Questo componente DEVE:
 
 - inoltrare la richiesta dal Componente Frontend o dall'Istanza del Wallet al componente di Gestione del Ciclo di Vita dell'Istanza del Wallet.
-- utilizzare PDND secondo le regole nella Sezione :ref:`e-service-pdnd:e-Service PDND` per essere notificato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale della necessità di revocare l'Istanza del Wallet e cancellare l'account dell'Utente a causa del decesso dell'Utente.
+- utilizzare PDND secondo le regole nella Sezione :ref:`e-service-pdnd:e-Service PDND` per essere notificato dal Provider di PID/IT-Wallet ID della necessità di revocare l'Istanza del Wallet e cancellare l'account dell'Utente a causa del decesso dell'Utente.
 
 Gestione del Ciclo di Vita dell'Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,10 +83,10 @@ Seguendo il profilo di implementazione nella Sezione :ref:`credential-presentati
 Componente di Backup e Ripristino
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere la riemissione di quella Credenziale Elettronica come specificato nella Sezione :ref:`backup-restore:Backup e Ripristino`.
+Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino come specificato nella Sezione :ref:`backup-restore:Backup e Ripristino`.
 
 .. note::
-   Attualmente la riemissione del PID non è gestita dal Componente di Backup e Ripristino.
+   Attualmente la riemissione del PID e dell'IT-Wallet ID non è gestita dal Componente di Backup e Ripristino.
 
 Dashboard e Registro delle Transazioni
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +109,7 @@ La Soluzione Wallet supporta questi modelli di interazione:
 
 1. **Utente verso Frontend del Backend del Wallet**: Interazioni basate sul web per la gestione dell'Istanza del Wallet.
 2. **Istanza del Wallet verso API del Backend del Wallet**: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e key Attestation.
-3. **Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet**: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.
+3. **Provider di PID/IT-Wallet ID verso API del Backend del Wallet**: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.
 4. **Utente verso Interfaccia Utente dell'Istanza del Wallet**: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).
 5. **Istanza del Wallet verso Relying Party**: per la presentazione delle Credenziali Elettroniche.
 

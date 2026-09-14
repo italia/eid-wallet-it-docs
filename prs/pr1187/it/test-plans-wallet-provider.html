@@ -5,15 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.4. Matrice di Test per Wallet Provider &#8212; IT-Wallet Specifiche Tecniche</title>
+    <title>20.4.1.4. Matrice di Test per Wallet Provider &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=6356115f" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=b90024cc" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -27,7 +27,7 @@
     <link rel="next" title="20.4.1.5. Matrice dei Test per il Credential Issuer" href="test-plans-credential-issuer.html" />
     <link rel="prev" title="20.4.1.3. Matrice di Test per le Autorità di Federazione" href="test-plans-federation-authority.html" />
    
-  <meta name="description" content="IT-Wallet Specifiche Tecniche">
+  <meta name="description" content="Specifiche Tecniche IT-Wallet">
   <script>
     (function () {
       try {
@@ -37,8 +37,13 @@
         }
       } catch (error) {
         /* ignore storage errors */
-      }
-    })();
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
   </script>
   </head><body class="it-docs-body">
 <nav class="it-skip-links" aria-label="Skip links">
@@ -196,7 +201,7 @@
               <a href="index.html"
                  class="it-docs-brand-link text-decoration-none"
                  title="Home">
-                <h2 class="it-brand-title it-docs-header-site-title" id="header-site-title">IT-Wallet Specifiche Tecniche</h2>
+                <h2 class="it-brand-title it-docs-header-site-title" id="header-site-title">Specifiche Tecniche IT-Wallet</h2>
               </a>
             </div>
             <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
@@ -818,7 +823,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Specificare tipi degli Attestati Elettronici</p></td>
-<td><p>Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando il parametro <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (o <code class="docutils literal notranslate"><span class="pre">scope</span></code>) (per RAR <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
+<td><p>Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando sia il parametro <code class="docutils literal notranslate"><span class="pre">scope</span></code> (per [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) sia il parametro <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (per RAR <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_053</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -1499,8 +1504,8 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_115a</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Privacy</p></td>
-<td><p>Log transazioni filtrati per identificare attributi</p></td>
-<td><p>La vista dei log delle transazioni è filtrata per mostrare solo Relying Party che hanno acceduto ad Attributi che identificano univocamente l'Utente.</p></td>
+<td><p>Log transazioni per eliminazione attributi</p></td>
+<td><p>La vista dei log delle transazioni mostra le Relying Party in possesso degli attributi dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Sicurezza</p></td>
@@ -1650,7 +1655,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_130</p></td>
 <td><p>Backup e Ripristino, Interoperabilità</p></td>
-<td><p>re-Issuance di Attestato Elettronico da backup ripristinato</p></td>
+<td><p>Emissione di Attestato Elettronico da backup ripristinato</p></td>
 <td><p>Per ogni voce Attestato Elettronico nel JWT backup, Istanza del Wallet estrae con successo l'URL Fornitore di Attestati, e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_130a</p></td>
@@ -1660,8 +1665,8 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-odd"><td><p>WP_130b</p></td>
 <td><p>Backup e Ripristino, Interoperabilità</p></td>
-<td><p>Richiesta re-Issuance Attestato Elettronico</p></td>
-<td><p>Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo una richiesta re-Issuance per l'Attestato Elettronico utilizzando una nuova associazione chiave di binding con il dispositivo.</p></td>
+<td><p>Richiesta emissione Attestato Elettronico</p></td>
+<td><p>Per ogni Attestato Elettronico, Istanza del Wallet avvia con successo un nuovo Wallet-Initiated Authorization Code Issuance Flow legato alla nuova chiave dell'Istanza del Wallet (nuova Associazione Crittografica con l'Utente), e non un rinnovo del token né una richiesta di Re-issuance Flow.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1938,8 +1943,16 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation">
-        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
   <button class="custom-navbar-toggler"
@@ -1965,7 +1978,19 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </div>
     <div class="menu-wrapper it-docs-menu-scroll">
       <div class="link-list-wrapper">
-        <h2 class="it-docs-nav-section-label">On this page</h2>
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
         <div class="it-docs-local-toc">
           <ul>
 <li><a class="reference internal" href="#">20.4.1.4. Matrice di Test per Wallet Provider</a><ul>
@@ -2011,7 +2036,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 20/07/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 14/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
