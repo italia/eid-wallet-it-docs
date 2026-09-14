@@ -132,8 +132,8 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Identificativo univoco del JWT che, insieme al valore contenuto nel claim ``iss``, impedisce il riutilizzo del JWT (*replay attack*). Siccome il valore del `jti` da solo non è resistente alle collisioni, esso DEVE essere identificato in modo univoco insieme al suo emittente.
       - [:rfc:`7519`].
     * - **issuer_state**
-      - DEVE essere presente solo in caso di issuer initiated flow. DEVE contenere lo stesso valore presente nel Credential Offer.
-      - [:rfc:`7519`].
+      - DEVE essere presente nel Request Object quando la Credential Offer contiene ``issuer_state``. DEVE contenere lo stesso valore presente nel Credential Offer. Il formato di tale valore è definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
+      - [`OpenID4VCI`_] Sezione 4.1.1.
 
 .. note::
   Se la request contiene sia *scope* che il parametro *authorization_details*, il Credential Issuer DEVE interpretarli individualmente. Tuttavia, se entrambi richiedono lo stesso tipo di Attestato Elettronico, il Credential Issuer DEVE eseguire la richiesta come se pervenuta soltanto dall'oggetto authorization details.
