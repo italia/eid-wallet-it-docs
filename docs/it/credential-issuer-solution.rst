@@ -38,7 +38,7 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID e IT-Wallet ID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
    11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazionale di Identità Digitale.
    12. Per l'emissione di IT-Wallet ID, autenticare gli Utenti utilizzando l'infrastruttura nazionale di Identità Digitale con LoA High o con Autenticazione eID Substantial con Verifica MRTD.
-   13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID o l'IT-Wallet ID dell'Utente sia valido tramite `OpenID4VP`_.
+   13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_. Il Credential Issuer PUÒ invece richiedere e verificare un IT-Wallet ID valido, secondo le proprie politiche di autenticazione.
    14. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
    Per il Componente Frontend (se implementato):
@@ -87,7 +87,7 @@ Componente Relying Party
 Questo componente DEVE autenticare gli Utenti, se richiesto:
 
    - Per l'emissione di PID/IT-Wallet ID, tramite l'infrastruttura nazionale di Identità Digitale.
-   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID o gli IT-Wallet ID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
+   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`. Il Credential Issuer PUÒ invece richiedere, ottenere e validare un IT-Wallet ID, secondo le proprie politiche di autenticazione.
 
 Interfaccia API
 ^^^^^^^^^^^^^^^
