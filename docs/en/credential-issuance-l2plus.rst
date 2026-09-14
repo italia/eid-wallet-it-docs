@@ -101,7 +101,7 @@ The Wallet Instance initiates the eID Substantial Authentication with MRTD Verif
 Authorization Details
 """""""""""""""""""""
 
-The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. When the User requests a IT-Wallet ID using eID Substantial Authentication with MRTD Verification, the Wallet Instance MAY include an additional **Authorization Details Object** in the ``authorization_details`` parameter, with the structure and claims as defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Such object constitutes an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
+The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. When the User requests a IT-Wallet ID using eID Substantial Authentication with MRTD Verification, the Wallet Instance SHOULD include an additional **Authorization Details Object** in the ``authorization_details`` parameter, with the structure and claims as defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Such object constitutes an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
 
 Below a non-normative example of PAR:
 

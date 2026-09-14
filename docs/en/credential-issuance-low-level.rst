@@ -114,7 +114,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   Wallet Solutions supporting both JAR-compliant and non-compliant Authorization Servers may duplicate parameters in both the request body and the signed Request Object. Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
 
 .. note::
-   To indicate eID Substantial Authentication with MRTD Verification as an optional hint, the ``authorization_details`` array MAY contain an element with ``type`` set to ``"it_l2+document_proof"``, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
+   To indicate eID Substantial Authentication with MRTD Verification as an optional hint, the ``authorization_details`` array SHOULD contain an element with ``type`` set to ``"it_l2+document_proof"``, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
 
 The Credential Issuer performs the following checks upon the receipt of the PAR request:
 

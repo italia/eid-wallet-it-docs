@@ -118,7 +118,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
             - **type**: it MUST be set to ``openid_credential``,
             - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
 
-        When the Wallet Instance intends to indicate eID Substantial Authentication with MRTD Verification as an optional hint, an additional JSON Object MAY be included with the following claims:
+        When the Wallet Instance intends to indicate eID Substantial Authentication with MRTD Verification as an optional hint, an additional JSON Object SHOULD be included with the following claims:
 
             - **type**: REQUIRED. MUST be ``it_l2+document_proof``,
             - **idphinting**: OPTIONAL. URL of the Identity Provider to be used as an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`,

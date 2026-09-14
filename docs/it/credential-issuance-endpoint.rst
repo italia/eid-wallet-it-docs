@@ -118,7 +118,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
             - **type**: DEVE essere valorizzato con ``openid_credential``,
             - **credential_configuration_id**: Stringa JSON. Stringa che indica un identificativo univoco dell'Attestato Elettronico in uno specifico formato che DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, ``dc_sd_jwt_pid`` può essere utilizzato per il PID in formato SD-JWT VC, ``dc_sd_jwt_mDL`` per la patente di guida in formato SD-JWT VC e ``mso_mdoc_mDL`` per la patente di guida in formato mdoc.
 
-        Inoltre, nel caso in cui l'Istanza del Wallet intenda indicare come *hint* opzionale l'Autenticazione eID Substantial con Verifica MRTD, PUÒ essere incluso un Oggetto JSON aggiuntivo con i seguenti claim:
+        Inoltre, nel caso in cui l'Istanza del Wallet intenda indicare come *hint* opzionale l'Autenticazione eID Substantial con Verifica MRTD, DOVREBBE essere incluso un Oggetto JSON aggiuntivo con i seguenti claim:
 
             - **type**: OBBLIGATORIO. DEVE essere ``it_l2+document_proof``,
             - **idphinting**: OPZIONALE. URL del Provider di Identità da utilizzare come *hint* opzionale per l'*Authorization Server*, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`,

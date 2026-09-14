@@ -114,7 +114,7 @@ Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione de
   Per gestire questo scenario, la Wallet Instance DOVREBBE verificare il parametro `require_signed_request_object` nei metadata dell'Authorization Server e decidere in base ad esso se inviare i parametri nel signed Request Object o meno. Per interoperabilità, la Wallet Instance PUÒ duplicare gli stessi parametri nel corpo della richiesta. La Sezione 10.7 di :rfc:`9101` fornisce i requisiti di sicurezza su come gestire correttamente questa duplicazione.
 
 .. note::
-   Per indicare come *hint* opzionale l'Autenticazione eID Substantial con Verifica MRTD, l'oggetto ``authorization_details`` PUÒ contenere un elemento con ``type`` valorizzato a ``"it_l2+document_proof"``, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per le specifiche complete del protocollo, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
+   Per indicare come *hint* opzionale l'Autenticazione eID Substantial con Verifica MRTD, l'oggetto ``authorization_details`` DOVREBBE contenere un elemento con ``type`` valorizzato a ``"it_l2+document_proof"``, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per le specifiche complete del protocollo, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
 
 Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Request`:
 

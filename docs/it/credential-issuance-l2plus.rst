@@ -101,7 +101,7 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet PUÒ includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Tale oggetto costituisce un *hint* opzionale per l'*Authorization Server*, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DOVREBBE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Tale oggetto costituisce un *hint* opzionale per l'*Authorization Server*, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
 
 Di seguito un esempio non normativo di PAR:
 
