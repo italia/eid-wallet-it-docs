@@ -1,0 +1,110 @@
+{
+  "header": {
+    "region_name": "Organization Name",
+    "lang_active_hint": "active language:",
+    "lang_trigger": "Language selection, {{name}} selected"
+  },
+  "meta": {
+    "description": "Select a digital identity provider to access services."
+  },
+  "noscript": {
+    "message": "JavaScript must be enabled to use digital identity selection."
+  },
+  "titles": {
+    "page_title": "Autentication Method Selection Page",
+    "login_logo": "Your Logo",
+    "login_digital_identity": "Log in with a digital identity",
+    "login_alternative_method": "Log in using an alternative method",
+    "havent_digital_identy": "Don't have a digital identity yet?",
+    "find_how_to_get_digital_id": "Find out how to get it",
+    "find_how_to_get_digital_id_url": "https://identitadigitale.gov.it/",
+    "learn_more": "Learn more",
+    "learn_more_a11y": {
+      "collapsed": "additional information hidden",
+      "expanded": "additional information shown"
+    },
+    "cards_load_status": "Authentication methods list updated"
+  },
+  "loading": {
+    "in_progress": "Loading...",
+    "error": "Unable to load authentication methods. Reload the page."
+  },
+  "digital_id": {
+    "it_wallet": {
+      "name": "IT-Wallet",
+      "logo_text": "Login with IT-Wallet",
+      "logo": "it-wallet/wallet_icon.svg",
+      "login_url": "../it-wallet-selection-page/it-wallet.html",
+      "learn_more_descr": "IT-Wallet is Italy's national digital wallet system. It lets you authenticate online and access public and private services securely and quickly, using the data, documents, and qualifications you can obtain digitally through one of the wallets that are part of it.",
+      "learn_more_link": "https://wallet.gov.it",
+      "learn_more_label": "Find out how to get it"
+    },
+    "cie": {
+      "name": "CIE SAML2",
+      "logo_text": "Login with CIE",
+      "logo": "cie/cie_white.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "CIE (Carta d'Identità Elettronica) is the Italian electronic identity card. Use it to access online services in a secure way via the SAML2 protocol.",
+      "learn_more_link": "https://www.cartaidentita.interno.gov.it/",
+      "learn_more_label": "Find out how to get it"
+    },
+    "cie_oidc": {
+      "name": "CIE OpenID Connect",
+      "logo_text": "Login with CIE",
+      "logo": "cie/cie_white.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "CIE (Carta d'Identità Elettronica) can be used with the OIDC protocol to authenticate and access online services."
+    },
+    "spid": {
+      "name": "SPID",
+      "logo_text": "Login with SPID",
+      "logo": "spid/spid-ico-circle-bb.svg",
+      "login_url": "#spid-idp-button-xlarge-post",
+      "learn_more_descr": "SPID (Sistema Pubblico di Identità Digitale) is the Italian public digital identity system. Choose your identity provider to log in with your SPID credentials.",
+      "learn_more_link": "https://www.spid.gov.it/",
+      "learn_more_label": "Find out how to get it"
+    },
+    "eidas": {
+      "name": "European digital ID",
+      "logo_text": "Login with eIDAS",
+      "logo": "img/ficep.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "Sign-in with a digital identity from another European Country including Iceland, Liechtenstein and Norway, and third country nationals in possession of a notified residency card"
+    }
+  },
+  "alternative_id": {
+    "cns": {
+      "name": "CNS",
+      "logo_text": "Login with CNS",
+      "logo": "img/cns.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "CNS (Carta Nazionale dei Servizi) is the identification tool that enables citizens to access public administration services online. Use it to access services that support CNS authentication."
+    },
+    "idem": {
+      "name": "IDEM",
+      "logo_text": "Login with IDEM",
+      "logo": "img/idem.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "IDEM (Identity and Access Management for Education and Research) is the federated identity system of the Italian research and education network (GARR). Use it to access services that support IDEM authentication."
+    },
+    "alt1": {
+      "name": "{Alternative 1}",
+      "logo_text": "Login with {Alternative 1}",
+      "logo": "../shared-ui/svg/sprites.svg#it-code-circle",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "{Alternative 1} is a federated identity system that allows you to access services that support {Alternative 1} authentication."
+    }
+  },
+  "footer": {
+    "nav_label": "Legal links",
+    "legal_notice": "Legal notes",
+    "privacy_policy": "Privacy Policy",
+    "accessibility_statement": "Accessibility statement",
+    "new_window_hint": "opens in a new window"
+  },
+  "skip_links": {
+    "nav_label": "Skip links",
+    "main_content": "Skip to main content",
+    "footer": "Skip to footer"
+  }
+}
