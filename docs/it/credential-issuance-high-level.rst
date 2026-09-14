@@ -21,7 +21,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
     1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso il PID Provider secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del PID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede il PID al PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
-    4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente utilizzando CieID nazionale con LoA High (L3).
+    4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
     5. **Recupero dei dati PID dal Registro Pubblico Nazionale**: il PID Provider ottiene i dati PID richiesti dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione del PID**: il PID Provider rilascia un PID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
@@ -42,7 +42,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un IT-Wallet
     1. **Individuazione e Trust del Provider di IT-Wallet ID**: l'Istanza del Wallet individua l'EAA Provider di IT-Wallet ID fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso l'EAA Provider di IT-Wallet secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati dell'IT-Wallet ID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta dell'IT-Wallet ID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede l'IT-Wallet ID all'EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: l'EAA Provider di IT-Wallet ID verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
-    4. **Autenticazione dell'Utente**: la selezione del metodo di autenticazione DEVE restare in capo all'*Authorization Endpoint* del Provider di IT-Wallet ID, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per le specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
+    4. **Autenticazione dell'Utente**: l'EAA Provider di IT-Wallet ID autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per il flusso di protocollo L2+, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
     5. **Recupero dei dati dell'IT-Wallet ID dal Registro Pubblico Nazionale**: l'EAA Provider di IT-Wallet ID ottiene i dati richiesti dell'IT-Wallet ID dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione dell'IT-Wallet ID**: l'EAA Provider di IT-Wallet ID rilascia un IT-Wallet ID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
@@ -51,7 +51,7 @@ Flusso ad Alto Livello per (Q)EAA
 
 La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA, seguendo le ipotesi elencate di seguito:
 
-  - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet, oppure un IT-Wallet ID valido quando il (Q)EAA Provider lo richiede;
+  - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet, oppure un IT-Wallet ID valido quando richiesto secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`;
   - il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.
 
 .. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
@@ -73,7 +73,7 @@ Analogamente al flusso ad alto livello del PID e dell'IT-Wallet ID, il diagramma
     1. **Individuazione e Trust del (Q)EAA Provider**: l'Istanza del Wallet ottiene l'elenco dei (Q)EAA Provider fidati utilizzando il Catalogo degli Attestati Elettronici e le API di Federazione (ad esempio, utilizzando l'endpoint Subordinate Listing del Trust Anchor e dei suoi Intermediari), quindi ispeziona i Metadata alla ricerca della disponibilità di Attestati Elettronici di ciascun (Q)EAA Provider (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del (Q)EAA**: utilizzando l'Authorization Code Flow, definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede un (Q)EAA al (Q)EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il (Q)EAA Provider verifica l'autenticità e la validità dell'Istanza del Wallet. Durante questo passaggio, il (Q)EAA Provider stabilisce la trust con il Fornitore di Wallet e recupera i Metadata del Wallet contenenti i parametri necessari per l'interoperabilità, come definito dal Trust Model.
-    4. **Autenticazione dell'Utente**: il (Q)EAA Provider, agendo come App di Verifica, autentica l'Utente verificando la presentazione del PID o, a scelta del Credential Issuer, dell'IT-Wallet ID.
+    4. **Autenticazione dell'Utente**: il (Q)EAA Provider, agendo come App di Verifica, autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
     5. **Ottenimento degli Attributi**: il (Q)EAA Provider recupera gli Attributi dell'Utente dalla relativa Fonte Autentica.
     6. **Emissione del (Q)EAA**: il (Q)EAA Provider rilascia un (Q)EAA vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 

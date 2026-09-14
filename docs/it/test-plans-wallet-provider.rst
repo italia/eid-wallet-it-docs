@@ -411,7 +411,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_052d
      - Issuance, Interoperabilità
      - Specificare tipi degli Attestati Elettronici
-     - Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando il parametro ``authorization_details`` (o ``scope``) (per RAR :rfc:`9396`).
+     - Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando sia il parametro ``scope`` (per [`OPENID4VC-HAIP`_]) sia il parametro ``authorization_details`` (per RAR :rfc:`9396`).
    * - WP_053
      - Issuance, Sicurezza
      - Authorization Request

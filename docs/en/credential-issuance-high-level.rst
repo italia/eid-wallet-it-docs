@@ -21,7 +21,7 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
     1. **PID Provider Discovery and Trust**: the Wallet Instance discovers the trusted PID Provider using the Digital Credential Catalogue and Federation Services, establishing the trust to the PID Provider according to the Trust Model and obtaining its metadata that discloses the formats of the PID, the algorithms supported, and any other parameter required for interoperability needs (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **PID Request**: using the Authorization Code Flow defined in [`OpenID4VCI`_] the Wallet Instance requests the PID to the PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Wallet Provider Discovery and Trust**: the PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
-    4. **User Authentication**: the PID Provider authenticates the User using National CieID LoA High (L3).
+    4. **User Authentication**: the PID Provider authenticates the User according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
     5. **Fetch of PID data from National Public Registry**: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **PID Issuance**: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
 
@@ -42,7 +42,7 @@ The high-level flow begins with the User who wants to obtain a IT-Wallet ID and 
     1. **IT-Wallet ID Provider Discovery and Trust**: the Wallet Instance discovers the trusted IT-Wallet ID EAA Provider using the Digital Credential Catalogue and Federation Services, establishing the trust to the IT-Wallet EAA Provider according to the Trust Model and obtaining its metadata that discloses the formats of the IT-Wallet ID, the algorithms supported, and any other parameter required for interoperability needs (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **IT-Wallet ID Request**: using the Authorization Code Flow defined in [`OpenID4VCI`_] the Wallet Instance requests the IT-Wallet ID to the EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Wallet Provider Discovery and Trust**: the IT-Wallet ID EAA Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
-    4. **User Authentication**: the selection of the authentication method MUST remain with the IT-Wallet ID Provider Authorization Endpoint, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For complete technical specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
+    4. **User Authentication**: the IT-Wallet ID EAA Provider authenticates the User according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For the L2+ protocol flow, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
     5. **Fetch of IT-Wallet ID data from National Public Registry**: the IT-Wallet ID EAA Provider obtains the required IT-Wallet ID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **IT-Wallet ID Issuance**: the IT-Wallet ID EAA Provider releases a IT-Wallet ID bound to the key material held by the requesting Wallet Instance.
 
@@ -51,7 +51,7 @@ High-Level (Q)EAA flow
 
 The :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` shows a general architecture and highlights the main operations involved in the issuance of a (Q)EAA, following the assumptions listed below:
 
-  - the User has a valid PID stored in their own Wallet Instance, or a valid IT-Wallet ID when the (Q)EAA Provider requests it;
+  - the User has a valid PID stored in their own Wallet Instance, or a valid IT-Wallet ID when requested according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`;
   - the (Q)EAA requires a high security implementation profile.
 
 .. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
@@ -73,7 +73,7 @@ Similarly to the PID and IT-Wallet ID high-level flow, the above diagram depicts
     1. **(Q)EAA Provider Discovery and Trust**: the Wallet Instance obtains the list of the trusted (Q)EAA Providers using the Digital Credential Catalogue and Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), then inspects the metadata looking for the Digital Credential capabilities of each (Q)EAA Provider (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **(Q)EAA Request**: using the Authorization Code Flow, defined in [`OpenID4VCI`_], the Wallet Instance requests a (Q)EAA to the (Q)EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Wallet Provider Discovery and Trust**: the (Q)EAA Provider verifies the authenticity and validity of the Wallet Instance. During this step the (Q)EAA Provider establishes trust with the Wallet Provider and retrieves Wallet metadata containing the necessary parameters for interoperability, as defined by the Trust Model.
-    4. **User Authentication**: the (Q)EAA Provider, acting as a Relying Party Instance, authenticates the User evaluating the presentation of the PID or, at the Credential Issuer's choice, of the IT-Wallet ID.
+    4. **User Authentication**: the (Q)EAA Provider, acting as a Relying Party Instance, authenticates the User according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
     5. **Obtaining Attributes**: the (Q)EAA Provider fetches User attributes from the relevant Authentic Source.
     6. **(Q)EAA Issuance**: the (Q)EAA Provider releases a (Q)EAA bound to the key material held by the requesting Wallet Instance.
 

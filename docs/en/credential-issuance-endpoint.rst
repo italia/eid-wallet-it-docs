@@ -66,10 +66,9 @@ The JWT *Request Object* has the following JOSE header parameters:
     * - **kid**
       - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.
       - :rfc:`7638#section_3`.
-
-.. note::
-  The parameter **typ**, if omitted, assumes the implicit value **JWT**.
-
+    * - **typ**
+      - REQUIRED. Media Type of the JWT. It MUST be set to ``oauth-authz-req+jwt`` to explicitly declare that this JWT is an Authorization Request Object and to prevent JWT confusion attacks.
+      - :rfc:`9101` and :rfc:`8725`.
 
 The ``request`` JWT payload contained in the HTTP POST message is given with the following parameters:
 
@@ -110,15 +109,15 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``pid``, for IT-Wallet ID it may be set to ``eid`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space.
-      - :rfc:`6749`
+      - REQUIRED. JSON String. String specifying a unique identifier of the Credential regardless of its format, as required by [`OPENID4VC-HAIP`_]. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``pid``, for IT-Wallet ID it may be set to ``eid`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space. The Wallet Instance MUST use the ``scope`` value advertised for the requested Credential Configuration, obtained from the Credential Issuer Metadata or, in the issuer-initiated flow, from the Credential Offer.
+      - :rfc:`6749` and [`OPENID4VC-HAIP`_].
     * - **authorization_details**
-      - Array of JSON Objects. Each JSON Object MUST include the following claims:
+      - REQUIRED. Array of JSON Objects. The array MUST contain at least one JSON Object of type ``openid_credential``. Each JSON Object of type ``openid_credential`` MUST include the following claims:
 
             - **type**: it MUST be set to ``openid_credential``,
-            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_eid`` for IT-Wallet ID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
 
-        When the Wallet Instance intends to indicate eID Substantial Authentication with MRTD Verification as an optional hint, an additional JSON Object SHOULD be included with the following claims:
+        When eID Substantial Authentication with MRTD Verification is indicated as a hint, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`, an additional JSON Object is included with the following claims:
 
             - **type**: REQUIRED. MUST be ``it_l2+document_proof``,
             - **idphinting**: OPTIONAL. URL of the Identity Provider to be used as an optional hint for the Authorization Server, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`,
@@ -136,7 +135,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - [:rfc:`7519`].
 
 .. note::
-  If the request contains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
+  The Pushed Authorization Request MUST include both the *scope* parameter and the *authorization_details* parameter. The Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
 
 The JOSE header of the Wallet Instance Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
@@ -283,6 +282,7 @@ For IT-Wallet ID issuance:
   * The Authorization Server MUST authenticate the User using one of the methods it supports, including CieID with Level of Assurance High (CIE L3) and, if supported, eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
   * The Authorization Server MAY present a discovery page enabling the User to select among the authentication methods it supports and allows for the request in progress.
   * The Wallet Instance MAY include in the Pushed Authorization Request one or more optional hints related to the User's preferred authentication method, as defined below. Such hints MUST NOT be interpreted as a binding imposition of the authentication method by the Wallet Instance.
+  * When the Wallet Instance indicates eID Substantial Authentication with MRTD Verification, it MUST include in the ``authorization_details`` array an object with ``type`` set to ``it_l2+document_proof``, with the structure and claims defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`.
   * If the Authorization Server receives a hint that it supports and accepts, it SHOULD honor it and MAY omit presenting a discovery page and/or autonomously applying only its default authentication method.
   * If the hint is absent, unsupported, or not accepted, the Authorization Server MUST apply its authentication policies, including any discovery page and the default authentication method.
   * The Authorization Server MUST NOT offer on a discovery page, select, or otherwise apply eID Substantial Authentication with MRTD Verification unless the Pushed Authorization Request includes an ``it_l2+document_proof`` object containing the required technical parameters ``challenge_method`` and ``challenge_redirect_uri``. Without those parameters the Authorization Server cannot complete the subsequent multi-step flow and browser confirmation.
@@ -529,7 +529,7 @@ If the Token Request is successfully validated, the Authorization Server provide
       - REQUIRED. Expiry time of the *Access Token* in seconds.
       - [:rfc:`6749`].
     * - **authorization_details**
-      - REQUIRED when ``authorization_details`` parameter is used to request issuance of a Credential. OPTIONAL when ``scope`` parameter is used to request issuance of a Credential. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
+      - REQUIRED. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
 
             - **credential_identifiers**: Array of strings, each uniquely identifying a Credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].

@@ -36,15 +36,13 @@ The Digital Credential Issuer Solution MUST:
    8. Issue Digital Credentials that support Selective Disclosure.
    9. Periodically renew its trust with the Federation.
    10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID and IT-Wallet ID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
-   11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
-   12. For IT-Wallet ID issuance, authenticate Users using national Digital Identity infrastructure with LoA High or with eID Substantial Authentication with MRTD Verification.
-   13. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_. The Credential Issuer MAY instead request and verify a valid IT-Wallet ID, according to its authentication policies.
-   14. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
+   11. Authenticate Users for PID, IT-Wallet ID and (Q)EAA issuance according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
+   12. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
    For the Frontend Component (if implemented):
 
-   14. Authenticate Users with a Level of Assurance (LoA) at least equal to that used to obtain the Digital Credential being issued or managed.
-   15. Provide appropriate security measures to protect User data and Digital Credential information.
+   13. Authenticate Users with a Level of Assurance (LoA) at least equal to that used to obtain the Digital Credential being issued or managed.
+   14. Provide appropriate security measures to protect User data and Digital Credential information.
 
 Component Details
 -----------------
@@ -84,10 +82,7 @@ This OAuth 2.0 based component MUST:
 Relying Party Component
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-When User authentication is required, this component MUST authenticate Users:
-
-   - For PID/IT-Wallet ID issuance, via national Digital Identity Providers.
-   - For (Q)EAA issuance, requesting, obtaining and validating a PID from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`. The Credential Issuer MAY instead request, obtain and validate an IT-Wallet ID, according to its authentication policies.
+When User authentication is required, this component MUST authenticate Users according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
 
 API Interface
 ^^^^^^^^^^^^^
