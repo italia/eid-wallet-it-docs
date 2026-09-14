@@ -1091,7 +1091,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
       * **pricing_model_uri**: URI alla documentazione dettagliata del modello di prezzo.
   * - **validity_info**
-    - Informazioni sulla validità della Credenziale Digitale, inclusi almeno:
+    - OBBLIGATORIO. Informazioni sulla validità della Credenziale Digitale, inclusi almeno:
 
       * **max_validity_days**: Periodo massimo di validità in giorni.
       * **status_methods**: Metodi di verifica dello stato supportati (es. ``status_list``).

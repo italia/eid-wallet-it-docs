@@ -1091,7 +1091,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **pricing_model_uri**: URI to the detailed pricing model documentation.
   * - **validity_info**
-    - Information about Digital Credential validity, including at least:
+    - REQUIRED. Information about Digital Credential validity, including at least:
 
       * **max_validity_days**: Maximum validity period in days.
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
