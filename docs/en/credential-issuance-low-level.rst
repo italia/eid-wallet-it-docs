@@ -701,9 +701,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
 issuer_state Parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``issuer_state`` parameter is an opaque string as defined in Section 4.1.1 of [`OpenID4VCI`_].
-
-It is REQUIRED when the Credential Offer is bound to a Credential Dataset of an Authentic Source. Otherwise it is OPTIONAL. When present, the Wallet Instance MUST include the same value in the subsequent Authorization Request, as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. The Wallet Instance MUST treat ``issuer_state`` as opaque and MUST NOT decrypt or parse it.
+The ``issuer_state`` parameter is an opaque string as defined in Section 4.1.1 of [`OpenID4VCI`_]. The conditions for its presence and the Wallet Instance's use of the value in the subsequent Authorization Request (:ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`) are specified in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`. The Wallet Instance MUST treat ``issuer_state`` as opaque and MUST NOT decrypt or parse it.
 
 The parameter value and the information it carries are two distinct layers:
 
