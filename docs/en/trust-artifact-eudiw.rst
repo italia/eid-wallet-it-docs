@@ -35,7 +35,7 @@ Intended uses, entitlements, provided attestations and intermediary relationship
 Register Dataset
 """"""""""""""""
 
-The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of the `CIR2025/848-Amendment`_.
+The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
 Below some non-normative examples of ``WalletRelyingParty`` objects stored in the Register.
 
 A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.
@@ -62,7 +62,7 @@ Register Open APIs
 The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements,
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
 
-- **GET /wrp**: Get a list of WRPs with optional filtering (defined in Annex VI of `CIR2025/848-Amendment`_) and pagination.
+- **GET /wrp**: Get a list of WRPs with optional filtering (defined in Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_]) and pagination.
   A successful response (``200``) MUST be a JWS-signed response body.
   The decoded payload MUST contain an array of ``WalletRelyingParty`` objects matching the query, and, where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State.
   The list of all registered WRPs is returned when no query parameters are provided.
@@ -71,7 +71,7 @@ and provide methods for searching and querying complete data sets of registered 
   If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code ``400`` and ``401``, respectively.
 
 .. note::
-    The published API view excludes only ``postalAddress`` (`CIR2025/848-Amendment`_, Annex I, point 4).
+    The published API view excludes only ``postalAddress`` ([`CIR2025/848`_] as amended by [`CIR2026/1730`_], Annex I, point 4).
     All other fields, including intended-use credential claims, are published as registered.
     The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06) and for Credential Issuance checks.
     They MUST NOT be used by the Wallet Unit as a substitute for a missing Wallet-Relying Party Registration Certificate during Credential Presentation ([`EIDAS-ARF`_] RPRC_16, RPRC_18 and RPRC_19a are empty).
@@ -80,7 +80,7 @@ The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`
 The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json.
 
 .. warning::
-  In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in the `CIR2025/848-Amendment`_.
+  In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
