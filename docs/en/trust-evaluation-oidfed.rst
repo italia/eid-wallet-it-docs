@@ -582,8 +582,11 @@ The transparency claims carried in the Trust Mark are the following:
 
 Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
-When the Relying Party operates through a Relying Party Intermediary, the Wallet Unit MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
-In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
+When the Relying Party operates through a Relying Party Intermediary in the **National Trust Framework**, the Wallet Unit MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
+The Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
+
+When the same presentation is evaluated in the **EUDIW Trust Framework**, the Wallet Unit MUST NOT display the trade names of the Intermediary or of the Intermediary Service ([`EIDAS-ARF`_] RPI_07).
+It displays the intermediated Relying Party and its Service, as defined in :ref:`trust-evaluation:EUDIW Authorization`.
 
 Metadata Retrieval and Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

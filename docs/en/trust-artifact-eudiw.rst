@@ -137,8 +137,11 @@ Extensions not listed in the table MUST NOT be present.
        * ``rfc822Name``, to provide an email address for WRP registration/usage matters.
 
        In addition, it MUST include a ``uniformResourceIdentifier`` whose last path segment is the Relying Party Service identifier of this certificate (``services[].serviceIdentifier`` in the Register).
-       That URI MUST be unique within the entity and MUST be identical to the ``srv_id`` of every WRPRC issued for the same Service ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+       That URI MUST be unique within the entity and MUST be identical to the ``srv_id`` of every WRPRC issued for the same Service of the same entity ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
        Until [`ETSI TS 119 411-8`_] defines a dedicated attribute for the Service identifier, this ``subjectAltName`` URI is the IT-Wallet encoding of Reg_33.
+
+       If the subject is an Intermediary presenting on behalf of an intermediated Relying Party, the certificate MUST additionally include a second ``uniformResourceIdentifier`` of the form ``{registryURI}/wrp/{intermediatedRpIdentifier}/services/{intermediatedServiceIdentifier}``, where ``intermediatedRpIdentifier`` is the EU-wide unique identifier of that Relying Party ([`EIDAS-ARF`_] Reg_32) and ``intermediatedServiceIdentifier`` is the identifier of the intermediated Relying Party Service ([`EIDAS-ARF`_] Reg_33).
+       Until [`ETSI TS 119 411-8`_] defines a dedicated attribute for this association, that URI is the IT-Wallet encoding of [`EIDAS-ARF`_] Reg_34a.
 
    * - ``cRLDistributionPoints``
      - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
@@ -159,10 +162,12 @@ Extensions not listed in the table MUST NOT be present.
     This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC.
 
     A registering entity MUST receive at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
+    An Intermediary MUST receive a separate set of WRPACs for each intermediated Relying Party, one WRPAC per intermediated Relying Party Service it serves ([`EIDAS-ARF`_] Reg_34a).
     The ``subject.organizationName`` (legal person) or the natural-person name attributes MUST identify the entity and MUST be suitable for presenting to the User ([`EIDAS-ARF`_] Reg_31).
     The ``subject.organizationIdentifier`` (legal person) or ``subject.serialNumber`` (natural person) MUST be the EU-wide unique identifier of the entity ([`EIDAS-ARF`_] Reg_32).
     The ``subject.commonName`` MUST be the ``serviceTradeName`` of the Service this certificate authenticates ([`EIDAS-ARF`_] Reg_34).
     The Service identifier MUST be present in ``subjectAltName`` as specified above ([`EIDAS-ARF`_] Reg_33).
+    If the subject is an Intermediary, ``subjectAltName`` MUST also carry the association to the intermediated Relying Party as specified above ([`EIDAS-ARF`_] Reg_34a).
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
@@ -230,8 +235,11 @@ This Trust Artifact provides detailed information about the Credential Issuer an
 
 Each WRPRC is bound to a single Relying Party Service.
 The Provider of WRPRC SHALL issue WRPRCs automatically and without undue delay after a valid WRPAC of that Service exists: one WRPRC per combination of intended use and Service for a Relying Party ([`EIDAS-ARF`_] RPRC_09), and one WRPRC per Service for a PID Provider or Attestation Provider ([`EIDAS-ARF`_] RPRC_13).
-The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
-The ``srv_id`` claim MUST equal the ``serviceIdentifier`` of that Service and MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and, for a non-intermediated presentation, MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service of the same entity ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
+The ``srv_id`` claim MUST equal the ``serviceIdentifier`` of that Service and, for a non-intermediated presentation, MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+In an intermediated presentation the Wallet Unit authenticates the Intermediary with the WRPAC associated to this Relying Party ([`EIDAS-ARF`_] Reg_34a) and evaluates the intermediated Relying Party from the WRPRC in the request ([`EIDAS-ARF`_] RPRC_17a, RPRC_19).
+The Wallet Unit MUST NOT require the Intermediary WRPAC identifier to equal the WRPRC ``sub``.
+The WRPRC ``intermediary`` object MUST identify the Intermediary and the Intermediary Service ([`EIDAS-ARF`_] RPRC_04), and the WRPAC ``subjectAltName`` MUST carry the association specified for Reg_34a.
 ETSI TS 119 475 v1.2.1 does not yet define ``srv_id``; this specification profiles it to implement RPRC_07a until that standard is updated. The claim is a JSON string (JWT) or a CBOR text string (CWT) and MUST be identical to ``services[].serviceIdentifier`` in the Register.
 
 The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`.
@@ -251,7 +259,7 @@ Below a non-normative example of WRPRC header and payload for a Relying Party.
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
   :language: json
 
-Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
+Below a non-normative example of WRPRC payload for an intermediated Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-payload-rpi.json
   :language: json
@@ -422,9 +430,15 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
   - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``.
     The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI TS 119 472-3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
 
+  If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary identifier from the WRPAC.
+  It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC in the request (``sub``) and compare that identifier to the authorised list ([`EIDAS-ARF`_] EDP_02, RPRC_19).
+
 - **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates.
   Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation.
   According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+
+  If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
+  It MUST compare the Trust Anchor of the Provider of WRPRC that signed the intermediated Relying Party's WRPRC in the request ([`EIDAS-ARF`_] EDP_03, RPRC_19).
 
 .. note::
 
@@ -438,7 +452,8 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
   `EIDAS-ARF`_ HLR EDP_02 refers to *EU-wide unique identifiers*, as defined in Reg_32, for the authorized RP list.
   `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate.
   The ``organizationIdentifier`` attribute within the DN has the same semantics as the identifier given in `EIDAS-ARF`_ HLR Reg_32.
-  This specification aligns with the `ETSI TS 119 472-3`_ formulation.
+  This specification aligns with the `ETSI TS 119 472-3`_ formulation for a **direct** presentation.
+  For an **intermediated** presentation EDP_02 requires the identifier of the *intermediated* Relying Party, taken from the WRPRC in the request, not from the Intermediary WRPAC.
 
 Embedded Disclosure Policy Data Model
 """"""""""""""""""""""""""""""""""""""

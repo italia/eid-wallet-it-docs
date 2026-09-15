@@ -76,7 +76,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - Its own Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
+      - Its own Wallet-Relying Party Access Certificate associated to that intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a) and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
 
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -688,11 +688,16 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     - **Credential Issuance**.
       The Wallet Unit MUST match the Credential Issuer identifier with the ``sub`` of the Wallet-Relying Party Registration Certificate or, if no Wallet-Relying Party Registration Certificate is available, with the ``identifier`` used in the Register query, and with the ``issuer_info.data.identifier`` of the Credential Issuer Metadata.
     - **Credential Presentation**.
-      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow.
-      If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario and match the identifier against the ``intermediary.sub`` field carried in the Wallet-Relying Party Registration Certificate.
+      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow.
+      If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
+      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04), and the WRPAC ``subjectAltName`` carries the association to that Relying Party and Service ([`EIDAS-ARF`_] Reg_34a).
 
     If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation and set ``authz_val_state`` to ``BINDING_FAILED``.
-    If it succeeds, the Wallet Unit MUST make available to the User the identity of the Relying Party Intermediary, the identity or service description of the intermediated Relying Party, and the intended use of the request; how this information is presented is defined in the relevant User interaction sections of the IT-Wallet specification.
+    If the **direct** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the Relying Party, and the intended use of the request.
+    If the **intermediated** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the *intermediated* Relying Party and the intended use of the request.
+    It MUST NOT display the trade names of the Intermediary or of the Intermediary Service ([`EIDAS-ARF`_] RPI_07).
+    How this information is presented is defined in the relevant User interaction sections of the IT-Wallet specification.
+    There is no User opt-in Registrar lookup of the intermediary relationship ([`EIDAS-ARF`_] RPI_07a is empty).
 
 2. **Entitlement verification**.
    The Wallet Unit MUST verify that the entitlements of the Authorization Subject match the expected role.
@@ -731,10 +736,14 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
 
     - ``no_policy``: no restriction applies.
     - ``authorized_rp_only``: only the Relying Parties in the ``authorized_parties`` list are authorized.
-      The Wallet Unit MUST compare the Relying Party subject DN of the Wallet-Relying Party Access Certificate against the ``subject_dn`` entries, and the Relying Party entitlements or sub-entitlements of the Wallet-Relying Party Registration Certificate against the ``entitlement_uri`` entries.
+      In a **direct** presentation the Wallet Unit MUST compare the Relying Party subject DN of the Wallet-Relying Party Access Certificate against the ``subject_dn`` entries, and the Relying Party entitlements or sub-entitlements of the Wallet-Relying Party Registration Certificate against the ``entitlement_uri`` entries.
       A match on either criterion is sufficient.
+      In an **intermediated** presentation the Wallet Unit MUST NOT use the Intermediary identifier from the WRPAC.
+      It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC ``sub`` in the request and compare that identifier, and the entitlements of that WRPRC, to the authorised list ([`EIDAS-ARF`_] EDP_02).
     - ``specific_root_of_trust``: only the Relying Parties whose Wallet-Relying Party Access Certificate chain contains one of the ``trusted_roots`` are authorized.
       The Wallet Unit MUST match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+      In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
+      It MUST compare the Trust Anchor of the Provider of WRPRC that signed the intermediated Relying Party's WRPRC in the request ([`EIDAS-ARF`_] EDP_03).
 
     If the applicable check is satisfied, or no Embedded Disclosure Policy is present, the Wallet Unit MUST set ``edp_state`` to ``EDP_SATISFIED``; otherwise it MUST set ``edp_state`` to ``EDP_NOT_SATISFIED``.
 

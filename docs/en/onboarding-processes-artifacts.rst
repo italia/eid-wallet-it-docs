@@ -136,20 +136,24 @@ Wallet-Relying Party Access Certificate Issuance
 Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defined in the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_], and the fallback to the Trust Mark does not apply to it.
 The Entity obtains at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
+An Intermediary obtains a separate set of WRPACs for each intermediated Relying Party, one WRPAC per intermediated Relying Party Service it serves ([`EIDAS-ARF`_] Reg_34a).
 
 **Input**
 
 The ``certificate_signing_requests`` of the Entity for the WRPAC of a given Service, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
 The attributes of the certificate come from the corresponding ``services[]`` element of the record of the Entity in the Register.
+For an Intermediary they additionally come from the intermediated Relying Party Service this certificate is associated to ([`EIDAS-ARF`_] Reg_34a).
 
 **Outcome**
 
 The WRPAC of that Service, issued by the WRPAC Certification Authority, that the Entity uses to authenticate towards the Wallet Units for that Service.
+For an Intermediary, the WRPAC of the association to a given intermediated Relying Party Service.
 
 **Process**
 
 1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting the ``certificate_signing_requests`` of the Service and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority checks that the Entity has a record in the Register, that the requested Service exists in ``services[]``, and derives the attributes of the certificate from that Service (``serviceTradeName`` into ``subject.commonName``, ``serviceIdentifier`` into ``subjectAltName``).
+   For an Intermediary it also encodes in ``subjectAltName`` the unique identifier and the Service identifier of the intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a).
 3. The Certification Authority issues the WRPAC and the Entity retrieves it.
 
 Wallet-Relying Party Registration Certificate Issuance
