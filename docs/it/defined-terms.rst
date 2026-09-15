@@ -205,6 +205,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
       Conforme con ARF 2.7.3.
 
+    **Servizio di Relying Party**
+    **Servizio di Wallet-Relying Party**
+      Oggetto di registrazione di primo livello di una Wallet-Relying Party, identificato da un ``serviceIdentifier`` univoco all'interno dell'entità e da un ``serviceTradeName`` idoneo alla presentazione all'Utente.
+      Un'entità che opera nel Quadro di Fiducia EUDIW DEVE registrare uno o più Servizi e DEVE ricevere almeno un Certificato di Accesso della Wallet-Relying Party per ciascun Servizio ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
+      Gli usi previsti sono vincolati a un Servizio ([`EIDAS-ARF`_] Reg_10d). Lo stesso identificativo e la stessa denominazione commerciale del Servizio DEVONO comparire nel corrispondente Certificato di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_07a).
+      Nel Registro l'oggetto è ``WalletRelyingPartyService`` nell'array ``services`` di `EUDI-TS 5`_.
+      Presente in ARF 3.0.0 Sezione 3.11.2 e [`CIR2026/1730`_]; non presente con questa formulazione in ARF 2.7.3.
+
     **Soluzione di Relying Party**
       Prodotto (software/hardware/cloud) che consente la presentazione degli Attestati Elettronici in vari contesti.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.

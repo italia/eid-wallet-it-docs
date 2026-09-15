@@ -32,10 +32,11 @@ The data is organized in the three categories of registered data defined in :ref
 - *Technical Configuration*, provided by the Entity, in particular the ``federation_entity_identifier`` and the ``federation_entity_key`` of its Entity Configuration.
 - *Authorization Information*, provided by the Entity, i.e.:
 
-   - ``entitlements``, 
-   - ``intended_use``, 
-   - ``provided_attestations`` for a Credential Issuer, 
-   - ``intermediary_relationship`` where applicable, 
+   - ``entitlements``,
+   - ``relying_party_services``,
+   - ``intended_use``,
+   - ``provided_attestations`` for a Credential Issuer,
+   - ``intermediary_relationship`` where applicable,
    - ``conformity_assessment`` for the categories that need it.
 
 The signed record, the certificates and their Trust Anchors are not an input but are derived from the registration.
@@ -89,7 +90,7 @@ This process describes what the Entity submits and which steps the components ex
 The updated registration data defined in :ref:`onboarding-system:Registration Data Model`.
 For a change of the Identity Information the input is the new ``legal_name``, ``identifier``, ``legal_nature``, ``contact_information``, ``service_policies`` or ``data_protection_authority``.
 For a change of the Technical Configuration related to the new key material, the ``federation_entity_key`` and ``certificate_signing_requests`` are provided respectively for the federation identity and for the X.509 certificates.
-For a change of the Authorization Information the input is the new ``entitlements``, ``intended_use``, ``provided_attestations`` or ``intermediary_relationship``, depending on the role.
+For a change of the Authorization Information the input is the new ``entitlements``, ``relying_party_services``, ``intended_use``, ``provided_attestations`` or ``intermediary_relationship``, depending on the role.
 
 **Outcome**
 

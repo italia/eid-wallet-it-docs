@@ -25,8 +25,12 @@ The data model of these Trust Artifacts profiles the following external specific
 Register of WRPs
 ^^^^^^^^^^^^^^^^
 
-The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs and their authorisations/declared usage.
-This section documents a `EUDI-TS 5`_ aligned profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
+The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs, their **Services**, and their authorisations/declared usage.
+This section documents a `EUDI-TS 5`_ version 1.4 aligned profile that satisfies Annex II of `CIR2025/848`_ as amended by [`CIR2026/1730`_].
+
+A Wallet-Relying Party that operates in the EUDIW Trust Framework MUST register one or more **Relying Party Services** in the ``services`` array of the ``WalletRelyingParty`` object (`EUDI-TS 5`_, ``WalletRelyingPartyService``).
+Each Service has a ``serviceIdentifier`` unique within the entity and a ``serviceTradeName`` suitable for presenting to the User ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
+Intended uses, entitlements, provided attestations and intermediary relationships are bound to a Service, not to the entity root ([`EIDAS-ARF`_] Reg_10d).
 
 Register Dataset
 """"""""""""""""
@@ -34,19 +38,19 @@ Register Dataset
 The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of the `CIR2025/848-Amendment`_.
 Below some non-normative examples of ``WalletRelyingParty`` objects stored in the Register.
 
-A bank registered as a Relying Party requesting PID for know-your-customer procedures.
+A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.
 
 .. literalinclude:: ../../examples/register-wrp-rp.json
   :language: JSON
 
 A bank registered as both a Relying Party requesting PID and a QEAA Provider (issuing bank account attestations to Wallet).
-It has both ``intendedUse`` and ``providesAttestations``.
+It registers two Services: one Service with ``intendedUses`` and one Service with ``providesAttestations``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-ap.json
   :language: JSON
 
 An entity registered as a designated Intermediary that acts on behalf of WRPs during Wallet interactions.
-It has ``isIntermediary: true`` and does not declare ``intendedUse`` (not required when registering solely as an Intermediary).
+Each of its ``services[]`` elements has ``isIntermediary: true`` and does not declare ``intendedUses`` (not required when registering solely as an Intermediary).
 
 .. literalinclude:: ../../examples/register-wrp-rp-intermediary.json
   :language: JSON
@@ -70,7 +74,8 @@ and provide methods for searching and querying complete data sets of registered 
     The published API view excludes only ``postalAddress`` (`CIR2025/848-Amendment`_, Annex I, point 4).
     All other fields, including intended-use credential claims, are published as registered.
 
-The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ v1.3 is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
+The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
+The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json.
 
 .. warning::
   In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in the `CIR2025/848-Amendment`_.
@@ -129,6 +134,10 @@ Extensions not listed in the table MUST NOT be present.
        * ``otherName`` with ``type-id`` set to ``2.5.4.20`` (``id-at-telephoneNumber``), to provide a phone number for WRP registration/usage matters;
        * ``rfc822Name``, to provide an email address for WRP registration/usage matters.
 
+       In addition, it MUST include a ``uniformResourceIdentifier`` whose last path segment is the Relying Party Service identifier of this certificate (``services[].serviceIdentifier`` in the Register).
+       That URI MUST be unique within the entity and MUST be identical to the ``srv_id`` of every WRPRC issued for the same Service ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+       Until [`ETSI TS 119 411-8`_] defines a dedicated attribute for the Service identifier, this ``subjectAltName`` URI is the IT-Wallet encoding of Reg_33.
+
    * - ``cRLDistributionPoints``
      - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
      
@@ -145,7 +154,13 @@ Extensions not listed in the table MUST NOT be present.
 
 .. note::
     **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
-    This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
+    This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC.
+
+    A registering entity MUST receive at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
+    The ``subject.organizationName`` (legal person) or the natural-person name attributes MUST identify the entity and MUST be suitable for presenting to the User ([`EIDAS-ARF`_] Reg_31).
+    The ``subject.organizationIdentifier`` (legal person) or ``subject.serialNumber`` (natural person) MUST be the EU-wide unique identifier of the entity ([`EIDAS-ARF`_] Reg_32).
+    The ``subject.commonName`` MUST be the ``serviceTradeName`` of the Service this certificate authenticates ([`EIDAS-ARF`_] Reg_34).
+    The Service identifier MUST be present in ``subjectAltName`` as specified above ([`EIDAS-ARF`_] Reg_33).
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
@@ -204,12 +219,17 @@ This section defines Wallet-Relying Party Registration Certificate (WRPRC), as d
 This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
 
 - core identification attributes (clause 5.1 `ETSI TS 119 475`_),
-- service description attributes (clause 5.2.4 `ETSI TS 119 475`_),
+- service description attributes (clause 5.2.4 `ETSI TS 119 475`_), including the Relying Party Service identifier and trade name ([`EIDAS-ARF`_] RPRC_07a),
 - entitlement attributes (see Annex A.2 `ETSI TS 119 475`_),
 - supervisory authority attributes (clause 5.2.4 `ETSI TS 119 475`_),
 - Relying Party attributes (clause 5.2.4 `ETSI TS 119 475`_),
 - Credential Issuer attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- Intermediary attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
+- Intermediary attributes; i.e., whether the Relying Party Service relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
+
+Each WRPRC is bound to a single Relying Party Service.
+The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
+The ``srv_id`` claim MUST equal the ``serviceIdentifier`` of that Service and MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+ETSI TS 119 475 v1.2.1 does not yet define ``srv_id``; this specification profiles it to implement RPRC_07a until that standard is updated. The claim is a JSON string (JWT) or a CBOR text string (CWT) and MUST be identical to ``services[].serviceIdentifier`` in the Register.
 
 The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`.
 It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI TS 119 475`_.
@@ -238,6 +258,8 @@ Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
   `ETSI TS 119 475`_, Table 10 defines the intermediary name subfield as ``sname``.
   The example in Annex C of the same standard uses ``name`` instead.
   This specification follows the normative Table 10 and uses ``sname``.
+
+  The Service identifier claim ``srv_id`` is profiled by this specification to implement [`EIDAS-ARF`_] RPRC_07a until `ETSI TS 119 475`_ defines an equivalent member.
 
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

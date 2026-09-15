@@ -212,6 +212,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Within IT-Wallet it covers the Credential Issuers (the PID Provider and the Attestation Providers) and the Relying Parties together with the Relying Party Intermediaries.
       Aligned with ARF 2.7.3.
 
+    **Relying Party Service**
+    **Wallet-Relying Party Service**
+      First-class registration object of a Wallet-Relying Party, identified by a ``serviceIdentifier`` unique within that entity and by a ``serviceTradeName`` suitable for presenting to the User.
+      A registering entity that operates in the EUDIW Trust Framework MUST register one or more Services and MUST receive at least one Wallet-Relying Party Access Certificate per Service ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
+      Intended uses are bound to a Service ([`EIDAS-ARF`_] Reg_10d). The same Service identifier and trade name MUST appear in the corresponding Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_07a).
+      In the Register the object is ``WalletRelyingPartyService`` in the ``services`` array of `EUDI-TS 5`_.
+      Present in ARF 3.0.0 Section 3.11.2 and [`CIR2026/1730`_]; not present under this wording in ARF 2.7.3.
+
     **Relying Party Solution**
       Product (software/hardware/cloud) enabling Credential presentations in various contexts.
       Not present in ARF 2.7.3; specific to IT-Wallet.
