@@ -9,7 +9,8 @@ The conditions that determine this outcome depend on the specific Authorization 
 
 - In case the Wallet Unit follows the :ref:`trust-evaluation:EUDIW Authorization` evaluation path, then the outcome is:
 
-    - ``AUTHORIZED`` if the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``; or
+    - during **Credential Presentation**, ``AUTHORIZED`` if the process terminates with ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``;
+    - during **Credential Issuance**, ``AUTHORIZED`` if the process terminates with ``CERTIFICATE_VALID`` OR ``REGISTER_VALID``, AND ``VERIFICATION_PASSED``;
     - ``NOT_AUTHORIZED`` otherwise.
 
 - In case the Wallet Unit follows the National :ref:`trust-evaluation:Authorization` evaluation path, then the outcome is:
@@ -26,9 +27,13 @@ A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit b
 - During the **Presentation** phase, all negative verification outcomes MUST be *non-overridable*, except for the following cases:
 
     - **Overasking [EUDIW]**.
-      When the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``OVERASKING_DETECTED``, i.e., the Authorization Artifact Validation has had a positive outcome, but the Scope Comparison finds the Relying Party requesting more than its registered scope.
+      When the process terminates with ``CERTIFICATE_VALID`` AND ``OVERASKING_DETECTED``, i.e., the Authorization Artifact Validation has had a positive outcome, but the Scope Comparison finds the Relying Party requesting more than its registered scope.
     - **Negative Embedded Disclosure Policy evaluation [EUDIW]**.
-      When the process terminates with ``REGISTER_VALID`` OR ``CERTIFICATE_VALID`` AND ``EDP_NOT_SATISFIED``, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+      When the process terminates with ``CERTIFICATE_VALID`` AND ``EDP_NOT_SATISFIED``, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+    - **Missing or invalid WRPRC [EUDIW]**.
+      When the process terminates with ``CERTIFICATE_INVALID`` during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
+      The Wallet Unit MUST warn the User ([`EIDAS-ARF`_] RPRC_17) and MUST NOT query the Register ([`EIDAS-ARF`_] RPRC_16 and RPRC_18 are empty).
+      Whether the User may still approve follows the Wallet Provider policy.
     - **Overasking [National]**.
       When the process terminates with ``TRUST_MARK_VALID`` AND ``OVERASKING_DETECTED``, i.e., the :ref:`trust-evaluation:Trust Mark Validation` has had a positive outcome, but the :ref:`trust-evaluation:Overasking Check` finds the Relying Party requesting more than its registered scope.
 
@@ -37,7 +42,5 @@ All other presentation failures, including binding failures or intermediary bind
 In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
 User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.
 
-.. note::
-    **User opt-in**.
-    The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` is executed only if the User enabled registration verification.
-    Override mechanisms define what happens when the procedure produces a negative result.
+The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request ([`EIDAS-ARF`_] RPRC_21).
+It is not gated on a User opt-in to Registrar lookup ([`EIDAS-ARF`_] RPRC_16 and RPRC_18 are empty).

@@ -149,7 +149,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
+**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate included in the request to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
 

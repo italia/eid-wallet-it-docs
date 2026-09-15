@@ -148,7 +148,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 **Passo 10**: Al ricevimento del ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [`ISO18013-5`_ #12.5 *mdoc reader authentication*]) per garantire l'autenticità del messaggio (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
+**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party incluso nella richiesta per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Passo 12**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e quindi approva la presentazione degli attributi richiesti.
 

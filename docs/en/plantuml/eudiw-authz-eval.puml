@@ -34,12 +34,12 @@ partition "Authorization Artifacts Validation" {
       #ffccb3:CERTIFICATE_INVALID;
     endif
   else (no)
-    :authz_art_state = none;
+    #ffccb3:CERTIFICATE_INVALID;
   endif
 
-  if (authz_art_state == CERTIFICATE_INVALID OR WRPRC not available) then (yes)
-    group "Register Query Validation" {
-      :1. Extract Registrar URL;
+  if (Issuance AND (authz_art_state == CERTIFICATE_INVALID)) then (yes)
+    group "Register Query Validation (Issuance only)" {
+      :1. Extract Registrar URL from issuer_info;
       :2. Connect to Registrar via HTTPS;
       :3. Query using entity identifier;
       :4. Format verification;
@@ -56,6 +56,10 @@ partition "Authorization Artifacts Validation" {
       #ffccb3:FAILED;
     endif
   else (no)
+    if (Presentation AND authz_art_state == CERTIFICATE_INVALID) then (yes)
+      :Warn the User (RPRC_17). Do not query the Register;
+    else (no)
+    endif
   endif
 }
 

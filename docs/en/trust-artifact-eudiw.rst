@@ -73,6 +73,8 @@ and provide methods for searching and querying complete data sets of registered 
 .. note::
     The published API view excludes only ``postalAddress`` (`CIR2025/848-Amendment`_, Annex I, point 4).
     All other fields, including intended-use credential claims, are published as registered.
+    The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06) and for Credential Issuance checks.
+    They MUST NOT be used by the Wallet Unit as a substitute for a missing Wallet-Relying Party Registration Certificate during Credential Presentation ([`EIDAS-ARF`_] RPRC_16, RPRC_18 and RPRC_19a are empty).
 
 The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
 The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json.
