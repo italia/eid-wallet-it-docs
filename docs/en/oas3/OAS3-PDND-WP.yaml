@@ -67,13 +67,6 @@ paths:
         This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
       operationId: notifyUserDeath
       parameters:
-        - name: DPoP
-          in: header
-          description: Use only if the DPoP voucher has been requested from PDND.
-          schema:
-            type: string
-            format: JWT
-          required: false
         - name: Agid-JWT-Signature
           in: header
           description: >-
@@ -100,22 +93,11 @@ paths:
           schema:
             type: string
             example: SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41
-        - name: Agid-JWT-TrackingEvidence
-          in: header
-          description: >-
-            If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
-            pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE
-            ON JWT.IO</a>
-          required: false
-          schema:
-            type: string
-            format: JWT
-            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       security:
+        - DPoPVoucherAuth: []
+          DPoPProof: []
         - BearerAuth: []
-        - DPoPAuth: []
+          TrackingEvidenceAuth: []
       requestBody:
         required: true
         content:
@@ -227,16 +209,44 @@ tags:
 
 components:
   securitySchemes:
+    DPoPVoucherAuth:
+      type: http
+      scheme: DPoP
+      description: >-
+        PDND Voucher issued with DPoP binding (POP_DPoP, RFC 9449). The
+        `Authorization` header MUST be `DPoP <voucher>` (`token_type` is `DPoP`).
+        This scheme MUST be used together with `DPoPProof`. It MUST NOT be
+        modelled as HTTP Bearer: a conformant Provider rejects
+        `Authorization: Bearer` for a DPoP-bound Voucher.
+    DPoPProof:
+      type: apiKey
+      in: header
+      name: DPoP
+      description: >-
+        DPoP proof JWT (RFC 9449). REQUIRED together with `DPoPVoucherAuth`
+        (POP_DPoP). MUST NOT be sent with `BearerAuth` (POP_TPoP), where proof
+        of possession is `Agid-JWT-TrackingEvidence`.
     BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: PDND Bearer Token
-    DPoPAuth:
+      description: >-
+        PDND Voucher issued as Bearer (POP_TPoP). The `Authorization` header
+        MUST be `Bearer <voucher>` (`token_type` is `Bearer`). This scheme MUST
+        be used together with `TrackingEvidenceAuth` as proof of possession.
+        This is REST_JWS_2021_POP via TrackingEvidence, not REST_JWS_2021_Bearer.
+    TrackingEvidenceAuth:
       type: apiKey
       in: header
-      name: DPoP
-      description: DPoP proof JWT (RFC 9449).
+      name: Agid-JWT-TrackingEvidence
+      description: >-
+        TrackingEvidence JWT. REQUIRED together with `BearerAuth` (POP_TPoP) as
+        proof of possession of the PDND Voucher. When the Provider mandates
+        AUDIT_REST_02, this header is also required and MAY be sent together
+        with the POP_DPoP pair (`DPoPVoucherAuth` + `DPoPProof`); extra headers
+        are allowed. MUST NOT be used as the sole PoP when `DPoPVoucherAuth`
+        is selected and AUDIT_REST_02 is not required.
+        See e-Service PDND in the Technical Specifications.
 
   headers:
     CacheControlHeader:
