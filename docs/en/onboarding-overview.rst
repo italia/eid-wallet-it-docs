@@ -27,7 +27,7 @@ The trust-infrastructure roles are realized by the components and services of th
  
   - **Supervisory Body**: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the National single point of contact for the notification to the European Commission.
   - **Registrar** and **Register**: the Registrar performs the technical registration of the Wallet-Relying Parties and writes their records into the **Register** as defined by [`CIR2025/848`_].
-  - **Provider of WRPAC** and **Provider of WRPRC**: issue, respectively, the WRPAC and the WRPRC.
+  - **Provider of WRPAC** and **Provider of WRPRC**: issue, respectively, the WRPAC and the WRPRC. The Provider of WRPRC SHALL issue registration certificates automatically after registration, without a request from the Entity ([`EIDAS-ARF`_] RPRC_09, RPRC_13).
   - **National Federation Authorities**: the **Federation Trust Anchor** and its **Federation Intermediates**, which register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
     In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the National X.509 signing PKI, whose root certificate and its distribution are described in :ref:`infrastructure-trust:PKI Architecture`.
  

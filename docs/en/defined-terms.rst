@@ -216,7 +216,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Wallet-Relying Party Service**
       First-class registration object of a Wallet-Relying Party, identified by a ``serviceIdentifier`` unique within that entity and by a ``serviceTradeName`` suitable for presenting to the User.
       A registering entity that operates in the EUDIW Trust Framework MUST register one or more Services and MUST receive at least one Wallet-Relying Party Access Certificate per Service ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
-      Intended uses are bound to a Service ([`EIDAS-ARF`_] Reg_10d). The same Service identifier and trade name MUST appear in the corresponding Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_07a).
+      Intended uses are bound to a Service ([`EIDAS-ARF`_] Reg_10d). The Provider of Registration Certificates SHALL issue the corresponding Wallet-Relying Party Registration Certificate(s) automatically ([`EIDAS-ARF`_] RPRC_09, RPRC_13). The same Service identifier and trade name MUST appear in each corresponding Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_07a).
       In the Register the object is ``WalletRelyingPartyService`` in the ``services`` array of `EUDI-TS 5`_.
       Present in ARF 3.0.0 Section 3.11.2 and [`CIR2026/1730`_]; not present under this wording in ARF 2.7.3.
 
@@ -304,6 +304,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
       Organizational Entity responsible for issuing Registration Certificates that describe the registration status and entitlements of PID Providers, Attestation Providers, and Relying Parties.
+      It SHALL issue a separate Wallet-Relying Party Registration Certificate automatically and without undue delay for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09) and for each registered Service of a PID or Attestation Provider ([`EIDAS-ARF`_] RPRC_13).
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Federation Registry**

@@ -42,12 +42,12 @@ The processes are carried out by the components described in :ref:`onboarding-sy
      - Eligibility and compliance verification, including the identity proofing and the verification of the entitlements
      - The Entity, which requests the registration
      - Registration Trust Mark Issuance; Credential Type Activation and Deactivation, ``if it completes a versioned entry``
-     - The request, by the Entity, of the WRPAC and of the WRPRC ``if EUDIW Trust Framework``, of the Sign/Seal Certificate ``if National PKI``, and of the National Authentication Certificate ``if Proximity Flow``; the :ref:`onboarding-system:Notification and Publication` of the Entity, ``if notified category``, for which the Onboarding System maintains the notifiable information
+     - The request, by the Entity, of the WRPAC ``if EUDIW Trust Framework``, of the Sign/Seal Certificate ``if National PKI``, and of the National Authentication Certificate ``if Proximity Flow``; the :ref:`onboarding-system:Notification and Publication` of the Entity, ``if notified category``, for which the Onboarding System maintains the notifiable information
    * - :ref:`onboarding-system:Entity Update`
      - :ref:`onboarding-system:Entity Registration`
      - The Entity, which submits a change of one or more categories of its registration data
-     - Registration Trust Mark Issuance, where the change affects the data it carries
-     - The request, by the Entity, of the re-issuance of the certificates that carry the changed data, after the revocation of the WRPRC by its Provider, the re-verification of the eligibility where the change affects the Authorization Information, and the :ref:`onboarding-system:Notification and Publication` of the change, ``if notified category``
+     - Registration Trust Mark Issuance, where the change affects the data it carries; :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`, where the change affects a Service or an intended use
+     - The request, by the Entity, of the re-issuance of the X.509 certificates that carry the changed data; the automated revocation and re-issuance of the WRPRC by its Provider; the re-verification of the eligibility where the change affects the Authorization Information; and the :ref:`onboarding-system:Notification and Publication` of the change, ``if notified category``
    * - :ref:`onboarding-system:Entity Suspension and Removal`
      - :ref:`onboarding-system:Entity Registration`
      - The competent authority or the Entity, which requests a suspension, a reactivation or a cancellation
@@ -83,11 +83,11 @@ The processes are carried out by the components described in :ref:`onboarding-sy
    * - :ref:`onboarding-system:Wallet-Relying Party Access Certificate Issuance`
      - :ref:`onboarding-system:Entity Registration`, with a record of the Entity in the Register, ``if EUDIW Trust Framework``
      - The Entity, with an ACME order, for the first issuance or for a re-issuance
-     - —
+     - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
      - The authentication of the Entity towards the Wallet Units
    * - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`, with a record with a valid registration status in the Register and a valid WRPAC, ``if EUDIW Trust Framework``
-     - The Entity, which requests the certificate to its Provider of WRPRC, for the first issuance or after the revocation of the previous one
+     - :ref:`onboarding-system:Entity Registration`, with a record with a valid registration status in the Register and a valid WRPAC of the Service, ``if EUDIW Trust Framework``
+     - The Provider of WRPRC, invoked without a request from the Entity when a valid WRPAC of the Service exists or when the Register record of that Service or intended use changes
      - —
      - The presentation of the registration data of the Entity to the Wallet Units
    * - :ref:`onboarding-system:Signature and Seal Certificate Issuance`

@@ -209,7 +209,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Servizio di Wallet-Relying Party**
       Oggetto di registrazione di primo livello di una Wallet-Relying Party, identificato da un ``serviceIdentifier`` univoco all'interno dell'entità e da un ``serviceTradeName`` idoneo alla presentazione all'Utente.
       Un'entità che opera nel Quadro di Fiducia EUDIW DEVE registrare uno o più Servizi e DEVE ricevere almeno un Certificato di Accesso della Wallet-Relying Party per ciascun Servizio ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
-      Gli usi previsti sono vincolati a un Servizio ([`EIDAS-ARF`_] Reg_10d). Lo stesso identificativo e la stessa denominazione commerciale del Servizio DEVONO comparire nel corrispondente Certificato di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_07a).
+      Gli usi previsti sono vincolati a un Servizio ([`EIDAS-ARF`_] Reg_10d). Il Fornitore di Certificati di Registrazione DEVE emettere automaticamente il corrispondente Certificato o i corrispondenti Certificati di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_09, RPRC_13). Lo stesso identificativo e la stessa denominazione commerciale del Servizio DEVONO comparire in ciascun corrispondente Certificato di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_07a).
       Nel Registro l'oggetto è ``WalletRelyingPartyService`` nell'array ``services`` di `EUDI-TS 5`_.
       Presente in ARF 3.0.0 Sezione 3.11.2 e [`CIR2026/1730`_]; non presente con questa formulazione in ARF 2.7.3.
 
@@ -300,6 +300,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
       Entità Organizzativa responsabile dell'emissione dei Certificati di Registrazione che descrivono lo stato di registrazione e i diritti di PID Provider, Attestation Provider e Relying Party.
+      DEVE emettere un Certificato di Registrazione della Wallet-Relying Party distinto, in modo automatico e senza indebito ritardo, per ciascuna combinazione di uso previsto e Servizio di Relying Party ([`EIDAS-ARF`_] RPRC_09) e per ciascun Servizio registrato di un PID Provider o Attestation Provider ([`EIDAS-ARF`_] RPRC_13).
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Federation Registry**

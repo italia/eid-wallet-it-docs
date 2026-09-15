@@ -71,7 +71,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The attributes a Relying Party intends to request from the Wallet Units, bound to a specific Relying Party Service. A Relying Party MUST declare which of its registered intended uses apply to each of its registered Services ([`EIDAS-ARF`_] Reg_10d).
      - [`CIR2025/848`_], Annex I; [`EIDAS-ARF`_] Reg_10d
    * - `relying_party_services`
-     - One or more Relying Party Services registered by the entity. Each Service has an identifier unique within the entity (``serviceIdentifier``), a trade name suitable for presenting to the User (``serviceTradeName``), the intended uses that apply to that Service, and, where applicable, the intermediary relationship of that Service. A registering entity that operates in the EUDIW Trust Framework MUST register at least one Service and MUST receive at least one WRPAC for each registered Service. The same Service identifier and trade name MUST be copied into the corresponding WRPRC.
+     - One or more Relying Party Services registered by the entity. Each Service has an identifier unique within the entity (``serviceIdentifier``), a trade name suitable for presenting to the User (``serviceTradeName``), the intended uses that apply to that Service, and, where applicable, the intermediary relationship of that Service. A registering entity that operates in the EUDIW Trust Framework MUST register at least one Service and MUST receive at least one WRPAC for each registered Service. The Provider of WRPRC SHALL then issue the corresponding WRPRC(s) automatically: one per combination of intended use and Service for a Relying Party ([`EIDAS-ARF`_] RPRC_09), and one per Service for a PID or Attestation Provider ([`EIDAS-ARF`_] RPRC_13). The same Service identifier and trade name MUST be copied into each corresponding WRPRC.
      - [`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34, RPRC_07a; [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``
    * - `provided_attestations`
      - The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the ``issuers`` field of that entry, together with the issuance capabilities offered for that Credential type (the supported issuance flows, the parameters of the deferred issuance and the documentation of the issuance service), see :ref:`registry:Digital Credentials Catalog`.
@@ -345,7 +345,7 @@ The X.509 certificate column groups the X.509 certificates the entity obtains, i
    The federation registration is common to every entity and, as a result of it, every entity obtains a Subordinate Statement issued by its Federation Authority, and a registration Trust Mark.
 
 .. note::
-   For a Wallet-Relying Party operating in the EUDIW Trust Framework, the WRPAC column is one access certificate **per registered Service** ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34), and the WRPRC column is one registration certificate **per combination of intended use and Service** for Relying Parties ([`EIDAS-ARF`_] RPRC_09) and **per Service** for PID and Attestation Providers ([`EIDAS-ARF`_] RPRC_13). The table above states whether the role obtains those artifacts, not their cardinality.
+   For a Wallet-Relying Party operating in the EUDIW Trust Framework, the WRPAC column is one access certificate **per registered Service** ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34), and the WRPRC column is one registration certificate **per combination of intended use and Service** for Relying Parties ([`EIDAS-ARF`_] RPRC_09) and **per Service** for PID and Attestation Providers ([`EIDAS-ARF`_] RPRC_13). Those WRPRCs SHALL be issued automatically and without undue delay after a valid WRPAC of the Service exists. The table above states whether the role obtains those artifacts, not their cardinality.
 
 .. note::
    An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
@@ -487,7 +487,7 @@ Besides the base registration data, a Relying Party provides the following exten
 
 .. note::
    A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark registration-entity`), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate. 
-   Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP and it MUST obtain its WRPAC and its WRPRC.
+   Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it SHALL receive its WRPRC(s) automatically.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""

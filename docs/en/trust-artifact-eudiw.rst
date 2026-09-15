@@ -227,6 +227,7 @@ This Trust Artifact provides detailed information about the Credential Issuer an
 - Intermediary attributes; i.e., whether the Relying Party Service relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
 
 Each WRPRC is bound to a single Relying Party Service.
+The Provider of WRPRC SHALL issue WRPRCs automatically and without undue delay after a valid WRPAC of that Service exists: one WRPRC per combination of intended use and Service for a Relying Party ([`EIDAS-ARF`_] RPRC_09), and one WRPRC per Service for a PID Provider or Attestation Provider ([`EIDAS-ARF`_] RPRC_13).
 The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
 The ``srv_id`` claim MUST equal the ``serviceIdentifier`` of that Service and MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
 ETSI TS 119 475 v1.2.1 does not yet define ``srv_id``; this specification profiles it to implement RPRC_07a until that standard is updated. The claim is a JSON string (JWT) or a CBOR text string (CWT) and MUST be identical to ``services[].serviceIdentifier`` in the Register.
