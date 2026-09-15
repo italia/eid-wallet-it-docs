@@ -132,7 +132,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim, prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
     * - **issuer_state**
-      - It MUST be present in the Request Object when the Credential Offer contains ``issuer_state``. It MUST contain the same value contained in the Credential Offer. The format of that value is defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
+      - It MUST be present only in issuer initiated flows and when the Credential Offer contains ``issuer_state``. It MUST contain the same value contained in the Credential Offer. The format of that value is defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
       - [`OpenID4VCI`_] Section 4.1.1.
 
 .. note::
