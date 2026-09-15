@@ -107,6 +107,18 @@ AccessCertificate cert = {
             accessLocation: GeneralName.uniformResourceIdentifier("http://ocsp.example.test")
           }
         ]
+      },
+
+      Extension {
+        oid: "1.3.6.1.4.1.11129.2.4.5",                   // id-ct-v2-sctList (RFC 9162)
+        critical: false,
+        value: TransItemList [
+          TransItem {
+            // At least one Signed Certificate Timestamp (CT_04)
+            timestampedData: "BASE64(RFC9162_TIMESTAMPED_ENTRY)",
+            signature: "BASE64(CT_LOG_SIGNATURE)"
+          }
+        ]
       }
     ]
   },

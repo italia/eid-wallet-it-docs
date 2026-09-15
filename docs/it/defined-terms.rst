@@ -289,6 +289,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Access Certificate Authority**
     **Access CA**
       Autorità di Certificazione responsabile dell'emissione dei Certificati di Accesso a PID Provider, Attestation Provider e Relying Party per interazioni sicure all'interno dell'ecosistema IT-Wallet.
+      Nel Trust Framework EUDIW coincide con il Provider of WRPAC. DEVE registrare i Wallet-Relying Party Access Certificate emessi secondo Certificate Transparency versione 2.0 (:rfc:`9162`) ([`EIDAS-ARF`_] CT_01), descrivere tale registrazione nella propria CPS ([`EIDAS-ARF`_] CT_02, Allegato IV, punto 3(j) del [`CIR2025/848`_]), includere almeno un Signed Certificate Timestamp in ciascun WRPAC ([`EIDAS-ARF`_] CT_04) e agire come monitor nell'ecosistema Certificate Transparency quando è disponibile un log per i certificati di accesso ([`EIDAS-ARF`_] CT_03).
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Certificato di Registrazione**

@@ -157,6 +157,11 @@ Extensions not listed in the table MUST NOT be present.
      - OPTIONAL. It MAY contain `QCStatement` structures among those defined in Clause 4.2 of [ETSI EN 319 412-5].
        In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
+   * - ``signedCertificateTimestampList``
+     - REQUIRED. Non-critical X.509 extension with object identifier ``1.3.6.1.4.1.11129.2.4.5`` (``id-ct-v2-sctList``) as specified in :rfc:`9162`.
+       It MUST contain at least one Signed Certificate Timestamp for this certificate ([`EIDAS-ARF`_] CT_04).
+       Certificate Transparency version 2.0 applies to Wallet-Relying Party Access Certificates only; it does not apply to the Wallet-Relying Party Registration Certificate.
+
 .. note::
     **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
     This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC.
@@ -168,6 +173,10 @@ Extensions not listed in the table MUST NOT be present.
     The ``subject.commonName`` MUST be the ``serviceTradeName`` of the Service this certificate authenticates ([`EIDAS-ARF`_] Reg_34).
     The Service identifier MUST be present in ``subjectAltName`` as specified above ([`EIDAS-ARF`_] Reg_33).
     If the subject is an Intermediary, ``subjectAltName`` MUST also carry the association to the intermediated Relying Party as specified above ([`EIDAS-ARF`_] Reg_34a).
+
+    The Provider of WRPAC SHALL log every issued WRPAC in a Certificate Transparency log according to :rfc:`9162` ([`EIDAS-ARF`_] CT_01) and SHALL describe that logging in its Certification Practice Statement, referenced by the ``cpsURI`` above ([`EIDAS-ARF`_] CT_02, Annex IV, point 3(j) of [`CIR2025/848`_], `ETSI TS 119 411-8`_ OVR-6.4.5-02).
+    Until a Certificate Transparency log for access certificates is designated at Union level, the Provider of WRPAC SHALL operate or use a log suitable for WRPACs so that each certificate can carry at least one Signed Certificate Timestamp ([`EIDAS-ARF`_] CT_04).
+    When a Certificate Transparency log for access certificates is available, the Provider of WRPAC SHALL act as a monitor in the Certificate Transparency ecosystem and SHOULD continue to monitor during temporary unavailability of the log ([`EIDAS-ARF`_] CT_03).
 
 The following is an example of a WRPAC for legal persons following the NCP.
 

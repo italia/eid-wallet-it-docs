@@ -137,6 +137,7 @@ Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defin
 The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_], and the fallback to the Trust Mark does not apply to it.
 The Entity obtains at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
 An Intermediary obtains a separate set of WRPACs for each intermediated Relying Party, one WRPAC per intermediated Relying Party Service it serves ([`EIDAS-ARF`_] Reg_34a).
+The Provider of WRPAC SHALL log issued WRPACs according to Certificate Transparency version 2.0 (:rfc:`9162`) and SHALL include at least one Signed Certificate Timestamp in each WRPAC, as profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` ([`EIDAS-ARF`_] CT_01, CT_04).
 
 **Input**
 
@@ -154,7 +155,8 @@ For an Intermediary, the WRPAC of the association to a given intermediated Relyi
 1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting the ``certificate_signing_requests`` of the Service and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority checks that the Entity has a record in the Register, that the requested Service exists in ``services[]``, and derives the attributes of the certificate from that Service (``serviceTradeName`` into ``subject.commonName``, ``serviceIdentifier`` into ``subjectAltName``).
    For an Intermediary it also encodes in ``subjectAltName`` the unique identifier and the Service identifier of the intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a).
-3. The Certification Authority issues the WRPAC and the Entity retrieves it.
+3. The Certification Authority logs the certificate in a Certificate Transparency log according to :rfc:`9162` ([`EIDAS-ARF`_] CT_01) and embeds at least one Signed Certificate Timestamp in the ``signedCertificateTimestampList`` extension ([`EIDAS-ARF`_] CT_04).
+4. The Certification Authority issues the WRPAC and the Entity retrieves it.
 
 Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -209,7 +211,7 @@ National Authentication Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""
 
 National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [`ISO18013-5`_].
-The certificate follows the same profile of the WRPAC and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+The certificate follows the same profile of the WRPAC, except for Certificate Transparency, which applies only to Wallet-Relying Party Access Certificates in the EUDIW Trust Framework, and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 
 **Input**
 

@@ -11,6 +11,7 @@ The procedures defined in this section profile combine the following external sp
 - `ETSI TS 119 411-8`_, `ETSI TS 119 475`_ and `ETSI EN 319 412-1`_, which define, respectively, the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate together with its entitlements, and the certificate subject attributes.
 - `ETSI TS 119 472-2`_ and `ETSI TS 119 472-3`_, which profile the Presentation and the Issuance protocols respectively, through which a Wallet-Relying Party is authenticated and its registration information is made available to the Wallet Unit; the latter also defines the Embedded Disclosure Policy.
 - IETF RFC 5280 (:rfc:`5280`) and IETF RFC 6960 (:rfc:`6960`), which define the X.509 certification path validation and the Online Certificate Status Protocol.
+- IETF RFC 9162 (:rfc:`9162`), which defines Certificate Transparency version 2.0 and the Signed Certificate Timestamp that a Wallet Unit verifies on the Wallet-Relying Party Access Certificate.
 
 .. note::
 
@@ -465,7 +466,7 @@ EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
 
 The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction.
-It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, and by verifying that the Wallet-Relying Party possesses the corresponding private key.
+It establishes trust by validating the Wallet-Relying Party X.509 certificate chain, from a trusted Provider of Wallet-Relying Party Access Certificate down to the presented Wallet-Relying Party Access Certificate, by verifying that the access certificate includes at least one valid Signed Certificate Timestamp, and by verifying that the Wallet-Relying Party possesses the corresponding private key.
 The Wallet-Relying Party Access Certificate is profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
 
 For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
@@ -476,6 +477,7 @@ The Authentication outcome MUST be based only on information derived from:
 
 - the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities;
 - the X.509 certificate path terminating with the Wallet-Relying Party Access Certificate end-entity certificate;
+- at least one Signed Certificate Timestamp embedded in that certificate and verified as specified in :rfc:`9162`;
 - a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.
 
 **Outcome**
@@ -497,7 +499,11 @@ The Wallet Unit MUST verify the authenticity and integrity of the presented Wall
 
 3. **Execute Path Validation**: validate the certification path as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, using the Trust Anchor retrieved at step 1, as described in :ref:`trust-evaluation:Wallet-Relying Party Access Certificate Validation`.
 
-4. **Verify the Signature**: use the public key of the validated Wallet-Relying Party Access Certificate to verify the Wallet-Relying Party signature over the artifact it signs in the specific interaction.
+4. **Verify Certificate Transparency**: verify that the validated Wallet-Relying Party Access Certificate includes at least one valid Signed Certificate Timestamp as specified in :rfc:`9162` ([`EIDAS-ARF`_] CT_05).
+   This verification applies when authenticating a Wallet-Relying Party during PID or attestation issuance and during presentation.
+   If the certificate does not include a valid Signed Certificate Timestamp, the Wallet Unit MUST output ``NON_AUTHENTICATED`` and MUST stop the interaction ([`EIDAS-ARF`_] CT_06, RPA_06a).
+
+5. **Verify the Signature**: use the public key of the validated Wallet-Relying Party Access Certificate to verify the Wallet-Relying Party signature over the artifact it signs in the specific interaction.
    The certificate chain and the signed artifact depend on the flow:
 
     - **Remote Flow**: the chain is carried in the ``x5c`` header of the Wallet-Relying Party signed Request Object, and the Relying Party is authenticated through the ``x509_hash`` Client Identifier Prefix, as defined in [`OpenID4VP`_] and [`OPENID4VC-HAIP`_].
