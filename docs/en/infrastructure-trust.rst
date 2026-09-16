@@ -11,7 +11,7 @@ This infrastructure provides the foundation for secure Digital Credential operat
 Two trust frameworks coexist in IT-Wallet.
 
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_).
-    It is the notified, interoperable path and MUST stand alone for PID, (Q)EAA or PuB-EAA, and for Wallet-Relying Parties, of other Member States: a Wallet Unit that implements only the EUDIW procedures SHALL be able to issue, present and verify those Credentials, and to authenticate those Wallet-Relying Parties, without any OpenID Federation artifact.
+    It is the notified, interoperable path and MUST stand alone for PID, (Q)EAA or PuB-EAA, and for Wallet-Relying Parties, of other Member States: a Wallet Unit that implements only the EUDIW procedures SHALL be able to issue, present and verify those Credentials, and to authenticate those Wallet-Relying Parties.
     It is mandatory and authoritative for those Credentials and Wallet-Relying Parties of other Member States, and for cross-border interoperability.
   - The **National Trust Framework** is a Member State overlay based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials that require an X.509 PKI.
     It is **out of the ARF**. It is the registration and onboarding layer for all the entities of the ecosystem.
@@ -39,7 +39,7 @@ For example, the national-scope IT-Wallet ID is issued and validated under the N
 
 .. note::
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
-    PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0, so that a Wallet Unit of another Member State can interact with them without any OpenID Federation artifact.
+    PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0, so that a Wallet Unit of another Member State can interact with them.
     They SHOULD use the National Trust Framework with national Wallet Units.
     The National overlay MUST NOT delay or substitute the EUDIW path for PID, (Q)EAA or PuB-EAA, or Wallet-Relying Parties, of other Member States.
 
