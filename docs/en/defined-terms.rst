@@ -35,6 +35,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic process confirming the identity of a person or the origin/integrity of data.
       Aligned with ARF 2.7.3.
 
+    **Identity Matching**
+      Process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person. See :ref:`identity-matching`.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Identity Reconciliation**
+      Process by which a Relying Party, after successful identity matching, links that natural person to a previous User session or stored User record. See :ref:`identity-matching`.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Authentic Source**
       Public or private entity responsible for a repository/system considered a primary source for Attributes or PID.
       Aligned with ARF 2.7.3.
