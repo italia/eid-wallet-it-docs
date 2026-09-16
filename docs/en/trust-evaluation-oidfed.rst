@@ -7,7 +7,9 @@ Trust Evaluation in the National Trust Framework
 This section defines the trust evaluation procedures of the National Trust Framework.
 The Entity Type Identifiers and the metadata of each role, used during these procedures, are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`, according to that profile.
 The selection rules that define when these procedures apply are detailed in :ref:`trust-evaluation:Trust Framework Selection`.
-These procedures MUST NOT be used for the issuance or the presentation of a notified PID, QEAA or PuB-EAA, nor for a cross-border Relying Party interaction.
+These procedures apply when the Trust Evaluated Party is authenticated under the National Trust Framework.
+They MUST NOT be used as a fallback for a PID, (Q)EAA or PuB-EAA of another Member State.
+A national Relying Party that addresses a national audience only SHOULD use OpenID Federation.
 
 The Trust Artifacts used during these procedures, that is the Entity Configuration, the Subordinate Statements, the Trust Marks, are defined in :ref:`infrastructure-trust:National Trust Artifacts`.
 

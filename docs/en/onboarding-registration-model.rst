@@ -80,7 +80,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - Bound to a Relying Party Service. For an intermediated Relying Party Service, the reference to the Intermediary Service it uses (``usesIntermediaries``). For a Relying Party Intermediary Service, the declaration that it acts as an intermediary (``isIntermediary``) and the Service identifiers it serves (``servedWRPServices``).
      - [`ETSI TS 119 475`_], Table 10; [`EIDAS-ARF`_] RPRC_04, Reg_34a; `EUDI-TS 5`_
    * - `trust_framework_scope`
-     - The declaration of the Trust Framework in which the entity intends to operate. The EUDIW Trust Framework is REQUIRED for notified PID, QEAA and PuB-EAA and for cross-border operation. The National Trust Framework alone is allowed only for national-scope Credentials and for domestic-only Relying Parties that do not request a notified PID, QEAA or PuB-EAA. The declaration is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided, see :ref:`infrastructure-trust:Overview`. It applies to the entity, while ``trustedAuthorities`` of a Credential type applies to the validation of an Attestation of that type.
+     - The declaration of the Trust Framework in which the entity intends to operate. The EUDIW Trust Framework is REQUIRED for PID, (Q)EAA or PuB-EAA of other Member States and for national entities that offer services for interoperability outside the national audience. OpenID Federation SHOULD be used by a national entity that addresses a national audience only. The declaration is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided, see :ref:`infrastructure-trust:Overview`. It applies to the entity, while ``trustedAuthorities`` of a Credential type applies to the validation of an Attestation of that type.
      - This specification
    * - `federation_entity_identifier`
      - The identifier of the Federation Entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration.
@@ -483,11 +483,12 @@ Besides the base registration data, a Relying Party provides the following exten
   - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is one WRPAC per registered Service when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
 - `trust_framework_scope`
 
-  - The Relying Party declares whether it operates within the EUDIW Trust Framework. It MUST declare EUDIW when it provides cross-border services or when it requests a notified PID, QEAA or PuB-EAA. It MAY declare the National Trust Framework alone only when it does not request those Credentials and does not provide cross-border services. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
+  - The Relying Party declares whether it operates within the EUDIW Trust Framework. It MUST declare EUDIW when it offers services for interoperability outside the national audience. It SHOULD declare the National Trust Framework, including OpenID Federation, when it addresses a national audience only, including when it requests a PID, (Q)EAA or PuB-EAA. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 .. note::
    A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark registration-entity`), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate. 
-   A Relying Party that requests a notified PID, QEAA or PuB-EAA, or that provides cross-border services, MUST operate in the EUDIW Trust Framework: it MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it SHALL receive its WRPRC(s) automatically.
+   A national Relying Party that offers services for interoperability outside the national audience MUST operate in the EUDIW Trust Framework: it MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it SHALL receive its WRPRC(s) automatically.
+   A national Relying Party that addresses a national audience only SHOULD use OpenID Federation, including when it requests a PID, (Q)EAA or PuB-EAA.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""
