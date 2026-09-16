@@ -20,10 +20,6 @@ Nell'IT-Wallet coesistono due trust framework.
 Il Trust Framework Nazionale NON DEVE essere selezionato, e NON DEVE essere usato come fallback, per l'emissione o la presentazione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
 Una Wallet-Relying Party nazionale che offre servizi di interoperabilità al di fuori del pubblico nazionale DEVE utilizzare il Trust Framework EUDIW.
 
-Un'entità nazionale che si rivolge esclusivamente a un pubblico nazionale DOVREBBE utilizzare il Trust Framework Nazionale, inclusa OpenID Federation.
-Un'entità nazionale che offre servizi di interoperabilità al di fuori del pubblico nazionale DEVE utilizzare il Trust Framework EUDIW.
-Per i PID, le (Q)EAA o le PuB-EAA di altri Stati membri è necessario il Trust Framework EUDIW.
-
 Questa sezione definisce l'implementazione del Trust Model nazionale conforme a OpenID Federation 1.0 (`OID-FED`_).
 
 Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.

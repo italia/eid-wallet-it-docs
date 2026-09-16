@@ -31,17 +31,13 @@ The IT-Wallet ecosystem operates on a federated trust infrastructure, requiring 
 To be able to perform a trust evaluation process, entities first need to onboard in the ecosystem (see :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
 During this phase, Non-Qualified EAA Providers and Relying Parties MUST declare whether they need to interoperate with European entities or they operate only within the national boundary.
 
-This choice affects both the onboarding and the trust evaluation procedures.
-A national entity that addresses a national audience only SHOULD use the National Trust Framework, including OpenID Federation.
-A national entity that offers services for interoperability outside the national audience MUST use the EUDIW Trust Framework.
-For PID, (Q)EAA or PuB-EAA of other Member States the EUDIW Trust Framework is necessary.
+This choice affects both the onboarding and the trust evaluation procedures, as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 For example, the national-scope IT-Wallet ID is issued and validated under the National Trust Framework, whereas a PID, (Q)EAA or PuB-EAA of another Member State belongs to the EUDIW Trust Framework (see :term:`IT-Wallet ID`).
 
 .. note::
     As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
     PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0, so that a Wallet Unit of another Member State can interact with them.
-    They SHOULD use the National Trust Framework with national Wallet Units.
-    The National overlay MUST NOT delay or substitute the EUDIW path for PID, (Q)EAA or PuB-EAA, or Wallet-Relying Parties, of other Member States.
+    The National overlay MUST NOT delay or substitute the EUDIW path specified above.
 
 In both cases, the onboarding and, where applicable, the European notification processes result in the release or update of the trust artifacts (detailed in sections :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` and :ref:`infrastructure-trust:National Trust Artifacts`), then used during the trust evaluation processes (detailed in section :ref:`trust-evaluation:Trust Evaluation Process`).
 

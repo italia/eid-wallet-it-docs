@@ -1446,7 +1446,7 @@ Each element of the ``credentials`` array contains at least the following inform
        * **value**: standard URI-formatted identifier for the Trusted List (for type ``etsi_tl``) or Entity Identifier (for type ``openid_federation``).
        * **isLoTE**: a boolean value that MUST be TRUE when the applicable trust framework type is an ETSI Trusted List (``etsi_tl``) but the trusted list behind the value URI is a list of trusted entities (LoTE) according to ETSI TS 119 602. Value MUST be FALSE if the applicable trusted list specification is ETSI TS 119 612. Attribute MUST NOT be used with other framework types.
 
-      OpenID Federation SHOULD always be used when the Credential is issued by a national entity. For a PID, (Q)EAA or PuB-EAA of another Member State the trust model is based on European Commission managed Lists of Trusted Lists and Lists of Trusted Entities.
+      The applicable ``frameworkType`` follows :ref:`infrastructure-trust:Infrastructure of Trust`. For a PID, (Q)EAA or PuB-EAA of another Member State the trust model is based on European Commission managed Lists of Trusted Lists and Lists of Trusted Entities.
 
       .. note::
         Use of ``isLoTE`` will become unnecessary and must be deprecated once OpenID4VCI specifies a new enumeration for Lists of Trusted Entities according to ETSI TS 119 602, the tentative enumeration is ``etsi_lote``.
