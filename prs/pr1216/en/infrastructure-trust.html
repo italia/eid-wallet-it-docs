@@ -329,17 +329,13 @@ Finally, it describes the related lifecycle (<a class="reference internal" href=
 <p>The IT-Wallet ecosystem operates on a federated trust infrastructure, requiring participating entities to establish mutual trust before engaging in any interaction involving User attributes.
 To be able to perform a trust evaluation process, entities first need to onboard in the ecosystem (see <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a>).
 During this phase, Non-Qualified EAA Providers and Relying Parties MUST declare whether they need to interoperate with European entities or they operate only within the national boundary.</p>
-<p>This choice affects both the onboarding and the trust evaluation procedures.
-A national entity that addresses a national audience only SHOULD use the National Trust Framework, including OpenID Federation.
-A national entity that offers services for interoperability outside the national audience MUST use the EUDIW Trust Framework.
-For PID, (Q)EAA or PuB-EAA of other Member States the EUDIW Trust Framework is necessary.
+<p>This choice affects both the onboarding and the trust evaluation procedures, as specified in <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>.
 For example, the national-scope IT-Wallet ID is issued and validated under the National Trust Framework, whereas a PID, (Q)EAA or PuB-EAA of another Member State belongs to the EUDIW Trust Framework (see <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As the Wallet cannot know in advance whether it will be used to interact with national or European services, both the National and the EUDIW Trust Frameworks MUST be supported.
 PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework, as they issue Credentials regulated by eIDAS 2.0, so that a Wallet Unit of another Member State can interact with them.
-They SHOULD use the National Trust Framework with national Wallet Units.
-The National overlay MUST NOT delay or substitute the EUDIW path for PID, (Q)EAA or PuB-EAA, or Wallet-Relying Parties, of other Member States.</p>
+The National overlay MUST NOT delay or substitute the EUDIW path specified above.</p>
 </div>
 <p>In both cases, the onboarding and, where applicable, the European notification processes result in the release or update of the trust artifacts (detailed in sections <a class="reference internal" href="#common-trust-artifacts"><span class="std std-ref">Common Trust Artifacts</span></a>, <a class="reference internal" href="#eudiw-trust-artifacts"><span class="std std-ref">EUDIW Trust Artifacts</span></a> and <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>), then used during the trust evaluation processes (detailed in section <a class="reference internal" href="trust-evaluation.html#trust-evaluation-process"><span class="std std-ref">Trust Evaluation Process</span></a>).</p>
 </section>

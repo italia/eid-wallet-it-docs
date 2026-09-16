@@ -37,12 +37,8 @@ Trust Framework Selection
 ------------------------------------
 
 This section describes the Trust Framework selection rules applicable to the operational flows of the Entities involved.
-
-The National Trust Framework is a Member State overlay **out of the ARF**.
-The EUDIW Trust Framework is the notified, interoperable path for a PID, (Q)EAA or PuB-EAA of another Member State.
-The National Trust Framework MUST NOT be used as a fallback for those Credentials, and a failed EUDIW evaluation MUST NOT be retried under the National Trust Framework.
-A national Relying Party that addresses a national audience only SHOULD use OpenID Federation.
-A national Relying Party that offers services for interoperability outside the national audience MUST use the EUDIW Trust Framework.
+The two Trust Frameworks and the policy that selects them are defined in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A failed EUDIW evaluation MUST NOT be retried under the National Trust Framework, as specified in :ref:`trust-evaluation:Failure Handling`.
 
 For the Signing Trust Anchor Validation there is no selection to perform: the trust anchor for the verification of an attestation is defined by the Rulebook of its Credential type, in every phase and whichever party performs the verification.
 Attestations whose Rulebook anchors them to a List of Trusted Entities or to a Trusted List, such as PIDs, QEAAs and PuB-EAAs, MUST be validated against those trust anchors also when the interaction follows the National Trust Framework (see OIA_12, OIA_13, OIA_14 and OIA_15 of the ARF Annex 2, `EIDAS-ARF`_).
@@ -72,23 +68,19 @@ The Signing Trust Anchor Validation is not included in the table below, since, a
       - Not applicable as a transacting party.
     * - Wallet Unit
       - Acts as Trust Evaluator toward the Credential Issuer and, at the same time, as Trust Evaluated Party toward it, since the Credential Issuer validates its Wallet Instance Attestation.
-        As Trust Evaluator it MUST apply the EUDIW Trust Framework when the Credential Issuer, or the requested PID, (Q)EAA or PuB-EAA, is of another Member State.
-        It SHOULD apply the National Trust Framework when the Credential Issuer is a national entity (see :ref:`trust-evaluation:Selection at Issuance`).
+        The selection of the Trust Framework is defined in :ref:`trust-evaluation:Selection at Issuance`.
       - Acts as Trust Evaluator toward the Relying Party.
         It MUST support both EUDIW and National Trust Framework.
         In the remote flow the framework follows the ``client_id`` prefix declared by the Relying Party.
         In the proximity flow both frameworks use the mdoc reader authentication and the framework is determined by the trust anchor that validates the reader certificate (see :ref:`trust-evaluation:Selection at Presentation`).
     * - Credential Issuer
       - Acts as Trust Evaluator toward the Wallet Unit and, at the same time, as Trust Evaluated Party toward it, since the Wallet Unit validates its Authentication, Authorization and Metadata.
-        As Trust Evaluator it MUST apply the EUDIW Trust Framework when the Wallet Unit is of another Member State.
-        It SHOULD apply the National Trust Framework when the Wallet Unit is national (see :ref:`trust-evaluation:Selection at Issuance`).
+        The selection of the Trust Framework is defined in :ref:`trust-evaluation:Selection at Issuance`.
       - Not applicable.
     * - Relying Party
       - Not applicable.
       - Acts as Trust Evaluated Party toward the Wallet Unit.
-        The Relying Party does not authenticate the Wallet Unit.
-        A national Relying Party that offers services for interoperability outside the national audience MUST use the EUDIW Trust Framework, with the ``x509_hash`` prefix.
-        A national Relying Party that addresses a national audience only SHOULD use the National Trust Framework, with the ``openid_federation`` prefix, including when it requests a PID, (Q)EAA or PuB-EAA (see :ref:`trust-evaluation:Selection at Presentation`).
+        The selection of the Trust Framework, including the ``client_id`` prefix, is defined in :ref:`trust-evaluation:Selection at Presentation`.
 
 .. note::
   In case of technical divergence between the configuration published through EUDIW mechanisms and the configuration published through the federation, for example different certificates for the same entity in a List of Trusted Entities and in the Trust Anchor Entity Configuration, the EUDIW configuration MUST prevail.
@@ -135,8 +127,7 @@ A selection mechanism equivalent to the ``client_id`` prefix is not defined in [
 
 Within IT-Wallet the applicable framework is determined by the trust anchor that validates the certification path of the reader certificate.
 The request is processed under the EUDIW Trust Framework when the path terminates in a trust anchor of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities, and under the National Trust Framework when it terminates in an Authentication Trust Anchor of the federation.
-A national Relying Party that addresses a national audience only SHOULD use the National Trust Framework authentication certificate.
-A national Relying Party that offers services for interoperability outside the national audience MUST use a WRPAC, so that the path terminates in a Provider of WRPAC trust anchor.
+The Relying Party applies the same audience policy as in the remote flow, using the corresponding certificate instead of the ``client_id`` prefix.
 The Wallet Unit MUST determine the applicable framework before the Authorization process and MUST run the Authorization under that framework only.
 
 Failure Handling
