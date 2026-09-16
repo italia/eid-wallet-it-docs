@@ -174,7 +174,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **IT-Wallet ID**
     **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
-      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Gli identificatori tecnici (``vct`` e ``credential_type``) sono definiti nella sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. Non presente in ARF 3.0.0; specifico di IT-Wallet.
+      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
@@ -208,8 +208,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Servizio di Relying Party**
     **Servizio di Wallet-Relying Party**
       Oggetto di registrazione di primo livello di una Wallet-Relying Party, identificato da un ``serviceIdentifier`` univoco all'interno dell'entità e da un ``serviceTradeName`` idoneo alla presentazione all'Utente.
-      Un'entità che opera nel Quadro di Fiducia EUDIW DEVE registrare uno o più Servizi e DEVE ricevere almeno un Certificato di Accesso della Wallet-Relying Party per ciascun Servizio ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
-      Gli usi previsti sono vincolati a un Servizio ([`EIDAS-ARF`_] Reg_10d). Il Fornitore di Certificati di Registrazione DEVE emettere automaticamente il corrispondente Certificato o i corrispondenti Certificati di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_09, RPRC_13). Lo stesso identificativo e la stessa denominazione commerciale del Servizio DEVONO comparire in ciascun corrispondente Certificato di Registrazione della Wallet-Relying Party ([`EIDAS-ARF`_] RPRC_07a).
+      Gli usi previsti, gli entitlement e i corrispondenti Trust Artifact di quella Wallet-Relying Party sono vincolati a un Servizio.
       Nel Registro l'oggetto è ``WalletRelyingPartyService`` nell'array ``services`` di `EUDI-TS 5`_.
       Conforme con ARF 3.0.0 Sezione 3.11.2 e [`CIR2026/1730`_].
 
@@ -288,8 +287,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Access Certificate Authority**
     **Access CA**
+    **Provider of WRPAC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Access Certificate alle Wallet-Relying Party registrate in quello Stato membro.
-      Nel Trust Framework EUDIW coincide con il Provider of WRPAC. DEVE registrare i Wallet-Relying Party Access Certificate emessi secondo Certificate Transparency versione 2.0 (:rfc:`9162`) ([`EIDAS-ARF`_] CT_01), descrivere tale registrazione nella propria CPS ([`EIDAS-ARF`_] CT_02, Allegato IV, punto 3(j) del [`CIR2025/848`_]), includere almeno un Signed Certificate Timestamp in ciascun WRPAC ([`EIDAS-ARF`_] CT_04) e agire come monitor nell'ecosistema Certificate Transparency quando è disponibile un log per i certificati di accesso ([`EIDAS-ARF`_] CT_03).
+      Nel Trust Framework EUDIW coincide con il Provider of WRPAC.
       Conforme con ARF 3.0.0.
 
     **Certificato di Registrazione**
@@ -300,8 +300,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Fornitore di Certificati di Registrazione**
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
+    **Provider of WRPRC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
-      DEVE emettere un Certificato di Registrazione della Wallet-Relying Party distinto, in modo automatico e senza indebito ritardo, per ciascuna combinazione di uso previsto e Servizio di Relying Party ([`EIDAS-ARF`_] RPRC_09) e per ciascun Servizio registrato di un PID Provider o Attestation Provider ([`EIDAS-ARF`_] RPRC_13), come richiesto da [`CIR2026/1730`_].
+      Nel Trust Framework EUDIW coincide con il Provider of WRPRC. Emette tali certificati automaticamente dopo la registrazione di un Servizio.
       Conforme con ARF 3.0.0.
 
     **Federation Registry**

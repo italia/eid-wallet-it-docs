@@ -25,7 +25,7 @@ A distinct ACME service is provided for each purpose, so the type of the certifi
 Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
 A certificate has its own ``notBefore`` and ``notAfter`` and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see :ref:`onboarding-system:Entity Suspension and Removal`, and not by the expiration of the Trust Chain.
 
-The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity. The Wallet-Relying Party Registration Certificate is issued automatically by the Provider of WRPRC after the Entity has obtained a valid WRPAC of the Service, whose validity is one of the conditions of the issuance ([`EIDAS-ARF`_] RPRC_09, RPRC_13).
+The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity. The Wallet-Relying Party Registration Certificate is issued automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 
 .. plantuml:: plantuml/acme-oidfed-x509-issuance.puml
    :width: 99%
@@ -137,7 +137,6 @@ Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defin
 The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_], and the fallback to the Trust Mark does not apply to it.
 The Entity obtains at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
 An Intermediary obtains a separate set of WRPACs for each intermediated Relying Party, one WRPAC per intermediated Relying Party Service it serves ([`EIDAS-ARF`_] Reg_34a).
-The Provider of WRPAC SHALL log issued WRPACs according to Certificate Transparency version 2.0 (:rfc:`9162`) and SHALL include at least one Signed Certificate Timestamp in each WRPAC, as profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` ([`EIDAS-ARF`_] CT_01, CT_04).
 
 **Input**
 

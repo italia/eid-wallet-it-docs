@@ -243,7 +243,7 @@ This Trust Artifact provides detailed information about the Credential Issuer an
 - Intermediary attributes; i.e., whether the Relying Party Service relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
 
 Each WRPRC is bound to a single Relying Party Service.
-The Provider of WRPRC SHALL issue WRPRCs automatically and without undue delay after a valid WRPAC of that Service exists: one WRPRC per combination of intended use and Service for a Relying Party ([`EIDAS-ARF`_] RPRC_09), and one WRPRC per Service for a PID Provider or Attestation Provider ([`EIDAS-ARF`_] RPRC_13).
+The Provider of WRPRC issues WRPRCs automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and, for a non-intermediated presentation, MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service of the same entity ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
 The ``srv_id`` claim MUST equal the ``serviceIdentifier`` of that Service and, for a non-intermediated presentation, MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
 In an intermediated presentation the Wallet Unit authenticates the Intermediary with the WRPAC associated to this Relying Party ([`EIDAS-ARF`_] Reg_34a) and evaluates the intermediated Relying Party from the WRPRC in the request ([`EIDAS-ARF`_] RPRC_17a, RPRC_19).

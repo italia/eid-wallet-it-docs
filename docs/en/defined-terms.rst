@@ -32,7 +32,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Attestation Scheme Provider**
       Entity that defines a type of Attestation, publishes its Attestation Rulebook together with the corresponding machine-readable attestation scheme, and may request their registration in a catalogue.
-      Within IT-Wallet it is the Entity that requests the registration of a Credential type in the Digital Credentials Catalog, see :ref:`onboarding-system:Credential Type Registration`.
+      Within IT-Wallet it is the Entity that requests the registration of a Credential type in the Digital Credentials Catalog.
       Aligned with Section 3.15 of the `EIDAS-ARF`_.
 
     **Attributes**
@@ -215,8 +215,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Relying Party Service**
     **Wallet-Relying Party Service**
       First-class registration object of a Wallet-Relying Party, identified by a ``serviceIdentifier`` unique within that entity and by a ``serviceTradeName`` suitable for presenting to the User.
-      A registering entity that operates in the EUDIW Trust Framework MUST register one or more Services and MUST receive at least one Wallet-Relying Party Access Certificate per Service ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
-      Intended uses are bound to a Service ([`EIDAS-ARF`_] Reg_10d). The Provider of Registration Certificates SHALL issue the corresponding Wallet-Relying Party Registration Certificate(s) automatically ([`EIDAS-ARF`_] RPRC_09, RPRC_13). The same Service identifier and trade name MUST appear in each corresponding Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_07a).
+      Intended uses, entitlements and the corresponding Trust Artifacts of that Wallet-Relying Party are bound to a Service.
       In the Register the object is ``WalletRelyingPartyService`` in the ``services`` array of `EUDI-TS 5`_.
       Aligned with ARF 3.0.0 Section 3.11.2 and [`CIR2026/1730`_].
 
@@ -293,8 +292,9 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Access Certificate Authority**
     **Access CA**
+    **Provider of WRPAC**
       Natural or legal person mandated by a Member State to issue Wallet-Relying Party Access Certificates to Wallet-Relying Parties registered in that Member State.
-      In the EUDIW Trust Framework it is the Provider of WRPAC. It SHALL log issued Wallet-Relying Party Access Certificates according to Certificate Transparency version 2.0 (:rfc:`9162`) ([`EIDAS-ARF`_] CT_01), describe that logging in its CPS ([`EIDAS-ARF`_] CT_02, Annex IV, point 3(j) of [`CIR2025/848`_]), include at least one Signed Certificate Timestamp in each WRPAC ([`EIDAS-ARF`_] CT_04), and act as a monitor in the Certificate Transparency ecosystem when a log for access certificates is available ([`EIDAS-ARF`_] CT_03).
+      In the EUDIW Trust Framework it is the Provider of WRPAC.
       Aligned with ARF 3.0.0.
 
     **Registration Certificate**
@@ -304,8 +304,9 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Registration Certificate Provider**
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
+    **Provider of WRPRC**
       Natural or legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
-      It SHALL issue a separate Wallet-Relying Party Registration Certificate automatically and without undue delay for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09) and for each registered Service of a PID or Attestation Provider ([`EIDAS-ARF`_] RPRC_13), as required by [`CIR2026/1730`_].
+      In the EUDIW Trust Framework it is the Provider of WRPRC. It issues those certificates automatically after registration of a Service.
       Aligned with ARF 3.0.0.
 
     **Federation Registry**
@@ -414,7 +415,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **IT-Wallet ID**
     **Electronic Attestation of Person Identification Data**
-      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID). The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Technical identifiers (``vct`` and ``credential_type``) are defined in the section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`. Not present in ARF 3.0.0; specific to IT-Wallet.
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID). The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Not present in ARF 3.0.0; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 3.0.0, the IT-Wallet definition is provided as authoritative for the Italian context.
