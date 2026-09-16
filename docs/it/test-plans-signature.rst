@@ -4,6 +4,8 @@
 Matrice di Test per la Valutazione delle Firme
 ----------------------------------------------
 
+.. _signature-evaluation-testcases:
+
 Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet, le Relying Party e i Credential Issuer per la valutazione di qualsiasi dichiarazione firmata, siano queste asserzioni, richieste, attestazioni o Credenziali.
 
 
@@ -30,16 +32,28 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - L'algoritmo nell'header deve corrispondere all'operazione crittografica.
   * - ATT-004
     - Appropriate Algorithms
-    - Assicurarsi che vengano utilizzati solo algoritmi crittograficamente attuali.
-    - Solo gli algoritmi approvati sono accettati; quelli deprecati sono rifiutati.
+    - Assicurarsi che siano usati solo gli algoritmi elencati come MUST o RECOMMENDED in :ref:`algorithms:Algoritmi Crittografici`. Gli algoritmi elencati come MUST NOT (incluso ``none``) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.
+    - Solo gli algoritmi approvati sono accettati; quelli deprecati o non elencati sono rifiutati.
   * - ATT-005
     - Signature Validation
     - Validare tutte le operazioni crittografiche e rifiutare se qualsiasi operazione fallisce.
     - Tutte le firme devono essere valide; qualsiasi fallimento risulta in un rifiuto.
   * - ATT-006
     - Key Entropy
-    - Assicurarsi che le chiavi crittografiche abbiano entropia sufficiente.
-    - Le chiavi devono soddisfare i requisiti di entropia; le chiavi deboli sono rifiutate.
+    - Chiavi crittografiche e segreti freschi forniscono almeno 128 bit di security strength come definito in NIST SP 800-57 Part 1. Le chiavi asimmetriche usate con ES256/ESP256 sono chiavi P-256 generate nel CSPRNG del Keystore o WSCD. Nonce, ``jti``, ``state`` e valori analoghi sono output CSPRNG di almeno 128 bit e non sono sequenziali.
+    - Chiavi e segreti soddisfano i minimi di entropia; chiavi deboli, sottodimensionate, sequenziali o forgiate in software sono rifiutate. Una terza parte verifica tipo e lunghezza della chiave e, ove la piattaforma lo esponga, che la chiave sia in hardware sicuro (Android ``KeyInfo.isInsideSecureHardware`` / token Secure Enclave iOS).
+  * - ATT-006a
+    - Key Entropy
+    - PKCE ``code_verifier``
+    - Il ``code_verifier`` ha da 43 a 128 caratteri unreserved come richiesto da :rfc:`7636`, generato con un CSPRNG.
+  * - ATT-006b
+    - Key Entropy
+    - Nonce MRTD e challenge
+    - Gli identificativi di challenge e i nonce MRTD PoP hanno almeno 128 bit di entropia, come richiesto per l'Autenticazione eID Substantial con Verifica MRTD.
+  * - ATT-006c
+    - Key Entropy
+    - Nessuna chiave debole importata
+    - Il Fornitore del Wallet rifiuta Key Attestation per chiavi importate nel Keystore, generate fuori dal Keystore/WSCD, o la cui lunghezza non corrisponde all'algoritmo (ad esempio ES256 con una chiave non P-256).
   * - ATT-007
     - Issuer Validation
     - Validare che le chiavi crittografiche appartengano all'emittente.

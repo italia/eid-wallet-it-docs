@@ -89,12 +89,11 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
 
    Tipi diversi di Attestato Elettronico POSSONO definire pattern di identity matching differenti. Questa Sezione definisce il pattern per il PID. Per il pattern dell'IT-Wallet ID, vedere la Sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`.
 
-   Per il PID, ``personal_administrative_number`` è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile. Quando è presentato, la Relying Party DOVREBBE utilizzarlo per l'identity matching. Quando non è presentato, la Relying Party DEVE effettuare l'identity matching mediante una o più delle seguenti modalità:
+   Per il PID, ``personal_administrative_number`` è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile.
 
-   - *Attribute-Based Binding*: confrontando gli attributi di identificazione personale disponibili nella presentation del PID (ad esempio ``given_name``, ``family_name`` e ``birthdate`` / ``birth_date``);
-   - *Session-Based Binding*: considerando gli attributi rilasciati nella stessa presentation response come appartenenti al medesimo Utente;
-   - *Issuer-Attested Binding* o *Relying Party-Specific Identifiers*: utilizzando un identificativo attestato dall'Issuer o precedentemente stabilito con la Relying Party;
-   - *Cryptographic Binding*: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso WSCA/WSCD, quando disponibile.
+   Quando ``personal_administrative_number`` è presentato, la Relying Party DEVE utilizzarlo come chiave primaria di identity matching prima di qualsiasi identity reconciliation con un record Utente memorizzato (:ref:`CI_201 <credential-issuer-testcases>`).
+
+   Quando ``personal_administrative_number`` non è presentato, la Relying Party DEVE effettuare *Attribute-Based Binding* confrontando almeno ``family_name``, ``given_name`` e ``birth_date`` (o ``birthdate``) dopo normalizzazione di maiuscole/minuscole, spazi e diacritici. La Relying Party NON DEVE completare l'identity matching su un sottoinsieme di tali attributi che consentirebbe uno scambio di persona (:ref:`CI_202 <credential-issuer-testcases>`). Session-Based Binding, Issuer-Attested Binding, identificativi specifici della Relying Party o Cryptographic Binding (dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso Keystore o WSCD) POSSONO integrare il confronto. NON DEVONO sostituire il set minimo di Attribute-Based Binding quando non è presentato un identificativo nazionale univoco.
 
    La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pienamente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
 

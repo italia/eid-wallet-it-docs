@@ -336,8 +336,13 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing an environment for the WSCA to protect critical assets.
-      Aligned with ARF 2.7.3.
+      Tamper-resistant device providing an environment for the WSCA to protect critical assets. In this specification the term **WSCD** is reserved for a cryptographic device certifiable as resistant to attackers with high attack potential (for example an HSM or a smart card certified at least Common Criteria EAL4+ AVA_VAN.5).
+      Aligned with ARF; the High-certifiable restriction is specific to this implementation profile.
+
+    **Keystore**
+    **Local Internal hardware-backed Keystore**
+      Hardware-backed key storage native to the User's device, such as the Trusted Execution Environment (TEE) and StrongBox on Android or the Secure Enclave on iOS. A Keystore is **not** a WSCD in the High-certifiable sense. The current implementation profile stores User keys of the Wallet Instance, of the IT-Wallet ID and of (Q)EAA in a Keystore.
+      Not used as a defined term in ARF 2.7.3 with this restriction; specific to this implementation profile.
 
     **Wallet Solution**
       Set of Technical Solutions for the proper functioning of Wallet Instances.
@@ -348,13 +353,18 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
-      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attestation APIs (OEM).
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD or Keystore using the Key Attestation APIs (OEM).
       Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
-    **Wallet Attestation**
-      Data object issued by a Wallet Provider proving the integrity of the Wallet Instance.
+    **WIA**
+      Data object issued by a Wallet Provider proving the integrity of the Wallet Instance. This specification uses **Wallet Instance Attestation (WIA)**. The legacy name «Wallet Attestation» MUST NOT be used for this artefact.
       Specific to IT-Wallet.
+
+    **Wallet Unit Attestation**
+    **WUA**
+      Data object that attests keys of a Wallet Unit, distinct from the Wallet Instance Attestation (WIA). Private keys bound to a WUA MUST be stored in the same Keystore or WSCD as the Digital Credential keys that the WUA attests.
+      Aligned with ARF.
 
     **Digital Credential Catalog**
       Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.
@@ -487,6 +497,12 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WIA**
+    - Wallet Instance Attestation
+  * - **WUA**
+    - Wallet Unit Attestation
+  * - **KA**
+    - Key Attestation
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **WSCD**

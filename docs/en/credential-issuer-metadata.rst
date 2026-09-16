@@ -151,6 +151,8 @@ The *openid_credential_issuer* metadata contains the following claims.
     - OPTIONAL. Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 
             - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
+
+        The presence of this parameter advertises batch issuance only for the credential types for which the Credential Issuer documents support. The Credential Issuer MUST declare whether PID and IT-Wallet ID are in scope of batch issuance. A credential type without that advertisement MUST be issued as a single credential (:ref:`CI_203 <credential-issuer-testcases>`).
   * - **status_list_aggregation_endpoint**
     - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
 

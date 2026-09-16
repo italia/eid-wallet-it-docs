@@ -70,7 +70,7 @@ The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT
   7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
   8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
-Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation valid for less than 24 hours (:ref:`WP_144 <wallet-instance-optional-testcases>`).
+Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation whose ``exp`` is at most 24 hours after ``iat`` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 
 **Step 18 (Wallet Instance Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Instance Attestation signed by the Wallet Provider. The Wallet provider MUST return the Wallet Instance Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet Instance Attestation received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
 

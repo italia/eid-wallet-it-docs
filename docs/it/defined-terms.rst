@@ -348,8 +348,13 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici.
-      Conforme con ARF 2.7.3.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In questa specifica il termine **WSCD** è riservato a un dispositivo crittografico certificabile come resistente ad attaccanti con potenziale di attacco elevato (ad esempio un HSM o una smart card certificata almeno Common Criteria EAL4+ AVA_VAN.5).
+      Allineato all'ARF; la restrizione certificabile High è specifica di questo profilo implementativo.
+
+    **Keystore**
+    **Keystore hardware-backed interno locale**
+      Memorizzazione delle chiavi hardware-backed nativa del dispositivo dell'Utente, ad esempio il Trusted Execution Environment (TEE) e StrongBox su Android o il Secure Enclave su iOS. Un Keystore **non** è un WSCD nel senso certificabile High. Il profilo implementativo attuale memorizza le chiavi dell'Utente dell'Istanza del Wallet, dell'IT-Wallet ID e delle (Q)EAA in un Keystore.
+      Non usato come termine definito in ARF 2.7.3 con questa restrizione; specifico di questo profilo implementativo.
 
     **Soluzione Wallet**
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle Istanze del Wallet.
@@ -361,13 +366,18 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Key Attestation**
-      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD affidabile, utilizzando le API di Key Attestation (OEM).
+      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD o in un Keystore affidabile, utilizzando le API di Key Attestation (OEM).
       Allineato alla Technical Specification 3.
 
     **Wallet Instance Attestation**
-    **Wallet Attestation**
-      Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet.
+    **WIA**
+      Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet. Questa specifica usa **Wallet Instance Attestation (WIA)**. Il nome legacy «Wallet Attestation» NON DEVE essere usato per questo artefatto.
       Specifico per l'IT-Wallet.
+
+    **Wallet Unit Attestation**
+    **WUA**
+      Oggetto di dati che attesta le chiavi di una Wallet Unit, distinto dalla Wallet Instance Attestation (WIA). Le chiavi private vincolate a una WUA DEVONO essere memorizzate nello stesso Keystore o WSCD delle chiavi degli Attestati Elettronici che la WUA attesta.
+      Allineato all'ARF.
 
     **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.
@@ -497,6 +507,12 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WIA**
+    - Wallet Instance Attestation (Attestato dell'Istanza del Wallet)
+  * - **WUA**
+    - Wallet Unit Attestation
+  * - **KA**
+    - Key Attestation
   * - **WSCA**
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**

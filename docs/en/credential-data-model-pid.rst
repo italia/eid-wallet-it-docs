@@ -89,12 +89,11 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
 
    Different Digital Credential types MAY define different identity matching patterns. This Section defines the pattern for the PID. For the IT-Wallet ID pattern, see Section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`.
 
-   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available. When it is presented, the Relying Party SHOULD use it for identity matching. When it is not presented, the Relying Party MUST perform identity matching using one or more of the following ways:
+   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available.
 
-   - *Attribute-Based Binding*: comparing the person identification attributes available in the PID presentation (for example ``given_name``, ``family_name`` and ``birthdate`` / ``birth_date``);
-   - *Session-Based Binding*: treating attributes released in the same presentation response as belonging to the same User;
-   - *Issuer-Attested Binding* or *Relying Party-Specific Identifiers*: using an identifier attested by the Issuer or previously established with the Relying Party;
-   - *Cryptographic Binding*: proving that the private keys of the presented Digital Credentials are managed by the same WSCA/WSCD, when available.
+   When ``personal_administrative_number`` is presented, the Relying Party MUST use it as the primary identity matching key before any identity reconciliation with a stored User record (:ref:`CI_201 <credential-issuer-testcases>`).
+
+   When ``personal_administrative_number`` is not presented, the Relying Party MUST perform *Attribute-Based Binding* by matching at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation of case, whitespace and diacritics. The Relying Party MUST NOT complete identity matching on a subset of those attributes that would allow a person swap (:ref:`CI_202 <credential-issuer-testcases>`). Session-Based Binding, Issuer-Attested Binding, Relying Party-Specific Identifiers or Cryptographic Binding (proving that the private keys of the presented Digital Credentials are managed by the same Keystore or WSCD) MAY supplement that comparison. They MUST NOT replace the Attribute-Based Binding minimum set when no unique national identifier is presented.
 
    Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF, to be fully applicable when the IT-Wallet will be notified as an EUDIW solution.
 

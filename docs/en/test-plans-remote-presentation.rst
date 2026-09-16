@@ -314,18 +314,18 @@ This section provides the set of test cases designed for technical implementers 
     - QR Code uses the required Q error correction level.
 
   * - RPR-78
-    - Wallet Attestation Request
-    - Test that Wallet Attestation request uses standard DCQL query.
-    - Wallet Attestation request correctly uses standard DCQL query.
+    - Wallet Instance Attestation (WIA) Request
+    - Test that Wallet Instance Attestation (WIA) request uses standard DCQL query.
+    - Wallet Instance Attestation (WIA) request correctly uses standard DCQL query.
 
   * - RPR-79
-    - Wallet Attestation Request
-    - Verify that ``claims`` parameter is not included in DCQL query for Wallet Attestation.
-    - ``claims`` parameter is not included in DCQL query for Wallet Attestation.
+    - Wallet Instance Attestation (WIA) Request
+    - Verify that ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
+    - ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
 
   * - RPR-80
-    - Wallet Attestation Request
-    - Test that ``vct_values`` parameter is required in DCQL query for Wallet Attestation.
+    - Wallet Instance Attestation (WIA) Request
+    - Test that ``vct_values`` parameter is required in DCQL query for Wallet Instance Attestation (WIA).
     - ``vct_values`` parameter is correctly required in DCQL query.
 
   * - RPR-81
@@ -409,9 +409,9 @@ This section provides the set of test cases designed for technical implementers 
     - The ``client_metadata`` is correctly aligned with Trust Chain metadata.
 
   * - RPR-97
-    - Wallet Attestation Request
-    - Test that Relying Party requests Wallet Attestation via DCQL.
-    - Relying Party correctly requests Wallet Attestation using DCQL query.
+    - Wallet Instance Attestation (WIA) Request
+    - Test that Relying Party requests Wallet Instance Attestation (WIA) via DCQL.
+    - Relying Party correctly requests Wallet Instance Attestation (WIA) using DCQL query.
 
   * - RPR-98
     - Error Response Format
@@ -424,9 +424,9 @@ This section provides the set of test cases designed for technical implementers 
     - Error response includes error and ``error_description`` parameters.
 
   * - RPR-100
-    - Wallet Attestation Presentation
-    - Test that Relying Party correctly requests Wallet Attestation from Wallet Instance.
-    - Relying Party correctly evaluates Wallet Attestation when requested.
+    - Wallet Instance Attestation (WIA) Presentation
+    - Test that Relying Party correctly requests Wallet Instance Attestation (WIA) from Wallet Instance.
+    - Relying Party correctly evaluates Wallet Instance Attestation (WIA) when requested.
 
   * - RPR-101
     - Presentation Array
