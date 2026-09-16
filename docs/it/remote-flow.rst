@@ -387,7 +387,12 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
 .. note::
   Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
 
+Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
+
 .. _endpoint-mix-up-protection:
+
+Protezione da Endpoint Mix-Up
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
   Per prevenire attacchi di tipo endpoint mix-up, i valori di ``request_uri``, ``response_uri`` e ``redirect_uri`` DEVONO ciascuno essere attestati da una terza parte fidata.
@@ -395,8 +400,6 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
   Sotto il Trust Framework EUDIW DEVONO corrispondere all'identità vincolata al Wallet-Relying Party Access Certificate e al Wallet-Relying Party Registration Certificate, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
   Questo requisito si applica a ``request_uri`` come specificato in :ref:`WP_081 <wallet-credential-presentation-testcases>` e :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`.
-
-Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
 
 
 Richiesta all'Endpoint URI Request

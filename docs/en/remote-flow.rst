@@ -388,7 +388,12 @@ The URL parameters contained in the Relying Party Authorization Request are desc
 .. note::
   IT Wallet specification recommends the use of ``request_uri``, i.e. Request Object by reference.
 
+The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
+
 .. _endpoint-mix-up-protection:
+
+Endpoint Mix-Up Protection
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
   To prevent endpoint mix-up attacks, the values of ``request_uri``, ``response_uri`` and ``redirect_uri`` MUST each be attested by a trusted third party.
@@ -396,8 +401,6 @@ The URL parameters contained in the Relying Party Authorization Request are desc
   Under the EUDIW Trust Framework they MUST match the identity bound to the Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate, as specified in :ref:`trust-evaluation:Selection at Presentation`.
 
   This requirement applies to ``request_uri`` as specified in :ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`.
-
-The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
 
 Request URI Request
@@ -436,8 +439,8 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
      - **Description**
    * - `vp_formats_supported`
      - REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by `OPENID4VC-HAIP`_ (including ``dc+sd-jwt`` and ``mso_mdoc``).
-    * - `client_id_prefixes_supported`
-      - REQUIRED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports. Wallet Instances MUST include both ``x509_hash`` (EUDIW / [`OPENID4VC-HAIP`_]) and ``openid_federation`` (National Trust Framework).
+   * - `client_id_prefixes_supported`
+     - REQUIRED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports. Wallet Instances MUST include both ``x509_hash`` (EUDIW / [`OPENID4VC-HAIP`_]) and ``openid_federation`` (National Trust Framework).
    * - `request_object_signing_alg_values_supported`
      - OPTIONAL. See OpenID Connect Discovery.
 

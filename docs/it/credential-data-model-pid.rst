@@ -8,11 +8,16 @@ Il PID è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identific
 
 .. _pid-until-notification:
 
-.. admonition:: Emissione del PID prima della notifica EUDIW
+Emissione del PID prima della notifica EUDIW
+--------------------------------------------
+
+.. warning::
 
    Il PID NON DEVE essere emesso, memorizzato o presentato finché l'IT-Wallet non è pienamente operativo e notificato come Portafoglio di Identità Digitale Europea ai sensi di [`CIR2024/2980`_].
    Fino a quella notifica, l'identificazione nazionale utilizza l':term:`IT-Wallet ID`.
-  
+
+Attributi del PID
+-----------------
 
 Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
 Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], gli attributi dell'Utente forniti all'interno del PID italiano sono quelli elencati di seguito:

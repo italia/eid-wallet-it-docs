@@ -9,11 +9,16 @@ The Person Identification Data (PID) is issued by the PID Provider according to 
 
 .. _pid-until-notification:
 
-.. admonition:: PID issuance before EUDIW notification
+PID issuance before EUDIW notification
+--------------------------------------
+
+.. warning::
 
    The PID MUST NOT be issued, stored or presented until the IT-Wallet is fully operational and notified as a European Digital Identity Wallet under [`CIR2024/2980`_].
    Until that notification, national identification uses the :term:`IT-Wallet ID`.
-  
+
+PID attributes
+--------------
 
 The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
 The PID MUST be provided according to data model requirements defined in  `EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the User attributes provided within the Italian PID are the ones listed below:
