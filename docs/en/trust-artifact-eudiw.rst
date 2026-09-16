@@ -76,8 +76,8 @@ and provide methods for searching and querying complete data sets of registered 
     The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06) and for Credential Issuance checks.
     They MUST NOT be used by the Wallet Unit as a substitute for a missing Wallet-Relying Party Registration Certificate during Credential Presentation ([`EIDAS-ARF`_] RPRC_16, RPRC_18 and RPRC_19a are empty).
 
-The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
-The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json.
+The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available as `EUDI-TS 5 OpenAPI`_.
+The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available as `EUDI-TS 5 JSON Schema`_.
 
 .. warning::
   In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
