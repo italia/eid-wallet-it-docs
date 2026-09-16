@@ -8,6 +8,8 @@ Architecture Overview
 The IT-Wallet System is a federated ecosystem that enables secure Digital Identity management and Digital Credential exchange for citizens and organizations.
 The IT-Wallet ecosystem is built on a multi-layered architecture, where governance bodies establish and maintain the trust infrastructure, Primary Actors implement and operate the technical solutions, and external systems provide additional services.
 
+IT-Wallet implements the two Trust Frameworks defined in :ref:`infrastructure-trust:Infrastructure of Trust`.
+
 The following diagrams depict the IT-Wallet architecture overview.
 
 .. plantuml:: plantuml/architecture-overview-governance.puml
@@ -40,10 +42,10 @@ The architecture enables the following core interaction processes:
 
   2. **Credential Discovery and Catalog Management**: The ecosystem supports dual Credential discovery mechanisms - public discovery through the :ref:`registry:Digital Credentials Catalog` for general-purpose Credentials, and private discovery via direct Credential Offers for specific use cases. The catalog is automatically populated based on Supervisory Body policies from registered Claims Registry and Taxonomy definitions.
 
-  3. **Credential Issuance**: Credential Issuers coordinate with Authentic Sources via standardised APIs to request verified User attributes, creating Digital Credentials based on authoritative data. Issuance can proceed for both Credentials discovered within the Credential Catalog and Credential provided through Credential offer flows.
+  3. **Credential Issuance**: Credential Issuers coordinate with Authentic Sources via standardised APIs to request verified User attributes, creating Digital Credentials based on authoritative data. Issuance follows [`OpenID4VCI`_], profiled by [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_]. Issuance can proceed for both Credentials discovered within the Credential Catalog and Credentials provided through Credential Offer flows. The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
-  4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management.
+  4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management, including selective disclosure as required by [`CIR2024/2979`_].
 
-  5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification.
+  5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Remote presentation uses [`OpenID4VP`_] profiled by [`OPENID4VC-HAIP`_]; proximity presentation uses [`ISO18013-5`_], as required by [`CIR2024/2982`_]. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification. The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
 
 

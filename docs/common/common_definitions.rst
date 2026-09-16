@@ -36,7 +36,9 @@
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _CID2015/1505: https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj
 .. _CID2025/2164: https://eur-lex.europa.eu/eli/dec_impl/2025/2164/oj
+.. _CIR2024/2979: https://eur-lex.europa.eu/eli/reg_impl/2024/2979/
 .. _CIR2024/2980: https://eur-lex.europa.eu/eli/reg_impl/2024/2980/
+.. _CIR2024/2982: https://eur-lex.europa.eu/eli/reg_impl/2024/2982/
 .. _CIR2025/848: https://eur-lex.europa.eu/eli/reg_impl/2025/848/
 .. _CIR2025/1569: https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj
 .. _CIR2026/1730: https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj

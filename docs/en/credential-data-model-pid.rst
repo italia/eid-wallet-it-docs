@@ -7,8 +7,12 @@ PID Data Model
 
 The Person Identification Data (PID) is issued by the PID Provider according to national laws and it MUST be provided in both SD-JWT VC and mdoc-CBOR data format.
 
-.. note::
-  The PID will be issued when the IT-Wallet will be fully operational and notified as EUDIW, the **IT-Wallet ID** is intended for access online services of national RPs only.
+.. _pid-until-notification:
+
+.. admonition:: PID issuance before EUDIW notification
+
+   The PID MUST NOT be issued, stored or presented until the IT-Wallet is fully operational and notified as a European Digital Identity Wallet under [`CIR2024/2980`_].
+   Until that notification, national identification uses the :term:`IT-Wallet ID`.
   
 
 The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
@@ -97,7 +101,7 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
    - *Issuer-Attested Binding* or *Relying Party-Specific Identifiers*: using an identifier attested by the Issuer or previously established with the Relying Party;
    - *Cryptographic Binding*: proving that the private keys of the presented Digital Credentials are managed by the same WSCA/WSCD, when available.
 
-   Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF, to be fully applicable when the IT-Wallet will be notified as an EUDIW solution.
+   Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF.
 
 All the User attributed listed above MUST be selectively disclosable.
 In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID:

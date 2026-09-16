@@ -4,7 +4,10 @@
 Flusso di Prossimità
 ====================
 
-Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico *mdoc-CBOR* a un'Istanza del Wallet come dettagliato nella *Specifica ISO 18013-5*.
+Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico *mdoc-CBOR* a un'Istanza del Wallet come dettagliato nella *Specifica ISO 18013-5*, come richiesto da [`CIR2024/2982`_].
+
+Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Sotto il Trust Framework EUDIW il certificato del lettore è il Wallet-Relying Party Access Certificate, validato rispetto alla List of Trusted Entities del Provider of WRPAC.
 
 La fase di presentazione di alto livello è strutturata in tre ampie sotto-fasi come illustrato nella figura seguente:
 

@@ -7,7 +7,7 @@ Flussi Dettagliati per l'Emissione di Attestati Elettronici
 Issuance Flow
 -------------
 
-Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_] e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
+Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_], come richiesto da [`CIR2024/2982`_], profilato da [`OPENID4VC-HAIP`_], e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], come raccomandato nella Sezione 3 di [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], come raccomandato nella Sezione 5 di [`OpenID4VCI`_].
@@ -15,7 +15,10 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-  * **OpenID Federation 1.0** [`OID-FED`_].
+  * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
+
+OpenID Federation 1.0 [`OID-FED`_] DOVREBBE essere supportata per l'emissione che coinvolge un'entità nazionale che si rivolge esclusivamente a un pubblico nazionale, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
@@ -205,7 +208,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 .. note::
    **Autenticazione dell'Utente e Consenso**: Il PID Provider esegue l'autenticazione dell'Utente basata sullo schema CieID con Livello di Garanzia Alto (CIE L3), mentre l'EAA Provider di IT-Wallet ID, oltre a CieID LoA High, supporta anche l'Autenticazione eID Substantial con Verifica MRTD come definita in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
-   Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID o un IT-Wallet ID valido all'Istanza del Wallet. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere la presentazione del PID o dell'IT-Wallet ID. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID o un IT-Wallet ID valido, ottenuto in precedenza. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
+   Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID o un IT-Wallet ID valido all'Istanza del Wallet, secondo :ref:`pid-until-notification`. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere quella presentazione. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID o un IT-Wallet ID valido, ottenuto in precedenza. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
 
 
 **Passi 6-7 (`Authorization Response`)**: Il Credential Issuer invia un ``code`` di autorizzazione insieme ai parametri ``state`` e ``iss`` all'Istanza del Wallet. L'Istanza del Wallet esegue i seguenti controlli sulla `Authorization Response`:

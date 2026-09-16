@@ -6,8 +6,12 @@ Modello di Dati del PID
 
 Il PID è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT VC e mdoc-CBOR.
 
-.. note::
-  Il PID non sarà rilasciato finché l’IT-Wallet non sarà notificato EUDIW; l’**IT-Wallet ID** ha lo scopo di consentire l’accesso ai servizi online dei RP nazionali al posto del PID.
+.. _pid-until-notification:
+
+.. admonition:: Emissione del PID prima della notifica EUDIW
+
+   Il PID NON DEVE essere emesso, memorizzato o presentato finché l'IT-Wallet non è pienamente operativo e notificato come Portafoglio di Identità Digitale Europea ai sensi di [`CIR2024/2980`_].
+   Fino a quella notifica, l'identificazione nazionale utilizza l':term:`IT-Wallet ID`.
   
 
 Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
