@@ -705,10 +705,12 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
 
     - ``no_policy``: no restriction applies.
     - ``authorized_rp_only``: only the Relying Parties in the ``authorized_parties`` list are authorized.
-      In a **direct** presentation the Wallet Unit MUST compare the Relying Party subject DN of the Wallet-Relying Party Access Certificate against the ``subject_dn`` entries, and the Relying Party entitlements or sub-entitlements of the Wallet-Relying Party Registration Certificate against the ``entitlement_uri`` entries.
-      A match on either criterion is sufficient.
-      In an **intermediated** presentation the Wallet Unit MUST NOT use the Intermediary identifier from the WRPAC.
-      It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC ``sub`` in the request and compare that identifier, and the entitlements of that WRPRC, to the authorised list ([`EIDAS-ARF`_] EDP_02).
+      The Wallet Unit MUST retrieve the EU-wide unique identifier and the Service identifier from the WRPRC in the request (``sub`` and ``srv_id``) and compare that duplet with the authorised list ([`EIDAS-ARF`_] EDP_02, Reg_32, Reg_33).
+      Where an ``authorized_parties`` element identifies the party by ``entitlement_uri``, the Wallet Unit MUST match that URI against the entitlements or sub-entitlements of the same WRPRC.
+      A match on the identifier duplet or on ``entitlement_uri`` is sufficient.
+      If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
+      The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
+      In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
     - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
       The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
       It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.

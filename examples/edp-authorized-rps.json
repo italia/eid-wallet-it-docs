@@ -6,9 +6,13 @@
   "policy_info_url": "https://example-ap.eu/policies/edp/medical-laymans.html",
   "authorized_parties": [
     {
+      "identifier": "VATES-12345678",
+      "service_identifier": "svc-pharmacy-01",
       "subject_dn": "CN=Central University Hospital Pharmacy,O=Central Hospital Group,ORGID=VATES-12345678,C=FI"
     },
     {
+      "identifier": "VATES-87654321",
+      "service_identifier": "svc-psp-01",
       "entitlement_uri": "https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai"
     }
   ]
