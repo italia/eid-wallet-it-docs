@@ -37,33 +37,17 @@ partition "Authorization Artifacts Validation" {
     #ffccb3:CERTIFICATE_INVALID;
   endif
 
-  if (Issuance AND (authz_art_state == CERTIFICATE_INVALID)) then (yes)
-    group "Register Query Validation (Issuance only)" {
-      :1. Extract Registrar URL from issuer_info;
-      :2. Connect to Registrar via HTTPS;
-      :3. Query using entity identifier;
-      :4. Format verification;
-      :5. Verify pertinence;
-      :6. Verify response signature;
-      :7. Trust Anchor validation;
-      :8. Sign/Seal certificate validation;
-      :9. Normalize derived data;
-    }
-
-    if (All Register checks successful?) then (yes)
-      #dcedc8:REGISTER_VALID;
-    else (no)
-      #ffccb3:FAILED;
+  if (authz_art_state == CERTIFICATE_INVALID) then (yes)
+    if (Presentation?) then (yes)
+      :Warn the User (RPRC_17). Do not query the Register;
+    else (Issuance)
+      :Warn the User and do not request issuance (RPRC_22a).\nDo not query the Register (RPRC_22);
     endif
   else (no)
-    if (Presentation AND authz_art_state == CERTIFICATE_INVALID) then (yes)
-      :Warn the User (RPRC_17). Do not query the Register;
-    else (no)
-    endif
   endif
 }
 
-if (authz_art_state == CERTIFICATE_VALID OR authz_art_state == REGISTER_VALID) then (yes)
+if (authz_art_state == CERTIFICATE_VALID) then (yes)
   partition "Authorization Validation Procedure" {
     
     :1. Binding Verification;

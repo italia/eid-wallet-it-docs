@@ -10,7 +10,7 @@ The conditions that determine this outcome depend on the specific Authorization 
 - In case the Wallet Unit follows the :ref:`trust-evaluation:EUDIW Authorization` evaluation path, then the outcome is:
 
     - during **Credential Presentation**, ``AUTHORIZED`` if the process terminates with ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``;
-    - during **Credential Issuance**, ``AUTHORIZED`` if the process terminates with ``CERTIFICATE_VALID`` OR ``REGISTER_VALID``, AND ``VERIFICATION_PASSED``;
+    - during **Credential Issuance**, ``AUTHORIZED`` if the process terminates with ``CERTIFICATE_VALID`` AND ``VERIFICATION_PASSED``;
     - ``NOT_AUTHORIZED`` otherwise.
 
 - In case the Wallet Unit follows the National :ref:`trust-evaluation:Authorization` evaluation path, then the outcome is:
