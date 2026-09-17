@@ -6,6 +6,9 @@ Soluzione Wallet
 
 La Wallet Solution è emessa dal Fornitore di Wallet sotto forma di applicazione mobile e servizi, come interfacce web. L'applicazione mobile funge da interfaccia principale per gli Utenti, consentendo loro di conservare i propri Attestati Elettronici e di interagire con altri partecipanti dell'ecosistema, come i Fornitori di Attributi Elettronici e le Relying Party. Questi Attestati Elettronici costituiscono un insieme di dati che possono identificare in modo univoco una persona fisica o giuridica, insieme ad altre Attestazioni Elettroniche Qualificate e non Qualificate di Attributi, note rispettivamente come QEAAs ed EAAs, o più brevemente (Q)EAAs. Una volta che un utente installa l'applicazione mobile sul proprio dispositivo, tale installazione viene definita come istanza del Wallet per quell'utente. Supportando l'applicazione mobile, il Fornitore di Wallet garantisce la sicurezza e l'affidabilità dell'intera Wallet Solution, poiché è responsabile dell'emissione della Wallet Instance Attestation (WIA) e della Key Attestation (KA). La WIA dimostra l'autenticità e l'integrità dell'istanza del Wallet, mentre la KA fornisce la prova che le chiavi utilizzate per il collegamento crittografico delle credenziali sono archiviate in modo sicuro all'interno di un WSCD affidabile. Inoltre, la KA conferma che la Wallet Unit non è stata revocata.
 
+La Soluzione Wallet attua le funzionalità principali di [`CIR2024/2979`_] per l'Istanza del Wallet, eccetto l'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate, che sono fuori dall'ambito di questa versione, come specificato in :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`.
+L'emissione del PID prima della notifica EUDIW è specificata in :ref:`pid-until-notification`.
+
 Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wallet.
 
 .. _fig_wallet-solution-high-level-architecture:

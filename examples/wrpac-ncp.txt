@@ -23,7 +23,7 @@ AccessCertificate cert = {
     subject: DistinguishedName {                          // Subject attributes for legal person
       countryName: "IT",
       organizationName: "Example of Relying Party",
-      commonName: "Relying Party Example",
+      commonName: "ExampleBank Mobile",                   // serviceTradeName (Reg_34)
       organizationIdentifier: "LEIXG-5493001KJTIIGC8Y1R12"
     },
 
@@ -72,6 +72,7 @@ AccessCertificate cert = {
         critical: false,
         value: SubjectAltName [
           GeneralName.uniformResourceIdentifier("https://rp.example.test/support"),
+          GeneralName.uniformResourceIdentifier("https://registry.example.it/api/wrp/services/svc-mobile-01"), // serviceIdentifier (Reg_33)
           GeneralName.rfc822Name("support@rp.example.test"),
           GeneralName.otherName(
             type-id: "2.5.4.20",                          // id-at-telephoneNumber
@@ -104,6 +105,18 @@ AccessCertificate cert = {
           AccessDescription {
             accessMethod: "1.3.6.1.5.5.7.48.1",           // id-ad-ocsp
             accessLocation: GeneralName.uniformResourceIdentifier("http://ocsp.example.test")
+          }
+        ]
+      },
+
+      Extension {
+        oid: "1.3.6.1.4.1.11129.2.4.5",                   // id-ct-v2-sctList (RFC 9162)
+        critical: false,
+        value: TransItemList [
+          TransItem {
+            // At least one Signed Certificate Timestamp (CT_04)
+            timestampedData: "BASE64(RFC9162_TIMESTAMPED_ENTRY)",
+            signature: "BASE64(CT_LOG_SIGNATURE)"
           }
         ]
       }

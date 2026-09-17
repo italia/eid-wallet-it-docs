@@ -7,7 +7,7 @@ Flussi Dettagliati per l'Emissione di Attestati Elettronici
 Issuance Flow
 -------------
 
-Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_] e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
+Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_], come richiesto da [`CIR2024/2982`_], profilato da [`OPENID4VC-HAIP`_], e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], come raccomandato nella Sezione 3 di [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], come raccomandato nella Sezione 5 di [`OpenID4VCI`_].
@@ -15,7 +15,10 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-  * **OpenID Federation 1.0** [`OID-FED`_].
+  * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
+
+OpenID Federation 1.0 [`OID-FED`_] DOVREBBE essere supportata per l'emissione che coinvolge un'entità nazionale che si rivolge esclusivamente a un pubblico nazionale, come specificato in :ref:`trust-evaluation:Selection at Issuance`.
+Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
@@ -88,7 +91,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-evaluation:Trust Evaluation Process`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
@@ -205,7 +208,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 .. note::
    **Autenticazione dell'Utente e Consenso**: Il PID Provider esegue l'autenticazione dell'Utente basata sullo schema CieID con Livello di Garanzia Alto (CIE L3), mentre l'EAA Provider di IT-Wallet ID, oltre a CieID LoA High, supporta anche l'Autenticazione eID Substantial con Verifica MRTD come definita in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
-   Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID o un IT-Wallet ID valido all'Istanza del Wallet. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere la presentazione del PID o dell'IT-Wallet ID. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID o un IT-Wallet ID valido, ottenuto in precedenza. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
+   Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID o un IT-Wallet ID valido all'Istanza del Wallet, secondo :ref:`pid-until-notification`. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere quella presentazione. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID o un IT-Wallet ID valido, ottenuto in precedenza. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
 
 
 **Passi 6-7 (`Authorization Response`)**: Il Credential Issuer invia un ``code`` di autorizzazione insieme ai parametri ``state`` e ``iss`` all'Istanza del Wallet. L'Istanza del Wallet esegue i seguenti controlli sulla `Authorization Response`:
@@ -316,7 +319,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
  4. La firma sulla prova della chiave DEVE essere verificata utilizzando la chiave pubblica specificata nel parametro dell'header.
  5. Il parametro dell'header NON DEVE contenere una chiave privata.
  6. La firma sul JWT di Key Attestation, come valore del parametro di intestazione ``key_attestation``, DEVE essere verificata utilizzando la chiave pubblica del Wallet Provider, identificata dal parametro di intestazione kid all’interno del JWT di Key Attestation.
- 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a questo valore ``c_nonce``. Inoltre, l'istante di creazione del JWT, come indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE essere all'interno di una finestra temporale accettabile come determinato dal server.
+ 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
 
 
 .. note::
@@ -692,9 +695,9 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
 
         - **issuer_state**: OPZIONALE. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Isser. PUO' essere associata a un determinato Credential Dataset fornito da una specifica Fonte Autentica. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente. Deve essere un’URN e contenere le seguenti informazioni:
 
-            - *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Registro delle Fonti Autentiche`.
+            - *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Authentic Source Registry`.
 
-            - *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Registro delle Fonti Autentiche`.
+            - *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Authentic Source Registry`.
 
             - *objectId*: OPZIONALE. Identificativo univoco del Credential Dataset disponibile presso la Fonte Autentica.
 

@@ -4,9 +4,9 @@
 Definizioni e Acronimi
 =======================
 
-Questa sezione mira ad uniformare la terminologia del Sistema IT-Wallet alle definizioni fornite in ARF 2.7.3 (vedere `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md>`_). Per ciascun termine, la definizione di IT-Wallet è stata confrontata e mappata con quella di ARF, includendo note su eventuali differenze o chiarimenti.
+Questa sezione mira ad uniformare la terminologia del Sistema IT-Wallet alle definizioni fornite in ARF 3.0.0 (vedere `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-1/annex-1-definitions.md>`_) e a [`CIR2026/1730`_], che modifica [`CIR2025/848`_]. Per ciascun termine, la definizione di IT-Wallet è stata confrontata e mappata con quella di ARF, includendo note su eventuali differenze o chiarimenti.
 
-Le definizioni di *Utente*, *Servizio Fiduciario*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attributo*, *Fornitore di Attestati Elettronici di Attributi* o *Fornitore di servizi fiduciari (TSP)*, *Person Identification Data (PID)*, *Lista di Revoca*, *Fornitore di Attestati Elettronici di Attributi qualificati* o *Fornitore di servizi fiduciari qualificati (QTSP)*, *Attestato Elettronico di Attributi (EAA)*, sono definite nel documento `EIDAS-ARF`_.
+Le definizioni di *Utente*, *Servizio Fiduciario*, *Trust Model*, *Trusted List*, *List of Trusted Entities*, *Trust Framework*, *Attributo*, *Fornitore di Attestati Elettronici di Attributi* o *Fornitore di servizi fiduciari (TSP)*, *Person Identification Data (PID)*, *Lista di Revoca*, *Fornitore di Attestati Elettronici di Attributi qualificati* o *Fornitore di servizi fiduciari qualificati (QTSP)*, *Attestato Elettronico di Attributi (EAA)*, *Wallet Unit Attestation*, *Servizio di Relying Party*, sono definite nel documento `EIDAS-ARF`_.
 
 Di seguito le descrizioni di acronimi e definizioni, correlati al presente documento utili ad approfondimenti su tematiche inerenti l' IT-Wallet e i componenti con i quali interagisce.
 
@@ -15,220 +15,231 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Dataset_id**
       Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente uno specifico dataset relativo a un Attestato Elettronico di Attributi.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Object_id**
       Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente una specifica istanza di Attestato Elettronico di Attributi associata a un determinato Utente.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Processo di Accreditamento**
       Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Attributi**
     **Attributi dell'Utente**
       Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Autenticazione**
       Processo elettronico che consente di confermare l'Identificazione di una persona fisica o giuridica, oppure l'origine/integrità dei dati.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fonte Autentica**
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Processo di Certificazione**
       Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Organismo di Valutazione della Conformità**
       Organismo accreditato valuta e certifica le Soluzioni di Portafogli o i Fornitori di Servizi Fiduciari.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore di Attestati Elettronici**
     **Credential Issuer**
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
-      Conforme con ARF 2.7.3; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA.
+      Conforme con ARF 3.0.0; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA.
 
     **Asset Critici**
       Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sull'Istanza del Wallet.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Cryptographic Hardware Key Tag**
       Identificativo univoco per le Cryptographic Hardware Keys, utilizzato per accedere alla chiave privata dell'hardware.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Cryptographic Hardware Keys**
       Coppia di chiavi generata dall'Istanza del Wallet, valida per tutta la sua durata.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Servizio di Integrità del Dispositivo**
       Servizio fornito dai produttori di dispositivi per verificare l'integrità delle app e l'archiviazione sicura delle chiavi.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Attestato Elettronico**
     **Attestato**
       Un set firmato di Attributi in un formato specifico (ad esempio mDoc-CBOR, SD-JWT VC), può essere un PID oppure una (Q)EAA.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Autorità di Federazione**
       Ente di governance pubblica che emana linee guida, regole e gestisce Elenchi di Fiducia e lo stato dei partecipanti.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Titolare**
     **Holder**
       Persona fisica o giuridica che riceve, gestisce e presenta Attestati Elettronici tramite l'Istanza del Wallet.
-      Simile ad ARF 2.7.3. ARF utilizza questo termine solo nei casi di interazione tra Wallet, mentre negli altri casi utilizza il termine *Holder Wallet Unit*.
+      Simile ad ARF 3.0.0. ARF utilizza questo termine solo nei casi di interazione tra Wallet, mentre negli altri casi utilizza il termine *Holder Wallet Unit*.
 
     **Associazione Crittografica con l'Utente**
     **Holder Key Binding**
       Capacità del Titolare di dimostrare il possesso della chiave privata attestata da una terza parte di fiducia.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Identity and Access Management**
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Sistema IT-Wallet**
       Insieme di Soluzioni Tecniche che implementano il Sistema di Wallet Digitale Italiano.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Registro del Sistema IT-Wallet**
       Registro delle entità partecipanti al Sistema IT-Wallet.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Key Attestation APIs (OEM)**
       Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro in un keystore supportato dall’hardware. Esempi includono l’Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS.
-      Non presente in ARF 2.7.3; specifico dell’IT-Wallet.
+      Non presente in ARF 3.0.0; specifico dell’IT-Wallet.
 
     **Livello di Garanzia**
       Nel quadro dell'Unione per l'**identificazione elettronica**, i **livelli di garanzia** esprimono il grado di fiducia nella **correttezza dell'identificazione** delle persone fisiche o giuridiche e nella possibilità di **fare affidamento sui mezzi di identificazione elettronica**. Per gli **schemi di identificazione elettronica notificati**, `EIDAS`_, come modificato (incluso il Quadro europeo di identità digitale codificato dal `EU_2024_1183`_), definisce i livelli **basso (*low*)**, **sostanziale (*substantial*)** e **alto (*high*)**.
       Nelle presenti Specifiche Tecniche il termine **LoA** si impiega anche per i **requisiti minimi di garanzia** riguardanti l'**autenticazione dell'Utente**, il contesto dell'**Istanza del Wallet** e l'**affidabilità degli Attestati Elettronici** (inclusi i metadati di catalogo come il livello minimo di garanzia), che DEVONO restare coerenti con la normativa dell'Unione, con l'attuazione nazionale degli schemi notificati e con le discipline sui **Portafogli di Identità Digitale Europea** e sui **Person Identification Data (PID)** (ivi incluso, ove pertinente, il Regolamento di esecuzione (UE) 2024/2979 della Commissione).
-      Non presente con questa formulazione in ARF 2.7.3; allineato al quadro normativo eIDAS / EUDI Wallet.
+      Non presente con questa formulazione in ARF 3.0.0; allineato al quadro normativo eIDAS / EUDI Wallet.
 
     **Metadata**
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Enti Nazionali di Accreditamento**
       Organismi che svolgono l'attività di accreditamento su delega di uno Stato membro.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Gestore di Identità Digitale**
       Entità organizzativa che fornisce mezzi di identificazione elettronica preesistenti notificati utilizzati per l'autenticazione dell'Utente (ad esempio CieID / SPID), distinta dall'attestato **IT-Wallet ID** detenuto nel Wallet.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **National Trust Anchor**
       Entità organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i metadati di federazione autorevoli per le entità subordinate (ad esempio Intermediari e Foglie).
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Processo di Notifica**
       Procedura per l'invio delle informazioni alla Commissione Europea e l'inserimento all'interno delle Trusted List.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Entità Organizzativa**
       Persona giuridica (pubblica o privata) riconosciuta per svolgere un ruolo nell'ecosistema IT-Wallet.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Dati di Identificazione Personale**
     **Person Identification Data**
     **PID**
       Insieme di dati rilasciati in conformità al diritto dell'Unione o nazionale che consentono di stabilire l'identità di una persona fisica o giuridica, o di una persona fisica che rappresenta un'altra persona fisica o giuridica.
-      Conforme con ARF 2.7.3 / `EU_2024_1183`_. Nelle presenti Specifiche Tecniche, i riferimenti all'emissione, alla presentazione o alla revoca di un PID denotano il PID tecnico (la struttura dati firmata che contiene i Dati di Identificazione Personale), come utilizzato nell'ARF. Il termine italiano «Attestato Elettronico di Dati di Identificazione Personale», ove impiegato come sinonimo di PID, va inteso in questo senso e **non** come Attestato Elettronico di Attributi (EAA).
+      Conforme con ARF 3.0.0 / `EU_2024_1183`_. Nelle presenti Specifiche Tecniche, i riferimenti all'emissione, alla presentazione o alla revoca di un PID denotano il PID tecnico (la struttura dati firmata che contiene i Dati di Identificazione Personale), come utilizzato nell'ARF. Il termine italiano «Attestato Elettronico di Dati di Identificazione Personale», ove impiegato come sinonimo di PID, va inteso in questo senso e **non** come Attestato Elettronico di Attributi (EAA).
 
     **Fornitore di Attestati Elettronici di Dati di Identificazione Personale**
     **PID Provider**
     **Provider of Person Identification Data**
       Persona fisica o giuridica responsabile dell'emissione e della revoca dei Dati di Identificazione Personale e della garanzia che i Dati di Identificazione Personale di un Utente siano associati crittograficamente a una Wallet Unit.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Policy Language**
       Linguaggio formale per la definizione di policy di sicurezza, privacy e gestione dell'identità.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Attori Primari**
       Entità che realizzano le Soluzioni Tecniche per il funzionamento del Sistema IT-Wallet.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Pseudonimo**
       Identificativo alternativo anonimo che consente l'autenticazione e l'autorizzazione da parte di un entità.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Attestato Elettronico di Attributi Qualificati**
       Attestazione verificabile digitalmente emessa da un QTSP, che comprova il possesso di attributi.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Attestato Elettronico di Attributi**
       Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **IT-Wallet ID**
     **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
-      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Gli identificatori tecnici (``vct`` e ``credential_type``) sono definiti nella sezione :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
       Entità Organizzativa che fornisce QEAAs.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore di Attestati Elettronici di Attributi**
     **EAA Provider**
       Entità Organizzativa che fornisce EAAs.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore Qualificato di Firme Elettroniche**
       Fornitore di Servizi Fiduciari che rilascia certificati di Firma Elettronica Qualificata.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Registration Authority**
     **Registrar**
       Soggetto responsabile della registrazione delle Entità Organizzative mediante l'emissione di Attestati di Fiducia.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Processo di Registrazione**
       Procedura per la verifica dell'idoneità e della conformità delle Entità Organizzative.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore di Servizi**
     **Relying Party**
-    **Wallet‑Relying Party**
       Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
+
+    **Wallet-Relying Party**
+      Relying Party che intende fare affidamento sulle Wallet Unit per la fornitura di servizi pubblici o privati mediante interazione digitale.
+      Nell'IT-Wallet comprende i Fornitori di Attestati Elettronici (il PID Provider e i Fornitori di Attestati) e le Relying Party insieme agli Intermediari di Relying Party.
+      Conforme con ARF 3.0.0.
+
+    **Servizio di Relying Party**
+    **Servizio di Wallet-Relying Party**
+      Oggetto di registrazione di primo livello di una Wallet-Relying Party, identificato da un ``serviceTradeName`` idoneo alla presentazione all'Utente e, quando registrato, da un ``serviceIdentifier`` univoco all'interno dell'entità.
+      Gli usi previsti, gli entitlement e i corrispondenti Trust Artifact di quella Wallet-Relying Party sono vincolati a un Servizio.
+      Nel Registro l'oggetto è ``WalletRelyingPartyService`` nell'array ``services`` di `EUDI-TS 5`_.
+      Conforme con ARF 3.0.0 Sezione 3.11.2 e [`CIR2026/1730`_].
 
     **Soluzione di Relying Party**
       Prodotto (software/hardware/cloud) che consente la presentazione degli Attestati Elettronici in vari contesti.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Backend della Relying Party**
       Infrastruttura remota composta da componenti server gestiti da un fornitore di Soluzioni di Relying Party.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Istanza di Relying Party**
     **App di Verifica**
       Istanza specifica di un'applicazione oppure dispositivo in dotazione ad una Relying Party.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Divulgazione Selettiva**
       Funzionalità che consente all'Utente di inviare un sottoinsieme di dati contenuti in Attestati Elettronici.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Self-Sovereign Identity**
       Approccio che concede agli individui di avere il pieno controllo sulle informazioni relative alla propria identità digitale.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Processo di Supervisione**
       Procedimento svolto da parte di un Organismo di Vigilanza per esaminare e garantire il corretto funzionamento del Fornitore di Wallet e di altre entità.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Signal Hub**
       La piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
@@ -238,157 +249,180 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Soluzioni Tecniche**
       Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Specifiche Tecniche**
       Specifiche che forniscono l'architettura tecnica, il quadro implementativo e i requisiti di progettazione.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Trust**
       Fiducia nell'affidabilità, sicurezza e integrità delle entità e delle loro azioni.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trust Attestation**
       Attestazione elettronica di conformità al quadro normativo, verificabile crittograficamente.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trust Evaluation**
       Processo di verifica dell'affidabilità delle Entità Organizzative registrate.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trust Framework**
       Insieme di regole e accordi giuridicamente vincolanti per un sistema composto da più attori.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trust Layer**
       Componente architetturale che consente ai partecipanti di stabilire un rapporto di fiducia.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trust Model**
       Insieme di regole che garantiscono la legittimità dei componenti/entità nell'ecosistema IT-Wallet.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Relazione di Fiducia**
     **Trust Relationship**
       Affidabilità tra Entità Organizzative verificata in seguito alla Trust Evaluation.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Certificato di Accesso**
     **Access Certificate**
       Certificato di autenticazione e convalida della Wallet Relying Party.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Access Certificate Authority**
     **Access CA**
-      Autorità di Certificazione responsabile dell'emissione dei Certificati di Accesso a PID Provider, Attestation Provider e Relying Party per interazioni sicure all'interno dell'ecosistema IT-Wallet.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+    **Provider of WRPAC**
+      Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Access Certificate alle Wallet-Relying Party registrate in quello Stato membro.
+      Nel Trust Framework EUDIW coincide con il Provider of WRPAC.
+      Conforme con ARF 3.0.0.
 
     **Certificato di Registrazione**
     **Registration Certificate**
       Oggetto che indica gli Attributi che la Relying Party ha registrato al fine di richiederli agli Utenti.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore di Certificati di Registrazione**
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
-      Entità Organizzativa responsabile dell'emissione dei Certificati di Registrazione che descrivono lo stato di registrazione e i diritti di PID Provider, Attestation Provider e Relying Party.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+    **Provider of WRPRC**
+      Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
+      Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
+      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida di un Servizio e un WRPAC valido di quel Servizio, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+      Conforme con ARF 3.0.0.
 
     **Federation Registry**
       Componente di registro dell'Infrastruttura del Registro IT-Wallet che mantiene l'elenco autorevole delle entità fidate che partecipano alla federazione, inclusi i relativi metadati di federazione, gli endpoint e le chiavi pubbliche.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Registro delle Fonti Autentiche**
     **Authentic Source Registry**
     **AS Registry**
       Registro contenente le Fonti Autentiche, le loro capacità dichiarate e i claim disponibili, utilizzato dai Fornitori di Attestati Elettronici per individuare e integrare fornitori di dati autorevoli.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Member State Trusted List Provider**
     **MS TLP**
       Entità Organizzativa designata da uno Stato Membro per compilare, firmare e pubblicare le Trusted List nazionali (es. Trusted List dei QTSP, Trusted List dei Fornitori di EAA) e per notificarne la posizione alla Commissione Europea.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Conforme con ARF 3.0.0 Topic 31.
 
     **Certificate Signing Request**
       Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione di un certificato digitale.
-      Non presente in ARF 2.7.3.
+      Non presente in ARF 3.0.0.
 
     **Trusted List**
-      Archivio di informazioni sugli enti autoritativi e sul loro stato.
-      Conforme con ARF 2.7.3.
+      Elenco che fornisce informazioni sullo stato e sulla storia dello stato dei servizi fiduciari dei prestatori di servizi fiduciari rispetto ai requisiti applicabili (`ETSI TS 119 612`_).
+      Ove l'ARF si riferisca al consumo di LoTE, gli implementatori usano la List of Trusted Entities. Le Trusted List nazionali dei Fornitori di QEAA seguono questo profilo e sono scoperte tramite la List of Trusted Lists.
+      Conforme con ARF 3.0.0.
+
+    **List of Trusted Entities**
+    **LoTE**
+      Elenco machine-readable di entità riconosciute come fidate all'interno di un dato schema di approvazione per uno scopo specifico, consumato durante la trust evaluation insieme ai Trust Anchor in ``ServiceDigitalIdentity`` (`ETSI TS 119 602`_).
+      La Commissione Europea compila le LoTE per PID Provider, Wallet Provider, Fornitori di PuB-EAA, Provider of WRPAC e Provider of WRPRC ([`EIDAS-ARF`_] Topic 31).
+      Conforme con ARF 3.0.0.
 
     **eIDAS Trusted List**
-      Archivio di informazioni sulle entità autorevoli e sul loro stato utilizzato nel quadro dei servizi fiduciari eIDAS (es. Trusted List dei PID Provider, Trusted List dei Wallet Provider, List of Trusted List che punta alle Trusted List dei QTSP e dei Fornitori di EAA degli Stati Membri, Trusted List delle CA dei Certificati di Accesso e dei Fornitori di Certificati di Registrazione).
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Termine ombrello IT-Wallet per le Trusted List e le List of Trusted Entities notificate nel quadro dei servizi fiduciari eIDAS (LoTE dei PID Provider, Wallet Provider, PuB-EAA, Access CA e Provider of WRPRC, e Trusted List nazionali dei QTSP e dei Fornitori di EAA scoperte tramite la List of Trusted Lists).
+      Non presente con questa formulazione in ARF 3.0.0; specifico di IT-Wallet.
 
     **Utente**
       Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Verificatore di Attestati Elettronici**
     **Verificatore di Credenziali**
       Una persona o entità che utilizza un'Istanza di Relying Party.
-      Simile ad ARF 2.7.3. ARF utilizza questo termine solo nei casi di interazione tra Wallet.
+      Simile ad ARF 3.0.0. ARF utilizza questo termine solo nei casi di interazione tra Wallet.
 
     **Istanza del Wallet**
       Applicazione installata sul dispositivo di un Utente, parte di un'Istanza del Wallet, che fornisce interfacce utente.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Fornitore di Wallet**
       Entità organizzativa responsabile della gestione e della fornitura di una Soluzione Wallet.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Backend del Fornitore di Wallet**
     **Wallet Provider Backend**
-      Infrastruttura tecnica e componenti server gestiti da un Fornitore di Wallet.
-      Non presente in ARF 2.7.3.
+      La parte di una Soluzione Wallet operata dal Fornitore di Wallet che offre supporto agli Utenti sulle loro Wallet Unit, esegue la manutenzione essenziale ed emette Key Attestation e Wallet Instance Attestation alla Wallet Unit.
+      Conforme con ARF 3.0.0.
 
     **Wallet Secure Cryptographic Application**
       Applicazione che gestisce gli asset critici utilizzando le funzioni crittografiche fornite dal WSCD.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
       Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Soluzione Wallet**
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle Istanze del Wallet.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
 
     **Wallet Unit**
       Configurazione univoca di una soluzione Wallet per un singolo utente, comprensiva delle funzionalità di sicurezza.
       Unique configuration of a Wallet Solution for an individual User, including security features.
-      Conforme con ARF 2.7.3.
+      Conforme con ARF 3.0.0.
+
+    **Wallet Unit Attestation**
+    **WUA**
+      Oggetto di dati che descrive i componenti della Wallet Unit o ne consente l'autenticazione e la convalida.
+      L'ARF definisce due sottotipi: la Wallet Instance Attestation e la Key Attestation ([`EIDAS-ARF`_] Topic 9).
+      Conforme con ARF 3.0.0.
 
     **Key Attestation**
-      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD affidabile, utilizzando le API di Key Attestation (OEM).
-      Allineato alla Technical Specification 3.
+    **KA**
+      Tipo di Wallet Unit Attestation che attesta la certificazione e le proprietà di una WSCA/WSCD o di un keystore disponibile alla Wallet Unit, e che contiene una o più chiavi pubbliche le cui chiavi private corrispondenti sono generate e conservate in quella WSCA/WSCD o keystore.
+      È emessa dal Fornitore di Wallet.
+      Conforme con ARF 3.0.0 Topic 9 e Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**
-      Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet.
-      Specifico per l'IT-Wallet.
+    **WIA**
+      Tipo di Wallet Unit Attestation che attesta l'integrità e l'autenticità di un'Istanza del Wallet e che reca un riferimento di revoca dell'Istanza, nonché informazioni sulla Soluzione Wallet.
+      È emessa dal Fornitore di Wallet.
+      Conforme con ARF 3.0.0 Topic 9.
 
     **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Intermediario**
     **Intermediario di Federazione**
       Entità intermedia come definita nella Sezione 1.2 di `OID-FED`_ nella catena di fiducia OpenID Federation tra Trust Anchor ed entità foglia. Tale ruolo di federazione **non** coincide concettualmente con l'**Intermediario di Relying Party** previsto dal quadro europeo di identità digitale (`EU_2024_1183`_); tuttavia, nel profilo implementativo descritto dalle presenti specifiche tecniche, un **Intermediario di Relying Party** è anche realizzato come Intermediario di Federazione (vedi **Intermediario IT-Wallet**).
-      Conforme con ARF 2.7.3 per le strutture di federazione.
+      Non presente in ARF 3.0.0 come ruolo di federazione; il termine *Intermediary* dell'ARF è l'Intermediario di Relying Party del Topic 52.
 
     **Intermediario di Relying Party**
     **Soggetto Aggregatore**
-      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_ Topic 52). In una presentazione EUDIW intermediata l'Intermediario si autentica con un WRPAC associato a quella Relying Party ([`EIDAS-ARF`_] Reg_34a) e l'Istanza del Wallet NON DEVE mostrare i nomi commerciali dell'Intermediario ([`EIDAS-ARF`_] RPI_07). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Conforme con ARF 3.0.0 Topic 52.
 
     **Intermediario IT-Wallet**
       Entità Organizzativa che agisce come **Intermediario di Relying Party** e che è tecnicamente realizzata come Intermediario di Federazione (`OID-FED`_, Sezione 1.2). Pertanto, nel profilo implementativo IT-Wallet, un Intermediario di Relying Party è anche un Intermediario di Federazione: pubblica la propria Entity Configuration, emette Subordinate Statement per le Relying Party affiliate ed emette loro il Trust Mark. Nell'infrastruttura di trust IT-Wallet, è registrato dal Trust Anchor con un ``trust_mark_type`` specifico, che consente all'Istanza del Wallet di identificare e mostrare all'Utente che il Relying Party richiedente opera tramite un Intermediario riconosciuto.
-      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+      Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
 
 .. note::
-   Qualora un termine non è presente nell'ARF 2.7.3, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
+   Qualora un termine non è presente nell'ARF 3.0.0, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
 
 Di seguito sono riportati i principali termini e definizioni relativi agli aspetti dell'Esperienza Utente:
 
@@ -513,6 +547,12 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**
     - Wallet Secure Cryptographic Device (Dispositivo Crittografico Sicuro per il Wallet)
+  * - **WUA**
+    - Wallet Unit Attestation (Attestazione della Wallet Unit)
+  * - **WIA**
+    - Wallet Instance Attestation (Attestazione dell'Istanza del Wallet)
+  * - **KA**
+    - Key Attestation (Attestazione della Chiave)
 
 Linguaggio Normativo e Convenzioni
 ==================================

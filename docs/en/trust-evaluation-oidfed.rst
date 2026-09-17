@@ -7,6 +7,7 @@ Trust Evaluation in the National Trust Framework
 This section defines the trust evaluation procedures of the National Trust Framework.
 The Entity Type Identifiers and the metadata of each role, used during these procedures, are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`, according to that profile.
 The selection rules that define when these procedures apply are detailed in :ref:`trust-evaluation:Trust Framework Selection`.
+These procedures apply when the Trust Evaluated Party is authenticated under the National Trust Framework.
 
 The Trust Artifacts used during these procedures, that is the Entity Configuration, the Subordinate Statements, the Trust Marks, are defined in :ref:`infrastructure-trust:National Trust Artifacts`.
 
@@ -501,7 +502,7 @@ Trust Mark Validation
 
 **Input**
 
-- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow, through the ``euWrprc`` member as defined in the EUDIW Trust Framework.
+- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow.
 - The validated Federation Trust Anchor configuration.
 
 **Outcome**
@@ -582,8 +583,11 @@ The transparency claims carried in the Trust Mark are the following:
 
 Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
-When the Relying Party operates through a Relying Party Intermediary, the Wallet Unit MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
-In the National Trust Framework the Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
+When the Relying Party operates through a Relying Party Intermediary in the **National Trust Framework**, the Wallet Unit MUST also inform the User that the Relying Party operates through that Intermediary, displaying the identity of both.
+The Intermediary is the Federation Intermediate in the Trust Chain of the Relying Party, registered with the ``intermediate`` Trust Mark (see :ref:`infrastructure-trust:Trust Mark Types and Schema`), and it is therefore identifiable from the validated Trust Chain without additional artifacts.
+
+When the same presentation is evaluated in the **EUDIW Trust Framework**, the Wallet Unit MUST NOT display the trade names of the Intermediary or of the Intermediary Service ([`EIDAS-ARF`_] RPI_07).
+It displays the intermediated Relying Party and its Service, as defined in :ref:`trust-evaluation:EUDIW Authorization`.
 
 Metadata Retrieval and Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,7 +1,7 @@
 {
   "policy_uri": "https://example-ap.eu/policies/edp/v1/financial-sector-trust",
   "policy_type": "specific_root_of_trust",
-  "description": "Access is restricted to Relying Parties possessing an active WRPAC issued by an approved national banking oversight root authority.",
+  "description": "Access is restricted to Relying Parties whose WRPRC is signed under an approved national banking oversight root or intermediate certificate.",
   "policy_authority": "European Banking Coordination Committee",
   "policy_info_url": "https://example-ap.eu/policies/edp/finance-roots-laymans.html",
   "trusted_roots": [

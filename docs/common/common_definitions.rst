@@ -1,6 +1,8 @@
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
 .. _EUDI-TS 3: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info
 .. _EUDI-TS 5: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md
+.. _EUDI-TS 5 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml
+.. _EUDI-TS 5 JSON Schema: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json
 .. _EUDI-TS 10: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md
 .. _EUDI-TS 11: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md
 .. _EUDI-TS 12: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md
@@ -34,10 +36,13 @@
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _CID2015/1505: https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj
 .. _CID2025/2164: https://eur-lex.europa.eu/eli/dec_impl/2025/2164/oj
+.. _CIR2024/2979: https://eur-lex.europa.eu/eli/reg_impl/2024/2979/
 .. _CIR2024/2980: https://eur-lex.europa.eu/eli/reg_impl/2024/2980/
+.. _CIR2024/2982: https://eur-lex.europa.eu/eli/reg_impl/2024/2982/
 .. _CIR2025/848: https://eur-lex.europa.eu/eli/reg_impl/2025/848/
-.. _CIR2025/848-Amendment: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=PI_COM:Ares(2026)1286341
 .. _CIR2025/1569: https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj
+.. _CIR2026/1730: https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj
+.. _CIR2025/848-Amendment: https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj
 .. _CIR2026/1731: https://eur-lex.europa.eu/eli/reg_impl/2026/1731
 .. _EUMS-LOTL: https://ec.europa.eu/tools/lotl/eu-lotl.xml
 .. _ETSI-LOTE-SCHEMAS: https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities
@@ -90,6 +95,7 @@
 .. _RFC 8392: https://datatracker.ietf.org/doc/html/rfc8392
 .. _RFC 9449: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
 .. _RFC 5280: https://datatracker.ietf.org/doc/html/rfc5280
+.. _RFC 9162: https://datatracker.ietf.org/doc/html/rfc9162
 .. _RFC 7763: https://www.rfc-editor.org/rfc/rfc7763.html
 .. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/13/
 .. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22

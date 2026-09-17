@@ -4,7 +4,10 @@
 Flusso di Prossimità
 ====================
 
-Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico *mdoc-CBOR* a un'Istanza del Wallet come dettagliato nella *Specifica ISO 18013-5*.
+Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico *mdoc-CBOR* a un'Istanza del Wallet come dettagliato nella *Specifica ISO 18013-5*, come richiesto da [`CIR2024/2982`_].
+
+Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Presentation`.
+Sotto il Trust Framework EUDIW il certificato del lettore è il Wallet-Relying Party Access Certificate, validato rispetto alla List of Trusted Entities del Provider of WRPAC.
 
 La fase di presentazione di alto livello è strutturata in tre ampie sotto-fasi come illustrato nella figura seguente:
 
@@ -148,7 +151,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 **Passo 10**: Al ricevimento del ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [`ISO18013-5`_ #12.5 *mdoc reader authentication*]) per garantire l'autenticità del messaggio (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
+**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party incluso per valore nella richiesta, come specificato in :ref:`trust-evaluation:EUDIW Authorization`, per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Passo 12**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e quindi approva la presentazione degli attributi richiesti.
 
@@ -466,6 +469,8 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
        - **readerAuth** *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'Istanza di Relying Party per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #12.5].
 
          Questo componente DEVE essere presente solo se ``readerAuthAll`` non viene utilizzato (:ref:`PPR-025 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+
+       - **requestInfo** *(map, CONDIZIONALE)*. Informazioni aggiuntive della richiesta. Nel Trust Framework EUDIW DEVE includere il membro ``euWrprc`` con il Wallet-Relying Party Registration Certificate del Servizio applicabile, incluso per valore, come specificato in :ref:`trust-evaluation:EUDIW Authorization` ([`EIDAS-ARF`_] RPRC_19).
 
    * - **readerAuthAll**
      - *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare la Relying Party una volta per tutte le `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #12.5].

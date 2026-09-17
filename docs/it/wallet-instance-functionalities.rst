@@ -4,11 +4,15 @@
 Funzionalità dell'Istanza del Wallet
 ====================================
 
-Un'Istanza del Wallet DEVE supportare le seguenti funzionalità:
+Un'Istanza del Wallet DEVE supportare le seguenti funzionalità, corrispondenti alle funzionalità principali di [`CIR2024/2979`_] eccetto l'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate, che sono fuori dall'ambito di questa versione:
 
   - Registrazione del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`),
   - Emissione della Wallet Instance Attestation (descritta in dettaglio in :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`),
   - Emissione della Key Attestation (descritta in dettaglio in :ref:`wallet-attestation-issuance:Emissione della Key Attestation`),
+  - Emissione di Attestati Elettronici (dettagliata in :ref:`credential-issuance:Emissione di Attestati Elettronici`),
+  - Presentazione di Attestati Elettronici, in remoto e in prossimità (dettagliata in :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`),
+  - Disclosure selettiva degli attributi,
+  - Dashboard delle transazioni (dettagliata in :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`),
   - Revoca del Wallet (dettagliata in :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`) e
   - Cancellazione degli attributi presentati (dettagliata in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`).
 

@@ -6,10 +6,17 @@ Wallet Solution Requirements
 
 This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances, as well as the corresponding Wallet Instance Attestation, Key Attestation and the secure storage component (WSCD).
 
+These requirements implement, for the Wallet Unit, the core functionalities of [`CIR2024/2979`_] and the interface profile of [`CIR2024/2982`_], as specified in the ARF (`EIDAS-ARF`_).
+Wallet-to-Wallet interaction and qualified electronic signature creation are out of the scope of this version.
+
 - The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
 - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Instance Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
 - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issuers. In case of Credential Issuers, Wallet Instance presents both Wallet Instance and Key Attestations.
+- The Wallet Instance MUST support both the EUDIW Trust Framework and the National Trust Framework, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+- The Wallet Instance MUST store PID and (Q)EAA, apply selective disclosure, and present them remotely and in proximity, as specified in :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
+- PID issuance, storage and presentation are specified in :ref:`pid-until-notification`.
+- The Wallet Instance MUST support the Credential formats required by [`OPENID4VC-HAIP`_], including ``dc+sd-jwt`` and ``mso_mdoc``.
 - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (:ref:`WP_015 <wallet-instance-testcases>`).
 - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 - The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;
@@ -67,6 +74,16 @@ The requirements for the Key Attestation are defined below:
 - If the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the KA.
 - A Wallet Provider SHALL consider all relevant factors, including offline usage, interoperability, and the risk of a KA becoming a vector to track the User, when deciding on the validity period of a KA.
 - The Key Attestation MUST NOT be issued by the Wallet Provider if the WSCD trustworthiness is not guaranteed. In this case, the Wallet Instance MUST be revoked.
+
+
+Use of Key Attestation APIs (OEM)
+.................................
+
+When issuing a Key Attestation:
+
+- For keys bound to a PID, the Wallet Provider MUST NOT use the :term:`Key Attestation APIs (OEM)` (:ref:`WP_140g <wallet-instance-optional-testcases>`).
+- For keys bound to any Digital Credential other than the PID, the Wallet Provider MAY use the :term:`Key Attestation APIs (OEM)` (:ref:`WP_140h <wallet-instance-optional-testcases>`).
+- If Key Attestation APIs (OEM) material is included in the Key Attestation Issuance Request, the Wallet Provider MUST validate it according to the device manufacturer's guidelines (:ref:`WP_143h <wallet-instance-optional-testcases>`).
 
 
 WSCD Requirements

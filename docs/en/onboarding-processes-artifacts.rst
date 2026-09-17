@@ -25,7 +25,7 @@ A distinct ACME service is provided for each purpose, so the type of the certifi
 Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
 A certificate has its own ``notBefore`` and ``notAfter`` and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see :ref:`onboarding-system:Entity Suspension and Removal`, and not by the expiration of the Trust Chain.
 
-The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity, while the Wallet-Relying Party Registration Certificate is requested by the Entity to its Provider after it has obtained its WRPAC, whose validity is one of the conditions of the issuance.
+The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity. The Wallet-Relying Party Registration Certificate is issued automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 
 .. plantuml:: plantuml/acme-oidfed-x509-issuance.puml
    :width: 99%
@@ -116,6 +116,7 @@ The criticality of each requested extension MUST follow the applicable certifica
    * - ``subjectAltName``
      - REQUIRED. It MUST be marked non-critical and MUST contain at least one ``GeneralName`` permitted by the applicable certificate profile.
        For a WRPAC or National Authentication Certificate, it MUST contain at least one of the following contact values: a ``uniformResourceIdentifier`` for a helpdesk/support website, an ``otherName`` with ``type-id`` set to ``2.5.4.20`` (``id-at-telephoneNumber``), or an ``rfc822Name`` for a registration/usage email address.
+       For a WRPAC, it MUST additionally contain the Service identifier URI defined in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
      - :rfc:`5280#section-4.2.1.6`, :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`
 
 Extensions not applicable to, or not listed in, the applicable certificate profile MUST NOT be included in the issued certificate, regardless of any value requested in the Certificate Signing Request.
@@ -134,44 +135,55 @@ Wallet-Relying Party Access Certificate Issuance
 
 Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defined in the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_], and the fallback to the Trust Mark does not apply to it.
+The Entity obtains at least one WRPAC for each registered Service ([`EIDAS-ARF`_] Reg_10a).
+An Intermediary obtains a separate set of WRPACs for each intermediated Relying Party, one WRPAC per intermediated Relying Party Service it serves ([`EIDAS-ARF`_] Reg_34a).
 
 **Input**
 
-The ``certificate_signing_requests`` of the Entity for the WRPAC, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
-The attributes of the certificate come from the record of the Entity in the Register.
+The ``certificate_signing_requests`` of the Entity for the WRPAC of a given Service, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
+The attributes of the certificate come from the corresponding ``services[]`` element of the record of the Entity in the Register.
+For an Intermediary they additionally come from the intermediated Relying Party Service this certificate is associated to ([`EIDAS-ARF`_] Reg_34a).
 
 **Outcome**
 
-The WRPAC, issued by the WRPAC Certification Authority, that the Entity uses to authenticate towards the Wallet Units.
+The WRPAC of that Service, issued by the WRPAC Certification Authority, that the Entity uses to authenticate towards the Wallet Units for that Service.
+For an Intermediary, the WRPAC of the association to a given intermediated Relying Party Service.
 
 **Process**
 
-1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting its ``certificate_signing_requests`` and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
-2. The Certification Authority checks that the Entity has a record in the Register and derives the attributes of the certificate from it.
-3. The Certification Authority issues the WRPAC and the Entity retrieves it.
+1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting the ``certificate_signing_requests`` of the Service and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
+2. The Certification Authority checks that the Entity has a record in the Register, that the requested Service exists in ``services[]``, and derives the attributes of the certificate from that Service (``serviceTradeName`` into ``subject.commonName``, ``serviceIdentifier`` into ``subjectAltName``).
+   For an Intermediary it also encodes in ``subjectAltName`` the unique identifier and the Service identifier of the intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a).
+3. The Certification Authority logs the certificate in a Certificate Transparency log according to :rfc:`9162` ([`EIDAS-ARF`_] CT_01) and embeds at least one Signed Certificate Timestamp in the ``signedCertificateTimestampList`` extension ([`EIDAS-ARF`_] CT_04).
+4. The Certification Authority issues the WRPAC and the Entity retrieves it.
 
 Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-The WRPRC is requested by the Entity to the Provider of WRPRC, which verifies the conditions of Annex V, point 3(c) of [`CIR2025/848`_] before issuing it.
-The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], and revokes the WRPRC when the registration of the Entity changes, so that the Entity requests a new one. 
+The Provider of WRPRC SHALL issue the WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC of the Service, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity or of that Service changes, and SHALL re-issue a new WRPRC automatically where the registration remains valid.
+
+For a Relying Party the Provider SHALL issue a separate WRPRC for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
+For a PID Provider, a QEAA Provider, a PuB-EAA Provider or a non-qualified EAA Provider the Provider SHALL issue a separate WRPRC for each registered Service ([`EIDAS-ARF`_] RPRC_13).
+A Relying Party Intermediary Service that does not declare intended uses does not receive a WRPRC of its own; the Wallet Unit relies on the WRPRC of the intermediated Relying Party Service.
 
 **Input**
 
-The request of the Entity and its valid WRPAC.
-The attributes of the certificate come from the record of the Entity in the Register.
+The signed record of the Entity in the Register, identifying the Relying Party Service and, for a Relying Party, each intended use of that Service, and the valid WRPAC of that Service.
+The attributes of the certificate come from the corresponding ``services[]`` element of the record.
 
 **Outcome**
 
-The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that the Entity presents to the Wallet Units together with its registration data.
+The WRPRC of that Service (and intended use, where applicable), signed by the Provider of WRPRC with its Sign/Seal Certificate and issued to the Entity, that the Entity presents to the Wallet Units together with its registration data.
 
 **Process**
 
-1. The Entity requests the WRPRC to its Provider of WRPRC, for the first issuance or after the revocation of the previous one.
-2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the information the certificate carries is consistent with that record, and that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
-3. The Provider of WRPRC builds the WRPRC from the record of the Entity in the Register and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
-4. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
+1. The Provider of WRPRC is invoked without a request from the Entity when a valid WRPAC of the Service becomes available, or when the Register record of that Service or intended use changes after the previous WRPRC has been revoked.
+2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the Service exists in ``services[]``, that the information the certificate carries is consistent with that Service, and that the WRPAC of that Service is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
+3. The Provider of WRPRC builds the WRPRC from that ``services[]`` element (``name`` from ``serviceTradeName``, ``srv_id`` from ``serviceIdentifier``) and, for a Relying Party, from the corresponding intended use, and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
+4. The Provider of WRPRC issues the WRPRC to the Entity.
+5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity or of that Service is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider SHALL re-issue a new WRPRC without undue delay.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""
@@ -198,7 +210,7 @@ National Authentication Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""
 
 National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [`ISO18013-5`_].
-The certificate follows the same profile of the WRPAC and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+The certificate follows the same profile of the WRPAC, except for Certificate Transparency, which applies only to Wallet-Relying Party Access Certificates in the EUDIW Trust Framework, and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 
 **Input**
 

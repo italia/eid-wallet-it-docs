@@ -6,6 +6,8 @@ Emissione della Key Attestation
 
 Questa sezione descrive come il Fornitore di Wallet emette una Key Attestation.
 
+L'uso delle :term:`Key Attestation APIs (OEM)` è definito in :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+
 .. plantuml:: plantuml/wallet-attestation-issuance.puml
     :width: 99%
     :alt: La figura illustra il Diagramma di Sequenza per l'acquisizione della Key Attestation.
@@ -88,7 +90,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Key Attestat
   2. La firma della Richiesta di Key Attestation DEVE essere valida e verificabile utilizzando la ``jwk`` fornita (:ref:`WP_143b <wallet-instance-optional-testcases>`).
   3. Il valore ``nonce`` DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza (:ref:`WP_143c <wallet-instance-optional-testcases>`).
   4. DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata al ``hardware_key_tag`` (:ref:`WP_143d <wallet-instance-optional-testcases>`).
-  5. La firma del parametro ``keys_to_attest`` deve essere prima validata utilizzando la ``jwk`` fornita, e il suo valore (``key_attestation`` nel caso di Android o ``integrity_assertion`` nel caso di iOS) DEVE essere validato secondo le linee guida del produttore del dispositivo.
+  5. La firma del parametro ``keys_to_attest`` DEVE essere prima validata utilizzando la ``jwk`` fornita. Se è incluso materiale delle API di Key Attestation (OEM), esso DEVE essere validato secondo le linee guida del produttore del dispositivo, come definito in :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)` (:ref:`WP_143h <wallet-instance-optional-testcases>`).
   6. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e le rispettive thumbprint JWKs ``[key_pub_1,...,key_pub_n]``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   7. L'``integrity_assertion`` DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   8. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.

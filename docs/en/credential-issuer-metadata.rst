@@ -139,6 +139,13 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
         - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
+  * - **issuer_info**
+    - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Array of objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each object MUST contain:
+
+        - **registration_cert**: REQUIRED. The Wallet-Relying Party Registration Certificate of the applicable Service, included by value ([`EIDAS-ARF`_] RPRC_22).
+        - **registrar_dataset**: REQUIRED. The registration information of the applicable Service.
+
+      The Wallet Unit MUST use ``registration_cert`` as specified in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` MUST NOT be used as a substitute for ``registration_cert``.
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**

@@ -6,10 +6,17 @@ Requisiti della Soluzione Wallet
 
 Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzioni Wallet con le loro Istanze del Wallet, nonché i corrispondenti Wallet Instance Attestation, Key Attestation e il componente di secure storage (WSCD).
 
+Questi requisiti attuano, per l'Istanza del Wallet, le funzionalità principali di [`CIR2024/2979`_] e il profilo di interfaccia di [`CIR2024/2982`_], come specificato nell'ARF (`EIDAS-ARF`_).
+L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate sono fuori dall'ambito di questa versione.
+
 - La Soluzione Wallet DEVE aderire alle specifiche stabilite da questo documento per ottenere Attestati Elettronici di Dati di Identificazione Personale (PID) e Attestati Elettronici di Attributi (Q)EAA.
 - Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.
 - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Instance Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
 - L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet Instance Attestation che la Key Attestation.
+- L'Istanza del Wallet DEVE supportare sia il Trust Framework EUDIW sia il Trust Framework Nazionale, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
+- L'Istanza del Wallet DEVE memorizzare PID e (Q)EAA, applicare la disclosure selettiva e presentarli in remoto e in prossimità, come specificato in :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
+- L'emissione, la memorizzazione e la presentazione del PID sono specificate in :ref:`pid-until-notification`.
+- L'Istanza del Wallet DEVE supportare i formati di Attestato Elettronico richiesti da [`OPENID4VC-HAIP`_], inclusi ``dc+sd-jwt`` e ``mso_mdoc``.
 - L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (:ref:`WP_015 <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.
 - L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;
@@ -67,6 +74,16 @@ I requisiti per la Key Attestation sono definiti di seguito:
 - Se il WSCA/WSCD è in grado di esportare una chiave privata, il Wallet Provider DEVE specificare questa capacità come attributo nella KA.
 - Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'uso offline, l'interoperabilità e il rischio che una KA diventi un vettore per tracciare l'Utente, nel decidere il periodo di validità di una KA.
 - La Key Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'Istanza del Wallet DEVE essere revocata.
+
+
+Uso delle API di Key Attestation (OEM)
+......................................
+
+Quando emette una Key Attestation:
+
+- Per le chiavi vincolate a un PID, il Fornitore di Wallet NON DEVE utilizzare le :term:`Key Attestation APIs (OEM)` (:ref:`WP_140g <wallet-instance-optional-testcases>`).
+- Per le chiavi vincolate a un Attestato Elettronico diverso dal PID, il Fornitore di Wallet PUÒ utilizzare le :term:`Key Attestation APIs (OEM)` (:ref:`WP_140h <wallet-instance-optional-testcases>`).
+- Se la Richiesta di Emissione della Key Attestation include materiale delle API di Key Attestation (OEM), il Fornitore di Wallet DEVE validarlo secondo le linee guida del produttore del dispositivo (:ref:`WP_143h <wallet-instance-optional-testcases>`).
 
 
 Requisiti WSCD

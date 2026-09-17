@@ -36,65 +36,69 @@
       "policyURI": "https://examplebank.eu/privacy"
     }
   ],
-  "tradeName": "ExampleBank Mobile",
-  "supportURI": [
-    "https://examplebank.eu/support"
-  ],
+  "tradeName": "ExampleBank",
   "isPSB": false,
   "supervisoryAuthority": {
-    "legalPerson": {
-      "legalName": ["Autorità di vigilanza"]
-    },
+    "name": "Garante per la protezione dei dati personali",
     "country": "IT",
     "email": ["contact@supervisor.example.it"],
-    "infoURI": ["https://supervisor.example.it"]
+    "formURI": ["https://supervisor.example.it"]
   },
   "registryURI": "https://registry.example.it/api",
-  "isIntermediary": false,
-  "srvDescription": [
-    [
-      { 
-        "lang": "en", 
-        "content": "Retail banking services for individuals." 
-      },
-      { 
-        "lang": "it", 
-        "content": "Servizi bancari per privati." 
-      }
-    ]
-  ],
-  "entitlement": [
-    "https://uri.etsi.org/19475/Entitlement/Service_Provider"
-  ],
-  "intendedUse": [
+  "services": [
     {
-      "intendedUseIdentifier": "iu-001",
-      "purpose": [
-        { 
-          "lang": "en", 
-          "content": "Open a bank account remotely." 
-        }
-      ],
-      "privacyPolicy": [
-        {
-          "type": "http://data.europa.eu/eudi/policy/privacy-statement",
-          "policyURI": "https://examplebank.eu/privacy/wallet"
-        }
-      ],
-      "credential": [
-        {
-          "format": "dc+sd-jwt",
-          "meta": {
-            "vct": "https://example.eu/schema/pid"
+      "serviceIdentifier": "svc-mobile-01",
+      "serviceTradeName": "ExampleBank Mobile",
+      "supportURI": "https://examplebank.eu/support",
+      "email": "wallet-rp-registration@examplebank.eu",
+      "phone": "+39100000000",
+      "srvDescription": [
+        [
+          {
+            "lang": "en",
+            "content": "Retail banking services for individuals."
           },
-          "claim": [
-            { "path": ["family_name"] },
-            { "path": ["given_name"] },
-            { "path": ["birth_date"] }
-          ]
-        }
+          {
+            "lang": "it",
+            "content": "Servizi bancari per privati."
+          }
+        ]
       ],
-      "createdAt": "2026-01-01"
+      "entitlements": [
+        "https://uri.etsi.org/19475/Entitlement/Service_Provider"
+      ],
+      "isIntermediary": false,
+      "intendedUses": [
+        {
+          "intendedUseIdentifier": "iu-001",
+          "purpose": [
+            {
+              "lang": "en",
+              "content": "Open a bank account remotely."
+            }
+          ],
+          "privacyPolicy": [
+            {
+              "type": "http://data.europa.eu/eudi/policy/privacy-statement",
+              "policyURI": "https://examplebank.eu/privacy/wallet"
+            }
+          ],
+          "credentials": [
+            {
+              "format": "dc+sd-jwt",
+              "meta": {
+                "vct_values": ["https://example.eu/schema/pid"]
+              },
+              "claims": [
+                { "path": ["family_name"] },
+                { "path": ["given_name"] },
+                { "path": ["birth_date"] }
+              ]
+            }
+          ],
+          "createdAt": "2026-01-01"
+        }
+      ]
     }
   ]
 }

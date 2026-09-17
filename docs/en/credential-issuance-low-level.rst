@@ -8,7 +8,7 @@ Credential Issuance Low-Level Flows
 Low-Level Issuance Flow
 -----------------------
 
-The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_:
+The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR2024/2982`_], profiled by [`OPENID4VC-HAIP`_], and the following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], as recommended in Section 3 of [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], as recommended in Section 5 of [`OpenID4VCI`_].
@@ -16,7 +16,10 @@ The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main 
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-  * **OpenID Federation 1.0** [`OID-FED`_].
+  * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
+
+OpenID Federation 1.0 [`OID-FED`_] SHOULD be supported for issuance involving a national entity that addresses a national audience only, as specified in :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Selection at Issuance`.
+A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
 
 The Credential Issuer MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Credential Issuers MUST support:
 
@@ -206,7 +209,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 .. note::
    **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), while the EAA Provider of IT-Wallet ID in addition to CieID LoA High supports also the eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
-   The (Q)EAA Provider performs the User authentication requesting a valid PID or IT-Wallet ID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID or the IT-Wallet ID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID or IT-Wallet ID, obtained beforehand. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
+   The (Q)EAA Provider performs the User authentication requesting a valid PID or IT-Wallet ID to the Wallet Instance, according to :ref:`pid-until-notification`. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request that presentation. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID or IT-Wallet ID, obtained beforehand. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
 
 
 **Steps 6-7 (Authorization Response)**: The Credential Issuer sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
