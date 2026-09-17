@@ -2969,15 +2969,17 @@ The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the present
 <p>Annex III of [CIR 2024/2979] defines three common EDP types:</p>
 <ul>
 <li><p><strong>No Policy.</strong> No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).</p></li>
-<li><p><strong>Authorized Relying Parties Only.</strong> The EDP contains a list of RPs that are allowed to access the Attestation.
-According to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.</p>
+<li><p><strong>Authorized Relying Parties Only.</strong> The EDP contains a list of authorised identifier duplets, each an EU-wide unique Relying Party identifier together with a Service identifier ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02, Reg_32, Reg_33).
+According to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07), that list MAY also identify authorised parties by subject distinguished name, in LDAP string form as defined in <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>, or by entitlement URI.</p>
 <ul class="simple">
 <li><p>For legal persons, the relevant DN attributes are <code class="docutils literal notranslate"><span class="pre">commonName</span></code>, <code class="docutils literal notranslate"><span class="pre">organizationName</span></code>, <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code>, and <code class="docutils literal notranslate"><span class="pre">countryName</span></code>.</p></li>
 <li><p>For natural persons: <code class="docutils literal notranslate"><span class="pre">commonName</span></code>, <code class="docutils literal notranslate"><span class="pre">givenName</span></code>, <code class="docutils literal notranslate"><span class="pre">surname</span></code>, <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code>, and <code class="docutils literal notranslate"><span class="pre">countryName</span></code>.
 The <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> attribute type is represented by the LDAP string &quot;ORGID&quot;; the <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code> attribute type is represented by &quot;SN&quot; (according to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).</p></li>
 </ul>
-<p>If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary identifier from the WRPAC.
-It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC in the request (<code class="docutils literal notranslate"><span class="pre">sub</span></code>) and compare that identifier to the authorised list ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02, RPRC_19).</p>
+<p>The Wallet Unit MUST retrieve the unique identifier and the Service identifier from the WRPRC in the request (<code class="docutils literal notranslate"><span class="pre">sub</span></code> and <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>) and compare that duplet with the authorised list.
+If the duplet is not included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02).
+The Wallet Unit MUST NOT use identifiers from the WRPAC.
+If the authenticated Wallet-Relying Party is an Intermediary, the WRPRC in the request is that of the intermediated Relying Party ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19).</p>
 </li>
 <li><p><strong>Specific Root of Trust.</strong> The EDP contains a list of trusted roots or intermediate certificates used for signing Wallet-Relying Party Registration Certificates ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03).
 Only RPs whose WRPRC signing path contains one of these certificates are allowed to access the Attestation.
@@ -2997,11 +2999,10 @@ This specification supports both the subject DN and the entitlement URI identifi
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> HLR EDP_02 refers to <em>EU-wide unique identifiers</em>, as defined in Reg_32, for the authorized RP list.
-<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate.
-The <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> attribute within the DN has the same semantics as the identifier given in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> HLR Reg_32.
-This specification aligns with the <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> formulation for a <strong>direct</strong> presentation.
-For an <strong>intermediated</strong> presentation EDP_02 requires the identifier of the <em>intermediated</em> Relying Party, taken from the WRPRC in the request, not from the Intermediary WRPAC.</p>
+<p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> HLR EDP_02 requires a list of identifier duplets (EU-wide unique identifier and Service identifier, Reg_32 and Reg_33) taken from the WRPRC in the request, not from the WRPAC.
+<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07) also identifies authorized RPs by subject DN or by entitlement URI.
+The <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> attribute within a subject DN has the same semantics as the identifier given in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> HLR Reg_32, but EDP_02 evaluation MUST use the WRPRC (<code class="docutils literal notranslate"><span class="pre">sub</span></code> and <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>), including in a <strong>direct</strong> presentation.
+For an <strong>intermediated</strong> presentation the WRPRC in the request is that of the <em>intermediated</em> Relying Party.</p>
 </div>
 <section id="embedded-disclosure-policy-data-model">
 <h4><span class="section-number">5.5.6.1. </span>Embedded Disclosure Policy Data Model<a class="headerlink" href="#embedded-disclosure-policy-data-model" title="Link to this heading">¶</a></h4>
@@ -3062,25 +3063,36 @@ Link to a website of the Attestation Provider (AP) explaining the disclosure pol
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties</span></code></p></td>
 <td><p>REQUIRED. array of objects. if <code class="docutils literal notranslate"><span class="pre">policy_type</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;authorized_rp_only&quot;</span></code>.
-Contains a list of authorized Relying Parties allowed to access the Attestation.</p></td>
+Contains a list of authorized identifier duplets (EU-wide unique Relying Party identifier and Service identifier) allowed to access the Attestation.</p></td>
 <td><p>Clause 4.2.5.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-07)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].identifier</span></code></p></td>
+<td><p>REQUIRED. string.
+EU-wide unique identifier of the authorised Relying Party, as specified in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_32.
+It MUST match the <code class="docutils literal notranslate"><span class="pre">sub</span></code> of the WRPRC in the request.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].service_identifier</span></code></p></td>
+<td><p>REQUIRED. string.
+Identifier of the authorised Relying Party Service, as specified in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33.
+It MUST match the <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> of the WRPRC in the request.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].subject_dn</span></code></p></td>
 <td><p>OPTIONAL. string.
-Subject Distinguished Name (DN) of the Relying Party extracted from its Wallet-Relying Party Access Certificate (WRPAC), formatted as an LDAP string compliant with <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.
-At least one of <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> or <code class="docutils literal notranslate"><span class="pre">entitlement_uri</span></code> MUST be present in each element.</p></td>
+Subject Distinguished Name (DN) of the Relying Party, formatted as an LDAP string compliant with <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.
+This is the ETSI encoding of ISS-MDATA-EBD-4.2.5.2-07. EDP evaluation MUST NOT take this value from the WRPAC ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02).</p></td>
 <td><p>Clause 4.2.5.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-07)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].entitlement_uri</span></code></p></td>
 <td><p>OPTIONAL. string (URI).
-URI-encoded entitlement or sub-entitlement as specified in Annex A of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], held within the Wallet-Relying Party Registration Certificate (WRPRC).
-At least one of <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> or <code class="docutils literal notranslate"><span class="pre">entitlement_uri</span></code> MUST be present in each element.</p></td>
+URI-encoded entitlement or sub-entitlement as specified in Annex A of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], held within the Wallet-Relying Party Registration Certificate (WRPRC).</p></td>
 <td><p>Clause 4.2.5.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-07)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trusted_roots</span></code></p></td>
 <td><p>REQUIRED. array of objects. if <code class="docutils literal notranslate"><span class="pre">policy_type</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;specific_root_of_trust&quot;</span></code>.
-Defines a precise list of trusted root or intermediate certificates.
-Only RPs whose WRPACs successfully chain to one of these roots are permitted access.</p></td>
+Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
+Only RPs whose WRPRC signing path contains one of these certificates are permitted access.</p></td>
 <td><p>Clause 4.2.5.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-08)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trusted_roots[].issuer_dn</span></code></p></td>
@@ -3112,9 +3124,13 @@ Extensions MAY be used to supply alternative policy rules applied to specific at
 <span class="w">  </span><span class="nt">&quot;policy_info_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example-ap.eu/policies/edp/medical-laymans.html&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;authorized_parties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VATES-12345678&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;service_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;svc-pharmacy-01&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;subject_dn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CN=Central University Hospital Pharmacy,O=Central Hospital Group,ORGID=VATES-12345678,C=FI&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VATES-87654321&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;service_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;svc-psp-01&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;entitlement_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
@@ -3124,7 +3140,7 @@ Extensions MAY be used to supply alternative policy rules applied to specific at
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example-ap.eu/policies/edp/v1/financial-sector-trust&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;policy_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specific_root_of_trust&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access is restricted to Relying Parties possessing an active WRPAC issued by an approved national banking oversight root authority.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access is restricted to Relying Parties whose WRPRC is signed under an approved national banking oversight root or intermediate certificate.&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;policy_authority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;European Banking Coordination Committee&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;policy_info_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example-ap.eu/policies/edp/finance-roots-laymans.html&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;trusted_roots&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
