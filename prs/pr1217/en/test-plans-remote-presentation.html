@@ -869,6 +869,16 @@
 <td><p>Test that Response URI returns error response on validation failure.</p></td>
 <td><p>Response URI returns error response when validation checks fail.</p></td>
 </tr>
+<tr class="row-even"><td><p>RPR-115</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test Unique National Identifier Binding when <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> or <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> is presented.</p></td>
+<td><p>The Relying Party uses the unique national identifier as the primary identity matching key before reconciliation, as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_201</span></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-116</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test Attribute-Based Binding when a PID is presented without <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>.</p></td>
+<td><p>The Relying Party matches at least <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code> and <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (or <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>).</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -905,7 +915,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

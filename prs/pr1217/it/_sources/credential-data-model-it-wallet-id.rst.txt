@@ -73,7 +73,7 @@ L'IT-Wallet ID in formato SD-JWT VC include i seguenti Attributi Utente:
 .. note::
    **Identity Matching**
 
-   Per l'IT-Wallet ID è presente almeno uno tra ``tax_id_code`` e ``personal_administrative_number``. La Relying Party DEVE prima effettuare l'identity matching utilizzando l'identificativo nazionale univoco presentato (``tax_id_code`` e/o ``personal_administrative_number``) come chiave primaria, prima di qualsiasi identity reconciliation con un record Utente memorizzato (:ref:`CI_201 <credential-issuer-testcases>`). Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'identity reconciliation, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
+   Per l'IT-Wallet ID è presente almeno uno tra ``tax_id_code`` e ``personal_administrative_number``. La Relying Party DEVE applicare l'Unique National Identifier Binding come specificato in :ref:`identity-matching` (:ref:`CI_201 <credential-issuer-testcases>`).
 
 Tutti gli attributi dell'Utente elencati sopra DEVONO essere divulgabili selettivamente (*selectively disclosable*).
 In aggiunta agli attributi di metadati obbligatori definiti nella :ref:`Tabella Parametri di header JOSE SD-JWT <table_sd-jwt-vc_jose_header>` e nella :ref:`Tabella Parametri SD-JWT <table_sd-jwt-vc_parameters>`, i seguenti attributi di metadati sono OBBLIGATORI per un IT-Wallet ID:

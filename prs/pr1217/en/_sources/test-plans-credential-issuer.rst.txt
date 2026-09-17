@@ -969,11 +969,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_201
     - Presentation, Security
     - Identity matching with unique national identifier
-    - When ``personal_administrative_number`` or ``tax_id_code`` is presented, the Relying Party uses it as the primary identity matching key before any reconciliation with a stored User record.
+    - When ``personal_administrative_number`` or ``tax_id_code`` is presented, the Relying Party uses it as the primary identity matching key before any reconciliation with a stored User record, as specified in :ref:`identity-matching`.
   * - CI_202
     - Presentation, Security
     - Attribute-Based Binding without unique identifier
-    - When a PID is presented without ``personal_administrative_number``, Attribute-Based Binding is not limited to a single pair of names. The Relying Party matches at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation, and MUST NOT complete matching on a subset that would allow person swap. Session-based, issuer-attested or cryptographic binding MAY supplement the comparison.
+    - When a PID is presented without ``personal_administrative_number``, Attribute-Based Binding is not limited to a single pair of names. The Relying Party matches at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation, and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching`. Session-based, issuer-attested or cryptographic binding MAY supplement the comparison.
   * - CI_203
     - Issuance, Privacy
     - Batch issuance applicability

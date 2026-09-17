@@ -99,8 +99,8 @@ Coverage index
      - Mobile Relying Party Instance keys when the instance does not hold User identity keys.
    * - 17
      - ALTA
-     - :ref:`CI_201 <credential-issuer-testcases>`, :ref:`CI_202 <credential-issuer-testcases>`
-     - Identity matching with and without ``personal_administrative_number``.
+     - :ref:`CI_201 <credential-issuer-testcases>`, :ref:`CI_202 <credential-issuer-testcases>`, :ref:`RPR-115 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-116 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`
+     - Identity matching with and without ``personal_administrative_number`` (:ref:`identity-matching`).
    * - 18
      - BASSA
      - :ref:`CI_203 <credential-issuer-testcases>`, :ref:`WP_058 <wallet-credential-issuance-testcases>`

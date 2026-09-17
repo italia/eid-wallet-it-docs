@@ -99,8 +99,8 @@ Indice di copertura
      - Chiavi della Mobile Relying Party Instance quando l'istanza non detiene chiavi di identità dell'Utente.
    * - 17
      - ALTA
-     - :ref:`CI_201 <credential-issuer-testcases>`, :ref:`CI_202 <credential-issuer-testcases>`
-     - Identity matching con e senza ``personal_administrative_number``.
+     - :ref:`CI_201 <credential-issuer-testcases>`, :ref:`CI_202 <credential-issuer-testcases>`, :ref:`RPR-115 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-116 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`
+     - Identity matching con e senza ``personal_administrative_number`` (:ref:`identity-matching`).
    * - 18
      - BASSA
      - :ref:`CI_203 <credential-issuer-testcases>`, :ref:`WP_058 <wallet-credential-issuance-testcases>`
