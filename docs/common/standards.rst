@@ -16,7 +16,7 @@ Wallet Architecture and Reference Frameworks
     :header-rows: 0
 
     * - `EIDAS-ARF`_
-      - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
+      - EUDI Wallet Architecture and Reference Framework (ARF) v3.0.0.
 
 
 EUDI Wallet Standards and Technical Specifications

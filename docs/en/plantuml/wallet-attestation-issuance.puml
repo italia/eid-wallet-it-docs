@@ -12,7 +12,7 @@ participant "Wallet Provider backend" as bck
 user->app: Request a new operation that\nrequires a Key Attestation 
 activate app
 
-app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag""), Key Attestation APIs, and Device Integrity APIs are available
+app->app: Check Cryptographic Hardware Key \nTag (""hardware_key_tag"") and Device Integrity APIs.\nIf attesting keys for credentials other than PID,\nKey Attestation APIs MAY be used
 
 app->app: Generates one or a batch of Credential key pair(s) to be attested in Key Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
 
@@ -37,6 +37,8 @@ app->aats: ""client_data_hash"" for Integrity Assertion
 aats->aats: Generate ""integrity_assertion""\nbound to nonce 
 aats-->app: ""integrity_assertion"" for Wallet Instance
 
+alt Keys bound to a Digital Credential other than the PID (OEM APIs MAY be used)
+
 alt if Android - Key Attestation flow for each key pair
 
 activate kats
@@ -58,6 +60,10 @@ aats-->app: ""integrity_assertion"" for WUA
 app->app : Generate ""keys_to_attest""= sign(""integrity_assertion"",""key_priv"")
 end
 
+else Keys bound to a PID
+app->app: MUST NOT invoke Key Attestation APIs (OEM).\nGenerate ""keys_to_attest"" from the credential key pair(s)\nwithout OEM attestation
+end
+
 
 app->app: Generate Key Attestation Request:""assertion""= sign((""integrity_assertion"", ""keys_to_attest"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""key_pub"", ""wallet_solution_id"", ""wallet_solution_version"", ""platform""),""key_priv"")
 app->bck: Send ""assertion""
@@ -68,7 +74,7 @@ using "hardware_key_tag"
 End note
 
 bck->bck: Validate ""nonce""
-bck->bck: Validate ""keys_to_attest"" and Hardware key PoP
+bck->bck: Validate ""keys_to_attest"" and Hardware key PoP\n(OEM attestation MAY be present for credentials other than PID)
 bck->bck: Validate ""integrity_assertion""
 bck->bck: Validate ""hardware_signature""
 bck->bck: Validate ""key_pub"" PoP for signing\n Key Attestation Request
