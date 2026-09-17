@@ -5,11 +5,15 @@
 Wallet Instance Functionalities
 ===============================
 
-A Wallet Instance, MUST support the following functionalities:
+A Wallet Instance MUST support the following functionalities, corresponding to the core functionalities of [`CIR2024/2979`_] except Wallet-to-Wallet interaction and qualified electronic signature creation, which are out of the scope of this version:
 
   - Wallet Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`),
   - Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`),
   - Key Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Key Attestation Issuance`),
+  - Digital Credential issuance (detailed in :ref:`credential-issuance:Digital Credential Issuance`),
+  - Digital Credential presentation, remotely and in proximity (detailed in :ref:`credential-presentation:Digital Credential Presentation`),
+  - Selective disclosure of attributes,
+  - Transaction dashboard (detailed in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`),
   - Wallet Revocation (detailed in :ref:`wallet-instance-revocation:Wallet Instance Revocation`) and
   - Deletion of presented attributes (detailed in :ref:`user-attribute-deletion:User's Attributes Deletion`).
 

@@ -315,7 +315,9 @@
             
   <section id="proximity-flow">
 <h1><span class="section-number">11.2.2. </span>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
-<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance as specified in the <em>ISO 18013-5 Specification</em>.</p>
+<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance as specified in the <em>ISO 18013-5 Specification</em>, as required by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>].</p>
+<p>The applicable Trust Framework is selected as specified in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.
+Under the EUDIW Trust Framework the reader certificate is the Wallet-Relying Party Access Certificate, validated against the Provider of WRPAC List of Trusted Entities.</p>
 <p>The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">

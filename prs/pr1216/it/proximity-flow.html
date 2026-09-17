@@ -317,7 +317,9 @@
             
   <section id="flusso-di-prossimita">
 <h1><span class="section-number">12.2.2. </span>Flusso di Prossimità<a class="headerlink" href="#flusso-di-prossimita" title="Link to this heading">¶</a></h1>
-<p>Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico <em>mdoc-CBOR</em> a un'Istanza del Wallet come dettagliato nella <em>Specifica ISO 18013-5</em>.</p>
+<p>Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico <em>mdoc-CBOR</em> a un'Istanza del Wallet come dettagliato nella <em>Specifica ISO 18013-5</em>, come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>].</p>
+<p>Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.
+Sotto il Trust Framework EUDIW il certificato del lettore è il Wallet-Relying Party Access Certificate, validato rispetto alla List of Trusted Entities del Provider of WRPAC.</p>
 <p>La fase di presentazione di alto livello è strutturata in tre ampie sotto-fasi come illustrato nella figura seguente:</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">

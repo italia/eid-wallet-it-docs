@@ -4,6 +4,9 @@
 Flusso Remoto
 =============
 
+La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_].
+Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+
 A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 
 * **Same Device**: essa DEVE fornire un indirizzo ``HTTP`` all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`);
@@ -59,7 +62,7 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
        * Se ``client_id`` utilizza il prefisso ``openid_federation``, DEVE corrispondere al parametro ``sub`` contenuto nella Entity Configuration della Relying Party all'interno della Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
        * Se ``client_id`` utilizza il prefisso ``x509_hash``, l'Istanza del Wallet DEVE verificare che l'hash del certificato X.509 della Relying Party (nell'intestazione ``x5c`` della richiesta) corrisponda all'hash contenuto in ``client_id`` del passaggio 2 (come definito in `OpenID4VP`_, Sezione 5.9.3).
 
-    c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. Ad esempio, applicando le politiche relative a quella specifica Relying Party ottenute con la Trust Chain (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
+    c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. L'artifact di autorizzazione applicabile segue il Trust Framework selezionato dal prefisso ``client_id``, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`: il Wallet-Relying Party Registration Certificate sotto il Trust Framework EUDIW, oppure le politiche ottenute con la Trust Chain sotto il Trust Framework Nazionale (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.
   6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.
@@ -384,11 +387,19 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
 .. note::
   Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
 
-.. warning::
-
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``request_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-
 Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
+
+.. _endpoint-mix-up-protection:
+
+Protezione da Endpoint Mix-Up
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+  Per prevenire attacchi di tipo endpoint mix-up, i valori di ``request_uri``, ``response_uri`` e ``redirect_uri`` DEVONO ciascuno essere attestati da una terza parte fidata.
+  Sotto il Trust Framework Nazionale DEVONO corrispondere ai parametri ``request_uris``, ``response_uris`` e ``redirect_uris`` nei metadata ``openid_credential_verifier`` ottenuti dalla Trust Chain.
+  Sotto il Trust Framework EUDIW DEVONO corrispondere all'identità vincolata al Wallet-Relying Party Access Certificate e al Wallet-Relying Party Registration Certificate, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+
+  Questo requisito si applica a ``request_uri`` come specificato in :ref:`WP_081 <wallet-credential-presentation-testcases>` e :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`.
 
 
 Richiesta all'Endpoint URI Request
@@ -428,7 +439,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
    * - `vp_formats_supported`
      - OBBLIGATORIO. Oggetto contenente un elenco di coppie nome/valore, in cui il nome è un identificatore di formato di Credenziale e il valore definisce i parametri specifici del formato supportati da un Wallet. Vedere `OpenID4VP`_ Appendice B. Le Istanze del Wallet DEVONO supportare gli identificatori di formato di Credenziale richiesti da `OPENID4VC-HAIP`_ (inclusi ``dc+sd-jwt`` e ``mso_mdoc``).
    * - `client_id_prefixes_supported`
-     - RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono ``openid_federation`` e ``x509_hash``; se omesso, il valore predefinito è pre-registrato.
+     - OBBLIGATORIO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. Le Istanze del Wallet DEVONO includere sia ``x509_hash`` (EUDIW / [`OPENID4VC-HAIP`_]) sia ``openid_federation`` (Trust Framework Nazionale).
    * - `request_object_signing_alg_values_supported`
      - OPZIONALE. Vedi OpenID Connect Discovery.
 
@@ -559,8 +570,7 @@ I parametri del payload JWT sono descritti qui:
     - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (:ref:`RPR-94 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 .. warning::
-
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-95 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  Il parametro ``response_uri`` è soggetto a :ref:`endpoint-mix-up-protection` (:ref:`WP_091a <wallet-credential-presentation-testcases>` e :ref:`RPR-95 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 .. note::
   Il parametro ``transaction_data`` è destinato ai casi d'uso in cui l'Istanza del Wallet DEVE autorizzare una transazione specifica, come l'avvio di un pagamento o una firma digitale. In questi scenari ad alta sensibilità, l'obiettivo è vincolare i dettagli della transazione alla Authorization Response, in modo da preservarne l'integrità e consentire di dimostrare successivamente l'approvazione dell'Utente (non ripudio).
@@ -714,8 +724,7 @@ La Relying Party DEVE includere un codice di risposta all'interno del ``redirect
 Anche se un avversario riesce a rubare il valore casuale utilizzato nella richiesta allo Status Endpoint, il suo user-agent verrebbe rifiutato a causa del cookie mancante nella richiesta.
 
 .. warning::
-
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``redirect_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``redirect_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_094a <wallet-credential-presentation-testcases>`).
+  Il parametro ``redirect_uri`` è soggetto a :ref:`endpoint-mix-up-protection` (:ref:`WP_094a <wallet-credential-presentation-testcases>`).
 
 Errori della Risposta della Relying Party
 -----------------------------------------
