@@ -145,7 +145,7 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **registration_cert**: REQUIRED. The Wallet-Relying Party Registration Certificate of the applicable Service, included by value ([`EIDAS-ARF`_] RPRC_22).
         - **registrar_dataset**: REQUIRED. The registration information of the applicable Service.
 
-      The Wallet Unit MUST use ``registration_cert`` as the authoritative Wallet-Relying Party Registration Certificate for issuance authorization. ``registrar_dataset`` MUST NOT be used as a substitute for ``registration_cert``.
+      The Wallet Unit MUST use ``registration_cert`` as specified in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` MUST NOT be used as a substitute for ``registration_cert``.
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**

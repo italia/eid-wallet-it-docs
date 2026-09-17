@@ -5,7 +5,7 @@ Flusso Remoto
 =============
 
 La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_].
-Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 
 A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 
@@ -62,7 +62,7 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
        * Se ``client_id`` utilizza il prefisso ``openid_federation``, DEVE corrispondere al parametro ``sub`` contenuto nella Entity Configuration della Relying Party all'interno della Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
        * Se ``client_id`` utilizza il prefisso ``x509_hash``, l'Istanza del Wallet DEVE verificare che l'hash del certificato X.509 della Relying Party (nell'intestazione ``x5c`` della richiesta) corrisponda all'hash contenuto in ``client_id`` del passaggio 2 (come definito in `OpenID4VP`_, Sezione 5.9.3).
 
-    c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. L'artifact di autorizzazione applicabile segue il Trust Framework selezionato dal prefisso ``client_id``, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`: il Wallet-Relying Party Registration Certificate sotto il Trust Framework EUDIW, oppure le politiche ottenute con la Trust Chain sotto il Trust Framework Nazionale (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
+    c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. L'artifact di autorizzazione applicabile segue il Trust Framework selezionato dal prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`: il Wallet-Relying Party Registration Certificate sotto il Trust Framework EUDIW, oppure le politiche ottenute con la Trust Chain sotto il Trust Framework Nazionale (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.
   6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.
@@ -397,7 +397,7 @@ Protezione da Endpoint Mix-Up
 .. warning::
   Per prevenire attacchi di tipo endpoint mix-up, i valori di ``request_uri``, ``response_uri`` e ``redirect_uri`` DEVONO ciascuno essere attestati da una terza parte fidata.
   Sotto il Trust Framework Nazionale DEVONO corrispondere ai parametri ``request_uris``, ``response_uris`` e ``redirect_uris`` nei metadata ``openid_credential_verifier`` ottenuti dalla Trust Chain.
-  Sotto il Trust Framework EUDIW DEVONO corrispondere all'identità vincolata al Wallet-Relying Party Access Certificate e al Wallet-Relying Party Registration Certificate, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+  Sotto il Trust Framework EUDIW DEVONO corrispondere all'identità vincolata al Wallet-Relying Party Access Certificate e al Wallet-Relying Party Registration Certificate, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 
   Questo requisito si applica a ``request_uri`` come specificato in :ref:`WP_081 <wallet-credential-presentation-testcases>` e :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`.
 
@@ -520,10 +520,10 @@ I parametri dell'header JWT sono descritti di seguito:
   * - **trust_chain**
     - OPZIONALE. È una sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
-    - OBBLIGATORIO quando ``client_id`` utilizza uno schema con prefisso ``x509_hash``. OPZIONALE quando ``client_id`` utilizza lo schema ``openid_federation``. Contiene il certificato X.509 foglia della Relying Party (e opzionalmente i certificati intermedi), utilizzato per verificare la firma JWT con la chiave pubblica nel certificato della Relying Party come definito in :rfc:`7515`. Il certificato della Relying Party in ``x5c`` DEVE attestare informazioni di identità della Relying Party sufficienti per vincolare gli endpoint di rete referenziati dal flusso di presentazione. In particolare, gli endpoint utilizzati nella Authorization Request e Authorization Response (ad esempio, ``response_uri``, ``redirect_uri``) DEVONO corrispondere alle informazioni di identità contenute nel certificato della Relying Party (ad esempio, un SAN di tipo URI per il matching completo dell'URI o un DNS Name SAN per il matching del nome host).
+    - OBBLIGATORIO quando ``client_id`` utilizza uno schema con prefisso ``x509_hash``. OPZIONALE quando ``client_id`` utilizza lo schema ``openid_federation``. Contiene la catena di certificati X.509 della Relying Party, escluso il certificato Trust Anchor. Questo certificato DEVE essere usato per verificare la firma JWT. Il certificato della Relying Party in ``x5c`` attesta le informazioni di identità della Relying Party insieme agli endpoint di rete usati nel flusso di presentazione, inclusi gli endpoint Authorization Request e Response (``response_uri`` e ``redirect_uri``). Tutti gli endpoint usati nel flusso di presentazione DEVONO essere vincolati all'FQDN e a qualsiasi ulteriore webpath fornito nel certificato della Relying Party, in forma di SAN di tipo URI per il matching completo dell'URI, o di SAN DNSName per il matching del nome host.
 
 .. note::
-   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`trust-infrastructure:X.509 PKI` per informazioni di base sulla validazione della catena di certificati X.509.
+   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`infrastructure-trust:X.509 Certificate Profile` per informazioni di base sulla validazione della catena di certificati X.509.
 
 I parametri del payload JWT sono descritti qui:
 
@@ -542,6 +542,13 @@ I parametri del payload JWT sono descritti qui:
         - **encrypted_response_enc_values_supported**. Array JSON che elenca gli algoritmi JWE ``enc`` supportati per le Authorization Response cifrate in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
         - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
+  * - **verifier_info**
+    - OBBLIGATORIO quando ``client_id`` utilizza un prefisso ``x509_hash``. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito in [`ETSI TS 119 472-2`_] e nella Sezione 5.1 di [`OpenID4VP`_]. Ciascun oggetto DEVE contenere:
+
+        - **registration_cert**: OBBLIGATORIO. Il Wallet-Relying Party Registration Certificate del Servizio applicabile, incluso per valore ([`EIDAS-ARF`_] RPRC_19).
+        - **registrar_dataset**: OPZIONALE. Le informazioni di registrazione del Servizio applicabile, solo per pubblicazione e trasparenza.
+
+      La Wallet Unit DEVE usare ``registration_cert`` come specificato in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` NON DEVE essere usato come sostituto di ``registration_cert``.
   * - **response_mode**
     - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**

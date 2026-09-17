@@ -502,7 +502,7 @@ Trust Mark Validation
 
 **Input**
 
-- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow, through the ``euWrprc`` member as defined in the EUDIW Trust Framework.
+- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow.
 - The validated Federation Trust Anchor configuration.
 
 **Outcome**

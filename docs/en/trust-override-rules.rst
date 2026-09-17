@@ -32,7 +32,7 @@ A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit b
       When the process terminates with ``CERTIFICATE_VALID`` AND ``EDP_NOT_SATISFIED``, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
     - **Missing or invalid WRPRC [EUDIW]**.
       When the process terminates with ``CERTIFICATE_INVALID`` during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
-      The Wallet Unit MUST warn the User ([`EIDAS-ARF`_] RPRC_17) and MUST NOT query the Register ([`EIDAS-ARF`_] RPRC_16 and RPRC_18 are empty).
+      The Wallet Unit MUST warn the User and MUST NOT query the Register, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
       Whether the User may still approve follows the Wallet Provider policy.
     - **Overasking [National]**.
       When the process terminates with ``TRUST_MARK_VALID`` AND ``OVERASKING_DETECTED``, i.e., the :ref:`trust-evaluation:Trust Mark Validation` has had a positive outcome, but the :ref:`trust-evaluation:Overasking Check` finds the Relying Party requesting more than its registered scope.
@@ -42,5 +42,4 @@ All other presentation failures, including binding failures or intermediary bind
 In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
 User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.
 
-The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request ([`EIDAS-ARF`_] RPRC_21).
-It is not gated on a User opt-in to Registrar lookup ([`EIDAS-ARF`_] RPRC_16 and RPRC_18 are empty).
+The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request, as specified in :ref:`trust-evaluation:EUDIW Authorization`.

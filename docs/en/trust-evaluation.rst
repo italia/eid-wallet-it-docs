@@ -136,11 +136,15 @@ Failure Handling
 The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
 In particular, a failed EUDIW evaluation MUST NOT be retried as a National Trust Framework evaluation.
 
-In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
-During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance.
-Unlike the presentation case, no User choice is offered at issuance.
+If Authentication fails, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction ([`EIDAS-ARF`_] CT_06, RPA_06a).
+The same applies under the National Trust Framework: a ``NON_AUTHENTICATED`` outcome MUST stop the interaction.
 
-This behavior follows the requirements defined in the ARF Annex 2 (`EIDAS-ARF`_), and applies for both EUDIW and National Trust Frameworks.
+If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+During presentation, a User choice to proceed is allowed only for the overridable Authorization outcomes defined there.
+Authentication failure is not overridable.
+
+During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance ([`EIDAS-ARF`_] RPRC_22a).
+No User choice is offered at issuance.
 
 .. include:: trust-evaluation-eudiw.rst
 .. include:: trust-evaluation-oidfed.rst

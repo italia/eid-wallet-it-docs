@@ -458,7 +458,7 @@ If **Base Signature Validation** results in failure, the Entity validating the A
 
 .. note::
 
-  When verifiying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
+  When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
 
 If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
@@ -710,6 +710,7 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
       A match on the identifier duplet or on ``entitlement_uri`` is sufficient.
       If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
       The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
+      If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for the identifier duplet.
       In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
     - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
       The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.

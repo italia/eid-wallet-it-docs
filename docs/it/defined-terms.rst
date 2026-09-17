@@ -201,8 +201,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fornitore di Servizi**
     **Relying Party**
-    **Wallet‑Relying Party**
       Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
+      Conforme con ARF 3.0.0.
+
+    **Wallet-Relying Party**
+      Relying Party che intende fare affidamento sulle Wallet Unit per la fornitura di servizi pubblici o privati mediante interazione digitale.
+      Nell'IT-Wallet comprende i Fornitori di Attestati Elettronici (il PID Provider e i Fornitori di Attestati) e le Relying Party insieme agli Intermediari di Relying Party.
       Conforme con ARF 3.0.0.
 
     **Servizio di Relying Party**
@@ -302,7 +306,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Reg. Cert. Provider**
     **Provider of WRPRC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
-      Nel Trust Framework EUDIW coincide con il Provider of WRPRC. Emette tali certificati automaticamente dopo la registrazione di un Servizio.
+      Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
+      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida di un Servizio e un WRPAC valido di quel Servizio, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Conforme con ARF 3.0.0.
 
     **Federation Registry**

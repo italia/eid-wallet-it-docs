@@ -543,6 +543,13 @@ The JWT payload parameters are described herein:
         - **encrypted_response_enc_values_supported**. JSON array listing the supported JWE ``enc`` algorithms for encrypted Authorization Responses in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their ``kid`` value.
         - **client_name** and **logo_uri**. OPTIONAL. Used for user consent display and to show the Relying Party identity in the Wallet Instance interface.
+  * - **verifier_info**
+    - REQUIRED when ``client_id`` uses an ``x509_hash`` prefix. Array of objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_]. Each object MUST contain:
+
+        - **registration_cert**: REQUIRED. The Wallet-Relying Party Registration Certificate of the applicable Service, included by value ([`EIDAS-ARF`_] RPRC_19).
+        - **registrar_dataset**: OPTIONAL. The registration information of the applicable Service, for publication and transparency only.
+
+      The Wallet Unit MUST use ``registration_cert`` as specified in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` MUST NOT be used as a substitute for ``registration_cert``.
   * - **response_mode**
     - REQUIRED. It MUST be set to ``direct_post.jwt`` in both Same Device and Cross Device flows (:ref:`RPR-90 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **dcql_query**
