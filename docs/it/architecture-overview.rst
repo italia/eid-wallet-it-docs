@@ -7,6 +7,8 @@ Panoramica dell'Architettura
 Il Sistema IT-Wallet è un ecosistema federato che consente la gestione sicura dell'Identità Digitale e lo scambio di Attestati Elettronici per cittadini e organizzazioni.
 L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli organi di governance stabiliscono e mantengono l'infrastruttura di trust, gli Attori Primari implementano e gestiscono le Soluzioni Tecniche, e i sistemi esterni forniscono servizi aggiuntivi.
 
+IT-Wallet implementa i due Trust Framework definiti in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+
 I seguenti diagrammi illustrano la panoramica dell'architettura IT-Wallet.
 
 .. plantuml:: plantuml/architecture-overview-governance.puml
@@ -39,10 +41,10 @@ L'architettura abilita i seguenti processi di interazione principali:
 
   2. **Discovery delle Credenziali e Gestione del Catalogo**: L'ecosistema supporta meccanismi duali di discovery delle credenziali pubbliche attraverso il :ref:`registry:Catalogo degli Attestati Elettronici` per credenziali di uso generale, e discovery di Attestati Elettronici privati tramite Credential Offer dirette per casi d'uso specifici. Il catalogo viene popolato automaticamente basandosi sulle policy dell'Organismo di Supervisione dalle definizioni registrate nel Claims Registry e nella Taxonomy.
 
-  3. **Rilascio degli Attestati**: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. Il rilascio può procedere sia per attestati pubblicati nel catalogo che per offerte di attestati privati.
+  3. **Rilascio degli Attestati**: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. L'emissione segue [`OpenID4VCI`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_]. Il rilascio può procedere sia per attestati pubblicati nel catalogo che per offerte di attestati privati. Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-  4. **Archiviazione e Gestione degli Attestati**: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati.
+  4. **Archiviazione e Gestione degli Attestati**: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati, inclusa la disclosure selettiva come richiesto da [`CIR2024/2979`_].
 
-  5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Registro dei Claims` per la verifica dello schema.
+  5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [`OpenID4VP`_] profilato da [`OPENID4VC-HAIP`_]; la presentazione in prossimità utilizza [`ISO18013-5`_], come richiesto da [`CIR2024/2982`_]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Registro dei Claims` per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 

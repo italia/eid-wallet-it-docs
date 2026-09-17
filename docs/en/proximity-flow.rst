@@ -5,7 +5,10 @@
 Proximity Flow
 ==============
 
-This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance as specified in the *ISO 18013-5 Specification*.
+This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance as specified in the *ISO 18013-5 Specification*, as required by [`CIR2024/2982`_].
+
+The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
+Under the EUDIW Trust Framework the reader certificate is the Wallet-Relying Party Access Certificate, validated against the Provider of WRPAC List of Trusted Entities.
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
 

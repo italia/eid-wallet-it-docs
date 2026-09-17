@@ -9,6 +9,9 @@ L'Istanza del Wallet stabilisce un meccanismo forte e affidabile per garantire a
 L'Istanza del Wallet stabilisce un rapporto di fiducia con i Fornitori di PID e (Q)EAA presentando le Wallet Instance Attestation e Key Attestation durante le interazioni.
 Queste attestazioni verificabili, fornite dal Fornitore di Wallet, servono ad autenticare la stessa Istanza del Wallet, garantendo l'affidabilità del WSCD, verificando che l'Istanza del Wallet non sia stata revocata e assicurandone l'affidabilità nelle interazioni con gli altri attori dell'ecosistema.
 
+I requisiti sul supporto dei Trust Framework e sulla presentazione della Wallet Instance Attestation e della Key Attestation sono specificati in :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`.
+L'emissione del PID prima della notifica EUDIW è specificata in :ref:`pid-until-notification`.
+
 
 .. toctree::
   :caption: Indice dei Contenuti dell'Istanza del Wallet

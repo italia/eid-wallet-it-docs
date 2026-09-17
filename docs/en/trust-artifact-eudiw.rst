@@ -416,10 +416,10 @@ The example below shows a non-normative example of payload of a List of Trusted 
 Embedded Disclosure Policy (EDP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An Embedded Disclosure Policy (EDP) is defined in Article 2(9) of CIR 2024/2979 as: *"A set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes"*.
+An Embedded Disclosure Policy (EDP) is defined in Article 2(9) of [`CIR2024/2979`_] as: *"A set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes"*.
 
 Attestation Providers (i.e., all Credential Issuers except the PID Provider) can optionally express an EDP which allow indicating which Relying Parties can access specific Digital Credentials.
-The Article 10 of CIR 2024/2979 establishes that Wallet Providers MUST ensure that Attestations with common EDPs (as listed in Annex III of CIR 2024/2979) can be processed by their Wallet Units.
+The Article 10 of [`CIR2024/2979`_] establishes that Wallet Providers MUST ensure that Attestations with common EDPs (as listed in Annex III of [`CIR2024/2979`_]) can be processed by their Wallet Units.
 
 EDPs are applicable to QEAAs, PuB-EAAs, and EAAs.
 They MUST NOT be applicable to PIDs.
@@ -434,7 +434,7 @@ Embedded Disclosure Policies are used to:
 - Implementing sector-specific access control (e.g., only public sector RPs or only healthcare RPs).
 - Implementing Member-State-specific access control (e.g., only RPs registered within a specific Member State).
 
-Annex III of [CIR 2024/2979] defines three common EDP types:
+Annex III of [`CIR2024/2979`_] defines three common EDP types:
 
 - **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
 
