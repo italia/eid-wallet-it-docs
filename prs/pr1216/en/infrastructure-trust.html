@@ -1678,13 +1678,15 @@ Relying Parties MUST NOT require an additional issuer above a Trust Anchor retri
 <section id="register-of-wrps">
 <h3><span class="section-number">5.5.1. </span>Register of WRPs<a class="headerlink" href="#register-of-wrps" title="Link to this heading">¶</a></h3>
 <p>The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs, their <strong>Services</strong>, and their authorisations/declared usage.
-This section documents a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> version 1.4 aligned profile that satisfies Annex II of <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].</p>
+This section documents a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> version 1.5 (2026-08-20) aligned profile that satisfies Annex II of <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].</p>
 <p>A Wallet-Relying Party that operates in the EUDIW Trust Framework MUST register one or more <strong>Relying Party Services</strong> in the <code class="docutils literal notranslate"><span class="pre">services</span></code> array of the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> object (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>, <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>).
-Each Service has a <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> unique within the entity and a <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> suitable for presenting to the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10a, Reg_33, Reg_34).
-Intended uses, entitlements, provided attestations and intermediary relationships are bound to a Service, not to the entity root ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10d).</p>
+Each Service has a <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> suitable for presenting to the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10a, Reg_34).
+<code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is unique within the entity when registered. It MUST be registered if the Service relies on an Intermediary (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> v1.5) and MUST be registered when a WRPAC is issued for that Service ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33, RPRC_07a).
+Intended uses, entitlements, provided attestations and intermediary relationships are bound to a Service, not to the entity root ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10d).
+A pure Intermediary Service MUST NOT register an entitlement (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> v1.5). An Intermediary Service MUST list the Service identifiers it serves in <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code> ([<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], Annex I).</p>
 <section id="register-dataset">
 <h4><span class="section-number">5.5.1.1. </span>Register Dataset<a class="headerlink" href="#register-dataset" title="Link to this heading">¶</a></h4>
-<p>The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].
+<p>The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of Annex VI of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], encoded as the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> JSON Schema of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> version 1.5.
 Below some non-normative examples of <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> objects stored in the Register.</p>
 <p>A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -1726,17 +1728,12 @@ Below some non-normative examples of <code class="docutils literal notranslate">
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;tradeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleBank&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;supportURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;https://examplebank.eu/support&quot;</span>
-<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;isPSB&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;supervisoryAuthority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;legalPerson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;legalName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Autorità di vigilanza&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Garante per la protezione dei dati personali&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contact@supervisor.example.it&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;infoURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;formURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;registryURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.example.it/api&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1781,7 +1778,7 @@ Below some non-normative examples of <code class="docutils literal notranslate">
 <span class="w">            </span><span class="p">{</span>
 <span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.eu/schema/pid&quot;</span>
+<span class="w">                </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://example.eu/schema/pid&quot;</span><span class="p">]</span>
 <span class="w">              </span><span class="p">},</span>
 <span class="w">              </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
@@ -1839,17 +1836,12 @@ It registers two Services: one Service with <code class="docutils literal notran
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;tradeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleBank&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;supportURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;https://examplebank.eu/support&quot;</span>
-<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;isPSB&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;supervisoryAuthority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;legalPerson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;legalName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Autorità di vigilanza&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Garante per la protezione dei dati personali&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contact@supervisor.example.it&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;infoURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;formURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;registryURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.example.it/api&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1931,15 +1923,7 @@ It registers two Services: one Service with <code class="docutils literal notran
 <span class="w">      </span><span class="nt">&quot;providesAttestations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://examplebank.eu/schema/bank-account&quot;</span><span class="p">]</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;claim&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;iban&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;account_holder_name&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;account_type&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;currency&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="w">          </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://examplebank.eu/schema/bank-account&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;intendedUses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1977,7 +1961,7 @@ It registers two Services: one Service with <code class="docutils literal notran
 </pre></div>
 </div>
 <p>An entity registered as a designated Intermediary that acts on behalf of WRPs during Wallet interactions.
-Each of its <code class="docutils literal notranslate"><span class="pre">services[]</span></code> elements has <code class="docutils literal notranslate"><span class="pre">isIntermediary:</span> <span class="pre">true</span></code> and does not declare <code class="docutils literal notranslate"><span class="pre">intendedUses</span></code> (not required when registering solely as an Intermediary).</p>
+Each of its <code class="docutils literal notranslate"><span class="pre">services[]</span></code> elements has <code class="docutils literal notranslate"><span class="pre">isIntermediary:</span> <span class="pre">true</span></code>, does not declare <code class="docutils literal notranslate"><span class="pre">intendedUses</span></code> or entitlements, and lists the served Services in <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code>.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;legalPerson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;legalName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TrustBridge Services B.V.&quot;</span><span class="p">]</span>
@@ -2011,15 +1995,12 @@ Each of its <code class="docutils literal notranslate"><span class="pre">service
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;tradeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TrustBridge&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;supportURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trustbridge.example/support&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;isPSB&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;supervisoryAuthority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;legalPerson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;legalName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Autorità di vigilanza&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Garante per la protezione dei dati personali&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contact@supervisor.example.it&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;infoURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;formURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://supervisor.example.it&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;registryURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.example.it/api&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -2041,11 +2022,7 @@ Each of its <code class="docutils literal notranslate"><span class="pre">service
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;entitlements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;https://uri.etsi.org/19475/Entitlement/Service_Provider&quot;</span>
-<span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;isIntermediary&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;intendedUses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">      </span><span class="nt">&quot;servedWRPServices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;svc-mobile-01&quot;</span>
 <span class="w">      </span><span class="p">]</span>
@@ -2060,13 +2037,19 @@ Each of its <code class="docutils literal notranslate"><span class="pre">service
 <p>The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements,
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.</p>
 <ul class="simple">
-<li><p><strong>GET /wrp</strong>: Get a list of WRPs with optional filtering (defined in Annex VI of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>]) and pagination.
+<li><p><strong>GET /wrp</strong>: Get a list of WRPs with optional filtering and pagination, as defined in Section 3.2 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> version 1.5.
+The filter parameters are <code class="docutils literal notranslate"><span class="pre">identifier</span></code>, <code class="docutils literal notranslate"><span class="pre">legalname</span></code>, <code class="docutils literal notranslate"><span class="pre">tradename</span></code>, <code class="docutils literal notranslate"><span class="pre">serviceidentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">policy</span></code>, <code class="docutils literal notranslate"><span class="pre">entitlement</span></code>, <code class="docutils literal notranslate"><span class="pre">providedattestation</span></code>, <code class="docutils literal notranslate"><span class="pre">usesintermediary</span></code>, <code class="docutils literal notranslate"><span class="pre">isintermediary</span></code>, <code class="docutils literal notranslate"><span class="pre">intendeduseidentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">claimpath</span></code>, <code class="docutils literal notranslate"><span class="pre">credentialmeta</span></code> and <code class="docutils literal notranslate"><span class="pre">credentialformat</span></code>.
 A successful response (<code class="docutils literal notranslate"><span class="pre">200</span></code>) MUST be a JWS-signed response body.
 The decoded payload MUST contain an array of <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> objects matching the query, and, where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State.
+When the query uses <code class="docutils literal notranslate"><span class="pre">serviceidentifier</span></code>, the response MUST include only the matching <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> in the <code class="docutils literal notranslate"><span class="pre">services</span></code> array of each matching <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code>.
 The list of all registered WRPs is returned when no query parameters are provided.</p></li>
+<li><p><strong>GET /wrp/{identifier}</strong>: Retrieve the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> object matching the given identifier.
+A successful response (<code class="docutils literal notranslate"><span class="pre">200</span></code>) MUST be a JWS-signed object.</p></li>
+<li><p><strong>GET /wrp/{identifier}/services/{serviceidentifier}</strong>: Retrieve the parent <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> object with the <code class="docutils literal notranslate"><span class="pre">services</span></code> array sliced to the matching Service.
+A successful response (<code class="docutils literal notranslate"><span class="pre">200</span></code>) MUST be a JWS-signed object.</p></li>
 <li><p><strong>GET /wrp/check-intended-use</strong>: A dedicated intended-use check endpoint for making narrowed-down intended use related queries from the Register.
-A successful response (<code class="docutils literal notranslate"><span class="pre">200</span></code>) MUST provide a JWS-signed boolean <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> response, determined by the queried parameter in the Registrar's Intended use information for the specific WRP.
-If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code <code class="docutils literal notranslate"><span class="pre">400</span></code> and <code class="docutils literal notranslate"><span class="pre">401</span></code>, respectively.</p></li>
+A successful response (<code class="docutils literal notranslate"><span class="pre">200</span></code>) MUST provide a JWS-signed boolean <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> response, determined by the queried parameters in the Registrar's Intended use information.
+If the request is invalid or incomplete the endpoint MUST answer with error code <code class="docutils literal notranslate"><span class="pre">400</span></code>. If the given WRP is not found, it MUST answer with error code <code class="docutils literal notranslate"><span class="pre">404</span></code>.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2075,12 +2058,9 @@ All other fields, including intended-use credential claims, are published as reg
 The Register Open APIs remain for publication and transparency ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_03, Reg_06) and for Credential Issuance checks.
 They MUST NOT be used by the Wallet Unit as a substitute for a missing Wallet-Relying Party Registration Certificate during Credential Presentation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16, RPRC_18 and RPRC_19a are empty).</p>
 </div>
-<p>The YAML file of the OpenAPI specification described in Section 3 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> is available as <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.
-The JSON Schema of the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> object, including the <code class="docutils literal notranslate"><span class="pre">services</span></code> array of <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, is available as <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter <code class="docutils literal notranslate"><span class="pre">providesattestation</span></code> to query for WRPs that provide the queried attestation type, as expected in [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].</p>
-</div>
+<p>The YAML file of the OpenAPI specification described in Section 3 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> version 1.5 is available as <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.
+The JSON Schema of the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> object, including the <code class="docutils literal notranslate"><span class="pre">services</span></code> array of <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, is available as <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.
+The national read profile of that API is available <span class="raw-html"><a href="OAS3-Register-API-READ.html" target="_blank">here</a></span>.</p>
 </section>
 </section>
 <section id="wallet-relying-party-access-certificate-wrpac-profile">
