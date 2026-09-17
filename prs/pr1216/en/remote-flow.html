@@ -857,13 +857,24 @@ When present, the Relying Party MUST evaluate it (<a class="reference internal" 
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>response_mode</strong></p></td>
+<tr class="row-even"><td><p><strong>verifier_info</strong></p></td>
+<td><p>REQUIRED when <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses an <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix. Array of objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] and Section 5.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]. Each object MUST contain:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>registration_cert</strong>: REQUIRED. The Wallet-Relying Party Registration Certificate of the applicable Service, included by value ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19).</p></li>
+<li><p><strong>registrar_dataset</strong>: OPTIONAL. The registration information of the applicable Service, for publication and transparency only.</p></li>
+</ul>
+</div></blockquote>
+<p>The Wallet Unit MUST use <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> as specified in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>. <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> MUST NOT be used as a substitute for <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> in both Same Device and Cross Device flows (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-90</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>dcql_query</strong></p></td>
+<tr class="row-even"><td><p><strong>dcql_query</strong></p></td>
 <td><p>REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>transaction_data</strong></p></td>
+<tr class="row-odd"><td><p><strong>transaction_data</strong></p></td>
 <td><dl class="simple">
 <dt>OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:</dt><dd><ul class="simple">
 <li><p><strong>type</strong>.  String that identifies the transaction data type.</p></li>
@@ -873,31 +884,31 @@ When present, the Relying Party MUST evaluate it (<a class="reference internal" 
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
+<tr class="row-even"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
 <td><p>OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_type</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-91</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_nonce</strong></p></td>
+<tr class="row-even"><td><p><strong>wallet_nonce</strong></p></td>
 <td><p>REQUIRED if previously provided by Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-81</span></a>). String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_uri</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
 <td><p>REQUIRED. The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-92</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>REQUIRED. Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-93</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
+<tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>RECOMMENDED. Unique identifier of the Authorization Request, its value SHOULD be opaque to the Wallet Instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iss</strong></p></td>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. The entity that has issued the JWT. It will be populated with the Relying Party client id.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>REQUIRED. Unix Timestamp, representing the time at which the JWT was issued.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>REQUIRED. Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-94</span></a>).</p></td>
 </tr>
 </tbody>

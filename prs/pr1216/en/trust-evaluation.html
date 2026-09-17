@@ -427,10 +427,13 @@ The Wallet Unit MUST determine the applicable framework before the Authorization
 <h3><span class="section-number">6.1.3. </span>Failure Handling<a class="headerlink" href="#failure-handling" title="Link to this heading">¶</a></h3>
 <p>The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
 In particular, a failed EUDIW evaluation MUST NOT be retried as a National Trust Framework evaluation.</p>
-<p>In the Presentation Flow, in case of failure, the Wallet Unit MUST inform the User that the identity of the Relying Party could not be verified and that the request is not trustworthy, and it MUST either reject the presentation or advise the user and allow them to proceed anyway.
-During Issuance Flow, when this authentication does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance.
-Unlike the presentation case, no User choice is offered at issuance.</p>
-<p>This behavior follows the requirements defined in the ARF Annex 2 (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>), and applies for both EUDIW and National Trust Frameworks.</p>
+<p>If Authentication fails, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_06, RPA_06a).
+The same applies under the National Trust Framework: a <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code> outcome MUST stop the interaction.</p>
+<p>If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.
+During presentation, a User choice to proceed is allowed only for the overridable Authorization outcomes defined there.
+Authentication failure is not overridable.</p>
+<p>During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22a).
+No User choice is offered at issuance.</p>
 </section>
 </section>
 <section id="trust-evaluation-in-the-eudiw-trust-framework">
@@ -943,7 +946,7 @@ To ensure interoperability, EUDIW Attestation Signature Validation implementatio
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When verifiying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the <cite>ServiceHistory.ServiceDigitalIdentity</cite> element instead of the <cite>ServiceInformation.ServiceDigitalIdentity</cite> element.</p>
+<p>When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the <cite>ServiceHistory.ServiceDigitalIdentity</cite> element instead of the <cite>ServiceInformation.ServiceDigitalIdentity</cite> element.</p>
 </div>
 <p>If both <strong>Base Signature Validation</strong> and <strong>Fallback Signature Validation</strong> fail, the Attestation MUST NOT be considered as issued by a trusted Entity.</p>
 </section>
@@ -1185,6 +1188,7 @@ Where an <code class="docutils literal notranslate"><span class="pre">authorized
 A match on the identifier duplet or on <code class="docutils literal notranslate"><span class="pre">entitlement_uri</span></code> is sufficient.
 If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
 The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
+If <code class="docutils literal notranslate"><span class="pre">authorized_parties[].subject_dn</span></code> is present, it is the ETSI encoding defined in <a class="reference internal" href="infrastructure-trust.html#embedded-disclosure-policy-edp"><span class="std std-ref">Embedded Disclosure Policy (EDP)</span></a> and MUST NOT be used as a substitute for the identifier duplet.
 In an <strong>intermediated</strong> presentation the WRPRC in the request is that of the intermediated Relying Party.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">specific_root_of_trust</span></code>: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the <code class="docutils literal notranslate"><span class="pre">trusted_roots</span></code> are authorized ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03).
 The Wallet Unit MUST match each <code class="docutils literal notranslate"><span class="pre">trusted_roots</span></code> entry by <code class="docutils literal notranslate"><span class="pre">issuer_dn</span></code> using LDAP DN comparison and <code class="docutils literal notranslate"><span class="pre">serial_number</span></code> using integer comparison.
@@ -1764,7 +1768,7 @@ It applies to Relying Parties.</p></li>
 <h4><span class="section-number">6.3.8.1. </span>Trust Mark Validation<a class="headerlink" href="#trust-mark-validation" title="Link to this heading">¶</a></h4>
 <p><strong>Input</strong></p>
 <ul class="simple">
-<li><p>The <em>registration-entity</em> Trust Mark, obtained in the Remote Flow from the <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> claim of the Entity Configuration or from the Federation Trust Mark endpoint (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 8.6), or provided by value in the <code class="docutils literal notranslate"><span class="pre">requestInfo</span></code> of the ISO <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> in the Proximity Flow, through the <code class="docutils literal notranslate"><span class="pre">euWrprc</span></code> member as defined in the EUDIW Trust Framework.</p></li>
+<li><p>The <em>registration-entity</em> Trust Mark, obtained in the Remote Flow from the <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> claim of the Entity Configuration or from the Federation Trust Mark endpoint (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 8.6), or provided by value in the <code class="docutils literal notranslate"><span class="pre">requestInfo</span></code> of the ISO <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> in the Proximity Flow.</p></li>
 <li><p>The validated Federation Trust Anchor configuration.</p></li>
 </ul>
 <p><strong>Outcome</strong></p>
@@ -1907,7 +1911,7 @@ When the process terminates with <code class="docutils literal notranslate"><spa
 When the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">EDP_NOT_SATISFIED</span></code>, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.</p></li>
 <li><p><strong>Missing or invalid WRPRC [EUDIW]</strong>.
 When the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code> during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
-The Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16 and RPRC_18 are empty).
+The Wallet Unit MUST warn the User and MUST NOT query the Register, as specified in <a class="reference internal" href="#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.
 Whether the User may still approve follows the Wallet Provider policy.</p></li>
 <li><p><strong>Overasking [National]</strong>.
 When the process terminates with <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">OVERASKING_DETECTED</span></code>, i.e., the <a class="reference internal" href="#trust-mark-validation"><span class="std std-ref">Trust Mark Validation</span></a> has had a positive outcome, but the <a class="reference internal" href="#overasking-check"><span class="std std-ref">Overasking Check</span></a> finds the Relying Party requesting more than its registered scope.</p></li>
@@ -1918,8 +1922,7 @@ When the process terminates with <code class="docutils literal notranslate"><spa
 <p>All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable as they indicate an integrity problem rather than a user-facing choice.</p>
 <p>In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
 User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.</p>
-<p>The <em>Scope Comparison Procedure</em> in <a class="reference internal" href="#authorization-validation"><span class="std std-ref">Authorization Validation</span></a> MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_21).
-It is not gated on a User opt-in to Registrar lookup ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16 and RPRC_18 are empty).</p>
+<p>The <em>Scope Comparison Procedure</em> in <a class="reference internal" href="#authorization-validation"><span class="std std-ref">Authorization Validation</span></a> MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request, as specified in <a class="reference internal" href="#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p>
 </section>
 </section>
 

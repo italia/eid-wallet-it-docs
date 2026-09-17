@@ -45,5 +45,5 @@ The metadata JSON Object whose key is ``wallet_solution`` contains the following
 
 .. note::
   For the ``authorization_endpoint``, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP `OPENID4VC-HAIP`_, and in particular the custom URL ``haip://``.
+  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP `OPENID4VC-HAIP`_, using ``openid4vp://`` or ``haip-vp://`` as specified in :ref:`remote-flow:Remote Flow`.
 

@@ -13,7 +13,7 @@ L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate 
 - Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.
 - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Instance Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
 - L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet Instance Attestation che la Key Attestation.
-- L'Istanza del Wallet DEVE supportare sia il Trust Framework EUDIW sia il Trust Framework Nazionale, come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+- L'Istanza del Wallet DEVE supportare sia il Trust Framework EUDIW sia il Trust Framework Nazionale, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
 - L'Istanza del Wallet DEVE memorizzare PID e (Q)EAA, applicare la disclosure selettiva e presentarli in remoto e in prossimità, come specificato in :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 - L'emissione, la memorizzazione e la presentazione del PID sono specificate in :ref:`pid-until-notification`.
 - L'Istanza del Wallet DEVE supportare i formati di Attestato Elettronico richiesti da [`OPENID4VC-HAIP`_], inclusi ``dc+sd-jwt`` e ``mso_mdoc``.

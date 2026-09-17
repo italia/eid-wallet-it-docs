@@ -270,23 +270,22 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
 </ul>
 
       </div>
@@ -362,8 +361,14 @@ Fornisce una visione di alto livello dell'Architettura, in termini di governance
 Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l'ecosistema.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>:
 Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>:
-Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>:
+Definisce i due Trust Framework, la PKI X.509 e i Trust Artifact.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-evaluation.html#trust-evaluation-process"><span class="std std-ref">Trust Evaluation Process</span></a>:
+Definisce la selezione del Trust Framework e le procedure di Authentication, Authorization e Metadata.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>:
+Definisce i registri e i cataloghi nazionali usati dall'ecosistema.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a>:
+Definisce la registrazione, la notifica, la pubblicazione e il ciclo di vita delle Entità, dei Trust Artifact e dei tipi di Attestato.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="entities.html#entita"><span class="std std-ref">Entità</span></a>:
 Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>:
@@ -393,7 +398,7 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="defined-terms-and-references.html#termini-definiti-e-riferimenti"><span class="std std-ref">Termini Definiti e Riferimenti</span></a>: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.</p></li>
 </ul>
 <p><strong>Fase 2: Progettazione</strong></p>
@@ -409,16 +414,16 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-sources.html#fonti-autentiche"><span class="std std-ref">Fonti Autentiche</span></a>: Ruolo e responsabilità della Fonte Autentica.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>: Specifiche obbligatorie per l'integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-source-endpoint.html#endpoint-delle-fonti-autentiche"><span class="std std-ref">Endpoint delle Fonti Autentiche</span></a>: Requisiti chiave per l'implementazione delle API che consentono al Credential Issuer di recuperare in modo sicuro e coerente i dati autorevoli e di gestirne il ciclo di vita tramite gli endpoint del Signal Hub.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>: Approfondimento sui componenti del Registro di interesse per la Fonte Autentica.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>: Approfondimento sui componenti del Registro di interesse per la Fonte Autentica.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>: Requisiti generali per la conservazione dei log e requisiti specifici per le Fonti Autentiche, in conformità alla norma ISO/IEC 27001.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guida alla configurazione dell'ambiente di test e alla validazione delle interazioni backend tramite l'utilizzo delle matrici di test fornite dall'ecosistema.</p></li>
 </ul>
 <p><strong>Fase 4: Registrazione</strong></p>
 <p>Registrarsi al sistema come Fonte Autentica, completando le procedure amministrative e tecniche richieste.</p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>: Approfondimento sulle procedure tecniche per la registrazione della Fonte Autentica.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>: Approfondimento sulle procedure tecniche per la registrazione della Fonte Autentica.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
 <section id="fornitore-di-wallet">
@@ -429,7 +434,7 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="defined-terms-and-references.html#termini-definiti-e-riferimenti"><span class="std std-ref">Termini Definiti e Riferimenti</span></a>: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.</p></li>
 </ul>
 <p><strong>Fase 2: Progettazione</strong></p>
@@ -445,7 +450,7 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti tecnici e funzionali relativi ai componenti, alle funzionalità e al ciclo di vita necessari per la configurazione della Soluzione Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi ai flussi di emissione e presentazione dei (Q)EAA.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-del-fornitore-di-wallet"><span class="std std-ref">Endpoint del Fornitore di Wallet</span></a>: Requisiti chiave per l’implementazione delle interfacce (API) del Fornitore di Wallet necessarie a garantire l’interoperabilità tra le entità.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>: Approfondimento sui componenti del Registro.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>: Approfondimento sui componenti del Registro.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Selezione e implementazione degli standard crittografici necessari a garantire la sicurezza delle chiavi e delle transazioni.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="security-privacy-considerations.html#considerazioni-di-sicurezza-e-privacy"><span class="std std-ref">Considerazioni di Sicurezza e Privacy</span></a>: Requisiti di sicurezza e conformità per le Soluzioni Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Wallet, in conformità alla norma ISO/IEC 27001.</p></li>
@@ -455,9 +460,9 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <p><strong>Fase 4: Registrazione</strong></p>
 <p>Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema.</p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Wallet.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
 <section id="fornitore-di-attestati-elettronici">
@@ -468,7 +473,7 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="defined-terms-and-references.html#termini-definiti-e-riferimenti"><span class="std std-ref">Termini Definiti e Riferimenti</span></a>: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.</p></li>
 </ul>
 <p><strong>Fase 2: Progettazione</strong></p>
@@ -492,9 +497,9 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <p><strong>Fase 4: Registrazione</strong></p>
 <p>Registrarsi al sistema come Credential Issuer, completando le procedure amministrative e tecniche previste affinché i (Q)EAA emessi verso i Wallet siano riconosciuti come affidabili dal Sistema.</p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Attestati Elettronici.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Attestati Elettronici.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Attestati Elettronici.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Attestati Elettronici.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
 <section id="fornitori-di-servizi-relying-party">
@@ -505,7 +510,7 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="defined-terms-and-references.html#termini-definiti-e-riferimenti"><span class="std std-ref">Termini Definiti e Riferimenti</span></a>: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.</p></li>
 </ul>
 <p><strong>Fase 2: Progettazione</strong></p>
@@ -528,9 +533,9 @@ Fornisce dettagli tecnici supplementari, modelli di implementazione e framework 
 <p><strong>Fase 4: Registrazione</strong></p>
 <p>Registrarsi al sistema come Relying Party, completando le procedure amministrative e tecniche previste, e diventare soggetto affidabile per la richiesta dei dati degli Utenti.</p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>: Panoramica dell'architettura del sistema di onboarding e del processo di registrazione della Relying Party.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell'architettura del sistema di onboarding e del processo di registrazione della Relying Party.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
 </section>

@@ -24,7 +24,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="4. Sistema di Onboarding" href="onboarding-high-level.html" />
+    <link rel="next" title="4. Design dell&#39;Esperienza Utente" href="functionalities.html" />
     <link rel="prev" title="2. Brand Identity" href="brand-identity.html" />
    
   <meta name="description" content="Specifiche Tecniche IT-Wallet">
@@ -264,23 +264,22 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
 </ul>
 
       </div>
@@ -304,7 +303,7 @@
 <h1><span class="section-number">3. </span>Panoramica dell'Architettura<a class="headerlink" href="#panoramica-dell-architettura" title="Link to this heading">¶</a></h1>
 <p>Il Sistema IT-Wallet è un ecosistema federato che consente la gestione sicura dell'Identità Digitale e lo scambio di Attestati Elettronici per cittadini e organizzazioni.
 L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli organi di governance stabiliscono e mantengono l'infrastruttura di trust, gli Attori Primari implementano e gestiscono le Soluzioni Tecniche, e i sistemi esterni forniscono servizi aggiuntivi.</p>
-<p>IT-Wallet implementa i due Trust Framework definiti in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+<p>IT-Wallet implementa i due Trust Framework definiti in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.</p>
 <p>I seguenti diagrammi illustrano la panoramica dell'architettura IT-Wallet.</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
@@ -339,15 +338,15 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
 </figcaption>
 </figure>
 <p>I sistemi esterni forniscono servizi che collegano l'ecosistema IT-Wallet all'infrastruttura digitale nazionale, consentendo l'interoperabilità con i servizi governativi esistenti e le fonti di dati.</p>
-<p>Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica delle credenziali attraverso i componenti centralizzati Claims Registry e Taxonomy, come dettagliato in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+<p>Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica delle credenziali attraverso i componenti centralizzati Claims Registry e Taxonomy, come dettagliato in <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p>
 <p>L'architettura abilita i seguenti processi di interazione principali:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><strong>Onboarding delle Entità e Federazione</strong>: Solo le entità qualificate possono partecipare alla federazione attraverso un onboarding sistematico che garantisce la conformità e stabilisce relazioni di trust crittografiche. Il sistema di onboarding include un <strong>Claims Registry</strong> e una <strong>Taxonomy</strong> che standardizzano le definizioni semantiche per tutte le credenziali, consentendo interoperabilità e governance. L'autorizzazione delle entità segue un approccio basato su policy che concede ambiti operativi specifici basati sulle caratteristiche organizzative e sulla conformità normativa. Vedere Sezione <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a> e <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p></li>
-<li><p><strong>Discovery delle Credenziali e Gestione del Catalogo</strong>: L'ecosistema supporta meccanismi duali di discovery delle credenziali pubbliche attraverso il <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> per credenziali di uso generale, e discovery di Attestati Elettronici privati tramite Credential Offer dirette per casi d'uso specifici. Il catalogo viene popolato automaticamente basandosi sulle policy dell'Organismo di Supervisione dalle definizioni registrate nel Claims Registry e nella Taxonomy.</p></li>
-<li><p><strong>Rilascio degli Attestati</strong>: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. L'emissione segue [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>], profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Il rilascio può procedere sia per attestati pubblicati nel catalogo che per offerte di attestati privati. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+<li><p><strong>Onboarding delle Entità e Federazione</strong>: Solo le entità qualificate possono partecipare alla federazione attraverso un onboarding sistematico che garantisce la conformità e stabilisce relazioni di trust crittografiche. Il sistema di onboarding include un <strong>Claims Registry</strong> e una <strong>Taxonomy</strong> che standardizzano le definizioni semantiche per tutte le credenziali, consentendo interoperabilità e governance. L'autorizzazione delle entità segue un approccio basato su policy che concede ambiti operativi specifici basati sulle caratteristiche organizzative e sulla conformità normativa. Vedere Sezione <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a> e <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p></li>
+<li><p><strong>Discovery delle Credenziali e Gestione del Catalogo</strong>: L'ecosistema supporta meccanismi duali di discovery delle credenziali pubbliche attraverso il <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> per credenziali di uso generale, e discovery di Attestati Elettronici privati tramite Credential Offer dirette per casi d'uso specifici. Il catalogo viene popolato automaticamente basandosi sulle policy dell'Organismo di Supervisione dalle definizioni registrate nel Claims Registry e nella Taxonomy.</p></li>
+<li><p><strong>Rilascio degli Attestati</strong>: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. L'emissione segue [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>], profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Il rilascio può procedere sia per attestati pubblicati nel catalogo che per offerte di attestati privati. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-issuance"><span class="std std-ref">Selection at Issuance</span></a>.</p></li>
 <li><p><strong>Archiviazione e Gestione degli Attestati</strong>: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati, inclusa la disclosure selettiva come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].</p></li>
-<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>]; la presentazione in prossimità utilizza [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <a class="reference internal" href="registry.html#registro-dei-claims"><span class="std std-ref">Registro dei Claims</span></a> per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>]; la presentazione in prossimità utilizza [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p></li>
 </ol>
 </div></blockquote>
 </section>
@@ -364,8 +363,8 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
-              <a class="btn btn-primary" href="onboarding-high-level.html">
-                <span>4. Sistema di Onboarding</span>
+              <a class="btn btn-primary" href="functionalities.html">
+                <span>4. Design dell&#39;Esperienza Utente</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>

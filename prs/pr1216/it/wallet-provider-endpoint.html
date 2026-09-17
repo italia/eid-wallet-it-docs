@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13.1. Endpoint del Fornitore di Wallet &#8212; Specifiche Tecniche IT-Wallet</title>
+    <title>12.1. Endpoint del Fornitore di Wallet &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
@@ -24,8 +24,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="13.2. Endpoint del Credential Issuer" href="credential-issuer-endpoint.html" />
-    <link rel="prev" title="13. Endpoints" href="endpoints.html" />
+    <link rel="next" title="12.2. Endpoint del Credential Issuer" href="credential-issuer-endpoint.html" />
+    <link rel="prev" title="12. Endpoints" href="endpoints.html" />
    
   <meta name="description" content="Specifiche Tecniche IT-Wallet">
   <script>
@@ -270,30 +270,29 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">13. Endpoints</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">13.1. Endpoint del Fornitore di Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Endpoint del Credential Issuer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Endpoint della Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Endpoint delle Fonti Autentiche</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">13.5. Endpoint di PDND Signal Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure-trust.html">5. Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">12. Endpoints</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.1. Endpoint del Fornitore di Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">12.2. Endpoint del Credential Issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">12.3. Endpoint della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">12.4. Endpoint delle Fonti Autentiche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">12.5. Endpoint di PDND Signal Hub</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
 </ul>
 
       </div>
@@ -314,7 +313,7 @@
           <div class="body">
             
   <section id="endpoint-del-fornitore-di-wallet">
-<h1><span class="section-number">13.1. </span>Endpoint del Fornitore di Wallet<a class="headerlink" href="#endpoint-del-fornitore-di-wallet" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">12.1. </span>Endpoint del Fornitore di Wallet<a class="headerlink" href="#endpoint-del-fornitore-di-wallet" title="Link to this heading">¶</a></h1>
 <p>Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DEVE esporre gli endpoint per supportare l'instaurazione della fiducia e le funzionalità essenziali dell'Istanza di Wallet. Questi includono l'endpoint di Federazione <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> che DEVE aderire alla specifica OpenID Federation 1.0 per stabilire in modo affidabile la fiducia con il Fornitore di Wallet, nonché endpoint per la registrazione dell'Istanza di Wallet, la generazione di nonce (richiesta per la registrazione), l'emissione di attestati e la revoca. A parte l'endpoint di Federazione, i dettagli di implementazione degli altri sono lasciati alla discrezione del Fornitore di Wallet.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -325,29 +324,29 @@
 <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">Casi di Test Opzionali per Istanza del Wallet</span></a>.</p>
 </div>
 <section id="endpoint-di-federazione">
-<h2><span class="section-number">13.1.1. </span>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.1. </span>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h2>
 <p>L'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.</p>
 <p>Vedere la Sezione <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> per i dettagli tecnici (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_001–004</span></a>).</p>
 </section>
 <section id="endpoint-nonce-della-soluzione-wallet">
-<h2><span class="section-number">13.1.2. </span>Endpoint Nonce della Soluzione Wallet<a class="headerlink" href="#endpoint-nonce-della-soluzione-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.2. </span>Endpoint Nonce della Soluzione Wallet<a class="headerlink" href="#endpoint-nonce-della-soluzione-wallet" title="Link to this heading">¶</a></h2>
 <p>Questo è un endpoint API RESTful che consente all'Istanza di Wallet di richiedere un nonce crittografico dal Fornitore di Wallet. Il nonce serve come sfida imprevedibile, monouso per garantire la freschezza e prevenire attacchi di replay.</p>
 <p>Vedere <a class="reference internal" href="mobile-application-instance.html#richiesta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Nonce dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Risposta di Nonce dell'Applicazione Mobile</span></a> per i dettagli sulla Richiesta di Nonce e sulla Risposta di Nonce (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131</span></a>).</p>
 </section>
 <section id="endpoint-di-gestione-dell-istanza-di-wallet">
-<h2><span class="section-number">13.1.3. </span>Endpoint di Gestione dell'Istanza di Wallet<a class="headerlink" href="#endpoint-di-gestione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.3. </span>Endpoint di Gestione dell'Istanza di Wallet<a class="headerlink" href="#endpoint-di-gestione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h2>
 <p>Questi endpoint API RESTful sono forniti dal Fornitore di Wallet e consentono la gestione dell'Istanza di Wallet, inclusa la registrazione, il recupero dello stato, la revoca su richiesta (ad esempio, da parte dell'Utente) e l'eliminazione.
 Le seguenti sezioni descrivono le richieste di registrazione, recupero dello stato e revoca, insieme alle relative risposte, gestite da questo endpoint, che sono necessarie per le funzionalità di base dell'<a class="reference internal" href="wallet-instance-functionalities.html#funzionalita-dell-istanza-del-wallet"><span class="std std-ref">Funzionalità dell'Istanza del Wallet</span></a>.</p>
 <section id="richiesta-di-registrazione-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.1. </span>Richiesta di Registrazione dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-registrazione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.1. </span>Richiesta di Registrazione dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-registrazione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Per registrare un'Istanza di Wallet, la richiesta al Fornitore di Wallet DEVE utilizzare il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <cite>application/json</cite>. Il corpo della richiesta DEVE contenere i claim descritti in <a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131–134</span></a>).</p>
 </section>
 <section id="risposta-alla-registrazione-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.2. </span>Risposta alla Registrazione dell'Istanza di Wallet<a class="headerlink" href="#risposta-alla-registrazione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.2. </span>Risposta alla Registrazione dell'Istanza di Wallet<a class="headerlink" href="#risposta-alla-registrazione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Se una Richiesta di Registrazione dell'Istanza di Wallet viene convalidata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con codice di stato 204 (No Content). Per i dettagli vedere <a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>).</p>
 </section>
 <section id="richiesta-di-recupero-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.3. </span>Richiesta di Recupero dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-recupero-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.3. </span>Richiesta di Recupero dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-recupero-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Per recuperare tutte le Istanze di Wallet associate a un Utente, una richiesta DEVE essere inviata utilizzando il metodo HTTP GET al Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -355,7 +354,7 @@ Le seguenti sezioni descrivono le richieste di registrazione, recupero dello sta
 </div>
 </section>
 <section id="risposta-al-recupero-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.4. </span>Risposta al Recupero dell'Istanza di Wallet<a class="headerlink" href="#risposta-al-recupero-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.4. </span>Risposta al Recupero dell'Istanza di Wallet<a class="headerlink" href="#risposta-al-recupero-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Se una Richiesta di Recupero dell'Istanza di Wallet viene elaborata con successo, il Fornitore di Wallet DEVE restituire una Risposta HTTP con un codice di stato 200 (OK).
 Il corpo della risposta DEVE essere in formato JSON e includere le informazioni rilevanti dell'Istanza di Wallet, come il suo ID univoco, lo stato e la data di emissione.
 Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un array contenente i dettagli di tutte le istanze associate (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_146</span></a>).</p>
@@ -373,7 +372,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 <section id="richiesta-di-revoca-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.5. </span>Richiesta di Revoca dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-revoca-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.5. </span>Richiesta di Revoca dell'Istanza di Wallet<a class="headerlink" href="#richiesta-di-revoca-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Per revocare un'Istanza di Wallet attiva, una richiesta di revoca DEVE essere inviata utilizzando il metodo HTTP PATCH con Content-Type impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Il corpo della richiesta DEVE contenere un parametro <code class="docutils literal notranslate"><span class="pre">status</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_147</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -381,7 +380,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 <section id="risposta-alla-revoca-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.6. </span>Risposta alla Revoca dell'Istanza di Wallet<a class="headerlink" href="#risposta-alla-revoca-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.6. </span>Risposta alla Revoca dell'Istanza di Wallet<a class="headerlink" href="#risposta-alla-revoca-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Se una Richiesta di Revoca dell'Istanza di Wallet viene elaborata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con un codice di stato 204 (No Content) come specificato in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_148</span></a>.</p>
 <p>Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere restituita una risposta di errore. Fare riferimento a <a class="reference internal" href="#gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet"><span class="std std-ref">Gestione degli Errori per la Gestione dell'Istanza di Wallet</span></a> per i dettagli sui codici di errore e le descrizioni (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039, WP_043–044</span></a>).</p>
 <p>Di seguito è riportato un esempio non normativo di una risposta di errore:</p>
@@ -397,7 +396,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 <section id="gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet">
-<h3><span class="section-number">13.1.3.7. </span>Gestione degli Errori per la Gestione dell'Istanza di Wallet<a class="headerlink" href="#gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.7. </span>Gestione degli Errori per la Gestione dell'Istanza di Wallet<a class="headerlink" href="#gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet" title="Link to this heading">¶</a></h3>
 <p>Per garantire robustezza e sicurezza, il Fornitore di Wallet DEVE gestire gli errori in modo coerente in tutte le richieste di Gestione dell'Istanza di Wallet, incluse Registrazione, Recupero e Revoca (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–044</span></a>, e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_150–155</span></a>).</p>
 <p>In caso di errore, il Fornitore di Wallet DEVE restituire una risposta di errore come definito in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7231.html"><strong>RFC 7231</strong></a>, con ulteriori dettagli disponibili in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7807.html"><strong>RFC 7807</strong></a>. La risposta DEVE utilizzare il Content-Type impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code> e DEVE includere i seguenti parametri:</p>
 <ul class="simple">
@@ -407,7 +406,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <p>Le seguenti sezioni classificano gli errori in <strong>errori comuni</strong>, che si applicano a tutte le richieste, ed <strong>errori specifici della richiesta</strong>, che sono rilevanti per operazioni particolari.</p>
 </section>
 <section id="risposte-di-errore-comuni">
-<h3><span class="section-number">13.1.3.8. </span>Risposte di Errore Comuni<a class="headerlink" href="#risposte-di-errore-comuni" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.8. </span>Risposte di Errore Comuni<a class="headerlink" href="#risposte-di-errore-comuni" title="Link to this heading">¶</a></h3>
 <p>I seguenti errori si applicano a tutte le operazioni di Gestione dell'Istanza di Wallet (Registrazione, Recupero e Revoca) e DEVONO essere supportati per la risposta di errore, se non diversamente specificato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -442,7 +441,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </table>
 </section>
 <section id="risposte-di-errore-specifiche-della-richiesta">
-<h3><span class="section-number">13.1.3.9. </span>Risposte di Errore Specifiche della Richiesta<a class="headerlink" href="#risposte-di-errore-specifiche-della-richiesta" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.3.9. </span>Risposte di Errore Specifiche della Richiesta<a class="headerlink" href="#risposte-di-errore-specifiche-della-richiesta" title="Link to this heading">¶</a></h3>
 <p>Gli errori in <a class="reference internal" href="mobile-application-instance.html#risposta-di-errore-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Errore di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> DEVONO essere supportati per le risposte di errore relative alla <strong>Registrazione dell'Istanza di Wallet</strong>.</p>
 <p>I seguenti errori DEVONO essere supportati per le risposte di errore relative al <strong>Recupero dell'Istanza di Wallet</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_041–042</span></a>):</p>
 <table class="longtable docutils align-default">
@@ -495,10 +494,10 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 </section>
 <section id="endpoint-di-emissione-della-wallet-instance-attestation">
-<h2><span class="section-number">13.1.4. </span>Endpoint di Emissione della Wallet Instance Attestation<a class="headerlink" href="#endpoint-di-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.4. </span>Endpoint di Emissione della Wallet Instance Attestation<a class="headerlink" href="#endpoint-di-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h2>
 <p>Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet Instance Attestation, inviando una Richiesta di Emissione della Wallet Instance Attestation.</p>
 <section id="richiesta-di-emissione-della-wallet-instance-attestation">
-<h3><span class="section-number">13.1.4.1. </span>Richiesta di Emissione della Wallet Instance Attestation<a class="headerlink" href="#richiesta-di-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.4.1. </span>Richiesta di Emissione della Wallet Instance Attestation<a class="headerlink" href="#richiesta-di-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
 <p>La richiesta di emissione della Wallet Instance Attestation utilizza il metodo HTTP POST con il <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
 <p>L'intestazione <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT della richiesta di emissione della Wallet Instance Attestation assume il valore <code class="docutils literal notranslate"><span class="pre">wia-request+jwt</span></code>.</p>
 <p>Il body della richiesta di emissione della Wallet Instance Attestation contiene un parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> il cui valore è un JWT firmato che include tutti i parametri di intestazione e le claim descritti di seguito.</p>
@@ -630,7 +629,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 <section id="risposta-all-emissione-della-wallet-instance-attestation">
-<h3><span class="section-number">13.1.4.2. </span>Risposta all'Emissione della Wallet Instance Attestation<a class="headerlink" href="#risposta-all-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.4.2. </span>Risposta all'Emissione della Wallet Instance Attestation<a class="headerlink" href="#risposta-all-emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
 <p>Se la Richiesta di Emissione della Wallet Instance Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'Oggetto JSON restituito DEVE possedere il parametro <code class="docutils literal notranslate"><span class="pre">wallet_instance-attestations</span></code> (vedi <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>). <code class="docutils literal notranslate"><span class="pre">wallet_insatnce_attestation</span></code> sono oggetti JSON che contengono rispettivamente la Wallet Instance Attestation. Entrambe le attestazioni sono firmate dal Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). La Wallet Instance Attestation JWT deve essere utilizzato per la fase di Emissione di un Attestato Elettronico, come OAuth Client Attestation, e sarà inviato al Fornitore di Attestati Elettronici come discusso in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>.</p>
 <p>L'Oggetto JSON restituito nella risposta ha il seguente claim:</p>
 <table class="longtable docutils align-default">
@@ -736,7 +735,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </table>
 </section>
 <section id="jwt-della-wallet-instance-attestation">
-<h3><span class="section-number">13.1.4.3. </span>JWT della Wallet Instance Attestation<a class="headerlink" href="#jwt-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.4.3. </span>JWT della Wallet Instance Attestation<a class="headerlink" href="#jwt-della-wallet-instance-attestation" title="Link to this heading">¶</a></h3>
 <p>L'header JOSE del JWT della Wallet Instance Attestation contiene i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -889,10 +888,10 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 </section>
 <section id="endpoint-di-emissione-della-key-attestation">
-<h2><span class="section-number">13.1.5. </span>Endpoint di Emissione della Key Attestation<a class="headerlink" href="#endpoint-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.5. </span>Endpoint di Emissione della Key Attestation<a class="headerlink" href="#endpoint-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h2>
 <p>Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation. L'uso delle <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> è definito in <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p>
 <section id="richiesta-di-emissione-della-key-attestation">
-<h3><span class="section-number">13.1.5.1. </span>Richiesta di Emissione della Key Attestation<a class="headerlink" href="#richiesta-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.5.1. </span>Richiesta di Emissione della Key Attestation<a class="headerlink" href="#richiesta-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
 <p>La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
 <p>L'header <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT della richiesta di emissione Key Attestation Issuance assume il valore <code class="docutils literal notranslate"><span class="pre">ka-request+jwt</span></code>.</p>
 <p>Il body della richiesta di emissione Key Attestation contiene un parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> il cui valore è un JWT firmato che include tutti i parametri di header e i claim del body descritti di seguito.</p>
@@ -1032,7 +1031,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 <section id="risposta-all-emissione-della-key-attestation">
-<h3><span class="section-number">13.1.5.2. </span>Risposta all'Emissione della Key Attestation<a class="headerlink" href="#risposta-all-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.5.2. </span>Risposta all'Emissione della Key Attestation<a class="headerlink" href="#risposta-all-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
 <p>Se la Key Attestation Issuance Request viene validata con successo, il Wallet Provider restituisce una risposta HTTP con codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'oggetto JSON restituito include <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> (si veda <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-key-attestation"><span class="std std-ref">Emissione della Key Attestation</span></a>). <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> è firmata dal Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). La Key Attestation JWT deve essere utilizzata nella fase di Emissione di un Attestato Elettronico, come intestazione JOSE <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> nel JWT di tipo <code class="docutils literal notranslate"><span class="pre">proof</span></code>, e verrà inviata al Fornitore di Attestati Elettronici come discusso in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>.</p>
 <p>L'oggetto JSON restituito nella risposta contiene il seguente parametro:</p>
 <table class="longtable docutils align-default">
@@ -1086,7 +1085,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </table>
 </section>
 <section id="key-attestation-jwt">
-<h3><span class="section-number">13.1.5.3. </span>Key Attestation JWT<a class="headerlink" href="#key-attestation-jwt" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.5.3. </span>Key Attestation JWT<a class="headerlink" href="#key-attestation-jwt" title="Link to this heading">¶</a></h3>
 <p>L'intestazione JOSE del Key Attestation JWT contiene i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1240,7 +1239,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 </section>
 <section id="catalogo-e-service-pdnd-del-fornitore-di-wallet">
-<h2><span class="section-number">13.1.6. </span>Catalogo e-Service PDND del Fornitore di Wallet<a class="headerlink" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.6. </span>Catalogo e-Service PDND del Fornitore di Wallet<a class="headerlink" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
 <p>La morte dell'Utente porta alla revoca delle Istanze di Wallet dell'Utente e all'eliminazione dell'account dell'Utente presso il Fornitore di Wallet. Per questo motivo, il Fornitore di Wallet fornisce il seguente e-service tramite PDND.
 Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica del PID/IT-Wallet ID della morte dell'Utente DEVE inviare una notifica ai Fornitori di Wallet utilizzando questo endpoint.</p>
 <div class="admonition note">
@@ -1248,7 +1247,7 @@ Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica de
 <p>Una Specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">qui</a></span>.</p>
 </div>
 <section id="notifica-morte-utente">
-<h3><span class="section-number">13.1.6.1. </span>Notifica Morte Utente<a class="headerlink" href="#notifica-morte-utente" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.6.1. </span>Notifica Morte Utente<a class="headerlink" href="#notifica-morte-utente" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1278,12 +1277,12 @@ Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica de
                 <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
 </svg>
-                <span>13. Endpoints</span>
+                <span>12. Endpoints</span>
               </a>
             </div>
             <div class="it-docs-pager-next ms-auto">
               <a class="btn btn-primary" href="credential-issuer-endpoint.html">
-                <span>13.2. Endpoint del Credential Issuer</span>
+                <span>12.2. Endpoint del Credential Issuer</span>
                 <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
 </svg>
@@ -1343,35 +1342,35 @@ Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica de
         </div>
         <div class="it-docs-local-toc">
           <ul>
-<li><a class="reference internal" href="#">13.1. Endpoint del Fornitore di Wallet</a><ul>
-<li><a class="reference internal" href="#endpoint-di-federazione">13.1.1. Endpoint di Federazione</a></li>
-<li><a class="reference internal" href="#endpoint-nonce-della-soluzione-wallet">13.1.2. Endpoint Nonce della Soluzione Wallet</a></li>
-<li><a class="reference internal" href="#endpoint-di-gestione-dell-istanza-di-wallet">13.1.3. Endpoint di Gestione dell'Istanza di Wallet</a><ul>
-<li><a class="reference internal" href="#richiesta-di-registrazione-dell-istanza-di-wallet">13.1.3.1. Richiesta di Registrazione dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#risposta-alla-registrazione-dell-istanza-di-wallet">13.1.3.2. Risposta alla Registrazione dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#richiesta-di-recupero-dell-istanza-di-wallet">13.1.3.3. Richiesta di Recupero dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#risposta-al-recupero-dell-istanza-di-wallet">13.1.3.4. Risposta al Recupero dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#richiesta-di-revoca-dell-istanza-di-wallet">13.1.3.5. Richiesta di Revoca dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#risposta-alla-revoca-dell-istanza-di-wallet">13.1.3.6. Risposta alla Revoca dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet">13.1.3.7. Gestione degli Errori per la Gestione dell'Istanza di Wallet</a></li>
-<li><a class="reference internal" href="#risposte-di-errore-comuni">13.1.3.8. Risposte di Errore Comuni</a></li>
-<li><a class="reference internal" href="#risposte-di-errore-specifiche-della-richiesta">13.1.3.9. Risposte di Errore Specifiche della Richiesta</a></li>
+<li><a class="reference internal" href="#">12.1. Endpoint del Fornitore di Wallet</a><ul>
+<li><a class="reference internal" href="#endpoint-di-federazione">12.1.1. Endpoint di Federazione</a></li>
+<li><a class="reference internal" href="#endpoint-nonce-della-soluzione-wallet">12.1.2. Endpoint Nonce della Soluzione Wallet</a></li>
+<li><a class="reference internal" href="#endpoint-di-gestione-dell-istanza-di-wallet">12.1.3. Endpoint di Gestione dell'Istanza di Wallet</a><ul>
+<li><a class="reference internal" href="#richiesta-di-registrazione-dell-istanza-di-wallet">12.1.3.1. Richiesta di Registrazione dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#risposta-alla-registrazione-dell-istanza-di-wallet">12.1.3.2. Risposta alla Registrazione dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#richiesta-di-recupero-dell-istanza-di-wallet">12.1.3.3. Richiesta di Recupero dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#risposta-al-recupero-dell-istanza-di-wallet">12.1.3.4. Risposta al Recupero dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#richiesta-di-revoca-dell-istanza-di-wallet">12.1.3.5. Richiesta di Revoca dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#risposta-alla-revoca-dell-istanza-di-wallet">12.1.3.6. Risposta alla Revoca dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#gestione-degli-errori-per-la-gestione-dell-istanza-di-wallet">12.1.3.7. Gestione degli Errori per la Gestione dell'Istanza di Wallet</a></li>
+<li><a class="reference internal" href="#risposte-di-errore-comuni">12.1.3.8. Risposte di Errore Comuni</a></li>
+<li><a class="reference internal" href="#risposte-di-errore-specifiche-della-richiesta">12.1.3.9. Risposte di Errore Specifiche della Richiesta</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#endpoint-di-emissione-della-wallet-instance-attestation">13.1.4. Endpoint di Emissione della Wallet Instance Attestation</a><ul>
-<li><a class="reference internal" href="#richiesta-di-emissione-della-wallet-instance-attestation">13.1.4.1. Richiesta di Emissione della Wallet Instance Attestation</a></li>
-<li><a class="reference internal" href="#risposta-all-emissione-della-wallet-instance-attestation">13.1.4.2. Risposta all'Emissione della Wallet Instance Attestation</a></li>
-<li><a class="reference internal" href="#jwt-della-wallet-instance-attestation">13.1.4.3. JWT della Wallet Instance Attestation</a></li>
+<li><a class="reference internal" href="#endpoint-di-emissione-della-wallet-instance-attestation">12.1.4. Endpoint di Emissione della Wallet Instance Attestation</a><ul>
+<li><a class="reference internal" href="#richiesta-di-emissione-della-wallet-instance-attestation">12.1.4.1. Richiesta di Emissione della Wallet Instance Attestation</a></li>
+<li><a class="reference internal" href="#risposta-all-emissione-della-wallet-instance-attestation">12.1.4.2. Risposta all'Emissione della Wallet Instance Attestation</a></li>
+<li><a class="reference internal" href="#jwt-della-wallet-instance-attestation">12.1.4.3. JWT della Wallet Instance Attestation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#endpoint-di-emissione-della-key-attestation">13.1.5. Endpoint di Emissione della Key Attestation</a><ul>
-<li><a class="reference internal" href="#richiesta-di-emissione-della-key-attestation">13.1.5.1. Richiesta di Emissione della Key Attestation</a></li>
-<li><a class="reference internal" href="#risposta-all-emissione-della-key-attestation">13.1.5.2. Risposta all'Emissione della Key Attestation</a></li>
-<li><a class="reference internal" href="#key-attestation-jwt">13.1.5.3. Key Attestation JWT</a></li>
+<li><a class="reference internal" href="#endpoint-di-emissione-della-key-attestation">12.1.5. Endpoint di Emissione della Key Attestation</a><ul>
+<li><a class="reference internal" href="#richiesta-di-emissione-della-key-attestation">12.1.5.1. Richiesta di Emissione della Key Attestation</a></li>
+<li><a class="reference internal" href="#risposta-all-emissione-della-key-attestation">12.1.5.2. Risposta all'Emissione della Key Attestation</a></li>
+<li><a class="reference internal" href="#key-attestation-jwt">12.1.5.3. Key Attestation JWT</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet">13.1.6. Catalogo e-Service PDND del Fornitore di Wallet</a><ul>
-<li><a class="reference internal" href="#notifica-morte-utente">13.1.6.1. Notifica Morte Utente</a></li>
+<li><a class="reference internal" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet">12.1.6. Catalogo e-Service PDND del Fornitore di Wallet</a><ul>
+<li><a class="reference internal" href="#notifica-morte-utente">12.1.6.1. Notifica Morte Utente</a></li>
 </ul>
 </li>
 </ul>

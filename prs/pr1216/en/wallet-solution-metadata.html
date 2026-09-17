@@ -372,7 +372,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, and in particular the custom URL <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, using <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> or <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> as specified in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>.</p>
 </div>
 </section>
 

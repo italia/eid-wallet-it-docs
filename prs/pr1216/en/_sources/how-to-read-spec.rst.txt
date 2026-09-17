@@ -24,7 +24,16 @@ The specification is organized into the following major sections:
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`:
-  Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
+  Defines the two Trust Frameworks, the X.509 PKI and the Trust Artifacts.
+
+- **Section** :ref:`trust-evaluation:Trust Evaluation Process`:
+  Defines Trust Framework selection and the Authentication, Authorization and Metadata evaluation procedures.
+
+- **Section** :ref:`registry:Registry Infrastructure`:
+  Defines the national registries and catalogues used by the ecosystem.
+
+- **Section** :ref:`onboarding-system:Onboarding System and Lifecycle Management`:
+  Defines registration, notification, publication and lifecycle of Entities, Trust Artifacts and Credential types.
 
 - **Section** :ref:`entities:Entities`:
   Comprehensive implementation requirements for each ecosystem participant: Wallet Solutions, Credential Issuers, Relying Parties, and Authentic Sources, including their components, interaction patterns, and configuration requirements.
