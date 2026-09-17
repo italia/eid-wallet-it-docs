@@ -69,6 +69,16 @@ The requirements for the Key Attestation are defined below:
 - The Key Attestation MUST NOT be issued by the Wallet Provider if the WSCD trustworthiness is not guaranteed. In this case, the Wallet Instance MUST be revoked.
 
 
+Use of Key Attestation APIs (OEM)
+.................................
+
+When issuing a Key Attestation:
+
+- For keys bound to a PID, the Wallet Provider MUST NOT use the :term:`Key Attestation APIs (OEM)` (:ref:`WP_140g <wallet-instance-optional-testcases>`).
+- For keys bound to any Digital Credential other than the PID, the Wallet Provider MAY use the :term:`Key Attestation APIs (OEM)` (:ref:`WP_140h <wallet-instance-optional-testcases>`).
+- If Key Attestation APIs (OEM) material is included in the Key Attestation Issuance Request, the Wallet Provider MUST validate it according to the device manufacturer's guidelines (:ref:`WP_143h <wallet-instance-optional-testcases>`).
+
+
 WSCD Requirements
 """""""""""""""""
 

@@ -1803,6 +1803,16 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Include <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim</p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim contains the ephemeral public key, linking the key to the attestation.</p></td>
 </tr>
+<tr class="row-even"><td><p>WP_140g</p></td>
+<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>No OEM Key Attestation APIs for PID</p></td>
+<td><p>Key Attestation issuance for PID keys conforms to <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_140h</p></td>
+<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>OEM Key Attestation APIs for other credentials</p></td>
+<td><p>Key Attestation issuance for Digital Credentials other than the PID conforms to <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p></td>
+</tr>
 <tr class="row-even"><td><p>WP_141</p></td>
 <td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
 <td><p>Signing JWT Wallet Attestation Request</p></td>
@@ -1853,62 +1863,67 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p><code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter verification</p></td>
 <td><p>Wallet Provider verifies that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter in the Wallet Attestation Request JWT matches its own URL identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_144</p></td>
+<tr class="row-even"><td><p>WP_143h</p></td>
+<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>OEM Key Attestation validation scope</p></td>
+<td><p>Wallet Provider validation of Key Attestation APIs (OEM) material in <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> conforms to <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_144</p></td>
 <td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
 <td><p>Attestation Issuance</p></td>
 <td><p>After successful validation of the Wallet Attestation Request, Wallet Provider issues a Wallet Attestation with an expiration time not exceeding 24 hours from issuance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_145</p></td>
+<tr class="row-even"><td><p>WP_145</p></td>
 <td><p>Wallet Revocation, Lifecycle, Interoperability</p></td>
 <td><p>Wallet Instance status retrieval</p></td>
 <td><p>Wallet Instance sends a Wallet Instances Retrieval Request to the Wallet Provider’s Wallet Instance Management Endpoint.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_146</p></td>
+<tr class="row-odd"><td><p>WP_146</p></td>
 <td><p>Wallet Revocation, Lifecycle, Interoperability</p></td>
 <td><p>Wallet Instance status response</p></td>
 <td><p>Wallet Provider validates the request and returns Wallet Instance a list of the authenticated User’s linked Wallet Instances, including each instance’s <code class="docutils literal notranslate"><span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, and <code class="docutils literal notranslate"><span class="pre">issued_at</span></code> fields.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_147</p></td>
+<tr class="row-even"><td><p>WP_147</p></td>
 <td><p>Wallet Revocation, Lifecycle, Interoperability</p></td>
 <td><p>Wallet Instance Revocation Request body</p></td>
 <td><p>Wallet Instance Revocation Request includes a body with <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;:&quot;REVOKED&quot;}</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_148</p></td>
+<tr class="row-odd"><td><p>WP_148</p></td>
 <td><p>Wallet Revocation, Lifecycle, Interoperability</p></td>
 <td><p>Wallet Instance Revocation Response</p></td>
 <td><p>Wallet Provider updates the specified Wallet Instance state to <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> and returns a confirmation.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_149</p></td>
+<tr class="row-even"><td><p>WP_149</p></td>
 <td><p>Wallet Revocation, Lifecycle, Security</p></td>
 <td><p>Clears keys upon revocation</p></td>
 <td><p>As part of its revocation, Wallet Instance removes all associated Wallet Cryptographic Hardware Key pairs from the device.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_150</p></td>
+<tr class="row-odd"><td><p>WP_150</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Initialization failure (invalid nonce)</p></td>
 <td><p>When a Wallet Instance Initialization request contains a nonce that is invalid, expired, or already used, Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_151</p></td>
+<tr class="row-even"><td><p>WP_151</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Initialization failure (Key Attestation signature)</p></td>
 <td><p>When a Wallet Instance Initialization request contains an invalid Key Attestation signature, Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_152</p></td>
+<tr class="row-odd"><td><p>WP_152</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Binding failure (Wallet Instance not found)</p></td>
 <td><p>When a Key Binding request references a Wallet Instance that is not found, Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">not_found</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_153</p></td>
+<tr class="row-even"><td><p>WP_153</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Binding failure (Wallet Instance revoked)</p></td>
 <td><p>When a Key Binding request is made for a Wallet Instance that has been revoked, Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_154</p></td>
+<tr class="row-odd"><td><p>WP_154</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Binding failure (invalid PoP)</p></td>
 <td><p>When a Key Binding request contains an invalid Proof of Possession (<code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>), Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_155</p></td>
+<tr class="row-even"><td><p>WP_155</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Binding failure (Integrity Assertion failure)</p></td>
 <td><p>When the Integrity Assertion in a Key Binding request fails validation (e.g., is tampered with), Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
@@ -2034,7 +2049,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

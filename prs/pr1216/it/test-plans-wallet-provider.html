@@ -1805,6 +1805,16 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <td><p>Includere claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code></p></td>
 <td><p>Il claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code> nel payload del JWT Richiesta di Emissione della Wallet Attestation contiene la chiave pubblica effimera, collegando la chiave all'attestato.</p></td>
 </tr>
+<tr class="row-even"><td><p>WP_140g</p></td>
+<td><p>Rilascio Wallet Attestation, Ciclo di vita, Sicurezza</p></td>
+<td><p>Nessuna API di Key Attestation OEM per il PID</p></td>
+<td><p>L'emissione della Key Attestation per chiavi del PID è conforme a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_140h</p></td>
+<td><p>Rilascio Wallet Attestation, Ciclo di vita, Sicurezza</p></td>
+<td><p>API di Key Attestation OEM per gli altri Attestati Elettronici</p></td>
+<td><p>L'emissione della Key Attestation per Attestati Elettronici diversi dal PID è conforme a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
+</tr>
 <tr class="row-even"><td><p>WP_141</p></td>
 <td><p>Rilascio Wallet Attestation, Ciclo di vita, Sicurezza</p></td>
 <td><p>Firma della Richiesta di Emissione della Wallet Attestation</p></td>
@@ -1855,62 +1865,67 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <td><p>Verifica parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code></p></td>
 <td><p>Il Fornitore del Wallet verifica che il parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> nel JWT Richiesta di Emissione della Wallet Attestation corrisponda al suo identificativo URL.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_144</p></td>
+<tr class="row-even"><td><p>WP_143h</p></td>
+<td><p>Rilascio Wallet Attestation, Ciclo di vita, Sicurezza</p></td>
+<td><p>Ambito di validazione delle API di Key Attestation OEM</p></td>
+<td><p>La validazione da parte del Fornitore del Wallet del materiale delle API di Key Attestation (OEM) in <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> è conforme a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_144</p></td>
 <td><p>Rilascio Wallet Attestation, Ciclo di vita, Sicurezza</p></td>
 <td><p>Rilascio Attestato</p></td>
 <td><p>Dopo un validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet rilascia una Wallet Attestation con scadenza non superiore a 24 ore dal rilascio.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_145</p></td>
+<tr class="row-even"><td><p>WP_145</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Recupero stato Istanza del Wallet</p></td>
 <td><p>Istanza del Wallet invia una Richiesta di Recupero Istanze del Wallet all'Endpoint di Gestione dell'Istanza del Wallet del Fornitore del Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_146</p></td>
+<tr class="row-odd"><td><p>WP_146</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Risposta stato Istanza del Wallet</p></td>
 <td><p>Il Fornitore del Wallet valida la richiesta e restituisce all'Istanza del Wallet un elenco delle Istanze del Wallet collegate dell'Utente autenticato, inclusi i campi <code class="docutils literal notranslate"><span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, e <code class="docutils literal notranslate"><span class="pre">issued_at</span></code> di ogni istanza.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_147</p></td>
+<tr class="row-even"><td><p>WP_147</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Corpo Richiesta di Revoca Istanza del Wallet</p></td>
 <td><p>La Richiesta di Revoca Istanza del Wallet include nel body un oggetto con chiave <code class="docutils literal notranslate"><span class="pre">status</span></code> e valore <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_148</p></td>
+<tr class="row-odd"><td><p>WP_148</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Risposta Revoca Istanza del Wallet</p></td>
 <td><p>Il Fornitore del Wallet aggiorna lo stato dell'Istanza del Wallet a <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> e restituisce una conferma.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_149</p></td>
+<tr class="row-even"><td><p>WP_149</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Sicurezza</p></td>
 <td><p>Cancella chiavi su revoca</p></td>
 <td><p>Nella revoca, Istanza del Wallet rimuove tutte le Cryptographic Hardware Key associate dal dispositivo all'Istanza stessa.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_150</p></td>
+<tr class="row-odd"><td><p>WP_150</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento inizializzazione (nonce non valido)</p></td>
 <td><p>Quando una Richiesta di Inizializzazione Istanza del Wallet contiene un nonce non valido, scaduto, o già utilizzato, il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_151</p></td>
+<tr class="row-even"><td><p>WP_151</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento inizializzazione (firma Key Attestation)</p></td>
 <td><p>Quando una Richiesta di Inizializzazione Istanza del Wallet contiene una firma Key Attestation non valida, il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_152</p></td>
+<tr class="row-odd"><td><p>WP_152</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento Key Binding (Istanza del Wallet non trovata)</p></td>
 <td><p>Quando una richiesta Key Binding riferisce un'Istanza del Wallet che non viene trovata, il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">not_found</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_153</p></td>
+<tr class="row-even"><td><p>WP_153</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento Key Binding (Istanza del Wallet revocata)</p></td>
 <td><p>Quando una richiesta Key Binding è fatta per un'Istanza del Wallet che è stata revocata, il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_154</p></td>
+<tr class="row-odd"><td><p>WP_154</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento Key Binding (PoP non valido)</p></td>
 <td><p>Quando una richiesta Key Binding contiene una Proof of Possession non valida (<code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>), il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_155</p></td>
+<tr class="row-even"><td><p>WP_155</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Fallimento Key Binding (fallimento Integrity Assertion)</p></td>
 <td><p>Quando l'Integrity Assertion in una richiesta Key Binding non passa la validazione (es. il dispositivo è manomesso), il Fornitore del Wallet restituisce una risposta <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> con codice errore <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
@@ -2036,7 +2051,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

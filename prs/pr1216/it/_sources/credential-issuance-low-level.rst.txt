@@ -316,7 +316,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
  4. La firma sulla prova della chiave DEVE essere verificata utilizzando la chiave pubblica specificata nel parametro dell'header.
  5. Il parametro dell'header NON DEVE contenere una chiave privata.
  6. La firma sul JWT di Key Attestation, come valore del parametro di intestazione ``key_attestation``, DEVE essere verificata utilizzando la chiave pubblica del Wallet Provider, identificata dal parametro di intestazione kid all’interno del JWT di Key Attestation.
- 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a questo valore ``c_nonce``. Inoltre, l'istante di creazione del JWT, come indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE essere all'interno di una finestra temporale accettabile come determinato dal server.
+ 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
 
 
 .. note::

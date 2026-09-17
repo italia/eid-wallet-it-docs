@@ -1198,6 +1198,14 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
      - Includere claim ``cnf``
      - Il claim ``cnf`` nel payload del JWT Richiesta di Emissione della Wallet Attestation contiene la chiave pubblica effimera, collegando la chiave all'attestato.
+   * - WP_140g
+     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Nessuna API di Key Attestation OEM per il PID
+     - L'emissione della Key Attestation per chiavi del PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+   * - WP_140h
+     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - API di Key Attestation OEM per gli altri Attestati Elettronici
+     - L'emissione della Key Attestation per Attestati Elettronici diversi dal PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_141
      - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
      - Firma della Richiesta di Emissione della Wallet Attestation
@@ -1238,6 +1246,10 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
      - Verifica parametro ``iss``
      - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Attestation corrisponda al suo identificativo URL.
+   * - WP_143h
+     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Ambito di validazione delle API di Key Attestation OEM
+     - La validazione da parte del Fornitore del Wallet del materiale delle API di Key Attestation (OEM) in ``keys_to_attest`` è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_144
      - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
      - Rilascio Attestato

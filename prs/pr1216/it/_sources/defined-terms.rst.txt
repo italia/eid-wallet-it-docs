@@ -387,14 +387,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Key Attestation**
     **KA**
       Tipo di Wallet Unit Attestation che attesta la certificazione e le proprietà di una WSCA/WSCD o di un keystore disponibile alla Wallet Unit, e che contiene una o più chiavi pubbliche le cui chiavi private corrispondenti sono generate e conservate in quella WSCA/WSCD o keystore.
-      In IT-Wallet è emessa dal Fornitore di Wallet utilizzando le API di Key Attestation (OEM).
+      È emessa dal Fornitore di Wallet.
       Conforme con ARF 3.0.0 Topic 9 e Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**
     **WIA**
       Tipo di Wallet Unit Attestation che attesta l'integrità e l'autenticità di un'Istanza del Wallet e che reca un riferimento di revoca dell'Istanza, nonché informazioni sulla Soluzione Wallet.
-      In IT-Wallet è emessa dal Fornitore di Wallet.
+      È emessa dal Fornitore di Wallet.
       Conforme con ARF 3.0.0 Topic 9.
 
     **Catalogo degli Attestati Elettronici**

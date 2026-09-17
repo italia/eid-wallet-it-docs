@@ -69,6 +69,16 @@ I requisiti per la Key Attestation sono definiti di seguito:
 - La Key Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'Istanza del Wallet DEVE essere revocata.
 
 
+Uso delle API di Key Attestation (OEM)
+......................................
+
+Quando emette una Key Attestation:
+
+- Per le chiavi vincolate a un PID, il Fornitore di Wallet NON DEVE utilizzare le :term:`Key Attestation APIs (OEM)` (:ref:`WP_140g <wallet-instance-optional-testcases>`).
+- Per le chiavi vincolate a un Attestato Elettronico diverso dal PID, il Fornitore di Wallet PUÒ utilizzare le :term:`Key Attestation APIs (OEM)` (:ref:`WP_140h <wallet-instance-optional-testcases>`).
+- Se la Richiesta di Emissione della Key Attestation include materiale delle API di Key Attestation (OEM), il Fornitore di Wallet DEVE validarlo secondo le linee guida del produttore del dispositivo (:ref:`WP_143h <wallet-instance-optional-testcases>`).
+
+
 Requisiti WSCD
 """"""""""""""
 

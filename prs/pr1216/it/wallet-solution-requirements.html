@@ -385,6 +385,15 @@ Esso dimostra principalmente l'<strong>autenticità</strong>, l'<strong>integrit
 <li><p>Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'uso offline, l'interoperabilità e il rischio che una KA diventi un vettore per tracciare l'Utente, nel decidere il periodo di validità di una KA.</p></li>
 <li><p>La Key Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'Istanza del Wallet DEVE essere revocata.</p></li>
 </ul>
+<section id="uso-delle-api-di-key-attestation-oem">
+<h3><span class="section-number">10.1.1.2.1. </span>Uso delle API di Key Attestation (OEM)<a class="headerlink" href="#uso-delle-api-di-key-attestation-oem" title="Link to this heading">¶</a></h3>
+<p>Quando emette una Key Attestation:</p>
+<ul class="simple">
+<li><p>Per le chiavi vincolate a un PID, il Fornitore di Wallet NON DEVE utilizzare le <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140g</span></a>).</p></li>
+<li><p>Per le chiavi vincolate a un Attestato Elettronico diverso dal PID, il Fornitore di Wallet PUÒ utilizzare le <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140h</span></a>).</p></li>
+<li><p>Se la Richiesta di Emissione della Key Attestation include materiale delle API di Key Attestation (OEM), il Fornitore di Wallet DEVE validarlo secondo le linee guida del produttore del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143h</span></a>).</p></li>
+</ul>
+</section>
 </section>
 <section id="requisiti-wscd">
 <h2><span class="section-number">10.1.1.3. </span>Requisiti WSCD<a class="headerlink" href="#requisiti-wscd" title="Link to this heading">¶</a></h2>
@@ -480,7 +489,10 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
           <ul>
 <li><a class="reference internal" href="#">10.1.1. Requisiti della Soluzione Wallet</a><ul>
 <li><a class="reference internal" href="#requisiti-della-wallet-instance-attestation">10.1.1.1. Requisiti della Wallet Instance Attestation</a></li>
-<li><a class="reference internal" href="#requisiti-della-key-atestation">10.1.1.2. Requisiti della Key Atestation</a></li>
+<li><a class="reference internal" href="#requisiti-della-key-atestation">10.1.1.2. Requisiti della Key Atestation</a><ul>
+<li><a class="reference internal" href="#uso-delle-api-di-key-attestation-oem">10.1.1.2.1. Uso delle API di Key Attestation (OEM)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#requisiti-wscd">10.1.1.3. Requisiti WSCD</a></li>
 </ul>
 </li>
@@ -517,7 +529,7 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

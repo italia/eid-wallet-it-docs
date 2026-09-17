@@ -890,7 +890,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 <section id="endpoint-di-emissione-della-key-attestation">
 <h2><span class="section-number">13.1.5. </span>Endpoint di Emissione della Key Attestation<a class="headerlink" href="#endpoint-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h2>
-<p>Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation.</p>
+<p>Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation. L'uso delle <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> è definito in <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p>
 <section id="richiesta-di-emissione-della-key-attestation">
 <h3><span class="section-number">13.1.5.1. </span>Richiesta di Emissione della Key Attestation<a class="headerlink" href="#richiesta-di-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
 <p>La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
@@ -965,7 +965,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td></td>
 </tr>
 <tr class="row-even"><td><p><strong>keys_to_attest</strong></p></td>
-<td><p>Array JSON di stringhe JWT, ciascuna delle quali rappresenta una <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>.</p></td>
+<td><p>Array JSON di stringhe JWT, ciascuna delle quali rappresenta una <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
@@ -1409,7 +1409,7 @@ Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica de
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

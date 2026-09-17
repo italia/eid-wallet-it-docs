@@ -493,7 +493,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 Endpoint di Emissione della Key Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation.
+Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation. L'uso delle :term:`Key Attestation APIs (OEM)` è definito in :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
 
 Richiesta di Emissione della Key Attestation
 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -560,7 +560,7 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - Il ``nonce`` ottenuto dal Nonce Endpoint.
       -
     * - **keys_to_attest**
-      - Array JSON di stringhe JWT, ciascuna delle quali rappresenta una ``Key_Attestation_Requests``.
+      - Array JSON di stringhe JWT, ciascuna delle quali rappresenta una ``Key_Attestation_Requests``. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
       -
     * - **hardware_signature**
       - La firma di ``client_data_hash`` ottenuta utilizzando la Cryptographic Hardware Key, codificata nel formato ``base64url``.

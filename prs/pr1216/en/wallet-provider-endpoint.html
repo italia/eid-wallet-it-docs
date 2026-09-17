@@ -888,7 +888,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 <section id="key-attestation-issuance-endpoint">
 <h2><span class="section-number">12.1.5. </span>Key Attestation Issuance Endpoint<a class="headerlink" href="#key-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
-<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request.</p>
+<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request. Use of the <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> is defined in <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p>
 <section id="key-attestation-issuance-request">
 <h3><span class="section-number">12.1.5.1. </span>Key Attestation Issuance Request<a class="headerlink" href="#key-attestation-issuance-request" title="Link to this heading">¶</a></h3>
 <p>The Key Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
@@ -963,7 +963,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td></td>
 </tr>
 <tr class="row-even"><td><p><strong>keys_to_attest</strong></p></td>
-<td><p>JSON array of JWT strings, each representing a <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>.</p></td>
+<td><p>JSON array of JWT strings, each representing a <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>. Inclusion of Key Attestation APIs (OEM) material is subject to <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
@@ -1441,7 +1441,7 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

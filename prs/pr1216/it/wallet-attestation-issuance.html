@@ -318,10 +318,11 @@
   <section id="emissione-della-key-attestation">
 <h1><span class="section-number">10.1.4.2.3. </span>Emissione della Key Attestation<a class="headerlink" href="#emissione-della-key-attestation" title="Link to this heading">¶</a></h1>
 <p>Questa sezione descrive come il Fornitore di Wallet emette una Key Attestation.</p>
+<p>L'uso delle <a class="reference internal" href="defined-terms.html#term-Key-Attestation-APIs-OEM"><span class="xref std std-term">Key Attestation APIs (OEM)</span></a> è definito in <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
-<object data="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.png"><img src="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.png" alt="La figura illustra il Diagramma di Sequenza per l'acquisizione della Key Attestation." style="width: 99.0%"/></a>
+<object data="_images/plantuml-10dd89f5f3f94f097d540382984b25db1580d18f.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-10dd89f5f3f94f097d540382984b25db1580d18f.png"><img src="_images/plantuml-10dd89f5f3f94f097d540382984b25db1580d18f.png" alt="La figura illustra il Diagramma di Sequenza per l'acquisizione della Key Attestation." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -395,7 +396,7 @@
 <li><p>La firma della Richiesta di Key Attestation DEVE essere valida e verificabile utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143b</span></a>).</p></li>
 <li><p>Il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143c</span></a>).</p></li>
 <li><p>DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata al <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143d</span></a>).</p></li>
-<li><p>La firma del parametro <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> deve essere prima validata utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita, e il suo valore (<code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> nel caso di Android o <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> nel caso di iOS) DEVE essere validato secondo le linee guida del produttore del dispositivo.</p></li>
+<li><p>La firma del parametro <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> DEVE essere prima validata utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita. Se è incluso materiale delle API di Key Attestation (OEM), esso DEVE essere validato secondo le linee guida del produttore del dispositivo, come definito in <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143h</span></a>).</p></li>
 <li><p>Il <code class="docutils literal notranslate"><span class="pre">client_data</span></code> DEVE essere ricostruito utilizzando il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e le rispettive thumbprint JWKs <code class="docutils literal notranslate"><span class="pre">[key_pub_1,...,key_pub_n]</span></code>. Il valore del parametro <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143e</span></a>).</p></li>
 <li><p>L'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143f</span></a>).</p></li>
 <li><p>Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.</p></li>
@@ -465,7 +466,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 16/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
