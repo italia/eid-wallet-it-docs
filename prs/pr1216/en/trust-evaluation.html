@@ -512,7 +512,7 @@ The parameters they operate on, such as the signed Request Object, the mdoc Requ
 <li><p><a class="reference internal" href="#eudiw-attestation-signature-validation"><span class="std std-ref">EUDIW Attestation Signature Validation</span></a>, applied to the Wallet Instance Attestation</p></li>
 </ul>
 </td>
-<td><p>The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and the Wallet-Relying Party Registration Certificate.</p></td>
+<td><p>The Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the applicable Service, included by value in the Credential Issuer Metadata ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).</p></td>
 </tr>
 <tr class="row-even"><td><p>Relying Party</p></td>
 <td><p>Remote or proximity presentation</p></td>
@@ -1015,7 +1015,7 @@ The EUDIW Authorization Process MUST start only <em>after</em> the Wallet-Relyin
 If the Wallet-Relying Party has not been authenticated, the EUDIW Authorization Process MUST NOT start.</p>
 <p>The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate.
 During Credential Presentation the Wallet-Relying Party Registration Certificate MUST be included by value in the request ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19) and is the sole authoritative source for presentation authorization ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17, RPRC_21).
-During Credential Issuance the same data MAY equivalently be obtained from the Register Response, as profiled in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>] and described in <a class="reference internal" href="infrastructure-trust.html#register-open-apis"><span class="std std-ref">Register Open APIs</span></a>.</p>
+During Credential Issuance a PID Provider or Attestation Provider MUST include the Wallet-Relying Party Registration Certificate of the applicable Service by value in the Credential Issuer Metadata ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).</p>
 <p>The EUDIW Authorization Process is split into:</p>
 <ul>
 <li><p><a class="reference internal" href="#authorization-artifacts-validation"><span class="std std-ref">Authorization Artifacts Validation</span></a>, which validates integrity and authenticity of the Trust Artifact carrying the authorization data; and</p></li>
@@ -1041,14 +1041,10 @@ Depending on the Flow type the User MAY <em>override</em> the Authorization Deci
 The Relying Party Intermediary is itself a registered entity, and its authorization to act as an intermediary is established through the <code class="docutils literal notranslate"><span class="pre">intermediary</span></code> binding declared in the intermediated Relying Party authorization data (see the Binding verification below).</p></li>
 </ul>
 <p>The Wallet Unit MUST support authorization-context resolution from the Wallet-Relying Party Registration Certificate included in the interaction.
-During Credential Presentation the Wallet Unit MUST NOT query the Register as a substitute for a missing or invalid Wallet-Relying Party Registration Certificate ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16, RPRC_18 and RPRC_19a are empty).
-During Credential Issuance, where a Wallet-Relying Party Registration Certificate is not available or cannot be relied upon, the Wallet Unit MAY resolve the authorization context from the Register.
-The substantive authorization logic MUST NOT change based on the data source.
-Where both sources are available during Issuance, the Wallet Unit MUST normalize both into the same internal authorization model before applying the rules.</p>
+The Wallet Unit MUST NOT query the Register as a substitute for a missing or invalid Wallet-Relying Party Registration Certificate during Credential Presentation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16, RPRC_18 and RPRC_19a are empty) or during Credential Issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22 and RPRC_22a).</p>
 <section id="authorization-artifacts-validation">
 <h4><span class="section-number">6.2.6.1. </span>Authorization Artifacts Validation<a class="headerlink" href="#authorization-artifacts-validation" title="Link to this heading">¶</a></h4>
-<p>The Wallet-Relying Party Registration Certificate carries the authorization data of an entity, in the JWT and CWT profiles defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].
-During Credential Issuance the Register Response carries equivalent information and the Wallet Unit MUST support its validation as well.</p>
+<p>The Wallet-Relying Party Registration Certificate carries the authorization data of an entity, in the JWT and CWT profiles defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p>
 <p>Each validation procedure specifies its inputs, its processing logic and its output, a verification result code.
 The result MAY be overridden by the User under the conditions detailed in <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.</p>
 <p>The validation flow depends on the interaction.</p>
@@ -1062,20 +1058,19 @@ The result MAY be overridden by the User under the conditions detailed in <a cla
 </div></blockquote>
 <p>A <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> element MAY be present for publication and transparency. It MUST NOT be used as a substitute for the Wallet-Relying Party Registration Certificate during presentation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19a is empty).</p>
 </li>
-<li><p>During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the <code class="docutils literal notranslate"><span class="pre">issuer_info</span></code> array, as defined in Section 4.2.3 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>].
-The array MAY contain a <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> element with the registration information.
+<li><p>During the Issuance flow a PID Provider or Attestation Provider MUST convey the Wallet-Relying Party Registration Certificate by value in the Credential Issuer Metadata ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22), through the <code class="docutils literal notranslate"><span class="pre">issuer_info</span></code> array, as defined in Section 4.2.3 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>].
+The array MUST contain a <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> element with the registration information.
+The <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> MAY be used as advisory information only. It MUST NOT be presented to the User as verified and MUST NOT be used as a substitute for the Wallet-Relying Party Registration Certificate ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).
 The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> field, as defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>].</p></li>
 </ul>
 <p>During Credential Presentation, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code> and MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17).
 The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16 and RPRC_18 are empty).</p>
-<p>During Credential Issuance, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST query the Register as described in <a class="reference internal" href="#register-query-validation"><span class="std std-ref">Register Query Validation</span></a>.
-The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate.
-Each Registrar exposes an online service through the API described in <a class="reference internal" href="infrastructure-trust.html#register-open-apis"><span class="std std-ref">Register Open APIs</span></a>.
-When using this service the Wallet Unit SHOULD inform the User that an external query will be made.</p>
+<p>During Credential Issuance, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>, MUST warn the User that it could not obtain or validate the registered information, and MUST NOT request the issuance of a PID or attestation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22a).
+The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).</p>
 <p><strong>Wallet-Relying Party Registration Certificate Validation</strong></p>
 <p>When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:</p>
 <ol class="arabic simple">
-<li><p><strong>Format verification</strong>: confirm that <code class="docutils literal notranslate"><span class="pre">typ</span></code> is <code class="docutils literal notranslate"><span class="pre">rc-wrp+jwt</span></code> in the Remote Flow, or <code class="docutils literal notranslate"><span class="pre">rc-wrp+cwt</span></code> in the Proximity Flow, as defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p></li>
+<li><p><strong>Format verification</strong>: confirm that <code class="docutils literal notranslate"><span class="pre">typ</span></code> is <code class="docutils literal notranslate"><span class="pre">rc-wrp+jwt</span></code> in the Remote Flow and during Credential Issuance, or <code class="docutils literal notranslate"><span class="pre">rc-wrp+cwt</span></code> in the Proximity Flow, as defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p></li>
 <li><p><strong>Algorithm verification</strong>: verify that the signature algorithm is conformant, that is <code class="docutils literal notranslate"><span class="pre">alg</span></code> is neither <code class="docutils literal notranslate"><span class="pre">none</span></code> nor a deprecated algorithm.</p></li>
 <li><p><strong>Signature validation</strong>: verify that the Wallet-Relying Party Registration Certificate signature is valid.</p></li>
 <li><p><strong>Trust Anchor validation</strong>: validate the Providers of WRPRC LoTE (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>) and retrieve the Trust Anchor from its <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList.ServiceDigitalIdentity</span></code> field.</p></li>
@@ -1099,55 +1094,28 @@ When using this service the Wallet Unit SHOULD inform the User that an external 
 <p><strong>Outcome</strong></p>
 <ul class="simple">
 <li><p>If all the steps succeed and the Wallet-Relying Party Registration Certificate is in the <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code>.</p></li>
-<li><p>If any step fails, or if during Credential Presentation no Wallet-Relying Party Registration Certificate is included in the request, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>.
-During Credential Presentation this is not a Registrar lookup: the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register.
-During Credential Issuance this triggers <a class="reference internal" href="#register-query-validation"><span class="std std-ref">Register Query Validation</span></a>.</p></li>
+<li><p>If any step fails, or if no Wallet-Relying Party Registration Certificate is included, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>.
+During Credential Presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register.
+During Credential Issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).</p></li>
 </ul>
-<p id="register-query-validation"><strong>Register Query Validation</strong></p>
-<p>Register Query Validation applies only during Credential Issuance.
-During Credential Presentation the Wallet Unit MUST NOT execute this procedure ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_16 and RPRC_18 are empty).</p>
-<p>When, during Issuance, the Wallet-Relying Party Registration Certificate is not available or its validation has failed, the Wallet Unit MUST query the Register API:</p>
-<ol class="arabic simple">
-<li><p><strong>Extract the Registrar URL</strong> from the Credential Issuer Metadata, that is <code class="docutils literal notranslate"><span class="pre">issuer_info[].registry_uri</span></code>.</p></li>
-<li><p><strong>Connect</strong> to the Registrar online service over HTTPS.</p></li>
-<li><p><strong>Query</strong> the service with the entity identifier and, optionally, the <code class="docutils literal notranslate"><span class="pre">intended_use_id</span></code>.
-The entity identifier is the <code class="docutils literal notranslate"><span class="pre">issuer_info[].data.identifier</span></code>.</p></li>
-<li><p><strong>Format verification</strong>: confirm that <code class="docutils literal notranslate"><span class="pre">typ</span></code> is <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, as defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p></li>
-<li><p><strong>Verify pertinence</strong>: verify that the response pertains to the relevant Authorization Subject.</p></li>
-<li><p><strong>Verify the response signature</strong>: verify the Registrar signature using the Sign/Seal Certificate carried in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> claim of the response.</p></li>
-<li><p><strong>Trust Anchor validation</strong>: validate the Registrars List of Trusted Entities (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>) and retrieve the Registrar Trust Anchor from its <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList.ServiceDigitalIdentity</span></code> field.</p></li>
-<li><p><strong>Path validation</strong>: validate the Registrar Sign/Seal Certificate chain as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, where <code class="docutils literal notranslate"><span class="pre">C_1</span></code> is the Registrar Sign/Seal Certificate, and the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> is the Trust Anchor obtained at the previous step.</p></li>
-<li><p><strong>Normalize</strong> the Register-derived data into the same internal model used for the Wallet-Relying Party Registration Certificate.</p></li>
-</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>During Credential Presentation the request MUST carry the Wallet-Relying Party Registration Certificate of the Authorization Subject by value, including when the authenticated Wallet-Relying Party is a Relying Party Intermediary ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19).
 That certificate identifies the intermediated Relying Party.</p>
 </div>
-<p><strong>Outcome</strong></p>
-<ul class="simple">
-<li><p>If all the steps succeed, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">REGISTER_VALID</span></code>.</p></li>
-<li><p>If any step fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">FAILED</span></code>.</p></li>
-</ul>
-<p>During Issuance only, the <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified.
-In Step 8.
-<strong>Path Validation</strong>, the Trust Anchor Certificate needed for the validation of the Registrar Sign/Seal Certificate MUST NOT be included in the certificate chain Register's response and MUST be always retrieved in the appropriate LoTE.</p>
 </section>
 <section id="authorization-validation">
 <h4><span class="section-number">6.2.6.2. </span>Authorization Validation<a class="headerlink" href="#authorization-validation" title="Link to this heading">¶</a></h4>
-<p>The Authorization Validation MUST follow the Authorization Artifacts Validation when <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">REGISTER_VALID</span></code> or <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_VALID</span></code>.
-If <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">FAILED</span></code> or, during Credential Presentation, <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_INVALID</span></code>, the Wallet Unit SHOULD NOT execute any Authorization Validation, as it cannot change the final Authorization Decision.</p>
+<p>The Authorization Validation MUST follow the Authorization Artifacts Validation when <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_VALID</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_INVALID</span></code>, the Wallet Unit SHOULD NOT execute any Authorization Validation, as it cannot change the final Authorization Decision.</p>
 <p><strong>Input</strong></p>
 <p>The Wallet Unit MUST base the Authorization Validation only on:</p>
 <ul class="simple">
 <li><p>the authenticated Wallet-Relying Party and the interaction context, authoritative only for the identity of the Wallet-Relying Party;</p></li>
-<li><p>a validated Authorization Artifact, that is a Wallet-Relying Party Registration Certificate or, during Credential Issuance, a Register Response, authoritative for the subject identity, entitlements, intended use, registered scope, intermediary relationships, issuance-specific data and privacy policy references, as defined in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>];</p></li>
-<li><p>explicitly identified fallback information, non-authoritative, during Credential Issuance only;</p></li>
+<li><p>a validated Authorization Artifact, that is a Wallet-Relying Party Registration Certificate, authoritative for the subject identity, entitlements, intended use, registered scope, intermediary relationships, issuance-specific data and privacy policy references, as defined in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>];</p></li>
 <li><p>a verified Embedded Disclosure Policy, REQUIRED when provided by the Attestation Provider during Credential Issuance, authoritative when present.</p></li>
 </ul>
-<p>Where authoritative sources conflict with non-authoritative sources, the authoritative sources MUST supersede.
-Where the authenticated Wallet-Relying Party context conflicts with the identity or the intermediary binding in the verified authorization context, the Wallet Unit MUST produce <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, non-overridable.
-A request-carried Registrar URL MUST NOT be treated as sufficient proof of registered information by itself; it MAY be used only as a discovery hint unless confirmed by an authoritative source.</p>
+<p>Where the authenticated Wallet-Relying Party context conflicts with the identity or the intermediary binding in the verified authorization context, the Wallet Unit MUST produce <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, non-overridable.</p>
 <p><strong>Outcome</strong></p>
 <p>The Wallet Unit MUST output the <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> variables, both initialized to <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p>
 <p><strong>Process</strong></p>
@@ -1158,7 +1126,7 @@ The Wallet-Relying Party identity is the <code class="docutils literal notransla
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Credential Issuance</strong>.
-The Wallet Unit MUST match the Credential Issuer identifier with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> of the Wallet-Relying Party Registration Certificate or, if no Wallet-Relying Party Registration Certificate is available, with the <code class="docutils literal notranslate"><span class="pre">identifier</span></code> used in the Register query, and with the <code class="docutils literal notranslate"><span class="pre">issuer_info.data.identifier</span></code> of the Credential Issuer Metadata.</p></li>
+The Wallet Unit MUST match the Credential Issuer identifier with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> of the Wallet-Relying Party Registration Certificate and with the <code class="docutils literal notranslate"><span class="pre">issuer_info.data.identifier</span></code> of the Credential Issuer Metadata ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22b).</p></li>
 <li><p><strong>Credential Presentation</strong>.
 The Wallet Unit MUST first assume the <strong>direct</strong> scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (<code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> or <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code>) with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> of the Wallet-Relying Party Registration Certificate, and with the <code class="docutils literal notranslate"><span class="pre">verifier_info.data.identifier</span></code> of the Request Object in the Remote Flow or the <code class="docutils literal notranslate"><span class="pre">docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier</span></code> in the Proximity Flow.
 If the match fails, the Wallet Unit MUST attempt the <strong>intermediated</strong> scenario ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17a):
@@ -1174,7 +1142,7 @@ There is no User opt-in Registrar lookup of the intermediary relationship ([<a c
 </li>
 <li><p><strong>Entitlement verification</strong>.
 The Wallet Unit MUST verify that the entitlements of the Authorization Subject match the expected role.
-The Wallet Unit MUST parse the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code> field of the Wallet-Relying Party Registration Certificate or, during Credential Issuance, of the Register Response and check that it contains the entitlement URI expected for the interaction, among those defined in Annex A.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]:</p>
+The Wallet Unit MUST parse the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code> field of the Wallet-Relying Party Registration Certificate and check that it contains the entitlement URI expected for the interaction, among those defined in Annex A.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/PID_Provider</span></code> for PID Providers, during PID Issuance;</p></li>
@@ -1189,7 +1157,7 @@ The Wallet Unit MUST parse the <code class="docutils literal notranslate"><span 
 <li><p><strong>Attestation Type verification</strong>.
 During Credential Issuance, the Wallet Unit MUST verify that the PID or the Attestation Type being issued is registered for the Credential Issuer.
 A PID Provider issuing PIDs MAY skip this step.
-Otherwise the Wallet Unit MUST match the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> array of the Wallet-Relying Party Registration Certificate or, during Credential Issuance, of the Register Response (defined in Table 8 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]) against the <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> keys of the Credential Issuer Metadata ([<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>]).
+Otherwise the Wallet Unit MUST match the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> array of the Wallet-Relying Party Registration Certificate (defined in Table 8 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]; [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_23) against the <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> keys of the Credential Issuer Metadata ([<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>]).
 The match MUST be exact and case sensitive, on <code class="docutils literal notranslate"><span class="pre">vct</span></code> for SD-JWT VC and on <code class="docutils literal notranslate"><span class="pre">docType</span></code> for mdoc.
 If not found, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> to <code class="docutils literal notranslate"><span class="pre">ATTESTATION_TYPE_NOT_REGISTERED</span></code>.</p></li>
 <li><p><strong>Scope Comparison</strong>.
@@ -1252,17 +1220,7 @@ The table below summarizes the codes.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code></p></td>
 <td><p>both</p></td>
-<td><p>A format, signature, trust anchor or status check fails on the presented registration certificate, or during Credential Presentation no Wallet-Relying Party Registration Certificate is included in the request. During presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">REGISTER_VALID</span></code></p></td>
-<td><p>issuance</p></td>
-<td><p>The online Registrar query completed, and the response signature, pertinence and trust anchor passed.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FAILED</span></code></p></td>
-<td><p>issuance</p></td>
-<td><p>The online Registrar query or response verification failed during Credential Issuance.</p></td>
+<td><p>A format, signature, trust anchor or status check fails on the presented registration certificate, or no Wallet-Relying Party Registration Certificate is included. During presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register. During issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_22).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">WRONG_ENTITLEMENT</span></code></p></td>
@@ -1304,8 +1262,8 @@ The table below summarizes the codes.</p>
 <p>The final Authorization Decision, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> or <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, is elaborated from the <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code>, <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> values, as defined in <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.</p>
 <figure class="align-default" id="id369">
 <p class="plantuml">
-<object data="_images/plantuml-cd7ddaa257ede5864d19284343c8daabf6f856b4.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-cd7ddaa257ede5864d19284343c8daabf6f856b4.png"><img src="_images/plantuml-cd7ddaa257ede5864d19284343c8daabf6f856b4.png" alt="Flowchart of the EUDIW Authorization Algorithm." style="width: 99.0%"/></a>
+<object data="_images/plantuml-0a86e7f143c3483df974838ee123c91781efca15.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-0a86e7f143c3483df974838ee123c91781efca15.png"><img src="_images/plantuml-0a86e7f143c3483df974838ee123c91781efca15.png" alt="Flowchart of the EUDIW Authorization Algorithm." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -1917,7 +1875,7 @@ The conditions that determine this outcome depend on the specific Authorization 
 <blockquote>
 <div><ul class="simple">
 <li><p>during <strong>Credential Presentation</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> if the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">EDP_SATISFIED</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>;</p></li>
-<li><p>during <strong>Credential Issuance</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> if the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> OR <code class="docutils literal notranslate"><span class="pre">REGISTER_VALID</span></code>, AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>;</p></li>
+<li><p>during <strong>Credential Issuance</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> if the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code> otherwise.</p></li>
 </ul>
 </div></blockquote>
