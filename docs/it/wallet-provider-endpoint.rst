@@ -738,7 +738,7 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
       - `OpenID4VCI`_.
 
-
+Il Fornitore di Wallet DEVE impostare ``key_storage`` e ``user_authentication`` su valori ISO 18045 che corrispondono alla resistenza al potenziale di attacco del Keystore o WSCD effettivo e del metodo di autenticazione dell'Utente. Il Fornitore di Wallet DEVE documentare il mapping usato per TEE, StrongBox e Secure Enclave. Un Keystore Interno Locale NON DEVE essere attestato con ``iso_18045_high``. Un WSCD certificato come resistente ad attaccanti con potenziale di attacco elevato (ad esempio Common Criteria EAL4+ AVA_VAN.5) PUÒ essere attestato con ``iso_18045_high`` (:ref:`WP_022a <wallet-instance-testcases>`).
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
@@ -764,6 +764,7 @@ Catalogo e-Service PDND del Fornitore di Wallet
 
 La morte dell'Utente porta alla revoca delle Istanze di Wallet dell'Utente e all'eliminazione dell'account dell'Utente presso il Fornitore di Wallet. Per questo motivo, il Fornitore di Wallet fornisce il seguente e-service tramite PDND.
 Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica del PID/IT-Wallet ID della morte dell'Utente DEVE inviare una notifica ai Fornitori di Wallet utilizzando questo endpoint.
+Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica Morte Utente, DEVONO essere autenticate e autorizzate. Le richieste non autenticate DEVONO essere rifiutate. Una Notifica Morte Utente andata a buon fine DEVE portare alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal Provider di PID/IT-Wallet ID (:ref:`WP_161 <wallet-instance-testcases>`).
 
 .. only:: html
 

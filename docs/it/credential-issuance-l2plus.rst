@@ -101,7 +101,31 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details`` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
+
+Tale oggetto aggiuntivo DEVE contenere i seguenti claim, come definiti anche nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`:
+
+.. list-table:: Oggetto Authorization Details ``it_l2+document_proof``
+   :widths: 25 15 60
+   :header-rows: 1
+
+   * - **Claim**
+     - **Tipo**
+     - **Descrizione**
+   * - **type**
+     - stringa
+     - OBBLIGATORIO. DEVE essere ``it_l2+document_proof``.
+   * - **idphinting**
+     - stringa
+     - OBBLIGATORIO. URL del Provider di Identità da usare come hint.
+   * - **challenge_method**
+     - stringa
+     - OBBLIGATORIO. Metodo di verifica MRTD. DEVE essere ``mrtd+ias``. Metodi di verifica aggiuntivi POSSONO essere definiti in versioni future di questa Specifica.
+   * - **challenge_redirect_uri**
+     - stringa
+     - OBBLIGATORIO. URI di redirect, riconosciuto dall'Istanza del Wallet, per la gestione della risposta alla challenge.
+
+Se tale oggetto è assente dall'array ``authorization_details``, il Provider EAA DEVE autenticare l'Utente con CieID LoA High.
 
 Di seguito un esempio non normativo di PAR:
 
@@ -116,15 +140,20 @@ Di seguito un esempio non normativo di PAR:
     client_id=47b982369791d08003a7283f059cb0d1&
     request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
-Quando l'oggetto ``it_l2+document_proof`` non è presente nell'array authorization_details, il Provider EAA DEVE autenticare l'Utente con CIEid LoA High.
 La Risposta PAR e la Richiesta di Autorizzazione sono le stesse delle Specifiche IT-Wallet.
 
 Fase 2: Autenticazione Primaria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità LoA3 configurato per l'autenticazione primaria. L'Utente completa il flusso di autenticazione LoA3 (SPID o CIEid Substantial) e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
+Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità configurato per l'autenticazione primaria.
+
+In questo flusso **LoA3** (ISO/IEC 29115) corrisponde a eIDAS **Substantial** e ai mezzi nazionali L2 (SPID L2 / CieID Substantial). **LoA High** corrisponde a eIDAS High e a CieID LoA High (CIE L3). Un'autenticazione Substantial NON DEVE essere registrata o trattata come High (:ref:`CI_205 <credential-issuer-testcases>`).
+
+L'Utente completa il flusso di autenticazione Substantial (SPID L2 o CieID Substantial) e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
 Il Server di Autorizzazione EAA DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
+
+Quando gli attributi MRTD diventano disponibili (Fase 3), il Provider EAA DEVE vincolare l'identità verificata dall'IdP con l'identità nell'MRTD confrontando almeno il codice fiscale o un identificativo nazionale univoco equivalente presente in entrambe le fonti. Una mancata corrispondenza DEVE interrompere l'emissione (:ref:`WP_159 <wallet-instance-testcases>`, :ref:`CI_200 <credential-issuer-testcases>`).
 
 .. note::
   Nel caso in cui l'Utente dovesse eseguire un'autenticazione LoA High, la successiva fase 3 DEVE essere saltata.
@@ -831,10 +860,10 @@ Requisiti implementativi aggiuntivi:
 Considerazioni Implementative
 -----------------------------
 
-Le implementazioni DOVREBBERO incorporare meccanismi di rate-limiting per proteggere contro attacchi automatizzati ed esaurimento risorse, e una configurazione di timeout che bilanci esperienza utente e postura di sicurezza, accomodando la variabilità inerente nella lettura di documenti basata su NFC.
+Le implementazioni DEVONO incorporare meccanismi di rate-limiting per proteggere contro attacchi automatizzati ed esaurimento risorse. Le implementazioni DOVREBBERO configurare un timeout di interazione che bilanci esperienza utente e postura di sicurezza, accomodando la variabilità inerente nella lettura di documenti basata su NFC.
 
-Il Provider EAA DOVREBBE implementare un approccio di timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
+Il Provider EAA DEVE implementare timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
 
-Tutti gli eventi rilevanti per la sicurezza durante il flusso di Autenticazione eID Substantial con Verifica MRTD DEVONO essere loggati con dettaglio sufficiente per scopi di auditing preservando la privacy dell'Utente, assicurando che le informazioni di identificazione personale, quando memorizzate, siano hashate appropriatamente. I log di audit DOVREBBERO avere identificatori di correlazione consistenti, abilitando tracciamento end-to-end attraverso tutte le fasi del protocollo, con protezione di integrità crittografica per prevenire manomissioni.
+Tutti gli eventi rilevanti per la sicurezza durante il flusso di Autenticazione eID Substantial con Verifica MRTD DEVONO essere loggati con dettaglio sufficiente per scopi di auditing preservando la privacy dell'Utente, assicurando che le informazioni di identificazione personale, quando memorizzate, siano hashate appropriatamente. I log di audit DEVONO avere identificatori di correlazione consistenti, abilitando tracciamento end-to-end attraverso tutte le fasi del protocollo, con protezione di integrità crittografica per prevenire manomissioni.
 
 
