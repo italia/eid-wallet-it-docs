@@ -2979,11 +2979,13 @@ The <code class="docutils literal notranslate"><span class="pre">organizationIde
 <p>If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary identifier from the WRPAC.
 It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC in the request (<code class="docutils literal notranslate"><span class="pre">sub</span></code>) and compare that identifier to the authorised list ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02, RPRC_19).</p>
 </li>
-<li><p><strong>Specific Root of Trust.</strong> The EDP contains a list of trusted roots or intermediate certificates.
-Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation.
-According to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.</p>
+<li><p><strong>Specific Root of Trust.</strong> The EDP contains a list of trusted roots or intermediate certificates used for signing Wallet-Relying Party Registration Certificates ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03).
+Only RPs whose WRPRC signing path contains one of these certificates are allowed to access the Attestation.
+According to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root or intermediate is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+The Wallet Unit MUST compare all certificates in that signing path, comprising the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE, with the authorised list.
+If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.</p>
 <p>If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
-It MUST compare the Trust Anchor of the Provider of WRPRC that signed the intermediated Relying Party's WRPRC in the request ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03, RPRC_19).</p>
+It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03, RPRC_19).</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -3038,7 +3040,7 @@ Valid values:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;no_policy&quot;</span></code>: Indicates that no policy restrictions apply for the associated EAA.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;authorized_rp_only&quot;</span></code>: Access is restricted to an explicit list of allowed Relying Parties.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;specific_root_of_trust&quot;</span></code>: Access is restricted to Relying Parties chaining to specified trusted roots.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;specific_root_of_trust&quot;</span></code>: Access is restricted to Relying Parties whose WRPRC signing path contains a specified trusted root or intermediate certificate.</p></li>
 </ul>
 </td>
 <td><p>Clause 4.2.5.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)</p></td>
