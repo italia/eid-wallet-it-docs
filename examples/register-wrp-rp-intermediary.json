@@ -31,15 +31,12 @@
     }
   ],
   "tradeName": "TrustBridge",
-  "supportURI": ["https://trustbridge.example/support"],
   "isPSB": false,
   "supervisoryAuthority": {
-    "legalPerson": {
-      "legalName": ["Autorità di vigilanza"]
-    },
+    "name": "Garante per la protezione dei dati personali",
     "country": "IT",
     "email": ["contact@supervisor.example.it"],
-    "infoURI": ["https://supervisor.example.it"]
+    "formURI": ["https://supervisor.example.it"]
   },
   "registryURI": "https://registry.example.it/api",
   "services": [
@@ -61,11 +58,7 @@
           }
         ]
       ],
-      "entitlements": [
-        "https://uri.etsi.org/19475/Entitlement/Service_Provider"
-      ],
       "isIntermediary": true,
-      "intendedUses": [],
       "servedWRPServices": [
         "svc-mobile-01"
       ]

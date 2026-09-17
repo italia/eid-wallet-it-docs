@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: Wallet Relying Party Register API
-  version: 1.0.0
-  description: Specification of the Wallet Relying Party (WRP) Register API in IT Wallet
+  version: "1.5"
+  description: National read profile of the Wallet-Relying Party Register API, aligned with EUDI-TS 5 version 1.5 (2026-08-20) and CIR (EU) 2026/1730.
 servers:
   - url: https://registry.example.eu
     description: Example register server
@@ -19,10 +19,13 @@ paths:
       operationId: listWrps
       parameters:
         - $ref: '#/components/parameters/identifierQuery'
+        - $ref: '#/components/parameters/serviceidentifierQuery'
+        - $ref: '#/components/parameters/isolateServiceQuery'
         - $ref: '#/components/parameters/legalnameQuery'
         - $ref: '#/components/parameters/tradenameQuery'
         - $ref: '#/components/parameters/policyQuery'
         - $ref: '#/components/parameters/entitlementQuery'
+        - $ref: '#/components/parameters/providedattestationQuery'
         - $ref: '#/components/parameters/usesintermediaryQuery'
         - $ref: '#/components/parameters/isintermediaryQuery'
         - $ref: '#/components/parameters/intendeduseidentifierQuery'
@@ -31,12 +34,54 @@ paths:
         - $ref: '#/components/parameters/credentialformatQuery'
         - $ref: '#/components/parameters/cursorQuery'
         - $ref: '#/components/parameters/limitQuery'
-        - $ref: '#/components/parameters/providesattestationQuery'
       responses:
         '200':
           $ref: '#/components/responses/JwsWrpArrayResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
+      security: []
+  /wrp/{identifier}:
+    get:
+      tags:
+        - Public Register
+      summary: Get a Wallet-Relying Party by identifier
+      description: Returns the WalletRelyingParty object matching the given identifier as a JWS-signed object.
+      operationId: getWrpByIdentifier
+      parameters:
+        - $ref: '#/components/parameters/identifierPath'
+      responses:
+        '200':
+          $ref: '#/components/responses/JwsWrpResponse'
+        '404':
+          description: WRP with the given identifier not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: WRP with the given identifier was not found.
+      security: []
+  /wrp/{identifier}/services/{serviceidentifier}:
+    get:
+      tags:
+        - Public Register
+      summary: Get a Wallet-Relying Party isolated to one Service
+      description: Returns the parent WalletRelyingParty record matching the identifier, with the services array sliced to the matching serviceidentifier.
+      operationId: getWrpService
+      parameters:
+        - $ref: '#/components/parameters/identifierPath'
+        - $ref: '#/components/parameters/serviceidentifierPath'
+      responses:
+        '200':
+          $ref: '#/components/responses/JwsWrpResponse'
+        '404':
+          description: WRP or Service identifier not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: WRP or Service identifier was not found.
       security: []
   /wrp/check-intended-use:
     get:
@@ -46,7 +91,8 @@ paths:
       description: This endpoint allows checking if a given Wallet Relying Party has declared an intended use with queried id, or for a specific credential format and claim path or privacy policy.
       operationId: checkIntendedUse
       parameters:
-        - $ref: '#/components/parameters/rpidentifierQuery'
+        - $ref: '#/components/parameters/identifierQuery'
+        - $ref: '#/components/parameters/serviceidentifierQuery'
         - $ref: '#/components/parameters/intendeduseidentifierQuery'
         - $ref: '#/components/parameters/claimpathQuery'
         - $ref: '#/components/parameters/credentialformatQuery'
@@ -58,13 +104,13 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
-          description: WRP with the given rpidentifier not found.
+          description: WRP with the given identifier not found.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
               example:
-                message: WRP with the given rpidentifier was not found.
+                message: WRP with the given identifier was not found.
       security: []
 components:
   securitySchemes:
@@ -80,6 +126,35 @@ components:
       required: false
       schema:
         type: string
+    identifierPath:
+      name: identifier
+      in: path
+      description: Wallet-Relying Party identifier.
+      required: true
+      schema:
+        type: string
+    serviceidentifierQuery:
+      name: serviceidentifier
+      in: query
+      description: Filter by Wallet-Relying Party Service identifier.
+      required: false
+      schema:
+        type: string
+    serviceidentifierPath:
+      name: serviceidentifier
+      in: path
+      description: Wallet-Relying Party Service identifier.
+      required: true
+      schema:
+        type: string
+    isolateServiceQuery:
+      name: isolateService
+      in: query
+      description: If true, and a serviceidentifier match is found, the returned WalletRelyingParty objects include only the matching Service in the services array.
+      required: false
+      schema:
+        type: boolean
+        default: false
     legalnameQuery:
       name: legalname
       in: query
@@ -167,25 +242,11 @@ components:
       schema:
         type: integer
         minimum: 1
-    providesattestationQuery:
-      name: providesattestation
+    providedattestationQuery:
+      name: providedattestation
       in: query
-      description: Filter by attestation types provided.
+      description: Filter by provided attestation type.
       required: false
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Credential'
-          example:
-            format: dc+sd-jwt
-            meta:
-              vct_values:
-                - https://examplebank.eu/schema/bank-account
-    rpidentifierQuery:
-      name: rpidentifier
-      in: query
-      description: Identifier of the WRP whose intended-use registration is being checked.
-      required: true
       schema:
         type: string
     policyurlQuery:
@@ -197,6 +258,13 @@ components:
         type: string
         format: uri
   responses:
+    JwsWrpResponse:
+      description: JWS-signed Wallet-Relying Party object.
+      content:
+        application/jwt:
+          schema:
+            type: string
+            description: JWS compact serialization string.
     JwsWrpArrayResponse:
       description: >-
        JWS-signed list of matching Wallet Relying Party objects
@@ -238,7 +306,7 @@ components:
           type: object
           description: Additional grouping or type metadata defined per credential format.
           additionalProperties: true
-        claim:
+        claims:
           type: array
           items:
             $ref: '#/components/schemas/Claim'
@@ -248,7 +316,8 @@ components:
       example:
         format: dc+sd-jwt
         meta:
-          vct: https://example.eu/schema/pid
+          vct_values:
+            - https://example.eu/schema/pid
         claim:
           - path:
               - family_name

@@ -37,17 +37,12 @@
     }
   ],
   "tradeName": "ExampleBank",
-  "supportURI": [
-    "https://examplebank.eu/support"
-  ],
   "isPSB": false,
   "supervisoryAuthority": {
-    "legalPerson": {
-      "legalName": ["Autorità di vigilanza"]
-    },
+    "name": "Garante per la protezione dei dati personali",
     "country": "IT",
     "email": ["contact@supervisor.example.it"],
-    "infoURI": ["https://supervisor.example.it"]
+    "formURI": ["https://supervisor.example.it"]
   },
   "registryURI": "https://registry.example.it/api",
   "services": [
@@ -129,15 +124,7 @@
       "providesAttestations": [
         {
           "format": "dc+sd-jwt",
-          "meta": {
-            "vct_values": ["https://examplebank.eu/schema/bank-account"]
-          },
-          "claim": [
-            { "path": ["iban"] },
-            { "path": ["account_holder_name"] },
-            { "path": ["account_type"] },
-            { "path": ["currency"] }
-          ]
+          "type": "https://examplebank.eu/schema/bank-account"
         }
       ],
       "intendedUses": [

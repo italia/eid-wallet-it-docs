@@ -26,16 +26,18 @@ Register of WRPs
 ^^^^^^^^^^^^^^^^
 
 The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs, their **Services**, and their authorisations/declared usage.
-This section documents a `EUDI-TS 5`_ version 1.4 aligned profile that satisfies Annex II of `CIR2025/848`_ as amended by [`CIR2026/1730`_].
+This section documents a `EUDI-TS 5`_ version 1.5 (2026-08-20) aligned profile that satisfies Annex II of `CIR2025/848`_ as amended by [`CIR2026/1730`_].
 
 A Wallet-Relying Party that operates in the EUDIW Trust Framework MUST register one or more **Relying Party Services** in the ``services`` array of the ``WalletRelyingParty`` object (`EUDI-TS 5`_, ``WalletRelyingPartyService``).
-Each Service has a ``serviceIdentifier`` unique within the entity and a ``serviceTradeName`` suitable for presenting to the User ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34).
+Each Service has a ``serviceTradeName`` suitable for presenting to the User ([`EIDAS-ARF`_] Reg_10a, Reg_34).
+``serviceIdentifier`` is unique within the entity when registered. It MUST be registered if the Service relies on an Intermediary (`EUDI-TS 5`_ v1.5) and MUST be registered when a WRPAC is issued for that Service ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
 Intended uses, entitlements, provided attestations and intermediary relationships are bound to a Service, not to the entity root ([`EIDAS-ARF`_] Reg_10d).
+A pure Intermediary Service MUST NOT register an entitlement (`EUDI-TS 5`_ v1.5). An Intermediary Service MUST list the Service identifiers it serves in ``servedWRPServices`` ([`CIR2026/1730`_], Annex I).
 
 Register Dataset
 """"""""""""""""
 
-The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_], encoded as the ``WalletRelyingParty`` JSON Schema of `EUDI-TS 5`_ version 1.5.
 Below some non-normative examples of ``WalletRelyingParty`` objects stored in the Register.
 
 A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.
@@ -50,7 +52,7 @@ It registers two Services: one Service with ``intendedUses`` and one Service wit
   :language: JSON
 
 An entity registered as a designated Intermediary that acts on behalf of WRPs during Wallet interactions.
-Each of its ``services[]`` elements has ``isIntermediary: true`` and does not declare ``intendedUses`` (not required when registering solely as an Intermediary).
+Each of its ``services[]`` elements has ``isIntermediary: true``, does not declare ``intendedUses`` or entitlements, and lists the served Services in ``servedWRPServices``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-intermediary.json
   :language: JSON
@@ -62,13 +64,19 @@ Register Open APIs
 The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements,
 and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
 
-- **GET /wrp**: Get a list of WRPs with optional filtering (defined in Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_]) and pagination.
+- **GET /wrp**: Get a list of WRPs with optional filtering and pagination, as defined in Section 3.2 of `EUDI-TS 5`_ version 1.5.
+  The filter parameters are ``identifier``, ``legalname``, ``tradename``, ``serviceidentifier``, ``policy``, ``entitlement``, ``providedattestation``, ``usesintermediary``, ``isintermediary``, ``intendeduseidentifier``, ``claimpath``, ``credentialmeta`` and ``credentialformat``.
   A successful response (``200``) MUST be a JWS-signed response body.
   The decoded payload MUST contain an array of ``WalletRelyingParty`` objects matching the query, and, where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State.
+  When the query uses ``serviceidentifier``, the response MUST include only the matching ``WalletRelyingPartyService`` in the ``services`` array of each matching ``WalletRelyingParty``.
   The list of all registered WRPs is returned when no query parameters are provided.
+- **GET /wrp/{identifier}**: Retrieve the ``WalletRelyingParty`` object matching the given identifier.
+  A successful response (``200``) MUST be a JWS-signed object.
+- **GET /wrp/{identifier}/services/{serviceidentifier}**: Retrieve the parent ``WalletRelyingParty`` object with the ``services`` array sliced to the matching Service.
+  A successful response (``200``) MUST be a JWS-signed object.
 - **GET /wrp/check-intended-use**: A dedicated intended-use check endpoint for making narrowed-down intended use related queries from the Register.
-  A successful response (``200``) MUST provide a JWS-signed boolean ``true`` or ``false`` response, determined by the queried parameter in the Registrar's Intended use information for the specific WRP.
-  If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code ``400`` and ``401``, respectively.
+  A successful response (``200``) MUST provide a JWS-signed boolean ``true`` or ``false`` response, determined by the queried parameters in the Registrar's Intended use information.
+  If the request is invalid or incomplete the endpoint MUST answer with error code ``400``. If the given WRP is not found, it MUST answer with error code ``404``.
 
 .. note::
     The published API view excludes only ``postalAddress`` ([`CIR2025/848`_] as amended by [`CIR2026/1730`_], Annex I, point 4).
@@ -76,11 +84,9 @@ and provide methods for searching and querying complete data sets of registered 
     The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06) and for Credential Issuance checks.
     They MUST NOT be used by the Wallet Unit as a substitute for a missing Wallet-Relying Party Registration Certificate during Credential Presentation ([`EIDAS-ARF`_] RPRC_16, RPRC_18 and RPRC_19a are empty).
 
-The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available as `EUDI-TS 5 OpenAPI`_.
+The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ version 1.5 is available as `EUDI-TS 5 OpenAPI`_.
 The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available as `EUDI-TS 5 JSON Schema`_.
-
-.. warning::
-  In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The national read profile of that API is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

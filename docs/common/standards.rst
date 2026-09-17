@@ -28,6 +28,8 @@ EUDI Wallet Standards and Technical Specifications
 
     * - `EUDI-TS 3`_
       - Specification of Wallet Unit Attestations (WUA) used in issuance of PID and Attestations.
+    * - `EUDI-TS 5`_
+      - Common Formats and API for Relying Party Registration Information, version 1.5 (2026-08-20). This version aligns the Register data model and API with [`CIR2026/1730`_], which amends [`CIR2025/848`_].
     * - `EUDI-TS 10`_
       - Data Portability and Download (Export).
     * - `EUDI-TS 12`_

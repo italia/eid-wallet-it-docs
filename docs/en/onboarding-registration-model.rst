@@ -71,13 +71,13 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The attributes a Relying Party intends to request from the Wallet Units, bound to a specific Relying Party Service. A Relying Party MUST declare which of its registered intended uses apply to each of its registered Services ([`EIDAS-ARF`_] Reg_10d).
      - [`CIR2025/848`_], Annex I; [`EIDAS-ARF`_] Reg_10d
    * - `relying_party_services`
-     - One or more Relying Party Services registered by the entity. Each Service has an identifier unique within the entity (``serviceIdentifier``), a trade name suitable for presenting to the User (``serviceTradeName``), the intended uses that apply to that Service, and, where applicable, the intermediary relationship of that Service. A registering entity that operates in the EUDIW Trust Framework MUST register at least one Service and MUST receive at least one WRPAC for each registered Service. The corresponding WRPRC(s) are issued automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`. The same Service identifier and trade name MUST be copied into each corresponding WRPRC.
+     - One or more Relying Party Services registered by the entity. Each Service has a trade name suitable for presenting to the User (``serviceTradeName``). ``serviceIdentifier``, when registered, is unique within the entity and MUST be registered if the Service relies on an Intermediary (`EUDI-TS 5`_ v1.5) or if a WRPAC is issued for that Service ([`EIDAS-ARF`_] Reg_33). The Service carries the intended uses that apply to it and, where applicable, the intermediary relationship. A registering entity that operates in the EUDIW Trust Framework MUST register at least one Service and MUST receive at least one WRPAC for each registered Service. The corresponding WRPRC(s) are issued automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`. The same Service identifier and trade name MUST be copied into each corresponding WRPRC.
      - [`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34, RPRC_07a; [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``
    * - `provided_attestations`
      - The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the ``issuers`` field of that entry, together with the issuance capabilities offered for that Credential type (the supported issuance flows, the parameters of the deferred issuance and the documentation of the issuance service), see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
-     - Bound to a Relying Party Service. For an intermediated Relying Party Service, the reference to the Intermediary Service it uses (``usesIntermediaries``). For a Relying Party Intermediary Service, the declaration that it acts as an intermediary (``isIntermediary``) and the Service identifiers it serves (``servedWRPServices``).
+     - Bound to a Relying Party Service. For an intermediated Relying Party Service, the reference to the Intermediary Service it uses (``usesIntermediaries``). For a Relying Party Intermediary Service, the declaration that it acts as an intermediary (``isIntermediary``) and the Service identifiers it serves (``servedWRPServices``, [`CIR2026/1730`_], Annex I). A pure Intermediary Service MUST NOT register an entitlement (`EUDI-TS 5`_ v1.5).
      - [`ETSI TS 119 475`_], Table 10; [`EIDAS-ARF`_] RPRC_04, Reg_34a; `EUDI-TS 5`_
    * - `trust_framework_scope`
      - The declaration of the Trust Framework in which the entity intends to operate, according to :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Trust Framework Selection`. The declaration is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided. It applies to the entity, while ``trustedAuthorities`` of a Credential type applies to the validation of an Attestation of that type.
@@ -196,7 +196,7 @@ The table below maps each Data Identifier to the fields of the destination data 
    * - `intended_use`
      - In the Register, the ``intendedUses`` array of the corresponding ``services[]`` element, each element carrying its ``intendedUseIdentifier``, ``purpose``, ``privacyPolicy`` and ``credentials``. In the registration Trust Mark, the ``credentials`` and the ``purpose``.
    * - `provided_attestations`
-     - In the Register, the ``providesAttestations`` of the corresponding ``services[]`` element. In the registration Trust Mark, the ``provides_attestations``. In the Digital Credentials Catalog, the element of the ``issuers`` array of each declared Credential type, including its ``issuance_flows`` and its ``service_documentation_uri``.
+     - In the Register, the ``providesAttestations`` array of the corresponding ``services[]`` element, each ``ProvidedAttestation`` carrying ``format`` and ``type`` as defined in `EUDI-TS 5`_ version 1.5. In the registration Trust Mark, the ``provides_attestations``. In the Digital Credentials Catalog, the element of the ``issuers`` array of each declared Credential type, including its ``issuance_flows`` and its ``service_documentation_uri``.
    * - `provided_claims_purposes`
      - In the AS Registry, the ``data_capabilities``, that is 
      
@@ -506,9 +506,11 @@ The Data Identifiers not listed here are provided as for a Relying Party.
    * - **Data Identifier**
      - **Value**
    * - `intended_use`
-     - It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties. In the Register, each of its ``services[]`` elements has ``isIntermediary`` set to ``true``, an empty ``intendedUses`` array, and ``servedWRPServices`` listing the Service identifiers it serves.
+     - It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties. In the Register, each of its ``services[]`` elements has ``isIntermediary`` set to ``true``, omits ``intendedUses``, and lists in ``servedWRPServices`` the Service identifiers it serves ([`CIR2026/1730`_], Annex I).
+   * - `entitlements`
+     - It MUST NOT be provided for a pure Intermediary Service (`EUDI-TS 5`_ v1.5).
    * - `relying_party_services`
-     - REQUIRED. At least one Service. Each Service is an intermediary Service: ``isIntermediary`` is ``true``, and ``servedWRPServices`` lists the intermediated Relying Party Service identifiers.
+     - REQUIRED. At least one Service. Each Service is an intermediary Service: ``isIntermediary`` is ``true``, ``serviceIdentifier`` is registered, and ``servedWRPServices`` lists the intermediated Relying Party Service identifiers.
    * - `certificate_signing_requests`
      - One WRPAC Certificate Signing Request for each intermediated Relying Party Service the Intermediary serves ([`EIDAS-ARF`_] Reg_34a). Each issued WRPAC authenticates the Intermediary and carries the association to that intermediated Relying Party and Service.
    * - `intermediary_relationship`
