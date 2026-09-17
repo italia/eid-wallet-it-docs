@@ -709,10 +709,13 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
       A match on either criterion is sufficient.
       In an **intermediated** presentation the Wallet Unit MUST NOT use the Intermediary identifier from the WRPAC.
       It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC ``sub`` in the request and compare that identifier, and the entitlements of that WRPRC, to the authorised list ([`EIDAS-ARF`_] EDP_02).
-    - ``specific_root_of_trust``: only the Relying Parties whose Wallet-Relying Party Access Certificate chain contains one of the ``trusted_roots`` are authorized.
-      The Wallet Unit MUST match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+    - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
+      The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+      It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.
+      The path comprises the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE.
+      If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
       In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
-      It MUST compare the Trust Anchor of the Provider of WRPRC that signed the intermediated Relying Party's WRPRC in the request ([`EIDAS-ARF`_] EDP_03).
+      It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request.
 
     If the applicable check is satisfied, or no Embedded Disclosure Policy is present, the Wallet Unit MUST set ``edp_state`` to ``EDP_SATISFIED``; otherwise it MUST set ``edp_state`` to ``EDP_NOT_SATISFIED``.
 

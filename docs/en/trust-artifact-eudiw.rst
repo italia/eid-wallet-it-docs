@@ -448,12 +448,14 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
   If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary identifier from the WRPAC.
   It MUST retrieve the EU-wide unique identifier of the intermediated Relying Party from the WRPRC in the request (``sub``) and compare that identifier to the authorised list ([`EIDAS-ARF`_] EDP_02, RPRC_19).
 
-- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates.
-  Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation.
-  According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates used for signing Wallet-Relying Party Registration Certificates ([`EIDAS-ARF`_] EDP_03).
+  Only RPs whose WRPRC signing path contains one of these certificates are allowed to access the Attestation.
+  According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root or intermediate is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+  The Wallet Unit MUST compare all certificates in that signing path, comprising the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE, with the authorised list.
+  If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
 
   If the authenticated Wallet-Relying Party is an Intermediary, the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
-  It MUST compare the Trust Anchor of the Provider of WRPRC that signed the intermediated Relying Party's WRPRC in the request ([`EIDAS-ARF`_] EDP_03, RPRC_19).
+  It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request ([`EIDAS-ARF`_] EDP_03, RPRC_19).
 
 .. note::
 
@@ -503,7 +505,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
-       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties chaining to specified trusted roots.
+       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties whose WRPRC signing path contains a specified trusted root or intermediate certificate.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
