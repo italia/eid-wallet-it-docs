@@ -11,8 +11,8 @@ Queste procedure si applicano quando la Trust Evaluated Party è autenticata sot
 
 I Trust Artifact usati durante queste procedure, cioè l'Entity Configuration, i Subordinate Statement, i Trust Mark, sono definiti in :ref:`infrastructure-trust:National Trust Artifacts`.
 
-Le procedure definite in questa sezione sono eseguite all'interno dei flussi operativi di Emissione e Presentazione (vedi :ref:`digital-credential-flows:Digital Credential Flows`).
-I parametri su cui operano, come il Request Object firmato, la mdoc Request, i Metadata di tutte le Entità coinvolte e il modello dati degli Attestati Elettronici ricevuti, sono definiti nelle rispettive sezioni (vedi :ref:`entities:Entities`, :ref:`remote-flow:Request Object` per il Remote Flow, e :ref:`credential-data-model:SD-JWT-VC Credential Format` e :ref:`credential-data-model:mdoc-CBOR Credential Format` per i formati degli Attestati Elettronici).
+Le procedure definite in questa sezione sono eseguite all'interno dei flussi operativi di Emissione e Presentazione (vedi :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`).
+I parametri su cui operano, come il Request Object firmato, la mdoc Request, i Metadata di tutte le Entità coinvolte e il modello dati degli Attestati Elettronici ricevuti, sono definiti nelle rispettive sezioni (vedi :ref:`entities:Entità`, :ref:`remote-flow:Request Object` per il Remote Flow, e :ref:`credential-data-model:Formato Attestato Elettronico SD-JWT-VC` e :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR` per i formati degli Attestati Elettronici).
 
 Trust Evaluation Processes by Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +82,7 @@ Le procedure sono definite in forma generale, con un **Trust Evaluator** e una *
 
 .. note::
   Nel remote flow la Relying Party invoca il Wallet attraverso app link (universal link) invece di custom URL scheme.
-  Questa scelta di IT-Wallet richiede che la Relying Party ottenga e validi preventivamente i metadata del Wallet Provider, costruendo la Trust Chain relativa al Wallet Provider (Metadata Retrieval and Validation), come parte del Wallet Metadata Retrieval Flow (vedi :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` e la Selection Page in :ref:`functionalities:User Experience Design`).
+  Questa scelta di IT-Wallet richiede che la Relying Party ottenga e validi preventivamente i metadata del Wallet Provider, costruendo la Trust Chain relativa al Wallet Provider (Metadata Retrieval and Validation), come parte del Wallet Metadata Retrieval Flow (vedi :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata` e la Selection Page in :ref:`functionalities:Design dell'Esperienza Utente`).
   Questo meccanismo è specifico del remote flow e non si applica al proximity flow.
 
 
@@ -127,7 +127,7 @@ La verifica dell'Entity Configuration è la validazione dell'Entity Statement de
 
 1. Recuperare l'Entity Configuration dall'endpoint well-known del Federation Trust Anchor, servita con il media type ``application/entity-statement+jwt``.
 2. Verificare che l'Entity Configuration sia un JWT firmato con ``iss`` e ``sub`` uguali all'identificatore del Federation Trust Anchor, e verificare la sua firma con una delle chiavi contenute nel suo ``jwks``.
-   Gli algoritmi di firma supportati sono definiti in :ref:`algorithms:Cryptographic Algorithms`.
+   Gli algoritmi di firma supportati sono definiti in :ref:`algorithms:Algoritmi Crittografici`.
 3. Confrontare le chiavi in ``jwks`` con le chiavi ottenute out-of-band o pinnate, scartando le chiavi che non corrispondono.
 4. Controllare la validità temporale dell'Entity Configuration attraverso i claim ``iat`` e ``exp``.
 5. Estrarre gli endpoint di federazione dai metadata ``federation_entity``, e il claim ``trust_mark_issuers`` (vedi :ref:`infrastructure-trust:Entity Configuration`).
@@ -424,7 +424,7 @@ Wallet Unit Authentication
 """""""""""""""""""""""""""""""""""
 
 La Wallet Instance Attestation convoglia la chiave pubblica della Wallet Unit che è usata per validare la firma sulla Wallet Instance Attestation.
-Il formato e il flusso di emissione sono definiti in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
+Il formato e il flusso di emissione sono definiti in :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
 La valutazione DEVE seguire il modello definito in OpenID Federation for Wallet Architectures.
 La Wallet Unit si autentica con un meccanismo di Client authentication che fornisce la Wallet Instance Attestation emessa dal suo Wallet Provider, insieme alla prova di possesso della chiave attestata.
@@ -597,7 +597,7 @@ I metadata pubblicati nell'Entity Configuration NON DEVONO essere usati senza qu
 
 I tipi di metadata e i loro parametri sono definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` e nelle specifiche di protocollo ivi referenziate.
 
-La configurazione della Wallet Unit è fornita dal Wallet Provider all'interno dei suoi metadata come definito in :ref:`wallet-solution-metadata:Wallet Solution Metadata`.
+La configurazione della Wallet Unit è fornita dal Wallet Provider all'interno dei suoi metadata come definito in :ref:`wallet-solution-metadata:Metadati della Soluzione Wallet`.
 
 **Input**
 

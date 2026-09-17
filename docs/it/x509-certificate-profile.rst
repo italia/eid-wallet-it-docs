@@ -62,7 +62,7 @@ Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la de
      - Section 4.1.2.2
 
    * - ``signature``
-     - OBBLIGATORIO. L'algoritmo referenziato DEVE essere tra quelli definiti in :ref:`algorithms:Cryptographic Algorithms`.
+     - OBBLIGATORIO. L'algoritmo referenziato DEVE essere tra quelli definiti in :ref:`algorithms:Algoritmi Crittografici`.
      - Section 4.1.2.3, Section 4.1.1.2
 
    * - ``issuer``
@@ -78,7 +78,7 @@ Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la de
      - Section 4.1.2.6
 
    * - ``subjectPublicKeyInfo``
-     - OBBLIGATORIO. L'algoritmo referenziato DEVE essere tra quelli definiti in :ref:`algorithms:Cryptographic Algorithms`.
+     - OBBLIGATORIO. L'algoritmo referenziato DEVE essere tra quelli definiti in :ref:`algorithms:Algoritmi Crittografici`.
      - Section 4.1.2.7
 
    * - ``issuerUniqueID``

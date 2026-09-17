@@ -10,7 +10,7 @@ Questa sezione descrive gli stati e gli eventi che causano il cambiamento di sta
 Mappa inoltre ciascun evento sui registri e sui Trust Artifact impattati dall'evento, si veda :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
 I formati, i parametri e gli stati dei Trust Artifact sono definiti in :ref:`infrastructure-trust:Trust Artifacts Lifecycle State Machine`, e i meccanismi di revoca sono definiti in :ref:`infrastructure-trust:Revocation Mechanisms`.
-Il ciclo di vita dei singoli Attestati Elettronici emessi agli Utenti è una materia distinta ed è definito in :ref:`credential-revocation:Digital Credential Lifecycle`.
+Il ciclo di vita dei singoli Attestati Elettronici emessi agli Utenti è una materia distinta ed è definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 Entity Lifecycle State Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -318,7 +318,7 @@ Ciascuna voce versionata ha due stati, ``ACTIVE`` e ``INACTIVE``, la cui semanti
 In sintesi, un tipo di Credenziale può essere emesso da una voce versionata solo finché tale voce è ``ACTIVE``.
 
 .. note::
-  Lo stato della voce versionata è una cosa distinta dallo stato dei singoli Attestati Elettronici emessi agli Utenti, che è definito in :ref:`credential-revocation:Digital Credential Lifecycle`.
+  Lo stato della voce versionata è una cosa distinta dallo stato dei singoli Attestati Elettronici emessi agli Utenti, che è definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 All'interno di IT-Wallet, una voce versionata è ``ACTIVE`` solo finché tutte le seguenti condizioni sono soddisfatte, e torna a ``INACTIVE`` non appena una di esse cessa di valere.
 
@@ -335,7 +335,7 @@ Un tipo di Credenziale non è mai modificato in place.
 Quando la sua definizione cambia, una nuova voce versionata è registrata e attivata, e la voce della versione precedente è portata a ``INACTIVE``.
 
 Le Credenziali già emesse dalla versione precedente conservano il proprio stato e non sono revocate dal versionamento.
-Ove il Credential Issuer necessiti che gli Utenti ottengano la nuova versione, può guidare la riemissione tramite lo stato ``0x03`` (``UPDATE``) o ``0x0F`` (``ATTRIBUTE_UPDATE``) dei singoli Attestati Elettronici, come descritto in :ref:`credential-revocation:Digital Credential Lifecycle`.
+Ove il Credential Issuer necessiti che gli Utenti ottengano la nuova versione, può guidare la riemissione tramite lo stato ``0x03`` (``UPDATE``) o ``0x0F`` (``ATTRIBUTE_UPDATE``) dei singoli Attestati Elettronici, come descritto in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 La registrazione di un tipo di Credenziale e il suo versionamento sono descritti nei processi di registrazione, e la struttura della voce di catalogo in :ref:`registry:Digital Credentials Catalog Structure`.
 
@@ -344,7 +344,7 @@ La registrazione di un tipo di Credenziale e il suo versionamento sono descritti
   
   Inoltre, il passaggio di una voce versionata a ``INACTIVE`` impedisce a qualsiasi Wallet Unit di richiedere una nuova emissione da tale voce.
   Non revoca le Credenziali già emesse da essa, che conservano il proprio stato.
-  Ove il motivo che ha causato la disattivazione richieda anche la revoca delle Credenziali già emesse, la revoca è una decisione distinta, assunta dal Credential Issuer come descritto in :ref:`credential-revocation:Digital Credential Lifecycle`.
+  Ove il motivo che ha causato la disattivazione richieda anche la revoca delle Credenziali già emesse, la revoca è una decisione distinta, assunta dal Credential Issuer come descritto in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 
 Claims and Schemas Lifecycle

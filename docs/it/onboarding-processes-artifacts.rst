@@ -68,7 +68,7 @@ La Certificate Signing Request DEVE essere una ``CertificationRequest`` come def
 
    * - ``subjectPKInfo``
      - OBBLIGATORIO. Reca la chiave pubblica da certificare.
-       La chiave DEVE utilizzare uno degli algoritmi a chiave pubblica definiti in :ref:`algorithms:Cryptographic Algorithms`.
+       La chiave DEVE utilizzare uno degli algoritmi a chiave pubblica definiti in :ref:`algorithms:Algoritmi Crittografici`.
        DEVE essere distinta dalla Federation Entity Key, e una chiave distinta DEVE essere utilizzata per ciascun certificato richiesto.
      - :rfc:`2986#section-4.1`
 
@@ -81,7 +81,7 @@ La Certificate Signing Request DEVE essere una ``CertificationRequest`` come def
      - :rfc:`2985#section-5.4.2`
 
    * - ``signatureAlgorithm``
-     - OBBLIGATORIO. DEVE essere compatibile con la chiave privata corrispondente a ``subjectPKInfo`` e DEVE essere uno degli algoritmi di firma definiti in :ref:`algorithms:Cryptographic Algorithms`.
+     - OBBLIGATORIO. DEVE essere compatibile con la chiave privata corrispondente a ``subjectPKInfo`` e DEVE essere uno degli algoritmi di firma definiti in :ref:`algorithms:Algoritmi Crittografici`.
      - :rfc:`2986#section-4.2`
 
    * - ``signature``

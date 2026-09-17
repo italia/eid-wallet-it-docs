@@ -242,7 +242,7 @@ La rappresentazione firmata è un JWT in compact serialization, servito come ``a
      - OBBLIGATORIO. DEVE essere impostato a ``JWT``.
      - [:rfc:`7515` Section 4.1.9].
    * - **alg**
-     - OBBLIGATORIO. Un identificativo di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Cryptographic Algorithms` e NON DEVE essere impostato a ``none`` o con un identificativo di algoritmo simmetrico (MAC).
+     - OBBLIGATORIO. Un identificativo di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` o con un identificativo di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Section 4.1.1].
    * - **kid**
      - OBBLIGATORIO. Identificativo univoco della chiave pubblica.
@@ -1108,7 +1108,7 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
      - OPZIONALE. Presente solo per gli attributi dell'Annex VI che fanno affidamento su una Fonte Autentica del settore pubblico e che sono esportati nel EUDIW Catalogue of Attributes. Descrive l'interfaccia di verifica transfrontaliera esposta ai Qualified Trust Service Provider, distinta dall'e-Service PDND nazionale e conforme a ETSI TS 119 478. Contiene ``method`` (uno tra ``oots_edelivery`` per l'interfaccia ISO 15000/eDelivery di ETSI TS 119 478 Section 6.2, o ``rest_oauth2`` per l'interfaccia REST + OAuth 2.0 di ETSI TS 119 478 Section 6.1) e ``endpoint`` (l'identificativo party eDelivery o l'endpoint REST). L'interfaccia PUÒ essere esposta dalla Fonte Autentica direttamente o da un intermediario nazionale designato (ad es. un access point OOTS).
 
 .. note::
-  Per ulteriori dettagli sulle funzionalità richieste e sull'esito atteso in termini di esperienza utente, si veda la Sezione :ref:`functionalities:Issuance from the Wallet Instance Catalog` per il parametro `data_capabilities.user_information` e la Sezione :ref:`functionalities:Focus on Electronic Attestations of Attributes` per i parametri `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` e `data_capabilities.available_claims.order`.
+  Per ulteriori dettagli sulle funzionalità richieste e sull'esito atteso in termini di esperienza utente, si veda la Sezione :ref:`functionalities:Ottenimento dal Catalogo dell'Istanza del Wallet` per il parametro `data_capabilities.user_information` e la Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` e `data_capabilities.available_claims.order`.
 
 **Esempio di Authentic Source Registry**
 
@@ -1502,7 +1502,7 @@ La fonte canonica per le caratteristiche di visualizzazione e la struttura dei c
 La logica complessiva per presentare un Attestato Elettronico è la seguente:
 
 1. A seconda del Trust Framework richiesto, il Wallet o la Relying Party recupera il :ref:`registry:Digital Credentials Catalog` (per entrambi gli Attestati Elettronici gestiti da Credential Issuer ancorati nel National o nel Trust Framework EUDIW) per scoprire i `credential_type` disponibili e l'`entity_id` dei loro Credential Issuer.
-2. Recupera i Metadata completi del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
+2. Recupera i Metadata completi del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
 3. I Metadata del Credential Issuer DEVONO contenere le caratteristiche di visualizzazione complete (loghi, colori) e le informazioni dettagliate di schema (tramite link ai Type Metadata appropriati o direttamente nella configurazione). L'Issuer costruisce questi metadata sulla base dei suggerimenti forniti dalla Fonte Autentica (tramite l'AS Registry) e delle specifiche di schema standard (tramite lo Schema Registry).
 
 Registry Integration and Cross-References
@@ -1553,7 +1553,7 @@ Questo journey di *Catalog Browsing* supporta gli Utenti (sia utenti umani trami
 2.  **Navigazione e selezione**:
 
     * **Discovery delle Credenziali**: L'entità sfoglia l'elenco delle Credenziali (campo ``credentials``) per identificare i tipi di Credenziale rilevanti (ad es., ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Taxonomy** per navigarne la gerarchia e per fornire localizzazioni diverse.
-    * **Metadata dell'Issuer**: L'entità estrae i Metadata del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata for openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
+    * **Metadata dell'Issuer**: L'entità estrae i Metadata del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
     * **Consultazione di dettaglio**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** utilizzando l'identificativo recuperato.
 
 3.  **Azione finale**: L'entità può quindi utilizzare i metadata per visualizzare le informazioni del catalogo a un Utente, o utilizzarli in altri modi.

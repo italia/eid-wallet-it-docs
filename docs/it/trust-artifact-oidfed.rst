@@ -122,11 +122,11 @@ Entity Configuration
 
 Nell'ecosistema IT-Wallet l'Entity Configuration è pubblicata durante l'onboarding dell'Entità (vedi :ref:`onboarding-system:Onboarding Processes`) ed è recuperata e validata durante la trust evaluation, come definito in :ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
-I dettagli tecnici sull'Entity Configuration di Wallet Provider, Credential Issuer e Relying Party sono forniti nella Sezione :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` e :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` rispettivamente.
+I dettagli tecnici sull'Entity Configuration di Wallet Provider, Credential Issuer e Relying Party sono forniti nella Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`, :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party` rispettivamente.
 
 .. note::
   Tutti i controlli di firma sulle Entity Configuration, sui Subordinate Statement e sui Trust Mark sono eseguiti con le Federation Entity Keys.
-  Per gli algoritmi supportati si fa riferimento alla Sezione :ref:`algorithms:Cryptographic Algorithms`.
+  Per gli algoritmi supportati si fa riferimento alla Sezione :ref:`algorithms:Algoritmi Crittografici`.
 
 Subordinate Statements
 """""""""""""""""""""""
@@ -254,7 +254,7 @@ I parametri informativi seguenti sono OPZIONALI in `OID-FED`_; il profilo delle 
       URL dei termini di servizio dell'entità.
       Vedi `OID-FED`_ Sezione 5.2.2
 
-I metadata relativi a Wallet Provider, Credential Issuer e Relying Party sono forniti nella Sezione :ref:`wallet-solution-metadata:Wallet Solution Metadata`, :ref:`credential-issuer-solution:Credential Issuer Metadata` e :ref:`relying-party-metadata:Relying Party Metadata` rispettivamente.
+I metadata relativi a Wallet Provider, Credential Issuer e Relying Party sono forniti nella Sezione :ref:`wallet-solution-metadata:Metadati della Soluzione Wallet`, :ref:`credential-issuer-solution:Metadata del Fornitore di Attestati Elettronici` e :ref:`relying-party-metadata:Metadati della Relying Party` rispettivamente.
 
 Entity Statement Examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -423,7 +423,7 @@ L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:
    * - **alg**
      - OBBLIGATORIO.
        L'algoritmo crittografico usato per firmare il Trust Mark JWT.
-       DEVE essere uno degli algoritmi supportati per le Federation Entity Keys (vedi :ref:`algorithms:Cryptographic Algorithms`).
+       DEVE essere uno degli algoritmi supportati per le Federation Entity Keys (vedi :ref:`algorithms:Algoritmi Crittografici`).
    * - **kid**
      - OBBLIGATORIO.
        Key ID della Federation Entity Key usata per firmare il Trust Mark, come definito in `OID-FED`_ Sezione 7.

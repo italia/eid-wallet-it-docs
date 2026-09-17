@@ -1,15 +1,44 @@
 openapi: 3.1.0
 info:
   title: Wallet Relying Party Register API
-  version: "1.5"
+  version: "1.5.0"
   description: National read profile of the Wallet-Relying Party Register API, aligned with EUDI-TS 5 version 1.5 (2026-08-20) and CIR (EU) 2026/1730.
+  termsOfService: "https://italia.github.io/eid-wallet-it-docs/"
+  contact:
+    name: IT-Wallet
+    url: https://github.com/italia/eid-wallet-it-docs
+  x-api-id: WRP-REGISTER-READ-01
+  x-summary: National read profile of the Wallet-Relying Party Register API.
 servers:
   - url: https://registry.example.eu
     description: Example register server
 tags:
+  - name: status
+    description: API health-check operations.
   - name: Public Register
     description: Public query operations.
 paths:
+  /status:
+    get:
+      tags:
+        - status
+      summary: Get Register API status.
+      description: Health-check endpoint that returns the operational status of the Wallet-Relying Party Register API.
+      operationId: registerStatus
+      responses:
+        "200":
+          description: Service available
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+        "503":
+          description: Service Unavailable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+      security: []
   /wrp:
     get:
       tags:
@@ -53,13 +82,7 @@ paths:
         '200':
           $ref: '#/components/responses/JwsWrpResponse'
         '404':
-          description: WRP with the given identifier not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                message: WRP with the given identifier was not found.
+          $ref: '#/components/responses/NotFound'
       security: []
   /wrp/{identifier}/services/{serviceidentifier}:
     get:
@@ -75,13 +98,7 @@ paths:
         '200':
           $ref: '#/components/responses/JwsWrpResponse'
         '404':
-          description: WRP or Service identifier not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                message: WRP or Service identifier was not found.
+          $ref: '#/components/responses/NotFound'
       security: []
   /wrp/check-intended-use:
     get:
@@ -104,13 +121,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
-          description: WRP with the given identifier not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                message: WRP with the given identifier was not found.
+          $ref: '#/components/responses/NotFound'
       security: []
 components:
   securitySchemes:
@@ -241,6 +252,7 @@ components:
       required: false
       schema:
         type: integer
+        format: int32
         minimum: 1
     providedattestationQuery:
       name: providedattestation
@@ -289,11 +301,23 @@ components:
     BadRequest:
       description: Bad request.
       content:
-        application/json:
+        application/problem+json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/ProblemDetails'
           example:
-            message: Request payload or parameters invalid or incomplete.
+            title: Bad Request
+            status: 400
+            detail: Request payload or parameters invalid or incomplete.
+    NotFound:
+      description: Resource not found.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+          example:
+            title: Not Found
+            status: 404
+            detail: The requested Wallet-Relying Party or Service was not found.
   schemas:
     Credential:
       type: object
@@ -336,6 +360,7 @@ components:
             oneOf:
               - type: string
               - type: integer
+                format: int32
                 minimum: 0
               - type: 'null'
         values:
@@ -345,6 +370,7 @@ components:
             oneOf:
               - type: string
               - type: integer
+                format: int32
               - type: boolean
       required:
         - path
@@ -352,10 +378,29 @@ components:
         path:
           - org.iso.18013.5.1
           - age_over_18
-    Error:
+    ProblemDetails:
       type: object
+      description: RFC 9457 problem details object for error responses.
       properties:
-        message:
+        type:
           type: string
+          format: uri
+          description: An absolute URI that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+        status:
+          type: integer
+          format: int32
+          description: The HTTP status code generated by the origin server for this occurrence of the problem.
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          format: uri
+          description: An absolute URI that identifies the specific occurrence of the problem.
       required:
-        - message
+        - title
+        - status
+        - detail

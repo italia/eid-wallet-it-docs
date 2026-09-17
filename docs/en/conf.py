@@ -171,6 +171,7 @@ exclude_patterns += [
     'onboarding-processes-entities.rst',
     'onboarding-processes-artifacts.rst',
     'onboarding-processes-credentials.rst',
+    'onboarding-notification.rst',
     'onboarding-lifecycle.rst',
 ]
 

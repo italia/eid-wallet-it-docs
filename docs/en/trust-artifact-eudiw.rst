@@ -1,6 +1,9 @@
 .. include:: ../common/common_definitions.rst
 .. Included via infrastructure-trust.rst at title level '-' (level 1).
 
+.. role:: raw-html(raw)
+  :format: html
+
 EUDIW Trust Artifacts
 ---------------------
 

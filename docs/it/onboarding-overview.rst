@@ -39,7 +39,7 @@ I ruoli dell'infrastruttura di trust sono realizzati dai componenti e dai serviz
    Una singola organizzazione PUÒ svolgere contemporaneamente diverse di queste funzioni.
  
 Le Istanze del Wallet non sono Entità di Federazione e non sono onboardate direttamente.
-Un'Istanza del Wallet è registrata indirettamente, tramite il proprio Fornitore di Wallet, si veda :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`, ed è ritenuta affidabile tramite una Wallet Instance Attestation emessa e firmata da tale Fornitore di Wallet, si veda :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
+Un'Istanza del Wallet è registrata indirettamente, tramite il proprio Fornitore di Wallet, si veda :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`, ed è ritenuta affidabile tramite una Wallet Instance Attestation emessa e firmata da tale Fornitore di Wallet, si veda :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
  
 La notifica di un'entità notificata è un processo dello Stato membro definito da [`CIR2024/2980`_], descritto in :ref:`onboarding-system:Notification and Publication`.
  

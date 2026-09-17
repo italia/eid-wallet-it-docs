@@ -17,8 +17,8 @@ Le procedure definite in questa sezione profilano le seguenti specifiche esterne
 
     Il modello dati dei Trust Artifact referenziati da queste procedure, insieme alle specifiche che li definiscono, è definito in :ref:`infrastructure-trust:EUDIW Trust Artifacts`.
 
-    Le procedure definite in questa sezione sono eseguite all'interno dei flussi operativi di Emissione e Presentazione (vedi :ref:`digital-credential-flows:Digital Credential Flows`).
-    I parametri su cui operano, come il Request Object firmato, la mdoc Request, i Metadata di tutte le Entità coinvolte e il modello dati degli Attestati Elettronici ricevuti, sono definiti nelle rispettive sezioni (vedi :ref:`entities:Entities`, :ref:`remote-flow:Request Object` per il Remote Flow, :ref:`proximity-flow:mdoc Request` per il Proximity Flow, e :ref:`credential-data-model:SD-JWT-VC Credential Format` e :ref:`credential-data-model:mdoc-CBOR Credential Format` per i formati degli Attestati Elettronici).
+    Le procedure definite in questa sezione sono eseguite all'interno dei flussi operativi di Emissione e Presentazione (vedi :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`).
+    I parametri su cui operano, come il Request Object firmato, la mdoc Request, i Metadata di tutte le Entità coinvolte e il modello dati degli Attestati Elettronici ricevuti, sono definiti nelle rispettive sezioni (vedi :ref:`entities:Entità`, :ref:`remote-flow:Request Object` per il Remote Flow, :ref:`proximity-flow:Richiesta mdoc` per il Proximity Flow, e :ref:`credential-data-model:Formato Attestato Elettronico SD-JWT-VC` e :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR` per i formati degli Attestati Elettronici).
 
 EUDIW Trust Evaluation Processes by Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -792,7 +792,7 @@ Nel Proximity Flow non è eseguito un recupero di metadata separato: l'identità
 
 La Wallet Unit ottiene i metadata della Wallet-Relying Party in base all'interazione:
 
-- Durante l'Emissione di Credenziali, i Metadata del Credential Issuer sono ottenuti dall'endpoint well-known dei metadata del Credential Issuer, come definito in [`OpenID4VCI`_] (vedi :ref:`credential-issuer-endpoint:Metadata Endpoints`).
+- Durante l'Emissione di Credenziali, i Metadata del Credential Issuer sono ottenuti dall'endpoint well-known dei metadata del Credential Issuer, come definito in [`OpenID4VCI`_] (vedi :ref:`credential-issuer-endpoint:Endpoint Metadata`).
 - Durante la Presentazione di Credenziali nel Remote Flow, i metadata della Relying Party sono recati nel Request Object della richiesta di autorizzazione, come definito in [`OpenID4VP`_] (vedi :ref:`remote-flow:Request Object`).
 
 **Metadata Validation**

@@ -119,7 +119,7 @@ I processi di Authentication, Authorization e Metadata Retrieval and Validation 
 
 Nel flusso di prossimità entrambi i Trust Framework utilizzano la mdoc reader authentication definita in [`ISO18013-5`_ #12.5], basata su un certificato X.509 fornito dall'Istanza della Relying Party nell'header ``x5chain`` del ``ReaderAuth``.
 
-Nell'ambito del Trust Framework EUDIW il certificato è il certificato di accesso, come profilato nella Section 5.3 di [`ETSI TS 119 472-2`_] (vedere :ref:`proximity-flow:mdoc Request`), ed è validato rispetto alla Provider of Wallet-Relying Party Access Certificate List of Trusted Entities.
+Nell'ambito del Trust Framework EUDIW il certificato è il certificato di accesso, come profilato nella Section 5.3 di [`ETSI TS 119 472-2`_] (vedere :ref:`proximity-flow:Richiesta mdoc`), ed è validato rispetto alla Provider of Wallet-Relying Party Access Certificate List of Trusted Entities.
 
 Nell'ambito del Trust Framework Nazionale il certificato è il certificato di autenticazione della Relying Party ed è validato rispetto a un Authentication Trust Anchor pubblicato nella Federation Trust Anchor Entity Configuration (vedere :ref:`trust-evaluation:Relying Party Proximity Authentication`).
 

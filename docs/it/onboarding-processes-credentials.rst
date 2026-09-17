@@ -104,7 +104,7 @@ Lo stato delle tre condizioni della voce versionata, ossia i suoi ``issuers``, l
 **Outcome**
 
 La voce versionata è ``ACTIVE`` finché tutte e tre le condizioni sono soddisfatte, e passa a ``INACTIVE`` non appena una di esse cessa di valere, come definito in :ref:`registry:Digital Credentials Catalog Structure`.
-La disattivazione impedisce una nuova emissione dalla voce versionata, ma non revoca le Credenziali già emesse da essa, che conservano il proprio stato, come descritto in :ref:`credential-revocation:Digital Credential Lifecycle`.
+La disattivazione impedisce una nuova emissione dalla voce versionata, ma non revoca le Credenziali già emesse da essa, che conservano il proprio stato, come descritto in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 **Process**
 
@@ -128,7 +128,7 @@ La definizione aggiornata del tipo di Credenziale, fornita dall'Attestation Sche
 **Outcome**
 
 Una nuova voce versionata del tipo di Credenziale, attivata quando le sue condizioni sono soddisfatte, mentre la voce versionata della versione precedente DEVE diventare ``INACTIVE``.
-Le Credenziali già emesse dalla versione precedente conservano il proprio stato e non sono revocate dal versionamento, e il Credential Issuer può guidarne la riemissione, come descritto in :ref:`credential-revocation:Digital Credential Lifecycle`.
+Le Credenziali già emesse dalla versione precedente conservano il proprio stato e non sono revocate dal versionamento, e il Credential Issuer può guidarne la riemissione, come descritto in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 **Process**
 
