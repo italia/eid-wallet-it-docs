@@ -59,7 +59,7 @@
 .. _OIDC-FED#Section-7.4.1: https://openid.net/specs/openid-federation-1_0.html#Section-7.4.1
 .. _OIDC-FED#Section-7.5: https://openid.net/specs/openid-federation-1_0.html#Section-7.5
 .. _OIDC: https://openid.net/specs/openid-connect-core-1_0.html
-.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html
+.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 .. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html

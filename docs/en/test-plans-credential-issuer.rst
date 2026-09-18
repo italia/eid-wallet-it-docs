@@ -99,7 +99,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_017
     - Issuance, Interoperability
     - PAR Scope and Authorization Details Interpretation
-    - When a request contains both scope value and authorization_details parameter, Credential Issuer processes each parameter independently
+    - The Pushed Authorization Request contains both the scope value and the authorization_details parameter. The Credential Issuer processes each parameter independently.
   * - CI_017a
     - Issuance, Interoperability
     - PAR Authorization Details
@@ -262,12 +262,12 @@ This section provides the set of test cases designed for technical implementers 
     - PID Provider MAY request User's contact details (email, phone number) for sending notifications about the issued PID
   * - CI_054
     - Presentation, Issuance Security
-    - PID-Based User Authentication
-    - (Q)EAA Provider successfully performs User authentication by requesting and validating a valid PID from the Wallet Instance
+    - PID or IT-Wallet ID User Authentication
+    - (Q)EAA Provider successfully performs User authentication as defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection`
   * - CI_055
     - Presentation, Issuance, Interoperability
     - OpenID4VP Protocol Usage
-    - (Q)EAA Provider uses OpenID4VP protocol to request PID presentation from the Wallet Instance
+    - (Q)EAA Provider uses OpenID4VP according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`
   * - CI_056
     - Presentation, Issuance, Security
     - Presentation Request Delivery
