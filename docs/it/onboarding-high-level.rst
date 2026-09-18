@@ -261,7 +261,7 @@ Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono 
 
     - **Tipo di Organizzazione**: Pubblica Amministrazione con requisito codice IPA.
     - **Richiesta di Autorizzazione**: Verifica dell'identità del cittadino per l'accesso ai servizi municipali.
-    - **Requisiti degli Attributi dell'Utente**: ``given_name``, ``family_name``, ``tax_id_code`` da PID.
+    - **Requisiti degli Attributi dell'Utente**: ``given_name``, ``family_name``, ``personal_administrative_number`` da PID.
     - **Giustificazione del Caso d'Uso**: Erogazione di servizi pubblici che richiede identificazione del cittadino.
     - **Ambito di Autorizzazione**: Concesso accesso più ampio riflettendo il mandato del servizio pubblico.
 

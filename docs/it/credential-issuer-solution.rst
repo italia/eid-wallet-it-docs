@@ -35,15 +35,16 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    7. Mantenere log di audit complete rispettando le normative sulla privacy.
    8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva (*Selective Disclosure*).
    9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet.
-   10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
-   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazione di Identità Digitale.
-   12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
-   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
+   10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID e IT-Wallet ID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
+   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazionale di Identità Digitale.
+   12. Per l'emissione di IT-Wallet ID, autenticare gli Utenti utilizzando l'infrastruttura nazionale di Identità Digitale con LoA High o con Autenticazione eID Substantial con Verifica MRTD.
+   13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID o l'IT-Wallet ID dell'Utente sia valido tramite `OpenID4VP`_.
+   14. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
    Per il Componente Frontend (se implementato):
 
-   14. Autenticare gli Utenti con un Livello di Garanzia (LoA) almeno pari a quello utilizzato per ottenere l'Attestato Elettronico che viene emesso o gestito.
-   15. Fornire misure di sicurezza appropriate per proteggere i dati dell'Utente e le informazioni dell'Attestato Elettronico.
+   15. Autenticare gli Utenti con un Livello di Garanzia (LoA) almeno pari a quello utilizzato per ottenere l'Attestato Elettronico che viene emesso o gestito.
+   16. Fornire misure di sicurezza appropriate per proteggere i dati dell'Utente e le informazioni dell'Attestato Elettronico.
 
 Dettagli dei Componenti
 -----------------------
@@ -85,8 +86,8 @@ Componente Relying Party
 
 Questo componente DEVE autenticare gli Utenti, se richiesto:
 
-   - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
-   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
+   - Per l'emissione di PID/IT-Wallet ID, tramite l'infrastruttura nazionale di Identità Digitale.
+   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID o gli IT-Wallet ID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
 Interfaccia API
 ^^^^^^^^^^^^^^^
@@ -128,7 +129,7 @@ La Soluzione del Fornitore degli Attestati Elettronici supporta questi modelli d
    1. **Utente verso Frontend**: Interazioni basate sul web per la gestione degli Attestati Elettronici.
    2. **Frontend verso Fornitore degli Attestati Elettronici**: Converte le richieste dell'Utente in messaggi del protocollo OpenID4VCI.
    3. **Istanza del Wallet verso Fornitore degli Attestati Elettronici**: Interazioni dirette basate sul protocollo seguendo il flusso di emissione.
-   4. **Relying Party verso Gestori di Identità**: Interazioni di autenticazione con i sistemi nazionali di Identità Digitale o verifica del PID.
+   4. **Relying Party verso Gestori di Identità**: Interazioni di autenticazione con i sistemi nazionali di Identità Digitale o verifica del PID/IT-Wallet ID.
    5. **Interfaccia API verso Fonti Autentiche**: Chiamate API sicure per recuperare dati verificati dell'Utente.
 
 Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, inclusa la corretta gestione di token e materiali crittografici.

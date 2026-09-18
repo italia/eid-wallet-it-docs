@@ -26,6 +26,15 @@ Below is the description of acronyms and definitions which are useful for furthe
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
+    **Attestation Rulebook**
+      Human-readable document that defines a type of Attestation by specifying the identifiers, the syntax, the semantics and the encoding of its Attributes, the proof mechanisms and, where needed, the trust and the presentation mechanisms.
+      Aligned with Section 5.5 of the `EIDAS-ARF`_.
+
+    **Attestation Scheme Provider**
+      Entity that defines a type of Attestation, publishes its Attestation Rulebook together with the corresponding machine-readable attestation scheme, and may request their registration in a catalogue.
+      Within IT-Wallet it is the Entity that requests the registration of a Credential type in the Digital Credentials Catalog, see :ref:`onboarding-system:Credential Type Registration`.
+      Aligned with Section 3.15 of the `EIDAS-ARF`_.
+
     **Attributes**
     **User Attribute**
     **User Claim**
@@ -121,7 +130,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **National Identity Provider**
-      Preexisting identity systems (e.g. CIE) notified to eIDAS.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
       Not present in ARF 2.7.3.
 
     **National Trust Anchor**
@@ -136,12 +145,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Legal person (organization or public entity) recognized to operate a role in the IT-Wallet ecosystem.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Personal Identification Data**
-      A set of data which allow to establish the identity of a natural or legal person, or of a natural person representing another natural or legal person, to be established.
-      Aligned with ARF 2.7.3.
+    **Person Identification Data**
+    **PID**
+      A set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person.
+      Aligned with ARF 2.7.3 / `EU_2024_1183`_. In these Technical Specifications, references to issuance, presentation, or revocation of a PID denote the technical PID (the signed data structure containing Person Identification Data) as used in the ARF.
 
     **PID Provider**
-      Credential Issuer responsible for issuing/revoking PID, ensuring cryptographic binding to Wallet Unit.
+    **Provider of Person Identification Data**
+      Natural or legal person responsible for issuing and revoking the Person Identification Data and ensuring that the Person Identification Data of a User is cryptographically bound to a Wallet Unit.
       Aligned with ARF 2.7.3.
 
     **Policy Language**
@@ -174,10 +185,6 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Person Identification Data**
-      Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
-      Aligned with ARF 2.7.3.
-
     **Qualified Electronic Attestation of Attributes Provider**
       Organizational Entity providing QEAAs.
       Aligned with ARF 2.7.3.
@@ -201,8 +208,12 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Relying Party**
-    **Wallet‑Relying Party**
       Entity relying on electronic identification or Trust Service from a Wallet Instance.
+      Aligned with ARF 2.7.3.
+
+    **Wallet-Relying Party**
+      Relying Party that intends to rely upon Wallet Units for the provision of public or private services by means of digital interaction.
+      Within IT-Wallet it covers the Credential Issuers (the PID Provider and the Attestation Providers) and the Relying Parties together with the Relying Party Intermediaries.
       Aligned with ARF 2.7.3.
 
     **Relying Party Solution**
@@ -371,15 +382,16 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Intermediate Entity**
     **Intermediary**
     **OpenID Federation Intermediate**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. It publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
+      Not present in ARF 2.7.3; specific to IT-Wallet. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_, Article 5b(8)); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity.
       Aligned with ARF 2.7.3 for federation structures.
 
     **Relying Party Intermediary**
       Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
 
-    **IT-Wallet Intermediary**
-      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
-      Not present in ARF 2.7.3; specific to IT-Wallet.
+    **IT-Wallet ID**
+    **Electronic Attestation of Person Identification Data**
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It MUST NOT be confused with the EUDI **PID**, nor with a **National Identity Provider** / national eID scheme (for example CieID / SPID). The term **National EID** MUST NOT be used as a synonym for IT-Wallet ID, to avoid confusion with those national eID schemes. Technical identifiers (``vct`` and ``credential_type``) are defined in the section :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`. Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.
@@ -467,14 +479,22 @@ Below are the main acronyms used in the document:
     - Carta di Identità Elettronica (National Electronic Identity Card)
   * - **EAA**
     - Electronic Attestation of Attributes
+  * - **EUMS TL**
+    - European Union Member State Trusted List (national Trusted List under Article 22 of eIDAS)
   * - **IAM**
     - Identity and Access Management
   * - **LoA**
     - Level of Assurance
+  * - **LOTL**
+    - List of Trusted Lists
+  * - **LoTE**
+    - List of Trusted Entities
   * - **NAB**
     - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
+  * - **OJEU**
+    - Official Journal of the European Union
   * - **PDND**
     - Piattaforma Digitale Nazionale Dati (National Digital Data Platform)
   * - **PID**
@@ -491,6 +511,10 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WRPAC**
+    - Wallet-Relying Party Access Certificate
+  * - **WRPRC**
+    - Wallet-Relying Party Registration Certificate
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **WSCD**

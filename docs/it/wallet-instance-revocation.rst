@@ -11,14 +11,14 @@ Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istan
 Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
 - **Utenti**, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.
-- **Fornitori di Attestati Elettronici di Dati di Identificazione Personale** quando notificati dalla Fonte Autentica del PID (ANPR) del decesso dell'Utente.
+- **PID Provider e EAA Provider di IT-Wallet ID** quando notificati dalla Fonte Autentica del PID/IT-Wallet ID (ANPR) del decesso dell'Utente.
 - **Autorità Legali o Organismo di Supervisione** in casi di comprovate attività illegali.
 
 .. _fig_Wallet_Instance_Revoc_Entities:
 .. plantuml:: plantuml/wallet-instance-revocation-entities.puml
     :width: 99%
     :alt: La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet.
-    :caption: `Entità coinvolte nel processo di revoca dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
+    :caption: `Entità coinvolte nel processo di revoca dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/fLBDZjCm4BxxAOPUw4gWlUmHeMNRI0JnKxLT8QHAaHiFhKLg5tlS4X3lpjZhR27cjfMgn1D_FpFVt7gIZiAX4y-qQRkW45xDRgvdDytC7exMeA7NGhojvrMpMbVBwjFwowAQNWcnGEUjcGQFxWLCxlanuMTbI5CFzcoqsG7j4JRci-mw9AWDIvaM9mo-iy4ewVhfENrhVEy93upFTrVfFBc2NmBuzsXbkAyp5oF6x5oA_m_Io1rwYFwUUvZhdIRPmSoXOXujEyy-_ijzTFQa5NSrK2zoOQ3EPmyZQP16mHctm98dtM9K-2t4HK06saVnjl4skEJ-pL22LIeL6d6m88cStWRYCzaqrThxW2uf7dAdiNoIdLOn07P4WGrSr9lgnuC3w_HFLCtMgZuP62gGijFe1m-hS8oDUEjwkEFRIUrTKBhbyK46KX_plFIeax7OGJs_hjSlXndDYp6c5lm_BHIO-37duSUZ5MA9NTw_SNJ5Mi0IJxQLfAtXr-yiJ94YCXJOSiSY-1kEyuuc8a5i-QacojLu7EH7I_fh3_SFYxmn2YNjitIHP-aXmskkxs9iBUbJYZbBD-_B2GJ_DtHZBhuPT8j6XKFt1m00>`_
 
 
 Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata (:ref:`WP_034 <wallet-instance-testcases>`):
@@ -36,7 +36,7 @@ Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider D
 
 .. note::
   - Il flusso per la Revoca dell'Istanza del Wallet attivato dall'Utente è dettagliato di seguito.
-  - L'endpoint utilizzato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale è dettagliato nel Catalogo e-Service del Fornitore di Wallet PDND (vedere la Sezione :ref:`wallet-provider-endpoint:Catalogo e-Service PDND del Fornitore di Wallet` per i dettagli tecnici).
+  - L'endpoint utilizzato dal Provider di PID/IT-Wallet ID è dettagliato nel Catalogo e-Service del Fornitore di Wallet PDND (vedere la Sezione :ref:`wallet-provider-endpoint:Catalogo e-Service PDND del Fornitore di Wallet` per i dettagli tecnici).
   - Il flusso per le Entità Autorizzate (ad esempio, Organismi di Supervisione) è fuori dall'ambito di questa specifica, sarà gestito da ciascun Fornitore di Wallet.
 
 

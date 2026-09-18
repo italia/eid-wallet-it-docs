@@ -1,4 +1,4 @@
-@startuml High-Level PID Issuance Flow
+@startuml High-Level PID and IT-Wallet ID Issuance Flow
 !include <C4/C4_Container>
 
 HIDE_STEREOTYPE()
@@ -28,7 +28,7 @@ AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineS
 
 Person(user, "User", "Wallet Instance holder")
 Container(wi, "Wallet Instance", "OID4VCI", " ", $sprite="wallet")
-Boundary(pidProvider, "PID Provider") {
+Boundary(pidProvider, "PID/EAA Provider") {
     Container(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
     Container(rp, "Relying Party Component", "OIDC / SAML", "",$sprite="cogs")
 }

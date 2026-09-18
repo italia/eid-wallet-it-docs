@@ -104,10 +104,10 @@ Extensions not listed in the table MUST NOT be present.
      - **Description**
 
    * - ``authorityKeyIdentifier``
-     - REQUIRED. The value SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. The value of the ``keyIdentifier`` field SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPTIONAL. If present, the ``keyIdentifier`` field SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. If present, its value SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
      - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
@@ -118,20 +118,30 @@ Extensions not listed in the table MUST NOT be present.
        * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
        * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
        * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``);
-       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``).
+       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
 
        and ``policyQualifiers`` containing a ``cpsURI`` that references an URL where the CPS of the Provider of WRPAC is located.
 
    * - ``subjectAltName``
-     - REQUIRED.
+     - REQUIRED. It MUST include a ``GeneralName`` structure with one of the following parameters defined to provide valid contact information of the WRP:
+     
+       * ``uniformResourceIdentifier``, to provide the URI of a website for helpdesk/support matters;
+       * ``otherName`` with ``type-id`` set to ``2.5.4.20`` (``id-at-telephoneNumber``), to provide a phone number for WRP registration/usage matters;
+       * ``rfc822Name``, to provide an email address for WRP registration/usage matters.
 
    * - ``cRLDistributionPoints``
      - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     
+       If present, it MUST contain at least one reference to a publicly available CRL.
 
    * - ``authorityInfoAccess``
      - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+
+   * - ``qcStatements``
+     - OPTIONAL. It MAY contain `QCStatement` structures among those defined in Clause 4.2 of [ETSI EN 319 412-5].
+       In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
 .. note::
     **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
@@ -232,7 +242,7 @@ Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the format and contents of three types of Trust Artifacts, each of which conveys a list of current and historical Trust Anchors (containers of an Entity public key and identifier which are assumed to be trusted).
+This section describes the format and contents of three types of Trust Artifacts, each of which conveys a list of current and historical Trust Anchors (containers of cryptographic materials and identifiers belonging to trusted Entities).
 
 Ecosystem Entities utilize these lists to:
 
@@ -241,7 +251,7 @@ Ecosystem Entities utilize these lists to:
 
 The three distinct types of trust lists are:
 
-- Trusted Lists (TLs): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_.
+- Trusted Lists (TLs): Established under Chapter II of Annex I of `CID2015/1505`_, as amended by `CID2025/2164`_, and specified in `ETSI TS 119 612`_.
   Each Member State publishes one TL in XML format.
   It is signed by the respective Member State with an XAdES digital signature at conformance level baseline B (as defined in `ETSI EN 319 132-1`_).
   TLs are published in a machine-readable format at endpoints specified within the LOTL.
@@ -255,17 +265,17 @@ The three distinct types of trust lists are:
    They are numbered and renewed periodically, and published in a website for unrestricted download.
    To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
 
-- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI TS 119 612`_.
+- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of `CID2015/1505`_, as amended by `CID2025/2164`_, and specified in `ETSI TS 119 612`_.
   There is only one LOTL, which is published in XML format and signed by the European Commission (EC).
   It utilizes an XAdES digital signature at conformance level baseline B (per `ETSI EN 319 132-1`_) and references the trusted certificates that each National Trusted List.
   To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism.
-  It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
+  It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (`OJEU`_).
 
-  The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently, the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
+  The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at ``https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd``. Currently, the machine-readable version of the LOTL and National TLs is published at `EUMS-LOTL`_.
 
-- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI TS 119 602`_.
+- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of `CIR2024/2980`_ and specified in `ETSI TS 119 602`_.
   These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_).
-  To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU.
+  To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the `OJEU`_.
   The LoTE types can be one of the following, as defined in annex C.2:
 
   - PID Provider;
@@ -275,7 +285,7 @@ The three distinct types of trust lists are:
   - Public sector bodies issuing Electronic Attestations of Attributes;
   - List of Registrars and Registers.
 
-  The following repository provides the normative JSON and XML schemas required for implementing the List of Trusted Entities https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities.
+  The following repository provides the normative JSON and XML schemas required for implementing the List of Trusted Entities (`ETSI-LOTE-SCHEMAS`_).
 
 The following table provides a comprehensive overview of the eIDAS trust list architecture, cross-referencing the legal basis, governing technical standards, explicit data formats, signature profiles, and publication dynamics for Trusted Lists (TL), the List of Trusted Lists (LOTL), and the various category-specific Lists of Trusted Entities (LoTE).
 
@@ -291,61 +301,65 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
      - **Scope & Signer**
      - **Publication & Update Mechanism**
    * - **Trusted Lists (TL)**
-     - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
+     - `CID2015/1505`_ (Annex I, Chapter II), amended by `CID2025/2164`_.
      - `ETSI TS 119 612`_; ``XML`` format.
      - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - Member State scope; one list per Member State, signed by that Member State.
      - Machine-readable endpoint specified within the LOTL.
    * - **List of Trusted Lists (LOTL)**
-     - CID (EU) 2015/1505 (Annex I, Chapter II), amended by CID (EU) 2025/2164.
+     - `CID2015/1505`_ (Annex I, Chapter II), amended by `CID2025/2164`_.
      - `ETSI TS 119 612`_; ``XML`` format.
      - XAdES digital signature, baseline B (`ETSI EN 319 132-1`_).
      - European Union scope; a single global list signed by the European Commission (EC) that anchors the National Trusted Lists.
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: PID Provider Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex D; ``JSON`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Wallet Provider (WP) Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex E; ``JSON`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Provider of WRPAC Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex F; ``JSON`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type (Wallet Relying Party Access Certificate).
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Provider of WRPRC Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex G; ``JSON`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type (Wallet Relying Party Registration Certificate).
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: PuB-EAA Provider Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex H; ``JSON`` or ``XML`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
-     - European Union scope; one list per specific ecosystem entity type.
-     - Machine-readable endpoint specified within the OJEU.
+     - European Union scope; lists notified PuB-EAA Providers and their Sign/Seal Trust Anchors.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Registrar and Register Provider Lists**
-     - Articles 4 and 5 of [CIR 2024/2980].
+     - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex I; ``JSON`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
      - European Union scope; one list per specific ecosystem entity type.
-     - Machine-readable endpoint specified within the OJEU.
+     - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
 
+.. note::
+  
+  As suggested in the `EIDAS-ARF`_, for efficiency, implementations MAY routinely check Trust Anchors in Lists of Trusted Entities or Trusted Lists and store them locally. This allows, for example, Relying Party Instances running on mobile apps to facilitate offline presentations.
+  
 The example below shows a non-normative example of payload of a List of Trusted Entities for PID Providers.
 
 .. literalinclude:: ../../examples/lote-pid.json
@@ -524,5 +538,3 @@ The timing of detection depends on when the Wallet Unit checks the Digital Crede
 
     - It enables Attestation Provider to unilaterally change an EDP, and it may introduce privacy risks and management overhead (as stated in the Discussion Topic D)
     - Technical details of this mechanism are not defined within ETSI standard.
-
-

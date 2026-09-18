@@ -18,19 +18,23 @@ The trust-infrastructure roles are realized by the components and services of th
   - **Authentic Sources**: onboard to make their data available to the Credential Issuers, so that the data can be included in the Attestations.
   - **Wallet-Relying Parties**: onboard to be authorized to rely on the Wallet Units and to obtain the Trust Artifacts they need to operate. They are further split into:
  
-    - **Credential Issuers**, that onboard to be authorized to issue the Credential types they declare;
-    - **Relying Parties** and **Relying Party Intermediaries**, that onboard to be authorized to request User attributes from the Wallet Units.
+    - **Credential Issuers**, which onboard to be authorized to issue the Credential types they declare;
+    - **Relying Parties** and **Relying Party Intermediaries**, which onboard to be authorized to request User attributes from the Wallet Units.
  
   - **Wallet Providers**: onboard to have their Wallet Solution recognized in the ecosystem and to be notified.
  
 **Trust-infrastructure entities**
  
-  - **Supervisory Body**: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the national single point of contact for the notification to the European Commission.
+  - **Supervisory Body**: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the National single point of contact for the notification to the European Commission.
   - **Registrar** and **Register**: the Registrar performs the technical registration of the Wallet-Relying Parties and writes their records into the **Register** as defined by [`CIR2025/848`_].
   - **Provider of WRPAC** and **Provider of WRPRC**: issue, respectively, the WRPAC and the WRPRC.
-  - **National Federation Authorities**: the **Federation Trust Anchor** and its **Federation Intermediates**, that register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-    In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the national X.509 signing PKI, whose root certificate and its distribution are described in :ref:`infrastructure-trust:PKI Architecture`.
+  - **National Federation Authorities**: the **Federation Trust Anchor** and its **Federation Intermediates**, which register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
+    In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the National X.509 signing PKI, whose root certificate and its distribution are described in :ref:`infrastructure-trust:PKI Architecture`.
  
+**Entities that interact with the Onboarding System without being onboarded**
+
+  - **Attestation Scheme Providers**: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see :ref:`onboarding-system:Credential Type Registration`. An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an orfanization that owns the Rulebook.
+
 .. note::
    A single organization may perform several of these functions at once.
  
@@ -43,8 +47,8 @@ System Components and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 The trust-infrastructure roles are realized, within the Onboarding System, by a set of components, each providing one or more services.
-An onboarding entity interacts with the system through a single entry point, the Onboarding UI, that orchestrates the flow and routes each request to the responsible component, and that is therefore not shown as a separate component in the diagram below.
- 
+An onboarding entity interacts with the system through a single entry point, the Onboarding UI, which orchestrates the flow and routes each request to the responsible component, and which is therefore not shown as a separate component in the diagram below.
+
 The table below lists the components, the services each of them provides, and the onboarding process that each service realizes.
  
 .. list-table:: Components, Services and Processes
@@ -55,41 +59,38 @@ The table below lists the components, the services each of them provides, and th
    * - **Component**
      - **Services**
      - **Realized process**
-   * - Supervisory Body
-     - Eligibility and compliance verification, approval of claims, schemas and Credential types
-     - Precondition to every registration, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`
    * - National Federation Management
      - Federation registration, issuance of Trust Marks, publication of the signed registries
-     - :ref:`onboarding-system:Entity Registration`
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`, :ref:`onboarding-system:Registration Trust Mark Issuance`
    * - EUDIW Registration Management
      - Verification and registration of the Wallet-Relying Parties in the Register
-     - :ref:`onboarding-system:Entity Registration`
-   * - X.509 Certificate Management
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`
+   * - Certificate Management
      - Issuance and update of WRPAC, WRPRC, Sign/Seal and National Authentication certificates
-     - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`
-   * - EU Notification Management
-     - Signature of the EU Member State Trusted List and notification to the European Commission
-     - :ref:`onboarding-system:Notification and Publication`
+     - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, :ref:`onboarding-system:Entity Update`
+   * - Notification Dataset Management
+     - Collection and maintenance, in the notification dataset, of the information subject to notification
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`
    * - Authentic Source Management
-     - Registration of the Authentic Sources in the AS Registry
-     - :ref:`onboarding-system:Authentic Source Registration`
+     - Registration, update and removal of the Authentic Sources in the AS Registry
+     - :ref:`onboarding-system:Authentic Source Registration`, :ref:`onboarding-system:Authentic Source Update`, :ref:`onboarding-system:Authentic Source Removal`
    * - Claims and Schema Management
      - Registration of the claims and provisioning of the schemas
-     - :ref:`onboarding-system:Attestation Onboarding`
+     - :ref:`onboarding-system:Claim Registration`, :ref:`onboarding-system:Schema Provisioning`
    * - Catalog Management
      - Registration, activation and versioning of the Credential types in the Digital Credentials Catalog
-     - :ref:`onboarding-system:Attestation Onboarding`
- 
-The components write the national registries and data stores described in :ref:`registry:Registry Infrastructure`, and interact, at EU level, with the European Commission for the notification and the alignment of the Catalogs.
-Two data stores are kept separate on purpose, the Register, that holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, that holds the notifiable information defined by [`CIR2024/2980`_] and feeds the Publication Service.
+     - :ref:`onboarding-system:Credential Type Registration`, :ref:`onboarding-system:Credential Type Activation and Deactivation`, :ref:`onboarding-system:Credential Type Update`
+
+The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`, which are grouped by purpose as in :ref:`registry:Registries and Catalogues of the Ecosystem`.
+
+Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [`CIR2024/2980`_].
 They overlap only in the identification data, so the split keeps the registration distinct from the notification.
  
-The diagram below shows the components, the actors that interact with them and the data stores they write.
-The Authentic Sources register in the AS Registry only, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
+The diagram below groups the components by responsibility and shows the data stores they interact with.
+A component can realize processes of more than one family, so the groups of the diagram do not coincide with the families of :ref:`onboarding-system:Onboarding Processes`, and the correspondence is the one given by the table above.
+The Authentic Sources register only in the AS Registry, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.
 
 .. plantuml:: plantuml/onboarding-system-overview.puml
     :width: 99%
-    :caption: `IT-Wallet Onboarding System. <https://www.plantuml.com/plantuml/svg/bLPHRnit37xNho3iXsr6x3RhqhLzA6exPo05rcLpXkp1B_8TVHQiamwIBeatzB-Fr9slYkEac0pO9v7yIF4ZUVxaWtIXgJHStOnlfTOOu7Upjj8LofImtFk0bT2u2H0iE5Lk0nJAOHwKDSBlbAcbanNuhIpiFPjifFQOI0hSo4Q76tm8KwrAKw49aDCNkaIhblbEbhWCUut0yDAKEeMPEcVlvrPR1yEtSHqB5zQ4fVe7uVmy4MbbCEnh1El2rYO2OmlqMCFvk-JGIRFZmrykqiD3E3Fh2dHT46_YIjLiOugvTGOTf9Y5378j_NUiPHwiEwKYeWG6owP6TwUyTNkOsM8_0Eb15XKCi_DPblqgH9T36Bn0vG3-5GAWLvs6W5G2p6QY7B7hNIb3WE7YWZza1xJwNC1WD9esOKj4gXoMjd4vZaQmCgFHRz8GDlCy6gtCPB8onug-3TvN9Trp_YvxEt__57skfQf8onImpBTOoVy9x_Fjo_Z4YxObWy19LArXxh1WP4dzuNs3heNEPNWC_VLHKZEo2FiJ-UJIVo6VNo8Fv6j1NbrBokcueWVLNNI3nVEtpFwwlBg5Fx5KFZmB-VIQPsIYzrmtrpGVoDFPogGdUxZY3gwmKDAHU6Li7KCckJBGUbrpHqZNbgh34eQpsMMsc9tW0id9Hb5Udo-YpxStiHZ-dboyVayjJmRK6cqA7lXek5XahsS_7-WuIWDyiPsBqpculhg4L_17DftIptKp6_FJjRDtgk1yh4pNKlrHIsgpxc-Lba2NSCfCZFcIQWsMrCSTPLGBF1QEYk4mAM1mg0HYUtaWh-ju7nEPqFtK2hhMURKoRUSmnEGCRkI3DRRg-NZp7PoqC3nq_N9eW6Ti8_DSAnmpkgXzx-fZzfyOF6A7q-KnH6F3WiJsgo1sSssRuj7q8fUDnhMrk_PsH4iMrq4tQnoLg2J5kQqgvJqPHLNCUrNn0unfWKzcxPfcBT0a92PP9dZaZiSV3-Fn0zWxAWPiYLwPahV6fshSzHy0wUMdrahpP8YQkQrghQJ9iVVhkYiGEHjqIABM9zrcCldOZPrUcm6iONHwDNikBlZntYcAzASkr3XWEOfODQARY7p0x8jkZF6U7WLpnCyjNO9BcxUHWBZZ633_vlzRqmBbiv5zl3oHs9JRieUD6z7b8wQcMGln2Kr1Vp_4Vm00>`_
-
-
+    :caption: `IT-Wallet Onboarding System. <https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7>`_

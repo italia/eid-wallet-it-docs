@@ -11,7 +11,7 @@ It defines which of them are operated within IT-Wallet, which certificates each 
 The content of the certificates is not defined here.
 The common requirements are defined in :ref:`infrastructure-trust:X.509 Certificate Profile` and the specific requirements of each certificate are defined together with the artifact that uses it.
 The issuance of the certificates is part of the onboarding (see :ref:`onboarding-system:Onboarding Processes`).
-The use of the Trust Anchors at runtime is defined in :ref:`trust-evaluation:EUDIW Trust Anchor Validation` for the EUDIW Trust Framework and in :ref:`trust-evaluation:Signing Trust Anchor Distribution` and :ref:`trust-evaluation:Authentication Trust Anchor Distribution` for the National Trust Framework.
+The use of the Trust Anchors at runtime is defined in :ref:`trust-evaluation:EUDIW Trust Anchor Validation` for the EUDIW Trust Framework and in :ref:`trust-evaluation:Signing Trust Anchor Distribution`, :ref:`trust-evaluation:Wallet Trust Anchor Distribution` and :ref:`trust-evaluation:Authentication Trust Anchor Distribution` for the National Trust Framework.
 
 Certification Hierarchies
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ Each subordinate Certification Authority serves one service, and its certificate
     :width: 99%
     :align: center
     :alt: The figure illustrates the certification hierarchies of the IT-Wallet ecosystem and the publication channel of the Trust Anchor derived from each Certification Authority.
-    :caption: `PKI Architecture of the IT-Wallet Ecosystem. <https://www.plantuml.com/plantuml/svg/dLPTRzis57tNhxXe7_ooM5km0LiVYYh-MBDagI8xy1u23BHq9H6XoO2a77X5__j8YbP5sshTE40INjvpphta8UaFIXEfcmsBHZ11gMb9SwAfu51Jb4Jcvey2mWjuRjPiFvVNX7Da84hGDKA1acwnWALib8Q4vxMGQXn5wedoPoB91bHD2l52UGKbOGfxCmMMf65wBhY-8nk4ZyYsg8tGwPm5_G_XbylUP2AbU9a89YIy_TLzUfCISqrunH0-Hm1N97-gf6XuqUQlQghHneKqBOGSNteipmP7gjCSR-U9_Jba-TrzJDGLhNSCOIrOOMWZXgK6BK3IgjPGK5iZ5JoAzZ9lxjmg4mRfpVKR80hkagKHZw3hfv-K2Q5XaZpoE1PboIZ7dq0qMj42tUvi2QE5IpQDw3gE7MNswTFoW36zda8gnTO09InenUC54kQfXoOxpw3op9FaNvEy2BbNX37Km_H-_co5LMhuGuaapr4fpqVQGTu3MxUsCXSPifqnuoDFYTHxW_Sxx2jbQJ8PMFgaqJLoxO-5b_RaOBbtGCAK_6GtoSFoOoXXLBF9qIfruwF6Z4XNl1qxVD14Tj14XXLLMfBZlJWvSxBkRFRdmChCakI8TohoPeDSkmcK0sjXaD6Ntc6uRmWpMTtria2vfVdNRXtkVhb8uNDOImVqylU6-No3tN-RB6skBdw8Btsu2jgQFKolLxwbkIGRV17ooIMRpDd3OJE1EH_vBJKmKRPuB636DRL6TWItzlmD7x-p65PfIE3xFP_1DHnGT53lpsJoNGwNzMsMx2oMGVD_5tnayRznixRxhOd63cH9h2qIgMbkiYulBILUJvD577kcvQqtG7Z93td0tVcXz1nDumuMFBMFtDMyWudW9QsQDiMhpcVM2bne-m1fBJPc1B2i4Nfi7d-3EmL4OllMgneBo_7NwiPXA7Utp2ajDRQCEuSrKl3F-BUV_t2Wu9uYlEXIg5ADuLyRKFZ5my7inIgaqHcR8HgOQm3i0jg72ouktk_VcI2mIeEXyqyGSJVjGKeMffWT3yRsGegy68p7x_tvScf-R6JR8-x6RgltwZxY_W-2diQNu4E-dBOA7xBrs0ifuBPzk83RONW7SHmyHg53uZXg6maXxZsXl3hCZKPzmu0elHzD_CUjCtgDTKQliyuejCweiquKCQpie3i32y6efPJYvLtBg5oDFTNzkwgQjP05vIOKweKsdHBNjgVKzM1oe45Li6J1LW3buyXKtTOUVJ2_cWtx7m00>`_
+    :caption: `PKI Architecture of the IT-Wallet Ecosystem. <https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0>`_
 
 The following table lists the Certification Authorities, the certificates that are issued by each of them, and the channel through which the derived Trust Anchor is distributed.
 The Lists of Trusted Entities and the Trusted Lists named in the table are defined in :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
@@ -46,10 +46,10 @@ The Lists of Trusted Entities and the Trusted Lists named in the table are defin
 
     * - Wallet Provider Sign/Seal CA
       - :ref:`infrastructure-trust:Wallet Provider Sign/Seal Certificate`
-      - Wallet Providers LoTE.
+      - Wallet Providers LoTE in the EUDIW Trust Framework, and the Federation Trust Anchor Entity Configuration as the distribution channel for the National Wallet Trust Anchor in the National Trust Framework (see :ref:`trust-evaluation:Wallet Trust Anchor Distribution`).
 
-    * - Access CA
-      - Access certificates following the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, issued to the Wallet-Relying Parties and to the PID Providers.
+    * - WRPAC CA
+      - Access certificates following the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, issued to the Wallet-Relying Parties.
       - Providers of WRPAC LoTE.
         The same Trust Anchor is also published in the PID Providers LoTE, because the trust anchors of the Access Certification Authorities for PID Providers are notified within the PID Provider notification, separately from the ones for the Wallet-Relying Parties (see [`EIDAS-ARF`_], Topic 31).
 
@@ -83,6 +83,16 @@ The Qualified CA of the QEAA Provider and the PuB-EAA Provider Sign/Seal CA are 
 Both belong to the perimeter of a Qualified Trust Service Provider and follow its own supervision and publication regime.
 The Sign/Seal Certificate of a PuB-EAA Provider is a qualified electronic seal issued by a Qualified Trust Service Provider (Article 45f of [`EIDAS`_]).
 
+Revocation Trust Anchors
+""""""""""""""""""""""""""
+
+Within these specifications, the following additional conditions apply regarding revocation Trust Anchors:
+
+- Within the EUDIW Trust Framework, the Trust Anchors used to validate the revocation mechanisms for WRPRC, PID and PuB-EAA certificate chains are the same notified Trust Anchors used by the corresponding signing PKIs.
+- Within the National Trust Framework, the Signing Trust Anchors of EAA Providers are also the Trust Anchors used to validate the revocation status of EAA signing certificate chains.
+- For Wallet Instance Attestations and Key Attestations, the Wallet Provider MUST use the same Trust Anchor for signature validation and for validation of the applicable status or revocation information. In the EUDIW Trust Framework, this Trust Anchor is published in the Wallet Providers LoTE; in the National Trust Framework, the same key material is distributed as the National Wallet Trust Anchor through the Federation Trust Anchor Entity Configuration (see :ref:`trust-evaluation:Wallet Trust Anchor Distribution`).
+- When a Wallet Provider operates in both Trust Frameworks, its National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission and published in the Wallet Providers LoTE under the Wallet Provider's ``ServiceDigitalIdentity``. The national Entity Configuration is an additional distribution channel and MUST NOT introduce a second Trust Anchor.
+
 .. note::
   The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.
 
@@ -97,7 +107,7 @@ Design Principles
 The hierarchies described above follow the principles listed below.
 
 - **One Sign/Seal Certification Authority per notified role.** Each role that signs or seals an artifact has a distinct Sign/Seal Certification Authority.
-- **A single Access Certification Authority.** Within IT-Wallet the access certificates are issued by a single Certification Authority, both to the Wallet-Relying Parties and to the PID Providers, as they follow the same profile and certificate policy.
+- **A single WRPAC Certification Authority.** Within IT-Wallet the access certificates are issued by a single Certification Authority, both to the Wallet-Relying Parties and to the PID Providers, as they follow the same profile and certificate policy.
   The Relying Party authentication certificates of the National Trust Framework are issued by a distinct Certification Authority.
 - **No Trust Anchor without a consumer.** Within IT-Wallet a Trust Anchor is published in a distribution channel only when a trust evaluation procedure defined in this specification obtains it from that channel.
 - **The Root Certification Authority is outside the validation path.** The Trust Anchor certificate is the trust termination point of the path validation (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`), therefore the Root Certification Authority is never evaluated at runtime and its certificate is not published in any List.

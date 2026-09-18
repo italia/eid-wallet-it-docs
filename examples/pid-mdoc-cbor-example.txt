@@ -65,12 +65,20 @@
             "elementIdentifier": "nationality",
             "elementValue": ["IT"],
             }
+        >>),
+        24(<<
+            {
+            "digestID": 9,
+            "random": h'71EAC48D2F9B635A0C17D4E82ABF05',
+            "elementIdentifier": "portrait",
+            "elementValue": h'FFD8FFE000104A46494600010100000100010000...'
+            }
         >>)
         ],
         "eu.europa.ec.eudi.pid.it.1": [
             24(<<
                 {
-                "digestID": 9,
+                "digestID": 10,
                 "random": h'44DD0606C5F5FDD206H8C84H3F67F5HEEH',
                 "elementIdentifier": "sub",
                 "elementValue": "550e8400-e29b-41d4-a716-446655440000"
@@ -78,15 +86,7 @@
             >>),
             24(<<
                 {
-                "digestID": 10,
-                "random": h'22bb8384b3e3ebb084f6a62f1d45d3fccf',
-                "elementIdentifier": "tax_id_code",
-                "elementValue": "TINIT-RSSMRA56A12H501U"
-                }
-            >>),
-            24(<<
-                {
-                "digestID": 12,
+                "digestID": 11,
                 "random": h'33cc9495c4f4fcc195g7b73g2e56e4gddg',
                 "elementIdentifier": "verification",
                 "elementValue": {
@@ -121,11 +121,12 @@
                           5: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
                           6: h'F8A5966E6DAC9970E0334D8F75E25…',
                           7: h'1F1A0F7CCDD79b29EB4B22F96F54F…',
-                          8: h'1A0F7EEDB46B37AS4N22R96D83F3F…'
+                          8: h'1A0F7EEDB46B37AS4N22R96D83F3F…',
+                          9: h'71EAC48D2F9B635A0C17D4E82ABF5…'
                       },
                       "eu.europa.ec.eudi.pid.it.1": {
-                          9: h'C8FF5E58G89FCE97G45533CE3E4B…',
-                          10: h'F9EE4D36F67DBD75E23311AC1C29…',
+                          10: h'C8FF5E58G89FCE97G45533CE3E4B…',
+                          11: h'F9EE4D36F67DBD75E23311AC1C29…',
                           12: h'A2BC5E47G78ECD86F34422BD2D3A…'
                       }
                   },                             

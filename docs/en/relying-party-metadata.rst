@@ -5,7 +5,7 @@
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as included in the parameters shown below. (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`). Please note that *openid_credential_verifier* is an OpenID Federation specific metadata used for OpenID4VP and it is used when the Relying Party's ``client_id`` is set with ``openid_federation``. When the Relying Party's ``client_id`` parameter is set with ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter provided within the request.
+The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as included in the parameters shown below. (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`). Please note that *openid_credential_verifier* is an OpenID Federation Wallet Architecture (`OID-FED-WALLET`_) specific metadata used for OpenID4VP and it is used when the Relying Party's ``client_id`` is set with ``openid_federation``. When the Relying Party's ``client_id`` parameter is set with ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter provided within the request.
 
 .. list-table::
   :class: longtable
@@ -33,7 +33,7 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**
-    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.
+    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching.
 
 
 .. note::

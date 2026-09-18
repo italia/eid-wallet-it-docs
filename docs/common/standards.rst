@@ -49,10 +49,14 @@ Infrastructure of Trust
       - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", February 2026, Final.
     * - `OID-FED-SUBORDINATE-EVENTS`_
       - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
+    * - `ACME-OIDFED`_
+      - De Marco, G., Pitman, B., "Automatic Certificate Management Environment (ACME) with OpenID Federation 1.0", December 2025, Draft 00.
     * - `ETSI TS 119 461`_
       - ETSI TS 119 461 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service components providing identity proofing of trust service subjects.
     * - `ETSI EN 319 411-1`_
-      - ETSI EN 319 411-1 v1.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements. IT-Wallet adopts v1.5.1, which does not introduce breaking changes with respect to v1.4.1 referenced by CIR (EU) 2025/848. 
+      - ETSI EN 319 411-1 v1.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements. IT-Wallet adopts v1.5.1, which does not introduce breaking changes with respect to v1.4.1 referenced by CIR (EU) 2025/848.
+    * - `ETSI EN 319 411-2`_
+      - ETSI EN 319 411-2 v2.5.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 2: Requirements for trust service providers issuing EU qualified certificates.
     * - `ETSI TS 119 411-8`_
       - ETSI TS 119 411-8 v1.1.1 - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for trust service providers issuing certificates; Part 8: Access certificate policy for EUDI Wallet Relying Parties.
     * - `ETSI EN 319 412-1`_
@@ -89,7 +93,7 @@ Digital Credential Data Format
     :header-rows: 0
 
     * - `SD-JWT-VC`_
-      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", October 2025, Draft 12.
+      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", November 2025, Draft 13.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
 
@@ -140,7 +144,7 @@ Digital Credential Revocation Check Mechanisms
     :header-rows: 0
 
     * - `TOKEN-STATUS-LIST`_
-      - Looker, T., Bastian, P., Bormann, C., "Token Status List (TSL)", October 2025, Draft 13.
+      - Looker, T., Bastian, P., Bormann, C., "Token Status List (TSL)", June 2026, Draft 21.
 
 National Data Interoperability Platform Specifications
 ------------------------------------------------------

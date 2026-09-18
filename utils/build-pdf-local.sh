@@ -57,11 +57,17 @@ for LANG in en it; do
     done
   fi
 
-  TEX_FILE=$(find "$ROOT_DIR/build/latex/${LANG}" -maxdepth 1 -type f -name '*.tex' | head -n 1)
-  if [[ -z "$TEX_FILE" ]]; then
+  # Prefer the main Sphinx document (settings_file_name.tex); ignore leftovers
+  # such as *-titleonly.tex that may still be present in the build directory.
+  TEX_FILE="$ROOT_DIR/build/latex/${LANG}/eid-wallet-it-docs.tex"
+  if [[ ! -f "$TEX_FILE" ]]; then
+    TEX_FILE=$(find "$ROOT_DIR/build/latex/${LANG}" -maxdepth 1 -type f -name '*.tex' ! -name '*-titleonly.tex' | head -n 1)
+  fi
+  if [[ -z "$TEX_FILE" || ! -f "$TEX_FILE" ]]; then
     echo "Error: no .tex file found for ${ULANG} build in build/latex/${LANG}"
     exit 1
   fi
+  echo "Using TeX file: $(basename "$TEX_FILE")"
 
   sed -i '/\\documentclass.*sphinxmanual/a \\\\pdfminorversion=7' "$TEX_FILE"
 

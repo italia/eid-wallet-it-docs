@@ -143,6 +143,8 @@ Flusso di ripristino per Credenziale con associazione hardware
 ..   Restore flow.
 
 Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
+
+Allo stesso modo del PID, anche l'IT-Wallet ID NON DEVE essere incluso nel file di backup.
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
 **Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
@@ -152,7 +154,10 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 **Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
 
 - Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (:ref:`WP_130a <credential-backup-testcases>`).
-- Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (:ref:`WP_130b <credential-backup-testcases>`).
+- Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di emissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (:ref:`WP_130b <credential-backup-testcases>`).
+
+.. note::
+  Durante il ripristino, l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow`, utilizzando una nuova Associazione Crittografica con l'Utente. Per le (Q)EAA, ciò include il gate di presentazione del PID presso il Fornitore di Credenziali che agisce come Relying Party. Questo NON DEVE essere interpretato come il Re-issuance Flow definito nella Sezione :ref:`credential-issuance-low-level:Re-issuance Flow`, che si applica solo all'aggiornamento della Credenziale sulla stessa istanza (``UPDATE`` / ``ATTRIBUTE_UPDATE``) e richiede un Refresh Token associato all'Istanza del Wallet originale. Dal punto di vista del Fornitore di Credenziali, il ripristino è indistinguibile da una prima emissione Wallet-Initiated. Le Credenziali ripristinate da Fornitori distinti RICHIEDONO un Authorization Code Issuance Flow separato per ciascun Fornitore.
 
 .. note::
   L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Instance Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (:ref:`WP_128a <credential-backup-testcases>`).

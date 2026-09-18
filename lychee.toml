@@ -39,6 +39,8 @@ exclude = [
   # External: servers that return 403 to automated/bot requests (links are valid)
   "^https://www\\.f5\\.com/",
   "^https://www\\.tuv-nederland\\.nl/",
+  # External: ICAO site frequently times out under automated checks
+  "^https://www\\.icao\\.int/",
   # PlantUML render URLs: generated encoded content, not stable HTTP endpoints
   "^https://www\\.plantuml\\.com/plantuml/",
 ]

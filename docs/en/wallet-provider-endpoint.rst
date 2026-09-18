@@ -667,13 +667,6 @@ The following table lists HTTP Status Codes and related error codes for the ones
       - ``invalid_request``
       - The signature of the Key Attestation Request is invalid or does not match the associated public key (JWK).
 
-
-
-
-
-
-
-
 Key Attestation JWT
 """"""""""""""""""""""""""""
 
@@ -772,13 +765,55 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
     A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
 
 
+Token Status List (Wallet Unit Attestation Profile)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIST`_ for Wallet Unit Attestations. A TSL conveys the current status of many Wallet Unit Attestations in a compact, signed Status List Token (SLT).
+
+The SLT Provider MUST be the Wallet Provider.
+
+**Status List**
+
+A Status List contains a compressed byte array whose entries represent the statuses of many Wallet Instance Attestations (WIAs) or Key Attestations (KAs). A WIA MUST include its Status List reference in ``client_status.status.status_list``, and a KA MUST include its Status List reference in ``key_storage_status.status.status_list``. Each Status List reference MUST contain ``idx`` and ``uri``. Both WIAs and KAs are JWTs; therefore, ``idx`` is a JSON integer and ``uri`` is a JSON string in each reference. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
+
+According to this specification, a WIA or KA can have one of the following statuses:
+
+  - ``VALID``. The WIA or KA is valid. This status is represented by ``0x00`` in the SLT.
+  - ``INVALID``. The WIA or KA is revoked. This status is represented by ``0x01`` in the SLT.
+
+As a result, the Wallet Provider MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``.
+
+The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+
+**Key Attestation Index Assignment**
+
+According to R_KA_1 of `CIR2026/1731`_, a Wallet Provider MUST choose one of the following index-assignment options for the ``key_storage_status.status`` claim in a KA. The selected option determines whether the status-list index is shared by KAs for the same type of key storage or is specific to an individual KA:
+
+* **Type-shared index.** All KAs attesting keys stored in the same type of WSCD or keystore MUST contain the same index value in ``key_storage_status.status``. Consequently, the status represented by that index is shared by all such KAs.
+* **Per-key-attestation index.** A KA attesting keys stored in an individual WSCD or keystore MUST contain a pairwise-unique index value in ``key_storage_status.status``. Consequently, each KA has a distinct status-list entry and its revocation status can be managed independently.
+
+The requirement for distinct ``idx`` values applies only to the per-key-attestation option. KAs using a type-shared index are exempt.
+
+**Status List Token**
+
+The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's ``client_status.status.status_list.uri`` member or the KA's ``key_storage_status.status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
+
+The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of `TOKEN-STATUS-LIST`_.
+
+Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:
+
+- a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework; or
+- a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.
+
+**Privacy Considerations**
+
+To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST aggregate the status information for multiple WIAs or KAs using per-key-attestation indexes in the same Status List and MUST publish the SLT at the same ``uri`` for those attestations. Where appropriate, each Status List SHOULD contain approximately 10,000 entries, in accordance with `EUDI-TS 3`_ and `CIR2026/1731`_. These aggregation and size requirements do not apply to KAs using a type-shared index.
 
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
-A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of the PID/IT-Wallet ID of the User's death MUST send a notification to Wallet Providers using this endpoint.
 
 .. only:: html
 
@@ -804,5 +839,4 @@ Notify User Death
       - Wallet Provider
     * - **Consumer**
       - PID Provider
-
 

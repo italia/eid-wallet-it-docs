@@ -12,14 +12,14 @@ The Wallet Provider MUST ensure the security and reliability of Wallet Instances
 As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigger the Wallet Instance revocation process (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
 - **Users**, connecting to the Wallet Provider's web portal from their Wallet Instance or using an external browser.
-- **PID Providers** when notified by the Authentic Source of the PID (ANPR) of the User's death.
+- **PID Providers and IT-Wallet ID EAA Providers** when notified by the Authentic Source of the PID/IT-Wallet ID (ANPR) of the User's death.
 - **Legal Authorities or the Supervisory Body** in cases of proven illegal activities.
 
 .. _fig_Wallet_Instance_Revoc_Entities:
 .. plantuml:: plantuml/wallet-instance-revocation-entities.puml
     :width: 99%
     :alt: The figure illustrates the Entities involved in the Wallet Instance revocation process.
-    :caption: `Entities involved in the Wallet Instance revocation process. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
+    :caption: `Entities involved in the Wallet Instance revocation process. <https://www.plantuml.com/plantuml/svg/fLBDZjCm4BxxAOPUw4gWlUmHeMNRI0JnKxLT8QHAaHiFhKLg5tlS4X3lpjZhR27cjfMgn1D_FpFVt7gIZiAX4y-qQRkW45xDRgvdDytC7exMeA7NGhojvrMpMbVBwjFwowAQNWcnGEUjcGQFxWLCxlanuMTbI5CFzcoqsG7j4JRci-mw9AWDIvaM9mo-iy4ewVhfENrhVEy93upFTrVfFBc2NmBuzsXbkAyp5oF6x5oA_m_Io1rwYFwUUvZhdIRPmSoXOXujEyy-_ijzTFQa5NSrK2zoOQ3EPmyZQP16mHctm98dtM9K-2t4HK06saVnjl4skEJ-pL22LIeL6d6m88cStWRYCzaqrThxW2uf7dAdiNoIdLOn07P4WGrSr9lgnuC3w_HFLCtMgZuP62gGijFe1m-hS8oDUEjwkEFRIUrTKBhbyK46KX_plFIeax7OGJs_hjSlXndDYp6c5lm_BHIO-37duSUZ5MA9NTw_SNJ5Mi0IJxQLfAtXr-yiJ94YCXJOSiSY-1kEyuuc8a5i-QacojLu7EH7I_fh3_SFYxmn2YNjitIHP-aXmskkxs9iBUbJYZbBD-_B2GJ_DtHZBhuPT8j6XKFt1m00>`_
 
 
 Regardless of who triggered the revocation, the Wallet Provider MUST inform Users when their Wallet Unit is revoked, according to the following requirements (:ref:`WP_034 <wallet-instance-testcases>`):
@@ -37,7 +37,7 @@ Regardless of who triggered the revocation, the Wallet Provider MUST inform User
 
 .. note::
   - The flow for the Wallet Instance Revocation triggered by the User is detailed below.
-  - The endpoint used by the PID Provider is detailed in the Wallet Provider Catalog of e-Service PDND Catalog (see Section :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalog` for technical details).
+  - The endpoint used by the PID/IT-Wallet ID Provider is detailed in the Wallet Provider Catalog of e-Service PDND Catalog (see Section :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalog` for technical details).
   - The flow for Authorized Entities (e.g., Supervisory Bodies) is out of scope of this specification, it will be managed by each Wallet Provider.
 
 

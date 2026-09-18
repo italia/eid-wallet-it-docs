@@ -21,11 +21,11 @@
   "given_name": "Mario",
   "family_name": "Rossi",
   "birthdate": "1980-01-10",
-  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
   "place_of_birth": {
     "locality": "Roma"
   },
   "nationalities": [
     "IT"
-  ]
+  ],
+  "picture": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
 }

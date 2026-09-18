@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 # -- PROJECT Variables ----------------------------------------------------
-settings_project_name = "IT-Wallet Specifiche Tecniche"
+settings_project_name = "Specifiche Tecniche IT-Wallet"
 # Stable browser/tab title and header — not modified by CI preview suffixes.
-settings_site_title = "IT-Wallet Specifiche Tecniche"
+settings_site_title = "Specifiche Tecniche IT-Wallet"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.5'
+settings_doc_version = '1.4.6'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'

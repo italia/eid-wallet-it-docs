@@ -14,11 +14,11 @@ HIDE_STEREOTYPE()
 
 title Architettura L2+ Autenticazione eID Substantial con Verifica MRTD
 
-Component_Ext(wallet, "Istanza del Wallet", "App Mobile", "Gestisce richiesta PID basata sullo stack standard tecnologico IT-Wallet. Fornisce **capacità crittografiche per lettura Documento Elettronico MRTD/IAS** (ICAO 9303, BSI-03110)",$sprite="wallet")
+Component_Ext(wallet, "Istanza del Wallet", "App Mobile", "Gestisce richiesta IT-Wallet ID basata sullo stack standard tecnologico IT-Wallet. Fornisce **capacità crittografiche per lettura Documento Elettronico MRTD/IAS** (ICAO 9303, BSI-03110)",$sprite="wallet")
 
-Boundary(issuer, "Provider PID") {
+Boundary(issuer, "Provider EAA") {
     Boundary(multi_step_authz, "Sistema Autenticazione eID Substantial con Verifica MRTD", "Orchestra flusso autenticazione multi-step e identity proofing remoto") {
-        Component(pid_authz_server, "Server di Autorizzazione", "Framework OAuth2 Authorization e OID4VCI", "Gestisce richiesta PID e coordinamento flusso di autorizzazione",$sprite="server")
+        Component(eaa_authz_server, "Server di Autorizzazione", "Framework OAuth2 Authorization e OID4VCI", "Gestisce richiesta IT-Wallet ID e coordinamento flusso di autorizzazione",$sprite="server")
         Component(doc_pop_service, "Servizio MRTD PoP", "Servizio di Validazione", "Gestisce proof of possession documento elettronico con validazione crittografica documento",$sprite="id_card")
     }
 }
@@ -27,13 +27,13 @@ Component_Ext(loa3_idp, "Provider Identità LoA3", "Schema eID eIDAS LoA3", "For
 
 Component_Ext(cie_registry, "Registro Nazionale CIE", "Database CIE", "Agisce come fonte autentica per la CIE. Fornisce informazioni relative allo stato di validità del documento. Fornisce anche opzionalmente i dati MRZ (numero documento, data di nascita, data di scadenza, cittadinanza e genere) per migliorare l'esperienza utente.",$sprite="database")
 
-Rel(wallet, pid_authz_server, "Flusso OAuth2 \nper Emissione PID", "Basato su Browser")
+Rel(wallet, eaa_authz_server, "Flusso OAuth2 \nper Emissione IT-Wallet ID", "Basato su Browser")
 
 Rel(wallet, doc_pop_service, "Invio proof documento", "API")
 
-pid_authz_server <-> doc_pop_service : "**Identity Matching**"
+eaa_authz_server <-> doc_pop_service : "**Identity Matching**"
 
-Rel_Back(pid_authz_server, loa3_idp, "Autenticazione SAML/OIDC", "Basato su Browser")
+Rel_Back(eaa_authz_server, loa3_idp, "Autenticazione SAML/OIDC", "Basato su Browser")
 
 Rel_Back(doc_pop_service, cie_registry, "Dati aggiuntivi relativi al Documento", "API")
 @enduml

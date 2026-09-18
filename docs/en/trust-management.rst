@@ -38,6 +38,22 @@ The diagram :numref:`fig_Trust_Artifacts_States` highlights the state machine of
     :caption: `Trust Artifacts States. <https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0>`_
 
 
+Federation Entity Key Rotation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Federation Entity Key of an Entity is attested by the Subordinate Statement that its immediate superior publishes about it, and the Entity Configuration of the Entity MUST be signed with a key that the Subordinate Statement attests.
+A new Federation Entity Key becomes trusted only when the superior attests it in the Subordinate Statement.
+
+The Federation Entity key rotation MUST be perfomed as defined in the following steps:
+
+- The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
+- In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.
+- The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
+- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key 
+- Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
+- The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
+
+
 Revocation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -51,7 +67,7 @@ The main distinction is the following:
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`infrastructure-trust:Status List Token (SLT)`;
+  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
@@ -67,8 +83,8 @@ The CRL MUST be digitally signed by the **CRL issuer**.
 
 CRLs MAY be used for the following types of certificates:
 
-- Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Wallet-Relying Party Access Certificate`.
-- Sign/Seal Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in `:ref:trust-artifact-eudiw:Sign/Seal Certificate`.
+- Wallet Relying Party Access Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
+- Sign/Seal Certificates by including the ``cRLDistributionPoints`` extension in the certificate, as described in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 
 If a CRL is used to manage the status of the certificates, the CRL issuer MUST be the entity referenced in the Trust Anchor certificate ``subject`` field.
 
@@ -542,61 +558,30 @@ Each ``SingleResponse`` is an ASN.1 *SEQUENCE* that carries the following parame
 
 Below is a non-normative example of an OCSP response with a single ``good`` status.
 
-
 .. literalinclude:: ../../examples/ocsp-response.txt
   :language: text
 
-Token Status List (TSL)
-""""""""""""""""""""""""
+Token Status List (WRPRC Profile)
+""""""""""""""""""""""""""""""""""
 
-This section defines a Status List data structure, which is used to convey information regarding the individual statuses of multiple WRPRCs.
-A Status List describes the status of the WRPRCs by encoding their validity in a bit array.
-Each WRPRC is allocated an index during issuance; this index represents its position within the bit array.
-The value of the bit(s) at this index corresponds to the WRPRC's status.
+This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIST`_ for Wallet-Relying Party Registration Certificates (WRPRCs). A TSL conveys the current status of many WRPRCs in a compact, signed Status List Token (SLT).
 
-A Status List is provided within a cryptographically signed Status List Token in JWT format.
-The format, request and response structures are found in :ref:`credential-revocation:Token Status Lists`.
+The SLT Provider MAY be the Provider of WRPRC or a designated entity.
 
-In this specification, the roles of the Provider of WRPRC and Status Issuer (i.e., the entity that issues the Status List Token about the status information of the WRPRC) MUST coincide.
-Moreover, the Status Provider (i.e., the entity that provides the Status List Token on a public endpoint) MUST be the Provider of WRPRC itself.
+**Status List**
 
-The Provider of WRPRC MUST use the following values for the possible statuses of the issued WRPRCs:
+A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative ``idx`` value to each issued WRPRC and include it, together with the SLT ``uri``, in the WRPRC's ``status.status_list`` member. For a JWT-encoded WRPRC, ``idx`` is a JSON integer and ``uri`` is a JSON string; for a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
 
-- ``0x00`` - ``VALID`` - The WRPRC is valid.
-- ``0x01`` - ``INVALID`` - The WRPRC is revoked.
+According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``; therefore, the Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
 
+The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
 
-Once the Wallet Unit receives a WRPRC, it can request the Status List to validate its status through the provided URI parameter and look up the corresponding index in the list.
+**Status List Token**
 
-Status List Token (SLT)
-........................
+The SLT Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the WRPRC's ``status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT. The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature.
 
-The **Status List Token** is available at the Status List Endpoint.
-It is formatted as a JSON Web Token (JWT) signed by the Provider of WRPRC and contains the parameters described in :ref:`credential-revocation:Status List Token`.
-The only difference is the ``status_list`` claim, which is a JSON object containing the following parameters:
+A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as described in Section 5.2, of `TOKEN-STATUS-LIST`_.
 
-.. _table_wrprc_status_list_structure:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
+Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.
 
-  * - **Parameter**
-    - **Description**
-    - **Reference**
-  * - **bits**
-    - REQUIRED.
-      JSON Integer specifying the number of bits per WRPRC in the compressed byte array (``lst``).
-      The allowed values for bits are 1,2,4 and 8.
-    - `TOKEN-STATUS-LIST`_
-  * - **lst**
-    - REQUIRED.
-      JSON String that contains the status values for all the WRPRCs it conveys statuses for.
-      The value MUST be the base64url-encoded compressed byte array.
-    - `TOKEN-STATUS-LIST`_
-  * - **aggregation_uri**
-    - OPTIONAL.
-      JSON String that contains a URI to retrieve the Status List Aggregation for this type of WRPRC or Issuer.
-    - `TOKEN-STATUS-LIST`_
-
-
+For a JWT SLT, the signing certificate chain MUST be carried in the ``x5c`` JOSE header; for a CWT SLT, it MUST be carried in the ``x5chain`` COSE header (label ``33``).
