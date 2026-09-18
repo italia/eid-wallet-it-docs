@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "docRequests": [
+    {
+      "itemsRequest": 24(<<
+        {
+          "docType": "org.iso.18013.5.1.mDL",
+          "nameSpaces": {
+            "org.iso.18013.5.1": {
+              "family_name": true,
+              "document_number": true,
+              "portrait": false
+            }
+          },
+          "requestInfo": {
+            % euWrprc is the UTF-8 byte string of a compact signed registration-entity Trust Mark JWT.
+            "euWrprc": h'65794a68624763694f694a49557a49314e694973496e523563434936496b705856434a392e65794a7a64434936496d567a5a584a7a5a534973496d6c6b496a6f6956464a3951',
+            "euWrpRegistrarInfo": {
+              "identifier": [
+                {"type": "organizationIdentifier", "identifier": "VATIT-EXAMPLE-NATIONAL-RP"}
+              ],
+              "srvDescription": [
+                {"lang": "en", "content": "Example national verification service"}
+              ],
+              "purpose": [
+                {"lang": "en", "content": "Identity verification"}
+              ],
+              "registryURI": "https://registry.example.org/entities/example-national-rp",
+              "intendedUseIdentifier": "identity-verification",
+              "policyURI": "https://example.org/national-privacy",
+              "credential": [
+                {"format": "mso_mdoc", "meta": {"doctype_value": "org.iso.18013.5.1.mDL"}, "claim": ["org.iso.18013.5.1/family_name", "org.iso.18013.5.1/document_number"]}
+              ]
+            }
+          }
+        }
+      >>),
+      "readerAuth": [
+        h'a10126',
+        {
+          33: [
+            h'4e6174696f6e616c2d61757468656e7469636174696f6e2d63657274696669636174652d656e642d656e74697479', % National authentication certificate placeholder
+            h'4e6174696f6e616c2d61757468656e7469636174696f6e2d63657274696669636174652d696e7465726d656469617465' % National intermediate certificate placeholder
+          ]
+        },
+        null,
+        h'6e6174696f6e616c2d7265616465722d617574682d7369676e6174757265' % National reader-auth signature placeholder
+      ]
+    }
+  ]
+  % x5chain starts with the National authentication certificate; the Authentication Trust Anchor is omitted.
+  % This example contains no EUDIW WRPAC or WRPRC evidence.
+  % The serialized DeviceRequest is encrypted inside SessionEstablishment.
+}

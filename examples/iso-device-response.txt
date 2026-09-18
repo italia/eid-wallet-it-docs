@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "documents": [
+    {
+      "docType": "org.iso.18013.5.1.mDL",
+      "issuerSigned": {
+        "nameSpaces": {
+          "org.iso.18013.5.1": [
+            24(<< {"digestID": 0, "random": h'6973737565722d72616e646f6d', "elementIdentifier": "family_name", "elementValue": "Rossi"} >>),
+            24(<< {"digestID": 3, "random": h'6973737565722d72616e646f6d2d32', "elementIdentifier": "issue_date", "elementValue": 1004(2025-03-27)} >>),
+            24(<< {"digestID": 4, "random": h'6973737565722d72616e646f6d2d33', "elementIdentifier": "expiry_date", "elementValue": 1004(2030-03-27)} >>)
+          ]
+        },
+        "issuerAuth": [
+          << {1: -7} >>,
+          {33: h'6973737565722d646f63756d656e742d7369676e65722d63657274696669636174652d636861696e'},
+          null,
+          h'6973737565722d617574682d7369676e6174757265'
+        ]
+      },
+      "deviceSigned": {
+        "nameSpaces": 24(<< {} >>),
+        "deviceAuth": {
+          "deviceSignature": [
+            << {1: -7} >>,
+            {},
+            null,
+            h'6465766963652d7369676e61747572652d6573333536'
+          ]
+        }
+      }
+      % No errors: this Document is a successful ISO/mdoc EAAP.
+    }
+  ],
+  "status": 0
+}

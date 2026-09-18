@@ -108,14 +108,14 @@ In the remote flow the selection is declared by the Relying Party through the ``
 
 The Relying Party does not authenticate the Wallet Unit and therefore cannot select the Trust Framework according to the Member State of that Wallet Unit or Wallet Solution.
 
-A national Relying Party that offers services for interoperability outside the national audience MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] (OIDFVP-HAIP_COMMON_GEN_REQ-02).
+A national Relying Party that offers services for interoperability outside the national audience MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] clause 6.
 A national Relying Party that does not offer those interoperable services and addresses a national audience only SHOULD use the ``openid_federation`` prefix with the federation artifacts, including when it requests a PID, (Q)EAA or PuB-EAA.
 
 The Wallet Unit MUST support both prefixes.
 It MUST process a request with the ``x509_hash`` prefix under the EUDIW procedures (see :ref:`trust-evaluation:EUDIW Authentication`).
 It MUST process a request with the ``openid_federation`` prefix under the National Trust Framework procedures (see :ref:`trust-evaluation:Trust Evaluation Processes by Context`) when the Trust Chain of the Relying Party is valid under the National Trust Anchor.
 If the request uses the ``openid_federation`` prefix and the Trust Chain cannot be validated under the National Trust Anchor, the Wallet Unit MUST treat the Relying Party as not trustworthy and MUST NOT evaluate the request under the National Trust Framework.
-The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework.
+The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework only. Implementations MUST NOT combine the frameworks or retry a failed process under the other framework.
 
 In the proximity flow both Trust Frameworks use the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on an X.509 certificate provided by the Relying Party Instance in the ``x5chain`` header of the ``ReaderAuth``.
 

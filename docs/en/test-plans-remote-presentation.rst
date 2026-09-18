@@ -19,18 +19,18 @@ This section provides the set of test cases designed for technical implementers 
     - **Purpose**
     - **Description**
     - **Expected Result**
-  * - RPR-01
-    - Same Device Flow
-    - Verify HTTP redirect (302) URL.
-    - Relying Party issues a correct URL using the base url provided within its metadata.
-  * - RPR-02
-    - Cross Device Flow
-    - Verify QR Code generation for Wallet Instance.
-    - Relying Party issues QR Code successfully.
-  * - RPR-03
-    - Cross Device Flow
-    - Verify QR Code contains correct URL parameters.
-    - Relying Party issues the QR-Code containing an URL using the base url provided within its metadata.
+   * - RPR-01
+     - Same Device Flow
+     - Verify Wallet invocation for both trust paths.
+     - Relying Party issues a correct HTTP redirect (302) or HTML href; EUDIW invocation supports ``eu-eaap://``, ``openid4vp://``, and ``haip-vp://``.
+   * - RPR-02
+     - Cross Device Flow
+     - Verify QR Code generation for Wallet Instance.
+     - Relying Party issues a QR Code successfully.
+   * - RPR-03
+     - Cross Device Flow
+     - Verify that the QR Code contains correct URL parameters.
+     - The QR URL contains ``client_id`` and required ``request_uri``, and does not contain ``request``.
   * - RPR-04
     - Cross Device Flow
     - Test QR Code scanning in low light.
@@ -43,26 +43,26 @@ This section provides the set of test cases designed for technical implementers 
     - Cross Device Flow
     - Test QR Code scanning with different devices.
     - QR Code is scanned successfully.
-  * - RPR-07
-    - Request URI Method
-    - Test ``request_uri_method`` as ``post``.
-    - Relying Party accepts Wallet Instance metadata via POST and replies with an updated Request Object.
-  * - RPR-08
+   * - RPR-07
+     - Request URI Method
+     - Test ``request_uri_method`` as ``post`` in a redirect flow.
+     - Relying Party accepts Wallet Instance metadata via POST and replies with an updated signed Request Object.
+   * - RPR-08
     - Request URI Method
     - Test ``request_uri_method`` as ``get``.
-    - Relying Party issues the Request Object via HTTP GET response.
-  * - RPR-09
+     - Relying Party issues the signed Request Object via HTTP GET response by reference.
+   * - RPR-09
     - Request URI Method
     - Test absence of ``request_uri_method``.
-    - Relying Party accepts defaults to GET method.
+     - Relying Party defaults to GET and never accepts a by-value ``request`` parameter.
   * - RPR-10
     - Metadata
     - Verify parameters match OpenID Credential Verifier metadata.
     - Only allowed parameters will be considered.
-  * - RPR-11
+   * - RPR-11
     - User Consent
     - Test eligibility of a Credential Verifier in requesting User attributes.
-    - User can modify data selection about optional attributes.
+     - User can modify data selection about optional attributes after the applicable path-specific authorization artifact and scope have been validated.
   * - RPR-12
     - Authorization Response
     - Test sending of Presentation Response.
@@ -71,18 +71,18 @@ This section provides the set of test cases designed for technical implementers 
     - Authorization Response
     - Verify response encryption.
     - Relying Party evaluates the encrypted response using its public key (one of its keys).
-  * - RPR-14
+   * - RPR-14
     - Error Handling
     - Test invalid Request Object handling.
-    - Error Response is sent.
+     - An error is sent only after the selected path authenticates ``response_uri``; otherwise processing terminates locally without revealing credential availability.
   * - RPR-15
     - Error Handling
     - Verify error logging.
     - Errors are logged appropriately.
-  * - RPR-16
+   * - RPR-16
     - Error Handling
     - Test recovery from Authorization Request Error.
-    - Relying Party prompts the User to retry or scan new QR code.
+     - Any recovery remains on the selected path and does not retry under the other trust framework.
   * - RPR-17
     - Error Handling
     - Test fake HTTP Cookie.
@@ -99,10 +99,10 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Presentation
     - Verify response format compliance.
     - Relying Party supports all the Credential format included within its ``vp_formats_supported`` metadata parameter.
-  * - RPR-24
+   * - RPR-24
     - Authorization Response
     - Test handling of response timeouts.
-    - Retries must be successful unless response is acquired.
+     - Any retry remains within the selected transport and trust path; no cross-framework fallback occurs.
   * - RPR-25
     - Error Handling
     - Verify handling of malformed claims in presentation payload.
@@ -338,20 +338,20 @@ This section provides the set of test cases designed for technical implementers 
     - Verify that ``response_types_supported`` is set to ``vp_token`` when present.
     - ``response_types_supported`` is correctly set to ``vp_token``.
 
-  * - RPR-83
+   * - RPR-83
     - Redirect URI
     - Test that Relying Party correctly provides ``redirect_uri`` parameter to Wallet Instance.
-    - Relying Party correctly provides and handles ``redirect_uri``.
+     - Every successful redirect-based Same Device response includes ``redirect_uri`` and the Wallet follows it; the RP rejects a different initiating session.
 
-  * - RPR-84
+   * - RPR-84
     - Flow Support
     - Test that Relying Party supports required remote flows.
-    - Relying Party supports both Same Device and Cross Device flows.
+     - Relying Party supports both Same Device and Cross Device flows.
 
-  * - RPR-85
+   * - RPR-85
     - Endpoint Security
     - Test that ``request_uri`` is attested by trusted third party.
-    - ``request_uri`` parameter is properly attested by trusted third party.
+     - ``request_uri`` is authorized by final Federation metadata for ``openid_federation`` or WRPAC binding for ``x509_hash``.
 
   * - RPR-86
     - Privacy Protection
@@ -373,10 +373,10 @@ This section provides the set of test cases designed for technical implementers 
     - Test that JWT typ is set to ``oauth-authz-req+jwt``.
     - JWT typ parameter is correctly set to ``oauth-authz-req+jwt``.
 
-  * - RPR-90
-    - Response Mode Validation
-    - Test that ``response_mode`` is set to ``direct_post.jwt`` in both Same Device and Cross Device flows.
-    - ``response_mode`` parameter is correctly set to ``direct_post.jwt`` for every remote presentation transaction.
+   * - RPR-90
+     - Response Mode Validation
+      - Test that ``response_mode`` is set to ``direct_post.jwt`` in both Same Device and Cross Device flows.
+      - ``response_mode`` is correctly set to ``direct_post.jwt`` for every remote presentation transaction.
 
   * - RPR-91
     - Response Type Validation
@@ -398,15 +398,15 @@ This section provides the set of test cases designed for technical implementers 
     - Test that JWT ``exp`` is set correctly.
     - JWT ``exp`` parameter is correctly set and not expired.
 
-  * - RPR-95
+   * - RPR-95
     - Response URI Security
     - Test that ``response_uri`` is attested by trusted third party.
-    - ``response_uri`` parameter is properly attested by trusted third party.
+     - ``response_uri`` is authorized by the selected path and never by evidence from the other framework.
 
-  * - RPR-96
+   * - RPR-96
     - Client Metadata Handling
-    - Test that Relying Party correctly handles Wallet Instance ``client_metadata``.
-    - The ``client_metadata`` is correctly aligned with Trust Chain metadata.
+    - Test that Wallet Instance correctly handles the Relying Party's ``client_metadata``.
+     -The Wallet Instance correctly uses the request-specific encryption ephemeral cryptographic material.
 
   * - RPR-97
     - Wallet Attestation Request
@@ -493,9 +493,27 @@ This section provides the set of test cases designed for technical implementers 
     - Test that ``redirect_uri`` is attested by trusted third party.
     - ``redirect_uri`` parameter is properly attested by trusted third party.
 
-  * - RPR-114
+   * - RPR-114
     - Validation Error Response
     - Test that Response URI returns error response on validation failure.
-    - Response URI returns error response when validation checks fail.
-
-
+     - Response URI returns error response when validation checks fail.
+   
+   * - RPR-115
+     - EUDIW Request Object
+     - Verify protected headers, ``verifier_info``, ``aud`` and DCQL trusted authorities.
+     - ``x5c`` contains the WRPAC first and excludes the trust anchor; protected ``iat``, ``aud``, complete registrar dataset, WRPRC-by-value, and ``etsi_tl`` are present.
+   
+   * - RPR-117
+     - Trust Path Separation
+     - Verify mutually exclusive Federation and EUDIW evidence.
+     - ``x509_hash`` uses WRPAC/WRPRC/LoTE processing and ``openid_federation`` uses Trust Chain/final metadata/registration Trust Mark processing; failed processing is not retried under the other path.
+   
+   * - RPR-119
+     - Response Encryption
+     - Verify request-specific response-encryption key and algorithms.
+     - Every request supplies one ephemeral key with unique ``kid`` and ``use``; the RP supports ``A128GCM`` and ``A256GCM`` and successful responses are encrypted.
+   
+   * - RPR-120
+     - Same Device Session Binding
+     - Verify successful redirect completion.
+     - ``redirect_uri`` is mandatory in every successful redirect-based Same Device response, is followed by the Wallet, and a different initiating session is rejected.

@@ -5,10 +5,10 @@
 Proximity Flow
 ==============
 
-This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance as specified in the *ISO 18013-5 Specification*, as required by [`CIR2024/2982`_].
+This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
 
-The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
-Under the EUDIW Trust Framework the reader certificate is the Wallet-Relying Party Access Certificate, validated against the Provider of WRPAC List of Trusted Entities.
+The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`, before authorization. The EUDIW path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities; the National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a ``registration-entity`` Trust Mark. The Trust Anchor validating the reader certificate selects exactly one path. Evidence MUST NOT be combined and a failed path MUST NOT be retried under the other framework. The selected path is processed through :ref:`trust-evaluation:Selection at Presentation`, :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Relying Party Proximity Authentication`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency` as applicable.
+
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
 
@@ -97,7 +97,7 @@ The following table shows the supported Device Retrieval technologies, specifyin
 Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_096b <wallet-credential-presentation-testcases>`)
 
 .. note::
-   From the second edition, version 3, `ISO18013-5`_ does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (:ref:`WP_096 <wallet-credential-presentation-testcases>`). Therefore, Server Retrieval is not considered in this flow (:ref:`WP_096a <wallet-credential-presentation-testcases>` and :ref:`PPR-023 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+   From the second edition, version 3, `ISO18013-5`_ does not define or support Server Retrieval as a transport option. ETSI requirement ``ISO/IEC 18013-SUPPORT-01`` in [`ETSI TS 119 472-2`_] prohibits Server Retrieval in this profile. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (:ref:`WP_096 <wallet-credential-presentation-testcases>` and :ref:`WP_096a <wallet-credential-presentation-testcases>`).
 
 
 The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
@@ -117,7 +117,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required  (:ref:`WP_100 <wallet-credential-presentation-testcases>`).
 
-**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication (:ref:`WP_101 <wallet-credential-presentation-testcases>`). The public key (``EDeviceKey.Pub``) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.
+**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for the session (:ref:`WP_101 <wallet-credential-presentation-testcases>`). The public key (``EDeviceKey.Pub``) is exchanged with the Relying Party Instance as Device Engagement data and is used with ``EReaderKey.Pub`` to derive the session keys.
 
 .. admonition:: Box A
 
@@ -132,17 +132,24 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
-**Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s) (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+**Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message containing ``EReaderKey.Pub`` and the encrypted ``DeviceRequest``. Every ``DocRequest`` in the ``DeviceRequest`` MUST contain its own ``readerAuth`` signed over ``ReaderAuthentication``; the ``SessionEstablishment`` envelope MUST NOT be described as signed. The ``SessionEstablishment`` message MUST be encrypted using the session keys derived in the previous step (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
 
-Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` message that contains an mdoc request for an mDL Digital Credential.
+Below are non-normative examples using the diagnostic notation of a CBOR-encoded EUDIW and National ``DeviceRequest``. Each decoded request is encrypted inside ``SessionEstablishment``.
 
-.. literalinclude:: ../../examples/iso-session-establishment.txt
+**EUDIW ``DeviceRequest``:**
+
+.. literalinclude:: ../../examples/iso-device-request-eudiw.txt
+  :language: text
+
+**National Trust Framework ``DeviceRequest``:**
+
+.. literalinclude:: ../../examples/iso-device-request-oidfed.txt
   :language: text
 
 .. admonition:: Box B
 
-   The Relying Party Instance MUST transmit the encrypted and signed ``SessionEstablishment`` message to the Wallet Instance over an NFC or a BLE secure connection that was established based on the Device Engagement information.
+   The Relying Party Instance MUST transmit the encrypted ``SessionEstablishment`` message to the Wallet Instance over an NFC or a BLE secure connection that was established using the Device Engagement information.
    Refer to:
 
    - Sec 8.2.2.3 for ``SessionEstablishment`` over BLE, and
@@ -150,27 +157,44 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 9**: The Wallet Instance MUST compute the session key, as described in Step 7.
 
-**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
+**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate every ``readerAuth`` in every ``DocRequest`` over its ``ReaderAuthentication`` data. The unprotected COSE ``x5chain`` header (label ``33``) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor. 
 
-**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate included by value in the request, as specified in :ref:`trust-evaluation:EUDIW Authorization`, to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
+The Wallet Instance validating that certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities; National uses the Relying Party authentication certificate and Authentication Trust Anchor. 
 
-**Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
+Trust Anchors MUST NOT be mixed and the Wallet Instance MUST NOT retry the other path if a filure happens(:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
+**Step 11**: After successful reader authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
+
+For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authorization`).
+
+For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See :ref:`trust-evaluation:Authorization`).
+
+Authentication and binding failures are terminal and no other path is tried :ref:`WP_107 <wallet-credential-presentation-testcases>`.
+
+The Wallet Instance MUST display human-readable verified Relying Party and Service identity, intended use or purpose, requested Credentials and attributes, retention intent, and privacy-policy information from the selected path's validated authorization artifact and Registrar information.
+
+For EUDIW intermediation it MUST display the intermediated Relying Party and Service and MUST NOT display Intermediary trade names. 
+
+For the National direct path it MUST use validated Trust Mark transparency claims (:ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency`).
+
+**Step 12**: The User reviews the validated path-specific transparency data and requested attributes and then approves or refuses the presentation. The Wallet Instance MUST NOT require the User approval before authentication and authorization succeed, except where an expressly permitted authorization override applies.
 
 .. admonition:: Box C
 
-   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It then MUST prepare a ``SessionData`` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #12.4]) as per (:ref:`WP_109–110 <wallet-credential-presentation-testcases>`). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure channel (:ref:`WP_111 <wallet-credential-presentation-testcases>`). The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #10.3] (:ref:`PPR-029 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, :ref:`PPR-030 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, and :ref:`WP_112 <wallet-credential-presentation-testcases>`).
+   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It MUST place every disclosed issuer-signed attribute in ``issuerSigned`` and MAY place an attribute in ``deviceSigned`` only when the Provider explicitly authorized it. A successful ``Document`` is an ISO/mdoc EAAP only when it has no ``errors``; an error-bearing document is not a successful EAAP. The Wallet Instance MUST sign ``deviceSignature`` over the required device-authentication data, encrypt the CBOR ``DeviceResponse`` in ``SessionData``, and transmit it over the secure channel (:ref:`WP_109–112 <wallet-credential-presentation-testcases>`).
    Refer to (:ref:`WP_112a–112b <wallet-credential-presentation-testcases>`):
 
    - Sec 8.2.2.4 for ``SessionData`` over BLE, and
    - Sec 8.2.2.5 for ``SessionData`` over NFC
 
-Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of an mDL Digital Credential.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceResponse`` transported inside encrypted ``SessionData``.
 
-.. literalinclude:: ../../examples/iso-session-data.txt
+.. literalinclude:: ../../examples/iso-device-response.txt
   :language: text
 
-**Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the `TOKEN-STATUS-LIST`_.
+**Step 13**: The Relying Party Instance receives and decrypts ``SessionData`` and independently validates each mdoc's device authentication, issuer authentication, SHA-256 digests, temporal validity, and applicable status. It MUST support ECDSA P-256 with SHA-256 for validating ``deviceSignature`` and status signatures and SHA-256 for mdoc digests, without weakening stricter Credential Rulebooks. 
+
+It MUST apply existing Token Status List processing when present and applicable. Credential Issuer trust remains independently governed by each Credential's Rulebook; reader-path selection MUST NOT select a Credential Issuer Trust Anchor (:ref:`PPR-029 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_112 <wallet-credential-presentation-testcases>`).
 
 **Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
@@ -179,9 +203,9 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 .. note::
     During each credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
-    The transaction record MUST be created once the Wallet Instance has successfully established the session and accepted the reader for processing (i.e., after decrypting the ``SessionEstablishment`` message and verifying reader authentication, Step 10). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., requested attestation type(s) such as ``docType``, and the identifier(s) of the requested attributes), without logging any attribute values.
+     The transaction record MUST be created once the Wallet Instance has successfully authenticated the reader (i.e., after decrypting the ``SessionEstablishment`` message and verifying reader authentication, Step 10). At this point, the record records only an authenticated request and MUST include the selected framework and request context available at that stage, without logging any attribute values.
 
-    The record MUST be updated as the transaction progresses to reflect the evolving transaction state and result context (e.g., what was actually presented after User consent and response preparation/sending, Steps 11–12), without logging any attribute values.
+     The record MUST be updated as the transaction progresses to reflect authorization, the User decision, the disclosure result, and failure reason, without logging any attribute values.
 
     The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).
 
@@ -424,9 +448,9 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
    * - **Capabilities**
      - *(map)*. Declares optional capabilities supported by the mdoc, that are:
 
-       - **HandoverSessionEstablishmentSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #9.2.3] (:ref:`PPR-024 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+        - **HandoverSessionEstablishmentSupport** *(bool, OPTIONAL)*. If present, it MUST be set to `true`. It indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #9.2.3] (:ref:`PPR-024 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
-       - **ReaderAuthAllSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #10.2.6] (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+        - **ReaderAuthAllSupport** *(bool, OPTIONAL)*. If present, it MUST be set to `true`. It indicates support for receiving the optional `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #10.2.6]; it does not make ``readerAuthAll`` required and cannot replace per-`DocRequest` ``readerAuth`` (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
    * - **OriginInfos**
      - *(array)*. Describes the interface used to receive and deliver the engagement structure.
@@ -453,27 +477,31 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
    * - **version**
      - *(tstr)*. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.
 
-   * - **docRequests**
-     - *(array)*. Each entry is a `DocRequest` containing:
+    * - **docRequests**
+      - *(array)*. Each entry is a `DocRequest` containing:
 
-       - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
+        - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
-         - **docType** *(tstr)*. The type of document requested. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
+          - **docType** *(tstr)*. The type of document requested. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
-         - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
+          - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
 
-           Each entry in `DataElements` includes:
+            Each entry in `DataElements` includes:
 
-           - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.
-           - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
+            - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.
+            - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
 
-       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #12.5].
+          - **requestInfo** *(map, REQUIRED and non-empty)*. Every `ItemsRequest` MUST contain ``euWrprc`` and ``euWrpRegistrarInfo`` as described below.
+
+            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization. On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.
+
+            - **euWrpRegistrarInfo** *(map, REQUIRED)*. Mandatory Registrar transparency data. Its ``identifier`` *(array, REQUIRED, non-empty)* contains objects with ``type`` *(tstr, REQUIRED)* and ``identifier`` *(tstr, REQUIRED)*. Its ``srvDescription`` and ``purpose`` *(arrays, REQUIRED, non-empty)* contain objects with ``lang`` *(tstr, REQUIRED)* and ``content`` *(tstr, REQUIRED)*. ``registryURI`` *(tstr, REQUIRED)*, ``intendedUseIdentifier`` *(tstr, REQUIRED)*, and ``policyURI`` *(tstr, REQUIRED)* are mandatory. ``credential`` *(array, OPTIONAL, non-empty when present)* contains ETSI ``Credential``/``Claim`` objects. These fields are used with the selected path's validated authorization artifact for User Transparency.
+
+        - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party Instance for this `DocRequest`. The signature MUST be computed over `ReaderAuthentication` data using the private key corresponding to the selected path's reader certificate, as defined in [`ISO18013-5`_ #12.5]. Its unprotected COSE header MUST contain ``x5chain`` label ``33`` with the end-entity certificate first and its path up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path and a Relying Party authentication certificate on the National path.
 
          This component MUST be present only if `readerAuthAll` is not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
-       - **requestInfo** *(map, CONDITIONAL)*. Additional request information. Under the EUDIW Trust Framework it MUST include the ``euWrprc`` member with the Wallet-Relying Party Registration Certificate of the applicable Service, included by value, as specified in :ref:`trust-evaluation:EUDIW Authorization` ([`EIDAS-ARF`_] RPRC_19).
-
-   * - **readerAuthAll**
+    * - **readerAuthAll**
      - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #12.5].
 
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
@@ -522,14 +550,14 @@ Each document in **documents** MUST be compliant with the following structure, a
    * - **docType**
      - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
 
-   * - **issuerSigned**
-     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
+    * - **issuerSigned**
+      - *(map)*. Contains ``nameSpaces`` with the issuer-signed data elements and ``issuerAuth`` with the issuer authentication structure using the Mobile Security Object (MSO). Every disclosed issuer-signed attribute MUST be placed here. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
-   * - **deviceSigned**
-     - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
+    * - **deviceSigned**
+      - *(map)*. Contains the ``nameSpaces`` ``DeviceNameSpaces`` structure and the ``deviceAuth`` structure. It MAY contain attributes only when the Provider explicitly authorized those attributes to be device-signed. See the table below for details.
 
-   * - **errors**
-     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
+    * - **errors**
+      - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. A ``Document`` without ``errors`` is an ISO/mdoc EAAP success; an error-bearing ``Document`` is not a successful EAAP. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
 
 
 A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:
@@ -550,8 +578,8 @@ A **deviceSigned** data structure MUST be compliant with the following structure
        - **DataItemName** *(tstr)*. The identifier of the data element.
        - **DataItemValue** *(any)*. The value of the data element.
 
-   * - **deviceAuth**
-     - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
+    * - **deviceAuth**
+      - *(map)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** *(COSE_Sign1)* for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -574,5 +602,3 @@ When a session is terminated, the Wallet Instance and the Relying Party Instance
 
 .. note::
   See :ref:`credential-data-model:mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
-
-
