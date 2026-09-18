@@ -106,7 +106,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 .. plantuml:: plantuml/credential-presentation-flow.puml
     :width: 99%
     :alt: The figure illustrates the Low-Level Presentation Flow in proximity.
-    :caption: `Low-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/ZLJBRjim4BppAnRgfGQS5kYn28muZki6JTFKJf1BBXIrjeb8IvKFAVxxBacvTLe7oKtIScTsPeSwSrvQ7vfQoE0DXQP4AuHKtbYuSsX1EWX2j7n8AzrAyb3Soxf63tUaVH7h_VFoyWOkYM59OIftGeIJIVyPVhH8uBS80y3-LAJJdVJ8IE4q7StKWGyJ0qkl3K6vEzOCF2XN9DolPjCzKsftMAFoBZMrrZpfHliTFw5Zq0ov3gJYWwov94phuRkaIhBu7UWrh3osy0cq0p8UMhHhOnki8bzYwtdOyEAmwGXI9KIVXbeWeOqg2Nl0TeiDlzRmY3oKr1OUw7rHp2-mqmg_uUx3ZTLTKOpX-STG5iL82CiJiVQEcVjn1--kBXTVRnVB-VnQd9QJwUZqOpdXpjmufutSC1tveW2M9m6Vr5RIPa3ukGHbgcJbzPTPd3d1Yx-BuHrs9vFkhIAMA2kq_uWu-9X5PCIPQTh0W0wTYyunr9xinY8d2tcvJc-8ZUVb09AokzR7D--jBcFl0rdy5T1vOFPL1ffpFifQkstM_QfdvtlFZlT3mv_PnJ_MLHdf_6e--COALE1fOvcmFh1n2C0nfRboWKdJo-HHEBFfDUUI8ntja9x98dJAu7BGBrkEUiSRuQZkiwvfCro6GzFSc6rJXZoVS63MO76ZdRSvlmhvHgzZcd6uKzC1-JKVPzd75Sj_QN4yLcl8uS6sBZYLl2GGlVPR6BRvRDnCADzaU8xFVwvcal5H9sDogtHReDHKiMUZDBNQedg4fZ8AMBokueyYNNmc663X5csZAHadAZouD0SllJZZ-VX7-ni0>`_
+    :caption: `Low-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/bLHDRnj73BtxLn3RImB8DT1ZQnXH9CKrchggPDUNNAXTMXfabpFbS7Qp_VMTdP6rigqMpct0Z_SUEIG_U4NHqDHd6DHoQ3OaPsS005Yg5RZt980UGZOw53MbSSWAnGFMDIdSiz5YYEbUXwoMSCEHWajA8Ms62UTNtS_mXoC6tH5ae4Fa4xrfKMcF6YvJIfOJOX974bHZ6JRzAH2mCdWG7jQpwSYwX_1KKwa-9JgntqnZj8ylyiIQOHy3byC3w-XA-TOf_8vSeLhfmJp2Mid1Js0yi5Lm98zM6geYRs9DILqK7auBFmuZhhB8Becy9YOPgcVgWDoE6XAiuIj5aMW4ll2xebZCgJKb_KRzZqinRL5CuBanR8hYVOOLjafWMnBe9YtyyFdc-jUxwzLYSPlSbvkhwVlBYyrLHCW02zxYDjAo5WLKg0ZqhTmXR_SeVwwWj5Lgy-sdsLCDYURi-GVk_xmzlshVMjYAi28vBcmqZeMDg3FRkA04dhmtbWUuOzAba4CX82wbTqhLeSeL_Ht83oLsHdUHtP6SHwSjHqzHI6AU1jqLnLlR-V6fdUkiQU4LDxNnktrBInGnv4yK1iXLLF9_OXFnny-BqzqVv-XaOqRld1B5Vuj4Fi5-1F0NrgP29Q0eg7_HgPIT5mqi4zn9y0fJBdTMmA7kyfZK2elx-St3Q1hnisFwV6qYR39PCVyaoo_GFkdmfNMK8XRpPMvBxGbkCM_oNiCdmOOwArzFSQwexWrlOOcYFImFn-5xLRnSwtG6rZlR7U8gM2qlrYH3ToVWWZZhuqDoewDx9bGDb5Zx2rGLimbAVXA7GqY93pgSc1RB_jpPsfGz61xkK19rTFUcpecDr6yTu5aUu3L50WHljanLOXi7KyWxovxWtM62vgWOTnCIIjgfiPonX4oCHoCCdieW1CE9OQfVJFIuogz6DXCcOOOhSiH3o-f-_8qlNAK1lZ3UXrTNU0ALsP9NFyaPHliyk8eQ_FxpBXFtdX7kI1h3Otyh6c_TIqDtze6u2atzBm00>`_
 
 
 **Step 1**: The User opens the Wallet Instance initiating the process.
@@ -477,8 +477,8 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
    * - **version**
      - *(tstr)*. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.
 
-    * - **docRequests**
-      - *(array)*. Each entry is a `DocRequest` containing:
+   * - **docRequests**
+     - *(array)*. Each entry is a `DocRequest` containing:
 
         - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
@@ -501,7 +501,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
          This component MUST be present only if `readerAuthAll` is not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
-    * - **readerAuthAll**
+   * - **readerAuthAll**
      - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #12.5].
 
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
@@ -550,14 +550,14 @@ Each document in **documents** MUST be compliant with the following structure, a
    * - **docType**
      - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
 
-    * - **issuerSigned**
-      - *(map)*. Contains ``nameSpaces`` with the issuer-signed data elements and ``issuerAuth`` with the issuer authentication structure using the Mobile Security Object (MSO). Every disclosed issuer-signed attribute MUST be placed here. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
+   * - **issuerSigned**
+     - *(map)*. Contains ``nameSpaces`` with the issuer-signed data elements and ``issuerAuth`` with the issuer authentication structure using the Mobile Security Object (MSO). Every disclosed issuer-signed attribute MUST be placed here. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
-    * - **deviceSigned**
-      - *(map)*. Contains the ``nameSpaces`` ``DeviceNameSpaces`` structure and the ``deviceAuth`` structure. It MAY contain attributes only when the Provider explicitly authorized those attributes to be device-signed. See the table below for details.
+   * - **deviceSigned**
+     - *(map)*. Contains the ``nameSpaces`` ``DeviceNameSpaces`` structure and the ``deviceAuth`` structure. It MAY contain attributes only when the Provider explicitly authorized those attributes to be device-signed. See the table below for details.
 
-    * - **errors**
-      - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. A ``Document`` without ``errors`` is an ISO/mdoc EAAP success; an error-bearing ``Document`` is not a successful EAAP. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
+   * - **errors**
+     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. A ``Document`` without ``errors`` is an ISO/mdoc EAAP success; an error-bearing ``Document`` is not a successful EAAP. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
 
 
 A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:
@@ -578,8 +578,8 @@ A **deviceSigned** data structure MUST be compliant with the following structure
        - **DataItemName** *(tstr)*. The identifier of the data element.
        - **DataItemValue** *(any)*. The value of the data element.
 
-    * - **deviceAuth**
-      - *(map)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** *(COSE_Sign1)* for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
+   * - **deviceAuth**
+     - *(map)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** *(COSE_Sign1)* for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
