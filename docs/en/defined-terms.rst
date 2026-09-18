@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via defined-terms-and-references.rst at title level '=' (document title).
 
 
 Defined Terms and Acronyms
@@ -24,6 +25,15 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Accreditation Process**
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Attestation Rulebook**
+      Human-readable document that defines a type of Attestation by specifying the identifiers, the syntax, the semantics and the encoding of its Attributes, the proof mechanisms and, where needed, the trust and the presentation mechanisms.
+      Aligned with Section 5.5 of the `EIDAS-ARF`_.
+
+    **Attestation Scheme Provider**
+      Entity that defines a type of Attestation, publishes its Attestation Rulebook together with the corresponding machine-readable attestation scheme, and may request their registration in a catalogue.
+      Within IT-Wallet it is the Entity that requests the registration of a Credential type in the Digital Credentials Catalog, see :ref:`onboarding-system:Credential Type Registration`.
+      Aligned with Section 3.15 of the `EIDAS-ARF`_.
 
     **Attributes**
     **User Attribute**
@@ -99,7 +109,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+      A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Keystore**
+      A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials. The properties of the Keystore are attested through the OEM Key Attestation APIs.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Level of Assurance**
@@ -194,8 +208,12 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Relying Party**
-    **Wallet‑Relying Party**
       Entity relying on electronic identification or Trust Service from a Wallet Instance.
+      Aligned with ARF 2.7.3.
+
+    **Wallet-Relying Party**
+      Relying Party that intends to rely upon Wallet Units for the provision of public or private services by means of digital interaction.
+      Within IT-Wallet it covers the Credential Issuers (the PID Provider and the Attestation Providers) and the Relying Parties together with the Relying Party Intermediaries.
       Aligned with ARF 2.7.3.
 
     **Relying Party Solution**
@@ -332,11 +350,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Wallet Secure Cryptographic Application**
-      Application managing critical assets using cryptographic functions provided by the WSCD.
+      Application managing critical assets using cryptographic functions provided by the WSCD. In IT-Wallet, the WSCA is used exclusively for the issuance and management of the PID at Level of Assurance High, operating within a Remote WSCD based on a remote Hardware Security Module (remote HSM).
       Aligned with ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing an environment for the WSCA to protect critical assets.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.
       Aligned with ARF 2.7.3.
 
     **Wallet Solution**
@@ -348,7 +366,8 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
-      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attestation APIs (OEM).
+    **KA**
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment.
       Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
@@ -363,15 +382,12 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Intermediate Entity**
     **Intermediary**
     **OpenID Federation Intermediate**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. It publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
+      Not present in ARF 2.7.3; specific to IT-Wallet. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_, Article 5b(8)); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity.
       Aligned with ARF 2.7.3 for federation structures.
 
     **Relying Party Intermediary**
       Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
-
-    **IT-Wallet Intermediary**
-      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
-      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **IT-Wallet ID**
     **Electronic Attestation of Person Identification Data**
@@ -463,14 +479,22 @@ Below are the main acronyms used in the document:
     - Carta di Identità Elettronica (National Electronic Identity Card)
   * - **EAA**
     - Electronic Attestation of Attributes
+  * - **EUMS TL**
+    - European Union Member State Trusted List (national Trusted List under Article 22 of eIDAS)
   * - **IAM**
     - Identity and Access Management
   * - **LoA**
     - Level of Assurance
+  * - **LOTL**
+    - List of Trusted Lists
+  * - **LoTE**
+    - List of Trusted Entities
   * - **NAB**
     - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
+  * - **OJEU**
+    - Official Journal of the European Union
   * - **PDND**
     - Piattaforma Digitale Nazionale Dati (National Digital Data Platform)
   * - **PID**
@@ -487,6 +511,10 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WRPAC**
+    - Wallet-Relying Party Access Certificate
+  * - **WRPRC**
+    - Wallet-Relying Party Registration Certificate
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **WSCD**

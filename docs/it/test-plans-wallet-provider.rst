@@ -165,11 +165,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_013
      - Ciclo di vita, Interoperabilità
      - Architettura componente frontend
-     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, e Archiviazione Sicura) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
+     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, Keystore e WSCA/WSCD Interface per il PID) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
    * - WP_014
      - Trust, Sicurezza
-     - Implementazione WSCD
-     - Istanza del Wallet utilizza esclusivamente il WSCD Interno Locale per tutte le operazioni crittografiche richieste, come generare firme e eseguire gestione delle chiavi, per conformarsi al profilo.
+     - Implementazione Keystore
+     - Istanza del Wallet utilizza il Keystore hardware-backed (Strongbox o TEE su Android; Secure Enclave su iOS) per tutte le operazioni crittografiche richieste, come generare firme e gestire le chiavi, per tutte le Credenziali Digitali eccetto il PID. Per l'emissione e la gestione del PID, la Wallet Instance interagisce con il WSCA operante nel Remote WSCD (HSM remoto), per conformarsi ai requisiti di Livello di Garanzia Alto.
    * - WP_015
      - Ciclo di vita, UX
      - Compatibilità Android/iOS
@@ -653,7 +653,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON secondo :ref:`remote-flow:Richiesta all'Endpoint URI Request`, includendo ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` impostato su ``["vp_token"]`` quando presente.
+     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, opzionalmente ``client_id_prefixes_supported`` e ``request_object_signing_alg_values_supported`` per Sezione 10.1 di [`OpenID4VP`_].
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``
