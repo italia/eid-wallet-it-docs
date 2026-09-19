@@ -159,13 +159,13 @@ Below are non-normative examples using the diagnostic notation of a CBOR-encoded
 
 **Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate every ``readerAuth`` in every ``DocRequest`` over its ``ReaderAuthentication`` data. The unprotected COSE ``x5chain`` header (label ``33``) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor. 
 
-The Wallet Instance validating that certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities; National uses the Relying Party authentication certificate and Authentication Trust Anchor. 
+The Wallet Instance validating that certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to :ref:`trust-evaluation:EUDIW Authentication`; National uses the Relying Party authentication certificate and Authentication Trust Anchor.
 
 Trust Anchors MUST NOT be mixed and the Wallet Instance MUST NOT retry the other path if a filure happens(:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
 **Step 11**: After successful reader authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
 
-For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authorization`).
+For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`).
 
 For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See :ref:`trust-evaluation:Authorization`).
 
@@ -175,7 +175,7 @@ The Wallet Instance MUST display human-readable verified Relying Party and Servi
 
 For EUDIW intermediation it MUST display the intermediated Relying Party and Service and MUST NOT display Intermediary trade names. 
 
-For the National direct path it MUST use validated Trust Mark transparency claims (:ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency`).
+For the National direct path it MUST use validated Trust Mark transparency claims (:ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency`).
 
 **Step 12**: The User reviews the validated path-specific transparency data and requested attributes and then approves or refuses the presentation. The Wallet Instance MUST NOT require the User approval before authentication and authorization succeed, except where an expressly permitted authorization override applies.
 
@@ -493,11 +493,11 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
           - **requestInfo** *(map, REQUIRED and non-empty)*. Every `ItemsRequest` MUST contain ``euWrprc`` and ``euWrpRegistrarInfo`` as described below.
 
-            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization. On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.
+            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization (:ref:`trust-evaluation:EUDIW Authorization`). On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization (:ref:`trust-evaluation:Authorization`. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.
 
             - **euWrpRegistrarInfo** *(map, REQUIRED)*. Mandatory Registrar transparency data. Its ``identifier`` *(array, REQUIRED, non-empty)* contains objects with ``type`` *(tstr, REQUIRED)* and ``identifier`` *(tstr, REQUIRED)*. Its ``srvDescription`` and ``purpose`` *(arrays, REQUIRED, non-empty)* contain objects with ``lang`` *(tstr, REQUIRED)* and ``content`` *(tstr, REQUIRED)*. ``registryURI`` *(tstr, REQUIRED)*, ``intendedUseIdentifier`` *(tstr, REQUIRED)*, and ``policyURI`` *(tstr, REQUIRED)* are mandatory. ``credential`` *(array, OPTIONAL, non-empty when present)* contains ETSI ``Credential``/``Claim`` objects. These fields are used with the selected path's validated authorization artifact for User Transparency.
 
-        - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party Instance for this `DocRequest`. The signature MUST be computed over `ReaderAuthentication` data using the private key corresponding to the selected path's reader certificate, as defined in [`ISO18013-5`_ #12.5]. Its unprotected COSE header MUST contain ``x5chain`` label ``33`` with the end-entity certificate first and its path up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path and a Relying Party authentication certificate on the National path.
+            - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party Instance for this `DocRequest`. The signature MUST be computed over `ReaderAuthentication` data using the private key corresponding to the selected path's reader certificate, as defined in [`ISO18013-5`_ #12.5]. Its unprotected COSE header MUST contain ``x5chain`` label ``33`` with the end-entity certificate first and its path up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path, validated according to :ref:`trust-evaluation:EUDIW Authentication`, and a Relying Party certificate on the National path, validated according to :ref:`trust-evaluation:Federation Entity Authentication`.
 
          This component MUST be present only if `readerAuthAll` is not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
