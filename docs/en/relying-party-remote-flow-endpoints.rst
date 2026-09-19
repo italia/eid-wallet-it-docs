@@ -127,7 +127,7 @@ Security Considerations
 All Relying Party endpoints MUST implement appropriate security measures:
 
 - **HTTPS Only**: All endpoints MUST be accessible only over HTTPS
-- **Endpoint Mix-up Protection**: National endpoint URLs MUST match final policy-processed Federation metadata; EUDIW endpoint URLs MUST be authenticated via WRPAC/WRPRC validation. Evidence from the other framework MUST NOT authorize an endpoint.
+- **Endpoint Mix-up Protection**: Endpoint URLs MUST be attested by trusted third parties through the respective NAtional or EUDIW.
 - **Input Validation**: All endpoints MUST validate input parameters and reject malformed requests
 - **Rate Limiting**: Endpoints SHOULD implement rate limiting to prevent abuse
 - **Audit Logging**: All endpoint interactions SHOULD be logged for security monitoring
@@ -141,7 +141,7 @@ Implementation Notes
 - The specific implementation details for most endpoints are left to the Relying Party's discretion
 - Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows
 - Proximity flow endpoints MUST support the lifecycle management of Verifier Apps
-- National redirect endpoints MUST be discoverable through the Relying Party's Entity Configuration. EUDIW redirect endpoint metadata is carried in the signed Request Object and is authenticated by the WRPAC.
+- National redirect endpoints MUST be discoverable through the Relying Party's Entity Configuration. EUDIW redirect endpoint metadata is carried in the signed Request Object and is authenticated by the WRPAC according to :ref:`trust-evaluation:EUDIW Authentication`.
 - Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions
 
 For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.

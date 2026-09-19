@@ -5,7 +5,7 @@
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_verifier* metadata contains the Relying Party metadata used by the ``openid_federation`` path (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`). It is authoritative only after final Federation policy processing. When the Relying Party's ``client_id`` uses ``x509_hash`` (i.e. the Relying Party has subscribed to the EUDIW Trsut Framework), the signed Request Object's ``client_metadata`` is the authoritative source for Authentication and Authorization and the Entity Configuration is not required.
+The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as included in the parameters shown below. (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`). Please note that *openid_credential_verifier* is an OpenID Federation Wallet Architecture (`OID-FED-WALLET`_) specific metadata used for OpenID4VP and it is used when the Relying Party's ``client_id`` is set with ``openid_federation``. When the Relying Party's ``client_id`` parameter is set with ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter provided within the request.
 
 .. list-table::
    :class: longtable

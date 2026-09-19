@@ -85,5 +85,3 @@ Get Statistics
     - Credential Issuer
   * - **Consumer**
     - Authorized Third Party
-
-
