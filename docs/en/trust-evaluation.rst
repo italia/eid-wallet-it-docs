@@ -91,9 +91,9 @@ Selection at Issuance
 At issuance the Wallet Unit initiates the interaction and knows the requested Credential. The selection is driven by whether the Credential Issuer is a national entity or is of another Member State, together with the catalogue of the requested Credential (see :ref:`registry:Digital Credentials Catalog`).
 For each interaction, the Wallet Unit MUST select exactly one framework before Authentication, Authorization, or Metadata Retrieval and Validation. 
 
-When the the Credential Issuer is a PID, QEAA or PuB-EAA provider, the EUDIW path MUST be selected. The Credential Issuer Metadata result MUST be authenticated using signed OpenID4VCI metadata payload whose protected ``x5c`` starts with the signing WRPAC and excludes the trust anchor. The Wallet Unit MUST use that result for every endpoint, key, grant, registration, reuse, and EDP decision. 
+When the Credential Issuer is a PID, QEAA or PuB-EAA provider, the EUDIW path MUST be selected. The Credential Issuer Metadata result MUST be authenticated using signed OpenID4VCI metadata payload whose protected ``x5c`` starts with the signing WRPAC and excludes the trust anchor, according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`. The Wallet Unit MUST use that result for every endpoint, key, grant, registration, reuse, and EDP decision, with authorization governed by :ref:`trust-evaluation:EUDIW Authorization`.
 
-When the the Credential Issuer is an EAA Provider, the National path MUST be selected. The Entity Configuration metadata MUST be authenticated as described in :ref:`trust-evaluation:Federation Entity Authentication`.
+When the Credential Issuer is an EAA Provider, the National path MUST be selected. The Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`) and MUST obtain the applicable final metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
 The National Trust Framework MUST NOT be selected for the issuance of a PID, QEAA or PuB-EAA of another Member State. The specific Trust Framework of a foreign EAA Provider is pecified in the related Attestation Rulebook.
 
