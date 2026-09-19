@@ -88,15 +88,14 @@ The Signing Trust Anchor Validation is not included in the table below, since, a
 Selection at Issuance
 ^^^^^^^^^^^^^^^^^^^^^
 
-At issuance the Wallet Unit initiates the interaction and knows the requested Credential.
-The selection is driven by whether the Credential Issuer is a national entity or is of another Member State, together with the catalogue of the requested Credential (see :ref:`registry:Digital Credentials Catalog`).
+At issuance the Wallet Unit initiates the interaction and knows the requested Credential. The selection is driven by whether the Credential Issuer is a national entity or is of another Member State, together with the catalogue of the requested Credential (see :ref:`registry:Digital Credentials Catalog`).
+For each interaction, the Wallet Unit MUST select exactly one framework before Authentication, Authorization, or Metadata Retrieval and Validation. 
 
-For Authentication, Authorization and Metadata Retrieval and Validation of the Credential Issuer, the Wallet Unit MUST apply the EUDIW procedures when the Credential Issuer, or the requested PID, (Q)EAA or PuB-EAA, is of another Member State.
-The Wallet Unit SHOULD apply the National Trust Framework procedures when the Credential Issuer is a national entity.
-The National Trust Framework MUST NOT be selected for the issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
-This rule MUST be applied also to EAA Providers, therefore, the same Credential Issuer MAY be evaluated under different frameworks in different interactions, according to the counterpart and the Credential requested.
-The headers of the signed artifacts of the Credential Issuer reflect the same selection: an ``x5c`` header carrying the access certificate for the EUDIW path, and a ``kid`` header, with the optional ``trust_chain`` header, for the National Trust Framework path.
-These headers MUST be consistent with the selected framework.
+When the the Credential Issuer is a PID, QEAA or PuB-EAA provider, the EUDIW path MUST be selected. The Credential Issuer Metadata result MUST be authenticated using signed OpenID4VCI metadata payload whose protected ``x5c`` starts with the signing WRPAC and excludes the trust anchor. The Wallet Unit MUST use that result for every endpoint, key, grant, registration, reuse, and EDP decision. 
+
+When the the Credential Issuer is an EAA Provider, the National path MUST be selected. The Entity Configuration metadata MUST be authenticated as described in :ref:`trust-evaluation:Federation Entity Authentication`.
+
+The National Trust Framework MUST NOT be selected for the issuance of a PID, QEAA or PuB-EAA of another Member State. The specific Trust Framework of a foreign EAA Provider is pecified in the related Attestation Rulebook.
 
 For the validation of the Wallet Unit, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities when the Wallet Unit is of another Member State.
 A Credential Issuer SHOULD validate the Wallet Instance Attestation through the National Trust Framework when the Wallet Unit is national (see :ref:`trust-evaluation:Wallet Unit Authentication`).

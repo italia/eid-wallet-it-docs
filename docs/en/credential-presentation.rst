@@ -12,7 +12,7 @@ The applicable Trust Framework is selected as specified in :ref:`trust-evaluatio
 A Wallet Unit that implements only the EUDIW procedures SHALL be able to present a PID, (Q)EAA or PuB-EAA to a Wallet-Relying Party of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 PID presentation before EUDIW notification is specified in :ref:`pid-until-notification`.
 
-When an Embedded Disclosure Policy is stored with a Digital Credential, the Wallet Unit MUST apply it before disclosure, as specified in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
+When an Embedded Disclosure Policy is stored with a Digital Credential, the Wallet Unit MUST evaluate it for the Credential and each requested attribute before User consent, display the results and any policy information link, and exclude or block every Credential or attribute with an unsatisfied result, as specified in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`. User approval MAY override ``EDP_NOT_SATISFIED``.
 
 In this section the following flows are described:
 
@@ -29,5 +29,4 @@ In this section the following flows are described:
 
   remote-flow.rst
   proximity-flow.rst
-
 

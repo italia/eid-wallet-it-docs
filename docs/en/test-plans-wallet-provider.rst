@@ -1124,6 +1124,50 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
      - Backup and Restore, Interoperability
      - Credential issuance request
      - For each Credential, Wallet Instance successfully initiates a new Wallet-Initiated Authorization Code Issuance Flow bound to the new Wallet Instance key (fresh Holder Key Binding), and not a token renewal or a Re-Issuance Flow request.
+   * - WP_201
+     - Issuance, Interoperability
+     - Support both issuance grants
+     - Wallet Instance successfully completes issuance with the Authorization Code Grant and with the Pre-Authorized Code Grant; it accepts a Provider advertising either permitted grant.
+   * - WP_201a
+     - Issuance, Security
+     - PID Pre-Authorized Code physical presence
+     - Wallet Instance requires and verifies User physical-presence authorization before requesting a PID with the Pre-Authorized Code Grant, and rejects issuance when it is absent.
+   * - WP_201b
+     - Issuance, Interoperability
+     - Credential Offer invocation
+     - An ETSI compliant EUDI Wallet Credential Offer uses ``eu-eaa-offer://`` and contains at least one final permitted grant object.
+   * - WP_201c
+     - Issuance, Trust, Security
+     - Exclusive issuance trust path
+     - Wallet Instance selects EUDIW or National at issuance, consumes only the selected authenticated metadata result, and does not mix evidence or retry a failed path under the other framework.
+   * - WP_201d
+     - Issuance, Trust, Interoperability
+     - EUDIW signed metadata validation
+     - Wallet Instance validates ``application/jwt`` Issuer Metadata with protected ``x5c`` containing the signing WRPAC first and excluding the trust anchor before using the payload.
+   * - WP_201e
+     - Issuance, Trust, Interoperability
+     - National final metadata validation
+     - Wallet Instance uses only final policy-processed Federation metadata for National issuance.
+   * - WP_201f
+     - Issuance, Interoperability
+     - Issuer registration information
+     - Wallet Instance parses signed-payload ``issuer_info`` elements with ``format`` and ``data`` and extracts the WRPRC.
+   * - WP_201g
+     - Issuance, Interoperability
+     - Credential reuse policy
+     - Wallet Instance enforces ``credential_reuse_policy`` ``id``, ordered ``details``, and conditional reuse and reissue fields; absence means unlimited reuse and the reuse policy takes precedence over ``batch_credential_issuance``.
+   * - WP_201h
+     - Issuance, Security, Privacy
+     - EDP URI and data delivery
+     - Wallet Instance accepts EDP URI plus policy data, or URI alone only for an exact preloaded policy; it rejects an unresolved URI, rejects EDP on a PID, and stores the resolved EDP with each issued EAA.
+   * - WP_201i
+     - Issuance, Security, Privacy
+     - EDP attribute evaluation and display
+     - Before consent, Wallet Instance evaluates the base EDP and each recognized attribute rule, displays Credential and attribute results and blocks every unsatisfied disclosure.
+   * - WP_201j
+     - Issuance, Security, Privacy
+     - EDP override
+     - User approval can override a Credential-level or attribute-level ``EDP_NOT_SATISFIED`` result.
 
 .. _wallet-instance-optional-testcases:
 

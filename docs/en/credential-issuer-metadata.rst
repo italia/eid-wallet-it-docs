@@ -42,7 +42,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **authorization_signing_alg_values_supported**
     - JSON array containing a list of the :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`algorithms:cryptographic algorithms`.
   * - **grant_types_supported**
-    - JSON array containing a list of the supported grant type values. The authorization server MUST support *authorization_code*.
+    - REQUIRED. JSON array containing the grant type values implemented by the Authorization Server. It MUST contain at least ``authorization_code``. Authorization Code-only metadata, including PAR, the Authorization Endpoint, PKCE, and JAR requirements, MUST be advertised only when ``authorization_code`` is present.
   * - **token_endpoint_auth_methods_supported**
     - JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support *attest_jwt_client_auth* as defined in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
   * - **client_attestation_signing_alg_values_supported**
@@ -124,7 +124,7 @@ The *openid_credential_issuer* metadata contains the following claims.
 
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
-          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value contains the following parameters. See `OpenID4VCI`_ Section B.2.
+           - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value contains the following parameters. See `OpenID4VCI`_ Section B.2.
 
             - **path**: REQUIRED. It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: REQUIRED. Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
@@ -136,16 +136,27 @@ The *openid_credential_issuer* metadata contains the following claims.
                 - **description**: REQUIRED. human-readable description for the claim.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
+           - **credential_reuse_policy**: OPTIONAL. Object describing reuse of the issued Credential. It MUST contain ``id``, an identifier for the policy; ``options``, the permitted reuse options; and ``details``, an ordered array of policy details. A detail MAY contain ``batch_size``, ``reissue_trigger_unused``, and ``reissue_trigger_lifetime_left`` only when the corresponding option makes it applicable. The details MUST be evaluated in order. If the policy is absent, reuse is unlimited. When both ``credential_reuse_policy`` and ``batch_credential_issuance`` are present, ``credential_reuse_policy`` takes precedence for reuse and reissuance decisions.
+
+           - **embedded_disclosure_policy**: OPTIONAL. Object carrying the EDP for this Credential configuration. It MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``. The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together. The EDP MUST NOT be present for a PID. The Wallet Unit MUST associate the resolved EDP with every issued EAA and MUST reject an unresolved URI.
+
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
         - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **issuer_info**
-    - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Array of objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each object MUST contain:
+    - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Top-level array of signed-payload objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each element MUST contain:
+      
+      - ``format``. REQUIRED. It identifies the signed representation and ``data`` is its decoded payload. 
 
-        - **registration_cert**: REQUIRED. The Wallet-Relying Party Registration Certificate of the applicable Service, included by value ([`EIDAS-ARF`_] RPRC_22).
-        - **registrar_dataset**: REQUIRED. The registration information of the applicable Service.
+       Possible values for ``format`` include ``registrar_dataset`` and ``registration_cert``.
+      
+      - ``data``. REQUIRED. Depending on the ``format`` parameter value,
+      
+        - if ``fromat == registrar_dataset``; this payload MUST contain an object with the following parameters: ``identifier``;``srvDescription``, ``registryURI``, and ``providesAttestations``. The values of these claims are further specified in :ref:`infrastructure-trust:Register of WRPs`.
+        - if ``fromat == registration_cert``; this payload MUST contain the base64-encoded WRPRC of the Credential Issuer by value. Its profile is specified in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+        
+       Both values of ``format`` MUST be present.
 
-      The Wallet Unit MUST use ``registration_cert`` as specified in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` MUST NOT be used as a substitute for ``registration_cert``.
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
@@ -157,8 +168,6 @@ The *openid_credential_issuer* metadata contains the following claims.
   * - **batch_credential_issuance**
     - OPTIONAL. Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 
-            - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
+            - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request. If ``credential_reuse_policy`` is also present, its ordered details and conditions take precedence over this member for reuse and reissuance decisions.
   * - **status_list_aggregation_endpoint**
     - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
-
-

@@ -8,7 +8,7 @@ Credential Issuance Low-Level Flows
 Low-Level Issuance Flow
 -----------------------
 
-The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR2024/2982`_], profiled by [`OPENID4VC-HAIP`_], and the following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_:
+The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR2024/2982`_], profiled by [`OPENID4VC-HAIP`_], and controlled by [`ETSI TS 119 472-3`_] V1.1.1, clauses 4.1 through 4.3, where ETSI specializes those specifications. The following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], as recommended in Section 3 of [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], as recommended in Section 5 of [`OpenID4VCI`_].
@@ -21,7 +21,7 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
 OpenID Federation 1.0 [`OID-FED`_] SHOULD be supported for issuance involving a national entity that addresses a national audience only, as specified in :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Selection at Issuance`.
 A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
 
-The Credential Issuer MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Credential Issuers MUST support:
+The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Each Credential Issuer MUST support the Authorization Code Grant and MUST advertise its support in Authorization Server metadata [`ETSI TS 119 472-3`_]. Credential Issuers MUST support:
 
   * **Authorization Code Flow**: The Credential Issuer requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer or a third party (i.e. via Credential Offer support).
@@ -92,10 +92,17 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-evaluation:Trust Evaluation Process`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value.
+Once *User Request flow* is completed, the Wallet Instance selects exactly one trust path under :ref:`trust-evaluation:Selection at Issuance` and processes only that path's authoritative metadata. 
+
+- On the EUDIW path it authenticates the access-certificate-signed Issuer Metadata and performs EUDIW authorization; 
+- on the National path it validates the Trust Chain and applies National authorization to the final policy-processed Federation metadata. 
+
+A failed trust path processing MUST terminate the interaction and MUST NOT be retried or supplemented with evidence from the other path. 
+
+Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the selected metadata, from where the Wallet Instance can get the ``batch_size`` value.
 
 .. note::
-  **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata (:ref:`WP_046 <wallet-credential-issuance-testcases>`). A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
+  **Selected-path trust check:** The Wallet Instance MUST process the Credential Issuer using exactly one path under :ref:`trust-evaluation:Selection at Issuance`. On EUDIW it validates the WRPAC through its Trust Anchor; on National it validates the Federation Trust Chain and consumes final policy-processed metadata. (:ref:`WP_046 <wallet-credential-issuance-testcases>`).
 
 In case of Issuer Initiated flow, in addition to the Federation Check defined above, the Wallet Instance MUST execute the following checks on the Credential Offer parameters:
 
@@ -103,7 +110,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * The Authorization Server identifier (if present) is contained in the ``authorization_servers`` Credential Issuer metadata parameter (:ref:`WP_049 <wallet-credential-issuance-testcases>`).
 
 
-**Steps 1-2 (PAR Request)**: The Wallet Instance:
+**Steps 1-2 (PAR Request, Authorization Code Grant only)**: The Wallet Instance:
 
   * Creates a fresh PKCE code verifier, Wallet Instance Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request* (:ref:`WP_052 <wallet-credential-issuance-testcases>`).
   * Provides to the Credential Issuer PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack (:ref:`WP_052 <wallet-credential-issuance-testcases>`). The Pushed Authorization Request enables client authentication prior to any User interaction. This step allows for the early rejection of illegitimate requests, effectively preventing spoofing attacks, tampering, and improper use of authorization requests.
@@ -168,7 +175,7 @@ Below is a non-normative example of the signed Request Object without encoding a
 
 
 .. note::
-  **Federation Check**: The Credential Issuer MUST check that the Wallet Provider is part of the federation.
+  **Wallet Provider trust check**: The Credential Issuer MUST validate the Wallet Provider using the framework selected for the interaction and MUST NOT use evidence or a retry from the other framework.
 
 
 .. note::
@@ -665,9 +672,9 @@ This information SHOULD be obtained using the Selection Page described in :ref:`
 - If the Selection Page is supported, the User selects the Wallet, and then the Credential Issuer or third party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The Wallet Instance invocation mechanism depends on the ``credential_offer_endpoint`` parameter in the Wallet metadata:
 
   - If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
-  - Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip-vci://`` (as defined in Section 4.2 of [`OPENID4VC-HAIP`_]). The Wallet Instance MUST support both custom URL schemes.
+  - Otherwise, for an ETSI EUDI Wallet invocation, the Credential Issuer or third party MUST use one of the following custom URL schemes: ``eu-eaa-offer://`` (as defined in [`ETSI TS 119 472-3`_]) ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip-vci://`` (as defined in Section 4.2 of [`OPENID4VC-HAIP`_]). A EUDIW compliant interaction MUST use ``eu-eaa-offer://``, a National interaction MAY retain its configured national Universal Link or other retained national invocation mechanism.
 
-- In the case when the Credential Issuer or third party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the Credential Issuer or third party invokes the Wallet Instance using the custom URL scheme described above.
+  - In the case when the Credential Issuer or third party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the Credential Issuer or third party invokes the Wallet Instance using the applicable scheme described above.
 
 The Credential Offer can be transmitted by value or by reference:
 
@@ -704,7 +711,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
         The ``issuer_state`` MUST follow the structure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` when ``objectId`` is absent, or ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` when ``objectId`` is present. The optional ``objectId`` segment MUST be omitted when not available; an empty trailing segment MUST NOT be used. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
 
-        - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
+       - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
 
 .. note::
@@ -719,7 +726,7 @@ The Credential Offer can be transmitted by value using any supported invocation 
 
 .. code-block:: text
 
-  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%issuer_state%22%3A%22eyJhbGciOiJSU0Et...F77QK8%22%7D%7D%7D
+  eu-eaa-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22eyJhbGciOiJSU0Et...F77QK8%22%7D%7D%7D
 
 The decoded Credential Offer object:
 
@@ -741,7 +748,7 @@ The QR Code or the href button contains:
 
 .. code-block:: text
 
-  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fcredential-issuer.example.org%2Foffers%2F8f3a2b1c
+  eu-eaa-offer://?credential_offer_uri=https%3A%2F%2Fcredential-issuer.example.org%2Foffers%2F8f3a2b1c
 
 The Wallet Instance sends an HTTP GET request:
 
@@ -777,7 +784,7 @@ The QR Code contains:
 
 .. code-block:: text
 
-  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fauthentic-source.gov.example%2Fcredential-offers%2Fabc123
+  eu-eaa-offer://?credential_offer_uri=https%3A%2F%2Fauthentic-source.gov.example%2Fcredential-offers%2Fabc123
 
 The Wallet Instance sends:
 

@@ -897,7 +897,7 @@
             "status_list_aggregation_endpoint": "https://eaa-provider.example.org/statuslists/aggregation"
         },
         "openid_credential_verifier": {
-            // see relying party metadata section and endpoints
+            "response_types_supported": ["vp_token"]
         },
         "jwks": {
             "keys": [
@@ -911,5 +911,4 @@
             ]
         }
     }
-}
 }

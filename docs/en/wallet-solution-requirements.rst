@@ -17,6 +17,9 @@ Wallet-to-Wallet interaction and qualified electronic signature creation are out
 - The Wallet Instance MUST store PID and (Q)EAA, apply selective disclosure, and present them remotely and in proximity, as specified in :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
 - PID issuance, storage and presentation are specified in :ref:`pid-until-notification`.
 - The Wallet Instance MUST support the Credential formats required by [`OPENID4VC-HAIP`_], including ``dc+sd-jwt`` and ``mso_mdoc``.
+- The Wallet Unit MUST support both the Authorization Code Grant and the Pre-Authorized Code Grant for issuance (for interoperability purposes as stated in GEN-REQ-4.1-03 of [`ETSI 119 472-3`]), and MUST process the grants advertised by the selected Credential Issuer.
+- The Wallet Unit MUST require authorization based on the User's physical presence when obtaining a PID through the Pre-Authorized Code Grant.
+- The Wallet Unit MUST ingest and associate an EDP delivered by URI together with policy data, or by URI alone when the exact policy is already preloaded; it MUST resolve and evaluate the applicable EDP before disclosure, show the result to the User, and request User's ovveride for the disclosure of every Credential or attribute that does not satisfy its applicable policy.
 - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (:ref:`WP_015 <wallet-instance-testcases>`).
 - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 - The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;
@@ -102,5 +105,4 @@ Only the legitimate User can access the private cryptographic keys, preventing u
   At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD** (:ref:`WP_014 <wallet-instance-testcases>`). Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (`AAL`).
 
 For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`, :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`, and :ref:`wallet-attestation-issuance:Key Attestation Issuance` of this document.
-
 

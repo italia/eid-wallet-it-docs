@@ -427,8 +427,8 @@ EDPs are applicable to QEAAs, PuB-EAAs, and EAAs.
 They MUST NOT be applicable to PIDs.
 
 The EDP is distributed through the Credential Issuer Metadata at issuance time.
-The Attestation Provider MUST include the EDP (if any) by value in the Credential Issuer Metadata, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
-If available, the Wallet Unit MUST store the EDP locally and associate it with the specific Attestation for which it was retrieved.
+The Attestation Provider MUST include the EDP URI together with its policy data, or the URI alone when the exact policy is already preloaded, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
+If available, the Wallet Unit MUST resolve and store the EDP locally and associate the resolved policy with the specific Attestation for which it was retrieved; an unresolved URI MUST cause the association and the affected disclosure to fail.
 The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the presentation protocol as per `ETSI TS 119 472-3`_, Section 4.2.5.1.
 
 Embedded Disclosure Policies are used to:
@@ -441,23 +441,22 @@ The Wallet Unit evaluates them as specified in :ref:`trust-evaluation:EUDIW Auth
 
 - **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
 
-- **Authorized Relying Parties Only.** The EDP contains a list of authorised identifier duplets, each an EU-wide unique Relying Party identifier together with a Service identifier ([`EIDAS-ARF`_] EDP_02, Reg_32, Reg_33).
-  According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07), that list MAY also carry a subject distinguished name, in LDAP string form as defined in :rfc:`4514`, or an entitlement URI.
+- **Authorized Relying Parties Only.** The EDP contains a list of authorized entries. Each entry MAY identify the Relying Party by its RFC 4514 subject distinguished name from the authenticated WRPAC, by an entitlement URI from the validated WRPRC, or by an identifier/service duplet from the WRPRC as an additional alternative ([`EIDAS-ARF`_] EDP_02, Reg_32, Reg_33).
 
   - For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``.
   - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``.
     The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI TS 119 472-3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
 
-- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates used for signing Wallet-Relying Party Registration Certificates ([`EIDAS-ARF`_] EDP_03).
-  Only RPs whose WRPRC signing path contains one of these certificates are allowed to access the Attestation.
+- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates in the WRPAC certification paths ([`EIDAS-ARF`_] EDP_03).
+  Only RPs whose authenticated WRPAC path contains one of these certificates are allowed to access the Attestation.
   According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root or intermediate is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
 
 .. note::
 
-  `EIDAS-ARF`_ HLR EDP_02 requires identifier duplets taken from the WRPRC in the request (``sub`` and ``srv_id``), not from the WRPAC, including in a **direct** presentation.
-  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also encodes authorized parties by subject DN or by entitlement URI.
-  The ``subject_dn`` parameter is that ETSI encoding; it is not an evaluation input against the WRPAC.
-  The ``entitlement_uri`` parameter is matched against entitlements held in the WRPRC.
+  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) encodes authorized parties by subject DN or by entitlement URI, and the identifier/service duplet is an additional alternative.
+  The ``subject_dn`` parameter is matched against the authenticated WRPAC subject using RFC 4514 DN comparison.
+  The ``entitlement_uri`` parameter is matched against entitlements or sub-entitlements held in the WRPRC.
+  The identifier/service duplet, when present, is matched against ``sub`` and ``srv_id`` from the WRPRC and is not taken from the WRPAC.
   Annex A.3 of `ETSI TS 119 475`_ defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``).
   For an **intermediated** presentation the WRPRC in the request is that of the *intermediated* Relying Party ([`EIDAS-ARF`_] RPRC_19).
 
@@ -483,8 +482,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
-       The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
-       The EDP MAY be accessible through this URI.
+        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the exact policy data set identified by that URI has already been pre-loaded into the Wallet Unit. A URI that cannot be resolved to the exact included or preloaded policy MUST fail EDP processing; the Wallet Unit MUST NOT proactively retrieve an unspecified replacement policy.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
@@ -513,38 +511,35 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
 
    * - ``authorized_parties``
-     - REQUIRED. array of objects. if ``policy_type`` is ``"authorized_rp_only"``.
-       Contains a list of authorized identifier duplets (EU-wide unique Relying Party identifier and Service identifier) allowed to access the Attestation.
+     - REQUIRED. array of objects if ``policy_type`` is ``"authorized_rp_only"``.
+       Contains authorized entries. Each entry MUST contain at least one of ``subject_dn`` or ``entitlement_uri``; an identifier/service duplet MAY be included as an additional alternative.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].identifier``
      - REQUIRED. string.
-       EU-wide unique identifier of the authorised Relying Party, as specified in [`EIDAS-ARF`_] Reg_32.
-       It MUST match the ``sub`` of the WRPRC in the request.
+        EU-wide unique identifier of the authorized Relying Party, as specified in [`EIDAS-ARF`_] Reg_32. When present, it MUST match the ``sub`` of the WRPRC in the request and is an additional matching alternative.
      - [`EIDAS-ARF`_] EDP_02
 
    * - ``authorized_parties[].service_identifier``
      - REQUIRED. string.
-       Identifier of the authorised Relying Party Service, as specified in [`EIDAS-ARF`_] Reg_33.
-       It MUST match the ``srv_id`` of the WRPRC in the request.
+        Identifier of the authorized Relying Party Service, as specified in [`EIDAS-ARF`_] Reg_33. When present with ``identifier``, it MUST match the ``srv_id`` of the WRPRC in the request.
      - [`EIDAS-ARF`_] EDP_02
 
    * - ``authorized_parties[].subject_dn``
      - OPTIONAL. string.
        Subject Distinguished Name (DN) of the Relying Party, formatted as an LDAP string compliant with :rfc:`4514`.
-       This is the ETSI encoding of ISS-MDATA-EBD-4.2.5.2-07.
-       It is not an evaluation input: the Wallet Unit MUST NOT match it against the WRPAC, and EDP_02 evaluation uses the identifier duplet from the WRPRC, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
+       This is the ETSI encoding of ISS-MDATA-EBD-4.2.5.2-07 and MUST be matched against the authenticated WRPAC subject DN using RFC 4514 DN comparison.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
      - OPTIONAL. string (URI).
-       URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC).
+        URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). It MUST be compared exactly.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
-       Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
-       Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
+        Defines a precise list of trusted root or intermediate certificates in permitted WRPAC certification paths.
+        Only RPs whose validated WRPAC path contains one of these certificates are permitted access.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
@@ -561,8 +556,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
-       These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present.
-       Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
+        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit MUST successfully process recognized rules even if unrecognized extensions are present. The IT-Wallet extension is an object with an extension identifier, a Credential-format claim ``path``, and an alternative common EDP rule. The base policy governs the Credential; the matching extension rule governs that attribute, and every disclosed attribute MUST satisfy its applicable rule. The extension encoding MUST be serializable in the EDP and MUST NOT change the result for attributes without a matching path.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
