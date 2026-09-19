@@ -63,7 +63,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
     a. verifies the signature of the signed Request Object using the selected path's authenticated public key (:ref:`WP_085 <wallet-credential-presentation-testcases>`).
     b. verifies that the ``client_id`` contained in the Request Object issuer (Relying Party) matches with the one obtained at the Step 2:
 
-       * If ``client_id`` uses the ``openid_federation`` prefix, it MUST match the final policy-processed Federation metadata identity within the validated Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
+       * If ``client_id`` uses the ``openid_federation`` prefix, it MUST match the Federation metadata identity obtained after Federation Entity Authentication and Metadata Retrieval and Validation (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`) within the validated Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
        * If ``client_id`` uses the ``x509_hash`` prefix, the Wallet Instance MUST verify that the leaf certificate hash in the WRPAC ``x5c`` chain matches the hash in ``client_id``.
 
      c. evaluates the eligibility of the Relying Party in the presesntation context. 
@@ -186,7 +186,7 @@ The details of each step shown in the previous picture are described below.
 
 **Step 12 (Request URI Response)**: The Relying Party issues the Request Object by signing it with one of its cryptographic private keys. 
 
-* For ``openid_federation``, the Wallet Instance validates the Trust Chain, derives final policy-processed ``openid_credential_verifier`` metadata, and verifies the signature with the key identified by ``kid`` in that metadata, as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`. 
+* For ``openid_federation``, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`), MUST obtain the ``openid_credential_verifier`` metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`, and MUST verify the signature with the key identified by ``kid`` in that metadata.
 * For ``x509_hash``, it verifies the leaf certificate hash against ``client_id``, validates the WRPAC path and SCT against the Providers of WRPAC LoTE, and verifies the signature with the WRPAC key, as defined in :ref:`trust-evaluation:EUDIW Authentication`. 
 
 The Wallet Instance MUST NOT switch paths or retry verification with evidence from the other path (:ref:`WP_084 <wallet-credential-presentation-testcases>`).
@@ -329,7 +329,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "exp": 1672422065
     }
 
-* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and ``registrar_dataset.identifier``. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. If the WRPRC is missing or invalid, it MAY query the Register. 
+* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and ``registrar_dataset.identifier`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. If the WRPRC is missing or invalid, it MAY query the Register.
 
 * For ``openid_federation``, it validates the registration Trust Mark, its entitlements, and its exact, case-sensitive scope, and MUST NOT treat WRPAC or WRPRC material as National trust evidence. 
 
@@ -465,7 +465,7 @@ Endpoint Mix-Up Protection
 
 .. warning::
    For redirect flows, to prevent endpoint mix-up attacks, the values of ``request_uri``, ``response_uri`` and ``redirect_uri`` MUST each be attested by a trusted third party.
-   Under the National Trust Framework they MUST match the corresponding ``request_uris``, ``response_uris`` and ``redirect_uris`` parameters in the final policy-processed ``openid_credential_verifier`` metadata obtained from the Trust Chain, as defined in :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+   Under the National Trust Framework, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`), and the values MUST match the corresponding ``request_uris``, ``response_uris`` and ``redirect_uris`` parameters in the ``openid_credential_verifier`` metadata obtained through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
    Under the EUDIW Trust Framework they MUST satisfy the WRPAC/WRPRC identity and endpoint binding, as specified in :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. Evidence from the unselected framework MUST NOT authorize an endpoint.
 
    This requirement applies to ``request_uri`` as specified in :ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`.
@@ -585,14 +585,14 @@ The JWT header parameters are described below:
    * - **typ**
      - REQUIRED. Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-89 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
    * - **kid**
-     - NATIONAL PATH ONLY. REQUIRED when ``client_id`` uses the ``openid_federation`` prefix. It identifies the public key in the final policy-processed Federation metadata, as defined in [:rfc:`7517`]. It is not EUDIW authentication evidence.
+     - NATIONAL PATH ONLY. REQUIRED when ``client_id`` uses the ``openid_federation`` prefix. It identifies the public key in the Federation metadata obtained after :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`, as defined in [:rfc:`7517`]. It is not EUDIW authentication evidence.
    * - **trust_chain**
      - NATIONAL PATH ONLY. OPTIONAL sequence of Entity Statements composing the Relying Party Trust Chain, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*. It is not EUDIW authentication evidence.
    * - **x5c**
-     - EUDIW PATH ONLY. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix. It contains the WRPAC first, followed by its certification path up to but excluding the trust anchor. The WRPAC MUST be used to verify the JWT signature; the chain MUST validate and its SCT MUST be valid against the Providers of WRPAC LoTE. The WRPAC binds the Relying Party identity and applicable presentation endpoints. It is not National authentication evidence.
+     - EUDIW PATH ONLY. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix. It contains the WRPAC first, followed by its certification path up to but excluding the trust anchor. The WRPAC MUST be used to verify the JWT signature; the chain MUST validate and its SCT MUST be valid against the Providers of WRPAC LoTE, as defined in :ref:`trust-evaluation:EUDIW Authentication`. The WRPAC binds the Relying Party identity and applicable presentation endpoints according to :ref:`trust-evaluation:EUDIW Authorization`. It is not National authentication evidence.
 
 .. note::
-   For ``x509_hash``, the ``x5c`` header MUST contain the WRPAC first and MUST NOT include the trust anchor as required by `OPENID4VC-HAIP`_. The chain MUST validate to a trust anchor obtained from the Providers of WRPAC LoTE; see Section :ref:`infrastructure-trust:X.509 Certificate Profile` for background on X.509 certificate chain validation.
+   For ``x509_hash``, the ``x5c`` header MUST contain the WRPAC first and MUST NOT include the trust anchor as required by `OPENID4VC-HAIP`_. The chain MUST validate to a trust anchor obtained from the Providers of WRPAC LoTE according to :ref:`trust-evaluation:EUDIW Authentication`; see Section :ref:`infrastructure-trust:X.509 Certificate Profile` for background on X.509 certificate chain validation.
 
 The JWT payload parameters are described herein:
 
@@ -618,7 +618,7 @@ The JWT payload parameters are described herein:
    * - **dcql_query**
      - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_. On the EUDIW path, each applicable query MUST use the ETSI Trusted Lists Authority Key Identifier mechanism with ``trusted_authorities`` type ``etsi_tl``.
    * - **verifier_info**
-     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array containing a ``registrar_dataset`` object and a separate ``registration_cert`` object. 
+     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array containing a ``registrar_dataset`` object and a separate ``registration_cert`` object, as required by :ref:`trust-evaluation:EUDIW Authorization`.
     
        It MUST NOT contain ``credential_ids`` [`ETSI TS 119 472-2`_]. 
       
