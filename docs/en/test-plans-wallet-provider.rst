@@ -622,35 +622,27 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_076
      - Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Same Device flow
-     - In the Same Device redirect flow, Wallet Instance successfully obtains a URL and extracts ``client_id``, required ``request_uri``, and optional ``request_uri_method``; no outer ``request`` or outer ``state`` is required.
-   * - WP_076b
-     - Remote-flow, Trust, Presentation, Security
-     - EUDIW Request Object registration data
-     - Wallet Instance requires protected ``x5c`` with WRPAC first and trust anchor omitted, protected ``iat``, complete ``verifier_info`` including ``registrar_dataset`` and WRPRC-by-value, ``aud``, and ``etsi_tl``.
-   * - WP_076c
-     - Remote-flow, Trust, Presentation, Security
-     - No cross-framework retry
-     - Wallet Instance terminates a failed selected-path evaluation and never retries it using evidence or procedures from the other framework.
+     - In the Same Device flow, Wallet Instance successfully obtains a URL and extracts the following parameters: ``client_id``, ``request_uri``, ``state``, and ``request_uri_method``.
    * - WP_077
      - Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Cross Device flow
-     - In the Cross Device flow, Wallet Instance successfully scans and parses a QR Code to extract ``client_id``, required ``request_uri``, and optional ``request_uri_method``.
+     - In the Cross Device flow, Wallet Instance successfully scans and parses a QR Code to extract the following parameters: ``client_id``, ``request_uri``, ``state``, and ``request_uri_method``.
    * - WP_078
      - Remote-flow, Trust, Presentation, Interoperability
      - Relying Party identity discovery
-     - For ``openid_federation``, Wallet Instance uses Federation API endpoints (``.well-known/openid-federation``, ``/fetch``) to retrieve current metadata.
+     - Wallet Instance successfully uses Federation API endpoints (``.well-known/openid-federation``, ``/fetch``) to retrieve current metadata and configurations of the Relying Party.
    * - WP_079
      - Remote-flow, Trust, Presentation, Interoperability
      - Relying Party Trust Chain evaluation
-     - For ``openid_federation``, Wallet Instance validates the Trust Chain and final policy-processed metadata.
+     - Wallet Instance successfully validates the Trust Chain of the Relying Party (provided statically or built through a Federation Entity Discovery process) from the Trust Anchor down to the Relying Party itself, confirming that the Relying Party is a recognized and trusted member of the federation.
    * - WP_080
      - Remote-flow, Trust, Presentation, Interoperability
      - Relying Party Trust Mark check
-     - For ``openid_federation``, Wallet Instance validates the ``registration-entity`` Trust Mark as the National authorization source.
+     - Wallet Instance successfully evaluates any Trust Marks included in the Relying Party’s Entity Configuration to ensure they are valid and indicate compliance with federation policies.
    * - WP_081
      - Remote-flow, Trust, Presentation, Security
      - Validate ``request_uri``
-     - Wallet Instance checks ``request_uri`` against final Federation ``request_uris`` for ``openid_federation`` rejects a mismatch.
+     - Wallet Instance checks the ``request_uri`` against its locally cached list of allowed URIs (from the ``openid_credential_verifier.request_uris`` in the Trust Chain) and only proceeds when it finds an exact match; if no match is found, it rejects the request.
    * - WP_082
      - Remote-flow, Presentation, Interoperability
      - GET Request Object
@@ -662,7 +654,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats ``wallet_metadata`` as a JSON object that includes ``vp_formats_supported`` and required ``client_id_prefixes_supported`` containing both ``x509_hash`` and ``openid_federation``, per Section 10.1 of [`OpenID4VP`_].
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, and optionally ``client_id_prefixes_supported`` and ``request_object_signing_alg_values_supported`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -674,7 +666,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_084
      - Remote-flow, Trust, Presentation, Security
      - Relying Party public key retrieval
-     - For ``openid_federation``, Wallet Instance fetches the key from final ``metadata.openid_credential_verifier.jwks`` using ``kid``; for ``x509_hash``, it uses the WRPAC key from the protected ``x5c`` chain. The unselected source is ignored.
+     - Wallet Instance fetches the correct Relying Party’s public key exclusively from the ``metadata.openid_credential_verifier.jwks`` field located within the Relying Party's Entity Configuration provided by the Trust Chain, and using the key identifier (``kid``) from the request JWT header.
    * - WP_085
      - Remote-flow, Presentation, Security
      - Request Object signature verification
@@ -682,22 +674,15 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_086
      - Remote-flow, Presentation, Security
      - Match ``client_id`` across contexts
-     - Wallet Instance confirms that outer and signed ``client_id``, ``iss`` and selected trust evidence identify the same Relying Party; a discrepancy causes rejection.
+     - Wallet Instance confirms that the ``iss`` claim in the signed Request Object exactly equals both the ``client_id`` it originally extracted from the Authorization Request URL and the ``sub`` value in the Relying Party’s Entity Configuration. Any discrepancy causes the request to be rejected.
    * - WP_087
      - Remote-flow, Presentation, Security
      - Check Relying Party eligibility
-     -
-       - For ``x509_hash``, Wallet Instance authorizes only with a valid WRPRC and exact, case-sensitive Service Provider entitlement and DCQL scope.
-       - For ``openid_federation``, it validates the registration Trust Mark, its entitlements, and the exact, case-sensitive DCQL scope using final metadata; it does not use WRPAC or WRPRC as National evidence.
-      
+     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified credential.
    * - WP_088
      - Remote-flow, Presentation, Privacy
      - User consent for disclosure
-     - Wallet Instance requests the User's consent by displaying the verified Relying Party and Service, intended use or purpose, and requested Credentials and attributes from the authoritative artifact. 
-        
-        - In the National path it displays the Relying Party and Federation Intermediate when applicable; 
-        - in an EUDIW intermediated flow it displays the intermediated Relying Party and Service and does not display Intermediary trade names.
-
+     - Wallet Instance requests the User's consent by presenting a UI screen that clearly displays the verified identity of the Relying Party and a list of all requested data attributes.
    * - WP_089
      - Remote-flow, Presentation, UX
      - Handle ``request_uri`` endpoint errors
@@ -709,23 +694,23 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_089b
      - Remote-flow, Presentation, UX
      - Recovering from ``request_uri`` errors
-     - For a recoverable error, Wallet Instance prompts the User with a specific recovery action, but any retry remains on the selected path and never switches frameworks.
+     - For a recoverable error, such as ``server_error``, Wallet Instance prompts the User with a specific recovery action, such as suggesting a retry or “Scan QR again” option, if applicable.
    * - WP_090
      - Remote-flow, Presentation, Interoperability
      - Notify Relying Party on invalid request
-     - If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response only after the selected path authenticates ``response_uri``; otherwise it terminates locally without revealing Credential availability.
+     - If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s ``response_uri`` Endpoint.
    * - WP_091
      - Remote-flow, Presentation, Interoperability
      - Send Authorization Response
-     - If verification is valid, Wallet Instance sends an encrypted response via ``direct_post.jwt``.
+     - If the Request Object verification is valid, Wallet Instance sends an Authorization Response via HTTP POST to the Relying Party’s ``response_uri`` as per ``response_mode=direct_post.jwt``.
    * - WP_091a
      - Remote-flow, Presentation, Security
      - Validate ``response_uri``
-     - Before sending the response, Wallet Instance confirms ``response_uri`` is authorized by final Federation metadata for ``openid_federation`` or WRPAC/WRPRC binding for ``x509_hash``; a mismatch aborts the request.
+     - Before sending the Authorization Response, Wallet Instance confirms the ``response_uri`` exactly matches one of the Relying Party’s attested ``response_uris`` in its metadata; a mismatch aborts the request.
    * - WP_092
      - Remote-flow, Presentation, Security
      - Encrypt Authorization Response
-     - Wallet Instance encrypts the response per Section 8.3 of [`OpenID4VP`_] using the mandatory request-specific ephemeral key with unique ``kid`` and ``use``, ECDH-ES P-256 and supported AES-GCM.
+     - Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [`OpenID4VP`_] using the Relying Party’s public key.
    * - WP_093
      - Remote-flow, Presentation, Security
      - Construct ``vp_token`` with ``state``
@@ -745,12 +730,11 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_094
      - Remote-flow, Presentation, Interoperability
      - Perform user-agent redirect
-     - In every successful redirect-based Same Device flow, Wallet Instance follows the mandatory ``redirect_uri`` supplied by the Relying Party, and the Relying Party resumes only in the same initiating session. A National Cross Device redirect may omit it.
+     - Upon receiving the ``redirect_uri``, Wallet Instance successfully performs a user-agent redirect to the ``redirect_uri`` supplied by the Relying Party, so the Relying Party can resume the interaction on the same device that initiated the flow.
    * - WP_094a
      - Remote-flow, Trust, Presentation, Security
      - Validate ``redirect_uri``
-     - Wallet Instance verifies that ``redirect_uri`` is authorized under the selected path. A mismatch or a return in a different initiating session aborts the flow.
-
+     - Wallet Instance verifies that the ``redirect_uri`` exactly matches one of the URIs listed in the Relying Party’s ``redirect_uris`` metadata. If it does not match, aborts the flow.
    * - WP_095
      - Proximity-flow, Presentation, Security
      - Support supervised/unsupervised retrieval
@@ -778,15 +762,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_098
      - Proximity-flow, Presentation, Security
      - Relying Party authentication
-     - Wallet Instance validates every per-``DocRequest`` ``readerAuth`` and selects exactly one path from the Trust Anchor validating the reader certificate: WRPAC/LoTE for EUDIW or National authentication certificate/Authentication Trust Anchor for National.
-   * - WP_098a
-     - Proximity-flow, Trust, Presentation, Security
-     - Reject ambiguous or failed trust path
-     - Wallet Instance rejects an ambiguous or failed reader-certificate path, never combines EUDIW and National evidence, and never retries the other framework.
-   * - WP_098b
-     - Proximity-flow, Trust, Presentation, Security
-     - Validate certificate-chain profile
-     - Wallet Instance requires unprotected COSE ``x5chain`` label ``33`` with the end-entity certificate first and the Trust Anchor omitted.
+     - Wallet Instance supports and performs Relying Party Instance Authentication in accordance with `ISO18013-5`_ reader-authentication.
    * - WP_099
      - Proximity-flow, Presentation, Interoperability
      - Domestic mDL support
@@ -822,7 +798,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_102e
      - Proximity-flow, Presentation, Interoperability
      - Verify Capabilities component
-     - The Capabilities component may omit either flag; when present, each flag is ``true``. ``ReaderAuthAllSupport`` does not make ``readerAuthAll`` mandatory or permit substitution.
+     - The Capabilities component within the DeviceEngagement data correctly sets both the ``HandoverSessionEstablishmentSupport`` and ``ReaderAuthAllSupport`` flags to ``true``.
    * - WP_102f
      - Proximity-flow, Presentation, Interoperability
      - Verify OriginInfos component
@@ -870,27 +846,19 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_105
      - Proximity-flow, Presentation, Security
      - Decrypt & verify ``SessionEstablishment``
-     - Wallet Instance decrypts ``SessionEstablishment``, extracts the encrypted ``DeviceRequest``, and validates every ``readerAuth`` over ``ReaderAuthentication``.
+     - Wallet Instance successfully decrypts the ``SessionEstablishment`` message using the derived session key and validates the Relying Party's signature.
    * - WP_106
      - Proximity-flow, Presentation, Security
      - Validate ``SessionEstablishment`` contents
-     - Wallet Instance verifies that ``SessionEstablishment`` includes ``EReaderKey.Pub`` and encrypted ``DeviceRequest`` with mandatory per-request authentication; the envelope is not treated as signed.
-   * - WP_106a
-     - Proximity-flow, Trust, Presentation, Interoperability
-     - Validate mandatory request information
-     - Wallet Instance rejects an ``ItemsRequest`` without non-empty ``requestInfo``, ``euWrprc`` or complete non-empty ``euWrpRegistrarInfo``; it decodes the bstr as WRPRC or Trust Mark only according to the authenticated reader path.
+     - Wallet Instance verifies the ``SessionEstablishment`` message includes the Relying Party’s Pub Key and a request for specific attribute(s) from the Relying Party.
    * - WP_107
      - Proximity-flow, Presentation, Privacy
      - Prompt attribute consent
-     - Wallet Instance performs path-specific authorization, exact scope and EDP checks, then displays requested Credentials and attributes and proceeds only after explicit User approval or an expressly permitted authorization override.
+     - Wallet Instance decrypts and displays the requested attributes to the User in a consent screen and proceeds only after receiving explicit User approval.
    * - WP_107a
      - Proximity-flow, Presentation, Privacy
-     - Display validated transparency data
-     - Wallet Instance displays verified RP/Service, purpose, intended use, retention and privacy-policy information from the selected path; EUDIW intermediation displays the intermediated RP/Service rather than Intermediary trade names, and raw certificate/JWT display is not required.
-   * - WP_107b
-     - Proximity-flow, Trust, Presentation, Security
-     - Validate path-specific authorization artifacts
-     - For EUDIW, Wallet Instance validates WRPAC/WRPRC, direct or intermediated binding, Service Provider entitlement, exact ``docType``/namespace scope and EDP without Register fallback; for National, it validates the by-value Trust Mark, direct identity binding, entitlement and exact overasking.
+     - Display Relying Party certificate
+     - Wallet Instance displays the full, parsed Relying Party Registration Certificate to the User for transparency before User consent and data disclosure.
    * - WP_108
      - Proximity-flow, Presentation, Interoperability
      - Retrieve mdoc Credentials
@@ -898,23 +866,19 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_109
      - Proximity-flow, Presentation, Interoperability
      - Prepare mdoc Response
-     - Wallet Instance builds the CBOR ``DeviceResponse`` transported in ``SessionData`` with a ``documents`` array populated with requested Credentials and issuer-signed attributes in ``issuerSigned``.
+     - Wallet Instance successfully builds the CBOR-encoded ``SessionData`` message (the mdoc Response) including a ``documents`` array populated with the requested Credentials.
    * - WP_110
      - Proximity-flow, Presentation, Security, Interoperability
      - mdoc authentication
-     - Wallet Instance correctly signs ``deviceSignature`` for each presented Credential, supports ECDSA P-256/SHA-256, and places attributes in ``deviceSigned`` only when explicitly authorized by the Provider.
+     - Wallet Instance correctly signs the ``deviceSigned`` authentication data for each presented Credential, following the mdoc authentication process as specified in Section 12.4 of [`ISO18013-5`_].
    * - WP_111
      - Proximity-flow, Presentation, Interoperability
      - Validate mdoc Response structure
-     - Wallet Instance constructs an ISO ``DeviceResponse`` with the required root and document components; a successful ``Document`` has no ``errors`` and an error-bearing document is not a successful EAAP.
+     - Wallet Instance constructs the mdoc Response as a CBOR-encoded object that includes a ``version`` component at its root and ensures each document within the ``documents`` array contains the mandatory ``docType`` component.
    * - WP_111a
      - Proximity-flow, Presentation, Security
      - Validate ``deviceSigned`` component
-     - Within each document, ``deviceSigned`` is a map containing ``nameSpaces`` and ``deviceAuth``; ``deviceAuth`` is a map containing the required ``deviceSignature`` over device-authentication data.
-   * - WP_111b
-     - Proximity-flow, Presentation, Security
-     - Validate response independently of reader trust framework
-     - Credential Issuer authentication, SHA-256 digests, temporal validity and applicable status are validated under each Credential's Rulebook; reader-path trust never selects a Credential Issuer Trust Anchor.
+     - Within each document, the ``deviceSigned`` component includes a ``deviceNameSpaces`` structure (possibly empty) plus a ``deviceAuth`` ``COSE_Sign1`` containing the required ``deviceSignature`` over the device-authentication data.
    * - WP_112
      - Proximity-flow, Presentation, Security
      - Encrypt ``SessionData``
@@ -1124,50 +1088,6 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
      - Backup and Restore, Interoperability
      - Credential issuance request
      - For each Credential, Wallet Instance successfully initiates a new Wallet-Initiated Authorization Code Issuance Flow bound to the new Wallet Instance key (fresh Holder Key Binding), and not a token renewal or a Re-Issuance Flow request.
-   * - WP_201
-     - Issuance, Interoperability
-     - Support both issuance grants
-     - Wallet Instance successfully completes issuance with the Authorization Code Grant and with the Pre-Authorized Code Grant; it accepts a Provider advertising either permitted grant.
-   * - WP_201a
-     - Issuance, Security
-     - PID Pre-Authorized Code physical presence
-     - Wallet Instance requires and verifies User physical-presence authorization before requesting a PID with the Pre-Authorized Code Grant, and rejects issuance when it is absent.
-   * - WP_201b
-     - Issuance, Interoperability
-     - Credential Offer invocation
-     - An ETSI compliant EUDI Wallet Credential Offer uses ``eu-eaa-offer://`` and contains at least one final permitted grant object.
-   * - WP_201c
-     - Issuance, Trust, Security
-     - Exclusive issuance trust path
-     - Wallet Instance selects EUDIW or National at issuance, consumes only the selected authenticated metadata result, and does not mix evidence or retry a failed path under the other framework.
-   * - WP_201d
-     - Issuance, Trust, Interoperability
-     - EUDIW signed metadata validation
-     - Wallet Instance validates ``application/jwt`` Issuer Metadata with protected ``x5c`` containing the signing WRPAC first and excluding the trust anchor before using the payload.
-   * - WP_201e
-     - Issuance, Trust, Interoperability
-     - National final metadata validation
-     - Wallet Instance uses only final policy-processed Federation metadata for National issuance.
-   * - WP_201f
-     - Issuance, Interoperability
-     - Issuer registration information
-     - Wallet Instance parses signed-payload ``issuer_info`` elements with ``format`` and ``data`` and extracts the WRPRC.
-   * - WP_201g
-     - Issuance, Interoperability
-     - Credential reuse policy
-     - Wallet Instance enforces ``credential_reuse_policy`` ``id``, ordered ``details``, and conditional reuse and reissue fields; absence means unlimited reuse and the reuse policy takes precedence over ``batch_credential_issuance``.
-   * - WP_201h
-     - Issuance, Security, Privacy
-     - EDP URI and data delivery
-     - Wallet Instance accepts EDP URI plus policy data, or URI alone only for an exact preloaded policy; it rejects an unresolved URI, rejects EDP on a PID, and stores the resolved EDP with each issued EAA.
-   * - WP_201i
-     - Issuance, Security, Privacy
-     - EDP attribute evaluation and display
-     - Before consent, Wallet Instance evaluates the base EDP and each recognized attribute rule, displays Credential and attribute results and blocks every unsatisfied disclosure.
-   * - WP_201j
-     - Issuance, Security, Privacy
-     - EDP override
-     - User approval can override a Credential-level or attribute-level ``EDP_NOT_SATISFIED`` result.
 
 .. _wallet-instance-optional-testcases:
 
@@ -1379,3 +1299,5 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Key Binding failure (Integrity Assertion failure)
      - When the Integrity Assertion in a Key Binding request fails validation (e.g., is tampered with), Wallet Provider returns a ``403 Forbidden`` response with the error code ``invalid_request``.
+
+

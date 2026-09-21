@@ -7,7 +7,12 @@ Proximity Flow
 
 This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
 
-The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`, before authorization. The EUDIW path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities; the National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a ``registration-entity`` Trust Mark. The Trust Anchor validating the reader certificate selects exactly one path. Evidence MUST NOT be combined and a failed path MUST NOT be retried under the other framework. The selected path is processed through :ref:`trust-evaluation:Selection at Presentation`, :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Relying Party Proximity Authentication`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency` as applicable.
+The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`. 
+
+- The EUDIW Trust Framework path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities; 
+- The National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a ``registration-entity`` Trust Mark. 
+
+The Wallet Instance validating the *mdoc reader* certificate selects exactly one path. Evidence from one path MUST NOT be combined with the other and a failed trust evaluation SHOULD NOT be retried under the other framework. The selected path is processed through :ref:`trust-evaluation:Selection at Presentation`, :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Relying Party Proximity Authentication`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency` as applicable.
 
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
@@ -157,19 +162,17 @@ Below are non-normative examples using the diagnostic notation of a CBOR-encoded
 
 **Step 9**: The Wallet Instance MUST compute the session key, as described in Step 7.
 
-**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate every ``readerAuth`` in every ``DocRequest`` over its ``ReaderAuthentication`` data. The unprotected COSE ``x5chain`` header (label ``33``) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor. 
+**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate either every ``readerAuth`` in every ``DocRequest`` or the ``readerAuthAll`` over its ``ReaderAuthentication`` data. The unprotected COSE ``x5chain`` header (label ``33``) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor. 
 
-The Wallet Instance validating that certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to :ref:`trust-evaluation:EUDIW Authentication`; National uses the Relying Party authentication certificate and Authentication Trust Anchor.
+The Wallet Instance validating the *mdoc reader* certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to :ref:`trust-evaluation:EUDIW Authentication`; National uses the Relying Party authentication certificate and Authentication Trust Anchor.
 
-Trust Anchors MUST NOT be mixed and the Wallet Instance MUST NOT retry the other path if a filure happens(:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
-
-**Step 11**: After successful reader authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
+**Step 11**: After successful *mdoc reader* authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
 
 For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`).
 
 For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See :ref:`trust-evaluation:Authorization`).
 
-Authentication and binding failures are terminal and no other path is tried :ref:`WP_107 <wallet-credential-presentation-testcases>`.
+Authentication and binding failures are terminal.
 
 The Wallet Instance MUST display human-readable verified Relying Party and Service identity, intended use or purpose, requested Credentials and attributes, retention intent, and privacy-policy information from the selected path's validated authorization artifact and Registrar information.
 
@@ -192,9 +195,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 .. literalinclude:: ../../examples/iso-device-response.txt
   :language: text
 
-**Step 13**: The Relying Party Instance receives and decrypts ``SessionData`` and independently validates each mdoc's device authentication, issuer authentication, SHA-256 digests, temporal validity, and applicable status. It MUST support ECDSA P-256 with SHA-256 for validating ``deviceSignature`` and status signatures and SHA-256 for mdoc digests, without weakening stricter Credential Rulebooks. 
-
-It MUST apply existing Token Status List processing when present and applicable. Credential Issuer trust remains independently governed by each Credential's Rulebook; reader-path selection MUST NOT select a Credential Issuer Trust Anchor (:ref:`PPR-029 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_112 <wallet-credential-presentation-testcases>`).
+**Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the `TOKEN-STATUS-LIST`_.
 
 **Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 

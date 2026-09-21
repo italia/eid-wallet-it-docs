@@ -132,9 +132,9 @@ This section provides the set of test cases designed for technical implementers 
     - Ephemeral public key meets the requirements of the selected cipher suite.
 
   * - PPR-023
-    - Server Retrieval
-    - Verify that the ETSI profile rejects Server Retrieval.
-    - Server Retrieval is rejected; only profiled proximity retrieval methods are accepted.
+    - BLE Configuration
+    - Verify that only Central Client mode is supported.
+    - Only Central Client mode is supported for BLE connections.
 
   * - PPR-024
     - Capabilities
@@ -143,8 +143,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-025
     - Capabilities
-    - Verify that ``ReaderAuthAllSupport`` is optional and does not replace per-request authentication.
-    - The flag is not required merely because ``Capabilities`` is present, and ``readerAuthAll`` never substitutes for ``readerAuth``.
+    - Verify that ``ReaderAuthAllSupport`` is set to ``true`` when present.
+    - ``ReaderAuthAllSupport`` is correctly set to ``true``.
 
   * - PPR-026
     - mdoc Request
@@ -189,12 +189,12 @@ This section provides the set of test cases designed for technical implementers 
   * - PPR-034
     - Session Establishment
     - Test that ``SessionEstablishment`` message is prepared correctly.
-    - The envelope carries ``EReaderKey.Pub`` and encrypted ``DeviceRequest`` and is not treated as a signed object.
+    - ``SessionEstablishment`` message is properly prepared with required components.
 
   * - PPR-035
     - Session Establishment
-    - Test per-``DocRequest`` ``readerAuth`` signatures and their ``ReaderAuthentication`` input.
-    - Every ``DocRequest`` contains an independently valid ``readerAuth``; no whole-envelope signature is required.
+    - Test that ``SessionEstablishment`` message is signed by RP Instance.
+    - ``SessionEstablishment`` message is correctly signed by Relying Party Instance.
 
   * - PPR-036
     - Session Establishment
@@ -203,8 +203,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-037
     - Session Establishment
-    - Test that ``SessionEstablishment`` includes ``EReaderKey.Pub`` and encrypted ``DeviceRequest``.
-    - The envelope includes the key and encrypted request, whose ``DocRequest`` entries contain the required reader authentication.
+    - Test that ``SessionEstablishment`` includes ``EReaderKey.Pub`` and attribute request.
+    - ``SessionEstablishment`` message includes required ``EReaderKey.Pub`` and attribute request.
 
   * - PPR-038
     - Message Transmission
@@ -223,8 +223,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-041
     - Signature Verification
-    - Test that the Wallet validates every ``readerAuth`` and selects exactly one trust path.
-    - The Wallet validates the certificate chain and signature for every request, rejects ambiguity, and never retries under the other framework.
+    - Test that Relying Party correctly handles Wallet Instance verifying RP Instance signature.
+    - Wallet Instance correctly verifies Relying Party Instance signature.
 
   * - PPR-042
     - Attribute Request Processing
@@ -238,8 +238,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-044
     - Certificate Display
-    - Test path-correct User Transparency data.
-    - Wallet Instance displays validated RP/Service, purpose, requested Credentials/attributes, retention and privacy-policy information; raw certificate/JWT display is not required.
+    - Test that Relying Party correctly handles Wallet Instance displaying RP Registration Certificate.
+    - Wallet Instance displays Relying Party Registration Certificate for transparency.
 
   * - PPR-045
     - Credential Retrieval
@@ -278,8 +278,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-052
     - Document Validation
-    - Test independent device, issuer, digest, temporal and status validation.
-    - Relying Party validates each mdoc under its Credential Rulebook independently of reader trust and applies applicable Token Status List processing.
+    - Test that RP Instance checks mdoc validity and Issuer signature.
+    - Relying Party Instance correctly validates mdoc and Issuer signature.
 
   * - PPR-053
     - BLE Disconnection
@@ -293,18 +293,18 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-055
     - Request Structure Compliance
-    - Test that mdoc Request is compliant with required structure. In particular, it includes ``readerAuth`` and every ``ItemsRequest`` has non-empty ``requestInfo`` with ``euWrprc`` and complete ``euWrpRegistrarInfo``.
-    - mdoc Request complies with ETSI ``ISO/IEC 18013-REQ-01`` through ``-11`` and the selected path semantics.
+    - Test that mdoc Request is compliant with required structure.
+    - mdoc Request complies with required structure and includes necessary components.
 
   * - PPR-056
     - Response Structure Compliance
     - Test that mdoc Response is compliant with required structure.
-    - A successful ``Document`` has no ``errors``; error-bearing documents are not successful EAAPs.
+    - mdoc Response complies with required structure and includes necessary components.
 
   * - PPR-057
     - Document Structure Compliance
-    - Test map structures and attribute placement.
-    - ``issuerSigned`` and ``deviceSigned`` are maps, issuer-signed disclosures are in ``issuerSigned``, and ``deviceSigned`` contains only Provider-authorized device attributes.
+    - Test that documents are compliant with required structure.
+    - Documents comply with required structure and include necessary components.
 
   * - PPR-058
     - Document Type Validation
@@ -318,8 +318,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-060
     - Device Authentication
-    - ``deviceAuth`` is a map including the required ``deviceSignature`` and supports ECDSA P-256/SHA-256.
-    - Device authentication is correctly represented and validated with the applicable cryptographic baseline.
+    - Test that ``deviceAuth`` includes ``deviceSignature``.
+    - ``deviceAuth`` structure includes required ``deviceSignature`` for authentication.
 
   * - PPR-061
     - Wallet Attestation Inclusion
@@ -355,55 +355,5 @@ This section provides the set of test cases designed for technical implementers 
     - Channel Closure
     - Test that communication channel is closed on termination.
     - Communication channel used for data retrieval is properly closed.
-  * - PPR-068
-    - Trust Path Selection
-    - Test EUDIW selection from a WRPAC path and National selection from an Authentication Trust Anchor path.
-    - The validating Trust Anchor selects exactly one path before authorization.
-  * - PPR-069
-    - Trust Path Failure
-    - Test ambiguous, invalid, mixed-evidence and cross-framework retry cases.
-    - The Wallet rejects ambiguity or failure, does not combine WRPAC/WRPRC with National evidence, and does not retry the other path.
-  * - PPR-070
-    - EUDIW Reader Authentication
-    - Test WRPAC chain order, Trust Anchor exclusion, revocation, SCT and proof of possession.
-    - EUDIW ``readerAuth`` validates only with the applicable WRPAC List of Trusted Entities and the WRPAC end entity first.
-  * - PPR-071
-    - National Reader Authentication
-    - Test the National authentication certificate, path validation and revocation against the Authentication Trust Anchor.
-    - National ``readerAuth`` validates only against the Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration.
-  * - PPR-072
-    - Request Information
-    - Test mandatory non-empty ``requestInfo`` and complete Registrar data in every ``ItemsRequest``.
-    - Missing, empty or mistyped ``euWrprc`` or ``euWrpRegistrarInfo`` is rejected.
-  * - PPR-073
-    - EUDIW Authorization Artifact
-    - Test that EUDIW ``euWrprc`` is a serialized ``rc-wrp+cwt`` WRPRC and remains authoritative.
-    - The WRPRC is validated, Registrar data cannot replace it, and a missing or invalid WRPRC does not trigger a Register lookup.
-  * - PPR-074
-    - National Authorization Artifact
-    - Test that National ``euWrprc`` is UTF-8 compact signed ``registration-entity`` Trust Mark JWT bytes.
-    - The Trust Mark is validated only on the National path; EUDIW evidence and fallback are rejected.
-  * - PPR-075
-    - National Identity Binding
-    - Test binding of certificate identity, Trust Mark subject/official identifiers and Registrar identifiers.
-    - All identifiers resolve to the same direct Relying Party; mismatches are terminal and National intermediated proximity is not introduced.
-  * - PPR-076
-    - Authorization Scope
-    - Test entitlement, exact case-sensitive ``docType`` and namespace scope, overasking and applicable EDP checks under both paths.
-    - Disclosure is blocked for missing entitlement, overasking, or an unsatisfied applicable EDP.
-  * - PPR-077
-    - User Transparency
-    - Test path-correct identity, service, purpose, retention, privacy-policy and Registrar transparency data.
-    - The User sees validated information for the selected path and EUDIW intermediation does not expose Intermediary trade names.
-  * - PPR-078
-    - ReaderAuthAll Non-Substitution
-    - Test a request containing ``readerAuthAll`` with missing per-request ``readerAuth``.
-    - The request is rejected because ``readerAuthAll`` is additional and cannot replace ``readerAuth``.
-  * - PPR-079
-    - Attribute Placement
-    - Test issuer-signed and device-signed attribute placement.
-    - All issuer-signed attributes are in ``issuerSigned`` and ``deviceSigned`` contains attributes only when explicitly authorized by the Provider.
-  * - PPR-080
-    - HAIP Cryptographic Baseline
-    - Test P-256/SHA-256 signature validation and SHA-256 mdoc digest support without importing HAIP transport parameters.
-    - The baseline is supported, stricter Rulebooks remain effective, and no OpenID4VP transport, DCQL, ``vp_token``, JAR, JWE, redirect or Digital Credentials API behavior is required.
+
+

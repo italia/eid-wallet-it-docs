@@ -33,11 +33,11 @@ The Digital Credential Issuer Solution MUST:
    4. Authenticate to Wallet Instances during issuance to prove its legitimacy.
    5. Support immediate issuance flow and MAY support deferred issuance for various operational scenarios.
    6. Support the Authorization Code Grant and advertise it in the Authorization Server metadata.
-   7. Publish the applicable signed metadata and registration information, Credential reuse policy, and EDP in accordance with [`ETSI TS 119 472-3`_] clauses 4.1 through 4.3; EDP MUST NOT be published for a PID.
+   7. Publish the applicable signed metadata and registration information, Credential reuse policy, and EDP. EDP MUST NOT be published for a PID Provider.
    8. Implement appropriate error handling and User notifications for all processes.
    9. Maintain comprehensive audit trails while respecting privacy regulations.
    10. Issue Digital Credentials that support Selective Disclosure.
-   11. Periodically renew its trust with the Federation.
+   11. Periodically renew its trust with the National and EUDIW Trust FRameworks where applicable.
    12. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID and IT-Wallet ID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
    13. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
    14. For IT-Wallet ID issuance, authenticate Users using national Digital Identity infrastructure with LoA High or with eID Substantial Authentication with MRTD Verification.
@@ -69,7 +69,7 @@ Credential Issuer Component
 
 Following the `OpenID4VCI`_ specification and the implementation profile in Section :ref:`credential-issuance:Digital Credential Issuance`, this component MUST:
 
-    - Issue Digital Credentials to Wallet Instances using the permitted Authorization Code and/or Pre-Authorized Code Grant.
+    - Issue Digital Credentials to Wallet Instances.
     - Process Digital Credential requests.
     - Obtain User data from Authentic Sources.
     - Generate properly formatted and signed Digital Credentials in supported formats (SD-JWT-VC, mDoc-CBOR). See Section :ref:`credential-data-model:Digital Credential Data Model` for more details.

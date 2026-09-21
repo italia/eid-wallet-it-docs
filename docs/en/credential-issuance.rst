@@ -7,7 +7,7 @@ Digital Credential Issuance
 
 This section describes the PID and (Q)EAAs issuance flow with a high level of security.
 
-Issuance uses [`OpenID4VCI`_], profiled by [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_], and is controlled by [`ETSI TS 119 472-3`_] V1.1.1, clauses 4.1 through 4.3, where ETSI specializes or conflicts with OpenID4VCI or HAIP.
+Issuance uses [`OpenID4VCI`_], profiled by [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_], and is controlled by [`ETSI TS 119 472-3`_].
 The Wallet Unit MUST support the Authorization Code Grant and possibly the Pre-Authorized Code Grant (as requested by [`ETSI TS 119 472-3`_]), and each Credential Issuer MUST support the Authorization Code Grant.
 
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Issuance`; the EUDIW and National paths are mutually exclusive for each interaction, and a failed path MUST NOT be retried or supplemented with evidence from the other path.

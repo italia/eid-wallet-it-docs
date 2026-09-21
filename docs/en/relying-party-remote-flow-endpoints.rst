@@ -6,8 +6,8 @@ The Relying Party MUST expose the endpoints required by the selected remote pres
 .. note::
 
   The Relying Party makes explicit its trust framework for the remote flow as follows: 
-  - in the National Trust Framework path requires the ``client_id`` prefix in the be ``openid_federation``.
-  - in the EUDIW Trust Framework path requires the ``client_id`` prefix in the signed Request Object to be valued with ``x509_hash``.
+  - the National Trust Framework requires the ``client_id`` prefix in the be ``openid_federation``.
+  - the EUDIW Trust Framework requires the ``client_id`` prefix in the signed Request Object to be valued with ``x509_hash``.
 
 .. note::
   Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`).
@@ -29,7 +29,7 @@ The following endpoints are required for OpenID4VP 1.0 remote presentation flows
 Request URI Endpoint
 ....................
 
-The Request URI Endpoint is where the Relying Party provides the signed Request Object by reference to the Wallet Instance. This endpoint supports GET and, when requested by ``request_uri_method``, POST as defined in the OpenID4VP 1.0 specification.
+The Request URI Endpoint is where the Relying Party provides the signed Request Object by reference (OIDFVP-HAIP-REDIRECTS-04 in `ETSI TS 119 472-2`_) to the Wallet Instance. This endpoint supports GET and, when requested by ``request_uri_method``, POST as defined in the OpenID4VP 1.0 specification.
 
 For detailed implementation requirements, see :ref:`remote-flow:Request URI Request` and :ref:`remote-flow:Request URI Response`.
 
@@ -127,7 +127,7 @@ Security Considerations
 All Relying Party endpoints MUST implement appropriate security measures:
 
 - **HTTPS Only**: All endpoints MUST be accessible only over HTTPS
-- **Endpoint Mix-up Protection**: Endpoint URLs MUST be attested by trusted third parties through the respective NAtional or EUDIW.
+- **Endpoint Mix-up Protection**: Endpoint URLs MUST be attested by trusted third parties through the respective National or EUDIW Trust Framework.
 - **Input Validation**: All endpoints MUST validate input parameters and reject malformed requests
 - **Rate Limiting**: Endpoints SHOULD implement rate limiting to prevent abuse
 - **Audit Logging**: All endpoint interactions SHOULD be logged for security monitoring
@@ -141,7 +141,7 @@ Implementation Notes
 - The specific implementation details for most endpoints are left to the Relying Party's discretion
 - Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows
 - Proximity flow endpoints MUST support the lifecycle management of Verifier Apps
-- National redirect endpoints MUST be discoverable through the Relying Party's Entity Configuration. EUDIW redirect endpoint metadata is carried in the signed Request Object and is authenticated by the WRPAC according to :ref:`trust-evaluation:EUDIW Authentication`.
+- For a Relying Party operating in the National Trust Framework, its endpoints MUST be discoverable through the Relying Party's Entity Configuration. For a Relying Party operating in the EUDIW Trust Framework, its endpoints are carried in the signed Request Object which is authenticated by the WRPAC according to :ref:`trust-evaluation:EUDIW Authentication`.
 - Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions
 
 For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.

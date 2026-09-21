@@ -58,7 +58,7 @@ The :numref:`fig_High-Level-Flow-ITWallet-EAA-Issuance` shows a general architec
   - the User has a valid PID or IT-Wallet ID stored in their own Wallet Instance, according to :ref:`pid-until-notification`;
   - the EAA requires a high security implementation profile.
 
-.. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
+.. _fig_High-Level-Flow-ITWallet-EAA-Issuance:
 .. plantuml:: plantuml/eaa-issuance-high-level-flow.puml
     :width: 99%
     :alt: The figure illustrates the general architecture and high level flow for EAA issuance.

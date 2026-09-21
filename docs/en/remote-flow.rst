@@ -5,9 +5,9 @@
 Remote Flow
 ===========
 
-Remote presentation uses [`OpenID4VP`_]. The EUDIW path is profiled by clause 6 of [`ETSI TS 119 472-2`_] and by the applicable requirements of [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_]. The ``client_id`` prefix selects the complete trust path: ``x509_hash`` selects the EUDIW path and ``openid_federation`` selects the National Trust Framework extension (see :ref:`trust-evaluation:Selection at Presentation`). ETSI clause 6 prevails over HAIP where the two sources differ. Implementations MUST NOT combine the paths or retry a failed path under the other framework.
+Remote presentation uses [`OpenID4VP`_] and by the applicable requirements of [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. The ``client_id`` prefix selects the complete trust path: ``x509_hash`` selects the EUDIW path and ``openid_federation`` selects the National Trust Framework extension (see :ref:`trust-evaluation:Selection at Presentation`). ETSI clause 6 prevails over HAIP where the two sources differ. Implementations MUST NOT combine the paths or retry a failed path under the other framework.
 
-The Relying Party and Wallet Instance MUST support both of the following device topologies (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
+The Relying Party and Wallet Instance MUST support both of the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
 
 * **Same Device**: the flow MUST invoke the Wallet Instance using an HTTP redirect (``302``) or an HTML href (:ref:`RPR-01 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 * **Cross Device**: the Relying Party MUST provide a ``QR Code`` which the User frames with the device camera or with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
