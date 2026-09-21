@@ -74,7 +74,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
        The Wallet Instance MUST perform exact, case-sensitive entitlement and DCQL scope checks (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *Authorization Response*: the Wallet Instance presents the requested information using ``direct_post.jwt``.
-  6. *RP Checks*: The Relying Party validates the encrypted response and presented Credentials. Trust in each Credential Issuer is governed by that Credential Issuer's Trust Framework and is independent of the selected Relying Party trust path.
+  6. *RP Checks*: The Relying Party validates the encrypted response and presented Credentials. Trust in each Credential Issuer is governed by that Credential Issuer's Trust Framework and is independent of the Relying Party's Trust Framework.
   7. *Relying Party Response*: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.
 
 Below is a sequence diagram that details the interactions between all the involved parties.
