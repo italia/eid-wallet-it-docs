@@ -79,7 +79,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_002h
      - Trust, Interoperabilità
      - Metadata Entity Configuration
-     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_solution`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
+     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``openid_wallet_provider`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
    * - WP_003
      - Trust, Interoperabilità
      - Utilizzo chiave metadata

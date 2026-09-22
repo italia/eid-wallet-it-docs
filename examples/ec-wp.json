@@ -15,7 +15,7 @@
     ]
   },
   "metadata": {
-    "wallet_solution": {
+    "openid_wallet_provider": {
       "logo_uri": "https://wallet-solution.example.org/compact-logo.svg",
       "jwks": {
         "keys": [

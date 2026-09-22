@@ -51,7 +51,7 @@ Payload JWT della Entity Configuration del Fornitore di Wallet
     * - ``jwks``
       - OBBLIGATORIO. Un JSON Web Key Set (JWKS) che rappresenta la parte pubblica delle chiavi di firma dell'Entità di Federazione. La chiave privata corrispondente è utilizzata dalla Soluzione Wallet per firmare la Entity Configuration su se stessa.
     * - ``metadata``
-      - OBBLIGATORIO. Oggetto JSON che rappresenta i Tipi di Entità e i metadati per quei Tipi di Entità. Ogni nome membro dell'oggetto JSON è un Identificatore di Tipo di Entità, e ogni valore DEVE essere un oggetto JSON contenente parametri di metadati secondo lo schema di metadati del Tipo di Entità. DEVE contenere i metadati ``wallet_solution`` e OPZIONALMENTE i metadati ``federation_entity``.
+      - OBBLIGATORIO. Oggetto JSON che rappresenta i Tipi di Entità e i metadati per quei Tipi di Entità. Ogni nome membro dell'oggetto JSON è un Identificatore di Tipo di Entità, e ogni valore DEVE essere un oggetto JSON contenente parametri di metadati secondo lo schema di metadati del Tipo di Entità. DEVE contenere i metadati ``openid_wallet_provider`` e OPZIONALMENTE i metadati ``federation_entity``.
 
 
 .. note::
@@ -64,7 +64,7 @@ Esempio di Entity Configuration del Fornitore di Wallet
 Di seguito è riportato un esempio non normativo di payload di una Entity Configuration del Fornitore di Wallet contenente metadati per
 
 - `federation_entity`
-- `wallet_solution`
+- `openid_wallet_provider`
 
 .. literalinclude:: ../../examples/ec-wp.json
   :language: JSON
