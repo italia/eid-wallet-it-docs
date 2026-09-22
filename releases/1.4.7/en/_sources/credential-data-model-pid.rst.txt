@@ -83,7 +83,7 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
 .. note::
    **Identity Matching and Identity Reconciliation**
 
-   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available. They MUST apply the identity matching and identity reconciliation rules defined in :ref:`identity-matching`. When that identifier is presented, Unique National Identifier Binding applies (:ref:`CI_201 <credential-issuer-testcases>`). When it is not presented, Attribute-Based Binding on at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) applies (:ref:`CI_202 <credential-issuer-testcases>`).
+   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available. They MUST apply the identity matching and identity reconciliation rules defined in :ref:`identity-matching`. When that identifier is presented, Unique National Identifier Binding applies (:ref:`CI_201 <credential-issuer-testcases>`). When it is not presented, Attribute-Based Binding on at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` applies (:ref:`CI_202 <credential-issuer-testcases>`).
 
 All the User attributed listed above MUST be selectively disclosable.
 In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID:

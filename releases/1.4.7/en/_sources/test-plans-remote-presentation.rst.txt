@@ -506,6 +506,6 @@ This section provides the set of test cases designed for technical implementers 
   * - RPR-116
     - Identity Matching
     - Test Attribute-Based Binding when a PID is presented without ``personal_administrative_number``.
-    - The Relying Party matches at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
+    - The Relying Party matches at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
 
 
