@@ -268,6 +268,9 @@ latex_elements = {
         \usepackage{luatex85}
         \usepackage{polyglossia}
         \setmainlanguage{italian}
+        % This TeX Live has no Italian patterns (polyglossia falls back to
+        % nohyphenation), so narrow table cells cannot break these words.
+        \AddToHook{begindocument/end}{\hyphenation{in-te-ro-pe-ra-bi-li-tà de-cen-tra-liz-za-zio-ne di-sin-stal-la-zio-ne au-ten-ti-ca-zio-ne i-ni-zia-liz-za-zio-ne pre-sen-ta-zio-ne re-gi-stra-zio-ne e-li-mi-na-zio-ne au-to-riz-za-zio-ne di-scon-nes-sio-ne ter-mi-na-zio-ne re-in-di-riz-za-men-to vi-sua-liz-za-zio-ne de-crit-ta-zio-ne tra-smis-sio-ne e-la-bo-ra-zio-ne pre-pa-ra-zio-ne fi-nan-zia-rio ob-bli-ga-to-rio i-stru-zio-ne in-ter-op-er-a-bil-i-ty es-tab-lish-ment au-tho-ri-za-tion pre-sen-ta-tion com-mu-ni-ca-tion au-then-ti-ca-tion com-pat-i-bil-i-ty con-fig-u-ra-tion en-gage-ment man-age-ment sub-sti-tu-tion per-for-mance ter-mi-na-tion en-ve-lope re-sponse}}
         
         % -- Fix for fancyhdr warning --
         \setlength{\headheight}{14pt}
