@@ -126,11 +126,6 @@ paths:
           $ref: '#/components/responses/NotFound'
       security: []
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   parameters:
     identifierQuery:
       name: identifier
