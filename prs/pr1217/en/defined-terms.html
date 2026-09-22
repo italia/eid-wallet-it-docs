@@ -420,8 +420,7 @@ Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 <dt id="term-IT-Wallet-System-Register"><strong>IT-Wallet System Register</strong><a class="headerlink" href="#term-IT-Wallet-System-Register" title="Link to this term">¶</a></dt><dd><p>Register of entities participating in the IT-Wallet System.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
-<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD or Keystore using the Key Attestation APIs (OEM).
-Aligned with Technical Specification 3.</p>
+<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dt id="term-KA"><strong>KA</strong><a class="headerlink" href="#term-KA" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD or Keystore using the Key Attestation APIs (OEM). Private keys bound to a Key Attestation MUST be stored in the same Keystore or WSCD as the Digital Credential keys that the Key Attestation attests.</p>
 </dd>
 <dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
@@ -580,8 +579,7 @@ Aligned with ARF 2.7.3.</p>
 <dt id="term-Wallet-Unit"><strong>Wallet Unit</strong><a class="headerlink" href="#term-Wallet-Unit" title="Link to this term">¶</a></dt><dd><p>Unique configuration of a Wallet Solution for an individual User, including security features.
 Aligned with ARF 2.7.3.</p>
 </dd>
-<dt id="term-Wallet-Unit-Attestation"><strong>Wallet Unit Attestation</strong><a class="headerlink" href="#term-Wallet-Unit-Attestation" title="Link to this term">¶</a></dt><dt id="term-WUA"><strong>WUA</strong><a class="headerlink" href="#term-WUA" title="Link to this term">¶</a></dt><dd><p>Data object that attests keys of a Wallet Unit, distinct from the Wallet Instance Attestation (WIA). Private keys bound to a WUA MUST be stored in the same Keystore or WSCD as the Digital Credential keys that the WUA attests.
-Aligned with ARF.</p>
+<dt id="term-Wallet-Unit-Attestation"><strong>Wallet Unit Attestation</strong><a class="headerlink" href="#term-Wallet-Unit-Attestation" title="Link to this term">¶</a></dt><dt id="term-WUA"><strong>WUA</strong><a class="headerlink" href="#term-WUA" title="Link to this term">¶</a></dt><dd><p>Attestations a Wallet Unit uses during issuance of a PID or an attestation. A Wallet Unit Attestation comprises two types: Wallet Instance Attestations (WIAs), which attest the integrity of the Wallet Instance, and Key Attestations (KAs), which attest the security of cryptographic keys stored in the Wallet Unit.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -827,7 +825,7 @@ Aligned with ISO 9241-210:2010.</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -101,31 +101,7 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un IT-Wallet ID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details`` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
-
-Tale oggetto aggiuntivo DEVE contenere i seguenti claim, come definiti anche nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`:
-
-.. list-table:: Oggetto Authorization Details ``it_l2+document_proof``
-   :widths: 25 15 60
-   :header-rows: 1
-
-   * - **Claim**
-     - **Tipo**
-     - **Descrizione**
-   * - **type**
-     - stringa
-     - OBBLIGATORIO. DEVE essere ``it_l2+document_proof``.
-   * - **idphinting**
-     - stringa
-     - OBBLIGATORIO. URL del Provider di Identità da usare come hint.
-   * - **challenge_method**
-     - stringa
-     - OBBLIGATORIO. Metodo di verifica MRTD. DEVE essere ``mrtd+ias``. Metodi di verifica aggiuntivi POSSONO essere definiti in versioni future di questa Specifica.
-   * - **challenge_redirect_uri**
-     - stringa
-     - OBBLIGATORIO. URI di redirect, riconosciuto dall'Istanza del Wallet, per la gestione della risposta alla challenge.
-
-Se tale oggetto è assente dall'array ``authorization_details``, il Provider EAA DEVE autenticare l'Utente con CieID LoA High.
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. L'inclusione dell'oggetto ``it_l2+document_proof`` in ``authorization_details`` e il metodo di autenticazione applicato dall'*Authorization Server* sono definiti in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
 
 Di seguito un esempio non normativo di PAR:
 
@@ -138,18 +114,16 @@ Di seguito un esempio non normativo di PAR:
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
 
     client_id=47b982369791d08003a7283f059cb0d1&
-    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
+    request=eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWF1dGh6LXJlcStqd3QiLCJraWQiOiJiMDFiODIwOGQ5ZTZjYzgzNGQ4N2RjMzU2YWI1MDE3MCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL2VhYS1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdFctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJlaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9laWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsImNoYWxsZW5nZV9tZXRob2QiOiJtcnRkK2lhcyIsImlkcGhpbnRpbmciOiJodHRwczovL2lkcC5leGFtcGxlLm9yZyIsImNoYWxsZW5nZV9yZWRpcmVjdF91cmkiOiJodHRwczovL3N0YXJ0LndhbGxldC5leGFtcGxlLm9yZy9jaGFsbGVuZ2UifV0sInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnIn0.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
 La Risposta PAR e la Richiesta di Autorizzazione sono le stesse delle Specifiche IT-Wallet.
 
 Fase 2: Autenticazione Primaria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità configurato per l'autenticazione primaria.
+Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità per l'autenticazione primaria, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. L'Utente completa il flusso di autenticazione e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
 In questo flusso **LoA3** (ISO/IEC 29115) corrisponde a eIDAS **Substantial** e ai mezzi nazionali L2 (SPID L2 / CieID Substantial). **LoA High** corrisponde a eIDAS High e a CieID LoA High (CIE L3). Un'autenticazione Substantial NON DEVE essere registrata o trattata come High (:ref:`CI_205 <credential-issuer-testcases>`).
-
-L'Utente completa il flusso di autenticazione Substantial (SPID L2 o CieID Substantial) e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
 Il Server di Autorizzazione EAA DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
 

@@ -331,7 +331,7 @@ Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selecti
 <blockquote>
 <div><ul class="simple">
 <li><p>Se <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> è disponibile e contiene un URL HTTPS (Universal Link), la Relying Party DOVREBBE utilizzare quell'endpoint.</p></li>
-<li><p>Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati: <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> (come definito nella Sezione 13.1.2 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]) o <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> (come definito nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.</p></li>
+<li><p>Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati: <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> (come definito nella Sezione 13.1.2 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]) o <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> (come definito nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.</p></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -356,7 +356,7 @@ Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selecti
 <blockquote>
 <div><ul class="simple">
 <li><p>direttamente, passando un Request Object by value (tramite il parametro <code class="docutils literal notranslate"><span class="pre">request</span></code>), oppure</p></li>
-<li><p>passando un Request Object by reference (tramite il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>), dove il Request Object firmato è disponibile per il download. Questo è l'unico metodo consentito per le Relying Party conformi all'OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></li>
+<li><p>passando un Request Object by reference (tramite il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>), dove il Request Object firmato è disponibile per il download. Questo è l'unico metodo consentito per le Relying Party conformi all'OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>.</p></li>
 </ul>
 <p>Se il Request Object è passato by reference, vengono eseguiti anche i Passaggi 2 e 3.</p>
 </div></blockquote>
@@ -694,7 +694,7 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 <p>Se sia la Relying Party che l'Istanza del Wallet supportano il <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party, con il metodo POST e il tipo di contenuto impostato su <cite>application/x-www-form-urlencoded</cite> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083</span></a>).
 La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083a–WP_083c</span></a>).</p>
 <table class="longtable docutils align-default" id="id3">
-<caption><span class="caption-number">Tabella 12.16 </span><span class="caption-text">Parametri dell'Endpoint URI Request</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Tabella 12.15 </span><span class="caption-text">Parametri dell'Endpoint URI Request</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -714,7 +714,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 </tbody>
 </table>
 <span id="table-wallet-metadata-parameters"></span><table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Tabella 12.17 </span><span class="caption-text">Parametri dei metadata del Wallet</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Tabella 12.16 </span><span class="caption-text">Parametri dei metadata del Wallet</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -726,7 +726,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>vp_formats_supported</cite></p></td>
-<td><p>OBBLIGATORIO. Oggetto contenente un elenco di coppie nome/valore, in cui il nome è un identificatore di formato di Credenziale e il valore definisce i parametri specifici del formato supportati da un Wallet. Vedere <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendice B. Le Istanze del Wallet DEVONO supportare gli identificatori di formato di Credenziale richiesti da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> (inclusi <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> e <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Oggetto contenente un elenco di coppie nome/valore, in cui il nome è un identificatore di formato di Credenziale e il valore definisce i parametri specifici del formato supportati da un Wallet. Vedere <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendice B. Le Istanze del Wallet DEVONO supportare gli identificatori di formato di Credenziale richiesti da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a> (inclusi <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> e <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>client_id_prefixes_supported</cite></p></td>
 <td><p>RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> e <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; se omesso, il valore predefinito è pre-registrato.</p></td>
@@ -754,7 +754,7 @@ loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, l
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>univarsal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Gli <em>URL scheme</em> <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> e <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> definiti in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> sono supportati per garantire l'interoperabilità.</p>
+Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Gli <em>URL scheme</em> <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> e <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> definiti in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a> e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> sono supportati per garantire l'interoperabilità.</p>
 </div>
 </section>
 <section id="risposta-dell-endpoint-uri-request">
@@ -841,7 +841,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'intestazione <code class="docutils literal notranslate"><span class="pre">x5c</span></code> NON DEVE includere il certificato radice, come richiesto da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>. La catena di certificati <code class="docutils literal notranslate"><span class="pre">x5c</span></code> DEVE validare a un certificato radice preconfigurato; vedere la Sezione <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a> per informazioni di base sulla validazione della catena di certificati X.509.</p>
+<p>L'intestazione <code class="docutils literal notranslate"><span class="pre">x5c</span></code> NON DEVE includere il certificato radice, come richiesto da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>. La catena di certificati <code class="docutils literal notranslate"><span class="pre">x5c</span></code> DEVE validare a un certificato radice preconfigurato; vedere la Sezione <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a> per informazioni di base sulla validazione della catena di certificati X.509.</p>
 </div>
 <p>I parametri del payload JWT sono descritti qui:</p>
 <table class="longtable docutils align-default">
@@ -1410,7 +1410,7 @@ della richiesta DOVREBBE includere un parametro con un valore casuale. La rispos
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -361,8 +361,8 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
-      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD or Keystore using the Key Attestation APIs (OEM).
-      Aligned with Technical Specification 3.
+    **KA**
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD or Keystore using the Key Attestation APIs (OEM). Private keys bound to a Key Attestation MUST be stored in the same Keystore or WSCD as the Digital Credential keys that the Key Attestation attests.
 
     **Wallet Instance Attestation**
     **WIA**
@@ -371,8 +371,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Wallet Unit Attestation**
     **WUA**
-      Data object that attests keys of a Wallet Unit, distinct from the Wallet Instance Attestation (WIA). Private keys bound to a WUA MUST be stored in the same Keystore or WSCD as the Digital Credential keys that the WUA attests.
-      Aligned with ARF.
+      Attestations a Wallet Unit uses during issuance of a PID or an attestation. A Wallet Unit Attestation comprises two types: Wallet Instance Attestations (WIAs), which attest the integrity of the Wallet Instance, and Key Attestations (KAs), which attest the security of cryptographic keys stored in the Wallet Unit.
 
     **Digital Credential Catalog**
       Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.

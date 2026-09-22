@@ -8,7 +8,6 @@ Matrice di Test per la Valutazione delle Firme
 
 Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet, le Relying Party e i Credential Issuer per la valutazione di qualsiasi dichiarazione firmata, siano queste asserzioni, richieste, attestazioni o Credenziali.
 
-
 .. list-table::
   :class: longtable
   :widths: 15 15 35 35

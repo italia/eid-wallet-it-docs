@@ -337,222 +337,8 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <p class="admonition-title">Nota</p>
 <p>I casi di test in questo elenco variano di ambito: alcuni restano ad alto livello e rimandano al completamento dei flussi utente, alla conformità rispetto ai principi architetturali e di interoperabilità; altri ancora sono di basso livello, mirati a singoli requisiti dettagliati e verificano funzionalità specifiche.</p>
 </div>
-<p>Il profilo implementativo attuale resta il <strong>Keystore hardware-backed interno locale</strong> (TEE / StrongBox / Secure Enclave). In questo piano <strong>Keystore</strong> indica quel componente on-device e <strong>WSCD</strong> indica un dispositivo crittografico certificabile High (HSM o smart card, almeno Common Criteria EAL4+ AVA_VAN.5). L'Attestato dell'Istanza del Wallet è <strong>WIA</strong>; la Wallet Unit Attestation è <strong>WUA</strong>; la Key Attestation è <strong>KA</strong>.</p>
-<section id="indice-di-copertura">
-<span id="wallet-provider-coverage-index"></span><h2><span class="section-number">20.4.1.4.1. </span>Indice di copertura<a class="headerlink" href="#indice-di-copertura" title="Link to this heading">¶</a></h2>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 8.0%" />
-<col style="width: 10.0%" />
-<col style="width: 42.0%" />
-<col style="width: 40.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><ol class="upperalpha simple" start="14">
-<li></li>
-</ol>
-</th>
-<th class="head"><p>Priorità</p></th>
-<th class="head"><p>Test Case ID</p></th>
-<th class="head"><p>Note</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014a</span></a>–<a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014f</span></a></p></td>
-<td><p>Requisiti cyber raggruppati per architettura (Keystore vs WSCD). Lo schema EUDIW-IT-Cyber è referenziato, non copiato.</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>–<a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014d</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_156</span></a></p></td>
-<td><p>Chiavi PID High solo su WSCD; chiavi IT-Wallet ID / (Q)EAA POSSONO usare il Keystore. Il go-live del PID High resta un vincolo di certificazione.</p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_196</span></a>, <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_205</span></a></p></td>
-<td><p>IT-Wallet ID trattato come eIDAS Substantial. I limiti di servizio appartengono alle linee guida sulle Relying Party.</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>BASSA</p></td>
-<td><p>build/editorial</p></td>
-<td><p>Sovrapposizione e troncamento nella conversione Markdown → PDF.</p></td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>BASSA</p></td>
-<td><p>build/editorial</p></td>
-<td><p>Etichette stabili dei requisiti. Il riferimento resta il Test Case ID.</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>MEDIA</p></td>
-<td><p>build/editorial</p></td>
-<td><p>Allineare le citazioni ad ARF v2.8.0.</p></td>
-</tr>
-<tr class="row-even"><td><p>7</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_196</span></a>, <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_197</span></a></p></td>
-<td><p>IT-Wallet ID è un tipo di credenziale di primo piano nei test di emissione, distinto dal PID.</p></td>
-</tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_160</span></a></p></td>
-<td><p>Presentazione offline solo se le chiavi sono in un Keystore/WSCD locale.</p></td>
-</tr>
-<tr class="row-even"><td><p>9</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014e</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_156</span></a></p></td>
-<td><p>Le chiavi WIA e WUA seguono il dispositivo che detiene le chiavi attestate.</p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-004</span></a>, <a class="reference internal" href="#wallet-provider-backend-testcases"><span class="std std-ref">WP_002</span></a>–<a class="reference internal" href="#wallet-provider-backend-testcases"><span class="std std-ref">WP_004c</span></a></p></td>
-<td><p>Chiavi di firma e parametri dei certificati dei manufatti di Federazione.</p></td>
-</tr>
-<tr class="row-even"><td><p>11</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-001</span></a></p></td>
-<td><p>Revoca via CRL e/o OCSP secondo il Trust Framework applicabile.</p></td>
-</tr>
-<tr class="row-odd"><td><p>12</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_020</span></a>, <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_120</span></a></p></td>
-<td><p>Chiavi backend che firmano WIA, WUA, KA e Credenziali Digitali.</p></td>
-</tr>
-<tr class="row-even"><td><p>13</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a></p></td>
-<td><p>La durata della WIA DEVE essere inferiore a 24 ore.</p></td>
-</tr>
-<tr class="row-odd"><td><p>14</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014b</span></a></p></td>
-<td><p>Le chiavi private NON DEVONO essere esportate in chiaro dal Keystore/WSCD.</p></td>
-</tr>
-<tr class="row-even"><td><p>15</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a></p></td>
-<td><p>Nomenclatura WSCD vs Keystore in questo piano.</p></td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014f</span></a></p></td>
-<td><p>Chiavi della Mobile Relying Party Instance quando l'istanza non detiene chiavi di identità dell'Utente.</p></td>
-</tr>
-<tr class="row-even"><td><p>17</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_201</span></a>, <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>, <a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-115</span></a>, <a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-116</span></a></p></td>
-<td><p>Identity matching con e senza <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> (<a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching e Identity Reconciliation</span></a>).</p></td>
-</tr>
-<tr class="row-odd"><td><p>18</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_203</span></a>, <a class="reference internal" href="#wallet-credential-issuance-testcases"><span class="std std-ref">WP_058</span></a></p></td>
-<td><p>Applicabilità dell'emissione batch per tipo di credenziale, incluso PID / IT-Wallet ID.</p></td>
-</tr>
-<tr class="row-even"><td><p>19</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_205</span></a></p></td>
-<td><p>Mappatura LoA3 / eIDAS Substantial / CIE-SPID L2.</p></td>
-</tr>
-<tr class="row-odd"><td><p>20</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_161</span></a></p></td>
-<td><p>Endpoint PDND autenticati, incluso Notify User Death.</p></td>
-</tr>
-<tr class="row-even"><td><p>21</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_022a</span></a></p></td>
-<td><p>Assegnazione di <code class="docutils literal notranslate"><span class="pre">key_storage</span></code> e <code class="docutils literal notranslate"><span class="pre">user_authentication</span></code> della KA (ISO 18045).</p></td>
-</tr>
-<tr class="row-odd"><td><p>22</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-004</span></a></p></td>
-<td><p>Algoritmi MUST/RECOMMENDED come in Cryptographic Algorithms. Le curve di Edwards non sono obbligatorie nel profilo attuale.</p></td>
-</tr>
-<tr class="row-even"><td><p>23</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-004</span></a></p></td>
-<td><p>Gli algoritmi post-quantum non sono obbligatori nel profilo attuale.</p></td>
-</tr>
-<tr class="row-odd"><td><p>24</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-004</span></a>, <a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-006</span></a></p></td>
-<td><p>Temi non profilati (cipher TLS, hash) seguono le Linee guida funzioni crittografiche ACN.</p></td>
-</tr>
-<tr class="row-even"><td><p>25</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a></p></td>
-<td><p>Durata massima della WIA. Le altre durate seguono il data model applicabile.</p></td>
-</tr>
-<tr class="row-odd"><td><p>26</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>–<a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014c</span></a></p></td>
-<td><p>OpenID4VC-SecTrust W-10 coperto dai test WSCA/Keystore.</p></td>
-</tr>
-<tr class="row-even"><td><p>27</p></td>
-<td><p>BASSA</p></td>
-<td><p>build/editorial</p></td>
-<td><p>Allineare Security and Privacy Considerations al testo corrente di OpenID4VC-SecTrust.</p></td>
-</tr>
-<tr class="row-odd"><td><p>28</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_022</span></a></p></td>
-<td><p>Tecnologie che soddisfano SR-P-50 nel profilo attuale: Local Internal Keystore.</p></td>
-</tr>
-<tr class="row-even"><td><p>29</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-006</span></a></p></td>
-<td><p>Identificativi non prevedibili; vietati valori sequenziali per chiavi o nonce.</p></td>
-</tr>
-<tr class="row-odd"><td><p>30</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_203</span></a></p></td>
-<td><p>Come 18, nel contesto delle mitigazioni di Security and Privacy.</p></td>
-</tr>
-<tr class="row-even"><td><p>31</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014c</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_022b</span></a></p></td>
-<td><p>Sole Control. Il WSCD remoto è fuori dal profilo attuale; il test è obbligatorio se quel profilo è abilitato.</p></td>
-</tr>
-<tr class="row-odd"><td><p>32</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>, <a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-006</span></a></p></td>
-<td><p>Il Local Internal Keystore non è prova di LoA High. I report TEE Protection Profile non sono usati come certificazione High.</p></td>
-</tr>
-<tr class="row-even"><td><p>33</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_198</span></a></p></td>
-<td><p>I log degli attori dell'onboarding Substantial aumentato sono nel perimetro dei test L2+.</p></td>
-</tr>
-<tr class="row-odd"><td><p>34</p></td>
-<td><p>MEDIA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014f</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_022</span></a>, <a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_022b</span></a></p></td>
-<td><p>Keystore/WSCD: Wallet Instance vs Mobile Relying Party Instance; KA per WSCD remoto/esterno.</p></td>
-</tr>
-<tr class="row-even"><td><p>35</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-006</span></a>–<a class="reference internal" href="test-plans-signature.html#signature-evaluation-testcases"><span class="std std-ref">ATT-006c</span></a></p></td>
-<td><p>Minimi di entropia verificabili da una terza parte.</p></td>
-</tr>
-<tr class="row-odd"><td><p>36</p></td>
-<td><p>BASSA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a></p></td>
-<td><p>WP_014 rielaborato per Keystore/WSCD.</p></td>
-</tr>
-<tr class="row-even"><td><p>37</p></td>
-<td><p>MEDIA</p></td>
-<td><p>Nomenclatura WIA/WUA in questo piano; <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_196</span></a>–<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_200</span></a></p></td>
-<td><p>Il nome legacy «Wallet Attestation» è sostituito da WIA. Aggiunti IT-Wallet ID e flusso L2+ MRTD.</p></td>
-</tr>
-<tr class="row-odd"><td><p>38</p></td>
-<td><p>ALTA</p></td>
-<td><p><a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_157</span></a>–<a class="reference internal" href="#wallet-instance-testcases"><span class="std std-ref">WP_159</span></a>, <a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_198</span></a>–<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_200</span></a></p></td>
-<td><p>Phase 1 <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code>, Phase 2 binding IdP–MRTD, flusso di emissione L2+.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="casi-di-test-per-backend-del-fornitore-del-wallet">
-<span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">20.4.1.4.2. </span>Casi di Test per Backend del Fornitore del Wallet<a class="headerlink" href="#casi-di-test-per-backend-del-fornitore-del-wallet" title="Link to this heading">¶</a></h2>
+<span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">20.4.1.4.1. </span>Casi di Test per Backend del Fornitore del Wallet<a class="headerlink" href="#casi-di-test-per-backend-del-fornitore-del-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="wallet-solution-requirements.html#requisiti-della-soluzione-wallet"><span class="std std-ref">Requisiti della Soluzione Wallet</span></a></p></li>
@@ -625,7 +411,7 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <tr class="row-odd"><td><p>WP_002h</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Metadata Entity Configuration</p></td>
-<td><p>Il payload del JWT Entity Configuration contiene un oggetto <code class="docutils literal notranslate"><span class="pre">metadata</span></code> che include il parametro <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> e opzionalmente il parametro <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, ciascuno valorizzato seguendo il proprio schema.</p></td>
+<td><p>Il payload del JWT Entity Configuration contiene un oggetto <code class="docutils literal notranslate"><span class="pre">metadata</span></code> che include il parametro <code class="docutils literal notranslate"><span class="pre">openid_wallet_provider</span></code> e opzionalmente il parametro <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, ciascuno valorizzato seguendo il proprio schema.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_003</p></td>
 <td><p>Trust, Interoperabilità</p></td>
@@ -702,7 +488,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </table>
 </section>
 <section id="casi-di-test-per-istanza-del-wallet">
-<span id="wallet-instance-testcases"></span><h2><span class="section-number">20.4.1.4.3. </span>Casi di Test per Istanza del Wallet<a class="headerlink" href="#casi-di-test-per-istanza-del-wallet" title="Link to this heading">¶</a></h2>
+<span id="wallet-instance-testcases"></span><h2><span class="section-number">20.4.1.4.2. </span>Casi di Test per Istanza del Wallet<a class="headerlink" href="#casi-di-test-per-istanza-del-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></p></li>
@@ -856,7 +642,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_028</p></td>
 <td><p>Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza</p></td>
 <td><p>Wallet Instance Attestation (WIA) a tempo limitato</p></td>
-<td><p>Il Fornitore del Wallet rilascia una WIA il cui <code class="docutils literal notranslate"><span class="pre">exp</span></code> è al massimo 24 ore dopo <code class="docutils literal notranslate"><span class="pre">iat</span></code>. Una formulazione limitata a «short-lived» senza un massimo numerico non è sufficiente.</p></td>
+<td><p>La WIA rilasciata soddisfa <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">la durata della Wallet Instance Attestation</span></a>. Una formulazione limitata a «short-lived» non è sufficiente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_029</p></td>
 <td><p>Rilascio Wallet Instance Attestation (WIA), Modello Dati e Ciclo di vita, Interoperabilità</p></td>
@@ -977,7 +763,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </table>
 </section>
 <section id="casi-di-test-per-fase-di-issuance">
-<span id="wallet-credential-issuance-testcases"></span><h2><span class="section-number">20.4.1.4.4. </span>Casi di Test per Fase di Issuance<a class="headerlink" href="#casi-di-test-per-fase-di-issuance" title="Link to this heading">¶</a></h2>
+<span id="wallet-credential-issuance-testcases"></span><h2><span class="section-number">20.4.1.4.3. </span>Casi di Test per Fase di Issuance<a class="headerlink" href="#casi-di-test-per-fase-di-issuance" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a></p></li>
@@ -1077,7 +863,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Specificare tipi degli Attestati Elettronici</p></td>
-<td><p>Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando il parametro <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (o <code class="docutils literal notranslate"><span class="pre">scope</span></code>) (per RAR <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
+<td><p>Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando sia il parametro <code class="docutils literal notranslate"><span class="pre">scope</span></code> (per [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) sia il parametro <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (per RAR <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_053</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -1318,7 +1104,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </table>
 </section>
 <section id="casi-di-test-per-fase-di-presentazione">
-<span id="wallet-credential-presentation-testcases"></span><h2><span class="section-number">20.4.1.4.5. </span>Casi di Test per Fase di Presentazione<a class="headerlink" href="#casi-di-test-per-fase-di-presentazione" title="Link to this heading">¶</a></h2>
+<span id="wallet-credential-presentation-testcases"></span><h2><span class="section-number">20.4.1.4.4. </span>Casi di Test per Fase di Presentazione<a class="headerlink" href="#casi-di-test-per-fase-di-presentazione" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>,
 coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong>Flusso di Prossimità</strong>.</p>
 <table class="longtable docutils align-default">
@@ -1730,7 +1516,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </table>
 </section>
 <section id="casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party">
-<span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">20.4.1.4.6. </span>Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party<a class="headerlink" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party" title="Link to this heading">¶</a></h2>
+<span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">20.4.1.4.5. </span>Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party<a class="headerlink" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a></p></li>
@@ -1795,7 +1581,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </table>
 </section>
 <section id="casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici">
-<span id="credential-backup-testcases"></span><h2><span class="section-number">20.4.1.4.7. </span>Casi di Test per Backup e Ripristino degli Attestati Elettronici<a class="headerlink" href="#casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<span id="credential-backup-testcases"></span><h2><span class="section-number">20.4.1.4.6. </span>Casi di Test per Backup e Ripristino degli Attestati Elettronici<a class="headerlink" href="#casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalla Sezione <a class="reference internal" href="backup-restore.html#backup-e-ripristino"><span class="std std-ref">Backup e Ripristino</span></a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1926,7 +1712,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </table>
 </section>
 <section id="casi-di-test-opzionali-per-istanza-del-wallet">
-<span id="wallet-instance-optional-testcases"></span><h2><span class="section-number">20.4.1.4.8. </span>Casi di Test Opzionali per Istanza del Wallet<a class="headerlink" href="#casi-di-test-opzionali-per-istanza-del-wallet" title="Link to this heading">¶</a></h2>
+<span id="wallet-instance-optional-testcases"></span><h2><span class="section-number">20.4.1.4.7. </span>Casi di Test Opzionali per Istanza del Wallet<a class="headerlink" href="#casi-di-test-opzionali-per-istanza-del-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="wallet-instance.html#istanza-del-wallet"><span class="std std-ref">Istanza del Wallet</span></a></p></li>
@@ -2112,7 +1898,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_144</p></td>
 <td><p>Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza</p></td>
 <td><p>Rilascio Attestato</p></td>
-<td><p>Dopo un validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet rilascia una Wallet Instance Attestation (WIA) con scadenza non superiore a 24 ore dal rilascio.</p></td>
+<td><p>Dopo un validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet rilascia una Wallet Instance Attestation (WIA) che soddisfa <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">la durata della Wallet Instance Attestation</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_145</p></td>
 <td><p>Revoca Wallet, Ciclo di vita, Interoperabilità</p></td>
@@ -2278,14 +2064,13 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
         <div class="it-docs-local-toc">
           <ul>
 <li><a class="reference internal" href="#">20.4.1.4. Matrice di Test per Wallet Provider</a><ul>
-<li><a class="reference internal" href="#indice-di-copertura">20.4.1.4.1. Indice di copertura</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-backend-del-fornitore-del-wallet">20.4.1.4.2. Casi di Test per Backend del Fornitore del Wallet</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-istanza-del-wallet">20.4.1.4.3. Casi di Test per Istanza del Wallet</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-fase-di-issuance">20.4.1.4.4. Casi di Test per Fase di Issuance</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-fase-di-presentazione">20.4.1.4.5. Casi di Test per Fase di Presentazione</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party">20.4.1.4.6. Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party</a></li>
-<li><a class="reference internal" href="#casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici">20.4.1.4.7. Casi di Test per Backup e Ripristino degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#casi-di-test-opzionali-per-istanza-del-wallet">20.4.1.4.8. Casi di Test Opzionali per Istanza del Wallet</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-backend-del-fornitore-del-wallet">20.4.1.4.1. Casi di Test per Backend del Fornitore del Wallet</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-istanza-del-wallet">20.4.1.4.2. Casi di Test per Istanza del Wallet</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-fase-di-issuance">20.4.1.4.3. Casi di Test per Fase di Issuance</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-fase-di-presentazione">20.4.1.4.4. Casi di Test per Fase di Presentazione</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party">20.4.1.4.5. Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party</a></li>
+<li><a class="reference internal" href="#casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici">20.4.1.4.6. Casi di Test per Backup e Ripristino degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#casi-di-test-opzionali-per-istanza-del-wallet">20.4.1.4.7. Casi di Test Opzionali per Istanza del Wallet</a></li>
 </ul>
 </li>
 </ul>
@@ -2321,7 +2106,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

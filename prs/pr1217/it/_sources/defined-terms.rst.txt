@@ -374,8 +374,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Key Attestation**
-      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD o in un Keystore affidabile, utilizzando le API di Key Attestation (OEM).
-      Allineato alla Technical Specification 3.
+    **KA**
+      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD o in un Keystore affidabile, utilizzando le API di Key Attestation (OEM). Le chiavi private vincolate a una Key Attestation DEVONO essere memorizzate nello stesso Keystore o WSCD delle chiavi degli Attestati Elettronici che la Key Attestation attesta.
 
     **Wallet Instance Attestation**
     **WIA**
@@ -384,8 +384,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Wallet Unit Attestation**
     **WUA**
-      Oggetto di dati che attesta le chiavi di una Wallet Unit, distinto dalla Wallet Instance Attestation (WIA). Le chiavi private vincolate a una WUA DEVONO essere memorizzate nello stesso Keystore o WSCD delle chiavi degli Attestati Elettronici che la WUA attesta.
-      Allineato all'ARF.
+      Attestazioni che una Wallet Unit usa durante l'emissione di un PID o di un'attestazione. Una Wallet Unit Attestation comprende due tipi: le Wallet Instance Attestation (WIA), che attestano l'integrità dell'Istanza del Wallet, e le Key Attestation (KA), che attestano la sicurezza delle chiavi crittografiche memorizzate nella Wallet Unit.
 
     **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.

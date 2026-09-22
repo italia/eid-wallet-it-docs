@@ -380,7 +380,7 @@
 <li><p>The URL in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter MUST match the Wallet Provider's URL identifier (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143g</span></a>).</p></li>
 </ol>
 </div></blockquote>
-<p>Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation whose <code class="docutils literal notranslate"><span class="pre">exp</span></code> is at most 24 hours after <code class="docutils literal notranslate"><span class="pre">iat</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>).</p>
+<p>Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation that meets <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">the Wallet Instance Attestation lifetime</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>).</p>
 <p><strong>Step 18 (Wallet Instance Attestation Issuance Response)</strong>: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, containing the Wallet Instance Attestation signed by the Wallet Provider. The Wallet provider MUST return the Wallet Instance Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet Instance Attestation received in addition to trust verification of its Issuer (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
 <p>Below is a non-normative example of the response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -443,7 +443,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
