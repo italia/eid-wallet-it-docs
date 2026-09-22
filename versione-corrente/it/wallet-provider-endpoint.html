@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=987dd299"></script>
+    <script src="_static/documentation_options.js?v=3c055680"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -800,7 +800,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT. Questo dovrebbe essere impostato a un massimo di 24 ore.</p></td>
+<td><p>OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT. La durata è specificata in <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">la durata della Wallet Instance Attestation</span></a>.</p></td>
 <td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> e <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nbf</strong></p></td>
@@ -1161,6 +1161,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 </tbody>
 </table>
+<p>Il Fornitore di Wallet DEVE impostare <code class="docutils literal notranslate"><span class="pre">key_storage</span></code> e <code class="docutils literal notranslate"><span class="pre">user_authentication</span></code> su valori ISO 18045 che corrispondono alla resistenza al potenziale di attacco del Keystore o WSCD effettivo e del metodo di autenticazione dell'Utente. Il Fornitore di Wallet DEVE documentare il mapping usato per TEE, StrongBox e Secure Enclave. Un Keystore Interno Locale NON DEVE essere attestato con <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>. Un WSCD certificato come resistente ad attaccanti con potenziale di attacco elevato (ad esempio Common Criteria EAL4+ AVA_VAN.5) PUÒ essere attestato con <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_022a</span></a>).</p>
 <p>Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key-attestation+jwt&quot;</span><span class="p">,</span>
@@ -1211,7 +1212,8 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <section id="catalogo-e-service-pdnd-del-fornitore-di-wallet">
 <h2><span class="section-number">13.1.6. </span>Catalogo e-Service PDND del Fornitore di Wallet<a class="headerlink" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
 <p>La morte dell'Utente porta alla revoca delle Istanze di Wallet dell'Utente e all'eliminazione dell'account dell'Utente presso il Fornitore di Wallet. Per questo motivo, il Fornitore di Wallet fornisce il seguente e-service tramite PDND.
-Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica del PID/IT-Wallet ID della morte dell'Utente DEVE inviare una notifica ai Fornitori di Wallet utilizzando questo endpoint.</p>
+Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica del PID/IT-Wallet ID della morte dell'Utente DEVE inviare una notifica ai Fornitori di Wallet utilizzando questo endpoint.
+Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica Morte Utente, DEVONO essere autenticate e autorizzate. Le richieste non autenticate DEVONO essere rifiutate. Una Notifica Morte Utente andata a buon fine DEVE portare alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal Provider di PID/IT-Wallet ID (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_161</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Una Specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">qui</a></span>.</p>
@@ -1378,7 +1380,7 @@ Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica de
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

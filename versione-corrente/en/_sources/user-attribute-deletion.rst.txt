@@ -4,7 +4,7 @@
 User's Attributes Deletion
 ==========================
 
-This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which Digital Credentials have been presented. Subsequently Users may request deletion of the attributes of one or more Digital Credentials presented to a Relying Party of their choice. The Relying Party MUST uniquely identify those Digital Credentials by applying identity matching. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which Digital Credentials have been presented. Subsequently Users may request deletion of the attributes of one or more Digital Credentials presented to a Relying Party of their choice. The Relying Party MUST uniquely identify those Digital Credentials by applying identity matching as specified in :ref:`identity-matching`. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%
@@ -35,7 +35,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 **Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (:ref:`WP_118 <user-attribute-deletion-testcases>`). Details on the Erasure Request can be found in :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint` (:ref:`WP_117 <user-attribute-deletion-testcases>`).
 
 .. note::
-  The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID/IT-Wallet ID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
+  The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID/IT-Wallet ID presentation. The specific mechanism used for authentication is left to the Relying Party. If the User does not authenticate through the Wallet Instance, identity matching and identity reconciliation MAY use a preexisting national authentication scheme, where possible, as specified in :ref:`identity-matching`. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
 
 **Step 9:** Upon successful authentication of the User, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion by applying identity matching, and MUST delete the related attributes in its possession.
 

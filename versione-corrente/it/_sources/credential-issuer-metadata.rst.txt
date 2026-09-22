@@ -151,6 +151,8 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
     - OPZIONALE. Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
+
+        La presenza di questo parametro dichiara l'emissione in batch solo per i tipi di Attestato per i quali il Credential Issuer documenta il supporto. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro dell'emissione in batch. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
   * - **status_list_aggregation_endpoint**
     - OBBLIGATORIO. URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
 

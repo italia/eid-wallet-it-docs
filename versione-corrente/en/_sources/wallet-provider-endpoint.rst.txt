@@ -445,7 +445,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
       - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT. The lifetime is specified in :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>`.
       - :rfc:`9126` and :rfc:`7519` and `EUDI-TS 3`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
@@ -740,6 +740,8 @@ The body of the Key Attestation JWT contains the following claims:
 
 
 
+The Wallet Provider MUST set ``key_storage`` and ``user_authentication`` to ISO 18045 values that match the attack-potential resistance of the actual Keystore or WSCD and of the User authentication method. The Wallet Provider MUST document the mapping used for TEE, StrongBox and Secure Enclave. A Local Internal Keystore MUST NOT be attested with ``iso_18045_high``. A WSCD certified as resistant to attackers with high attack potential (for example Common Criteria EAL4+ AVA_VAN.5) MAY be attested with ``iso_18045_high`` (:ref:`WP_022a <wallet-instance-testcases>`).
+
 Below is a non-normative example of the Key Attestation JWT header and payload, without encoding and signature applied:
 
 .. literalinclude:: ../../examples/ka-jwt_example_header.json
@@ -764,6 +766,7 @@ e-Service PDND Wallet Provider Catalog
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of the PID/IT-Wallet ID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, MUST be authenticated and authorised. Unauthenticated requests MUST be rejected. A successful Notify User Death MUST lead to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations (:ref:`WP_161 <wallet-instance-testcases>`).
 
 .. only:: html
 

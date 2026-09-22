@@ -101,7 +101,7 @@ The Wallet Instance initiates the eID Substantial Authentication with MRTD Verif
 Authorization Details
 """""""""""""""""""""
 
-The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. The inclusion of the ``it_l2+document_proof`` Authorization Details Object and the authentication method applied by the Authorization Server are defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
+The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. The inclusion of the ``it_l2+document_proof`` Authorization Details Object and the authentication method applied by the Authorization Server are defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
 
 Below a non-normative example of PAR:
 
@@ -123,10 +123,14 @@ Phase 2: Primary Authentication
 
 Upon successful processing of the PAR, the Authorization Server redirects the User Agent to the Identity Provider for primary authentication, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. The User completes the authentication flow and the Authorization Server correlates the authenticated identity with the active OAuth session.
 
+In this flow **LoA3** (ISO/IEC 29115) maps to eIDAS **Substantial** and to the national L2 means (SPID L2 / CieID Substantial). **LoA High** maps to eIDAS High and CieID LoA High (CIE L3). A Substantial authentication MUST NOT be recorded or treated as High (:ref:`CI_205 <credential-issuer-testcases>`).
+
 The EAA Authorization Server MUST ensure that the ``mrtd_auth_session`` parameter is maintained throughout this phase for proper session correlation with subsequent authentication steps.
 
+After MRTD attributes become available (Phase 3), the EAA Provider MUST bind the identity verified by the IdP with the identity in the MRTD by comparing at least the tax identification number (*codice fiscale*) or an equivalent unique national identifier present in both sources. A mismatch MUST abort issuance (:ref:`WP_159 <wallet-instance-testcases>`, :ref:`CI_200 <credential-issuer-testcases>`).
+
 .. note::
-  In the case the User performs a LoA High authentication the phase 3 MUST be skipped.
+  If the User performs a LoA High authentication, Phase 3 MUST be skipped.
 
 Phase 3: MRTD PoP Validation Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -830,10 +834,10 @@ Additional implementation requirements:
 Implementation Considerations
 -----------------------------
 
-Implementations SHOULD incorporate rate-limiting mechanisms to protect against automated attacks and resource exhaustion, and a timeout configuration balancing user experience and security posture, accommodating the variability inherent in NFC-based document reading.
+Implementations MUST incorporate rate-limiting mechanisms to protect against automated attacks and resource exhaustion. Implementations SHOULD configure an interaction timeout that balances user experience and security posture, accommodating the variability inherent in NFC-based document reading.
 
-EAA Provider SHOULD implement session timeouts approach with proper cleanup mechanisms, ensuring session resources are released and temporary cryptographic material is securely deleted when sessions expire.
+The EAA Provider MUST implement session timeouts with cleanup mechanisms, ensuring session resources are released and temporary cryptographic material is securely deleted when sessions expire.
 
-All security-relevant events throughout the eID Substantial Authentication with MRTD Verification flow MUST be logged with sufficient detail for auditing purposes while preserving the privacy of the User, ensuring that personally identifiable information, when stored, is appropriately hashed. The audit logs SHOULD have consistent correlation identifiers, enabling end-to-end tracing across all protocol phases, with cryptographic integrity protection to prevent tampering.
+All security-relevant events throughout the eID Substantial Authentication with MRTD Verification flow MUST be logged with sufficient detail for auditing purposes while preserving the privacy of the User, ensuring that personally identifiable information, when stored, is appropriately hashed. The audit logs MUST have consistent correlation identifiers, enabling end-to-end tracing across all protocol phases, with cryptographic integrity protection to prevent tampering.
 
 

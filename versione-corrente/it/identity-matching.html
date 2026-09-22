@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12.2.3. Identity Matching e Identity Reconciliation &#8212; Specifiche Tecniche IT-Wallet</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
+
+    <script src="_static/documentation_options.js?v=3c055680"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+<script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
+<script src="_static/shared-ui/js/ita.min.js"></script>
+<script src="_static/shared-ui/js/bootstrap-italia.bundle.min.js"></script>
+<script src="_static/js/eid-wallet-docs.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="12.3. Flusso di Recupero dei Wallet Metadata" href="wallet-metadata-retrieval.html" />
+    <link rel="prev" title="12.2.2. Flusso di Prossimità" href="proximity-flow.html" />
+   
+  <meta name="description" content="Specifiche Tecniche IT-Wallet">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }})();
+  </script>
+  </head><body class="it-docs-body">
+<nav class="it-skip-links" aria-label="Skip links">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Skip to footer</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>Dipartimento per la Trasformazione Digitale</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center"><div class="it-docs-searchbox--slim it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input">Cerca</label>
+    <input id="it-docs-search-input"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div><a id="source_link" class="it-docs-source-link" href="https://github.com/italia/eudi-wallet-it-docs" title="Source repository" target="_blank" rel="noopener">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.4-2.1.7-2.1-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.4 2.1zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+  </svg>
+  
+  <span class="visually-hidden">Source repository</span>
+</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+  <button type="button"
+          id="it-docs-brightness-toggle"
+          class="it-docs-brightness-toggle nav-link dropdown-toggle"
+          aria-controls="it-docs-brightness-menu"
+          data-bs-toggle="dropdown"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          title="Content brightness">
+    <span id="it-docs-brightness-active-hint" class="visually-hidden">
+      Active brightness:
+    </span>
+    <svg class="icon it-docs-brightness-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 7.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM10.5 1.25h3v4.75h-3V1.25zm0 17h3v4.75h-3V18.25zM1.25 10.5h4.75v3h-4.75v-3zm17 0h4.75v3H18.25v-3zM5.1 5.1h3.2v3.2H5.1V5.1zm10.7 0h3.2v3.2h-3.2V5.1zM5.1 15.7h3.2v3.2H5.1v-3.2zm10.7 0h3.2v3.2h-3.2v-3.2z"/>
+</svg>
+    <span class="visually-hidden" id="it-docs-brightness-current-label">Light</span>
+    <svg class="icon ms-1 it-docs-brightness-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+  </button>
+  <div id="it-docs-brightness-menu" class="dropdown-menu dropdown-menu-end">
+    <div class="row">
+      <div class="col-12">
+        <div class="link-list-wrapper">
+          <ul class="link-list" role="menu" aria-labelledby="it-docs-brightness-toggle">
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option active"
+                      data-it-docs-brightness="light"
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span>Light</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="middle"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Middle</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="black"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Black</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">lingua attiva:</span>
+              <span class="it-header-lang-label" aria-hidden="true">ITA</span>
+              <svg class="icon icon-sm ms-1 it-header-lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option active"
+                           href="#"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="true"
+                           aria-current="true">
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option"
+                           href="../en/identity-matching.html"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="false"
+                           >
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="it-header-center-content-wrapper it-docs-header-compact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-center-content d-flex align-items-center justify-content-between flex-nowrap">
+            <div class="it-brand-wrapper it-docs-brand-wrapper">
+              <a href="index.html"
+                 class="it-docs-brand-link text-decoration-none"
+                 title="Home">
+                <h2 class="it-brand-title it-docs-header-site-title" id="header-site-title">Specifiche Tecniche IT-Wallet</h2>
+              </a>
+            </div>
+            <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                    type="button"
+                    data-it-docs-nav-toggle
+                    data-it-docs-nav-target="#itDocsPrimaryNav"
+                    aria-controls="itDocsPrimaryNav"
+                    aria-expanded="false"
+                    aria-label="Open navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
+</svg>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container it-docs-header-mobile-tools-container d-lg-none">
+      <div class="it-docs-header-mobile-tools"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input-mobile">Cerca</label>
+    <input id="it-docs-search-input-mobile"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="it-docs-layout">
+  <div class="it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-3 it-docs-sidebar-col" aria-label="Primary navigation">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="Close navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
+  <div class="sidebar-linklist-wrapper">
+    <div class="link-list-wrapper">
+      <h2 class="it-docs-nav-section-label">Indice dei contenuti</h2>
+      
+      <div class="it-docs-sphinx-toc">
+        <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">12.1. Emissione di Attestati Elettronici</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="credential-presentation.html">12.2. Presentazione dell'Attestato Elettronico</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="remote-flow.html">12.2.1. Flusso Remoto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proximity-flow.html">12.2.2. Flusso di Prossimità</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">12.2.3. Identity Matching e Identity Reconciliation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-metadata-retrieval.html">12.3. Flusso di Recupero dei Wallet Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-6 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              JavaScript is required for navigation menus and some interactive features.
+            </p>
+          </noscript>
+          <div class="body">
+            
+  <section id="identity-matching">
+<span id="identity-matching-e-identity-reconciliation"></span><h1><span class="section-number">12.2.3. </span>Identity Matching e Identity Reconciliation<a class="headerlink" href="#identity-matching" title="Link to this heading">¶</a></h1>
+<p>L'<strong>identity matching</strong> è il processo con cui una Relying Party accerta che gli attributi di identificazione personale presentati in una transazione si riferiscano alla stessa persona fisica. È lo stesso approccio pratico già utilizzato in qualsiasi infrastruttura legacy di autenticazione e autorizzazione. Non è una funzionalità dell'Istanza del Wallet, né un passo del protocollo di presentazione. La verifica crittografica dell'Attestato Elettronico resta un prerequisito distinto, e l'identity reconciliation è un passo successivo e opzionale.</p>
+<p>Dopo la verifica crittografica di un Attestato Elettronico presentato, nei flussi remoto o di prossimità, la Relying Party DEVE prima effettuare l'<strong>identity matching</strong>, per accertare che gli attributi di identificazione personale presentati nella transazione corrente si riferiscano alla stessa persona fisica. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'<strong>identity reconciliation</strong>, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.</p>
+<p>Se l'identity matching fallisce, la Relying Party NON DEVE effettuare l'identity reconciliation e NON DEVE trattare chi presenta l'Attestato Elettronico come un Utente già noto.</p>
+<p>Questa Sezione specifica le regole di matching e reconciliation che si applicano agli Attestati Elettronici di identificazione personale (PID e IT-Wallet ID). La correlazione delle identità durante l'emissione dell'IT-Wallet ID (IdP–MRTD) è specificata in <a class="reference internal" href="credential-issuance-l2plus.html#autenticazione-eid-substantial-con-verifica-mrtd-per-emissione-it-wallet-id"><span class="std std-ref">Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID</span></a> ed è fuori dallo scopo di questa Sezione.</p>
+<section id="id1">
+<h2><span class="section-number">12.2.3.1. </span>Identity Matching<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>L'identity matching determina se gli attributi di identificazione personale presentati identificano una sola persona fisica.</p>
+<p>La Relying Party DEVE applicare il pattern di matching del tipo di Attestato Elettronico presentato, come definito di seguito. Tipi diversi di Attestato Elettronico POSSONO definire pattern di identity matching differenti. Per gli attributi Utente del PID, vedere <a class="reference internal" href="credential-data-model-pid.html#modello-di-dati-del-pid"><span class="std std-ref">Modello di Dati del PID</span></a>. Per gli attributi Utente dell'IT-Wallet ID, vedere <a class="reference internal" href="credential-data-model-it-wallet-id.html#modello-di-dati-dell-it-wallet-id"><span class="std std-ref">Modello di Dati dell'IT-Wallet ID</span></a>.</p>
+</section>
+<section id="identity-reconciliation">
+<h2><span class="section-number">12.2.3.2. </span>Identity Reconciliation<a class="headerlink" href="#identity-reconciliation" title="Link to this heading">¶</a></h2>
+<p>L'identity reconciliation è il passo successivo che associa una persona fisica identificata con successo a un record Utente o a una sessione della Relying Party.</p>
+<p>La Relying Party NON DEVE completare l'identity reconciliation se l'identity matching non è andato a buon fine. La reconciliation PUÒ creare un nuovo record Utente quando nessun record memorizzato corrisponde.</p>
+</section>
+<section id="pattern-di-matching-per-tipo-di-attestato-elettronico">
+<h2><span class="section-number">12.2.3.3. </span>Pattern di Matching per Tipo di Attestato Elettronico<a class="headerlink" href="#pattern-di-matching-per-tipo-di-attestato-elettronico" title="Link to this heading">¶</a></h2>
+<section id="unique-national-identifier-binding">
+<h3><span class="section-number">12.2.3.3.1. </span>Unique National Identifier Binding<a class="headerlink" href="#unique-national-identifier-binding" title="Link to this heading">¶</a></h3>
+<p>Quando è presentato <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> o <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>, la Relying Party DEVE utilizzarlo come chiave primaria di identity matching prima di qualsiasi identity reconciliation con un record Utente memorizzato (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_201</span></a>).</p>
+<p>Per l'IT-Wallet ID è presente almeno uno tra <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> e <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>. La Relying Party DEVE utilizzare l'identificativo nazionale univoco presentato come chiave primaria di matching.</p>
+</section>
+<section id="attribute-based-binding">
+<h3><span class="section-number">12.2.3.3.2. </span>Attribute-Based Binding<a class="headerlink" href="#attribute-based-binding" title="Link to this heading">¶</a></h3>
+<p>Per il PID, <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile.</p>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> non è presentato, la Relying Party DEVE effettuare <em>Attribute-Based Binding</em> confrontando almeno <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (o <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) e <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> dopo normalizzazione di maiuscole/minuscole, spazi e diacritici. La Relying Party DEVE applicare la stessa normalizzazione agli attributi presentati e al record Utente memorizzato, inclusi i membri stringa di <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> (<code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">region</span></code>, <code class="docutils literal notranslate"><span class="pre">locality</span></code>). Il confronto della data di nascita DEVE usare la data di calendario ISO 8601 (<code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>), indipendentemente dal formato di visualizzazione.</p>
+<p>La Relying Party NON DEVE completare l'identity matching su un sottoinsieme di tali attributi che consentirebbe uno scambio di persona (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>). In particolare:</p>
+<ul class="simple">
+<li><p>il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code>, NON DEVE essere trattato come identity matching andato a buon fine;</p></li>
+<li><p>una discordanza su qualsiasi attributo del set minimo DEVE far fallire l'identity matching; la Relying Party NON DEVE ignorare una discordanza sul nome attuale (ad esempio dopo un cambio di nome) per forzare un match;</p></li>
+<li><p>se l'Attribute-Based Binding corrisponde a più di un record Utente memorizzato, la Relying Party NON DEVE completare l'identity matching. PUÒ richiedere un identificativo nazionale univoco, oppure applicare un metodo di binding supplementare che identifichi univocamente la persona.</p></li>
+</ul>
+</section>
+</section>
+<section id="metodi-di-binding-supplementari">
+<h2><span class="section-number">12.2.3.4. </span>Metodi di Binding Supplementari<a class="headerlink" href="#metodi-di-binding-supplementari" title="Link to this heading">¶</a></h2>
+<p>I metodi seguenti POSSONO integrare l'Attribute-Based Binding. NON DEVONO sostituire il set minimo di Attribute-Based Binding quando non è presentato un identificativo nazionale univoco:</p>
+<ul class="simple">
+<li><p><strong>Session-Based Binding</strong>: la presentazione avviene all'interno di una sessione autenticata già associata all'Utente;</p></li>
+<li><p><strong>Issuer-Attested Binding</strong>: l'Issuer attesta che gli attributi presentati appartengono allo stesso soggetto (ad esempio tramite un identificativo di soggetto stabile dell'Issuer);</p></li>
+<li><p><strong>Identificativi specifici della Relying Party</strong>: identificativi precedentemente emessi dalla Relying Party a quell'Utente dopo un identity matching andato a buon fine;</p></li>
+<li><p><strong>Cryptographic Binding</strong>: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso Keystore o WSCD.</p></li>
+</ul>
+</section>
+<section id="privacy-e-selective-disclosure">
+<h2><span class="section-number">12.2.3.5. </span>Privacy e Selective Disclosure<a class="headerlink" href="#privacy-e-selective-disclosure" title="Link to this heading">¶</a></h2>
+<p>La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pienamente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.</p>
+</section>
+<section id="applicazione-all-eliminazione-degli-attributi-dell-utente">
+<h2><span class="section-number">12.2.3.6. </span>Applicazione all'Eliminazione degli Attributi dell'Utente<a class="headerlink" href="#applicazione-all-eliminazione-degli-attributi-dell-utente" title="Link to this heading">¶</a></h2>
+<p>Quando l'Utente richiede la cancellazione degli attributi presentati, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici applicando l'identity matching, come specificato in <a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a>.</p>
+<p>Quando l'Utente si autentica all'Endpoint di Cancellazione presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.</p>
+<p>Quando l'Utente si autentica all'Endpoint di Cancellazione senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.</p>
+</section>
+</section>
+
+
+          </div>
+          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="Page navigation">
+            <div class="it-docs-pager-prev">
+              <a class="btn btn-outline-primary" href="proximity-flow.html">
+                <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+                <span>12.2.2. Flusso di Prossimità</span>
+              </a>
+            </div>
+            <div class="it-docs-pager-next ms-auto">
+              <a class="btn btn-primary" href="wallet-metadata-retrieval.html">
+                <span>12.3. Flusso di Recupero dei Wallet Metadata</span>
+                <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+              </a>
+            </div>
+          </nav>
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">12.2.3. Identity Matching e Identity Reconciliation</a><ul>
+<li><a class="reference internal" href="#id1">12.2.3.1. Identity Matching</a></li>
+<li><a class="reference internal" href="#identity-reconciliation">12.2.3.2. Identity Reconciliation</a></li>
+<li><a class="reference internal" href="#pattern-di-matching-per-tipo-di-attestato-elettronico">12.2.3.3. Pattern di Matching per Tipo di Attestato Elettronico</a><ul>
+<li><a class="reference internal" href="#unique-national-identifier-binding">12.2.3.3.1. Unique National Identifier Binding</a></li>
+<li><a class="reference internal" href="#attribute-based-binding">12.2.3.3.2. Attribute-Based Binding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodi-di-binding-supplementari">12.2.3.4. Metodi di Binding Supplementari</a></li>
+<li><a class="reference internal" href="#privacy-e-selective-disclosure">12.2.3.5. Privacy e Selective Disclosure</a></li>
+<li><a class="reference internal" href="#applicazione-all-eliminazione-degli-attributi-dell-utente">12.2.3.6. Applicazione all'Eliminazione degli Attributi dell'Utente</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner"><nav id="footer-partners-nav"
+     class="it-docs-footer-partners"
+     aria-label="Institutional partners">
+  <ul class="it-docs-footer-partners-list">
+    <li>
+      <a href="https://innovazione.gov.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--dtd"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-dtd.svg"
+             alt="Department for Digital Transformation"
+             width="120"
+             height="32"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+  </ul>
+</nav><div class="it-docs-footer-meta">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+            Sphinx 7.4.5
+          </span></p>
+      </div>
+    </div>
+  </div>
+</footer><a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="Torna su">
+  <svg class="icon it-docs-back-to-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M18.6 10.1 12 3.5l-6.6 6.6.7.7 5.4-5.3V21h1V5.5l5.4 5.3.7-.7z"/>
+</svg>
+</a>
+  </body>
+</html>

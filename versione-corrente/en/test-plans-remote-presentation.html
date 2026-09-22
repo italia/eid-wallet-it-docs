@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=fe830cc9"></script>
+    <script src="_static/documentation_options.js?v=5afb88d0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -685,18 +685,18 @@
 <td><p>QR Code uses the required Q error correction level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-78</p></td>
-<td><p>Wallet Attestation Request</p></td>
-<td><p>Test that Wallet Attestation request uses standard DCQL query.</p></td>
-<td><p>Wallet Attestation request correctly uses standard DCQL query.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Test that Wallet Instance Attestation (WIA) request uses standard DCQL query.</p></td>
+<td><p>Wallet Instance Attestation (WIA) request correctly uses standard DCQL query.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-79</p></td>
-<td><p>Wallet Attestation Request</p></td>
-<td><p>Verify that <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Attestation.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Attestation.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Verify that <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Instance Attestation (WIA).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Instance Attestation (WIA).</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-80</p></td>
-<td><p>Wallet Attestation Request</p></td>
-<td><p>Test that <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter is required in DCQL query for Wallet Attestation.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter is required in DCQL query for Wallet Instance Attestation (WIA).</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter is correctly required in DCQL query.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-81</p></td>
@@ -780,9 +780,9 @@
 <td><p>The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is correctly aligned with Trust Chain metadata.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
-<td><p>Wallet Attestation Request</p></td>
-<td><p>Test that Relying Party requests Wallet Attestation via DCQL.</p></td>
-<td><p>Relying Party correctly requests Wallet Attestation using DCQL query.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Test that Relying Party requests Wallet Instance Attestation (WIA) via DCQL.</p></td>
+<td><p>Relying Party correctly requests Wallet Instance Attestation (WIA) using DCQL query.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-98</p></td>
 <td><p>Error Response Format</p></td>
@@ -795,9 +795,9 @@
 <td><p>Error response includes error and <code class="docutils literal notranslate"><span class="pre">error_description</span></code> parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-100</p></td>
-<td><p>Wallet Attestation Presentation</p></td>
-<td><p>Test that Relying Party correctly requests Wallet Attestation from Wallet Instance.</p></td>
-<td><p>Relying Party correctly evaluates Wallet Attestation when requested.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Presentation</p></td>
+<td><p>Test that Relying Party correctly requests Wallet Instance Attestation (WIA) from Wallet Instance.</p></td>
+<td><p>Relying Party correctly evaluates Wallet Instance Attestation (WIA) when requested.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-101</p></td>
 <td><p>Presentation Array</p></td>
@@ -869,6 +869,16 @@
 <td><p>Test that Response URI returns error response on validation failure.</p></td>
 <td><p>Response URI returns error response when validation checks fail.</p></td>
 </tr>
+<tr class="row-even"><td><p>RPR-115</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test Unique National Identifier Binding when <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> or <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> is presented.</p></td>
+<td><p>The Relying Party uses the unique national identifier as the primary identity matching key before reconciliation, as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_201</span></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-116</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test Attribute-Based Binding when a PID is presented without <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>.</p></td>
+<td><p>The Relying Party matches at least <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (or <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) and <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>).</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -905,7 +915,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

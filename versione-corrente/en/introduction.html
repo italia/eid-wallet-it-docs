@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=fe830cc9"></script>
+    <script src="_static/documentation_options.js?v=5afb88d0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -368,7 +368,7 @@ Comprehensive implementation requirements for each ecosystem participant: Wallet
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>:
 Covers Digital Credential data models and formats, lifecycle management, validity verification, and the Credentials Catalog structure.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-flows.html#digital-credential-flows"><span class="std std-ref">Digital Credential Flows</span></a>:
-Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows.</p></li>
+Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows, and identity matching after presentation.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a>:
 Technical specifications for all API endpoints exposed by each entity type, including federation endpoints and specialized service integrations.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>, <a class="reference internal" href="security-privacy-considerations.html#security-and-privacy-considerations"><span class="std std-ref">Security and Privacy Considerations</span></a>, and <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a> (<strong>Implementation Support</strong>):
@@ -519,6 +519,7 @@ Provides supplementary technical details, implementation patterns, and testing f
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="relying-party-solution.html#relying-party-solution"><span class="std std-ref">Relying Party Solution</span></a>: Technical and functional requirements on components and functionalities for PID and (Q)EAA verification.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-flows.html#digital-credential-flows"><span class="std std-ref">Digital Credential Flows</span></a>: Technical and functional requirements on (Q)EAA presentation and verification flows.</p></li>
+<li><p><strong>Section</strong> <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a>: Rules for identity matching and identity reconciliation after presentation of person identification attributes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="relying-party-endpoints.html#relying-party-endpoints"><span class="std std-ref">Relying Party Endpoints</span></a>: Key requirements for the implementation of (Q)EAA verification endpoints.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="security-privacy-considerations.html#security-and-privacy-considerations"><span class="std std-ref">Security and Privacy Considerations</span></a>: Security and compliance requirements for implemented solutions.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>: General log retention requirements and requirements specific for Relying Parties, in accordance with ISO/IEC 27001.</p></li>
@@ -658,7 +659,7 @@ Provides supplementary technical details, implementation patterns, and testing f
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

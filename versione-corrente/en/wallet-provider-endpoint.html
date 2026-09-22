@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=fe830cc9"></script>
+    <script src="_static/documentation_options.js?v=5afb88d0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -799,7 +799,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.</p></td>
+<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT. The lifetime is specified in <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">the Wallet Instance Attestation lifetime</span></a>.</p></td>
 <td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> and <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nbf</strong></p></td>
@@ -1160,6 +1160,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
+<p>The Wallet Provider MUST set <code class="docutils literal notranslate"><span class="pre">key_storage</span></code> and <code class="docutils literal notranslate"><span class="pre">user_authentication</span></code> to ISO 18045 values that match the attack-potential resistance of the actual Keystore or WSCD and of the User authentication method. The Wallet Provider MUST document the mapping used for TEE, StrongBox and Secure Enclave. A Local Internal Keystore MUST NOT be attested with <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>. A WSCD certified as resistant to attackers with high attack potential (for example Common Criteria EAL4+ AVA_VAN.5) MAY be attested with <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_022a</span></a>).</p>
 <p>Below is a non-normative example of the Key Attestation JWT header and payload, without encoding and signature applied:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key-attestation+jwt&quot;</span><span class="p">,</span>
@@ -1210,7 +1211,8 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <section id="e-service-pdnd-wallet-provider-catalog">
 <h2><span class="section-number">13.1.6. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
 <p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
-A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of the PID/IT-Wallet ID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
+A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of the PID/IT-Wallet ID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, MUST be authenticated and authorised. Unauthenticated requests MUST be rejected. A successful Notify User Death MUST lead to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_161</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
@@ -1377,7 +1379,7 @@ A PID/IT-Wallet ID Provider that has been notified by the Authentic Source of th
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

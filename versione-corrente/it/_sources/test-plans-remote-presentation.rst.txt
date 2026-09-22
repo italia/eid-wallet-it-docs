@@ -314,18 +314,18 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il QR Code utilizza il livello di correzione Q richiesto.
 
   * - RPR-78
-    - Richiesta Attestazione Wallet
-    - Test che la richiesta di Attestazione Wallet utilizzi la query DCQL standard.
-    - La richiesta di Attestazione Wallet utilizza correttamente la query DCQL standard.
+    - Richiesta Wallet Instance Attestation (WIA)
+    - Test che la richiesta di Wallet Instance Attestation (WIA) utilizzi la query DCQL standard.
+    - La richiesta di Wallet Instance Attestation (WIA) utilizza correttamente la query DCQL standard.
 
   * - RPR-79
-    - Richiesta Attestazione Wallet
-    - Verifica che il parametro ``claims`` non sia incluso nella query DCQL per l’Attestazione Wallet.
-    - Il parametro ``claims`` non è incluso nella query DCQL per l’Attestazione Wallet.
+    - Richiesta Wallet Instance Attestation (WIA)
+    - Verifica che il parametro ``claims`` non sia incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
+    - Il parametro ``claims`` non è incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
 
   * - RPR-80
-    - Richiesta Attestazione Wallet
-    - Test che il parametro ``vct_values`` sia richiesto nella query DCQL per l’Attestazione Wallet.
+    - Richiesta Wallet Instance Attestation (WIA)
+    - Test che il parametro ``vct_values`` sia richiesto nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
     - Il parametro ``vct_values`` è correttamente richiesto nella query DCQL.
 
   * - RPR-81
@@ -409,9 +409,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il ``client_metadata`` è correttamente allineato con i metadati della Trust Chain.
 
   * - RPR-97
-    - Richiesta Attestazione Wallet
-    - Test che il Relying Party richieda l’Attestazione Wallet tramite DCQL.
-    - Il Relying Party richiede correttamente l’Attestazione Wallet usando la query DCQL.
+    - Richiesta Wallet Instance Attestation (WIA)
+    - Test che il Relying Party richieda l’Attestato dell'Istanza del Wallet (WIA) tramite DCQL.
+    - Il Relying Party richiede correttamente l’Attestato dell'Istanza del Wallet (WIA) usando la query DCQL.
 
   * - RPR-98
     - Formato Risposta di Errore
@@ -424,9 +424,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - La risposta di errore include i parametri error ed ``error_description``.
 
   * - RPR-100
-    - Presentazione Attestazione Wallet
-    - Test che il Relying Party richieda correttamente l’Attestazione Wallet all’istanza Wallet.
-    - Il Relying Party valuta correttamente l’Attestazione Wallet quando richiesta.
+    - Presentazione Wallet Instance Attestation (WIA)
+    - Test che il Relying Party richieda correttamente l’Attestato dell'Istanza del Wallet (WIA) all’istanza Wallet.
+    - Il Relying Party valuta correttamente l’Attestato dell'Istanza del Wallet (WIA) quando richiesta.
 
   * - RPR-101
     - Array Presentazione
@@ -497,5 +497,15 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Risposta di Errore di Validazione
     - Test che la Response URI restituisca una risposta di errore in caso di fallimento della validazione.
     - La Response URI restituisce una risposta di errore quando i controlli di validazione falliscono.
+
+  * - RPR-115
+    - Identity Matching
+    - Test dell'Unique National Identifier Binding quando è presentato ``personal_administrative_number`` o ``tax_id_code``.
+    - La Relying Party usa l'identificativo nazionale univoco come chiave primaria di identity matching prima della riconciliazione, come specificato in :ref:`identity-matching` (:ref:`CI_201 <credential-issuer-testcases>`).
+
+  * - RPR-116
+    - Identity Matching
+    - Test dell'Attribute-Based Binding quando un PID è presentato senza ``personal_administrative_number``.
+    - La Relying Party confronta almeno ``family_name``, ``given_name``, ``birth_date`` (o ``birthdate``) e ``place_of_birth`` dopo normalizzazione e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
 
 

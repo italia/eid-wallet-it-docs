@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=987dd299"></script>
+    <script src="_static/documentation_options.js?v=3c055680"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -686,18 +686,18 @@
 <td><p>Il QR Code utilizza il livello di correzione Q richiesto.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-78</p></td>
-<td><p>Richiesta Attestazione Wallet</p></td>
-<td><p>Test che la richiesta di Attestazione Wallet utilizzi la query DCQL standard.</p></td>
-<td><p>La richiesta di Attestazione Wallet utilizza correttamente la query DCQL standard.</p></td>
+<td><p>Richiesta Wallet Instance Attestation (WIA)</p></td>
+<td><p>Test che la richiesta di Wallet Instance Attestation (WIA) utilizzi la query DCQL standard.</p></td>
+<td><p>La richiesta di Wallet Instance Attestation (WIA) utilizza correttamente la query DCQL standard.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-79</p></td>
-<td><p>Richiesta Attestazione Wallet</p></td>
-<td><p>Verifica che il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non sia incluso nella query DCQL per l’Attestazione Wallet.</p></td>
-<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non è incluso nella query DCQL per l’Attestazione Wallet.</p></td>
+<td><p>Richiesta Wallet Instance Attestation (WIA)</p></td>
+<td><p>Verifica che il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non sia incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non è incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-80</p></td>
-<td><p>Richiesta Attestazione Wallet</p></td>
-<td><p>Test che il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> sia richiesto nella query DCQL per l’Attestazione Wallet.</p></td>
+<td><p>Richiesta Wallet Instance Attestation (WIA)</p></td>
+<td><p>Test che il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> sia richiesto nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> è correttamente richiesto nella query DCQL.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-81</p></td>
@@ -781,9 +781,9 @@
 <td><p>Il <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> è correttamente allineato con i metadati della Trust Chain.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
-<td><p>Richiesta Attestazione Wallet</p></td>
-<td><p>Test che il Relying Party richieda l’Attestazione Wallet tramite DCQL.</p></td>
-<td><p>Il Relying Party richiede correttamente l’Attestazione Wallet usando la query DCQL.</p></td>
+<td><p>Richiesta Wallet Instance Attestation (WIA)</p></td>
+<td><p>Test che il Relying Party richieda l’Attestato dell'Istanza del Wallet (WIA) tramite DCQL.</p></td>
+<td><p>Il Relying Party richiede correttamente l’Attestato dell'Istanza del Wallet (WIA) usando la query DCQL.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-98</p></td>
 <td><p>Formato Risposta di Errore</p></td>
@@ -796,9 +796,9 @@
 <td><p>La risposta di errore include i parametri error ed <code class="docutils literal notranslate"><span class="pre">error_description</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-100</p></td>
-<td><p>Presentazione Attestazione Wallet</p></td>
-<td><p>Test che il Relying Party richieda correttamente l’Attestazione Wallet all’istanza Wallet.</p></td>
-<td><p>Il Relying Party valuta correttamente l’Attestazione Wallet quando richiesta.</p></td>
+<td><p>Presentazione Wallet Instance Attestation (WIA)</p></td>
+<td><p>Test che il Relying Party richieda correttamente l’Attestato dell'Istanza del Wallet (WIA) all’istanza Wallet.</p></td>
+<td><p>Il Relying Party valuta correttamente l’Attestato dell'Istanza del Wallet (WIA) quando richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-101</p></td>
 <td><p>Array Presentazione</p></td>
@@ -870,6 +870,16 @@
 <td><p>Test che la Response URI restituisca una risposta di errore in caso di fallimento della validazione.</p></td>
 <td><p>La Response URI restituisce una risposta di errore quando i controlli di validazione falliscono.</p></td>
 </tr>
+<tr class="row-even"><td><p>RPR-115</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test dell'Unique National Identifier Binding quando è presentato <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> o <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>.</p></td>
+<td><p>La Relying Party usa l'identificativo nazionale univoco come chiave primaria di identity matching prima della riconciliazione, come specificato in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching e Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_201</span></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-116</p></td>
+<td><p>Identity Matching</p></td>
+<td><p>Test dell'Attribute-Based Binding quando un PID è presentato senza <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>.</p></td>
+<td><p>La Relying Party confronta almeno <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (o <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) e <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> dopo normalizzazione e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching e Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>).</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -906,7 +916,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=fe830cc9"></script>
+    <script src="_static/documentation_options.js?v=5afb88d0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -334,7 +334,7 @@ The test plan is based on the requirements extracted from the following Sections
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The test cases in this list vary in scope. Some are intentionally written at a high level to confirm the success of complete user flows and the conformance of core architectural and interoperability principles, while others are atomic, targeting single, detailed requirements and verifying specific functional behavior.</p>
+<p>The test cases in this list vary in scope. Some are intentionally written at a high level to confirm the success of complete user flows and the conformance of core architectural and interoperability principles,    while others are atomic, targeting single, detailed requirements and verifying specific functional behavior.</p>
 </div>
 <section id="test-cases-for-wallet-provider-backend">
 <span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">20.4.1.4.1. </span>Test Cases for Wallet Provider Backend<a class="headerlink" href="#test-cases-for-wallet-provider-backend" title="Link to this heading">¶</a></h2>
@@ -415,7 +415,7 @@ The test plan is based on the requirements extracted from the following Sections
 <tr class="row-even"><td><p>WP_003</p></td>
 <td><p>Trust, Interoperability</p></td>
 <td><p>Metadata key usage</p></td>
-<td><p>The public keys in the metadata JSON Object are designated exclusively for signing and/or encryption when the entity acts as a Wallet Provider (e.g., for Wallet Attestations).</p></td>
+<td><p>The public keys in the metadata JSON Object are designated exclusively for signing and/or encryption when the entity acts as a Wallet Provider (e.g., for Wallet Instance Attestations (WIA)).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_004</p></td>
 <td><p>Trust, Interoperability</p></td>
@@ -461,7 +461,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_008</p></td>
 <td><p>Wallet Revocation, Security</p></td>
 <td><p>PID Provider-initiated revocation trigger</p></td>
-<td><p>Wallet Provider implements and supports revocation requests triggered by PID Providers via the PDND Endpoint.</p></td>
+<td><p>Wallet Provider implements and supports revocation requests triggered by PID Providers or IT-Wallet ID Providers via the PDND Endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_009</p></td>
 <td><p>Wallet Revocation, Security</p></td>
@@ -520,8 +520,38 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-odd"><td><p>WP_014</p></td>
 <td><p>Trust, Security</p></td>
-<td><p>WSCD implementation</p></td>
-<td><p>Wallet Instance exclusively uses the Local Internal WSCD for all required cryptographic operations, such as generating signatures and performing key management, to conform with the profile.</p></td>
+<td><p>Keystore / WSCD profile</p></td>
+<td><p>The current implementation profile uses only a Local Internal hardware-backed Keystore (Android TEE or StrongBox, iOS Secure Enclave). The Wallet Instance generates and stores User private keys in that Keystore and does not use a software-only keystore. WSCD denotes a High-certifiable device (HSM or smart card, at least Common Criteria EAL4+ AVA_VAN.5).</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_014a</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>Hardware-backed Keystore only</p></td>
+<td><p>Attempts to generate or import User private keys in a software-only keystore are rejected. Cryptographic operations for WIA, KA, IT-Wallet ID and (Q)EAA key binding use the Local Internal Keystore.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_014b</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>Non-exportability of private keys</p></td>
+<td><p>The Keystore or WSCD does not allow export of User private keys in clear. If a device reports the private key as exportable, the Wallet Provider rejects the Key Attestation and does not activate the Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_014c</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>Sole Control and User authentication</p></td>
+<td><p>The Keystore or WSCD requires User authentication (wallet unlock: PIN or biometric) before any signature or key-use operation. The User retains exclusive control of the private keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_014d</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>PID High vs IT-Wallet ID key storage</p></td>
+<td><p>Keys of IT-Wallet ID and (Q)EAA MAY be stored in the Local Internal Keystore (eIDAS Substantial). Keys of a PID at LoA High MUST be stored only in a WSCD. The current profile does not issue a PID High; a TEE Protection Profile or similar report is not accepted as evidence of LoA High.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_014e</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>WIA keys collocation</p></td>
+<td><p>Private keys bound to the WIA are generated and stored in the same Keystore or WSCD that the WIA attests.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_014f</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>Mobile Relying Party Instance keys</p></td>
+<td><p>A Mobile Relying Party Instance that does not store User identity keys MAY use the Local Internal Keystore. It is not required to use a High-certifiable WSCD.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_015</p></td>
 <td><p>Lifecycle, UX</p></td>
@@ -541,12 +571,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_018</p></td>
 <td><p>Lifecycle, Trust, Security</p></td>
 <td><p>Periodic trust reestablishment</p></td>
-<td><p>Wallet Instance periodically and successfully obtains a fresh Wallet Attestation from its Wallet Provider.</p></td>
+<td><p>Wallet Instance periodically and successfully obtains a fresh Wallet Instance Attestation (WIA) from its Wallet Provider.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_019</p></td>
 <td><p>Trust, Security</p></td>
-<td><p>Wallet Attestation content</p></td>
-<td><p>The Wallet Attestation contains all required claims and data points that attest to the device's integrity and security status.</p></td>
+<td><p>Wallet Instance Attestation (WIA) content</p></td>
+<td><p>The Wallet Instance Attestation (WIA) contains all required claims and data points that attest to the device's integrity and security status.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_019a</p></td>
 <td><p>Trust, Security</p></td>
@@ -556,12 +586,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_019b</p></td>
 <td><p>Trust, Security</p></td>
 <td><p>Attestation-ephemeral key binding</p></td>
-<td><p>The Wallet Attestation contains a cryptographic binding to Wallet Instance’s ephemeral public key that is successfully verified.</p></td>
+<td><p>The Wallet Instance Attestation (WIA) contains a cryptographic binding to Wallet Instance’s ephemeral public key that is successfully verified.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_020</p></td>
 <td><p>Trust, Security</p></td>
-<td><p>Wallet Attestation signing</p></td>
-<td><p>The Wallet Attestation is signed by its authorized Wallet Provider, as officially listed by the overseeing Registration Authority.</p></td>
+<td><p>Wallet Instance Attestation (WIA) signing</p></td>
+<td><p>The Wallet Instance Attestation (WIA) is signed by its authorized Wallet Provider, as officially listed by the overseeing Registration Authority.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_021</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
@@ -570,11 +600,21 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-odd"><td><p>WP_022</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
-<td><p>Key Attestation API availability</p></td>
-<td><p>Wallet Instance checks and confirms the availability of the platform's Key Attestation APIs (StrongBox/TEE or Secure Enclave/DeviceCheck).</p></td>
+<td><p>Key Attestation from Local Internal Keystore</p></td>
+<td><p>Wallet Instance checks and confirms the availability of the platform Key Attestation APIs of the Local Internal Keystore (StrongBox/TEE or Secure Enclave) and obtains a Key Attestation (KA) for keys generated in that Keystore.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_022a</p></td>
+<td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
+<td><p>KA <code class="docutils literal notranslate"><span class="pre">key_storage</span></code> and <code class="docutils literal notranslate"><span class="pre">user_authentication</span></code></p></td>
+<td><p>The KA JWT sets <code class="docutils literal notranslate"><span class="pre">key_storage</span></code> and <code class="docutils literal notranslate"><span class="pre">user_authentication</span></code> to ISO 18045 values that match the attack-potential resistance of the actual Keystore or WSCD and of the User authentication method. The Wallet Provider documents the mapping used for TEE, StrongBox and Secure Enclave. Values MUST NOT claim <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code> for a Local Internal Keystore.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_022b</p></td>
+<td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
+<td><p>KA for remote or local-external WSCD</p></td>
+<td><p>If a future profile uses a remote WSCD (HSM) or a local-external WSCD (smart card, token), the KA is produced by that WSCD, not by the phone TEE. Sole Control of the User over remote keys is verified. This case is out of the current profile.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_023</p></td>
-<td><p>Wallet Initialization / Registration, Wallet Attestation Issuance, Lifecycle, Trust</p></td>
+<td><p>Wallet Initialization / Registration, Wallet Instance Attestation (WIA) Issuance, Lifecycle, Trust</p></td>
 <td><p>Wallet Provider federation discovery</p></td>
 <td><p>Wallet Instance successfully uses Federation API endpoints (<code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>) to retrieve current metadata and configurations of the Wallet Provider.</p></td>
 </tr>
@@ -589,44 +629,44 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <td><p>Wallet Instance prompts the User to set their preferred unlock method (PIN or biometric), and then successfully configures the chosen method.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_026</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Ephemeral key pair for attestation</p></td>
-<td><p>To perform a Wallet Attestation request, Wallet Instance successfully generates a new ephemeral asymmetric key pair.</p></td>
+<td><p>To perform a Wallet Instance Attestation (WIA) request, Wallet Instance successfully generates a new ephemeral asymmetric key pair.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_027</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Device security flaw verification</p></td>
-<td><p>Wallet Provider verifies the device meets its minimum security requirements and is free of known security flaws;  if not, the Wallet Attestation Request is rejected.</p></td>
+<td><p>Wallet Provider verifies the device meets its minimum security requirements and is free of known security flaws;  if not, the Wallet Instance Attestation (WIA) Request is rejected.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_028</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Time-limited Wallet Attestation</p></td>
-<td><p>When no revocation check methods are supported, the Wallet Provider issues a Wallet Attestation with a defined expiration time and a short validity period.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Time-limited Wallet Instance Attestation (WIA)</p></td>
+<td><p>The issued WIA meets <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">the Wallet Instance Attestation lifetime</span></a>. A formulation limited to «short-lived» is not sufficient.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_029</p></td>
-<td><p>Wallet Attestation Issuance, Data Model and Lifecycle, Interoperability</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Data Model and Lifecycle, Interoperability</p></td>
 <td><p>HTTP 200 / JSON response envelope</p></td>
-<td><p>Upon successful validation of the Wallet Attestation Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Attestation as its structure defined in <a class="reference external" href="wallet-provider-endpoint.html#wallet-attestation-jwt">Wallet Attestation JWT</a>.</p></td>
+<td><p>Upon successful validation of the Wallet Instance Attestation (WIA) Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Instance Attestation (WIA) as its structure defined in <a class="reference external" href="wallet-provider-endpoint.html#wallet-instance-attestation-jwt">Wallet Instance Attestation (WIA) JWT</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_029a</p></td>
-<td><p>Wallet Attestation Issuance, Data Model and Lifecycle, Security</p></td>
-<td><p>Wallet Attestation format</p></td>
-<td><p>Wallet Provider provides the Wallet Attestation in JWT format signed by the Wallet Provider, and confirming the structures defined in <a class="reference external" href="wallet-provider-endpoint.html#wallet-attestation-jwt">Wallet Attestation JWT</a>.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Data Model and Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) format</p></td>
+<td><p>Wallet Provider provides the Wallet Instance Attestation (WIA) in JWT format signed by the Wallet Provider, and confirming the structures defined in <a class="reference external" href="wallet-provider-endpoint.html#wallet-instance-attestation-jwt">Wallet Instance Attestation (WIA) JWT</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_029b</p></td>
-<td><p>Wallet Attestation Issuance, Data Model and Lifecycle, Security</p></td>
-<td><p>No PII in Wallet Attestation</p></td>
-<td><p>The Wallet Attestation payload contains no personally identifiable information (PII) about the User.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Data Model and Lifecycle, Security</p></td>
+<td><p>No PII in Wallet Instance Attestation (WIA)</p></td>
+<td><p>The Wallet Instance Attestation (WIA) payload contains no personally identifiable information (PII) about the User.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_030</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Wallet Attestation integrity verification</p></td>
-<td><p>Wallet Instance verifies the signature of the received Wallet Attestation.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) integrity verification</p></td>
+<td><p>Wallet Instance verifies the signature of the received Wallet Instance Attestation (WIA).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_031</p></td>
-<td><p>Wallet Attestation Issuance, Trust, Security</p></td>
-<td><p>Wallet Attestation trust verification</p></td>
-<td><p>Wallet Instance verifies and confirms that the Wallet Attestation issuer (i.e., Wallet Provider) is a trusted member of the Federation, before accepting the Wallet Attestation.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Trust, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) trust verification</p></td>
+<td><p>Wallet Instance verifies and confirms that the Wallet Instance Attestation (WIA) issuer (i.e., Wallet Provider) is a trusted member of the Federation, before accepting the Wallet Instance Attestation (WIA).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_032</p></td>
 <td><p>Wallet Revocation, Lifecycle, Security</p></td>
@@ -797,12 +837,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_051</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Credential Request using OAuth 2.0 code flow</p></td>
-<td><p>Wallet Instance successfully requests PID/(Q)EAA from the PID/(Q)EAA Provider using the Authorization Code Flow per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
+<td><p>Wallet Instance successfully requests PID, IT-Wallet ID or (Q)EAA from the corresponding Provider using the Authorization Code Flow per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_052</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>PAR Request: payload construction</p></td>
-<td><p>Wallet Instance generates a fresh PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, Wallet Attestation PoP JWT, and <code class="docutils literal notranslate"><span class="pre">state</span></code> value, then wraps them into a Request Object signed with its private key per <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, and posts it to the PAR Endpoint.</p></td>
+<td><p>Wallet Instance generates a fresh PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, Wallet Instance Attestation (WIA) PoP JWT, and <code class="docutils literal notranslate"><span class="pre">state</span></code> value, then wraps them into a Request Object signed with its private key per <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, and posts it to the PAR Endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_052a</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -811,13 +851,13 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-odd"><td><p>WP_052b</p></td>
 <td><p>Issuance, Interoperability</p></td>
-<td><p>Wallet Attestation PoP JWT creation</p></td>
-<td><p>Wallet Instance generates the Wallet Attestation PoP JWT (per OAuth-Client-Attestation-PoP parameters as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) and binds it to the same ephemeral public key referenced in the Wallet Attestation’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
+<td><p>Wallet Instance Attestation (WIA) PoP JWT creation</p></td>
+<td><p>Wallet Instance generates the Wallet Instance Attestation (WIA) PoP JWT (per OAuth-Client-Attestation-PoP parameters as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) and binds it to the same ephemeral public key referenced in the Wallet Instance Attestation (WIA)’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_052c</p></td>
 <td><p>Issuance, Security</p></td>
-<td><p>Wallet Attestation PoP JWT signing</p></td>
-<td><p>Wallet Instance signs the PoP JWT with the ephemeral private key corresponding to the public key in the Wallet Attestation’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
+<td><p>Wallet Instance Attestation (WIA) PoP JWT signing</p></td>
+<td><p>Wallet Instance signs the PoP JWT with the ephemeral private key corresponding to the public key in the Wallet Instance Attestation (WIA)’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -857,7 +897,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_055a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Token request proof parameters</p></td>
-<td><p>The Token Request carries the required proofs in headers: a DPoP proof JWT, a Wallet Attestation JWT, and Wallet Instance’s PoP JWT (per OAuth-Client-Attestation and OAuth-Client-Attestation-PoP as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
+<td><p>The Token Request carries the required proofs in headers: a DPoP proof JWT, a Wallet Instance Attestation (WIA) JWT, and Wallet Instance’s PoP JWT (per OAuth-Client-Attestation and OAuth-Client-Attestation-PoP as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_055b</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -872,7 +912,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_055d</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Token request proof parameters</p></td>
-<td><p>The Wallet Attestation JWT is signed using the private key bound to Wallet Instance, where its related public key is provided within the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim).</p></td>
+<td><p>The Wallet Instance Attestation (WIA) JWT is signed using the private key bound to Wallet Instance, where its related public key is provided within the Wallet Instance Attestation (WIA) (<code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_056</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -917,7 +957,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_059</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Validate Credential Response for required parameters</p></td>
-<td><p>Wallet Instance inspects the Credential Response payload, verifying all mandatory PID/(Q)EAA parameters are present and valid as defined in <a class="reference internal" href="credential-issuer-endpoint.html#table-credential-response-claim"><span class="std std-ref">Table of Credential Response</span></a>; if any parameter is missing or invalid, it rejects the response with an error.</p></td>
+<td><p>Wallet Instance inspects the Credential Response payload, verifying all mandatory PID, IT-Wallet ID or (Q)EAA parameters are present and valid as defined in <a class="reference internal" href="credential-issuer-endpoint.html#table-credential-response-claim"><span class="std std-ref">Table of Credential Response</span></a>; if any parameter is missing or invalid, it rejects the response with an error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_060</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -997,17 +1037,17 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_068</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Refresh Token Request</p></td>
-<td><p>Wallet Instance sends a POST request to the Credential Issuer’s Token Endpoint with <code class="docutils literal notranslate"><span class="pre">grant_type=refresh_token</span></code>, a valid refresh_token, a DPoP header with a fresh DPoP proof JWT, and OAuth headers carrying the Wallet Attestation JWT and its PoP.</p></td>
+<td><p>Wallet Instance sends a POST request to the Credential Issuer’s Token Endpoint with <code class="docutils literal notranslate"><span class="pre">grant_type=refresh_token</span></code>, a valid refresh_token, a DPoP header with a fresh DPoP proof JWT, and OAuth headers carrying the Wallet Instance Attestation (WIA) JWT and its PoP.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_068a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Refresh Token: generate proofs</p></td>
-<td><p>For a refresh Access Token request, Wallet Instance generates a new DPoP JWT and a new Wallet Attestation PoP, and includes them in the request.</p></td>
+<td><p>For a refresh Access Token request, Wallet Instance generates a new DPoP JWT and a new Wallet Instance Attestation (WIA) PoP, and includes them in the request.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_068b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Refresh Token: maintain binding</p></td>
-<td><p>Wallet Instance reuses the same key bound to the Wallet Attestation PoP and the DPoP proof from the original Access Token request, ensuring the refreshed Access Token remains cryptographically bound and valid.</p></td>
+<td><p>Wallet Instance reuses the same key bound to the Wallet Instance Attestation (WIA) PoP and the DPoP proof from the original Access Token request, ensuring the refreshed Access Token remains cryptographically bound and valid.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_069</p></td>
 <td><p>Issuance, Security</p></td>
@@ -1610,12 +1650,12 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_123</p></td>
 <td><p>Backup and Restore, Security</p></td>
 <td><p>Backup JWT signing with attested key</p></td>
-<td><p>Wallet Instance signs the backup JWT with the private key corresponding to the public key found in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of the Wallet Attestation JWT.</p></td>
+<td><p>Wallet Instance signs the backup JWT with the private key corresponding to the public key found in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of the Wallet Instance Attestation (WIA) JWT.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_123a</p></td>
 <td><p>Backup and Restore, Security</p></td>
 <td><p>Attestation validity check for backup JWT</p></td>
-<td><p>Before signing the backup JWT, Wallet Instance verifies the validity of its own Wallet Attestation.</p></td>
+<td><p>Before signing the backup JWT, Wallet Instance verifies the validity of its own Wallet Instance Attestation (WIA).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_124</p></td>
 <td><p>Backup and Restore, Security</p></td>
@@ -1639,18 +1679,18 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-even"><td><p>WP_128</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
-<td><p>Wallet Attestation extraction from backup JWT</p></td>
-<td><p>Wallet Instance extracts the Wallet Attestation JWT from the <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim of backup JWT found within the backup file.</p></td>
+<td><p>Wallet Instance Attestation (WIA) extraction from backup JWT</p></td>
+<td><p>Wallet Instance extracts the Wallet Instance Attestation (WIA) JWT from the <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim of backup JWT found within the backup file.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_128a</p></td>
 <td><p>Backup and Restore, Security</p></td>
-<td><p>Ignore Wallet Attestation expiration during restore</p></td>
-<td><p>The restore process continues successfully even if the Wallet Attestation JWT in the backup file is expired.</p></td>
+<td><p>Ignore Wallet Instance Attestation (WIA) expiration during restore</p></td>
+<td><p>The restore process continues successfully even if the Wallet Instance Attestation (WIA) JWT in the backup file is expired.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_129</p></td>
 <td><p>Backup and Restore, Security</p></td>
 <td><p>Backup JWT signature verification</p></td>
-<td><p>Wallet Instance successfully verifies the signature of the backup JWT using the Wallet Attestation public key from the <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim within the <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim.</p></td>
+<td><p>Wallet Instance successfully verifies the signature of the backup JWT using the Wallet Instance Attestation (WIA) public key from the <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim within the <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_130</p></td>
 <td><p>Backup and Restore, Interoperability</p></td>
@@ -1770,94 +1810,94 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Wallet Instance uninstalls itself and removes all local keys and application data.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_140</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Wallet Attestation Request</p></td>
-<td><p>Wallet Instance successfully constructs the Wallet Attestation Request JWT with the required claims: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, and other configuration related parameters.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, and other configuration related parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_140a</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Hardware key existence check/re-initialization</p></td>
 <td><p>Wallet Instance checks for the existence of Cryptographic Hardware Keys; if they are not found, it triggers the re-initialization process.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_140b</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Interoperability</p></td>
-<td><p>Requests nonce for Wallet Attestation Request</p></td>
-<td><p>Wallet Instance successfully requests and receives a fresh nonce from the Wallet Provider’s Nonce Endpoint, before requesting the Wallet Attestation.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Interoperability</p></td>
+<td><p>Requests nonce for Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Wallet Instance successfully requests and receives a fresh nonce from the Wallet Provider’s Nonce Endpoint, before requesting the Wallet Instance Attestation (WIA).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_140c</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Interoperability</p></td>
-<td><p>Computes hash for Wallet Attestation Request</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Interoperability</p></td>
+<td><p>Computes hash for Wallet Instance Attestation (WIA) Request</p></td>
 <td><p>Wallet Instance computes a SHA-256 digest (<code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>) of the nonce and the thumbprint of the <code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code> JWK.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_140d</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Interoperability</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Interoperability</p></td>
 <td><p>Signs hash with hardware private key</p></td>
 <td><p>Wallet Instance signs the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> with the hardware private key and produces a valid <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_140e</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Interoperability</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Interoperability</p></td>
 <td><p>Obtains signed Integrity Assertion from Device Integrity Service.</p></td>
 <td><p>Wallet Instance successfully requests and receives a signed <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> from the Device Integrity Service that is bound to the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_140f</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Include <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim</p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim contains the ephemeral public key, linking the key to the attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_141</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Signing JWT Wallet Attestation Request</p></td>
-<td><p>Wallet Instance signs the Wallet Attestation Request JWT with the ephemeral private key.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Signing JWT Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Wallet Instance signs the Wallet Instance Attestation (WIA) Request JWT with the ephemeral private key.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_142</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Submitting Wallet Attestation Request JWT to Wallet Provider</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Submitting Wallet Instance Attestation (WIA) Request JWT to Wallet Provider</p></td>
 <td><p>The Wallet Instance submits the signed request JWT as an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter to the Wallet Provider’s Attestation Issuance Endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_143</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Attestation Request JWT verification</p></td>
-<td><p>Wallet Provider successfully performs a comprehensive validation of the Wallet Attestation Request JWT, including its signature, claims, and cryptographic proofs.</p></td>
+<td><p>Wallet Provider successfully performs a comprehensive validation of the Wallet Instance Attestation (WIA) Request JWT, including its signature, claims, and cryptographic proofs.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_143a</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>HTTP header validation for Wallet Attestation Request</p></td>
-<td><p>Wallet Provider successfully validates the Wallet Attestation Request JWT header to contain valid <code class="docutils literal notranslate"><span class="pre">alg</span></code>, <code class="docutils literal notranslate"><span class="pre">kid</span></code>, and <code class="docutils literal notranslate"><span class="pre">typ</span></code> parameters.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>HTTP header validation for Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Wallet Provider successfully validates the Wallet Instance Attestation (WIA) Request JWT header to contain valid <code class="docutils literal notranslate"><span class="pre">alg</span></code>, <code class="docutils literal notranslate"><span class="pre">kid</span></code>, and <code class="docutils literal notranslate"><span class="pre">typ</span></code> parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_143b</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>JWT signature verification in Wallet Attestation Request</p></td>
-<td><p>Wallet Provider successfully verifies the signature of the Wallet Attestation Request JWT using the public key in the provided JWK.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>JWT signature verification in Wallet Instance Attestation (WIA) Request</p></td>
+<td><p>Wallet Provider successfully verifies the signature of the Wallet Instance Attestation (WIA) Request JWT using the public key in the provided JWK.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_143c</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
-<td><p>Nonce uniqueness verification for Wallet Attestation</p></td>
-<td><p>Wallet Provider rejects the Wallet Attestation Request JWT if the nonce was not generated by itself or has been previously used.</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
+<td><p>Nonce uniqueness verification for Wallet Instance Attestation (WIA)</p></td>
+<td><p>Wallet Provider rejects the Wallet Instance Attestation (WIA) Request JWT if the nonce was not generated by itself or has been previously used.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_143d</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Registered Wallet Instance verification</p></td>
-<td><p>Wallet Provider confirms that the Wallet Attestation Request originates from a valid and currently registered Wallet Instance; if not rejects the request.</p></td>
+<td><p>Wallet Provider confirms that the Wallet Instance Attestation (WIA) Request originates from a valid and currently registered Wallet Instance; if not rejects the request.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_143e</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Interoperability</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Interoperability</p></td>
 <td><p>Hardware signature validation</p></td>
 <td><p>Wallet Provider successfully reconstructs the client_data, and validates the <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> using Wallet Instance's registered Hardware public key.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_143f</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Integrity Assertion validation per guidelines</p></td>
 <td><p>Wallet Provider successfully validates the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> according to the device manufacturer’s guidelines.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_143g</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter verification</p></td>
-<td><p>Wallet Provider verifies that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter in the Wallet Attestation Request JWT matches its own URL identifier.</p></td>
+<td><p>Wallet Provider verifies that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter in the Wallet Instance Attestation (WIA) Request JWT matches its own URL identifier.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_144</p></td>
-<td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Attestation Issuance</p></td>
-<td><p>After successful validation of the Wallet Attestation Request, Wallet Provider issues a Wallet Attestation with an expiration time not exceeding 24 hours from issuance.</p></td>
+<td><p>After successful validation of the Wallet Instance Attestation (WIA) Request, the Wallet Provider issues a Wallet Instance Attestation (WIA) that meets <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">the Wallet Instance Attestation lifetime</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_145</p></td>
 <td><p>Wallet Revocation, Lifecycle, Interoperability</p></td>
@@ -1913,6 +1953,36 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Binding failure (Integrity Assertion failure)</p></td>
 <td><p>When the Integrity Assertion in a Key Binding request fails validation (e.g., is tampered with), Wallet Provider returns a <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> response with the error code <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_156</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>WUA distinct from WIA</p></td>
+<td><p>Wallet Unit Attestation (WUA) is issued and verified as a distinct artefact from the WIA. Private keys bound to a WUA are stored in the same Keystore or WSCD as the Digital Credential keys that the WUA attests. Tests MUST NOT use the legacy name «Wallet Attestation» for either artefact.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_157</p></td>
+<td><p>Issuance, Authentication</p></td>
+<td><p>IT-Wallet ID issuance authentication</p></td>
+<td><p>The Wallet Instance obtains an IT-Wallet ID using CieID LoA High as the primary method, or the eID Substantial Authentication with MRTD Verification flow as the alternative. The flow is distinct from PID High issuance.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_158</p></td>
+<td><p>Issuance, Authentication</p></td>
+<td><p>L2+ <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code></p></td>
+<td><p>When requesting an IT-Wallet ID with eID Substantial Authentication with MRTD Verification, the PAR Request Object includes an <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> object with <code class="docutils literal notranslate"><span class="pre">type</span></code> equal to <code class="docutils literal notranslate"><span class="pre">it_l2+document_proof</span></code> and the claims required by <a class="reference internal" href="credential-issuance-l2plus.html#eid-substantial-authentication-with-mrtd-verification-for-it-wallet-id-issuance"><span class="std std-ref">eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance</span></a>. If that object is absent, the EAA Provider authenticates the User with CieID LoA High.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_159</p></td>
+<td><p>Issuance, Authentication, Security</p></td>
+<td><p>L2+ IdP–MRTD identity binding</p></td>
+<td><p>After primary authentication (SPID or CieID Substantial), the EAA Provider correlates the identity in the IdP assertion with the identity in the MRTD (CIE). The comparison uses at least the tax identification number or an equivalent unique identifier present in both sources. A mismatch aborts issuance. If primary authentication is LoA High, Phase 3 (MRTD PoP) is skipped.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_160</p></td>
+<td><p>Presentation, Security</p></td>
+<td><p>Offline presentation and key location</p></td>
+<td><p>Offline or proximity presentation of a Digital Credential succeeds only when the bound private keys are in a local Keystore or local WSCD. Credentials whose keys are in a remote WSCD are not presented offline.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_161</p></td>
+<td><p>Trust, Security</p></td>
+<td><p>Authenticated PDND Wallet Provider endpoints</p></td>
+<td><p>Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, are authenticated and authorised. Unauthenticated requests are rejected. A successful Notify User Death leads to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2035,7 +2105,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=fe830cc9"></script>
+    <script src="_static/documentation_options.js?v=5afb88d0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
@@ -316,7 +316,7 @@
             
   <section id="signature-evaluation-test-matrix">
 <h1><span class="section-number">20.4.1.1. </span>Signature Evaluation Test Matrix<a class="headerlink" href="#signature-evaluation-test-matrix" title="Link to this heading">¶</a></h1>
-<p>This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.</p>
+<p id="signature-evaluation-testcases">This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -349,8 +349,8 @@
 </tr>
 <tr class="row-odd"><td><p>ATT-004</p></td>
 <td><p>Appropriate Algorithms</p></td>
-<td><p>Ensure only cryptographically current algorithms are used.</p></td>
-<td><p>Only approved algorithms are accepted; deprecated ones are rejected.</p></td>
+<td><p>Ensure only algorithms listed as MUST or RECOMMENDED in <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> are used. Algorithms listed as MUST NOT (including <code class="docutils literal notranslate"><span class="pre">none</span></code>) are rejected. Cipher suites and hash functions not profiled in that section follow the ACN <em>Linee guida funzioni crittografiche</em>. Edwards-curve and post-quantum algorithms are not required by the current profile.</p></td>
+<td><p>Only approved algorithms are accepted; deprecated or unlisted algorithms are rejected.</p></td>
 </tr>
 <tr class="row-even"><td><p>ATT-005</p></td>
 <td><p>Signature Validation</p></td>
@@ -359,50 +359,65 @@
 </tr>
 <tr class="row-odd"><td><p>ATT-006</p></td>
 <td><p>Key Entropy</p></td>
-<td><p>Ensure cryptographic keys have sufficient entropy.</p></td>
-<td><p>Keys must meet entropy requirements; weak keys are rejected.</p></td>
+<td><p>Cryptographic keys and fresh secrets provide at least 128 bits of security strength as defined in NIST SP 800-57 Part 1. Asymmetric keys used with ES256/ESP256 are P-256 keys generated inside the Keystore or WSCD CSPRNG. Nonces, <code class="docutils literal notranslate"><span class="pre">jti</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and similar values are CSPRNG output of at least 128 bits and are not sequential.</p></td>
+<td><p>Keys and secrets meet the entropy minima; weak, undersized, sequential or software-forged keys are rejected. A third party verifies key type and length and, where the platform exposes it, that the key is inside secure hardware (Android <code class="docutils literal notranslate"><span class="pre">KeyInfo.isInsideSecureHardware</span></code> / iOS Secure Enclave token).</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-007</p></td>
+<tr class="row-even"><td><p>ATT-006a</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> is 43 to 128 unreserved characters as required by <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>, generated with a CSPRNG.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-006b</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>MRTD and challenge nonces</p></td>
+<td><p>Challenge identifiers and MRTD PoP nonces have at least 128 bits of entropy, as required for eID Substantial Authentication with MRTD Verification.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-006c</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>No imported weak keys</p></td>
+<td><p>The Wallet Provider rejects Key Attestations for keys that were imported into the Keystore, generated outside the Keystore/WSCD, or whose length does not match the algorithm (for example ES256 with a non-P-256 key).</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-007</p></td>
 <td><p>Issuer Validation</p></td>
 <td><p>Validate that the cryptographic keys belong to the issuer.</p></td>
 <td><p>Keys must be verified as belonging to the issuer.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-008</p></td>
+<tr class="row-even"><td><p>ATT-008</p></td>
 <td><p>Audience Validation</p></td>
 <td><p>Validate the audience claim to ensure the token is used by the intended party.</p></td>
 <td><p>Audience claim must match the intended recipient.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-009</p></td>
+<tr class="row-odd"><td><p>ATT-009</p></td>
 <td><p>Claim Trust</p></td>
 <td><p>Do not trust received claims without validation.</p></td>
 <td><p>Claims must be validated; untrusted claims are rejected.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-010</p></td>
+<tr class="row-even"><td><p>ATT-010</p></td>
 <td><p>Explicit Typing</p></td>
 <td><p>Use explicit typing to prevent COSE/JOSE confusion.</p></td>
 <td><p>Typing must be explicit and validated.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-011</p></td>
+<tr class="row-odd"><td><p>ATT-011</p></td>
 <td><p>Cross-JWT Confusion</p></td>
 <td><p>Prevent COSE/JOSE from being used in unintended contexts.</p></td>
 <td><p>COSE/JOSE must be contextually validated to prevent misuse.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-012</p></td>
+<tr class="row-even"><td><p>ATT-012</p></td>
 <td><p>Substitution Attacks</p></td>
 <td><p>Ensure COSE/JOSE are not substituted across different contexts.</p></td>
 <td><p>COSE/JOSE must be validated for context-specific use.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-013</p></td>
+<tr class="row-odd"><td><p>ATT-013</p></td>
 <td><p>Issued At Validation</p></td>
 <td><p>Verify that the <cite>issued at</cite> parameter is set to the current time, allowing a grace period not exceeding 120 seconds.</p></td>
 <td><p>The <cite>issued at</cite> value must be within 120 seconds of the current time.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-014</p></td>
+<tr class="row-even"><td><p>ATT-014</p></td>
 <td><p>Expiration Validation</p></td>
 <td><p>Ensure the <cite>expiration</cite> time is greater than the <cite>issued at</cite> time.</p></td>
 <td><p>The <cite>expiration</cite> time must be later than the <cite>issued at</cite> time.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-015</p></td>
+<tr class="row-odd"><td><p>ATT-015</p></td>
 <td><p>Data Model validation</p></td>
 <td><p>Ensure JOSE/COSE type matches with the defined data model.</p></td>
 <td><p>The parameters or claims, their values and the schema used to represent them are compliant with the data model.</p></td>
@@ -461,7 +476,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -83,7 +83,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_003
      - Trust, Interoperabilità
      - Utilizzo chiave metadata
-     - Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).
+     - Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Instance Attestation (WIA)).
    * - WP_004
      - Trust, Interoperabilità
      - Riferimento chiave metadata
@@ -120,7 +120,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_008
      - Revoca Wallet, Sicurezza
      - Trigger revoca avviata dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale
-     - Il Fornitore di Wallet implementa e supporta richieste di revoca attivate dai Fornitori di Attestati Elettronici di Dati di Identificazione Personale tramite il PDND Endpoint.
+     - Il Fornitore di Wallet implementa e supporta richieste di revoca attivate dai Fornitori di PID o di IT-Wallet ID tramite il PDND Endpoint.
    * - WP_009
      - Revoca Wallet, Sicurezza
      - Trigger revoca avviata dalle Autorità Legali
@@ -168,8 +168,32 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, e Archiviazione Sicura) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
    * - WP_014
      - Trust, Sicurezza
-     - Implementazione WSCD
-     - Istanza del Wallet utilizza esclusivamente il WSCD Interno Locale per tutte le operazioni crittografiche richieste, come generare firme e eseguire gestione delle chiavi, per conformarsi al profilo.
+     - Profilo Keystore / WSCD
+     - Il profilo implementativo attuale usa esclusivamente un Keystore hardware-backed interno locale (TEE o StrongBox su Android, Secure Enclave su iOS). L'Istanza del Wallet genera e memorizza le chiavi private dell'Utente in quel Keystore e non usa un keystore solo software. WSCD indica un dispositivo certificabile High (HSM o smart card, almeno Common Criteria EAL4+ AVA_VAN.5).
+   * - WP_014a
+     - Trust, Sicurezza
+     - Solo Keystore hardware-backed
+     - I tentativi di generare o importare chiavi private dell'Utente in un keystore solo software sono rifiutati. Le operazioni crittografiche per WIA, KA, IT-Wallet ID e (Q)EAA usano il Local Internal Keystore.
+   * - WP_014b
+     - Trust, Sicurezza
+     - Non esportabilità delle chiavi private
+     - Il Keystore o il WSCD non consente l'esportazione in chiaro delle chiavi private dell'Utente. Se il dispositivo dichiara la chiave privata come esportabile, il Fornitore del Wallet rifiuta la Key Attestation e non attiva l'Istanza del Wallet.
+   * - WP_014c
+     - Trust, Sicurezza
+     - Sole Control e autenticazione Utente
+     - Il Keystore o il WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
+   * - WP_014d
+     - Trust, Sicurezza
+     - Conservazione chiavi PID High vs IT-Wallet ID
+     - Le chiavi di IT-Wallet ID e (Q)EAA POSSONO essere memorizzate nel Local Internal Keystore (eIDAS Substantial). Le chiavi di un PID a LoA High DEVONO essere memorizzate solo in un WSCD. Il profilo attuale non emette un PID High; un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
+   * - WP_014e
+     - Trust, Sicurezza
+     - Collocazione chiavi WIA
+     - Le chiavi private associate alla WIA sono generate e memorizzate nello stesso Keystore o WSCD che la WIA attesta.
+   * - WP_014f
+     - Trust, Sicurezza
+     - Chiavi della Mobile Relying Party Instance
+     - Una Mobile Relying Party Instance che non memorizza chiavi di identità dell'Utente PUÒ usare il Local Internal Keystore. Non è richiesto un WSCD certificabile High.
    * - WP_015
      - Ciclo di vita, UX
      - Compatibilità Android/iOS
@@ -185,11 +209,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_018
      - Ciclo di vita, Trust, Sicurezza
      - Ristabilimento periodico del trust
-     - Istanza del Wallet ottiene periodicamente e con successo una Wallet Attestation fresca dal suo Fornitore del Wallet.
+     - Istanza del Wallet ottiene periodicamente e con successo una Wallet Instance Attestation (WIA) fresca dal suo Fornitore del Wallet.
    * - WP_019
      - Trust, Sicurezza
-     - Contenuto Wallet Attestation
-     - La Wallet Attestation contiene tutti i claim e punti dati richiesti che attestano l'integrità e lo stato di sicurezza del dispositivo.
+     - Contenuto Wallet Instance Attestation (WIA)
+     - La Wallet Instance Attestation (WIA) contiene tutti i claim e punti dati richiesti che attestano l'integrità e lo stato di sicurezza del dispositivo.
    * - WP_019a
      - Trust, Sicurezza
      - Nessun attestato per Istanze del Wallet non verificate
@@ -197,21 +221,29 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_019b
      - Trust, Sicurezza
      - Associazione attestato-chiave effimera
-     - La Wallet Attestation contiene una chiave pubblica effimera generata dall'Istanza del Wallet e Istanza del Wallet è in grado di dimostrare la proprietà della chiave privata corrispondente.
+     - La Wallet Instance Attestation (WIA) contiene una chiave pubblica effimera generata dall'Istanza del Wallet e Istanza del Wallet è in grado di dimostrare la proprietà della chiave privata corrispondente.
    * - WP_020
      - Trust, Sicurezza
-     - Firma Wallet Attestation
-     - La Wallet Attestation è firmata digitalmente dal suo Fornitore del Wallet autorizzato, come ufficialmente elencato dall'Autorità di Registrazione supervisore.
+     - Firma Wallet Instance Attestation (WIA)
+     - La Wallet Instance Attestation (WIA) è firmata digitalmente dal suo Fornitore del Wallet autorizzato, come ufficialmente elencato dall'Autorità di Registrazione supervisore.
    * - WP_021
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Verifica sicurezza dispositivo
      - Istanza del Wallet non può essere attivata su un dispositivo che non soddisfa i requisiti minimi di sicurezza definiti dal Fornitore del Wallet.
    * - WP_022
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
-     - Disponibilità API Key Attestation
-     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API nel dispositivo (StrongBox/TEE o Secure Enclave/DeviceCheck).
+     - Key Attestation dal Local Internal Keystore
+     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API del Local Internal Keystore (StrongBox/TEE o Secure Enclave) e ottiene una Key Attestation (KA) per le chiavi generate in quel Keystore.
+   * - WP_022a
+     - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
+     - KA ``key_storage`` e ``user_authentication``
+     - Il JWT della KA imposta ``key_storage`` e ``user_authentication`` ai valori ISO 18045 coerenti con la resistenza al potenziale di attacco del Keystore o WSCD effettivo e del metodo di autenticazione Utente. Il Fornitore del Wallet documenta la mappatura usata per TEE, StrongBox e Secure Enclave. I valori NON DEVONO dichiarare ``iso_18045_high`` per un Local Internal Keystore.
+   * - WP_022b
+     - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
+     - KA per WSCD remoto o locale esterno
+     - Se un profilo futuro usa un WSCD remoto (HSM) o un WSCD locale esterno (smart card, token), la KA è prodotta da quel WSCD, non dal TEE del telefono. È verificato il Sole Control dell'Utente sulle chiavi remote. Questo caso è fuori dal profilo attuale.
    * - WP_023
-     - Inizializzazione / Registrazione Wallet, Rilascio Wallet Attestation, Ciclo di vita, Trust
+     - Inizializzazione / Registrazione Wallet, Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
      - Istanza del Wallet utilizza con successo gli Endpoint di Federation (``.well-known/openid-federation``, ``/fetch``) per recuperare metadata e configurazioni correnti del Fornitore del Wallet.
    * - WP_024
@@ -223,37 +255,37 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Configurazione metodo sblocco Wallet
      - Istanza del Wallet richiede all'Utente di impostare il proprio metodo di sblocco preferito (PIN o biometrico), e quindi configura con successo il metodo scelto.
    * - WP_026
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Coppia chiavi effimere per attestato
-     - Per eseguire una Richiesta di Emissione della Wallet Attestation, Istanza del Wallet genera con successo una nuova coppia di chiavi asimmetriche effimere.
+     - Per eseguire una Richiesta di Emissione della Wallet Instance Attestation (WIA), Istanza del Wallet genera con successo una nuova coppia di chiavi asimmetriche effimere.
    * - WP_027
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica falla sicurezza dispositivo
-     - Il Fornitore del Wallet verifica che il dispositivo soddisfi i suoi requisiti minimi di sicurezza e sia privo di falle di sicurezza note; se non è così, la Richiesta di Emissione della Wallet Attestation viene rifiutata.
+     - Il Fornitore del Wallet verifica che il dispositivo soddisfi i suoi requisiti minimi di sicurezza e sia privo di falle di sicurezza note; se non è così, la Richiesta di Emissione della Wallet Instance Attestation (WIA) viene rifiutata.
    * - WP_028
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Wallet Attestation a tempo limitato
-     - quando non sono supportati metodi di controllo revoca, Il Fornitore del Wallet rilascia una Wallet Attestation con un tempo di scadenza definito e un periodo di validità breve.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Wallet Instance Attestation (WIA) a tempo limitato
+     - La WIA rilasciata soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>`. Una formulazione limitata a «short-lived» non è sufficiente.
    * - WP_029
-     - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Interoperabilità
+     - Rilascio Wallet Instance Attestation (WIA), Modello Dati e Ciclo di vita, Interoperabilità
      - Busta risposta HTTP 200 / JSON
-     - Dopo la validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet restituisce un codice di stato 200 OK con Content-Type ``application/json``, nel cui payload si trova l'array ``wallet_attestations`` contenente le Wallet Attestation definite in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
+     - Dopo la validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet restituisce un codice di stato 200 OK con Content-Type ``application/json``, nel cui payload si trova l'array ``wallet_attestations`` contenente le Wallet Instance Attestation (WIA) definite in `Wallet Instance Attestation (WIA) JWT <wallet-provider-endpoint.html#wallet-instance-attestation-jwt>`_.
    * - WP_029a
-     - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
-     - Formato della Wallet Attestation
-     - Il Fornitore del Wallet fornisce la Wallet Attestation formato JWT firmato dal Fornitore del Wallet, come definito in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`.
+     - Rilascio Wallet Instance Attestation (WIA), Modello Dati e Ciclo di vita, Sicurezza
+     - Formato della Wallet Instance Attestation (WIA)
+     - Il Fornitore del Wallet fornisce la Wallet Instance Attestation (WIA) formato JWT firmato dal Fornitore del Wallet, come definito in `Wallet Instance Attestation (WIA) JWT <wallet-provider-endpoint.html#wallet-instance-attestation-jwt>`.
    * - WP_029b
-     - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
-     - Nessun PII nella Wallet Attestation
-     - Il payload della Wallet Attestation non contiene informazioni personali sull'Utente.
+     - Rilascio Wallet Instance Attestation (WIA), Modello Dati e Ciclo di vita, Sicurezza
+     - Nessun PII nella Wallet Instance Attestation (WIA)
+     - Il payload della Wallet Instance Attestation (WIA) non contiene informazioni personali sull'Utente.
    * - WP_030
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Verifica integrità Wallet Attestation
-     - Istanza del Wallet verifica la firma della Wallet Attestation ricevuta.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Verifica integrità Wallet Instance Attestation (WIA)
+     - Istanza del Wallet verifica la firma della Wallet Instance Attestation (WIA) ricevuta.
    * - WP_031
-     - Rilascio Wallet Attestation, Trust, Sicurezza
-     - Verifica trust Wallet Attestation
-     - Istanza del Wallet verifica e conferma che l'emittente della Wallet Attestation (cioè, Fornitore del Wallet) è un membro fidato della Federazione, altrimenti la rifiuta come non valida.
+     - Rilascio Wallet Instance Attestation (WIA), Trust, Sicurezza
+     - Verifica trust Wallet Instance Attestation (WIA)
+     - Istanza del Wallet verifica e conferma che l'emittente della Wallet Instance Attestation (WIA) (cioè, Fornitore del Wallet) è un membro fidato della Federazione, altrimenti la rifiuta come non valida.
    * - WP_032
      - Revoca Wallet, Ciclo di vita, Sicurezza
      - Revoca avviata dall'utente
@@ -391,23 +423,23 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_051
      - Issuance, Interoperabilità
      - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code
-     - Istanza del Wallet richiede con successo PID/(Q)EAA dal Fornitore PID/(Q)EAA utilizzando il Flusso Authorization Code come in `OpenID4VCI`_.
+     - Istanza del Wallet richiede con successo PID, IT-Wallet ID o (Q)EAA dal Fornitore corrispondente utilizzando il Flusso Authorization Code come in `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperabilità
      - Richiesta PAR: costruzione payload
-     - Istanza del Wallet genera un nuovo PKCE ``code_verifier``, JWT PoP Wallet Attestation, e valore ``state``, quindi li avvolge in un Request Object firmato con la sua chiave privata (:rfc:`9126`), e lo invia al PAR Endpoint.
+     - Istanza del Wallet genera un nuovo PKCE ``code_verifier``, JWT PoP Wallet Instance Attestation (WIA), e valore ``state``, quindi li avvolge in un Request Object firmato con la sua chiave privata (:rfc:`9126`), e lo invia al PAR Endpoint.
    * - WP_052a
      - Issuance, Interoperabilità
      - Generazione sicura ``code_verifier`` PKCE
      - Istanza del Wallet crea il ``code_verifier`` seguendo le raccomandazioni contenute in :rfc:`7636`, come stringa casuale ad alta entropia utilizzando caratteri non riservati con lunghezza tra 43 e 128.
    * - WP_052b
      - Issuance, Interoperabilità
-     - Creazione JWT PoP Wallet Attestation
-     - Istanza del Wallet genera il JWT PoP Wallet Attestation (per parametri ``OAuth-Client-Attestation-PoP`` come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_) e include, nel payload, la chiave pubblica effimera referenziata nel ``cnf.jwk`` della Wallet Attestation.
+     - Creazione JWT PoP Wallet Instance Attestation (WIA)
+     - Istanza del Wallet genera il JWT PoP Wallet Instance Attestation (WIA) (per parametri ``OAuth-Client-Attestation-PoP`` come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_) e include, nel payload, la chiave pubblica effimera referenziata nel ``cnf.jwk`` della Wallet Instance Attestation (WIA).
    * - WP_052c
      - Issuance, Sicurezza
-     - Firma JWT PoP Wallet Attestation
-     - Istanza del Wallet firma il JWT PoP con la chiave privata effimera corrispondente alla chiave pubblica valorizzata nel parametro ``cnf.jwk`` della Wallet Attestation.
+     - Firma JWT PoP Wallet Instance Attestation (WIA)
+     - Istanza del Wallet firma il JWT PoP con la chiave privata effimera corrispondente alla chiave pubblica valorizzata nel parametro ``cnf.jwk`` della Wallet Instance Attestation (WIA).
    * - WP_052d
      - Issuance, Interoperabilità
      - Specificare tipi degli Attestati Elettronici
@@ -439,7 +471,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_055a
      - Issuance, Interoperabilità
      - Parametri prova Token Request
-     - La Token Request porta le prove richieste negli header: un JWT prova DPoP, un JWT Wallet Attestation, e JWT PoP dell'Istanza del Wallet (per ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_).
+     - La Token Request porta le prove richieste negli header: un JWT prova DPoP, un JWT Wallet Instance Attestation (WIA), e JWT PoP dell'Istanza del Wallet (per ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_).
    * - WP_055b
      - Issuance, Interoperabilità
      - Generare coppia chiavi/prova DPoP
@@ -450,8 +482,8 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet firma il DPoP-JWT con la chiave privata DPoP generata precedentemente.
    * - WP_055d
      - Issuance, Interoperabilità
-     - Parametri PoP Wallet Attestation nella Token Request
-     - ``OAuth-Client-Attestation-PoP`` è firmato utilizzando la chiave privata associata alIstanza del Wallet, dove la sua chiave pubblica correlata è fornita all'interno del Wallet Attestation (claim ``cnf.jwk``).
+     - Parametri PoP Wallet Instance Attestation (WIA) nella Token Request
+     - ``OAuth-Client-Attestation-PoP`` è firmato utilizzando la chiave privata associata alIstanza del Wallet, dove la sua chiave pubblica correlata è fornita all'interno del Wallet Instance Attestation (WIA) (claim ``cnf.jwk``).
    * - WP_056
      - Issuance, Interoperabilità
      - Richiesta Attestato Elettronico
@@ -487,7 +519,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_059
      - Issuance, Interoperabilità
      - Validare la Credential Response per parametri richiesti
-     - Istanza del Wallet ispeziona il payload Credential Response, verificando che tutti i parametri PID/(Q)EAA obbligatori siano presenti e validi come definito in :ref:`Table of Credential Response <table_credential_response_claim>`; se qualsiasi parametro è mancante o non valido, rifiuta la risposta con un errore.
+     - Istanza del Wallet ispeziona il payload Credential Response, verificando che tutti i parametri PID, IT-Wallet ID o (Q)EAA obbligatori siano presenti e validi come definito in :ref:`Table of Credential Response <table_credential_response_claim>`; se qualsiasi parametro è mancante o non valido, rifiuta la risposta con un errore.
    * - WP_060
      - Issuance, Interoperabilità
      - Verificare tipo/schema di un Attestato Elettronico
@@ -551,15 +583,15 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_068
      - Issuance, Interoperabilità
      - Richiesta Refresh Token
-     - Istanza del Wallet invia una richiesta POST al Token Endpoint del Credential Issuer con ``grant_type=refresh_token``, un ``refresh_token`` valido, un header DPoP contenente un DPoP-JWT fresco, e un ``OAuth-Client-Attestation`` header contenente la Wallet Attestation un header ``OAuth-Client-Attestation-JWT`` contenente la PoP della chiave privata associata alla Wallet Attestation.
+     - Istanza del Wallet invia una richiesta POST al Token Endpoint del Credential Issuer con ``grant_type=refresh_token``, un ``refresh_token`` valido, un header DPoP contenente un DPoP-JWT fresco, e un ``OAuth-Client-Attestation`` header contenente la Wallet Instance Attestation (WIA) un header ``OAuth-Client-Attestation-JWT`` contenente la PoP della chiave privata associata alla Wallet Instance Attestation (WIA).
    * - WP_068a
      - Issuance, Sicurezza
      - Refresh Token: generare prove
-     - Per una richiesta refresh Access Token, Istanza del Wallet genera un nuovo JWT DPoP e un nuovo PoP Wallet Attestation, e li include nella richiesta.
+     - Per una richiesta refresh Access Token, Istanza del Wallet genera un nuovo JWT DPoP e un nuovo PoP Wallet Instance Attestation (WIA), e li include nella richiesta.
    * - WP_068b
      - Issuance, Interoperabilità
      - Refresh Token: mantenere associazione
-     - Istanza del Wallet riutilizza la stessa chiave associata al PoP Wallet Attestation e alla DPoP-JWT dalla richiesta Access Token originale, assicurandosi che l'Access Token rinnovato rimanga crittograficamente associato al DPoP-JWT e valido.
+     - Istanza del Wallet riutilizza la stessa chiave associata al PoP Wallet Instance Attestation (WIA) e alla DPoP-JWT dalla richiesta Access Token originale, assicurandosi che l'Access Token rinnovato rimanga crittograficamente associato al DPoP-JWT e valido.
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
@@ -1042,11 +1074,11 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e
    * - WP_123
      - Backup e Ripristino, Sicurezza
      - Firma JWT backup con chiave attestata
-     - Istanza del Wallet firma il JWT backup con la chiave privata corrispondente alla chiave pubblica trovata nel claim ``cnf`` del JWT Wallet Attestation.
+     - Istanza del Wallet firma il JWT backup con la chiave privata corrispondente alla chiave pubblica trovata nel claim ``cnf`` del JWT Wallet Instance Attestation (WIA).
    * - WP_123a
      - Backup e Ripristino, Sicurezza
      - Controllo validità attestato per JWT backup
-     - Prima di firmare il JWT backup, Istanza del Wallet verifica la validità del proprio Wallet Attestation.
+     - Prima di firmare il JWT backup, Istanza del Wallet verifica la validità del proprio Wallet Instance Attestation (WIA).
    * - WP_124
      - Backup e Ripristino, Sicurezza
      - Cifratura file backup con chiave Utente
@@ -1065,12 +1097,12 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e
      - L'Utente seleziona con successo un file backup dall'archiviazione e inserisce le loro frasi-chiave di recupero.
    * - WP_128
      - Backup e Ripristino, Interoperabilità
-     - Estrazione Wallet Attestation da JWT backup
-     - Istanza del Wallet estrae la Wallet Attestation dal claim ``wallet_attestation`` del JWT backup trovato all'interno del file backup.
+     - Estrazione Wallet Instance Attestation (WIA) da JWT backup
+     - Istanza del Wallet estrae la Wallet Instance Attestation (WIA) dal claim ``wallet_attestation`` del JWT backup trovato all'interno del file backup.
    * - WP_128a
      - Backup e Ripristino, Sicurezza
-     - Ignorare scadenza Wallet Attestation durante ripristino
-     - Il processo ripristino continua con successo anche se la Wallet Attestation nel file backup è scaduto.
+     - Ignorare scadenza Wallet Instance Attestation (WIA) durante ripristino
+     - Il processo ripristino continua con successo anche se la Wallet Instance Attestation (WIA) nel file backup è scaduto.
    * - WP_129
      - Backup e Ripristino, Sicurezza
      - Verifica firma JWT backup
@@ -1171,77 +1203,77 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Eliminazione chiave/stato su disinstallazione
      - Istanza del Wallet si disinstalla e rimuove tutte le chiavi locali e dati applicazione.
    * - WP_140
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Richiesta di Emissione della Wallet Attestation
-     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Attestation con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, e altri parametri correlati alla configurazione.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Richiesta di Emissione della Wallet Instance Attestation (WIA)
+     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, e altri parametri correlati alla configurazione.
    * - WP_140a
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Controllo esistenza chiave hardware/ri-inizializzazione
      - Istanza del Wallet controlla l'esistenza di Cryptographic Hardware Keys; se non vengono trovate, attiva il processo ri-inizializzazione.
    * - WP_140b
-     - Rilascio Wallet Attestation, Ciclo di vita, Interoperabilità
-     - Richiede nonce per Richiesta di Emissione della Wallet Attestation
-     - Istanza del Wallet richiede con successo e riceve un nuovo nonce dal Nonce Endpoint del Fornitore del Wallet, prima di richiedere la Wallet Attestation.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Interoperabilità
+     - Richiede nonce per Richiesta di Emissione della Wallet Instance Attestation (WIA)
+     - Istanza del Wallet richiede con successo e riceve un nuovo nonce dal Nonce Endpoint del Fornitore del Wallet, prima di richiedere la Wallet Instance Attestation (WIA).
    * - WP_140c
-     - Rilascio Wallet Attestation, Ciclo di vita, Interoperabilità
-     - Calcola hash per Richiesta di Emissione della Wallet Attestation
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Interoperabilità
+     - Calcola hash per Richiesta di Emissione della Wallet Instance Attestation (WIA)
      - Istanza del Wallet calcola un digest SHA-256 (``client_data_hash``) del nonce e del thumbprint del JWK ``ephemeral_key_pub``.
    * - WP_140d
-     - Rilascio Wallet Attestation, Ciclo di vita, Interoperabilità
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Interoperabilità
      - Firma hash con chiave privata hardware
      - Istanza del Wallet firma il ``client_data_hash`` con la chiave privata hardware e produce un ``hardware_signature`` valido.
    * - WP_140e
-     - Rilascio Wallet Attestation, Ciclo di vita, Interoperabilità
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Interoperabilità
      - Ottiene Integrity Assertion firmato dal Servizio di Integrità del Dispositivo.
      - Istanza del Wallet richiede con e riceve con successo una ``integrity_assertion`` firmata dal Servizio di Integrità del Dispositivo che è associato al ``client_data_hash``.
    * - WP_140f
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Includere claim ``cnf``
-     - Il claim ``cnf`` nel payload del JWT Richiesta di Emissione della Wallet Attestation contiene la chiave pubblica effimera, collegando la chiave all'attestato.
+     - Il claim ``cnf`` nel payload del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) contiene la chiave pubblica effimera, collegando la chiave all'attestato.
    * - WP_141
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Firma della Richiesta di Emissione della Wallet Attestation
-     - Istanza del Wallet firma il JWT Richiesta di Emissione della Wallet Attestation con la chiave privata effimera.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Firma della Richiesta di Emissione della Wallet Instance Attestation (WIA)
+     - Istanza del Wallet firma il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con la chiave privata effimera.
    * - WP_142
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Invio del JWT Richiesta di Emissione della Wallet Attestation al Fornitore del Wallet
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Invio del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) al Fornitore del Wallet
      - Istanza del Wallet invia il JWT richiesta firmato come parametro ``assertion`` all'Endpoint di Issuance degli Attestati Elettronici del Fornitore del Wallet.
    * - WP_143
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica JWT Richiesta Attestato
-     - Il Fornitore del Wallet esegue con successo una validazione completa della Richiesta di Emissione della Wallet Attestation, inclusa la sua firma, i suoi parametri, e le verifiche crittografiche associate.
+     - Il Fornitore del Wallet esegue con successo una validazione completa della Richiesta di Emissione della Wallet Instance Attestation (WIA), inclusa la sua firma, i suoi parametri, e le verifiche crittografiche associate.
    * - WP_143a
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Validazione header HTTP per Richiesta di Emissione della Wallet Attestation
-     - Il Fornitore del Wallet valida con successo l'header del JWT Richiesta di Emissione della Wallet Attestation per contenere parametri ``alg``, ``kid``, e ``typ`` validi.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Validazione header HTTP per Richiesta di Emissione della Wallet Instance Attestation (WIA)
+     - Il Fornitore del Wallet valida con successo l'header del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) per contenere parametri ``alg``, ``kid``, e ``typ`` validi.
    * - WP_143b
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Verifica firma JWT in Richiesta di Emissione della Wallet Attestation
-     - Il Fornitore del Wallet verifica con successo la firma del JWT Richiesta di Emissione della Wallet Attestation utilizzando la chiave pubblica nel JWK fornito.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Verifica firma JWT in Richiesta di Emissione della Wallet Instance Attestation (WIA)
+     - Il Fornitore del Wallet verifica con successo la firma del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) utilizzando la chiave pubblica nel JWK fornito.
    * - WP_143c
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
-     - Verifica unicità nonce per Wallet Attestation
-     - Il Fornitore del Wallet rifiuta il JWT Richiesta di Emissione della Wallet Attestation se il nonce non è stato generato da esso stesso o è stato precedentemente utilizzato.
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Verifica unicità nonce per Wallet Instance Attestation (WIA)
+     - Il Fornitore del Wallet rifiuta il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) se il nonce non è stato generato da esso stesso o è stato precedentemente utilizzato.
    * - WP_143d
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica Istanza del Wallet registrata
-     - Il Fornitore del Wallet conferma che la Richiesta di Emissione della Wallet Attestation provenga da un'Istanza del Wallet valida e attualmente registrata; se non rifiuta la richiesta.
+     - Il Fornitore del Wallet conferma che la Richiesta di Emissione della Wallet Instance Attestation (WIA) provenga da un'Istanza del Wallet valida e attualmente registrata; se non rifiuta la richiesta.
    * - WP_143e
-     - Rilascio Wallet Attestation, Ciclo di vita, Interoperabilità
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Interoperabilità
      - Validazione firma hardware
      - Il Fornitore del Wallet ricostruisce con successo i client_data, e valida l'``hardware_signature`` utilizzando la chiave pubblica Hardware dell'Istanza del Wallet registrata precedentemente.
    * - WP_143f
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Validazione Integrity Assertion per linee guida
      - Il Fornitore del Wallet valida con successo l'``integrity_assertion`` secondo le linee guida del produttore dispositivo.
    * - WP_143g
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica parametro ``iss``
-     - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Attestation corrisponda al suo identificativo URL.
+     - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) corrisponda al suo identificativo URL.
    * - WP_144
-     - Rilascio Wallet Attestation, Ciclo di vita, Sicurezza
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Rilascio Attestato
-     - Dopo un validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet rilascia una Wallet Attestation con scadenza non superiore a 24 ore dal rilascio.
+     - Dopo un validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet rilascia una Wallet Instance Attestation (WIA) che soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>`.
    * - WP_145
      - Revoca Wallet, Ciclo di vita, Interoperabilità
      - Recupero stato Istanza del Wallet
@@ -1286,5 +1318,29 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Fallimento Key Binding (fallimento Integrity Assertion)
      - Quando l'Integrity Assertion in una richiesta Key Binding non passa la validazione (es. il dispositivo è manomesso), il Fornitore del Wallet restituisce una risposta ``403 Forbidden`` con codice errore ``invalid_request``.
+   * - WP_156
+     - Trust, Sicurezza
+     - WUA distinta dalla WIA
+     - La Wallet Unit Attestation (WUA) è emessa e verificata come manufatto distinto dalla WIA. Le chiavi private associate a una WUA sono memorizzate nello stesso Keystore o WSCD delle chiavi della Credenziale Digitale che la WUA attesta. I test NON DEVONO usare il nome legacy «Wallet Attestation» per nessuno dei due manufatti.
+   * - WP_157
+     - Issuance, Autenticazione
+     - Autenticazione per l'emissione di IT-Wallet ID
+     - L'Istanza del Wallet ottiene un IT-Wallet ID usando CieID LoA High come metodo primario, oppure il flusso eID Substantial Authentication with MRTD Verification come alternativa. Il flusso è distinto dall'emissione di un PID High.
+   * - WP_158
+     - Issuance, Autenticazione
+     - ``authorization_details`` L2+
+     - Quando si richiede un IT-Wallet ID con eID Substantial Authentication with MRTD Verification, il Request Object PAR include un oggetto ``authorization_details`` con ``type`` uguale a ``it_l2+document_proof`` e i claim previsti da :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`. Se quell'oggetto è assente, l'EAA Provider autentica l'Utente con CieID LoA High.
+   * - WP_159
+     - Issuance, Autenticazione, Sicurezza
+     - Binding identità IdP–MRTD in L2+
+     - Dopo l'autenticazione primaria (SPID o CieID Substantial), l'EAA Provider correla l'identità dell'asserzione IdP con l'identità nell'MRTD (CIE). Il confronto usa almeno il codice fiscale o un identificativo univoco equivalente presente in entrambe le fonti. Una discordanza interrompe l'emissione. Se l'autenticazione primaria è LoA High, la Phase 3 (MRTD PoP) è saltata.
+   * - WP_160
+     - Presentation, Sicurezza
+     - Presentazione offline e collocazione delle chiavi
+     - La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.
+   * - WP_161
+     - Trust, Sicurezza
+     - Endpoint PDND del Fornitore del Wallet autenticati
+     - Le chiamate al Catalogo e-Service PDND del Fornitore del Wallet, incluso Notify User Death, sono autenticate e autorizzate. Le richieste non autenticate sono rifiutate. Un Notify User Death riuscito porta alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal PID/IT-Wallet ID Provider.
 
 

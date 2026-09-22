@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=987dd299"></script>
+    <script src="_static/documentation_options.js?v=3c055680"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -317,7 +317,7 @@
             
   <section id="matrice-di-test-per-la-valutazione-delle-firme">
 <h1><span class="section-number">20.4.1.1. </span>Matrice di Test per la Valutazione delle Firme<a class="headerlink" href="#matrice-di-test-per-la-valutazione-delle-firme" title="Link to this heading">¶</a></h1>
-<p>Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet, le Relying Party e i Credential Issuer per la valutazione di qualsiasi dichiarazione firmata, siano queste asserzioni, richieste, attestazioni o Credenziali.</p>
+<p id="signature-evaluation-testcases">Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet, le Relying Party e i Credential Issuer per la valutazione di qualsiasi dichiarazione firmata, siano queste asserzioni, richieste, attestazioni o Credenziali.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -350,8 +350,8 @@
 </tr>
 <tr class="row-odd"><td><p>ATT-004</p></td>
 <td><p>Appropriate Algorithms</p></td>
-<td><p>Assicurarsi che vengano utilizzati solo algoritmi crittograficamente attuali.</p></td>
-<td><p>Solo gli algoritmi approvati sono accettati; quelli deprecati sono rifiutati.</p></td>
+<td><p>Assicurarsi che siano usati solo gli algoritmi elencati come MUST o RECOMMENDED in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>. Gli algoritmi elencati come MUST NOT (incluso <code class="docutils literal notranslate"><span class="pre">none</span></code>) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.</p></td>
+<td><p>Solo gli algoritmi approvati sono accettati; quelli deprecati o non elencati sono rifiutati.</p></td>
 </tr>
 <tr class="row-even"><td><p>ATT-005</p></td>
 <td><p>Signature Validation</p></td>
@@ -360,50 +360,65 @@
 </tr>
 <tr class="row-odd"><td><p>ATT-006</p></td>
 <td><p>Key Entropy</p></td>
-<td><p>Assicurarsi che le chiavi crittografiche abbiano entropia sufficiente.</p></td>
-<td><p>Le chiavi devono soddisfare i requisiti di entropia; le chiavi deboli sono rifiutate.</p></td>
+<td><p>Chiavi crittografiche e segreti freschi forniscono almeno 128 bit di security strength come definito in NIST SP 800-57 Part 1. Le chiavi asimmetriche usate con ES256/ESP256 sono chiavi P-256 generate nel CSPRNG del Keystore o WSCD. Nonce, <code class="docutils literal notranslate"><span class="pre">jti</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> e valori analoghi sono output CSPRNG di almeno 128 bit e non sono sequenziali.</p></td>
+<td><p>Chiavi e segreti soddisfano i minimi di entropia; chiavi deboli, sottodimensionate, sequenziali o forgiate in software sono rifiutate. Una terza parte verifica tipo e lunghezza della chiave e, ove la piattaforma lo esponga, che la chiave sia in hardware sicuro (Android <code class="docutils literal notranslate"><span class="pre">KeyInfo.isInsideSecureHardware</span></code> / token Secure Enclave iOS).</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-007</p></td>
+<tr class="row-even"><td><p>ATT-006a</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code></p></td>
+<td><p>Il <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> ha da 43 a 128 caratteri unreserved come richiesto da <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>, generato con un CSPRNG.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-006b</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>Nonce MRTD e challenge</p></td>
+<td><p>Gli identificativi di challenge e i nonce MRTD PoP hanno almeno 128 bit di entropia, come richiesto per l'Autenticazione eID Substantial con Verifica MRTD.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-006c</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>Nessuna chiave debole importata</p></td>
+<td><p>Il Fornitore del Wallet rifiuta Key Attestation per chiavi importate nel Keystore, generate fuori dal Keystore/WSCD, o la cui lunghezza non corrisponde all'algoritmo (ad esempio ES256 con una chiave non P-256).</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-007</p></td>
 <td><p>Issuer Validation</p></td>
 <td><p>Validare che le chiavi crittografiche appartengano all'emittente.</p></td>
 <td><p>Le chiavi devono essere verificate come appartenenti all'emittente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-008</p></td>
+<tr class="row-even"><td><p>ATT-008</p></td>
 <td><p>Audience Validation</p></td>
 <td><p>Validare il claim audience per assicurarsi che il token sia utilizzato dalla parte destinata.</p></td>
 <td><p>Il claim audience deve corrispondere al destinatario previsto.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-009</p></td>
+<tr class="row-odd"><td><p>ATT-009</p></td>
 <td><p>Claim Trust</p></td>
 <td><p>Non fidarsi dei claim ricevuti senza validazione.</p></td>
 <td><p>I claim devono essere validati; i claim non attendibili sono rifiutati.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-010</p></td>
+<tr class="row-even"><td><p>ATT-010</p></td>
 <td><p>Explicit Typing</p></td>
 <td><p>Utilizzare il typing esplicito per prevenire confusione COSE/JOSE.</p></td>
 <td><p>Il typing deve essere esplicito e validato.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-011</p></td>
+<tr class="row-odd"><td><p>ATT-011</p></td>
 <td><p>Cross-JWT Confusion</p></td>
 <td><p>Prevenire l'uso di COSE/JOSE in contesti non intesi.</p></td>
 <td><p>COSE/JOSE deve essere validato contestualmente per prevenire uso improprio.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-012</p></td>
+<tr class="row-even"><td><p>ATT-012</p></td>
 <td><p>Substitution Attacks</p></td>
 <td><p>Assicurarsi che COSE/JOSE non siano sostituiti in contesti diversi.</p></td>
 <td><p>COSE/JOSE deve essere validato per l'uso specifico del contesto.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-013</p></td>
+<tr class="row-odd"><td><p>ATT-013</p></td>
 <td><p>Issued At Validation</p></td>
 <td><p>Verificare che il parametro <cite>issued at</cite> sia impostato all'ora corrente, permettendo un periodo di grazia non superiore a 120 secondi.</p></td>
 <td><p>Il valore <cite>issued at</cite> deve essere entro 120 secondi dall'ora corrente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ATT-014</p></td>
+<tr class="row-even"><td><p>ATT-014</p></td>
 <td><p>Expiration Validation</p></td>
 <td><p>Assicurarsi che il tempo di <cite>expiration</cite> sia maggiore del tempo <cite>issued at</cite>.</p></td>
 <td><p>Il tempo di <cite>expiration</cite> deve essere successivo al tempo <cite>issued at</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>ATT-015</p></td>
+<tr class="row-odd"><td><p>ATT-015</p></td>
 <td><p>Data model validation</p></td>
 <td><p>Assicurarsi che il tipo JOSE/COSE corrisponda al data model definito.</p></td>
 <td><p>I parametri o claim, i loro valori e lo schema utilizzato per rappresentarli sono conformi al data model.</p></td>
@@ -462,7 +477,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
