@@ -76,7 +76,7 @@ Digital Credential Issuance
     * - `OpenID4VCI`_
       - Lodderstedt, T., Yasuda, K., Looker, T., Bastian, P., "OpenID for Verifiable Credential Issuance 1.0", September 2025.
     * - `OPENID4VC-HAIP`_
-      - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", November 2025, Draft 6.
+      - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", December 2025, Final Specification.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., Bormann, C., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
     * - `OAUTH-MULT-RESP-TYPE`_
@@ -95,7 +95,7 @@ Digital Credential Presentation
     * - `OAuthCrossDeviceSec`_
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OPENID4VC-HAIP`_
-      - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", November 2025, Draft 6.
+      - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", December 2025, Final Specification.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
     * - `OIDC-RP-Metadata`_

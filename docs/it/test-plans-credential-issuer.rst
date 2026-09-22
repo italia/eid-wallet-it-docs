@@ -100,7 +100,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_017
     - Emissione, Interoperabilità
     - Interpretazione di Scope e Authorization Details nella PAR
-    - Quando una richiesta contiene sia il valore scope sia il parametro authorization_details, il Credential Issuer elabora ciascun parametro in modo indipendente.
+    - La Pushed Authorization Request contiene sia il valore scope sia il parametro authorization_details. Il Credential Issuer elabora ciascun parametro in modo indipendente.
   * - CI_017a
     - Emissione, Interoperabilità
     - Authorization Details nella PAR
@@ -264,11 +264,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_054
     - Presentazione, Sicurezza di emissione
     - Autenticazione utente basata su PID o IT-Wallet ID
-    - Il (Q)EAA Provider esegue con successo l'autenticazione dell'utente richiedendo e validando un PID o un IT-Wallet ID valido dall'istanza del Wallet, secondo il tipo di Credenziale richiesto dalla transazione.
+    - Il (Q)EAA Provider esegue con successo l’autenticazione dell’utente richiedendo e validando un PID valido dall’istanza del Wallet, oppure un IT-Wallet ID valido secondo le proprie politiche di autenticazione, come definito in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
   * - CI_055
     - Presentazione, Emissione, Interoperabilità
     - Utilizzo del protocollo OpenID4VP
-    - Il (Q)EAA Provider utilizza il protocollo OpenID4VP per richiedere la presentazione del PID o dell'IT-Wallet ID dall'istanza del Wallet.
+    - Il (Q)EAA Provider utilizza il protocollo OpenID4VP per richiedere la presentazione del PID dall’istanza del Wallet, oppure dell’IT-Wallet ID secondo le proprie politiche di autenticazione, come definito in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
   * - CI_056
     - Presentazione, Emissione, Sicurezza
     - Consegna della richiesta di presentazione

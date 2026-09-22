@@ -106,7 +106,7 @@ Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione de
   * DEVE creare il ``code_verifier`` con una stringa casuale con sufficiente entropia utilizzando i caratteri non riservati con una lunghezza minima di 43 caratteri e una lunghezza massima di 128 caratteri, rendendo impraticabile per un attaccante indovinarne il valore. Il valore DEVE essere generato seguendo la raccomandazione nella Sezione 4.1 di :rfc:`7636` (:ref:`WP_052a <wallet-credential-issuance-testcases>`).
   * Firma questa richiesta utilizzando la chiave privata creata durante la fase di configurazione per ottenere l'Attestato di Unità di Wallet. La relativa chiave pubblica attestata dal Fornitore di Wallet viene fornita all'interno del claim ``cnf.jwk`` dell'Attestato di Unità di Wallet (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
   * DEVE utilizzare i parametri ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` secondo OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], poiché in questo flusso il Pushed Authorization Endpoint è un endpoint protetto (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
-  * Specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro ``scope`` (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
+  * DEVE specificare i tipi di Credenziali richieste utilizzando sia il parametro ``scope``, come richiesto da [`OPENID4VC-HAIP`_], sia il parametro ``authorization_details`` [RAR :rfc:`9396`] (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 .. note::
   JAR [:rfc:`9101`] è obbligatorio in questa specifica tecnica per garantire l'integrità end-to-end della richiesta di autorizzazione e di tutti i parametri inclusi nel Request Object.
@@ -114,7 +114,7 @@ Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione de
   Per gestire questo scenario, la Wallet Instance DOVREBBE verificare il parametro `require_signed_request_object` nei metadata dell'Authorization Server e decidere in base ad esso se inviare i parametri nel signed Request Object o meno. Per interoperabilità, la Wallet Instance PUÒ duplicare gli stessi parametri nel corpo della richiesta. La Sezione 10.7 di :rfc:`9101` fornisce i requisiti di sicurezza su come gestire correttamente questa duplicazione.
 
 .. note::
-   Per l'Autenticazione eID Substantial con Verifica MRTD, l'oggetto ``authorization_details`` DEVE contenere il valore ``"it_l2+document_proof"``. Per le specifiche complete del protocollo, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
+   La selezione del metodo di autenticazione dell'Utente, incluso l'uso di ``it_l2+document_proof``, è definita in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Il relativo flusso di protocollo è definito in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
 
 Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Request`:
 
@@ -204,8 +204,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 
 .. note::
-   **Autenticazione dell'Utente e Consenso**: Il PID Provider esegue l'autenticazione dell'Utente basata sullo schema CieID con Livello di Garanzia Alto (CIE L3), mentre l'EAA Provider di IT-Wallet ID, oltre a CieID LoA High, supporta anche l'Autenticazione eID Substantial con Verifica MRTD come definita in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
-   Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID o un IT-Wallet ID valido all'Istanza del Wallet. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere la presentazione del PID o dell'IT-Wallet ID. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID o un IT-Wallet ID valido, ottenuto in precedenza. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
+   **Autenticazione dell'Utente e Consenso**: Il Credential Issuer esegue l'autenticazione dell'Utente all'*Authorization Endpoint* secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
 
 
 **Passi 6-7 (`Authorization Response`)**: Il Credential Issuer invia un ``code`` di autorizzazione insieme ai parametri ``state`` e ``iss`` all'Istanza del Wallet. L'Istanza del Wallet esegue i seguenti controlli sulla `Authorization Response`:

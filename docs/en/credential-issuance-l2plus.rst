@@ -101,31 +101,7 @@ The Wallet Instance initiates the eID Substantial Authentication with MRTD Verif
 Authorization Details
 """""""""""""""""""""
 
-The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. When the User requests an IT-Wallet ID using eID Substantial Authentication with MRTD Verification, the Wallet Instance MUST include an additional **Authorization Details Object** in the ``authorization_details`` parameter (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
-
-That additional object MUST contain the following claims, as also defined in the Table of the JWT Request parameters of Section :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`:
-
-.. list-table:: Authorization Details object ``it_l2+document_proof``
-   :widths: 25 15 60
-   :header-rows: 1
-
-   * - **Claim**
-     - **Type**
-     - **Description**
-   * - **type**
-     - string
-     - REQUIRED. MUST be ``it_l2+document_proof``.
-   * - **idphinting**
-     - string
-     - REQUIRED. URL of the Identity Provider to be used as a hint.
-   * - **challenge_method**
-     - string
-     - REQUIRED. MRTD verification method. MUST be ``mrtd+ias``. Additional verification methods MAY be defined in future releases of this Specification.
-   * - **challenge_redirect_uri**
-     - string
-     - REQUIRED. Redirect URI, recognised by the Wallet Instance, for handling the challenge response.
-
-If that object is absent from the ``authorization_details`` array, the EAA Provider MUST authenticate the User with CieID LoA High.
+The JWT Request Object MUST contain the same parameters as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. The inclusion of the ``it_l2+document_proof`` Authorization Details Object and the authentication method applied by the Authorization Server are defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
 
 Below a non-normative example of PAR:
 
@@ -138,18 +114,16 @@ Below a non-normative example of PAR:
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
 
     client_id=47b982369791d08003a7283f059cb0d1&
-    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
+    request=eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWF1dGh6LXJlcStqd3QiLCJraWQiOiJiMDFiODIwOGQ5ZTZjYzgzNGQ4N2RjMzU2YWI1MDE3MCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL2VhYS1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdFctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJlaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9laWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsImNoYWxsZW5nZV9tZXRob2QiOiJtcnRkK2lhcyIsImlkcGhpbnRpbmciOiJodHRwczovL2lkcC5leGFtcGxlLm9yZyIsImNoYWxsZW5nZV9yZWRpcmVjdF91cmkiOiJodHRwczovL3N0YXJ0LndhbGxldC5leGFtcGxlLm9yZy9jaGFsbGVuZ2UifV0sInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnIn0.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
 The PAR Response and the Authorization Request are the same as in the IT-Wallet Specification.
 
 Phase 2: Primary Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upon successful processing of the PAR, the Authorization Server redirects the User Agent to the configured Identity Provider for primary authentication.
+Upon successful processing of the PAR, the Authorization Server redirects the User Agent to the Identity Provider for primary authentication, according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. The User completes the authentication flow and the Authorization Server correlates the authenticated identity with the active OAuth session.
 
 In this flow **LoA3** (ISO/IEC 29115) maps to eIDAS **Substantial** and to the national L2 means (SPID L2 / CieID Substantial). **LoA High** maps to eIDAS High and CieID LoA High (CIE L3). A Substantial authentication MUST NOT be recorded or treated as High (:ref:`CI_205 <credential-issuer-testcases>`).
-
-The User completes the Substantial authentication flow (SPID L2 or CieID Substantial) and the Authorization Server correlates the authenticated identity with the active OAuth session.
 
 The EAA Authorization Server MUST ensure that the ``mrtd_auth_session`` parameter is maintained throughout this phase for proper session correlation with subsequent authentication steps.
 
