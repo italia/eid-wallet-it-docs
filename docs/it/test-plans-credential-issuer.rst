@@ -8,7 +8,6 @@ Matrice dei Test per il Credential Issuer
 
 Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Issuer. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Issuer.
 
-
 .. list-table::
   :class: longtable
   :widths: 15 15 35 35
@@ -265,7 +264,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_054
     - Presentazione, Sicurezza di emissione
     - Autenticazione utente basata su PID o IT-Wallet ID
-    - Il (Q)EAA Provider esegue con successo l'autenticazione dell'utente richiedendo e validando un PID o un IT-Wallet ID valido dall'istanza del Wallet, secondo il tipo di credenziale richiesto dalla transazione.
+    - Il (Q)EAA Provider esegue con successo l'autenticazione dell'utente richiedendo e validando un PID o un IT-Wallet ID valido dall'istanza del Wallet, secondo il tipo di Credenziale richiesto dalla transazione.
   * - CI_055
     - Presentazione, Emissione, Interoperabilità
     - Utilizzo del protocollo OpenID4VP
@@ -977,7 +976,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_203
     - Emissione, Privacy
     - Applicabilità dell'emissione batch
-    - Se i metadata del Credential Issuer contengono ``batch_credential_issuance``, l'emissione batch si applica solo ai tipi di credenziale per cui quei metadata sono pubblicati. L'Issuer documenta se PID e IT-Wallet ID sono in perimetro. Un tipo senza quei metadata è emesso come credenziale singola.
+    - Se i metadata del Credential Issuer contengono ``batch_credential_issuance``, l'emissione batch si applica solo ai tipi di Credenziale per cui quei metadata sono pubblicati. L'Issuer documenta se PID e IT-Wallet ID sono in perimetro. Un tipo senza quei metadata è emesso come Credenziale singola.
   * - CI_204
     - Emissione, Interoperabilità
     - WIA in emissione
