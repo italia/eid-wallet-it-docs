@@ -10,6 +10,7 @@ Digital Credential Management
 
   credential-data-model.rst
   credential-data-model-pid.rst
+  credential-data-model-it-wallet-id.rst
   credential-revocation.rst
 
 

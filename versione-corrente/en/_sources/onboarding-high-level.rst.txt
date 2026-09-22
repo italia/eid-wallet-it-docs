@@ -261,7 +261,7 @@ Relying Party operators begin by identifying which EAA types are required for th
 
     - **Organization Type**: Public Administration with IPA code requirement.
     - **Authorization Request**: Citizen identity verification for municipal services access.
-    - **Claims Requirements**: ``given_name``, ``family_name``, ``tax_id_code`` from PID.
+    - **Claims Requirements**: ``given_name``, ``family_name``, ``personal_administrative_number`` from PID.
     - **Use Case Justification**: Public service delivery requiring citizen identification.
     - **Authorization Scope**: Granted broader access reflecting public service mandate.
 

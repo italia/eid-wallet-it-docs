@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=1137af0e" />
 
-    <script src="_static/documentation_options.js?v=af8558f3"></script>
+    <script src="_static/documentation_options.js?v=987dd299"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -376,7 +376,7 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>OBBLIGATORIO. Versione del formato del documento di discovery (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>last_updated</strong></p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al documento di discovery (es. <code class="docutils literal notranslate"><span class="pre">2024-03-15T10:30:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>endpoints</strong></p></td>
@@ -404,7 +404,7 @@ Content-Type: application/json
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:it-wallet-registry:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T10:30:00Z&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;endpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;claims_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/claims&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources&quot;</span><span class="p">,</span>
@@ -492,7 +492,7 @@ Content-Type: application/json
 <td><p>OBBLIGATORIO. La versione del Registro dei Claims (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando il registro è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro dei Claims è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2026-03-06T00:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
@@ -936,7 +936,7 @@ Content-Type: application/json
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il Registro delle Fonti Autentiche è un registro tecnico e non pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.</p>
+<p>Il Registro delle Fonti Autentiche è un registro pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.</p>
 </div>
 <section id="utilizzo-del-registro-delle-fonti-autentiche">
 <h3><span class="section-number">7.4.1. </span>Utilizzo del Registro delle Fonti Autentiche<a class="headerlink" href="#utilizzo-del-registro-delle-fonti-autentiche" title="Link to this heading">¶</a></h3>
@@ -1036,7 +1036,7 @@ Content-Type: application/json
 <td><p>OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro delle Fonti Autentiche è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
@@ -1232,8 +1232,16 @@ Content-Type: application/json
 <td><p>OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
-<td><p>Array di stringhe</p></td>
-<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti.</p></td>
+<td><p>Array di Oggetti</p></td>
+<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti riferiti allo specifico dataset. Ogni oggetto contiene:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>type</strong>: OBBLIGATORIO. Indica il tipo di informazione di contatto e DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">telephone</span></code> oppure <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p></li>
+<li><p><strong>value</strong>: OBBLIGATORIO. Contiene il valore dell'informazione di contatto corrispondente al tipo specificato.</p></li>
+<li><p><strong>description</strong>: OPZIONALE. Contiene una descrizione testuale associata all'informazione di contatto.</p></li>
+</ul>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1353,7 +1361,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1455,7 +1466,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1511,7 +1525,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -2173,7 +2190,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> per la verifica dell'identità specifica con PID.</p></li>
+<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> per la verifica dell'identità specifica con PID oppure <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;eid&quot;</span></code> per la verifica dell'identità specifica con IT-Wallet ID.</p></li>
 <li><p><strong>Controlli di Polizia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> per la verifica della patente di guida.</p></li>
 <li><p><strong>KYC Bancario</strong>: Tipologie specifiche di credenziale previste dalla normativa finanziaria.</p></li>
 <li><p><strong>Servizi Sanitari</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> per l'accesso ai benefici per disabilità conformi EU.</p></li>
@@ -2256,12 +2273,22 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali.</p></td>
+<td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>OBBLIGATORIO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>credentials</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
+<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.</p></td>
 </tr>
 </tbody>
@@ -2283,7 +2310,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. Versione della definizione della Credenziale Digitale.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere <code class="docutils literal notranslate"><span class="pre">pid</span></code> e per l'IT-Wallet ID DEVE essere <code class="docutils literal notranslate"><span class="pre">eid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_name_l10n_id</strong></p></td>
 <td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile della Credenziale Digitale nel bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">mDL.name</span></code>).</p></td>
@@ -2373,19 +2400,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>localization</strong></p></td>
-<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
-<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
-<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
-<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>.</p></li>
@@ -2393,7 +2408,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>parent_credentials</strong></p></td>
 <td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> è assente. Array degli identificativi di <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.</p></td>
 </tr>
 </tbody>
@@ -3319,13 +3334,16 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco del Registro degli Schemi (es. <code class="docutils literal notranslate"><span class="pre">urn:schemas:it-wallet</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>OBBLIGATORIO. La versione del Registro degli Schemi (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>last_updated</strong></p></td>
-<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando il Registro degli Schemi è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>schemas</strong></p></td>
+<tr class="row-odd"><td><p><strong>schemas</strong></p></td>
 <td><p>OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella &quot;Parametri di Definizione dello Schema&quot; di seguito, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.</p></td>
 </tr>
 </tbody>
@@ -3349,7 +3367,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. La versione della definizione dello schema (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>).</p></td>
+<td><p>OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>format</strong></p></td>
 <td><p>OBBLIGATORIO. Il formato tecnico dello schema (es. <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>).</p></td>
@@ -3374,8 +3392,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <p><strong>Esempio di Registro degli Schemi:</strong></p>
 <p>Un esempio non normativo del payload del Registro degli Schemi:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:schemas:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL+mso_mdoc+org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
@@ -3426,7 +3445,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Discovery delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare le tipologie di Credenziale rilevanti (es. <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) e, se necessario, utilizza le informazioni sulla <strong>Tassonomia</strong> per navigare la gerarchia e fornire diverse localizzazioni.</p></li>
+<li><p><strong>Discovery delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare le tipologie di Credenziale rilevanti (es. <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) e, se necessario, utilizza le informazioni sulla <strong>Tassonomia</strong> per navigare la gerarchia e fornire diverse localizzazioni.</p></li>
 <li><p><strong>Metadati dell'Emittente</strong>: L'entità estrae l'<strong>Identificatore dell'Emittente</strong> (<cite>entity_id</cite> nel campo <cite>issuers</cite>) associato alla Credenziale desiderata.</p></li>
 <li><p><strong>Consultazione dei Dettagli</strong>: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede alla <strong>Configurazione dell'Entità</strong> (Metadati dell'Emittente) utilizzando l'identificatore recuperato.</p></li>
 </ul>
@@ -3652,7 +3671,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.5</span><span class="it-docs-footer-detail">Last updated 05/08/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 22/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
