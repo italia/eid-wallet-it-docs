@@ -445,7 +445,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
       - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT. The lifetime is specified in :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>`.
       - :rfc:`9126` and :rfc:`7519` and `EUDI-TS 3`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.

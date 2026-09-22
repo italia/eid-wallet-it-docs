@@ -265,7 +265,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_054
     - Presentation, Issuance Security
     - PID or IT-Wallet ID based User Authentication
-    - (Q)EAA Provider successfully performs User authentication by requesting and validating a valid PID or IT-Wallet ID from the Wallet Instance, according to the credential type required for the transaction.
+    - (Q)EAA Provider successfully performs User authentication by requesting and validating a valid PID or IT-Wallet ID from the Wallet Instance, according to the Credential type required for the transaction.
   * - CI_055
     - Presentation, Issuance, Interoperability
     - OpenID4VP Protocol Usage
@@ -977,7 +977,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_203
     - Issuance, Privacy
     - Batch issuance applicability
-    - If the Credential Issuer metadata contains ``batch_credential_issuance``, batch issuance applies only to the credential types for which that metadata is advertised. The Issuer documents whether PID and IT-Wallet ID are in scope. A type without that metadata is issued as a single credential.
+    - If the Credential Issuer metadata contains ``batch_credential_issuance``, batch issuance applies only to the Credential types for which that metadata is advertised. The Issuer documents whether PID and IT-Wallet ID are in scope. A type without that metadata is issued as a single Credential.
   * - CI_204
     - Issuance, Interoperability
     - WIA at issuance

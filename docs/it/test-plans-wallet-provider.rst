@@ -84,7 +84,7 @@ Indice di copertura
    * - 13
      - MEDIA
      - :ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`
-     - La durata della WIA DEVE essere inferiore a 24 ore.
+     - Durata della WIA (:ref:`requisito <wia-time-to-live>`).
    * - 14
      - ALTA
      - :ref:`WP_014b <wallet-instance-testcases>`
@@ -434,7 +434,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_028
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Wallet Instance Attestation (WIA) a tempo limitato
-     - Il Fornitore del Wallet rilascia una WIA il cui ``exp`` è al massimo 24 ore dopo ``iat``. Una formulazione limitata a «short-lived» senza un massimo numerico non è sufficiente.
+     - La WIA rilasciata soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>`. Una formulazione limitata a «short-lived» non è sufficiente.
    * - WP_029
      - Rilascio Wallet Instance Attestation (WIA), Modello Dati e Ciclo di vita, Interoperabilità
      - Busta risposta HTTP 200 / JSON
@@ -1442,7 +1442,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_144
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Rilascio Attestato
-     - Dopo un validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet rilascia una Wallet Instance Attestation (WIA) con scadenza non superiore a 24 ore dal rilascio.
+     - Dopo un validazione riuscita della Richiesta di Emissione della Wallet Instance Attestation (WIA), il Fornitore del Wallet rilascia una Wallet Instance Attestation (WIA) che soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>`.
    * - WP_145
      - Revoca Wallet, Ciclo di vita, Interoperabilità
      - Recupero stato Istanza del Wallet

@@ -60,7 +60,7 @@ Coverage index
    * - 7
      - MEDIA
      - :ref:`CI_196 <credential-issuer-testcases>`, :ref:`CI_197 <credential-issuer-testcases>`
-     - IT-Wallet ID is a first-class credential type in issuance tests, distinct from PID.
+     - IT-Wallet ID is a first-class Credential type in issuance tests, distinct from PID.
    * - 8
      - MEDIA
      - :ref:`WP_160 <wallet-instance-testcases>`
@@ -84,7 +84,7 @@ Coverage index
    * - 13
      - MEDIA
      - :ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`
-     - WIA lifetime MUST be less than 24 hours.
+     - WIA lifetime (:ref:`requirement <wia-time-to-live>`).
    * - 14
      - ALTA
      - :ref:`WP_014b <wallet-instance-testcases>`
@@ -104,7 +104,7 @@ Coverage index
    * - 18
      - BASSA
      - :ref:`CI_203 <credential-issuer-testcases>`, :ref:`WP_058 <wallet-credential-issuance-testcases>`
-     - Batch issuance applicability per credential type, including PID / IT-Wallet ID.
+     - Batch issuance applicability per Credential type, including PID / IT-Wallet ID.
    * - 19
      - BASSA
      - :ref:`CI_205 <credential-issuer-testcases>`
@@ -434,7 +434,7 @@ This section lists the test cases from Sections:
    * - WP_028
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Time-limited Wallet Instance Attestation (WIA)
-     - The Wallet Provider issues a WIA whose ``exp`` is at most 24 hours after ``iat``. A formulation limited to «short-lived» without a numeric maximum is not sufficient.
+     - The issued WIA meets :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>`. A formulation limited to «short-lived» is not sufficient.
    * - WP_029
      - Wallet Instance Attestation (WIA) Issuance, Data Model and Lifecycle, Interoperability
      - HTTP 200 / JSON response envelope
@@ -1442,7 +1442,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_144
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Attestation Issuance
-     - After successful validation of the Wallet Instance Attestation (WIA) Request, Wallet Provider issues a Wallet Instance Attestation (WIA) with an expiration time not exceeding 24 hours from issuance.
+     - After successful validation of the Wallet Instance Attestation (WIA) Request, the Wallet Provider issues a Wallet Instance Attestation (WIA) that meets :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>`.
    * - WP_145
      - Wallet Revocation, Lifecycle, Interoperability
      - Wallet Instance status retrieval
