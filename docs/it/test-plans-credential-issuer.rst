@@ -972,7 +972,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_202
     - Presentazione, Sicurezza
     - Attribute-Based Binding senza identificativo univoco
-    - Quando un PID è presentato senza ``personal_administrative_number``, l'Attribute-Based Binding non si limita a una coppia di nomi. La Relying Party confronta almeno ``family_name``, ``given_name`` e ``birth_date`` (o ``birthdate``) dopo normalizzazione, e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in :ref:`identity-matching`. Binding di sessione, attested dall'Issuer o crittografico POSSONO integrare il confronto.
+    - Quando un PID è presentato senza ``personal_administrative_number``, l'Attribute-Based Binding non si limita a una coppia di nomi. La Relying Party confronta almeno ``family_name``, ``given_name``, ``birth_date`` (o ``birthdate``) e ``place_of_birth`` dopo normalizzazione, e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in :ref:`identity-matching`. Binding di sessione, attested dall'Issuer o crittografico POSSONO integrare il confronto.
   * - CI_203
     - Emissione, Privacy
     - Applicabilità dell'emissione batch

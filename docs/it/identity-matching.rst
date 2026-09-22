@@ -43,11 +43,11 @@ Attribute-Based Binding
 
 Per il PID, ``personal_administrative_number`` è OPZIONALE. Le Relying Party NON DEVONO assumere che un identificativo nazionale univoco sia sempre disponibile.
 
-Quando ``personal_administrative_number`` non è presentato, la Relying Party DEVE effettuare *Attribute-Based Binding* confrontando almeno ``family_name``, ``given_name`` e ``birth_date`` (o ``birthdate``) dopo normalizzazione di maiuscole/minuscole, spazi e diacritici. La Relying Party DEVE applicare la stessa normalizzazione agli attributi presentati e al record Utente memorizzato. Il confronto della data di nascita DEVE usare la data di calendario ISO 8601 (``YYYY-MM-DD``), indipendentemente dal formato di visualizzazione.
+Quando ``personal_administrative_number`` non è presentato, la Relying Party DEVE effettuare *Attribute-Based Binding* confrontando almeno ``family_name``, ``given_name``, ``birth_date`` (o ``birthdate``) e ``place_of_birth`` dopo normalizzazione di maiuscole/minuscole, spazi e diacritici. La Relying Party DEVE applicare la stessa normalizzazione agli attributi presentati e al record Utente memorizzato, inclusi i membri stringa di ``place_of_birth`` (``country``, ``region``, ``locality``). Il confronto della data di nascita DEVE usare la data di calendario ISO 8601 (``YYYY-MM-DD``), indipendentemente dal formato di visualizzazione.
 
 La Relying Party NON DEVE completare l'identity matching su un sottoinsieme di tali attributi che consentirebbe uno scambio di persona (:ref:`CI_202 <credential-issuer-testcases>`). In particolare:
 
-- il matching della sola coppia di nomi, o del solo nome e della data di nascita, NON DEVE essere trattato come identity matching andato a buon fine;
+- il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta ``place_of_birth``, NON DEVE essere trattato come identity matching andato a buon fine;
 - una discordanza su qualsiasi attributo del set minimo DEVE far fallire l'identity matching; la Relying Party NON DEVE ignorare una discordanza sul nome attuale (ad esempio dopo un cambio di nome) per forzare un match;
 - se l'Attribute-Based Binding corrisponde a più di un record Utente memorizzato, la Relying Party NON DEVE completare l'identity matching. PUÒ richiedere un identificativo nazionale univoco, oppure applicare un metodo di binding supplementare che identifichi univocamente la persona.
 

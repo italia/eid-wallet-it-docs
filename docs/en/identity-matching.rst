@@ -43,11 +43,11 @@ Attribute-Based Binding
 
 For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available.
 
-When ``personal_administrative_number`` is not presented, the Relying Party MUST perform *Attribute-Based Binding* by matching at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation of case, whitespace and diacritics. The Relying Party MUST apply the same normalisation to the presented attributes and to the stored User record. Comparison of the date of birth MUST use the ISO 8601 calendar date (``YYYY-MM-DD``), independent of display format.
+When ``personal_administrative_number`` is not presented, the Relying Party MUST perform *Attribute-Based Binding* by matching at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` after normalisation of case, whitespace and diacritics. The Relying Party MUST apply the same normalisation to the presented attributes and to the stored User record, including the string members of ``place_of_birth`` (``country``, ``region``, ``locality``). Comparison of the date of birth MUST use the ISO 8601 calendar date (``YYYY-MM-DD``), independent of display format.
 
 The Relying Party MUST NOT complete identity matching on a subset of those attributes that would allow a person swap (:ref:`CI_202 <credential-issuer-testcases>`). In particular:
 
-- matching only a pair of names, or only a name and a date of birth, MUST NOT be treated as a successful identity match;
+- matching only a pair of names, only a name and a date of birth, or any subset that omits ``place_of_birth``, MUST NOT be treated as a successful identity match;
 - a mismatch on any attribute of the minimum set MUST fail identity matching; the Relying Party MUST NOT ignore a current-name mismatch (for example after a name change) in order to force a match;
 - if Attribute-Based Binding matches more than one stored User record, the Relying Party MUST NOT complete identity matching. It MAY request a unique national identifier, or apply a supplementary binding method that uniquely identifies the person.
 
