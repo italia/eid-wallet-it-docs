@@ -1,4 +1,4 @@
-@startuml High-Level PID and IT-Wallet ID Issuance Flow
+@startuml High-Level PID Issuance Flow
 !include <C4/C4_Container>
 
 HIDE_STEREOTYPE()
@@ -27,8 +27,8 @@ skinparam ranksep 170
 AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
 
 Person(user, "User", "Wallet Instance holder")
-Container(wi, "Wallet Instance", "OID4VCI", " ", $sprite="wallet")
-Boundary(pidProvider, "PID/EAA Provider") {
+Container(wi, "Wallet Instance", "OID4VCI / OID4VP", " ", $sprite="wallet")
+Boundary(pidProvider, "PID Provider") {
     Container(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
     Container(rp, "Relying Party Component", "OIDC / SAML", "",$sprite="cogs")
 }
@@ -36,7 +36,7 @@ Boundary(IdentityProvider, "CIEid Digital Identity\n Federation") {
     System_Ext(idp, "Identity Provider", "Digital Identity scheme based on CIEid LoA High (L3)", $sprite="institution")
 }
 Container_Ext(as, "Authentic Source", "ANPR", "",$sprite="database")
-Container_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
+Container_Ext(ta, "EUDIW Trust Services and Digital Credentials Catalog", "EUDIW Registry", "",$sprite="lock")
 
 Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a PID","")
 Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nPID Provider Discovery\nand Trust","")
@@ -46,4 +46,8 @@ Rel(rp,idp,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User
 Rel_U(vci,as,"<size:16><color red><b>5</b></color></size>\nObtains\nAttributes","")
 BiRel(vci,rp,"","",$tags="async")
 Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues PID","")
+note right of wi
+Trust selection at Issuance chooses EUDIW path: WRPAC-authenticated signed Issuer Metadata and EUDIW Authorization.
+
+end note
 @enduml
