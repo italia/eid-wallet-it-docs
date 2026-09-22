@@ -360,15 +360,6 @@ components:
                 format: int32
                 minimum: 0
               - type: 'null'
-        values:
-          type: array
-          description: Optional allowed values.
-          items:
-            oneOf:
-              - type: string
-              - type: integer
-                format: int32
-              - type: boolean
       required:
         - path
       example:
