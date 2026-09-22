@@ -411,7 +411,7 @@ This section lists the test cases from Sections:
    * - WP_052d
      - Issuance, Interoperability
      - Specify Digital Credential types
-     - Wallet Instance embeds correct Digital Credential types in the Request Object using the ``authorization_details`` (or ``scope``) parameter (per RAR :rfc:`9396`).
+     - Wallet Instance embeds correct Digital Credential types in the Request Object using both the ``scope`` parameter (per [`OPENID4VC-HAIP`_]) and the ``authorization_details`` parameter (per RAR :rfc:`9396`).
    * - WP_053
      - Issuance, Security
      - Authorization Request
