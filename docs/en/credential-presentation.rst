@@ -10,6 +10,9 @@ In this section the following flows are described:
 
 - :ref:`remote-flow:Remote Flow`, where the User presents a Digital Credential to a web Relying Party Instance according to `OpenID4VP`_. In this scenario the user-agent and the Wallet Instance can be used in the same device (**Same Device Flow**), or in different devices (**Cross Device Flow**).
 - :ref:`proximity-flow:Proximity Flow`, where the User presents a Digital Credential to a mobile Relying Party Instance according to `ISO18013-5`_. The User interacts with a Verifier using proximity connection technologies such as using QR Codes and Bluetooth Low Energy (BLE).
+- :ref:`identity-matching`, applied after cryptographic verification of a presented Digital Credential.
+
+Proximity or otherwise offline presentation of a Digital Credential MUST succeed only when the bound private keys are stored in a local Keystore or a local WSCD. Digital Credentials whose bound private keys are stored in a remote WSCD MUST NOT be presented offline (:ref:`WP_160 <wallet-instance-testcases>`).
 
 .. note::
   When a Relying Party needs to distinguish the User during authentication, it MUST do so on the basis of the information contained in the Digital Credentials requested in the presentation request. The corresponding claims must be included in the presentation request. The Relying Party distinguishes the User by evaluating the values of the claims actually presented.
@@ -87,5 +90,6 @@ In this section the following flows are described:
 
   remote-flow.rst
   proximity-flow.rst
+  identity-matching.rst
 
 

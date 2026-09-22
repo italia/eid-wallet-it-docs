@@ -33,7 +33,7 @@ The specification is organized into the following major sections:
   Covers Digital Credential data models and formats, lifecycle management, validity verification, and the Credentials Catalog structure.
 
 - **Section** :ref:`digital-credential-flows:Digital Credential Flows`:
-  Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows.
+  Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows, and identity matching after presentation.
 
 - **Section** :ref:`endpoints:Endpoints`:
   Technical specifications for all API endpoints exposed by each entity type, including federation endpoints and specialized service integrations.
@@ -261,6 +261,8 @@ To implement verification functionalities following specific protocols, to send 
 - **Section** :ref:`relying-party-solution:Relying Party Solution`: Technical and functional requirements on components and functionalities for PID and (Q)EAA verification.
 
 - **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Technical and functional requirements on (Q)EAA presentation and verification flows.
+
+- **Section** :ref:`identity-matching`: Rules for identity matching and identity reconciliation after presentation of person identification attributes.
 
 - **Section** :ref:`relying-party-endpoints:Relying Party Endpoints`: Key requirements for the implementation of (Q)EAA verification endpoints.
 

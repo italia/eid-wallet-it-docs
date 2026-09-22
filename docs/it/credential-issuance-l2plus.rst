@@ -101,7 +101,7 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. L'inclusione dell'oggetto ``it_l2+document_proof`` in ``authorization_details`` e il metodo di autenticazione applicato dall'*Authorization Server* sono definiti in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. L'inclusione dell'oggetto ``it_l2+document_proof`` in ``authorization_details`` e il metodo di autenticazione applicato dall'*Authorization Server* sono definiti in :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente` (:ref:`WP_158 <wallet-instance-testcases>`, :ref:`CI_199 <credential-issuer-testcases>`).
 
 Di seguito un esempio non normativo di PAR:
 
@@ -123,7 +123,11 @@ Fase 2: Autenticazione Primaria
 
 Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità per l'autenticazione primaria, secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. L'Utente completa il flusso di autenticazione e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
+In questo flusso **LoA3** (ISO/IEC 29115) corrisponde a eIDAS **Substantial** e ai mezzi nazionali L2 (SPID L2 / CieID Substantial). **LoA High** corrisponde a eIDAS High e a CieID LoA High (CIE L3). Un'autenticazione Substantial NON DEVE essere registrata o trattata come High (:ref:`CI_205 <credential-issuer-testcases>`).
+
 Il Server di Autorizzazione EAA DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
+
+Quando gli attributi MRTD diventano disponibili (Fase 3), il Provider EAA DEVE vincolare l'identità verificata dall'IdP con l'identità nell'MRTD confrontando almeno il codice fiscale o un identificativo nazionale univoco equivalente presente in entrambe le fonti. Una mancata corrispondenza DEVE interrompere l'emissione (:ref:`WP_159 <wallet-instance-testcases>`, :ref:`CI_200 <credential-issuer-testcases>`).
 
 .. note::
   Nel caso in cui l'Utente dovesse eseguire un'autenticazione LoA High, la successiva fase 3 DEVE essere saltata.
@@ -830,10 +834,10 @@ Requisiti implementativi aggiuntivi:
 Considerazioni Implementative
 -----------------------------
 
-Le implementazioni DOVREBBERO incorporare meccanismi di rate-limiting per proteggere contro attacchi automatizzati ed esaurimento risorse, e una configurazione di timeout che bilanci esperienza utente e postura di sicurezza, accomodando la variabilità inerente nella lettura di documenti basata su NFC.
+Le implementazioni DEVONO incorporare meccanismi di rate-limiting per proteggere contro attacchi automatizzati ed esaurimento risorse. Le implementazioni DOVREBBERO configurare un timeout di interazione che bilanci esperienza utente e postura di sicurezza, accomodando la variabilità inerente nella lettura di documenti basata su NFC.
 
-Il Provider EAA DOVREBBE implementare un approccio di timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
+Il Provider EAA DEVE implementare timeout di sessione con meccanismi di pulizia appropriati, assicurando che le risorse di sessione siano rilasciate e il materiale crittografico temporaneo sia eliminato in modo sicuro quando le sessioni scadono.
 
-Tutti gli eventi rilevanti per la sicurezza durante il flusso di Autenticazione eID Substantial con Verifica MRTD DEVONO essere loggati con dettaglio sufficiente per scopi di auditing preservando la privacy dell'Utente, assicurando che le informazioni di identificazione personale, quando memorizzate, siano hashate appropriatamente. I log di audit DOVREBBERO avere identificatori di correlazione consistenti, abilitando tracciamento end-to-end attraverso tutte le fasi del protocollo, con protezione di integrità crittografica per prevenire manomissioni.
+Tutti gli eventi rilevanti per la sicurezza durante il flusso di Autenticazione eID Substantial con Verifica MRTD DEVONO essere loggati con dettaglio sufficiente per scopi di auditing preservando la privacy dell'Utente, assicurando che le informazioni di identificazione personale, quando memorizzate, siano hashate appropriatamente. I log di audit DEVONO avere identificatori di correlazione consistenti, abilitando tracciamento end-to-end attraverso tutte le fasi del protocollo, con protezione di integrità crittografica per prevenire manomissioni.
 
 

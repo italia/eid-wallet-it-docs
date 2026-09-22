@@ -4,8 +4,9 @@
 Credential Issuer Test Matrix
 ---------------------------------
 
-This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
+.. _credential-issuer-testcases:
 
+This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
 
 .. list-table::
   :class: longtable
@@ -82,8 +83,8 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Issuer uses the algorithm specified in the alg header parameter (:rfc:`9126`/:rfc:`9101`) to validate the Request Object Signature
   * - CI_015b
     - Issuance, Security
-    - PAR Wallet Attestation Public Key Retrieval
-    - Credential Issuer successfully retrieves the public key from the Wallet Attestation's cnf.jwk claim
+    - PAR Wallet Instance Attestation (WIA) Public Key Retrieval
+    - Credential Issuer successfully retrieves the public key from the Wallet Instance Attestation (WIA)'s cnf.jwk claim
   * - CI_015c
     - Issuance, Security
     - PAR JWT Key Identifier Reference
@@ -155,31 +156,31 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_029
     - Issuance, Trust
     - Wallet Instance Trustworthiness Verification
-    - Credential Issuer successfully verifies the trustworthiness and indirect Federation membership of the Wallet Instance through comprehensive Wallet Attestation validation
+    - Credential Issuer successfully verifies the trustworthiness and indirect Federation membership of the Wallet Instance through comprehensive Wallet Instance Attestation (WIA) validation
   * - CI_030
     - Issuance, Trust
     - Wallet Provider Federation Membership Validation
-    - Credential Issuer confirms the Wallet Provider (issuer of the Wallet Attestation) is a recognized and trusted Federation member by checking Federation registries and trust lists;
+    - Credential Issuer confirms the Wallet Provider (issuer of the Wallet Instance Attestation (WIA)) is a recognized and trusted Federation member by checking Federation registries and trust lists;
   * - CI_031
     - Issuance, Security
-    - Wallet Attestation Cryptographic Signature Validation
-    - Credential Issuer successfully validates the cryptographic signature of the Wallet Attestation using the Wallet Provider's public key, ensuring signature integrity and authenticity;
+    - Wallet Instance Attestation (WIA) Cryptographic Signature Validation
+    - Credential Issuer successfully validates the cryptographic signature of the Wallet Instance Attestation (WIA) using the Wallet Provider's public key, ensuring signature integrity and authenticity;
   * - CI_032
     - Issuance, Security
-    - Wallet Attestation Expiration Check
-    - Credential Issuer verifies the Wallet Attestation has not expired at verification time by checking timestamp claims against current time
+    - Wallet Instance Attestation (WIA) Expiration Check
+    - Credential Issuer verifies the Wallet Instance Attestation (WIA) has not expired at verification time by checking timestamp claims against current time
   * - CI_033
     - Issuance, Security
-    - Wallet Attestation Attested Cryptographic Key Acceptance
+    - Wallet Instance Attestation (WIA) Attested Cryptographic Key Acceptance
     - Credential Issuer accepts and uses only cryptographic keys that are properly derived from the attested Wallet Instance during the credential issuance process;
   * - CI_034
     - Issuance, Security
-    - Wallet Attestation Device Security and Compliance Verification
-    - Credential Issuer relies on Wallet Attestation claims to confirm the Wallet Instance operates on a secure, trusted device that meets the Issuer's required security standards;
+    - Wallet Instance Attestation (WIA) Device Security and Compliance Verification
+    - Credential Issuer relies on Wallet Instance Attestation (WIA) claims to confirm the Wallet Instance operates on a secure, trusted device that meets the Issuer's required security standards;
   * - CI_035
     - Issuance, Trust
     - Wallet Provider Trust Chain Evaluation
-    - Credential Issuer successfully evaluates the complete Trust Chain of the Wallet Attestation's issuer (Wallet Provider)
+    - Credential Issuer successfully evaluates the complete Trust Chain of the Wallet Instance Attestation (WIA)'s issuer (Wallet Provider)
   * - CI_036
     - Issuance, Trust, Interoperability
     - Federation Metadata Retrieval
@@ -250,8 +251,8 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Issuer rejects all Authorization Requests that do not contain the request_uri parameter, since PAR is the exclusive method for passing Authorization Requests from the Wallet Instance (derived from :rfc:`9126`).
   * - CI_051
     - Issuance, Security
-    - CieID High-Level Authentication
-    - PID Provider successfully performs User authentication based on CieID scheme with LoAHigh (CIE L3)
+    - CieID High-Level Authentication for PID
+    - PID Provider successfully performs User authentication based on CieID scheme with LoA High (CIE L3). This case applies to PID, not to IT-Wallet ID.
   * - CI_052
     - Issuance, Security and Privacy
     - User Consent for PID Issuance
@@ -944,5 +945,45 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
     - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
+  * - CI_196
+    - Data Model and lifecycle, Interoperability
+    - IT-Wallet ID User attributes
+    - The IT-Wallet ID is issued with the User attributes defined in the :ref:`IT-Wallet ID data model <credential-data-model-it-wallet-id:IT-Wallet ID Data Model>`, distinct from the PID attribute set.
+  * - CI_197
+    - Issuance, Authentication
+    - IT-Wallet ID primary authentication
+    - The EAA Provider of IT-Wallet ID authenticates the User with CieID LoA High (CIE L3) as the primary method.
+  * - CI_198
+    - Issuance, Authentication
+    - eID Substantial Authentication with MRTD Verification
+    - When CieID PIN is not used, the EAA Provider of IT-Wallet ID supports the eID Substantial Authentication with MRTD Verification flow in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`. Actors in that flow retain logs according to the General Log Retention Policies.
+  * - CI_199
+    - Issuance, Authentication
+    - L2+ Authorization Details
+    - For IT-Wallet ID issuance with MRTD Verification, the PAR ``authorization_details`` array contains an object with ``type`` ``it_l2+document_proof`` and the required claims. If that object is absent, authentication falls back to CieID LoA High.
+  * - CI_200
+    - Issuance, Authentication, Security
+    - IdP–MRTD identity correlation
+    - The EAA Provider binds the identity verified by the IdP (CieID/SPID Substantial) with the identity in the MRTD by comparing at least the tax identification number or an equivalent unique identifier present in both sources. A mismatch aborts issuance. LoA High primary authentication skips MRTD PoP.
+  * - CI_201
+    - Presentation, Security
+    - Identity matching with unique national identifier
+    - When ``personal_administrative_number`` or ``tax_id_code`` is presented, the Relying Party uses it as the primary identity matching key before any reconciliation with a stored User record, as specified in :ref:`identity-matching`.
+  * - CI_202
+    - Presentation, Security
+    - Attribute-Based Binding without unique identifier
+    - When a PID is presented without ``personal_administrative_number``, Attribute-Based Binding is not limited to a single pair of names. The Relying Party matches at least ``family_name``, ``given_name`` and ``birth_date`` (or ``birthdate``) after normalisation, and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching`. Session-based, issuer-attested or cryptographic binding MAY supplement the comparison.
+  * - CI_203
+    - Issuance, Privacy
+    - Batch issuance applicability
+    - If the Credential Issuer metadata contains ``batch_credential_issuance``, batch issuance applies only to the Credential types for which that metadata is advertised. The Issuer documents whether PID and IT-Wallet ID are in scope. A type without that metadata is issued as a single Credential.
+  * - CI_204
+    - Issuance, Interoperability
+    - WIA at issuance
+    - At issuance the Credential Issuer validates a Wallet Instance Attestation (WIA), not a legacy «Wallet Attestation». WUA, where used, is a distinct artefact.
+  * - CI_205
+    - Issuance, Authentication
+    - LoA nomenclature mapping
+    - In the L2+ flow, LoA3 (ISO/IEC 29115) maps to eIDAS Substantial and to the national L2 means (SPID L2 / CieID Substantial). LoA High maps to eIDAS High and CIE L3. Tests fail if a Substantial authentication is recorded as High.
 
 

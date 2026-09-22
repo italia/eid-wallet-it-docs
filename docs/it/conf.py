@@ -6,7 +6,7 @@ settings_project_name = "Specifiche Tecniche IT-Wallet"
 settings_site_title = "Specifiche Tecniche IT-Wallet"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.6'
+settings_doc_version = '1.4.7'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
@@ -268,6 +268,9 @@ latex_elements = {
         \usepackage{luatex85}
         \usepackage{polyglossia}
         \setmainlanguage{italian}
+        % This TeX Live has no Italian patterns (polyglossia falls back to
+        % nohyphenation), so narrow table cells cannot break these words.
+        \AddToHook{begindocument/end}{\hyphenation{in-te-ro-pe-ra-bi-li-tà de-cen-tra-liz-za-zio-ne di-sin-stal-la-zio-ne au-ten-ti-ca-zio-ne i-ni-zia-liz-za-zio-ne pre-sen-ta-zio-ne re-gi-stra-zio-ne e-li-mi-na-zio-ne au-to-riz-za-zio-ne di-scon-nes-sio-ne ter-mi-na-zio-ne re-in-di-riz-za-men-to vi-sua-liz-za-zio-ne de-crit-ta-zio-ne tra-smis-sio-ne e-la-bo-ra-zio-ne pre-pa-ra-zio-ne fi-nan-zia-rio ob-bli-ga-to-rio i-stru-zio-ne in-ter-op-er-a-bil-i-ty es-tab-lish-ment au-tho-ri-za-tion pre-sen-ta-tion com-mu-ni-ca-tion au-then-ti-ca-tion com-pat-i-bil-i-ty con-fig-u-ra-tion en-gage-ment man-age-ment sub-sti-tu-tion per-for-mance ter-mi-na-tion en-ve-lope re-sponse}}
         
         % -- Fix for fancyhdr warning --
         \setlength{\headheight}{14pt}
@@ -286,7 +289,57 @@ latex_elements = {
 
         \usepackage{adjustbox}
         \usepackage{fvextra}
-        \usepackage{seqsplit}
+
+        % Break after identifier punctuation, and before an uppercase letter
+        % that follows at least two lowercase letters (DeviceRetrievalMode,
+        % not eID). \sphinxhyphen is "-\kern0pt", which is not a breakpoint.
+        \directlua{
+          local break_after = {
+            [95] = true,
+            [47] = true,
+            [63] = true,
+            [61] = true,
+            [35] = true,
+            [38] = true,
+            [58] = true,
+            [46] = true,
+            [43] = true,
+            [45] = true,
+          }
+          local glyph_id = node.id("glyph")
+          local function lower_run(g)
+            local k = 0
+            while g and g.id == glyph_id and g.char and g.char >= 97 and g.char <= 122 do
+              k = k + 1
+              if k >= 2 then return k end
+              g = g.prev
+            end
+            return k
+          end
+          local function insert_identifier_breaks(head)
+            local n = head
+            while n do
+              local nxt = n.next
+              local camel = n.id == glyph_id and n.char and nxt and nxt.id == glyph_id and nxt.char
+                  and n.char >= 97 and n.char <= 122
+                  and nxt.char >= 65 and nxt.char <= 90
+                  and lower_run(n) >= 2
+              if n.id == glyph_id and n.char and nxt and nxt.id == glyph_id and nxt.char
+                  and (break_after[n.char] or camel) then
+                local pen = node.new("penalty")
+                pen.penalty = 0
+                local g = node.new("glue")
+                head = node.insert_after(head, n, pen)
+                head = node.insert_after(head, pen, g)
+                n = g
+              end
+              n = n.next
+            end
+            return head
+          end
+          luatexbase.add_to_callback(
+            "pre_linebreak_filter", insert_identifier_breaks, "identifier_breaks")
+        }
         
         % -- prevent too big dim  --
         \maxdimen=16383.99999pt
@@ -313,7 +366,7 @@ latex_elements = {
             \begingroup
             \catcode`\-=12\relax
             \catcode`\_=12\relax
-            \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio,center}{%
+            \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio}{%
                 \original@includegraphics[#1]{#2}%
             }%
             \endgroup
@@ -325,7 +378,7 @@ latex_elements = {
                 \begingroup
                 \catcode`\-=12\relax
                 \catcode`\_=12\relax
-                \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio,center}{%
+                \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio}{%
                     \original@sphinxincludegraphics[#1]{#2}%
                 }%
                 \endgroup
@@ -348,18 +401,59 @@ latex_elements = {
             breaksymbolright={}%
         }
 
-        % Pygments wraps long JWT strings in unbreakable boxes; seqsplit fixes that
+        % Pygments puts a whole JWT in one macro argument, so fvextra cannot
+        % break it. seqsplit cannot scan the \PYGZhy macros inside that
+        % argument. Insert a breakpoint after every character, and pass
+        % Pygments escapes through with their brace groups intact.
         \makeatletter
+        \protected\def\sphinxhyphen#1{\discretionary{-}{}{-}}
+        \let\sphinxhyphenininlineliteral\sphinxhyphen
+        \def\sphinx@pygend{\sphinx@pygend}
+        \def\sphinx@pygscan{\futurelet\sphinx@pygtok\sphinx@pygstep}
+        \def\sphinx@pygstep{%
+          \ifx\sphinx@pygtok\sphinx@pygend
+            \let\sphinx@pygnext\@gobble
+          \else\ifx\sphinx@pygtok\@sptoken
+            \let\sphinx@pygnext\sphinx@pygspace
+          \else\ifcat\noexpand\sphinx@pygtok\relax
+            \let\sphinx@pygnext\sphinx@pygcs
+          \else
+            \let\sphinx@pygnext\sphinx@pygchar
+          \fi\fi\fi
+          \sphinx@pygnext
+        }
+        \def\sphinx@pygchar#1{#1\hskip\z@\sphinx@pygscan}
+        \def\sphinx@pygcs#1{%
+          \let\sphinx@pygsaved#1%
+          \futurelet\sphinx@pygtok\sphinx@pygcs@maybe
+        }
+        \def\sphinx@pygcs@maybe{%
+          \ifx\sphinx@pygtok\bgroup
+            \expandafter\sphinx@pygcs@group
+          \else
+            \expandafter\sphinx@pygcs@plain
+          \fi
+        }
+        \def\sphinx@pygcs@group#1{%
+          \sphinx@pygsaved{#1}\hskip\z@\sphinx@pygscan
+        }
+        \def\sphinx@pygcs@plain{%
+          \sphinx@pygsaved\hskip\z@\sphinx@pygscan
+        }
+        \expandafter\def\expandafter\sphinx@pygspace\space{%
+          \space\sphinx@pygscan
+        }
         \def\PYG@do#1{%
-            \PYG@bc{\PYG@tc{\PYG@ul{\PYG@it{\PYG@bf{\PYG@ff{\seqsplit{#1}}}}}}}%
+          \PYG@bc{\PYG@tc{\PYG@ul{\PYG@it{\PYG@bf{\PYG@ff{\sphinx@pygscan#1\sphinx@pygend}}}}}}%
         }
-
-        % Narrow tables: smaller type and tighter columns improve line breaking
-        \AtBeginEnvironment{longtable}{%
-            \small%
-            \setlength{\tabcolsep}{3.5pt}%
-            \emergencystretch=4em%
+        \newcommand{\sphinx@tablebreaks}{%
+          \small
+          \setlength{\tabcolsep}{3.5pt}%
+          \emergencystretch=4em
+          \exhyphenpenalty=0
         }
+        \AtBeginEnvironment{longtable}{\sphinx@tablebreaks}
+        \AtBeginEnvironment{tabular}{\sphinx@tablebreaks}
         \makeatother
 
         % -- Improvement for long verbatim  --
