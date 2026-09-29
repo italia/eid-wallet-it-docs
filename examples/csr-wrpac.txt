@@ -50,7 +50,6 @@ CertificationRequest csr = {
               critical: false,
               value: SubjectAltName [
                 GeneralName.uniformResourceIdentifier("https://rp.example.test/support"),
-                GeneralName.uniformResourceIdentifier("https://registry.example.it/api/wrp/services/svc-mobile-01"), // serviceIdentifier (Reg_33)
                 GeneralName.rfc822Name("support@rp.example.test"),
                 GeneralName.otherName(
                   type-id: "2.5.4.20",                    // id-at-telephoneNumber

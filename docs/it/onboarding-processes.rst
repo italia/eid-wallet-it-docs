@@ -46,7 +46,7 @@ I processi sono eseguiti dai componenti descritti in :ref:`onboarding-system:Sys
    * - :ref:`onboarding-system:Entity Update`
      - :ref:`onboarding-system:Entity Registration`
      - L'Entità, che presenta una modifica di una o più categorie dei propri dati di registrazione
-     - Registration Trust Mark Issuance, ove la modifica incida sui dati che reca; :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`, ove la modifica incida su un Service o su un intended use
+     - Registration Trust Mark Issuance, ove la modifica incida sui dati che reca; :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`, ove la modifica incida sui dati di registrazione
      - La richiesta, da parte dell'Entità, della riemissione dei certificati X.509 che recano i dati modificati; la revoca e la riemissione automatizzate del WRPRC da parte del relativo Provider; la ri-verifica dell'eleggibilità ove la modifica incida sull'Authorization Information; e la :ref:`onboarding-system:Notification and Publication` della modifica, ``if notified category``
    * - :ref:`onboarding-system:Entity Suspension and Removal`
      - :ref:`onboarding-system:Entity Registration`
@@ -86,8 +86,8 @@ I processi sono eseguiti dai componenti descritti in :ref:`onboarding-system:Sys
      - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
      - L'autenticazione dell'Entità verso le Wallet Unit
    * - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`, con un record con uno stato di registrazione valido nel Register e un WRPAC valido del Service, ``if EUDIW Trust Framework``
-     - Il Provider of WRPRC, invocato senza una richiesta dell'Entità quando esiste un WRPAC valido del Service o quando il record del Register di quel Service o intended use cambia
+     - :ref:`onboarding-system:Entity Registration`, con un record con uno stato di registrazione valido nel Register e un WRPAC valido, ``if EUDIW Trust Framework``
+     - Il Provider of WRPRC, invocato senza una richiesta dell'Entità quando esiste un WRPAC valido o quando il record del Register cambia
      - —
      - La presentazione dei dati di registrazione dell'Entità alle Wallet Unit
    * - :ref:`onboarding-system:Signature and Seal Certificate Issuance`
