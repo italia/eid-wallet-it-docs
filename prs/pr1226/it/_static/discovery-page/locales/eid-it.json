@@ -1,0 +1,112 @@
+{
+  "header": {
+    "region_name": "Nome dell'Organizzazione",
+    "lang_active_hint": "lingua attiva:",
+    "lang_trigger": "Selezione lingua, {{name}} selezionata"
+  },
+  "meta": {
+    "description": "Selezione del provider di identità digitale per l'accesso ai servizi."
+  },
+  "noscript": {
+    "message": "Per usare la selezione dell'identità digitale è necessario abilitare JavaScript."
+  },
+  "titles": {
+    "page_title": "Pagina di selezione del metodo di Autenticazione",
+    "login_logo": "Il tuo logo",
+    "login_digital_identity": "Accedi con un'identità digitale",
+    "login_alternative_method": "Accedi con un metodo alternativo",
+    "havent_digital_identy": "Non hai un'identità digitale?",
+    "find_how_to_get_digital_id": "Scopri come ottenerla",
+    "find_how_to_get_digital_id_url": "https://identitadigitale.gov.it/",
+    "learn_more": "Scopri di più",
+    "learn_more_a11y": {
+      "collapsed": "informazioni aggiuntive nascoste",
+      "expanded": "informazioni aggiuntive visibili"
+    },
+    "cards_load_status": "Elenco metodi di autenticazione aggiornato"
+  },
+  "loading": {
+    "in_progress": "Caricamento in corso...",
+    "error": "Impossibile caricare i metodi di autenticazione. Ricarica la pagina."
+  },
+  "digital_id": {
+    "it_wallet": {
+      "name": "IT-Wallet",
+      "logo_text": "Entra con IT-Wallet",
+      "logo": "it-wallet/wallet_icon.svg",
+      "login_url": "../it-wallet-selection-page/it-wallet.html",
+      "learn_more_descr": "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte.",
+      "learn_more_link": "https://wallet.gov.it",
+      "learn_more_label": "Scopri come ottenerlo"
+    },
+    "cie": {
+      "name": "CIE SAML2",
+      "logo_text": "Entra con CIE",
+      "logo": "cie/cie_white.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "La CIE (Carta d'Identità Elettronica) è il documento d'identità elettronico italiano. Usala per accedere ai servizi online in modo sicuro tramite il protocollo SAML2.",
+      "learn_more_link": "https://www.cartaidentita.interno.gov.it/",
+      "learn_more_label": "Scopri come ottenerla"
+    },
+    "cie_oidc": {
+      "name": "CIE OpenID Connect",
+      "logo_text": "Entra con CIE",
+      "logo": "cie/cie_white.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "La CIE (Carta d'Identità Elettronica) può essere usata con il protocollo OIDC per autenticarti e accedere ai servizi online."
+    },
+    "spid": {
+      "name": "SPID",
+      "logo_text": "Entra con SPID",
+      "logo": "spid/spid-ico-circle-bb.svg",
+      "login_url": "#spid-idp-button-xlarge-post",
+      "learn_more_descr": "SPID (Sistema Pubblico di Identità Digitale) è il sistema pubblico di identità digitale italiano. Scegli il tuo gestore di identità per accedere con le tue credenziali SPID.",
+      "learn_more_link": "https://www.spid.gov.it/",
+      "learn_more_label": "Scopri come ottenerla"
+    },
+    "eidas": {
+      "name": "European digital ID",
+      "logo_text": "Login with eIDAS",
+      "logo": "img/ficep.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "Sign-in with a digital identity from another European Country including Iceland, Liechtenstein and Norway, and third country nationals in possession of a notified residency card",
+      "learn_more_label": "Learn more",
+      "learn_more_toggle_label": "Learn more"
+    }
+  },
+  "alternative_id": {
+    "cns": {
+      "name": "CNS",
+      "logo_text": "Entra con CNS",
+      "logo": "img/cns.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "La CNS (Carta Nazionale dei Servizi) è lo strumento di identificazione che consente ai cittadini di accedere ai servizi della pubblica amministrazione online. Puoi usarla per accedere ai servizi che supportano l'autenticazione CNS."
+    },
+    "idem": {
+      "name": "IDEM",
+      "logo_text": "Entra con IDEM",
+      "logo": "img/idem.svg",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "IDEM (Identity and Access Management for Education and Research) è il sistema di identità federata della rete della ricerca e dell'istruzione italiana (GARR). Usalo per accedere ai servizi che supportano l'autenticazione IDEM."
+    },
+    "alt1": {
+      "name": "{Alternativa 1}",
+      "logo_text": "Entra con {Alternativa 1}",
+      "logo": "../shared-ui/svg/sprites.svg#it-code-circle",
+      "login_url": "CAMBIAMI",
+      "learn_more_descr": "{Alternativa 1} è un sistema di identità federata che ti permette di accedere ai servizi che supportano l’autenticazione con {Alternativa 1}."
+    }
+  },
+  "footer": {
+    "nav_label": "Link legali",
+    "legal_notice": "Note legali",
+    "privacy_policy": "Privacy Policy",
+    "accessibility_statement": "Dichiarazione Accessibilità",
+    "new_window_hint": "si apre in una nuova finestra"
+  },
+  "skip_links": {
+    "nav_label": "Collegamenti di salto",
+    "main_content": "Vai al contenuto principale",
+    "footer": "Vai al piè di pagina"
+  }
+}
