@@ -373,7 +373,7 @@ This association allows the User to directly request Wallet Instance revocation 
 <p>As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
 This specification mandates the use of at least a second-factor for User authentication.</p>
 </div>
-<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding resides in a secure WSCD.
+<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard credentials; WSCA operating within a Remote WSCD for the PID).
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
 <p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
@@ -428,7 +428,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A Wallet Provider SHALL choose the technical validity period of the Wallet Instance Attestation and SHALL maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the <code class="docutils literal notranslate"><span class="pre">client_status.exp</span></code> claim in the Wallet Instance Attestation.</p>
+<p>A Wallet Provider MUST choose the technical validity period of the Wallet Instance Attestation and MUST maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the <code class="docutils literal notranslate"><span class="pre">client_status.exp</span></code> claim in the Wallet Instance Attestation.</p>
 </div>
 </section>
 </section>
@@ -547,7 +547,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

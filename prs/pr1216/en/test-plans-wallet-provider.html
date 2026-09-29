@@ -515,12 +515,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_013</p></td>
 <td><p>Lifecycle, Interoperability</p></td>
 <td><p>Frontend component architecture</p></td>
-<td><p>Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, and Secure Storage) as shown in <a class="reference internal" href="wallet-solution.html#fig-wallet-solution-high-level-architecture"><span class="std std-ref">Figure of Wallet Solution High Level Architecture</span></a>.</p></td>
+<td><p>Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, Keystore, and WSCA/WSCD Interface for PID) as shown in <a class="reference internal" href="wallet-solution.html#fig-wallet-solution-high-level-architecture"><span class="std std-ref">Figure of Wallet Solution High Level Architecture</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_014</p></td>
 <td><p>Trust, Security</p></td>
-<td><p>WSCD implementation</p></td>
-<td><p>Wallet Instance exclusively uses the Local Internal WSCD for all required cryptographic operations, such as generating signatures and performing key management, to conform with the profile.</p></td>
+<td><p>Keystore implementation</p></td>
+<td><p>Wallet Instance uses the hardware-backed Keystore (Strongbox or TEE on Android; Secure Enclave on iOS) for all required cryptographic operations, such as generating signatures and performing key management. For PID issuance and management, the Wallet Instance interacts with the WSCA operating within the Remote WSCD (remote HSM) to conform with Level of Assurance High requirements.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_015</p></td>
 <td><p>Lifecycle, UX</p></td>
@@ -1268,7 +1268,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_100</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>WSCA authentication</p></td>
-<td><p>Wallet Instance prompts the User to perform a WSCA-based authentication, directly or by unlocking the application, and does not proceed with the proximity flow until it succeeds.</p></td>
+<td><p>Wallet Instance prompts the User to perform a WSCA-based authentication, directly or by unlocking the application, and does not proceed with the proximity flow until it succeeds. Note: WSCA authentication applies when the PID (LoA High) is involved in the proximity flow.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_101</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
@@ -2049,7 +2049,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

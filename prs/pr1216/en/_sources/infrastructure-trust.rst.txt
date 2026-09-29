@@ -11,11 +11,11 @@ This infrastructure provides the foundation for secure Digital Credential operat
 Two trust frameworks coexist in IT-Wallet.
 
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_).
-    It is the notified, interoperable path and MUST stand alone for PID, (Q)EAA or PuB-EAA, and for Wallet-Relying Parties, of other Member States: a Wallet Unit that implements only the EUDIW procedures SHALL be able to issue, present and verify those Credentials, and to authenticate those Wallet-Relying Parties.
+    It is the notified, interoperable path and MUST stand alone for PID, (Q)EAA or PuB-EAA, and for Wallet-Relying Parties, of other Member States: a Wallet Unit that implements only the EUDIW procedures MUST be able to issue, present and verify those Credentials, and to authenticate those Wallet-Relying Parties.
     It is mandatory and authoritative for those Credentials and Wallet-Relying Parties of other Member States, and for cross-border interoperability.
   - The **National Trust Framework** is a national overlay based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI dedicated to the signature of Digital Credentials that require an X.509 PKI.
     It is **out of the ARF**. It is the registration and onboarding layer for all the entities of the ecosystem.
-    OpenID Federation SHOULD be used by a national entity that addresses a national audience only.
+    A national entity MAY use OpenID Federation, including for the issuance and the presentation of an Italian PID, (Q)EAA or PuB-EAA.
 
 The National Trust Framework MUST NOT be selected, and MUST NOT be used as a fallback, for the issuance or the presentation of a PID, (Q)EAA or PuB-EAA of another Member State.
 A national Wallet-Relying Party that offers services for interoperability outside the national audience MUST use the EUDIW Trust Framework, as specified in :ref:`trust-evaluation:Trust Framework Selection`.

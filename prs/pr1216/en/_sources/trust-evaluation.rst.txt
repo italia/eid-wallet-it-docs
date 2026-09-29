@@ -92,14 +92,14 @@ At issuance the Wallet Unit initiates the interaction and knows the requested Cr
 The selection is driven by whether the Credential Issuer is a national entity or is of another Member State, together with the catalogue of the requested Credential (see :ref:`registry:Digital Credentials Catalog`).
 
 For Authentication, Authorization and Metadata Retrieval and Validation of the Credential Issuer, the Wallet Unit MUST apply the EUDIW procedures when the Credential Issuer, or the requested PID, (Q)EAA or PuB-EAA, is of another Member State.
-The Wallet Unit SHOULD apply the National Trust Framework procedures when the Credential Issuer is a national entity.
+The Wallet Unit MAY apply the National Trust Framework procedures when the Credential Issuer is a national entity, including the Italian PID Provider.
 The National Trust Framework MUST NOT be selected for the issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
 This rule MUST be applied also to EAA Providers, therefore, the same Credential Issuer MAY be evaluated under different frameworks in different interactions, according to the counterpart and the Credential requested.
 The headers of the signed artifacts of the Credential Issuer reflect the same selection: an ``x5c`` header carrying the access certificate for the EUDIW path, and a ``kid`` header, with the optional ``trust_chain`` header, for the National Trust Framework path.
 These headers MUST be consistent with the selected framework.
 
 For the validation of the Wallet Unit, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities when the Wallet Unit is of another Member State.
-A Credential Issuer SHOULD validate the Wallet Instance Attestation through the National Trust Framework when the Wallet Unit is national (see :ref:`trust-evaluation:Wallet Unit Authentication`).
+A Credential Issuer MAY validate the Wallet Instance Attestation through the National Trust Framework when the Wallet Unit is national (see :ref:`trust-evaluation:Wallet Unit Authentication`).
 
 Selection at Presentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +109,7 @@ In the remote flow the selection is declared by the Relying Party through the ``
 The Relying Party does not authenticate the Wallet Unit and therefore cannot select the Trust Framework according to the Member State of that Wallet Unit or Wallet Solution.
 
 A national Relying Party that offers services for interoperability outside the national audience MUST use the ``x509_hash`` Client Identifier Prefix and the EUDIW artifacts, as required by [`ETSI TS 119 472-2`_] (OIDFVP-HAIP_COMMON_GEN_REQ-02).
-A national Relying Party that does not offer those interoperable services and addresses a national audience only SHOULD use the ``openid_federation`` prefix with the federation artifacts, including when it requests a PID, (Q)EAA or PuB-EAA.
+A national Relying Party MAY use the ``openid_federation`` prefix with the federation artifacts, including when it requests an Italian PID, (Q)EAA or PuB-EAA.
 
 The Wallet Unit MUST support both prefixes.
 It MUST process a request with the ``x509_hash`` prefix under the EUDIW procedures (see :ref:`trust-evaluation:EUDIW Authentication`).
@@ -136,7 +136,7 @@ Failure Handling
 The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
 In particular, a failed EUDIW evaluation MUST NOT be retried as a National Trust Framework evaluation.
 
-If Authentication fails, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction ([`EIDAS-ARF`_] CT_06, RPA_06a).
+If Authentication fails, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction ([`EIDAS-ARF`_] RPA_06a).
 The same applies under the National Trust Framework: a ``NON_AUTHENTICATED`` outcome MUST stop the interaction.
 
 If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply :ref:`trust-evaluation:Authorization Decision and Override Rules`.

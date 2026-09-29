@@ -410,9 +410,14 @@
 <li><p>supportare l’interazione dell’Utente con i record di transazione, inclusa la visualizzazione, l’esportazione e la cancellazione.</p></li>
 </ul>
 </section>
-<section id="archiviazione-sicura">
-<h3><span class="section-number">9.1.2.2.7. </span>Archiviazione Sicura<a class="headerlink" href="#archiviazione-sicura" title="Link to this heading">¶</a></h3>
-<p>L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli asset critici e per eseguire in modo sicuro funzioni crittografiche.</p>
+<section id="keystore">
+<h3><span class="section-number">9.1.2.2.7. </span>Keystore<a class="headerlink" href="#keystore" title="Link to this heading">¶</a></h3>
+<p>L'Istanza del Wallet DEVE utilizzare questo componente per generare, archiviare e utilizzare in modo sicuro le chiavi crittografiche per tutte le Credenziali Digitali. Il Keystore si basa sull'ambiente crittografico hardware-backed fornito dall'OEM del dispositivo (Strongbox o TEE su Android; Secure Enclave su iOS) ed è attestato tramite le OEM Key Attestation APIs. Il Keystore è il meccanismo di archiviazione sicura di default per tutte le operazioni della Wallet Instance e per tutte le Credenziali Digitali.</p>
+</section>
+<section id="wsca-wscd-interface">
+<h3><span class="section-number">9.1.2.2.8. </span>WSCA/WSCD Interface<a class="headerlink" href="#wsca-wscd-interface" title="Link to this heading">¶</a></h3>
+<p>Per l'emissione e la gestione del PID a Livello di Garanzia Alto, l'Istanza del Wallet DEVE interagire con un <strong>WSCA operante in un Remote WSCD</strong> implementato come Hardware Security Module (HSM) remoto operato lato server. Questo componente fornisce l'interfaccia verso il WSCA e il Remote WSCD, e garantisce che le chiavi private del PID siano generate e gestite in un ambiente hardware remoto antimanomissione conforme ai requisiti per il Livello di Garanzia Alto. La WSCA/WSCD Interface è utilizzata esclusivamente per il PID.</p>
+<p>L'attestazione delle chiavi nel contesto del Remote WSCD è eseguita dal Wallet Provider: dopo che il WSCA genera la coppia di chiavi del PID all'interno del Remote WSCD (HSM remoto), il Wallet Provider attesta le proprietà del WSCA e del Remote WSCD ed emette un Key Attestation (KA) che viene presentato al PID Provider durante l'emissione del PID. Il KA per il Remote WSCD descrive le proprietà di sicurezza dell'HSM remoto (anziché dell'hardware OEM del dispositivo), fornendo il livello di certificazione superiore richiesto per il Livello di Garanzia Alto.</p>
 </section>
 </section>
 </section>
@@ -516,7 +521,8 @@
 <li><a class="reference internal" href="#componente-di-presentazione">9.1.2.2.4. Componente di Presentazione</a></li>
 <li><a class="reference internal" href="#componente-di-backup-e-ripristino">9.1.2.2.5. Componente di Backup e Ripristino</a></li>
 <li><a class="reference internal" href="#dashboard-e-registro-delle-transazioni">9.1.2.2.6. Dashboard e Registro delle Transazioni</a></li>
-<li><a class="reference internal" href="#archiviazione-sicura">9.1.2.2.7. Archiviazione Sicura</a></li>
+<li><a class="reference internal" href="#keystore">9.1.2.2.7. Keystore</a></li>
+<li><a class="reference internal" href="#wsca-wscd-interface">9.1.2.2.8. WSCA/WSCD Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -555,7 +561,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

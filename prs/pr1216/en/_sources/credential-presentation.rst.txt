@@ -9,7 +9,7 @@ This section describes how a Relying Party Instance requests to a Wallet Instanc
 
 Presentation uses [`OpenID4VP`_] for the remote flow, profiled by [`OPENID4VC-HAIP`_], and [`ISO18013-5`_] for the proximity flow, as required by [`CIR2024/2982`_].
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
-A Wallet Unit that implements only the EUDIW procedures SHALL be able to present a PID, (Q)EAA or PuB-EAA to a Wallet-Relying Party of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Wallet Unit that implements only the EUDIW procedures MUST be able to present a PID, (Q)EAA or PuB-EAA to a Wallet-Relying Party of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 PID presentation before EUDIW notification is specified in :ref:`pid-until-notification`.
 
 When an Embedded Disclosure Policy is stored with a Digital Credential, the Wallet Unit MUST apply it before disclosure, as specified in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.

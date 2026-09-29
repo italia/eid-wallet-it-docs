@@ -619,9 +619,9 @@ prima e quindi inviare la richiesta all'endpoint della Credenziale e legare le C
 token di accesso vincolato al mittente, il che significa che il token di accesso si lega al dispositivo utilizzando materiali crittografici.</p>
 <p>La seconda superficie per l'attacco è correlata alla gestione delle chiavi. Nel caso di utilizzo di chiavi basate su software, è possibile clonare le chiavi e spostarle su un dispositivo sotto
 il controllo dell'attaccante, e nel caso di furto delle Credenziali, l'attaccante può facilmente creare una prova di possesso delle chiavi. IT-Wallet è meno vulnerabile a questi attacchi in quanto supporta
-WSCD interno locale che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
-profilo di certificazione che certifichi il WSCD interno locale contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
-come mostrato ad esempio in questo <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Rapporto di Certificazione</a> o <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">sito Global Platform</a> rende il requisito solo parzialmente soddisfatto.</p>
+un Keystore hardware-backed che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
+profilo di certificazione che certifichi il Keystore (TEE) contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
+come mostrato ad esempio in questo <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Rapporto di Certificazione</a> o <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">sito Global Platform</a> rende il requisito solo parzialmente soddisfatto per le Credenziali Digitali standard. Per il PID, questa limitazione è superata richiedendo un WSCA operante in un Remote WSCD (HSM remoto lato server), che fornisce certificazione a un livello più elevato.</p>
 </section>
 <section id="sr-v-10">
 <h3><span class="section-number">14.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
@@ -949,7 +949,7 @@ Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificat
 </tr>
 </tbody>
 </table>
-<p>Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del WSCD, garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.</p>
+<p>Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del Keystore (o del WSCA/Remote WSCD per il PID), garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.</p>
 </section>
 </section>
 </section>
@@ -1105,7 +1105,7 @@ Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificat
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

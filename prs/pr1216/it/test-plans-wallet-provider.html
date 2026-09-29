@@ -516,12 +516,12 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-even"><td><p>WP_013</p></td>
 <td><p>Ciclo di vita, Interoperabilità</p></td>
 <td><p>Architettura componente frontend</p></td>
-<td><p>Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, e Archiviazione Sicura) come mostrato in <a class="reference internal" href="wallet-solution.html#fig-wallet-solution-high-level-architecture"><span class="std std-ref">Figure of Wallet Solution High Level Architecture</span></a>.</p></td>
+<td><p>Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, Keystore e WSCA/WSCD Interface per il PID) come mostrato in <a class="reference internal" href="wallet-solution.html#fig-wallet-solution-high-level-architecture"><span class="std std-ref">Figure of Wallet Solution High Level Architecture</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_014</p></td>
 <td><p>Trust, Sicurezza</p></td>
-<td><p>Implementazione WSCD</p></td>
-<td><p>Istanza del Wallet utilizza esclusivamente il WSCD Interno Locale per tutte le operazioni crittografiche richieste, come generare firme e eseguire gestione delle chiavi, per conformarsi al profilo.</p></td>
+<td><p>Implementazione Keystore</p></td>
+<td><p>Istanza del Wallet utilizza il Keystore hardware-backed (Strongbox o TEE su Android; Secure Enclave su iOS) per tutte le operazioni crittografiche richieste, come generare firme e gestire le chiavi, per tutte le Credenziali Digitali eccetto il PID. Per l'emissione e la gestione del PID, la Wallet Instance interagisce con il WSCA operante nel Remote WSCD (HSM remoto), per conformarsi ai requisiti di Livello di Garanzia Alto.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_015</p></td>
 <td><p>Ciclo di vita, UX</p></td>
@@ -2050,7 +2050,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

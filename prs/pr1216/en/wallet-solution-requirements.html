@@ -321,8 +321,8 @@
             
   <section id="wallet-solution-requirements">
 <h1><span class="section-number">9.1.1. </span>Wallet Solution Requirements<a class="headerlink" href="#wallet-solution-requirements" title="Link to this heading">¶</a></h1>
-<p>This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances, as well as the corresponding Wallet Instance Attestation, Key Attestation and the secure storage component (WSCD).</p>
-<p>These requirements implement, for the Wallet Unit, the core functionalities of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>] and the interface profile of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>], as specified in the ARF (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>).
+<p>This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances, as well as the corresponding Wallet Instance Attestation, Key Attestation and the secure storage components: the <strong>Keystore</strong> (used for all Digital Credentials) and the <strong>WSCA/Remote WSCD</strong> (used exclusively for PID at Level of Assurance High).</p>
+<p>These requirements implement, for the Wallet Unit, the core functionalities of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>] and the interface profile of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>], as specified in the ARF (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>).
 Wallet-to-Wallet interaction and qualified electronic signature creation are out of the scope of this version.</p>
 <ul class="simple">
 <li><p>The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
@@ -357,9 +357,9 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 <li><p>The Wallet Instance Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019a</span></a>).</p></li>
 <li><p>Each Wallet Instance SHOULD be able to request multiple Wallet Instance Attestations using different cryptographic public keys associated with them.</p></li>
 <li><p>The Wallet Instance Attestation MUST NOT contain information about the User in control of the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029b</span></a>).</p></li>
-<li><p>The Wallet Instance MUST secure a Wallet Instance Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
-<li><p>A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times presents a temporally valid and non-revoked Wallet Instance Attestation to a PID Provider or Attestation Provider during the issuance process of a PID or attestation. Note: This requirement applies to both device-bound and non-device-bound attestations, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
-<li><p>A Wallet Unit SHALL present a Wallet Instance Attestation only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.</p></li>
+<li><p>The Wallet Instance MUST secure a Wallet Instance Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>.</p></li>
+<li><p>A Wallet Provider MUST ensure that a non-revoked Wallet Unit at all times presents a temporally valid and non-revoked Wallet Instance Attestation to a PID Provider or Attestation Provider during the issuance process of a PID or attestation. Note: This requirement applies to both device-bound and non-device-bound attestations, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>.</p></li>
+<li><p>A Wallet Unit MUST present a Wallet Instance Attestation only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -368,26 +368,26 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 </section>
 <section id="key-attestation-requirements">
 <h2><span class="section-number">9.1.1.2. </span>Key Attestation Requirements<a class="headerlink" href="#key-attestation-requirements" title="Link to this heading">¶</a></h2>
-<p>Key Attestation contains information to ensure that keys used for Digital Credential key binding are stored in a <strong>trustworthy</strong> WSCD. It also provides a method to authenticate the WSCD with the Credential Issuer and verifies that the Wallet Unit has not been revoked.</p>
+<p>Key Attestation contains information to ensure that keys used for Digital Credential key binding are securely generated and stored in a trustworthy hardware-backed environment: a <strong>Keystore</strong> for standard device-bound Digital Credentials, or a <strong>WSCA</strong> operating within a <strong>Remote WSCD</strong> (remote HSM) exclusively for the PID at Level of Assurance High. It also provides a method to authenticate the key storage environment with the Credential Issuer and verifies that the Wallet Unit has not been revoked.</p>
 <p>The requirements for the Key Attestation are defined below:</p>
 <ul class="simple">
-<li><p>The Key Attestation SHALL provide a PID Provider or Attestation Provider with information about the capabilities of the WSCA and WSCD of the Wallet Unit, such that they are able to take a well-grounded decision on whether to issue a PID or attestation to the Wallet Unit.</p></li>
-<li><p>The Key Attestation SHALL enable PID Providers and Attestation Providers to verify the authenticity and revocation status of the Wallet Unit.</p></li>
-<li><p>A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times can present a Key Attestation, when requested by a PID Provider or Attestation Provider.</p></li>
-<li><p>During issuance of a PID, the Wallet Unit SHALL provide the PID Provider with a valid Key Attestation (KA) describing the WSCA/WSCD that generated the new PID private key. Note: A PID private key is always generated and managed by the WSCA/WSCD, which by definition complies with requirements for Level of Assurance High.</p></li>
-<li><p>During issuance of device-bound attestation, a Wallet Unit SHALL retrieve the requirements of the Attestation Provider regarding key storage by the WSCA/WSCD from the Issuer metadata (as specified in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>). The Wallet Unit SHALL determine which of its WSCA/WSCD(s), if any, comply with these requirements.  If a compliant WSCA/WSCD or keystore is available to the Wallet Unit, the Wallet Unit SHALL provide the Attestation Provider with a valid KA describing the selected WSCA/WSCD or keystore. Note: A KA describes the properties of the WSCA/WSCD or a keystore and contains one or more public key(s) corresponding to private key(s) generated by and stored in that WSCA/WSCD or keystore.</p></li>
-<li><p>If a Wallet Unit contains multiple WSCAs, it SHALL, internally and securely, keep track of which PIDs and attestations are bound to which WSCA.</p></li>
-<li><p>A Wallet Unit SHALL present a Key Attestation only as part of the issuance of a PID or a key-bound attestation.</p></li>
-<li><p>The Key Attestation SHALL enable PID Providers to request a Wallet Provider to revoke a Wallet Unit, by including an identifier for the Wallet Unit in the KA (e.g., a URI and index to an Attestation Status Lis). The Wallet Provider SHALL ensure that this Wallet Unit identifier does not enable tracking of the User.</p></li>
-<li><p>The Key Attestation MUST contain one or multiple attested credential's public key that are coming from the same WSCD.</p></li>
-<li><p>The Key Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. Wallet Providers SHALL ensure that the certificates they use for signing KAs and WIAs comply with all applicable requirements in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>, in particular Clause 5.</p></li>
-<li><p>An Attestation Provider issuing non-device-bound attestations SHALL indicate in its Credential Issuer metadata that it does not need a KA. A Wallet Unit SHALL NOT send a KA to an Attestation Provider when requesting a non-device-bound attestation. Note: A Wallet Unit sends a WIA to the Attestation Provider regardless of whether the attestations it issues are device-bound or not.</p></li>
-<li><p>A Wallet Provider SHALL ensure that the presentation of a KA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, this is achieved by letting the signed KA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the KA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the KA.</p></li>
-<li><p>During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider SHALL verify the KA in accordance with the requirements in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> Appendix F.4.</p></li>
-<li><p>During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider SHALL receive a proof that the Wallet Unit possesses the private keys corresponding to all public keys in the KA.</p></li>
-<li><p>If the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the KA.</p></li>
-<li><p>A Wallet Provider SHALL consider all relevant factors, including offline usage, interoperability, and the risk of a KA becoming a vector to track the User, when deciding on the validity period of a KA.</p></li>
-<li><p>The Key Attestation MUST NOT be issued by the Wallet Provider if the WSCD trustworthiness is not guaranteed. In this case, the Wallet Instance MUST be revoked.</p></li>
+<li><p>The Key Attestation MUST provide a PID Provider or Attestation Provider with information about the properties of the Keystore or the WSCA/WSCD of the Wallet Unit, such that they are able to take a well-grounded decision on whether to issue a PID or attestation to the Wallet Unit.</p></li>
+<li><p>The Key Attestation MUST enable PID Providers and Attestation Providers to verify the authenticity and revocation status of the Wallet Unit.</p></li>
+<li><p>A Wallet Provider MUST ensure that a non-revoked Wallet Unit at all times can present a Key Attestation, when requested by a PID Provider or Attestation Provider.</p></li>
+<li><p>During issuance of a PID, the Wallet Unit MUST provide the PID Provider with a valid Key Attestation (KA) describing the WSCA and the Remote WSCD that generated the new PID private key. Note: A PID private key is always generated and managed by the WSCA operating within the Remote WSCD (remote HSM), which by definition complies with requirements for Level of Assurance High.</p></li>
+<li><p>During issuance of a device-bound attestation other than a PID, the Wallet Unit MUST provide the Attestation Provider with a valid Key Attestation (KA) describing the Keystore in which the new credential private key was generated and is stored. The Wallet Unit MUST retrieve the key storage requirements of the Attestation Provider from the Issuer metadata (as specified in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>) and MUST determine which of its Keystores, if any, comply with these requirements. Note: A KA for a device-bound attestation describes the properties of the Keystore as attested by the OEM Key Attestation APIs, and contains one or more public key(s) corresponding to private key(s) generated by and stored in that Keystore.</p></li>
+<li><p>If a Wallet Unit contains multiple Keystores or WSCAs, it MUST, internally and securely, keep track of which PIDs and attestations are bound to which Keystore or WSCA.</p></li>
+<li><p>A Wallet Unit MUST present a Key Attestation only as part of the issuance of a PID or a key-bound attestation.</p></li>
+<li><p>The Key Attestation MUST enable PID Providers to request a Wallet Provider to revoke a Wallet Unit, by including an identifier for the Wallet Unit in the KA (e.g., a URI and index to an Attestation Status List). The Wallet Provider MUST ensure that this Wallet Unit identifier does not enable tracking of the User.</p></li>
+<li><p>The Key Attestation MUST contain one or multiple attested Credential's public key(s) that are bound to the same Keystore or WSCA/WSCD.</p></li>
+<li><p>The Key Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. Wallet Providers MUST ensure that the certificates they use for signing KAs and WIAs comply with all applicable requirements in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>, in particular Clause 5.</p></li>
+<li><p>An Attestation Provider issuing non-device-bound attestations MUST indicate in its Credential Issuer metadata that it does not need a KA. A Wallet Unit MUST NOT send a KA to an Attestation Provider when requesting a non-device-bound attestation. Note: A Wallet Unit sends a WIA to the Attestation Provider regardless of whether the attestations it issues are device-bound or not.</p></li>
+<li><p>A Wallet Provider MUST ensure that the presentation of a KA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, this is achieved by letting the signed KA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the KA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the KA.</p></li>
+<li><p>During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider MUST verify the KA in accordance with the requirements in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> Appendix F.4.</p></li>
+<li><p>During issuance of a PID or a device-bound attestation, the PID Provider or Attestation Provider MUST receive a proof that the Wallet Unit possesses the private keys corresponding to all public keys in the KA.</p></li>
+<li><p>If the Keystore or the WSCA/WSCD is able to export a private key, the Wallet Provider MUST specify this capability as an attribute in the KA.</p></li>
+<li><p>A Wallet Provider MUST consider all relevant factors, including offline usage, interoperability, and the risk of a KA becoming a vector to track the User, when deciding on the validity period of a KA.</p></li>
+<li><p>The Key Attestation MUST NOT be issued by the Wallet Provider if the trustworthiness of the Keystore or WSCA/WSCD cannot be guaranteed. In this case, the Wallet Instance MUST be revoked.</p></li>
 </ul>
 <section id="use-of-key-attestation-apis-oem">
 <h3><span class="section-number">9.1.1.2.1. </span>Use of Key Attestation APIs (OEM)<a class="headerlink" href="#use-of-key-attestation-apis-oem" title="Link to this heading">¶</a></h3>
@@ -399,20 +399,23 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 </ul>
 </section>
 </section>
-<section id="wscd-requirements">
-<h2><span class="section-number">9.1.1.3. </span>WSCD Requirements<a class="headerlink" href="#wscd-requirements" title="Link to this heading">¶</a></h2>
-<p>To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet Instance Attestation) MUST be securely generated and stored within the Wallet Secure Cryptographic Device (WSCD).
-Only the legitimate User can access the private cryptographic keys, preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:</p>
+<section id="keystore-requirements">
+<h2><span class="section-number">9.1.1.3. </span>Keystore Requirements<a class="headerlink" href="#keystore-requirements" title="Link to this heading">¶</a></h2>
+<p>The <strong>Keystore</strong> is the default hardware-backed secure storage mechanism used by the Wallet Unit for all cryptographic operations related to Digital Credentials (other than the PID). Cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet Instance Attestation) and with device-bound attestations MUST be securely generated and stored within the Keystore. Only the legitimate User can access the private cryptographic keys, preventing unauthorized usage or tampering.</p>
+<p>The Keystore relies on the device's native cryptographic hardware provided by the OEM:</p>
 <ul class="simple">
-<li><p><strong>Local Internal WSCD</strong>: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android.</p></li>
-<li><p><strong>Local External WSCD</strong>: The WSCD is hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
-<li><p><strong>Remote WSCD</strong>: The WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
-<li><p><strong>Local Hybrid WSCD</strong>: The WSCD involves a pluggable internal hardware component within the User's device, such as an <em>eUICC</em> that adheres to <em>GlobalPlatform</em> standards and supports <em>JavaCard</em>.</p></li>
-<li><p><strong>Remote Hybrid WSCD</strong>: The WSCD involves a local component mixed with a remote service.</p></li>
+<li><p><strong>Android</strong>: Strongbox Keymaster (a dedicated Hardware Security Module embedded in the device) is RECOMMENDED. The Trusted Execution Environment (TEE) MAY be used as a fallback only when Strongbox is unavailable.</p></li>
+<li><p><strong>iOS</strong>: The Secure Enclave MUST be used.</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>At the current stage, the implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>). Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (<cite>AAL</cite>).</p>
+<p>The properties of the Keystore are attested by the OEM Key Attestation APIs (e.g., Android Key Attestation API, Apple DeviceCheck) and reported in the Key Attestation issued by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>).</p>
+<p>For more detailed information, please refer to <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a>, <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>, and <a class="reference internal" href="wallet-attestation-issuance.html#key-attestation-issuance"><span class="std std-ref">Key Attestation Issuance</span></a> of this document.</p>
+</section>
+<section id="wsca-wscd-requirements">
+<h2><span class="section-number">9.1.1.4. </span>WSCA/WSCD Requirements<a class="headerlink" href="#wsca-wscd-requirements" title="Link to this heading">¶</a></h2>
+<p>The <strong>WSCA/WSCD</strong> used for the PID consists of a WSCA operating within a <strong>Remote WSCD</strong> implemented as a remote Hardware Security Module (remote HSM) operated server-side. This combination is used exclusively for the issuance and management of the PID at Level of Assurance High. The PID private key MUST be generated and managed by the WSCA operating within the Remote WSCD (remote HSM), which by definition satisfies the requirements for Level of Assurance High.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the current implementation profile, the WSCA/WSCD is exclusively required for PID issuance. Future versions of this specification MAY extend this requirement to other Digital Credentials that require Level of Assurance High.</p>
 </div>
 <p>For more detailed information, please refer to <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a>, <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>, and <a class="reference internal" href="wallet-attestation-issuance.html#key-attestation-issuance"><span class="std std-ref">Key Attestation Issuance</span></a> of this document.</p>
 </section>
@@ -497,7 +500,8 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 <li><a class="reference internal" href="#use-of-key-attestation-apis-oem">9.1.1.2.1. Use of Key Attestation APIs (OEM)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wscd-requirements">9.1.1.3. WSCD Requirements</a></li>
+<li><a class="reference internal" href="#keystore-requirements">9.1.1.3. Keystore Requirements</a></li>
+<li><a class="reference internal" href="#wsca-wscd-requirements">9.1.1.4. WSCA/WSCD Requirements</a></li>
 </ul>
 </li>
 </ul>
@@ -533,7 +537,7 @@ Only the legitimate User can access the private cryptographic keys, preventing u
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 17/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
