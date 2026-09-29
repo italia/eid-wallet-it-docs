@@ -214,10 +214,9 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Relying Party Service**
     **Wallet-Relying Party Service**
-      First-class registration object of a Wallet-Relying Party, identified by a ``serviceTradeName`` suitable for presenting to the User and, when registered, by a ``serviceIdentifier`` unique within that entity.
-      Intended uses, entitlements and the corresponding Trust Artifacts of that Wallet-Relying Party are bound to a Service.
-      In the Register the object is ``WalletRelyingPartyService`` in the ``services`` array of `EUDI-TS 5`_.
-      Aligned with ARF 3.0.0 Section 3.11.2 and [`CIR2026/1730`_].
+      Service of a Wallet-Relying Party, registered separately from that entity's other services and distinguished by its identifier and trade name.
+      Encoded in `EUDI-TS 5`_ as ``WalletRelyingPartyService``.
+      Aligned with Section 3.11.2 of the `EIDAS-ARF`_.
 
     **Relying Party Solution**
       Product (software/hardware/cloud) enabling Credential presentations in various contexts.
