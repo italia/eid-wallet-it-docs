@@ -577,7 +577,6 @@ The validation flow depends on the interaction.
 
 - During the Issuance flow a PID Provider or Attestation Provider MUST convey the Wallet-Relying Party Registration Certificate by value in the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22), through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_].
   The array MUST contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the registration information.
-  The ``registrar_dataset`` MAY be used as advisory information only. It MUST NOT be presented to the User as verified and MUST NOT be used as a substitute for the Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_22).
   The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata as the ``embedded_disclosure_policy`` member of a credential configuration within ``credential_configurations_supported``, as defined in [`OpenID4VCI`_] and :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 During Credential Presentation, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_INVALID`` and MUST warn the User ([`EIDAS-ARF`_] RPRC_17).
