@@ -1,0 +1,1 @@
+urn:it-wallet:credential-offer:https%3A%2F%2Fauthentic-source.example.org:education_degree:6F9619FF-8B86-D011-B42D-00C04FC964FF

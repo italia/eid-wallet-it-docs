@@ -873,6 +873,31 @@ Participants' Key Retrieval Flow
 .. note::
   The Interoperability API includes an event notification endpoint that alerts subscribed Participants about changes within the PDND Infrastructure. Among these notifications, the ``/events/keys`` endpoint provides updates on modifications to cryptographic material, such as additions or deletions of keys. By leveraging this mechanism, Participants can implement a periodic polling strategy to retrieve all changed keys and update their local cache. This eliminates the need to request each key individually during the workflow.
 
+GetAttributeClaims Consumer Encryption Keys
+"""""""""""""""""""""""""""""""""""""""""""
+
+Participant keys registered for PDND Voucher issuance and request integrity are signing keys, as in the non-normative example above. Those keys MUST NOT be used to encrypt ``issuer_state``.
+
+The Credential Issuer, acting as Consumer of the ``GetAttributeClaims`` e-service defined in :ref:`authentic-source-endpoint:Get Attribute Claims`, MUST register a dedicated encryption key pair on the `Client e-service` used for that e-service. This encryption key is in addition to the signing key used for Vouchers.
+
+The public key MUST be published as a JWK [:rfc:`7517`] with the following parameters:
+
+- **kty**: MUST be ``EC``.
+- **crv**: MUST be ``P-256``.
+- **use**: MUST be ``enc``.
+- **key_ops**: MUST include ``deriveKey`` and MUST NOT include ``sign``.
+- **alg**: MUST be ``ECDH-ES``.
+- **kid**: REQUIRED. Unique identifier of this key.
+
+The offer issuer (the Credential Issuer or the Authentic Source) MUST obtain the ``kid`` of that encryption key and MUST retrieve the JWK using the PDND Interoperability API ``GET /keys/{kid}`` as defined in this section. The Authentic Source MAY discover new or rotated ``kid`` values through the ``/events/keys`` endpoint described above. The JWK used for encryption MUST have ``use`` set to ``enc``.
+
+How that key is used to encrypt ``issuer_state`` is defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
+
+Below is a non-normative example of such an encryption JWK:
+
+.. literalinclude:: ../../examples/issuer-state-encryption-jwk.json
+  :language: JSON
+
 PDND Interoperability API Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
