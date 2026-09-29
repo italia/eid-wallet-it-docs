@@ -329,7 +329,6 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Trusted List**
       List that provides information about the status and the status history of the trust services from trust service providers regarding compliance with the applicable requirements (`ETSI TS 119 612`_).
-      Where the ARF refers to LoTE consumption, implementers use the List of Trusted Entities. QEAA Provider national Trusted Lists follow this Trusted List profile and are discovered through the List of Trusted Lists.
       Aligned with ARF 3.0.0.
 
     **List of Trusted Entities**

@@ -330,7 +330,6 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Trusted List**
       Elenco che fornisce informazioni sullo stato e sulla storia dello stato dei servizi fiduciari dei prestatori di servizi fiduciari rispetto ai requisiti applicabili (`ETSI TS 119 612`_).
-      Ove l'ARF si riferisca al consumo di LoTE, gli implementatori usano la List of Trusted Entities. Le Trusted List nazionali dei Fornitori di QEAA seguono questo profilo e sono scoperte tramite la List of Trusted Lists.
       Conforme con ARF 3.0.0.
 
     **List of Trusted Entities**
