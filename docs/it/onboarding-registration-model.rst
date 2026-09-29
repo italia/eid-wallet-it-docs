@@ -65,20 +65,20 @@ Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, 
      - Gli entitlement che l'entità richiede, i quali dichiarano i ruoli che intende svolgere nell'ecosistema.
      - [`ETSI TS 119 475`_], Annex A.2
    * - `service_description`
-     - Il nome commerciale e la descrizione localizzata di ciascun Relying Party Service che l'entità offre alle Wallet Unit. Nel Trust Framework EUDIW questi dati sono forniti per Service, si veda `relying_party_services`. Come tale nome commerciale sia recato in più di un WRPAC o WRPRC è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+     - Il nome commerciale e la descrizione localizzata di ciascun Relying Party Service che l'entità offre alle Wallet Unit. Nel Trust Framework EUDIW questi dati sono forniti per Service, si veda `relying_party_services`.
      - [`CIR2025/848`_], Annex I; [`EIDAS-ARF`_] Reg_34
    * - `intended_use`
-     - Gli attributi che una Relying Party intende richiedere dalle Wallet Unit, registrati sui propri Relying Party Service, si veda `relying_party_services`. Un WRPRC distinto per ciascuna combinazione di intended use e Service è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
-     - [`CIR2025/848`_], Annex I
+     - Gli attributi che una Relying Party intende richiedere dalle Wallet Unit, vincolati a uno specifico Relying Party Service. Una Relying Party DEVE dichiarare quali dei propri intended use registrati si applicano a ciascuno dei propri Service registrati ([`EIDAS-ARF`_] Reg_10d).
+     - [`CIR2025/848`_], Annex I; [`EIDAS-ARF`_] Reg_10d
    * - `relying_party_services`
-     - I Relying Party Service registrati dall'entità, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. ``serviceIdentifier`` non è richiesto. Il WRPRC è emesso automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
-     - [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``; :ref:`infrastructure-trust:Register of WRPs`
+     - Uno o più Relying Party Service registrati dall'entità. La cardinalità e ``serviceIdentifier`` sono specificati in :ref:`infrastructure-trust:Register of WRPs`. I corrispondenti WRPRC sono emessi automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+     - [`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34, RPRC_07a; [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``
    * - `provided_attestations`
      - I tipi di Attestato che un Credential Issuer intende emettere. All'interno di IT-Wallet ciascuno di essi fa riferimento a una voce versionata già presente nel Digital Credentials Catalog, e la dichiarazione aggiunge il Credential Issuer al campo ``issuers`` di tale voce, insieme alle capacità di emissione offerte per quel tipo di Credenziale (i flussi di emissione supportati, i parametri dell'emissione differita e la documentazione del servizio di emissione), si veda :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
      - Vincolato a un Relying Party Service. Per un Relying Party Service intermediato, il riferimento all'Intermediary Service che utilizza (``usesIntermediaries``). Per un Relying Party Intermediary Service, la dichiarazione che agisce come intermediario (``isIntermediary``) e gli identificativi di Service che serve (``servedWRPServices``, [`CIR2026/1730`_], Annex I). Un Intermediary Service puro NON DEVE registrare un entitlement (`EUDI-TS 5`_).
-     - [`ETSI TS 119 475`_], Table 10; [`EIDAS-ARF`_] RPRC_04; `EUDI-TS 5`_
+     - [`ETSI TS 119 475`_], Table 10; [`EIDAS-ARF`_] RPRC_04, Reg_34a; `EUDI-TS 5`_
    * - `trust_framework_scope`
      - La dichiarazione del Trust Framework in cui l'entità intende operare, secondo :ref:`infrastructure-trust:Infrastructure of Trust` e :ref:`trust-evaluation:Trust Framework Selection`. La dichiarazione è fornita dai ruoli per i quali questa scelta non è già fissata dalla notifica, e determina i Trust Artifact che l'entità ottiene e il modo in cui gli altri Data Identifier del profilo sono forniti. Si applica all'entità, mentre ``trustedAuthorities`` di un tipo di Credenziale si applica alla validazione di un Attestato di quel tipo.
      - La presente specifica
@@ -89,7 +89,7 @@ Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, 
      - La chiave pubblica con cui l'Entità di Federazione firma la propria Entity Configuration. DEVE essere fornita in formato JWK. Il resto della configurazione di federazione è pubblicato nell'Entity Configuration raggiungibile all'endpoint ``.well-known/openid-federation``.
      - `OID-FED`_, Section 3
    * - `certificate_signing_requests`
-     - Un array di Certificate Signing Request in formato PKCS #10, una per ciascun certificato X.509 che l'entità necessita di ottenere, ossia, a seconda del ruolo, il WRPAC, il Sign/Seal Certificate o il National Authentication Certificate. Una Wallet-Relying Party che opera nel Trust Framework EUDIW fornisce una Certificate Signing Request per il WRPAC. Una Certificate Signing Request per il WRPAC per ciascun Service registrato, e una per ciascun Relying Party Service intermediato, sono rinviate come specificato in :ref:`infrastructure-trust:Register of WRPs`. Ciascuna richiesta reca la chiave pubblica da certificare. DEVE essere distinta dalla Federation Entity Key. Il loro profilo è definito in :ref:`onboarding-system:Certificate Signing Request Profile` e sono l'input di :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, dove sono presentate nell'ordine ACME.
+     - Un array di Certificate Signing Request in formato PKCS #10, una per ciascun certificato X.509 che l'entità necessita di ottenere, ossia, a seconda del ruolo, il WRPAC, il Sign/Seal Certificate o il National Authentication Certificate. Per una Wallet-Relying Party che opera nel Trust Framework EUDIW DEVE esserci una Certificate Signing Request per il WRPAC per ciascun Service registrato. Per un Intermediario di Relying Party DEVE esserci una Certificate Signing Request per il WRPAC per ciascun Relying Party Service intermediato che serve ([`EIDAS-ARF`_] Reg_34a). Ciascuna richiesta reca la chiave pubblica da certificare. DEVE essere distinta dalla Federation Entity Key. Il loro profilo è definito in :ref:`onboarding-system:Certificate Signing Request Profile` e sono l'input di :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, dove sono presentate nell'ordine ACME.
      - :rfc:`2986`
    * - `provided_claims_purposes`
      - I claim che compongono un Attestato, selezionati dal Claims Registry, e gli scopi che utilizza, selezionati dalla Taxonomy, insieme alle capacità di fornitura dei dati. Raggruppa i ``data_capabilities`` della voce dell'AS Registry, si veda :ref:`registry:Authentic Source Registry`.
@@ -190,9 +190,9 @@ La tabella seguente mappa ciascun Data Identifier sui campi dei data model di de
    * - `entitlements`
      - Nel Register, l'array ``entitlements`` di ciascun elemento ``services[]``. Nel Trust Mark di registrazione, gli ``entitlements``. Nel Digital Credentials Catalog, il ``legal_type`` dell'elemento ``issuers`` del Credential Issuer.
    * - `service_description`
-     - Nel Register, il ``tradeName`` a livello di entità ove presente, e per Service il ``serviceTradeName`` e la ``srvDescription`` di ciascun elemento ``services[]``. Nel Trust Mark di registrazione, la ``srv_description``. Il vincolo di ``subject.commonName`` e del ``name`` del WRPRC a un Service è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+     - Nel Register, il ``tradeName`` a livello di entità ove presente, e per Service il ``serviceTradeName`` e la ``srvDescription`` di ciascun elemento ``services[]``. Nel WRPAC, ``subject.commonName`` DEVE coincidere con ``serviceTradeName``. Nel WRPRC, ``name`` DEVE coincidere con ``serviceTradeName``. Nel Trust Mark di registrazione, la ``srv_description``.
    * - `relying_party_services`
-     - Nel Register, l'array ``services`` di oggetti ``WalletRelyingPartyService``, ciascuno recante i membri definiti in `EUDI-TS 5`_, inclusi ``serviceTradeName``, ``srvDescription``, ``intendedUses``, ``entitlements``, ``providesAttestations``, ``isIntermediary``, ``usesIntermediaries`` e ``servedWRPServices``. ``serviceIdentifier`` resta opzionale. L'identificativo del Service nel WRPAC e il ``srv_id`` del WRPRC sono rinviati come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+     - Nel Register, l'array ``services`` di oggetti ``WalletRelyingPartyService``, ciascuno recante ``serviceIdentifier``, ``serviceTradeName``, ``srvDescription``, ``intendedUses``, ``entitlements``, ``providesAttestations``, ``isIntermediary``, ``usesIntermediaries`` e ``servedWRPServices``, come definito in `EUDI-TS 5`_. Nel WRPAC, ``subject.commonName`` (Reg_34) e l'identificativo del Service in ``subjectAltName`` (Reg_33). Nel WRPRC, ``name`` e ``srv_id`` (RPRC_07a).
    * - `intended_use`
      - Nel Register, l'array ``intendedUses`` del corrispondente elemento ``services[]``, ciascun elemento recante il proprio ``intendedUseIdentifier``, ``purpose``, ``privacyPolicy`` e ``credentials``. Nel Trust Mark di registrazione, i ``credentials`` e il ``purpose``.
    * - `provided_attestations`
@@ -345,7 +345,7 @@ La colonna del certificato X.509 raggruppa i certificati X.509 che l'entità ott
    La registrazione di federazione è comune a ogni entità e, come suo risultato, ogni entità ottiene un Subordinate Statement emesso dalla propria Federation Authority, e un Trust Mark di registrazione.
 
 .. note::
-   Per una Wallet-Relying Party che opera nel Trust Framework EUDIW, la colonna WRPAC è un certificato di accesso e la colonna WRPRC è un certificato di registrazione, emesso automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`. Un WRPAC per ciascun Service registrato, un insieme distinto di WRPAC per ciascuna Relying Party intermediata, e un WRPRC per ciascuna combinazione di intended use e Service sono rinviati come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+   Per una Wallet-Relying Party che opera nel Trust Framework EUDIW, la colonna WRPAC è un certificato di accesso **per ciascun Service registrato** ([`EIDAS-ARF`_] Reg_10a, Reg_33, Reg_34), e per un Intermediario di Relying Party è un **insieme distinto di certificati di accesso per ciascuna Relying Party intermediata**, un WRPAC per ciascun Relying Party Service intermediato ([`EIDAS-ARF`_] Reg_34a). La colonna WRPRC è un certificato di registrazione **per ciascuna combinazione di intended use e Service** per le Relying Party e **per Service** per i PID e Attestation Provider, emesso automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`. La tabella precedente indica se il ruolo ottiene tali artifact, non la loro cardinalità.
 
 .. note::
    Un'entità che opera solo a livello nazionale non ottiene né un record nel Register, né un WRPAC né un WRPRC.
@@ -373,13 +373,13 @@ Oltre ai dati di registrazione di base, un PID Provider fornisce i seguenti dati
 - `service_description`
 - `relying_party_services`
 
-  - I Service del PID Provider, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. Il Service reca ``provided_attestations`` per il tipo PID. ``serviceIdentifier`` non è richiesto.
+  - Almeno un Service, il cui ``serviceIdentifier`` è univoco all'interno del PID Provider. Il Service reca ``provided_attestations`` per il tipo PID.
 - `provided_attestations`
 - `federation_entity_identifier`
 - `federation_entity_key`
 - `certificate_signing_requests`
 
-  - Una Certificate Signing Request per il WRPAC, con cui il PID Provider si autentica verso le Wallet Unit.
+  - Una Certificate Signing Request per il WRPAC di ciascun Service registrato, con cui il PID Provider si autentica verso le Wallet Unit.
   - Una Certificate Signing Request per il Sign/Seal Certificate, con cui firma il PID emesso.
 - `conformity_assessment`
 - `service_supply_point`
@@ -395,13 +395,13 @@ Oltre ai dati di registrazione di base, un QEAA Provider fornisce i seguenti dat
 - `service_description`
 - `relying_party_services`
 
-  - I Service del QEAA Provider, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. Il Service reca ``provided_attestations``. ``serviceIdentifier`` non è richiesto.
+  - Almeno un Service, il cui ``serviceIdentifier`` è univoco all'interno del QEAA Provider. Il Service reca ``provided_attestations``.
 - `provided_attestations`
 - `federation_entity_identifier`
 - `federation_entity_key`
 - `certificate_signing_requests`
 
-  - Una Certificate Signing Request per il WRPAC, con cui il QEAA Provider si autentica verso le Wallet Unit.
+  - Una Certificate Signing Request per il WRPAC di ciascun Service registrato, con cui il QEAA Provider si autentica verso le Wallet Unit.
 - `conformity_assessment`
 - `service_supply_point`
 - `signing_trust_anchor`
@@ -419,13 +419,13 @@ Oltre ai dati di registrazione di base, un PuB-EAA Provider fornisce i seguenti 
 - `service_description`
 - `relying_party_services`
 
-  - I Service del PuB-EAA Provider, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. Il Service reca ``provided_attestations``. ``serviceIdentifier`` non è richiesto.
+  - Almeno un Service, il cui ``serviceIdentifier`` è univoco all'interno del PuB-EAA Provider. Il Service reca ``provided_attestations``.
 - `provided_attestations`
 - `federation_entity_identifier`
 - `federation_entity_key`
 - `certificate_signing_requests`
 
-  - Una Certificate Signing Request per il WRPAC, con cui il PuB-EAA Provider si autentica verso le Wallet Unit.
+  - Una Certificate Signing Request per il WRPAC di ciascun Service registrato, con cui il PuB-EAA Provider si autentica verso le Wallet Unit.
 - `conformity_assessment`:
 
   - Il Conformity Assessment Report emesso da un Conformity Assessment Body ai sensi dell'Articolo 45f di [`EIDAS`_].
@@ -444,14 +444,14 @@ Oltre ai dati di registrazione di base, un Non-Qualified EAA Provider fornisce i
 - `service_description`
 - `relying_party_services`
 
-  - OBBLIGATORIO ove il Non-Qualified EAA Provider operi nel Trust Framework EUDIW. I Service del Provider, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. ``serviceIdentifier`` non è richiesto.
+  - OBBLIGATORIO ove il Non-Qualified EAA Provider operi nel Trust Framework EUDIW. Almeno un Service, il cui ``serviceIdentifier`` è univoco all'interno del Provider.
 - `provided_attestations`
 - `federation_entity_identifier`
 - `federation_entity_key`
 - `certificate_signing_requests`
 
   - Una Certificate Signing Request per il Sign/Seal Certificate, con cui il Non-Qualified EAA Provider firma l'EAA emessa.
-  - Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW fornisce inoltre una Certificate Signing Request per il WRPAC, con cui si autentica verso le Wallet Unit.
+  - Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW fornisce inoltre una Certificate Signing Request per il WRPAC di ciascun Service registrato, con cui si autentica verso le Wallet Unit.
 - `service_supply_point`
 - `trust_framework_scope`
   
@@ -467,10 +467,10 @@ Oltre ai dati di registrazione di base, una Relying Party fornisce i seguenti da
 - `service_description`
 - `relying_party_services`
 
-  - OBBLIGATORIO ove la Relying Party operi nel Trust Framework EUDIW. I Service della Relying Party, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. ``serviceIdentifier`` non è richiesto.
+  - OBBLIGATORIO ove la Relying Party operi nel Trust Framework EUDIW. Almeno un Service. Ciascun Service reca i propri valori ``intended_use`` (Reg_10d).
 - `intended_use`:
 
-  - Annidato in `relying_party_services`. Il tipo di Attestato e opzionalmente gli attributi che la Relying Party intende richiedere dalle Wallet Unit.
+  - Annidato in `relying_party_services`. Il tipo di Attestato e opzionalmente gli attributi che la Relying Party intende richiedere dalle Wallet Unit, con una definizione di intended use per ciascuna combinazione di Service registrata ai sensi di Reg_10d.
 - `intermediary_relationship`
 
   - Annidato in `relying_party_services`. Nel Trust Framework EUDIW, OBBLIGATORIO ove il Relying Party Service operi tramite un RP Intermediary, e in tal caso fa riferimento all'identificativo dell'Intermediary Service (``usesIntermediaries``). Nel National Trust Framework la Relying Party non lo dichiara, perché la relazione con l'RP Intermediary è istituita tramite la federazione, in quanto la Relying Party imposta i propri ``authority_hints`` sull'RP Intermediary che la federa. Il lato dell'RP Intermediary è descritto in :ref:`onboarding-system:Relying Party Intermediary`.
@@ -480,14 +480,14 @@ Oltre ai dati di registrazione di base, una Relying Party fornisce i seguenti da
   - OBBLIGATORIO per una Relying Party che opera senza intermediario. Una Relying Party che opera tramite un RP Intermediary NON DEVE fornirlo, perché è registrata dal proprio RP Intermediary secondo il National Trust Framework.
 - `certificate_signing_requests`
 
-  - Una Certificate Signing Request per ciascun certificato X.509 di cui la Relying Party ha bisogno, ossia un WRPAC quando opera nel Trust Framework EUDIW, e il National Authentication Certificate quando opera solo nel National Trust Framework e supporta il Proximity Flow.
+  - Una Certificate Signing Request per ciascun certificato X.509 di cui la Relying Party ha bisogno, ossia un WRPAC per ciascun Service registrato quando opera nel Trust Framework EUDIW, e il National Authentication Certificate quando opera solo nel National Trust Framework e supporta il Proximity Flow.
 - `trust_framework_scope`
 
   - La Relying Party dichiara il Trust Framework in cui opera, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust` e :ref:`trust-evaluation:Selection at Presentation`. Questa scelta incide sugli artifact che ottiene.
 
 .. note::
    Una Relying Party (intermediata o meno) DEVE registrarsi tramite il Sistema di Onboarding per ottenere un Trust Mark di registrazione (si veda :ref:`infrastructure-trust:Trust Mark registration-entity`) e, nel caso di una Mobile Relying Party Instance, per ottenere un Authentication X.509 Certificate. 
-   Una Relying Party che opera nel Trust Framework EUDIW DEVE avere un record nel Register of WRP, DEVE ottenere il proprio WRPAC e DEVE ricevere il proprio WRPRC automaticamente, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+   Una Relying Party che opera nel Trust Framework EUDIW DEVE avere un record nel Register of WRP, DEVE ottenere il proprio WRPAC e DEVE ricevere i propri WRPRC automaticamente, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""
@@ -510,9 +510,9 @@ I Data Identifier non elencati qui sono forniti come per una Relying Party.
    * - `entitlements`
      - NON DEVE essere fornito per un Intermediary Service puro (`EUDI-TS 5`_).
    * - `relying_party_services`
-     - OBBLIGATORIO. Ciascun Service è un Intermediary Service: ``isIntermediary`` è ``true``, e ``servedWRPServices`` elenca i Relying Party Service che serve. ``serviceIdentifier`` non è richiesto.
+     - OBBLIGATORIO. Almeno un Service. Ciascun Service è un Intermediary Service: ``isIntermediary`` è ``true``, ``serviceIdentifier`` è registrato e ``servedWRPServices`` elenca gli identificativi dei Relying Party Service intermediato.
    * - `certificate_signing_requests`
-     - Una Certificate Signing Request per il WRPAC. Il WRPAC emesso autentica l'Intermediario. Un WRPAC per ciascun Relying Party Service intermediato è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+     - Una Certificate Signing Request per il WRPAC per ciascun Relying Party Service intermediato che l'Intermediario serve ([`EIDAS-ARF`_] Reg_34a). Ciascun WRPAC emesso autentica l'Intermediario e reca l'associazione a quella Relying Party intermediata e a quel Service.
    * - `intermediary_relationship`
      - Impostato sull'Intermediary Service, ossia la Relying Party dichiara che il Service è un intermediario designato. È dichiarato in entrambi i framework.
    * - `federation_entity_identifier`

@@ -30,12 +30,11 @@ Register of WRPs
 
 The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs, their **Services**, and their authorisations/declared usage.
 The Register dataset and read API are `EUDI-TS 5`_, objects ``WalletRelyingParty`` and ``WalletRelyingPartyService``, and satisfy Annex II of `CIR2025/848`_ as amended by [`CIR2026/1730`_].
+Cardinality of Services, access certificates and registration certificates is [`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34 and RPRC_07a.
 
 .. note::
-    **Profile deviation.** The Relying Party Service identifier, and the issuance of more than one Wallet-Relying Party Access Certificate or Wallet-Relying Party Registration Certificate per Wallet-Relying Party ([`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34a and RPRC_07a), are not requirements of this specification until ETSI and the ARF Technical Specifications define the implementation.
-    `EUDI-TS 5`_ marks ``serviceIdentifier`` as ``[0..1]``.
-    `ETSI TS 119 411-8`_ does not yet define an attribute for that identifier, and `ETSI TS 119 475`_ does not yet define ``srv_id``.
-    Until then, this specification does not require ``serviceIdentifier``, an entity obtains one WRPAC, and the Provider of WRPRC issues one WRPRC for that entity.
+    **Profile deviation.** `EUDI-TS 5`_ marks ``serviceIdentifier`` as ``[0..1]``.
+    This specification REQUIRES it on every registered Service, unique within the entity, because Reg_10a issues at least one WRPAC per Service and Reg_33 and RPRC_07a require that identifier in the WRPAC and in the WRPRC.
 
 Register Dataset
 """"""""""""""""
@@ -85,10 +84,28 @@ This section extends the general :ref:`infrastructure-trust:X.509 Certificate Pr
 The WRPAC is the certificate defined in Article 2 and Annex IV of [`CIR2025/848`_].
 Its profile is `ETSI TS 119 411-8`_.
 Extensions not specified by that document MUST NOT be present.
-Subject attributes are [`EIDAS-ARF`_] Reg_31, Reg_32 and Reg_34, and `ETSI TS 119 411-8`_.
+Subject attributes and the number of certificates are [`EIDAS-ARF`_] Reg_10a, Reg_31, Reg_32, Reg_33, Reg_34 and Reg_34a.
 Authentication is specified in :ref:`trust-evaluation:EUDIW Authentication`.
 Revocation on suspension or cancellation of the WRP services is specified in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
-The Relying Party Service identifier and one WRPAC per Service are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+
+`ETSI TS 119 411-8`_ does not yet define a dedicated attribute for the Relying Party Service identifier (Reg_33) or for the association to an intermediated Relying Party (Reg_34a).
+Until it does, this specification encodes both in ``subjectAltName`` as follows.
+The contact ``GeneralName`` required by `ETSI TS 119 411-8`_ remains.
+
+.. list-table:: IT-Wallet encoding of the WRPAC Service identifier
+   :header-rows: 1
+   :widths: 25 75
+
+   * - **Extension**
+     - **Profile**
+
+   * - ``subjectAltName``
+     - REQUIRED, in addition to the contact ``GeneralName`` specified in `ETSI TS 119 411-8`_.
+       It MUST include a ``uniformResourceIdentifier`` whose last path segment is the Relying Party Service identifier of this certificate (``services[].serviceIdentifier`` in the Register).
+       That URI MUST be unique within the entity and MUST be identical to the ``srv_id`` of every WRPRC issued for the same Service of the same entity ([`EIDAS-ARF`_] Reg_33, RPRC_07a).
+
+       If the subject is an Intermediary presenting on behalf of an intermediated Relying Party, the certificate MUST additionally include a second ``uniformResourceIdentifier`` of the form ``{registryURI}/wrp/{intermediatedRpIdentifier}/services/{intermediatedServiceIdentifier}``, where ``intermediatedRpIdentifier`` is the EU-wide unique identifier of that Relying Party ([`EIDAS-ARF`_] Reg_32) and ``intermediatedServiceIdentifier`` is the identifier of the intermediated Relying Party Service ([`EIDAS-ARF`_] Reg_33).
+       That URI is the IT-Wallet encoding of [`EIDAS-ARF`_] Reg_34a.
 
 .. note::
     The WRPAC attributes MUST be derived from the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
@@ -155,11 +172,18 @@ It is a signed JWT or a CWT (:rfc:`8392`), signed with the private key of the Pr
 The JWT signature is a JAdES signature with the B-B profile (`ETSI TS 119 182-1`_).
 The CWT signature follows :rfc:`9052` and :rfc:`9360`.
 
-The Provider of WRPRC issues one WRPRC for the entity, automatically, as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
-Binding that certificate to a Relying Party Service identifier, and issuing more than one WRPRC per entity, are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+Each WRPRC is bound to a single Relying Party Service.
+The Provider of WRPRC issues WRPRCs automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+
+.. note::
+    **Profile.** The ``name`` claim MUST equal the ``serviceTradeName`` of that Service and, for a non-intermediated presentation, MUST be identical to the ``subject.commonName`` of the WRPAC of the same Service of the same entity ([`EIDAS-ARF`_] Reg_34, RPRC_07a).
+    `ETSI TS 119 475`_ does not yet define ``srv_id``.
+    This specification profiles it to implement [`EIDAS-ARF`_] RPRC_07a until that standard defines an equivalent member.
+    The claim is a JSON string (JWT) or a CBOR text string (CWT).
+    It MUST equal the ``serviceIdentifier`` of that Service and, for a non-intermediated presentation, MUST be identical to the Service identifier encoded in the WRPAC ``subjectAltName`` ([`EIDAS-ARF`_] Reg_33).
 
 The ``intermediary`` object is clause 5.2.4 of `ETSI TS 119 475`_ and [`EIDAS-ARF`_] RPRC_04.
-The Wallet Unit evaluates intermediated presentation as specified in :ref:`trust-evaluation:EUDIW Authorization`.
+The Wallet Unit evaluates intermediated presentation, including the WRPAC ``subjectAltName`` association of [`EIDAS-ARF`_] Reg_34a, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
 
 Below a non-normative example of WRPRC header and payload for a Relying Party.
 
@@ -284,9 +308,7 @@ The Attestation Provider MUST include the EDP, if any, by value in the Credentia
 
 .. note::
 
-  `EIDAS-ARF`_ HLR EDP_02 requires an identifier duplet taken from the WRPRC in the request (``sub`` and a Service identifier), not from the WRPAC, including in a **direct** presentation.
-  The Service identifier is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
-  Until then, the Wallet Unit matches the EU-wide unique identifier (``sub``) and, where present, the entitlement URI.
+  `EIDAS-ARF`_ HLR EDP_02 requires identifier duplets taken from the WRPRC in the request (``sub`` and ``srv_id``), not from the WRPAC, including in a **direct** presentation.
   `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also encodes authorized parties by subject DN or by entitlement URI.
   The ``subject_dn`` parameter is that ETSI encoding; it is not an evaluation input against the WRPAC.
   The ``entitlement_uri`` parameter is matched against entitlements held in the WRPRC.
@@ -346,7 +368,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``authorized_parties``
      - REQUIRED. array of objects. if ``policy_type`` is ``"authorized_rp_only"``.
-       Contains a list of authorized Relying Parties allowed to access the Attestation, identified by the EU-wide unique identifier. The Service identifier of EDP_02 is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+       Contains a list of authorized identifier duplets (EU-wide unique Relying Party identifier and Service identifier) allowed to access the Attestation.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].identifier``
@@ -355,11 +377,17 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        It MUST match the ``sub`` of the WRPRC in the request.
      - [`EIDAS-ARF`_] EDP_02
 
+   * - ``authorized_parties[].service_identifier``
+     - REQUIRED. string.
+       Identifier of the authorised Relying Party Service, as specified in [`EIDAS-ARF`_] Reg_33.
+       It MUST match the ``srv_id`` of the WRPRC in the request.
+     - [`EIDAS-ARF`_] EDP_02
+
    * - ``authorized_parties[].subject_dn``
      - OPTIONAL. string.
        Subject Distinguished Name (DN) of the Relying Party, formatted as an LDAP string compliant with :rfc:`4514`.
        This is the ETSI encoding of ISS-MDATA-EBD-4.2.5.2-07.
-       It is not an evaluation input: the Wallet Unit MUST NOT match it against the WRPAC, and EDP_02 evaluation uses the EU-wide unique identifier from the WRPRC, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
+       It is not an evaluation input: the Wallet Unit MUST NOT match it against the WRPAC, and EDP_02 evaluation uses the identifier duplet from the WRPRC, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``

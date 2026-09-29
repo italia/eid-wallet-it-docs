@@ -1,5 +1,6 @@
 {
   "name": "Small Business Verification",
+  "srv_id": "svc-kyc-01",
   "sub_ln": "Small Business S.p.A.",
   "sub": "IT123456789",
   "country": "IT",
@@ -14,6 +15,7 @@
   "intermediary": {
     "sub": {
       "id": "LEIXG-529900INTERMEDIARY01",
+      "sid": "svc-bridge-01",
       "sname": "Verification Service"
     }
   },

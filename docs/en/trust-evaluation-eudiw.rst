@@ -66,7 +66,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
       - On the Wallet Unit:
 
         - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`, applied to the Wallet Instance Attestation
-      - The Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate, included by value in the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22).
+      - The Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the applicable Service, included by value in the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22).
     * - Relying Party
       - Remote or proximity presentation
       - On the received Credentials:
@@ -76,7 +76,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - Its own Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
+      - Its own Wallet-Relying Party Access Certificate associated to that intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a) and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
 
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -532,7 +532,7 @@ If the Wallet-Relying Party has not been authenticated, the EUDIW Authorization 
 
 The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate.
 During Credential Presentation the Wallet-Relying Party Registration Certificate MUST be included by value in the request ([`EIDAS-ARF`_] RPRC_19) and is the sole authoritative source for presentation authorization ([`EIDAS-ARF`_] RPRC_17, RPRC_21).
-During Credential Issuance a PID Provider or Attestation Provider MUST include the Wallet-Relying Party Registration Certificate by value in the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22).
+During Credential Issuance a PID Provider or Attestation Provider MUST include the Wallet-Relying Party Registration Certificate of the applicable Service by value in the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22).
 
 The EUDIW Authorization Process is split into:
 
@@ -652,8 +652,7 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     - **Credential Presentation**.
       The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow.
       If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
-      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, and the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04).
-      Association of a distinct WRPAC to that Relying Party and Service is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04), and the WRPAC ``subjectAltName`` carries the association to that Relying Party and Service ([`EIDAS-ARF`_] Reg_34a).
 
     If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation and set ``authz_val_state`` to ``BINDING_FAILED``.
     If the **direct** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the Relying Party, and the intended use of the request.
@@ -699,13 +698,12 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
 
     - ``no_policy``: no restriction applies.
     - ``authorized_rp_only``: only the Relying Parties in the ``authorized_parties`` list are authorized.
-      The Wallet Unit MUST retrieve the EU-wide unique identifier from the WRPRC in the request (``sub``) and compare it with ``authorized_parties[].identifier`` ([`EIDAS-ARF`_] EDP_02, Reg_32).
-      The Service identifier of that duplet is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+      The Wallet Unit MUST retrieve the EU-wide unique identifier and the Service identifier from the WRPRC in the request (``sub`` and ``srv_id``) and compare that duplet with the authorised list ([`EIDAS-ARF`_] EDP_02, Reg_32, Reg_33).
       Where an ``authorized_parties`` element identifies the party by ``entitlement_uri``, the Wallet Unit MUST match that URI against the entitlements or sub-entitlements of the same WRPRC.
-      A match on the identifier or on ``entitlement_uri`` is sufficient.
+      A match on the identifier duplet or on ``entitlement_uri`` is sufficient.
       If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
       The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
-      If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for ``sub``.
+      If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for the identifier duplet.
       In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
     - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
       The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.

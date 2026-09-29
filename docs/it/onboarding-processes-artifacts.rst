@@ -116,6 +116,7 @@ La criticità di ciascuna estensione richiesta DEVE seguire il profilo di certif
    * - ``subjectAltName``
      - OBBLIGATORIO. DEVE essere marcato non-critical e DEVE contenere almeno un ``GeneralName`` consentito dal profilo di certificato applicabile.
        Per un WRPAC o un National Authentication Certificate, DEVE contenere almeno uno dei seguenti valori di contatto: un ``uniformResourceIdentifier`` per un sito web di helpdesk/supporto, un ``otherName`` con ``type-id`` impostato a ``2.5.4.20`` (``id-at-telephoneNumber``), o un ``rfc822Name`` per un indirizzo e-mail di registrazione/utilizzo.
+       Per un WRPAC, DEVE inoltre contenere l'URI dell'identificativo del Service definito in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
      - :rfc:`5280#section-4.2.1.6`, :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`
 
 Le estensioni non applicabili, o non elencate, nel profilo di certificato applicabile NON DEVONO essere incluse nel certificato emesso, indipendentemente da qualsiasi valore richiesto nella Certificate Signing Request.
@@ -134,50 +135,54 @@ Wallet-Relying Party Access Certificate Issuance
 
 Il processo Wallet-Relying Party Access Certificate Issuance emette il WRPAC, definito nel :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, tramite il meccanismo di :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 Il WRPAC appartiene al Trust Framework EUDIW, quindi i suoi attributi DEVONO sempre essere derivati dal Register, come richiesto dalla clausola 5.1.2 di [`ETSI TS 119 475`_], e il fallback al Trust Mark non si applica a esso.
-L'Entità ottiene un solo WRPAC.
-Un WRPAC per ciascun Service registrato, e un insieme distinto di WRPAC per ciascuna Relying Party intermediata, sono rinviati come specificato in :ref:`infrastructure-trust:Register of WRPs`.
+L'Entità ottiene almeno un WRPAC per ciascun Service registrato ([`EIDAS-ARF`_] Reg_10a).
+Un Intermediario ottiene un insieme distinto di WRPAC per ciascuna Relying Party intermediata, un WRPAC per ciascun Relying Party Service intermediato che serve ([`EIDAS-ARF`_] Reg_34a).
 
 **Input**
 
-Le ``certificate_signing_requests`` dell'Entità per il WRPAC, e la Federation Trust Chain utilizzata nella challenge ``openid-federation-01``.
-Gli attributi del certificato provengono dal record dell'Entità nel Register.
+Le ``certificate_signing_requests`` dell'Entità per il WRPAC di un dato Service, e la Federation Trust Chain utilizzata nella challenge ``openid-federation-01``.
+Gli attributi del certificato provengono dal corrispondente elemento ``services[]`` del record dell'Entità nel Register.
+Per un Intermediario provengono inoltre dal Relying Party Service intermediato a cui questo certificato è associato ([`EIDAS-ARF`_] Reg_34a).
 
 **Outcome**
 
-Il WRPAC, emesso dalla WRPAC Certification Authority, che l'Entità utilizza per autenticarsi verso le Wallet Unit.
+Il WRPAC di tale Service, emesso dalla WRPAC Certification Authority, che l'Entità utilizza per autenticarsi verso le Wallet Unit per tale Service.
+Per un Intermediario, il WRPAC dell'associazione a un dato Relying Party Service intermediato.
 
 **Process**
 
-1. L'Entità richiede il WRPAC al servizio ACME della WRPAC Certification Authority, presentando le proprie ``certificate_signing_requests`` e autenticandosi con la propria Federation Trust Chain, validata come in :ref:`trust-evaluation:Federation Entity Authentication`.
-2. La Certification Authority verifica che l'Entità abbia un record nel Register e deriva gli attributi del certificato da tale record.
+1. L'Entità richiede il WRPAC al servizio ACME della WRPAC Certification Authority, presentando le ``certificate_signing_requests`` del Service e autenticandosi con la propria Federation Trust Chain, validata come in :ref:`trust-evaluation:Federation Entity Authentication`.
+2. La Certification Authority verifica che l'Entità abbia un record nel Register, che il Service richiesto esista in ``services[]``, e deriva gli attributi del certificato da tale Service (``serviceTradeName`` in ``subject.commonName``, ``serviceIdentifier`` in ``subjectAltName``).
+   Per un Intermediario codifica inoltre in ``subjectAltName`` l'identificativo univoco e l'identificativo del Service della Relying Party intermediata ([`EIDAS-ARF`_] Reg_34a).
 3. La Certification Authority emette il WRPAC e l'Entità lo recupera.
 
 Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Il Wallet-Relying Party Registration Certificate Issuance emette il WRPRC, descritto nel :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-Il Provider of WRPRC DEVE emettere un solo WRPRC automaticamente e senza indebito ritardo, senza una richiesta dell'Entità, una volta che l'Entità ha un record con uno stato di registrazione valido nel Register e un WRPAC valido, come richiesto da [`EIDAS-ARF`_] RPRC_09 e RPRC_13 e dall'Annex V, punto 3(c) di [`CIR2025/848`_] come modificato da [`CIR2026/1730`_].
-Il Provider of WRPRC monitora il Register, secondo [`CIR2025/848`_], revoca il WRPRC quando la registrazione dell'Entità cambia, e DEVE riemettere automaticamente un nuovo WRPRC ove la registrazione resti valida.
+Il Provider of WRPRC DEVE emettere il WRPRC automaticamente e senza indebito ritardo, senza una richiesta dell'Entità, una volta che l'Entità ha un record con uno stato di registrazione valido nel Register e un WRPAC valido del Service, come richiesto da [`EIDAS-ARF`_] RPRC_09 e RPRC_13 e dall'Annex V, punto 3(c) di [`CIR2025/848`_] come modificato da [`CIR2026/1730`_].
+Il Provider of WRPRC monitora il Register, secondo [`CIR2025/848`_], revoca il WRPRC quando la registrazione dell'Entità o di tale Service cambia, e DEVE riemettere automaticamente un nuovo WRPRC ove la registrazione resti valida.
 
-Un WRPRC distinto per ciascuna combinazione di intended use e Relying Party Service, e un WRPRC distinto per ciascun Service registrato di un PID o Attestation Provider, sono rinviati come specificato in :ref:`infrastructure-trust:Register of WRPs`.
-Un Intermediario di Relying Party che non dichiara intended use non riceve un WRPRC proprio; la Wallet Unit fa affidamento sul WRPRC della Relying Party intermediata.
+Per una Relying Party il Provider DEVE emettere un WRPRC distinto per ciascuna combinazione di intended use e Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
+Per un PID Provider, un QEAA Provider, un PuB-EAA Provider o un non-qualified EAA Provider il Provider DEVE emettere un WRPRC distinto per ciascun Service registrato ([`EIDAS-ARF`_] RPRC_13).
+Un Relying Party Intermediary Service che non dichiara intended use non riceve un WRPRC proprio; la Wallet Unit fa affidamento sul WRPRC del Relying Party Service intermediato.
 
 **Input**
 
-Il record firmato dell'Entità nel Register e il suo WRPAC valido.
-Gli attributi del certificato provengono da tale record.
+Il record firmato dell'Entità nel Register, che identifica il Relying Party Service e, per una Relying Party, ciascun intended use di tale Service, e il WRPAC valido di tale Service.
+Gli attributi del certificato provengono dal corrispondente elemento ``services[]`` del record.
 
 **Outcome**
 
-Il WRPRC, firmato dal Provider of WRPRC con il proprio Sign/Seal Certificate ed emesso all'Entità, che l'Entità presenta alle Wallet Unit insieme ai propri dati di registrazione.
+Il WRPRC di tale Service (e intended use, ove applicabile), firmato dal Provider of WRPRC con il proprio Sign/Seal Certificate ed emesso all'Entità, che l'Entità presenta alle Wallet Unit insieme ai propri dati di registrazione.
 
 **Process**
 
-1. Il Provider of WRPRC è invocato senza una richiesta dell'Entità quando un WRPAC valido diventa disponibile, o quando il record del Register cambia dopo che il WRPRC precedente è stato revocato.
-2. Il Provider of WRPRC verifica che l'Entità abbia un record con uno stato di registrazione valido nel Register, che le informazioni recate dal certificato siano coerenti con tale record, e che il WRPAC dell'Entità sia valido, come richiesto dall'Annex V, punto 3(c) di [`CIR2025/848`_].
-3. Il Provider of WRPRC costruisce il WRPRC dal record dell'Entità nel Register e lo firma con il proprio Sign/Seal Certificate, emesso dalla WRPRC Sign/Seal Certification Authority.
+1. Il Provider of WRPRC è invocato senza una richiesta dell'Entità quando un WRPAC valido del Service diventa disponibile, o quando il record del Register di tale Service o intended use cambia dopo che il WRPRC precedente è stato revocato.
+2. Il Provider of WRPRC verifica che l'Entità abbia un record con uno stato di registrazione valido nel Register, che il Service esista in ``services[]``, che le informazioni recate dal certificato siano coerenti con tale Service, e che il WRPAC di tale Service sia valido, come richiesto dall'Annex V, punto 3(c) di [`CIR2025/848`_].
+3. Il Provider of WRPRC costruisce il WRPRC da tale elemento ``services[]`` (``name`` da ``serviceTradeName``, ``srv_id`` da ``serviceIdentifier``) e, per una Relying Party, dal corrispondente intended use, e lo firma con il proprio Sign/Seal Certificate, emesso dalla WRPRC Sign/Seal Certification Authority.
 4. Il Provider of WRPRC emette il WRPRC all'Entità.
-5. Il Provider of WRPRC monitora qualsiasi modifica del Register in modo automatizzato e revoca il WRPRC ove la registrazione dell'Entità sia modificata, sospesa o cancellata, o ove il contenuto del certificato non sia più coerente con il record, come richiesto dall'Annex V, punto 3(d) di [`CIR2025/848`_]. La revoca è pubblicata tramite la :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Ove la registrazione resti valida, il Provider DEVE riemettere un nuovo WRPRC senza indebito ritardo.
+5. Il Provider of WRPRC monitora qualsiasi modifica del Register in modo automatizzato e revoca il WRPRC ove la registrazione dell'Entità o di tale Service sia modificata, sospesa o cancellata, o ove il contenuto del certificato non sia più coerente con il record, come richiesto dall'Annex V, punto 3(d) di [`CIR2025/848`_]. La revoca è pubblicata tramite la :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Ove la registrazione resti valida, il Provider DEVE riemettere un nuovo WRPRC senza indebito ritardo.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""
