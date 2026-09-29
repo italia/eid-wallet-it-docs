@@ -19,7 +19,7 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
   * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
 
 OpenID Federation 1.0 [`OID-FED`_] MAY be used for issuance by a national Credential Issuer, including the Italian PID Provider, as specified in :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Selection at Issuance`.
-A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
+A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 The Credential Issuer MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Credential Issuers MUST support:
 

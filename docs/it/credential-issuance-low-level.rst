@@ -18,7 +18,7 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
   * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
 
 OpenID Federation 1.0 [`OID-FED`_] PUÒ essere utilizzata per l'emissione da parte di un Credential Issuer nazionale, compreso il PID Provider italiano, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust` e in :ref:`trust-evaluation:Selection at Issuance`.
-Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
+Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
