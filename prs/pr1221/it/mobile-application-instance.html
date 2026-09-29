@@ -347,15 +347,19 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>DEVE assicurarsi che le Cryptographic Hardware Keys non esistano già. Se esistono e l'Istanza dell'Applicazione è nella fase di inizializzazione, DEVONO essere eliminate.</p></li>
-<li><p>DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_priv</span></code>) tramite un WSCD locale.</p></li>
+<li><p>DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_priv</span></code>) tramite un <strong>Keystore</strong>.</p></li>
 <li><p>DOVREBBE ottenere un identificatore univoco Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) per le Cryptographic Hardware Keys generate dal sistema operativo. Se il sistema operativo consente di specificare un tag durante la creazione delle chiavi, allora DEVE essere selezionata una stringa casuale per l'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>. Questo valore casuale DEVE essere resistente alle collisioni e imprevedibile per garantire la sicurezza. Per raggiungere questo obiettivo, considerare l'utilizzo di una funzione di hash crittografico o un generatore di numeri casuali sicuro fornito dal sistema operativo o da una libreria crittografica affidabile.</p></li>
 <li><p>Se i punti precedenti sono soddisfatti, DEVE memorizzare l'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> nell'archivio locale.</p></li>
 </ol>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>WSCD</strong>: L'Istanza dell'Applicazione Mobile PUÒ utilizzare un WSCD locale per operazioni crittografiche, inclusa la generazione di chiavi, l'archiviazione sicura e l'elaborazione crittografica, su dispositivi che supportano questa funzionalità. Sui dispositivi Android, Strongbox è RACCOMANDATO; Trusted Execution Environment (TEE) PUÒ essere utilizzato solo quando Strongbox non è disponibile. Per i dispositivi iOS, Secure Elements (SE) DEVONO essere utilizzati. Dato che ogni OEM offre un SDK distinto per accedere al WSCD locale, la discussione di seguito affronterà questo argomento in un contesto generale.</p>
-<p>Se il WSCD fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.</p>
+<p><strong>Keystore</strong>: L'Istanza dell'Applicazione Mobile utilizza il Keystore per operazioni crittografiche, inclusa la generazione di chiavi, l'archiviazione sicura e l'elaborazione crittografica, su dispositivi che supportano questa funzionalità. Sui dispositivi Android, Strongbox è RACCOMANDATO; Trusted Execution Environment (TEE) PUÒ essere utilizzato solo quando Strongbox non è disponibile. Per i dispositivi iOS, Secure Enclave DEVE essere utilizzato. Dato che ogni OEM offre un SDK distinto per accedere al Keystore, la discussione di seguito affronterà questo argomento in un contesto generale.</p>
+<p>Se il Keystore fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>WSCA/Remote WSCD</strong>: Per l'emissione del PID a LoA High, la Wallet Instance interagisce con un WSCA operante in un Remote WSCD basato su un HSM remoto lato server. Questo fornisce un livello di certificazione superiore rispetto al Keystore locale, soddisfacendo i requisiti per LoA High come definito da eIDAS 2.0.</p>
 </div>
 <p><strong>Passo 7</strong>: L'Istanza dell'Applicazione Mobile utilizza le API di Key Attestation, fornendo il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> per acquisire la Key Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133b</span></a>).</p>
 <div class="admonition note">
@@ -708,7 +712,7 @@ Questo processo elimina la necessità di inviare direttamente la chiave pubblica
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 21/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

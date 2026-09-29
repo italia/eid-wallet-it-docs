@@ -312,12 +312,12 @@ Questa infrastruttura fornisce il fondamento per operazioni sicure sugli Attesta
 <p>Nell'IT-Wallet coesistono due Trust Framework.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Il <strong>Trust Framework EUDIW</strong> è definito dal Regolamento eIDAS2 (<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>), dai relativi regolamenti di esecuzione e dall'ARF (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>).
+<li><p>Il <strong>Trust Framework EUDIW</strong> è definito dal Regolamento eIDAS2 (<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>), dai relativi regolamenti di esecuzione e dall'ARF (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>).
 È il percorso notificato e interoperabile e DEVE essere autonomo per i PID, le (Q)EAA o le PuB-EAA, e per le Wallet-Relying Party, di altri Stati membri: una Wallet Unit che implementa solo le procedure EUDIW DEVE poter emettere, presentare e verificare tali Attestati, e autenticare tali Wallet-Relying Party.
 È obbligatorio e autorevole per tali Attestati e Wallet-Relying Party di altri Stati membri, e per l'interoperabilità transfrontaliera.</p></li>
 <li><p>Il <strong>Trust Framework Nazionale</strong> è un overlay nazionale basato su OpenID Federation (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>) combinato con una PKI X.509 dedicata alla firma degli Attestati Elettronici che richiedono una PKI X.509.
 È <strong>fuori dall'ARF</strong>. È il livello di registrazione e onboarding per tutte le entità dell'ecosistema.
-OpenID Federation DOVREBBE essere utilizzata da un'entità nazionale che si rivolge esclusivamente a un pubblico nazionale.</p></li>
+Un'entità nazionale PUÒ utilizzare OpenID Federation, anche per l'emissione e la presentazione di un PID, di una (Q)EAA o di una PuB-EAA italiani.</p></li>
 </ul>
 </div></blockquote>
 <p>Il Trust Framework Nazionale NON DEVE essere selezionato, e NON DEVE essere usato come fallback, per l'emissione o la presentazione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
@@ -354,20 +354,20 @@ L'uso dei Trust Anchor a runtime è definito in <a class="reference internal" hr
 <p>All'interno dell'IT-Wallet è operata una singola Root Certification Authority nazionale.
 Essa emette i certificati delle Autorità di Certificazione subordinate e non è utilizzata per alcun altro scopo.
 Ciascuna Autorità di Certificazione subordinata serve un servizio, e il suo certificato è il Trust Anchor pubblicato per tale servizio.</p>
-<figure class="align-center" id="id740">
+<figure class="align-center" id="id734">
 <span id="fig-pki-architecture"></span><p class="plantuml">
 <object data="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png"><img src="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png" alt="La figura illustra le gerarchie di certificazione dell'ecosistema IT-Wallet e il canale di pubblicazione del Trust Anchor derivato da ciascuna Autorità di Certificazione." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0">Architettura PKI dell'Ecosistema IT-Wallet.</a></span><a class="headerlink" href="#id740" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0">Architettura PKI dell'Ecosistema IT-Wallet.</a></span><a class="headerlink" href="#id734" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>La tabella seguente elenca le Autorità di Certificazione, i certificati emessi da ciascuna di esse e il canale attraverso il quale è distribuito il Trust Anchor derivato.
 Le List of Trusted Entities e le Trusted List nominate nella tabella sono definite in <a class="reference internal" href="#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
-<span id="table-pki-certification-authorities"></span><table class="longtable docutils align-default" id="id741">
-<caption><span class="caption-number">Tabella 5.1 </span><span class="caption-text">Autorità di Certificazione e Trust Anchor Derivati</span><a class="headerlink" href="#id741" title="Link to this table">¶</a></caption>
+<span id="table-pki-certification-authorities"></span><table class="longtable docutils align-default" id="id735">
+<caption><span class="caption-number">Tabella 5.1 </span><span class="caption-text">Autorità di Certificazione e Trust Anchor Derivati</span><a class="headerlink" href="#id735" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 38.0%" />
@@ -391,7 +391,7 @@ Le List of Trusted Entities e le Trusted List nominate nella tabella sono defini
 <tr class="row-even"><td><p>WRPAC CA</p></td>
 <td><p>Certificati di accesso conformi al <a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>, emessi alle Wallet-Relying Party.</p></td>
 <td><p>Providers of WRPAC LoTE.
-Lo stesso Trust Anchor è inoltre pubblicato nella PID Providers LoTE, perché i trust anchor delle Access Certification Authorities per i PID Provider sono notificati all'interno della notifica del PID Provider, separatamente da quelli per le Wallet-Relying Party (vedere [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Topic 31).</p></td>
+Lo stesso Trust Anchor è inoltre pubblicato nella PID Providers LoTE, perché i trust anchor delle Access Certification Authorities per i PID Provider sono notificati all'interno della notifica del PID Provider, separatamente da quelli per le Wallet-Relying Party (vedere [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>], Topic 31).</p></td>
 </tr>
 <tr class="row-odd"><td><p>National Authentication CA</p></td>
 <td><p>Certificati di autenticazione della Relying Party utilizzati nel Proximity Flow.
@@ -459,7 +459,7 @@ Una compromissione della Root Certification Authority non è rilevata dalla path
 <li><p><strong>Solo end entity al di sotto di un Trust Anchor pubblicato.</strong> All'interno dell'IT-Wallet il Trust Anchor pubblicato è l'Autorità di Certificazione subordinata del servizio, e nessun ulteriore strato di Autorità di Certificazione è emesso al di sotto di essa.
 Ciò è coerente con la raccomandazione <code class="docutils literal notranslate"><span class="pre">pathLenConstraint</span></code> di <a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>.</p></li>
 <li><p><strong>Separazione delle chiavi per scopo.</strong> Un Trust Anchor pubblicato per uno scopo non è utilizzato per certificare gli artifact di un altro scopo.
-Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizzabili per quale categoria di Attestation, come richiesto da [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>].</p></li>
+Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizzabili per quale categoria di Attestation, come richiesto da [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>].</p></li>
 </ul>
 </section>
 </section>
@@ -474,8 +474,8 @@ Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizza
 </ul>
 <p>Questo profilo stabilisce i requisiti di sintassi, semantica e codifica per i certificati X.509 sulla base di <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> e ETSI EN 319 412.
 Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformarsi ai requisiti di questa sezione, salvo diversa indicazione esplicita.</p>
-<table class="longtable docutils align-default" id="id742">
-<caption><span class="caption-number">Tabella 5.2 </span><span class="caption-text">Campi del Certificato X.509</span><a class="headerlink" href="#id742" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id736">
+<caption><span class="caption-number">Tabella 5.2 </span><span class="caption-text">Campi del Certificato X.509</span><a class="headerlink" href="#id736" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -509,8 +509,8 @@ Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformar
 <p>Il campo <code class="docutils literal notranslate"><span class="pre">tbsCertificate</span></code> DEVE contenere una struttura <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code>, i cui campi DEVONO conformarsi a <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.1.2"><strong>RFC 5280#section-4.1.2</strong></a>.</p>
 <p>La tabella seguente definisce i campi del certificato applicabili al profilo di certificato specificato in questo documento.
 Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi, ma NON DEVONO modificare i requisiti di presenza ivi specificati.</p>
-<table class="longtable docutils align-default" id="id743">
-<caption><span class="caption-number">Tabella 5.3 </span><span class="caption-text">Campi TBSCertificate</span><a class="headerlink" href="#id743" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id737">
+<caption><span class="caption-number">Tabella 5.3 </span><span class="caption-text">Campi TBSCertificate</span><a class="headerlink" href="#id737" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -572,8 +572,8 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 <li><p><strong>C</strong>: l'estensione DEVE essere marcata come critica;</p></li>
 <li><p><strong>NC</strong>: l'estensione DEVE essere marcata come non critica.</p></li>
 </ul>
-<table class="longtable docutils align-default" id="id744">
-<caption><span class="caption-number">Tabella 5.4 </span><span class="caption-text">Estensioni di Certificato Supportate</span><a class="headerlink" href="#id744" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id738">
+<caption><span class="caption-number">Tabella 5.4 </span><span class="caption-text">Estensioni di Certificato Supportate</span><a class="headerlink" href="#id738" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 20.0%" />
@@ -677,8 +677,8 @@ Un certificato self-signed destinato ad agire come Trust Anchor PUÒ essere usat
 <p>I requisiti specifici per i PID Provider Sign/Seal Certificate sono specificati nella Clausola 4 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id745">
-<caption><span class="caption-number">Tabella 5.5 </span><span class="caption-text">Estensioni del PID Provider Sign/Seal Certificate</span><a class="headerlink" href="#id745" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id739">
+<caption><span class="caption-number">Tabella 5.5 </span><span class="caption-text">Estensioni del PID Provider Sign/Seal Certificate</span><a class="headerlink" href="#id739" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -700,7 +700,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
 Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>], Clausola 4.3.2 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941202/02.04.01_60/en_31941202v020401p.pdf">ETSI EN 319 412-2</a>] e Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certificatePolicies</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">PolicyInformation</span></code> con <code class="docutils literal notranslate"><span class="pre">policyIdentifier</span></code> impostato all'OID di una certificate policy che include almeno i requisiti per <em>NCP+</em>, definiti in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.05.01_60/en_31941101v010501p.pdf">ETSI EN 319 411-1</a>, per essere conforme al requisito <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> <code class="docutils literal notranslate"><span class="pre">AS-AP-10-098</span></code>.</p></td>
+<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">PolicyInformation</span></code> con <code class="docutils literal notranslate"><span class="pre">policyIdentifier</span></code> impostato all'OID di una certificate policy che include almeno i requisiti per <em>NCP+</em>, definiti in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.05.01_60/en_31941101v010501p.pdf">ETSI EN 319 411-1</a>, per essere conforme al requisito <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> <code class="docutils literal notranslate"><span class="pre">AS-AP-10-098</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code></p></td>
 <td><p>OBBLIGATORIO.</p></td>
@@ -869,8 +869,8 @@ Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href
 <p>I requisiti specifici per i Wallet Provider Sign/Seal Certificate sono specificati nella Clausola 5 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id746">
-<caption><span class="caption-number">Tabella 5.6 </span><span class="caption-text">Estensioni del Wallet Provider Sign/Seal Certificate</span><a class="headerlink" href="#id746" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id740">
+<caption><span class="caption-number">Tabella 5.6 </span><span class="caption-text">Estensioni del Wallet Provider Sign/Seal Certificate</span><a class="headerlink" href="#id740" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -892,7 +892,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
 Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>], Clausola 4.3.2 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941202/02.04.01_60/en_31941202v020401p.pdf">ETSI EN 319 412-2</a>] e Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certificatePolicies</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">PolicyInformation</span></code> con <code class="docutils literal notranslate"><span class="pre">policyIdentifier</span></code> impostato all'OID di una certificate policy che include almeno (secondo il requisito <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> <code class="docutils literal notranslate"><span class="pre">EW-DM-38-001</span></code>):</p>
+<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">PolicyInformation</span></code> con <code class="docutils literal notranslate"><span class="pre">policyIdentifier</span></code> impostato all'OID di una certificate policy che include almeno (secondo il requisito <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> <code class="docutils literal notranslate"><span class="pre">EW-DM-38-001</span></code>):</p>
 <ul class="simple">
 <li><p>I requisiti per <em>NCP</em>, definiti in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.05.01_60/en_31941101v010501p.pdf">ETSI EN 319 411-1</a>, per KA che descrivono un keystore.</p></li>
 <li><p>I requisiti per <em>NCP+</em>, definiti in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.05.01_60/en_31941101v010501p.pdf">ETSI EN 319 411-1</a>, per KA che descrivono una WSCA/WSCD.</p></li>
@@ -1066,8 +1066,8 @@ Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href
 <p>I requisiti specifici per i Sign/Seal Certificate di EAA Provider e QEAA Provider sono specificati rispettivamente nelle Clausole 6 e 7 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id747">
-<caption><span class="caption-number">Tabella 5.7 </span><span class="caption-text">Estensioni del (Q)EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id747" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id741">
+<caption><span class="caption-number">Tabella 5.7 </span><span class="caption-text">Estensioni del (Q)EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id741" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1265,12 +1265,12 @@ Per dettagli aggiuntivi, vedi Clausola 4.3.2 [<a class="reference external" href
 <h4><span class="section-number">5.4.1.4. </span>PuB-EAA Provider Sign/Seal Certificate<a class="headerlink" href="#pub-eaa-provider-sign-seal-certificate" title="Link to this heading">¶</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Sebbene i requisiti specifici per i PuB-EAA Provider Sign/Seal Certificate specificati nella Clausola 8 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>] non richiedano che questo profilo sia qualificato, l'Art. 45f(1)(b) di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>] richiede che le Attestation di tipo PuB-EAA siano firmate con un certificato qualificato. Per soddisfare entrambi i requisiti, sebbene non dichiarato né in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] né in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>], questo profilo unisce i profili QEAA e PuB-EAA Provider Sign/Seal Certificate specificati nelle Clausole 7 e 8 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
+<p>Sebbene i requisiti specifici per i PuB-EAA Provider Sign/Seal Certificate specificati nella Clausola 8 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>] non richiedano che questo profilo sia qualificato, l'Art. 45f(1)(b) di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>] richiede che le Attestation di tipo PuB-EAA siano firmate con un certificato qualificato. Per soddisfare entrambi i requisiti, sebbene non dichiarato né in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] né in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>], questo profilo unisce i profili QEAA e PuB-EAA Provider Sign/Seal Certificate specificati nelle Clausole 7 e 8 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 </div>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id748">
-<caption><span class="caption-number">Tabella 5.8 </span><span class="caption-text">Estensioni del PuB-EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id748" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id742">
+<caption><span class="caption-number">Tabella 5.8 </span><span class="caption-text">Estensioni del PuB-EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id742" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1489,8 +1489,8 @@ La location del Trust Anchor Certificate è determinata dal Trust Framework spec
 </div>
 <p>La tabella seguente definisce i requisiti specifici del profilo per i campi del certificato.
 I campi non elencati nella tabella restano soggetti ai requisiti definiti nel <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> comune.</p>
-<table class="longtable docutils align-default" id="id749">
-<caption><span class="caption-number">Tabella 5.9 </span><span class="caption-text">Campi del Trust Anchor Certificate</span><a class="headerlink" href="#id749" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id743">
+<caption><span class="caption-number">Tabella 5.9 </span><span class="caption-text">Campi del Trust Anchor Certificate</span><a class="headerlink" href="#id743" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1510,8 +1510,8 @@ Altrimenti, il distinguished name dell'issuer DEVE identificare l'entità che ha
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id750">
-<caption><span class="caption-number">Tabella 5.10 </span><span class="caption-text">Estensioni del Trust Anchor Certificate</span><a class="headerlink" href="#id750" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id744">
+<caption><span class="caption-number">Tabella 5.10 </span><span class="caption-text">Estensioni del Trust Anchor Certificate</span><a class="headerlink" href="#id744" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1658,7 +1658,7 @@ Le Relying Party NON DEVONO richiedere un issuer aggiuntivo al di sopra di un Tr
 </section>
 <section id="eudiw-trust-artifacts">
 <h2><span class="section-number">5.5. </span>EUDIW Trust Artifacts<a class="headerlink" href="#eudiw-trust-artifacts" title="Link to this heading">¶</a></h2>
-<p>Questa sezione definisce i trust artifact richiesti e i loro ruoli concettuali nell'ecosistema EUDIW secondo <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>, inclusi:</p>
+<p>Questa sezione definisce i trust artifact richiesti e i loro ruoli concettuali nell'ecosistema EUDIW secondo <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>, inclusi:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>;</p></li>
 <li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>;</p></li>
@@ -1679,15 +1679,16 @@ Le Relying Party NON DEVONO richiedere un issuer aggiuntivo al di sopra di un Tr
 <section id="register-of-wrps">
 <h3><span class="section-number">5.5.1. </span>Register of WRPs<a class="headerlink" href="#register-of-wrps" title="Link to this heading">¶</a></h3>
 <p>Il Register of WRPs nazionale è il sistema accessibile pubblicamente (dataset + API) che fornisce dichiarazioni di registrazione firmate/sigillate relative alle WRP, ai loro <strong>Services</strong>, e alle loro autorizzazioni/usi dichiarati.
-Questa sezione documenta un profilo allineato a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> versione 1.5 (2026-08-20) che soddisfa l'Allegato II di <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].</p>
-<p>Una Wallet-Relying Party che opera nel Trust Framework EUDIW DEVE registrare uno o più <strong>Relying Party Services</strong> nell'array <code class="docutils literal notranslate"><span class="pre">services</span></code> dell'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>, <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>).
-Ciascun Service ha un <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> idoneo a essere presentato all'Utente ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10a, Reg_34).
-<code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> è univoco all'interno dell'entità quando registrato. DEVE essere registrato se il Service si affida a un Intermediary (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> v1.5) e DEVE essere registrato quando un WRPAC è emesso per quel Service ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33, RPRC_07a).
-Usi previsti, entitlement, attestation fornite e relazioni di intermediario sono vincolati a un Service, non alla root dell'entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10d).
-Un Intermediary Service puro NON DEVE registrare un'entitlement (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> v1.5). Un Intermediary Service DEVE elencare gli identificatori di Service che serve in <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code> ([<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], Allegato I).</p>
+Il dataset e l'API di lettura del Register sono <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>, oggetti <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> e <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, e soddisfano l'Allegato II di <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a> come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].
+La cardinalità dei Service, dei certificati di accesso e dei certificati di registrazione è [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_10a, Reg_10d, Reg_33, Reg_34 e RPRC_07a.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Deviazione di profilo.</strong> <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> marca <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> come <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code>.
+Questa specifica lo RICHIEDE su ogni Service registrato, univoco all'interno dell'entità, perché Reg_10a emette almeno un WRPAC per Service e Reg_33 e RPRC_07a richiedono tale identificatore nel WRPAC e nel WRPRC.</p>
+</div>
 <section id="register-dataset">
 <h4><span class="section-number">5.5.1.1. </span>Register Dataset<a class="headerlink" href="#register-dataset" title="Link to this heading">¶</a></h4>
-<p>Il formato dati per le informazioni disponibili attraverso l'API aperta fornita dal Register of WRPs nazionale DEVE essere conforme agli schemi dati descritti nelle Tabelle 1-11 dell'Allegato VI di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], codificati come JSON Schema <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> versione 1.5.
+<p>Il formato dati per le informazioni disponibili attraverso l'API aperta fornita dal Register of WRPs nazionale DEVE essere conforme agli schemi dati descritti nelle Tabelle 1-11 dell'Allegato VI di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], codificati come JSON Schema <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>.
 Di seguito alcuni esempi non normativi di oggetti <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> memorizzati nel Register.</p>
 <p>Una banca registrata come Relying Party che richiede PID per procedure know-your-customer, con un Relying Party Service.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -2035,129 +2036,59 @@ Ciascun suo elemento <code class="docutils literal notranslate"><span class="pre
 </section>
 <section id="register-open-apis">
 <h4><span class="section-number">5.5.1.2. </span>Register Open APIs<a class="headerlink" href="#register-open-apis" title="Link to this heading">¶</a></h4>
-<p>I metodi di lettura API comuni (GET) DEVONO essere aperti all'accesso pubblico (nessuna autenticazione preventiva), restituire dichiarazioni firmate JWS,
-e fornire metodi per la ricerca e l'interrogazione di insiemi di dati completi di WRP registrate corrispondenti ai parametri di query forniti.</p>
-<ul class="simple">
-<li><p><strong>GET /wrp</strong>: Ottenere un elenco di WRP con filtraggio e paginazione opzionali, come definito nella Sezione 3.2 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> versione 1.5.
-I parametri di filtro sono <code class="docutils literal notranslate"><span class="pre">identifier</span></code>, <code class="docutils literal notranslate"><span class="pre">legalname</span></code>, <code class="docutils literal notranslate"><span class="pre">tradename</span></code>, <code class="docutils literal notranslate"><span class="pre">serviceidentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">policy</span></code>, <code class="docutils literal notranslate"><span class="pre">entitlement</span></code>, <code class="docutils literal notranslate"><span class="pre">providedattestation</span></code>, <code class="docutils literal notranslate"><span class="pre">usesintermediary</span></code>, <code class="docutils literal notranslate"><span class="pre">isintermediary</span></code>, <code class="docutils literal notranslate"><span class="pre">intendeduseidentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">claimpath</span></code>, <code class="docutils literal notranslate"><span class="pre">credentialmeta</span></code> e <code class="docutils literal notranslate"><span class="pre">credentialformat</span></code>.
-Una risposta di successo (<code class="docutils literal notranslate"><span class="pre">200</span></code>) DEVE essere un body di risposta firmato JWS.
-Il payload decodificato DEVE contenere un array di oggetti <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> corrispondenti alla query e, ove rilevante, accompagnati da informazioni di history WRPAC nella statement/profile usata dallo Stato membro.
-Quando la query usa <code class="docutils literal notranslate"><span class="pre">serviceidentifier</span></code>, la risposta DEVE includere solo il <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> corrispondente nell'array <code class="docutils literal notranslate"><span class="pre">services</span></code> di ciascun <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> corrispondente.
-L'elenco di tutte le WRP registrate è restituito quando non sono forniti parametri di query.</p></li>
-<li><p><strong>GET /wrp/{identifier}</strong>: Recuperare l'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> corrispondente all'identificatore dato.
-Una risposta di successo (<code class="docutils literal notranslate"><span class="pre">200</span></code>) DEVE essere un oggetto firmato JWS.</p></li>
-<li><p><strong>GET /wrp/{identifier}/services/{serviceidentifier}</strong>: Recuperare l'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> padre con l'array <code class="docutils literal notranslate"><span class="pre">services</span></code> ridotto al Service corrispondente.
-Una risposta di successo (<code class="docutils literal notranslate"><span class="pre">200</span></code>) DEVE essere un oggetto firmato JWS.</p></li>
-<li><p><strong>GET /wrp/check-intended-use</strong>: Un endpoint dedicato di controllo dell'uso previsto per effettuare query ristrette relative all'uso previsto dal Register.
-Una risposta di successo (<code class="docutils literal notranslate"><span class="pre">200</span></code>) DEVE fornire una risposta booleana <code class="docutils literal notranslate"><span class="pre">true</span></code> o <code class="docutils literal notranslate"><span class="pre">false</span></code> firmata JWS, determinata dai parametri interrogati nelle informazioni di Intended use del Registrar.
-Se la richiesta è non valida o incompleta l'endpoint DEVE rispondere con codice di errore <code class="docutils literal notranslate"><span class="pre">400</span></code>. Se la WRP data non è trovata, DEVE rispondere con codice di errore <code class="docutils literal notranslate"><span class="pre">404</span></code>.</p></li>
-</ul>
+<p>I metodi di lettura sono la Sezione 3 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>.
+Metodi, parametri di filtro, codici di risposta e la riduzione di <code class="docutils literal notranslate"><span class="pre">services</span></code> quando si usa <code class="docutils literal notranslate"><span class="pre">serviceidentifier</span></code> sono definiti lì.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>La vista API pubblicata esclude solo <code class="docutils literal notranslate"><span class="pre">postalAddress</span></code> ([<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], Allegato I, punto 4).
 Tutti gli altri campi, inclusi i claim di credenziale dell'uso previsto, sono pubblicati come registrati.
-Le Register Open APIs restano per pubblicazione e trasparenza ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_03, Reg_06).
+Le Register Open APIs restano per pubblicazione e trasparenza ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_03, Reg_06).
 La Wallet Unit NON DEVE usarle come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali o l'Emissione di Credenziali, come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p>
 </div>
-<p>Il file YAML della specifica OpenAPI descritta nella Sezione 3 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> versione 1.5 è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.
-Lo JSON Schema dell'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code>, incluso l'array <code class="docutils literal notranslate"><span class="pre">services</span></code> di <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.
+<p>Il file YAML della specifica OpenAPI descritta nella Sezione 3 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.
+Lo JSON Schema dell'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code>, incluso l'array <code class="docutils literal notranslate"><span class="pre">services</span></code> di <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.
 Il profilo di lettura nazionale di tale API è disponibile <span class="raw-html"><a href="OAS3-Register-API-READ.html" target="_blank">qui</a></span>.</p>
 </section>
 </section>
 <section id="wallet-relying-party-access-certificate-wrpac-profile">
 <h3><span class="section-number">5.5.2. </span>Wallet-Relying Party Access Certificate (WRPAC) Profile<a class="headerlink" href="#wallet-relying-party-access-certificate-wrpac-profile" title="Link to this heading">¶</a></h3>
 <p>Questa sezione estende il <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> generale e specifica un <strong>Certificate Profile</strong> per i <strong>Wallet-Relying Party Access Certificates (WRPACs)</strong>.</p>
-<p>Secondo l'Articolo 2 di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], un WRPAC è un certificato per sigilli o firme elettronici che autentica e valida la WRP quando interagisce con l'EUDI Wallet.
-Per maggiori dettagli sul processo di autenticazione, vedi <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.</p>
-<p>La sospensione o la cancellazione dei servizi della WRP comporta la revoca di tutti i WRPAC validi da parte dell'autorità emittente rilevante, in modo che la WRP non sia più in grado di interagire con le Wallet Unit.
-Per maggiori dettagli sui processi di Trust Management, vedi <a class="reference internal" href="#trust-management-and-lifecycle"><span class="std std-ref">Trust Management and Lifecycle</span></a>.</p>
-<p>L'Allegato IV di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] afferma inoltre che i WRPAC sono destinati a effettuare firme o sigilli elettronici e che DEVONO essere conformi almeno ai requisiti della Normalised Certificate Policy (NCP) specificati negli standard ETSI.
-Tenendo conto di questi requisiti minimi, sono possibili diversi scenari specificati nelle clausole seguenti: certificati emessi a persone fisiche o giuridiche, a supporto di firme/sigilli avanzati o anche di firme/sigilli qualificati.
-I requisiti condizionali sono definiti in base al caso specifico in cui ricadono i WRPAC.</p>
-<p>I requisiti specifici per i WRPAC sono specificati in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>.</p>
-<p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
-Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id751">
-<caption><span class="caption-number">Tabella 5.11 </span><span class="caption-text">Estensioni del Wallet-Relying Party Access Certificate</span><a class="headerlink" href="#id751" title="Link to this table">¶</a></caption>
+<p>Il WRPAC è il certificato definito nell'Articolo 2 e nell'Allegato IV di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].
+Il suo profilo è <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>.
+Le estensioni non specificate da quel documento NON DEVONO essere presenti.
+Gli attributi del subject e il numero di certificati sono [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_10a, Reg_31, Reg_32, Reg_33, Reg_34 e Reg_34a.
+L'autenticazione è specificata in <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.
+La revoca in caso di sospensione o cancellazione dei servizi della WRP è specificata in <a class="reference internal" href="#trust-management-and-lifecycle"><span class="std std-ref">Trust Management and Lifecycle</span></a>.</p>
+<p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a> non definisce ancora un attributo dedicato per l'identificatore del Relying Party Service (Reg_33) né per l'associazione a una Relying Party intermediata (Reg_34a).
+Finché non lo fa, questa specifica codifica entrambi in <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> come segue.
+Il <code class="docutils literal notranslate"><span class="pre">GeneralName</span></code> di contatto richiesto da <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a> resta.</p>
+<table class="docutils align-default" id="id745">
+<caption><span class="caption-number">Tabella 5.11 </span><span class="caption-text">Codifica IT-Wallet dell'identificatore di Service del WRPAC</span><a class="headerlink" href="#id745" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Extension</strong></p></th>
-<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Profilo</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorityKeyIdentifier</span></code></p></td>
-<td><p>OBBLIGATORIO. Il valore del campo <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> DOVREBBE essere derivato dalla chiave pubblica usando i metodi definiti in <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.1"><strong>RFC 5280#section-4.2.1.1</strong></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subjectKeyIdentifier</span></code></p></td>
-<td><p>OPZIONALE. Se presente, il suo valore DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in <span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.2"><strong>RFC 5280#section-4.2.1.2</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">keyUsage</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE contenere uno (e uno solo) dei key-usage settings <em>Type A</em>, <em>Type B</em>, o <em>Type F</em>. <em>Type A</em> DOVREBBE essere usato secondo LEG-4.3.1-4 nella Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>]. Per dettagli aggiuntivi, vedi Clausola 4.3.2 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941202/02.04.01_60/en_31941202v020401p.pdf">ETSI EN 319 412-2</a>] e Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>].</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certificatePolicies</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">PolicyInformation</span></code> con <code class="docutils literal notranslate"><span class="pre">policyIdentifier</span></code> impostato a uno dei seguenti valori (definiti in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>):</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0.4.0.194118.1.1</span></code> (<code class="docutils literal notranslate"><span class="pre">NCP-n-eudiwrp</span></code>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0.4.0.194118.1.2</span></code> (<code class="docutils literal notranslate"><span class="pre">NCP-l-eudiwrp</span></code>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0.4.0.194118.1.3</span></code> (<code class="docutils literal notranslate"><span class="pre">QCP-n-eudiwrp</span></code>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0.4.0.194118.1.4</span></code> (<code class="docutils literal notranslate"><span class="pre">QCP-l-eudiwrp</span></code>)</p></li>
-</ul>
-<p>e <code class="docutils literal notranslate"><span class="pre">policyQualifiers</span></code> contenente un <code class="docutils literal notranslate"><span class="pre">cpsURI</span></code> che referenzia un URL in cui è situata la CPS del Provider of WRPAC.</p>
-</td>
-</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">GeneralName</span></code> con uno dei seguenti parametri definiti per fornire informazioni di contatto valide della WRP:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code>, per fornire l'URI di un sito web per questioni di helpdesk/supporto;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">otherName</span></code> con <code class="docutils literal notranslate"><span class="pre">type-id</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">2.5.4.20</span></code> (<code class="docutils literal notranslate"><span class="pre">id-at-telephoneNumber</span></code>), per fornire un numero di telefono per questioni di registrazione/uso della WRP;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rfc822Name</span></code>, per fornire un indirizzo email per questioni di registrazione/uso della WRP.</p></li>
-</ul>
-<p>Inoltre, DEVE includere un <code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code> il cui ultimo segmento di path è l'identificatore del Relying Party Service di questo certificato (<code class="docutils literal notranslate"><span class="pre">services[].serviceIdentifier</span></code> nel Register).
-Tale URI DEVE essere univoco all'interno dell'entità e DEVE essere identico al <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> di ogni WRPRC emesso per lo stesso Service della stessa entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33, RPRC_07a).
-Fino a quando [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>] non definisce un attributo dedicato per l'identificatore del Service, questo URI <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> è la codifica IT-Wallet di Reg_33.</p>
-<p>Se il subject è un Intermediary che presenta per conto di una Relying Party intermediata, il certificato DEVE includere inoltre un secondo <code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code> della forma <code class="docutils literal notranslate"><span class="pre">{registryURI}/wrp/{intermediatedRpIdentifier}/services/{intermediatedServiceIdentifier}</span></code>, dove <code class="docutils literal notranslate"><span class="pre">intermediatedRpIdentifier</span></code> è l'identificatore univoco a livello UE di quella Relying Party ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_32) e <code class="docutils literal notranslate"><span class="pre">intermediatedServiceIdentifier</span></code> è l'identificatore del Relying Party Service intermediato ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33).
-Fino a quando [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>] non definisce un attributo dedicato per questa associazione, tale URI è la codifica IT-Wallet di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34a.</p>
+<td><p>OBBLIGATORIO, in aggiunta al <code class="docutils literal notranslate"><span class="pre">GeneralName</span></code> di contatto specificato in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>.
+DEVE includere un <code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code> il cui ultimo segmento di path è l'identificatore del Relying Party Service di questo certificato (<code class="docutils literal notranslate"><span class="pre">services[].serviceIdentifier</span></code> nel Register).
+Tale URI DEVE essere univoco all'interno dell'entità e DEVE essere identico al <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> di ogni WRPRC emesso per lo stesso Service della stessa entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_33, RPRC_07a).</p>
+<p>Se il subject è un Intermediary che presenta per conto di una Relying Party intermediata, il certificato DEVE includere inoltre un secondo <code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code> della forma <code class="docutils literal notranslate"><span class="pre">{registryURI}/wrp/{intermediatedRpIdentifier}/services/{intermediatedServiceIdentifier}</span></code>, dove <code class="docutils literal notranslate"><span class="pre">intermediatedRpIdentifier</span></code> è l'identificatore univoco a livello UE di quella Relying Party ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_32) e <code class="docutils literal notranslate"><span class="pre">intermediatedServiceIdentifier</span></code> è l'identificatore del Relying Party Service intermediato ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_33).
+Tale URI è la codifica IT-Wallet di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_34a.</p>
 </td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code></p></td>
-<td><p>CONDIZIONALE. <strong>OBBLIGATORIO SE:</strong> il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>.</p>
-<p>Se presente, DEVE contenere almeno un riferimento a una CRL pubblicamente disponibile.</p>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorityInfoAccess</span></code></p></td>
-<td><p>OBBLIGATORIO. DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">AccessDescription</span></code> con <code class="docutils literal notranslate"><span class="pre">accessMethod</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">1.3.6.1.5.5.7.48.2</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ad-caIssuers</span></code>) e <code class="docutils literal notranslate"><span class="pre">accessLocation</span></code> che specifica almeno una access location di un certificato CA valido della CA emittente.</p>
-<p>Se l'OCSP è supportato dalla CA emittente, l'estensione DEVE includere una struttura <code class="docutils literal notranslate"><span class="pre">AccessDescription</span></code> con <code class="docutils literal notranslate"><span class="pre">accessMethod</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">1.3.6.1.5.5.7.48.1</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ad-ocsp</span></code>) e <code class="docutils literal notranslate"><span class="pre">accessLocation</span></code> che specifica almeno un responder OCSP autorevole a fornire informazioni di status del certificato per il certificato, come descritto in <a class="reference internal" href="#online-certificate-status-protocol-ocsp"><span class="std std-ref">Online Certificate Status Protocol (OCSP)</span></a>.</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qcStatements</span></code></p></td>
-<td><p>OPZIONALE. PUÒ contenere strutture <cite>QCStatement</cite> tra quelle definite nella Clausola 4.2 di [ETSI EN 319 412-5].
-In ogni caso, NON DEVE contenere una struttura <code class="docutils literal notranslate"><span class="pre">QCStatement</span></code> con <code class="docutils literal notranslate"><span class="pre">statementId</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">0.4.0.1862.1.7</span></code> (<code class="docutils literal notranslate"><span class="pre">id-etsi-qcs-QcCClegislation</span></code>), indicato come <code class="docutils literal notranslate"><span class="pre">esi4-qcStatement-7</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signedCertificateTimestampList</span></code></p></td>
-<td><p>OBBLIGATORIO. Estensione X.509 non critica con object identifier <code class="docutils literal notranslate"><span class="pre">1.3.6.1.4.1.11129.2.4.5</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ct-v2-sctList</span></code>) come specificato in <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9162.html"><strong>RFC 9162</strong></a>.
-DEVE contenere almeno un Signed Certificate Timestamp per questo certificato ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_04).
-Certificate Transparency versione 2.0 si applica solo ai Wallet-Relying Party Access Certificate; non si applica al Wallet-Relying Party Registration Certificate.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Considerazioni di Dipendenza</strong>: Gli attributi del WRPAC DEVONO essere derivati dalle informazioni detenute nel Register come specificato nella clausola 5.1.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>.
-Ciò implica inoltre che per alcuni attributi specifici nel WRPAC lo stesso valore DEVE essere incontrato nel WRPRC corrispondente.</p>
-<p>Un'entità in registrazione DEVE ricevere almeno un WRPAC per ciascun Service registrato ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_10a).
-Un Intermediary DEVE ricevere un insieme separato di WRPAC per ciascuna Relying Party intermediata, un WRPAC per ciascun Relying Party Service intermediato che serve ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34a).
-Il <code class="docutils literal notranslate"><span class="pre">subject.organizationName</span></code> (persona giuridica) o gli attributi di nome della persona fisica DEVONO identificare l'entità e DEVONO essere idonei a essere presentati all'Utente ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_31).
-Il <code class="docutils literal notranslate"><span class="pre">subject.organizationIdentifier</span></code> (persona giuridica) o <code class="docutils literal notranslate"><span class="pre">subject.serialNumber</span></code> (persona fisica) DEVE essere l'identificatore univoco a livello UE dell'entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_32).
-Il <code class="docutils literal notranslate"><span class="pre">subject.commonName</span></code> DEVE essere il <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> del Service che questo certificato autentica ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34).
-L'identificatore del Service DEVE essere presente in <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> come specificato sopra ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33).
-Se il subject è un Intermediary, <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> DEVE anche recare l'associazione alla Relying Party intermediata come specificato sopra ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34a).</p>
-<p>Il Provider of WRPAC DEVE registrare ogni WRPAC emesso in un log Certificate Transparency secondo <span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9162.html"><strong>RFC 9162</strong></a> ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_01) e DEVE descrivere tale registrazione nella propria Certification Practice Statement, referenziata dal <code class="docutils literal notranslate"><span class="pre">cpsURI</span></code> sopra ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_02, Allegato IV, punto 3(j) di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a> OVR-6.4.5-02).
-Fino a quando un log Certificate Transparency per i certificati di accesso non è designato a livello di Unione, il Provider of WRPAC DEVE operare o usare un log idoneo per i WRPAC in modo che ciascun certificato possa recare almeno un Signed Certificate Timestamp ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_04).
-Quando un log Certificate Transparency per i certificati di accesso è disponibile, il Provider of WRPAC DEVE agire come monitor nell'ecosistema Certificate Transparency e DOVREBBE continuare a monitorare durante l'indisponibilità temporanea del log ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] CT_03).</p>
+<p>Gli attributi del WRPAC DEVONO essere derivati dal Register come specificato nella clausola 5.1.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>.</p>
+<p><strong>Deviazione di profilo.</strong> La Certificate Transparency ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] CT_01 a CT_06) non è un requisito di questa specifica finché le Technical Specification dell'ARF non la rendono pienamente disponibile e chiara per le implementazioni.
+Il profilo del WRPAC non include un Signed Certificate Timestamp, il Provider of WRPAC non è tenuto a registrare i WRPAC emessi, e la Wallet Unit non è tenuta a verificare la Certificate Transparency durante l'Autenticazione.</p>
 </div>
 <p>Di seguito un esempio di WRPAC per persone giuridiche secondo la NCP.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AccessCertificate cert = {
@@ -2269,18 +2200,6 @@ Quando un log Certificate Transparency per i certificati di accesso è disponibi
             accessLocation: GeneralName.uniformResourceIdentifier(&quot;http://ocsp.example.test&quot;)
           }
         ]
-      },
-
-      Extension {
-        oid: &quot;1.3.6.1.4.1.11129.2.4.5&quot;,                   // id-ct-v2-sctList (RFC 9162)
-        critical: false,
-        value: TransItemList [
-          TransItem {
-            // At least one Signed Certificate Timestamp (CT_04)
-            timestampedData: &quot;BASE64(RFC9162_TIMESTAMPED_ENTRY)&quot;,
-            signature: &quot;BASE64(CT_LOG_SIGNATURE)&quot;
-          }
-        ]
       }
     ]
   },
@@ -2300,8 +2219,8 @@ Quando un log Certificate Transparency per i certificati di accesso è disponibi
 <p>Questa sezione estende il <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> generale e specifica un <strong>Certificate Profile</strong> per i <strong>Registrar Sign/Seal Certificates</strong>.</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id752">
-<caption><span class="caption-number">Tabella 5.12 </span><span class="caption-text">Estensioni del Registrar Sign/Seal Certificate</span><a class="headerlink" href="#id752" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id746">
+<caption><span class="caption-number">Tabella 5.12 </span><span class="caption-text">Estensioni del Registrar Sign/Seal Certificate</span><a class="headerlink" href="#id746" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2313,10 +2232,10 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorityKeyIdentifier</span></code></p></td>
-<td><p>OBBLIGATORIO. Il valore DOVREBBE essere derivato dalla chiave pubblica usando i metodi definiti in <span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.1"><strong>RFC 5280#section-4.2.1.1</strong></a>.</p></td>
+<td><p>OBBLIGATORIO. Il valore DOVREBBE essere derivato dalla chiave pubblica usando i metodi definiti in <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.1"><strong>RFC 5280#section-4.2.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subjectKeyIdentifier</span></code></p></td>
-<td><p>OPZIONALE. Se presente, il campo <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in <span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.2"><strong>RFC 5280#section-4.2.1.2</strong></a>.</p></td>
+<td><p>OPZIONALE. Se presente, il campo <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in <span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.2"><strong>RFC 5280#section-4.2.1.2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">keyUsage</span></code></p></td>
 <td><p>OBBLIGATORIO. DEVE contenere uno (e uno solo) dei key-usage settings <em>Type A</em>, <em>Type B</em>, o <em>Type F</em>. <em>Type A</em> DOVREBBE essere usato secondo LEG-4.3.1-4 nella Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>]. Per dettagli aggiuntivi, vedi Clausola 4.3.2 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941202/02.04.01_60/en_31941202v020401p.pdf">ETSI EN 319 412-2</a>] e Clausola 4.3.1 [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941203/01.03.01_60/en_31941203v010301p.pdf">ETSI EN 319 412-3</a>].</p></td>
@@ -2468,32 +2387,23 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
 </section>
 <section id="wallet-relying-party-registration-certificate-wrprc-profile">
 <h3><span class="section-number">5.5.4. </span>Wallet-Relying Party Registration Certificate (WRPRC) Profile<a class="headerlink" href="#wallet-relying-party-registration-certificate-wrprc-profile" title="Link to this heading">¶</a></h3>
-<p>Questa sezione definisce il Wallet-Relying Party Registration Certificate (WRPRC), come descritto in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>.
-Questo Trust Artifact fornisce informazioni dettagliate sul profilo di Authorization del Credential Issuer e della Relying Party, inclusi:</p>
-<ul class="simple">
-<li><p>attributi di identificazione core (clausola 5.1 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>),</p></li>
-<li><p>attributi di descrizione del servizio (clausola 5.2.4 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>), incluso l'identificatore e il trade name del Relying Party Service ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_07a),</p></li>
-<li><p>attributi di entitlement (vedi Allegato A.2 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>),</p></li>
-<li><p>attributi dell'autorità di vigilanza (clausola 5.2.4 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>),</p></li>
-<li><p>attributi della Relying Party (clausola 5.2.4 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>),</p></li>
-<li><p>attributi del Credential Issuer (clausola 5.2.4 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>),</p></li>
-<li><p>attributi dell'Intermediary; cioè, se il Relying Party Service si affida a un Intermediary per richiedere Attestati Elettronici (clausola 5.2.4 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>).</p></li>
-</ul>
+<p>Questa sezione profila il Wallet-Relying Party Registration Certificate (WRPRC) definito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> e in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>.
+I suoi contenuti sono la clausola 5.1, la clausola 5.2.4 e l'Allegato A.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>, e l'Allegato V paragrafo 3 di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].
+È un JWT firmato o un CWT (<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8392.html"><strong>RFC 8392</strong></a>), firmato con la chiave privata del Provider of Wallet-Relying Party Registration Certificates.
+La firma JWT è una firma JAdES con il profilo B-B (<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a>).
+La firma CWT segue <span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9052.html"><strong>RFC 9052</strong></a> e <span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9360.html"><strong>RFC 9360</strong></a>.</p>
 <p>Ciascun WRPRC è vincolato a un singolo Relying Party Service.
-Il Provider of WRPRC emette i WRPRC automaticamente come definito in <a class="reference internal" href="onboarding-system.html#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.
-Il claim <code class="docutils literal notranslate"><span class="pre">name</span></code> DEVE essere uguale al <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> di quel Service e, per una presentazione non intermediata, DEVE essere identico al <code class="docutils literal notranslate"><span class="pre">subject.commonName</span></code> del WRPAC dello stesso Service della stessa entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34, RPRC_07a).
-Il claim <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> DEVE essere uguale al <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> di quel Service e, per una presentazione non intermediata, DEVE essere identico all'identificatore del Service codificato nel <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> del WRPAC ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33, RPRC_07a).
-L'oggetto <code class="docutils literal notranslate"><span class="pre">intermediary</span></code> del WRPRC DEVE identificare l'Intermediary e l'Intermediary Service ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_04).
-La Wallet Unit valuta la presentazione intermediata, inclusa l'associazione <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> del WRPAC di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_34a, come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.
-ETSI TS 119 475 v1.2.1 non definisce ancora <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>; questa specifica lo profila per implementare RPRC_07a fino a quando tale standard non è aggiornato. Il claim è una stringa JSON (JWT) o una text string CBOR (CWT) e DEVE essere identico a <code class="docutils literal notranslate"><span class="pre">services[].serviceIdentifier</span></code> nel Register.</p>
-<p>Il Wallet-Relying Party Registration Certificate DEVE essere formattato come JSON Web Token (JWT) firmato o come CBOR Web Token (CWT) <span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8392.html"><strong>RFC 8392</strong></a>.
-DEVE essere conforme ai requisiti sintattici e semantici specificati nell'Allegato V paragrafo 3 del CIR (UE) 2025/848 e in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>.</p>
-<p>Il Wallet-Relying Party Registration Certificate DEVE essere firmato con la chiave privata del Provider of Wallet-Relying Party Registration Certificates.
-In particolare:</p>
-<ul class="simple">
-<li><p>Il JWT DEVE essere firmato con una JSON Advanced Electronic Signature con il profilo B-B come definito in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a>.</p></li>
-<li><p>Il CWT DEVE essere firmato con una Advanced Electronic Signature seguendo la struttura come definita in <span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9052.html"><strong>RFC 9052</strong></a> e <span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9360.html"><strong>RFC 9360</strong></a>.</p></li>
-</ul>
+Il Provider of WRPRC emette i WRPRC automaticamente come definito in <a class="reference internal" href="onboarding-system.html#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Profilo.</strong> Il claim <code class="docutils literal notranslate"><span class="pre">name</span></code> DEVE essere uguale al <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> di quel Service e, per una presentazione non intermediata, DEVE essere identico al <code class="docutils literal notranslate"><span class="pre">subject.commonName</span></code> del WRPAC dello stesso Service della stessa entità ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_34, RPRC_07a).
+<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> non definisce ancora <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>.
+Questa specifica lo profila per implementare [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_07a fino a quando tale standard definisce un membro equivalente.
+Il claim è una stringa JSON (JWT) o una text string CBOR (CWT).
+DEVE essere uguale al <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> di quel Service e, per una presentazione non intermediata, DEVE essere identico all'identificatore del Service codificato nel <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> del WRPAC ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_33).</p>
+</div>
+<p>L'oggetto <code class="docutils literal notranslate"><span class="pre">intermediary</span></code> è la clausola 5.2.4 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> e [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_04.
+La Wallet Unit valuta la presentazione intermediata, inclusa l'associazione <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> del WRPAC di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_34a, come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p>
 <p>Di seguito un esempio non normativo di header e payload WRPRC per una Relying Party.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rc-wrp+jwt&quot;</span><span class="p">,</span>
@@ -2575,7 +2485,6 @@ In particolare:</p>
 <p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>, Tabella 10 definisce il subfield del nome dell'intermediario come <code class="docutils literal notranslate"><span class="pre">sname</span></code>.
 L'esempio nell'Allegato C dello stesso standard usa invece <code class="docutils literal notranslate"><span class="pre">name</span></code>.
 Questa specifica segue la Tabella 10 normativa e usa <code class="docutils literal notranslate"><span class="pre">sname</span></code>.</p>
-<p>Il claim identificatore del Service <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> è profilato da questa specifica per implementare [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_07a fino a quando <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> definisce un membro equivalente.</p>
 </div>
 </section>
 <section id="trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities">
@@ -2586,49 +2495,12 @@ Questa specifica segue la Tabella 10 normativa e usa <code class="docutils liter
 <li><p><strong>Validare l'affidabilità a runtime</strong>: Verificare un Trust Anchor (vedi <a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>) per autenticare, autorizzare o validare un'entità o un artifact durante le operazioni live.</p></li>
 <li><p><strong>Eseguire la validazione storica</strong>: Validare le informazioni contenute nella list per scopi di audit storico.</p></li>
 </ul>
-<p>I tre tipi distinti di trust list sono:</p>
-<ul>
-<li><p>Trusted Lists (TLs): Stabilite ai sensi del Capitolo II dell'Allegato I di <a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj">CID2015/1505</a>, come modificato da <a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2025/2164/oj">CID2025/2164</a>, e specificate in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a>.
-Ciascuno Stato membro pubblica una TL in formato XML.
-È firmata dallo Stato membro rispettivo con una firma digitale XAdES al livello di conformità baseline B (come definito in <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf">ETSI EN 319 132-1</a>).
-Le TL sono pubblicate in un formato machine-readable a endpoint specificati all'interno della LOTL.
-Queste List detengono informazioni correnti e storiche sull'accreditamento dei trust service provider, referenziando:</p>
-<ul class="simple">
-<li><p>Qualified Trust Service Providers (QTSP), come Qualified Certificates Issuing e meccanismi di revoca, QEAA Provider, servizi di archiviazione elettronica qualificata.</p></li>
-<li><p>Trust Service non qualificati come gli EAA Provider.</p></li>
-<li><p>Altri Trust Service definiti a livello nazionale, come l'archiviazione.</p></li>
-</ul>
-<blockquote>
-<div><p>All'interno di eIDAS, le TL sono mantenute dagli Stati membri, che sono responsabili di tenere traccia dei trust service provider sotto la rispettiva giurisdizione.
-Sono numerate e rinnovate periodicamente, e pubblicate in un sito web per il download non ristretto.
-Per proteggerne l'integrità e assicurarne l'autenticità, sono inoltre firmate con certificati fidati contenuti nella LOTL.</p>
-</div></blockquote>
-</li>
-<li><p>List of Trusted Lists (LOTL): Stabilita ai sensi del Capitolo II dell'Allegato I di <a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj">CID2015/1505</a>, come modificato da <a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2025/2164/oj">CID2025/2164</a>, e specificata in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a>.
-Esiste una sola LOTL, che è pubblicata in formato XML e firmata dalla Commissione europea (CE).
-Utilizza una firma digitale XAdES al livello di conformità baseline B (secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf">ETSI EN 319 132-1</a>) e referenzia i certificati fidati di ciascuna National Trusted List.
-Per facilitare la rotazione delle chiavi e gli aggiornamenti continui, la LOTL implementa un pivoting mechanism.
-È pubblicata in un formato machine-readable a un endpoint specificato all'interno della Gazzetta ufficiale dell'Unione europea (<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944">OJEU</a>).</p>
-<p>Lo schema XML sia per le Trusted List sia per la List of Trusted Lists, contenente nome e descrizione dei parametri, è disponibile all'indirizzo <code class="docutils literal notranslate"><span class="pre">https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd</span></code>. Attualmente, la versione machine-readable della LOTL e delle TL nazionali è pubblicata in <a class="reference external" href="https://ec.europa.eu/tools/lotl/eu-lotl.xml">EUMS-LOTL</a>.</p>
-</li>
-<li><p>Lists of Trusted Entities (LoTE): Stabilite ai sensi degli Articoli 4 e 5 di <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a> e specificate in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>.
-Sono disponibili in formato XML o JSON e sono firmate con una firma digitale AdES al livello di conformità baseline B (secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a>).
-Per facilitare gli aggiornamenti continui, la LoTE implementa un pivoting mechanism ed è pubblicata in un formato machine-readable a un endpoint specificato all'interno della <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944">OJEU</a>.
-I tipi di LoTE possono essere uno dei seguenti, come definito nell'allegato C.2:</p>
-<ul class="simple">
-<li><p>PID Provider;</p></li>
-<li><p>Wallet Provider;</p></li>
-<li><p>Provider of Wallet Relying Party Access Certificates;</p></li>
-<li><p>Providers of Wallet Relying Party Registration Certificates;</p></li>
-<li><p>Public sector bodies issuing Electronic Attestations of Attributes;</p></li>
-<li><p>List of Registrars and Registers.</p></li>
-</ul>
-<p>Il repository seguente fornisce gli schemi JSON e XML normativi richiesti per implementare la List of Trusted Entities (<a class="reference external" href="https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities">ETSI-LOTE-SCHEMAS</a>).</p>
-</li>
-</ul>
-<p>La tabella seguente fornisce una panoramica completa dell'architettura delle trust list eIDAS, con riferimenti incrociati alla base giuridica, agli standard tecnici di governo, ai formati dati espliciti, ai profili di firma e alle dinamiche di pubblicazione per le Trusted List (TL), la List of Trusted Lists (LOTL) e le varie List of Trusted Entities (LoTE) specifiche per categoria.</p>
-<table class="longtable docutils align-default" id="id753">
-<caption><span class="caption-number">Tabella 5.13 </span><span class="caption-text">Profili dell'Ecosistema delle Trust List eIDAS</span><a class="headerlink" href="#id753" title="Link to this table">¶</a></caption>
+<p>La tabella seguente mappa ciascuna list alla sua base giuridica, allo standard di governo, al formato e alla pubblicazione.
+Lo schema XML delle Trusted List e della List of Trusted Lists è pubblicato all'indirizzo <code class="docutils literal notranslate"><span class="pre">https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd</span></code>.
+La List of Trusted Lists machine-readable e le Trusted List nazionali sono pubblicate in <a class="reference external" href="https://ec.europa.eu/tools/lotl/eu-lotl.xml">EUMS-LOTL</a>.
+Gli schemi JSON e XML normativi delle List of Trusted Entities sono pubblicati in <a class="reference external" href="https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities">ETSI-LOTE-SCHEMAS</a>.</p>
+<table class="longtable docutils align-default" id="id747">
+<caption><span class="caption-number">Tabella 5.13 </span><span class="caption-text">Profili dell'Ecosistema delle Trust List eIDAS</span><a class="headerlink" href="#id747" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 14.0%" />
 <col style="width: 20.0%" />
@@ -2714,7 +2586,7 @@ Implementa un pivoting mechanism per gestire gli aggiornamenti continui.</p></td
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Come suggerito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>, per efficienza, le implementazioni POSSONO controllare routinariamente i Trust Anchor nelle List of Trusted Entities o nelle Trusted List e memorizzarli localmente. Questo consente, per esempio, alle Relying Party Instance in esecuzione su app mobili di facilitare le presentazioni offline.</p>
+<p>Come suggerito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>, per efficienza, le implementazioni POSSONO controllare routinariamente i Trust Anchor nelle List of Trusted Entities o nelle Trusted List e memorizzarli localmente. Questo consente, per esempio, alle Relying Party Instance in esecuzione su app mobili di facilitare le presentazioni offline.</p>
 </div>
 <p>L'esempio seguente mostra un esempio non normativo di payload di una List of Trusted Entities per PID Provider.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -2952,44 +2824,20 @@ Implementa un pivoting mechanism per gestire gli aggiornamenti continui.</p></td
 </section>
 <section id="embedded-disclosure-policy-edp">
 <h3><span class="section-number">5.5.6. </span>Embedded Disclosure Policy (EDP)<a class="headerlink" href="#embedded-disclosure-policy-edp" title="Link to this heading">¶</a></h3>
-<p>Un'Embedded Disclosure Policy (EDP) è definita nell'Articolo 2(9) di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>] come: <em>&quot;A set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes&quot;</em>.</p>
-<p>Gli Attestation Provider (cioè, tutti i Credential Issuer eccetto il PID Provider) possono opzionalmente esprimere un'EDP che consente di indicare quali Relying Party possono accedere a specifici Attestati Elettronici.
-L'Articolo 10 di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>] stabilisce che i Wallet Provider DEVONO assicurare che le Attestation con EDP comuni (come elencate nell'Allegato III di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>]) possano essere elaborate dalle loro Wallet Unit.</p>
-<p>Le EDP sono applicabili a QEAA, PuB-EAA ed EAA.
-NON DEVONO essere applicabili ai PID.</p>
-<p>L'EDP è distribuita attraverso i Metadata del Credential Issuer al momento dell'emissione.
-L'Attestation Provider DEVE includere l'EDP (se presente) per valore nei Metadata del Credential Issuer, all'interno del parametro <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code>, in conformità con <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> o l'estensione di esso specificata in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>.
-Se disponibile, la Wallet Unit DEVE memorizzare l'EDP localmente e associarla alla specifica Attestation per cui è stata recuperata.
-La Wallet Unit NON DEVE rivelare l'EDP alla Relying Party attraverso il protocollo di presentazione secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>, Sezione 4.2.5.1.</p>
-<p>Le Embedded Disclosure Policy sono usate per:</p>
-<ul class="simple">
-<li><p>Implementare il controllo di accesso settoriale (ad es., solo RP del settore pubblico o solo RP sanitarie).</p></li>
-<li><p>Implementare il controllo di accesso specifico per Stato membro (ad es., solo RP registrate all'interno di uno Stato membro specifico).</p></li>
-</ul>
-<p>L'Allegato III di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>] definisce tre tipi comuni di EDP.
-La Wallet Unit li valuta come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p>
-<ul class="simple">
-<li><p><strong>No Policy.</strong> Nessuna EDP è presente, oppure l'EDP indica esplicitamente che non si applicano restrizioni (ISS-MDATA-EBD-4.2.5.2-06).</p></li>
-<li><p><strong>Authorized Relying Parties Only.</strong> L'EDP contiene un elenco di coppie di identificatori autorizzati, ciascuna un identificatore univoco a livello UE della Relying Party insieme a un identificatore di Service ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02, Reg_32, Reg_33).
-Secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07), tale elenco PUÒ anche recare un subject distinguished name, in forma di stringa LDAP come definito in <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>, oppure un URI di entitlement.</p>
-<ul>
-<li><p>Per le persone giuridiche, gli attributi DN rilevanti sono <code class="docutils literal notranslate"><span class="pre">commonName</span></code>, <code class="docutils literal notranslate"><span class="pre">organizationName</span></code>, <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code>, e <code class="docutils literal notranslate"><span class="pre">countryName</span></code>.</p></li>
-<li><p>Per le persone fisiche: <code class="docutils literal notranslate"><span class="pre">commonName</span></code>, <code class="docutils literal notranslate"><span class="pre">givenName</span></code>, <code class="docutils literal notranslate"><span class="pre">surname</span></code>, <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code>, e <code class="docutils literal notranslate"><span class="pre">countryName</span></code>.
-Il tipo di attributo <code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> è rappresentato dalla stringa LDAP &quot;ORGID&quot;; il tipo di attributo <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code> è rappresentato da &quot;SN&quot; (secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> NOTE 1 e NOTE 2 a ISS-MDATA-EBD-4.2.5.2-07).</p></li>
-</ul>
-</li>
-<li><p><strong>Specific Root of Trust.</strong> L'EDP contiene un elenco di certificati root o intermedi fidati usati per firmare i Wallet-Relying Party Registration Certificate ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_03).
-Solo le RP il cui signing path del WRPRC contiene uno di questi certificati sono autorizzate ad accedere all'Attestation.
-Secondo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-08/09), ciascuna root o intermedio autorizzato è identificato dal suo issuer distinguished name in forma di stringa LDAP come definito in RFC 4514 e dal serial number del certificato dell'issuer.</p></li>
-</ul>
+<p>Un'Embedded Disclosure Policy (EDP) è definita nell'Articolo 2(9) di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].
+Applicabilità e i tre tipi comuni di policy sono l'Articolo 10 e l'Allegato III di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>], codificati nella Sezione 4.2.5.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08 e ISS-MDATA-EBD-4.2.5.2-09).
+Un'EDP NON DEVE essere applicata a un PID.
+La Wallet Unit valuta i tipi comuni come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.
+La non divulgazione verso la Relying Party è la Sezione 4.2.5.1 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>.</p>
+<p>L'Attestation Provider DEVE includere l'EDP, se presente, per valore nei Metadata del Credential Issuer, all'interno di <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code>, come membro <code class="docutils literal notranslate"><span class="pre">embedded_disclosure_policy</span></code> della configurazione della credenziale, in conformità con <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> o l'estensione di esso specificata in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'HLR EDP_02 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> richiede coppie di identificatori prese dal WRPRC nella richiesta (<code class="docutils literal notranslate"><span class="pre">sub</span></code> e <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>), non dal WRPAC, anche in una presentazione <strong>diretta</strong>.
+<p>L'HLR EDP_02 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> richiede coppie di identificatori prese dal WRPRC nella richiesta (<code class="docutils literal notranslate"><span class="pre">sub</span></code> e <code class="docutils literal notranslate"><span class="pre">srv_id</span></code>), non dal WRPAC, anche in una presentazione <strong>diretta</strong>.
 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07) codifica inoltre le parti autorizzate per subject DN o per URI di entitlement.
 Il parametro <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> è quella codifica ETSI; non è un input di valutazione rispetto al WRPAC.
 Il parametro <code class="docutils literal notranslate"><span class="pre">entitlement_uri</span></code> è abbinato rispetto alle entitlement detenute nel WRPRC.
 L'Allegato A.3 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> definisce sub-entitlement per i Service Provider, attualmente per i Payment Service Provider (ad es. <code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai</span></code>).
-Per una presentazione <strong>intermediata</strong> il WRPRC nella richiesta è quello della Relying Party <em>intermediata</em> ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] RPRC_19).</p>
+Per una presentazione <strong>intermediata</strong> il WRPRC nella richiesta è quello della Relying Party <em>intermediata</em> ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_19).</p>
 </div>
 <section id="embedded-disclosure-policy-data-model">
 <h4><span class="section-number">5.5.6.1. </span>Embedded Disclosure Policy Data Model<a class="headerlink" href="#embedded-disclosure-policy-data-model" title="Link to this heading">¶</a></h4>
@@ -2998,8 +2846,8 @@ Per una presentazione <strong>intermediata</strong> il WRPRC nella richiesta è 
 <p class="admonition-title">Avvertimento</p>
 <p>I nomi dei parametri sono definiti in questa sezione e non si basano su una specifica ETSI normativa. La Sezione 4.2.5.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> definisce i requisiti di alto livello per il modello dati, ma lo schema JSON finale sarà pubblicato separatamente da ETSI. La struttura definita qui è un profilo di implementazione basato sui requisiti del modello dati ETSI, e i nomi dei parametri POSSONO cambiare quando lo schema ETSI è pubblicato.</p>
 </div>
-<table class="longtable docutils align-default" id="id754">
-<caption><span class="caption-number">Tabella 5.14 </span><span class="caption-text">Parametri dell'Embedded Disclosure Policy</span><a class="headerlink" href="#id754" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id748">
+<caption><span class="caption-number">Tabella 5.14 </span><span class="caption-text">Parametri dell'Embedded Disclosure Policy</span><a class="headerlink" href="#id748" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -3055,19 +2903,19 @@ Contiene un elenco di coppie di identificatori autorizzati (identificatore univo
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].identifier</span></code></p></td>
 <td><p>OBBLIGATORIO. string.
-Identificatore univoco a livello UE della Relying Party autorizzata, come specificato in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_32.
+Identificatore univoco a livello UE della Relying Party autorizzata, come specificato in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_32.
 DEVE corrispondere al <code class="docutils literal notranslate"><span class="pre">sub</span></code> del WRPRC nella richiesta.</p></td>
-<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] EDP_02</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].service_identifier</span></code></p></td>
 <td><p>OBBLIGATORIO. string.
-Identificatore del Relying Party Service autorizzato, come specificato in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] Reg_33.
+Identificatore del Relying Party Service autorizzato, come specificato in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_33.
 DEVE corrispondere al <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> del WRPRC nella richiesta.</p></td>
-<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] EDP_02</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] EDP_02</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorized_parties[].subject_dn</span></code></p></td>
 <td><p>OPZIONALE. string.
-Subject Distinguished Name (DN) della Relying Party, formattato come stringa LDAP conforme a <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.
+Subject Distinguished Name (DN) della Relying Party, formattato come stringa LDAP conforme a <span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.
 Questa è la codifica ETSI di ISS-MDATA-EBD-4.2.5.2-07.
 Non è un input di valutazione: la Wallet Unit NON DEVE abbinarlo rispetto al WRPAC, e la valutazione EDP_02 usa la coppia di identificatori dal WRPRC, come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p></td>
 <td><p>Clausola 4.2.5.2 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-07)</p></td>
@@ -3085,7 +2933,7 @@ Solo le RP il cui signing path del WRPRC contiene uno di questi certificati sono
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trusted_roots[].issuer_dn</span></code></p></td>
 <td><p>OBBLIGATORIO. string.
-Issuer Distinguished Name (DN) in forma di stringa LDAP conforme a <span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.</p></td>
+Issuer Distinguished Name (DN) in forma di stringa LDAP conforme a <span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4514.html"><strong>RFC 4514</strong></a>.</p></td>
 <td><p>Clausola 4.2.5.2 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>] (ISS-MDATA-EBD-4.2.5.2-09)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trusted_roots[].serial_number</span></code></p></td>
@@ -3192,14 +3040,14 @@ Definisce gli Entity Type Identifier delle Entità usate in questa sezione.</p><
 </ul>
 <p>La figura <a class="reference internal" href="#fig-oid-fed-roles"><span class="std std-ref">OID-FED Roles</span></a> mappa ciascuna entità dell'ecosistema wallet sul ruolo OpenID Federation che svolge.
 Le Wallet-Relying Party e i Wallet Provider sono Federation Entity che DEVONO essere registrate da una Federation Authority, cioè un Federation TA o Intermediate.</p>
-<figure class="align-default" id="id755">
+<figure class="align-default" id="id749">
 <span id="fig-oid-fed-roles"></span><p class="plantuml">
 <object data="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.png"><img src="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.png" alt="I ruoli all'interno della Federazione, dove il Trust Anchor sovrintende i suoi subordinati, che includono uno o più Intermediate e Foglie." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00">OID-FED Roles</a></span><a class="headerlink" href="#id755" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00">OID-FED Roles</a></span><a class="headerlink" href="#id749" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -3359,7 +3207,7 @@ Vedi <a class="reference external" href="https://openid.net/specs/openid-federat
 <p>All'interno di IT-Wallet le Federation Entity Keys recate nel <code class="docutils literal notranslate"><span class="pre">jwks</span></code> di un'Entity Configuration o di un Subordinate Statement sono usate per firmare le dichiarazioni di federazione e sono validate attraverso la Federation Trust Chain, non attraverso X.509.
 La PKI di firma X.509, i cui certificati sono usati per firmare le Attestation, è una relazione di fiducia separata.
 I Signing Trust Anchor di questa PKI sono distribuiti nell'Entity Configuration del Federation Trust Anchor.
-Ciascuno è fornito nel parametro <code class="docutils literal notranslate"><span class="pre">x5c</span></code> (<span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a> Sezione 4.7) di una JWK dedicata all'interno del <code class="docutils literal notranslate"><span class="pre">jwks</span></code>, distinta dalle Federation Entity Keys, che non recano <code class="docutils literal notranslate"><span class="pre">x5c</span></code>, come definito in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.
+Ciascuno è fornito nel parametro <code class="docutils literal notranslate"><span class="pre">x5c</span></code> (<span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a> Sezione 4.7) di una JWK dedicata all'interno del <code class="docutils literal notranslate"><span class="pre">jwks</span></code>, distinta dalle Federation Entity Keys, che non recano <code class="docutils literal notranslate"><span class="pre">x5c</span></code>, come definito in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.
 I certificati Document Signer dei Credential Issuer non sono recati nel <code class="docutils literal notranslate"><span class="pre">jwks</span></code> degli Entity Statement: sono inclusi nelle Attestation firmate, nell'header <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> per il formato mdoc e nell'header <code class="docutils literal notranslate"><span class="pre">x5c</span></code> per il formato JOSE, e sono validati come definito in <a class="reference internal" href="trust-evaluation.html#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a>.
 L'emissione di questi Certificati X.509 e l'operazione della PKI di firma sono definite nell'onboarding (vedi <a class="reference internal" href="onboarding-system.html#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>).</p>
 </div>
@@ -3965,8 +3813,8 @@ Per questo motivo nessun campo dedicato all'intermediario è presente nel Trust 
 L'onboarding dell'Intermediary è definito in <a class="reference internal" href="onboarding-system.html#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p>
 <p><strong>Trust Mark Structure</strong></p>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id756">
-<caption><span class="caption-number">Tabella 5.15 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nell'Entity Configuration)</span><a class="headerlink" href="#id756" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id750">
+<caption><span class="caption-number">Tabella 5.15 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nell'Entity Configuration)</span><a class="headerlink" href="#id750" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -3990,8 +3838,8 @@ Un JSON Web Token firmato che rappresenta il Trust Mark emesso dalla Federation 
 <p>Il Trust Mark JWT (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> sopra) DEVE essere un JWT firmato che include sia un header JOSE sia un payload, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 7.</p>
 <p><strong>Trust Mark JWT Header</strong></p>
 <p>L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id757">
-<caption><span class="caption-number">Tabella 5.16 </span><span class="caption-text">Parametri dell'Header JWT del Trust Mark</span><a class="headerlink" href="#id757" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id751">
+<caption><span class="caption-number">Tabella 5.16 </span><span class="caption-text">Parametri dell'Header JWT del Trust Mark</span><a class="headerlink" href="#id751" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -4029,8 +3877,8 @@ I Trust Mark senza un parametro di header <code class="docutils literal notransl
 </div>
 <p><strong>Trust Mark JWT Payload</strong></p>
 <p>Il payload del Trust Mark JWT include i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id758">
-<caption><span class="caption-number">Tabella 5.17 </span><span class="caption-text">Claim JWT del Trust Mark</span><a class="headerlink" href="#id758" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id752">
+<caption><span class="caption-number">Tabella 5.17 </span><span class="caption-text">Claim JWT del Trust Mark</span><a class="headerlink" href="#id752" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -4295,7 +4143,7 @@ Lo status può essere controllato usando l'endpoint Trust Mark Status (vedi Sezi
 Durante la loro pubblicazione possono essere aggiornati.</p>
 </div>
 <p>Il diagramma <a class="reference internal" href="#fig-trust-artifacts-states"><span class="std std-numref">Fig. 5.3</span></a> evidenzia la state machine dei Trust Artifact sopra menzionati:</p>
-<figure class="align-default" id="id759">
+<figure class="align-default" id="id753">
 <span id="fig-trust-artifacts-states"></span><p class="plantuml">
 <object data="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.svg" type="image/svg+xml" style="width:90%">
 <a href="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png"><img src="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png" alt="&#64;startuml
@@ -4328,7 +4176,7 @@ state &quot;Trust Marks&quot; as TMGroup {
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0">Trust Artifacts States.</a></span><a class="headerlink" href="#id759" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0">Trust Artifacts States.</a></span><a class="headerlink" href="#id753" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -4388,8 +4236,8 @@ Lo scope di una delta CRL DEVE essere lo stesso della base CRL che referenzia.</
 <p>Una CRL X.509 v2 è rappresentata come la codifica ASN.1 DER della SEQUENCE <code class="docutils literal notranslate"><span class="pre">CertificateList</span></code>.
 La codifica ASN.1 DER è un sistema di encoding tag, length e value strettamente definito per ciascun elemento.
 I byte finali trasmessi rappresentano la codifica DER della SEQUENCE di livello superiore contenente i campi nella tabella seguente:</p>
-<table class="longtable docutils align-default" id="id760">
-<caption><span class="caption-number">Tabella 5.18 </span><span class="caption-text">Struttura CertificateList di Livello Superiore</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id754">
+<caption><span class="caption-number">Tabella 5.18 </span><span class="caption-text">Struttura CertificateList di Livello Superiore</span><a class="headerlink" href="#id754" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4404,24 +4252,24 @@ I byte finali trasmessi rappresentano la codifica DER della SEQUENCE di livello 
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tbsCertList</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Contiene le informazioni core della CRL inclusi il nome dell'issuer, la data di emissione, la data del prossimo aggiornamento, l'elenco opzionale dei certificati revocati, e le estensioni CRL opzionali.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.1</p></td>
+<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.1</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Contiene l'identificatore di algoritmo per l'algoritmo usato dal CRL issuer per firmare la <code class="docutils literal notranslate"><span class="pre">CertificateList</span></code>.
 La selezione DOVREBBE allinearsi agli standard rilevanti (ad es., [ETSI TS 119 312]).</p></td>
-<td><p><span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.2</p></td>
+<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.2</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm.algorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OBJECT IDENTIFIER</em>. L'OID dell'algoritmo di firma.</p></td>
-<td><p>[<span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm.parameters</span></code></p></td>
 <td><p>OPZIONALE. <em>ANY</em>. Parametri specifici dell'algoritmo, dipendenti dall'algoritmo di firma usato.</p></td>
-<td><p>[<span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signatureValue</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>BIT STRING</em>. Contiene la firma digitale calcolata sulla <code class="docutils literal notranslate"><span class="pre">tbsCertList</span></code> codificata ASN.1 DER.</p></td>
-<td><p>[<span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.3]</p></td>
+<td><p>[<span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.1.3]</p></td>
 </tr>
 </tbody>
 </table>
@@ -4429,8 +4277,8 @@ La selezione DOVREBBE allinearsi agli standard rilevanti (ad es., [ETSI TS 119 3
 <h5><span class="section-number">5.7.3.1.1. </span>Certificate List Content<a class="headerlink" href="#certificate-list-content" title="Link to this heading">¶</a></h5>
 <p>La <code class="docutils literal notranslate"><span class="pre">tbsCertList</span></code> (To Be Signed Certificate List) è una SEQUENCE ASN.1 contenente diversi campi ed estensioni.
 La tabella seguente elenca tutti tali campi ed estensioni che sono richiesti in una CRL o condizionalmente richiesti.</p>
-<table class="longtable docutils align-default" id="id761">
-<caption><span class="caption-number">Tabella 5.19 </span><span class="caption-text">Campi ed Estensioni tbsCertList</span><a class="headerlink" href="#id761" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id755">
+<caption><span class="caption-number">Tabella 5.19 </span><span class="caption-text">Campi ed Estensioni tbsCertList</span><a class="headerlink" href="#id755" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4446,65 +4294,65 @@ La tabella seguente elenca tutti tali campi ed estensioni che sono richiesti in 
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p>OPZIONALE. <em>INTEGER</em>. Descrive la versione della CRL codificata.
 Quando sono usate le estensioni (come è prassi standard), questo campo DEVE essere presente e DEVE specificare la versione 2 (il valore intero è <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></td>
-<td><p>[<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.1]</p></td>
+<td><p>[<span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signature</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. L'identificatore di algoritmo per l'algoritmo usato per firmare la CRL.</p></td>
-<td><p>[<span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.2]</p></td>
+<td><p>[<span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.2]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signature.algorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OBJECT IDENTIFIER</em>. L'OID dell'algoritmo di firma.
 DEVE corrispondere al campo <code class="docutils literal notranslate"><span class="pre">signatureAlgorithm</span></code> nella sequence <code class="docutils literal notranslate"><span class="pre">CertificateList</span></code> padre.</p></td>
-<td><p>[<span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signature.parameters</span></code></p></td>
 <td><p>OPZIONALE. <em>ANY</em>. Parametri specifici dell'algoritmo, dipendenti dall'algoritmo usato.</p></td>
-<td><p>[<span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">issuer</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>Name</em>. Identifica l'entità che ha firmato ed emesso la CRL.
 DEVE contenere un distinguished name (DN) X.500 non vuoto composto da sequence <code class="docutils literal notranslate"><span class="pre">AttributeType</span></code> (OID) e <code class="docutils literal notranslate"><span class="pre">AttributeValue</span></code>.</p></td>
-<td><p>[<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.3]</p></td>
+<td><p>[<span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.3]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thisUpdate</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>UTCTime</em> o <em>GeneralizedTime</em>. Indica la data di emissione di questa CRL.
 Le date fino al 2049 DEVONO usare <code class="docutils literal notranslate"><span class="pre">UTCTime</span></code>; le date nel 2050 o successive DEVONO usare <code class="docutils literal notranslate"><span class="pre">GeneralizedTime</span></code>.</p></td>
-<td><p>[<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.4]</p></td>
+<td><p>[<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.4]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nextUpdate</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>UTCTime</em> o <em>GeneralizedTime</em>. Indica la data entro cui sarà emessa la successiva CRL.
 Le date fino al 2049 DEVONO usare <code class="docutils literal notranslate"><span class="pre">UTCTime</span></code>; le date nel 2050 o successive DEVONO usare <code class="docutils literal notranslate"><span class="pre">GeneralizedTime</span></code>.</p></td>
-<td><p>[<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.5]</p></td>
+<td><p>[<span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.5]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">revokedCertificates</span></code></p></td>
 <td><p>OPZIONALE. <em>SEQUENCE OF</em>. Una sequence di certificati revocati.
 Quando non vi sono certificati revocati, questo campo DEVE essere assente.</p></td>
-<td><p>[<span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
+<td><p>[<span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">revokedCertificates.userCertificate</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>INTEGER</em>. Il <code class="docutils literal notranslate"><span class="pre">CertificateSerialNumber</span></code> del certificato revocato.</p></td>
-<td><p>[<span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
+<td><p>[<span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">revokedCertificates.revocationDate</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>UTCTime</em> o <em>GeneralizedTime</em>. La data in cui è avvenuta la revoca.</p></td>
-<td><p>[<span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
+<td><p>[<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">revokedCertificates.crlEntryExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>SEQUENCE OF</em>. Estensioni specifiche per questa entry di certificato revocato.
 Se presente, la <code class="docutils literal notranslate"><span class="pre">version</span></code> della CRL DEVE essere <code class="docutils literal notranslate"><span class="pre">v2</span></code>.</p></td>
-<td><p>[<span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
+<td><p>[<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.6]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">crlExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT SEQUENCE OF</em>. Una sequence di una o più estensioni CRL.
 Se presente, la <code class="docutils literal notranslate"><span class="pre">version</span></code> della CRL DEVE essere <code class="docutils literal notranslate"><span class="pre">v2</span></code>.</p></td>
-<td><p>[<span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.7]</p></td>
+<td><p>[<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.1.2.7]</p></td>
 </tr>
 </tbody>
 </table>
 <p>Il campo <code class="docutils literal notranslate"><span class="pre">crlExtensions</span></code> PUÒ contenere varie estensioni.
 Le estensioni standard notevoli includono:</p>
-<table class="longtable docutils align-default" id="id762">
-<caption><span class="caption-number">Tabella 5.20 </span><span class="caption-text">crlExtensions Notevoli</span><a class="headerlink" href="#id762" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id756">
+<caption><span class="caption-number">Tabella 5.20 </span><span class="caption-text">crlExtensions Notevoli</span><a class="headerlink" href="#id756" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4520,12 +4368,12 @@ Le estensioni standard notevoli includono:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorityKeyIdentifier</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Fornisce un mezzo per identificare la chiave pubblica corrispondente alla chiave privata usata per firmare la CRL.
 Contiene <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> (OCTET STRING), <code class="docutils literal notranslate"><span class="pre">authorityCertIssuer</span></code>, o <code class="docutils literal notranslate"><span class="pre">authorityCertSerialNumber</span></code>.</p></td>
-<td><p><span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.1</p></td>
+<td><p><span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.1</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cRLNumber</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>INTEGER</em>. Un'estensione non critica che convoglia un numero di sequence monotonicamente crescente per un dato scope e issuer di CRL.
 Sia le base CRL sia le delta CRL condividono la stessa sequence monotonicamente crescente; il numero della delta CRL DEVE essere maggiore del numero della base CRL che referenzia.</p></td>
-<td><p><span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.3</p></td>
+<td><p><span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.3</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">deltaCRLIndicator</span></code></p></td>
 <td><p>OBBLIGATORIO per le delta CRL; NON DEVE comparire nelle base CRL. <em>INTEGER</em> (<code class="docutils literal notranslate"><span class="pre">BaseCRLNumber</span></code>). Un'estensione <strong>critica</strong> che marca la CRL come delta CRL e identifica la base CRL rispetto a cui è relativa.
@@ -4533,7 +4381,7 @@ Il valore intero è il <code class="docutils literal notranslate"><span class="p
 Una relying party che non comprende questa estensione DEVE rifiutare la CRL.
 La base CRL DEVE restare raggiungibile (in cache o recuperabile) affinché la delta sia utile.
 Se questa estensione è assente, la CRL è una CRL completa (base).</p></td>
-<td><p><span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.4</p></td>
+<td><p><span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.4</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">freshestCRL</span></code> (a.k.a.
 <em>CRL Distribution Points</em> su una CRL)</p></td>
@@ -4541,14 +4389,14 @@ Se questa estensione è assente, la CRL è una CRL completa (base).</p></td>
 Ciascun <code class="docutils literal notranslate"><span class="pre">DistributionPointName</span></code> reca uno o più URI (tipicamente <code class="docutils literal notranslate"><span class="pre">uniformResourceIdentifier</span></code>).
 Quando presente su una base CRL, DEVE puntare alla location di distribuzione della delta CRL; quando presente su una delta CRL, punta alla delta CRL successiva.
 Una relying party usa questo per scoprire le delta senza configurazione out-of-band aggiuntiva.</p></td>
-<td><p><span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.6</p></td>
+<td><p><span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.6</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">issuingDistributionPoint</span></code></p></td>
 <td><p>OPZIONALE; OBBLIGATORIO quando lo scope della CRL è ristretto (ad es., only-CA, only-end-entity, only-some-reasons) o quando la CRL è indiretta. <em>SEQUENCE</em> (<code class="docutils literal notranslate"><span class="pre">IssuingDistributionPoint</span></code>). Un'estensione <strong>critica</strong> che descrive lo scope della CRL.
 Contiene i flag <code class="docutils literal notranslate"><span class="pre">distributionPoint</span></code>, <code class="docutils literal notranslate"><span class="pre">onlyContainsUserCerts</span></code>, <code class="docutils literal notranslate"><span class="pre">onlyContainsCACerts</span></code>, <code class="docutils literal notranslate"><span class="pre">onlySomeReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">indirectCRL</span></code>, e <code class="docutils literal notranslate"><span class="pre">onlyContainsAttributeCerts</span></code>.
 Per i deployment delta-CRL, il bit <code class="docutils literal notranslate"><span class="pre">indirectCRL</span></code> è impostato a TRUE quando la delta è firmata da un CRL issuer diverso dalla Certificate Authority che ha emesso i certificati (comune quando è usato un servizio di revoca delegato), e <code class="docutils literal notranslate"><span class="pre">onlySomeReasons</span></code> PUÒ restringere la delta CRL a specifiche ragioni di revoca (ad es., solo <code class="docutils literal notranslate"><span class="pre">keyCompromise</span></code>).
 La base CRL e le delta CRL corrispondenti DEVONO condividere lo stesso scope (stessi flag <code class="docutils literal notranslate"><span class="pre">onlyContains*</span></code> e <code class="docutils literal notranslate"><span class="pre">distributionPoint</span></code>).</p></td>
-<td><p><span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.5</p></td>
+<td><p><span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 5.2.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -4556,14 +4404,14 @@ La base CRL e le delta CRL corrispondenti DEVONO condividere lo stesso scope (st
 </section>
 <section id="online-certificate-status-protocol-ocsp">
 <h4><span class="section-number">5.7.3.2. </span>Online Certificate Status Protocol (OCSP)<a class="headerlink" href="#online-certificate-status-protocol-ocsp" title="Link to this heading">¶</a></h4>
-<p>L'Online Certificate Status Protocol (OCSP) (<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>) consente alle applicazioni di determinare lo stato esatto di revoca di certificati identificati.
+<p>L'Online Certificate Status Protocol (OCSP) (<span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>) consente alle applicazioni di determinare lo stato esatto di revoca di certificati identificati.
 Fornisce informazioni di revoca più tempestive di quanto tipicamente possibile con le CRL e PUÒ anche essere usato per ottenere informazioni di status aggiuntive.</p>
 <p>Un client OCSP emette una richiesta di status a un responder OCSP e DEVE sospendere l'accettazione dei certificati in questione fino a quando il responder fornisce una risposta valida.</p>
 <p>Se supportato dalla Certificate Authority, l'URI a cui il Responder OCSP può essere invocato DEVE essere presente nell'estensione <code class="docutils literal notranslate"><span class="pre">authorityInfoAccess.accessLocation</span></code> del Wallet Relying Party Access Certificate (WRPAC).</p>
 <p>Questo protocollo specifica i dati che DEVONO essere scambiati tra il client OCSP (che controlla lo status di uno o più certificati) e il server OCSP (che fornisce lo status corrispondente).</p>
 <p>La tabella seguente sintetizza i ruoli del client e del server OCSP nell'ecosistema EUDIW.</p>
-<table class="longtable docutils align-default" id="id763">
-<caption><span class="caption-number">Tabella 5.21 </span><span class="caption-text">Ruoli OCSP nell'ecosistema EUDIW</span><a class="headerlink" href="#id763" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id757">
+<caption><span class="caption-number">Tabella 5.21 </span><span class="caption-text">Ruoli OCSP nell'ecosistema EUDIW</span><a class="headerlink" href="#id757" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 28.0%" />
 <col style="width: 28.0%" />
@@ -4602,8 +4450,8 @@ Fornisce informazioni di revoca più tempestive di quanto tipicamente possibile 
 <h5><span class="section-number">5.7.3.2.1. </span>Online Certificate Status Protocol Request Format<a class="headerlink" href="#online-certificate-status-protocol-request-format" title="Link to this heading">¶</a></h5>
 <p>La richiesta OCSP DEVE essere la codifica ASN.1 DER della SEQUENCE <code class="docutils literal notranslate"><span class="pre">OCSPRequest</span></code>, che contiene la <code class="docutils literal notranslate"><span class="pre">tbsRequest</span></code> (To-Be-Signed Request) e una firma opzionale.
 La tabella seguente elenca i parametri trovati all'interno della struttura <code class="docutils literal notranslate"><span class="pre">tbsRequest</span></code>.</p>
-<table class="longtable docutils align-default" id="id764">
-<caption><span class="caption-number">Tabella 5.22 </span><span class="caption-text">Parametri della Struttura tbsRequest</span><a class="headerlink" href="#id764" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id758">
+<caption><span class="caption-number">Tabella 5.22 </span><span class="caption-text">Parametri della Struttura tbsRequest</span><a class="headerlink" href="#id758" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4619,29 +4467,29 @@ La tabella seguente elenca i parametri trovati all'interno della struttura <code
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT INTEGER</em>. Indica la versione del protocollo.
 Se omesso, il valore predefinito è <code class="docutils literal notranslate"><span class="pre">v1</span></code> (0).</p></td>
-<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">requestList</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE OF</em>. Contiene una o più richieste di status di singolo certificato.</p></td>
-<td><p>[<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">requestList.reqCert</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. La struttura <code class="docutils literal notranslate"><span class="pre">CertID</span></code> recante l'identificatore di un certificato target.</p></td>
-<td><p>[<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">requestList.singleRequestExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT SEQUENCE</em>. Include estensioni applicabili a questa richiesta di status di singolo certificato.</p></td>
-<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">requestExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>[2] EXPLICIT SEQUENCE</em>. Include estensioni applicabili alle richieste complessive trovate all'interno della <code class="docutils literal notranslate"><span class="pre">requestList</span></code>.</p></td>
-<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 </tbody>
 </table>
 <p>Il parametro <code class="docutils literal notranslate"><span class="pre">reqCert</span></code> utilizza la struttura <code class="docutils literal notranslate"><span class="pre">CertID</span></code>, DEVE essere una <em>SEQUENCE</em> ASN.1 contenente i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id765">
-<caption><span class="caption-number">Tabella 5.23 </span><span class="caption-text">Parametri della Struttura CertID</span><a class="headerlink" href="#id765" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id759">
+<caption><span class="caption-number">Tabella 5.23 </span><span class="caption-text">Parametri della Struttura CertID</span><a class="headerlink" href="#id759" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4656,34 +4504,34 @@ Se omesso, il valore predefinito è <code class="docutils literal notranslate"><
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hashAlgorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Identifica l'algoritmo di hash usato per generare gli hash del nome e della chiave dell'issuer.</p></td>
-<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hashAlgorithm.algorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OBJECT IDENTIFIER</em>. L'OID della funzione di hash (ad es., SHA-256, a seconda del profilo).</p></td>
-<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hashAlgorithm.parameters</span></code></p></td>
 <td><p>OPZIONALE. <em>ANY</em>. Parametri specifici dell'algoritmo, dipendenti dall'algoritmo di hash usato.</p></td>
-<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issuerNameHash</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OCTET STRING</em>. L'hash del distinguished name (DN) dell'issuer, calcolato sulla codifica DER del campo name dell'issuer.</p></td>
-<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">issuerKeyHash</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OCTET STRING</em>. L'hash della chiave pubblica dell'issuer, calcolato sul valore (esclusi tag e length) del campo subject public key.</p></td>
-<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">serialNumber</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>INTEGER</em>. Il serial number del certificato target per cui è richiesto lo status.</p></td>
-<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
+<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.1.1]</p></td>
 </tr>
 </tbody>
 </table>
 <p>Le strutture <code class="docutils literal notranslate"><span class="pre">requestExtensions</span></code> e <code class="docutils literal notranslate"><span class="pre">singleRequestExtensions</span></code> POSSONO contenere varie estensioni.
 La tabella seguente elenca quelle richieste:</p>
-<table class="longtable docutils align-default" id="id766">
-<caption><span class="caption-number">Tabella 5.24 </span><span class="caption-text">Estensione Nonce OCSP</span><a class="headerlink" href="#id766" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id760">
+<caption><span class="caption-number">Tabella 5.24 </span><span class="caption-text">Estensione Nonce OCSP</span><a class="headerlink" href="#id760" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4699,7 +4547,7 @@ La tabella seguente elenca quelle richieste:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nonce</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OCTET STRING</em>. Valore crittograficamente fresco usato per vincolare una richiesta e una risposta al fine di prevenire attacchi di replay.
 L'identificatore OID è <code class="docutils literal notranslate"><span class="pre">id-pkix-ocsp-nonce</span></code>.</p></td>
-<td><p>[<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.4.1]</p></td>
+<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.4.1]</p></td>
 </tr>
 </tbody>
 </table>
@@ -4738,8 +4586,8 @@ L'identificatore OID è <code class="docutils literal notranslate"><span class="
 <p>Una risposta OCSP DEVE essere la codifica ASN.1 DER della <em>SEQUENCE</em> <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code>.
 Quando trasportata su HTTP, il body della risposta HTTP DEVE contenere la codifica DER raw di questa <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code>, con il MIME type <code class="docutils literal notranslate"><span class="pre">application/ocsp-response</span></code>.
 La <em>SEQUENCE</em> <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code> contiene i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id767">
-<caption><span class="caption-number">Tabella 5.25 </span><span class="caption-text">Parametri della Struttura OCSPResponse</span><a class="headerlink" href="#id767" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id761">
+<caption><span class="caption-number">Tabella 5.25 </span><span class="caption-text">Parametri della Struttura OCSPResponse</span><a class="headerlink" href="#id761" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4755,21 +4603,21 @@ La <em>SEQUENCE</em> <code class="docutils literal notranslate"><span class="pre
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">responseStatus</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>ENUMERATED</em>. Indica lo status di elaborazione della richiesta precedente.
 I valori supportati sono: <code class="docutils literal notranslate"><span class="pre">successful</span></code> (0), <code class="docutils literal notranslate"><span class="pre">malformedRequest</span></code> (1), <code class="docutils literal notranslate"><span class="pre">internalError</span></code> (2), <code class="docutils literal notranslate"><span class="pre">tryLater</span></code> (3), <code class="docutils literal notranslate"><span class="pre">sigRequired</span></code> (5), e <code class="docutils literal notranslate"><span class="pre">unauthorized</span></code> (6).</p></td>
-<td><p>[<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">responseBytes</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT SEQUENCE</em>. Presente solo quando il <code class="docutils literal notranslate"><span class="pre">responseStatus</span></code> è <code class="docutils literal notranslate"><span class="pre">successful</span></code> (0).
 Contiene il tipo di risposta e i dati di risposta codificati.</p></td>
-<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">responseBytes.responseType</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OBJECT IDENTIFIER</em>. Identificatore per il tipo di risposta.
 Per un responder OCSP basic, questo valore DEVE essere <code class="docutils literal notranslate"><span class="pre">id-pkix-ocsp-basic</span></code>.</p></td>
-<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">responseBytes.response</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OCTET STRING</em>. Contiene la codifica DER della sintassi di risposta identificata da <code class="docutils literal notranslate"><span class="pre">responseType</span></code> (ad es., la struttura <code class="docutils literal notranslate"><span class="pre">BasicOCSPResponse</span></code>).</p></td>
-<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 </tbody>
 </table>
@@ -4779,8 +4627,8 @@ Per un responder OCSP basic, questo valore DEVE essere <code class="docutils lit
 Corrispondentemente, i client OCSP DEVONO essere in grado di ricevere ed elaborare risposte del tipo di risposta <code class="docutils literal notranslate"><span class="pre">id-pkix-ocsp-basic</span></code>.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">BasicOCSPResponse</span></code> è una SEQUENCE ASN.1 contenente i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id768">
-<caption><span class="caption-number">Tabella 5.26 </span><span class="caption-text">Parametri della Struttura BasicOCSPResponse</span><a class="headerlink" href="#id768" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id762">
+<caption><span class="caption-number">Tabella 5.26 </span><span class="caption-text">Parametri della Struttura BasicOCSPResponse</span><a class="headerlink" href="#id762" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4795,66 +4643,66 @@ Corrispondentemente, i client OCSP DEVONO essere in grado di ricevere ed elabora
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Contiene i dati core della risposta da firmare da parte del responder.</p></td>
-<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.version</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT INTEGER</em>. La versione della sintassi di risposta.
 Se omesso, il valore predefinito è <code class="docutils literal notranslate"><span class="pre">v1</span></code> (0).</p></td>
-<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.responderID</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>CHOICE</em>. Identifica il responder OCSP.
 DEVE contenere o <code class="docutils literal notranslate"><span class="pre">byName</span></code> o <code class="docutils literal notranslate"><span class="pre">byKey</span></code>.</p></td>
-<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.responderID.byName</span></code></p></td>
 <td><p>OPZIONALE. <em>[1] EXPLICIT Name</em>. Il <code class="docutils literal notranslate"><span class="pre">Name</span></code> dal subject del certificato del responder.</p></td>
-<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.responderID.byKey</span></code></p></td>
 <td><p>OPZIONALE. <em>[2] EXPLICIT OCTET STRING</em>. L'hash SHA-1 del <code class="docutils literal notranslate"><span class="pre">subjectPublicKey</span></code> del responder (esclusi i campi tag e length).</p></td>
-<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.producedAt</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>GeneralizedTime</em>. L'ora in cui la risposta OCSP è stata generata.</p></td>
-<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.responses</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE OF</em>. Una sequence di strutture <code class="docutils literal notranslate"><span class="pre">SingleResponse</span></code>, che forniscono lo status di ciascun certificato richiesto.</p></td>
-<td><p>[<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tbsResponseData.responseExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>[1] EXPLICIT SEQUENCE OF</em>. Contiene estensioni applicabili alla risposta OCSP complessiva.</p></td>
-<td><p>[<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Identifica l'algoritmo crittografico usato per firmare la risposta.</p></td>
-<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm.algorithm</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>OBJECT IDENTIFIER</em>. L'OID dell'algoritmo di firma.
 La selezione DOVREBBE allinearsi agli standard rilevanti (ad es., [ETSI TS 119 312]).</p></td>
-<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signatureAlgorithm.parameters</span></code></p></td>
 <td><p>OPZIONALE. <em>ANY</em>. Parametri specifici dell'algoritmo, dipendenti dall'OID definito in <code class="docutils literal notranslate"><span class="pre">algorithm</span></code>.</p></td>
-<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
+<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>, clausola 4.1.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">signature</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>BIT STRING</em>. La firma digitale calcolata sull'hash della <code class="docutils literal notranslate"><span class="pre">tbsResponseData</span></code> codificata DER.</p></td>
-<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">certs</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT SEQUENCE OF</em>. Catena di certificati per aiutare il client a verificare la firma del responder.
 Se non sono inclusi certificati, questo campo DOVREBBE essere assente.</p></td>
-<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 </tbody>
 </table>
 <p>La struttura <code class="docutils literal notranslate"><span class="pre">responseExtensions</span></code> PUÒ contenere varie estensioni.
 La tabella seguente elenca quelle richieste:</p>
-<table class="longtable docutils align-default" id="id769">
-<caption><span class="caption-number">Tabella 5.27 </span><span class="caption-text">Estensioni di Risposta Nonce</span><a class="headerlink" href="#id769" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id763">
+<caption><span class="caption-number">Tabella 5.27 </span><span class="caption-text">Estensioni di Risposta Nonce</span><a class="headerlink" href="#id763" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4871,14 +4719,14 @@ La tabella seguente elenca quelle richieste:</p>
 <td><p>OBBLIGATORIO. <em>OCTET STRING</em>. Valore crittograficamente fresco usato per vincolare una richiesta e una risposta al fine di prevenire attacchi di replay.
 Se incluso nella richiesta, i responder DOVREBBERO includerlo nella risposta.
 L'identificatore OID è <code class="docutils literal notranslate"><span class="pre">id-pkix-ocsp-nonce</span></code>.</p></td>
-<td><p>[<span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.4.1]</p></td>
+<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.4.1]</p></td>
 </tr>
 </tbody>
 </table>
 <p>Nella Risposta OCSP DEVE esserci almeno una <code class="docutils literal notranslate"><span class="pre">SingleResponse</span></code> per ciascun <code class="docutils literal notranslate"><span class="pre">CertID</span></code> nella richiesta.
 Ciascuna <code class="docutils literal notranslate"><span class="pre">SingleResponse</span></code> è una <em>SEQUENCE</em> ASN.1 che reca i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id770">
-<caption><span class="caption-number">Tabella 5.28 </span><span class="caption-text">Parametri della Struttura SingleResponse</span><a class="headerlink" href="#id770" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id764">
+<caption><span class="caption-number">Tabella 5.28 </span><span class="caption-text">Parametri della Struttura SingleResponse</span><a class="headerlink" href="#id764" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4893,45 +4741,45 @@ Ciascuna <code class="docutils literal notranslate"><span class="pre">SingleResp
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">certID</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>SEQUENCE</em>. Identificatore del certificato il cui status è determinato in <code class="docutils literal notranslate"><span class="pre">certStatus</span></code>.</p></td>
-<td><p>[<span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>CHOICE</em>. Il valore dello status del certificato.
 DEVE essere esattamente uno tra: <code class="docutils literal notranslate"><span class="pre">good</span></code>, <code class="docutils literal notranslate"><span class="pre">revoked</span></code>, o <code class="docutils literal notranslate"><span class="pre">unknown</span></code>.</p></td>
-<td><p>[<span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus.good</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] IMPLICIT NULL</em>. Indica che il certificato è valido.</p></td>
-<td><p>[<span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus.revoked</span></code></p></td>
 <td><p>OPZIONALE. <em>[1] IMPLICIT SEQUENCE</em>. Indica che il certificato è stato revocato.
 Contiene la struttura <code class="docutils literal notranslate"><span class="pre">RevokedInfo</span></code>.</p></td>
-<td><p>[<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus.revoked.revocationTime</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>GeneralizedTime</em>. L'ora in cui il certificato è stato revocato.</p></td>
-<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus.revoked.revocationReason</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT ENUMERATED</em>. Contiene il <code class="docutils literal notranslate"><span class="pre">CRLReason</span></code> che indica perché il certificato è stato revocato.</p></td>
-<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">certStatus.unknown</span></code></p></td>
 <td><p>OPZIONALE. <em>[2] IMPLICIT NULL</em>. Indica che il responder non conosce lo status del certificato.</p></td>
-<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thisUpdate</span></code></p></td>
 <td><p>OBBLIGATORIO. <em>GeneralizedTime</em>. Indica la data e l'ora di emissione di questa Risposta OCSP.</p></td>
-<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nextUpdate</span></code></p></td>
 <td><p>OPZIONALE. <em>[0] EXPLICIT GeneralizedTime</em>. Indica la data e l'ora entro cui il successivo aggiornamento al database del Responder OCSP sarà in vigore.</p></td>
-<td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">singleExtensions</span></code></p></td>
 <td><p>OPZIONALE. <em>[1] EXPLICIT SEQUENCE</em>. Include estensioni applicabili a questa risposta di status di singolo certificato.</p></td>
-<td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
+<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, clausola 4.2.1]</p></td>
 </tr>
 </tbody>
 </table>
@@ -4997,7 +4845,7 @@ Contiene la struttura <code class="docutils literal notranslate"><span class="pr
 <p>Questa sezione profila il meccanismo Token Status List (TSL) di <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> per i Wallet-Relying Party Registration Certificate (WRPRC). Una TSL convoglia lo status corrente di molti WRPRC in un Status List Token (SLT) compatto e firmato.</p>
 <p>Lo SLT Provider PUÒ essere il Provider of WRPRC o un'entità designata.</p>
 <p><strong>Status List</strong></p>
-<p>Una Status List contiene un array di byte compresso le cui entry rappresentano gli status di molti WRPRC. Il Provider of WRPRC DEVE assegnare un valore <code class="docutils literal notranslate"><span class="pre">idx</span></code> distinto, non negativo a ciascun WRPRC emesso e includerlo, insieme all'<code class="docutils literal notranslate"><span class="pre">uri</span></code> della SLT, nel membro <code class="docutils literal notranslate"><span class="pre">status.status_list</span></code> del WRPRC. Per un WRPRC codificato JWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero JSON e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una stringa JSON; per un WRPRC codificato CWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero non firmato CBOR e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una text string CBOR. In entrambi i casi, <code class="docutils literal notranslate"><span class="pre">uri</span></code> DEVE essere un URI conforme a <span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>Una Status List contiene un array di byte compresso le cui entry rappresentano gli status di molti WRPRC. Il Provider of WRPRC DEVE assegnare un valore <code class="docutils literal notranslate"><span class="pre">idx</span></code> distinto, non negativo a ciascun WRPRC emesso e includerlo, insieme all'<code class="docutils literal notranslate"><span class="pre">uri</span></code> della SLT, nel membro <code class="docutils literal notranslate"><span class="pre">status.status_list</span></code> del WRPRC. Per un WRPRC codificato JWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero JSON e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una stringa JSON; per un WRPRC codificato CWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero non firmato CBOR e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una text string CBOR. In entrambi i casi, <code class="docutils literal notranslate"><span class="pre">uri</span></code> DEVE essere un URI conforme a <span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
 <p>Secondo l'ARF e [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], lo status del WRPRC è <code class="docutils literal notranslate"><span class="pre">VALID</span></code> o <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>; pertanto, il Provider of WRPRC DEVE impostare il parametro <code class="docutils literal notranslate"><span class="pre">bits</span></code> nell'oggetto <code class="docutils literal notranslate"><span class="pre">status_list</span></code> della SLT a <code class="docutils literal notranslate"><span class="pre">1</span></code>. Il valore <code class="docutils literal notranslate"><span class="pre">0x00</span></code> rappresenta <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, e <code class="docutils literal notranslate"><span class="pre">0x01</span></code> rappresenta <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>.</p>
 <p>Lo SLT Provider DEVE impacchettare le entry a partire dal bit meno significativo di ciascun byte, comprimere l'array di byte usando DEFLATE con il formato dati ZLIB, e pubblicare la Status List risultante nella SLT.</p>
 <p><strong>Status List Token</strong></p>
@@ -5200,7 +5048,7 @@ Contiene la struttura <code class="docutils literal notranslate"><span class="pr
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 21/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

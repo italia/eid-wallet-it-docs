@@ -92,14 +92,14 @@ All'emissione la Wallet Unit avvia l'interazione e conosce l'Attestato richiesto
 La selezione è determinata dal fatto che il Credential Issuer sia un'entità nazionale oppure di un altro Stato membro, insieme al catalogo dell'Attestato richiesto (vedere :ref:`registry:Digital Credentials Catalog`).
 
 Per Authentication, Authorization e Metadata Retrieval and Validation del Credential Issuer, la Wallet Unit DEVE applicare le procedure EUDIW quando il Credential Issuer, o il PID, la (Q)EAA o la PuB-EAA richiesti, è di un altro Stato membro.
-La Wallet Unit DOVREBBE applicare le procedure del Trust Framework Nazionale quando il Credential Issuer è un'entità nazionale.
+La Wallet Unit PUÒ applicare le procedure del Trust Framework Nazionale quando il Credential Issuer è un'entità nazionale, compreso il PID Provider italiano.
 Il Trust Framework Nazionale NON DEVE essere selezionato per l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
 Questa regola DEVE essere applicata anche agli EAA Provider; pertanto, lo stesso Credential Issuer PUÒ essere valutato nell'ambito di framework diversi in interazioni diverse, in funzione della controparte e dell'Attestato richiesto.
 Gli header degli artifact firmati del Credential Issuer riflettono la stessa selezione: un header ``x5c`` che reca il certificato di accesso per il percorso EUDIW, e un header ``kid``, con l'header ``trust_chain`` opzionale, per il percorso del Trust Framework Nazionale.
 Tali header DEVONO essere coerenti con il framework selezionato.
 
 Per la validazione della Wallet Unit, il Credential Issuer DEVE validare la Wallet Instance Attestation attraverso la Wallet Providers List of Trusted Entities quando la Wallet Unit è di un altro Stato membro.
-Un Credential Issuer DOVREBBE validare la Wallet Instance Attestation attraverso il Trust Framework Nazionale quando la Wallet Unit è nazionale (vedere :ref:`trust-evaluation:Wallet Unit Authentication`).
+Un Credential Issuer PUÒ validare la Wallet Instance Attestation attraverso il Trust Framework Nazionale quando la Wallet Unit è nazionale (vedere :ref:`trust-evaluation:Wallet Unit Authentication`).
 
 Selection at Presentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +109,7 @@ Nel flusso remoto la selezione è dichiarata dalla Relying Party attraverso il p
 La Relying Party non autentica la Wallet Unit e pertanto non può selezionare il Trust Framework in funzione dello Stato membro di quella Wallet Unit o Soluzione Wallet.
 
 Una Relying Party nazionale che offre servizi di interoperabilità al di fuori del pubblico nazionale DEVE utilizzare il Client Identifier Prefix ``x509_hash`` e gli artifact EUDIW, come richiesto da [`ETSI TS 119 472-2`_] (OIDFVP-HAIP_COMMON_GEN_REQ-02).
-Una Relying Party nazionale che non offre tali servizi interoperabili e si rivolge esclusivamente a un pubblico nazionale DOVREBBE utilizzare il prefisso ``openid_federation`` con gli artifact di federazione, anche quando richiede un PID, una (Q)EAA o una PuB-EAA.
+Una Relying Party nazionale PUÒ utilizzare il prefisso ``openid_federation`` con gli artifact di federazione, anche quando richiede un PID, una (Q)EAA o una PuB-EAA italiani.
 
 La Wallet Unit DEVE supportare entrambi i prefissi.
 DEVE processare una richiesta con il prefisso ``x509_hash`` nell'ambito delle procedure EUDIW (vedere :ref:`trust-evaluation:EUDIW Authentication`).
@@ -136,7 +136,7 @@ Failure Handling
 Il fallimento della trust evaluation nell'ambito del framework selezionato NON DEVE essere valutato nuovamente nell'ambito dell'altro framework.
 In particolare, una valutazione EUDIW fallita NON DEVE essere ritentata come valutazione del Trust Framework Nazionale.
 
-Se l'Authentication fallisce, la Wallet Unit DEVE informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e DEVE interrompere l'interazione ([`EIDAS-ARF`_] CT_06, RPA_06a).
+Se l'Authentication fallisce, la Wallet Unit DEVE informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e DEVE interrompere l'interazione ([`EIDAS-ARF`_] RPA_06a).
 Lo stesso vale nell'ambito del Trust Framework Nazionale: un esito ``NON_AUTHENTICATED`` DEVE interrompere l'interazione.
 
 Se l'Authentication ha successo e l'Authorization fallisce, la Wallet Unit DEVE applicare :ref:`trust-evaluation:Authorization Decision and Override Rules`.

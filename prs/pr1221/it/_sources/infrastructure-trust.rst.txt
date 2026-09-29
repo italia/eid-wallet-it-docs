@@ -15,7 +15,7 @@ Nell'IT-Wallet coesistono due Trust Framework.
     È obbligatorio e autorevole per tali Attestati e Wallet-Relying Party di altri Stati membri, e per l'interoperabilità transfrontaliera.
   - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 dedicata alla firma degli Attestati Elettronici che richiedono una PKI X.509.
     È **fuori dall'ARF**. È il livello di registrazione e onboarding per tutte le entità dell'ecosistema.
-    OpenID Federation DOVREBBE essere utilizzata da un'entità nazionale che si rivolge esclusivamente a un pubblico nazionale.
+    Un'entità nazionale PUÒ utilizzare OpenID Federation, anche per l'emissione e la presentazione di un PID, di una (Q)EAA o di una PuB-EAA italiani.
 
 Il Trust Framework Nazionale NON DEVE essere selezionato, e NON DEVE essere usato come fallback, per l'emissione o la presentazione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
 Una Wallet-Relying Party nazionale che offre servizi di interoperabilità al di fuori del pubblico nazionale DEVE utilizzare il Trust Framework EUDIW, come specificato in :ref:`trust-evaluation:Trust Framework Selection`.

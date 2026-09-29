@@ -109,7 +109,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 3.0.0; specific to IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+      A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation.
+      Not present in ARF 3.0.0; specific to IT-Wallet.
+
+    **Keystore**
+      A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials. The properties of the Keystore are attested through the OEM Key Attestation APIs.
       Not present in ARF 3.0.0; specific to IT-Wallet.
 
     **Level of Assurance**
@@ -214,10 +218,9 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Relying Party Service**
     **Wallet-Relying Party Service**
-      First-class registration object of a Wallet-Relying Party, identified by a ``serviceTradeName`` suitable for presenting to the User and, when registered, by a ``serviceIdentifier`` unique within that entity.
-      Intended uses, entitlements and the corresponding Trust Artifacts of that Wallet-Relying Party are bound to a Service.
-      In the Register the object is ``WalletRelyingPartyService`` in the ``services`` array of `EUDI-TS 5`_.
-      Aligned with ARF 3.0.0 Section 3.11.2 and [`CIR2026/1730`_].
+      Service of a Wallet-Relying Party, registered separately from that entity's other services and distinguished by its identifier and trade name.
+      Encoded in `EUDI-TS 5`_ as ``WalletRelyingPartyService``.
+      Aligned with Section 3.11.2 of the `EIDAS-ARF`_.
 
     **Relying Party Solution**
       Product (software/hardware/cloud) enabling Credential presentations in various contexts.
@@ -293,7 +296,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Access Certificate Authority**
     **Access CA**
     **Provider of WRPAC**
-      Natural or legal person mandated by a Member State to issue Wallet-Relying Party Access Certificates to Wallet-Relying Parties registered in that Member State.
+      Legal person mandated by a Member State to issue Wallet-Relying Party Access Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPAC.
       Aligned with ARF 3.0.0.
 
@@ -305,7 +308,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
     **Provider of WRPRC**
-      Natural or legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
+      Legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPRC.
       It issues those certificates automatically once the Entity has a valid registration of a Service and a valid WRPAC of that Service.
       Aligned with ARF 3.0.0.
@@ -330,7 +333,6 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Trusted List**
       List that provides information about the status and the status history of the trust services from trust service providers regarding compliance with the applicable requirements (`ETSI TS 119 612`_).
-      Where the ARF refers to LoTE consumption, implementers use the List of Trusted Entities. QEAA Provider national Trusted Lists follow this Trusted List profile and are discovered through the List of Trusted Lists.
       Aligned with ARF 3.0.0.
 
     **List of Trusted Entities**
@@ -365,11 +367,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **Wallet Secure Cryptographic Application**
-      Application managing critical assets using cryptographic functions provided by the WSCD.
+      Application managing critical assets using cryptographic functions provided by the WSCD. In IT-Wallet, the WSCA is used exclusively for the issuance and management of the PID at Level of Assurance High, operating within a Remote WSCD based on a remote Hardware Security Module (remote HSM).
       Aligned with ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing an environment for the WSCA to protect critical assets.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.
       Aligned with ARF 3.0.0.
 
     **Wallet Solution**
@@ -388,7 +390,8 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Key Attestation**
     **KA**
-      A type of Wallet Unit Attestation that attests the certification and properties of a WSCA/WSCD or keystore available to the Wallet Unit, and that contains one or more public keys whose corresponding private keys are generated by and stored in that WSCA/WSCD or keystore.
+      A type of Wallet Unit Attestation that attests the certification and properties of a WSCA/WSCD or Keystore available to the Wallet Unit, and that contains one or more public keys whose corresponding private keys are generated by and stored in that WSCA/WSCD or Keystore.
+      For the PID at Level of Assurance High, the Key Attestation describes the WSCA and the Remote WSCD (remote HSM). For other device-bound Digital Credentials, the Key Attestation describes the properties of the Keystore as attested by the OEM Key Attestation APIs.
       It is issued by the Wallet Provider.
       Aligned with ARF 3.0.0 Topic 9 and Technical Specification 3.
 
@@ -411,7 +414,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_, Article 5b(8)); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity.
 
     **Relying Party Intermediary**
-      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_ Topic 52). In an intermediated EUDIW presentation the Intermediary authenticates with a WRPAC associated to that Relying Party ([`EIDAS-ARF`_] Reg_34a) and the Wallet Unit SHALL NOT display the Intermediary's trade names ([`EIDAS-ARF`_] RPI_07). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_ Topic 52). In an intermediated EUDIW presentation the Intermediary authenticates with a WRPAC associated to that Relying Party ([`EIDAS-ARF`_] Reg_34a) and the Wallet Unit MUST NOT display the Intermediary's trade names ([`EIDAS-ARF`_] RPI_07). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
       Aligned with ARF 3.0.0 Topic 52.
 
     **IT-Wallet ID**

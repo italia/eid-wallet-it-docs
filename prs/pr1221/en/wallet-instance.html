@@ -317,7 +317,7 @@
 <h1><span class="section-number">9.1.4. </span>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h1>
 <p>The Wallet Instance establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.</p>
 <p>The Wallet Instance establishes trust with PID and (Q)EAA Providers by consistently presenting Wallet Instance and Key Attestations during interactions.
-These verifiable attestations, provided by the Wallet Provider, serve to authenticate the Wallet Instance itself, ensuring the trustworthiness of the WSCD, checking the Wallet Instance has not been revoked and ensuring its reliability when engaging with other ecosystem actors.</p>
+These verifiable attestations, provided by the Wallet Provider, serve to authenticate the Wallet Instance itself, ensuring the trustworthiness of the secure storage environment: the <strong>Keystore</strong> for all device-bound Digital Credentials, and the <strong>WSCA</strong> operating within a <strong>Remote WSCD</strong> (remote HSM) exclusively for the PID at Level of Assurance High. They also verify that the Wallet Instance has not been revoked and ensure its reliability when engaging with other ecosystem actors.</p>
 <p>Requirements on Trust Framework support and on the presentation of Wallet Instance Attestation and Key Attestation are specified in <a class="reference internal" href="wallet-solution-requirements.html#wallet-solution-requirements"><span class="std std-ref">Wallet Solution Requirements</span></a>.
 PID issuance before EUDIW notification is specified in <a class="reference internal" href="credential-data-model-pid.html#pid-until-notification"><span class="std std-ref">PID issuance before EUDIW notification</span></a>.</p>
 <div class="toctree-wrapper compound">
@@ -402,7 +402,7 @@ PID issuance before EUDIW notification is specified in <a class="reference inter
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 21/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 29/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

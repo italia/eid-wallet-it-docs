@@ -13,7 +13,7 @@ The Wallet Unit MUST support the Authorization Code Grant and possibly the Pre-A
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Issuance`; the EUDIW and National paths are mutually exclusive for each interaction, and a failed path MUST NOT be retried or supplemented with evidence from the other path.
 
 A Credential Issuer invoked through the EUDI Wallet flow MUST use the ``eu-eaa-offer://`` scheme for Credential Offers as profiled by [`ETSI TS 119 472-3`_].
-A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Wallet Unit that implements only the EUDIW procedures MUST be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 PID issuance before EUDIW notification is specified in :ref:`pid-until-notification`.
 
 
