@@ -179,7 +179,7 @@ The table below maps each Data Identifier to the fields of the destination data 
          - ``contacts``, 
          - ``homepage_uri``.
        
-       In the registration Trust Mark, the ``email`` and the ``support_uri``. In the Entity Configuration, the ``contacts`` and the ``homepage_uri`` of the ``federation_entity`` metadata. In the Digital Credentials Catalog, the ``contacts`` and the ``homepage_uri`` of the ``issuers`` element of the Credential Issuer.
+       In the registration Trust Mark, the ``email`` and the ``support_uri``. In the Entity Configuration, the ``contacts`` and the ``organization_uri`` of the ``federation_entity`` metadata. In the Digital Credentials Catalog, the ``contacts`` and the ``homepage_uri`` of the ``issuers`` element of the Credential Issuer.
    * - `service_policies`
      - In the Register, the ``policyURI`` of each element of the ``policy`` array, distinguished by its ``type``. In the registration Trust Mark, the ``privacy_policy``. In the Entity Configuration, the ``policy_uri`` and the ``tos_uri`` of the ``federation_entity`` metadata. In the Digital Credentials Catalog, the ``policy_uri`` and the ``tos_uri`` of the ``issuers`` element of the Credential Issuer.
    * - `data_protection_authority`

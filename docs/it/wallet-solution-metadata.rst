@@ -4,7 +4,7 @@
 Metadati della Soluzione Wallet
 -------------------------------
 
-L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i seguenti parametri. Le chiavi pubbliche presenti in questo oggetto sono utilizzate esclusivamente per operazioni di firma e/o crittografia richieste a questa Entità quando agisce come componente del Fornitore di Wallet (ad esempio, firmare gli Attestati di Wallet per l'Istanza del Wallet).
+L'oggetto JSON dei metadati la cui chiave è ``openid_wallet_provider`` contiene i seguenti parametri. Le chiavi pubbliche presenti in questo oggetto sono utilizzate esclusivamente per operazioni di firma e/o crittografia richieste a questa Entità quando agisce come componente del Fornitore di Wallet (ad esempio, firmare gli Attestati di Wallet per l'Istanza del Wallet).
 
 .. list-table::
     :class: longtable

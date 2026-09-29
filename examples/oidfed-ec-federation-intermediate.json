@@ -20,7 +20,7 @@
   "metadata": {
     "federation_entity": {
       "organization_name": "Intermediary S.r.l.",
-      "homepage_uri": "https://intermediary.example.com",
+      "organization_uri": "https://intermediary.example.com",
       "policy_uri": "https://intermediary.example.com/policy",
       "logo_uri": "https://intermediary.example.com/logo.svg",
       "contacts": [

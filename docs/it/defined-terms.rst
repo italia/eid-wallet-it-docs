@@ -34,6 +34,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Processo elettronico che consente di confermare l'Identificazione di una persona fisica o giuridica, oppure l'origine/integrità dei dati.
       Conforme con ARF 2.7.3.
 
+    **Identity Matching**
+      Processo con cui una Relying Party accerta che gli attributi di identificazione personale presentati in una transazione si riferiscano alla stessa persona fisica. Vedere :ref:`identity-matching`.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Identity Reconciliation**
+      Processo con cui una Relying Party, dopo un identity matching andato a buon fine, collega quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato. Vedere :ref:`identity-matching`.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Fonte Autentica**
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
       Conforme con ARF 2.7.3.
@@ -351,7 +359,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High. Un WSCD DEVE essere certificabile come resistente ad attaccanti con potenziale di attacco elevato (almeno Common Criteria EAL4+ AVA_VAN.5). Un Keystore hardware-backed non è un WSCD e NON DEVE essere trattato come prova di Livello di Garanzia Alto.
       Conforme con ARF 2.7.3.
 
     **Soluzione Wallet**
@@ -365,13 +373,17 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Key Attestation**
     **KA**
-      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un ambiente sicuro affidabile. Per il PID (LoA High), il Key Attestation descrive le proprietà del WSCA e del Remote WSCD (HSM remoto); per tutte le altre Credenziali Digitali device-bound, il Key Attestation descrive le proprietà del Keystore tramite le OEM Key Attestation APIs.
+      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali sono generate e archiviate in modo sicuro in un ambiente hardware affidabile: un Keystore per le Credenziali Digitali diverse dal PID a Livello di Garanzia Alto, oppure un WSCA operante in un Remote WSCD per tale PID. Le chiavi private vincolate a una Key Attestation DEVONO essere memorizzate nello stesso Keystore o WSCA/Remote WSCD delle chiavi degli Attestati Elettronici che la Key Attestation attesta.
       Allineato alla Technical Specification 3.
 
     **Wallet Instance Attestation**
-    **Wallet Attestation**
-      Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet.
+    **WIA**
+      Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet. Questa specifica usa **Wallet Instance Attestation (WIA)**. Il nome legacy «Wallet Attestation» NON DEVE essere usato per questo artefatto.
       Specifico per l'IT-Wallet.
+
+    **Wallet Unit Attestation**
+    **WUA**
+      Attestazioni che una Wallet Unit usa durante l'emissione di un PID o di un'attestazione. Una Wallet Unit Attestation comprende due tipi: le Wallet Instance Attestation (WIA), che attestano l'integrità dell'Istanza del Wallet, e le Key Attestation (KA), che attestano la sicurezza delle chiavi crittografiche memorizzate nella Wallet Unit.
 
     **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.
@@ -509,6 +521,10 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **KA**
+    - Key Attestation
+  * - **WIA**
+    - Wallet Instance Attestation (Attestato dell'Istanza del Wallet)
   * - **WRPAC**
     - Wallet-Relying Party Access Certificate (Certificato di Accesso della Wallet-Relying Party)
   * - **WRPRC**
@@ -517,6 +533,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**
     - Wallet Secure Cryptographic Device (Dispositivo Crittografico Sicuro per il Wallet)
+  * - **WUA**
+    - Wallet Unit Attestation
 
 Linguaggio Normativo e Convenzioni
 ==================================

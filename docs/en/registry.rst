@@ -1101,8 +1101,12 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.
    * - **data_capabilities[].contacts**
-     - String Array
-     - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
+     - JSON Object Array
+     - OPTIONAL. Array containing customer service contacts or user support channels related to the specific dataset. Each object contains:
+
+        - **type**: REQUIRED. Indicates the type of contact information and MUST be set to ``email``, ``telephone`` or ``url``.
+        - **value**: REQUIRED. Contains the value of the contact information corresponding to the specified type.
+        - **description**: OPTIONAL. A textual description associated with the contact information.
    * - **data_capabilities[].verification_endpoint**
      - JSON object
      - OPTIONAL. Present only for Annex VI attributes relying on a public-sector Authentic Source that are exported to the EUDIW Catalogue of Attributes. Describes the cross-border verification interface exposed to Qualified Trust Service Providers, distinct from the domestic PDND e-Service and conformant to ETSI TS 119 478. It contains ``method`` (one of ``oots_edelivery`` for the ISO 15000/eDelivery interface of ETSI TS 119 478 Section 6.2, or ``rest_oauth2`` for the REST + OAuth 2.0 interface of ETSI TS 119 478 Section 6.1) and ``endpoint`` (the eDelivery party identifier or REST endpoint). The interface MAY be exposed by the Authentic Source directly or by a designated national intermediary (e.g. an OOTS access point).
@@ -1184,7 +1188,7 @@ It allows the discovery of schema URIs and their cryptographic integrity checks.
    * - **version**
      - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
    * - **last_modified**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+     - REQUIRED. The timestamp indicating when the Schema Registry was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
 
@@ -1391,7 +1395,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **pricing_model_uri**: URI to the detailed pricing model documentation.
   * - **validity_info**
-    - Information about Digital Credential validity, including at least:
+    - REQUIRED. Information about Digital Credential validity, including at least:
 
       * **max_validity_days**: Maximum validity period in days.
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).

@@ -19,7 +19,7 @@
     },
     "metadata": {
         "federation_entity": {
-            "homepage_uri": "https://eaa-provider.example.org/",
+            "organization_uri": "https://eaa-provider.example.org/",
             "organization_name": "Organization Name",
             "contacts": [
                 "informazioni@example.it",

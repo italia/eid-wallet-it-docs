@@ -277,7 +277,7 @@ Di seguito è riportato un esempio non normativo di un'Entity Configuration del 
                 "contacts":[
                     "tech@eid.trust-anchor.example.eu"
                 ],
-                "homepage_uri": "https://trust-anchor.eid-wallet.example.it",
+                "organization_uri": "https://trust-anchor.eid-wallet.example.it",
                 "logo_uri":"https://trust-anchor.eid-wallet.example.it/static/svg/logo.svg",
                 "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/fetch",
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
@@ -404,7 +404,7 @@ Di seguito è riportato un esempio non normativo di Entity Configuration del Tru
         "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
           "https://trust-anchor.eid-wallet.example.it"
         ],
-        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_wallet_provider": [
           "https://trust-anchor.eid-wallet.example.it"
         ]
       }
@@ -464,8 +464,8 @@ In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli 
      - `OID-FED`_
    * - Fornitore di Wallet
      - Fornitore di Wallet
-     - ``federation_entity``, ``wallet_solution``
-     - --
+     - ``federation_entity``, ``openid_wallet_provider``
+     - `OID-FED-WALLET`_
    * - Authorization Server
      -
      - ``federation_entity``, ``oauth_authorization_server``
@@ -507,8 +507,8 @@ I metadati *federation_entity* per le Foglie contiene i seguenti claim.
     - **Descrizione**
   * - **organization_name**
     - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
-  * - **homepage_uri**
-    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
+  * - **organization_uri**
+    - OBBLIGATORIO. URL della pagina web dell'organizzazione che possiede l'entità. Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
     - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**

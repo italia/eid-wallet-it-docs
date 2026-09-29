@@ -4,12 +4,13 @@ This document lists previous released versions of the IT-Wallet documentation. F
 
 ---
 
-## Previous Releases (Pre-1.4.0)
+## Previous Releases
 
 ### LTS Releases (1.4.x)
 
 | Version | English | Italian |
 |---------|---------|---------|
+| 1.4.6 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.6/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.6/eid-wallet-it-docs-en-20260806-094556.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.6/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.6/eid-wallet-it-docs-it-20260806-094556.pdf) |
 | 1.4.5 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.5/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.5/eid-wallet-it-docs-en-20260713-143742.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.5/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.5/eid-wallet-it-docs-it-20260713-143742.pdf) |
 | 1.4.4 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.4/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.4/eid-wallet-it-docs-en-20260707-133453.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.4/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.4/eid-wallet-it-docs-it-20260707-133453.pdf) |
 | 1.4.3 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.3-1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.3-1/eid-wallet-it-docs-en-20260701-110032.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.3-1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.3-1/eid-wallet-it-docs-it-20260701-110032.pdf) |

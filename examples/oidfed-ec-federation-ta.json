@@ -39,7 +39,7 @@
   "metadata": {
     "federation_entity": {
       "organization_name": "IT-Wallet Federation Trust Anchor",
-      "homepage_uri": "https://trust-anchor.eid-wallet.example.it",
+      "organization_uri": "https://trust-anchor.eid-wallet.example.it",
       "policy_uri": "https://trust-anchor.eid-wallet.example.it/policy",
       "logo_uri": "https://trust-anchor.eid-wallet.example.it/logo.svg",
       "contacts": [
@@ -56,7 +56,7 @@
     }
   },
   "trust_mark_issuers": {
-    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution": [
+    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_wallet_provider": [
       "https://trust-anchor.eid-wallet.example.it"
     ],
     "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer": [

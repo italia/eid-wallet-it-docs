@@ -187,9 +187,7 @@ The Entity Type Identifiers of the ecosystem roles are defined in OpenID Federat
 Each role declares in its Entity Configuration one or more metadata types, whose parameters follow the protocol specification of that metadata type.
 The table below maps the roles of the ecosystem to their Entity Type Identifiers and gives the reference of the metadata protocol for each of them.
 
-.. warning::
-  Within IT-Wallet the Wallet Provider metadata type MUST be ``wallet_solution``.
-  This is a deviation from OpenID Federation for Wallet Architectures, that names the corresponding Entity Type Identifier ``openid_wallet_provider``.
+The Wallet Provider metadata type MUST be ``openid_wallet_provider``, the Entity Type Identifier defined by OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_).
 
 .. list-table::
    :class: longtable
@@ -201,7 +199,7 @@ The table below maps the roles of the ecosystem to their Entity Type Identifiers
    * - Trust Anchor
      - ``federation_entity``
    * - Wallet Provider
-     - ``federation_entity``, ``wallet_solution``
+     - ``federation_entity``, ``openid_wallet_provider``
    * - Credential Issuer
      - ``federation_entity``, ``openid_credential_issuer``, [``oauth_authorization_server``]
    * - Relying Party
@@ -235,8 +233,9 @@ The informational parameters below are OPTIONAL in `OID-FED`_; IT-Wallet specifi
   * - **organization_name**
     - REQUIRED.
       See `OID-FED`_ Section 5.2.2
-  * - **homepage_uri**
+  * - **organization_uri**
     - REQUIRED.
+      URL of a Web page for the organization owning this Entity.
       See `OID-FED`_ Section 5.2.2
   * - **policy_uri**
     - REQUIRED.
