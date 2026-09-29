@@ -160,11 +160,11 @@ Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-The Provider of WRPRC SHALL issue the WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC of the Service, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
-The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity or of that Service changes, and SHALL re-issue a new WRPRC automatically where the registration remains valid.
+The Provider of WRPRC MUST issue the WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC of the Service, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity or of that Service changes, and MUST re-issue a new WRPRC automatically where the registration remains valid.
 
-For a Relying Party the Provider SHALL issue a separate WRPRC for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
-For a PID Provider, a QEAA Provider, a PuB-EAA Provider or a non-qualified EAA Provider the Provider SHALL issue a separate WRPRC for each registered Service ([`EIDAS-ARF`_] RPRC_13).
+For a Relying Party the Provider MUST issue a separate WRPRC for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
+For a PID Provider, a QEAA Provider, a PuB-EAA Provider or a non-qualified EAA Provider the Provider MUST issue a separate WRPRC for each registered Service ([`EIDAS-ARF`_] RPRC_13).
 A Relying Party Intermediary Service that does not declare intended uses does not receive a WRPRC of its own; the Wallet Unit relies on the WRPRC of the intermediated Relying Party Service.
 
 **Input**
@@ -182,7 +182,7 @@ The WRPRC of that Service (and intended use, where applicable), signed by the Pr
 2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the Service exists in ``services[]``, that the information the certificate carries is consistent with that Service, and that the WRPAC of that Service is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
 3. The Provider of WRPRC builds the WRPRC from that ``services[]`` element (``name`` from ``serviceTradeName``, ``srv_id`` from ``serviceIdentifier``) and, for a Relying Party, from the corresponding intended use, and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
 4. The Provider of WRPRC issues the WRPRC to the Entity.
-5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity or of that Service is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider SHALL re-issue a new WRPRC without undue delay.
+5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity or of that Service is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider MUST re-issue a new WRPRC without undue delay.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""

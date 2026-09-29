@@ -15,7 +15,7 @@ State Machines for Trust Artifacts are described below:
   The transition from ``VALID`` to ``REVOKED`` is triggered by the revocation of the Trust Artifact, which can be initiated by the corresponding Trust Artifact provider due to various reasons such as key compromise, organizational changes, or non-compliance with framework policies.
   Once a Trust Artifact is in the ``REVOKED`` state, it MUST NOT be trusted for any operational use within the ecosystem, and any Entity relying on it MUST reject it for authentication, authorization, or any other trust-related operations.
 
-  - A WRPAC in ``VALID`` state MUST NOT be present in the designated CRL and/or SHALL return a ``good`` status in the OCSP response.
+  - A WRPAC in ``VALID`` state MUST NOT be present in the designated CRL and/or MUST return a ``good`` status in the OCSP response.
     A WRPAC in ``REVOKED`` state MUST be present in the designated CRL and/or MUST return a ``revoked`` status in the OCSP response.
   - A WRPRC in ``VALID`` state MUST return a ``0x00`` status in the corresponding Status List Token.
     A WRPRC in ``REVOKED`` state MUST have status value ``0x01`` within the corresponding Status List Token.

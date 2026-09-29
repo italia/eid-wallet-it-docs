@@ -487,7 +487,7 @@ Besides the base registration data, a Relying Party provides the following exten
 
 .. note::
    A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark registration-entity`), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate. 
-   A Relying Party that operates in the EUDIW Trust Framework MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it SHALL receive its WRPRC(s) automatically, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+   A Relying Party that operates in the EUDIW Trust Framework MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it MUST receive its WRPRC(s) automatically, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""

@@ -9,7 +9,7 @@ This section describes the PID and (Q)EAAs issuance flow with a high level of se
 
 Issuance uses [`OpenID4VCI`_], profiled by [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_].
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
-A Wallet Unit that implements only the EUDIW procedures SHALL be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+A Wallet Unit that implements only the EUDIW procedures MUST be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
 PID issuance before EUDIW notification is specified in :ref:`pid-until-notification`.
 
 
