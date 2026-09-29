@@ -136,7 +136,7 @@ Failure Handling
 Il fallimento della trust evaluation nell'ambito del framework selezionato NON DEVE essere valutato nuovamente nell'ambito dell'altro framework.
 In particolare, una valutazione EUDIW fallita NON DEVE essere ritentata come valutazione del Trust Framework Nazionale.
 
-Se l'Authentication fallisce, la Wallet Unit DEVE informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e DEVE interrompere l'interazione ([`EIDAS-ARF`_] RPA_06a).
+Se l'Authentication fallisce, la Wallet Unit DEVE informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e DEVE interrompere l'interazione ([`EIDAS-ARF`_] CT_06, RPA_06a).
 Lo stesso vale nell'ambito del Trust Framework Nazionale: un esito ``NON_AUTHENTICATED`` DEVE interrompere l'interazione.
 
 Se l'Authentication ha successo e l'Authorization fallisce, la Wallet Unit DEVE applicare :ref:`trust-evaluation:Authorization Decision and Override Rules`.
