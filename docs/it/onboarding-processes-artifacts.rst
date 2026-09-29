@@ -154,8 +154,7 @@ Per un Intermediario, il WRPAC dell'associazione a un dato Relying Party Service
 1. L'Entità richiede il WRPAC al servizio ACME della WRPAC Certification Authority, presentando le ``certificate_signing_requests`` del Service e autenticandosi con la propria Federation Trust Chain, validata come in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. La Certification Authority verifica che l'Entità abbia un record nel Register, che il Service richiesto esista in ``services[]``, e deriva gli attributi del certificato da tale Service (``serviceTradeName`` in ``subject.commonName``, ``serviceIdentifier`` in ``subjectAltName``).
    Per un Intermediario codifica inoltre in ``subjectAltName`` l'identificativo univoco e l'identificativo del Service della Relying Party intermediata ([`EIDAS-ARF`_] Reg_34a).
-3. La Certification Authority registra il certificato in un log di Certificate Transparency secondo :rfc:`9162` ([`EIDAS-ARF`_] CT_01) e incorpora almeno un Signed Certificate Timestamp nell'estensione ``signedCertificateTimestampList`` ([`EIDAS-ARF`_] CT_04).
-4. La Certification Authority emette il WRPAC e l'Entità lo recupera.
+3. La Certification Authority emette il WRPAC e l'Entità lo recupera.
 
 Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,7 +209,7 @@ National Authentication Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""
 
 Il processo National Authentication Certificate Issuance emette il certificato X.509 che una Relying Party utilizza per autenticarsi nel Proximity Flow, tramite l'mdoc reader authentication di [`ISO18013-5`_].
-Il certificato segue lo stesso profilo del WRPAC, eccetto per la Certificate Transparency, che si applica solo ai Wallet-Relying Party Access Certificate nel Trust Framework EUDIW, ed è emesso dalla National Authentication Certification Authority, tramite il meccanismo di :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+Il certificato segue lo stesso profilo del WRPAC, ed è emesso dalla National Authentication Certification Authority, tramite il meccanismo di :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 
 **Input**
 
