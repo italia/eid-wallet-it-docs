@@ -71,13 +71,13 @@ Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, 
      - Gli attributi che una Relying Party intende richiedere dalle Wallet Unit, vincolati a uno specifico Relying Party Service. Una Relying Party DEVE dichiarare quali dei propri intended use registrati si applicano a ciascuno dei propri Service registrati ([`EIDAS-ARF`_] Reg_10d).
      - [`CIR2025/848`_], Annex I; [`EIDAS-ARF`_] Reg_10d
    * - `relying_party_services`
-     - Uno o più Relying Party Service registrati dall'entità. Ciascun Service ha un nome commerciale adatto alla presentazione all'Utente (``serviceTradeName``). ``serviceIdentifier``, quando registrato, è univoco all'interno dell'entità e DEVE essere registrato se il Service si avvale di un Intermediario (`EUDI-TS 5`_ v1.5) o se un WRPAC è emesso per quel Service ([`EIDAS-ARF`_] Reg_33). Il Service reca gli intended use che si applicano a esso e, ove applicabile, la relazione di intermediazione. Un'entità in registrazione che opera nel Trust Framework EUDIW DEVE registrare almeno un Service e DEVE ricevere almeno un WRPAC per ciascun Service registrato. I corrispondenti WRPRC sono emessi automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`. Lo stesso identificativo e lo stesso nome commerciale del Service DEVONO essere copiati in ciascun WRPRC corrispondente.
+     - Uno o più Relying Party Service registrati dall'entità. La cardinalità e ``serviceIdentifier`` sono specificati in :ref:`infrastructure-trust:Register of WRPs`. I corrispondenti WRPRC sono emessi automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
      - [`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34, RPRC_07a; [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``
    * - `provided_attestations`
      - I tipi di Attestato che un Credential Issuer intende emettere. All'interno di IT-Wallet ciascuno di essi fa riferimento a una voce versionata già presente nel Digital Credentials Catalog, e la dichiarazione aggiunge il Credential Issuer al campo ``issuers`` di tale voce, insieme alle capacità di emissione offerte per quel tipo di Credenziale (i flussi di emissione supportati, i parametri dell'emissione differita e la documentazione del servizio di emissione), si veda :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
-     - Vincolato a un Relying Party Service. Per un Relying Party Service intermediato, il riferimento all'Intermediary Service che utilizza (``usesIntermediaries``). Per un Relying Party Intermediary Service, la dichiarazione che agisce come intermediario (``isIntermediary``) e gli identificativi di Service che serve (``servedWRPServices``, [`CIR2026/1730`_], Annex I). Un Intermediary Service puro NON DEVE registrare un entitlement (`EUDI-TS 5`_ v1.5).
+     - Vincolato a un Relying Party Service. Per un Relying Party Service intermediato, il riferimento all'Intermediary Service che utilizza (``usesIntermediaries``). Per un Relying Party Intermediary Service, la dichiarazione che agisce come intermediario (``isIntermediary``) e gli identificativi di Service che serve (``servedWRPServices``, [`CIR2026/1730`_], Annex I). Un Intermediary Service puro NON DEVE registrare un entitlement (`EUDI-TS 5`_).
      - [`ETSI TS 119 475`_], Table 10; [`EIDAS-ARF`_] RPRC_04, Reg_34a; `EUDI-TS 5`_
    * - `trust_framework_scope`
      - La dichiarazione del Trust Framework in cui l'entità intende operare, secondo :ref:`infrastructure-trust:Infrastructure of Trust` e :ref:`trust-evaluation:Trust Framework Selection`. La dichiarazione è fornita dai ruoli per i quali questa scelta non è già fissata dalla notifica, e determina i Trust Artifact che l'entità ottiene e il modo in cui gli altri Data Identifier del profilo sono forniti. Si applica all'entità, mentre ``trustedAuthorities`` di un tipo di Credenziale si applica alla validazione di un Attestato di quel tipo.
@@ -196,7 +196,7 @@ La tabella seguente mappa ciascun Data Identifier sui campi dei data model di de
    * - `intended_use`
      - Nel Register, l'array ``intendedUses`` del corrispondente elemento ``services[]``, ciascun elemento recante il proprio ``intendedUseIdentifier``, ``purpose``, ``privacyPolicy`` e ``credentials``. Nel Trust Mark di registrazione, i ``credentials`` e il ``purpose``.
    * - `provided_attestations`
-     - Nel Register, l'array ``providesAttestations`` del corrispondente elemento ``services[]``, ciascun ``ProvidedAttestation`` recante ``format`` e ``type`` come definito in `EUDI-TS 5`_ versione 1.5. Nel Trust Mark di registrazione, i ``provides_attestations``. Nel Digital Credentials Catalog, l'elemento dell'array ``issuers`` di ciascun tipo di Credenziale dichiarato, inclusi i suoi ``issuance_flows`` e il suo ``service_documentation_uri``.
+     - Nel Register, l'array ``providesAttestations`` del corrispondente elemento ``services[]``, ciascun ``ProvidedAttestation`` recante ``format`` e ``type`` come definito in `EUDI-TS 5`_. Nel Trust Mark di registrazione, i ``provides_attestations``. Nel Digital Credentials Catalog, l'elemento dell'array ``issuers`` di ciascun tipo di Credenziale dichiarato, inclusi i suoi ``issuance_flows`` e il suo ``service_documentation_uri``.
    * - `provided_claims_purposes`
      - Nell'AS Registry, i ``data_capabilities``, ossia 
      
@@ -508,7 +508,7 @@ I Data Identifier non elencati qui sono forniti come per una Relying Party.
    * - `intended_use`
      - NON DEVE essere fornito. Un Intermediario di Relying Party non richiede attributi per sé, ma per conto delle Relying Party intermediate. Nel Register, ciascuno dei suoi elementi ``services[]`` ha ``isIntermediary`` impostato a ``true``, omette ``intendedUses`` e elenca in ``servedWRPServices`` gli identificativi di Service che serve ([`CIR2026/1730`_], Annex I).
    * - `entitlements`
-     - NON DEVE essere fornito per un Intermediary Service puro (`EUDI-TS 5`_ v1.5).
+     - NON DEVE essere fornito per un Intermediary Service puro (`EUDI-TS 5`_).
    * - `relying_party_services`
      - OBBLIGATORIO. Almeno un Service. Ciascun Service è un Intermediary Service: ``isIntermediary`` è ``true``, ``serviceIdentifier`` è registrato e ``servedWRPServices`` elenca gli identificativi dei Relying Party Service intermediato.
    * - `certificate_signing_requests`

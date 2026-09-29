@@ -174,4 +174,4 @@ The criticality values used in this specification have the following meaning:
 .. warning::
   **Preventing Circular Dependencies in URIs**
 
-  To prevent circular validation dependencies during TLS handshakes, URIs defined in the ``cRLDistributionPoints`` and ``authorityInfoAccess`` extensions SHALL use the ``http://`` scheme instead of ``https://`` as suggested by :rfc:`5280#section-8`.
+  To prevent circular validation dependencies during TLS handshakes, URIs defined in the ``cRLDistributionPoints`` and ``authorityInfoAccess`` extensions MUST use the ``http://`` scheme instead of ``https://`` as suggested by :rfc:`5280#section-8`.

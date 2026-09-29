@@ -11,7 +11,6 @@ Le procedure definite in questa sezione profilano le seguenti specifiche esterne
 - `ETSI TS 119 411-8`_, `ETSI TS 119 475`_ e `ETSI EN 319 412-1`_, che definiscono, rispettivamente, il Wallet-Relying Party Access Certificate, il Wallet-Relying Party Registration Certificate insieme alle sue entitlement, e gli attributi del subject del certificato.
 - `ETSI TS 119 472-2`_ e `ETSI TS 119 472-3`_, che profilano rispettivamente i protocolli di Presentazione e di Emissione, attraverso i quali una Wallet-Relying Party è autenticata e le sue informazioni di registrazione sono rese disponibili alla Wallet Unit; quest'ultima definisce inoltre l'Embedded Disclosure Policy.
 - IETF RFC 5280 (:rfc:`5280`) e IETF RFC 6960 (:rfc:`6960`), che definiscono la validazione del certification path X.509 e l'Online Certificate Status Protocol.
-- IETF RFC 9162 (:rfc:`9162`), che definisce Certificate Transparency versione 2.0 e il Signed Certificate Timestamp che una Wallet Unit verifica sul Wallet-Relying Party Access Certificate.
 
 .. note::
 
@@ -466,7 +465,7 @@ EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
 
 Il Processo di Autenticazione consente alla Wallet Unit di autenticare una Wallet-Relying Party durante un'interazione.
-Stabilisce la fiducia validando la catena di certificati X.509 della Wallet-Relying Party, da un Provider of Wallet-Relying Party Access Certificate fidato fino al Wallet-Relying Party Access Certificate presentato, verificando che il certificato di accesso includa almeno un Signed Certificate Timestamp valido, e verificando che la Wallet-Relying Party possieda la corrispondente chiave privata.
+Stabilisce la fiducia validando la catena di certificati X.509 della Wallet-Relying Party, da un Provider of Wallet-Relying Party Access Certificate fidato fino al Wallet-Relying Party Access Certificate presentato, e verificando che la Wallet-Relying Party possieda la corrispondente chiave privata.
 Il Wallet-Relying Party Access Certificate è profilato in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
 
 Per la verifica del certificato di accesso, la Wallet Unit DEVE accettare solo i Trust Anchor pubblicati nelle List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate notificati dagli Stati membri (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`).
@@ -477,7 +476,6 @@ L'esito dell'Autenticazione DEVE basarsi solo su informazioni derivate da:
 
 - il Trust Anchor appropriato ottenuto da un'istanza valida della List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate;
 - il path di certificati X.509 che termina con il certificato end-entity del Wallet-Relying Party Access Certificate;
-- almeno un Signed Certificate Timestamp incorporato in tale certificato e verificato come specificato in :rfc:`9162`;
 - una firma della Wallet-Relying Party sull'artifact dell'interazione, recante la prova di possesso della chiave privata referenziata nel Wallet-Relying Party Access Certificate.
 
 **Esito**
@@ -499,11 +497,7 @@ La Wallet Unit DEVE verificare l'autenticità e l'integrità del Wallet-Relying 
 
 3. **Execute Path Validation**: validare il certification path come definito in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, usando il Trust Anchor recuperato al passo 1, come descritto in :ref:`trust-evaluation:Wallet-Relying Party Access Certificate Validation`.
 
-4. **Verify Certificate Transparency**: verificare che il Wallet-Relying Party Access Certificate validato includa almeno un Signed Certificate Timestamp valido come specificato in :rfc:`9162` ([`EIDAS-ARF`_] CT_05).
-   Questa verifica si applica quando si autentica una Wallet-Relying Party durante l'emissione di PID o attestation e durante la presentazione.
-   Se il certificato non include un Signed Certificate Timestamp valido, la Wallet Unit DEVE produrre ``NON_AUTHENTICATED`` e DEVE interrompere l'interazione ([`EIDAS-ARF`_] CT_06, RPA_06a).
-
-5. **Verify the Signature**: usare la chiave pubblica del Wallet-Relying Party Access Certificate validato per verificare la firma della Wallet-Relying Party sull'artifact che firma nella specifica interazione.
+4. **Verify the Signature**: usare la chiave pubblica del Wallet-Relying Party Access Certificate validato per verificare la firma della Wallet-Relying Party sull'artifact che firma nella specifica interazione.
    La catena di certificati e l'artifact firmato dipendono dal flusso:
 
     - **Remote Flow**: la catena è recata nell'header ``x5c`` del Request Object firmato dalla Wallet-Relying Party, e la Relying Party è autenticata attraverso il Client Identifier Prefix ``x509_hash``, come definito in [`OpenID4VP`_] e [`OPENID4VC-HAIP`_].
@@ -583,8 +577,7 @@ Il flusso di validazione dipende dall'interazione.
 
 - Durante il flusso di Emissione un PID Provider o un Attestation Provider DEVE convogliare il Wallet-Relying Party Registration Certificate per valore nei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22), attraverso l'array ``issuer_info``, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_].
   L'array DEVE contenere un elemento ``registration_cert`` con il Wallet-Relying Party Registration Certificate per valore, e DEVE contenere un elemento ``registrar_dataset`` con le informazioni di registrazione.
-  Il ``registrar_dataset`` PUÒ essere usato solo come informazione consultiva. NON DEVE essere presentato all'Utente come verificato e NON DEVE essere usato come sostituto del Wallet-Relying Party Registration Certificate ([`EIDAS-ARF`_] RPRC_22).
-  L'Embedded Disclosure Policy è distribuita attraverso i Metadata del Credential Issuer all'interno del campo ``credential_configurations_supported``, come definito in [`OpenID4VCI`_].
+  L'Embedded Disclosure Policy è distribuita attraverso i Metadata del Credential Issuer come membro ``embedded_disclosure_policy`` di una configurazione della credenziale all'interno di ``credential_configurations_supported``, come definito in [`OpenID4VCI`_] e in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 Durante la Presentazione di Credenziali, se il Wallet-Relying Party Registration Certificate non è disponibile o la sua validazione fallisce, la Wallet Unit DEVE impostare ``authz_art_state`` a ``CERTIFICATE_INVALID`` e DEVE avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17).
 La Wallet Unit NON DEVE interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_16 e RPRC_18 sono vuoti).

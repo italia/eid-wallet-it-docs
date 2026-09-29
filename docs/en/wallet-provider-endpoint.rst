@@ -762,7 +762,7 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
 
 
 .. note::
-    A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
+    A Wallet Provider MUST choose the technical validity period of the KA and MUST maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
 
 
 Token Status List (Wallet Unit Attestation Profile)

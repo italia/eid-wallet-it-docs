@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Wallet Relying Party Register API
-  version: "1.5.0"
+  version: "1.0.0"
   description: National read profile of the Wallet-Relying Party Register API, aligned with EUDI-TS 5 version 1.5 (2026-08-20) and CIR (EU) 2026/1730.
   termsOfService: "https://italia.github.io/eid-wallet-it-docs/"
   contact:
@@ -68,6 +68,8 @@ paths:
           $ref: '#/components/responses/JwsWrpArrayResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
       security: []
   /wrp/{identifier}:
     get:
@@ -124,11 +126,6 @@ paths:
           $ref: '#/components/responses/NotFound'
       security: []
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   parameters:
     identifierQuery:
       name: identifier
@@ -363,15 +360,6 @@ components:
                 format: int32
                 minimum: 0
               - type: 'null'
-        values:
-          type: array
-          description: Optional allowed values.
-          items:
-            oneOf:
-              - type: string
-              - type: integer
-                format: int32
-              - type: boolean
       required:
         - path
       example:

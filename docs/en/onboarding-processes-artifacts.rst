@@ -154,18 +154,17 @@ For an Intermediary, the WRPAC of the association to a given intermediated Relyi
 1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting the ``certificate_signing_requests`` of the Service and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority checks that the Entity has a record in the Register, that the requested Service exists in ``services[]``, and derives the attributes of the certificate from that Service (``serviceTradeName`` into ``subject.commonName``, ``serviceIdentifier`` into ``subjectAltName``).
    For an Intermediary it also encodes in ``subjectAltName`` the unique identifier and the Service identifier of the intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a).
-3. The Certification Authority logs the certificate in a Certificate Transparency log according to :rfc:`9162` ([`EIDAS-ARF`_] CT_01) and embeds at least one Signed Certificate Timestamp in the ``signedCertificateTimestampList`` extension ([`EIDAS-ARF`_] CT_04).
-4. The Certification Authority issues the WRPAC and the Entity retrieves it.
+3. The Certification Authority issues the WRPAC and the Entity retrieves it.
 
 Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-The Provider of WRPRC SHALL issue the WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC of the Service, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
-The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity or of that Service changes, and SHALL re-issue a new WRPRC automatically where the registration remains valid.
+The Provider of WRPRC MUST issue the WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC of the Service, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity or of that Service changes, and MUST re-issue a new WRPRC automatically where the registration remains valid.
 
-For a Relying Party the Provider SHALL issue a separate WRPRC for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
-For a PID Provider, a QEAA Provider, a PuB-EAA Provider or a non-qualified EAA Provider the Provider SHALL issue a separate WRPRC for each registered Service ([`EIDAS-ARF`_] RPRC_13).
+For a Relying Party the Provider MUST issue a separate WRPRC for each combination of intended use and Relying Party Service ([`EIDAS-ARF`_] RPRC_09, Reg_10d).
+For a PID Provider, a QEAA Provider, a PuB-EAA Provider or a non-qualified EAA Provider the Provider MUST issue a separate WRPRC for each registered Service ([`EIDAS-ARF`_] RPRC_13).
 A Relying Party Intermediary Service that does not declare intended uses does not receive a WRPRC of its own; the Wallet Unit relies on the WRPRC of the intermediated Relying Party Service.
 
 **Input**
@@ -183,7 +182,7 @@ The WRPRC of that Service (and intended use, where applicable), signed by the Pr
 2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the Service exists in ``services[]``, that the information the certificate carries is consistent with that Service, and that the WRPAC of that Service is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
 3. The Provider of WRPRC builds the WRPRC from that ``services[]`` element (``name`` from ``serviceTradeName``, ``srv_id`` from ``serviceIdentifier``) and, for a Relying Party, from the corresponding intended use, and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
 4. The Provider of WRPRC issues the WRPRC to the Entity.
-5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity or of that Service is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider SHALL re-issue a new WRPRC without undue delay.
+5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity or of that Service is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider MUST re-issue a new WRPRC without undue delay.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""
@@ -210,7 +209,7 @@ National Authentication Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""
 
 National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [`ISO18013-5`_].
-The certificate follows the same profile of the WRPAC, except for Certificate Transparency, which applies only to Wallet-Relying Party Access Certificates in the EUDIW Trust Framework, and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+The certificate follows the same profile of the WRPAC, and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 
 **Input**
 

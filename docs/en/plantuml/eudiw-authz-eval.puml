@@ -66,7 +66,7 @@ if (authz_art_state == CERTIFICATE_VALID) then (yes)
           :3. Attestation Type Verification;
           
           if (Attestation Registered?) then (no)
-            :ATTESTATION_TYPE_NOT_REGISTERED;<<#ffccb3>>
+            #ffccb3:ATTESTATION_TYPE_NOT_REGISTERED;
           else (yes)
             #dcedc8:VERIFICATION_PASSED;
           endif
