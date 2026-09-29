@@ -153,7 +153,7 @@ The *openid_credential_issuer* metadata contains the following claims.
       - ``data``. REQUIRED. Depending on the ``format`` parameter value,
       
         - if ``format == registrar_dataset``; this payload MUST contain an object with the following parameters: ``identifier``;``srvDescription``, ``registryURI``, and ``providesAttestations``. The values of these claims are further specified in :ref:`infrastructure-trust:Register of WRPs`.
-        - if ``fromat == registration_cert``; this payload MUST contain the base64-encoded WRPRC of the Credential Issuer by value. Its profile is specified in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+        - if ``format == registration_cert``; this payload MUST contain the base64-encoded WRPRC of the Credential Issuer by value. Its profile is specified in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
         
        Both values of ``format`` MUST be present.
 
