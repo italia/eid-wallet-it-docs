@@ -1409,8 +1409,6 @@ Il payload della collection contiene i seguenti parametri.
 
    * - **Field Name**
      - **Description**
-   * - **id**
-     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``).
    * - **version**
      - OBBLIGATORIO. La versione del Digital Credentials Catalog (ad es., ``1.0.0``).
    * - **last_modified**
