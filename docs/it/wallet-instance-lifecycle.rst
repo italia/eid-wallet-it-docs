@@ -63,23 +63,26 @@ Questa associazione consente all'utente di richiedere direttamente al Fornitore 
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
-Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro.
+Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le credenziali standard; WSCA operante in un Remote WSCD per il PID).
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
 personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
-Nello stato **Operativo**, gli Utenti possono richiedere l'emissione del PID (**PID ISS**), dell'**IT-Wallet ID** (che **non** causa la transizione allo stato **Valido**), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
+Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'**IT-Wallet ID** (che **non** causa la transizione allo stato **Valido**), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono il PID, possono essere presentate
 senza far transitare l'Istanza del Wallet a un altro stato (transizione **(Q)EEA PRE**). L'IT-Wallet ID PUÒ altresì essere presentato mentre l'Istanza del Wallet rimane **Operativa**.
+
+La transizione **PID ISS** è soggetta a :ref:`pid-until-notification`.
+Fino ad allora l'Istanza del Wallet rimane **Operativa** con l'IT-Wallet ID.
 
 Un'Istanza del Wallet **Valida** DEVE transitare nuovamente allo stato **Operativo** a causa della transizione **PID EXP/REV/DEL**, quando il PID associato scade, viene revocato dal suo Fornitore o viene eliminato dall'Utente.
 
 Transizione a Valido
 ....................
 
-Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (**PID ISS**). L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato **Valido**, gli Utenti possono ottenere e presentare
+Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (**PID ISS**), come specificato in :ref:`pid-until-notification`. L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato **Valido**, gli Utenti possono ottenere e presentare
 nuovi Attestati Elettronici di Attributi (Qualificati) (**(Q)EAA ISS/PRE**), e presentare il PID (**PID PRE**). Si prega di fare riferimento a :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
 .. note::
@@ -124,5 +127,10 @@ Un Fornitore di Wallet invece è responsabile per:
 * **Attivazione dell'Istanza del Wallet** (**WI ACT**): un account Utente DEVE essere creato e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione di almeno due fattori per l'Utente per interagire con il portale del Fornitore di Wallet.
 * **Revoca dell'Istanza del Wallet** (**WI REV**): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Instance Attestation, che viene riportata nella Wallet Instance Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.
 * **Eliminazione dei Dati**: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.
+
+
+.. note::
+  Il Wallet Provider DEVE scegliere il periodo di validità tecnica della Wallet Instance Attestation e DEVE mantenere la lista di revoca per l’intero periodo di validità della Wallet Instance Attestation Status List, come definito dal claim ``client_status.exp`` nella Wallet Instance Attestation.
+
 
 
