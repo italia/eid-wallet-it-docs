@@ -7,7 +7,7 @@ Flussi Dettagliati per l'Emissione di Attestati Elettronici
 Issuance Flow
 -------------
 
-Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_] e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
+Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_], come richiesto da [`CIR2024/2982`_], profilato da [`OPENID4VC-HAIP`_], e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], come raccomandato nella Sezione 3 di [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], come raccomandato nella Sezione 5 di [`OpenID4VCI`_].
@@ -15,7 +15,10 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-  * **OpenID Federation 1.0** [`OID-FED`_].
+  * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
+
+OpenID Federation 1.0 [`OID-FED`_] PUÒ essere utilizzata per l'emissione da parte di un Credential Issuer nazionale, compreso il PID Provider italiano, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust` e in :ref:`trust-evaluation:Selection at Issuance`.
+Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
@@ -88,7 +91,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``. L'emissione in batch si applica solo ai tipi di Attestato per i quali quei metadati sono dichiarati. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-evaluation:Trust Evaluation Process`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``. L'emissione in batch si applica solo ai tipi di Attestato per i quali quei metadati sono dichiarati. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
@@ -139,7 +142,7 @@ Di seguito un esempio non normativo di `PAR Request`.
     POST /as/par HTTP/1.1
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZyIsImNuZiI6eyJqd2siOnsiY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmcifX0sIndhbGxldF9uYW1lIjoiV2FsbGV0X3YxIiwid2FsbGV0X2xpbmsiOiJodHRwczovL2V4YW1wbGUuY29tL3dhbGxldC9kZXRhaWxfaW5mby5odG1sIiwid2FsbGV0X3ZlcnNpb24iOiIxLjAuMCIsImNsaWVudF9zdGF0dXMiOnsic3RhdHVzIjp7InN0YXR1c19saXN0Ijp7ImlkeCI6MTMzNywidXJpIjoiaHR0cHM6Ly9yZXZvY2F0aW9uX3VybC93aWEtc3RhdHVzbGlzdHMvNDIifX0sImV4cCI6MTMwMzQ5Nzc4MH0sImV4cCI6MTc0MDE1ODE2N30.j3nx-adTbi3_O0Seddi_-Fqr37MJpDHCI5leCie7iTXApqn_4kOlrDgpmY35pGfZhlB_1lZUBTnKywNn5LjNow
+    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZy9kZDc2MmU2ZjhiNjEzMTkzIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyJ9fSwid2FsbGV0X25hbWUiOiJXYWxsZXRfdjEiLCJ3YWxsZXRfbGluayI6Imh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiLCJ3YWxsZXRfdmVyc2lvbiI6IjEuMC4wIiwiY2xpZW50X3N0YXR1cyI6eyJzdGF0dXMiOnsic3RhdHVzX2xpc3QiOnsiaWR4IjoxMzM3LCJ1cmkiOiJodHRwczovL3Jldm9jYXRpb25fdXJsL3dpYS1zdGF0dXNsaXN0cy80MiJ9fSwiZXhwIjoxMzAzNDk3NzgwfSwiZXhwIjoxNzQwMTU4MTY3fQ.XOv01xkHC-_h-bZFcXgkEffs3xk8WezKWs8KA4yZD8aNabDq81Y80wkOuHCM25zSGHbABszaSDsyYaJv9bh40w
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-instance-attestation$&
@@ -164,11 +167,13 @@ Di seguito un esempio non normativo del `Request Object` firmato senza codifica 
 
 
 .. note::
-  **Controllo della Federazione**: Il Credential Issuer DEVE verificare che il Fornitore di Wallet faccia parte della federazione.
-
-
-.. note::
-  Il Credential Issuer DEVE validare la firma dell'Attestato di Unità di Wallet e che non sia scaduto.
+  **Controllo di fiducia della Wallet Unit:** Al PAR Endpoint, il Credential Issuer DEVE stabilire la fiducia nel Fornitore di Wallet.
+  Il Credential Issuer DEVE validare la firma dell'Attestato di Unità di Wallet e il materiale crittografico di firma.
+  Il Credential Issuer DEVE controllarne la validità temporale e lo status di revoca.
+  Il Credential Issuer DEVE verificare la prova di possesso ``OAuth-Client-Attestation-PoP``.
+  Per una Wallet Unit di un altro Stato membro, il Credential Issuer DEVE validare l'Attestato di Unità di Wallet attraverso la Wallet Providers List of Trusted Entities secondo :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+  Per una Wallet Unit nazionale, il Credential Issuer PUÒ validare la Trust Chain del Fornitore di Wallet e l'Attestato di Unità di Wallet secondo :ref:`trust-evaluation:Wallet Unit Authentication`.
+  Un controllo fallito DEVE terminare la richiesta.
 
 **Passo 3 (`PAR Response`)**: Il Credential Issuer fornisce un valore ``request_uri`` monouso. Il valore ``request_uri`` emesso DEVE essere vincolato all'identificativo del client (``client_id``) che è stato fornito nel `Request Object`.
 
@@ -211,7 +216,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
     1. DEVE verificare che la `Authorization Response` contenga tutti i parametri definiti secondo la :ref:`Tabella dei parametri della Risposta HTTP <table_http_response_claim>` (:ref:`WP_054 <wallet-credential-issuance-testcases>`).
     2. DEVE verificare che il valore restituito dal Credential Issuer per il parametro ``state`` sia uguale al valore inviato dall'Istanza del Wallet nel `Request Object` (:rfc:`6749`) come specificato in :ref:`WP_054a <wallet-credential-issuance-testcases>`.
-    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9027`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
+    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9207`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
 
 .. note::
     L'URI di reindirizzamento dell'Istanza del Wallet è un `universal link` o `app link` registrato con il sistema operativo locale, quindi quest'ultimo lo risolverà e passerà la risposta all'Istanza del Wallet.
@@ -231,7 +236,8 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
    2. DEVE assicurarsi che il ``code`` di autorizzazione sia valido e non sia stato utilizzato in precedenza (:rfc:`6749`).
    3. DEVE assicurarsi che il ``redirect_uri`` corrisponda al valore incluso nel precedente `Request Object` (vedi Sezione 3.1.3.1. di [`OIDC`_]).
    4. DEVE validare il JWT di `DPoP proof`, secondo la Sezione 4.3 di (:rfc:`9449`).
-   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`; in caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
+   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`. In caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
+   6. DEVE ripetere i controlli sul Fornitore di Wallet, sulla firma dell'Attestato di Unità di Wallet e sulla catena del certificato di firma, sulla validità temporale, sullo status di revoca e sulla prova di possesso definiti per il PAR Endpoint. Un trust artifact recuperato in precedenza PUÒ essere riutilizzato solo finché resta valido e aggiornato nell'ambito del trust framework applicabile.
 
 .. code-block:: http
 
@@ -239,7 +245,7 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwieCI6IjR2dDhNdEFISmlsMzBDNnpUTmt2c0VVcnlHTEUtQW5BNkc5LV8xa3l5Rk0iLCJ5IjoiTWdiNTFfbjNSRjNtbHNtS3dMd0xtRUFqVmlJM3Q1bTVWNTI2MFA5MzR3RSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0ZWRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOH0.3Tp1ZlZ05PQYeZUHhiZwaQ1etqnwYwoiJHFR_JHb32381lMJL-8o2rE3VZ8X3yuqrGFfCVeP90Ln4J5r8ASIBg
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZyIsImNuZiI6eyJqd2siOnsiY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmcifX0sImNsaWVudF9zdGF0dXMiOnsic3RhdHVzIjp7InN0YXR1c19saXN0Ijp7ImlkeCI6MTMzNywidXJpIjoiaHR0cHM6Ly9yZXZvY2F0aW9uX3VybC93aWEtc3RhdHVzbGlzdHMvNDIifX0sImV4cCI6MTMwMzQ5Nzc4MH0sIndhbGxldF9uYW1lIjoiV2FsbGV0X3YxIiwid2FsbGV0X2xpbmsiOiJodHRwczovL2V4YW1wbGUuY29tL3dhbGxldC9kZXRhaWxfaW5mby5odG1sIiwid2FsbGV0X3ZlcnNpb24iOiIxLjAuMCIsImV4cCI6MTc0MDE1ODE2N30.j2M6GTp3L7SzDHO6KUDo7PCuqCzO0TsHDYwOezsrAuDres4F8hAhK2SymL6nTMHuInaAQM74QlMvfBD2bY9E-w
+    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZy9kZDc2MmU2ZjhiNjEzMTkzIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyJ9fSwid2FsbGV0X25hbWUiOiJXYWxsZXRfdjEiLCJ3YWxsZXRfbGluayI6Imh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiLCJ3YWxsZXRfdmVyc2lvbiI6IjEuMC4wIiwiY2xpZW50X3N0YXR1cyI6eyJzdGF0dXMiOnsic3RhdHVzX2xpc3QiOnsiaWR4IjoxMzM3LCJ1cmkiOiJodHRwczovL3Jldm9jYXRpb25fdXJsL3dpYS1zdGF0dXNsaXN0cy80MiJ9fSwiZXhwIjoxMzAzNDk3NzgwfSwiZXhwIjoxNzQwMTU4MTY3fQ.XOv01xkHC-_h-bZFcXgkEffs3xk8WezKWs8KA4yZD8aNabDq81Y80wkOuHCM25zSGHbABszaSDsyYaJv9bh40w
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     grant_type=authorization_code
@@ -315,7 +321,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
  4. La firma sulla prova della chiave DEVE essere verificata utilizzando la chiave pubblica specificata nel parametro dell'header.
  5. Il parametro dell'header NON DEVE contenere una chiave privata.
  6. La firma sul JWT di Key Attestation, come valore del parametro di intestazione ``key_attestation``, DEVE essere verificata utilizzando la chiave pubblica del Wallet Provider, identificata dal parametro di intestazione kid all’interno del JWT di Key Attestation.
- 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a questo valore ``c_nonce``. Inoltre, l'istante di creazione del JWT, come indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE essere all'interno di una finestra temporale accettabile come determinato dal server.
+ 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
 
 
 .. note::
@@ -522,7 +528,7 @@ Un esempio non normativo della richiesta di token per un Access Token DPoP utili
   Host: eaa-provider.example.org
   Content-Type: application/x-www-form-urlencoded
   DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwieCI6IjR2dDhNdEFISmlsMzBDNnpUTmt2c0VVcnlHTEUtQW5BNkc5LV8xa3l5Rk0iLCJ5IjoiTWdiNTFfbjNSRjNtbHNtS3dMd0xtRUFqVmlJM3Q1bTVWNTI2MFA5MzR3RSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0ZWRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOH0.3Tp1ZlZ05PQYeZUHhiZwaQ1etqnwYwoiJHFR_JHb32381lMJL-8o2rE3VZ8X3yuqrGFfCVeP90Ln4J5r8ASIBg
-  OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZyIsImNuZiI6eyJqd2siOnsiY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmcifX0sImNsaWVudF9zdGF0dXMiOnsic3RhdHVzIjp7InN0YXR1c19saXN0Ijp7ImlkeCI6MTMzNywidXJpIjoiaHR0cHM6Ly9yZXZvY2F0aW9uX3VybC93aWEtc3RhdHVzbGlzdHMvNDIifX0sImV4cCI6MTMwMzQ5Nzc4MH0sIndhbGxldF9uYW1lIjoiV2FsbGV0X3YxIiwid2FsbGV0X2xpbmsiOiJodHRwczovL2V4YW1wbGUuY29tL3dhbGxldC9kZXRhaWxfaW5mby5odG1sIiwid2FsbGV0X3ZlcnNpb24iOiIxLjAuMCIsImV4cCI6MTc0MDE1ODE2N30.j2M6GTp3L7SzDHO6KUDo7PCuqCzO0TsHDYwOezsrAuDres4F8hAhK2SymL6nTMHuInaAQM74QlMvfBD2bY9E-w
+  OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJzdWIiOiJodHRwczovL3dhbGxldC1zb2x1dGlvbi5leGFtcGxlLm9yZy9kZDc2MmU2ZjhiNjEzMTkzIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyJ9fSwid2FsbGV0X25hbWUiOiJXYWxsZXRfdjEiLCJ3YWxsZXRfbGluayI6Imh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiLCJ3YWxsZXRfdmVyc2lvbiI6IjEuMC4wIiwiY2xpZW50X3N0YXR1cyI6eyJzdGF0dXMiOnsic3RhdHVzX2xpc3QiOnsiaWR4IjoxMzM3LCJ1cmkiOiJodHRwczovL3Jldm9jYXRpb25fdXJsL3dpYS1zdGF0dXNsaXN0cy80MiJ9fSwiZXhwIjoxMzAzNDk3NzgwfSwiZXhwIjoxNzQwMTU4MTY3fQ.XOv01xkHC-_h-bZFcXgkEffs3xk8WezKWs8KA4yZD8aNabDq81Y80wkOuHCM25zSGHbABszaSDsyYaJv9bh40w
   OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
   grant_type=refresh_token
@@ -691,9 +697,9 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
 
         - **issuer_state**: OPZIONALE. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Isser. PUO' essere associata a un determinato Credential Dataset fornito da una specifica Fonte Autentica. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente. Deve essere un’URN e contenere le seguenti informazioni:
 
-            - *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Registro delle Fonti Autentiche`.
+            - *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Authentic Source Registry`.
 
-            - *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Registro delle Fonti Autentiche`.
+            - *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Authentic Source Registry`.
 
             - *objectId*: OPZIONALE. Identificativo univoco del Credential Dataset disponibile presso la Fonte Autentica.
 

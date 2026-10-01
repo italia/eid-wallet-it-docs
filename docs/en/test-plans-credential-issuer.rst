@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via test-plans.rst at title level '-' (level 1).
 
 
 Credential Issuer Test Matrix
@@ -13,10 +14,10 @@ This section provides the set of test cases designed for technical implementers 
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - CI_001
     - Trust, Security
     - Entity Configuration publication
@@ -433,6 +434,18 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Security
     - Notification Endpoint Access Authorization
     - Access Token allows access to Notification endpoint for notifying Digital Credential deletion to the Credential Issuer
+  * - CI_089
+    - Voided
+    - Voided
+    - Voided
+  * - CI_089a
+    - Voided
+    - Voided
+    - Voided
+  * - CI_089b
+    - Voided
+    - Voided
+    - Voided
   * - CI_089c
     - Issuance, Security
     - Credential Endpoint Access Authorization
@@ -518,13 +531,13 @@ This section provides the set of test cases designed for technical implementers 
     - Re-issuance Process Scope Limitation
     - The re-issuance process is limited to two specific update types: Data model/format technical updates and User's attribute set updates
   * - CI_110
-    - Issuance, Security
-    - Not Recommended Technical Update User Interaction
-    - For data model/format technical updates, the replacement and storage of Digital Credentials don't require direct user involvement
+    - Voided
+    - Voided
+    - Voided
   * - CI_111
-    - Issuance, Security and Privacy
-    - Attribute Update User Authorization
-    - For User's attribute set updates, the Wallet Instance informs the User about attribute data set changes and requests explicit User authorization before storing the new Digital Credential
+    - Voided
+    - Voided
+    - Voided
   * - CI_112
     - Issuance, Security
     - Expiry Date Consistency for Re-Issuance
@@ -710,9 +723,9 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Revocation Process Management
     - A Digital Credential successfully changes from Issued, Valid or Suspended states to Revoked state when it is actively revoked by the Credential Issuer by a revocation process (PID/(Q)EAA REV).
   * - CI_155
-    - Data Model and lifecycle, Interoperability
-    - Digital Credential Revocation Use Cases
-    - Digital Credential Revocation is correctly implemented for every use case
+    - Voided
+    - Voided
+    - Voided
   * - CI_155a
     - Data Model and lifecycle, Interoperability
     - Digital Credential Revocation - Technical Security Compromise
@@ -868,19 +881,19 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_177
     - Data Model and lifecycle, Interoperability
     - Status List Token Cryptographic Format
-    - Status List is successfully provided within cryptographically signed Status List Token in JWT format.
+    - Status List is successfully provided within a cryptographically signed Status List Token in JWT or CWT format.
   * - CI_178
     - Data Model and lifecycle, Interoperability
     - Status List Bit Configuration for Digital Credentials
-    - Credential Issuer successfully defines number of bits k (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within Status List, with Credential Issuer configuring the number of bits and each Credential having 2^k possible states.
+    - Credential Issuer successfully sets the ``bits`` parameter to ``4``; each Digital Credential is represented by 4 bits, allowing 16 status values.
   * - CI_179
     - Data Model and lifecycle, Interoperability
     - Status List Byte Array Creation and Credential Position Assignment
-    - Credential Issuer successfully creates byte array of size = (amount of Digital Credentials) * k / 8 or greater, with each byte corresponding to 8/k statuses depending on k value (8 if k=1, 4 if k=2, 2 if k=4, or 1 if k=8), and assigns each issued Digital Credential to a position in the array.
+    - Credential Issuer successfully creates a byte array of size = (number of Digital Credentials) * 4 / 8 or greater, with each byte corresponding to two 4-bit status values, and assigns each issued Digital Credential to a position in the array.
   * - CI_180
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Status Values Setting in Byte Array
-    - Credential Issuer successfully sets status values for all issued Digital Credentials within the byte array, with each Digital Credential status identified using an index that maps to specific bits within the byte array, index counting from 0 to (amount of Digital Credential) - 1, bits counted from least significant bit ("0") to most significant bit ("7"), and all bits of the byte array at a particular index set to a status value
+    - Credential Issuer successfully sets status values for all issued Digital Credentials within the byte array, with each status identified by an index that maps to four bits within the byte array, indices counting from 0 to (number of Digital Credentials) - 1, bits counted from least significant bit ("0") to most significant bit ("7"), and each four-bit value set to the corresponding status.
   * - CI_181
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Byte Array Compression
@@ -896,15 +909,15 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_183
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Status Values Definition
-    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Token Status Lists` section.
+    - Credential Issuer successfully uses the status values defined in the :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
   * - CI_184
     - Data Model and lifecycle, Interoperability
     - Status List Optional Digital Credential Status States Definition
-    - Credential Issuer successfully adds other states besides those described above when choosing the number of bits for conveying statuses of issued Digital Credentials, with careful consideration for information disclosure to Relying Parties when adding many different states for Digital Credential lifecycle.
+    - Credential Issuer successfully defines additional application-specific statuses within the range supported by ``bits``, with careful consideration for the information disclosed to Relying Parties about the Digital Credential lifecycle.
   * - CI_185
     - Data Model and lifecycle, Interoperability
     - Status List Token Parameters at Endpoint
-    - Status List Token is successfully available at the Status List Endpoint and contains the parameters in the corresponding :ref:`table <table_status_list_endpoint_parameters>`
+    - The Status List Token is successfully available at the Status List Endpoint and conforms to `TOKEN-STATUS-LIST`_ and the profiles specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
   * - CI_186
     - Data Model and lifecycle, Interoperability
     - Recommended Status List Token Short-Lived Expiration Setting
@@ -912,7 +925,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_187
     - Data Model and lifecycle, Interoperability
     - JSON-Encoded Status List Structure
-    - The JSON-encoded Status List's structure correctly conforms to the corresponding :ref:`table <table_status_list_structure>`
+    - The structure of the JSON-encoded Status List correctly conforms to `TOKEN-STATUS-LIST`_ and the profiles specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
   * - CI_188
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Local Storage
@@ -924,11 +937,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_190
     - Data Model and lifecycle, Interoperability
     - Status List Claim JSON Object Parameters
-    - The value of *status_list* claim is successfully a JSON Object with the corresponding :ref:`parameters <table_status_list_parameters>`.
+    - The value of the *status_list* claim is a JSON object with the parameters defined in `TOKEN-STATUS-LIST`_ and the profiles specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
   * - CI_191
     - Data Model and lifecycle, Interoperability
     - Status List Endpoint Successful Response
-    - Status List Endpoint successfully responds with Status List Token using HTTP status code in the 2xx range, with Status Provider using content-type application/statuslist+jwt for Status List Token in JWT format in the successful response.
+    - Status List Endpoint successfully responds with a Status List Token using an HTTP status code in the 2xx range, with the Status Provider using ``application/statuslist+jwt`` for a JWT Status List Token or ``application/statuslist+cwt`` for a CWT Status List Token.
   * - CI_192
     - Data Model and lifecycle, Interoperability
     - HTTP Status List Response Gzip Content-Encoding
@@ -985,5 +998,4 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Authentication
     - LoA nomenclature mapping
     - In the L2+ flow, LoA3 (ISO/IEC 29115) maps to eIDAS Substantial and to the national L2 means (SPID L2 / CieID Substantial). LoA High maps to eIDAS High and CIE L3. Tests fail if a Substantial authentication is recorded as High.
-
 

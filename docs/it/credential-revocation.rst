@@ -243,9 +243,9 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID/IT-Wallet ID, il Forni
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Il Fornitore di Wallet che, per qualsiasi motivo, revoca una Wallet Instance DEVE garantire che lo stato aggiornato sia riportato nella status list della relativa Wallet Unit Attestation.
-In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Credential Issuer DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation relative alle Wallet Instance a cui sono stati emessi gli Attestati Elettronici.
-Dopo la revoca della Wallet Unit Attestation, il Credential Issuer procede alla revoca di tutti gli Attestati Elettronici emessi per la Wallet Instance.
+In caso di smarrimento o furto del dispositivo, oppure in presenza di una vulnerabilità generale, il Wallet Provider DEVE revocare la Wallet Instance. Pertanto, il Wallet Provider DEVE garantire che lo stato aggiornato sia riportato nella status list della relativa Wallet Instance Attestation. In caso di vulnerabilità della WSCD, il Wallet Provider DEVE revocare la relativa Key Attestation.
+In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Credential Issuer DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Instance Attestation e Key Attestation associate alle Wallet Instance alle quali sono state rilasciate le Credenziali.
+Dopo la revoca della Wallet Instance Attestation, il Credential Issuer procede alla revoca di tutti gli Attestati Elettronici emessi per la Wallet Instance.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -548,7 +548,7 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
 
-  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
   - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.
 

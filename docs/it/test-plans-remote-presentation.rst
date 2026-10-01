@@ -76,9 +76,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di un oggetto Request non valido.
     - Viene inviata una risposta di errore.
   * - RPR-15
-    - Gestione Errori
-    - Verifica la registrazione degli errori.
-    - Gli errori vengono registrati correttamente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-16
     - Gestione Errori
     - Test del recupero da errore nella richiesta di autorizzazione.
@@ -87,6 +87,10 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Gestione Errori
     - Test di un cookie HTTP falso.
     - Il Relying Party verifica la coerenza della sessione utente accoppiando il cookie http di sessione con state e nonce forniti.
+  * - RPR-18
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-19
     - Redirect URI
     - Test del reindirizzamento all’endpoint del Relying Party.
@@ -95,14 +99,22 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Redirect URI
     - Verifica la gestione di un `redirect_uri` non valido.
     - Viene restituita una risposta di errore.
+  * - RPR-21
+    - Annullato
+    - Annullato
+    - Annullato
+  * - RPR-22
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-23
     - Presentazione Credenziali
     - Verifica la conformità del formato della risposta.
     - Il Relying Party supporta tutti i formati di credenziali inclusi nel parametro ``vp_formats_supported`` dei suoi metadati.
   * - RPR-24
-    - Risposta di Autorizzazione
-    - Test della gestione dei timeout di risposta.
-    - I tentativi devono avere successo a meno che non venga acquisita la risposta.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-25
     - Gestione Errori
     - Verifica la gestione di claim malformati nel payload della presentazione.
@@ -143,6 +155,10 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Flusso stesso e tra dispositivi
     - Verifica la gestione di condizioni di rete lente.
     - Il Relying Party fornisce la risposta http entro il limite massimo di 2 secondi.
+  * - RPR-35
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-36
     - Risposta di Presentazione
     - Verifica la gestione di payload di risposta di grandi dimensioni.
@@ -200,13 +216,13 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di content type non supportati.
     - Viene restituita una risposta di errore.
   * - RPR-50
-    - Consenso Utente
-    - Verifica la notifica all’utente delle modifiche al consenso.
-    - L’utente viene informato delle modifiche al consenso.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-51
-    - Consenso Utente
-    - Test del consenso dell’utente per dati sensibili.
-    - L’utente può acconsentire ai dati sensibili.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-52
     - Risposta di Autorizzazione
     - Verifica la gestione di errori di decifratura della risposta.
@@ -244,9 +260,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di metodi HTTP non validi.
     - Viene restituita una risposta di errore.
   * - RPR-61
-    - Consenso Utente
-    - Verifica la notifica all’utente della revoca del consenso.
-    - L’utente viene informato della revoca del consenso.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-62
     - Consenso Utente
     - Test del consenso dell’utente per dati opzionali.
@@ -296,13 +312,13 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Verifica la gestione dei timeout utente.
     - L’utente viene informato del timeout.
   * - RPR-74
-    - Flusso tra dispositivi
-    - Test della scansione del QR Code con dispositivi diversi.
-    - Il QR Code viene scansionato con successo.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-75
-    - Flusso tra dispositivi
-    - Verifica la scansione del QR Code con app diverse.
-    - Il QR Code viene scansionato con successo.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-76
     - Metodo request_uri
     - Test della gestione di metodi HTTP non supportati.
@@ -409,9 +425,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il ``client_metadata`` è correttamente allineato con i metadati della Trust Chain.
 
   * - RPR-97
-    - Richiesta Wallet Instance Attestation (WIA)
-    - Test che il Relying Party richieda l’Attestato dell'Istanza del Wallet (WIA) tramite DCQL.
-    - Il Relying Party richiede correttamente l’Attestato dell'Istanza del Wallet (WIA) usando la query DCQL.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-98
     - Formato Risposta di Errore
@@ -424,9 +440,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - La risposta di errore include i parametri error ed ``error_description``.
 
   * - RPR-100
-    - Presentazione Wallet Instance Attestation (WIA)
-    - Test che il Relying Party richieda correttamente l’Attestato dell'Istanza del Wallet (WIA) all’istanza Wallet.
-    - Il Relying Party valuta correttamente l’Attestato dell'Istanza del Wallet (WIA) quando richiesta.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-101
     - Array Presentazione
@@ -479,9 +495,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - La Response URI restituisce HTTP 200 con content type ``application/json``.
 
   * - RPR-111
-    - Coerenza Codici di Errore
-    - Test che i codici di errore siano coerenti tra i diversi endpoint.
-    - I codici di errore sono coerenti su tutti gli endpoint del Relying Party.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-112
     - Inclusione Codice di Risposta
@@ -489,9 +505,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il Relying Party include un nuovo codice di risposta in ``redirect_uri``.
 
   * - RPR-113
-    - Sicurezza Redirect URI
-    - Test che ``redirect_uri`` sia attestato da una terza parte fidata.
-    - Il parametro ``redirect_uri`` è correttamente attestato da una terza parte fidata.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-114
     - Risposta di Errore di Validazione

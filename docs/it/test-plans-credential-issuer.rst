@@ -433,6 +433,18 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Notification Endpoint
     - L'Access Token consente l'accesso al Notification endpoint per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer.
+  * - CI_089
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089a
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089b
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_089c
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Credential Endpoint
@@ -518,13 +530,13 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Limitazione dello scope del processo di Ri-emissione
     - Il processo di ri-emissione è limitato a due specifici tipi di aggiornamento: aggiornamenti tecnici del modello/formato dei dati e aggiornamenti dell’insieme di attributi dell’Utente.
   * - CI_110
-    - Emissione, Sicurezza
-    - Aggiornamenti tecnici senza interazione utente
-    - Per aggiornamenti tecnici del modello/formato dei dati, la sostituzione e l'archiviazione degli Attestati Elettronici non richiedono il coinvolgimento diretto dell'Utente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_111
-    - Emissione, Sicurezza e Privacy
-    - Autorizzazione utente per aggiornamento attributi
-    - Per aggiornamenti dell'insieme di attributi dell'Utente, il Wallet Instance informa l'Utente delle modifiche e richiede esplicita autorizzazione prima di archiviare il nuovo Attestato Elettronico.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_112
     - Emissione, Sicurezza
     - Coerenza della data di scadenza nella Ri-emissione
@@ -710,9 +722,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Gestione Processo Revoca Credenziale
     - Una Credenziale Digitale cambia con successo dagli stati Emesso, Valido o Sospeso allo stato Revocato quando è attivamente revocata dal Fornitore di Attestati Elettronici tramite un processo di revoca (PID/(Q)EAA REV).
   * - CI_155
-    - Modello di Dati e ciclo di vita, Interoperabilità
-    - Casi d'Uso Revoca Credenziale Digitale
-    - La Revoca Credenziale Digitale è implementata correttamente per ogni caso d'uso
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_155a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Revoca Credenziale Digitale - Compromissione Sicurezza Tecnica
