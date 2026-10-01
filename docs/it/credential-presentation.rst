@@ -64,7 +64,7 @@ La presentazione in prossimità o comunque offline di un Attestato Elettronico D
          }
        }
 
-  2. **Altro Attestato Elettronico di catalogo.** La Relying Party richiede i claim previsti dallo schema dell'Attestato Elettronico pubblicato nel :ref:`registry:Catalogo degli Attestati Elettronici`. Il relativo modello dati è definito dallo schema corrispondente nel :ref:`registry:Registro degli Schema`.
+  2. **Altro Attestato Elettronico di catalogo.** La Relying Party richiede i claim previsti dallo schema dell'Attestato Elettronico pubblicato nel :ref:`registry:Digital Credentials Catalog`. Il relativo modello dati è definito dallo schema corrispondente nel :ref:`registry:Schema Registry`.
 
      Esempio di ``dcql_query`` nel flusso remoto per una mDL (``credential_type`` ``mDL``, formato mdoc-CBOR, ``docType`` ``org.iso.18013.5.1.mDL``):
 
