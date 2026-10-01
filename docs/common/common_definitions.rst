@@ -44,6 +44,7 @@
 .. _CIR2026/1730: https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj
 .. _CIR2025/848-Amendment: https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj
 .. _CIR2026/1731: https://eur-lex.europa.eu/eli/reg_impl/2026/1731
+.. _EU_2026/1731: https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj
 .. _EUMS-LOTL: https://ec.europa.eu/tools/lotl/eu-lotl.xml
 .. _ETSI-LOTE-SCHEMAS: https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities
 .. _OJEU: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944
