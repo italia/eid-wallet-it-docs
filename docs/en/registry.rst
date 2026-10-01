@@ -1377,7 +1377,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **credential_name_l10n_id**
     - REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., ``mDL.name``).
   * - **legal_type**
-    - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
+    - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``). A type whose ``legal_type`` is ``qeaa`` or ``pub-eaa`` MUST follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
   * - **restriction_policy**
     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 

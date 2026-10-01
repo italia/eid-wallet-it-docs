@@ -15,6 +15,7 @@ A Digital Credential data model has the following structure:
 - **User attributes**: Information about the User, such as identity or qualifications.
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT VC or mdoc-CBOR data format.
+A QEAA and a PuB-EAA MUST also follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.
 
 Format-Agnostic Credential Metadata Attributes
@@ -138,7 +139,7 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
-      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_list`.
+      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived and it is not a QEAA or a PuB-EAA. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain the JSON member `status_list`. For a QEAA or a PuB-EAA, ``status`` follows :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
@@ -344,7 +345,8 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - :rfc:`9053`
 
 .. note::
-  Only the signature algorithm MUST be present in the protected header, other elements SHOULD NOT be present in the protected header.
+  For a Digital Credential that is not a QEAA or a PuB-EAA, only the signature algorithm MUST be present in the protected header.
+  For a QEAA or a PuB-EAA, the protected header is specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
 
 The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 
@@ -397,7 +399,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
       - *(map, REQUIRED)*. Contains the `MobileSecurityObject` issuance and expiration datetimes. It includes the following sub-values:
 
           * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
-          * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
+          * **validFrom** *(tdate)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time. For a Digital Credential that is not a QEAA or a PuB-EAA, ``validFrom`` is OPTIONAL. For a QEAA or a PuB-EAA, ``validFrom`` is REQUIRED as specified in :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
           * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
 
       - [ISO 18013-5#9.1.2.4]
@@ -416,7 +418,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_.
+      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived and it is not a QEAA or a PuB-EAA. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_. For a QEAA or a PuB-EAA, ``status`` follows :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::

@@ -11,6 +11,7 @@ Gestione degli Attestati Elettronici
   credential-data-model.rst
   credential-data-model-pid.rst
   credential-data-model-it-wallet-id.rst
+  credential-data-model-qeaa-pub-eaa.rst
   credential-revocation.rst
 
 

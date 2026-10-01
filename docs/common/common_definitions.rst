@@ -51,6 +51,7 @@
 .. _OJEU: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
 .. _ISO18013-5: https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf
+.. _ISO-IEC-23220-2: https://www.iso.org/standard/91155.html
 .. _JWA: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms
 .. _JWE: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-encryption
 .. _JWK: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key

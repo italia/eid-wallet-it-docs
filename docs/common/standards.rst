@@ -100,6 +100,8 @@ Digital Credential Data Format
       - ETSI TS 119 472-1 v1.2.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes; Part 1: General requirements.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
+    * - `ISO-IEC-23220-2`_
+      - ISO/IEC TS 23220-2. Cards and security devices for personal identification — Building blocks for identity management via mobile devices — Part 2: Data objects and encoding rules for generic eID systems.
 
 
 Digital Credential Issuance

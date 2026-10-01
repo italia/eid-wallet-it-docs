@@ -14,6 +14,7 @@ Un modello di dati dell'Attestato Elettronico ha la seguente struttura:
 - **Attributi dell'Utente**: Informazioni sull'Utente, come identità o qualifiche.
 
 Gli Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) sono rilasciati dai Fornitori di (Q)EAA a un'Istanza del Wallet e DEVONO essere forniti in formato SD-JWT VC o mdoc-CBOR.
+Un QEAA e un PuB-EAA MUST anche seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
 Mentre il modello dati (Q)EAA è guidato dal caso d'uso e può includere diversi attributi dell'Utente, gli attributi di metadati specifici per ciascun formato dati sono forniti nelle sezioni seguenti.
 
 Attributi di Metadati Format-Agnostic dell'Attestato Elettronico
@@ -137,7 +138,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. *Stringa*. Identificativo del dato `expiry_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce al periodo di validità amministrativa dell'Attestato Elettronico, che è tipicamente diverso dal periodo di validità tecnica espresso dal claim JWT ``exp``.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
-      - OPZIONALE. OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`.
+      - OPZIONALE. OBBLIGATORIO solo se l'Attestato Elettronico è long-lived e non è un QEAA o un PuB-EAA. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
@@ -343,7 +344,8 @@ Il **protected header** DEVE contenere il seguente parametro codificato in forma
       - :rfc:`9053`
 
 .. note::
-  Solo l'algoritmo di firma DEVE essere presente nel protected header, altri elementi NON DOVREBBERO essere presenti.
+  Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, solo l'algoritmo di firma MUST essere presente nel protected header.
+  Per un QEAA o un PuB-EAA, il protected header è specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
 
 L'**unprotected header** DEVE contenere i seguenti parametri, se non diversamente specificato:
 
@@ -396,7 +398,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - *(map, OBBLIGATORIO)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
 
           * **signed** *(tdate, OPZIONALE)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
-          * **validFrom** *(tdate, OPZIONALE)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
+          * **validFrom** *(tdate)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`. Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``validFrom`` è OPTIONAL. Per un QEAA o un PuB-EAA, ``validFrom`` è REQUIRED come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
           * **validUntil** *(tdate, OBBLIGATORIO)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
 
       - [ISO 18013-5#9.1.2.4]
@@ -415,7 +417,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_.
+      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived) e non è un QEAA o un PuB-EAA. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::

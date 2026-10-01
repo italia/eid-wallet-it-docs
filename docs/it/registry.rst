@@ -1373,7 +1373,7 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
   * - **credential_name_l10n_id**
     - OBBLIGATORIO. Chiave di localizzazione che referenzia il nome leggibile dell'Attestato Elettronico nel bundle di localizzazione (ad es., ``mDL.name``).
   * - **legal_type**
-    - OBBLIGATORIO. Classificazione legale della Credenziale (ad es., ``pub-eaa``, ``qeaa``, ``eaa``).
+    - OBBLIGATORIO. Classificazione legale della Credenziale (ad es., ``pub-eaa``, ``qeaa``, ``eaa``). Un tipo il cui ``legal_type`` è ``qeaa`` o ``pub-eaa`` MUST seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
   * - **restriction_policy**
     - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Credential Issuer autorizzati a richiedere/emettere l'Attestato Elettronico.
 
