@@ -171,7 +171,7 @@ exclude_patterns += [
     'onboarding-processes-entities.rst',
     'onboarding-processes-artifacts.rst',
     'onboarding-processes-credentials.rst',
-    'onboarding-lifecycle.rst',
+    'onboarding-notification.rst',
 ]
 
 # The name of the Pygments (syntax highlighting) style to use.

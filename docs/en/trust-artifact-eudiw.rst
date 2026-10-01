@@ -1,6 +1,9 @@
 .. include:: ../common/common_definitions.rst
 .. Included via infrastructure-trust.rst at title level '-' (level 1).
 
+.. role:: raw-html(raw)
+  :format: html
+
 EUDIW Trust Artifacts
 ---------------------
 
@@ -25,28 +28,34 @@ The data model of these Trust Artifacts profiles the following external specific
 Register of WRPs
 ^^^^^^^^^^^^^^^^
 
-The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs and their authorisations/declared usage.
-This section documents a `EUDI-TS 5`_ aligned profile that satisfies Annex II of `CIR2025/848`_ and `CIR2025/848-Amendment`_ constraints.
+The national Register of WRPs is the publicly accessible system (dataset + API) that provides signed/sealed registration statements about WRPs, their **Services**, and their authorisations/declared usage.
+The Register dataset and read API are `EUDI-TS 5`_, objects ``WalletRelyingParty`` and ``WalletRelyingPartyService``, and satisfy Annex II of `CIR2025/848`_ as amended by [`CIR2026/1730`_].
+
+.. note::
+    **Profile deviation.** The Relying Party Service identifier, and the issuance of more than one Wallet-Relying Party Access Certificate or Wallet-Relying Party Registration Certificate per Wallet-Relying Party ([`EIDAS-ARF`_] Reg_10a, Reg_10d, Reg_33, Reg_34a and RPRC_07a), are not requirements of this specification until ETSI and the ARF Technical Specifications define the implementation.
+    `EUDI-TS 5`_ marks ``serviceIdentifier`` as ``[0..1]``.
+    `ETSI TS 119 411-8`_ does not yet define an attribute for that identifier, and `ETSI TS 119 475`_ does not yet define ``srv_id``.
+    Until then, this specification does not require ``serviceIdentifier``, an entity obtains one WRPAC, and the Provider of WRPRC issues one WRPRC for that entity.
 
 Register Dataset
 """"""""""""""""
 
-The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of the Annex VI of the `CIR2025/848-Amendment`_.
+The data format for the information available through the open API provided by the national Register of WRPs MUST comply with the data schemas described in Tables 1-11 of Annex VI of [`CIR2025/848`_] as amended by [`CIR2026/1730`_], encoded as the ``WalletRelyingParty`` JSON Schema of `EUDI-TS 5`_.
 Below some non-normative examples of ``WalletRelyingParty`` objects stored in the Register.
 
-A bank registered as a Relying Party requesting PID for know-your-customer procedures.
+A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.
 
 .. literalinclude:: ../../examples/register-wrp-rp.json
   :language: JSON
 
 A bank registered as both a Relying Party requesting PID and a QEAA Provider (issuing bank account attestations to Wallet).
-It has both ``intendedUse`` and ``providesAttestations``.
+It registers two Services: one Service with ``intendedUses`` and one Service with ``providesAttestations``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-ap.json
   :language: JSON
 
 An entity registered as a designated Intermediary that acts on behalf of WRPs during Wallet interactions.
-It has ``isIntermediary: true`` and does not declare ``intendedUse`` (not required when registering solely as an Intermediary).
+Each of its ``services[]`` elements has ``isIntermediary: true``, does not declare ``intendedUses`` or entitlements, and lists the served Services in ``servedWRPServices``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-intermediary.json
   :language: JSON
@@ -55,97 +64,37 @@ It has ``isIntermediary: true`` and does not declare ``intendedUse`` (not requir
 Register Open APIs
 """"""""""""""""""
 
-The common API read methods (GET) MUST be open for public access (no prior authentication), return JWS-signed statements,
-and provide methods for searching and querying complete data sets of registered WRPs matching with provided query parameters.
-
-- **GET /wrp**: Get a list of WRPs with optional filtering (defined in Annex VI of `CIR2025/848-Amendment`_) and pagination.
-  A successful response (``200``) MUST be a JWS-signed response body.
-  The decoded payload MUST contain an array of ``WalletRelyingParty`` objects matching the query, and, where relevant, accompanied by WRPAC history information in the statement/profile used by the Member State.
-  The list of all registered WRPs is returned when no query parameters are provided.
-- **GET /wrp/check-intended-use**: A dedicated intended-use check endpoint for making narrowed-down intended use related queries from the Register.
-  A successful response (``200``) MUST provide a JWS-signed boolean ``true`` or ``false`` response, determined by the queried parameter in the Registrar's Intended use information for the specific WRP.
-  If the request is invalid/incomplete or the given WRP is not found, the endpoint MUST answer with error code ``400`` and ``401``, respectively.
+The read methods are Section 3 of `EUDI-TS 5`_.
+Methods, filter parameters, response codes and the slicing of ``services`` when ``serviceidentifier`` is used are defined there.
 
 .. note::
-    The published API view excludes only ``postalAddress`` (`CIR2025/848-Amendment`_, Annex I, point 4).
+    The published API view excludes only ``postalAddress`` ([`CIR2025/848`_] as amended by [`CIR2026/1730`_], Annex I, point 4).
     All other fields, including intended-use credential claims, are published as registered.
+    The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06).
+    The Wallet Unit MUST NOT use them as a substitute for a missing or invalid Wallet-Relying Party Registration Certificate during Credential Presentation or Credential Issuance, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
 
-The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ v1.3 is available at https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml.
-
-.. warning::
-  In addition to the filtering parameter in the above YAML file, this specification requires the support of the parameter ``providesattestation`` to query for WRPs that provide the queried attestation type, as expected in the `CIR2025/848-Amendment`_.
+The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available as `EUDI-TS 5 OpenAPI`_.
+The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available as `EUDI-TS 5 JSON Schema`_.
+The national read profile of that API is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Wallet-Relying Party Access Certificates (WRPACs)**.
 
-According to the Article 2 of [`CIR2025/848`_], a WRPAC is a certificate for electronic seals or signatures authenticating and validating the WRP when they interact with the EUDI Wallet.
-For more details on the authentication process, see :ref:`trust-evaluation:EUDIW Authentication`.
-
-The suspension or cancellation of the WRP services, involves revocation of all valid WRPAC by the relevant issuing authority, such that the WRP is no longer able to interact with Wallet Units.
-For more detail on the Trust Management processes, see :ref:`infrastructure-trust:Trust Management and Lifecycle`.
-
-Annex IV of [`CIR2025/848`_] also states that the WRPACs are meant for performing electronic signatures or seals and that they MUST comply with at least the Normalised Certificate Policy (NCP) requirements specified in the ETSI standards.
-Taking into account these minimal requirements, different scenarios are possible and specified in the following clauses: certificates issued to natural or legal persons, supporting advanced signatures/seals or even qualified signature/seals.
-Conditional requirements are defined according to the specific case the WRPACs fall into.
-
-The specific requirements for WRPACs are specified in `ETSI TS 119 411-8`_.
-
-The following table defines the complete set of extensions applicable to the certificate profile.
-Extensions not listed in the table MUST NOT be present.
-
-.. list-table:: Wallet-Relying Party Access Certificate Extensions
-   :class: longtable
-   :header-rows: 1
-   :widths: 25 75
-
-   * - **Extension**
-     - **Description**
-
-   * - ``authorityKeyIdentifier``
-     - REQUIRED. The value of the ``keyIdentifier`` field SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
-
-   * - ``subjectKeyIdentifier``
-     - OPTIONAL. If present, its value SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
-
-   * - ``keyUsage``
-     - REQUIRED. It MUST contain one (and only one) of the key-usage settings *Type A*, *Type B*, or *Type F*. *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_]. For additional details, see Clause 4.3.2 [`ETSI EN 319 412-2`_] and Clause 4.3.1 [`ETSI EN 319 412-3`_].
-
-   * - ``certificatePolicies``
-     - REQUIRED. It MUST include a ``PolicyInformation`` structure with ``policyIdentifier`` set to one of the following values (defined in `ETSI TS 119 411-8`_):
-
-       * ``0.4.0.194118.1.1`` (``NCP-n-eudiwrp``);
-       * ``0.4.0.194118.1.2`` (``NCP-l-eudiwrp``);
-       * ``0.4.0.194118.1.3`` (``QCP-n-eudiwrp``);
-       * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
-
-       and ``policyQualifiers`` containing a ``cpsURI`` that references an URL where the CPS of the Provider of WRPAC is located.
-
-   * - ``subjectAltName``
-     - REQUIRED. It MUST include a ``GeneralName`` structure with one of the following parameters defined to provide valid contact information of the WRP:
-     
-       * ``uniformResourceIdentifier``, to provide the URI of a website for helpdesk/support matters;
-       * ``otherName`` with ``type-id`` set to ``2.5.4.20`` (``id-at-telephoneNumber``), to provide a phone number for WRP registration/usage matters;
-       * ``rfc822Name``, to provide an email address for WRP registration/usage matters.
-
-   * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
-     
-       If present, it MUST contain at least one reference to a publicly available CRL.
-
-   * - ``authorityInfoAccess``
-     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
-
-       If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
-
-   * - ``qcStatements``
-     - OPTIONAL. It MAY contain `QCStatement` structures among those defined in Clause 4.2 of [ETSI EN 319 412-5].
-       In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
+The WRPAC is the certificate defined in Article 2 and Annex IV of [`CIR2025/848`_].
+Its profile is `ETSI TS 119 411-8`_.
+Extensions not specified by that document MUST NOT be present.
+Subject attributes are [`EIDAS-ARF`_] Reg_31, Reg_32 and Reg_34, and `ETSI TS 119 411-8`_.
+Authentication is specified in :ref:`trust-evaluation:EUDIW Authentication`.
+Revocation on suspension or cancellation of the WRP services is specified in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
+The Relying Party Service identifier and one WRPAC per Service are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
 .. note::
-    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
-    This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
+    The WRPAC attributes MUST be derived from the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
+
+    **Profile deviation.** Certificate Transparency ([`EIDAS-ARF`_] CT_01 to CT_06) is not a requirement of this specification until the ARF Technical Specifications make it fully available and clear for implementations.
+    The WRPAC profile does not include a Signed Certificate Timestamp, the Provider of WRPAC is not required to log issued WRPACs, and the Wallet Unit is not required to verify Certificate Transparency during Authentication.
 
 The following is an example of a WRPAC for legal persons following the NCP.
 
@@ -200,25 +149,17 @@ The following is a non-normative example of a Registrar Sign/Seal Certificate fo
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines Wallet-Relying Party Registration Certificate (WRPRC), as described in the `EIDAS-ARF`_ and `ETSI TS 119 475`_.
-This Trust Artifact provides detailed information about the Credential Issuer and Relying Party's Authorization profile, including:
+This section profiles the Wallet-Relying Party Registration Certificate (WRPRC) defined in `EIDAS-ARF`_ and `ETSI TS 119 475`_.
+Its contents are clause 5.1, clause 5.2.4 and Annex A.2 of `ETSI TS 119 475`_, and Annex V paragraph 3 of [`CIR2025/848`_].
+It is a signed JWT or a CWT (:rfc:`8392`), signed with the private key of the Provider of Wallet-Relying Party Registration Certificates.
+The JWT signature is a JAdES signature with the B-B profile (`ETSI TS 119 182-1`_).
+The CWT signature follows :rfc:`9052` and :rfc:`9360`.
 
-- core identification attributes (clause 5.1 `ETSI TS 119 475`_),
-- service description attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- entitlement attributes (see Annex A.2 `ETSI TS 119 475`_),
-- supervisory authority attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- Relying Party attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- Credential Issuer attributes (clause 5.2.4 `ETSI TS 119 475`_),
-- Intermediary attributes; i.e., whether the Relying Party relies on an Intermediary to request Digital Credentials (clause 5.2.4 `ETSI TS 119 475`_).
+The Provider of WRPRC issues one WRPRC for the entity, automatically, as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+Binding that certificate to a Relying Party Service identifier, and issuing more than one WRPRC per entity, are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
-The Wallet-Relying Party Registration Certificate MUST be formatted either as a signed JSON Web Token (JWT) or CBOR Web Token (CWT) :rfc:`8392`.
-It MUST comply with the syntactic and semantic requirements specified in Annex V paragraph 3 of CIR (EU) 2025/848 and `ETSI TS 119 475`_.
-
-The Wallet-Relying Party Registration Certificate MUST be signed with the private key of Provider of the Wallet-Relying Party Registration Certificates.
-In particular:
-
-- The JWT MUST be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in `ETSI TS 119 182-1`_.
-- The CWT MUST be signed with an Advanced Electronic Signature following structure as defined in :rfc:`9052` and :rfc:`9360`.
+The ``intermediary`` object is clause 5.2.4 of `ETSI TS 119 475`_ and [`EIDAS-ARF`_] RPRC_04.
+The Wallet Unit evaluates intermediated presentation as specified in :ref:`trust-evaluation:EUDIW Authorization`.
 
 Below a non-normative example of WRPRC header and payload for a Relying Party.
 
@@ -228,7 +169,7 @@ Below a non-normative example of WRPRC header and payload for a Relying Party.
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
   :language: json
 
-Below a non-normative example of WRPRC payload for a Relying Party Intermediary.
+Below a non-normative example of WRPRC payload for an intermediated Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-payload-rpi.json
   :language: json
@@ -249,45 +190,10 @@ Ecosystem Entities utilize these lists to:
 - **Validate runtime trustworthiness**: Verify a Trust Anchor (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
 - **Perform historical validation**: Validate information contained within the list for historical audit purposes.
 
-The three distinct types of trust lists are:
-
-- Trusted Lists (TLs): Established under Chapter II of Annex I of `CID2015/1505`_, as amended by `CID2025/2164`_, and specified in `ETSI TS 119 612`_.
-  Each Member State publishes one TL in XML format.
-  It is signed by the respective Member State with an XAdES digital signature at conformance level baseline B (as defined in `ETSI EN 319 132-1`_).
-  TLs are published in a machine-readable format at endpoints specified within the LOTL.
-  These Lists hold current and historical information about the accreditation of trust service providers, referencing:
-
-  - Qualified Trust Service Providers (QTSP)s, such as Qualified Certificates Issuing and revocation mechanisms, QEAA Providers, Qualified electronic archiving services.
-  - Non-Qualified Trust Services such as EAA Providers.
-  - Other Trust Services defined at the national level, such as archiving.
-
-   Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction.
-   They are numbered and renewed periodically, and published in a website for unrestricted download.
-   To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
-
-- List of Trusted Lists (LOTL): Established under Chapter II of Annex I of `CID2015/1505`_, as amended by `CID2025/2164`_, and specified in `ETSI TS 119 612`_.
-  There is only one LOTL, which is published in XML format and signed by the European Commission (EC).
-  It utilizes an XAdES digital signature at conformance level baseline B (per `ETSI EN 319 132-1`_) and references the trusted certificates that each National Trusted List.
-  To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism.
-  It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (`OJEU`_).
-
-  The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at ``https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd``. Currently, the machine-readable version of the LOTL and National TLs is published at `EUMS-LOTL`_.
-
-- Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of `CIR2024/2980`_ and specified in `ETSI TS 119 602`_.
-  These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI TS 119 182-1`_).
-  To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the `OJEU`_.
-  The LoTE types can be one of the following, as defined in annex C.2:
-
-  - PID Provider;
-  - Wallet Provider;
-  - Provider of Wallet Relying Party Access Certificates;
-  - Providers of Wallet Relying Party Registration Certificates;
-  - Public sector bodies issuing Electronic Attestations of Attributes;
-  - List of Registrars and Registers.
-
-  The following repository provides the normative JSON and XML schemas required for implementing the List of Trusted Entities (`ETSI-LOTE-SCHEMAS`_).
-
-The following table provides a comprehensive overview of the eIDAS trust list architecture, cross-referencing the legal basis, governing technical standards, explicit data formats, signature profiles, and publication dynamics for Trusted Lists (TL), the List of Trusted Lists (LOTL), and the various category-specific Lists of Trusted Entities (LoTE).
+The table below maps each list to its legal basis, governing standard, format and publication.
+The XML schema of Trusted Lists and of the List of Trusted Lists is published at ``https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd``.
+The machine-readable List of Trusted Lists and the National Trusted Lists are published at `EUMS-LOTL`_.
+The normative JSON and XML schemas of the Lists of Trusted Entities are published at `ETSI-LOTE-SCHEMAS`_.
 
 .. list-table:: eIDAS Trust List Ecosystem Profiles
    :class: longtable
@@ -368,52 +274,27 @@ The example below shows a non-normative example of payload of a List of Trusted 
 Embedded Disclosure Policy (EDP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An Embedded Disclosure Policy (EDP) is defined in Article 2(9) of CIR 2024/2979 as: *"A set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes"*.
+An Embedded Disclosure Policy (EDP) is defined in Article 2(9) of [`CIR2024/2979`_].
+Applicability and the three common policy types are Article 10 and Annex III of [`CIR2024/2979`_], encoded in Section 4.2.5.2 of `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08 and ISS-MDATA-EBD-4.2.5.2-09).
+An EDP MUST NOT be applied to a PID.
+The Wallet Unit evaluates the common types as specified in :ref:`trust-evaluation:EUDIW Authorization`.
+Non-disclosure towards the Relying Party is Section 4.2.5.1 of `ETSI TS 119 472-3`_.
 
-Attestation Providers (i.e., all Credential Issuers except the PID Provider) can optionally express an EDP which allow indicating which Relying Parties can access specific Digital Credentials.
-The Article 10 of CIR 2024/2979 establishes that Wallet Providers MUST ensure that Attestations with common EDPs (as listed in Annex III of CIR 2024/2979) can be processed by their Wallet Units.
-
-EDPs are applicable to QEAAs, PuB-EAAs, and EAAs.
-They MUST NOT be applicable to PIDs.
-
-The EDP is distributed through the Credential Issuer Metadata at issuance time.
-The Attestation Provider MUST include the EDP (if any) by value in the Credential Issuer Metadata, within the ``credential_configurations_supported`` parameter, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
-If available, the Wallet Unit MUST store the EDP locally and associate it with the specific Attestation for which it was retrieved.
-The Wallet Unit MUST NOT reveal the EDP to the Relying Party through the presentation protocol as per `ETSI TS 119 472-3`_, Section 4.2.5.1.
-
-Embedded Disclosure Policies are used to:
-
-- Implementing sector-specific access control (e.g., only public sector RPs or only healthcare RPs).
-- Implementing Member-State-specific access control (e.g., only RPs registered within a specific Member State).
-
-Annex III of [CIR 2024/2979] defines three common EDP types:
-
-- **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
-
-- **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation.
-  According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
-
-  - For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``.
-  - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``.
-    The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI TS 119 472-3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
-
-- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates.
-  Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation.
-  According to `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+The Attestation Provider MUST include the EDP, if any, as the ``embedded_disclosure_policy`` member of ``credential_metadata`` within ``credential_configurations_supported``, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
+The member MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``.
+The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together.
+An unresolved URI MUST cause the association and the affected disclosure to fail.
 
 .. note::
 
-  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI TS 119 475`_, held in the Wallet-Relying Party Registration Certificate.
-  Annex A.3 of `ETSI TS 119 475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``).
-  Future versions may include additional sector-specific sub-entitlements at national or EU level.
-  This specification supports both the subject DN and the entitlement URI identification mechanisms.
-
-.. note::
-
-  `EIDAS-ARF`_ HLR EDP_02 refers to *EU-wide unique identifiers*, as defined in Reg_32, for the authorized RP list.
-  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate.
-  The ``organizationIdentifier`` attribute within the DN has the same semantics as the identifier given in `EIDAS-ARF`_ HLR Reg_32.
-  This specification aligns with the `ETSI TS 119 472-3`_ formulation.
+  `EIDAS-ARF`_ HLR EDP_02 requires an identifier duplet taken from the WRPRC in the request (``sub`` and a Service identifier), not from the WRPAC, including in a **direct** presentation.
+  The Service identifier is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+  Until then, the Wallet Unit matches the EU-wide unique identifier (``sub``) and, where present, the entitlement URI.
+  `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also encodes authorized parties by subject DN or by entitlement URI.
+  The ``subject_dn`` parameter is that ETSI encoding; it is not an evaluation input against the WRPAC.
+  The ``entitlement_uri`` parameter is matched against entitlements held in the WRPRC.
+  Annex A.3 of `ETSI TS 119 475`_ defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``).
+  For an **intermediated** presentation the WRPRC in the request is that of the *intermediated* Relying Party ([`EIDAS-ARF`_] RPRC_19).
 
 Embedded Disclosure Policy Data Model
 """"""""""""""""""""""""""""""""""""""
@@ -437,8 +318,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
-       The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
-       The EDP MAY be accessible through this URI.
+        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the exact policy data set identified by that URI has already been pre-loaded into the Wallet Unit. A URI that cannot be resolved to the exact included or preloaded policy MUST fail EDP processing; the Wallet Unit MUST NOT proactively retrieve an unspecified replacement policy.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
@@ -448,7 +328,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
-       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties chaining to specified trusted roots.
+       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties whose WRPRC signing path contains a specified trusted root or intermediate certificate.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
@@ -468,25 +348,31 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``authorized_parties``
      - REQUIRED. array of objects. if ``policy_type`` is ``"authorized_rp_only"``.
-       Contains a list of authorized Relying Parties allowed to access the Attestation.
+       Contains a list of authorized Relying Parties allowed to access the Attestation, identified by the EU-wide unique identifier. The Service identifier of EDP_02 is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
+
+   * - ``authorized_parties[].identifier``
+     - REQUIRED. string.
+       EU-wide unique identifier of the authorized Relying Party, as specified in [`EIDAS-ARF`_] Reg_32.
+       It MUST match the ``sub`` of the WRPRC in the request.
+     - [`EIDAS-ARF`_] EDP_02
 
    * - ``authorized_parties[].subject_dn``
      - OPTIONAL. string.
-       Subject Distinguished Name (DN) of the Relying Party extracted from its Wallet-Relying Party Access Certificate (WRPAC), formatted as an LDAP string compliant with :rfc:`4514`.
-       At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
+       Subject Distinguished Name (DN) of the Relying Party, formatted as an LDAP string compliant with :rfc:`4514`.
+       This is the ETSI encoding of ISS-MDATA-EBD-4.2.5.2-07.
+       It is not an evaluation input: the Wallet Unit MUST NOT match it against the WRPAC, and EDP_02 evaluation uses the EU-wide unique identifier from the WRPRC, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
      - OPTIONAL. string (URI).
-       URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC).
-       At least one of ``subject_dn`` or ``entitlement_uri`` MUST be present in each element.
+        URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). It MUST be compared exactly.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
-       Defines a precise list of trusted root or intermediate certificates.
-       Only RPs whose WRPACs successfully chain to one of these roots are permitted access.
+        Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
+        Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
@@ -503,8 +389,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
-       These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present.
-       Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
+        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit MUST successfully process recognized rules even if unrecognized extensions are present. The IT-Wallet extension is an object with an extension identifier, a Credential-format claim ``path``, and an alternative common EDP rule. The base policy governs the Credential; the matching extension rule governs that attribute, and every disclosed attribute MUST satisfy its applicable rule. The extension encoding MUST be serializable in the EDP and MUST NOT change the result for attributes without a matching path.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.

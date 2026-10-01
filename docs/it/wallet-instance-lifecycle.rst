@@ -70,16 +70,19 @@ Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo 
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
 personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
-Nello stato **Operativo**, gli Utenti possono richiedere l'emissione del PID (**PID ISS**), dell'**IT-Wallet ID** (che **non** causa la transizione allo stato **Valido**), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
+Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'**IT-Wallet ID** (che **non** causa la transizione allo stato **Valido**), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono il PID, possono essere presentate
 senza far transitare l'Istanza del Wallet a un altro stato (transizione **(Q)EEA PRE**). L'IT-Wallet ID PUÒ altresì essere presentato mentre l'Istanza del Wallet rimane **Operativa**.
+
+La transizione **PID ISS** è soggetta a :ref:`pid-until-notification`.
+Fino ad allora l'Istanza del Wallet rimane **Operativa** con l'IT-Wallet ID.
 
 Un'Istanza del Wallet **Valida** DEVE transitare nuovamente allo stato **Operativo** a causa della transizione **PID EXP/REV/DEL**, quando il PID associato scade, viene revocato dal suo Fornitore o viene eliminato dall'Utente.
 
 Transizione a Valido
 ....................
 
-Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (**PID ISS**). L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato **Valido**, gli Utenti possono ottenere e presentare
+Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (**PID ISS**), come specificato in :ref:`pid-until-notification`. L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato **Valido**, gli Utenti possono ottenere e presentare
 nuovi Attestati Elettronici di Attributi (Qualificati) (**(Q)EAA ISS/PRE**), e presentare il PID (**PID PRE**). Si prega di fare riferimento a :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
 .. note::

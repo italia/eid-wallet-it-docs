@@ -1231,6 +1231,14 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Include ``cnf`` claim
      - The ``cnf`` claim contains the ephemeral public key, linking the key to the attestation.
+   * - WP_140g
+     - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
+     - No OEM Key Attestation APIs for PID
+     - Key Attestation issuance for PID keys conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
+   * - WP_140h
+     - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
+     - OEM Key Attestation APIs for other credentials
+     - Key Attestation issuance for Digital Credentials other than the PID conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_141
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Signing JWT Wallet Instance Attestation (WIA) Request
@@ -1271,6 +1279,10 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - ``iss`` parameter verification
      - Wallet Provider verifies that the ``iss`` parameter in the Wallet Instance Attestation (WIA) Request JWT matches its own URL identifier.
+   * - WP_143h
+     - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
+     - OEM Key Attestation validation scope
+     - Wallet Provider validation of Key Attestation APIs (OEM) material in ``keys_to_attest`` conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_144
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Attestation Issuance

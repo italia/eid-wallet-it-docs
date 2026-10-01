@@ -1,4 +1,4 @@
-@startuml
+@startuml High-Level IT-Wallet ID Issuance Flow
 !include <C4/C4_Container>
 
 HIDE_STEREOTYPE()
@@ -36,14 +36,18 @@ Boundary(IdentityProvider, "CIEid Digital Identity\n Federation") {
     System_Ext(idp, "Identity Provider", "Digital Identity scheme based on CIEid LoA High (L3) or eID Substantial Authentication with MRTD Verification", $sprite="institution")
 }
 Container_Ext(as, "Authentic Source", "ANPR", "",$sprite="database")
-Container_Ext(ta, "Federation Services and Digital Credentials Catalogue", "OID-FED registry", "",$sprite="lock")
+Container_Ext(ta, "National Trust Services and Digital Credentials Catalogue", "National registry", "",$sprite="lock")
 
 Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a \nIT-Wallet ID","")
-Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nIT-Wallet ID \nEAA Provider \nDiscovery\nand Trust","")
-Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests IT-Wallet ID","")
+Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nIT-Wallet ID\nEAA Provider Discovery\nand National Trust","")
+Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests IT-Wallet ID\nAuthorization Code","")
 Rel(vci,ta,"<size:16><color red><b>3</b></color></size>\nWallet Provider \nDiscovery and Trust","")
 Rel(rp,idp,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User","")
 Rel_U(vci,as,"<size:16><color red><b>5</b></color></size>\nObtains\nAttributes","")
 BiRel(vci,rp,"","",$tags="async")
 Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues IT-Wallet ID","")
+note right of wi
+Trust selection at Issuance chooses National path: Federation Entity Authentication and National Authorization.
+
+end note
 @enduml

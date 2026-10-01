@@ -368,7 +368,7 @@ Where:
   - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
 
 .. note::
-  The Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
+  The national Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
   Additional Trust Mark purposes, when defined, MAY therefore be issued by other Entities authorized through ``trust_mark_issuers``.
 
 Trust Mark registration-entity
@@ -378,6 +378,8 @@ Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trus
 The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
+For National proximity presentation, the ``euWrprc`` member of ``requestInfo`` is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only; the authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.
+
 An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
 
 A Relying Party Intermediary receives its registration Trust Mark with the ``intermediate`` ``<entity_type>`` in the identifier.
