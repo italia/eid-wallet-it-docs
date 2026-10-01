@@ -76,7 +76,7 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - Its own Wallet-Relying Party Access Certificate associated to that intermediated Relying Party ([`EIDAS-ARF`_] Reg_34a) and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
+      - Its own Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
 
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -652,7 +652,8 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     - **Credential Presentation**.
       The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
       If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
-      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04), and the WRPAC ``subjectAltName`` carries the association to that Relying Party and Service ([`EIDAS-ARF`_] Reg_34a).
+      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, and the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04).
+      Association of a distinct WRPAC to that Relying Party and Service is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
     If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation and set ``authz_val_state`` to ``BINDING_FAILED``.
     If the **direct** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the Relying Party, and the intended use of the request.
@@ -695,9 +696,23 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
    During Credential Issuance, the Wallet Unit MUST resolve the EDP identified by the selected Credential metadata and associate the resolved policy with each issued EAA. During Credential Presentation, for each Digital Credential and each requested attribute, the Wallet Unit MUST evaluate the associated EDP before User consent. If an EDP URI cannot be resolved to the exact included or preloaded policy, the EDP evaluation MUST fail. An EDP MUST NOT be evaluated for a PID.
    According to the ``policy_type`` defined in Section 4.2.5 of [`ETSI TS 119 472-3`_]:
 
-     - ``no_policy``: no restriction applies.
-     - ``authorized_rp_only``: an authorized entry is satisfied by its RFC 4514 ``subject_dn`` matching the authenticated WRPAC subject DN and/or its ``entitlement_uri`` matching an entitlement or sub-entitlement in the validated WRPRC. The Wallet Unit MUST compare DNs using RFC 4514 DN comparison and MUST compare the entitlement URI exactly. If no applicable form matches, the EDP evaluation MUST fail.
-     - ``specific_root_of_trust``: only Relying Parties whose authenticated WRPAC certification path contains one of the specified roots or intermediates are authorized. The Wallet Unit MUST match each entry by ``issuer_dn`` using RFC 4514 DN comparison and ``serial_number`` using integer comparison.
+    - ``no_policy``: no restriction applies.
+    - ``authorized_rp_only``: only the Relying Parties in the ``authorized_parties`` list are authorized.
+      The Wallet Unit MUST retrieve the EU-wide unique identifier from the WRPRC in the request (``sub``) and compare it with ``authorized_parties[].identifier`` ([`EIDAS-ARF`_] EDP_02, Reg_32).
+      The Service identifier of that duplet is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+      Where an ``authorized_parties`` element identifies the party by ``entitlement_uri``, the Wallet Unit MUST match that URI against the entitlements or sub-entitlements of the same WRPRC.
+      A match on the identifier or on ``entitlement_uri`` is sufficient.
+      If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
+      The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
+      If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for ``sub``.
+      In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
+    - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
+      The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+      It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.
+      The path comprises the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE.
+      If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
+      In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
+      It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request.
 
    The Wallet Unit MUST apply the base policy to the Credential and any recognized attribute-specific rule to the selected Credential-format claim path. A disclosed attribute is permitted only when both the Credential-level result and its applicable attribute-level result are satisfied. The Wallet Unit MUST inform the User of the Credential-level and attribute-level results, including the policy information link when present, before consent, and MUST block every unsatisfied Credential or attribute. Unknown extensions MAY be ignored only when doing so does not break processing of recognized rules.
 
