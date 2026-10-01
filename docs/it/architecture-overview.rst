@@ -47,4 +47,6 @@ L'architettura abilita i seguenti processi di interazione principali:
 
   5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [`OpenID4VP`_] profilato da [`OPENID4VC-HAIP`_]; la presentazione in prossimità utilizza [`ISO18013-5`_], come richiesto da [`CIR2024/2982`_]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Claims Registry` per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 
+La decomposizione per componenti del PID Provider e della Soluzione Wallet è in :ref:`component-decomposition:Decomposizione per Componenti`.
+
 
