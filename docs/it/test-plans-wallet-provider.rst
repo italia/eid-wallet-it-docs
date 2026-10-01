@@ -1161,11 +1161,11 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_133a
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Calcolo hash SHA-256
-     - Istanza del Wallet calcola con successo un digest SHA-256 (``client_data_hash``) sul ``nonce``, il ``hardware_key_pub``, e il ``hardware_key_tag``,
+     - Istanza del Wallet calcola con successo un digest SHA-256 (``client_data_hash``) degli ottetti UTF-8 del ``nonce`` immediatamente seguiti dagli ottetti UTF-8 di ``hardware_key_tag``. Il digest non include ``hardware_key_pub``.
    * - WP_133b
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Key Attestation
-     - Istanza del Wallet invoca con successo l'API Key Attestation con il ``client_data_hash`` e ottiene un attestato firmato dalla Key Attestation API.
+     - Istanza del Wallet invoca con successo l'API di Key Attestation al momento della generazione della chiave, passando ``client_data_hash`` come challenge di attestazione, e ottiene un attestato firmato.
    * - WP_134
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Richiesta Key Binding
@@ -1189,7 +1189,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_136
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Verifica associazione crittografica
-     - Il Fornitore del Wallet verifica con successo l'associazione crittografica tra il ``hardware_key_tag``, ``hardware_key_pub``, il nonce, e il ``client_data_hash`` fornito nel parametro ``key_attestation``.
+     - Il Fornitore del Wallet estrae ``hardware_key_pub`` dalla ``key_attestation`` validata e verifica che il challenge incorporato sia uguale al digest SHA-256 degli ottetti UTF-8 del ``nonce`` immediatamente seguiti dagli ottetti UTF-8 di ``hardware_key_tag``.
    * - WP_137
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Registrazione Istanza del Wallet
@@ -1205,7 +1205,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_140
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Richiesta di Emissione della Wallet Instance Attestation (WIA)
-     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, e altri parametri correlati alla configurazione.
+     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, e altri parametri correlati alla configurazione.
    * - WP_140a
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Controllo esistenza chiave hardware/ri-inizializzazione
@@ -1354,5 +1354,13 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Trust, Sicurezza
      - Endpoint PDND del Fornitore del Wallet autenticati
      - Le chiamate al Catalogo e-Service PDND del Fornitore del Wallet, incluso Notify User Death, sono autenticate e autorizzate. Le richieste non autenticate sono rifiutate. Un Notify User Death riuscito porta alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal PID/IT-Wallet ID Provider.
+   * - WP_162
+     - Emissione Key Attestation, Sicurezza
+     - Challenge di attestazione Android
+     - Su Android, ciascuna chiave di Credenziale è generata con il challenge dell'API di Key Attestation impostato agli ottetti UTF-8 del ``nonce``. ``client_data_hash`` è usato solo per ``hardware_signature``. Ciascun elemento di ``keys_to_attest`` è un ``key-attestation-request+jwt`` come definito in :ref:`wallet-provider-endpoint:Elemento di Key Attestation`.
+   * - WP_163
+     - Emissione Wallet Instance Attestation (WIA), Ciclo di vita
+     - Riutilizzo della voce di stato per emittente
+     - La Richiesta di Wallet Instance Attestation include ``intended_issuer``. Una prima richiesta per quell'emittente omette ``status_list_idx`` e il Fornitore di Wallet assegna un nuovo indice. Una richiesta successiva per lo stesso emittente include quel ``status_list_idx``. Una richiesta che riutilizza un indice a cui l'Istanza del Wallet non è autorizzata è rifiutata con ``403 Forbidden`` e ``invalid_request``.
 
 
