@@ -52,4 +52,11 @@ JSON fields and HTTP parameters are wrapped in double backticks in the RST sourc
 
 Static images need both SVG (HTML) and PDF (LaTeX), selected with `.. only:: format_html` and `.. only:: format_latex`. PlantUML sources live in `plantuml/*.puml` and use the `plantuml` directive. Every figure has an `:alt:` and a label `.. _fig_name:`.
 
-Use `list-table` with `:widths:`, `:header-rows: 1`, bold headers, and a label `.. _table_name:`. Larger examples go in `examples/` and are pulled in with `literalinclude`. Mark examples as non-normative in the surrounding text.
+Use `list-table` with `:widths:`, `:header-rows: 1`, bold headers, and a label `.. _table_name:`.
+
+An example that is the same in English and Italian (code, JSON, HTTP, or any other sample) belongs in `examples/`. Include it from both language files with `literalinclude`. Do not paste that example into both `docs/en` and `docs/it`. Mark examples as non-normative in the surrounding text.
+
+```rst
+.. literalinclude:: ../../examples/request-object-header.json
+   :language: JSON
+```

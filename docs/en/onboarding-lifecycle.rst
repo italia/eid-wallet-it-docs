@@ -460,5 +460,7 @@ The relationship between an Entity update and the Trust Artifacts it affects is 
 
 .. note::
   The Register is a set of records per WRP, so an event impacts only the record of the Entity concerned.
-  The Digital Credentials Catalog, the Authentic Source Registry, the Claims Registry, the Schema Registry and the Taxonomy are instead single signed documents, so every write requires a new signature and a new publication of the whole document.
+  The Authentic Source Registry, the Claims Registry, the Catalogue of Attributes and the Taxonomy are single signed documents, so every write requires a new signature and a new publication of the whole document.
+  The Digital Credentials Catalog is served as independently signed responses, as specified in :ref:`registry:Digital Credentials Catalog Retrieval`.
+  The Catalogue of Attestations is served as independently signed responses, as specified in :ref:`registry:Catalogue of Attestations`.
 

@@ -460,4 +460,6 @@ La relazione tra un aggiornamento di un'Entità e i Trust Artifact che incide è
 
 .. note::
   Il Register è un insieme di record per WRP, quindi un evento impatta solo il record dell'Entità interessata.
-  Il Digital Credentials Catalog, l'Authentic Source Registry, il Claims Registry, lo Schema Registry e la Taxonomy sono invece singoli documenti firmati, quindi ogni scrittura richiede una nuova firma e una nuova pubblicazione dell'intero documento.
+  L'Authentic Source Registry, il Claims Registry, il Catalogue of Attributes e la Taxonomy sono singoli documenti firmati, quindi ogni scrittura richiede una nuova firma e una nuova pubblicazione dell'intero documento.
+  Il Digital Credentials Catalog è servito mediante risposte firmate in modo indipendente, come specificato in :ref:`registry:Digital Credentials Catalog Retrieval`.
+  Il Catalogue of Attestations è servito mediante risposte firmate in modo indipendente, come specificato in :ref:`registry:Catalogue of Attestations`.

@@ -136,7 +136,7 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
                 - **description**: OBBLIGATORIO. Descrizione "human-readable" dell'Attributo.
                 - **locale**: OBBLIGATORIO. Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
-        - **schema_id**: OBBLIGATORIO. Identificativo dello schema delle credenziali come definito nel :ref:`registry:Schema Registry`.
+        - **schema_id**: REQUIRED. L'``id`` dello ``SchemaMeta`` nel :ref:`registry:Catalogue of Attestations`.
         - **authentic_sources**: CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Digital Credentials Catalog`.
   * - **issuer_info**
