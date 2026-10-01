@@ -315,7 +315,13 @@
             
   <section id="proximity-flow">
 <h1><span class="section-number">11.2.2. </span>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
-<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance as specified in the <em>ISO 18013-5 Specification</em>.</p>
+<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>], as required by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p>
+<p>The applicable Trust Framework is selected as specified in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p>
+<ul class="simple">
+<li><p>The EUDIW Trust Framework path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities;</p></li>
+<li><p>The National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a <code class="docutils literal notranslate"><span class="pre">registration-entity</span></code> Trust Mark.</p></li>
+</ul>
+<p>The Wallet Instance validating the <em>mdoc reader</em> certificate selects exactly one path. Evidence from one path MUST NOT be combined with the other and a failed trust evaluation SHOULD NOT be retried under the other framework. The selected path is processed through <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>, <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>, <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>, <a class="reference internal" href="trust-evaluation.html#relying-party-proximity-authentication"><span class="std std-ref">Relying Party Proximity Authentication</span></a>, <a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>, and <a class="reference internal" href="trust-evaluation.html#user-transparency"><span class="std std-ref">User Transparency</span></a> as applicable.</p>
 <p>The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
@@ -422,24 +428,24 @@ During the communication subphase, the Relying Party Instance has the option to 
 <p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096b</span></a>)</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>From the second edition, version 3, <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096</span></a>). Therefore, Server Retrieval is not considered in this flow (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096a</span></a> and <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-023</span></a>).</p>
+<p>From the second edition, version 3, <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> does not define or support Server Retrieval as a transport option. ETSI requirement <code class="docutils literal notranslate"><span class="pre">ISO/IEC</span> <span class="pre">18013-SUPPORT-01</span></code> in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] prohibits Server Retrieval in this profile. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096a</span></a>).</p>
 </div>
 <p>The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.</p>
 <figure class="align-default" id="id2">
 <span id="fig-high-level-flow-itwallet-presentation-iso-updated"></span><p class="plantuml">
-<object data="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.png"><img src="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.png" alt="The figure illustrates the Low-Level Presentation Flow in proximity." style="width: 99.0%"/></a>
+<object data="_images/plantuml-f4f0ac26f76160216d113228b4860a3750f473b1.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-f4f0ac26f76160216d113228b4860a3750f473b1.png"><img src="_images/plantuml-f4f0ac26f76160216d113228b4860a3750f473b1.png" alt="The figure illustrates the Low-Level Presentation Flow in proximity." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJBRjim4BppAnRgfGQS5kYn28muZki6JTFKJf1BBXIrjeb8IvKFAVxxBacvTLe7oKtIScTsPeSwSrvQ7vfQoE0DXQP4AuHKtbYuSsX1EWX2j7n8AzrAyb3Soxf63tUaVH7h_VFoyWOkYM59OIftGeIJIVyPVhH8uBS80y3-LAJJdVJ8IE4q7StKWGyJ0qkl3K6vEzOCF2XN9DolPjCzKsftMAFoBZMrrZpfHliTFw5Zq0ov3gJYWwov94phuRkaIhBu7UWrh3osy0cq0p8UMhHhOnki8bzYwtdOyEAmwGXI9KIVXbeWeOqg2Nl0TeiDlzRmY3oKr1OUw7rHp2-mqmg_uUx3ZTLTKOpX-STG5iL82CiJiVQEcVjn1--kBXTVRnVB-VnQd9QJwUZqOpdXpjmufutSC1tveW2M9m6Vr5RIPa3ukGHbgcJbzPTPd3d1Yx-BuHrs9vFkhIAMA2kq_uWu-9X5PCIPQTh0W0wTYyunr9xinY8d2tcvJc-8ZUVb09AokzR7D--jBcFl0rdy5T1vOFPL1ffpFifQkstM_QfdvtlFZlT3mv_PnJ_MLHdf_6e--COALE1fOvcmFh1n2C0nfRboWKdJo-HHEBFfDUUI8ntja9x98dJAu7BGBrkEUiSRuQZkiwvfCro6GzFSc6rJXZoVS63MO76ZdRSvlmhvHgzZcd6uKzC1-JKVPzd75Sj_QN4yLcl8uS6sBZYLl2GGlVPR6BRvRDnCADzaU8xFVwvcal5H9sDogtHReDHKiMUZDBNQedg4fZ8AMBokueyYNNmc663X5csZAHadAZouD0SllJZZ-VX7-ni0">Low-Level Presentation Flow in proximity.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/bLHDRnj73BtxLn3RImB8DT1ZQnXH9CKrchggPDUNNAXTMXfabpFbS7Qp_VMTdP6rigqMpct0Z_SUEIG_U4NHqDHd6DHoQ3OaPsS005Yg5RZt980UGZOw53MbSSWAnGFMDIdSiz5YYEbUXwoMSCEHWajA8Ms62UTNtS_mXoC6tH5ae4Fa4xrfKMcF6YvJIfOJOX974bHZ6JRzAH2mCdWG7jQpwSYwX_1KKwa-9JgntqnZj8ylyiIQOHy3byC3w-XA-TOf_8vSeLhfmJp2Mid1Js0yi5Lm98zM6geYRs9DILqK7auBFmuZhhB8Becy9YOPgcVgWDoE6XAiuIj5aMW4ll2xebZCgJKb_KRzZqinRL5CuBanR8hYVOOLjafWMnBe9YtyyFdc-jUxwzLYSPlSbvkhwVlBYyrLHCW02zxYDjAo5WLKg0ZqhTmXR_SeVwwWj5Lgy-sdsLCDYURi-GVk_xmzlshVMjYAi28vBcmqZeMDg3FRkA04dhmtbWUuOzAba4CX82wbTqhLeSeL_Ht83oLsHdUHtP6SHwSjHqzHI6AU1jqLnLlR-V6fdUkiQU4LDxNnktrBInGnv4yK1iXLLF9_OXFnny-BqzqVv-XaOqRld1B5Vuj4Fi5-1F0NrgP29Q0eg7_HgPIT5mqi4zn9y0fJBdTMmA7kyfZK2elx-St3Q1hnisFwV6qYR39PCVyaoo_GFkdmfNMK8XRpPMvBxGbkCM_oNiCdmOOwArzFSQwexWrlOOcYFImFn-5xLRnSwtG6rZlR7U8gM2qlrYH3ToVWWZZhuqDoewDx9bGDb5Zx2rGLimbAVXA7GqY93pgSc1RB_jpPsfGz61xkK19rTFUcpecDr6yTu5aUu3L50WHljanLOXi7KyWxovxWtM62vgWOTnCIIjgfiPonX4oCHoCCdieW1CE9OQfVJFIuogz6DXCcOOOhSiH3o-f-_8qlNAK1lZ3UXrTNU0ALsP9NFyaPHliyk8eQ_FxpBXFtdX7kI1h3Otyh6c_TIqDtze6u2atzBm00">Low-Level Presentation Flow in proximity.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1</strong>: The User opens the Wallet Instance initiating the process.</p>
 <p><strong>Step 2</strong>: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_100</span></a>).</p>
 <p><strong>Step 3</strong>: The User selects the proximity presentation functionality.</p>
 <p><strong>Step 4</strong>: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_100</span></a>).</p>
-<p><strong>Step 5</strong>: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_101</span></a>). The public key (<code class="docutils literal notranslate"><span class="pre">EDeviceKey.Pub</span></code>) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.</p>
+<p><strong>Step 5</strong>: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for the session (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_101</span></a>). The public key (<code class="docutils literal notranslate"><span class="pre">EDeviceKey.Pub</span></code>) is exchanged with the Relying Party Instance as Device Engagement data and is used with <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> to derive the session keys.</p>
 <div class="admonition-box-a admonition">
 <p class="admonition-title">Box A</p>
 <p>The Wallet Instance and Relying Party Instance exchange <em>Device Engagement</em> data via QR code or via NFC Connection Handover (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>).</p>
@@ -451,48 +457,127 @@ During the communication subphase, the Relying Party Instance has the option to 
 </div>
 <p><strong>Step 6</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
 <p><strong>Step 7</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_104</span></a>).</p>
-<p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) and encrypted using the session keys derived in the previous step. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST include the <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and a request for specific attribute(s) (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a>).</p>
-<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message that contains an mdoc request for an mDL Digital Credential.</p>
+<p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message containing <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and the encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>. Every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> in the <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> MUST contain its own <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> signed over <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code>; the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> envelope MUST NOT be described as signed. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST be encrypted using the session keys derived in the previous step (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a>).</p>
+<p>Below are non-normative examples using the diagnostic notation of a CBOR-encoded EUDIW and National <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>. Each decoded request is encrypted inside <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p>
+<p><strong>EUDIW ``DeviceRequest``:</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;version&quot;: &quot;1.0&quot;,  % Version
-  &quot;docRequests&quot;: 
-  [
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;docRequests&quot;: [
     {
-    &quot;itemsRequest&quot;: 
-    24(&lt;&lt;  % Embedded CBOR data item
-      {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
-        &quot;nameSpaces&quot;: 
+      &quot;itemsRequest&quot;: 24(&lt;&lt;
         {
-          &quot;org.iso.18013.5.1&quot;: 
-          {
-            &quot;family_name&quot;: true,
-            &quot;document_number&quot;: true,
-            &quot;driving_privileges&quot;: true,
-            &quot;issue_date&quot;: true,
-            &quot;expiry_date&quot;: true,
-            &quot;portrait&quot;: false
+          &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+          &quot;nameSpaces&quot;: {
+            &quot;org.iso.18013.5.1&quot;: {
+              &quot;family_name&quot;: true,
+              &quot;document_number&quot;: true,
+              &quot;driving_privileges&quot;: true,
+              &quot;issue_date&quot;: true,
+              &quot;expiry_date&quot;: true,
+              &quot;portrait&quot;: false
+            }
+          },
+          &quot;requestInfo&quot;: {
+            &quot;euWrprc&quot;: h&#39;5b73657269616c697a65642072632d7772702b6377742057525052435d&#39;,
+            &quot;euWrpRegistrarInfo&quot;: {
+              &quot;identifier&quot;: [
+                {&quot;type&quot;: &quot;organizationIdentifier&quot;, &quot;identifier&quot;: &quot;VATIT-EXAMPLE-RP&quot;}
+              ],
+              &quot;srvDescription&quot;: [
+                {&quot;lang&quot;: &quot;en&quot;, &quot;content&quot;: &quot;Example identity verification service&quot;}
+              ],
+              &quot;purpose&quot;: [
+                {&quot;lang&quot;: &quot;en&quot;, &quot;content&quot;: &quot;Identity verification&quot;}
+              ],
+              &quot;registryURI&quot;: &quot;https://registry.example.org/entities/example-rp&quot;,
+              &quot;intendedUseIdentifier&quot;: &quot;identity-verification&quot;,
+              &quot;policyURI&quot;: &quot;https://example.org/privacy&quot;,
+              &quot;credential&quot;: [
+                {&quot;format&quot;: &quot;mso_mdoc&quot;, &quot;meta&quot;: {&quot;doctype_value&quot;: &quot;org.iso.18013.5.1.mDL&quot;}, &quot;claim&quot;: [&quot;org.iso.18013.5.1/family_name&quot;, &quot;org.iso.18013.5.1/document_number&quot;]}
+              ]
+            }
           }
         }
-      }
-    &gt;&gt;)
+      &gt;&gt;),
+      &quot;readerAuth&quot;: [
+        h&#39;a10126&#39;,
+        {
+          33: [
+            h&#39;57525041432d656e642d656e746974792d6365727469666963617465&#39;, % WRPAC end-entity certificate placeholder
+            h&#39;57525041432d696e7465726d6564696174652d6365727469666963617465&#39; % WRPAC intermediate certificate placeholder
+          ]
+        },
+        null,
+        h&#39;65756469772d7265616465722d617574682d7369676e6174757265&#39; % EUDIW reader-auth signature placeholder
+      ]
     }
-  ],
-  &quot;readerAuthAll&quot;: 
-  [
-    h&#39;a10126&#39;, % COSE_Sign1 authentication header
-    {
-      33: h&#39;308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b&#39;
-    },
-    null, % No additional reader authentication
-    h&#39;58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9&#39;  % Reader authentication signature
   ]
+  % x5chain starts with the WRPAC; the Trust Anchor is intentionally omitted.
+  % The serialized DeviceRequest is encrypted inside SessionEstablishment.
+  % readerAuthAll, if present, is additional and cannot replace readerAuth.
+}
+</pre></div>
+</div>
+<p><strong>National Trust Framework ``DeviceRequest``:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;docRequests&quot;: [
+    {
+      &quot;itemsRequest&quot;: 24(&lt;&lt;
+        {
+          &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+          &quot;nameSpaces&quot;: {
+            &quot;org.iso.18013.5.1&quot;: {
+              &quot;family_name&quot;: true,
+              &quot;document_number&quot;: true,
+              &quot;portrait&quot;: false
+            }
+          },
+          &quot;requestInfo&quot;: {
+            % euWrprc is the UTF-8 byte string of a compact signed registration-entity Trust Mark JWT.
+            &quot;euWrprc&quot;: h&#39;65794a68624763694f694a49557a49314e694973496e523563434936496b705856434a392e65794a7a64434936496d567a5a584a7a5a534973496d6c6b496a6f6956464a3951&#39;,
+            &quot;euWrpRegistrarInfo&quot;: {
+              &quot;identifier&quot;: [
+                {&quot;type&quot;: &quot;organizationIdentifier&quot;, &quot;identifier&quot;: &quot;VATIT-EXAMPLE-NATIONAL-RP&quot;}
+              ],
+              &quot;srvDescription&quot;: [
+                {&quot;lang&quot;: &quot;en&quot;, &quot;content&quot;: &quot;Example national verification service&quot;}
+              ],
+              &quot;purpose&quot;: [
+                {&quot;lang&quot;: &quot;en&quot;, &quot;content&quot;: &quot;Identity verification&quot;}
+              ],
+              &quot;registryURI&quot;: &quot;https://registry.example.org/entities/example-national-rp&quot;,
+              &quot;intendedUseIdentifier&quot;: &quot;identity-verification&quot;,
+              &quot;policyURI&quot;: &quot;https://example.org/national-privacy&quot;,
+              &quot;credential&quot;: [
+                {&quot;format&quot;: &quot;mso_mdoc&quot;, &quot;meta&quot;: {&quot;doctype_value&quot;: &quot;org.iso.18013.5.1.mDL&quot;}, &quot;claim&quot;: [&quot;org.iso.18013.5.1/family_name&quot;, &quot;org.iso.18013.5.1/document_number&quot;]}
+              ]
+            }
+          }
+        }
+      &gt;&gt;),
+      &quot;readerAuth&quot;: [
+        h&#39;a10126&#39;,
+        {
+          33: [
+            h&#39;4e6174696f6e616c2d61757468656e7469636174696f6e2d63657274696669636174652d656e642d656e74697479&#39;, % National authentication certificate placeholder
+            h&#39;4e6174696f6e616c2d61757468656e7469636174696f6e2d63657274696669636174652d696e7465726d656469617465&#39; % National intermediate certificate placeholder
+          ]
+        },
+        null,
+        h&#39;6e6174696f6e616c2d7265616465722d617574682d7369676e6174757265&#39; % National reader-auth signature placeholder
+      ]
+    }
+  ]
+  % x5chain starts with the National authentication certificate; the Authentication Trust Anchor is omitted.
+  % This example contains no EUDIW WRPAC or WRPRC evidence.
+  % The serialized DeviceRequest is encrypted inside SessionEstablishment.
 }
 </pre></div>
 </div>
 <div class="admonition-box-b admonition">
 <p class="admonition-title">Box B</p>
-<p>The Relying Party Instance MUST transmit the encrypted and signed <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message to the Wallet Instance over an NFC or a BLE secure connection that was established based on the Device Engagement information.
+<p>The Relying Party Instance MUST transmit the encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message to the Wallet Instance over an NFC or a BLE secure connection that was established using the Device Engagement information.
 Refer to:</p>
 <ul class="simple">
 <li><p>Sec 8.2.2.3 for <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over BLE, and</p></li>
@@ -500,203 +585,61 @@ Refer to:</p>
 </ul>
 </div>
 <p><strong>Step 9</strong>: The Wallet Instance MUST compute the session key, as described in Step 7.</p>
-<p><strong>Step 10</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) to ensure its authenticity (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_105–106</span></a>).</p>
-<p><strong>Step 11</strong>: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107</span></a>). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
-<p><strong>Step 12</strong>: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.</p>
+<p><strong>Step 10</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate either every <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> in every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> or the <code class="docutils literal notranslate"><span class="pre">readerAuthAll</span></code> over its <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code> data. The unprotected COSE <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header (label <code class="docutils literal notranslate"><span class="pre">33</span></code>) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor.</p>
+<p>The Wallet Instance validating the <em>mdoc reader</em> certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>; National uses the Relying Party authentication certificate and Authentication Trust Anchor.</p>
+<p><strong>Step 11</strong>: After successful <em>mdoc reader</em> authentication, the Wallet Instance MUST execute authorization under the selected path before consent.</p>
+<p>For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive <code class="docutils literal notranslate"><span class="pre">docType</span></code> and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a> and <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>).</p>
+<p>For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and <code class="docutils literal notranslate"><span class="pre">euWrpRegistrarInfo.identifier</span></code> to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See <a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>).</p>
+<p>Authentication and binding failures are terminal.</p>
+<p>The Wallet Instance MUST display human-readable verified Relying Party and Service identity, intended use or purpose, requested Credentials and attributes, retention intent, and privacy-policy information from the selected path's validated authorization artifact and Registrar information.</p>
+<p>For EUDIW intermediation it MUST display the intermediated Relying Party and Service and MUST NOT display Intermediary trade names.</p>
+<p>For the National direct path it MUST use validated Trust Mark transparency claims (<a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>, and <a class="reference internal" href="trust-evaluation.html#user-transparency"><span class="std std-ref">User Transparency</span></a>).</p>
+<p><strong>Step 12</strong>: The User reviews the validated path-specific transparency data and requested attributes and then approves or refuses the presentation. The Wallet Instance MUST NOT require the User approval before authentication and authorization succeed, except where an expressly permitted authorization override applies.</p>
 <div class="admonition-box-c admonition">
 <p class="admonition-title">Box C</p>
-<p>After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-006</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108</span></a>). It then MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4]) as per (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_109–110</span></a>). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure channel (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_111</span></a>). The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-030</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112</span></a>).
+<p>After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-006</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108</span></a>). It MUST place every disclosed issuer-signed attribute in <code class="docutils literal notranslate"><span class="pre">issuerSigned</span></code> and MAY place an attribute in <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> only when the Provider explicitly authorized it. A successful <code class="docutils literal notranslate"><span class="pre">Document</span></code> is an ISO/mdoc EAAP only when it has no <code class="docutils literal notranslate"><span class="pre">errors</span></code>; an error-bearing document is not a successful EAAP. The Wallet Instance MUST sign <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> over the required device-authentication data, encrypt the CBOR <code class="docutils literal notranslate"><span class="pre">DeviceResponse</span></code> in <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, and transmit it over the secure channel (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_109–112</span></a>).
 Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112a–112b</span></a>):</p>
 <ul class="simple">
 <li><p>Sec 8.2.2.4 for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE, and</p></li>
 <li><p>Sec 8.2.2.5 for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC</p></li>
 </ul>
 </div>
-<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of an mDL Digital Credential.</p>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">DeviceResponse</span></code> transported inside encrypted <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;version&quot;: &quot;1.0&quot;,
-    &quot;documents&quot;:
-    [
-      {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
-        &quot;issuerSigned&quot;:
-        {
-          &quot;nameSpaces&quot;:
-          {
-            &quot;org.iso.18013.5.1&quot;:
-            [
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 0,
-                    &quot;random&quot;: h&#39;790401ed5d0822d1aced942e4b0c41f754eee67b89c5ee3b8fd2c97491a96406&#39;,
-                    &quot;elementIdentifier&quot;: &quot;family_name&quot;,
-                    &quot;elementValue&quot;: &quot;Rossi&quot;
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 3,
-                    &quot;random&quot;: h&#39;0c8f68d1ec3aa445ef68aa10b7a5875fa18ca222a821e23890a227cdc7d25e8f&#39;,
-                    &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
-                    &quot;elementValue&quot;: 1004(2025-03-27)
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 4,
-                    &quot;random&quot;: h&#39;0a9ed0d4937673152e52fb3fac0722baf4252e0d0c9869919e3339670203178e&#39;,
-                    &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,
-                    &quot;elementValue&quot;: 1004(2030-03-27)
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 8,
-                    &quot;random&quot;: h&#39;88e94c0365c611b523518d9a1b179ae52e242383576249f4965c40c6c97cf214&#39;,
-                    &quot;elementIdentifier&quot;: &quot;document_number&quot;,
-                    &quot;elementValue&quot;: &quot;XX1234567&quot;
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 9,
-                    &quot;random&quot;: h&#39;944758b43602b01ad68911b062349845492c04c6a78129bcf8cb5fb1396af2fc&#39;,
-                    &quot;elementIdentifier&quot;: &quot;portrait&quot;,
-                    &quot;elementValue&quot;: h&#39;ffd8ffe000104a46494600010101009000900000ffdb004300130d0e110e0c
-                    13110f11151413171d301f1d1a1a1d3a2a2c2330453d4947443d43414c566d5d4c51685241435f82
-                    606871757b7c7b4a5c869085778f6d787b76ffdb0043011415151d191d381f1f38764f434f767676
-                    76767676767676767676767676767676767676767676767676767676767676767676767676767676
-                    76767676767676ffc00011080018006403012200021101031101ffc4001b00000301000301000000
-                    000000000000000005060401020307ffc40032100001030303020502030900000000000001020304
-                    0005110612211331141551617122410781a1163542527391b2c1f1ffc40015010101000000000000
-                    00000000000000000001ffc4001a110101010003010000000000000000000000014111213161ffda
-                    000c03010002110311003f00a5bbde22da2329c7d692bc7d0d03f52cfb0ff75e7a7ef3e7709723a1
-                    d0dae146ddfbb3c039ce07ad2bd47a7e32dbb8dd1d52d6ef4b284f64a480067dfb51f87ffb95ff00
-                    eb9ff14d215de66af089ce44b7dbde9cb6890a2838eddf18078f7add62d411ef4db9b10a65d6b95a
-                    147381ea0d495b933275fe6bba75c114104a8ba410413e983dff004f5af5d34b4b4cde632d0bf1fd
-                    1592bdd91c6411f3934c2fa6af6b54975d106dcf4a65ae56e856001ebc03c7ce29dd9eef1ef10fc4
-                    47dc9da76ad2aee93537a1ba7e4f70dd8eff0057c6dffb5e1a19854a83758e54528750946ec67048
-                    50cd037bceb08b6d7d2cc76d3317fc7b5cc04fb6707269c5c6e0c5b60ae549242123b0e493f602a0
-                    75559e359970d98db89525456b51c951c8afa13ea8e98e3c596836783d5c63f5a61a99fdb7290875
-                    db4be88ab384bbbbbfc7183fdeaa633e8951db7da396dc48524fb1a8bd611a5aa2a2432f30ab420a
-                    7a6d3240c718cf031fa9ef4c9ad550205aa02951df4a1d6c8421b015b769db8c9229837ea2be8b1b
-                    0d39d0eba9c51484efdb8c0efd8d258daf3c449699f2edbd4584e7af9c64e3f96b9beb28d4ac4093
-                    1e6478c8e76a24a825449501d867d2b1dcdebae99b9c752ae4ecd6dde4a179c1c1e460938f9149ef
-                    655e515c03919a289cb3dca278fb7bf177f4faa829dd8ce3f2ac9a7ecde490971fafd7dce15eed9b
-                    71c018c64fa514514b24e8e4f8c5c9b75c1e82579dc1233dfec08238f6add62d391acc1c5256a79e
-                    706d52d431c7a0145140b9fd149eb3a60dc5e88cbbc2da092411e9dc71f39a7766b447b344e847dc
-                    ac9dcb5abba8d145061d43a6fcf1e65cf15d0e90231d3dd9cfe62995c6dcc5ca12a2c904a15f71dd
-                    27d451453e09d1a21450961cbb3ea8a956433b781f1ce33dfed54f0e2b50a2b71d84ed6db18028a2
-                    8175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e
-                    47b514520a5a28a283ffd9&#39;
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                    &quot;digestID&quot;: 10,
-                    &quot;random&quot;: h&#39;577e4822125f55fe923117aba01fdaefcc67d4aea80018fc22efa8d48e17982f&#39;,
-                    &quot;elementIdentifier&quot;: &quot;driving_privileges&quot;,
-                    &quot;elementValue&quot;: [
-                      {
-                        &quot;vehicle_category_code&quot;: &quot;A&quot;,
-                        &quot;issue_date&quot;: 1004(&quot;2020-09-17&quot;),
-                        &quot;expiry_date&quot;: 1004(&quot;2031-06-10&quot;)
-                        }
-                      ]
-                }
-              &gt;&gt;)
-            ]
-          },
-          &quot;issuerAuth&quot;:
-          [
-            &lt;&lt; {1: -7} &gt;&gt;,
-            {
-              33: h&#39;30820208308201afa00302010202142eb39c647c81836bcf79fa9cd0b201ec0bf52307300a0
-              6082a8648ce3d0403023064310b30090603550406130255533113301106035504080c0a43616c6966
-              6f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4
-              d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d301e170d323530333237
-              3135353532305a170d3235303430363135353532305a3064310b30090603550406130255533113301
-              106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e63697363
-              6f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e6
-              36f6d3059301306072a8648ce3d020106082a8648ce3d03010703420004f33da72d0dd0009b62221b
-              0e839099b12dab5e01021124ebf9060422e648f3c3ec6614a86da1e91e552b2ae35e04d3058ae82b5
-              c65a7f1f26800cb4499652a09a33f303d303b0603551d1104343032863068747470733a2f2f637265
-              64656e7469616c2d6973737565722e6f6964632d66656465726174696f6e2e6f6e6c696e65300a060
-              82a8648ce3d040302034700304402204d1f0819971652b79ebe4825547de3d5554d2f41410225e6b1
-              3dab949cda125e022079ba71b823619e49719dce5daa565bf745d3d97e2b87c7f7d6a626f981e653ed&#39;
-            },
-            &lt;&lt;
-              24(&lt;&lt;
-                {
-                  &quot;version&quot;: &quot;1.0&quot;,
-                  &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
-                  &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
-                  &quot;valueDigests&quot;: {
-                    &quot;org.iso.18013.5.1&quot;:
-                    {
-                        0: h&#39;f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe&#39;,
-                        1: h&#39;e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac&#39;,
-                        2: h&#39;cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e&#39;,
-                        3: h&#39;8b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a047772&#39;,
-                        4: h&#39;14135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d&#39;,
-                        5: h&#39;86dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc74&#39;,
-                        6: h&#39;2e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a&#39;,
-                        7: h&#39;4efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700&#39;,
-                        8: h&#39;cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e&#39;,
-                        9: h&#39;775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f&#39;,
-                       10: h&#39;915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd833&#39;,
-                       11: h&#39;47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb&#39;
-                    },
-                    &quot;org.iso.18013.5.1.IT&quot;: {
-                       12: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;,
-                       13: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
-                      }
-                  },
-                  &quot;deviceKeyInfo&quot;: {
-                    &quot;deviceKey&quot;: {
-                        1: 2,
-                       -1: 1,
-                       -2: h&#39;f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866&#39;,
-                       -3: h&#39;a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef&#39;
-                    }
-                  },
-                  &quot;validityInfo&quot;: {
-                    &quot;signed&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
-                    &quot;validFrom&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
-                    &quot;validUntil&quot;: 0(&quot;2026-03-27T00:00:00Z&quot;)
-                  },
-                  &quot;status&quot;: {
-                    &quot;status_list&quot;: {
-                      &quot;idx&quot;: 1340,
-                      &quot;uri&quot;: &quot;https://statusprovider.example.org/statuslists/1&quot;
-                    }
-                  }
-                }
-              &gt;&gt;)
-            &gt;&gt;,
-            h&#39;d09f9acdf7a6be5e4aeb405bfb3b297b1b8003bcf52558a2f39fc6e5cffed40f18f49d2cc0e72a2a5645
-            8d8aade591dee8d6540e639bca637f94bd9fa56f345c&#39;
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;documents&quot;: [
+    {
+      &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+      &quot;issuerSigned&quot;: {
+        &quot;nameSpaces&quot;: {
+          &quot;org.iso.18013.5.1&quot;: [
+            24(&lt;&lt; {&quot;digestID&quot;: 0, &quot;random&quot;: h&#39;6973737565722d72616e646f6d&#39;, &quot;elementIdentifier&quot;: &quot;family_name&quot;, &quot;elementValue&quot;: &quot;Rossi&quot;} &gt;&gt;),
+            24(&lt;&lt; {&quot;digestID&quot;: 3, &quot;random&quot;: h&#39;6973737565722d72616e646f6d2d32&#39;, &quot;elementIdentifier&quot;: &quot;issue_date&quot;, &quot;elementValue&quot;: 1004(2025-03-27)} &gt;&gt;),
+            24(&lt;&lt; {&quot;digestID&quot;: 4, &quot;random&quot;: h&#39;6973737565722d72616e646f6d2d33&#39;, &quot;elementIdentifier&quot;: &quot;expiry_date&quot;, &quot;elementValue&quot;: 1004(2030-03-27)} &gt;&gt;)
           ]
         },
-        &quot;deviceSigned&quot;:
-        {
-          &quot;nameSpaces&quot;: 24(&lt;&lt; {} &gt;&gt;),
-          &quot;deviceAuth&quot;:
-          {
-            &quot;deviceSignature&quot;:
-            [
-              &lt;&lt; {1: -7} &gt;&gt;,
-              {},
-              null,
-              h&#39;E99521A85AD75943BF5AEAE68943BF5AE249943BF5AE943BF5AE43BF5AEDE99521A85AD75943BF5AEAE
-              68943BF5AE249943BF5AE943BF5AE43BF5AED&#39;
-
-            ]
-          }
+        &quot;issuerAuth&quot;: [
+          &lt;&lt; {1: -7} &gt;&gt;,
+          {33: h&#39;6973737565722d646f63756d656e742d7369676e65722d63657274696669636174652d636861696e&#39;},
+          null,
+          h&#39;6973737565722d617574682d7369676e6174757265&#39;
+        ]
+      },
+      &quot;deviceSigned&quot;: {
+        &quot;nameSpaces&quot;: 24(&lt;&lt; {} &gt;&gt;),
+        &quot;deviceAuth&quot;: {
+          &quot;deviceSignature&quot;: [
+            &lt;&lt; {1: -7} &gt;&gt;,
+            {},
+            null,
+            h&#39;6465766963652d7369676e61747572652d6573333536&#39;
+          ]
         }
       }
-    ],
-    &quot;status&quot;: 0
+      % No errors: this Document is a successful ISO/mdoc EAAP.
+    }
+  ],
+  &quot;status&quot;: 0
 }
 </pre></div>
 </div>
@@ -706,8 +649,10 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>During each credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see <a class="reference internal" href="wallet-instance-dashboard.html#wallet-instance-dashboard-and-transaction-logging"><span class="std std-ref">Wallet Instance Dashboard and Transaction Logging</span></a>).</p>
-<p>The transaction record MUST be created once the Wallet Instance has successfully established the session and accepted the reader for processing (i.e., after decrypting the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message and verifying reader authentication, Step 10). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., requested attestation type(s) such as <code class="docutils literal notranslate"><span class="pre">docType</span></code>, and the identifier(s) of the requested attributes), without logging any attribute values.</p>
-<p>The record MUST be updated as the transaction progresses to reflect the evolving transaction state and result context (e.g., what was actually presented after User consent and response preparation/sending, Steps 11–12), without logging any attribute values.</p>
+<blockquote>
+<div><p>The transaction record MUST be created once the Wallet Instance has successfully authenticated the reader (i.e., after decrypting the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message and verifying reader authentication, Step 10). At this point, the record records only an authenticated request and MUST include the selected framework and request context available at that stage, without logging any attribute values.</p>
+<p>The record MUST be updated as the transaction progresses to reflect authorization, the User decision, the disclosure result, and failure reason, without logging any attribute values.</p>
+</div></blockquote>
 <p>The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).</p>
 </div>
 <section id="deviceengagement-over-qr-code">
@@ -1049,10 +994,12 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </tr>
 <tr class="row-even"><td><p><strong>Capabilities</strong></p></td>
 <td><p><em>(map)</em>. Declares optional capabilities supported by the mdoc, that are:</p>
-<ul class="simple">
-<li><p><strong>HandoverSessionEstablishmentSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>SessionEstablishment</cite> message during Negotiated Handover, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-024</span></a>).</p></li>
-<li><p><strong>ReaderAuthAllSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>ReaderAuthAll</cite> structure in the mdoc request, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.2.6] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>HandoverSessionEstablishmentSupport</strong> <em>(bool, OPTIONAL)</em>. If present, it MUST be set to <cite>true</cite>. It indicates support for receiving the <cite>SessionEstablishment</cite> message during Negotiated Handover, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-024</span></a>).</p></li>
+<li><p><strong>ReaderAuthAllSupport</strong> <em>(bool, OPTIONAL)</em>. If present, it MUST be set to <cite>true</cite>. It indicates support for receiving the optional <cite>ReaderAuthAll</cite> structure in the mdoc request, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.2.6]; it does not make <code class="docutils literal notranslate"><span class="pre">readerAuthAll</span></code> required and cannot replace per-<cite>DocRequest</cite> <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p></li>
 </ul>
+</div></blockquote>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>OriginInfos</strong></p></td>
@@ -1082,7 +1029,8 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </tr>
 <tr class="row-odd"><td><p><strong>docRequests</strong></p></td>
 <td><p><em>(array)</em>. Each entry is a <cite>DocRequest</cite> containing:</p>
-<ul>
+<blockquote>
+<div><ul>
 <li><p><strong>itemsRequest</strong>. CBOR-encoded <cite>ItemsRequest</cite> structure, formatted as:</p>
 <ul>
 <li><p><strong>docType</strong> <em>(tstr)</em>. The type of document requested. See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></li>
@@ -1093,12 +1041,20 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 <li><p><strong>IntentToRetain</strong> <em>(bool)</em>. Indicates whether the Relying Party intends to retain the value of the data element.</p></li>
 </ul>
 </li>
+<li><p><strong>requestInfo</strong> <em>(map, REQUIRED and non-empty)</em>. Every <cite>ItemsRequest</cite> MUST contain <code class="docutils literal notranslate"><span class="pre">euWrprc</span></code> and <code class="docutils literal notranslate"><span class="pre">euWrpRegistrarInfo</span></code> as described below.</p>
+<ul class="simple">
+<li><p><strong>euWrprc</strong> <em>(bstr, REQUIRED)</em>. On the EUDIW path, the byte string contains the serialized <code class="docutils literal notranslate"><span class="pre">rc-wrp+cwt</span></code> WRPRC, which is authoritative for authorization (<a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>). On the National path, it contains the UTF-8 bytes of the compact signed <code class="docutils literal notranslate"><span class="pre">registration-entity</span></code> Trust Mark JWT, which is authoritative for authorization (<a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.</p></li>
+<li><p><strong>euWrpRegistrarInfo</strong> <em>(map, REQUIRED)</em>. Mandatory Registrar transparency data. Its <code class="docutils literal notranslate"><span class="pre">identifier</span></code> <em>(array, REQUIRED, non-empty)</em> contains objects with <code class="docutils literal notranslate"><span class="pre">type</span></code> <em>(tstr, REQUIRED)</em> and <code class="docutils literal notranslate"><span class="pre">identifier</span></code> <em>(tstr, REQUIRED)</em>. Its <code class="docutils literal notranslate"><span class="pre">srvDescription</span></code> and <code class="docutils literal notranslate"><span class="pre">purpose</span></code> <em>(arrays, REQUIRED, non-empty)</em> contain objects with <code class="docutils literal notranslate"><span class="pre">lang</span></code> <em>(tstr, REQUIRED)</em> and <code class="docutils literal notranslate"><span class="pre">content</span></code> <em>(tstr, REQUIRED)</em>. <code class="docutils literal notranslate"><span class="pre">registryURI</span></code> <em>(tstr, REQUIRED)</em>, <code class="docutils literal notranslate"><span class="pre">intendedUseIdentifier</span></code> <em>(tstr, REQUIRED)</em>, and <code class="docutils literal notranslate"><span class="pre">policyURI</span></code> <em>(tstr, REQUIRED)</em> are mandatory. <code class="docutils literal notranslate"><span class="pre">credential</span></code> <em>(array, OPTIONAL, non-empty when present)</em> contains ETSI <code class="docutils literal notranslate"><span class="pre">Credential</span></code>/<code class="docutils literal notranslate"><span class="pre">Claim</span></code> objects. These fields are used with the selected path's validated authorization artifact for User Transparency.</p></li>
+<li><p><strong>readerAuth</strong> <em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the Relying Party Instance for this <cite>DocRequest</cite>. The signature MUST be computed over <cite>ReaderAuthentication</cite> data using the private key corresponding to the selected path's reader certificate, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]. Its unprotected COSE header MUST contain <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> label <code class="docutils literal notranslate"><span class="pre">33</span></code> with the end-entity certificate first and its path up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path, validated according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>, and a Relying Party certificate on the National path, validated according to <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
 </ul>
 </li>
-<li><p><strong>readerAuth</strong> <em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the Relying Party Instance for each <cite>DocRequest</cite>. The signature is computed over <cite>ReaderAuthentication</cite> data, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5].</p>
-<p>This component MUST be present only if <cite>readerAuthAll</cite> is not used (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p>
+</ul>
 </li>
 </ul>
+<blockquote>
+<div><p>This component MUST be present only if <cite>readerAuthAll</cite> is not used (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p>
+</div></blockquote>
+</div></blockquote>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>readerAuthAll</strong></p></td>
@@ -1154,13 +1110,13 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 <td><p><em>(tstr)</em>. Document type identifier. For example, for an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>(bstr)</em>. Contains the <cite>IssuerNameSpaces</cite> structure, which includes data elements signed by the Issuer, and the <cite>issuerAuth</cite> structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></td>
+<td><p><em>(map)</em>. Contains <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> with the issuer-signed data elements and <code class="docutils literal notranslate"><span class="pre">issuerAuth</span></code> with the issuer authentication structure using the Mobile Security Object (MSO). Every disclosed issuer-signed attribute MUST be placed here. See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
-<td><p><em>(bstr)</em>. Contains the <cite>DeviceNameSpaces</cite> structure (data elements signed by the Wallet Instance), and the <cite>deviceAuth</cite> structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.</p></td>
+<td><p><em>(map)</em>. Contains the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> <code class="docutils literal notranslate"><span class="pre">DeviceNameSpaces</span></code> structure and the <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> structure. It MAY contain attributes only when the Provider explicitly authorized those attributes to be device-signed. See the table below for details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>errors</strong></p></td>
-<td><p><em>(map, OPTIONAL)</em>. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.6] for details on the errors structure.</p></td>
+<td><p><em>(map, OPTIONAL)</em>. A map of error codes for each unreturned data element grouped by namespace. A <code class="docutils literal notranslate"><span class="pre">Document</span></code> without <code class="docutils literal notranslate"><span class="pre">errors</span></code> is an ISO/mdoc EAAP success; an error-bearing <code class="docutils literal notranslate"><span class="pre">Document</span></code> is not a successful EAAP. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.6] for details on the errors structure.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1186,7 +1142,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
-<td><p><em>(COSE_Sign1)</em>. Contains the <cite>DeviceAuth</cite> structure, which MUST include the <strong>deviceSignature</strong> for the Wallet Instance authentication. The signature is computed over the <cite>DeviceAuthentication</cite> data, which binds the returned elements to the session and the request. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4] for details on the authentication structure.</p></td>
+<td><p><em>(map)</em>. Contains the <cite>DeviceAuth</cite> structure, which MUST include the <strong>deviceSignature</strong> <em>(COSE_Sign1)</em> for the Wallet Instance authentication. The signature is computed over the <cite>DeviceAuthentication</cite> data, which binds the returned elements to the session and the request. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4] for details on the authentication structure.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1348,7 +1304,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 18/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

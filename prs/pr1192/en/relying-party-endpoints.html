@@ -316,22 +316,28 @@
 <p>The Relying Party MUST expose a comprehensive set of endpoints to support the complete IT-Wallet ecosystem, including both remote and proximity presentation flows.</p>
 <section id="relying-party-remote-flow-endpoints">
 <h2><span class="section-number">12.3.1. </span>Relying Party Remote Flow Endpoints<a class="headerlink" href="#relying-party-remote-flow-endpoints" title="Link to this heading">¶</a></h2>
-<p>The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.</p>
+<p>The Relying Party MUST expose the endpoints required by the selected remote presentation path. The National Trust Framework path uses Federation discovery and redirect endpoints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Relying Party makes explicit its trust framework for the remote flow as follows:
+- the National Trust Framework requires the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix in the be <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.
+- the EUDIW Trust Framework requires the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix in the signed Request Object to be valued with <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>).</p>
 </div>
-<section id="id118">
-<h3><span class="section-number">12.3.1.1. </span>Federation Endpoint<a class="headerlink" href="#id118" title="Link to this heading">¶</a></h3>
-<p>The Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <a class="reference internal" href="infrastructure-trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.</p>
+<section id="id124">
+<h3><span class="section-number">12.3.1.1. </span>Federation Endpoint<a class="headerlink" href="#id124" title="Link to this heading">¶</a></h3>
+<p>For the National Trust Framework path, the Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <a class="reference internal" href="infrastructure-trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.</p>
 <p>Technical details are provided in Section <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a>.</p>
 </section>
 <section id="openid4vp-remote-flow-endpoints">
 <h3><span class="section-number">12.3.1.2. </span>OpenID4VP Remote Flow Endpoints<a class="headerlink" href="#openid4vp-remote-flow-endpoints" title="Link to this heading">¶</a></h3>
-<p>The following endpoints are required for OpenID4VP 1.0 remote presentation flows as described in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>. These endpoints support both Same Device and Cross Device flows:</p>
+<p>The following endpoints are required for OpenID4VP 1.0 remote presentation flows as described in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>. They support both Same Device and Cross Device flows.</p>
 <section id="request-uri-endpoint">
 <h4><span class="section-number">12.3.1.2.1. </span>Request URI Endpoint<a class="headerlink" href="#request-uri-endpoint" title="Link to this heading">¶</a></h4>
-<p>The Request URI Endpoint is where the Relying Party provides the signed Request Object to the Wallet Instance. This endpoint supports both GET and POST methods as defined in the OpenID4VP 1.0 specification.</p>
+<p>The Request URI Endpoint is where the Relying Party provides the signed Request Object by reference (OIDFVP-HAIP-REDIRECTS-04 in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>) to the Wallet Instance. This endpoint supports GET and, when requested by <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>, POST as defined in the OpenID4VP 1.0 specification.</p>
 <p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#request-uri-request"><span class="std std-ref">Request URI Request</span></a> and <a class="reference internal" href="remote-flow.html#request-uri-response"><span class="std std-ref">Request URI Response</span></a>.</p>
 </section>
 <section id="response-uri-endpoint">
@@ -421,7 +427,7 @@
 <p>All Relying Party endpoints MUST implement appropriate security measures:</p>
 <ul class="simple">
 <li><p><strong>HTTPS Only</strong>: All endpoints MUST be accessible only over HTTPS</p></li>
-<li><p><strong>Endpoint Mix-up Protection</strong>: Endpoint URLs MUST be attested by trusted third parties through the Trust Chain</p></li>
+<li><p><strong>Endpoint Mix-up Protection</strong>: Endpoint URLs MUST be attested by trusted third parties through the respective National or EUDIW Trust Framework.</p></li>
 <li><p><strong>Input Validation</strong>: All endpoints MUST validate input parameters and reject malformed requests</p></li>
 <li><p><strong>Rate Limiting</strong>: Endpoints SHOULD implement rate limiting to prevent abuse</p></li>
 <li><p><strong>Audit Logging</strong>: All endpoint interactions SHOULD be logged for security monitoring</p></li>
@@ -434,7 +440,7 @@
 <li><p>The specific implementation details for most endpoints are left to the Relying Party's discretion</p></li>
 <li><p>Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows</p></li>
 <li><p>Proximity flow endpoints MUST support the lifecycle management of Verifier Apps</p></li>
-<li><p>All endpoints MUST be discoverable through the Relying Party's Entity Configuration</p></li>
+<li><p>For a Relying Party operating in the National Trust Framework, its endpoints MUST be discoverable through the Relying Party's Entity Configuration. For a Relying Party operating in the EUDIW Trust Framework, its endpoints are carried in the signed Request Object which is authenticated by the WRPAC according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.</p></li>
 <li><p>Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions</p></li>
 </ul>
 <p>For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.</p>
@@ -765,7 +771,7 @@
           <ul>
 <li><a class="reference internal" href="#">12.3. Relying Party Endpoints</a><ul>
 <li><a class="reference internal" href="#relying-party-remote-flow-endpoints">12.3.1. Relying Party Remote Flow Endpoints</a><ul>
-<li><a class="reference internal" href="#id118">12.3.1.1. Federation Endpoint</a></li>
+<li><a class="reference internal" href="#id124">12.3.1.1. Federation Endpoint</a></li>
 <li><a class="reference internal" href="#openid4vp-remote-flow-endpoints">12.3.1.2. OpenID4VP Remote Flow Endpoints</a><ul>
 <li><a class="reference internal" href="#request-uri-endpoint">12.3.1.2.1. Request URI Endpoint</a></li>
 <li><a class="reference internal" href="#response-uri-endpoint">12.3.1.2.2. Response URI Endpoint</a></li>
@@ -834,7 +840,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 18/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

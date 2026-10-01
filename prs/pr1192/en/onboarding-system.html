@@ -359,7 +359,7 @@ The trust-infrastructure roles are realized by the components and services of th
 <div><ul class="simple">
 <li><p><strong>Supervisory Body</strong>: during the onboarding it verifies the eligibility and the compliance of the entities, avails itself of the Registrar for technical registration, and acts as the National single point of contact for the notification to the European Commission.</p></li>
 <li><p><strong>Registrar</strong> and <strong>Register</strong>: the Registrar performs the technical registration of the Wallet-Relying Parties and writes their records into the <strong>Register</strong> as defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></li>
-<li><p><strong>Provider of WRPAC</strong> and <strong>Provider of WRPRC</strong>: issue, respectively, the WRPAC and the WRPRC.</p></li>
+<li><p><a class="reference internal" href="defined-terms.html#term-Provider-of-WRPAC"><span class="xref std std-term">Provider of WRPAC</span></a> and <a class="reference internal" href="defined-terms.html#term-Provider-of-WRPRC"><span class="xref std std-term">Provider of WRPRC</span></a>: issue, respectively, the WRPAC and the WRPRC. The WRPAC profile is defined in <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>. Automatic issuance of the WRPRC is defined in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p></li>
 <li><p><strong>National Federation Authorities</strong>: the <strong>Federation Trust Anchor</strong> and its <strong>Federation Intermediates</strong>, which register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.
 In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the National X.509 signing PKI, whose root certificate and its distribution are described in <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>.</p></li>
 </ul>
@@ -367,7 +367,7 @@ In IT-Wallet the National Trust Anchor also operates the root Certification Auth
 <p><strong>Entities that interact with the Onboarding System without being onboarded</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Attestation Scheme Providers</strong>: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>. An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an orfanization that owns the Rulebook.</p></li>
+<li><p><strong>Attestation Scheme Providers</strong>: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>. An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an organization that owns the Rulebook.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -383,8 +383,8 @@ A Wallet Instance is registered indirectly, through its Wallet Provider, see <a 
 <p>The trust-infrastructure roles are realized, within the Onboarding System, by a set of components, each providing one or more services.
 An onboarding entity interacts with the system through a single entry point, the Onboarding UI, which orchestrates the flow and routes each request to the responsible component, and which is therefore not shown as a separate component in the diagram below.</p>
 <p>The table below lists the components, the services each of them provides, and the onboarding process that each service realizes.</p>
-<table class="longtable docutils align-default" id="id937">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Components, Services and Processes</span><a class="headerlink" href="#id937" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id985">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Components, Services and Processes</span><a class="headerlink" href="#id985" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 30.0%" />
@@ -434,7 +434,7 @@ They overlap only in the identification data, so the split keeps the registratio
 A component can realize processes of more than one family, so the groups of the diagram do not coincide with the families of <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the correspondence is the one given by the table above.
 The Authentic Sources register only in the AS Registry, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.</p>
-<figure class="align-default" id="id938">
+<figure class="align-default" id="id986">
 <p class="plantuml">
 <object data="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.png"><img src="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.png" alt="&#64;startuml IT-Wallet Onboarding System
@@ -519,7 +519,7 @@ pkgreg --&gt; pub
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id938" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id986" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -541,8 +541,8 @@ The data is identified by a format-agnostic <strong>Data Identifier</strong>.</p
 <p>Depending on the role, the registration data is then encoded in a different data model, the <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> schema of the Register for a Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), the entry of the AS Registry for an Authentic Source (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), and the notification dataset for a notifiable Entity.
 The Credential type definition data is encoded in the versioned entry of the Digital Credentials Catalog (<a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>).
 The mapping to the destination data models is given in <a class="reference internal" href="#mapping-to-the-registry-data-models"><span class="std std-ref">Mapping to the Registry Data Models</span></a>.</p>
-<table class="longtable docutils align-default" id="id939">
-<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Base Registration Data</span><a class="headerlink" href="#id939" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id987">
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Base Registration Data</span><a class="headerlink" href="#id987" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -583,8 +583,8 @@ The mapping to the destination data models is given in <a class="reference inter
 </table>
 <p>The extended registration data is provided in the table below.
 A given entity provides only the subset that applies to its role, as defined in the corresponding profile in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
-<table class="longtable docutils align-default" id="id940">
-<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Extended Registration Data</span><a class="headerlink" href="#id940" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id988">
+<caption><span class="caption-number">Table 8.3 </span><span class="caption-text">Extended Registration Data</span><a class="headerlink" href="#id988" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -602,58 +602,62 @@ A given entity provides only the subset that applies to its role, as defined in 
 <td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Annex A.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>service_description</cite></p></td>
-<td><p>The trade name and the localized description of the service, provided by the entities that offer a service to the Wallet Units.</p></td>
-<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
+<td><p>The trade name and the localized description of each Relying Party Service the entity offers to Wallet Units. In the EUDIW Trust Framework this data is provided per Service, see <cite>relying_party_services</cite>. How that trade name is carried in more than one WRPAC or WRPRC is deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I; [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] Reg_34</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>intended_use</cite></p></td>
-<td><p>The attributes a Relying Party intends to request from the Wallet Units.</p></td>
+<td><p>The attributes a Relying Party intends to request from the Wallet Units, registered on its Relying Party Services, see <cite>relying_party_services</cite>. A separate WRPRC for each combination of intended use and Service is deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>provided_attestations</cite></p></td>
+<tr class="row-odd"><td><p><cite>relying_party_services</cite></p></td>
+<td><p>The Relying Party Services registered by the entity, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required. The WRPRC is issued automatically as defined in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p></td>
+<td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>]; <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>, <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>; <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
 <td><p>The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of that entry, together with the issuance capabilities offered for that Credential type (the supported issuance flows, the parameters of the deferred issuance and the documentation of the issuance service), see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></td>
 <td><p>[<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], Annex I</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>intermediary_relationship</cite></p></td>
-<td><p>For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.</p></td>
-<td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 10</p></td>
+<tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
+<td><p>Bound to a Relying Party Service. For an intermediated Relying Party Service, the reference to the Intermediary Service it uses (<code class="docutils literal notranslate"><span class="pre">usesIntermediaries</span></code>). For a Relying Party Intermediary Service, the declaration that it acts as an intermediary (<code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code>) and the Service identifiers it serves (<code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code>, [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], Annex I). A pure Intermediary Service MUST NOT register an entitlement (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>).</p></td>
+<td><p>[<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], Table 10; [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_04; <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>trust_framework_scope</cite></p></td>
-<td><p>The declaration of the Trust Framework in which the entity intends to operate (the EUDIW Trust Framework for the cross-border operation or the National Trust Framework alone). It is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided, see <a class="reference internal" href="infrastructure-trust.html#overview"><span class="std std-ref">Overview</span></a>. It applies to the entity, while <code class="docutils literal notranslate"><span class="pre">trustedAuthorities</span></code> of a Credential type applies to the validation of an Attestation of that type.</p></td>
+<tr class="row-even"><td><p><cite>trust_framework_scope</cite></p></td>
+<td><p>The declaration of the Trust Framework in which the entity intends to operate, according to <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a> and <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>. The declaration is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided. It applies to the entity, while <code class="docutils literal notranslate"><span class="pre">trustedAuthorities</span></code> of a Credential type applies to the validation of an Attestation of that type.</p></td>
 <td><p>This specification</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The identifier of the Federation Entity in the National Trust Framework, that is the <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> of its Entity Configuration.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<tr class="row-even"><td><p><cite>federation_entity_key</cite></p></td>
 <td><p>The public key with which the Federation Entity signs its Entity Configuration. It MUST be provided in JWK format. The rest of the federation configuration is published in the Entity Configuration reachable at the <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> endpoint.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Section 3</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>certificate_signing_requests</cite></p></td>
-<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. Their profile is defined in <a class="reference internal" href="#certificate-signing-request-profile"><span class="std std-ref">Certificate Signing Request Profile</span></a> and they are the input of the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>, where they are presented in the ACME order.</p></td>
+<tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>An array of Certificate Signing Requests in PKCS #10 format, one for each X.509 certificate the entity needs to obtain, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate. A Wallet-Relying Party operating in the EUDIW Trust Framework provides one WRPAC Certificate Signing Request. One WRPAC Certificate Signing Request for each registered Service, and one for each intermediated Relying Party Service, are deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>. Each request carries the public key to be certified. It MUST be distinct from the Federation Entity Key. Their profile is defined in <a class="reference internal" href="#certificate-signing-request-profile"><span class="std std-ref">Certificate Signing Request Profile</span></a> and they are the input of the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>, where they are presented in the ACME order.</p></td>
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>provided_claims_purposes</cite></p></td>
+<tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
 <td><p>The claims composing an Attestation, selected from the Claims Registry, and the purposes it uses, selected from the Taxonomy, together with the data-provision capabilities. It groups the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the AS Registry entry, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></td>
 <td><p>This specification</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>visual_identity</cite></p></td>
+<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
 <td><p>The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text.</p></td>
 <td><p>This specification</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
 <td><p>The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.</p></td>
-<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<tr class="row-odd"><td><p><cite>service_supply_point</cite></p></td>
 <td><p>The URL at which a Wallet Unit starts the process of requesting and obtaining an Attestation from the Issuer. It MUST be provided by the notified categories that issue an Attestation requested by the Wallet Unit.</p></td>
-<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
+<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
 <td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the National Root Certification Authority, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
-<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>verification_endpoint</cite></p></td>
+<tr class="row-odd"><td><p><cite>verification_endpoint</cite></p></td>
 <td><p>The cross-border verification interface exposed to Qualified Trust Service Providers for the Annex VI attributes exported to the EUDIW Catalogue of Attributes, conformant to ETSI TS 119 478 and declared in the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the entry of the Authentic Source Registry, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. It is provided by the Authentic Source.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 2.1</p></td>
 </tr>
@@ -663,8 +667,8 @@ A given entity provides only the subset that applies to its role, as defined in 
 For this reason it is not registration data, it does not follow a profile of <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>, and it is the input of the <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.
 It is provided by the Attestation Scheme Provider, which owns the Attestation Rulebook of the Credential type, and it is taken from the Rulebook itself.
 The same criterion applies to the definition of a claim, registered through the <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p>
-<table class="longtable docutils align-default" id="id941">
-<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Credential Type Definition Data</span><a class="headerlink" href="#id941" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id989">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Credential Type Definition Data</span><a class="headerlink" href="#id989" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -717,8 +721,8 @@ The two are distinct: the definition creates the versioned entry, the declaratio
 <h3><span class="section-number">8.2.2. </span>Mapping to the Registry Data Models<a class="headerlink" href="#mapping-to-the-registry-data-models" title="Link to this heading">¶</a></h3>
 <p>The Onboarding System collects the registration data and the Credential type definition data, and they are then encoded in the data model of the destination, that for the registration data depends on the role.
 The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.</p>
-<table class="longtable docutils align-default" id="id942">
-<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Mapping of the Data Identifiers to the destination data models</span><a class="headerlink" href="#id942" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id990">
+<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Mapping of the Data Identifiers to the destination data models</span><a class="headerlink" href="#id990" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -766,18 +770,21 @@ The table below maps each Data Identifier to the fields of the destination data 
 <td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">supervisoryAuthority</span></code>. In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">dpa_contact</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">supervisory_authority</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>entitlements</cite></p></td>
-<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">entitlement</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>. In the Digital Credentials Catalog, the <code class="docutils literal notranslate"><span class="pre">legal_type</span></code> of the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> element of the Credential Issuer.</p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code> array of each <code class="docutils literal notranslate"><span class="pre">services[]</span></code> element. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>. In the Digital Credentials Catalog, the <code class="docutils literal notranslate"><span class="pre">legal_type</span></code> of the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> element of the Credential Issuer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>service_description</cite></p></td>
-<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">tradeName</span></code> and the <code class="docutils literal notranslate"><span class="pre">srvDescription</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">srv_description</span></code>.</p></td>
+<td><p>In the Register, the entity-level <code class="docutils literal notranslate"><span class="pre">tradeName</span></code> where present, and per Service the <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code> and the <code class="docutils literal notranslate"><span class="pre">srvDescription</span></code> of each <code class="docutils literal notranslate"><span class="pre">services[]</span></code> element. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">srv_description</span></code>. Binding <code class="docutils literal notranslate"><span class="pre">subject.commonName</span></code> and the WRPRC <code class="docutils literal notranslate"><span class="pre">name</span></code> to one Service is deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>intended_use</cite></p></td>
-<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">intendedUse</span></code> array, each element carrying its <code class="docutils literal notranslate"><span class="pre">intendedUseIdentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">purpose</span></code>, <code class="docutils literal notranslate"><span class="pre">privacyPolicy</span></code> and <code class="docutils literal notranslate"><span class="pre">credential</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> and the <code class="docutils literal notranslate"><span class="pre">purpose</span></code>.</p></td>
+<tr class="row-even"><td><p><cite>relying_party_services</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">services</span></code> array of <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects, each carrying the members defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>, including <code class="docutils literal notranslate"><span class="pre">serviceTradeName</span></code>, <code class="docutils literal notranslate"><span class="pre">srvDescription</span></code>, <code class="docutils literal notranslate"><span class="pre">intendedUses</span></code>, <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">providesAttestations</span></code>, <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code>, <code class="docutils literal notranslate"><span class="pre">usesIntermediaries</span></code> and <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> remains optional. The Service identifier in the WRPAC and the WRPRC <code class="docutils literal notranslate"><span class="pre">srv_id</span></code> are deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>provided_attestations</cite></p></td>
-<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">providesAttestations</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code>. In the Digital Credentials Catalog, the element of the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> array of each declared Credential type, including its <code class="docutils literal notranslate"><span class="pre">issuance_flows</span></code> and its <code class="docutils literal notranslate"><span class="pre">service_documentation_uri</span></code>.</p></td>
+<tr class="row-odd"><td><p><cite>intended_use</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">intendedUses</span></code> array of the corresponding <code class="docutils literal notranslate"><span class="pre">services[]</span></code> element, each element carrying its <code class="docutils literal notranslate"><span class="pre">intendedUseIdentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">purpose</span></code>, <code class="docutils literal notranslate"><span class="pre">privacyPolicy</span></code> and <code class="docutils literal notranslate"><span class="pre">credentials</span></code>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> and the <code class="docutils literal notranslate"><span class="pre">purpose</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>provided_claims_purposes</cite></p></td>
+<tr class="row-even"><td><p><cite>provided_attestations</cite></p></td>
+<td><p>In the Register, the <code class="docutils literal notranslate"><span class="pre">providesAttestations</span></code> array of the corresponding <code class="docutils literal notranslate"><span class="pre">services[]</span></code> element, each <code class="docutils literal notranslate"><span class="pre">ProvidedAttestation</span></code> carrying <code class="docutils literal notranslate"><span class="pre">format</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code> as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. In the registration Trust Mark, the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code>. In the Digital Credentials Catalog, the element of the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> array of each declared Credential type, including its <code class="docutils literal notranslate"><span class="pre">issuance_flows</span></code> and its <code class="docutils literal notranslate"><span class="pre">service_documentation_uri</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>provided_claims_purposes</cite></p></td>
 <td><p>In the AS Registry, the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code>, that is</p>
 <blockquote>
 <div><ul class="simple">
@@ -793,7 +800,7 @@ The table below maps each Data Identifier to the fields of the destination data 
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-odd"><td><p><cite>visual_identity</cite></p></td>
+<tr class="row-even"><td><p><cite>visual_identity</cite></p></td>
 <td><p>In the AS Registry the</p>
 <blockquote>
 <div><ul class="simple">
@@ -804,7 +811,7 @@ The table below maps each Data Identifier to the fields of the destination data 
 <p>each with its integrity digest and its alternative text.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p><cite>credential_type_declaration</cite></p></td>
+<tr class="row-odd"><td><p><cite>credential_type_declaration</cite></p></td>
 <td><p>In the Digital Credentials Catalog:</p>
 <blockquote>
 <div><ul class="simple">
@@ -819,7 +826,7 @@ The table below maps each Data Identifier to the fields of the destination data 
 <p>and the <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code>, or the <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code>, that provide the data of the Credential type.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p><cite>credential_technical_specification</cite></p></td>
+<tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
 <td><p>In the Digital Credentials Catalog:</p>
 <blockquote>
 <div><ul class="simple">
@@ -831,7 +838,7 @@ The table below maps each Data Identifier to the fields of the destination data 
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p><cite>credential_policies</cite></p></td>
+<tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
 <td><p>In the Digital Credentials Catalog:</p>
 <blockquote>
 <div><ul class="simple">
@@ -844,13 +851,13 @@ The table below maps each Data Identifier to the fields of the destination data 
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-odd"><td><p><cite>conformity_assessment</cite></p></td>
+<tr class="row-even"><td><p><cite>conformity_assessment</cite></p></td>
 <td><p>In the notification dataset, the conformity assessment report.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>service_supply_point</cite></p></td>
+<tr class="row-odd"><td><p><cite>service_supply_point</cite></p></td>
 <td><p>In the notification dataset, the service supply point.</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>signing_trust_anchor</cite></p></td>
+<tr class="row-even"><td><p><cite>signing_trust_anchor</cite></p></td>
 <td><p>In the notification dataset, the trust anchor.</p></td>
 </tr>
 </tbody>
@@ -897,8 +904,8 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 The way each artifact is produced is described in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, and the effects of the later changes in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
 <p>The table shows the artifacts that vary by role.
 The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate, while the WRPRC is shown on its own because it is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.</p>
-<table class="longtable docutils align-default" id="id943">
-<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Trust Artifacts Registration Outcomes by Entity Type</span><a class="headerlink" href="#id943" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id991">
+<caption><span class="caption-number">Table 8.6 </span><span class="caption-text">Trust Artifacts Registration Outcomes by Entity Type</span><a class="headerlink" href="#id991" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 12.0%" />
@@ -965,6 +972,10 @@ The X.509 certificate column groups the X.509 certificates the entity obtains, i
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>For a Wallet-Relying Party operating in the EUDIW Trust Framework, the WRPAC column is one access certificate and the WRPRC column is one registration certificate, issued automatically as defined in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>. One WRPAC per registered Service, a separate set of WRPACs per intermediated Relying Party, and one WRPRC per combination of intended use and Service are deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>An entity operating only at national level obtains no Register record, no WRPAC and no WRPRC.
 It holds its Entity Statement and its registration Trust Mark from the federation registration, and, where its role requires it, its X.509 certificate, that is the Sign/Seal Certificate for a National Credential Issuer or the Authentication Certificate for a Relying Party operating in the Proximity Flow.</p>
 </div>
@@ -987,6 +998,11 @@ In addition to the base registration data, a PID Provider provides the following
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
+<li><p><cite>relying_party_services</cite></p>
+<ul>
+<li><p>The Services of the PID Provider, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. The Service carries <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> for the PID type. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></li>
+</ul>
+</li>
 <li><p><cite>provided_attestations</cite></p></li>
 <li><p><cite>federation_entity_identifier</cite></p></li>
 <li><p><cite>federation_entity_key</cite></p></li>
@@ -1007,6 +1023,11 @@ In addition to the base registration data, a QEAA Provider provides the followin
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
+<li><p><cite>relying_party_services</cite></p>
+<ul>
+<li><p>The Services of the QEAA Provider, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. The Service carries <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></li>
+</ul>
+</li>
 <li><p><cite>provided_attestations</cite></p></li>
 <li><p><cite>federation_entity_identifier</cite></p></li>
 <li><p><cite>federation_entity_key</cite></p></li>
@@ -1031,6 +1052,11 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
+<li><p><cite>relying_party_services</cite></p>
+<ul>
+<li><p>The Services of the PuB-EAA Provider, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. The Service carries <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></li>
+</ul>
+</li>
 <li><p><cite>provided_attestations</cite></p></li>
 <li><p><cite>federation_entity_identifier</cite></p></li>
 <li><p><cite>federation_entity_key</cite></p></li>
@@ -1058,6 +1084,11 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
+<li><p><cite>relying_party_services</cite></p>
+<ul>
+<li><p>REQUIRED where the Non-Qualified EAA Provider operates in the EUDIW Trust Framework. The Services of the Provider, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></li>
+</ul>
+</li>
 <li><p><cite>provided_attestations</cite></p></li>
 <li><p><cite>federation_entity_identifier</cite></p></li>
 <li><p><cite>federation_entity_key</cite></p></li>
@@ -1081,14 +1112,19 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
+<li><p><cite>relying_party_services</cite></p>
+<ul>
+<li><p>REQUIRED where the Relying Party operates in the EUDIW Trust Framework. The Services of the Relying Party, as <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code> objects of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></li>
+</ul>
+</li>
 <li><p><cite>intended_use</cite>:</p>
 <ul>
-<li><p>The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.</p></li>
+<li><p>Nested in <cite>relying_party_services</cite>. The Attestation type and optionally the attributes the Relying Party intends to request from the Wallet Units.</p></li>
 </ul>
 </li>
 <li><p><cite>intermediary_relationship</cite></p>
 <ul>
-<li><p>In the EUDIW Trust Framework, REQUIRED where the Relying Party operates through a RP Intermediary, and in that case it references its RP Intermediary identifier. In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> to the RP Intermediary that federates it. The RP Intermediary side is described in <a class="reference internal" href="#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p></li>
+<li><p>Nested in <cite>relying_party_services</cite>. In the EUDIW Trust Framework, REQUIRED where the Relying Party Service operates through a RP Intermediary, and in that case it references the Intermediary Service identifier (<code class="docutils literal notranslate"><span class="pre">usesIntermediaries</span></code>). In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> to the RP Intermediary that federates it. The RP Intermediary side is described in <a class="reference internal" href="#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p></li>
 </ul>
 </li>
 <li><p><cite>federation_entity_identifier</cite></p></li>
@@ -1099,19 +1135,19 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 </li>
 <li><p><cite>certificate_signing_requests</cite></p>
 <ul>
-<li><p>One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.</p></li>
+<li><p>One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is one WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.</p></li>
 </ul>
 </li>
 <li><p><cite>trust_framework_scope</cite></p>
 <ul>
-<li><p>The Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.</p></li>
+<li><p>The Relying Party declares the Trust Framework in which it operates, as specified in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a> and <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>. This choice affects the artifacts it obtains.</p></li>
 </ul>
 </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate.
-Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP and it MUST obtain its WRPAC and its WRPRC.</p>
+A Relying Party that operates in the EUDIW Trust Framework MUST have a record in the Register of WRP, it MUST obtain its WRPAC, and it MUST receive its WRPRC automatically, as specified in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p>
 </div>
 </section>
 <section id="relying-party-intermediary">
@@ -1121,8 +1157,8 @@ In the National Trust Framework the Relying Party Intermediary is a Federation I
 In the EUDIW Trust Framework it is registered with <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code> set, and it federates its intermediated Relying Parties that operate cross-border.
 It provides the same Data Identifiers as a <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a>, with the differences in the table below.
 The Data Identifiers not listed here are provided as for a Relying Party.</p>
-<table class="longtable docutils align-default" id="id944">
-<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id944" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id992">
+<caption><span class="caption-number">Table 8.7 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id992" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 66.0%" />
@@ -1134,15 +1170,24 @@ The Data Identifiers not listed here are provided as for a Relying Party.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>intended_use</cite></p></td>
-<td><p>It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties.</p></td>
+<td><p>It MUST NOT be provided. A Relying Party Intermediary does not request attributes for itself, but on behalf of the intermediated Relying Parties. In the Register, each of its <code class="docutils literal notranslate"><span class="pre">services[]</span></code> elements has <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, omits <code class="docutils literal notranslate"><span class="pre">intendedUses</span></code>, and lists in <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code> the Service identifiers it serves ([<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>], Annex I).</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>intermediary_relationship</cite></p></td>
-<td><p>Set on the intermediary side, that is the Relying Party declares that it is a designated intermediary. It is declared in both the frameworks.</p></td>
+<tr class="row-odd"><td><p><cite>entitlements</cite></p></td>
+<td><p>It MUST NOT be provided for a pure Intermediary Service (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>federation_entity_identifier</cite></p></td>
+<tr class="row-even"><td><p><cite>relying_party_services</cite></p></td>
+<td><p>REQUIRED. Each Service is an intermediary Service: <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, and <code class="docutils literal notranslate"><span class="pre">servedWRPServices</span></code> lists the Relying Party Services it serves. <code class="docutils literal notranslate"><span class="pre">serviceIdentifier</span></code> is not required.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>certificate_signing_requests</cite></p></td>
+<td><p>One WRPAC Certificate Signing Request. The issued WRPAC authenticates the Intermediary. One WRPAC for each intermediated Relying Party Service is deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>intermediary_relationship</cite></p></td>
+<td><p>Set on the intermediary Service, that is the Relying Party declares that the Service is a designated intermediary. It is declared in both the frameworks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>federation_entity_identifier</cite></p></td>
 <td><p>The Federation Entity Identifier of the Relying Party Intermediary within the National Trust Framework.</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>federation_entity_key</cite></p></td>
+<tr class="row-even"><td><p><cite>federation_entity_key</cite></p></td>
 <td><p>The Federation Entity Key of the Relying Party Intermediary.</p></td>
 </tr>
 </tbody>
@@ -1209,8 +1254,8 @@ Each process is described with its Input, its Outcome and its Process, that is t
 <li><p><strong>Enables</strong> are the capabilities that become possible afterwards, which are not processes of the Onboarding System.</p></li>
 </ul>
 <p>The processes are carried out by the components described in <a class="reference internal" href="#system-components-and-services"><span class="std std-ref">System Components and Services</span></a>, and one table is given for each family of <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>.</p>
-<span id="table-map-entity"></span><table class="longtable docutils align-default" id="id945">
-<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Process Map of the Entity Onboarding Processes</span><a class="headerlink" href="#id945" title="Link to this table">¶</a></caption>
+<span id="table-map-entity"></span><table class="longtable docutils align-default" id="id993">
+<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Process Map of the Entity Onboarding Processes</span><a class="headerlink" href="#id993" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1231,13 +1276,13 @@ Each process is described with its Input, its Outcome and its Process, that is t
 <td><p>Eligibility and compliance verification, including the identity proofing and the verification of the entitlements</p></td>
 <td><p>The Entity, which requests the registration</p></td>
 <td><p>Registration Trust Mark Issuance; Credential Type Activation and Deactivation, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">it</span> <span class="pre">completes</span> <span class="pre">a</span> <span class="pre">versioned</span> <span class="pre">entry</span></code></p></td>
-<td><p>The request, by the Entity, of the WRPAC and of the WRPRC <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code>, of the Sign/Seal Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">National</span> <span class="pre">PKI</span></code>, and of the National Authentication Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">Proximity</span> <span class="pre">Flow</span></code>; the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> of the Entity, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code>, for which the Onboarding System maintains the notifiable information</p></td>
+<td><p>The request, by the Entity, of the WRPAC <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code>, of the Sign/Seal Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">National</span> <span class="pre">PKI</span></code>, and of the National Authentication Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">Proximity</span> <span class="pre">Flow</span></code>; the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> of the Entity, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code>, for which the Onboarding System maintains the notifiable information</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#entity-update"><span class="std std-ref">Entity Update</span></a></p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
 <td><p>The Entity, which submits a change of one or more categories of its registration data</p></td>
-<td><p>Registration Trust Mark Issuance, where the change affects the data it carries</p></td>
-<td><p>The request, by the Entity, of the re-issuance of the certificates that carry the changed data, after the revocation of the WRPRC by its Provider, the re-verification of the eligibility where the change affects the Authorization Information, and the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> of the change, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code></p></td>
+<td><p>Registration Trust Mark Issuance, where the change affects the data it carries; <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>, where the change affects the registration data</p></td>
+<td><p>The request, by the Entity, of the re-issuance of the X.509 certificates that carry the changed data; the automated revocation and re-issuance of the WRPRC by its Provider; the re-verification of the eligibility where the change affects the Authorization Information; and the <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> of the change, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a></p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
@@ -1265,8 +1310,8 @@ Each process is described with its Input, its Outcome and its Process, that is t
 </tr>
 </tbody>
 </table>
-<span id="table-map-artifacts"></span><table class="longtable docutils align-default" id="id946">
-<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Process Map of the Certificate and Trust Artifact Issuance Processes</span><a class="headerlink" href="#id946" title="Link to this table">¶</a></caption>
+<span id="table-map-artifacts"></span><table class="longtable docutils align-default" id="id994">
+<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Process Map of the Certificate and Trust Artifact Issuance Processes</span><a class="headerlink" href="#id994" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1286,12 +1331,12 @@ Each process is described with its Input, its Outcome and its Process, that is t
 <tr class="row-even"><td><p><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Access Certificate Issuance</span></a></p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, with a record of the Entity in the Register, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code></p></td>
 <td><p>The Entity, with an ACME order, for the first issuance or for a re-issuance</p></td>
-<td><p>—</p></td>
+<td><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a></p></td>
 <td><p>The authentication of the Entity towards the Wallet Units</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a></p></td>
 <td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, with a record with a valid registration status in the Register and a valid WRPAC, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code></p></td>
-<td><p>The Entity, which requests the certificate to its Provider of WRPRC, for the first issuance or after the revocation of the previous one</p></td>
+<td><p>The Provider of WRPRC, invoked without a request from the Entity when a valid WRPAC exists or when the Register record changes</p></td>
 <td><p>—</p></td>
 <td><p>The presentation of the registration data of the Entity to the Wallet Units</p></td>
 </tr>
@@ -1315,8 +1360,8 @@ Each process is described with its Input, its Outcome and its Process, that is t
 </tr>
 </tbody>
 </table>
-<span id="table-map-attestation"></span><table class="longtable docutils align-default" id="id947">
-<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Process Map of the Attestation Onboarding Processes</span><a class="headerlink" href="#id947" title="Link to this table">¶</a></caption>
+<span id="table-map-attestation"></span><table class="longtable docutils align-default" id="id995">
+<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Process Map of the Attestation Onboarding Processes</span><a class="headerlink" href="#id995" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1398,6 +1443,7 @@ The data is organized in the three categories of registered data defined in <a c
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">entitlements</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relying_party_services</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">intended_use</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> for a Credential Issuer,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code> where applicable,</p></li>
@@ -1415,7 +1461,7 @@ For a PID Provider and a Wallet Provider the <code class="docutils literal notra
 The registration is recorded across the two Trust Frameworks according to the role and to the declaration of the Entity.</p>
 <ul class="simple">
 <li><p>In the National Trust Framework the Entity is registered in the federation, and its Subordinate Statement, that carries the registration Trust Mark, is published by the National Federation Management.</p></li>
-<li><p>In the EUDIW Trust Framework, for the Wallet-Relying Parties, a signed record is written in the Register, and it drives the later issuance of the WRPAC and of the WRPRC.</p></li>
+<li><p>In the EUDIW Trust Framework, for the Wallet-Relying Parties, a signed record is written in the Register, and it drives the later issuance of the WRPAC and the automated issuance of the WRPRC.</p></li>
 </ul>
 <p>The National Trust Framework is always the registration layer, while the EUDIW Trust Framework is added for the notified categories and for the Entities that declare the cross-border operation, as described in <a class="reference internal" href="infrastructure-trust.html#overview"><span class="std std-ref">Overview</span></a>.
 The Register and the notification dataset are kept separate, as described in <a class="reference internal" href="#trust-artifacts-registration-outcomes"><span class="std std-ref">Trust Artifacts Registration Outcomes</span></a>.</p>
@@ -1431,7 +1477,7 @@ Then, the Entity MUST include the received Trust Mark in its Entity Configuratio
 During the same registration the Federation Trust Anchor public keys are made available to the Entity out-of-band, through the contact channel of the registration, and this bootstraps the trust of the Entity in the Trust Anchor, see <a class="reference internal" href="trust-evaluation.html#federation-trust-anchor-distribution-and-validation"><span class="std std-ref">Federation Trust Anchor Distribution and Validation</span></a>.
 The structure of the Entity Configuration and of the Subordinate Statement is defined in <a class="reference internal" href="infrastructure-trust.html#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>.</p></li>
 <li><p>Where the role and the declaration of the Entity require the EUDIW Trust Framework, the EUDIW Registration Management verifies the Entity and writes its record in the Register, and the Registrar signs or seals it.
-The record drives the later issuance of the WRPAC and of the WRPRC, and its data model and its public API are defined in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.
+The record drives the later issuance of the WRPAC and the automated issuance of the WRPRC, and its data model and its public API are defined in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.
 For a Credential Issuer, the <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> declared at registration add the Credential Issuer to the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of each declared Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>, and the same declaration is carried in the record and in the WRPRC.</p></li>
 <li><p>Where the Entity belongs to a category subject to notification, the Notification Dataset Management collects its notifiable information in the notification dataset, as described in <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p></li>
 <li><p>The registration produces the <code class="docutils literal notranslate"><span class="pre">registration</span></code> event, that the Federation Authority publishes on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.
@@ -1452,14 +1498,14 @@ This process describes what the Entity submits and which steps the components ex
 <p>The updated registration data defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
 For a change of the Identity Information the input is the new <code class="docutils literal notranslate"><span class="pre">legal_name</span></code>, <code class="docutils literal notranslate"><span class="pre">identifier</span></code>, <code class="docutils literal notranslate"><span class="pre">legal_nature</span></code>, <code class="docutils literal notranslate"><span class="pre">contact_information</span></code>, <code class="docutils literal notranslate"><span class="pre">service_policies</span></code> or <code class="docutils literal notranslate"><span class="pre">data_protection_authority</span></code>.
 For a change of the Technical Configuration related to the new key material, the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code> and <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> are provided respectively for the federation identity and for the X.509 certificates.
-For a change of the Authorization Information the input is the new <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_use</span></code>, <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> or <code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code>, depending on the role.</p>
+For a change of the Authorization Information the input is the new <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">relying_party_services</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_use</span></code>, <code class="docutils literal notranslate"><span class="pre">provided_attestations</span></code> or <code class="docutils literal notranslate"><span class="pre">intermediary_relationship</span></code>, depending on the role.</p>
 <p><strong>Outcome</strong></p>
 <p>The updated registered information of the Entity.
 A change that affects the Authorization Information triggers the re-verification of the eligibility, because a new entitlement is not self-declared, as described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
 <li><p>The Entity submits the change of one or more categories of its registration data.</p></li>
-<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Entity requests the re-issuance of the certificates that carry the changed data, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>. Where the Entity belongs to a notified category, the Notification Dataset Management updates the notification, as described in <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p></li>
+<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Entity requests the re-issuance of the X.509 certificates that carry the changed data, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>. The Provider of WRPRC revokes the affected WRPRC and MUST re-issue it automatically where the registration remains valid. Where the Entity belongs to a notified category, the Notification Dataset Management updates the notification, as described in <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p></li>
 <li><p>For a change of the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code>, the rotation of the key is handled by the National Federation Management, that re-issues the Subordinate Statement attesting the new key, so the new key becomes trusted only when the superior attests it, following <a class="reference internal" href="infrastructure-trust.html#federation-entity-key-rotation"><span class="std std-ref">Federation Entity Key Rotation</span></a>. The rotation of the keys of the X.509 certificates is a re-issuance handled by the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes, where the Entity provides the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> in the ACME order.</p></li>
 <li><p>A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of a Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.</p></li>
 <li><p>The update produces the corresponding event, a <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> for a change of the Identity Information or the Technical Configuration and a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> for a key rotation, published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
@@ -1580,8 +1626,8 @@ Both sources provide the authorization data with the same logic of [<a class="re
 <p>A distinct ACME service is provided for each purpose, so the type of the certificate is determined by the service, and the profile of each certificate is fixed by its type.</p>
 <p>Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
 A certificate has its own <code class="docutils literal notranslate"><span class="pre">notBefore</span></code> and <code class="docutils literal notranslate"><span class="pre">notAfter</span></code> and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see <a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a>, and not by the expiration of the Trust Chain.</p>
-<p>The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity, while the Wallet-Relying Party Registration Certificate is requested by the Entity to its Provider after it has obtained its WRPAC, whose validity is one of the conditions of the issuance.</p>
-<figure class="align-default" id="id948">
+<p>The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity. The Wallet-Relying Party Registration Certificate is issued automatically as defined in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p>
+<figure class="align-default" id="id996">
 <p class="plantuml">
 <object data="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png"><img src="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png" alt="&#64;startuml
@@ -1612,7 +1658,7 @@ CA --&gt; E : X.509 certificate
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id948" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id996" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1624,8 +1670,8 @@ The Wallet-Relying Party Registration Certificate and the registration Trust Mar
 <p>A Certificate Signing Request carries the public key to be certified, proves possession of the corresponding private key, and requests the values of the certificate fields supplied by the Entity.
 It does not determine the content of the issued certificate: the Certification Authority MUST validate the requested values against the registration data and the applicable certificate profile, and it MUST add or determine the issuer-dependent values required by that profile.</p>
 <p>The Certificate Signing Request MUST be a <code class="docutils literal notranslate"><span class="pre">CertificationRequest</span></code> as defined in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a> (PKCS #10), DER-encoded, and it is carried in the ACME order as required by <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8555.html#section-7.4"><strong>RFC 8555#section-7.4</strong></a>.</p>
-<table class="longtable docutils align-default" id="id949">
-<caption><span class="caption-number">Table 8.11 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id949" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id997">
+<caption><span class="caption-number">Table 8.11 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id997" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -1677,8 +1723,8 @@ It MUST be distinct from the Federation Entity Key, and a distinct key MUST be u
 </table>
 <p>The following table defines the extension values requested by the Entity and the extension values determined by the Certification Authority.
 The criticality of each requested extension MUST follow the applicable certificate profile.</p>
-<table class="longtable docutils align-default" id="id950">
-<caption><span class="caption-number">Table 8.12 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id950" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id998">
+<caption><span class="caption-number">Table 8.12 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id998" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 55.0%" />
@@ -1728,7 +1774,7 @@ The Federation Entity Key is bound to the Entity through the Entity Configuratio
     subject: DistinguishedName {
       countryName: &quot;IT&quot;,
       organizationName: &quot;Example of Relying Party&quot;,
-      commonName: &quot;Relying Party Example&quot;,
+      commonName: &quot;ExampleBank Mobile&quot;,                   // serviceTradeName (Reg_34)
       organizationIdentifier: &quot;VATIT-12345678901&quot;
     },
 
@@ -1798,7 +1844,9 @@ The Federation Entity Key is bound to the Entity through the Entity Configuratio
 <section id="wallet-relying-party-access-certificate-issuance">
 <h4><span class="section-number">8.3.3.3. </span>Wallet-Relying Party Access Certificate Issuance<a class="headerlink" href="#wallet-relying-party-access-certificate-issuance" title="Link to this heading">¶</a></h4>
 <p>Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defined in the <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.
-The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], and the fallback to the Trust Mark does not apply to it.</p>
+The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], and the fallback to the Trust Mark does not apply to it.
+The Entity obtains one WRPAC.
+One WRPAC per registered Service, and a separate set of WRPACs for each intermediated Relying Party, are deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p>
 <p><strong>Input</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the WRPAC, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.
 The attributes of the certificate come from the record of the Entity in the Register.</p>
@@ -1807,26 +1855,29 @@ The attributes of the certificate come from the record of the Entity in the Regi
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
 <li><p>The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting its <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> and authenticating with its Federation Trust Chain, validated as in <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
-<li><p>The Certification Authority checks that the Entity has a record in the Register and derives the attributes of the certificate from it.</p></li>
+<li><p>The Certification Authority checks that the Entity has a record in the Register and derives the attributes of the certificate from that record.</p></li>
 <li><p>The Certification Authority issues the WRPAC and the Entity retrieves it.</p></li>
 </ol>
 </section>
 <section id="wallet-relying-party-registration-certificate-issuance">
 <h4><span class="section-number">8.3.3.4. </span>Wallet-Relying Party Registration Certificate Issuance<a class="headerlink" href="#wallet-relying-party-registration-certificate-issuance" title="Link to this heading">¶</a></h4>
 <p>Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.
-The WRPRC is requested by the Entity to the Provider of WRPRC, which verifies the conditions of Annex V, point 3(c) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] before issuing it.
-The Provider of WRPRC monitors the Register, according to [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], and revokes the WRPRC when the registration of the Entity changes, so that the Entity requests a new one.</p>
+The Provider of WRPRC MUST issue one WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC, as required by [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>].
+The Provider of WRPRC monitors the Register, according to [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], revokes the WRPRC when the registration of the Entity changes, and MUST re-issue a new WRPRC automatically where the registration remains valid.</p>
+<p>A separate WRPRC for each combination of intended use and Relying Party Service, and a separate WRPRC for each registered Service of a PID or Attestation Provider, are deferred as specified in <a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.
+A Relying Party Intermediary that does not declare intended uses does not receive a WRPRC of its own; the Wallet Unit relies on the WRPRC of the intermediated Relying Party.</p>
 <p><strong>Input</strong></p>
-<p>The request of the Entity and its valid WRPAC.
-The attributes of the certificate come from the record of the Entity in the Register.</p>
+<p>The signed record of the Entity in the Register and its valid WRPAC.
+The attributes of the certificate come from that record.</p>
 <p><strong>Outcome</strong></p>
-<p>The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that the Entity presents to the Wallet Units together with its registration data.</p>
+<p>The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate and issued to the Entity, that the Entity presents to the Wallet Units together with its registration data.</p>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
-<li><p>The Entity requests the WRPRC to its Provider of WRPRC, for the first issuance or after the revocation of the previous one.</p></li>
+<li><p>The Provider of WRPRC is invoked without a request from the Entity when a valid WRPAC becomes available, or when the Register record changes after the previous WRPRC has been revoked.</p></li>
 <li><p>The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the information the certificate carries is consistent with that record, and that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></li>
 <li><p>The Provider of WRPRC builds the WRPRC from the record of the Entity in the Register and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.</p></li>
-<li><p>The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>]. The revocation is published through the <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>.</p></li>
+<li><p>The Provider of WRPRC issues the WRPRC to the Entity.</p></li>
+<li><p>The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>]. The revocation is published through the <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>. Where the registration remains valid, the Provider MUST re-issue a new WRPRC without undue delay.</p></li>
 </ol>
 </section>
 <section id="signature-and-seal-certificate-issuance">
@@ -1848,7 +1899,7 @@ The attributes of the certificate come from the record of the Entity in the Regi
 <section id="national-authentication-certificate-issuance">
 <h4><span class="section-number">8.3.3.6. </span>National Authentication Certificate Issuance<a class="headerlink" href="#national-authentication-certificate-issuance" title="Link to this heading">¶</a></h4>
 <p>National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].
-The certificate follows the same profile of the WRPAC and it is issued by the National Authentication Certification Authority, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.</p>
+The certificate follows the same profile of the WRPAC, and it is issued by the National Authentication Certification Authority, through the mechanism of <a class="reference internal" href="#issuance-of-the-x-509-certificates-through-acme-and-openid-federation"><span class="std std-ref">Issuance of the X.509 Certificates through ACME and OpenID Federation</span></a>.</p>
 <p><strong>Input</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> of the Entity for the National Authentication Certificate, and the Federation Trust Chain used in the <code class="docutils literal notranslate"><span class="pre">openid-federation-01</span></code> challenge.</p>
 <p><strong>Outcome</strong></p>
@@ -2054,14 +2105,14 @@ The lifecycle of the single Digital Credentials issued to the Users is a differe
 <p>This section applies to WRPs and WPs as they are directly involved in the operational phases.
 As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.3</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
-<figure class="align-default" id="id951">
+<figure class="align-default" id="id999">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id951" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id999" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -2080,7 +2131,7 @@ Wallet Providers become <code class="docutils literal notranslate"><span class="
 <p><strong>Transition from REGISTERED to OPERATIONAL</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> indicates that the Entity has been authorized to perform the operations related to its role.</p>
 <ul class="simple">
-<li><p><em>EUDIW Trust Framework</em>: WRPs are <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> if they were <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> and they obtained a WRPAC, optionally a WRPRC and, depending on the role, a Sign/Seal Certificate.
+<li><p><em>EUDIW Trust Framework</em>: WRPs are <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> if they were <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> and they obtained a WRPAC, the corresponding WRPRC(s), and, depending on the role, a Sign/Seal Certificate.
 The signing Trust Anchor of that certificate MUST have been added to the LoTE or to the EUMS TL.
 Wallet Providers are <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> if they were <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> and they obtained a Sign/Seal Certificate whose signing Trust Anchor has been added to the LoTE.</p></li>
 <li><p><em>National Trust Framework</em>: WRPs and Wallet Providers are <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code> if they were <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, they obtained the Sign/Seal Certificates and the registration Trust Marks, and their Subordinate Statement has been published by the Federation Authority.</p></li>
@@ -2092,7 +2143,7 @@ To return to <code class="docutils literal notranslate"><span class="pre">OPERAT
 <p><strong>Transition from REGISTERED or OPERATIONAL to SUSPENDED</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> indicates that the registration is temporarily not valid.
 Differently from the cancellation, the suspension is reversible.
-A WRP whose registration is suspended MUST NOT issue Credentials to Wallet Units nor request attributes from them, and the Credentials it issued are not accepted by the Relying Parties, as described in Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>].</p>
+A WRP whose registration is suspended MUST NOT issue Credentials to Wallet Units nor request attributes from them, and the Credentials it issued are not accepted by the Relying Parties, as described in Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>].</p>
 <p>The events that lead to this state, and the parties entitled to decide them, are listed in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p>
 <p><strong>Transition from SUSPENDED to REGISTERED</strong></p>
 <p>The suspension can be lifted by the same party that decided it.
@@ -2110,7 +2161,7 @@ Entities MAY however continue to validate historical data, signatures and Creden
 An Entity in <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> state that wants to participate again in the ecosystem MUST complete a new registration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>] describes for PID Providers and Attestation Providers the states <strong>Registered</strong>, <strong>Suspended</strong> and <strong>Cancelled</strong>.
+<p>Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] describes for PID Providers and Attestation Providers the states <strong>Registered</strong>, <strong>Suspended</strong> and <strong>Cancelled</strong>.
 Within IT-Wallet the <strong>Registered</strong> state is split into <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code> and <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, to distinguish the moment in which the registration record exists from the moment in which the Entity holds all the Trust Artifacts it needs to operate.</p>
 </div>
 <div class="admonition note">
@@ -2124,8 +2175,8 @@ The Authentic Sources follow the PDND framework, and the effects that their life
 <p>Every transition of the state machine of the Entities is caused by an event.
 For each event, this section states who is entitled to trigger it, who is responsible for it, and, when applicable, on which normative basis and within which conditions.
 The events that concern the Credential types and the Authentic Sources are described in the dedicated sections below.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id952">
-<caption><span class="caption-number">Table 8.13 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id952" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id1000">
+<caption><span class="caption-number">Table 8.13 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id1000" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -2163,7 +2214,7 @@ The events that concern the Credential types and the Authentic Sources are descr
 <tr class="row-odd"><td><p>Reactivation</p></td>
 <td><p>Removal of the condition that caused the suspension.</p></td>
 <td><p>The same party that decided the suspension.</p></td>
-<td><p>Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>].</p></td>
+<td><p>Section 4.6.5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>].</p></td>
 <td><p>Not defined.</p></td>
 </tr>
 <tr class="row-even"><td><p>Cancellation</p></td>
@@ -2205,13 +2256,14 @@ In every case the suspension or the cancellation is carried out through the mech
 For an Entity registered through a Federation Intermediate, the Subordinate Statement is served by the Intermediate, which withdraws it to suspend or cancel the Entity, while the registration Trust Mark remains issued by the Federation Trust Anchor which is responsible for any effects on the lifecycle of the registration Trust Mark.
 The suspension or the cancellation of a Federation Intermediate MUST propagate to its affiliated Entities, whose Trust Chain runs through it, as described in <a class="reference internal" href="trust-evaluation.html#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a>.</p>
 <p>Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
-This is set by Annex IV of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] for the Providers of WRPACs and by Annex V of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] for the Providers of WRPRCs.</p>
+For a WRPRC the re-issuance is automatic, as defined in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.
+This is set by Annex IV of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] for the Providers of WRPACs and by Annex V of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj">CIR2026/1730</a>] for the Providers of WRPRCs.</p>
 <p>Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (<code class="docutils literal notranslate"><span class="pre">federation_subordinate_events_endpoint</span></code>), so that other participants can track the lifecycle of an Entity over time.
 The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id953">
-<caption><span class="caption-number">Table 8.14 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id953" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id1001">
+<caption><span class="caption-number">Table 8.14 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id1001" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -2269,8 +2321,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id954">
-<caption><span class="caption-number">Table 8.15 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id954" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id1002">
+<caption><span class="caption-number">Table 8.15 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id1002" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -2415,8 +2467,8 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 <p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
 The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id955">
-<caption><span class="caption-number">Table 8.16 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id955" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id1003">
+<caption><span class="caption-number">Table 8.16 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id1003" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />
@@ -2681,7 +2733,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 18/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

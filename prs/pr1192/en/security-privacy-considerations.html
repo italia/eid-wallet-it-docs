@@ -617,10 +617,10 @@ Regarding the <strong>aud</strong> value, the Verifier must check that the audie
 first and therefore send the request to the Credential endpoint and bind the Credentials to the keys under his control. The IT-Wallet specification requires the use of a sender-constrained
 access token, which means that the access token binds to the device using cryptographic materials.</p>
 <p>The second surface for the attack is related to key management. In the case of using software-based keys, it is possible to clone the keys and move them to a device under
-attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports local
-internal WSCD that uses hardware-based keys. However, the lack of a
-certification profile that certifies the local internal WSCD against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
-as shown for example in this <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Certification Report</a> or <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">Global Platform site</a> makes the requirement only partially satisfied.</p>
+attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports a
+hardware-backed Keystore that uses hardware-based keys. However, the lack of a
+certification profile that certifies the Keystore (TEE) against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
+as shown for example in this <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Certification Report</a> or <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">Global Platform site</a> makes the requirement only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side), which provides certification at a higher assurance level.</p>
 </section>
 <section id="sr-v-10">
 <h3><span class="section-number">14.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
@@ -948,7 +948,7 @@ In addition, privacy-preserving Status List mechanism ensure that while the Veri
 </tr>
 </tbody>
 </table>
-<p>To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the WSCD, ensuring that only the User can access them, thereby preventing unauthorized use or tampering.</p>
+<p>To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the Keystore (or the WSCA/WSCD for the PID), ensuring that only the User can access them, thereby preventing unauthorized use or tampering.</p>
 </section>
 </section>
 </section>
@@ -1104,7 +1104,7 @@ In addition, privacy-preserving Status List mechanism ensure that while the Veri
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 18/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

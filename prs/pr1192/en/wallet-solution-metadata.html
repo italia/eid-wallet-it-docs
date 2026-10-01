@@ -343,7 +343,7 @@
 <td><p>REQUIRED. String containing a human-readable name of the Wallet.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code></p></td>
-<td><p>REQUIRED. URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.</p></td>
+<td><p>REQUIRED. URL of the authorization endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. For EUDIW invocation it MUST support <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>, <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code>, and <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code>; using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code></p></td>
 <td><p>REQUIRED. Credential Offer Endpoint of a Wallet.</p></td>
@@ -372,7 +372,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, and in particular the custom URL <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, using <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> or <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> as specified in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>.</p>
 </div>
 </section>
 
@@ -426,7 +426,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 18/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
