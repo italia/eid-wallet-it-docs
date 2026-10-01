@@ -53,7 +53,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 
 **Passi 11-12 (Richiesta di Emissione della Wallet Instance Attestation)**: L'Istanza del Wallet:
 
-* Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Instance Attestation <table_wia_request_claim>`) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` e, quando si riutilizza una voce di status list, ``status_list_idx`` (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Instance Attestation <table_wia_request_claim>` e :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`). È firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Wallet Instance Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Instance Attestation` del Backend del Fornitore del Wallet.
 
 
@@ -69,6 +69,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Insta
   6. L'``integrity_assertion`` DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   8. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  9. Il Fornitore di Wallet DEVE applicare :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`.
 
 Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Instance Attestation che soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 
@@ -85,5 +86,27 @@ Di seguito è riportato un esempio non normativo della risposta.
   {
     "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+
+Riutilizzo della Voce di Stato per Emittente
+---------------------------------------------
+
+Il Fornitore di Wallet DEVE usare l'opzione di riutilizzo per emittente della Sezione 2.5.1 di `EUDI-TS 3`_ per la voce ``client_status.status`` di ciascuna Wallet Instance Attestation.
+
+L'Istanza del Wallet DEVE conservare l'indice di status list che le è stato assegnato per ciascun PID Provider o Attestation Provider.
+
+La Wallet Instance Attestation Request DEVE includere ``intended_issuer``.
+
+Quando l'Istanza del Wallet richiede una Wallet Instance Attestation per un PID Provider o un Attestation Provider per il quale possiede già un indice, la richiesta DEVE includere ``status_list_idx`` impostato a quell'indice.
+
+Quando l'Istanza del Wallet richiede una Wallet Instance Attestation per un PID Provider o un Attestation Provider per il quale non possiede un indice, la richiesta DEVE omettere ``status_list_idx``.
+
+Quando ``status_list_idx`` è presente, il Fornitore di Wallet DEVE verificare che l'Istanza del Wallet sia autorizzata a quell'indice per ``intended_issuer`` prima di emettere una Wallet Instance Attestation che lo riutilizza. Il Fornitore di Wallet DEVE rifiutare la richiesta quando l'Istanza del Wallet non è autorizzata a quell'indice.
+
+Il Fornitore di Wallet NON DEVE riutilizzare la stessa voce di status list per Wallet Instance Attestation che la stessa Istanza del Wallet presenta a PID Provider o Attestation Provider diversi.
+
+Quando ``status_list_idx`` è assente, il Fornitore di Wallet DEVE assegnare una nuova voce di status list per quell'Istanza del Wallet e per ``intended_issuer``.
+
+Il Fornitore di Wallet DEVE documentare l'uso di questa opzione nella propria privacy policy.
 
 
