@@ -224,11 +224,4 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
       - ``temporarily_unavailable``
       - La richiesta non può essere soddisfatta perché l'Endpoint è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
-Endpoint di Cancellazione della Relying Party del Provider Backend
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-L'Endpoint di Cancellazione consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party, supportando i diritti di privacy dell'utente e la conformità normativa.
-
-Per i requisiti di implementazione dettagliati, vedere :ref:`relying-party-remote-flow-endpoints:Endpoint di Cancellazione della Relying Party`.
-
 

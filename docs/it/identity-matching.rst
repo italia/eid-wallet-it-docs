@@ -71,6 +71,6 @@ Applicazione all'Eliminazione degli Attributi dell'Utente
 
 Quando l'Utente richiede la cancellazione degli attributi presentati, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici applicando l'identity matching, come specificato in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`.
 
-Quando l'Utente si autentica all'Endpoint di Cancellazione presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.
+Quando l'Utente si autentica per una richiesta di cancellazione dei dati presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.
 
-Quando l'Utente si autentica all'Endpoint di Cancellazione senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.
+Quando l'Utente si autentica per una richiesta di cancellazione dei dati senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.

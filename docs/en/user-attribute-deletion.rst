@@ -5,43 +5,40 @@
 User's Attributes Deletion
 ==========================
 
-This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which Digital Credentials have been presented. Subsequently Users may request deletion of the attributes of one or more Digital Credentials presented to a Relying Party of their choice. The Relying Party MUST uniquely identify those Digital Credentials by applying identity matching as specified in :ref:`identity-matching`. Below the high level flow regarding this interaction is presented (:ref:`WP_115 <user-attribute-deletion-testcases>`).
+This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which Digital Credentials have been presented. Users may then request deletion of the attributes of one or more Digital Credentials presented to a Relying Party of their choice. The request uses the common interface of `EUDI-TS 7`_. The high level flow is presented below (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%
     :alt: The figure illustrates the Deletion of User's Attributes Process.
-    :caption: `Deletion of User's Attributes Process. <https://www.plantuml.com/plantuml/svg/TLFDZjD03BxdAQnUkB3x03sWNR55ue8G2-B2nKcSTaGw3cDFIzyUUqeIfkpUHlNdxyTVyo2AIVDnX2SQIGD7u06-2QKt0e-gARHPIHhCoZ4VMqeDTie9DexP00faUpHDox_djISwXOwQoOX35oQC2fllE1ezV8oc5pigYpXDKAES01xt5FNAZ0t57epwol-5nak8U_XiEvTwSvTGSYBOnPx3ttMYIMlK1-efeQTquBGW1qEkKb0YmTqxTxWrpoV-IO3pCQ2VBpNasFa3ns1-mE6-vTjRU3xm6SOW2ZnKpWC9_8WXmiGY9FBApMzjF9jgfw07gky0oaQNw5SckOxxjSdLjQp-FEss9Z7XtNlxgP0qK21mDqkNaKmSXVmwaPM0JvHysW00V3NLcuQ1MyKGNHQAgxcX-V0m93xwf22EfDYZedd-Fw8Xl1pNRTOORkr5vP7tVk5_HTTaSqUuzGEZlydlyGAqYkfTl2tG9N5T0sOJZ1ewL9AImHkzByXXv3DqRDDet70su8A00mgqH14aTns937aSQxh-lhv0iR4wBrykhLLx-9QpuPKNcMMhX5_YLiLcN3g__JT_OWt3vShqO5RoSVm3>`_
+    :caption: Deletion of User's Attributes Process.
 
+**Step 1:** The User requests the deletion of attributes by invoking the Wallet Instance's attribute deletion function.
 
-.. .. figure:: ../../images/user's_data_deletion_flow.svg
-..     :figwidth: 100%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/png/RLBDZjD03BxdAQozS67t0Nf0ksABn0KX5iI5YvCuxOZfE8mzBNrxx2bDcBAtTFpv-_7NHr7CMWwnmwASog6dtE6WdE7kcr2-0nGeOezTpx_1dzu8FDCn3DJDjXg6C6DIkFkECPB2nsICQQ2wYFCCBSe9u6b7II_Cs54QmQWl_5yedaFQmMVRERURsunICi4sZHp-hXFDsg8-q4WPDN1ouBmW9qSkKb0ZmVqxTxWnpqV-IO2gEVH52KQAL3ccaWR_m1ZC3pZSjtnx0ozxFa4Cei1JupoGm8yK4imiGYBEnDFrU4zNcLiRBwOwAEYUsZk0ij5b-bL8wdZrnzFgMbP_ddRJafZmzhqzLH93EWJkhz9r93Cd8RzEOYNW8sMVsc-0hwPwqp1mhnYIrBcxMXkw71wcp0UVLCI154TKDC__HpI4b-EwtHh3hRsg77dd5_vNT4csT8GRFp3wD_azNe4sKRsBjnMw96vhm6A2ISE0Ib8pUACF5Jb5Fi70Dat63IS3BWZOeq1FzY9b64XaAZ6sTED3Uu5gOtN-x7tJMhM7xxaONdcHMRPg-2LkKsp1fVFRV_CdrZ2TBqoFPgKSuXy0
-
-..     Sequence Diagram for Deletion of User's Attributes
-
-**Step 1:** The User requests the deletion of attributes invoking the Wallet Instance's attribute deletion function.
-
-**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes (:ref:`WP_115a <user-attribute-deletion-testcases>`).
+**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and that are in possession of the User's attributes (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Step 3:** The User selects the target Relying Party for attributes deletion.
 
-**Steps 4 - 5:** The Wallet Instance obtains the Relying Party Entity Configuration at the Federation ./well-known/ endpoint. The URL or the Erasure Endpoint (``erasure_endpoint``) can be found inside the metadata parameter (:ref:`WP_116 <user-attribute-deletion-testcases>`).
+**Steps 4 - 5:** The Wallet Instance determines the contact channels registered for that Relying Party (:ref:`WP_116 <user-attribute-deletion-testcases>`).
 
-**Step 6:** The Wallet Instance logs the Erasure Request's relevant information as defined in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
-  * the date of request,
+In the National Trust Framework, the contact is the ``support_uri`` of the registration Trust Mark, as defined in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
+
+In the EUDIW Trust Framework, the contacts are the helpdesk and support values in the Subject Alternative Name of the Wallet-Relying Party Access Certificate, as specified in `EUDI-TS 7`_.
+
+**Step 6:** The Wallet Instance logs the initiation of the data deletion request as defined in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+
+  * the date and time of the request,
   * the Relying Party to which the request was made,
   * the attributes requested to be removed.
 
-**Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (:ref:`WP_118 <user-attribute-deletion-testcases>`). Details on the Erasure Request can be found in :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint` (:ref:`WP_117 <user-attribute-deletion-testcases>`).
+**Steps 7 - 8:** The Wallet Instance MUST display the contacts that the platform can invoke, or apply a previously configured User preference. It MUST then invoke the external application that corresponds to the selected contact (:ref:`WP_117 <user-attribute-deletion-testcases>`, :ref:`WP_118 <user-attribute-deletion-testcases>`).
+
+- The Wallet Instance MUST open an HTTPS URL in an external browser.
+- The Wallet Instance MUST open an email address in an external mail client, when a mail client is available, as a ``mailto`` URI. The ``subject`` MUST state that the User requests the erasure of personal data pursuant to Article 17 of Regulation (EU) 2016/679 previously provided through the Wallet Instance. The ``body`` SHOULD identify the attributes requested for erasure, or state that all personal data previously provided through the Wallet Instance are requested for erasure.
+- The Wallet Instance MUST open a telephone number in the phone application, when a phone application is available.
+
+**Step 9:** Before deleting the attributes, the Relying Party MUST authenticate the User, or the request, with an authentication mechanism of its choice. The Relying Party SHOULD use the authentication and signature facilities of the User's Wallet Instance. Upon authenticating the User, the Relying Party MUST delete the attributes of the Digital Credentials identified by identity matching, as specified in :ref:`identity-matching`.
 
 .. note::
-  The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID/IT-Wallet ID presentation. The specific mechanism used for authentication is left to the Relying Party. If the User does not authenticate through the Wallet Instance, identity matching and identity reconciliation MAY use a preexisting national authentication scheme, where possible, as specified in :ref:`identity-matching`. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
+  The specific authentication mechanism is left to the Relying Party. If the User does not authenticate through the Wallet Instance, identity matching and identity reconciliation MAY use a preexisting national authentication scheme, where possible, as specified in :ref:`identity-matching`. Upon authenticating the User, the Relying Party MAY prompt the User to confirm the deletion.
 
-**Step 9:** Upon successful authentication of the User, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion by applying identity matching, and MUST delete the related attributes in its possession.
-
-**Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint`.
-
-**Steps 11 - 12:** The User-Agent uses the implemented method to return the Erasure Response to the Wallet Instance. Finally, the User is notified via the Wallet Instance regarding the Erasure Response outcome (:ref:`WP_119 <user-attribute-deletion-testcases>`).
-
-
+**Step 10:** The Wallet Instance MUST inform the User that the data deletion request has been initiated (:ref:`WP_119 <user-attribute-deletion-testcases>`, :ref:`WP_119a <user-attribute-deletion-testcases>`). The completion of the deletion by the Relying Party is outside this protocol, as specified in `EUDI-TS 7`_.

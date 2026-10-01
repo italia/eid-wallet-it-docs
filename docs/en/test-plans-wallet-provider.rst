@@ -969,10 +969,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
 Test Cases for User Attribute Deletion on Relying Party Side
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the test cases from Sections:
-
-- :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+This section lists the test cases from Section :ref:`user-attribute-deletion:User's Attributes Deletion`.
 
 .. list-table::
    :class: longtable
@@ -993,28 +990,28 @@ This section lists the test cases from Sections:
      - The transaction log view shows Relying Parties in possession of the User's attributes.
    * - WP_116
      - Attribute Deletion, Lifecycle, Security
-     - Relying Party metadata validation for deletion
-     - When a User selects a Relying Party for attribute deletion, Wallet Instance fetches and validates its federation metadata, confirming the presence of an Erasure Endpoint.
+     - Relying Party support contact for deletion
+     - When a User selects a Relying Party for attribute deletion, the Wallet Instance obtains the registered support contact (``support_uri`` in the National Trust Framework, or the Wallet-Relying Party Access Certificate support contact in the EUDIW Trust Framework) and confirms that at least one invocable contact is present.
    * - WP_117
      - Attribute Deletion, Lifecycle, Interoperability
-     - Erasure Request
-     - Wallet Instance correctly constructs, and sends a valid Erasure Request destined for the Relying Party's Erasure Endpoint.
+     - Data deletion request
+     - The Wallet Instance invokes the external application that matches the selected contact. For an email address, the draft ``subject`` requests erasure under Article 17 of Regulation (EU) 2016/679 and the ``body`` identifies the attributes, or requests erasure of all personal data previously provided through the Wallet Instance.
    * - WP_117a
      - Attribute Deletion, Lifecycle, Privacy
-     - Erasure Request logging
-     - A log entry is created for each Erasure Request, containing the timestamp, the Relying Party's identifier, and the specific attributes requested for deletion.
+     - Data deletion request logging
+     - A log entry is created for each data deletion request, containing the date and time, the Relying Party's identifier, and the specific attributes requested for deletion.
    * - WP_118
      - Attribute Deletion, Lifecycle, UX
-     - User redirection and callback for erasure
-     - Wallet Instance successfully redirects the User to the Relying Party’s Erasure Endpoint and receives the Erasure Response via its callback mechanism.
+     - Contact selection
+     - The Wallet Instance presents the contacts that the platform can invoke, or applies a stored User preference, and invokes the selected external application.
    * - WP_119
      - Attribute Deletion, Lifecycle, Interoperability
-     - Handles deletion/error response
-     - Wallet Instance correctly processes both success and error responses for the Erasure Response from the Relying Party.
+     - Request initiation
+     - The Wallet Instance records the data deletion request as initiated. It does not require an HTTP response from the Relying Party.
    * - WP_119a
      - Attribute Deletion, Lifecycle, UX
-     - User notification on erasure
-     - Wallet Instance displays a clear notification to the User indicating the success or failure of the Erasure Request.
+     - User notification on deletion request
+     - The Wallet Instance informs the User that the data deletion request has been initiated.
 
 .. _credential-backup-testcases:
 
