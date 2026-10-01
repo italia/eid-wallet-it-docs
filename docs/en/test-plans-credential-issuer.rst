@@ -519,13 +519,13 @@ This section provides the set of test cases designed for technical implementers 
     - Re-issuance Process Scope Limitation
     - The re-issuance process is limited to two specific update types: Data model/format technical updates and User's attribute set updates
   * - CI_110
-    - Issuance, Security
-    - Not Recommended Technical Update User Interaction
-    - For data model/format technical updates, the replacement and storage of Digital Credentials don't require direct user involvement
+    - Voided
+    - Voided
+    - Voided
   * - CI_111
-    - Issuance, Security and Privacy
-    - Attribute Update User Authorization
-    - For User's attribute set updates, the Wallet Instance informs the User about attribute data set changes and requests explicit User authorization before storing the new Digital Credential
+    - Voided
+    - Voided
+    - Voided
   * - CI_112
     - Issuance, Security
     - Expiry Date Consistency for Re-Issuance
@@ -711,9 +711,9 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Revocation Process Management
     - A Digital Credential successfully changes from Issued, Valid or Suspended states to Revoked state when it is actively revoked by the Credential Issuer by a revocation process (PID/(Q)EAA REV).
   * - CI_155
-    - Data Model and lifecycle, Interoperability
-    - Digital Credential Revocation Use Cases
-    - Digital Credential Revocation is correctly implemented for every use case
+    - Voided
+    - Voided
+    - Voided
   * - CI_155a
     - Data Model and lifecycle, Interoperability
     - Digital Credential Revocation - Technical Security Compromise
