@@ -379,6 +379,8 @@ Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trus
 The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
+For National proximity presentation, the ``euWrprc`` member of ``requestInfo`` is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only; the authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.
+
 An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
 
 A Relying Party Intermediary receives its registration Trust Mark with the ``intermediate`` ``<entity_type>`` in the identifier.

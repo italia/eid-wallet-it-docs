@@ -25,7 +25,7 @@ The metadata JSON Object whose key is ``wallet_solution`` contains the following
     * - ``wallet_name``
       - REQUIRED. String containing a human-readable name of the Wallet.
     * - ``authorization_endpoint``
-      - REQUIRED. URL of the authorization server's endpoint, see `OAUTH2`_. Using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.
+      - REQUIRED. URL of the authorization endpoint, see `OAUTH2`_. For EUDIW invocation it MUST support ``eu-eaap://``, ``openid4vp://``, and ``haip-vp://``; using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.
     * - ``credential_offer_endpoint``
       - REQUIRED. Credential Offer Endpoint of a Wallet.
     * - ``response_types_supported``

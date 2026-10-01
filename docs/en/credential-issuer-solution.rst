@@ -32,20 +32,22 @@ The Digital Credential Issuer Solution MUST:
    3. Communicate with Authentic Sources through secure and reliable API Services to obtain verified User data.
    4. Authenticate to Wallet Instances during issuance to prove its legitimacy.
    5. Support immediate issuance flow and MAY support deferred issuance for various operational scenarios.
-   6. Implement appropriate error handling and User notifications for all processes.
-   7. Maintain comprehensive audit trails while respecting privacy regulations.
-   8. Issue Digital Credentials that support Selective Disclosure.
-   9. Periodically renew its trust with the Federation.
-   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID and IT-Wallet ID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
-   11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
-   12. For IT-Wallet ID issuance, authenticate Users using national Digital Identity infrastructure with LoA High or with eID Substantial Authentication with MRTD Verification.
-   13. For (Q)EAA issuance requiring authentication, verify a valid PID or IT-Wallet ID from the User's Wallet Instance via `OpenID4VP`_.
-   14. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
+   6. Support the Authorization Code Grant and advertise it in the Authorization Server metadata.
+   7. Publish the applicable signed metadata and registration information, Credential reuse policy, and EDP. EDP MUST NOT be published for a PID Provider.
+   8. Implement appropriate error handling and User notifications for all processes.
+   9. Maintain comprehensive audit trails while respecting privacy regulations.
+   10. Issue Digital Credentials that support Selective Disclosure.
+   11. Periodically renew its trust with the National and EUDIW Trust FRameworks where applicable.
+   12. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID and IT-Wallet ID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
+   13. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
+   14. For IT-Wallet ID issuance, authenticate Users using national Digital Identity infrastructure with LoA High or with eID Substantial Authentication with MRTD Verification.
+   15. For (Q)EAA issuance requiring authentication, verify a valid PID or IT-Wallet ID from the User's Wallet Instance via `OpenID4VP`_.
+   16. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
    For the Frontend Component (if implemented):
 
-   14. Authenticate Users with a Level of Assurance (LoA) at least equal to that used to obtain the Digital Credential being issued or managed.
-   15. Provide appropriate security measures to protect User data and Digital Credential information.
+   17. Authenticate Users with a Level of Assurance (LoA) at least equal to that used to obtain the Digital Credential being issued or managed.
+   18. Provide appropriate security measures to protect User data and Digital Credential information.
 
 Component Details
 -----------------
@@ -67,20 +69,20 @@ Credential Issuer Component
 
 Following the `OpenID4VCI`_ specification and the implementation profile in Section :ref:`credential-issuance:Digital Credential Issuance`, this component MUST:
 
-   - Issue Digital Credentials to Wallet Instances.
-   - Process Digital Credential requests.
-   - Obtain User data from Authentic Sources.
-   - Generate properly formatted and signed Digital Credentials in supported formats (SD-JWT-VC, mDoc-CBOR). See Section :ref:`credential-data-model:Digital Credential Data Model` for more details.
-   - Implement the Digital Credential issuance protocols and flows.
+    - Issue Digital Credentials to Wallet Instances.
+    - Process Digital Credential requests.
+    - Obtain User data from Authentic Sources.
+    - Generate properly formatted and signed Digital Credentials in supported formats (SD-JWT-VC, mDoc-CBOR). See Section :ref:`credential-data-model:Digital Credential Data Model` for more details.
+    - Implement the Digital Credential issuance protocols and flows.
 
 Authorization Server
 ^^^^^^^^^^^^^^^^^^^^
 
 This OAuth 2.0 based component MUST:
 
-   - Handle authentication and authorization flows.
-   - Manage access/refresh tokens and authorization codes.
-   - Validate User identity confirmed by the Relying Party Component.
+    - Handle the Authorization Code authentication and authorization flows.
+    - Manage access/refresh tokens and authorization codes.
+    - Validate User identity confirmed by the Relying Party Component.
 
 Relying Party Component
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,5 +139,3 @@ All interactions must follow the security considerations in Section :ref:`creden
 
 .. include:: credential-issuer-entity-configuration.rst
 .. include:: credential-issuer-metadata.rst
-
-

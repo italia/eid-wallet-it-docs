@@ -280,7 +280,10 @@ An EDP MUST NOT be applied to a PID.
 The Wallet Unit evaluates the common types as specified in :ref:`trust-evaluation:EUDIW Authorization`.
 Non-disclosure towards the Relying Party is Section 4.2.5.1 of `ETSI TS 119 472-3`_.
 
-The Attestation Provider MUST include the EDP, if any, by value in the Credential Issuer Metadata, within ``credential_configurations_supported``, as the ``embedded_disclosure_policy`` member of the credential configuration, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
+The Attestation Provider MUST include the EDP, if any, as the ``embedded_disclosure_policy`` member of ``credential_metadata`` within ``credential_configurations_supported``, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
+The member MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``.
+The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together.
+An unresolved URI MUST cause the association and the affected disclosure to fail.
 
 .. note::
 
@@ -315,8 +318,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
-       The AP MUST either include the URI together with the full policy data set, or provide only the URI if the policy data set has already been pre-loaded into the Wallet Unit.
-       The EDP MAY be accessible through this URI.
+        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the exact policy data set identified by that URI has already been pre-loaded into the Wallet Unit. A URI that cannot be resolved to the exact included or preloaded policy MUST fail EDP processing; the Wallet Unit MUST NOT proactively retrieve an unspecified replacement policy.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
@@ -351,7 +353,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``authorized_parties[].identifier``
      - REQUIRED. string.
-       EU-wide unique identifier of the authorised Relying Party, as specified in [`EIDAS-ARF`_] Reg_32.
+       EU-wide unique identifier of the authorized Relying Party, as specified in [`EIDAS-ARF`_] Reg_32.
        It MUST match the ``sub`` of the WRPRC in the request.
      - [`EIDAS-ARF`_] EDP_02
 
@@ -364,13 +366,13 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``authorized_parties[].entitlement_uri``
      - OPTIONAL. string (URI).
-       URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC).
+        URI-encoded entitlement or sub-entitlement as specified in Annex A of [`ETSI TS 119 475`_], held within the Wallet-Relying Party Registration Certificate (WRPRC). It MUST be compared exactly.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
-       Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
-       Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
+        Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
+        Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
@@ -387,8 +389,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
-       These structures MAY be ignored by the Wallet Unit, but the Wallet Unit SHOULD successfully process the remaining EDP data even if unrecognized extensions are present.
-       Extensions MAY be used to supply alternative policy rules applied to specific attributes within an EAA subject to Selective Disclosure.
+        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit MUST successfully process recognized rules even if unrecognized extensions are present. The IT-Wallet extension is an object with an extension identifier, a Credential-format claim ``path``, and an alternative common EDP rule. The base policy governs the Credential; the matching extension rule governs that attribute, and every disclosed attribute MUST satisfy its applicable rule. The extension encoding MUST be serializable in the EDP and MUST NOT change the result for attributes without a matching path.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.

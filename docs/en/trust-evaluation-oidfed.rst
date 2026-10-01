@@ -455,12 +455,12 @@ Relying Party Proximity Authentication
 """""""""""""""""""""""""""""""""""""""
 
 In the Proximity Flow the Relying Party is authenticated through the mdoc reader authentication defined in [`ISO18013-5`_].
-The Relying Party signs the session transcript with the private key of its authentication certificate and provides the certificate chain in the ``x5chain`` header of the ``ReaderAuth``.
+The Relying Party signs each ``ReaderAuthentication`` with the private key of its National authentication certificate and provides the certificate chain in the unprotected ``x5chain`` header (label ``33``) of each ``readerAuth``. The end-entity certificate is first and the path excludes the Authentication Trust Anchor.
 The certification path terminates in an Authentication Trust Anchor distributed as defined in :ref:`trust-evaluation:Authentication Trust Anchor Distribution`.
 
 **Input**
 
-- The ``ReaderAuth`` signed by the Relying Party, with the authentication certificate chain in the ``x5chain`` header.
+- Each ``readerAuth`` signed by the Relying Party, with the authentication certificate chain in the ``x5chain`` header.
 - The applicable Authentication Trust Anchor.
 
 **Outcome**
@@ -470,11 +470,11 @@ In the second case the Relying Party MUST NOT be considered authenticated and th
 
 **Process**
 
-1. Extract the certificate chain from the ``x5chain`` header of the ``ReaderAuth``.
+1. Extract the certificate chain from the ``x5chain`` header of every ``readerAuth`` and require the National authentication certificate as its end entity.
 2. Validate the certification path against the applicable Authentication Trust Anchor as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
-3. Verify the ``ReaderAuth`` signature over the session transcript with the validated authentication certificate.
+3. Verify each ``readerAuth`` signature over its ``ReaderAuthentication`` data with the validated authentication certificate.
 
-The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
+The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate. This National authentication result selects the National Trust Framework path before authorization; it MUST NOT be combined with EUDIW WRPAC/WRPRC evidence or retried under the EUDIW path.
 
 Authorization
 ^^^^^^^^^^^^^^^^^^
@@ -496,13 +496,14 @@ The Authorization process is composed of the following procedures:
 The role authorization common to both phases is performed by the Entitlement Check; the phase specific checks are the Credential type check at issuance, inside the Entitlement Check, and the attribute level Overasking Check at presentation.
 
 The Trust Evaluator MUST perform the Authorization process only after the Trust Evaluated Party has been successfully authenticated.
+In National direct proximity, the Wallet Unit MUST validate the Trust Mark and bind the National authentication-certificate identity, the Trust Mark subject and official identifiers, and an identifier in ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party. It MUST validate the entitlement, exact case-sensitive overasking scope, and Trust Mark transparency claims. National proximity MUST exclude EUDIW evidence and fallback and MUST NOT introduce National intermediated-proximity transport.
 
 Trust Mark Validation
 """""""""""""""""""""""
 
 **Input**
 
-- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo`` of the ISO ``DeviceRequest`` in the Proximity Flow.
+- The *registration-entity* Trust Mark, obtained in the Remote Flow from the ``trust_marks`` claim of the Entity Configuration or from the Federation Trust Mark endpoint (`OID-FED`_ Section 8.6), or provided by value in the ``requestInfo.euWrprc`` CBOR byte string of every ISO ``ItemsRequest`` in the Proximity Flow as the UTF-8 bytes of its compact signed JWT.
 - The validated Federation Trust Anchor configuration.
 
 **Outcome**
