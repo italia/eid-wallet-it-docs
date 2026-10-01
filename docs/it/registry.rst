@@ -114,7 +114,9 @@ Il modo in cui i registri con finalità di trust sono letti è descritto in :ref
 Registry Discovery Endpoint
 ---------------------------
 
-Il Federation Trust Anchor DEVE fornire un meccanismo di discovery per i componenti del registro tramite endpoint *well-known* standardizzati che forniscono metadata e informazioni di discovery REST API per gestire operazioni complesse quali paginazione e filtraggio.
+Il Federation Trust Anchor MUST fornire un meccanismo di discovery per i componenti del registro tramite endpoint *well-known* standardizzati che forniscono metadata e informazioni di discovery delle API REST.
+
+La paginazione e il filtraggio del Digital Credentials Catalog sono specificati in :ref:`registry:Digital Credentials Catalog Retrieval`.
 
 Il Federation Trust Anchor DEVE pubblicare i metadata di discovery del registro all'endpoint ``.well-known/it-wallet-registry`` con supporto alla content negotiation:
 
@@ -166,9 +168,10 @@ Il payload JWT della risposta del Registry Discovery DEVE contenere i seguenti p
 
        * **claims_registry**: URI dell'API del Claims Registry.
        * **authentic_sources**: URI dell'API dell'Authentic Source Registry.
-       * **credential_catalog**: URI dell'endpoint well-known del Digital Credentials Catalog.
+       * **credential_catalog**: URI dell'endpoint di collection del Digital Credentials Catalog. Si veda :ref:`registry:Digital Credentials Catalog Retrieval`.
        * **taxonomy**: URI della risorsa Taxonomy.
-       * **schema_registry**: URI dell'API dello Schema Registry.
+       * **schema_registry**: URI della radice dell'API del Catalogue of Attestations. Si veda :ref:`registry:Catalogue of Attestations`.
+       * **attribute_catalog**: URI del Catalogue of Attributes. Si veda :ref:`registry:Catalogue of Attributes`.
    * - **content_negotiation**
      - OBBLIGATORIO. Array dei content type supportati dall'endpoint di discovery (ad es., ``["application/json", "application/jwt"]``).
 
@@ -185,7 +188,8 @@ Struttura del payload JWT (quando decodificato):
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas"
+      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
+      "attribute_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/attributes"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -217,7 +221,9 @@ Questo requisito si applica a tutti gli endpoint della Registry Infrastructure e
    * - Authentic Source Registry
      - URL assoluto pubblicato sotto la chiave ``authentic_sources`` del documento di discovery.
    * - Schema Registry
-     - URL assoluto pubblicato sotto la chiave ``schema_registry`` del documento di discovery.
+     - URL assoluto pubblicato sotto la chiave ``schema_registry`` del documento di discovery. È la radice dell'API del Catalogue of Attestations.
+   * - Catalogue of Attributes
+     - URL assoluto pubblicato sotto la chiave ``attribute_catalog`` del documento di discovery.
    * - Taxonomy
      - URL assoluto pubblicato sotto la chiave ``taxonomy`` del documento di discovery.
    * - Digital Credentials Catalog
@@ -277,6 +283,8 @@ L'esempio non normativo seguente richiede entrambe le rappresentazioni dall'endp
 
     HTTP/1.1 200 OK
     Content-Type: application/json
+
+L'esempio richiede la prima pagina della collection. I parametri di query, le pagine successive e la risorsa entry sono specificati in :ref:`registry:Digital Credentials Catalog Retrieval`.
 
 Taxonomy
 --------
@@ -847,6 +855,8 @@ Il Claims Registry mantiene definizioni tecniche language-neutral per la coerenz
      - OPZIONALE. Array di nomi di claim che rappresentano le proprietà di ciascun elemento in un claim di tipo ``array`` (ad es., ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` per ``driving_privileges``).
    * - **items**
      - OPZIONALE. Oggetto JSON che descrive lo schema di ciascun elemento in un claim di tipo ``array`` semplice (ad es., ``{"type": "string"}`` per ``nationalities``).
+   * - **attribute_identifier**
+     - CONDITIONAL. REQUIRED quando il claim è pubblicato nel :ref:`registry:Catalogue of Attributes`. MUST essere uguale all'``identifier`` dell'Attribute.
 
 Di seguito è fornito un esempio non normativo della struttura del Claims Registry:
 
@@ -873,6 +883,34 @@ Di seguito è fornito un esempio non normativo dell'output di un bundle di local
   }
 
 I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
+
+Catalogue of Attributes
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Il Federation Trust Anchor MUST pubblicare il Catalogue of Attributes della Section 2 di [`EUDI-TS 11`_].
+L'URL di pubblicazione è l'URL assoluto sotto la chiave ``attribute_catalog`` del documento Registry Discovery.
+Il documento MUST essere un array JSON. Ciascun elemento MUST essere valido rispetto allo JSON Schema dell'Annex A.1 ([`EUDI-TS 11 Attribute Schema`_]).
+L'elemento MUST NOT contenere proprietà esterne a quello schema.
+
+Un attributo elencato nell'Annex VI di [`EIDAS`_] che si basa su una Fonte Autentica del settore pubblico MUST comparire in questo catalogo.
+Qualsiasi altro claim del Claims Registry MAY comparire.
+
+``name`` MUST includere almeno un valore in inglese. La lingua di una stringa è il tag ``@`` definito dall'Annex A.1, ad esempio ``Given name@en``.
+``identifier`` MUST essere un URI che contiene il namespace, l'identificativo locale e la versione dell'attributo.
+``description`` MUST essere presente in inglese, con lo stesso tag di lingua.
+``distributions`` MUST contenere almeno un elemento il cui ``mediaType`` è ``application/json-schema``.
+``contactInfo`` MUST contenere almeno un URI.
+``authenticSources`` MUST contenere un ``DataService`` per ciascun punto di verifica. ``country``, ``endpointDescription`` e ``endpointURI`` sono REQUIRED. Per una Fonte Autentica italiana del settore pubblico, ``country`` MUST essere ``IT`` e ``endpointURI`` MUST essere l'``endpoint`` di ``verification_endpoint`` nell':ref:`registry:Authentic Source Registry`.
+La Section 2.1.1 di [`EUDI-TS 11`_] chiama tale URI ``endpointURL``. L'Annex A.1 lo chiama ``endpointURI``. Il documento pubblicato MUST usare ``endpointURI``.
+
+La discovery dei servizi di verifica e la chiamata di verifica MUST seguire la Section 3 di [`EUDI-TS 11`_].
+
+Un claim pubblicato in questo catalogo MUST impostare ``attribute_identifier`` nel Claims Registry all'``identifier`` dell'Attribute.
+
+L'esempio non normativo seguente è un Attribute.
+
+.. literalinclude:: ../../examples/attribute-catalog-example.json
+   :language: JSON
 
 Authentic Source Registry
 -------------------------
@@ -1166,59 +1204,79 @@ Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :re
   - **Relying Party**: Utilizzano lo Schema Registry per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
   - **Fornitori di Wallet**: Accedono allo Schema Registry per recuperare tutte le informazioni necessarie per integrarli nelle proprie Soluzioni Wallet.
 
-Schema Registry Structure
+Catalogue of Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'URL dell'endpoint Schema Registry è pubblicato sotto la chiave ``schema_registry`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
-Consente la discovery degli URI degli schema e dei relativi controlli crittografici di integrità.
+Il valore ``schema_registry`` nel documento Registry Discovery è la radice dell'API del Catalogue of Attestations.
+Il Federation Trust Anchor MUST implementare la Section 5 di [`EUDI-TS 11`_] e il documento OpenAPI dell'Annex A.3 ([`EUDI-TS 11 OpenAPI`_]).
+Ciascuno schema di attestazione MUST essere un oggetto ``SchemaMeta`` come definito nella Section 4.3 di [`EUDI-TS 11`_] e MUST essere valido rispetto allo JSON Schema dell'Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
+L'oggetto MUST NOT contenere proprietà esterne a quello schema.
 
-.. list-table:: First-level Fields of the Schema Registry
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
+La radice dell'API ha questi path:
 
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - OBBLIGATORIO. Identificativo univoco dello Schema Registry (ad es., ``urn:schemas:it-wallet``).
-   * - **version**
-     - OBBLIGATORIO. La versione dello Schema Registry (ad es., ``1.0.0``).
-   * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
-   * - **schemas**
-     - OBBLIGATORIO. Un array JSON in cui ciascuna voce è un oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ciascun oggetto contiene i parametri definiti nella tabella "Schema Definition Parameters" seguente, compresi identificazione dello schema, specifiche di formato, URI e dati di verifica di integrità.
+- ``GET /schemas`` elenca gli schema con i parametri di query dell'Annex A.3.
+- ``GET /schemas/{schemaId}`` restituisce uno schema. ``schemaId`` è l'``id`` dello ``SchemaMeta``.
+- ``PUT /schemas/{schemaId}`` sostituisce uno schema.
+- ``DELETE /schemas/{schemaId}`` elimina uno schema.
 
-.. list-table:: Schema Definition Parameters
-   :widths: 25 75
-   :header-rows: 1
+``id`` MUST essere un UUID assegnato dal Federation Trust Anchor alla prima registrazione dello schema.
+``version`` MUST seguire il semantic versioning. La prima versione pubblicata MUST essere ``1.0.0``.
+``supportedFormats`` e ciascun elemento di ``schemaURIs`` MUST usare gli identificativi di formato della Section 4.3 di [`EUDI-TS 11`_].
+Il documento di schema specifico del formato servito a ``schemaURIs[].uri`` MUST seguire la Section 4.3.4 di [`EUDI-TS 11`_].
+Un ``rulebookURI`` o un ``schemaURIs[].uri`` MAY recare un suffisso ``#integrity``. Il valore del suffisso MUST essere integrity metadata come definito nella Section 3 di [`W3C-SRI`_]. Quando il suffisso è presente, il consumatore MUST verificare il documento come definito nella Section 3.3.5 di [`W3C-SRI`_].
+Il ``frameworkType`` ``openid_federation`` MUST essere usato solo per un EAA non qualificato.
+``isLoTE`` MUST seguire la Section 4.3.3 di [`EUDI-TS 11`_].
+L'Attestation Rulebook di una QEAA o di una PuB-EAA MUST essere pubblicato come richiesto dalla Section 4.2 di [`EUDI-TS 11`_].
+La pubblicazione del rulebook di un EAA è RECOMMENDED.
 
-   * - **Field Name**
-     - **Description**
-   * - **id**
-     - OBBLIGATORIO. L'identificativo univoco dello schema (ad es., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
-   * - **version**
-     - OBBLIGATORIO. La versione della definizione dello schema (ad es., ``1.0.0``).
-   * - **credential_type**
-     - OBBLIGATORIO. L'identificativo univoco del tipo di Attestato Elettronico (ad es., ``mDL``, ``pid``, ``eid``).
-   * - **format**
-     - OBBLIGATORIO. Il formato tecnico dello schema (ad es., ``mso_mdoc``, ``dc+sd-jwt``).
-   * - **vct**
-     - CONDIZIONALE. È OBBLIGATORIO se il ``format`` è ``dc+sd-jwt``, indicando il Verifiable Credential Type (ad es., ``urn:eudi:mDL:it:1``).
-   * - **docType**
-     - CONDIZIONALE. È OBBLIGATORIO se il ``format`` è ``mso_mdoc``, indicando il tipo di documento utilizzato (ad es., ``org.iso.18013.5.1.mDL``).
-   * - **schema_uri**
-     - OBBLIGATORIO. L'URI da cui il documento di schema può essere recuperato (ad es., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
-   * - **schema_uri#integrity**
-     - OBBLIGATORIO. Digest crittografico del documento di schema per la verifica di integrità. Formato: ``{digest_method}-{digest_value}`` (ad es., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
-   * - **description**
-     - OPZIONALE. Una descrizione leggibile dello schema, che può essere localizzata (ad es., "Schema tecnico per la mobile Driving License in formato mdoc.").
+List of schemas
+"""""""""""""""
 
-**Esempio di Schema Registry:**
+``GET /schemas`` MUST essere disponibile senza autenticazione.
+La risposta MUST essere HTTP 200 quando la query è valida.
+Il payload del JWT MUST contenere ``iss``, ``iat`` e ``data``.
+``data`` MUST contenere ``total``, ``limit``, ``offset`` e ``data``.
+L'array ``data`` interno contiene gli oggetti ``SchemaMeta`` corrispondenti.
+``iss`` MUST identificare il Federation Trust Anchor.
+``iat`` MUST essere il tempo Unix in cui il JWT è stato emesso, come definito in :rfc:`7519`.
 
-Un esempio non normativo del payload dello Schema Registry:
+Quando ``limit`` è assente, si applica il valore 20.
+Quando ``offset`` è assente, si applica il valore 0.
+Quando non è presente alcun filtro, l'insieme dei risultati è ogni schema registrato, restituito a partire da ``offset`` per al massimo ``limit`` elementi.
+Il Federation Trust Anchor MUST ordinare tale insieme per ``id`` crescente.
+Un client che richiede ogni schema corrispondente MUST richiedere la pagina successiva aumentando ``offset`` di ``limit`` fino a quando ``offset`` è maggiore o uguale a ``total``.
+Il Federation Trust Anchor MUST rispondere con HTTP 400 quando la query non è conforme all'Annex A.3.
+
+Una risposta ``application/jwt`` con esito positivo MUST includere l'header ``x-jku-url``. Il suo valore MUST essere l'URI HTTPS del JSON Web Key Set usato per verificare la firma.
+La stessa risposta MUST essere disponibile anche come ``application/json`` secondo :ref:`registry:Content Negotiation and Signed Representation`. Il corpo JSON è il payload del JWT.
+
+L'esempio non normativo seguente è una pagina di ``GET /schemas``.
 
 .. literalinclude:: ../../examples/schema-registry-example-payload.json
-  :language: JSON
+   :language: JSON
+
+One schema
+""""""""""
+
+``GET /schemas/{schemaId}`` MUST essere disponibile senza autenticazione.
+Il Federation Trust Anchor MUST rispondere con HTTP 200 e un JWS il cui payload è lo ``SchemaMeta`` corrispondente quando ``schemaId`` esiste.
+Il Federation Trust Anchor MUST rispondere con HTTP 404 quando ``schemaId`` non esiste.
+La risposta JWT MUST includere ``x-jku-url`` come specificato per l'elenco.
+
+Update and deletion
+"""""""""""""""""""
+
+``PUT /schemas/{schemaId}`` e ``DELETE /schemas/{schemaId}`` MUST essere accettati solo da un rappresentante autenticato dell'Attestation Scheme Provider che ha registrato lo schema, come richiesto dalla Section 4.5.3 e dalla Section 5.2.2 di [`EUDI-TS 11`_].
+Il corpo della richiesta ``PUT`` MUST essere lo ``SchemaMeta`` completo.
+Un ``PUT`` con esito positivo MUST rispondere con HTTP 200 e lo ``SchemaMeta`` memorizzato come ``application/json``, come specificato nell'Annex A.3. Questa risposta non è selezionata dalla content negotiation che si applica al ``GET``.
+Un ``DELETE`` con esito positivo MUST rispondere con HTTP 204.
+Il Federation Trust Anchor MUST rispondere con HTTP 401 quando il chiamante non è autenticato.
+Il Federation Trust Anchor MUST rispondere con HTTP 403 quando il chiamante autenticato non è un rappresentante dell'Attestation Scheme Provider che ha registrato lo schema.
+Il Federation Trust Anchor MUST rispondere con HTTP 404 quando ``schemaId`` non esiste.
+La Section 5.2.2 di [`EUDI-TS 11`_] lascia il meccanismo di autenticazione della Commissione a una versione successiva. Fino a quando quel meccanismo è definito, il Sistema di Onboarding è il rappresentante che il Federation Trust Anchor MUST accettare per questi due metodi.
+
+L'implementazione di ``GET /schemas`` MUST tenere conto delle vulnerabilità descritte nella Section 5.4 di [`EUDI-TS 11`_].
+L'implementazione SHOULD applicare le misure della Section 5.5 e della Section 5.6 di [`EUDI-TS 11`_].
 
 Digital Credentials Catalog
 ---------------------------
@@ -1301,8 +1359,8 @@ I Data Identifier che recano queste informazioni attraverso l'onboarding, e la l
    * - ``authentic_sources`` or ``parent_credentials``
      - L'Attestation Scheme Provider, referenziando le voci dell':ref:`registry:Authentic Source Registry` o un tipo di Credenziale già registrato
      - :ref:`onboarding-system:Credential Type Registration`
-   * - ``schema_uri``, ``format``, ``vct``, ``docType``
-     - L'Attestation Scheme Provider, tramite lo schema che rende disponibile nello :ref:`registry:Schema Registry`
+   * - ``schemaId``
+     - L'Attestation Scheme Provider, tramite lo ``SchemaMeta`` registrato nel :ref:`registry:Catalogue of Attestations`
      - :ref:`onboarding-system:Schema Provisioning`
    * - ``issuers``
      - Ciascun elemento deriva dagli Attestati Elettronici che un Credential Issuer dichiara nei propri dati di registrazione, con le capacità di emissione che offre per ciascuno di essi
@@ -1318,13 +1376,149 @@ La registrazione della voce versionata è approvata dall'Organismo di Supervisio
   Il Credential Schema è lo JSON Schema o lo CBOR Schema che valida la struttura dell'Attestato Elettronico, ed è registrato nello :ref:`registry:Schema Registry`.
   L'Attestation Scheme Provider possiede il primo e fornisce il secondo come parte della specifica tecnica del tipo di Credenziale.
 
+Digital Credentials Catalog Retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Il Federation Trust Anchor MUST pubblicare il Digital Credentials Catalog come due risorse HTTP.
+Entrambe le risorse usano la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
+
+L'URL della collection è l'URL assoluto pubblicato sotto la chiave ``credential_catalog`` del documento Registry Discovery.
+L'URL della entry è l'URL della collection con due segmenti di path aggiunti, il ``credential_type`` e la ``version`` di una voce versionata.
+Un client MUST costruire l'URL della entry a partire da quell'URL di collection.
+Entrambi i segmenti di path MUST essere percent-encoded come definito in :rfc:`3986`.
+
+Una risposta con esito positivo di ciascuna risorsa è un JWS in compact serialization.
+I parametri di header MUST essere quelli definiti nella :ref:`tabella corrispondente <table_catalog_parameters>`.
+Il Federation Trust Anchor MUST firmare ciascuna risposta per proprio conto.
+Una scrittura che modifica una voce versionata non richiede una nuova firma sulle voci versionate che la scrittura ha lasciato invariate.
+
+Il metodo di elenco e il metodo di lettura della singola voce seguono la Section 5.3.1 di [`EUDI-TS 11`_].
+La risposta reca la voce versionata nazionale definita in :ref:`registry:Digital Credentials Catalog Structure`.
+
+Collection
+""""""""""
+
+L'endpoint di collection MUST accettare HTTP GET sull'URL della collection.
+Il Federation Trust Anchor MUST rispondere con HTTP 200 a una richiesta di collection valida.
+
+La richiesta MAY includere i parametri di query in :ref:`table_catalog_query_parameters`.
+``limit`` e ``offset`` seguono la Section 5.3.1 di [`EUDI-TS 11`_].
+``attestationLoS``, ``bindingType``, ``trustedAuthoritiesFrameworkType``, ``trustedAuthoritiesValue`` e ``rulebookUri`` sono i filtri di quella sezione che corrispondono a un campo della voce versionata nazionale.
+``credential_type`` e ``state`` selezionano la stessa voce.
+La risposta di collection MUST includere una voce versionata solo quando quella voce corrisponde a ogni filtro fornito.
+Il Federation Trust Anchor MUST rispondere con HTTP 400 quando la richiesta ripete un parametro di query, contiene un parametro di query non elencato in :ref:`table_catalog_query_parameters`, o contiene un valore che non soddisfa quel parametro.
+
+Il Federation Trust Anchor MUST ordinare le voci corrispondenti secondo l'ordine dei code point Unicode di ``credential_type`` e, a parità di ``credential_type``, secondo l'ordine dei code point Unicode di ``version``.
+L'array ``credentials`` MUST contenere le voci corrispondenti in quell'ordine, a partire dalle voci successive a ``offset``, e MUST contenere al massimo ``limit`` voci.
+Quando nessuna voce versionata corrisponde, o quando ``offset`` è maggiore o uguale a ``total``, ``credentials`` MUST essere un array vuoto e ``total`` MUST essere il numero di voci corrispondenti.
+
+Un client MUST NOT trattare ``credentials`` come l'insieme di tutte le voci versionate del catalogo.
+Quando il client richiede ogni voce corrispondente, MUST richiedere la pagina successiva aumentando ``offset`` di ``limit`` fino a quando ``offset`` è maggiore o uguale a ``total``.
+
+.. _table_catalog_query_parameters:
+.. list-table:: Query Parameters of the Digital Credentials Catalog Collection
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - **Parameter**
+     - **Description**
+   * - ``limit``
+     - OPTIONAL. Numero massimo di voci versionate restituite in ``credentials``. Quando è assente, si applica il valore 20. Il valore MUST essere un intero da 1 a 100 inclusi.
+   * - ``offset``
+     - OPTIONAL. Numero di voci corrispondenti da saltare prima di questa pagina. Quando è assente, si applica il valore 0. Il valore MUST essere un intero maggiore o uguale a 0.
+   * - ``credential_type``
+     - OPTIONAL. Corrispondenza esatta su ``credential_type``.
+   * - ``state``
+     - OPTIONAL. Corrispondenza esatta su ``state``. Il valore MUST essere ``ACTIVE`` o ``INACTIVE``.
+   * - ``attestationLoS``
+     - OPTIONAL. Corrispondenza esatta su ``attestationLoS``.
+   * - ``bindingType``
+     - OPTIONAL. Corrispondenza esatta su ``bindingType``.
+   * - ``trustedAuthoritiesFrameworkType``
+     - OPTIONAL. La voce corrisponde quando almeno un oggetto di ``trustedAuthorities`` ha ``frameworkType`` uguale a questo valore.
+   * - ``trustedAuthoritiesValue``
+     - OPTIONAL. La voce corrisponde quando almeno un oggetto di ``trustedAuthorities`` ha ``value`` uguale a questo valore.
+   * - ``rulebookUri``
+     - OPTIONAL. Corrispondenza esatta su ``rulebookURI``.
+
+L'esempio non normativo seguente richiede la prima pagina delle voci attive.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog?state=ACTIVE&limit=20&offset=0 HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/jwt
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jwt
+
+    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+
+Il payload di una risposta di collection con esito positivo MUST contenere i campi in :ref:`table_catalog_collection_payload`.
+
+Entry
+"""""
+
+L'endpoint di entry MUST accettare HTTP GET sull'URL della entry.
+Il path identifica la voce versionata il cui ``credential_type`` e la cui ``version`` sono i due segmenti di path.
+Il Federation Trust Anchor MUST rispondere con HTTP 200 quando quella coppia esiste.
+Il Federation Trust Anchor MUST rispondere con HTTP 404 quando nessuna voce versionata ha quella coppia.
+
+.. _table_catalog_entry_payload:
+.. list-table:: Payload of a Digital Credentials Catalog Entry Response
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - **Field Name**
+     - **Description**
+   * - **iss**
+     - REQUIRED. Identificativo dell'issuer. MUST essere lo stesso valore di ``iss`` nella risposta di collection.
+   * - **iat**
+     - REQUIRED. Si veda ``iat`` in :ref:`table_catalog_collection_payload`.
+   * - **localization**
+     - REQUIRED. L'oggetto di localizzazione definito per la risposta di collection.
+   * - **credential**
+     - REQUIRED. La voce versionata identificata dal path. I suoi campi sono quelli in :ref:`table_catalog_parameters_first_level`.
+
+L'esempio non normativo seguente richiede una voce versionata. Il membro ``credential`` è abbreviato.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog/mDL/1 HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+.. code-block:: json
+
+    {
+      "iss": "https://trust-registry.eid-wallet.example.it",
+      "iat": 1742040000,
+      "localization": {
+        "default_locale": "it",
+        "available_locales": ["en", "it"],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/",
+        "version": "1.0.0"
+      },
+      "credential": {
+        "credential_type": "mDL",
+        "version": "1",
+        "...": "..."
+      }
+    }
+
 Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'URL dell'endpoint Digital Credentials Catalog è pubblicato sotto la chiave ``credential_catalog`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
-La sua rappresentazione firmata è un JWT. I parametri di header DEVONO essere come definiti nella :ref:`corresponding table <table_catalog_parameters>`, e il payload contiene i seguenti parametri:
+Questa sezione definisce il payload della risposta di collection e i campi di ciascuna voce versionata.
+Il payload della collection contiene i seguenti parametri.
 
-.. list-table:: First-level Fields of the Digital Credentials Catalog
+.. _table_catalog_collection_payload:
+.. list-table:: First-level Fields of a Collection Response
    :class: longtable
    :header-rows: 1
    :widths: 30 70
@@ -1332,22 +1526,30 @@ La sua rappresentazione firmata è un JWT. I parametri di header DEVONO essere c
    * - **Field Name**
      - **Description**
    * - **id**
-     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``).
+     - REQUIRED. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``).
    * - **version**
-     - OBBLIGATORIO. La versione del Digital Credentials Catalog (ad es., ``1.0.0``).
+     - REQUIRED. La versione del Digital Credentials Catalog (ad es., ``1.0.0``).
    * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
+     - REQUIRED. Il timestamp che indica quando il contenuto del catalogo è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
    * - **iss**
-     - OBBLIGATORIO. Identificativo dell'issuer del Digital Credential Catalog.
+     - REQUIRED. Identificativo dell'issuer del Digital Credential Catalog.
+   * - **iat**
+     - REQUIRED. Tempo Unix in cui questo JWT di risposta è stato emesso, come definito in :rfc:`7519`. ``last_modified`` registra l'ultima modifica del contenuto del catalogo. ``iat`` registra l'emissione di questo JWT.
    * - **localization**
-     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+     - REQUIRED. Oggetto di configurazione della localizzazione contenente:
 
        * **default_locale**: Codice locale predefinito (ad es., ``it``).
        * **available_locales**: Array dei codici locale supportati (ad es., ``["en", "it"]``).
        * **base_uri**: URI di base per il recupero dei bundle di localizzazione (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
        * **version**: Versione del formato del bundle di localizzazione.
+   * - **total**
+     - REQUIRED. Intero. Numero di voci versionate che corrispondono alla richiesta, prima che siano applicati ``limit`` e ``offset``.
+   * - **limit**
+     - REQUIRED. Intero. La dimensione di pagina applicata a questa risposta.
+   * - **offset**
+     - REQUIRED. Intero. Il numero di voci corrispondenti saltate prima di questa pagina.
    * - **credentials**
-     - OBBLIGATORIO. Array contenente le definizioni degli Attestati Elettronici.
+     - REQUIRED. Array delle voci versionate di questa pagina. Il numero di elementi MUST essere minore o uguale a ``limit``.
 
 Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
@@ -1363,6 +1565,8 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
     - OBBLIGATORIO. Versione della definizione dell'Attestato Elettronico.
   * - **credential_type**
     - OBBLIGATORIO. Identificativo univoco del tipo di Attestato Elettronico. Per il PID DEVE essere ``pid`` e per l'IT-Wallet ID DEVE essere ``eid``.
+  * - **schemaId**
+    - REQUIRED. UUID dello ``SchemaMeta`` nel :ref:`registry:Catalogue of Attestations` per questo tipo di Credenziale. MUST essere uguale all'``id`` di quello ``SchemaMeta``.
   * - **state**
     - OBBLIGATORIO. Stato di questa voce versionata del tipo di Credenziale. DEVE essere uno tra:
 
@@ -1464,7 +1668,7 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
 .. note::
   L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Credential Catalog.
 
-L'esempio corrispondente del Digital Credentials Catalog come decodificato in JSON sia per l'header sia per il payload è il seguente:
+L'esempio non normativo seguente è una pagina di una risposta di collection, decodificata in JSON sia per l'header sia per il payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
   :language: JSON
@@ -1473,12 +1677,12 @@ L'esempio corrispondente del Digital Credentials Catalog come decodificato in JS
   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Digital Credentials Catalog, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Digital Credentials Catalog, un'Entità che lo consulta SHOULD:
 
-  - Scaricare la versione di base del Digital Credentials Catalog (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/credential-catalog``.
+  - Richiedere le pagine di collection di cui ha bisogno, o una voce versionata, come specificato in :ref:`registry:Digital Credentials Catalog Retrieval`.
   - Determinare la lingua preferita dell'Utente.
   - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la struttura del Digital Credentials Catalog.
+  - Unire dinamicamente il contenuto localizzato con la voce del catalogo.
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
@@ -1501,7 +1705,7 @@ La fonte canonica per le caratteristiche di visualizzazione e la struttura dei c
 
 La logica complessiva per presentare un Attestato Elettronico è la seguente:
 
-1. A seconda del Trust Framework richiesto, il Wallet o la Relying Party recupera il :ref:`registry:Digital Credentials Catalog` (per entrambi gli Attestati Elettronici gestiti da Credential Issuer ancorati nel National o nel Trust Framework EUDIW) per scoprire i `credential_type` disponibili e l'`entity_id` dei loro Credential Issuer.
+1. A seconda del Trust Framework richiesto, il Wallet o la Relying Party recupera le voci versionate applicabili dal :ref:`registry:Digital Credentials Catalog`, per entrambi gli Attestati Elettronici gestiti da Credential Issuer ancorati nel National o nel Trust Framework EUDIW, per scoprire i `credential_type` disponibili e l'`entity_id` dei loro Credential Issuer. Il recupero usa l'endpoint di collection o di entry specificato in :ref:`registry:Digital Credentials Catalog Retrieval`.
 2. Recupera i Metadata completi del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
 3. I Metadata del Credential Issuer DEVONO contenere le caratteristiche di visualizzazione complete (loghi, colori) e le informazioni dettagliate di schema (tramite link ai Type Metadata appropriati o direttamente nella configurazione). L'Issuer costruisce questi metadata sulla base dei suggerimenti forniti dalla Fonte Autentica (tramite l'AS Registry) e delle specifiche di schema standard (tramite lo Schema Registry).
 
@@ -1525,7 +1729,7 @@ Come mostrato nella Figura :ref:`fig_registry_relationships`, i componenti del r
 La Figura :ref:`fig_eudiw_national_registry_relationships` mostra invece la mappatura tra i cataloghi EUDIW e le controparti nazionali:
 
 - **EUDIW Catalogue of Attributes** corrisponde al **Claims Registry** nazionale per la definizione semantica degli attributi e all'**Authentic Source Registry** per la discovery del punto di verifica. Si noti che le definizioni nazionali degli attributi si allineano al catalogo a livello UE per l'interoperabilità transfrontaliera.
-- **EUDIW Catalogue of Schemes** corrisponde allo **Schema Registry** nazionale per la discovery degli schema di attestazione e al **Digital Credentials Catalog** per la discovery dei requisiti di emissione e presentazione. Si noti che i registri nazionali contengono tutte le informazioni fornite in quello EUDIW più informazioni aggiuntive (ad es., modello di prezzo e informazioni di validità).
+- **EUDIW Catalogue of Schemes** corrisponde al **Catalogue of Attestations** nazionale (:ref:`registry:Catalogue of Attestations`), che implementa la Section 5 di [`EUDI-TS 11`_], e al **Digital Credentials Catalog** per i requisiti nazionali di emissione e presentazione. Il catalogo nazionale mantiene le informazioni aggiuntive, quali il modello di prezzo e le informazioni di validità.
 
 .. _fig_eudiw_national_registry_relationships:
 .. plantuml:: plantuml/eudiw-national-registry-relationships.puml
@@ -1552,7 +1756,7 @@ Questo journey di *Catalog Browsing* supporta gli Utenti (sia utenti umani trami
 
 2.  **Navigazione e selezione**:
 
-    * **Discovery delle Credenziali**: L'entità sfoglia l'elenco delle Credenziali (campo ``credentials``) per identificare i tipi di Credenziale rilevanti (ad es., ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Taxonomy** per navigarne la gerarchia e per fornire localizzazioni diverse.
+    * **Discovery delle Credenziali**: L'entità richiede una o più pagine dell'endpoint di collection (:ref:`registry:Digital Credentials Catalog Retrieval`) e legge l'array ``credentials`` di ciascuna pagina per identificare i tipi di Credenziale rilevanti (ad es., ``pid``, ``eid``, ``mDL``). Se necessario, utilizza le informazioni sulla **Taxonomy** per navigarne la gerarchia e per fornire localizzazioni diverse.
     * **Metadata dell'Issuer**: L'entità estrae i Metadata del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
     * **Consultazione di dettaglio**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** utilizzando l'identificativo recuperato.
 
@@ -1563,16 +1767,16 @@ Credential Issuance
 
 Questo journey definisce come un Credential Issuer utilizza la Registry Infrastructure per preparare e emettere un Attestato Elettronico conforme.
 
-1.  **Identificazione dei requisiti**: Il Credential Issuer consulta il **Digital Credentials Catalog** per i requisiti tecnici del tipo di Credenziale da emettere (ad es., ``max_validity_days``, ``min_loa``).
+1.  **Identificazione dei requisiti**: Il Credential Issuer recupera la voce versionata del tipo di Credenziale dall'endpoint di entry del **Digital Credentials Catalog** (:ref:`registry:Digital Credentials Catalog Retrieval`) e legge i requisiti tecnici di quella voce (ad es., ``max_validity_days``, ``min_loa``).
 
 2.  **Risoluzione di schema e claim**:
 
   Il Credential Issuer consulta:
 
-    * il EUDIW Catalogue of Schemes per ottenere lo schema dell'Attestato Elettronico ancorato a EUDIW ricercato (``schemaURIs``), o
-    * :ref:`registry:Schema Registry` per ottenere lo schema dell'Attestato Elettronico ancorato a livello nazionale ricercato (``schema_uri``).
+    * il EUDIW Catalogue of Schemes per ottenere lo ``SchemaMeta`` dell'Attestato Elettronico ancorato a EUDIW, o
+    * :ref:`registry:Catalogue of Attestations` per ottenere lo ``SchemaMeta`` dell'Attestato Elettronico nazionale mediante ``GET /schemas/{schemaId}``.
 
-  e, in entrambi i casi, ne verifica l'integrità. Quindi, a seconda del Trust Framework che ancora l'Attestato Elettronico, accede al EUDIW Catalogue of Attributes o al :ref:`registry:Claims Registry` per recuperare le definizioni semantiche standardizzate e i formati di dato degli attributi (claim) necessari.
+  Il Credential Issuer verifica il suffisso ``#integrity`` di ciascun ``schemaURIs[].uri`` quando tale suffisso è presente. Quindi, a seconda del Trust Framework che ancora l'Attestato Elettronico, accede al Catalogue of Attributes o al :ref:`registry:Claims Registry` per recuperare le definizioni semantiche standardizzate e i formati di dato degli attributi (claim) necessari.
 
 3.  **Recupero dei dati autentici**:
 
@@ -1612,12 +1816,12 @@ Questo journey descrive come un'**Istanza del Wallet** e una **Relying Party (RP
     * **(EUDIW Trust Framework)**:
 
       * La RP valida la firma dell'Attestato Elettronico e valuta la trust con il suo issuer come descritto in :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
-      * La RP consulta il EUDIW Catalogue of Schemes per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`) ove applicabile.
+      * La RP consulta il EUDIW Catalogue of Schemes e recupera lo ``SchemaMeta`` della Credenziale presentata, verificando ciascun ``schemaURIs[].uri`` che reca un suffisso ``#integrity`` come definito in [`W3C-SRI`_].
 
     * **(National Trust Framework)**:
 
       * La RP valida la firma dell'Attestato Elettronico e valuta la trust con il suo issuer come descritto in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`.
-      * La RP consulta lo :ref:`registry:Schema Registry` per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
+      * La RP recupera lo ``SchemaMeta`` da ``GET /schemas/{schemaId}`` sul :ref:`registry:Catalogue of Attestations`, usando lo ``schemaId`` della voce di catalogo, e verifica ciascun ``schemaURIs[].uri`` che reca un suffisso ``#integrity`` come definito in [`W3C-SRI`_].
 
 3.  **Validazione dello schema e della policy finale**:
 
@@ -1632,7 +1836,7 @@ Cross-border Attribute Verification by a QTSP
 Questo journey descrive come un Qualified Trust Service Provider (QTSP), eventualmente stabilito in un altro Stato membro, verifica il valore di un attributo dell'Annex VI rispetto a una Fonte Autentica italiana del settore pubblico per emettere una QEAA.
 Esercita il EUDIW Catalogue of Attributes e il ``verification_endpoint`` dell':ref:`registry:Authentic Source Registry`, e non utilizza la valutazione di trust OpenID Federation nazionale né l'e-Service PDND nazionale.
 
-1.  **Discovery del punto di verifica**: Il QTSP interroga il EUDIW Catalogue of Attributes per l'attributo richiesto e risolve la voce ``Attribute`` italiana responsabile, ottenendo l'``authenticSources[].DataService.endpointURL`` (l'interfaccia di verifica ETSI TS 119 478 dichiarata nel ``verification_endpoint`` dell'AS Registry), la ``legalBasis`` e la descrizione di come avviare la richiesta di verifica. La controparte nazionale del Catalogue of Attributes è la coppia Claims Registry, per la semantica, e Authentic Source Registry, per il punto di verifica, si veda :ref:`registry:Registry Integration and Cross-References`.
+1.  **Discovery del punto di verifica**: Il QTSP interroga il Catalogue of Attributes per l'attributo richiesto e risolve la voce ``Attribute`` italiana, ottenendo ``authenticSources[].endpointURI``, la ``legalBasis`` e la descrizione di come avviare la richiesta di verifica. ``endpointURI`` è l'``endpoint`` di ``verification_endpoint`` nell':ref:`registry:Authentic Source Registry`. La discovery e la chiamata di verifica seguono la Section 3 di [`EUDI-TS 11`_].
 
 2.  **Selezione dell'interfaccia**: A seconda di ``verification_endpoint.method``, il QTSP utilizza l'interfaccia ISO 15000/eDelivery (``oots_edelivery``) o l'interfaccia REST + OAuth 2.0 (``rest_oauth2``) di ETSI TS 119 478 Section 6.
 

@@ -1,27 +1,34 @@
 {
-    "id": "urn:schemas:it-wallet",
-    "version": "1.0.0",
-    "last_modified": "2025-03-15T12:00:00Z",
-    "schemas": [
-        {
-            "id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
-            "version": "1.0.0",
-            "credential_type": "mDL",
-            "format": "mso_mdoc",
-            "docType": "org.iso.18013.5.1.mDL",
-            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL",
-            "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
-            "description": "Schema tecnico per la mobile Driving License in formato mdoc."
-        },
-        {
-            "id": "pid+dc+sd-jwt+urn:eudi:pid:it:1",
-            "version": "1.0.0",
-            "credential_type": "pid",
-            "format": "dc+sd-jwt",
-            "vct": "urn:eudi:pid:it:1",
-            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/pid",
-            "schema_uri#integrity": "sha256-a1b2c3d4e5f67890...",
-            "description": "Schema tecnico per la Person Identification Data (PID) in formato SD-JWT."
-        }
-    ]
+    "iss": "https://trust-anchor.example.org",
+    "iat": 1742040000,
+    "data": {
+        "total": 1,
+        "limit": 20,
+        "offset": 0,
+        "data": [
+            {
+                "id": "550e8400-e29b-41d4-a716-446655440000",
+                "version": "1.0.0",
+                "rulebookURI": "https://example.org/rulebooks/mdl",
+                "trustedAuthorities": [
+                    {
+                        "frameworkType": "etsi_tl",
+                        "value": "https://example.org/lists-of-trusted-entities/mdl-providers",
+                        "isLoTE": true
+                    }
+                ],
+                "attestationLoS": "iso_18045_high",
+                "bindingType": "key",
+                "supportedFormats": [
+                    "mso_mdoc"
+                ],
+                "schemaURIs": [
+                    {
+                        "formatIdentifier": "mso_mdoc",
+                        "uri": "https://trust-registry.example.org/schemas/mdoc/mDL#integrity=sha256-47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU="
+                    }
+                ]
+            }
+        ]
+    }
 }

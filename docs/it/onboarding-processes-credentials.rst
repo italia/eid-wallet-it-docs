@@ -42,7 +42,9 @@ Lo schema è uno dei requisiti per l'attivazione di un tipo di Credenziale, quin
 
 **Input**
 
-Lo schema del tipo di Credenziale segue i Schema Definition Parameters di :ref:`registry:Schema Registry`: il suo ``credential_type`` e ``version``, il ``format`` a cui si applica, uno JSON Schema per il formato SD-JWT VC o uno CBOR Schema per il formato mdoc-CBOR, e lo ``schema_uri`` con il suo digest di integrità.
+Lo schema del tipo di Credenziale è uno ``SchemaMeta`` registrato tramite il :ref:`registry:Catalogue of Attestations`: la sua ``version``, i ``supportedFormats``, il documento di schema specifico del formato a ``schemaURIs[].uri`` e il ``rulebookURI``.
+Il documento specifico del formato segue la Section 4.3.4 di [`EUDI-TS 11`_].
+L'integrità, quando usata, è il suffisso ``#integrity`` di tale URI come definito in [`W3C-SRI`_].
 Lo schema è fornito dall'Attestation Scheme Provider insieme alla definizione del tipo di Credenziale, ed è composto dai claim definiti in :ref:`registry:Claims Registry`. Un claim ancora mancante attiva il :ref:`onboarding-system:Claim Registration`.
 
 **Outcome**
@@ -54,7 +56,7 @@ Ciò soddisfa il requisito di schema dell'attivazione del tipo di Credenziale, c
 
 1. I claim che compongono lo schema sono disponibili nel Claims Registry, altrimenti il Claim Registration è attivato per il claim mancante.
 2. Lo schema è generato dal data model per una Credenziale definita a livello nazionale, oppure è registrato in allineamento con il Rulebook esterno.
-3. Il Claims and Schema Management registra lo schema nello Schema Registry, con il suo digest di integrità, per ciascun formato supportato.
+3. Il Claims and Schema Management registra uno ``SchemaMeta`` nel Catalogue of Attestations, che copre ogni formato supportato.
 
 Credential Type Registration
 """"""""""""""""""""""""""""
