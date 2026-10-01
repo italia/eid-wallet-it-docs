@@ -84,10 +84,12 @@ Following the implementation profile in Section :ref:`credential-presentation:Di
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section :ref:`backup-restore:Backup and Restore`.
+For each hardware-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore, as specified in Section :ref:`backup-restore:Backup Flow`.
+
+This component MUST keep the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 .. note::
-   Currently the re-issuance of the PID and IT-Wallet ID is not managed by the Backup and Restore Component.
+   Restore of the backup file does not request issuance of the PID or the IT-Wallet ID. The migration object lists both, and the receiving Wallet Instance requests their issuance from that list.
 
 Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
