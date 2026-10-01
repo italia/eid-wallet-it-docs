@@ -96,6 +96,8 @@ Digital Credential Data Format
 
     * - `SD-JWT-VC`_
       - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", November 2025, Draft 13.
+    * - `ETSI TS 119 472-1`_
+      - ETSI TS 119 472-1 v1.2.1 - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestation of Attributes; Part 1: General requirements.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
 
