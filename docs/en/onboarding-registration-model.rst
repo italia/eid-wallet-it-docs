@@ -389,6 +389,7 @@ QEAA Provider
 """""""""""""
 
 A QEAA Provider is a Federation Entity that issues Qualified Electronic Attestations of Attributes, and its Sign/Seal Certificate is the qualified certificate issued by the Qualified Trust Service Provider it belongs to.
+The attestations it issues MUST follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 In addition to the base registration data, a QEAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
@@ -413,6 +414,7 @@ PuB-EAA Provider
 """"""""""""""""
 
 A PuB-EAA Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PuB-EAA Providers LoTE.
+The attestations it issues MUST follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 In addition to the base registration data, a PuB-EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
