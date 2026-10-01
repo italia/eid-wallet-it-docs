@@ -27,6 +27,8 @@ Esportazione e Cancellazione dei Record di Transazione
 
 Il file esportato DEVE poter essere salvato in una posizione di archiviazione esterna o remota scelta dall’Utente, tra le opzioni di archiviazione supportate dall’Istanza del Wallet.
 
+Questa esportazione è il download dei record di transazione. Il ripristino del registro delle transazioni in un'Istanza del Wallet ricevente è specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
+
 **Cancellazione**: la dashboard DEVE consentire all’Utente di cancellare uno o più record di transazione dall’Istanza del Wallet in qualsiasi momento.
 
 Prima di cancellare qualsiasi record di transazione, l’Istanza del Wallet DEVE mostrare all’Utente un avviso chiaro sulle possibili conseguenze per i diritti dell’Utente in materia di protezione dei dati.

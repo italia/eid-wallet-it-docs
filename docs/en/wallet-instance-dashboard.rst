@@ -28,6 +28,8 @@ Export and Deletion of Transaction Records
 
 The exported file MUST be storable in an external or remote storage location of the User’s choice, from among the storage options supported by the Wallet Instance.
 
+This export is the download of transaction records. Restoration of the transaction log into a receiving Wallet Instance is specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
+
 **Deletion**: The dashboard MUST allow the User to delete one or more transaction records from the Wallet Instance at any time.
 
 Before deleting any transaction record, the Wallet Instance MUST display a clear warning to the User about the potential consequences for the User’s data protection rights.

@@ -83,10 +83,12 @@ Seguendo il profilo di implementazione nella Sezione :ref:`credential-presentati
 Componente di Backup e Ripristino
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino come specificato nella Sezione :ref:`backup-restore:Backup e Ripristino`.
+Per ogni Credenziale Elettronica con associazione hardware diversa dal PID e dall'IT-Wallet ID, questo componente DEVE aggiungere al file di backup i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino, come specificato nella Sezione :ref:`backup-restore:Flusso di Backup`.
+
+Questo componente DEVE mantenere l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
 .. note::
-   Attualmente la riemissione del PID e dell'IT-Wallet ID non è gestita dal Componente di Backup e Ripristino.
+   Il ripristino del file di backup non richiede l'emissione del PID o dell'IT-Wallet ID. L'oggetto di migrazione elenca entrambi, e l'Istanza del Wallet ricevente ne richiede l'emissione a partire da tale elenco.
 
 Dashboard e Registro delle Transazioni
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

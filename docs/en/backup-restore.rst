@@ -12,8 +12,23 @@ The **Backup and Restore** functionality becomes relevant when the :term:`User` 
 - The :term:`User` has changed their mobile device and needs to set up the :term:`Wallet Solution` on the new device.
 - The :term:`User` performs a factory reset on the current phone and needs to set up the :term:`Wallet Solution` again.
 
-.. note::
-  For Wallet Solutions based on the IT Wallet :term:`Technical Specifications`, the migration to a different :term:`Wallet Solution` (known as data portability) can be supported following the backup and restore functionality described in this section.
+The :term:`Wallet Instance` MUST carry out backup, restore, export and portability under this section in a manner that is user-friendly, transparent and traceable by the :term:`User`.
+
+The :term:`Wallet Instance` MUST enable the :term:`User` to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible, as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [`EU_2024_1183`_].
+
+The :term:`Wallet Instance` MUST enable the :term:`User` to exercise the User's rights to data portability, as required by Article 5a(4)(g) of that Regulation.
+
+The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the :term:`User` can migrate to a :term:`Wallet Instance` of a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
+
+The backup file specified in :ref:`backup-restore:Backup Flow` is the backup and recovery of references to hardware-bound Digital Credentials.
+
+Download of the User's data and of electronic attestations of attributes, and portability to a different :term:`Wallet Solution`, use the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
+
+Download of transaction records also uses the dashboard export specified in :ref:`wallet-instance-dashboard:Export and Deletion of Transaction Records`.
+
+Download of configurations uses :ref:`backup-restore:Wallet Configuration Download`.
+
+A device-bound private key is a critical asset. A device-bound private key MUST NOT be included in the backup file. A device-bound private key MUST NOT be included in the migration object.
 
 
 Backup Flow
@@ -53,12 +68,13 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
 - For each of the HW bound key Credentials, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT (:ref:`WP_122d <credential-backup-testcases>`).
+- The backup file MUST NOT contain a non-device-bound attestation.
 - Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet Instance Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet Instance Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet Instance Attestation` before signing the backup JWT (:ref:`WP_123 <credential-backup-testcases>`).
 - Add the signed backup JWT as an entry to the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 - Encrypt the backup file using the provided key phrase (:ref:`WP_124 <credential-backup-testcases>`).
 
 .. note::
-  The Backup JWT MAY contain transaction history for each Credential entry within the ``credentials_backup`` claim (:ref:`WP_122c <credential-backup-testcases>`).
+  The Backup JWT MAY contain transaction history for each Credential entry within the ``credentials_backup`` claim (:ref:`WP_122c <credential-backup-testcases>`). That history is not the transaction log. The :term:`Wallet Instance` MUST NOT restore that history as the transaction log of the new :term:`Wallet Instance`.
 
 **Step 5**: The :term:`User` will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other (:ref:`WP_125 <credential-backup-testcases>`).
 
@@ -143,9 +159,11 @@ Restore flow for Hardware Binding Credential
 
 ..   Restore flow.
 
-Considering that the :term:`User` has initialized the new :term:`Wallet Instance` and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
+Restore of the backup file applies when the new :term:`Wallet Instance` is already active with a PID or an IT-Wallet ID.
 
-In the same way as the PID, IT-Wallet ID also MUST not be included in the backup file.
+The PID MUST NOT be included in the backup file. The IT-Wallet ID MUST NOT be included in the backup file.
+
+The credential list of the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution` includes the PID and the IT-Wallet ID.
 
 Below, the description of the steps of :numref:`fig_Restore_flow`:
 
@@ -163,5 +181,82 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 
 .. note::
   The :term:`Wallet Instance` MUST NOT check the expiration of the :term:`Wallet Instance Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
+
+
+Migration to a Different Wallet Solution
+----------------------------------------
+
+The :term:`Wallet Instance` MUST provide the migration object in the common format of `EUDI-TS 10`_.
+
+The migration object is distinct from the backup JWT of type ``wallet-unit-credentials-backup+jwt``.
+
+The :term:`Wallet Instance` MUST NOT present the backup JWT as a migration object.
+
+Acceptance of the migration object MUST NOT depend on support for the backup JWT.
+
+The :term:`Wallet Instance` MUST keep the migration object up to date with the Digital Credentials it stores and with the transaction log specified in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`.
+
+The migration object MUST contain the list of Digital Credentials present in the :term:`Wallet Instance`, including the PID and the IT-Wallet ID.
+
+The migration object MUST contain each non-device-bound attestation as the attestation itself.
+
+The migration object MUST contain the transaction log.
+
+For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the credential, and the provider's service supply point, as specified in `EUDI-TS 10`_.
+
+The credential list MUST NOT contain attribute values.
+
+The credential list MUST NOT contain a private key.
+
+The migration object MUST NOT contain a copy of a device-bound attestation.
+
+The migration object MUST NOT contain a :term:`Wallet Instance Attestation`.
+
+The :term:`Wallet Instance` MUST protect the confidentiality, integrity and authenticity of the migration object with the measures specified in `EUDI-TS 10`_.
+
+The :term:`Wallet Instance` MUST NOT protect the migration object by signing it as a ``wallet-unit-credentials-backup+jwt``.
+
+The :term:`Wallet Instance` MUST allow the :term:`User` to store the migration object in an external or remote location of the User's choice, among the storage options supported by the :term:`Wallet Instance`.
+
+Directly after installation, the new :term:`Wallet Instance` MUST enable the :term:`User` to import a migration object from a location the User indicates, among the storage options supported by the :term:`Wallet Instance`.
+
+The new :term:`Wallet Instance` MUST ask the :term:`User` whether to restore the transaction log from the migration object.
+
+When the :term:`User` agrees, the :term:`Wallet Instance` MUST restore that log.
+
+The :term:`Wallet Instance` MUST append later transactions to the restored log.
+
+Dashboard export of transaction records remains the download of those records, as specified in :ref:`wallet-instance-dashboard:Export and Deletion of Transaction Records`.
+
+The new :term:`Wallet Instance` MUST copy each non-device-bound attestation from the migration object into the :term:`Wallet Instance`.
+
+For each PID, IT-Wallet ID and other device-bound Digital Credential listed in the migration object, the :term:`Wallet Instance` MUST enable the :term:`User` to select it.
+
+When the :term:`User` selects a listed credential, the :term:`Wallet Instance` MUST request issuance of that credential from the provider identified in the list.
+
+The request MUST use a fresh :term:`Holder Key Binding`.
+
+If the list contains a PID, the :term:`Wallet Instance` MUST request issuance of the PID before the other credentials in the list.
+
+The :term:`Wallet Instance` MUST request that issuance with the Wallet-Initiated Authorization Code Issuance Flow defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`.
+
+For a (Q)EAA, the presentation gate in :ref:`credential-issuance-endpoint:User Authentication Method Selection` applies.
+
+The :term:`Wallet Instance` MUST NOT use the Re-Issuance Flow defined in Section :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+
+Wallet Configuration Download
+-----------------------------
+
+The :term:`Wallet Instance` MUST allow the :term:`User` to download the User's wallet configuration to the extent technically feasible.
+
+The wallet configuration is the set of User-selected settings stored by the :term:`Wallet Instance`.
+
+The download MUST NOT include a critical asset.
+
+A critical asset includes a device-bound private key, key material held in the Keystore or in a Remote WSCD, and a copy of a device-bound attestation.
+
+The configuration file is distinct from the backup JWT and from the migration object.
+
+The :term:`Wallet Instance` MUST allow the :term:`User` to store the configuration file in a location of the User's choice, among the storage options supported by the :term:`Wallet Instance`.
 
 
