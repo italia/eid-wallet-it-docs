@@ -68,7 +68,7 @@ This section contains the references about the official releases of this project
 
 | Version | English | Italian |
 |---------|---------|---------|
-| 1.4.7 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/en/) \| [PDF]() | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/) \| [PDF]() |
+| 1.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/en/) \| [PDF]() | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/it/) \| [PDF]() |
 
 For previous releases see [RELEASES-HISTORY.md](RELEASES-HISTORY.md).
 
