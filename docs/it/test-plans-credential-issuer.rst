@@ -433,6 +433,18 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Notification Endpoint
     - L'Access Token consente l'accesso al Notification endpoint per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer.
+  * - CI_089
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089a
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089b
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_089c
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Credential Endpoint
