@@ -176,7 +176,13 @@ Below is a non-normative example of the signed Request Object without encoding a
 
 
 .. note::
-  **Wallet Unit trust check:** At the PAR Endpoint, the Credential Issuer MUST establish trust in the Wallet Provider, validate the Wallet Instance Attestation signature and signing cryptographic material, check its temporal validity and revocation status, and verify the ``OAuth-Client-Attestation-PoP`` proof of possession. For a Wallet Unit of another Member State, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities according to :ref:`trust-evaluation:EUDIW Attestation Signature Validation`. For a national Wallet Unit, it MAY validate the Wallet Provider Trust Chain and the Wallet Instance Attestation according to :ref:`trust-evaluation:Wallet Unit Authentication`. A failed check MUST terminate the request.
+  **Wallet Unit trust check:** At the PAR Endpoint, the Credential Issuer MUST establish trust in the Wallet Provider.
+  The Credential Issuer MUST validate the Wallet Instance Attestation signature and signing cryptographic material.
+  The Credential Issuer MUST check its temporal validity and revocation status.
+  The Credential Issuer MUST verify the ``OAuth-Client-Attestation-PoP`` proof of possession.
+  For a Wallet Unit of another Member State, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities according to :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+  For a national Wallet Unit, the Credential Issuer MAY validate the Wallet Provider Trust Chain and the Wallet Instance Attestation according to :ref:`trust-evaluation:Wallet Unit Authentication`.
+  A failed check MUST terminate the request.
 
 
 **Step 3 (PAR Response)**: The Credential Issuer provides a one-time use ``request_uri`` value. The issued ``request_uri`` value MUST be bound to the client identifier (``client_id``) that was provided in the Request Object.
@@ -220,7 +226,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
     1. It MUST check the Authorization Response contains all the defined parameters according to :ref:`Table of the HTTP Response parameters <table_http_response_claim>` (:ref:`WP_054 <wallet-credential-issuance-testcases>`).
     2. It MUST check the returned value by the Credential Issuer for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`) as per :ref:`WP_054a <wallet-credential-issuance-testcases>`.
-    3. It MUST check that the URL of Credential Issuer in ``iss`` parameter is equal to the URL identifier of intended Credential Issuer that the Wallet Instance starts the communication with (:rfc:`9027`)  as per :ref:`WP_054b <wallet-credential-issuance-testcases>`.
+    3. It MUST check that the URL of Credential Issuer in ``iss`` parameter is equal to the URL identifier of intended Credential Issuer that the Wallet Instance starts the communication with (:rfc:`9207`)  as per :ref:`WP_054b <wallet-credential-issuance-testcases>`.
 
 .. note::
     The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
@@ -240,7 +246,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
    3. It MUST ensure the ``redirect_uri`` matches the value included in the previous Request Object (see Section 3.1.3.1. of [`OIDC`_]).
    4. It MUST validate the DPoP Proof JWT, according to (:rfc:`9449`) Section 4.3.
-   5. It MUST verify the ``code_verifier`` parameter according to the PKCE mechanism, ensuring it matches the ``code_challenge`` associated with the authorization code as defined in Section 4.6 of :rfc:`7636`; otherwise, the request MUST be rejected (:ref:`CI_061a <test-plans-credential-issuer:Credential Issuer Test Matrix>`).
+   5. It MUST verify the ``code_verifier`` parameter according to the PKCE mechanism, ensuring it matches the ``code_challenge`` associated with the authorization code as defined in Section 4.6 of :rfc:`7636`. Otherwise, the request MUST be rejected (:ref:`CI_061a <test-plans-credential-issuer:Credential Issuer Test Matrix>`).
    6. It MUST repeat the Wallet Provider, Wallet Instance Attestation signature and signing certificate chain, temporal validity, revocation status, and proof-of-possession checks defined for the PAR Endpoint. A previously retrieved trust artifact MAY be reused only while it remains valid and fresh under the applicable trust framework.
 
 .. code-block:: http

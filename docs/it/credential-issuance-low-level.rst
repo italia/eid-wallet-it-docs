@@ -167,11 +167,13 @@ Di seguito un esempio non normativo del `Request Object` firmato senza codifica 
 
 
 .. note::
-  **Controllo della Federazione**: Il Credential Issuer DEVE verificare che il Fornitore di Wallet faccia parte della federazione.
-
-
-.. note::
-  Il Credential Issuer DEVE validare la firma dell'Attestato di Unità di Wallet e che non sia scaduto.
+  **Controllo di fiducia della Wallet Unit:** Al PAR Endpoint, il Credential Issuer DEVE stabilire la fiducia nel Fornitore di Wallet.
+  Il Credential Issuer DEVE validare la firma dell'Attestato di Unità di Wallet e il materiale crittografico di firma.
+  Il Credential Issuer DEVE controllarne la validità temporale e lo status di revoca.
+  Il Credential Issuer DEVE verificare la prova di possesso ``OAuth-Client-Attestation-PoP``.
+  Per una Wallet Unit di un altro Stato membro, il Credential Issuer DEVE validare l'Attestato di Unità di Wallet attraverso la Wallet Providers List of Trusted Entities secondo :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+  Per una Wallet Unit nazionale, il Credential Issuer PUÒ validare la Trust Chain del Fornitore di Wallet e l'Attestato di Unità di Wallet secondo :ref:`trust-evaluation:Wallet Unit Authentication`.
+  Un controllo fallito DEVE terminare la richiesta.
 
 **Passo 3 (`PAR Response`)**: Il Credential Issuer fornisce un valore ``request_uri`` monouso. Il valore ``request_uri`` emesso DEVE essere vincolato all'identificativo del client (``client_id``) che è stato fornito nel `Request Object`.
 
@@ -214,7 +216,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
     1. DEVE verificare che la `Authorization Response` contenga tutti i parametri definiti secondo la :ref:`Tabella dei parametri della Risposta HTTP <table_http_response_claim>` (:ref:`WP_054 <wallet-credential-issuance-testcases>`).
     2. DEVE verificare che il valore restituito dal Credential Issuer per il parametro ``state`` sia uguale al valore inviato dall'Istanza del Wallet nel `Request Object` (:rfc:`6749`) come specificato in :ref:`WP_054a <wallet-credential-issuance-testcases>`.
-    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9027`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
+    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9207`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
 
 .. note::
     L'URI di reindirizzamento dell'Istanza del Wallet è un `universal link` o `app link` registrato con il sistema operativo locale, quindi quest'ultimo lo risolverà e passerà la risposta all'Istanza del Wallet.
@@ -234,7 +236,8 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
    2. DEVE assicurarsi che il ``code`` di autorizzazione sia valido e non sia stato utilizzato in precedenza (:rfc:`6749`).
    3. DEVE assicurarsi che il ``redirect_uri`` corrisponda al valore incluso nel precedente `Request Object` (vedi Sezione 3.1.3.1. di [`OIDC`_]).
    4. DEVE validare il JWT di `DPoP proof`, secondo la Sezione 4.3 di (:rfc:`9449`).
-   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`; in caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
+   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`. In caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
+   6. DEVE ripetere i controlli sul Fornitore di Wallet, sulla firma dell'Attestato di Unità di Wallet e sulla catena del certificato di firma, sulla validità temporale, sullo status di revoca e sulla prova di possesso definiti per il PAR Endpoint. Un trust artifact recuperato in precedenza PUÒ essere riutilizzato solo finché resta valido e aggiornato nell'ambito del trust framework applicabile.
 
 .. code-block:: http
 

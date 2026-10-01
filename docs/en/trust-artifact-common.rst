@@ -18,7 +18,8 @@ This profile is originally defined in `ETSI TS 119 412-6`_.
 .. warning::
 
   The Entity Sign/Seal Certificate Profiles defined in this specification assume that Entity Sign/Seal Certificates are issued by a CA and are not self-signed.
-  A self-signed certificate intended to act as a Trust Anchor MAY be used in interoperability, however, National Sign/Seal Certificates MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile` and :ref:`infrastructure-trust:Certification Hierarchies` which requires National Trust Anchors to be bound to a common root.
+  A self-signed certificate intended to act as a Trust Anchor MAY be used in interoperability.
+  National Sign/Seal Certificates MUST comply with the requirements defined in :ref:`infrastructure-trust:Trust Anchor Certificate Profile` and :ref:`infrastructure-trust:Certification Hierarchies`, which require National Trust Anchors to be bound to a common root.
 
 PID Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""
@@ -63,7 +64,7 @@ Extensions not listed in the table MUST NOT be present.
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``); the corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
+     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``), as defined in Clause 4.5 of [`ETSI TS 119 412-6`_].
      
        It MAY contain additional ``QCStatement`` structures among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_]. In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
@@ -118,7 +119,7 @@ Extensions not listed in the table MUST NOT be present.
        If OCSP is supported by the issuing CA, the extension MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, as described in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
    * - ``qcStatements``
-     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``); the corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
+     - REQUIRED. It MUST contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.6`` (``id-etsi-qcs-QcType``). The corresponding ``statementInfo`` MUST contain a ``QcType`` structure including exactly one object identifier, namely ``0.4.0.194126.1.2`` (``id-etsi-qct-wal``), as defined in Clause 5.2 of [`ETSI TS 119 412-6`_].
      
        It MAY contain additional ``QCStatement`` structures among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_]. In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
@@ -233,7 +234,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED. It MUST contain:
      
        * A ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.1`` (``id-etsi-qcs-QcCompliance``), referred to as ``esi4-qcStatement-1``.
-       * A ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``; the corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
+       * A ``QCStatement`` structure with ``statementId`` set to the OID corresponding to ``id-etsi-qcs-QcPSB``. The corresponding ``statementInfo`` MUST contain a ``QcPSB`` structure including the fields defined in Clause 8.3 of [`ETSI TS 119 412-6`_].
        
        It MAY contain additional ``QCStatement`` structures among those defined in Clause 4.2 of [`ETSI EN 319 412-5`_]. In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
@@ -308,7 +309,8 @@ Fields not listed in the table remain subject to the requirements defined in the
 
    * - ``basicConstraints``
      - REQUIRED. The ``cA`` field MUST be set to ``TRUE``, signalling CA capability for X.509 path validation.
-       The ``pathLenConstraint`` MAY be present; in that case, it MUST limit the number of non-self-issued intermediate CA certificates below this Trust Anchor.
+       The ``pathLenConstraint`` MAY be present.
+       In that case, it MUST limit the number of non-self-issued intermediate CA certificates below this Trust Anchor.
        It is RECOMMENDED to set ``pathLenConstraint`` to 0 to prevent subordinate CA layers, unless a documented operational need exists to support additional intermediate CA tiers.
 
    * - ``cRLDistributionPoints``

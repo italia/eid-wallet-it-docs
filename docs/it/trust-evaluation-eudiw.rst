@@ -86,9 +86,9 @@ Questa sezione specifica il **Trust Anchor Validation Process** che una Wallet U
 - validare l'affidabilità di un Trust Anchor (vedi :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) per autenticare, autorizzare o validare un'entità o un artifact durante il *runtime*.
 - validare le informazioni contenute nella List per *scopi storici*.
 
-A seconda del Trust Artifact o dell'Attestation in verifica, il Trust Evaluator DEVE recuperare, scaricare e validare la List che referenzia il Trust Anchor appropriato:
+A seconda del Trust Artifact o dell'Attestation in verifica, il Trust Evaluator MUST recuperare, scaricare e validare la List che referenzia il Trust Anchor appropriato:
 
-1. La *List of Trusted Entities* DEVE essere usata per recuperare i Trust Anchor per validare:
+1. La *List of Trusted Entities* MUST essere usata per recuperare i Trust Anchor per validare:
 
    - **WRPAC** nella LoTE dei Provider of WRPAC.
    - **WRPRC** nella LoTE dei Provider of WRPRC.
@@ -101,9 +101,9 @@ A seconda del Trust Artifact o dell'Attestation in verifica, il Trust Evaluator 
 
    - **QEAA Sign/Seal Certificates** nella Trusted List dello Stato membro corrispondente.
 
-3. Per i **PuB-EAA Sign/Seal Certificates**, la Trusted List dello Stato membro corrispondente DEVE essere usata per stabilire lo status qualificato della CA emittente e del certificato. NON DEVE sostituire l'inserimento del Trust Anchor nella LoTE dei PuB-EAA Provider.
+3. Per i **PuB-EAA Sign/Seal Certificates**, la Trusted List dello Stato membro corrispondente MUST essere usata per stabilire lo status qualificato della CA emittente e del certificato. MUST NOT sostituire l'inserimento del Trust Anchor nella LoTE dei PuB-EAA Provider.
 
-Per verificare l'autenticità delle List recuperate, l'Entità DEVE eseguire le seguenti validazioni:
+Per verificare l'autenticità delle List recuperate, l'Entità MUST eseguire le seguenti validazioni:
 
 - :ref:`trust-evaluation:List of Trusted Entities Validation`: Validare la firma digitale della List of Trusted Entities verificandola rispetto al certificato del List of Trusted Entities Provider.
   Questo certificato è pubblicato nella Gazzetta ufficiale dell'Unione europea.
@@ -112,10 +112,10 @@ Per verificare l'autenticità delle List recuperate, l'Entità DEVE eseguire le 
 
 **Input**
 
-L'Entità che valida DEVE basare le decisioni di validazione del Trust Anchor solo su informazioni derivate da:
+L'Entità che valida MUST basare le decisioni di validazione del Trust Anchor solo su informazioni derivate da:
 
 - La Gazzetta ufficiale dell'UE (OJEU) che ancora la fiducia nei certificati root che hanno firmato le List of Trusted Entities e la List of Trusted Lists.
-  La versione corrente dell'OJEU è disponibile `qui <https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944>`_.
+  La versione corrente dell'OJEU è `OJEU`_.
 - Una List of Trusted Entities o una List of Trusted Lists e le Trusted List a livello di Stato membro validate.
 
 **Esito**
@@ -129,7 +129,7 @@ Questi codici confluiscono nella decisione finale:
     - ``LOTL-Status == LOTL_VERIFICATION_PASSED``, o
     - ``EU-TL-Status == EU-TL_VERIFICATION_PASSED``;
 
-    Allora la List of Trusted Entities o la Trusted List è valida e i certificati Trust Anchor (vedi :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) ivi contenuti DEVONO essere considerati affidabili.
+    Allora la List of Trusted Entities o la Trusted List è valida e i certificati Trust Anchor (vedi :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) ivi contenuti MUST essere considerati affidabili.
 
 - Se gli algoritmi di validazione terminano con:
 
@@ -137,7 +137,7 @@ Questi codici confluiscono nella decisione finale:
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, o
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-    Allora la List of Trusted Entities o la Trusted List non è valida e i certificati Trust Anchor (vedi :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) ivi contenuti NON DEVONO essere considerati affidabili.
+    Allora la List of Trusted Entities o la Trusted List non è valida e i certificati Trust Anchor (vedi :ref:`infrastructure-trust:Trust Anchor Certificate Profile`) ivi contenuti MUST NOT essere considerati affidabili.
 
 .. note::
 
@@ -160,7 +160,7 @@ Questo assicura che un'entità in possesso dell'ultima versione valida nota poss
 Sebbene il pivoting mechanism consenta aggiornamenti continui dei parametri della LoTE, alcuni aggiornamenti possono richiedere l'aggiunta di un oggetto ``ServiceHistory`` alla LoTE per preservare le chiavi e le configurazioni storiche necessarie a validare le firme legacy.
 Gli scenari specifici in cui un aggiornamento di un'Entità innesca una migrazione della sua configurazione in ``ServiceHistory`` sono dettagliati in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
 
-Indipendentemente dall'obiettivo di un'Entità quando valida la LoTE (sia che recuperi una configurazione corrente o storica), il meccanismo di validazione DEVE seguire rigorosamente la Sezione :ref:`trust-evaluation:List of Trusted Entities Validation`.
+Indipendentemente dall'obiettivo di un'Entità quando valida la LoTE (sia che recuperi una configurazione corrente o storica), il meccanismo di validazione MUST seguire rigorosamente la Sezione :ref:`trust-evaluation:List of Trusted Entities Validation`.
 
 List of Trusted Entities Validation
 """""""""""""""""""""""""""""""""""
@@ -207,7 +207,7 @@ L'Entità che valida inizializza le seguenti variabili, corrispondenti ai parame
 
 **Processo**:
 
-La validazione DEVE eseguire i seguenti passi.
+La validazione MUST eseguire i seguenti passi.
 Ciascun passo indica il requisito corrispondente della clausola 4.1 di [`ETSI TS 119 615`_].
 
 1. (Inizializzazione) Scaricare il file JWT da ``OJEU-LoTE-Loc`` e assegnarlo a ``LoTE``.
@@ -218,12 +218,12 @@ Ciascun passo indica il requisito corrispondente della clausola 4.1 di [`ETSI TS
    Contare il numero di URI validi che precedono l'URI corrispondente a ``OJEU-Loc`` e assegnarlo a ``n``.
    (PRO-4.1.4-03 per la ricerca di ``OJEU-Loc``, PRO-4.1.4-04 per il conteggio di ``n``)
 
-    - Se nessun URI corrisponde a ``OJEU-Loc``: la validazione DEVE fallire con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``.
+    - Se nessun URI corrisponde a ``OJEU-Loc``: la validazione MUST fallire con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``.
 
 4. (LoTE Location Conflict) Verificare la condizione ``OJEU-LoTE-Loc != LoTE Location`` AND ``LoTE != Content at LoTE Location``, dove ``LoTE Location`` è l'URI ``LoTELocation`` nel componente ``PointersToOtherLoTE`` di ``LoTE`` con ``SchemeTerritory`` ``EU`` (clausola 6.3.13 di [`ETSI TS 119 602`_]).
    (PRO-4.1.4-05)
 
-    - Se ``TRUE``: la validazione DEVE interrompersi con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``LoTE_FILE_CONFLICT``.
+    - Se ``TRUE``: la validazione MUST interrompersi con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``LoTE_FILE_CONFLICT``.
     - Se ``FALSE``, procedere al passo successivo.
 
 5. (LoTE Freshness) Verificare la condizione ``OJEU-LoTE-Loc == LoTE Location`` AND ``LoTE != Content at LoTE Location``.
@@ -233,7 +233,7 @@ Ciascun passo indica il requisito corrispondente della clausola 4.1 di [`ETSI TS
     - Se ``FALSE``, procedere al passo successivo.
 
 6. (Digital Signature Validation) Validare la firma della ``LoTE`` corrente usando la chiave pubblica da ``LoTE-Signer-Cert`` come certificato direttamente fidato, seguendo la validazione di firma di base di [`ETSI EN 319 102-1`_] come richiesto da PRO-4.1.4-07.
-   In particolare, i campi *Country code* e *Organization* nel Subject Distinguished Name del certificato che supporta la firma digitale AdES devono corrispondere rispettivamente al scheme territory e a uno dei valori del scheme operator name all'interno della LoTE.
+   I campi *Country code* e *Organization* nel Subject Distinguished Name del certificato che supporta la firma digitale AdES MUST corrispondere rispettivamente al scheme territory e a uno dei valori del scheme operator name all'interno della LoTE.
    (PRO-4.1.4-07, PRO-4.1.4-08, clausola 6.8.0 di [`ETSI TS 119 602`_])
 
     - Se la validazione fallisce: interrompere con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
@@ -251,18 +251,18 @@ Ciascun passo indica il requisito corrispondente della clausola 4.1 di [`ETSI TS
         - Iterare ``i`` da 1 a ``n`` (dal Pivot più recente al più vecchio).
           Sia ``Pivot`` il file scaricato dall'``i``-esimo URI.
         - (Link Check) Impostare ``Pivot-Certs-Set`` ai certificati nel claim ``PointersToOtherLoTE`` (territory ``EU``) di ``Pivot``.
-          Se ``LoTESO-Cert`` (il firmatario del file precedente nella catena) non è in ``Pivot-Certs-Set``, la validazione DEVE fallire con ``LoTE-Sub-Status`` impostato a ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
+          Se ``LoTESO-Cert`` (il firmatario del file precedente nella catena) non è in ``Pivot-Certs-Set``, la validazione MUST fallire con ``LoTE-Sub-Status`` impostato a ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
         - (Update Signer) Impostare ``LoTESO-Cert`` al primo certificato nel parametro di header ``x5c`` di ``Pivot``.
         - (Verify Signature) Validare la firma di ``Pivot`` usando ``LoTESO-Cert`` come descritto nel passo 6.
           (Digital Signature Validation).
-          Se fallisce, la validazione DEVE fallire con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
+          Se fallisce, la validazione MUST fallire con ``LoTE-Status`` impostato a ``LoTE_VERIFICATION_FAILED`` e ``LoTE-Sub-Status`` impostato a ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
         - Il ciclo continua, procedendo a ritroso fino a quando ``LoTESO-Cert`` rappresenta il firmatario del Pivot più vecchio.
 
 8. (Trust Root Validation) Verificare la fine della catena.
-   Se ``LoTESO-Cert`` (dall'ultimo Pivot, o dalla ``LoTE`` corrente quando non esiste alcun Pivot) non è in ``OJEU-LoTE-Certs-Set`` (l'insieme dei certificati fidati), la validazione DEVE fallire con ``LoTE-Sub-Status`` impostato a ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``.
+   Se ``LoTESO-Cert`` (dall'ultimo Pivot, o dalla ``LoTE`` corrente quando non esiste alcun Pivot) non è in ``OJEU-LoTE-Certs-Set`` (l'insieme dei certificati fidati), la validazione MUST fallire con ``LoTE-Sub-Status`` impostato a ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``.
    (PRO-4.1.4-12)
 
-9. (Expiration) Se l'ora corrente è maggiore del valore ``NextUpdate`` di ``LoTE``, oppure è impostato a ``NULL`` (clausola 6.3.15 di [`ETSI TS 119 602`_]), la validazione DEVE fallire.
+9. (Expiration) Se l'ora corrente è maggiore del valore ``NextUpdate`` di ``LoTE``, oppure è impostato a ``NULL`` (clausola 6.3.15 di [`ETSI TS 119 602`_]), la validazione MUST fallire.
    (PRO-4.1.4-13)
 
 10. (Success) Impostare ``Authenticated-LoTE`` a ``LoTE`` e ``LoTE-Status`` a ``LoTE_VERIFICATION_PASSED``.
@@ -281,7 +281,7 @@ Ciascun passo indica il requisito corrispondente della clausola 4.1 di [`ETSI TS
     - I passi 4, 5 e 11 consentono di modificare la location del file della List of Trusted Entities senza cambiare la chiave pubblica del firmatario fidato iniziale, purché sia la vecchia sia la nuova location abbiano lo stesso contenuto, altrimenti la validazione fallisce con ``LoTE_FILE_CONFLICT``.
       Questo consente di recuperare la List of Trusted Entities da location diverse senza influire sulla validazione del Trust Anchor, purché il contenuto sia lo stesso.
     - In caso di errore ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``, è probabile che la pubblicazione della Gazzetta ufficiale dell'Unione europea sia stata aggiornata con una nuova location per la List of Trusted Entities.
-      L'Entità che valida DOVREBBE ripetere il processo di validazione dopo aver scaricato la versione più recente della Gazzetta ufficiale dell'Unione europea.
+      L'Entità che valida SHOULD ripetere il processo di validazione dopo aver scaricato la versione più recente della Gazzetta ufficiale dell'Unione europea.
     - Nel passo 8, l'Entità che valida stabilisce il binding del certificato firmatario della ``LoTE`` con il certificato referenziato nella Gazzetta ufficiale dell'Unione europea, usando di fatto quest'ultima come fonte di certificati fidati.
 
 Di seguito un diagramma di flusso che sintetizza i passi precedenti per la validazione della List of Trusted Entities:
@@ -325,10 +325,10 @@ Trusted List Validation
 """"""""""""""""""""""""
 
 Questa sezione definisce la validazione della Trusted List.
-Per validare la Trusted List, l'Entità che valida DEVE:
+Per validare la Trusted List, l'Entità che valida MUST:
 
 1. Validare la List of Trusted Lists dell'UE usando l'algoritmo descritto nella sezione 4.1 di [`ETSI TS 119 615`_].
-   Se questo fallisce, la validazione si interrompe e la Wallet Unit DEVE considerare l'Entità con cui sta interagendo come non fidata.
+   Se questo fallisce, la validazione si interrompe e la Wallet Unit MUST considerare l'Entità con cui sta interagendo come non fidata.
    Il processo di validazione è analogo a :ref:`trust-evaluation:List of Trusted Entities Validation` eccetto per il formato della LOTL che è sempre XML.
 2. Analizzare la List of Trusted Lists dell'UE validata per scoprire il certificato necessario a validare la Trusted List dello Stato membro rilevante.
 3. Ottenere e validare la Trusted List rilevante come descritto nella sezione 4.2 di [`ETSI TS 119 615`_].
@@ -348,19 +348,19 @@ Questa è la stessa validazione del certification path usata nel Trust Framework
 All'interno del Trust Framework EUDIW si applica quanto segue.
 
   - Il ``trust_anchor`` è il certificato fidato ottenuto dal componente ``ServiceDigitalIdentity`` della List of Trusted Entities (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`) o della Trusted List (vedi :ref:`trust-evaluation:Trusted List Validation`) applicabile e validata, cioè la LoTE dei Provider of WRPAC per il Wallet-Relying Party Access Certificate, la LoTE dei Provider of WRPRC per il Wallet-Relying Party Registration Certificate, e la LoTE dei Registrar per il Registrar Sign/Seal Certificate.
-  - Il controllo dello status di revoca PUÒ essere omesso per un certificato che reca entrambe le estensioni ``noRevAvail`` e ``ETSIValAssuredCertMod`` (vedi :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`), il cui status è allora determinato unicamente dal suo periodo di validità.
+  - Il controllo dello status di revoca MAY essere omesso per un certificato che reca entrambe le estensioni ``noRevAvail`` e ``ETSIValAssuredCertMod`` (vedi :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`), il cui status è allora determinato unicamente dal suo periodo di validità.
 
 .. note::
 
-  Come definito in :ref:`infrastructure-trust:Revocation Trust Anchors`, il Trust Anchor recuperato dalla LoTE o dalla Trusted List applicabile è il Trust Anchor notificato per la catena di certificati corrispondente. Lo stesso Trust Anchor DEVE essere usato per validare le firme delle CRL o delle risposte OCSP usate per il controllo di revoca, come specificato in :rfc:`5280#section-6` e :rfc:`6960`.
+  Come definito in :ref:`infrastructure-trust:Revocation Trust Anchors`, il Trust Anchor recuperato dalla LoTE o dalla Trusted List applicabile è il Trust Anchor notificato per la catena di certificati corrispondente. Lo stesso Trust Anchor MUST essere usato per validare le firme delle CRL o delle risposte OCSP usate per il controllo di revoca, come specificato in :rfc:`5280#section-6` e :rfc:`6960`.
 
 **Input**
 
 - ``path``: la sequenza di ``n`` certificati ``C_1, ..., C_n`` fornita dall'Entità, dove ``C_1`` è il primo certificato della catena e ``C_n`` è il certificato end-entity.
   Per ogni ``i`` in ``1, ..., n-1``, ``C_i`` è l'issuer di ``C_i+1``.
 - ``trust_anchor``: il certificato fidato ottenuto dal ``ServiceDigitalIdentity`` della List of Trusted Entities o della Trusted List validata.
-  DEVE contenere la chiave pubblica usata per firmare ``C_1``.
-  Le implementazioni DEVONO supportare sia certificati Trust Anchor self-signed sia non self-signed.
+  MUST contenere la chiave pubblica usata per firmare ``C_1``.
+  Le implementazioni MUST supportare sia certificati Trust Anchor self-signed sia non self-signed.
 - ``current_time``: la data e l'ora correnti.
 
 **Esito**
@@ -373,7 +373,7 @@ All'interno del Trust Framework EUDIW si applica quanto segue.
 2. Eseguire la path validation definita in :rfc:`5280#section-6`, usando il ``trust_anchor`` come input trust anchor dell'algoritmo e ``current_time`` come tempo di validazione.
 3. Verificare lo status di revoca dei certificati nel path secondo :rfc:`5280` e :rfc:`6960`, a meno che il controllo non sia omesso come descritto sopra.
 
-Se un qualsiasi passo fallisce, il certification path DEVE essere considerato non valido e la firma dell'artifact NON DEVE essere verificata con la catena di certificati presentata.
+Se un qualsiasi passo fallisce, il certification path MUST essere considerato non valido e la firma dell'artifact MUST NOT essere verificata con la catena di certificati presentata.
 
 EUDIW Attestation Signature Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -381,7 +381,7 @@ EUDIW Attestation Signature Validation
 Questo processo valida la firma su un'Attestation (Attestato Elettronico o Wallet Instance Attestation) usando il Sign/Seal Certificate appropriato come profilato in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 È invocato durante i flussi di emissione e presentazione per validare la firma sull'Attestation.
 
-Il processo DEVE essere strutturato come segue:
+Il processo MUST essere strutturato come segue:
 
 - Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, allora si applica uno dei seguenti casi:
 
@@ -414,13 +414,13 @@ Questo processo dipende dal tipo di Attestation:
 
 - **QEAA**.
 
-  1. Verificare la firma dell'Attestation usando il certificato Sign/Seal fornito nell'Attestation. Per una QEAA, la firma o il sigillo elettronico qualificato DEVE essere validato in conformità all'Articolo 32 di [`EIDAS`_].
+  1. Verificare la firma dell'Attestation usando il certificato Sign/Seal fornito nell'Attestation. Per una QEAA, la firma o il sigillo elettronico qualificato MUST essere validato in conformità all'Articolo 32 di [`EIDAS`_].
   2. Recuperare la Trusted List appropriata in base alla nazionalità del Credential Issuer, validarla come definito in :ref:`trust-evaluation:Trusted List Validation`, ed estrarre il Trust Anchor appropriato dal campo ``ServiceDigitalIdentity`` dell'Entità rilevante.
   3. Estrarre la catena di certificati del firmatario dall'Attestation e validarla rispetto al Trust Anchor ottenuto, come definito in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
 
 - **PuB-EAA**.
 
-  1. Verificare la firma dell'Attestation con il Sign/Seal Certificate fornito nell'Attestation. Una firma elettronica qualificata DEVE essere validata in conformità all'Articolo 32 di [`EIDAS`_]; ove il Provider sia una persona giuridica che usa un sigillo elettronico, si applicano gli Articoli 37 e 40.
+  1. Verificare la firma dell'Attestation con il Sign/Seal Certificate fornito nell'Attestation. Una firma elettronica qualificata MUST essere validata in conformità all'Articolo 32 di [`EIDAS`_]; ove il Provider sia una persona giuridica che usa un sigillo elettronico, si applicano gli Articoli 37 e 40.
   2. Recuperare e validare la LoTE dei PuB-EAA Provider come definito in :ref:`trust-evaluation:List of Trusted Entities Validation`, abbinare il Provider e il suo Sign/Seal Certificate con l'oggetto ``TrustedEntityList`` rilevante, ed estrarre il suo Trust Anchor.
   3. Estrarre la catena di certificati del firmatario dall'Attestation e validarla rispetto al Trust Anchor ottenuto dalla LoTE, come definito in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
   4. Recuperare la Trusted List dello Stato membro corrispondente alla CA emittente, validarla come definito in :ref:`trust-evaluation:Trusted List Validation`, e stabilire lo status qualificato della CA emittente e del Sign/Seal Certificate.
@@ -429,7 +429,7 @@ Questo processo dipende dal tipo di Attestation:
 
   In ciascuno dei casi precedenti, per un'Attestation in formato mdoc, il Mobile Security Object reca il certificato Document Signer nell'header ``x5chain``, come definito in [`ISO18013-5`_]. Per un'Attestation in formato SD-JWT VC, la catena di certificati dell'issuer è recata nell'header ``x5c`` della firma JOSE.
 
-Se la **Base Signature Validation** risulta in un fallimento, l'Entità che valida l'Attestation DEVE eseguire la **Fallback Signature Validation** come segue:
+Se la **Base Signature Validation** risulta in un fallimento, l'Entità che valida l'Attestation MUST eseguire la **Fallback Signature Validation** come segue:
 
 .. warning::
   
@@ -452,14 +452,14 @@ Se la **Base Signature Validation** risulta in un fallimento, l'Entità che vali
 .. warning::
 
    Sebbene la specifica IT Wallet richieda che i certificati Trust Anchor notificati alla Commissione e inclusi nella LoTE siano *diversi* dai Sign/Seal Certificate delle Entità correlate, la Clausola 4.2 di [`ETSI TS 119 412-6`_] consente ai Trust Anchor della LoTE di servire direttamente come Sign/Seal Certificate.
-   In questo caso, tali certificati NON DEVONO essere inclusi nell'Attestation, costringendo il processo di verifica ad attenersi alla procedura di **Fallback Signature Validation**.
-   Per assicurare l'interoperabilità, le implementazioni di EUDIW Attestation Signature Validation DEVONO supportare entrambi i meccanismi di validazione.
+   In questo caso, tali certificati MUST NOT essere inclusi nell'Attestation, costringendo il processo di verifica ad attenersi alla procedura di **Fallback Signature Validation**.
+   Per assicurare l'interoperabilità, le implementazioni di EUDIW Attestation Signature Validation MUST supportare entrambi i meccanismi di validazione.
 
 .. note::
 
   Quando si verificano firme o sigilli realizzati da chiavi storiche, si applica lo stesso processo con la seguente differenza: il Trust Anchor è recuperato dall'elemento `ServiceHistory.ServiceDigitalIdentity` invece che dall'elemento `ServiceInformation.ServiceDigitalIdentity`.
 
-Se sia la **Base Signature Validation** sia la **Fallback Signature Validation** falliscono, l'Attestation NON DEVE essere considerata emessa da un'Entità fidata.
+Se sia la **Base Signature Validation** sia la **Fallback Signature Validation** falliscono, l'Attestation MUST NOT essere considerata emessa da un'Entità fidata.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
@@ -468,11 +468,11 @@ Il Processo di Autenticazione consente alla Wallet Unit di autenticare una Walle
 Stabilisce la fiducia validando la catena di certificati X.509 della Wallet-Relying Party, da un Provider of Wallet-Relying Party Access Certificate fidato fino al Wallet-Relying Party Access Certificate presentato, e verificando che la Wallet-Relying Party possieda la corrispondente chiave privata.
 Il Wallet-Relying Party Access Certificate è profilato in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
 
-Per la verifica del certificato di accesso, la Wallet Unit DEVE accettare solo i Trust Anchor pubblicati nelle List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate notificati dagli Stati membri (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`).
+Per la verifica del certificato di accesso, la Wallet Unit MUST accettare solo i Trust Anchor pubblicati nelle List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate notificati dagli Stati membri (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`).
 
 **Input**
 
-L'esito dell'Autenticazione DEVE basarsi solo su informazioni derivate da:
+L'esito dell'Autenticazione MUST basarsi solo su informazioni derivate da:
 
 - il Trust Anchor appropriato ottenuto da un'istanza valida della List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate;
 - il path di certificati X.509 che termina con il certificato end-entity del Wallet-Relying Party Access Certificate;
@@ -480,13 +480,13 @@ L'esito dell'Autenticazione DEVE basarsi solo su informazioni derivate da:
 
 **Esito**
 
-La Wallet Unit DEVE produrre una decisione: la Wallet-Relying Party è ``AUTHENTICATED`` oppure ``NON_AUTHENTICATED``.
+La Wallet Unit MUST produrre una decisione: la Wallet-Relying Party è ``AUTHENTICATED`` oppure ``NON_AUTHENTICATED``.
 Se ``AUTHENTICATED``, la Wallet Unit procede nel flusso di interazione.
-Se ``NON_AUTHENTICATED``, la Wallet Unit DEVE informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e DEVE interrompere l'interazione, poiché l'entità non è affidabile.
+Se ``NON_AUTHENTICATED``, la Wallet Unit MUST informare l'Utente che l'identità della Wallet-Relying Party non ha potuto essere verificata e MUST interrompere l'interazione, poiché l'entità non è affidabile.
 
 **Processo**
 
-La Wallet Unit DEVE verificare l'autenticità e l'integrità del Wallet-Relying Party Access Certificate presentato come segue:
+La Wallet Unit MUST verificare l'autenticità e l'integrità del Wallet-Relying Party Access Certificate presentato come segue:
 
 1. **Retrieve the Trust Anchor**: ottenere l'entry del Provider of Wallet-Relying Party Access Certificate dalla List of Trusted Entities validata (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`).
    Per selezionare l'entry corretta, abbinare l'``issuer.organizationIdentifier`` del primo certificato della catena, la cui semantica è definita nella clausola 5.1.4 di [`ETSI EN 319 412-1`_], con il ``TrustedEntitiesList[].TrustedEntity.TETradeName`` della List of Trusted Entities.
@@ -506,8 +506,8 @@ La Wallet Unit DEVE verificare l'autenticità e l'integrità del Wallet-Relying 
 
 .. warning::
 
-    Una Wallet-Relying Party DEVE distinguere tra autenticazione transitoria (ad es., controllo di accesso) e impegno sul contenuto (non ripudio).
-    Per impedire a un attaccante di mascherare un impegno legale come un nonce di protocollo, la Wallet-Relying Party NON DEVE usare la chiave privata del Wallet-Relying Party Access Certificate per firmare dati arbitrari che potrebbero essere controllati da una parte esterna.
+    Una Wallet-Relying Party MUST distinguere tra autenticazione transitoria (ad es., controllo di accesso) e impegno sul contenuto (non ripudio).
+    Per impedire a un attaccante di mascherare un impegno legale come un nonce di protocollo, la Wallet-Relying Party MUST NOT usare la chiave privata del Wallet-Relying Party Access Certificate per firmare dati arbitrari che potrebbero essere controllati da una parte esterna.
 
 Wallet-Relying Party Access Certificate Validation
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -521,18 +521,18 @@ Gli input sono i seguenti:
 
 .. warning::
 
-  Come descritto nella Sezione 6.1.1 di `OPENID4VC-HAIP`_ il Trust Anchor Certificate necessario per la validazione del WRPAC NON DEVE essere incluso nella catena di certificati e DEVE essere sempre recuperato nella LoTE appropriata.
+  Come descritto nella Sezione 6.1.1 di `OPENID4VC-HAIP`_ il Trust Anchor Certificate necessario per la validazione del WRPAC MUST NOT essere incluso nella catena di certificati e MUST essere sempre recuperato nella LoTE appropriata.
 
 EUDIW Authorization
 ^^^^^^^^^^^^^^^^^^^
 
-Questa sezione specifica il Processo di Autorizzazione EUDIW che una Wallet Unit DEVE eseguire per determinare se un'interazione con una Wallet-Relying Party è consentita all'interno dell'ecosistema EUDI Wallet.
-Il Processo di Autorizzazione EUDIW DEVE iniziare solo *dopo* che la Wallet-Relying Party è stata autenticata con successo secondo :ref:`trust-evaluation:EUDIW Authentication`.
-Se la Wallet-Relying Party non è stata autenticata, il Processo di Autorizzazione EUDIW NON DEVE iniziare.
+Questa sezione specifica il Processo di Autorizzazione EUDIW che una Wallet Unit MUST eseguire per determinare se un'interazione con una Wallet-Relying Party è consentita all'interno dell'ecosistema EUDI Wallet.
+Il Processo di Autorizzazione EUDIW MUST iniziare solo *dopo* che la Wallet-Relying Party è stata autenticata con successo secondo :ref:`trust-evaluation:EUDIW Authentication`.
+Se la Wallet-Relying Party non è stata autenticata, il Processo di Autorizzazione EUDIW MUST NOT iniziare.
 
 I dati di autorizzazione di una Wallet-Relying Party sono recati dal Wallet-Relying Party Registration Certificate.
-Durante la Presentazione di Credenziali il Wallet-Relying Party Registration Certificate DEVE essere incluso per valore nella richiesta ([`EIDAS-ARF`_] RPRC_19) ed è l'unica fonte autorevole per l'autorizzazione alla presentazione ([`EIDAS-ARF`_] RPRC_17, RPRC_21).
-Durante l'Emissione di Credenziali un PID Provider o un Attestation Provider DEVE includere il Wallet-Relying Party Registration Certificate per valore nei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22).
+Durante la Presentazione di Credenziali il Wallet-Relying Party Registration Certificate MUST essere incluso per valore nella richiesta ([`EIDAS-ARF`_] RPRC_19) ed è l'unica fonte autorevole per l'autorizzazione alla presentazione ([`EIDAS-ARF`_] RPRC_17, RPRC_21).
+Durante l'Emissione di Credenziali un PID Provider o un Attestation Provider MUST includere il Wallet-Relying Party Registration Certificate per valore nei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22).
 
 Il Processo di Autorizzazione EUDIW è suddiviso in:
 
@@ -546,17 +546,17 @@ Il Processo di Autorizzazione EUDIW è suddiviso in:
       Questo si applica alle interazioni che coinvolgono sia Relying Party sia Relying Party Intermediary, sia nel Remote Flow sia nel Proximity Flow.
 
 - :ref:`trust-evaluation:Authorization Decision and Override Rules`, che produce una *Authorization Decision* espressa come ``AUTHORIZED`` o ``NOT_AUTHORIZED`` sulla base dei risultati di Authorization Artifacts Validation e Authorization Validation.
-  A seconda del tipo di Flow l'Utente PUÒ *sovrascrivere* la Authorization Decision.
+  A seconda del tipo di Flow l'Utente MAY *sovrascrivere* la Authorization Decision.
 
-All'interno della *Authorization Validation*, la Wallet Unit DEVE distinguere tra la Wallet-Relying Party autenticata e l'*Authorization Subject*, cioè l'entità la cui autorizzazione è in valutazione:
+All'interno della *Authorization Validation*, la Wallet Unit MUST distinguere tra la Wallet-Relying Party autenticata e l'*Authorization Subject*, cioè l'entità la cui autorizzazione è in valutazione:
 
 - Durante l'Emissione, l'Authorization Subject è il Credential Issuer.
 - Durante la presentazione *diretta*, l'Authorization Subject è la Relying Party.
 - Durante la presentazione *intermediata*, la Wallet-Relying Party autenticata è il Relying Party Intermediary, mentre l'Authorization Subject per la richiesta di dati è la *Relying Party intermediata*, il cui ambito registrato governa la richiesta.
   Il Relying Party Intermediary è esso stesso un'entità registrata, e la sua autorizzazione ad agire come intermediario è stabilita attraverso il binding ``intermediary`` dichiarato nei dati di autorizzazione della Relying Party intermediata (vedi la Binding verification di seguito).
 
-La Wallet Unit DEVE supportare la risoluzione del contesto di autorizzazione dal Wallet-Relying Party Registration Certificate incluso nell'interazione.
-La Wallet Unit NON DEVE interrogare il Register come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali ([`EIDAS-ARF`_] RPRC_16, RPRC_18 e RPRC_19a sono vuoti) o durante l'Emissione di Credenziali ([`EIDAS-ARF`_] RPRC_22 e RPRC_22a).
+La Wallet Unit MUST supportare la risoluzione del contesto di autorizzazione dal Wallet-Relying Party Registration Certificate incluso nell'interazione.
+La Wallet Unit MUST NOT interrogare il Register come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali ([`EIDAS-ARF`_] RPRC_16, RPRC_18 e RPRC_19a sono vuoti) o durante l'Emissione di Credenziali ([`EIDAS-ARF`_] RPRC_22 e RPRC_22a).
 
 Authorization Artifacts Validation
 """""""""""""""""""""""""""""""""""
@@ -564,36 +564,47 @@ Authorization Artifacts Validation
 Il Wallet-Relying Party Registration Certificate reca i dati di autorizzazione di un'entità, nei profili JWT e CWT definiti nella Sezione 5.2.1 di [`ETSI TS 119 475`_].
 
 Ciascuna procedura di validazione specifica i propri input, la propria logica di elaborazione e il proprio output, un codice di risultato di verifica.
-Il risultato PUÒ essere sovrascritto dall'Utente alle condizioni dettagliate in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
+Il risultato MAY essere sovrascritto dall'Utente alle condizioni dettagliate in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
 Il flusso di validazione dipende dall'interazione.
 
-- Durante il flusso di Presentazione la Relying Party DEVE convogliare il Wallet-Relying Party Registration Certificate per valore ([`EIDAS-ARF`_] RPRC_19):
+- Durante il flusso di Presentazione la Relying Party MUST convogliare il Wallet-Relying Party Registration Certificate per valore ([`EIDAS-ARF`_] RPRC_19):
 
     - come elemento ``registration_cert`` del parametro ``verifier_info`` del Request Object, nel Remote Flow, come definito in [`ETSI TS 119 472-2`_] e nella Sezione 5.1 di [`OpenID4VP`_];
     - nel membro ``euWrprc`` di ``requestInfo`` nell'ISO ``DeviceRequest``, nel Proximity Flow, come definito nella Sezione 5.3 di [`ETSI TS 119 472-2`_] e in [`ISO18013-5`_].
 
-  Un elemento ``registrar_dataset`` PUÒ essere presente per pubblicazione e trasparenza. NON DEVE essere usato come sostituto del Wallet-Relying Party Registration Certificate durante la presentazione ([`EIDAS-ARF`_] RPRC_19a è vuoto).
+   Nel Remote Flow, ``verifier_info`` MUST contenere anche un elemento ``registrar_dataset`` per il trasporto e la trasparenza ETSI.
+   Il dataset MUST contenere l'identificatore registrato e i campi ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` e ``policyURI``, come specificato nel Remote Flow.
+   Il dataset MUST NOT sostituire né prevalere sul Wallet-Relying Party Registration Certificate come fonte di autorizzazione della presentazione ([`EIDAS-ARF`_] RPRC_19a è vuoto).
 
-- Durante il flusso di Emissione un PID Provider o un Attestation Provider DEVE convogliare il Wallet-Relying Party Registration Certificate per valore nei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22), attraverso l'array ``issuer_info``, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_].
-  L'array DEVE contenere un elemento ``registration_cert`` con il Wallet-Relying Party Registration Certificate per valore, e DEVE contenere un elemento ``registrar_dataset`` con le informazioni di registrazione.
-  L'Embedded Disclosure Policy è distribuita attraverso i Metadata del Credential Issuer come membro ``embedded_disclosure_policy`` di una configurazione della credenziale all'interno di ``credential_configurations_supported``, come definito in [`OpenID4VCI`_] e in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
+   Nel Proximity Flow, ogni ``ItemsRequest`` MUST contenere un ``requestInfo.euWrpRegistrarInfo`` non vuoto, con l'array ``identifier`` non vuoto, gli array ``srvDescription`` e ``purpose`` non vuoti, ``registryURI``, ``intendedUseIdentifier`` e ``policyURI``.
+   I dati ``credential`` opzionali sono non vuoti quando presenti.
+   Questi dati del Registrar servono alla trasparenza e al binding di identità.
+   Tali dati MUST NOT sostituire il WRPRC obbligatorio fornito per valore.
+   Tali dati MUST NOT innescare una consultazione del Register.
 
-Durante la Presentazione di Credenziali, se il Wallet-Relying Party Registration Certificate non è disponibile o la sua validazione fallisce, la Wallet Unit DEVE impostare ``authz_art_state`` a ``CERTIFICATE_INVALID`` e DEVE avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17).
-La Wallet Unit NON DEVE interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_16 e RPRC_18 sono vuoti).
+- Durante il flusso di Emissione un PID Provider o un Attestation Provider MUST convogliare le informazioni di registrazione applicabili nei Metadata firmati del Credential Issuer ([`EIDAS-ARF`_] RPRC_22), attraverso l'array ``issuer_info`` di primo livello definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_].
+  Ciascun elemento contiene ``format`` e ``data``.
+  L'array MUST contenere un elemento ``registration_cert`` con il Wallet-Relying Party Registration Certificate per valore.
+  L'array MUST contenere un elemento ``registrar_dataset`` con le informazioni di registrazione.
+  Il ``registrar_dataset`` MUST NOT sostituire la validazione del certificato quando ``registration_cert`` è presente.
+  L'Embedded Disclosure Policy è distribuita come membro ``embedded_disclosure_policy`` di ``credential_metadata`` all'interno di ``credential_configurations_supported``, come definito in [`OpenID4VCI`_] e in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
-Durante l'Emissione di Credenziali, se il Wallet-Relying Party Registration Certificate non è disponibile o la sua validazione fallisce, la Wallet Unit DEVE impostare ``authz_art_state`` a ``CERTIFICATE_INVALID``, DEVE avvisare l'Utente che non ha potuto ottenere o validare le informazioni registrate, e NON DEVE richiedere l'emissione di un PID o di un'attestation ([`EIDAS-ARF`_] RPRC_22a).
-La Wallet Unit NON DEVE interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
+Durante la Presentazione di Credenziali, se il Wallet-Relying Party Registration Certificate non è disponibile o la sua validazione fallisce, la Wallet Unit MUST impostare ``authz_art_state`` a ``CERTIFICATE_INVALID`` e MUST avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17).
+La Wallet Unit MUST NOT interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_16 e RPRC_18 sono vuoti).
+
+Durante l'Emissione di Credenziali, se il Wallet-Relying Party Registration Certificate non è disponibile o la sua validazione fallisce, la Wallet Unit MUST impostare ``authz_art_state`` a ``CERTIFICATE_INVALID``, MUST avvisare l'Utente che non ha potuto ottenere o validare le informazioni registrate, e MUST NOT richiedere l'emissione di un PID o di un'attestation ([`EIDAS-ARF`_] RPRC_22a).
+La Wallet Unit MUST NOT interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
 
 **Wallet-Relying Party Registration Certificate Validation**
 
-Quando un Wallet-Relying Party Registration Certificate è disponibile, la Wallet Unit DEVE validarlo prima di farvi affidamento:
+Quando un Wallet-Relying Party Registration Certificate è disponibile, la Wallet Unit MUST validarlo prima di farvi affidamento:
 
 1. **Format verification**: confermare che ``typ`` è ``rc-wrp+jwt`` nel Remote Flow e durante l'Emissione di Credenziali, oppure ``rc-wrp+cwt`` nel Proximity Flow, come definito nella Sezione 5.2.1 di [`ETSI TS 119 475`_].
 2. **Algorithm verification**: verificare che l'algoritmo di firma sia conforme, cioè che ``alg`` non sia né ``none`` né un algoritmo deprecato.
 3. **Signature validation**: verificare che la firma del Wallet-Relying Party Registration Certificate sia valida.
 4. **Trust Anchor validation**: validare la LoTE dei Provider of WRPRC (vedi :ref:`trust-evaluation:List of Trusted Entities Validation`) e recuperare il Trust Anchor dal suo campo ``TrustedEntitiesList.ServiceDigitalIdentity``.
-5. **Path validation**: validare la catena del Wallet-Relying Party Registration Certificate come definito in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, usando il ``trust_anchor`` ottenuto nel passo precedente. Per il WRPRC, il Trust Anchor usato per la validazione della firma, la validazione del certificate path e il controllo di revoca DEVE essere recuperato dall'entry di servizio applicabile nella LoTE dei Provider of WRPRC (cioè, sotto il ``ServiceDigitalIdentity`` corrispondente al ``ServiceTypeIdentifier`` con valore ``http://uri.etsi.org/19602/SvcType/WRPRC/Issuance``).
+5. **Path validation**: validare la catena del Wallet-Relying Party Registration Certificate come definito in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, usando il ``trust_anchor`` ottenuto nel passo precedente. Per il WRPRC, il Trust Anchor usato per la validazione della firma, la validazione del certificate path e il controllo di revoca MUST essere recuperato dall'entry di servizio applicabile nella LoTE dei Provider of WRPRC (cioè, sotto il ``ServiceDigitalIdentity`` corrispondente al ``ServiceTypeIdentifier`` con valore ``http://uri.etsi.org/19602/SvcType/WRPRC/Issuance``).
 6. **Temporal validity**: controllare ``iat`` e ``exp`` se presenti.
 7. **Status verification**: controllare lo status di revoca attraverso il campo ``status`` del Wallet-Relying Party Registration Certificate, come definito in [`ETSI TS 119 475`_]:
 
@@ -607,64 +618,64 @@ Quando un Wallet-Relying Party Registration Certificate è disponibile, la Walle
 
 .. note::
 
-   Nel Passo 5 (**Path validation**), il Trust Anchor Certificate necessario per validare il WRPRC NON DEVE essere incluso nella catena di certificati e DEVE essere sempre recuperato dalla LoTE appropriata.
+   Nel Passo 5 (**Path validation**), il Trust Anchor Certificate necessario per validare il WRPRC MUST NOT essere incluso nella catena di certificati e MUST essere sempre recuperato dalla LoTE appropriata.
 
 **Esito**
 
-- Se tutti i passi hanno successo e il Wallet-Relying Party Registration Certificate è nello stato ``VALID``, la Wallet Unit DEVE impostare ``authz_art_state`` a ``CERTIFICATE_VALID``.
-- Se un qualsiasi passo fallisce, o se nessun Wallet-Relying Party Registration Certificate è incluso, la Wallet Unit DEVE impostare ``authz_art_state`` a ``CERTIFICATE_INVALID``.
-  Durante la Presentazione di Credenziali la Wallet Unit DEVE avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17) e NON DEVE interrogare il Register.
-  Durante l'Emissione di Credenziali la Wallet Unit DEVE avvisare l'Utente e NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a). La Wallet Unit NON DEVE interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
+- Se tutti i passi hanno successo e il Wallet-Relying Party Registration Certificate è nello stato ``VALID``, la Wallet Unit MUST impostare ``authz_art_state`` a ``CERTIFICATE_VALID``.
+- Se un qualsiasi passo fallisce, o se nessun Wallet-Relying Party Registration Certificate è incluso, la Wallet Unit MUST impostare ``authz_art_state`` a ``CERTIFICATE_INVALID``.
+  Durante la Presentazione di Credenziali la Wallet Unit MUST avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17) e MUST NOT interrogare il Register.
+  Durante l'Emissione di Credenziali la Wallet Unit MUST avvisare l'Utente e MUST NOT richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a). La Wallet Unit MUST NOT interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
 
 .. note::
 
-    Durante la Presentazione di Credenziali la richiesta DEVE recare per valore il Wallet-Relying Party Registration Certificate dell'Authorization Subject, anche quando la Wallet-Relying Party autenticata è un Relying Party Intermediary ([`EIDAS-ARF`_] RPRC_19).
+    Durante la Presentazione di Credenziali la richiesta MUST recare per valore il Wallet-Relying Party Registration Certificate dell'Authorization Subject, anche quando la Wallet-Relying Party autenticata è un Relying Party Intermediary ([`EIDAS-ARF`_] RPRC_19).
     Tale certificato identifica la Relying Party intermediata.
 
 Authorization Validation
 """""""""""""""""""""""""""""
 
-La Authorization Validation DEVE seguire la Authorization Artifacts Validation quando ``authz_art_state == CERTIFICATE_VALID``.
-Se ``authz_art_state == CERTIFICATE_INVALID``, la Wallet Unit NON DOVREBBE eseguire alcuna Authorization Validation, poiché non può modificare la Authorization Decision finale.
+La Authorization Validation MUST seguire la Authorization Artifacts Validation quando ``authz_art_state == CERTIFICATE_VALID``.
+Se ``authz_art_state == CERTIFICATE_INVALID``, la Wallet Unit SHOULD NOT eseguire alcuna Authorization Validation, poiché non può modificare la Authorization Decision finale.
 
 **Input**
 
-La Wallet Unit DEVE basare la Authorization Validation solo su:
+La Wallet Unit MUST basare la Authorization Validation solo su:
 
 - la Wallet-Relying Party autenticata e il contesto di interazione, autorevoli solo per l'identità della Wallet-Relying Party;
 - un Authorization Artifact validato, cioè un Wallet-Relying Party Registration Certificate, autorevole per l'identità del subject, le entitlement, l'uso previsto, l'ambito registrato, le relazioni di intermediario, i dati specifici dell'emissione e i riferimenti alla privacy policy, come definito in [`ETSI TS 119 475`_];
-- un'Embedded Disclosure Policy verificata, OBBLIGATORIA quando fornita dall'Attestation Provider durante l'Emissione di Credenziali, autorevole quando presente.
+- un'Embedded Disclosure Policy verificata, REQUIREDA quando fornita dall'Attestation Provider durante l'Emissione di Credenziali, autorevole quando presente.
 
-Ove il contesto della Wallet-Relying Party autenticata sia in conflitto con l'identità o il binding di intermediario nel contesto di autorizzazione verificato, la Wallet Unit DEVE produrre ``NOT_AUTHORIZED``, non sovrascrivibile.
+Ove il contesto della Wallet-Relying Party autenticata sia in conflitto con l'identità o il binding di intermediario nel contesto di autorizzazione verificato, la Wallet Unit MUST produrre ``NOT_AUTHORIZED``, non sovrascrivibile.
 
 **Esito**
 
-La Wallet Unit DEVE produrre le variabili ``authz_val_state`` e ``edp_state``, entrambe inizializzate a ``none``.
+La Wallet Unit MUST produrre le variabili ``authz_val_state`` e ``edp_state``, entrambe inizializzate a ``none``.
 
 **Processo**
 
 1. **Binding verification**.
-   La Wallet Unit DEVE assicurare che l'entità autenticata sia la stessa entità descritta nei dati di autorizzazione.
+   La Wallet Unit MUST assicurare che l'entità autenticata sia la stessa entità descritta nei dati di autorizzazione.
    L'identità della Wallet-Relying Party è l'``organizationIdentifier`` del subject del Wallet-Relying Party Access Certificate (clausola 5.1.4 di [`ETSI EN 319 412-1`_]; il profilo del Wallet-Relying Party Access Certificate è definito in [`ETSI TS 119 411-8`_]).
 
     - **Credential Issuance**.
-      La Wallet Unit DEVE abbinare l'identificatore del Credential Issuer con il ``sub`` del Wallet-Relying Party Registration Certificate e con l'``issuer_info.data.identifier`` dei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22b).
+      La Wallet Unit MUST abbinare l'identificatore del Credential Issuer con il ``sub`` del Wallet-Relying Party Registration Certificate e con l'``issuer_info.data.identifier`` dei Metadata del Credential Issuer ([`EIDAS-ARF`_] RPRC_22b).
     - **Credential Presentation**.
-      La Wallet Unit DEVE prima assumere lo scenario **diretto** e abbinare l'identificatore della Relying Party nel Wallet-Relying Party Access Certificate (``organizationIdentifier`` o ``serialNumber``) con il ``sub`` del Wallet-Relying Party Registration Certificate, e con il ``verifier_info.data.identifier`` del Request Object nel Remote Flow oppure il ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` nel Proximity Flow.
-      Se l'abbinamento fallisce, la Wallet Unit DEVE tentare lo scenario **intermediato** ([`EIDAS-ARF`_] RPRC_17a):
+      La Wallet Unit MUST prima assumere lo scenario **diretto** e abbinare l'identificatore della Relying Party nel Wallet-Relying Party Access Certificate (``organizationIdentifier`` o ``serialNumber``) con il ``sub`` del Wallet-Relying Party Registration Certificate, e con il ``verifier_info.data.identifier`` del Request Object nel Remote Flow oppure il ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` nel Proximity Flow.
+      Se l'abbinamento fallisce, la Wallet Unit MUST tentare lo scenario **intermediato** ([`EIDAS-ARF`_] RPRC_17a):
       il subject del WRPAC è l'Intermediary, il WRPRC identifica una Relying Party diversa, e l'oggetto ``intermediary`` del WRPRC identifica questo Intermediary ([`EIDAS-ARF`_] RPRC_04).
       L'associazione di un WRPAC distinto a quella Relying Party e a quel Service è rinviata come specificato in :ref:`infrastructure-trust:Register of WRPs`.
 
-    Se la Binding verification fallisce, la Wallet Unit DEVE interrompere la Authorization Validation e impostare ``authz_val_state`` a ``BINDING_FAILED``.
-    Se lo scenario **diretto** ha successo, la Wallet Unit DEVE rendere disponibili all'Utente l'identità e il Servizio della Relying Party, e l'uso previsto della richiesta.
-    Se lo scenario **intermediato** ha successo, la Wallet Unit DEVE rendere disponibili all'Utente l'identità e il Servizio della Relying Party *intermediata* e l'uso previsto della richiesta.
-    NON DEVE visualizzare i trade name dell'Intermediary o del Servizio dell'Intermediary ([`EIDAS-ARF`_] RPI_07).
+    Se la Binding verification fallisce, la Wallet Unit MUST interrompere la Authorization Validation e impostare ``authz_val_state`` a ``BINDING_FAILED``.
+    Se lo scenario **diretto** ha successo, la Wallet Unit MUST rendere disponibili all'Utente l'identità e il Servizio della Relying Party, e l'uso previsto della richiesta.
+    Se lo scenario **intermediato** ha successo, la Wallet Unit MUST rendere disponibili all'Utente l'identità e il Servizio della Relying Party *intermediata* e l'uso previsto della richiesta.
+    MUST NOT visualizzare i trade name dell'Intermediary o del Servizio dell'Intermediary ([`EIDAS-ARF`_] RPI_07).
     Le modalità di presentazione di queste informazioni sono definite nelle sezioni rilevanti di interazione Utente della specifica IT-Wallet.
     Non è prevista una lookup opzionale da parte dell'Utente nel Registrar della relazione di intermediario ([`EIDAS-ARF`_] RPI_07a è vuoto).
 
 2. **Entitlement verification**.
-   La Wallet Unit DEVE verificare che le entitlement dell'Authorization Subject corrispondano al ruolo atteso.
-   La Wallet Unit DEVE analizzare il campo ``entitlements`` del Wallet-Relying Party Registration Certificate e controllare che contenga l'URI di entitlement atteso per l'interazione, tra quelli definiti nell'Allegato A.2 di [`ETSI TS 119 475`_]:
+   La Wallet Unit MUST verificare che le entitlement dell'Authorization Subject corrispondano al ruolo atteso.
+   La Wallet Unit MUST analizzare il campo ``entitlements`` del Wallet-Relying Party Registration Certificate e controllare che contenga l'URI di entitlement atteso per l'interazione, tra quelli definiti nell'Allegato A.2 di [`ETSI TS 119 475`_]:
 
     - ``https://uri.etsi.org/19475/Entitlement/PID_Provider`` per i PID Provider, durante l'Emissione di PID;
     - ``https://uri.etsi.org/19475/Entitlement/QEAA_Provider`` per i QEAA Provider, durante l'Emissione di QEAA;
@@ -672,54 +683,64 @@ La Wallet Unit DEVE produrre le variabili ``authz_val_state`` e ``edp_state``, e
     - ``https://uri.etsi.org/19475/Entitlement/Non_Q_EAA_Provider`` per gli EAA Provider, durante l'Emissione di EAA;
     - ``https://uri.etsi.org/19475/Entitlement/Service_Provider`` per le Relying Party, durante la Presentazione di Credenziali.
 
-    Se l'entitlement attesa non è presente, la Wallet Unit DEVE impostare ``authz_val_state`` a ``WRONG_ENTITLEMENT``.
+    Se l'entitlement attesa non è presente, la Wallet Unit MUST impostare ``authz_val_state`` a ``WRONG_ENTITLEMENT``.
 
 3. **Attestation Type verification**.
-   Durante l'Emissione di Credenziali, la Wallet Unit DEVE verificare che il PID o il Tipo di Attestation in emissione sia registrato per il Credential Issuer.
-   Un PID Provider che emette PID PUÒ omettere questo passo.
-   Altrimenti la Wallet Unit DEVE abbinare l'array ``provides_attestations`` del Wallet-Relying Party Registration Certificate (definito nella Tabella 8 di [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_23) rispetto alle chiavi ``credential_configurations_supported`` dei Metadata del Credential Issuer ([`OpenID4VCI`_]).
-   L'abbinamento DEVE essere esatto e case sensitive, su ``vct`` per SD-JWT VC e su ``docType`` per mdoc.
-   Se non trovato, la Wallet Unit DEVE impostare ``authz_val_state`` a ``ATTESTATION_TYPE_NOT_REGISTERED``.
+   Durante l'Emissione di Credenziali, la Wallet Unit MUST verificare che il PID o il Tipo di Attestation in emissione sia registrato per il Credential Issuer.
+   Un PID Provider che emette PID MAY omettere questo passo.
+   Altrimenti la Wallet Unit MUST abbinare l'array ``provides_attestations`` del Wallet-Relying Party Registration Certificate (definito nella Tabella 8 di [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_23) rispetto alle chiavi ``credential_configurations_supported`` dei Metadata del Credential Issuer ([`OpenID4VCI`_]).
+   L'abbinamento MUST essere esatto e case sensitive, su ``vct`` per SD-JWT VC e su ``docType`` per mdoc.
+   Se non trovato, la Wallet Unit MUST impostare ``authz_val_state`` a ``ATTESTATION_TYPE_NOT_REGISTERED``.
 
 4. **Scope Comparison**.
-   Durante la Presentazione di Credenziali, la Wallet Unit DEVE verificare che gli Attestati Elettronici e gli attributi richiesti ricadano nell'ambito registrato, recato nell'array ``credentials`` del Wallet-Relying Party Registration Certificate incluso nella richiesta (definito nella Tabella 9 di [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_21).
+   Durante la Presentazione di Credenziali, la Wallet Unit MUST verificare che gli Attestati Elettronici e gli attributi richiesti ricadano nell'ambito registrato, recato nell'array ``credentials`` del Wallet-Relying Party Registration Certificate incluso nella richiesta (definito nella Tabella 9 di [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_21).
 
     - **Remote Flow**: estrarre gli Attestati Elettronici e gli attributi richiesti dalla ``dcql_query`` del Request Object ([`OpenID4VP`_]) e abbinarli rispetto alle entry ``credentials``, confrontando ``format`` e ``meta`` (``vct_values`` per SD-JWT VC) e gli attributi richiesti rispetto ai path ``claim``.
     - **Proximity Flow**: estrarre il ``docType`` e i ``nameSpaces`` dai ``docRequests`` della mdoc Request ([`ISO18013-5`_]) e abbinarli rispettivamente rispetto a ``credentials[].meta.doctype_value`` e ``credentials[].claim``.
 
-    L'abbinamento DEVE essere esatto e case sensitive.
-    Se un qualsiasi Attestato Elettronico o attributo richiesto non è registrato, la Wallet Unit DEVE impostare ``authz_val_state`` a ``OVERASKING_DETECTED`` e identificare gli attributi o gli Attestati Elettronici non registrati.
+    L'abbinamento MUST essere esatto e case sensitive.
+    Se un qualsiasi Attestato Elettronico o attributo richiesto non è registrato, la Wallet Unit MUST impostare ``authz_val_state`` a ``OVERASKING_DETECTED`` e identificare gli attributi o gli Attestati Elettronici non registrati.
 
-    Se tutti i controlli precedenti applicabili all'interazione sono soddisfatti, la Wallet Unit DEVE impostare ``authz_val_state`` a ``VERIFICATION_PASSED``.
+    Se tutti i controlli precedenti applicabili all'interazione sono soddisfatti, la Wallet Unit MUST impostare ``authz_val_state`` a ``VERIFICATION_PASSED``.
 
 5. **Embedded Disclosure Policy evaluation**.
-   Durante la Presentazione di Credenziali, per ciascun Attestato Elettronico che corrisponde alla Presentation Request, la Wallet Unit DEVE verificare la presenza di un'Embedded Disclosure Policy memorizzata localmente.
-   Se non ne esiste alcuna, questo controllo è superato.
-   Altrimenti, secondo il ``policy_type`` definito nella Sezione 4.2.5 di [`ETSI TS 119 472-3`_]:
+   Durante l'Emissione di Credenziali, la Wallet Unit MUST risolvere l'EDP identificata dai metadata della Credenziale selezionata.
+   La Wallet Unit MUST associare la policy risolta a ciascuna EAA emessa.
+   Durante la Presentazione di Credenziali, per ciascun Attestato Elettronico e per ciascun attributo richiesto, la Wallet Unit MUST valutare l'EDP associata prima del consenso dell'Utente.
+   Se un URI di EDP non può essere risolto nella policy esatta inclusa o precaricata, la valutazione EDP MUST fallire.
+   Un'EDP MUST NOT essere valutata per un PID.
+   Secondo il ``policy_type`` definito nella Sezione 4.2.5 di [`ETSI TS 119 472-3`_]:
 
     - ``no_policy``: non si applica alcuna restrizione.
     - ``authorized_rp_only``: solo le Relying Party nell'elenco ``authorized_parties`` sono autorizzate.
-      La Wallet Unit DEVE recuperare l'identificatore univoco a livello UE dal WRPRC nella richiesta (``sub``) e confrontarlo con ``authorized_parties[].identifier`` ([`EIDAS-ARF`_] EDP_02, Reg_32).
+      La Wallet Unit MUST recuperare l'identificatore univoco a livello UE dal WRPRC nella richiesta (``sub``) e confrontarlo con ``authorized_parties[].identifier`` ([`EIDAS-ARF`_] EDP_02, Reg_32).
       L'identificatore di Service di tale coppia è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
-      Ove un elemento ``authorized_parties`` identifichi la parte tramite ``entitlement_uri``, la Wallet Unit DEVE abbinare tale URI rispetto alle entitlement o sub-entitlement dello stesso WRPRC.
+      Ove un elemento ``authorized_parties`` identifichi la parte tramite ``entitlement_uri``, la Wallet Unit MUST abbinare tale URI rispetto alle entitlement o sub-entitlement dello stesso WRPRC.
       Un abbinamento sull'identificatore o su ``entitlement_uri`` è sufficiente.
-      Se nessuno dei due corrisponde, la Wallet Unit DEVE considerare fallita la valutazione EDP.
-      La Wallet Unit NON DEVE usare identificatori dal WRPAC, incluso il subject DN della Relying Party di un Wallet-Relying Party Access Certificate.
-      Se ``authorized_parties[].subject_dn`` è presente, è la codifica ETSI definita in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` e NON DEVE essere usato come sostituto di ``sub``.
+      Se nessuno dei due corrisponde, la Wallet Unit MUST considerare fallita la valutazione EDP.
+      La Wallet Unit MUST NOT usare identificatori dal WRPAC, incluso il subject DN della Relying Party di un Wallet-Relying Party Access Certificate.
+      Se ``authorized_parties[].subject_dn`` è presente, è la codifica ETSI definita in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` e MUST NOT essere usato come sostituto di ``sub``.
       In una presentazione **intermediata** il WRPRC nella richiesta è quello della Relying Party intermediata.
     - ``specific_root_of_trust``: solo le Relying Party il cui Wallet-Relying Party Registration Certificate è firmato sotto uno dei ``trusted_roots`` sono autorizzate ([`EIDAS-ARF`_] EDP_03).
-      La Wallet Unit DEVE abbinare ciascuna entry ``trusted_roots`` per ``issuer_dn`` usando il confronto LDAP DN e ``serial_number`` usando il confronto intero.
-      DEVE confrontare tutti i certificati nel signing path del WRPRC con quei certificati root o intermedi autorizzati.
+      La Wallet Unit MUST abbinare ciascuna entry ``trusted_roots`` per ``issuer_dn`` usando il confronto LDAP DN e ``serial_number`` usando il confronto intero.
+      MUST confrontare tutti i certificati nel signing path del WRPRC con quei certificati root o intermedi autorizzati.
       Il path comprende i certificati presentati con il WRPRC e il Trust Anchor recuperato dalla LoTE dei Provider of WRPRC.
-      Se nessuno di questi certificati è incluso nell'elenco, la Wallet Unit DEVE considerare fallita la valutazione EDP.
-      In una presentazione **intermediata** la Wallet Unit NON DEVE confrontare la catena WRPAC dell'Intermediary.
-      DEVE usare il signing path del WRPRC della Relying Party intermediata incluso nella richiesta.
+      Se nessuno di questi certificati è incluso nell'elenco, la Wallet Unit MUST considerare fallita la valutazione EDP.
+      In una presentazione **intermediata** la Wallet Unit MUST NOT confrontare la catena WRPAC dell'Intermediary.
+      MUST usare il signing path del WRPRC della Relying Party intermediata incluso nella richiesta.
 
-    Se il controllo applicabile è soddisfatto, o non è presente alcuna Embedded Disclosure Policy, la Wallet Unit DEVE impostare ``edp_state`` a ``EDP_SATISFIED``; altrimenti DEVE impostare ``edp_state`` a ``EDP_NOT_SATISFIED``.
+   La Wallet Unit MUST applicare la policy di base alla Credenziale e ogni regola specifica di attributo riconosciuta al path del claim nel formato di Credenziale selezionato.
+   Un attributo divulgato è consentito solo quando sono soddisfatti sia il risultato a livello di Credenziale sia il risultato a livello di attributo applicabile.
+   La Wallet Unit MUST informare l'Utente dei risultati a livello di Credenziale e a livello di attributo, incluso il link alle informazioni sulla policy quando presente, prima del consenso.
+   La Wallet Unit MUST bloccare ogni Credenziale o attributo non soddisfatto.
+   Le estensioni sconosciute MAY essere ignorate solo quando ciò non interrompe l'elaborazione delle regole riconosciute.
+
+   Se i controlli applicabili sono soddisfatti, o non è presente alcuna EDP per una EAA, la Wallet Unit MUST impostare il risultato della Credenziale o dell'attributo a ``EDP_SATISFIED``.
+   Altrimenti la Wallet Unit MUST impostare tale risultato a ``EDP_NOT_SATISFIED``.
 
 **Esito**
 
-Al termine della Authorization Validation la Wallet Unit DEVE produrre i valori ``authz_val_state`` e ``edp_state``.
+Al termine della Authorization Validation la Wallet Unit MUST produrre i valori ``authz_val_state`` e ``edp_state``.
 La tabella seguente sintetizza i codici.
 
 .. _table_authz_state_codes:
@@ -739,7 +760,7 @@ La tabella seguente sintetizza i codici.
    * - ``authz_art_state``
      - ``CERTIFICATE_INVALID``
      - both
-     - Un controllo di formato, firma, trust anchor o status fallisce sul certificato di registrazione presentato, oppure nessun Wallet-Relying Party Registration Certificate è incluso. Durante la presentazione la Wallet Unit DEVE avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17) e NON DEVE interrogare il Register. Durante l'emissione la Wallet Unit DEVE avvisare l'Utente e NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a). La Wallet Unit NON DEVE interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
+     - Un controllo di formato, firma, trust anchor o status fallisce sul certificato di registrazione presentato, oppure nessun Wallet-Relying Party Registration Certificate è incluso. Durante la presentazione la Wallet Unit MUST avvisare l'Utente ([`EIDAS-ARF`_] RPRC_17) e MUST NOT interrogare il Register. Durante l'emissione la Wallet Unit MUST avvisare l'Utente e MUST NOT richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a). La Wallet Unit MUST NOT interrogare il Register come fallback ([`EIDAS-ARF`_] RPRC_22).
    * - ``authz_val_state``
      - ``WRONG_ENTITLEMENT``
      - both
@@ -763,11 +784,11 @@ La tabella seguente sintetizza i codici.
    * - ``edp_state``
      - ``EDP_SATISFIED``
      - presentation
-     - Non si applica alcuna restrizione di Embedded Disclosure Policy, oppure la Relying Party soddisfa la policy locale.
+     - Non si applica alcuna restrizione di Embedded Disclosure Policy, oppure la Credenziale o l'attributo e la Relying Party soddisfano la policy risolta.
    * - ``edp_state``
      - ``EDP_NOT_SATISFIED``
      - presentation
-     - La Relying Party non soddisfa alcuna Embedded Disclosure Policy memorizzata localmente.
+     - La Credenziale selezionata, o l'attributo, non soddisfa l'Embedded Disclosure Policy risolta. La divulgazione o l'emissione dei dati interessati è bloccata.
 
 La Authorization Decision finale, ``AUTHORIZED`` o ``NOT_AUTHORIZED``, è elaborata dai valori ``authz_art_state``, ``authz_val_state`` e ``edp_state``, come definito in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
@@ -793,6 +814,13 @@ La Wallet Unit ottiene i metadata della Wallet-Relying Party in base all'interaz
 **Metadata Validation**
 
 L'autenticità dei metadata recuperati è stabilita attraverso il Wallet-Relying Party Access Certificate.
-Durante l'Emissione di Credenziali, i Metadata del Credential Issuer sono firmati dall'Attestation Provider come definito nella Sezione 12.2.3 di [`OpenID4VCI`_], fornendo la catena del Wallet-Relying Party Access Certificate nell'header ``x5c`` della firma JOSE.
+Durante l'Emissione di Credenziali, i Metadata del Credential Issuer sono firmati dall'Attestation Provider come definito nella Sezione 12.2.3 di [`OpenID4VCI`_], fornendo la catena del Wallet-Relying Party Access Certificate nell'header ``x5c`` protetto della firma JOSE.
+Il primo certificato MUST essere il certificato di accesso di firma.
+Il trust anchor MUST essere escluso.
+
+La Wallet Unit MUST validare il certification path e la firma prima di usare il payload.
+La Wallet Unit MUST usare tale payload autenticato come unica fonte di metadata per l'interazione, inclusi ``issuer_info``, i grant, la policy di riuso e l'EDP.
+
 Durante la Presentazione di Credenziali nel Remote Flow, il Request Object è firmato dalla Relying Party e fornisce lo stesso header ``x5c``.
-In entrambi i casi la Wallet Unit valida la firma e la catena di certificati come definito in :ref:`trust-evaluation:EUDIW Authentication`, e DEVE usare solo i metadata la cui firma è verificata rispetto al Wallet-Relying Party Access Certificate autenticato.
+In entrambi i casi la Wallet Unit valida la firma e la catena di certificati come definito in :ref:`trust-evaluation:EUDIW Authentication`.
+La Wallet Unit MUST usare solo i metadata la cui firma è verificata rispetto al Wallet-Relying Party Access Certificate autenticato.

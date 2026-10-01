@@ -14,7 +14,7 @@ Il profilo X.509 è dettagliato in :ref:`infrastructure-trust:Common Trust Artif
 - OpenID Federation Subordinate Events (`OID-FED-SUBORDINATE-EVENTS`_), che definisce l'endpoint Subordinate Events, usato per ottenere lo storico di registrazione di un Immediate Subordinate.
 
 La figura :ref:`fig_OID-FED_roles` mappa ciascuna entità dell'ecosistema wallet sul ruolo OpenID Federation che svolge.
-Le Wallet-Relying Party e i Wallet Provider sono Federation Entity che DEVONO essere registrate da una Federation Authority, cioè un Federation TA o Intermediate.
+Le Wallet-Relying Party e i Wallet Provider sono Federation Entity che MUST essere registrate da una Federation Authority, cioè un Federation TA o Intermediate.
 
 .. _fig_OID-FED_roles:
 .. plantuml:: plantuml/oid-fed-roles.puml
@@ -30,11 +30,11 @@ Federation API Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 OpenID Federation 1.0 usa servizi web RESTful protetti su HTTPS.
-Tutte le Federation Entity DEVONO pubblicare la propria **Entity Configuration** all'endpoint ``.well-known/openid-federation`` secondo `OID-FED`_ Sezione 9.
+Tutte le Federation Entity MUST pubblicare la propria **Entity Configuration** all'endpoint ``.well-known/openid-federation`` secondo `OID-FED`_ Sezione 9.
 Il Federation TA e gli Intermediate espongono inoltre gli endpoint di federazione usati per costruire e validare le Trust Chain e per supportare i Trust Mark.
 
 Le proprietà della Federation Entity supportate nel profilo delle specifiche IT-Wallet sono definite in `OID-FED`_ Sezione 5.1.1.
-La tabella seguente elenca gli endpoint di federazione, gli Entity Type che DEVONO esporre ciascuno di essi, i parametri di richiesta usati all'interno di IT-Wallet con il loro status OBBLIGATORIO o OPZIONALE, e la risposta restituita da ciascun endpoint.
+La tabella seguente elenca gli endpoint di federazione, gli Entity Type che MUST esporre ciascuno di essi, i parametri di richiesta usati all'interno di IT-Wallet con il loro status REQUIRED o OPTIONAL, e la risposta restituita da ciascun endpoint.
 I parametri di richiesta seguono `OID-FED`_ Sezione 8: sono inviati come query parameter per le richieste GET e nel body per le richieste POST.
 Le risposte seguono i formati di risposta OID-FED referenziati nella tabella.
 
@@ -47,60 +47,60 @@ Le risposte seguono i formati di risposta OID-FED referenziati nella tabella.
      - **Parametri di richiesta**
      - **Risposta**
    * - **fetch** (``/fetch``).
-       OBBLIGATORIO per Federation TA e Intermediate.
+       REQUIRED per Federation TA e Intermediate.
      - **GET**.
-       ``sub`` OBBLIGATORIO.
+       ``sub`` REQUIRED.
      - Il Subordinate Statement richiesto, come JWT firmato (``application/entity-statement+jwt``).
        `OID-FED`_ Sezione 8.1.2
    * - **list** (``/list``).
-       OBBLIGATORIO per Federation TA e Intermediate.
+       REQUIRED per Federation TA e Intermediate.
      - **GET**.
-       ``entity_type``, ``trust_marked``, ``trust_mark_type`` e ``intermediate``, tutti OPZIONALI.
+       ``entity_type``, ``trust_marked``, ``trust_mark_type`` e ``intermediate``, tutti OPTIONAL.
      - Un array JSON degli Entity Identifier degli Immediate Subordinate (``application/json``).
        `OID-FED`_ Sezione 8.2.2
    * - **resolve** (``/resolve``).
-       OBBLIGATORIO per Federation TA e Intermediate.
+       REQUIRED per Federation TA e Intermediate.
      - **GET**.
-       ``sub`` e ``trust_anchor`` OBBLIGATORI, ``entity_type`` OPZIONALE.
+       ``sub`` e ``trust_anchor`` REQUIRED, ``entity_type`` OPTIONAL.
      - La Resolve Response con i Resolved Metadata, la Trust Chain e i Trust Mark verificati, come JWT firmato (``application/resolve-response+jwt``).
        `OID-FED`_ Sezione 8.3.2
    * - **trust mark status** (``/trust_mark_status``).
-       OBBLIGATORIO per Federation TA e OPZIONALE per Intermediate.
+       REQUIRED per Federation TA e OPTIONAL per Intermediate.
      - **POST**.
-       ``trust_mark`` OBBLIGATORIO.
+       ``trust_mark`` REQUIRED.
      - La Trust Mark Status Response, cioè la validità del Trust Mark, come JWT firmato (``application/trust-mark-status-response+jwt``).
        `OID-FED`_ Sezione 8.4.2
    * - **trust mark list** (``/trust_marked_list``).
-       OBBLIGATORIO per Federation TA e OPZIONALE per Intermediate.
+       REQUIRED per Federation TA e OPTIONAL per Intermediate.
      - **GET**.
-       ``trust_mark_type`` OBBLIGATORIO, ``sub`` OPZIONALE.
+       ``trust_mark_type`` REQUIRED, ``sub`` OPTIONAL.
      - Un array JSON degli Entity Identifier per i quali il Trust Mark è emesso e ancora valido (``application/json``).
        `OID-FED`_ Sezione 8.5.2
    * - **trust mark** (``/trust_mark``).
-       OBBLIGATORIO solo per Federation TA e OPZIONALE per Intermediate.
+       REQUIRED solo per Federation TA e OPTIONAL per Intermediate.
      - **GET**.
-       ``trust_mark_type`` e ``sub`` OBBLIGATORI.
+       ``trust_mark_type`` e ``sub`` REQUIRED.
      - Il Trust Mark richiesto, come JWT firmato (``application/trust-mark+jwt``).
        `OID-FED`_ Sezione 8.6.2
    * - **historical keys** (``/historical_keys``).
-       OBBLIGATORIO per Federation TA e Intermediate.
+       REQUIRED per Federation TA e Intermediate.
      - **GET**.
        Nessun parametro di richiesta.
      - Un JWK Set firmato con le chiavi storiche, come JWT firmato (``application/jwk-set+jwt``).
        `OID-FED`_ Sezione 8.7.2
    * - **subordinate events** (``/subordinate_events``).
-       OBBLIGATORIO per Federation TA e OPZIONALE per Intermediate.
+       REQUIRED per Federation TA e OPTIONAL per Intermediate.
      - **GET**.
-       ``sub`` OBBLIGATORIO.
+       ``sub`` REQUIRED.
      - Un JWT firmato con lo storico degli eventi di registrazione.
        Vedi la specifica Subordinate Events Sezione 2.3.
 
-L'endpoint **Subordinate Events** (``/subordinate_events``) è definito in `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_.
+L'endpoint **Subordinate Events** (``/subordinate_events``) è definito in `OID-FED-SUBORDINATE-EVENTS`_.
 Il suo scopo è fornire una traccia storica verificabile degli eventi di registrazione concernenti un Immediate Subordinate, come la sua registrazione, l'aggiornamento delle sue Federation Entity Keys e la sua revoca.
-Per il formato della richiesta, il formato della risposta e i tipi di evento si fa riferimento a `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_ Sezione 2.2 e 2.3.
+Per il formato della richiesta, il formato della risposta e i tipi di evento si fa riferimento alle Sezioni 2.2 e 2.3 di [`OID-FED-SUBORDINATE-EVENTS`_].
 
 .. note::
-  All'interno di IT-Wallet l'endpoint **resolve** (``/resolve``) DEVE rispondere alle richieste non autenticate solo con informazioni in cache sulle Entità, se disponibili, e la raccolta e la valutazione di una Trust Chain NON DEVE essere l'azione predefinita dell'endpoint resolve, come descritto in `OID-FED`_ Sezione 18.1.
+  All'interno di IT-Wallet l'endpoint **resolve** (``/resolve``) MUST rispondere alle richieste non autenticate solo con informazioni in cache sulle Entità, se disponibili, e la raccolta e la valutazione di una Trust Chain MUST NOT essere l'azione predefinita dell'endpoint resolve, come descritto in `OID-FED`_ Sezione 18.1.
 
 Entity Statements
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -111,11 +111,11 @@ Contiene le chiavi, le policy e i dettagli di configurazione richiesti affinché
 L'**Entity Configuration** è l'Entity Statement che ciascuna Federation Entity emette su se stessa e pubblica al path ``.well-known/openid-federation`` (`OID-FED`_ Sezione 3).
 I suoi ``iss`` e ``sub`` sono il Federation Entity Identifier dell'Entità stessa, ed è firmata con una Federation Entity Key.
 La risposta HTTP imposta il media type a ``application/entity-statement+jwt``.
-L'Entity Configuration PUÒ anche contenere uno o più Trust Mark.
+L'Entity Configuration MAY anche contenere uno o più Trust Mark.
 
 Un **Subordinate Statement** è l'Entity Statement che un Trust Anchor o un Federation Intermediate emette sul proprio Immediate Subordinate (`OID-FED`_ Sezione 3).
 Il suo ``iss`` è l'issuer, il suo ``sub`` è il Subordinate, e reca le Federation Entity Keys del Subordinate, quindi è la dichiarazione che vincola le chiavi del Subordinate sotto il suo superiore.
-PUÒ anche recare una metadata policy e i Trust Mark relativi al Subordinate.
+MAY anche recare una metadata policy e i Trust Mark relativi al Subordinate.
 
 Entity Configuration
 """""""""""""""""""""""
@@ -141,36 +141,36 @@ All'interno di IT-Wallet i Subordinate Statement sono emessi durante l'onboardin
 Entity Statement Parameters
 """""""""""""""""""""""""""""""""""""""
 
-In aggiunta ai parametri comuni OBBLIGATORI ``iss``, ``sub``, ``iat``, ``exp`` e ``jwks`` come definiti in `OID-FED`_ Sezione 3.1.1, all'interno del profilo delle specifiche IT-Wallet si applicano i seguenti parametri.
+In aggiunta ai parametri comuni REQUIRED ``iss``, ``sub``, ``iat``, ``exp`` e ``jwks`` come definiti in `OID-FED`_ Sezione 3.1.1, all'interno del profilo delle specifiche IT-Wallet si applicano i seguenti parametri.
 
 Nell'Entity Configuration (`OID-FED`_ Sezione 3.1.2):
 
-- **metadata** (``metadata``): Oggetto JSON OBBLIGATORIO in cui ciascuna chiave è un identificatore di tipo di metadata e il suo valore è il metadata di tale tipo (vedi `OID-FED`_ Sezione 3.1.1).
-  Tutte le Entità DEVONO includere almeno un metadata per ``federation_entity`` nelle proprie Entity Configuration, e POSSONO includere più di una dichiarazione di metadata, ma solo una per ciascun tipo di metadata.
+- **metadata** (``metadata``): Oggetto JSON REQUIRED in cui ciascuna chiave è un identificatore di tipo di metadata e il suo valore è il metadata di tale tipo (vedi `OID-FED`_ Sezione 3.1.1).
+  Tutte le Entità MUST includere almeno un metadata per ``federation_entity`` nelle proprie Entity Configuration, e MAY includere più di una dichiarazione di metadata, ma solo una per ciascun tipo di metadata.
   I tipi di metadata sono definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
-- **trust_marks** (``trust_marks``): OBBLIGATORIO per Foglie e Federation Intermediate.
+- **trust_marks** (``trust_marks``): REQUIRED per Foglie e Federation Intermediate.
   Array JSON dei Trust Mark del subject.
   Il Trust Mark di registrazione è definito in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-- **trust_mark_issuers** (``trust_mark_issuers``): OBBLIGATORIO solo per Federation TA e NON DEVE essere incluso altrimenti.
+- **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED solo per Federation TA e MUST NOT essere incluso altrimenti.
   Oggetto JSON che dichiara, per ciascun tipo di Trust Mark, le Federation Authority fidate a emetterlo, indicate dai loro Federation Entity Identifier.
-  All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi DEVE contenere almeno l'identificatore del Federation TA.
+  All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi MUST contenere almeno l'identificatore del Federation TA.
 
 Nel Subordinate Statement (`OID-FED`_ Sezione 3.1.3):
 
-- **metadata_policy** (``metadata_policy``): OPZIONALE in `OID-FED`_.
+- **metadata_policy** (``metadata_policy``): OPTIONAL in `OID-FED`_.
   Metadata policy vincolata a un tipo di metadata specifico e applicata al sottoalbero, risolta combinando i Claim ``metadata_policy`` lungo la Trust Chain, come definito in `OID-FED`_ Sezione 6.1.4.
-  All'interno di IT-Wallet il Subordinate Statement relativo a una Foglia DEVE recare una ``metadata_policy`` che vincola i metadata di protocollo della Foglia ai valori approvati in onboarding.
-  Usando gli operatori di metadata policy di `OID-FED`_ Sezione 6.1.3, DEVE fissare l'``organization_name`` dei metadata ``federation_entity``, le chiavi di firma di protocollo (``jwks``) e, quando presente nel tipo di metadata, gli endpoint di servizio e gli URI di request, response e redirect (per esempio i ``request_uris``, ``response_uris`` e ``redirect_uris`` di ``openid_credential_verifier``).
+  All'interno di IT-Wallet il Subordinate Statement relativo a una Foglia MUST recare una ``metadata_policy`` che vincola i metadata di protocollo della Foglia ai valori approvati in onboarding.
+  Usando gli operatori di metadata policy di `OID-FED`_ Sezione 6.1.3, MUST fissare l'``organization_name`` dei metadata ``federation_entity``, le chiavi di firma di protocollo (``jwks``) e, quando presente nel tipo di metadata, gli endpoint di servizio e gli URI di request, response e redirect (per esempio i ``request_uris``, ``response_uris`` e ``redirect_uris`` di ``openid_credential_verifier``).
   Questo Subordinate Statement è emesso dal superiore immediato che ha registrato la Foglia, cioè il Federation TA per le Foglie che registra direttamente e un Federation Intermediate per le sue Relying Party affiliate.
   Il Subordinate Statement relativo a un Federation Intermediate non reca una ``metadata_policy``, perché l'Intermediate non ha metadata di protocollo e le sue Relying Party affiliate sono vincolate dall'Intermediate stesso.
-  Un superiore PUÒ restringere ulteriormente la metadata policy impostata dai propri superiori, ma NON DEVE allentarla, come definito in `OID-FED`_ Sezione 6.1.1.
-- **constraints** (``constraints``): OBBLIGATORIO solo per Federation TA.
+  Un superiore MAY restringere ulteriormente la metadata policy impostata dai propri superiori, ma MUST NOT allentarla, come definito in `OID-FED`_ Sezione 6.1.1.
+- **constraints** (``constraints``): REQUIRED solo per Federation TA.
   Reca i vincoli applicati al sottoalbero al di sotto dell'issuer.
-  DEVE contenere ``allowed_entity_types``, che restringe i metadata Entity Type che i Subordinate nel sottoalbero sono autorizzati a pubblicare, e ``max_path_length``, che limita il numero di Intermediate tra l'issuer e il subject della Trust Chain.
-  L'Entity Type ``federation_entity`` è sempre consentito e NON DEVE essere elencato in ``allowed_entity_types``.
+  MUST contenere ``allowed_entity_types``, che restringe i metadata Entity Type che i Subordinate nel sottoalbero sono autorizzati a pubblicare, e ``max_path_length``, che limita il numero di Intermediate tra l'issuer e il subject della Trust Chain.
+  L'Entity Type ``federation_entity`` è sempre consentito e MUST NOT essere elencato in ``allowed_entity_types``.
   Vedi `OID-FED`_ Sezione 6.2.
 
-Tutti gli altri parametri opzionali definiti in `OID-FED`_ Sezione 3 che non sono riconosciuti all'interno del profilo delle specifiche IT-Wallet DEVONO essere ignorati durante la valutazione di un Entity Statement.
+Tutti gli altri parametri opzionali definiti in `OID-FED`_ Sezione 3 che non sono riconosciuti all'interno del profilo delle specifiche IT-Wallet MUST essere ignorati durante la valutazione di un Entity Statement.
 
 .. note::
   All'interno di IT-Wallet le Federation Entity Keys recate nel ``jwks`` di un'Entity Configuration o di un Subordinate Statement sono usate per firmare le dichiarazioni di federazione e sono validate attraverso la Federation Trust Chain, non attraverso X.509.
@@ -187,7 +187,7 @@ Gli Entity Type Identifier dei ruoli dell'ecosistema sono definiti in OpenID Fed
 Ciascun ruolo dichiara nella propria Entity Configuration uno o più tipi di metadata, i cui parametri seguono la specifica di protocollo di tale tipo di metadata.
 La tabella seguente mappa i ruoli dell'ecosistema sui loro Entity Type Identifier e fornisce il riferimento del protocollo di metadata per ciascuno di essi.
 
-Il tipo di metadata del Wallet Provider DEVE essere ``openid_wallet_provider``, l'Entity Type Identifier definito da OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_).
+Il tipo di metadata del Wallet Provider MUST essere ``openid_wallet_provider``, l'Entity Type Identifier definito da OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_).
 
 .. list-table::
    :class: longtable
@@ -214,14 +214,14 @@ Il tipo di metadata del Wallet Provider DEVE essere ``openid_wallet_provider``, 
   Il suo Trust Mark di registrazione usa l'Entity Type Identifier ``intermediate`` nel tipo di Trust Mark, come definito in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
 .. note::
-  Quando un PID o EAA Provider implementa sia il Credential Issuer sia l'Authorization Server all'interno della stessa Entità, DEVE includere sia ``openid_credential_issuer`` sia ``oauth_authorization_server`` nei suoi tipi di metadata.
-  Quando l'Authorization Server è un'Entità separata, i metadata del Credential Issuer DEVONO contenere il parametro ``authorization_servers`` con l'identificatore dell'Authorization Server.
-  Secondo `OPENID4VCI`_ l'Authorization Server PUÒ essere esterno all'Entità che implementa il Credential Endpoint, pertanto l'uso di ``oauth_authorization_server`` è OPZIONALE.
+  Quando un PID o EAA Provider implementa sia il Credential Issuer sia l'Authorization Server all'interno della stessa Entità, MUST includere sia ``openid_credential_issuer`` sia ``oauth_authorization_server`` nei suoi tipi di metadata.
+  Quando l'Authorization Server è un'Entità separata, i metadata del Credential Issuer MUST contenere il parametro ``authorization_servers`` con l'identificatore dell'Authorization Server.
+  Secondo `OPENID4VCI`_ l'Authorization Server MAY essere esterno all'Entità che implementa il Credential Endpoint, pertanto l'uso di ``oauth_authorization_server`` è OPTIONAL.
   Inoltre, qualora sia necessaria l'Autenticazione dell'Utente da parte del Credential Issuer, potrebbe essere necessario includere il tipo di metadata rilevante ``openid_credential_verifier``.
 
 I metadata ``federation_entity`` recano i parametri informativi seguenti insieme ai parametri degli endpoint di federazione.
 I parametri degli endpoint di federazione (``federation_fetch_endpoint``, ``federation_list_endpoint``, ``federation_resolve_endpoint`` e gli altri) sono pubblicati solo dal Federation TA e dagli Intermediate, secondo i loro obblighi definiti nella sezione Federation API Endpoints sopra, e una Foglia non li espone.
-I parametri informativi seguenti sono OPZIONALI in `OID-FED`_; il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.
+I parametri informativi seguenti sono OPTIONAL in `OID-FED`_; il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.
 
 .. list-table::
   :class: longtable
@@ -231,25 +231,25 @@ I parametri informativi seguenti sono OPZIONALI in `OID-FED`_; il profilo delle 
   * - **Claim**
     - **Descrizione**
   * - **organization_name**
-    - OBBLIGATORIO.
+    - REQUIRED.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **organization_uri**
-    - OBBLIGATORIO.
+    - REQUIRED.
       URL della pagina web dell'organizzazione che possiede l'entità.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
-    - OBBLIGATORIO.
+    - REQUIRED.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**
-    - OBBLIGATORIO.
+    - REQUIRED.
       URL del logo dell'entità, in formato SVG.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **contacts**
-    - OBBLIGATORIO.
+    - REQUIRED.
       All'interno di IT-Wallet è l'indirizzo email verificato istituzionale (PEC) dell'entità.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **tos_uri**
-    - OPZIONALE.
+    - OPTIONAL.
       URL dei termini di servizio dell'entità.
       Vedi `OID-FED`_ Sezione 5.2.2
 
@@ -355,7 +355,7 @@ I Trust Mark sono emessi dalla Federation Authority (Trust Anchor per l'onboardi
 Trust Mark Types and Schema
 """""""""""""""""""""""""""
 
-Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che riflette lo scope di autorizzazione:
+Gli identificatori dei Trust Mark MUST seguire uno schema gerarchico che riflette lo scope di autorizzazione:
 
 ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``
 
@@ -363,19 +363,19 @@ Dove:
 
   - ``<federation_authority_domain>``: Il dominio della Federation Authority emittente.
   - ``<purpose>``: Lo scopo del Trust Mark.
-    Lo scopo ``registration-entity`` è **OBBLIGATORIO** per tutte le entità a seguito del processo di onboarding.
-    Scopi aggiuntivi di Trust Mark POSSONO essere definiti per esigenze future, ma non sono richiesti per i processi di autorizzazione definiti in :ref:`trust-evaluation:Authorization`.
+    Lo scopo ``registration-entity`` è **REQUIRED** per tutte le entità a seguito del processo di onboarding.
+    Scopi aggiuntivi di Trust Mark MAY essere definiti per esigenze future, ma non sono richiesti per i processi di autorizzazione definiti in :ref:`trust-evaluation:Authorization`.
   - ``<entity_type>``: L'Entity Type Identifier del subject, tra quelli definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (per esempio ``openid_credential_issuer`` o ``openid_credential_verifier``), e ``intermediate`` per un Relying Party Intermediary.
 
 .. note::
   Il Federation TA nazionale è l'issuer di Trust Mark riconosciuto all'interno della federazione e l'unica Entità che può abilitare altri issuer di Trust Mark usando il parametro ``trust_mark_issuers`` nella propria Entity Configuration.
-  Scopi aggiuntivi di Trust Mark, quando definiti, POSSONO quindi essere emessi da altre Entità autorizzate attraverso ``trust_mark_issuers``.
+  Scopi aggiuntivi di Trust Mark, quando definiti, MAY quindi essere emessi da altre Entità autorizzate attraverso ``trust_mark_issuers``.
 
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""
 
 All'interno di IT-Wallet il Trust Mark ``registration-entity`` è il Trust Mark di registrazione di un'entità.
-L'unico issuer di Trust Mark per il Trust Mark di registrazione DEVE essere il Federation TA.
+L'unico issuer di Trust Mark per il Trust Mark di registrazione MUST essere il Federation TA.
 Attesta la registrazione e reca i dati di autorizzazione dell'entità, cioè le sue entitlement e, ove applicabile, le Credenziali e gli attributi che è autorizzata a emettere o a richiedere.
 Questo Trust Mark di registrazione è l'analogo funzionale del Wallet-Relying Party Registration Certificate (WRPRC) del Trust Framework EUDIW.
 Un'entità riceve un Trust Mark di registrazione per ciascun ruolo che detiene, con il componente ``<entity_type>`` dell'identificatore impostato di conseguenza.
@@ -390,7 +390,7 @@ L'onboarding dell'Intermediary è definito in :ref:`onboarding-system:Relying Pa
 
 **Trust Mark Structure**
 
-I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
+I Trust Mark nell'Entity Configuration MUST essere rappresentati come oggetti JSON contenenti i seguenti claim:
 
 .. list-table:: Claim dell'Oggetto Trust Mark (nell'Entity Configuration)
    :class: longtable
@@ -400,17 +400,17 @@ I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti 
    * - **Claim**
      - **Descrizione**
    * - **trust_mark_type**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Identificatore per il tipo di Trust Mark che segue lo schema: ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``.
    * - **trust_mark**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Un JSON Web Token firmato che rappresenta il Trust Mark emesso dalla Federation Authority.
 
-Il Trust Mark JWT (contenuto nel claim ``trust_mark`` sopra) DEVE essere un JWT firmato che include sia un header JOSE sia un payload, come definito in `OID-FED`_ Sezione 7.
+Il Trust Mark JWT (contenuto nel claim ``trust_mark`` sopra) MUST essere un JWT firmato che include sia un header JOSE sia un payload, come definito in `OID-FED`_ Sezione 7.
 
 **Trust Mark JWT Header**
 
-L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:
+L'header JOSE del Trust Mark JWT MUST includere i seguenti parametri:
 
 .. list-table:: Parametri dell'Header JWT del Trust Mark
    :class: longtable
@@ -420,17 +420,17 @@ L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:
    * - **Parameter**
      - **Descrizione**
    * - **alg**
-     - OBBLIGATORIO.
+     - REQUIRED.
        L'algoritmo crittografico usato per firmare il Trust Mark JWT.
-       DEVE essere uno degli algoritmi supportati per le Federation Entity Keys (vedi :ref:`algorithms:Algoritmi Crittografici`).
+       MUST essere uno degli algoritmi supportati per le Federation Entity Keys (vedi :ref:`algorithms:Algoritmi Crittografici`).
    * - **kid**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Key ID della Federation Entity Key usata per firmare il Trust Mark, come definito in `OID-FED`_ Sezione 7.
    * - **typ**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Media type del Trust Mark JWT.
-       DEVE essere impostato a ``trust-mark+jwt``, come definito in `OID-FED`_ Sezione 7, a meno che un media type più specifico non sia definito dal trust framework per il particolare tipo di Trust Mark.
-       I Trust Mark senza un parametro di header ``typ`` o con un valore ``typ`` non riconosciuto DEVONO essere rifiutati.
+       MUST essere impostato a ``trust-mark+jwt``, come definito in `OID-FED`_ Sezione 7, a meno che un media type più specifico non sia definito dal trust framework per il particolare tipo di Trust Mark.
+       I Trust Mark senza un parametro di header ``typ`` o con un valore ``typ`` non riconosciuto MUST essere rifiutati.
 
 Un esempio non normativo di un header JWT di Trust Mark:
 
@@ -454,73 +454,73 @@ Il payload del Trust Mark JWT include i seguenti claim:
    * - **Claim**
      - **Descrizione**
    * - **iss**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Il Federation Trust Anchor che emette il Trust Mark.
    * - **sub**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Federation Entity Identifier del subject.
    * - **trust_mark_type**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Identificatore univoco del Trust Mark.
-       DEVE corrispondere al claim ``trust_mark_type`` dell'Oggetto Trust Mark.
+       MUST corrispondere al claim ``trust_mark_type`` dell'Oggetto Trust Mark.
    * - **iat**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Timestamp di emissione del Trust Mark.
    * - **exp**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Timestamp di scadenza del Trust Mark.
    * - **public_body**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Booleano che indica se l'entità è un organismo del settore pubblico.
    * - **vat_number**
-     - OBBLIGATORIO quando ``public_body`` è ``false``.
+     - REQUIRED quando ``public_body`` è ``false``.
        Partita IVA dell'entità.
-       PUÒ essere presente anche quando ``public_body`` è ``true``.
+       MAY essere presente anche quando ``public_body`` è ``true``.
    * - **legal_identifier**
-     - RACCOMANDATO.
+     - RECOMMENDED.
        Numero o identificatore di registrazione legale dell'entità (ad es., numero di registrazione dell'impresa, codice fiscale).
    * - **ipa_code**
-     - OBBLIGATORIO quando ``public_body`` è ``true``, NON DEVE essere presente altrimenti.
+     - REQUIRED quando ``public_body`` è ``true``, MUST NOT essere presente altrimenti.
        Codice IPA (Indice delle Pubbliche Amministrazioni) dell'entità del settore pubblico.
    * - **organization_name**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Denominazione completa dell'Entità Organizzativa.
    * - **email**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Email istituzionale o PEC dell'organizzazione.
    * - **support_uri**
-     - OBBLIGATORIO.
+     - REQUIRED.
        URL o indirizzo email da usare per le richieste relative all'entità, come la cancellazione o la portabilità dei dati.
    * - **srv_description**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Descrizione multilingue del servizio fornito dall'entità.
        Ciascuna entry contiene ``lang`` e ``value``.
    * - **entitlements**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Array di URI di entitlement che identificano il ruolo del subject, come definito in `ETSI TS 119 475`_ Allegato A.2 (ad es. ``Service_Provider``, ``PID_Provider``, ``QEAA_Provider``, ``PUB_EAA_Provider``, ``Non_Q_EAA_Provider``).
    * - **provides_attestations**
-     - OBBLIGATORIO per un Credential Issuer, NON DEVE essere presente altrimenti.
+     - REQUIRED per un Credential Issuer, MUST NOT essere presente altrimenti.
        Array dei tipi di Credenziale che il subject è autorizzato a emettere.
        Ciascuna entry contiene ``format``, ``meta`` per identificare il tipo di Credenziale, e un array ``claim`` opzionale.
    * - **credentials**
-     - OBBLIGATORIO per una Relying Party che richiede Credenziali, NON DEVE essere presente altrimenti.
+     - REQUIRED per una Relying Party che richiede Credenziali, MUST NOT essere presente altrimenti.
        Array delle query di Credenziale che il subject è autorizzato a richiedere, usato per l'Overasking Check.
        Ciascuna entry contiene ``format``, ``meta`` (ad es. ``vct_values`` o ``doctype_value``) e un array ``claim`` dei path di attributo autorizzati.
    * - **purpose**
-     - OBBLIGATORIO per una Relying Party che richiede Credenziali, NON DEVE essere presente altrimenti.
+     - REQUIRED per una Relying Party che richiede Credenziali, MUST NOT essere presente altrimenti.
        Elenco multilingue che descrive il trattamento dei dati associato all'uso previsto.
        Ciascuna entry contiene ``lang`` e ``value``.
    * - **privacy_policy**
-     - OBBLIGATORIO per una Relying Party che richiede Credenziali, NON DEVE essere presente altrimenti.
+     - REQUIRED per una Relying Party che richiede Credenziali, MUST NOT essere presente altrimenti.
        URL della privacy policy del subject.
    * - **supervisory_authority**
-     - OBBLIGATORIO.
+     - REQUIRED.
        Informazioni sull'Autorità di protezione dei dati, con ``uri``, ``email`` e ``phone``.
    * - **logo_uri**
-     - OBBLIGATORIO.
+     - REQUIRED.
        URL che punta al :ref:`brand-identity:Trust Mark` per scopi UI/UX.
    * - **ref**
-     - OPZIONALE.
+     - OPTIONAL.
        URL con informazioni web aggiuntive sul Trust Mark.
 
 .. note::

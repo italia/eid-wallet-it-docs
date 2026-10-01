@@ -113,7 +113,7 @@ For more detailed information, please refer to :ref:`wallet-instance-registratio
 WSCA/WSCD Requirements
 """"""""""""""""""""""
 
-The **WSCA/WSCD** used for the PID consists of a WSCA operating within a **Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This combination is used exclusively for the issuance and management of the PID at Level of Assurance High. The PID private key MUST be generated and managed by the WSCA operating within the Remote WSCD (remote HSM), which by definition satisfies the requirements for Level of Assurance High. The WSCA/Remote WSCD MUST require User authentication before any signature or other private-key operation.
+The **WSCA/WSCD** used for the PID consists of a WSCA operating within a **Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This combination is used exclusively for the issuance and management of the PID at Level of Assurance High. The PID private key MUST be generated and managed by the WSCA operating within the Remote WSCD (remote HSM), which by definition satisfies the requirements for Level of Assurance High. A WSCD MUST be certifiable as resistant to attackers with high attack potential (at least Common Criteria EAL4+ AVA_VAN.5). A hardware-backed Keystore MUST NOT be treated as evidence of Level of Assurance High. The WSCA/Remote WSCD MUST require User authentication before any signature or other private-key operation.
 
 .. note::
   In the current implementation profile, the WSCA/WSCD is exclusively required for PID issuance. Future versions of this specification MAY extend this requirement to other Digital Credentials that require Level of Assurance High.

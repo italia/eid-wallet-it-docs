@@ -281,9 +281,12 @@ The Wallet Unit evaluates the common types as specified in :ref:`trust-evaluatio
 Non-disclosure towards the Relying Party is Section 4.2.5.1 of `ETSI TS 119 472-3`_.
 
 The Attestation Provider MUST include the EDP, if any, as the ``embedded_disclosure_policy`` member of ``credential_metadata`` within ``credential_configurations_supported``, in compliance with `OpenID4VCI`_ or the extension thereof specified in `ETSI TS 119 472-3`_.
-The member MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``.
-The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together.
+The member MUST contain a ``policy_uri``.
+The member MAY contain the complete policy data in ``policy_data``.
+The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded.
+Otherwise the URI and the policy data MUST be provided together.
 An unresolved URI MUST cause the association and the affected disclosure to fail.
+The Wallet Unit MUST NOT retrieve policy content from ``policy_uri``.
 
 .. note::
 
@@ -318,7 +321,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
        Unique identifier of the Embedded Disclosure Policy (EDP).
 
        The association of the EDP with an EAA MUST be established by including this unique URI.
-        The AP MUST either include the URI together with the full policy data set, or provide only the URI if the exact policy data set identified by that URI has already been pre-loaded into the Wallet Unit. A URI that cannot be resolved to the exact included or preloaded policy MUST fail EDP processing; the Wallet Unit MUST NOT proactively retrieve an unspecified replacement policy.
+       Resolution of the URI, including the prohibition on retrieving policy content from it, is specified above in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
@@ -389,7 +392,14 @@ The following table provides a comprehensive overview of the Embedded Disclosure
      - OPTIONAL. array of objects.
        Container for supplementary EDP extension structures.
 
-        These structures MAY be ignored by the Wallet Unit, but the Wallet Unit MUST successfully process recognized rules even if unrecognized extensions are present. The IT-Wallet extension is an object with an extension identifier, a Credential-format claim ``path``, and an alternative common EDP rule. The base policy governs the Credential; the matching extension rule governs that attribute, and every disclosed attribute MUST satisfy its applicable rule. The extension encoding MUST be serializable in the EDP and MUST NOT change the result for attributes without a matching path.
+       These structures MAY be ignored by the Wallet Unit.
+       The Wallet Unit MUST successfully process recognized rules even if unrecognized extensions are present.
+       The IT-Wallet extension is an object with an extension identifier, a Credential-format claim ``path``, and an alternative common EDP rule.
+       The base policy governs the Credential.
+       The matching extension rule governs that attribute.
+       Every disclosed attribute MUST satisfy its applicable rule.
+       The extension encoding MUST be serializable in the EDP.
+       The extension encoding MUST NOT change the result for attributes without a matching path.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
@@ -417,9 +427,6 @@ The timing of detection depends on when the Wallet Unit checks the Digital Crede
 .. warning::
 
     **Proactive refresh**.
-    The Attestation Provider MAY provide EDP though its URI.
-    In this case, the Wallet Unit MAY proactively fetch the EDP content at the ``policy_uri`` to check for updates, without waiting for a Digital Credential revocation signal.
-    However, this mechanism SHOULD NOT be used in this specification for the following reason:
-
-    - It enables Attestation Provider to unilaterally change an EDP, and it may introduce privacy risks and management overhead (as stated in the Discussion Topic D)
-    - Technical details of this mechanism are not defined within ETSI standard.
+    This specification does not use proactive refresh of an Embedded Disclosure Policy.
+    The prohibition on retrieving policy content from ``policy_uri``, and the revocation of the Digital Credential when an EDP changes, are specified above in this section.
+    Proactive refresh is excluded because it would allow an Attestation Provider to change an EDP unilaterally, with the privacy and management consequences described in Discussion Topic D, and because its technical details are not defined in the ETSI standard.

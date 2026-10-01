@@ -92,13 +92,17 @@ At issuance the Wallet Unit initiates the interaction and knows the requested Cr
 For each interaction, the Wallet Unit MUST select exactly one framework before Authentication, Authorization, or Metadata Retrieval and Validation. 
 
 For Authentication, Authorization and Metadata Retrieval and Validation of the Credential Issuer, the Wallet Unit MUST apply the EUDIW procedures when the Credential Issuer, or the requested PID, (Q)EAA or PuB-EAA, is of another Member State.
-On the EUDIW path, the Credential Issuer Metadata result MUST be authenticated using a signed OpenID4VCI metadata payload whose protected ``x5c`` starts with the signing WRPAC and excludes the trust anchor, according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`. The Wallet Unit MUST use that result for every endpoint, key, grant, registration, reuse, and EDP decision, with authorization governed by :ref:`trust-evaluation:EUDIW Authorization`.
+On the EUDIW path, the Credential Issuer Metadata result MUST be authenticated using a signed OpenID4VCI metadata payload whose protected ``x5c`` starts with the signing WRPAC and excludes the trust anchor, according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
+The Wallet Unit MUST use that result for every endpoint, key, grant, registration, reuse, and EDP decision.
+Authorization on that path is governed by :ref:`trust-evaluation:EUDIW Authorization`.
 
 The Wallet Unit MAY apply the National Trust Framework procedures when the Credential Issuer is a national entity, including the Italian PID Provider.
-On the National path, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`) and MUST obtain the applicable final metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+On the National path, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`).
+The Wallet Unit MUST obtain the applicable final metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
 The National Trust Framework MUST NOT be selected for the issuance of a PID, (Q)EAA or PuB-EAA of another Member State.
-This rule MUST be applied also to EAA Providers, therefore, the same Credential Issuer MAY be evaluated under different frameworks in different interactions, according to the counterpart and the Credential requested.
+This rule MUST be applied also to EAA Providers.
+The same Credential Issuer MAY be evaluated under different frameworks in different interactions, according to the counterpart and the Credential requested.
 The specific Trust Framework of a foreign EAA Provider is specified in the related Attestation Rulebook.
 The headers of the signed artifacts of the Credential Issuer reflect the same selection: an ``x5c`` header carrying the access certificate for the EUDIW path, and a ``kid`` header, with the optional ``trust_chain`` header, for the National Trust Framework path.
 These headers MUST be consistent with the selected framework.
@@ -120,7 +124,9 @@ The Wallet Unit MUST support both prefixes.
 It MUST process a request with the ``x509_hash`` prefix under the EUDIW procedures (see :ref:`trust-evaluation:EUDIW Authentication`).
 It MUST process a request with the ``openid_federation`` prefix under the National Trust Framework procedures (see :ref:`trust-evaluation:Trust Evaluation Processes by Context`) when the Trust Chain of the Relying Party is valid under the National Trust Anchor.
 If the request uses the ``openid_federation`` prefix and the Trust Chain cannot be validated under the National Trust Anchor, the Wallet Unit MUST treat the Relying Party as not trustworthy and MUST NOT evaluate the request under the National Trust Framework.
-The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework only. Implementations MUST NOT combine the frameworks or retry a failed process under the other framework.
+The Authentication, Authorization and Metadata Retrieval and Validation processes run under the selected framework only.
+Implementations MUST NOT combine the frameworks.
+Implementations MUST NOT retry a failed process under the other framework.
 
 In the proximity flow both Trust Frameworks use the mdoc reader authentication defined in [`ISO18013-5`_ #12.5], based on an X.509 certificate provided by the Relying Party Instance in the ``x5chain`` header of the ``ReaderAuth``.
 

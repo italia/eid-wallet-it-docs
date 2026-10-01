@@ -116,7 +116,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Livello di Garanzia**
       Nel quadro dell'Unione per l'**identificazione elettronica**, i **livelli di garanzia** esprimono il grado di fiducia nella **correttezza dell'identificazione** delle persone fisiche o giuridiche e nella possibilità di **fare affidamento sui mezzi di identificazione elettronica**. Per gli **schemi di identificazione elettronica notificati**, `EIDAS`_, come modificato (incluso il Quadro europeo di identità digitale codificato dal `EU_2024_1183`_), definisce i livelli **basso (*low*)**, **sostanziale (*substantial*)** e **alto (*high*)**.
-      Nelle presenti Specifiche Tecniche il termine **LoA** si impiega anche per i **requisiti minimi di garanzia** riguardanti l'**autenticazione dell'Utente**, il contesto dell'**Istanza del Wallet** e l'**affidabilità degli Attestati Elettronici** (inclusi i metadati di catalogo come il livello minimo di garanzia), che DEVONO restare coerenti con la normativa dell'Unione, con l'attuazione nazionale degli schemi notificati e con le discipline sui **Portafogli di Identità Digitale Europea** e sui **Person Identification Data (PID)** (ivi incluso, ove pertinente, il Regolamento di esecuzione (UE) 2024/2979 della Commissione).
+      Nelle presenti Specifiche Tecniche il termine **LoA** si impiega anche per i **requisiti minimi di garanzia** riguardanti l'**autenticazione dell'Utente**, il contesto dell'**Istanza del Wallet** e l'**affidabilità degli Attestati Elettronici** (inclusi i metadati di catalogo come il livello minimo di garanzia). Questi usi seguono la normativa dell'Unione, l'attuazione nazionale degli schemi notificati e le discipline sui **Portafogli di Identità Digitale Europea** e sui **Person Identification Data (PID)** (ivi incluso, ove pertinente, il Regolamento di esecuzione (UE) 2024/2979 della Commissione).
       Non presente con questa formulazione in ARF 3.0.0; allineato al quadro normativo eIDAS / EUDI Wallet.
 
     **Metadata**
@@ -186,7 +186,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **IT-Wallet ID**
     **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
-      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. NON DEVE essere confuso con il **PID** EUDI, né con un **Gestore di Identità Digitale** / schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** NON DEVE essere usato come sinonimo di IT-Wallet ID, per evitare confusione con tali schemi. Non presente in ARF 3.0.0; specifico di IT-Wallet.
+      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. La proibizione cross-border è specificata in :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. **Non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. È distinto dal **PID** EUDI e da un **Gestore di Identità Digitale** o schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** non è un sinonimo di IT-Wallet ID. Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
@@ -381,7 +381,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High. Un WSCD DEVE essere certificabile come resistente ad attaccanti con potenziale di attacco elevato (almeno Common Criteria EAL4+ AVA_VAN.5). Un Keystore hardware-backed non è un WSCD e NON DEVE essere trattato come prova di Livello di Garanzia Alto.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High. La certificazione del WSCD, e la distinzione rispetto a un Keystore hardware-backed, sono specificate in :ref:`wallet-solution-requirements:Requisiti WSCA/WSCD`.
       Conforme con ARF 3.0.0.
 
     **Soluzione Wallet**
@@ -424,7 +424,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Intermediario di Relying Party**
     **Soggetto Aggregatore**
-      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_ Topic 52). In una presentazione EUDIW intermediata l'Intermediario si autentica con il proprio WRPAC e l'Istanza del Wallet NON DEVE mostrare i nomi commerciali dell'Intermediario ([`EIDAS-ARF`_] RPI_07). L'associazione di un WRPAC distinto alla Relying Party intermediata è rinviata come specificato in :ref:`infrastructure-trust:Register of WRPs`. IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea, e tale articolo vieta di conservare dati sul contenuto della transazione tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_ Topic 52). In una presentazione EUDIW intermediata l'Intermediario si autentica con il proprio WRPAC. La regola di visualizzazione dell'Istanza del Wallet è specificata in :ref:`trust-evaluation:EUDIW Authorization`. L'associazione di un WRPAC distinto alla Relying Party intermediata è rinviata come specificato in :ref:`infrastructure-trust:Register of WRPs`. IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
       Conforme con ARF 3.0.0 Topic 52.
 
     **Intermediario IT-Wallet**
@@ -568,14 +568,17 @@ Di seguito gli acronimi usati più di frequente nel documento:
 Linguaggio Normativo e Convenzioni
 ==================================
 
-Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando appaiono con tutte le lettere in maiuscolo assumono i significati di seguito riportati:
+Conformemente a BCP 14 [RFC2119] [RFC8174], le parole chiave normative sono MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED, MAY e OPTIONAL, quando appaiono interamente in maiuscolo.
 
-  - DEVE/DEVONO: indicano un requisito che è necessario soddisfare.
-  - NON DEVE/NON DEVONO: indicano un divieto assoluto.
-  - PUÒ/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione.
-  - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti da una eventuale scelta alternativa.
-  - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
-  - OBBLIGATORIO: necessario
-  - OPZIONALE: facoltativo
+Nel testo italiano le forme seguenti, interamente in maiuscolo, hanno lo stesso significato:
+
+  - DEVE e DEVONO hanno il significato di MUST.
+  - NON DEVE e NON DEVONO hanno il significato di MUST NOT.
+  - PUÒ e POSSONO hanno il significato di MAY.
+  - DOVREBBE, DOVREBBERO e RACCOMANDATO hanno il significato di SHOULD o RECOMMENDED.
+  - NON DOVREBBE, NON DOVREBBERO e NON RACCOMANDATO hanno il significato di SHOULD NOT o NOT RECOMMENDED.
+  - OBBLIGATORIO ha il significato di REQUIRED.
+  - OPZIONALE ha il significato di OPTIONAL.
+  - CONDIZIONALE ha il significato di CONDITIONAL.
 
 

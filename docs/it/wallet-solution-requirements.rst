@@ -116,6 +116,8 @@ I requisiti WSCA/WSCD sono definiti di seguito:
 
 - La chiave privata del PID DEVE essere generata e gestita dal WSCA operante nel Remote WSCD (HSM remoto).
 - Il Remote WSCD DEVE soddisfare i requisiti per il Livello di Garanzia Alto (LoA High) come definito da eIDAS 2.0.
+- Un WSCD DEVE essere certificabile come resistente ad attaccanti con potenziale di attacco elevato (almeno Common Criteria EAL4+ AVA_VAN.5).
+- Un Keystore hardware-backed NON DEVE essere trattato come prova di Livello di Garanzia Alto.
 - Il WSCA DEVE operare all'interno di un Remote WSCD basato su un HSM remoto, fornendo un livello di certificazione superiore rispetto al Keystore locale.
 - Il Wallet Provider DEVE garantire che solo il WSCA possa accedere alla chiave privata del PID memorizzata nel Remote WSCD.
 - Il WSCA/Remote WSCD DEVE richiedere l'autenticazione dell'Utente prima di qualsiasi firma o altra operazione con la chiave privata.

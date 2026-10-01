@@ -54,7 +54,7 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
       - On the Relying Party:
 
         - :ref:`trust-evaluation:Relying Party Proximity Authentication`
-        - :ref:`trust-evaluation:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in the ``requestInfo`` of the ISO ``DeviceRequest``
+        - :ref:`trust-evaluation:Authorization`, including the Overasking Check, on the registration Trust Mark provided by value in ``requestInfo.euWrprc`` of every ISO ``ItemsRequest``
       - No entity level artifact is required from the Wallet Unit.
     * - Credential Issuer
       - Issuing national only Credentials
@@ -474,7 +474,10 @@ In the second case the Relying Party MUST NOT be considered authenticated and th
 2. Validate the certification path against the applicable Authentication Trust Anchor as defined in :ref:`trust-evaluation:X.509 Certificate Chain Validation`.
 3. Verify each ``readerAuth`` signature over its ``ReaderAuthentication`` data with the validated authentication certificate.
 
-The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate. This National authentication result selects the National Trust Framework path before authorization; it MUST NOT be combined with EUDIW WRPAC/WRPRC evidence or retried under the EUDIW path.
+The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
+This National authentication result selects the National Trust Framework path before authorization.
+It MUST NOT be combined with EUDIW WRPAC/WRPRC evidence.
+It MUST NOT be retried under the EUDIW path.
 
 Authorization
 ^^^^^^^^^^^^^^^^^^
@@ -496,7 +499,10 @@ The Authorization process is composed of the following procedures:
 The role authorization common to both phases is performed by the Entitlement Check; the phase specific checks are the Credential type check at issuance, inside the Entitlement Check, and the attribute level Overasking Check at presentation.
 
 The Trust Evaluator MUST perform the Authorization process only after the Trust Evaluated Party has been successfully authenticated.
-In National direct proximity, the Wallet Unit MUST validate the Trust Mark and bind the National authentication-certificate identity, the Trust Mark subject and official identifiers, and an identifier in ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party. It MUST validate the entitlement, exact case-sensitive overasking scope, and Trust Mark transparency claims. National proximity MUST exclude EUDIW evidence and fallback and MUST NOT introduce National intermediated-proximity transport.
+In National direct proximity, the Wallet Unit MUST validate the Trust Mark and bind the National authentication-certificate identity, the Trust Mark subject and official identifiers, and an identifier in ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party.
+The Wallet Unit MUST validate the entitlement, the exact case-sensitive overasking scope, and the Trust Mark transparency claims.
+National proximity MUST exclude EUDIW evidence and fallback.
+National proximity MUST NOT introduce National intermediated-proximity transport.
 
 Trust Mark Validation
 """""""""""""""""""""""

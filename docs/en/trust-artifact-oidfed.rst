@@ -95,9 +95,9 @@ The responses follow the OID-FED response formats referenced in the table.
      - A signed JWT with the history of the registration events.
        See the Subordinate Events specification Section 2.3.
 
-The **Subordinate Events** (``/subordinate_events``) endpoint is defined in `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_.
+The **Subordinate Events** (``/subordinate_events``) endpoint is defined in `OID-FED-SUBORDINATE-EVENTS`_.
 Its purpose is to give a verifiable, historical track of the registration events concerning an Immediate Subordinate, such as its registration, the update of its Federation Entity Keys and its revocation.
-For the request format, the response format and the event types refer to `OpenID Federation Subordinate Events <https://openid.net/specs/openid-federation-subordinate-events-1_0.html>`_ Section 2.2 and 2.3.
+For the request format, the response format and the event types refer to Section 2.2 and 2.3 of [`OID-FED-SUBORDINATE-EVENTS`_].
 
 .. note::
   Within IT-Wallet the **resolve** (``/resolve``) endpoint MUST respond to unauthenticated requests only with cached information about Entities, if available, and the collection and assessment of a Trust Chain MUST NOT be the default action of the resolve endpoint, as described in `OID-FED`_ Section 18.1.

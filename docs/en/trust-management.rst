@@ -169,12 +169,14 @@ The following table lists all such fields and extensions that are required in a 
 
    * - ``thisUpdate``
      - REQUIRED. *UTCTime* or *GeneralizedTime*. Indicates the issue date of this CRL.
-       Dates through 2049 MUST use ``UTCTime``; dates in 2050 or later MUST use ``GeneralizedTime``.
+       Dates through 2049 MUST use ``UTCTime``.
+       Dates in 2050 or later MUST use ``GeneralizedTime``.
      - [:rfc:`5280`, clause 5.1.2.4]
 
    * - ``nextUpdate``
      - REQUIRED. *UTCTime* or *GeneralizedTime*. Indicates the date by which the next CRL will be issued.
-       Dates through 2049 MUST use ``UTCTime``; dates in 2050 or later MUST use ``GeneralizedTime``.
+       Dates through 2049 MUST use ``UTCTime``.
+       Dates in 2050 or later MUST use ``GeneralizedTime``.
      - [:rfc:`5280`, clause 5.1.2.5]
 
    * - ``revokedCertificates``
@@ -219,11 +221,14 @@ Notable standard extensions include:
 
    * - ``cRLNumber``
      - REQUIRED. *INTEGER*. A non-critical extension conveying a monotonically increasing sequence number for a given CRL scope and issuer.
-       Both base CRLs and delta CRLs share the same monotonically increasing sequence; the delta CRL's number MUST be greater than the base CRL's number it references.
+       Both base CRLs and delta CRLs share the same monotonically increasing sequence.
+       The delta CRL's number MUST be greater than the base CRL's number it references.
      - :rfc:`5280`, clause 5.2.3
 
    * - ``deltaCRLIndicator``
-     - REQUIRED for delta CRLs; MUST NOT appear in base CRLs. *INTEGER* (``BaseCRLNumber``). A **critical** extension that marks the CRL as a delta CRL and identifies the base CRL it is relative to.
+     - REQUIRED for delta CRLs.
+       It MUST NOT appear in base CRLs.
+       *INTEGER* (``BaseCRLNumber``). A **critical** extension that marks the CRL as a delta CRL and identifies the base CRL it is relative to.
        The integer value is the ``cRLNumber`` of the base CRL on which this delta is built.
        A relying party that does not understand this extension MUST reject the CRL.
        The base CRL MUST still be reachable (cached or retrievable) for the delta to be useful.
@@ -570,9 +575,11 @@ The SLT Provider MAY be the Provider of WRPRC or a designated entity.
 
 **Status List**
 
-A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative ``idx`` value to each issued WRPRC and include it, together with the SLT ``uri``, in the WRPRC's ``status.status_list`` member. For a JWT-encoded WRPRC, ``idx`` is a JSON integer and ``uri`` is a JSON string; for a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
+A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative ``idx`` value to each issued WRPRC and include it, together with the SLT ``uri``, in the WRPRC's ``status.status_list`` member. For a JWT-encoded WRPRC, ``idx`` is a JSON integer and ``uri`` is a JSON string.
+For a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
 
-According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``; therefore, the Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
+According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``.
+The Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
 
 The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
 
@@ -584,4 +591,5 @@ A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as descri
 
 Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.
 
-For a JWT SLT, the signing certificate chain MUST be carried in the ``x5c`` JOSE header; for a CWT SLT, it MUST be carried in the ``x5chain`` COSE header (label ``33``).
+For a JWT SLT, the signing certificate chain MUST be carried in the ``x5c`` JOSE header.
+For a CWT SLT, it MUST be carried in the ``x5chain`` COSE header (label ``33``).

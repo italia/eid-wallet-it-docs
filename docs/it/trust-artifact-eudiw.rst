@@ -40,7 +40,7 @@ Il dataset e l'API di lettura del Register sono `EUDI-TS 5`_, oggetti ``WalletRe
 Register Dataset
 """"""""""""""""
 
-Il formato dati per le informazioni disponibili attraverso l'API aperta fornita dal Register of WRPs nazionale DEVE essere conforme agli schemi dati descritti nelle Tabelle 1-11 dell'Allegato VI di [`CIR2025/848`_] come modificato da [`CIR2026/1730`_], codificati come JSON Schema ``WalletRelyingParty`` di `EUDI-TS 5`_.
+Il formato dati per le informazioni disponibili attraverso l'API aperta fornita dal Register of WRPs nazionale MUST essere conforme agli schemi dati descritti nelle Tabelle 1-11 dell'Allegato VI di [`CIR2025/848`_] come modificato da [`CIR2026/1730`_], codificati come JSON Schema ``WalletRelyingParty`` di `EUDI-TS 5`_.
 Di seguito alcuni esempi non normativi di oggetti ``WalletRelyingParty`` memorizzati nel Register.
 
 Una banca registrata come Relying Party che richiede PID per procedure know-your-customer, con un Relying Party Service.
@@ -71,7 +71,7 @@ Metodi, parametri di filtro, codici di risposta e la riduzione di ``services`` q
     La vista API pubblicata esclude solo ``postalAddress`` ([`CIR2025/848`_] come modificato da [`CIR2026/1730`_], Allegato I, punto 4).
     Tutti gli altri campi, inclusi i claim di credenziale dell'uso previsto, sono pubblicati come registrati.
     Le Register Open APIs restano per pubblicazione e trasparenza ([`EIDAS-ARF`_] Reg_03, Reg_06).
-    La Wallet Unit NON DEVE usarle come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali o l'Emissione di Credenziali, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
+    La Wallet Unit MUST NOT usarle come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali o l'Emissione di Credenziali, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
 
 Il file YAML della specifica OpenAPI descritta nella Sezione 3 di `EUDI-TS 5`_ è disponibile come `EUDI-TS 5 OpenAPI`_.
 Lo JSON Schema dell'oggetto ``WalletRelyingParty``, incluso l'array ``services`` di ``WalletRelyingPartyService``, è disponibile come `EUDI-TS 5 JSON Schema`_.
@@ -84,14 +84,14 @@ Questa sezione estende il :ref:`infrastructure-trust:X.509 Certificate Profile` 
 
 Il WRPAC è il certificato definito nell'Articolo 2 e nell'Allegato IV di [`CIR2025/848`_].
 Il suo profilo è `ETSI TS 119 411-8`_.
-Le estensioni non specificate da quel documento NON DEVONO essere presenti.
+Le estensioni non specificate da quel documento MUST NOT essere presenti.
 Gli attributi del subject sono [`EIDAS-ARF`_] Reg_31, Reg_32 e Reg_34, e `ETSI TS 119 411-8`_.
 L'autenticazione è specificata in :ref:`trust-evaluation:EUDIW Authentication`.
 La revoca in caso di sospensione o cancellazione dei servizi della WRP è specificata in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
 L'identificatore del Relying Party Service e un WRPAC per Service sono rinviati come specificato in :ref:`infrastructure-trust:Register of WRPs`.
 
 .. note::
-    Gli attributi del WRPAC DEVONO essere derivati dal Register come specificato nella clausola 5.1.2 di `ETSI TS 119 475`_.
+    Gli attributi del WRPAC MUST essere derivati dal Register come specificato nella clausola 5.1.2 di `ETSI TS 119 475`_.
 
     **Deviazione di profilo.** La Certificate Transparency ([`EIDAS-ARF`_] CT_01 a CT_06) non è un requisito di questa specifica finché le Technical Specification dell'ARF non la rendono pienamente disponibile e chiara per le implementazioni.
     Il profilo del WRPAC non include un Signed Certificate Timestamp, il Provider of WRPAC non è tenuto a registrare i WRPAC emessi, e la Wallet Unit non è tenuta a verificare la Certificate Transparency durante l'Autenticazione.
@@ -107,7 +107,7 @@ Registrar Sign/Seal Certificate Profile
 Questa sezione estende il :ref:`infrastructure-trust:X.509 Certificate Profile` generale e specifica un **Certificate Profile** per i **Registrar Sign/Seal Certificates**.
 
 La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
-Le estensioni non elencate nella tabella NON DEVONO essere presenti.
+Le estensioni non elencate nella tabella MUST NOT essere presenti.
 
 .. list-table:: Estensioni del Registrar Sign/Seal Certificate
    :class: longtable
@@ -118,27 +118,27 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - **Descrizione**
 
    * - ``authorityKeyIdentifier``
-     - OBBLIGATORIO. Il valore DOVREBBE essere derivato dalla chiave pubblica usando i metodi definiti in :rfc:`5280#section-4.2.1.1`.
+     - REQUIRED. Il valore SHOULD essere derivato dalla chiave pubblica usando i metodi definiti in :rfc:`5280#section-4.2.1.1`.
 
    * - ``subjectKeyIdentifier``
-     - OPZIONALE. Se presente, il campo ``keyIdentifier`` DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in :rfc:`5280#section-4.2.1.2`.
+     - OPTIONAL. Se presente, il campo ``keyIdentifier`` SHOULD essere derivato dalla chiave pubblica del subject usando i metodi definiti in :rfc:`5280#section-4.2.1.2`.
 
    * - ``keyUsage``
-     - OBBLIGATORIO. DEVE contenere uno (e uno solo) dei key-usage settings *Type A*, *Type B*, o *Type F*. *Type A* DOVREBBE essere usato secondo LEG-4.3.1-4 nella Clausola 4.3.1 [`ETSI EN 319 412-3`_]. Per dettagli aggiuntivi, vedi Clausola 4.3.2 [`ETSI EN 319 412-2`_] e Clausola 4.3.1 [`ETSI EN 319 412-3`_].
+     - REQUIRED. MUST contenere uno (e uno solo) dei key-usage settings *Type A*, *Type B*, o *Type F*. *Type A* SHOULD essere usato secondo LEG-4.3.1-4 nella Clausola 4.3.1 [`ETSI EN 319 412-3`_]. Per dettagli aggiuntivi, vedi Clausola 4.3.2 [`ETSI EN 319 412-2`_] e Clausola 4.3.1 [`ETSI EN 319 412-3`_].
 
    * - ``certificatePolicies``
-     - OBBLIGATORIO. DEVE includere una struttura ``PolicyInformation`` rilevante per le pratiche della CA emittente.
+     - REQUIRED. MUST includere una struttura ``PolicyInformation`` rilevante per le pratiche della CA emittente.
 
    * - ``subjectAltName``
-     - OBBLIGATORIO.
+     - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDIZIONALE. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - CONDITIONAL. **REQUIRED IF:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
-     - OBBLIGATORIO. DEVE includere una struttura ``AccessDescription`` con ``accessMethod`` impostato a ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) e ``accessLocation`` che specifica almeno una access location di un certificato CA valido della CA emittente.
+     - REQUIRED. MUST includere una struttura ``AccessDescription`` con ``accessMethod`` impostato a ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) e ``accessLocation`` che specifica almeno una access location di un certificato CA valido della CA emittente.
 
-       Se l'OCSP è supportato dalla CA emittente, l'estensione DEVE includere una struttura ``AccessDescription`` con ``accessMethod`` impostato a ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) e ``accessLocation`` che specifica almeno un responder OCSP autorevole a fornire informazioni di status del certificato per il certificato, come descritto in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
+       Se l'OCSP è supportato dalla CA emittente, l'estensione MUST includere una struttura ``AccessDescription`` con ``accessMethod`` impostato a ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) e ``accessLocation`` che specifica almeno un responder OCSP autorevole a fornire informazioni di status del certificato per il certificato, come descritto in :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
 
 Di seguito un esempio non normativo di Registrar Sign/Seal Certificate per persone giuridiche (non self-signed).
 
@@ -265,7 +265,7 @@ Gli schemi JSON e XML normativi delle List of Trusted Entities sono pubblicati i
 
 .. note::
   
-  Come suggerito in `EIDAS-ARF`_, per efficienza, le implementazioni POSSONO controllare routinariamente i Trust Anchor nelle List of Trusted Entities o nelle Trusted List e memorizzarli localmente. Questo consente, per esempio, alle Relying Party Instance in esecuzione su app mobili di facilitare le presentazioni offline.
+  Come suggerito in `EIDAS-ARF`_, per efficienza, le implementazioni MAY controllare routinariamente i Trust Anchor nelle List of Trusted Entities o nelle Trusted List e memorizzarli localmente. Questo consente, per esempio, alle Relying Party Instance in esecuzione su app mobili di facilitare le presentazioni offline.
   
 L'esempio seguente mostra un esempio non normativo di payload di una List of Trusted Entities per PID Provider.
 
@@ -277,11 +277,17 @@ Embedded Disclosure Policy (EDP)
 
 Un'Embedded Disclosure Policy (EDP) è definita nell'Articolo 2(9) di [`CIR2024/2979`_].
 Applicabilità e i tre tipi comuni di policy sono l'Articolo 10 e l'Allegato III di [`CIR2024/2979`_], codificati nella Sezione 4.2.5.2 di `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08 e ISS-MDATA-EBD-4.2.5.2-09).
-Un'EDP NON DEVE essere applicata a un PID.
+Un'EDP MUST NOT essere applicata a un PID.
 La Wallet Unit valuta i tipi comuni come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
 La non divulgazione verso la Relying Party è la Sezione 4.2.5.1 di `ETSI TS 119 472-3`_.
 
-L'Attestation Provider DEVE includere l'EDP, se presente, per valore nei Metadata del Credential Issuer, all'interno di ``credential_configurations_supported``, come membro ``embedded_disclosure_policy`` della configurazione della credenziale, in conformità con `OpenID4VCI`_ o l'estensione di esso specificata in `ETSI TS 119 472-3`_.
+L'Attestation Provider MUST includere l'EDP, se presente, come membro ``embedded_disclosure_policy`` di ``credential_metadata`` all'interno di ``credential_configurations_supported``, in conformità con `OpenID4VCI`_ o l'estensione di esso specificata in `ETSI TS 119 472-3`_.
+Il membro MUST contenere un ``policy_uri``.
+Il membro MAY contenere i dati completi della policy in ``policy_data``.
+La Wallet Unit MAY ricevere solo ``policy_uri`` quando la policy esatta identificata da tale URI è già precaricata.
+Altrimenti l'URI e i dati della policy MUST essere forniti insieme.
+Un URI non risolto MUST far fallire l'associazione e la divulgazione interessata.
+La Wallet Unit MUST NOT recuperare il contenuto della policy da ``policy_uri``.
 
 .. note::
 
@@ -300,7 +306,7 @@ Embedded Disclosure Policy Data Model
 La tabella seguente fornisce una panoramica completa del modello dati dell'Embedded Disclosure Policy, inclusi i nomi dei parametri, i tipi di dati, le descrizioni e le clausole specifiche in `ETSI TS 119 472-3`_ in cui ciascun parametro è definito.
 
 .. warning::
-  I nomi dei parametri sono definiti in questa sezione e non si basano su una specifica ETSI normativa. La Sezione 4.2.5.2 di `ETSI TS 119 472-3`_ definisce i requisiti di alto livello per il modello dati, ma lo schema JSON finale sarà pubblicato separatamente da ETSI. La struttura definita qui è un profilo di implementazione basato sui requisiti del modello dati ETSI, e i nomi dei parametri POSSONO cambiare quando lo schema ETSI è pubblicato.
+  I nomi dei parametri sono definiti in questa sezione e non si basano su una specifica ETSI normativa. La Sezione 4.2.5.2 di `ETSI TS 119 472-3`_ definisce i requisiti di alto livello per il modello dati, ma lo schema JSON finale sarà pubblicato separatamente da ETSI. La struttura definita qui è un profilo di implementazione basato sui requisiti del modello dati ETSI, e i nomi dei parametri MAY cambiare quando lo schema ETSI è pubblicato.
 
 .. list-table:: Parametri dell'Embedded Disclosure Policy
    :class: longtable
@@ -312,16 +318,15 @@ La tabella seguente fornisce una panoramica completa del modello dati dell'Embed
      - **Riferimento**
 
    * - ``policy_uri``
-     - OBBLIGATORIO. string (URI).
+     - REQUIRED. string (URI).
        Identificatore univoco dell'Embedded Disclosure Policy (EDP).
 
-       L'associazione dell'EDP con una EAA DEVE essere stabilita includendo questo URI univoco.
-       L'AP DEVE o includere l'URI insieme all'insieme completo dei dati della policy, oppure fornire solo l'URI se l'insieme dei dati della policy è già stato precaricato nella Wallet Unit.
-       L'EDP PUÒ essere accessibile attraverso questo URI.
+       L'associazione dell'EDP con una EAA MUST essere stabilita includendo questo URI univoco.
+       La risoluzione dell'URI, inclusa la proibizione di recuperare il contenuto della policy da esso, è specificata sopra in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-01, ISS-MDATA-EBD-4.2.5.2-02, ISS-MDATA-EBD-4.2.5.2-03)
 
    * - ``policy_type``
-     - OBBLIGATORIO. string.
+     - REQUIRED. string.
        Classificazione del tipo di policy.
        Valori validi:
 
@@ -331,65 +336,72 @@ La tabella seguente fornisce una panoramica completa del modello dati dell'Embed
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
-     - OPZIONALE. string.
+     - OPTIONAL. string.
        Descrizione dell'applicabilità della policy a una particolare comunità e/o classe di applicazione che condivide requisiti di sicurezza comuni.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-04)
 
    * - ``policy_authority``
-     - OPZIONALE. string.
+     - OPTIONAL. string.
        Identificatore dell'autorità o dell'entità responsabile della policy.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-05)
 
    * - ``policy_info_url``
-     - OPZIONALE. string (URL).
+     - OPTIONAL. string (URL).
        Collegamento a un sito web dell'Attestation Provider (AP) che spiega le linee guida della disclosure policy in termini comprensibili.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-13, EDP_05)
 
    * - ``authorized_parties``
-     - OBBLIGATORIO. array of objects. se ``policy_type`` è ``"authorized_rp_only"``.
+     - REQUIRED. array of objects. se ``policy_type`` è ``"authorized_rp_only"``.
        Contiene un elenco di Relying Party autorizzate ad accedere all'Attestation, identificate dall'identificatore univoco a livello UE. L'identificatore di Service di EDP_02 è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].identifier``
-     - OBBLIGATORIO. string.
+     - REQUIRED. string.
        Identificatore univoco a livello UE della Relying Party autorizzata, come specificato in [`EIDAS-ARF`_] Reg_32.
-       DEVE corrispondere al ``sub`` del WRPRC nella richiesta.
+       MUST corrispondere al ``sub`` del WRPRC nella richiesta.
      - [`EIDAS-ARF`_] EDP_02
 
    * - ``authorized_parties[].subject_dn``
-     - OPZIONALE. string.
+     - OPTIONAL. string.
        Subject Distinguished Name (DN) della Relying Party, formattato come stringa LDAP conforme a :rfc:`4514`.
        Questa è la codifica ETSI di ISS-MDATA-EBD-4.2.5.2-07.
-       Non è un input di valutazione: la Wallet Unit NON DEVE abbinarlo rispetto al WRPAC, e la valutazione EDP_02 usa l'identificatore univoco a livello UE dal WRPRC, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
+       Non è un input di valutazione: la Wallet Unit MUST NOT abbinarlo rispetto al WRPAC, e la valutazione EDP_02 usa l'identificatore univoco a livello UE dal WRPRC, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``authorized_parties[].entitlement_uri``
-     - OPZIONALE. string (URI).
+     - OPTIONAL. string (URI).
        Entitlement o sub-entitlement codificata come URI come specificato nell'Allegato A di [`ETSI TS 119 475`_], detenuta all'interno del Wallet-Relying Party Registration Certificate (WRPRC).
+       Tale URI MUST essere confrontato in modo esatto.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-07)
 
    * - ``trusted_roots``
-     - OBBLIGATORIO. array of objects. se ``policy_type`` è ``"specific_root_of_trust"``.
+     - REQUIRED. array of objects. se ``policy_type`` è ``"specific_root_of_trust"``.
        Definisce un elenco preciso di certificati root o intermedi fidati usati per firmare i WRPRC.
        Solo le RP il cui signing path del WRPRC contiene uno di questi certificati sono autorizzate all'accesso.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
-     - OBBLIGATORIO. string.
+     - REQUIRED. string.
        Issuer Distinguished Name (DN) in forma di stringa LDAP conforme a :rfc:`4514`.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``trusted_roots[].serial_number``
-     - OBBLIGATORIO. string.
+     - REQUIRED. string.
        Serial number del certificato corrispondente all'issuer definito.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-09)
 
    * - ``extensions``
-     - OPZIONALE. array of objects.
+     - OPTIONAL. array of objects.
        Contenitore per strutture di estensione EDP supplementari.
 
-       Queste strutture POSSONO essere ignorate dalla Wallet Unit, ma la Wallet Unit DOVREBBE elaborare con successo i restanti dati EDP anche se sono presenti estensioni non riconosciute.
-       Le estensioni POSSONO essere usate per fornire regole di policy alternative applicate ad attributi specifici all'interno di una EAA soggetta a Selective Disclosure.
+       Queste strutture MAY essere ignorate dalla Wallet Unit.
+       La Wallet Unit MUST elaborare con successo le regole riconosciute anche se sono presenti estensioni non riconosciute.
+       L'estensione IT-Wallet è un oggetto con un identificatore di estensione, un claim ``path`` nel formato della Credenziale e una regola EDP comune alternativa.
+       La policy di base disciplina la Credenziale.
+       La regola di estensione corrispondente disciplina tale attributo.
+       Ogni attributo divulgato MUST soddisfare la regola applicabile.
+       La codifica dell'estensione MUST essere serializzabile nell'EDP.
+       La codifica dell'estensione MUST NOT cambiare il risultato per gli attributi senza un path corrispondente.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-10, ISS-MDATA-EBD-4.2.5.2-11, ISS-MDATA-EBD-4.2.5.2-12)
 
 Di seguito esempi non normativi di EDP con i tipi di policy Authorized Relying Parties Only e Specific Root of Trust.
@@ -403,10 +415,10 @@ Di seguito esempi non normativi di EDP con i tipi di policy Authorized Relying P
 Embedded Disclosure Policy Lifecycle
 """"""""""""""""""""""""""""""""""""
 
-L'EDP memorizzata localmente DEVE restare valida finché l'Attestation a cui è associata è valida e non revocata.
-L'EDP NON DEVE avere uno status di validità indipendente o un meccanismo di revoca separato dall'Attestation.
+L'EDP memorizzata localmente MUST restare valida finché l'Attestation a cui è associata è valida e non revocata.
+L'EDP MUST NOT avere uno status di validità indipendente o un meccanismo di revoca separato dall'Attestation.
 
-Se un Attestation Provider aggiunge, modifica o cancella un'EDP per un Attestato Elettronico che emette, l'Attestation Provider DEVE revocare tale Attestato Elettronico.
+Se un Attestation Provider aggiunge, modifica o cancella un'EDP per un Attestato Elettronico che emette, l'Attestation Provider MUST revocare tale Attestato Elettronico.
 La Wallet Unit rileva il cambiamento di EDP indirettamente attraverso il normale meccanismo di controllo dello status dell'Attestation (Status List), che riporterà l'Attestato Elettronico come revocato.
 L'EDP memorizzata localmente è quindi implicitamente invalidata insieme all'Attestato Elettronico.
 L'Utente deve richiedere una nuova emissione per ottenere l'Attestato Elettronico con l'EDP aggiornata.
@@ -417,9 +429,6 @@ Il momento del rilevamento dipende da quando la Wallet Unit controlla lo status 
 .. warning::
 
     **Proactive refresh**.
-    L'Attestation Provider PUÒ fornire l'EDP attraverso il suo URI.
-    In questo caso, la Wallet Unit PUÒ recuperare proattivamente il contenuto dell'EDP all'``policy_uri`` per verificare aggiornamenti, senza attendere un segnale di revoca dell'Attestato Elettronico.
-    Tuttavia, questo meccanismo NON DOVREBBE essere usato in questa specifica per il seguente motivo:
-
-    - Consente all'Attestation Provider di modificare unilateralmente un'EDP, e può introdurre rischi per la privacy e overhead di gestione (come indicato nel Discussion Topic D)
-    - I dettagli tecnici di questo meccanismo non sono definiti all'interno dello standard ETSI.
+    Questa specifica non usa il refresh proattivo di un'Embedded Disclosure Policy.
+    La proibizione di recuperare il contenuto della policy da ``policy_uri``, e la revoca dell'Attestato Elettronico quando un'EDP cambia, sono specificate sopra in questa sezione.
+    Il refresh proattivo è escluso perché consentirebbe a un Attestation Provider di modificare unilateralmente un'EDP, con le conseguenze di privacy e di gestione descritte nel Discussion Topic D, e perché i suoi dettagli tecnici non sono definiti nello standard ETSI.
