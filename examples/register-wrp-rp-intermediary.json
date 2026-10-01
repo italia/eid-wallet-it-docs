@@ -13,7 +13,7 @@
     }
   ],
   "postalAddress": [
-    " Corso Venezia, Milano, IT"
+    "Corso Venezia, Milano, IT"
   ],
   "country": "IT",
   "email": ["wallet-intermediary@trustbridge.example"],
@@ -31,32 +31,37 @@
     }
   ],
   "tradeName": "TrustBridge",
-  "supportURI": ["https://trustbridge.example/support"],
-  "srvDescription": [
-    [
-      {
-        "lang": "en",
-        "content": "Intermediary for wallet-relying parties operating in the Netherlands."
-      },
-      {
-        "lang": "it",
-        "content": "Intermediario per WRP che operano in Italia."
-      }
-    ]
-  ],
   "isPSB": false,
-  "entitlement": [
-    "https://uri.etsi.org/19475/Entitlement/Service_Provider"
-  ],
   "supervisoryAuthority": {
-    "legalPerson": {
-      "legalName": ["Autorità di vigilanza"]
-    },
+    "name": "Garante per la protezione dei dati personali",
     "country": "IT",
     "email": ["contact@supervisor.example.it"],
-    "infoURI": ["https://supervisor.example.it"]
+    "formURI": ["https://supervisor.example.it"]
   },
   "registryURI": "https://registry.example.it/api",
-  "isIntermediary": true
+  "services": [
+    {
+      "serviceIdentifier": "svc-bridge-01",
+      "serviceTradeName": "TrustBridge Wallet Intermediation",
+      "supportURI": "https://trustbridge.example/support",
+      "email": "wallet-intermediary@trustbridge.example",
+      "phone": "+39200000000",
+      "srvDescription": [
+        [
+          {
+            "lang": "en",
+            "content": "Intermediary for wallet-relying parties operating in Italy."
+          },
+          {
+            "lang": "it",
+            "content": "Intermediario per WRP che operano in Italia."
+          }
+        ]
+      ],
+      "isIntermediary": true,
+      "servedWRPServices": [
+        "svc-mobile-01"
+      ]
+    }
+  ]
 }
-

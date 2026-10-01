@@ -493,7 +493,7 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 Key Attestation Issuance Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request.
+This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request. Use of the :term:`Key Attestation APIs (OEM)` is defined in :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
 
 Key Attestation Issuance Request
 """""""""""""""""""""""""""""""""""""""""""""
@@ -560,7 +560,7 @@ The Key Attestation Request JWT includes the following body claims:
       - The ``nonce`` obtained from the Nonce Endpoint.
       -
     * - **keys_to_attest**
-      - JSON array of JWT strings, each representing a ``Key_Attestation_Requests``.
+      - JSON array of JWT strings, each representing a ``Key_Attestation_Requests``. Inclusion of Key Attestation APIs (OEM) material is subject to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
       -
     * - **hardware_signature**
       - The signature of ``client_data_hash`` obtained using the Cryptographic Hardware Key, encoded in the ``base64url`` format.
@@ -762,7 +762,7 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
 
 
 .. note::
-    A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
+    A Wallet Provider MUST choose the technical validity period of the KA and MUST maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
 
 
 Token Status List (Wallet Unit Attestation Profile)

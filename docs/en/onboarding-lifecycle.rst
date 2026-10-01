@@ -40,7 +40,7 @@ Each state determines the authorization level and the operational capabilities o
 
 ``OPERATIONAL`` indicates that the Entity has been authorized to perform the operations related to its role.
 
-- *EUDIW Trust Framework*: WRPs are ``OPERATIONAL`` if they were ``REGISTERED`` and they obtained a WRPAC, optionally a WRPRC and, depending on the role, a Sign/Seal Certificate.
+- *EUDIW Trust Framework*: WRPs are ``OPERATIONAL`` if they were ``REGISTERED`` and they obtained a WRPAC, the corresponding WRPRC(s), and, depending on the role, a Sign/Seal Certificate.
   The signing Trust Anchor of that certificate MUST have been added to the LoTE or to the EUMS TL.
   Wallet Providers are ``OPERATIONAL`` if they were ``REGISTERED`` and they obtained a Sign/Seal Certificate whose signing Trust Anchor has been added to the LoTE.
 - *National Trust Framework*: WRPs and Wallet Providers are ``OPERATIONAL`` if they were ``REGISTERED``, they obtained the Sign/Seal Certificates and the registration Trust Marks, and their Subordinate Statement has been published by the Federation Authority.
@@ -167,7 +167,8 @@ For an Entity registered through a Federation Intermediate, the Subordinate Stat
 The suspension or the cancellation of a Federation Intermediate MUST propagate to its affiliated Entities, whose Trust Chain runs through it, as described in :ref:`trust-evaluation:Federation Trust Chain`.
 
 Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
-This is set by Annex IV of [`CIR2025/848`_] for the Providers of WRPACs and by Annex V of [`CIR2025/848`_] for the Providers of WRPRCs.
+For a WRPRC the re-issuance is automatic, as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+This is set by Annex IV of [`CIR2025/848`_] for the Providers of WRPACs and by Annex V of [`CIR2025/848`_] as amended by [`CIR2026/1730`_] for the Providers of WRPRCs.
 
 Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (``federation_subordinate_events_endpoint``), so that other participants can track the lifecycle of an Entity over time.
 The endpoint and the format of its response are described in :ref:`infrastructure-trust:Federation API Endpoints`.

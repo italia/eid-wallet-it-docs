@@ -110,7 +110,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Metodo utilizzato per derivare il **code challenge**. DEVE essere valorizzato con ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``, per l'IT-Wallet ID può essere valorizzato con ``eid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
+      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Digital Credentials Catalog`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``, per l'IT-Wallet ID può essere valorizzato con ``eid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
       - :rfc:`6749`
     * - **authorization_details**
       - Array di Oggetti JSON. Ogni Oggetto JSON DEVE includere i seguenti claim:
@@ -768,7 +768,7 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
     - Rappresenta la chiave pubblica scelta dall'Istanza del Wallet, in formato JSON Web Key (JWK) [:rfc:`7517`] a cui l'Attestato Elettronico sarà vincolato, come definito nella Sezione 4.1.3 del [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
   * - **key_attestation**
-    - Representa la Key Attestation.
+    - Rappresenta la Key Attestation.
     - [`OpenID4VCI`_].
 
 .. list-table::

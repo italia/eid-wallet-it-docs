@@ -11,5 +11,19 @@
     {
       "entitlement_uri": "https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai"
     }
+  ],
+  "extensions": [
+    {
+      "id": "it-wallet-attribute-rule",
+      "path": ["medical_record_number"],
+      "rule": {
+        "policy_type": "authorized_rp_only",
+        "authorized_parties": [
+          {
+            "entitlement_uri": "https://uri.etsi.org/19475/SubEntitlement/healthcare/clinical"
+          }
+        ]
+      }
+    }
   ]
 }

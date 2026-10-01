@@ -5,7 +5,7 @@ CertificationRequest csr = {
     subject: DistinguishedName {
       countryName: "IT",
       organizationName: "Example of Relying Party",
-      commonName: "Relying Party Example",
+      commonName: "ExampleBank Mobile",                   // serviceTradeName (Reg_34)
       organizationIdentifier: "VATIT-12345678901"
     },
 

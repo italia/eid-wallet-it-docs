@@ -37,5 +37,9 @@ v_env/bin/activate
 !.github
 !.stylelintrc.json
 !.htmlhintrc.json
+
+# Local OpenCode state
+/.opencode/
+
 *__pycache__
 _build

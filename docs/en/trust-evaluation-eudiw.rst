@@ -66,17 +66,17 @@ The procedures are defined in a general form, with a Trust Evaluator and a Trust
       - On the Wallet Unit:
 
         - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`, applied to the Wallet Instance Attestation
-      - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
+      - The Wallet-Relying Party Access Certificate used to authenticate the signed Issuer Metadata, and the applicable registration information conveyed in ``issuer_info`` ([`EIDAS-ARF`_] RPRC_22).
     * - Relying Party
       - Remote or proximity presentation
       - On the received Credentials:
 
         - :ref:`trust-evaluation:EUDIW Attestation Signature Validation`
-      - The Wallet-Relying Party Access Certificate and its registration, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
+      - The Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
     * - Relying Party Intermediary
       - Presentation, on behalf of an intermediated Relying Party
       - It does not act as Trust Evaluator in the operational flows.
-      - Its own Wallet-Relying Party Access Certificate and the registration of the intermediated Relying Party, that is its Register entry and, where issued, the Wallet-Relying Party Registration Certificate.
+      - Its own Wallet-Relying Party Access Certificate and the Wallet-Relying Party Registration Certificate of the intermediated Relying Party, included by value in the presentation request ([`EIDAS-ARF`_] RPRC_19).
 
 EUDIW Trust Anchor Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -457,7 +457,7 @@ If **Base Signature Validation** results in failure, the Entity validating the A
 
 .. note::
 
-  When verifiying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
+  When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
 
 If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
@@ -530,8 +530,9 @@ This section specifies the EUDIW Authorization Process that a Wallet Unit MUST e
 The EUDIW Authorization Process MUST start only *after* the Wallet-Relying Party has been successfully authenticated according to :ref:`trust-evaluation:EUDIW Authentication`.
 If the Wallet-Relying Party has not been authenticated, the EUDIW Authorization Process MUST NOT start.
 
-The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate or, equivalently, by the Register Response.
-Both are profiled in [`ETSI TS 119 475`_] and their data model is described in :ref:`infrastructure-trust:Register Open APIs`.
+The authorization data of a Wallet-Relying Party is carried by the Wallet-Relying Party Registration Certificate.
+During Credential Presentation the Wallet-Relying Party Registration Certificate MUST be included by value in the request ([`EIDAS-ARF`_] RPRC_19) and is the sole authoritative source for presentation authorization ([`EIDAS-ARF`_] RPRC_17, RPRC_21).
+During Credential Issuance a PID Provider or Attestation Provider MUST convey the applicable registration information in the signed Credential Issuer Metadata through ``issuer_info`` ([`EIDAS-ARF`_] RPRC_22). The ``registration_cert`` and ``registrar_dataset`` are mandatory.
 
 The EUDIW Authorization Process is split into:
 
@@ -554,41 +555,41 @@ Within the *Authorization Validation*, the Wallet Unit MUST distinguish between 
 - During *intermediated* presentation, the authenticated Wallet-Relying Party is the Relying Party Intermediary, while the Authorization Subject for the data request is the *intermediated Relying Party*, whose registered scope governs the request.
   The Relying Party Intermediary is itself a registered entity, and its authorization to act as an intermediary is established through the ``intermediary`` binding declared in the intermediated Relying Party authorization data (see the Binding verification below).
 
-The Wallet Unit MUST support authorization-context resolution from both a Wallet-Relying Party Registration Certificate, where available, and the Register, where a Wallet-Relying Party Registration Certificate is not available or cannot be relied upon.
-The substantive authorization logic MUST NOT change based on the data source.
-Where both sources are available, the Wallet Unit MUST normalize both into the same internal authorization model before applying the rules.
+The Wallet Unit MUST support authorization-context resolution from the Wallet-Relying Party Registration Certificate included in the interaction.
+The Wallet Unit MUST NOT query the Register as a substitute for a missing or invalid Wallet-Relying Party Registration Certificate during Credential Presentation ([`EIDAS-ARF`_] RPRC_16, RPRC_18 and RPRC_19a are empty) or during Credential Issuance ([`EIDAS-ARF`_] RPRC_22 and RPRC_22a).
 
 Authorization Artifacts Validation
 """""""""""""""""""""""""""""""""""
 
-The artifacts that carry the authorization data of an entity are the Wallet-Relying Party Registration Certificate and the Register Response.
-Both carry equivalent information, in the JWT and CWT profiles defined in Section 5.2.1 of [`ETSI TS 119 475`_].
-The Wallet Unit MUST support the validation of both and MUST validate at least one of the two.
+The Wallet-Relying Party Registration Certificate carries the authorization data of an entity, in the JWT and CWT profiles defined in Section 5.2.1 of [`ETSI TS 119 475`_].
 
 Each validation procedure specifies its inputs, its processing logic and its output, a verification result code.
 The result MAY be overridden by the User under the conditions detailed in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
-The validation flow depends on the availability of the Wallet-Relying Party Registration Certificate in the interaction.
+The validation flow depends on the interaction.
 
-- During the Presentation flow the Relying Party MAY convey the Wallet-Relying Party Registration Certificate by value:
+- During the Presentation flow the Relying Party MUST convey the Wallet-Relying Party Registration Certificate by value ([`EIDAS-ARF`_] RPRC_19):
 
-    - in the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
+    - as a ``registration_cert`` element of the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
     - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
 
-- During the Issuance flow the Credential Issuer conveys the authorization data in the Credential Issuer Metadata through the ``issuer_info`` array, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_].
-  The array MAY contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value, and MUST contain a ``registrar_dataset`` element with the registration information.
-  The Embedded Disclosure Policy is distributed through the Credential Issuer Metadata within the ``credential_configurations_supported`` field, as defined in [`OpenID4VCI`_].
+   In the Remote Flow, ``verifier_info`` MUST also contain a ``registrar_dataset`` element for ETSI transport and transparency. The dataset MUST contain the registered identifier, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` fields as specified in the Remote Flow. It MUST NOT replace or override the Wallet-Relying Party Registration Certificate as the presentation authorization source ([`EIDAS-ARF`_] RPRC_19a is empty). 
+  
+   In the Proximity Flow, every ``ItemsRequest`` MUST contain a non-empty ``requestInfo.euWrpRegistrarInfo`` with its non-empty ``identifier`` array, non-empty ``srvDescription`` and ``purpose`` arrays, ``registryURI``, ``intendedUseIdentifier`` and ``policyURI``; optional ``credential`` data is non-empty when present. This Registrar data is for transparency and identity binding and MUST NOT replace the mandatory WRPRC-by-value or trigger a Register lookup.
 
-In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST query the Register as described in :ref:`Register Query Validation <register-query-validation>`.
-The Register Response provides the same authorization-relevant data as the Wallet-Relying Party Registration Certificate.
-Each Registrar exposes an online service through the API described in :ref:`infrastructure-trust:Register Open APIs`.
-When using this service the Wallet Unit SHOULD inform the User that an external query will be made.
+- During the Issuance flow a PID Provider or Attestation Provider MUST convey the applicable registration information in the signed Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22), through the top-level ``issuer_info`` array defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each element contains ``format`` and ``data``. The array MUST contain a ``registration_cert`` element with the Wallet-Relying Party Registration Certificate by value and a ``registrar_dataset`` element with the registration information. The ``registrar_dataset`` MUST NOT replace certificate validation when ``registration_cert`` is present. The Embedded Disclosure Policy is distributed as the ``embedded_disclosure_policy`` member of ``credential_metadata`` within ``credential_configurations_supported``, as defined in [`OpenID4VCI`_] and :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
+
+During Credential Presentation, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_INVALID`` and MUST warn the User ([`EIDAS-ARF`_] RPRC_17).
+The Wallet Unit MUST NOT query the Register as a fallback ([`EIDAS-ARF`_] RPRC_16 and RPRC_18 are empty).
+
+During Credential Issuance, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_INVALID``, MUST warn the User that it could not obtain or validate the registered information, and MUST NOT request the issuance of a PID or attestation ([`EIDAS-ARF`_] RPRC_22a).
+The Wallet Unit MUST NOT query the Register as a fallback ([`EIDAS-ARF`_] RPRC_22).
 
 **Wallet-Relying Party Registration Certificate Validation**
 
 When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:
 
-1. **Format verification**: confirm that ``typ`` is ``rc-wrp+jwt`` in the Remote Flow, or ``rc-wrp+cwt`` in the Proximity Flow, as defined in Section 5.2.1 of [`ETSI TS 119 475`_].
+1. **Format verification**: confirm that ``typ`` is ``rc-wrp+jwt`` in the Remote Flow and during Credential Issuance, or ``rc-wrp+cwt`` in the Proximity Flow, as defined in Section 5.2.1 of [`ETSI TS 119 475`_].
 2. **Algorithm verification**: verify that the signature algorithm is conformant, that is ``alg`` is neither ``none`` nor a deprecated algorithm.
 3. **Signature validation**: verify that the Wallet-Relying Party Registration Certificate signature is valid.
 4. **Trust Anchor validation**: validate the Providers of WRPRC LoTE (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
@@ -611,57 +612,30 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
 **Outcome**
 
 - If all the steps succeed and the Wallet-Relying Party Registration Certificate is in the ``VALID`` state, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_VALID``.
-- If any step fails, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_INVALID``.
-  This is not a final authorization decision: it triggers :ref:`Register Query Validation <register-query-validation>` as fallback.
-
-.. _register-query-validation:
-
-**Register Query Validation**
-
-When the Wallet-Relying Party Registration Certificate is not available or its validation has failed, the Wallet Unit MUST query the Register API:
-
-1. **Extract the Registrar URL** from the Presentation Request, that is the ``verifier_info`` in the Remote Flow or the ``requestInfo`` in the Proximity Flow, or from the Credential Issuer Metadata, that is ``issuer_info[].registry_uri``, during Issuance.
-2. **Connect** to the Registrar online service over HTTPS.
-3. **Query** the service with the entity identifier and, optionally, the ``intended_use_id``.
-   The entity identifier is the ``verifier_info[].data.identifier`` in the Remote Flow, the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow, or the ``issuer_info[].data.identifier`` during Issuance.
-4. **Format verification**: confirm that ``typ`` is ``jwt``, as defined in Section 5.2.1 of [`ETSI TS 119 475`_].
-5. **Verify pertinence**: verify that the response pertains to the relevant Authorization Subject and intended use.
-6. **Verify the response signature**: verify the Registrar signature using the Sign/Seal Certificate carried in the ``x5c`` claim of the response.
-7. **Trust Anchor validation**: validate the Registrars List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`) and retrieve the Registrar Trust Anchor from its ``TrustedEntitiesList.ServiceDigitalIdentity`` field.
-8. **Path validation**: validate the Registrar Sign/Seal Certificate chain as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`, where ``C_1`` is the Registrar Sign/Seal Certificate, and the ``trust_anchor`` is the Trust Anchor obtained at the previous step.
-9. **Normalize** the Register-derived data into the same internal model used for the Wallet-Relying Party Registration Certificate.
+- If any step fails, or if no Wallet-Relying Party Registration Certificate is included, the Wallet Unit MUST set ``authz_art_state`` to ``CERTIFICATE_INVALID``.
+  During Credential Presentation the Wallet Unit MUST warn the User ([`EIDAS-ARF`_] RPRC_17) and MUST NOT query the Register.
+  During Credential Issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([`EIDAS-ARF`_] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([`EIDAS-ARF`_] RPRC_22).
 
 .. note::
 
-    Even when the Relying Party requesting the presentation is a Relying Party Intermediary, the Presentation Request MUST carry the intermediated Relying Party data, as defined in [`ETSI TS 119 475`_].
-
-**Outcome**
-
-- If all the steps succeed, the Wallet Unit MUST set ``authz_art_state`` to ``REGISTER_VALID``.
-- If any step fails, the Wallet Unit MUST set ``authz_art_state`` to ``FAILED``.
-
-During Issuance only, the ``registrar_dataset`` data MAY be used as a further fallback, as advisory information only, and MUST NOT be presented to the User as verified.
-In Step 8.
-**Path Validation**, the Trust Anchor Certificate needed for the validation of the Registrar Sign/Seal Certificate MUST NOT be included in the certificate chain Register's response and MUST be always retrieved in the appropriate LoTE.
+    During Credential Presentation the request MUST carry the Wallet-Relying Party Registration Certificate of the Authorization Subject by value, including when the authenticated Wallet-Relying Party is a Relying Party Intermediary ([`EIDAS-ARF`_] RPRC_19).
+    That certificate identifies the intermediated Relying Party.
 
 Authorization Validation
 """""""""""""""""""""""""""""
 
-The Authorization Validation MUST follow the Authorization Artifacts Validation when ``authz_art_state == REGISTER_VALID`` or ``authz_art_state == CERTIFICATE_VALID``.
-If ``authz_art_state == FAILED`` the Wallet Unit SHOULD NOT execute any Authorization Validation, as it cannot change the final Authorization Decision.
+The Authorization Validation MUST follow the Authorization Artifacts Validation when ``authz_art_state == CERTIFICATE_VALID``.
+If ``authz_art_state == CERTIFICATE_INVALID``, the Wallet Unit SHOULD NOT execute any Authorization Validation, as it cannot change the final Authorization Decision.
 
 **Input**
 
 The Wallet Unit MUST base the Authorization Validation only on:
 
 - the authenticated Wallet-Relying Party and the interaction context, authoritative only for the identity of the Wallet-Relying Party;
-- a validated Authorization Artifact, that is a Wallet-Relying Party Registration Certificate or a Register Response, authoritative for the subject identity, entitlements, intended use, registered scope, intermediary relationships, issuance-specific data and privacy policy references, as defined in [`ETSI TS 119 475`_];
-- explicitly identified fallback information, non-authoritative;
+- a validated Authorization Artifact, that is a Wallet-Relying Party Registration Certificate, authoritative for the subject identity, entitlements, intended use, registered scope, intermediary relationships, issuance-specific data and privacy policy references, as defined in [`ETSI TS 119 475`_];
 - a verified Embedded Disclosure Policy, REQUIRED when provided by the Attestation Provider during Credential Issuance, authoritative when present.
 
-Where authoritative sources conflict with non-authoritative sources, the authoritative sources MUST supersede.
 Where the authenticated Wallet-Relying Party context conflicts with the identity or the intermediary binding in the verified authorization context, the Wallet Unit MUST produce ``NOT_AUTHORIZED``, non-overridable.
-A request-carried Registrar URL MUST NOT be treated as sufficient proof of registered information by itself; it MAY be used only as a discovery hint unless confirmed by an authoritative source.
 
 **Outcome**
 
@@ -674,22 +648,23 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
    The Wallet-Relying Party identity is the ``organizationIdentifier`` of the Wallet-Relying Party Access Certificate subject (clause 5.1.4 of [`ETSI EN 319 412-1`_]; the Wallet-Relying Party Access Certificate profile is defined in [`ETSI TS 119 411-8`_]).
 
     - **Credential Issuance**.
-      The Wallet Unit MUST match the Credential Issuer identifier with the ``sub`` of the Wallet-Relying Party Registration Certificate or, if no Wallet-Relying Party Registration Certificate is available, with the ``identifier`` used in the Register query, and with the ``issuer_info.data.identifier`` of the Credential Issuer Metadata.
+      The Wallet Unit MUST match the Credential Issuer identifier with the subject of a supplied Wallet-Relying Party Registration Certificate and with the applicable identifier in ``issuer_info[].data.identifier[]`` of the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22b).
     - **Credential Presentation**.
-      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier with the ``sub`` of the Wallet-Relying Party Registration Certificate or, if not available, the ``identifier`` used in the Register query, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` in the Proximity Flow.
-      If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario and match the identifier against the ``intermediary.sub`` field carried in the Wallet-Relying Party Registration Certificate or in the Register Response.
+      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
+      If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
+      the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, and the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04).
+      Association of a distinct WRPAC to that Relying Party and Service is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
     If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation and set ``authz_val_state`` to ``BINDING_FAILED``.
-    If it succeeds, the Wallet Unit MUST make available to the User the identity of the Relying Party Intermediary, the identity or service description of the intermediated Relying Party, and the intended use of the request; how this information is presented is defined in the relevant User interaction sections of the IT-Wallet specification.
-
-    .. note::
-
-        If the Wallet Unit used only the Wallet-Relying Party Registration Certificate ``sub`` for the Binding verification and the outcome is ``BINDING_FAILED``, the Wallet-Relying Party Registration Certificate is not valid for this Relying Party.
-        The Wallet Unit MUST query the Register, validate the response as described in :ref:`Register Query Validation <register-query-validation>`, and repeat the Binding verification.
+    If the **direct** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the Relying Party, and the intended use of the request.
+    If the **intermediated** scenario succeeds, the Wallet Unit MUST make available to the User the identity and Service of the *intermediated* Relying Party and the intended use of the request.
+    It MUST NOT display the trade names of the Intermediary or of the Intermediary Service ([`EIDAS-ARF`_] RPI_07).
+    How this information is presented is defined in the relevant User interaction sections of the IT-Wallet specification.
+    There is no User opt-in Registrar lookup of the intermediary relationship ([`EIDAS-ARF`_] RPI_07a is empty).
 
 2. **Entitlement verification**.
    The Wallet Unit MUST verify that the entitlements of the Authorization Subject match the expected role.
-   The Wallet Unit MUST parse the ``entitlements`` field of the Wallet-Relying Party Registration Certificate or of the Register Response and check that it contains the entitlement URI expected for the interaction, among those defined in Annex A.2 of [`ETSI TS 119 475`_]:
+   The Wallet Unit MUST parse the ``entitlements`` field of the Wallet-Relying Party Registration Certificate and check that it contains the entitlement URI expected for the interaction, among those defined in Annex A.2 of [`ETSI TS 119 475`_]:
 
     - ``https://uri.etsi.org/19475/Entitlement/PID_Provider`` for PID Providers, during PID Issuance;
     - ``https://uri.etsi.org/19475/Entitlement/QEAA_Provider`` for QEAA Providers, during QEAA Issuance;
@@ -702,12 +677,12 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
 3. **Attestation Type verification**.
    During Credential Issuance, the Wallet Unit MUST verify that the PID or the Attestation Type being issued is registered for the Credential Issuer.
    A PID Provider issuing PIDs MAY skip this step.
-   Otherwise the Wallet Unit MUST match the ``provides_attestations`` array of the Wallet-Relying Party Registration Certificate or of the Register Response (defined in Table 8 of [`ETSI TS 119 475`_]) against the ``credential_configurations_supported`` keys of the Credential Issuer Metadata ([`OpenID4VCI`_]).
+   Otherwise the Wallet Unit MUST match the ``provides_attestations`` array of the Wallet-Relying Party Registration Certificate (defined in Table 8 of [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_23) against the ``credential_configurations_supported`` keys of the Credential Issuer Metadata ([`OpenID4VCI`_]).
    The match MUST be exact and case sensitive, on ``vct`` for SD-JWT VC and on ``docType`` for mdoc.
    If not found, the Wallet Unit MUST set ``authz_val_state`` to ``ATTESTATION_TYPE_NOT_REGISTERED``.
 
 4. **Scope Comparison**.
-   During Credential Presentation, the Wallet Unit MUST verify that the requested Digital Credentials and attributes fall within the registered scope, carried in the ``credentials`` array of the Wallet-Relying Party Registration Certificate or of the Register Response (defined in Table 9 of [`ETSI TS 119 475`_]).
+   During Credential Presentation, the Wallet Unit MUST verify that the requested Digital Credentials and attributes fall within the registered scope, carried in the ``credentials`` array of the Wallet-Relying Party Registration Certificate included in the request (defined in Table 9 of [`ETSI TS 119 475`_]; [`EIDAS-ARF`_] RPRC_21).
 
     - **Remote Flow**: extract the requested Digital Credentials and attributes from the ``dcql_query`` of the Request Object ([`OpenID4VP`_]) and match them against the ``credentials`` entries, comparing ``format`` and ``meta`` (``vct_values`` for SD-JWT VC) and the requested attributes against the ``claim`` paths.
     - **Proximity Flow**: extract the ``docType`` and the ``nameSpaces`` from the ``docRequests`` of the mdoc Request ([`ISO18013-5`_]) and match them against ``credentials[].meta.doctype_value`` and ``credentials[].claim`` respectively.
@@ -718,18 +693,30 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     If all the checks above that apply to the interaction are satisfied, the Wallet Unit MUST set ``authz_val_state`` to ``VERIFICATION_PASSED``.
 
 5. **Embedded Disclosure Policy evaluation**.
-   During Credential Presentation, for each Digital Credential matching the Presentation Request, the Wallet Unit MUST check for a locally stored Embedded Disclosure Policy.
-   If none exists, this check is superseded.
-   Otherwise, according to the ``policy_type`` defined in Section 4.2.5 of [`ETSI TS 119 472-3`_]:
+   During Credential Issuance, the Wallet Unit MUST resolve the EDP identified by the selected Credential metadata and associate the resolved policy with each issued EAA. During Credential Presentation, for each Digital Credential and each requested attribute, the Wallet Unit MUST evaluate the associated EDP before User consent. If an EDP URI cannot be resolved to the exact included or preloaded policy, the EDP evaluation MUST fail. An EDP MUST NOT be evaluated for a PID.
+   According to the ``policy_type`` defined in Section 4.2.5 of [`ETSI TS 119 472-3`_]:
 
     - ``no_policy``: no restriction applies.
     - ``authorized_rp_only``: only the Relying Parties in the ``authorized_parties`` list are authorized.
-      The Wallet Unit MUST compare the Relying Party subject DN of the Wallet-Relying Party Access Certificate against the ``subject_dn`` entries, and the Relying Party entitlements or sub-entitlements of the Wallet-Relying Party Registration Certificate against the ``entitlement_uri`` entries.
-      A match on either criterion is sufficient.
-    - ``specific_root_of_trust``: only the Relying Parties whose Wallet-Relying Party Access Certificate chain contains one of the ``trusted_roots`` are authorized.
-      The Wallet Unit MUST match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+      The Wallet Unit MUST retrieve the EU-wide unique identifier from the WRPRC in the request (``sub``) and compare it with ``authorized_parties[].identifier`` ([`EIDAS-ARF`_] EDP_02, Reg_32).
+      The Service identifier of that duplet is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
+      Where an ``authorized_parties`` element identifies the party by ``entitlement_uri``, the Wallet Unit MUST match that URI against the entitlements or sub-entitlements of the same WRPRC.
+      A match on the identifier or on ``entitlement_uri`` is sufficient.
+      If neither matches, the Wallet Unit MUST consider the EDP evaluation to have failed.
+      The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
+      If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for ``sub``.
+      In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
+    - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
+      The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
+      It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.
+      The path comprises the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE.
+      If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
+      In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
+      It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request.
 
-    If the applicable check is satisfied, or no Embedded Disclosure Policy is present, the Wallet Unit MUST set ``edp_state`` to ``EDP_SATISFIED``; otherwise it MUST set ``edp_state`` to ``EDP_NOT_SATISFIED``.
+   The Wallet Unit MUST apply the base policy to the Credential and any recognized attribute-specific rule to the selected Credential-format claim path. A disclosed attribute is permitted only when both the Credential-level result and its applicable attribute-level result are satisfied. The Wallet Unit MUST inform the User of the Credential-level and attribute-level results, including the policy information link when present, before consent, and MUST block every unsatisfied Credential or attribute. Unknown extensions MAY be ignored only when doing so does not break processing of recognized rules.
+
+   If the applicable checks are satisfied, or no EDP is present for an EAA, the Wallet Unit MUST set the Credential or attribute result to ``EDP_SATISFIED``; otherwise it MUST set it to ``EDP_NOT_SATISFIED``.
 
 **Outcome**
 
@@ -753,15 +740,7 @@ The table below summarizes the codes.
    * - ``authz_art_state``
      - ``CERTIFICATE_INVALID``
      - both
-     - A format, signature, trust anchor or status check fails on the presented registration certificate.
-   * - ``authz_art_state``
-     - ``REGISTER_VALID``
-     - both
-     - The online Registrar query completed, and the response signature, pertinence and trust anchor passed.
-   * - ``authz_art_state``
-     - ``FAILED``
-     - both
-     - The online Registrar query or response verification failed during the fallback procedures.
+     - A format, signature, trust anchor or status check fails on the presented registration certificate, or no Wallet-Relying Party Registration Certificate is included. During presentation the Wallet Unit MUST warn the User ([`EIDAS-ARF`_] RPRC_17) and MUST NOT query the Register. During issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([`EIDAS-ARF`_] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([`EIDAS-ARF`_] RPRC_22).
    * - ``authz_val_state``
      - ``WRONG_ENTITLEMENT``
      - both
@@ -785,11 +764,11 @@ The table below summarizes the codes.
    * - ``edp_state``
      - ``EDP_SATISFIED``
      - presentation
-     - No Embedded Disclosure Policy restriction applies, or the Relying Party satisfies the local policy.
+     - No Embedded Disclosure Policy restriction applies, or the Credential/attribute and Relying Party satisfy the resolved policy.
    * - ``edp_state``
      - ``EDP_NOT_SATISFIED``
      - presentation
-     - The Relying Party does not satisfy any locally stored Embedded Disclosure Policy.
+     - The selected Credential, or attribute does not satisfy the resolved Embedded Disclosure Policy; disclosure or issuance of the affected data is blocked.
 
 The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elaborated from the ``authz_art_state``, ``authz_val_state`` and ``edp_state`` values, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
@@ -815,6 +794,9 @@ The Wallet Unit obtains the metadata of the Wallet-Relying Party according to th
 **Metadata Validation**
 
 The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate.
-During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the ``x5c`` header of the JOSE signature.
+During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [`OpenID4VCI`_], providing the Wallet-Relying Party Access Certificate chain in the protected ``x5c`` header of the JOSE signature. The first certificate MUST be the signing access certificate and the trust anchor MUST be excluded. 
+
+The Wallet Unit MUST validate the certificate path and signature before using the payload, then MUST use that authenticated payload as the sole metadata source for the interaction, including its ``issuer_info``, grants, reuse policy, and EDP.
+
 During Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same ``x5c`` header.
 In both cases the Wallet Unit validates the signature and the certificate chain as defined in :ref:`trust-evaluation:EUDIW Authentication`, and MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.

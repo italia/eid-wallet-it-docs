@@ -23,7 +23,7 @@ AccessCertificate cert = {
     subject: DistinguishedName {                          // Subject attributes for legal person
       countryName: "IT",
       organizationName: "Example of Relying Party",
-      commonName: "Relying Party Example",
+      commonName: "ExampleBank Mobile",                   // serviceTradeName (Reg_34)
       organizationIdentifier: "LEIXG-5493001KJTIIGC8Y1R12"
     },
 
