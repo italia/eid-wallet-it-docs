@@ -122,8 +122,8 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
-      - OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
-      - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - OBBLIGATORIO per un EAA. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
+      - :rfc:`7519#section-4.1.5` e [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01.
     * - **issuing_authority**
       - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
@@ -146,8 +146,8 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OBBLIGATORIO. *Stringa*. Identificativo del dato `credential_type_identifier` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere impostato utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici, il confronto dei caratteri letterali inclusi in questa URN DEVE essere eseguito in modo case-sensitive. È l'identificativo del tipo di SD-JWT VC e DEVE essere impostato con un valore resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione del tipo di Attestato Elettronico. A meno che non sia diversamente specificato da `EIDAS-ARF`_ e dagli EUDI Rulebook, il ``vct`` DOVREBBE seguire una struttura come ``urn:it-wallet:{credential_type}:{credential_type_version}``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
-      - OPZIONALE. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
-      - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
+      - OBBLIGATORIO per un EAA. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
+      - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_], e [`ETSI TS 119 472-1`_] EAA-5.2.1.2-03.
     * - **verification**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Include i seguenti sotto-valori:
 
