@@ -31,11 +31,10 @@ I metadata *openid_credential_verifier* DEVONO contenere il *client_metadata*, c
     - Oggetto JSON che definisce i formati e i tipi di prova delle Verifiable Presentations e delle Verifiable Credentials supportati dalla RP. È composto da una lista di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno ``dc+sd-jwt``. Per le SD-JWT VC, il valore associato a ciascuna coppia nome/valore DEVE includere ``sd-jwt_alg_values`` che elenca gli algoritmi di firma accettati; per mdoc-CBOR, la valore DEVE includere ``issuerauth_alg_values`` e ``deviceauth_alg_values``. Gli header JOSE/COSE degli artefatti presentati DEVONO corrispondere a uno dei valori dichiarati. Vedi `OpenID4VP`_ Sezione 11 e Appendice B.
   * - **jwks**
     - Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
-  * - **erasure_endpoint**
-    - [CONDIZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema ``https``. Alla ricezione di una richiesta di cancellazione, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici per i quali l'Utente richiede la rimozione, applicando l'identity matching come specificato in :ref:`identity-matching`.
 
 
 .. note::
-  I parametri ``response_uris`` e ``erasure_endpoint`` sono introdotti in questa specifica.
+  Il parametro ``response_uris`` è introdotto in questa specifica.
+  L'Istanza del Wallet richiede la cancellazione dei dati personali tramite il contatto di supporto della Relying Party, come specificato in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente` e in `EUDI-TS 7`_.
 
 

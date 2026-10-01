@@ -968,10 +968,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
 Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione elenca i casi di test dalle Sezioni:
-
-- :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+Questa sezione elenca i casi di test dalla Sezione :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`.
 
 .. list-table::
    :class: longtable
@@ -992,28 +989,28 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - La vista dei log delle transazioni mostra le Relying Party in possesso degli attributi dell'Utente.
    * - WP_116
      - Eliminazione Attributi, Ciclo di vita, Sicurezza
-     - Validazione metadata Relying Party per eliminazione
-     - Quando un Utente seleziona una Relying Party per l'eliminazione degli Attributi, Istanza del Wallet recupera e valida i suoi metadata di Federazione, confermando la presenza di un Endpoint di Cancellazione della Relying Party.
+     - Contatto di supporto della Relying Party per la cancellazione
+     - Quando un Utente seleziona una Relying Party per l'eliminazione degli attributi, l'Istanza del Wallet ottiene il contatto di supporto registrato (``support_uri`` nel National Trust Framework, oppure il contatto di supporto del Wallet-Relying Party Access Certificate nel EUDIW Trust Framework) e conferma che sia presente almeno un contatto invocabile.
    * - WP_117
      - Eliminazione Attributi, Ciclo di vita, Interoperabilità
-     - Richiesta Cancellazione
-     - Istanza del Wallet costruisce correttamente, e invia una Richiesta Cancellazione valida destinata all'Endpoint di Cancellazione della Relying Party.
+     - Richiesta di cancellazione dei dati
+     - L'Istanza del Wallet invoca l'applicazione esterna corrispondente al contatto selezionato. Per un indirizzo email, il ``subject`` della bozza richiede la cancellazione ai sensi dell'Articolo 17 del Regolamento (UE) 2016/679 e il ``body`` identifica gli attributi, oppure richiede la cancellazione di tutti i dati personali precedentemente forniti tramite l'Istanza del Wallet.
    * - WP_117a
      - Eliminazione Attributi, Ciclo di vita, Privacy
-     - Registrazione Richiesta Cancellazione
-     - Una voce nel log viene creata per ogni Richiesta Cancellazione, contenente il timestamp, l'identificativo della Relying Party, e gli Attributi specifici la cui eliminazione è richiesta.
+     - Registrazione della richiesta di cancellazione dei dati
+     - Una voce di log è creata per ogni richiesta di cancellazione dei dati, contenente la data e l'ora, l'identificativo della Relying Party e gli attributi specifici di cui è richiesta l'eliminazione.
    * - WP_118
      - Eliminazione Attributi, Ciclo di vita, UX
-     - Reindirizzamento utente e callback per cancellazione
-     - Istanza del Wallet reindirizza con successo l'Utente all'Endpoint di Cancellazione della Relying Party e riceve la Risposta Cancellazione tramite un opportuno meccanismo di callback.
+     - Selezione del contatto
+     - L'Istanza del Wallet presenta i contatti che la piattaforma può invocare, oppure applica una preferenza dell'Utente memorizzata, e invoca l'applicazione esterna selezionata.
    * - WP_119
      - Eliminazione Attributi, Ciclo di vita, Interoperabilità
-     - Gestisce risposta eliminazione/errore
-     - Istanza del Wallet processa correttamente sia le risposte di successo che di errore per la Risposta Cancellazione dalla Relying Party.
+     - Avvio della richiesta
+     - L'Istanza del Wallet registra la richiesta di cancellazione dei dati come avviata. Non richiede una risposta HTTP dalla Relying Party.
    * - WP_119a
      - Eliminazione Attributi, Ciclo di vita, UX
-     - Notifica utente su cancellazione
-     - Istanza del Wallet mostra una notifica chiara all'Utente indicando il successo o fallimento della Richiesta di Cancellazione.
+     - Notifica all'Utente sulla richiesta di cancellazione
+     - L'Istanza del Wallet informa l'Utente che la richiesta di cancellazione dei dati è stata avviata.
 
 .. _credential-backup-testcases:
 
