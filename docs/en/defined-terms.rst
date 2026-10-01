@@ -45,6 +45,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic process confirming the identity of a person or the origin/integrity of data.
       Aligned with ARF 3.0.0.
 
+    **Identity Matching**
+      Process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person. See :ref:`identity-matching`.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Identity Reconciliation**
+      Process by which a Relying Party, after successful identity matching, links that natural person to a previous User session or stored User record. See :ref:`identity-matching`.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Authentic Source**
       Public or private entity responsible for a repository/system considered a primary source for Attributes or PID.
       Aligned with ARF 3.0.0.
@@ -371,7 +379,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High. A WSCD MUST be certifiable as resistant to attackers with high attack potential (at least Common Criteria EAL4+ AVA_VAN.5). A hardware-backed Keystore is not a WSCD and MUST NOT be treated as evidence of Level of Assurance High.
       Aligned with ARF 3.0.0.
 
     **Wallet Solution**
@@ -539,6 +547,10 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **KA**
+    - Key Attestation
+  * - **WIA**
+    - Wallet Instance Attestation
   * - **WRPAC**
     - Wallet-Relying Party Access Certificate
   * - **WRPRC**
@@ -549,9 +561,5 @@ Below are the main acronyms used in the document:
     - Wallet Secure Cryptographic Device
   * - **WUA**
     - Wallet Unit Attestation
-  * - **WIA**
-    - Wallet Instance Attestation
-  * - **KA**
-    - Key Attestation
 
 

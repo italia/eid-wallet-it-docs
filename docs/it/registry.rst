@@ -1391,7 +1391,7 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
 
       * **pricing_model_uri**: URI della documentazione dettagliata del modello di prezzo.
   * - **validity_info**
-    - Informazioni sulla validità dell'Attestato Elettronico, comprese almeno:
+    - OBBLIGATORIO. Informazioni sulla validità dell'Attestato Elettronico, comprese almeno:
 
       * **max_validity_days**: Periodo massimo di validità in giorni.
       * **status_methods**: Metodi di verifica dello stato supportati (ad es. ``status_list``).

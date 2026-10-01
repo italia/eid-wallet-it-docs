@@ -20,7 +20,7 @@
   "metadata": {
     "federation_entity": {
       "organization_name": "Private Company S.p.A.",
-      "homepage_uri": "https://access.privatecompany.example.com",
+      "organization_uri": "https://access.privatecompany.example.com",
       "policy_uri": "https://access.privatecompany.example.com/policy",
       "logo_uri": "https://access.privatecompany.example.com/logo.svg",
       "contacts": [

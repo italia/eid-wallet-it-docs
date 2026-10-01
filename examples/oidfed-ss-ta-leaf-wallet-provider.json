@@ -15,7 +15,7 @@
     ]
   },
   "metadata_policy": {
-    "wallet_solution": {
+    "openid_wallet_provider": {
       "jwks": {
         "value": { "... the Wallet Provider protocol keys registered at onboarding ..." }
       }
@@ -23,7 +23,7 @@
   },
   "constraints": {
     "allowed_entity_types": [
-      "wallet_solution"
+      "openid_wallet_provider"
     ],
     "max_path_length": 0
   }

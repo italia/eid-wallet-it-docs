@@ -100,7 +100,7 @@ Once *User Request flow* is completed, the Wallet Instance MUST perform the foll
 - **National Authentication, and Authorization:** On the National path, it MUST validate the Credential Issuer's Federation Trust Chain, authenticate the signed protocol artifact, and consume only the applicable final metadata according to :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`. After successful Authentication, it MUST validate the registration Trust Mark, including its signature, temporal validity, and status, and verify the Credential Issuer's entitlement and authorization to issue the offered Credential type according to :ref:`trust-evaluation:Authorization`.
 - **Failure handling:** If Authentication or Authorization does not succeed, the Wallet Instance MUST warn the User, MUST NOT request issuance, and MUST NOT retry the failed evaluation or supplement its evidence through the other trust path, as specified in :ref:`trust-evaluation:Failure Handling`.
 
-Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the selected metadata, from where the Wallet Instance can get the ``batch_size`` value.
+Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the selected metadata, from where the Wallet Instance can get the ``batch_size`` value. Batch issuance applies only to the Credential types for which that metadata is advertised. The Credential Issuer MUST declare whether PID and IT-Wallet ID are in scope. A Credential type without that advertisement MUST be issued as a single Credential (:ref:`CI_203 <credential-issuer-testcases>`).
 
 .. note::
   **Selected-path trust check:** The Wallet Instance MUST complete the Credential Issuer Authentication, Authorization, and Metadata Retrieval and Validation checks above before continuing the Authorization Code Grant flow (:ref:`WP_046 <wallet-credential-issuance-testcases>`).
@@ -118,7 +118,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`  (:ref:`WP_052a <wallet-credential-issuance-testcases>`).
   * Signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation ``cnf.jwk`` claim  (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
   * MUST use the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint  (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
-  * Specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or ``scope`` parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
+  * MUST specify the types of the requested credentials using both the ``scope`` parameter, as required by [`OPENID4VC-HAIP`_], and the ``authorization_details`` [RAR :rfc:`9396`] parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 .. note::
   This specification uses JAR [:rfc:`9101`] to ensure end-to-end integrity of authorization requests for all Request Object parameters.
@@ -126,7 +126,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   Wallet Solutions supporting both JAR-compliant and non-compliant Authorization Servers may duplicate parameters in both the request body and the signed Request Object. Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
 
 .. note::
-   For eID Substantial Authentication with MRTD Verification, the ``authorization_details`` object MUST contain the type ``"it_l2+document_proof"``. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
+   User authentication method selection, including the use of ``it_l2+document_proof``, is defined in :ref:`credential-issuance-endpoint:User Authentication Method Selection`. The related protocol flow is defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
 
 The Credential Issuer performs the following checks upon the receipt of the PAR request:
 
@@ -213,8 +213,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 
 .. note::
-   **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), while the EAA Provider of IT-Wallet ID in addition to CieID LoA High supports also the eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
-   The (Q)EAA Provider performs the User authentication requesting a valid PID or IT-Wallet ID to the Wallet Instance, according to :ref:`pid-until-notification`. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request that presentation. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID or IT-Wallet ID, obtained beforehand. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
+   **User Authentication and Consent**: The Credential Issuer performs User authentication at the Authorization Endpoint according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
 
 
 **Steps 6-7 (Authorization Response)**: The Credential Issuer sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:

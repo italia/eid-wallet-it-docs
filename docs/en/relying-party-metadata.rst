@@ -35,7 +35,7 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
    * - **jwks**
      - JSON Web Key Set document, passed by value, containing the request-specific ephemeral response-encryption public keys for the Relying Party. Every key MUST have ``kid`` and ``use`` values, and each ``kid`` MUST identify exactly one key. See `JWK`_.
    * - **erasure_endpoint**
-     - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching.
+     - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching as specified in :ref:`identity-matching`.
 
 
 .. note::

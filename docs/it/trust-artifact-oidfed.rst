@@ -187,9 +187,7 @@ Gli Entity Type Identifier dei ruoli dell'ecosistema sono definiti in OpenID Fed
 Ciascun ruolo dichiara nella propria Entity Configuration uno o più tipi di metadata, i cui parametri seguono la specifica di protocollo di tale tipo di metadata.
 La tabella seguente mappa i ruoli dell'ecosistema sui loro Entity Type Identifier e fornisce il riferimento del protocollo di metadata per ciascuno di essi.
 
-.. warning::
-  All'interno di IT-Wallet il tipo di metadata del Wallet Provider DEVE essere ``wallet_solution``.
-  Questa è una deviazione da OpenID Federation for Wallet Architectures, che nomina il corrispondente Entity Type Identifier ``openid_wallet_provider``.
+Il tipo di metadata del Wallet Provider DEVE essere ``openid_wallet_provider``, l'Entity Type Identifier definito da OpenID Federation for Wallet Architectures (`OID-FED-WALLET`_).
 
 .. list-table::
    :class: longtable
@@ -201,7 +199,7 @@ La tabella seguente mappa i ruoli dell'ecosistema sui loro Entity Type Identifie
    * - Trust Anchor
      - ``federation_entity``
    * - Wallet Provider
-     - ``federation_entity``, ``wallet_solution``
+     - ``federation_entity``, ``openid_wallet_provider``
    * - Credential Issuer
      - ``federation_entity``, ``openid_credential_issuer``, [``oauth_authorization_server``]
    * - Relying Party
@@ -235,8 +233,9 @@ I parametri informativi seguenti sono OPZIONALI in `OID-FED`_; il profilo delle 
   * - **organization_name**
     - OBBLIGATORIO.
       Vedi `OID-FED`_ Sezione 5.2.2
-  * - **homepage_uri**
+  * - **organization_uri**
     - OBBLIGATORIO.
+      URL della pagina web dell'organizzazione che possiede l'entità.
       Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
     - OBBLIGATORIO.

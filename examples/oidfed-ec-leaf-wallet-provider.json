@@ -20,18 +20,18 @@
   "metadata": {
     "federation_entity": {
       "organization_name": "Example Wallet Provider",
-      "homepage_uri": "https://wallet-provider.example.it",
+      "organization_uri": "https://wallet-provider.example.it",
       "policy_uri": "https://wallet-provider.example.it/policy",
       "logo_uri": "https://wallet-provider.example.it/logo.svg",
       "contacts": [
         "wallet-provider@pec.example.it"
       ]
     },
-    "wallet_solution": { ".. as defined in the Wallet Solution Metadata section ..." }
+    "openid_wallet_provider": { ".. as defined in the Wallet Solution Metadata section ..." }
   },
   "trust_marks": [
     {
-      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution",
+      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_wallet_provider",
       "trust_mark": "<signed Trust Mark JWT>"
     }
   ]
