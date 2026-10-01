@@ -623,8 +623,8 @@ Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_0
   * - **state**
     - Identificatore univoco fornito dalla Relying Party all'interno della Authorization Request.
 
-.. note:: 
-    Sebbene `OpenID4VP`_ prenda in considerazione la bozza -10 della specifica SD-JWT VC, la specifica IT Wallet considera la bozza -11 (`SD-JWT-VC`_) in linea con la versione identificata in `OpenID4VCI`_.
+.. note::
+    Sebbene `OpenID4VP`_ prenda in considerazione la bozza -10 della specifica SD-JWT VC, la specifica IT Wallet considera la bozza -13 (`SD-JWT-VC`_) in linea con la versione identificata in `OpenID4VCI`_.
 
 SD-JWT definisce come un *Holder* può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'*Holder* DEVE includere il ``KB-JWT`` nell'SD-JWT aggiungendo il ``KB-JWT`` alla termine della stringa contenente l'SD-JWT (:ref:`WP_093b <wallet-credential-presentation-testcases>`), come rappresentato nell'esempio seguente
 

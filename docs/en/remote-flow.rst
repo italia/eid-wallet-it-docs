@@ -697,6 +697,9 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
    * - **state**
      - Unique identifier provided by the Relying Party within the Authorization Request.
 
+.. note::
+    Although `OpenID4VP`_ considers SD-JWT-based Verifiable Credentials (SD-JWT VC) draft -10, the IT Wallet specification considers SD-JWT VC draft -13 (`SD-JWT-VC`_) to be in line with the version identified in `OpenID4VCI`_.
+
 SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT (:ref:`WP_093b <wallet-credential-presentation-testcases>`), as represented in the example below
 
 .. code-block:: text
