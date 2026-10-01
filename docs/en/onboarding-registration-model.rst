@@ -367,6 +367,7 @@ PID Provider
 """"""""""""
 
 A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
+The component decomposition of the PID Provider is in :ref:`component-decomposition:PID Provider`.
 In addition to the base registration data, a PID Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
