@@ -492,7 +492,7 @@ Il payload del Trust Mark JWT include i seguenti claim:
      - REQUIRED.
        Contatto di supporto dell'entità.
        Una richiesta di cancellazione dei dati usa questo valore, come specificato in `EUDI-TS 7`_, per la cancellazione dei dati personali precedentemente forniti tramite l'Istanza del Wallet.
-       Il valore MUST essere un URL HTTPS, un indirizzo email o un numero di telefono.
+       Il valore DEVE essere un URL HTTPS, un indirizzo email o un numero di telefono.
    * - **srv_description**
      - REQUIRED.
        Descrizione multilingue del servizio fornito dall'entità.
