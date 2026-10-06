@@ -356,21 +356,21 @@ Within the EUDIW Trust Framework the following applies.
 
 **Input**
 
-- ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` is the first certificate of the chain and ``C_n`` is the end-entity certificate.
-  For any ``i`` in ``1, ..., n-1``, ``C_i`` is the issuer of ``C_i+1``.
+- ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` MUST be the end-entity certificate corresponding to the private key used to sign the artifact or Attestation and ``C_n`` MUST be the certificate signed by the ``trust_anchor``. The Trust Anchor certificate MUST NOT be included in ``path``.
+  For any ``i`` in ``1, ..., n-1``, ``C_i+1`` MUST be the issuer of ``C_i``.
 - ``trust_anchor``: the trusted certificate obtained from the ``ServiceDigitalIdentity`` of the validated List of Trusted Entities or Trusted List.
-  It MUST contain the public key used to sign ``C_1``.
+  It MUST contain the public key used to sign ``C_n``.
   Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.
 - ``current_time``: the current date and time.
 
 **Outcome**
 
-- The validated end-entity certificate ``C_n``, or a failure.
+- The validated end-entity certificate ``C_1``, or a failure.
 
 **Process**
 
-1. Build the certification path from the end-entity certificate ``C_n`` to the ``trust_anchor``.
-2. Execute the path validation defined in :rfc:`5280#section-6`, using the ``trust_anchor`` as the trust anchor input of the algorithm and ``current_time`` as the validation time.
+1. Build the certification path from the end-entity certificate ``C_1`` towards the ``trust_anchor``, ending with ``C_n``.
+2. Execute the path validation defined in :rfc:`5280#section-6`, using the ``trust_anchor`` as the trust anchor input of the algorithm and ``current_time`` as the validation time. The RFC 5280 validation processes the certificates from ``C_n`` to ``C_1``; this does not change the order of the presented ``path``.
 3. Verify the revocation status of the certificates in the path according to :rfc:`5280` and :rfc:`6960`, unless the check is skipped as described above.
 
 If any step fails, the certification path MUST be considered invalid and the artifact signature MUST NOT be verified with the presented certificate chain.
@@ -475,7 +475,7 @@ For the verification of the access certificate, the Wallet Unit MUST accept only
 The Authentication outcome MUST be based only on information derived from:
 
 - the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities;
-- the X.509 certificate path terminating with the Wallet-Relying Party Access Certificate end-entity certificate;
+- the X.509 certificate path starting with the Wallet-Relying Party Access Certificate end-entity certificate;
 - a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.
 
 **Outcome**
@@ -489,7 +489,7 @@ If ``NON_AUTHENTICATED``, the Wallet Unit MUST inform the User that the identity
 The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:
 
 1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
-   To select the correct entry, match the ``issuer.organizationIdentifier`` of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntitiesList[].TrustedEntity.TETradeName`` of the List of Trusted Entities.
+   To select the correct entry, match the ``issuer.organizationIdentifier`` of the last certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntitiesList[].TrustedEntity.TETradeName`` of the List of Trusted Entities.
    The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
 
 2. **Construct the Certification Path**: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_1``) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_n``).
@@ -515,8 +515,8 @@ Wallet-Relying Party Access Certificate Validation
 The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there.
 The inputs are the following:
 
-- ``C_n`` is the first certificate of the chain provided by the Wallet-Relying Party;
-- ``C_1`` is the Wallet-Relying Party Access Certificate;
+- ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party and is the Wallet-Relying Party Access Certificate used to sign the artifact;
+- ``C_n`` is the last certificate of the chain and is signed by the ``trust_anchor``;
 - ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
 
 .. warning::
