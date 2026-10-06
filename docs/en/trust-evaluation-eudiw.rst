@@ -489,8 +489,8 @@ If ``NON_AUTHENTICATED``, the Wallet Unit MUST inform the User that the identity
 The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:
 
 1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
-   To select the correct entry, match the ``issuer.organizationIdentifier`` of the last certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntitiesList[].TrustedEntity.TETradeName`` of the List of Trusted Entities.
-   The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
+   When present, the ``issuer.organizationIdentifier`` of the last certificate of the chain MAY be used to locate candidate entries by matching it against the registration identifier in ``TrustedEntitiesList[].TrustedEntityInformation.TETradeName``, as defined in clause 5.1.4 of [`ETSI EN 319 412-1`_] and Annex F, Table F.2 of [`ETSI TS 119 602`_].
+   The Wallet Unit MUST retrieve candidate Trust Anchor certificates from the ``ServiceDigitalIdentity`` of the entry's service whose ``ServiceTypeIdentifier`` is ``http://uri.etsi.org/19602/SvcType/WRPAC/Issuance``, as defined in Annex F, Table F.3 of [`ETSI TS 119 602`_]. The selected Trust Anchor MUST validate the presented certification path at step 3.
 
 2. **Construct the Certification Path**: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_1``) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_n``).
    The simplest path consists of a single certificate, where ``n = 1``.
