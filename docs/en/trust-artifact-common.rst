@@ -253,7 +253,7 @@ This section extends the general :ref:`infrastructure-trust:X.509 Certificate Pr
 A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
 In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
 
-Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate.
+Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST start with the presented end-entity certificate and MUST end with a certificate signed by the subject of a Trust Anchor certificate.
 The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`).
 Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
 
@@ -315,7 +315,7 @@ Fields not listed in the table remain subject to the requirements defined in the
      - OPTIONAL. It MAY include CRL distribution point URIs, when CRL-based revocation is used.
 
    * - ``authorityInfoAccess``
-     - OPTIONAL. If applicable, it MAY include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. If applicable, it MAY include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        It MAY also include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.
 
