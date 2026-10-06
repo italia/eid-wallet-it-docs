@@ -10,6 +10,8 @@ start
 
 :Inputs:
 certificate path = [C1,...,Cn],
+C1 = signing end-entity certificate,
+Cn = certificate signed by trust_anchor,
 trust_anchor, 
 current_time;
 
@@ -24,9 +26,9 @@ working_public_key_parameters,
 working_issuer_name, 
 max_path_length=n.
 
-:Set loop index i = 1;
+:Set loop index i = n;
 
-while (Is i <= n?) is (Yes)
+while (Is i >= 1?) is (Yes)
     :Process Certificate Ci;
     
     :Step 2.1: Basic Integrity & Binding Checks
@@ -45,7 +47,7 @@ while (Is i <= n?) is (Yes)
         
         if (Policy State Verified?) then (Yes)
             
-            if (Is i < n?\nIntermediate CA check) then (Yes)
+            if (Is i > 1?\nIntermediate CA check) then (Yes)
                 :Step 3.1: Update Working State
                 - Update working_issuer_name from Ci
                 - Update working_public_key parameters from Ci;
@@ -64,11 +66,11 @@ while (Is i <= n?) is (Yes)
                     #ffccb3:Validation FAILED;
                     stop
                 endif
-            else (No (current Cert is Cn))
+            else (No (current Cert is C1))
                 ' Step 3 is skipped for target certificate
             endif
             
-            :Increment i : i = i + 1;
+            :Decrement i : i = i - 1;
             
         else (No)
             #ffccb3:Validation FAILED;

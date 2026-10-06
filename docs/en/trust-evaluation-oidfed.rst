@@ -219,7 +219,7 @@ X.509 Certificate Chain Validation
 This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature.
 For artifacts in JOSE format the chain is carried in the ``x5c`` header parameter, as defined in :rfc:`7515` and used in IT-Wallet in the Request Object of the presentation flow (see :ref:`remote-flow:Request Object`).
 For Credentials in mdoc format the chain is carried in the ``x5chain`` unprotected header (element 33) of the Mobile Security Object, as defined in :rfc:`9360` and in :ref:`credential-data-model:Mobile Security Object`.
-The chain contains the Document Signer certificate and any intermediate certificate.
+The chain MUST start with the end-entity certificate corresponding to the private key used to sign the artifact or Attestation, followed by any intermediate certificates in issuer order. Each subsequent certificate MUST certify the preceding certificate.
 It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
 
 The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`.
