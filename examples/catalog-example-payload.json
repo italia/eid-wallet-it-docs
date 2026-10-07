@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
     "iss": "https://trust-registry.eid-wallet.example.it",
+    "iat": 1742040000,
+    "total": 1,
+    "limit": 20,
+    "offset": 0,
     "localization": {
         "available_locales": [
             "en",
@@ -17,6 +21,7 @@
             "version": "1",
             "state": "ACTIVE",
             "credential_type": "mDL",
+            "schemaId": "550e8400-e29b-41d4-a716-446655440000",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",
             "restriction_policy": {

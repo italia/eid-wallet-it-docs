@@ -5,6 +5,9 @@
 .. _EUDI-TS 5 JSON Schema: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-json-common-rp-data-model.json
 .. _EUDI-TS 10: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md
 .. _EUDI-TS 11: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md
+.. _EUDI-TS 11 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-cat-of-attestations-jwt-openapi31.yml
+.. _EUDI-TS 11 Attribute Schema: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-cat-of-attributes-datamodel.json
+.. _EUDI-TS 11 Attestation Schema: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-json-cat-attestations-data-model.json
 .. _EUDI-TS 12: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md
 .. _attestKey: https://developer.apple.com/documentation/DeviceCheck/DCAppAttestService/attestKey(_:clientDataHash:completionHandler:)
 .. _Device Check: https://developer.apple.com/documentation/devicecheck
