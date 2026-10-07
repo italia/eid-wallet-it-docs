@@ -1206,7 +1206,7 @@ This section outlines three different categories of requirements for managing ea
 
 - **Its status**: to allow the User to verify whether an Electronic Attestation is valid or invalid;
 - **Its usage**: to enable the User to view and manage the history of presentations carried out with an Electronic Attestation;
-- **Its data**: to allow the User to backup and restore each Electronic Attestation of Attributes in compliance with the principle of data portability.
+- **Its data**: to allow the User to backup and restore each Electronic Attestation of Attributes, and to migrate to a different Wallet Solution, in compliance with the principle of data portability. See :ref:`backup-restore:Backup and Restore`.
 
 Below are the key aspects that impact and define the User Experience in managing Electronic Attestations though the Wallet Instance, along with the functional requirements associated with each category.
 
@@ -1378,8 +1378,9 @@ Backup and Restore of Electronic Attestation of Attributes
 
 With the aim of ensuring the principle of data portability, the Wallet Solution MUST guarantee the User to have access to specific functionalities, particularly to:
 
-- Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance;
-- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance.
+- Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance, as specified in :ref:`backup-restore:Backup Flow`;
+- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in :ref:`backup-restore:Restore flow for Hardware Binding Credential`;
+- Request migration to a different Wallet Solution through the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 Deactivation of the Wallet Instance
 ------------------------------------
