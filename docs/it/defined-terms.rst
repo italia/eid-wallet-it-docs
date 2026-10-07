@@ -179,6 +179,23 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
       Conforme con ARF 3.0.0.
+      Il profilo tecnico è :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
+
+    **Codice di identità dell'attestato**
+      Identificatore di un Electronic Attestation of Attributes emesso.
+      In SD-JWT VC è il claim ``jti``.
+      In mdoc è l'elemento ``document_number``.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identità dell'Attestato`.
+
+    **Validità tecnica**
+      Intervallo durante il quale l'attestato codificato e la sua firma sono validi.
+      In SD-JWT VC è espresso da ``nbf`` e ``exp``.
+      In mdoc è espresso da ``validFrom`` e ``validUntil``.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
+
+    **Validità amministrativa**
+      Intervallo durante il quale gli attributi attestati restano validi, ad esempio la scadenza di una licenza.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
 
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
