@@ -1,0 +1,104 @@
+{
+  "legalPerson": {
+    "legalName": ["ExampleBank S.p.A."]
+  },
+  "identifier": [
+    {
+      "type": "http://data.europa.eu/eudi/id/EUID",
+      "identifier": "IT-EUID-123456789"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/id/VATIN",
+      "identifier": "IT98765432101"
+    }
+  ],
+  "postalAddress": [
+    "Via dei Mille, Roma, IT"
+  ],
+  "country": "IT",
+  "email": [
+    "wallet-rp-registration@examplebank.eu"
+  ],
+  "phone": [
+    "+39100000000"
+  ],
+  "infoURI": [
+    "https://examplebank.eu"
+  ],
+  "providerType": "WalletRelyingParty",
+  "policy": [
+    {
+      "type": "http://data.europa.eu/eudi/policy/terms-and-conditions",
+      "policyURI": "https://examplebank.eu/terms"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/policy/privacy-policy",
+      "policyURI": "https://examplebank.eu/privacy"
+    }
+  ],
+  "tradeName": "ExampleBank",
+  "isPSB": false,
+  "supervisoryAuthority": {
+    "name": "Garante per la protezione dei dati personali",
+    "country": "IT",
+    "email": ["contact@supervisor.example.it"],
+    "formURI": ["https://supervisor.example.it"]
+  },
+  "registryURI": "https://registry.example.it/api",
+  "services": [
+    {
+      "serviceIdentifier": "svc-mobile-01",
+      "serviceTradeName": "ExampleBank Mobile",
+      "supportURI": "https://examplebank.eu/support",
+      "email": "wallet-rp-registration@examplebank.eu",
+      "phone": "+39100000000",
+      "srvDescription": [
+        [
+          {
+            "lang": "en",
+            "content": "Retail banking services for individuals."
+          },
+          {
+            "lang": "it",
+            "content": "Servizi bancari per privati."
+          }
+        ]
+      ],
+      "entitlements": [
+        "https://uri.etsi.org/19475/Entitlement/Service_Provider"
+      ],
+      "isIntermediary": false,
+      "intendedUses": [
+        {
+          "intendedUseIdentifier": "iu-001",
+          "purpose": [
+            {
+              "lang": "en",
+              "content": "Open a bank account remotely."
+            }
+          ],
+          "privacyPolicy": [
+            {
+              "type": "http://data.europa.eu/eudi/policy/privacy-statement",
+              "policyURI": "https://examplebank.eu/privacy/wallet"
+            }
+          ],
+          "credentials": [
+            {
+              "format": "dc+sd-jwt",
+              "meta": {
+                "vct_values": ["https://example.eu/schema/pid"]
+              },
+              "claims": [
+                { "path": ["family_name"] },
+                { "path": ["given_name"] },
+                { "path": ["birth_date"] }
+              ]
+            }
+          ],
+          "createdAt": "2026-01-01"
+        }
+      ]
+    }
+  ]
+}

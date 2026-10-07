@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via credential-issuance.rst at title level '=' (document title).
 
 
 eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance
@@ -11,7 +12,7 @@ This Section defines an eID Substantial Authentication with MRTD Verification pr
 	- Session correlation and security binding between authentication steps.
 	- Integration with Credential issuance flows.
 
-While CIEid with LoA High authentication remains the primary method for Wallet activation and IT-Wallet ID issuance, the eID Substantial Authentication with MRTD Verification mechanism defined in this Section provides an alternative approach to enhance service accessibility and usability, without compromising the overall security of the IT-Wallet ecosystem.
+While CIEid with LoA High authentication remains the preferred method for Wallet activation and IT-Wallet ID issuance, the eID Substantial Authentication with MRTD Verification mechanism defined in this Section provides an alternative approach to enhance service accessibility and usability, without compromising the overall security of the IT-Wallet ecosystem.
 
 .. note::
   This Section currently only supports the CIE id card for the MRTD verification protocol, the protocol described in this Section MAY be extended to support other MRTD Documents such as Electronic Passports.
@@ -540,7 +541,7 @@ Below a non-normative example of an MRTD PoP Validation Request:
 
 **The Wallet Instance MUST:**
 
-- Perform `ICAO 9303`_ compliant NFC document reading (PACE,etc.).
+- Perform `ICAO 9303`_ compliant NFC document reading (PACE, etc.).
 - Validate document cryptographic signatures and certificate chains.
 - Extract identity attributes (DG1 and DG11), Anti-Cloning Public Key from document data groups, and SODs (form MRTD and IAS Applications).
 - Perform the Anti-Cloning Internal Authentication.

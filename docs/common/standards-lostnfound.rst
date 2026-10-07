@@ -111,12 +111,18 @@ Electronic Signatures and Infrastructures
     :widths: 25 75
     :header-rows: 0
 
+    * - ETSI_TS_119_412_6
+      - Certificate Profiles; Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers
     * - ETSI_TS_119_431_1
-      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev.
+      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev
     * - ETSI_TS_119_431_2
       - Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation
     * - ETSI_TS_119_432
       - Protocols for remote digital signature creation
+    * - ETSI_TS_119_602
+      - Lists of trusted entities; Data model
+    * - ETSI_TS_119_612
+      - Trusted Lists
     * - ETSI_EN_319_132_1
       - XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES)
     * - ETSI_TS_119_182_1
@@ -198,6 +204,8 @@ Json Web Token Standards
       - Jones, M., Sakimura, N., “JSON Web Key (JWK) Thumbprint”, September 2015.
     * - :rfc:`7800`
       - Jones, M., Bradley, J. and H. Tschofenig, "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)", RFC 7800, DOI 10.17487/RFC7800, April 2016.
+    * - :rfc:`8392`
+      - Jones, M., Wahlstroem, E., Erdtman, S., Tschofenig, H., "CBOR Web Token (CWT)", RFC8392, DOI 10.17487/RFC8392, May 2018.
     * - :rfc:`8725`
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
     * - `SD-JWT`_
@@ -231,5 +239,29 @@ Digital Credential Presentation Proposals for Future Milestones
       - Cards and security devices for personal identification - Building blocks for identity management via mobile devices - Part 4: Protocols and services for operational phase
     * - ISO/IEC 18013-7
       - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
+    * - Mediating API
+      - OpenID4VC-HAIP clause 5.2, or ISO/IEC 18013-7 Annex C. Later milestone. The Implementing Acts do not cite the W3C Digital Credentials API.
+    * - CTAP 2.2
+      - Client to Authenticator Protocol 2.2 hybrid flow for cross-device communication between a browser and a Wallet device (OIDFVP-HAIP-API_REQ-08). Later milestone.
+    * - Identifier list mechanism
+      - Alternative to the status list for mdoc EAA revocation (Integrity IA Annex, EAA-6.2.10.1-02.3). Later milestone.
+
+Implementing Act Technologies for Later Milestones
+--------------------------------------------------
+
+The following Implementing Act technologies are not specified in the normative text. They are retained here for a later milestone.
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - ETSI TS 119 471
+      - Policy and security requirements for Electronic Attestation of Attributes Service Providers.
+    * - :rfc:`3647`
+      - Chokhani, S., Ford, W., Sabett, R., Merrill, C., and S. Wu, "Internet X.509 Public Key Infrastructure Certificate Policy and Certification Practices Framework", RFC 3647.
+    * - ListOfCertifiedWallets
+      - Wallet Solution metadata ``ListOfCertifiedWalletsQRCode`` and ``ListOfCertifiedWalletsURL`` (Integrity IA Annex).
+    * - CIR (EU) 2025/1569 Article 8
+      - Scheme publication for domestic PID attributes (PID and EAA Implementing Regulation Annex).
 
 

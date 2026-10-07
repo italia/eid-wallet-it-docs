@@ -7,6 +7,9 @@ Flussi ad Alto Livello per l'Emissione di Attestati Elettronici
 Flusso ad Alto Livello per PID
 ------------------------------
 
+Questo flusso si applica dopo la condizione in :ref:`pid-until-notification`.
+Fino ad allora si applica il Flusso ad Alto Livello per IT-Wallet ID.
+
 La :numref:`fig_High-Level-Flow-ITWallet-PID-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione del PID.
 
 .. _fig_High-Level-Flow-ITWallet-PID-Issuance:
@@ -18,7 +21,7 @@ La :numref:`fig_High-Level-Flow-ITWallet-PID-Issuance` mostra un'architettura ge
 
 Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avvia la propria Istanza del Wallet (Passo 0). Di seguito la descrizione dei passaggi rappresentati nell'immagine precedente:
 
-    1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso il PID Provider secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
+    1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici e il Trust Framework EUDIW (Liste delle Entità Fidate), stabilendo la trust secondo :ref:`trust-evaluation:Selection at Issuance` e ottenendo i suoi Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`). Un'Istanza del Wallet nazionale PUÒ utilizzare inoltre OpenID Federation quando il PID Provider è un'entità nazionale.
     2. **Richiesta del PID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede il PID al PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
     4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
@@ -39,7 +42,7 @@ La :numref:`fig_High-Level-Flow-ITWallet-ID-Issuance` mostra un'architettura gen
 
 Il flusso ad alto livello inizia con l'Utente che desidera ottenere un IT-Wallet ID e avvia la propria Istanza del Wallet (Passo 0). Di seguito la descrizione dei passaggi rappresentati nell'immagine precedente:
 
-    1. **Individuazione e Trust del Provider di IT-Wallet ID**: l'Istanza del Wallet individua l'EAA Provider di IT-Wallet ID fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso l'EAA Provider di IT-Wallet secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati dell'IT-Wallet ID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
+    1. **Individuazione e Trust del Provider di IT-Wallet ID**: l'Istanza del Wallet individua l'EAA Provider di IT-Wallet ID fidato utilizzando il Catalogo degli Attestati Elettronici e OpenID Federation, stabilendo la trust verso l'EAA Provider di IT-Wallet secondo il Trust Framework Nazionale e ottenendo i suoi Metadata, che indicano i formati dell'IT-Wallet ID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta dell'IT-Wallet ID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede l'IT-Wallet ID all'EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: l'EAA Provider di IT-Wallet ID verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
     4. **Autenticazione dell'Utente**: l'EAA Provider di IT-Wallet ID autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per il flusso di protocollo L2+, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
@@ -70,7 +73,7 @@ La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura g
 
 Analogamente al flusso ad alto livello del PID e dell'IT-Wallet ID, il diagramma sopra illustra un flusso ad alto livello per (Q)EAA che inizia dall'Utente che desidera ottenere un (Q)EAA (passo 0). Di seguito la descrizione delle operazioni più rilevanti coinvolte nell'emissione del (Q)EAA:
 
-    1. **Individuazione e Trust del (Q)EAA Provider**: l'Istanza del Wallet ottiene l'elenco dei (Q)EAA Provider fidati utilizzando il Catalogo degli Attestati Elettronici e le API di Federazione (ad esempio, utilizzando l'endpoint Subordinate Listing del Trust Anchor e dei suoi Intermediari), quindi ispeziona i Metadata alla ricerca della disponibilità di Attestati Elettronici di ciascun (Q)EAA Provider (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
+    1. **Individuazione e Trust del (Q)EAA Provider**: l'Istanza del Wallet ottiene l'elenco dei (Q)EAA Provider fidati utilizzando il Catalogo degli Attestati Elettronici. Per una (Q)EAA o una PuB-EAA di un altro Stato membro, l'individuazione e la trust DEVONO utilizzare il Trust Framework EUDIW. Per un (Q)EAA Provider o un PuB-EAA Provider nazionale, l'Istanza del Wallet PUÒ utilizzare OpenID Federation, come specificato in :ref:`trust-evaluation:Selection at Issuance`. L'Istanza del Wallet ispeziona quindi i Metadata alla ricerca della disponibilità di Attestati Elettronici di ciascun (Q)EAA Provider (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del (Q)EAA**: utilizzando l'Authorization Code Flow, definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede un (Q)EAA al (Q)EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il (Q)EAA Provider verifica l'autenticità e la validità dell'Istanza del Wallet. Durante questo passaggio, il (Q)EAA Provider stabilisce la trust con il Fornitore di Wallet e recupera i Metadata del Wallet contenenti i parametri necessari per l'interoperabilità, come definito dal Trust Model.
     4. **Autenticazione dell'Utente**: il (Q)EAA Provider, agendo come App di Verifica, autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.

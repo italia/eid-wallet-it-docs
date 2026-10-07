@@ -63,23 +63,26 @@ This association allows the User to directly request Wallet Instance revocation 
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding resides in a secure WSCD.
+As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard credentials; WSCA operating within a Remote WSCD for the PID).
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
-In the **Operational** state, Users can request the issuance of PID (**PID ISS**), of the national **IT-Wallet ID** (which does **not** cause a transition to **Valid**), or of (Q)EAAs if the PID is not required in the issuance
+In the **Operational** state, Users can request the issuance of the national **IT-Wallet ID** (which does **not** cause a transition to **Valid**), or of (Q)EAAs if the PID is not required in the issuance
 (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
 without transitioning the Wallet Instance to another state (**(Q)EEA PRE** transition). The IT-Wallet ID MAY likewise be presented while the Wallet Instance remains **Operational**.
+
+The **PID ISS** transition is subject to :ref:`pid-until-notification`.
+Until then the Wallet Instance remains **Operational** with the IT-Wallet ID.
 
 A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, is revoked by its Provider or either deleted by the User.
 
 Transition to Valid
 ...................
 
-A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). Obtaining an IT-Wallet ID MUST NOT cause this transition. In the **Valid** state, Users can obtain and present
+A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**), as specified in :ref:`pid-until-notification`. Obtaining an IT-Wallet ID MUST NOT cause this transition. In the **Valid** state, Users can obtain and present
 new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
 
 .. note::
@@ -126,3 +129,5 @@ A Wallet Provider instead is responsible for:
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
 
 
+.. note::
+  A Wallet Provider MUST choose the technical validity period of the Wallet Instance Attestation and MUST maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the ``client_status.exp`` claim in the Wallet Instance Attestation.

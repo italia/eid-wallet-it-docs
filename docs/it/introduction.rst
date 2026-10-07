@@ -52,6 +52,7 @@ Linguaggio Normativo e Convenzioni
 ----------------------------------
 
 Le parole chiave "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY" e "OPTIONAL" in questo documento devono essere interpretate come descritto in BCP 14 [RFC2119] [RFC8174] quando, e solo quando, appaiono in maiuscolo, come mostrato qui.
+Nel testo italiano, le forme interamente in maiuscolo elencate in :ref:`defined-terms-and-references:Linguaggio Normativo e Convenzioni` hanno lo stesso significato delle parole chiave inglesi corrispondenti.
 
 .. include:: how-to-read-spec.rst
 

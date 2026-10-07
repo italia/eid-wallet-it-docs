@@ -6,7 +6,7 @@ Matrice di Test per Wallet Provider
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 
-- :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+- :ref:`infrastructure-trust:Infrastructure of Trust`
 - :ref:`wallet-solution:Soluzione Wallet`
 - :ref:`credential-issuance:Emissione di Attestati Elettronici`
 - :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`
@@ -165,35 +165,35 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_013
      - Ciclo di vita, Interoperabilità
      - Architettura componente frontend
-     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, e Archiviazione Sicura) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
+     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, Keystore e WSCA/WSCD Interface per il PID) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
    * - WP_014
      - Trust, Sicurezza
-     - Profilo Keystore / WSCD
-     - Il profilo implementativo attuale usa esclusivamente un Keystore hardware-backed interno locale (TEE o StrongBox su Android, Secure Enclave su iOS). L'Istanza del Wallet genera e memorizza le chiavi private dell'Utente in quel Keystore e non usa un keystore solo software. WSCD indica un dispositivo certificabile High (HSM o smart card, almeno Common Criteria EAL4+ AVA_VAN.5).
+     - Implementazione Keystore
+     - Istanza del Wallet utilizza il Keystore hardware-backed (Strongbox o TEE su Android; Secure Enclave su iOS) per tutte le operazioni crittografiche richieste, come generare firme e gestire le chiavi, per tutte le Credenziali Digitali eccetto il PID. Per l'emissione e la gestione del PID, la Wallet Instance interagisce con il WSCA operante nel Remote WSCD (HSM remoto), per conformarsi ai requisiti di Livello di Garanzia Alto. Un Keystore hardware-backed non è un WSCD e non è prova di Livello di Garanzia Alto.
    * - WP_014a
      - Trust, Sicurezza
      - Solo Keystore hardware-backed
-     - I tentativi di generare o importare chiavi private dell'Utente in un keystore solo software sono rifiutati. Le operazioni crittografiche per WIA, KA, IT-Wallet ID e (Q)EAA usano il Local Internal Keystore.
+     - I tentativi di generare o importare chiavi private dell'Utente in un keystore solo software sono rifiutati. Le operazioni crittografiche per WIA, KA, IT-Wallet ID e (Q)EAA usano il Keystore hardware-backed.
    * - WP_014b
      - Trust, Sicurezza
      - Non esportabilità delle chiavi private
-     - Il Keystore o il WSCD non consente l'esportazione in chiaro delle chiavi private dell'Utente. Se il dispositivo dichiara la chiave privata come esportabile, il Fornitore del Wallet rifiuta la Key Attestation e non attiva l'Istanza del Wallet.
+     - Il Keystore o il WSCA/Remote WSCD non consente l'esportazione in chiaro delle chiavi private dell'Utente. Se il dispositivo dichiara la chiave privata come esportabile, il Fornitore del Wallet rifiuta la Key Attestation e non attiva l'Istanza del Wallet.
    * - WP_014c
      - Trust, Sicurezza
      - Sole Control e autenticazione Utente
-     - Il Keystore o il WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
+     - Il Keystore o il WSCA/Remote WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
    * - WP_014d
      - Trust, Sicurezza
-     - Conservazione chiavi PID High vs IT-Wallet ID
-     - Le chiavi di IT-Wallet ID e (Q)EAA POSSONO essere memorizzate nel Local Internal Keystore (eIDAS Substantial). Le chiavi di un PID a LoA High DEVONO essere memorizzate solo in un WSCD. Il profilo attuale non emette un PID High; un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
+     - Conservazione chiavi PID High vs altre credenziali
+     - Le chiavi di IT-Wallet ID e (Q)EAA sono memorizzate nel Keystore hardware-backed. Le chiavi di un PID a LoA High DEVONO essere generate e memorizzate solo dal WSCA operante nel Remote WSCD. Un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
    * - WP_014e
      - Trust, Sicurezza
      - Collocazione chiavi WIA
-     - Le chiavi private associate alla WIA sono generate e memorizzate nello stesso Keystore o WSCD che la WIA attesta.
+     - Le chiavi private associate alla WIA sono generate e memorizzate nello stesso Keystore o WSCA/Remote WSCD che la WIA attesta.
    * - WP_014f
      - Trust, Sicurezza
      - Chiavi della Mobile Relying Party Instance
-     - Una Mobile Relying Party Instance che non memorizza chiavi di identità dell'Utente PUÒ usare il Local Internal Keystore. Non è richiesto un WSCD certificabile High.
+     - Una Mobile Relying Party Instance che non memorizza chiavi di identità dell'Utente PUÒ usare il Keystore hardware-backed. Non è richiesto un WSCA/Remote WSCD.
    * - WP_015
      - Ciclo di vita, UX
      - Compatibilità Android/iOS
@@ -241,7 +241,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_022b
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - KA per WSCD remoto o locale esterno
-     - Se un profilo futuro usa un WSCD remoto (HSM) o un WSCD locale esterno (smart card, token), la KA è prodotta da quel WSCD, non dal TEE del telefono. È verificato il Sole Control dell'Utente sulle chiavi remote. Questo caso è fuori dal profilo attuale.
+     - Per un PID a Livello di Garanzia Alto, la KA è prodotta dal WSCA operante nel Remote WSCD (HSM remoto), non dal TEE del telefono. È verificato il Sole Control dell'Utente su quelle chiavi remote.
    * - WP_023
      - Inizializzazione / Registrazione Wallet, Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
@@ -685,7 +685,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON secondo :ref:`remote-flow:Richiesta all'Endpoint URI Request`, includendo ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` impostato su ``["vp_token"]`` quando presente.
+     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, opzionalmente ``client_id_prefixes_supported`` e ``request_object_signing_alg_values_supported`` per Sezione 10.1 di [`OpenID4VP`_].
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``
@@ -1230,6 +1230,14 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Includere claim ``cnf``
      - Il claim ``cnf`` nel payload del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) contiene la chiave pubblica effimera, collegando la chiave all'attestato.
+   * - WP_140g
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Nessuna API di Key Attestation OEM per il PID
+     - L'emissione della Key Attestation per chiavi del PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+   * - WP_140h
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - API di Key Attestation OEM per gli altri Attestati Elettronici
+     - L'emissione della Key Attestation per Attestati Elettronici diversi dal PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_141
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Firma della Richiesta di Emissione della Wallet Instance Attestation (WIA)
@@ -1270,6 +1278,10 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica parametro ``iss``
      - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) corrisponda al suo identificativo URL.
+   * - WP_143h
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Ambito di validazione delle API di Key Attestation OEM
+     - La validazione da parte del Fornitore del Wallet del materiale delle API di Key Attestation (OEM) in ``keys_to_attest`` è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_144
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Rilascio Attestato

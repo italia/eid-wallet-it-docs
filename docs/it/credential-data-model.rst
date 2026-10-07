@@ -258,10 +258,6 @@ Type Metadata dell'Attestato Elettronico
 
 Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
-In aggiunta ai parametri definiti nella sezione 9.2 di [`SD-JWT-VC`_], il seguente parametro DOVREBBE essere incluso:
-
-  - ``name``: Nome "human-readable" dell'Attributo destinato agli utenti finali.
-
 In conformità con la Sezione 6.3.3 di `SD-JWT-VC`_, il documento JSON del *Type Metadata* PUÒ essere recuperato tramite un *well-known* endpoint.
 Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/type-metadata``. A tale endpoint DEVE essere aggiunto il parametro di query ``vct``.
 L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` come content type.
@@ -362,7 +358,7 @@ L'**unprotected header** DEVE contenere i seguenti parametri, se non diversament
       - **Riferimento**
     * - **4**
       - *(tstr, OPZIONALE)*. Identificativo univoco del JWK dell'Emittente. Richiesto quando l'Emittente del documento mdoc utilizza OpenID Federation.
-      - :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+      - :ref:`infrastructure-trust:Infrastructure of Trust`
     * - **33**
       - *(array)*. Catena di certificati X.509 relativa all'Emittente. Obbligatorio se l'autenticazione è basata su certificato X.509.
       - :rfc:`9360`
