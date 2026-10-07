@@ -383,15 +383,11 @@ It is invoked during the issuance and presentation flows to validate the signatu
 
 The process MUST be structured as follows:
 
-- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
-
-  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
-
-  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (only for PID or WIA).
+- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, the signature validation procedure below MUST be executed using the Sign/Seal Certificate and the associated X.509 trust chain contained in the Attestation, with the Trust Anchor present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
 
 - If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
 
-The **Base Signature Validation** is structured as follows:
+The signature validation procedure is structured as follows:
 
 **Input**
 
@@ -429,37 +425,11 @@ This process depends on the Attestation type:
 
   In each of the above cases, for an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
-If **Base Signature Validation** results in failure, the Entity validating the Attestation MUST execute **Fallback Signature Validation** as follows:
-
-.. warning::
-  
-  This process only applies to **PID** and **WIA** Attestation types.
-
-**Input**
-
-- The received Attestation.
-- The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities.
-
-**Outcome**
-
-- The validated Attestation, or a validation failure.
-
-**Process**
-
-1. Fetch the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-2. Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
-
-.. warning::
-
-   Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates.
-   In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure.
-   To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
-
 .. note::
 
   When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
 
-If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
+If signature validation fails, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
