@@ -490,7 +490,9 @@ Il payload del Trust Mark JWT include i seguenti claim:
        Email istituzionale o PEC dell'organizzazione.
    * - **support_uri**
      - REQUIRED.
-       URL o indirizzo email da usare per le richieste relative all'entità, come la cancellazione o la portabilità dei dati.
+       Contatto di supporto dell'entità.
+       Una richiesta di cancellazione dei dati usa questo valore, come specificato in `EUDI-TS 7`_, per la cancellazione dei dati personali precedentemente forniti tramite l'Istanza del Wallet.
+       Il valore DEVE essere un URL HTTPS, un indirizzo email o un numero di telefono.
    * - **srv_description**
      - REQUIRED.
        Descrizione multilingue del servizio fornito dall'entità.

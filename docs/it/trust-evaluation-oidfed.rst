@@ -587,7 +587,7 @@ I claim di trasparenza recati nel Trust Mark sono i seguenti:
 - ``privacy_policy``, l'URL della privacy policy, per una Relying Party che richiede Credenziali;
 - ``supervisory_authority``, l'Autorità di protezione dei dati a cui l'Utente può segnalare anomalie;
 - ``public_body``, se l'entità è un organismo del settore pubblico;
-- ``support_uri``, il contatto per le richieste relative all'entità, come la cancellazione o la portabilità dei dati.
+- ``support_uri``, il contatto di supporto usato per una richiesta di cancellazione dei dati, come specificato in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`.
 
 Le loro definizioni sono fornite in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 

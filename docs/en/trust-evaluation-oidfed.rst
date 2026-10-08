@@ -586,7 +586,7 @@ The transparency claims carried in the Trust Mark are the following:
 - ``privacy_policy``, the URL of the privacy policy, for a Relying Party that requests Credentials;
 - ``supervisory_authority``, the Data Protection Authority to which the User can report anomalies;
 - ``public_body``, whether the entity is a public sector body;
-- ``support_uri``, the contact for requests related to the entity, such as data deletion or portability.
+- ``support_uri``, the support contact used for a data deletion request, as specified in :ref:`user-attribute-deletion:User's Attributes Deletion`.
 
 Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 
