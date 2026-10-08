@@ -10,6 +10,7 @@ Appendice
     :maxdepth: 3
 
     mobile-application-instance.rst
+    component-decomposition.rst
     e-service-pdnd.rst
     e-service-pdnd-template.rst
     test-plans.rst
