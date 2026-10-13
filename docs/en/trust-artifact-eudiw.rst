@@ -64,7 +64,7 @@ Each of its ``services[]`` elements has ``isIntermediary: true``, does not decla
 Register Open APIs
 """"""""""""""""""
 
-The read methods are Section 3 of `EUDI-TS 5`_.
+The read methods are described in Section 3 of `EUDI-TS 5`_.
 Methods, filter parameters, response codes and the slicing of ``services`` when ``serviceidentifier`` is used are defined there.
 
 .. note::
@@ -88,7 +88,6 @@ Extensions not specified by that document MUST NOT be present.
 Subject attributes are [`EIDAS-ARF`_] Reg_31, Reg_32 and Reg_34, and `ETSI TS 119 411-8`_.
 Authentication is specified in :ref:`trust-evaluation:EUDIW Authentication`.
 Revocation on suspension or cancellation of the WRP services is specified in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
-The Relying Party Service identifier and one WRPAC per Service are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
 .. note::
     The WRPAC attributes MUST be derived from the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
@@ -183,7 +182,7 @@ Below a non-normative example of WRPRC payload for an intermediated Relying Part
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the format and contents of three types of Trust Artifacts, each of which conveys a list of current and historical Trust Anchors (containers of cryptographic materials and identifiers belonging to trusted Entities).
+This section describes the format and contents of three types of Trust Artifacts: Trusted List (TL), Lists of Trusted Lists (LOTL), and Lists of Trusted Entities (LoTE), each of which conveys a list of current and historical Trust Anchors (containers of cryptographic materials and identifiers belonging to trusted Entities).
 
 Ecosystem Entities utilize these lists to:
 

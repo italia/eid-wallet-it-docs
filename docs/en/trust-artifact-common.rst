@@ -317,7 +317,7 @@ Fields not listed in the table remain subject to the requirements defined in the
      - OPTIONAL. It MAY include CRL distribution point URIs, when CRL-based revocation is used.
 
    * - ``authorityInfoAccess``
-     - REQUIRED. If applicable, it MAY include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
+     - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and an ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
 
        It MAY also include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.1`` (``id-ad-ocsp``) and ``accessLocation`` specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.
 
