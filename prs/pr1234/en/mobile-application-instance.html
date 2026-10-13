@@ -348,7 +348,7 @@
 <li><p>It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.</p></li>
 <li><p>It MUST select a Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) before generating the key pair. The value MUST be a random string that is collision-resistant and unpredictable. The Mobile Application Instance MUST use a secure random number generator provided by the operating system or a reputable cryptographic library.</p></li>
 <li><p>It MUST compute <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> as the SHA-256 digest of the UTF-8 octets of the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> immediately followed by the UTF-8 octets of <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>. The digest MUST NOT include <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>).</p></li>
-<li><p>It MUST generate a pair of asymmetric Elliptic Curve keys (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_priv</span></code>) via a <strong>Keystore</strong>, passing <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> as the Key Attestation challenge. On platforms that bind the attestation challenge only at key generation, the Mobile Application Instance MUST NOT generate the key and attest it in a separate later call.</p></li>
+<li><p>It MUST generate an asymmetric Elliptic Curve key pair (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_priv</span></code>) through a <strong>Keystore</strong>, using <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> as the Key Attestation challenge.</p></li>
 <li><p>If the previous points are satisfied, it MUST store the <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> in local storage.</p></li>
 </ol>
 </div></blockquote>
@@ -378,7 +378,7 @@ For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may v
 <p>If any errors occur in the Key Attestation APIs process, such as device integrity verification, for example, due to unavailable Key Attestation APIss, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.</p>
 <p><strong>Step 8</strong>: The Key Attestation APIs performs the following actions:</p>
 <ul class="simple">
-<li><p>Creates a Key Attestation whose challenge is <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> and whose certificate contains the public key of the Application Instance Hardware.</p></li>
+<li><p>Creates a Key Attestation using <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> as the challenge, with an attestation certificate containing the Application Instance Hardware public key.</p></li>
 <li><p>Incorporates information pertaining to the device's security.</p></li>
 <li><p>Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.</p></li>
 </ul>
@@ -716,7 +716,7 @@ The public key is bound by the attestation certificate. It is not an input to <c
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 13/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

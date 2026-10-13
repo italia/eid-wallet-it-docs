@@ -854,21 +854,21 @@ This is the same certification path validation used in the National Trust Framew
 </div>
 <p><strong>Input</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the sequence of <code class="docutils literal notranslate"><span class="pre">n</span></code> certificates <code class="docutils literal notranslate"><span class="pre">C_1,</span> <span class="pre">...,</span> <span class="pre">C_n</span></code> provided by the Entity, where <code class="docutils literal notranslate"><span class="pre">C_1</span></code> is the first certificate of the chain and <code class="docutils literal notranslate"><span class="pre">C_n</span></code> is the end-entity certificate.
-For any <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n-1</span></code>, <code class="docutils literal notranslate"><span class="pre">C_i</span></code> is the issuer of <code class="docutils literal notranslate"><span class="pre">C_i+1</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the sequence of <code class="docutils literal notranslate"><span class="pre">n</span></code> certificates <code class="docutils literal notranslate"><span class="pre">C_1,</span> <span class="pre">...,</span> <span class="pre">C_n</span></code> provided by the Entity, where <code class="docutils literal notranslate"><span class="pre">C_1</span></code> MUST be the end-entity certificate corresponding to the private key used to sign the artifact or Attestation and <code class="docutils literal notranslate"><span class="pre">C_n</span></code> MUST be the certificate signed by the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>. The Trust Anchor certificate MUST NOT be included in <code class="docutils literal notranslate"><span class="pre">path</span></code>.
+For any <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n-1</span></code>, <code class="docutils literal notranslate"><span class="pre">C_i+1</span></code> MUST be the issuer of <code class="docutils literal notranslate"><span class="pre">C_i</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>: the trusted certificate obtained from the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> of the validated List of Trusted Entities or Trusted List.
-It MUST contain the public key used to sign <code class="docutils literal notranslate"><span class="pre">C_1</span></code>.
+It MUST contain the public key used to sign <code class="docutils literal notranslate"><span class="pre">C_n</span></code>.
 Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">current_time</span></code>: the current date and time.</p></li>
 </ul>
 <p><strong>Outcome</strong></p>
 <ul class="simple">
-<li><p>The validated end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_n</span></code>, or a failure.</p></li>
+<li><p>The validated end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_1</span></code>, or a failure.</p></li>
 </ul>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
-<li><p>Build the certification path from the end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_n</span></code> to the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>.</p></li>
-<li><p>Execute the path validation defined in <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, using the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> as the trust anchor input of the algorithm and <code class="docutils literal notranslate"><span class="pre">current_time</span></code> as the validation time.</p></li>
+<li><p>Build the certification path from the end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_1</span></code> towards the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>, ending with <code class="docutils literal notranslate"><span class="pre">C_n</span></code>.</p></li>
+<li><p>Execute the path validation defined in <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, using the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> as the trust anchor input of the algorithm and <code class="docutils literal notranslate"><span class="pre">current_time</span></code> as the validation time. The RFC 5280 validation processes the certificates from <code class="docutils literal notranslate"><span class="pre">C_n</span></code> to <code class="docutils literal notranslate"><span class="pre">C_1</span></code>; this does not change the order of the presented <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></li>
 <li><p>Verify the revocation status of the certificates in the path according to <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, unless the check is skipped as described above.</p></li>
 </ol>
 <p>If any step fails, the certification path MUST be considered invalid and the artifact signature MUST NOT be verified with the presented certificate chain.</p>
@@ -879,15 +879,10 @@ Implementations MUST support both self-signed and non-self-signed Trust Anchor c
 It is invoked during the issuance and presentation flows to validate the signature on the Attestation.</p>
 <p>The process MUST be structured as follows:</p>
 <ul class="simple">
-<li><p>If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:</p>
-<ul>
-<li><p><strong>Base Signature Validation</strong>: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).</p></li>
-<li><p><strong>Fallback Signature Validation</strong>: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (only for PID or WIA).</p></li>
-</ul>
-</li>
+<li><p>If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, the signature validation procedure below MUST be executed using the Sign/Seal Certificate and the associated X.509 trust chain contained in the Attestation, with the Trust Anchor present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).</p></li>
 <li><p>If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.</p></li>
 </ul>
-<p>The <strong>Base Signature Validation</strong> is structured as follows:</p>
+<p>The signature validation procedure is structured as follows:</p>
 <p><strong>Input</strong></p>
 <ul class="simple">
 <li><p>The received Attestation and the signer certificate chain carried within it.</p></li>
@@ -927,36 +922,11 @@ It is invoked during the issuance and presentation flows to validate the signatu
 <p class="admonition-title">Note</p>
 <p>In each of the above cases, for an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]. For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header of the JOSE signature.</p>
 </div>
-<p>If <strong>Base Signature Validation</strong> results in failure, the Entity validating the Attestation MUST execute <strong>Fallback Signature Validation</strong> as follows:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This process only applies to <strong>PID</strong> and <strong>WIA</strong> Attestation types.</p>
-</div>
-<p><strong>Input</strong></p>
-<ul class="simple">
-<li><p>The received Attestation.</p></li>
-<li><p>The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities.</p></li>
-</ul>
-<p><strong>Outcome</strong></p>
-<ul class="simple">
-<li><p>The validated Attestation, or a validation failure.</p></li>
-</ul>
-<p><strong>Process</strong></p>
-<ol class="arabic simple">
-<li><p>Fetch the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>, and extract the appropriate Trust Anchor from the relevant Entity's <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> field.</p></li>
-<li><p>Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.</p></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be <em>different</em> from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates.
-In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the <strong>Fallback Signature Validation</strong> procedure.
-To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the <cite>ServiceHistory.ServiceDigitalIdentity</cite> element instead of the <cite>ServiceInformation.ServiceDigitalIdentity</cite> element.</p>
 </div>
-<p>If both <strong>Base Signature Validation</strong> and <strong>Fallback Signature Validation</strong> fail, the Attestation MUST NOT be considered as issued by a trusted Entity.</p>
+<p>If signature validation fails, the Attestation MUST NOT be considered as issued by a trusted Entity.</p>
 </section>
 <section id="eudiw-authentication">
 <h3><span class="section-number">6.2.5. </span>EUDIW Authentication<a class="headerlink" href="#eudiw-authentication" title="Link to this heading">¶</a></h3>
@@ -968,7 +938,7 @@ The Wallet-Relying Party Access Certificate is profiled in <a class="reference i
 <p>The Authentication outcome MUST be based only on information derived from:</p>
 <ul class="simple">
 <li><p>the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities;</p></li>
-<li><p>the X.509 certificate path terminating with the Wallet-Relying Party Access Certificate end-entity certificate;</p></li>
+<li><p>the X.509 certificate path starting with the Wallet-Relying Party Access Certificate end-entity certificate;</p></li>
 <li><p>a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.</p></li>
 </ul>
 <p><strong>Outcome</strong></p>
@@ -979,8 +949,8 @@ If <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATE
 <p>The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:</p>
 <ol class="arabic">
 <li><p><strong>Retrieve the Trust Anchor</strong>: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>).
-To select the correct entry, match the <code class="docutils literal notranslate"><span class="pre">issuer.organizationIdentifier</span></code> of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>], with the <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList[].TrustedEntity.TETradeName</span></code> of the List of Trusted Entities.
-The certificates in the <code class="docutils literal notranslate"><span class="pre">TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity</span></code> field constitute the Trust Anchor.</p></li>
+When present, the <code class="docutils literal notranslate"><span class="pre">issuer.organizationIdentifier</span></code> of the last certificate of the chain MAY be used to locate candidate entries by matching it against the registration identifier in <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList[].TrustedEntityInformation.TETradeName</span></code>, as defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>] and Annex F, Table F.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>].
+The Wallet Unit MUST retrieve candidate Trust Anchor certificates from the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> of the entry's service whose <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> is <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPAC/Issuance</span></code>, as defined in Annex F, Table F.3 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]. The selected Trust Anchor MUST validate the presented certification path at step 3.</p></li>
 <li><p><strong>Construct the Certification Path</strong>: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (<code class="docutils literal notranslate"><span class="pre">C_1</span></code>) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (<code class="docutils literal notranslate"><span class="pre">C_n</span></code>).
 The simplest path consists of a single certificate, where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
 <li><p><strong>Execute Path Validation</strong>: validate the certification path as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, using the Trust Anchor retrieved at step 1, as described in <a class="reference internal" href="#wallet-relying-party-access-certificate-validation"><span class="std std-ref">Wallet-Relying Party Access Certificate Validation</span></a>.</p></li>
@@ -1005,8 +975,8 @@ To prevent an attacker from disguising a legal commitment as a protocol nonce, t
 <p>The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a> with the <code class="docutils literal notranslate"><span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> defined there.
 The inputs are the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">C_n</span></code> is the first certificate of the chain provided by the Wallet-Relying Party;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">C_1</span></code> is the Wallet-Relying Party Access Certificate;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_1</span></code> is the first certificate of the chain provided by the Wallet-Relying Party and is the Wallet-Relying Party Access Certificate used to sign the artifact;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_n</span></code> is the last certificate of the chain and is signed by the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.</p></li>
 </ul>
 <div class="admonition warning">
@@ -1548,7 +1518,7 @@ In particular, verify that the metadata Entity Types published by the subject ar
 <p>This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature.
 For artifacts in JOSE format the chain is carried in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header parameter, as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> and used in IT-Wallet in the Request Object of the presentation flow (see <a class="reference internal" href="remote-flow.html#request-object"><span class="std std-ref">Request Object</span></a>).
 For Credentials in mdoc format the chain is carried in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> unprotected header (element 33) of the Mobile Security Object, as defined in <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9360.html"><strong>RFC 9360</strong></a> and in <a class="reference internal" href="credential-data-model.html#mobile-security-object"><span class="std std-ref">Mobile Security Object</span></a>.
-The chain contains the Document Signer certificate and any intermediate certificate.
+The chain MUST start with the end-entity certificate corresponding to the private key used to sign the artifact or Attestation, followed by any intermediate certificates in issuer order. Each subsequent certificate MUST certify the preceding certificate.
 It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.</p>
 <p>The certification path validation is the standard X.509 path validation defined in <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, with the revocation status checking defined in <span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.
 The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.
@@ -2142,7 +2112,7 @@ User-relevant information about overridable outcomes MUST be presented as adviso
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 13/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
