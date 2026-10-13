@@ -49,7 +49,7 @@ Upon a successful request, the Application Provider generates and returns the ``
   1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.
   2. It MUST select a Cryptographic Hardware Key Tag (``hardware_key_tag``) before generating the key pair. The value MUST be a random string that is collision-resistant and unpredictable. The Mobile Application Instance MUST use a secure random number generator provided by the operating system or a reputable cryptographic library.
   3. It MUST compute ``client_data_hash`` as the SHA-256 digest of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``. The digest MUST NOT include ``hardware_key_pub`` (:ref:`WP_133a <wallet-instance-optional-testcases>`).
-  4. It MUST generate a pair of asymmetric Elliptic Curve keys (``hardware_key_pub``, ``hardware_key_priv``) via a **Keystore**, passing ``client_data_hash`` as the Key Attestation challenge. On platforms that bind the attestation challenge only at key generation, the Mobile Application Instance MUST NOT generate the key and attest it in a separate later call.
+  4. It MUST generate an asymmetric Elliptic Curve key pair (``hardware_key_pub``, ``hardware_key_priv``) through a **Keystore**, using ``client_data_hash`` as the Key Attestation challenge.
   5. If the previous points are satisfied, it MUST store the ``hardware_key_tag`` in local storage.
 
 .. note::
@@ -80,7 +80,7 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 
 **Step 8**: The Key Attestation APIs performs the following actions:
 
-* Creates a Key Attestation whose challenge is ``client_data_hash`` and whose certificate contains the public key of the Application Instance Hardware.
+* Creates a Key Attestation using ``client_data_hash`` as the challenge, with an attestation certificate containing the Application Instance Hardware public key.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
