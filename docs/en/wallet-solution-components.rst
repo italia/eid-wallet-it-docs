@@ -89,7 +89,7 @@ For each hardware-bound Digital Credential other than the PID and the IT-Wallet 
 This component MUST keep the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 .. note::
-   Restore of the backup file does not request issuance of the PID or the IT-Wallet ID. The migration object lists both, and the receiving Wallet Instance requests their issuance from that list.
+   Restore of the backup file does not request issuance of the PID or the IT-Wallet ID. The migration object includes references to any PID or IT-Wallet ID present in the source Wallet Instance, enabling the receiving Wallet Instance to request their fresh issuance.
 
 Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

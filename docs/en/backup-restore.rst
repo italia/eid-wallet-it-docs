@@ -5,24 +5,25 @@
 Backup and Restore
 ==================
 
-The **Backup and Restore** functionality becomes relevant when the :term:`User` wants to change device and/or :term:`Wallet Solution` in order to access the previously issued Digital Credentials again.
+**Backup and restore** enables the :term:`User` to recover access to previously issued hardware-bound Digital Credentials in a new Wallet Instance. The :term:`User`  obtains a PID or IT-Wallet ID when activating the new Wallet Instance, before restoring the other credentials.
 
 - The mobile device has been **lost**, **stolen**, **damaged**, or **compromised** (e.g., due to unauthorized access).
 - The :term:`User` replaces an existing :term:`Wallet Instance` with a new instance of the same :term:`Wallet Solution`.
-- The :term:`User` has changed their mobile device and needs to set up the :term:`Wallet Solution` on the new device.
-- The :term:`User` performs a factory reset on the current phone and needs to set up the :term:`Wallet Solution` again.
+- The :term:`User` has changed their mobile device and needs to set up a new :term:`Wallet Instance` on the new device.
+- The :term:`User` performs a factory reset on the current phone and needs to set up a new :term:`Wallet Instance` again.
 
+Migration, or data portability, enables the :term:`User` to recover their credentials and transaction log in a new Wallet Instance of the same or a different :term:`Wallet Solution`, using the migration object.
 The :term:`Wallet Instance` MUST carry out backup, restore, export and portability under this section in a manner that is user-friendly, transparent and traceable by the :term:`User`.
 
 The :term:`Wallet Instance` MUST enable the :term:`User` to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible, as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [`EU_2024_1183`_].
 
 The :term:`Wallet Instance` MUST enable the :term:`User` to exercise the User's rights to data portability, as required by Article 5a(4)(g) of that Regulation.
 
-The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the :term:`User` can migrate to a :term:`Wallet Instance` of a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
+The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the :term:`User` can migrate to a :term:`Wallet Instance` of the same or a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
 
 The backup file specified in :ref:`backup-restore:Backup Flow` is the backup and recovery of references to hardware-bound Digital Credentials.
 
-Download of the User's data and of electronic attestations of attributes, and portability to a different :term:`Wallet Solution`, use the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
+Download of the User's data and of electronic attestations of attributes, and portability to the same or a different :term:`Wallet Solution`, use the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 Download of transaction records also uses the dashboard export specified in :ref:`wallet-instance-dashboard:Export and Deletion of Transaction Records`.
 
@@ -92,7 +93,7 @@ A non-normative example of the backup JWT header and payload is as the following
 .. code-block:: json
 
   {
-    "timestamp":"2024-12-13T16:35:06+01:00",
+    "timestamp":"1734104106",
     "wallet_provider_id":"https://wallet-provider.example.org/",
     "wallet_instance_version":"v1.0",
     "wallet_instance_attestation":"eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ",
@@ -133,7 +134,7 @@ The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <cr
   * - **wallet_provider_id**
     - It MUST be set to the unique identifier of the :term:`Wallet Provider`.
   * - **wallet_instance_version**
-    - It MUST be set to the version of the :term:`Wallet Solution` that has been backed up.
+    - It MUST be set to the version of the :term:`Wallet Instance` that created the backup.
   * - **wallet_instance_attestation**
     - It MUST be set to a value containing the :term:`Wallet Instance Attestation` JWT.
   * - **credentials_backup**
@@ -183,7 +184,7 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
   The :term:`Wallet Instance` MUST NOT check the expiration of the :term:`Wallet Instance Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
 
 
-Migration to a Different Wallet Solution
+Migration to a New Wallet Instance
 ----------------------------------------
 
 The :term:`Wallet Instance` MUST provide the migration object in the common format of `EUDI-TS 10`_.
@@ -210,13 +211,13 @@ The credential list MUST NOT contain a private key.
 
 The migration object MUST NOT contain a copy of a device-bound attestation.
 
-The migration object MUST NOT contain a :term:`Wallet Instance Attestation`.
+The migration object MUST NOT contain a :term:`Wallet Instance Attestation` or a :term:`Key Attestation`.
 
 The :term:`Wallet Instance` MUST protect the confidentiality, integrity and authenticity of the migration object with the measures specified in `EUDI-TS 10`_.
 
 The :term:`Wallet Instance` MUST NOT protect the migration object by signing it as a ``wallet-unit-credentials-backup+jwt``.
 
-The :term:`Wallet Instance` MUST allow the :term:`User` to store the migration object in an external or remote location of the User's choice, among the storage options supported by the :term:`Wallet Instance`.
+The :term:`Wallet Instance` MUST allow the :term:`User` to store the migration object (which is a password-protected and encrypted file) in an external or remote location of the User's choice, among the storage options supported by the :term:`Wallet Instance`.
 
 Directly after installation, the new :term:`Wallet Instance` MUST enable the :term:`User` to import a migration object from a location the User indicates, among the storage options supported by the :term:`Wallet Instance`.
 
@@ -228,7 +229,9 @@ The :term:`Wallet Instance` MUST append later transactions to the restored log.
 
 Dashboard export of transaction records remains the download of those records, as specified in :ref:`wallet-instance-dashboard:Export and Deletion of Transaction Records`.
 
-The new :term:`Wallet Instance` MUST copy each non-device-bound attestation from the migration object into the :term:`Wallet Instance`.
+The new :term:`Wallet Instance` MUST enable the :term:`User` to select each non-device-bound attestation from the migration object.
+
+When the :term:`User` selects a non-device-bound attestation, the :term:`Wallet Instance` MUST restore that attestation from the migration object.
 
 For each PID, IT-Wallet ID and other device-bound Digital Credential listed in the migration object, the :term:`Wallet Instance` MUST enable the :term:`User` to select it.
 
@@ -236,7 +239,7 @@ When the :term:`User` selects a listed credential, the :term:`Wallet Instance` M
 
 The request MUST use a fresh :term:`Holder Key Binding`.
 
-If the list contains a PID, the :term:`Wallet Instance` MUST request issuance of the PID before the other credentials in the list.
+If the :term:`User` selects a PID, the :term:`Wallet Instance` MUST request issuance of the PID before the other credentials in the list.
 
 The :term:`Wallet Instance` MUST request that issuance with the Wallet-Initiated Authorization Code Issuance Flow defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`.
 
