@@ -1479,7 +1479,7 @@ Extensions not listed in the table MUST NOT be present.</p>
 <p>This section extends the general <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> and specifies a <strong>Certificate Profile</strong> for <strong>Trust Anchors</strong>.
 A Trust Anchor is a trusted public key (and associated data) used as an input to the <a class="reference internal" href="trust-evaluation.html#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>.
 In this profile, the Trust Anchor MUST be represented and distributed as an <strong>X.509 certificate</strong>, which MAY be self-signed.</p>
-<p>Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST end with a certificate signed by the subject of a Trust Anchor certificate.
+<p>Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST start with the presented end-entity certificate and MUST end with a certificate signed by the subject of a Trust Anchor certificate.
 The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> variable in <a class="reference internal" href="trust-evaluation.html#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>).
 Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.</p>
 <div class="admonition note">
@@ -1550,7 +1550,7 @@ It is RECOMMENDED to set <code class="docutils literal notranslate"><span class=
 <td><p>OPTIONAL. It MAY include CRL distribution point URIs, when CRL-based revocation is used.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authorityInfoAccess</span></code></p></td>
-<td><p>OPTIONAL. If applicable, it MAY include an <code class="docutils literal notranslate"><span class="pre">AccessDescription</span></code> structure with <code class="docutils literal notranslate"><span class="pre">accessMethod</span></code> set to <code class="docutils literal notranslate"><span class="pre">1.3.6.1.5.5.7.48.2</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ad-caIssuers</span></code>) and an <code class="docutils literal notranslate"><span class="pre">accessLocation</span></code> specifying at least one access location of a valid CA certificate of the issuing CA.</p>
+<td><p>REQUIRED. If applicable, it MAY include an <code class="docutils literal notranslate"><span class="pre">AccessDescription</span></code> structure with <code class="docutils literal notranslate"><span class="pre">accessMethod</span></code> set to <code class="docutils literal notranslate"><span class="pre">1.3.6.1.5.5.7.48.2</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ad-caIssuers</span></code>) and an <code class="docutils literal notranslate"><span class="pre">accessLocation</span></code> specifying at least one access location of a valid CA certificate of the issuing CA.</p>
 <p>It MAY also include an <code class="docutils literal notranslate"><span class="pre">AccessDescription</span></code> structure with <code class="docutils literal notranslate"><span class="pre">accessMethod</span></code> set to <code class="docutils literal notranslate"><span class="pre">1.3.6.1.5.5.7.48.1</span></code> (<code class="docutils literal notranslate"><span class="pre">id-ad-ocsp</span></code>) and <code class="docutils literal notranslate"><span class="pre">accessLocation</span></code> specifying at least one OCSP responder authoritative to provide certificate status information for the certificate, when OCSP-based revocation is used.</p>
 </td>
 </tr>
@@ -5031,7 +5031,7 @@ For a CWT SLT, it MUST be carried in the <code class="docutils literal notransla
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 13/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
