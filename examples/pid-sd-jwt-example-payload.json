@@ -11,6 +11,7 @@
   "iss": "https://pidprovider.example.org",
   "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
   "iat": 1683000000,
+  "nbf": 1683000000,
   "issuing_authority": "PID Provider Organization",
   "issuing_country": "IT",
   "date_of_expiry": "2033-03-19",
