@@ -15,10 +15,11 @@ Il Trust Framework di ciascuna interazione è selezionato come specificato in :r
     Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA di un altro Stato membro.
     Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di un altro Stato membro.
     I PID Provider, i QEAA Provider e i PuB-EAA Provider DEVONO supportare il Trust Framework EUDIW.
-  - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 dedicata alla firma degli Attestati Elettronici che richiedono una PKI X.509.
+  - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 per gli Attestati Elettronici ancorati a tale framework.
     È **fuori dall'ARF**.
-    È il livello di registrazione, onboarding e discovery per le entità dell'ecosistema.
-    La discovery attraverso il Trust Framework Nazionale include le entità ancorate al Trust Framework EUDIW.
+    Fornisce registrazione, onboarding e discovery per le entità che operano nel perimetro nazionale.
+    La discovery attraverso il Trust Framework Nazionale PUÒ includere le entità ancorate al Trust Framework EUDIW.
+    Tale discovery non sostituisce la registrazione, la notifica o il percorso di trust EUDIW.
 
 Questa sezione fornisce innanzitutto una panoramica delle entità e dei processi coinvolti nell'infrastruttura di trust (:ref:`infrastructure-trust:Overview`).
 Definisce quindi il :ref:`infrastructure-trust:X.509 Certificate Profile` generale e i :ref:`infrastructure-trust:Common Trust Artifacts` condivisi da entrambi i framework, seguiti dagli artifact specifici di ciascun framework (:ref:`infrastructure-trust:EUDIW Trust Artifacts` e :ref:`infrastructure-trust:National Trust Artifacts`).

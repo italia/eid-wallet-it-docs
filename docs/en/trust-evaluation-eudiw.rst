@@ -439,6 +439,8 @@ It establishes trust by validating the Wallet-Relying Party X.509 certificate ch
 The Wallet-Relying Party Access Certificate is profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
 
 For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
+The Wallet Unit MUST perform this authentication and validation itself.
+The Wallet Unit MUST NOT delegate it to an operating system browser or to another intermediary application ([`CIR2024/2982`_] Article 3(1), as replaced by [`CIR2026/1731`_]).
 
 **Input**
 

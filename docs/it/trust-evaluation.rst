@@ -115,10 +115,9 @@ La Wallet Unit DEVE interrompere l'interazione.
 
 Nel flusso di prossimità entrambi i framework utilizzano la mdoc reader authentication definita in [`ISO18013-5`_ #12.5].
 L'Istanza della Relying Party fornisce un certificato X.509 nell'header ``x5chain`` del ``ReaderAuth``.
-La Wallet Unit DEVE determinare il framework dal trust anchor che valida quel certification path, prima dell'Authorization.
-La Wallet Unit DEVE eseguire l'Authorization esclusivamente nell'ambito di tale framework.
-Il path seleziona il Trust Framework EUDIW quando termina in un trust anchor della Provider of Wallet-Relying Party Access Certificate List of Trusted Entities (vedere :ref:`proximity-flow:Richiesta mdoc`).
-Il path seleziona il Trust Framework Nazionale quando termina in un Authentication Trust Anchor della federazione (vedere :ref:`trust-evaluation:Relying Party Proximity Authentication`).
+Sul percorso EUDIW la Wallet Unit DEVE autenticare e validare il Wallet-Relying Party Access Certificate come specificato in :ref:`trust-evaluation:EUDIW Authentication`.
+Sul percorso nazionale la Wallet Unit DEVE validare il certificato di reader come specificato in :ref:`trust-evaluation:Relying Party Proximity Authentication`.
+La Wallet Unit DEVE eseguire l'Authorization esclusivamente nell'ambito del framework selezionato.
 La Relying Party utilizza il certificato che corrisponde alla riga selezionata.
 
 Failure Handling
