@@ -5,14 +5,14 @@
 Backup and Restore
 ==================
 
-**Backup and restore** enables the :term:`User` to recover access to previously issued device-bound Digital Credentials in a new Wallet Instance. The :term:`User`  obtains a PID or IT-Wallet ID when activating the new Wallet Instance, before restoring the other credentials.
+**Backup and restore** enables the :term:`User` to recover access to previously issued device-bound Digital Credentials in a new Wallet Instance. The :term:`User`  obtains a PID or IT-Wallet ID when activating the new Wallet Instance, before restoring the other Credentials.
 
 - The mobile device has been **lost**, **stolen**, **damaged**, or **compromised** (e.g., due to unauthorized access).
 - The :term:`User` replaces an existing :term:`Wallet Instance` with a new instance of the same :term:`Wallet Solution`.
 - The :term:`User` has changed their mobile device and needs to set up a new :term:`Wallet Instance` on the new device.
 - The :term:`User` performs a factory reset on the current phone and needs to set up a new :term:`Wallet Instance` again.
 
-Migration, or data portability, enables the :term:`User` to recover their credentials and transaction log in a new Wallet Instance of the same or a different :term:`Wallet Solution`, using the migration object.
+Migration, or data portability, enables the :term:`User` to recover their Credentials and transaction log in a new Wallet Instance of the same or a different :term:`Wallet Solution`, using the migration object.
 The :term:`Wallet Instance` MUST carry out backup, restore, export and portability under this section in a manner that is user-friendly, transparent and traceable by the :term:`User`.
 
 The :term:`Wallet Instance` MUST enable the :term:`User` to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible, as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [`EU_2024_1183`_].
@@ -164,7 +164,7 @@ Restore of the backup file applies when the new :term:`Wallet Instance` is alrea
 
 The PID MUST NOT be included in the backup file. The IT-Wallet ID MUST NOT be included in the backup file.
 
-The credential list of the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution` includes the PID and the IT-Wallet ID.
+The Credential list of the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution` includes the PID and the IT-Wallet ID.
 
 Below, the description of the steps of :numref:`fig_Restore_flow`:
 
@@ -199,15 +199,21 @@ The :term:`Wallet Instance` MUST keep the migration object up to date with the D
 
 The migration object MUST contain the list of Digital Credentials present in the :term:`Wallet Instance`, including the PID and the IT-Wallet ID.
 
-The migration object MUST contain each non-device-bound attestation as the attestation itself.
+The :term:`Wallet Instance` MUST enable the :term:`User` to indicate whether attribute identifiers and attribute values of a non-device-bound attestation are stored in the migration object.
+
+When the :term:`User` indicates that they are stored, the migration object MUST contain that non-device-bound attestation as the attestation itself, as specified in `EUDI-TS 10`_.
+
+When the :term:`User` does not indicate that they are stored, the migration object MUST NOT contain that non-device-bound attestation.
 
 The migration object MUST contain the transaction log.
 
-For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the credential, and the provider's service supply point, as specified in `EUDI-TS 10`_.
+For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the Credential, and the provider's service supply point, as specified in `EUDI-TS 10`_.
 
-The credential list MUST NOT contain attribute values.
+The attestation type, the provider that issued the Credential, and the provider's service supply point for that non-device-bound attestation remain in the Credential list.
 
-The credential list MUST NOT contain a private key.
+The Credential list MUST NOT contain attribute identifiers or attribute values.
+
+The Credential list MUST NOT contain a private key.
 
 The migration object MUST NOT contain a copy of a device-bound attestation.
 
@@ -229,17 +235,19 @@ The :term:`Wallet Instance` MUST append later transactions to the restored log.
 
 Dashboard export of transaction records remains the download of those records, as specified in :ref:`wallet-instance-dashboard:Export and Deletion of Transaction Records`.
 
-The new :term:`Wallet Instance` MUST enable the :term:`User` to select each non-device-bound attestation from the migration object.
+The new :term:`Wallet Instance` MUST enable the :term:`User` to select each non-device-bound attestation listed in the migration object.
 
-When the :term:`User` selects a non-device-bound attestation, the :term:`Wallet Instance` MUST restore that attestation from the migration object.
+When the :term:`User` selects a non-device-bound attestation and the migration object contains that attestation, the :term:`Wallet Instance` MUST restore that attestation from the migration object.
+
+When the :term:`User` selects a non-device-bound attestation and the migration object does not contain that attestation, the :term:`Wallet Instance` MUST request issuance of an attestation of the same type from the provider identified in the list.
 
 For each PID, IT-Wallet ID and other device-bound Digital Credential listed in the migration object, the :term:`Wallet Instance` MUST enable the :term:`User` to select it.
 
-When the :term:`User` selects a listed credential, the :term:`Wallet Instance` MUST request issuance of that credential from the provider identified in the list.
+When the :term:`User` selects a device-bound Credential, the :term:`Wallet Instance` MUST request issuance of that Credential from the provider identified in the list.
 
-The request MUST use a fresh :term:`Holder Key Binding`.
+An issuance request from the migration object MUST use a fresh :term:`Holder Key Binding`.
 
-If the :term:`User` selects a PID, the :term:`Wallet Instance` MUST request issuance of the PID before the other credentials in the list.
+If the :term:`User` selects a PID, the :term:`Wallet Instance` MUST request issuance of the PID before the other Credentials in the list.
 
 The :term:`Wallet Instance` MUST request that issuance with the Wallet-Initiated Authorization Code Issuance Flow defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`.
 

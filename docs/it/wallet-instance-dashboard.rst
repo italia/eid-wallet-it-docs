@@ -6,8 +6,8 @@ Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni
 
 L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:
 
-- rilascio e ri-rilascio delle credenziali;
-- presentazione delle credenziali alle Relying Party;
+- rilascio e ri-rilascio delle Credenziali;
+- presentazione delle Credenziali alle Relying Party;
 - richieste di cancellazione dei dati inviate alle Relying Party.
 
 Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente contenente gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione, e DEVE aggiornarlo con l’esito finale, ove applicabile.

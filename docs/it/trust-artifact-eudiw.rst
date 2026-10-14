@@ -69,7 +69,7 @@ Metodi, parametri di filtro, codici di risposta e la riduzione di ``services`` q
 
 .. note::
     La vista API pubblicata esclude solo ``postalAddress`` ([`CIR2025/848`_] come modificato da [`CIR2026/1730`_], Allegato I, punto 4).
-    Tutti gli altri campi, inclusi i claim di credenziale dell'uso previsto, sono pubblicati come registrati.
+    Tutti gli altri campi, inclusi i claim di Credenziale dell'uso previsto, sono pubblicati come registrati.
     Le Register Open APIs restano per pubblicazione e trasparenza ([`EIDAS-ARF`_] Reg_03, Reg_06).
     La Wallet Unit MUST NOT usarle come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali o l'Emissione di Credenziali, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
 

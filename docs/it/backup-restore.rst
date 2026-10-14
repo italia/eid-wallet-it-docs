@@ -162,7 +162,7 @@ Il ripristino del file di backup si applica quando la nuova Istanza del Wallet Ã
 
 Il PID NON DEVE essere incluso nel file di backup. L'IT-Wallet ID NON DEVE essere incluso nel file di backup.
 
-L'elenco delle credenziali dell'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa` include il PID e l'IT-Wallet ID.
+L'elenco delle Credenziali dell'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa` include il PID e l'IT-Wallet ID.
 
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
@@ -197,15 +197,21 @@ L'Istanza del Wallet DEVE mantenere aggiornato l'oggetto di migrazione rispetto 
 
 L'oggetto di migrazione DEVE contenere l'elenco delle Credenziali Elettroniche presenti nell'Istanza del Wallet, incluso il PID e l'IT-Wallet ID.
 
-L'oggetto di migrazione DEVE contenere ciascun attestato non vincolato al dispositivo come attestato stesso.
+L'Istanza del Wallet DEVE consentire all'Utente di indicare se gli identificatori e i valori di attributo di un attestato non vincolato al dispositivo sono conservati nell'oggetto di migrazione.
+
+Quando l'Utente indica che sono conservati, l'oggetto di migrazione DEVE contenere quell'attestato non vincolato al dispositivo come attestato stesso, come specificato in `EUDI-TS 10`_.
+
+Quando l'Utente non indica che sono conservati, l'oggetto di migrazione NON DEVE contenere quell'attestato non vincolato al dispositivo.
 
 L'oggetto di migrazione DEVE contenere il registro delle transazioni.
 
-Per ciascun PID, IT-Wallet ID o altra Credenziale Elettronica in tale elenco, l'oggetto di migrazione DEVE includere il tipo di attestato, il fornitore che ha emesso la credenziale e il punto di fornitura del servizio di tale fornitore, come specificato in `EUDI-TS 10`_.
+Per ciascun PID, IT-Wallet ID o altra Credenziale Elettronica in tale elenco, l'oggetto di migrazione DEVE includere il tipo di attestato, il fornitore che ha emesso la Credenziale e il punto di fornitura del servizio di tale fornitore, come specificato in `EUDI-TS 10`_.
 
-L'elenco delle credenziali NON DEVE contenere valori di attributo.
+Il tipo di attestato, il fornitore che ha emesso la Credenziale e il punto di fornitura del servizio di tale fornitore, per quell'attestato non vincolato al dispositivo, restano nell'elenco delle Credenziali.
 
-L'elenco delle credenziali NON DEVE contenere una chiave privata.
+L'elenco delle Credenziali NON DEVE contenere identificatori di attributo o valori di attributo.
+
+L'elenco delle Credenziali NON DEVE contenere una chiave privata.
 
 L'oggetto di migrazione NON DEVE contenere una copia di un attestato con associazione al dispositivo.
 
@@ -227,15 +233,19 @@ L'Istanza del Wallet DEVE accodare le transazioni successive al registro riprist
 
 L'esportazione dei record di transazione dalla dashboard resta il download di tali record, come specificato in :ref:`wallet-instance-dashboard:Esportazione e Cancellazione dei Record di Transazione`.
 
-La nuova Istanza del Wallet DEVE copiare nell'Istanza del Wallet ciascun attestato non vincolato al dispositivo presente nell'oggetto di migrazione.
+La nuova Istanza del Wallet DEVE consentire all'Utente di selezionare ciascun attestato non vincolato al dispositivo elencato nell'oggetto di migrazione.
+
+Quando l'Utente seleziona un attestato non vincolato al dispositivo e l'oggetto di migrazione contiene quell'attestato, l'Istanza del Wallet DEVE ripristinare quell'attestato dall'oggetto di migrazione.
+
+Quando l'Utente seleziona un attestato non vincolato al dispositivo e l'oggetto di migrazione non contiene quell'attestato, l'Istanza del Wallet DEVE richiedere l'emissione di un attestato dello stesso tipo al fornitore identificato nell'elenco.
 
 Per ciascun PID, IT-Wallet ID e altra Credenziale Elettronica con associazione al dispositivo elencata nell'oggetto di migrazione, l'Istanza del Wallet DEVE consentire all'Utente di selezionarla.
 
-Quando l'Utente seleziona una credenziale elencata, l'Istanza del Wallet DEVE richiederne l'emissione al fornitore identificato nell'elenco.
+Quando l'Utente seleziona una Credenziale con associazione al dispositivo, l'Istanza del Wallet DEVE richiederne l'emissione al fornitore identificato nell'elenco.
 
-La richiesta DEVE utilizzare una nuova Associazione Crittografica con l'Utente.
+Una richiesta di emissione dall'oggetto di migrazione DEVE utilizzare una nuova Associazione Crittografica con l'Utente.
 
-Se l'elenco contiene un PID, l'Istanza del Wallet DEVE richiedere l'emissione del PID prima delle altre credenziali dell'elenco.
+Se l'elenco contiene un PID, l'Istanza del Wallet DEVE richiedere l'emissione del PID prima delle altre Credenziali dell'elenco.
 
 L'Istanza del Wallet DEVE richiedere tale emissione con il Wallet-Initiated Authorization Code Issuance Flow definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow`.
 

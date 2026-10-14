@@ -37,7 +37,7 @@ For detailed implementation requirements, see :ref:`remote-flow:Request URI Requ
 Response URI Endpoint
 .....................
 
-The Response URI Endpoint receives the Authorization Response from the Wallet Instance containing the Verifiable Presentation. This endpoint processes the presentation and validates the credentials.
+The Response URI Endpoint receives the Authorization Response from the Wallet Instance containing the Verifiable Presentation. This endpoint processes the presentation and validates the Credentials.
 
 For detailed implementation requirements, see :ref:`remote-flow:Authorization Response` and :ref:`remote-flow:Relying Party Response`.
 

@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 .. Incluso tramite relying-party-endpoints.rst al livello di titolo '"' (livello 3).
 
-La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
+La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle Credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
 
 .. note::
   I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`).
@@ -31,7 +31,7 @@ Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Richies
 Endpoint Response URI
 .....................
 
-L'Endpoint Response URI riceve l'Authorization Response dall'Istanza del Wallet contenente la Verifiable Presentation. Questo endpoint elabora la presentazione e convalida le credenziali.
+L'Endpoint Response URI riceve l'Authorization Response dall'Istanza del Wallet contenente la Verifiable Presentation. Questo endpoint elabora la presentazione e convalida le Credenziali.
 
 Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Authorization Response` e :ref:`remote-flow:Risposta della Relying Party`.
 

@@ -114,7 +114,7 @@ PID
 The **PID** is the Person Identification Data under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model` and :term:`Person Identification Data`). It is issued by the PID Provider as a technical PID (signed data structure) for presentation from the Wallet Instance.
 
 - The Wallet Instance in the **Operational** state allows the PID issuance. Upon successful issuance of a valid PID, the Wallet Instance MUST transition to the **Valid** state (see :ref:`wallet-instance-lifecycle:Transition to Valid`).
-- While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further credential issuance according to this specification and the EUDI framework.
+- While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further Credential issuance according to this specification and the EUDI framework.
 - Revocation, expiry, or deletion of the PID MUST transition the Wallet Instance back to **Operational** (see :ref:`wallet-instance-lifecycle:Transition to Operational`).
 - Where the User revokes the PID, the Wallet Provider MUST handle the consequences on the Wallet Instance lifecycle and on dependent EAAs as defined in this specification.
 - The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.
@@ -351,20 +351,20 @@ Following is represented for illustrative purposes the page with the :ref:`funct
 .. only:: format_html
 
   .. figure:: ./images/svg/Credential-offer-ENG.svg
-    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
     :align: center
 
-    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
 
 
 .. only:: format_latex
 
   .. figure:: ./images/pdf/Credential-offer-ENG.pdf
-    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
 
-    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
 
 
 Engagement Button

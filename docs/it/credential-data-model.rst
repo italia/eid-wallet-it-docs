@@ -8,7 +8,7 @@ Un modello di dati dell'Attestato Elettronico ha la seguente struttura:
 
 - **Attributi di metadati**:
 
-  - **Format-Agnostic**: Sono attributi di metadati di alto livello che descrivono l'Attestato Elettronico indipendentemente dal suo formato di codifica. Rappresentano le informazioni semantiche sulla credenziale (ad esempio, credential_type, issuing_authority, expiry_date) e rimangono concettualmente coerenti tra i diversi formati. Quando una credenziale viene codificata, questi attributi di metadati comuni vengono mappati a parametri tecnici specifici del formato secondo le regole di codifica di ciascun formato (SD-JWT-VC o mdoc-CBOR).
+  - **Format-Agnostic**: Sono attributi di metadati di alto livello che descrivono l'Attestato Elettronico indipendentemente dal suo formato di codifica. Rappresentano le informazioni semantiche sulla Credenziale (ad esempio, credential_type, issuing_authority, expiry_date) e rimangono concettualmente coerenti tra i diversi formati. Quando una Credenziale viene codificata, questi attributi di metadati comuni vengono mappati a parametri tecnici specifici del formato secondo le regole di codifica di ciascun formato (SD-JWT-VC o mdoc-CBOR).
   - **Format-Specific**: Sono parametri di metadati intrinseci al formato di codifica specifico e servono a scopi tecnici relativi al modello di sicurezza e ai requisiti di protocollo del formato.
 
 - **Attributi dell'Utente**: Informazioni sull'Utente, come identità o qualifiche.
@@ -19,7 +19,7 @@ Mentre il modello dati (Q)EAA è guidato dal caso d'uso e può includere diversi
 Attributi di Metadati Format-Agnostic dell'Attestato Elettronico
 ----------------------------------------------------------------
 
-La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla credenziale.
+La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla Credenziale.
 
 .. _table_format_agnostic_attributes:
 .. list-table::
@@ -46,7 +46,7 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
   * - **verification**
     - OPZIONALE. Oggetto contenente informazioni di Identity proofing e verifica dei dati dell'Utente.
 
-Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
+Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la Credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
 
 Formato Attestato Elettronico SD-JWT-VC
 ---------------------------------------

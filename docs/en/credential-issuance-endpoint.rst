@@ -265,7 +265,7 @@ Authorization endpoint
 """"""""""""""""""""""
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
-The authorization server MUST first verify the identity of the User that own the credential.
+The authorization server MUST first verify the identity of the User that own the Credential.
 
 
 User Authentication Method Selection
@@ -624,7 +624,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - **Description**
     - **Reference**
   * - **iss**
-    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the credential.
+    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the Credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
     - REQUIRED. It identifies the subject of the JWT.

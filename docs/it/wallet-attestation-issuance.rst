@@ -66,13 +66,13 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 
 * richiede all'API di Key Attestation di creare un valore ``key_attestation`` collegato per ogni ``client_data_hash`` per ciascuna ``key_pub``.
 * riceve un valore ``key_attestation`` firmato dall'API di Key Attestation, autenticato dall'OEM.
-* genera un valore ``keys_to_attest`` firmando il ``key_attestation`` utilizzando la chiave privata della coppia di chiavi di credenziale generata inizialmente (``priv_key``).
+* genera un valore ``keys_to_attest`` firmando il ``key_attestation`` utilizzando la chiave privata della coppia di chiavi di Credenziale generata inizialmente (``priv_key``).
 
 **Passi 16-19**: L'Istanza del Wallet:
 
 * richiede al Servizio di Integrità del Dispositivo di creare un valore ``integrity_assertion`` collegato per ogni ``client_data_hash`` per ogni ``key_pub``.
 * riceve un valore ``integrity_assertion`` firmato per la Key Attestation dal Servizio di Integrità del Dispositivo, autenticato dall'OEM.
-* genera un valore ``keys_to_attest`` firmando l'``integrity_assertion`` ottenuto per la key Attestation utilizzando la chiave privata della coppia di chiavi di credenziale generata inizialmente (``priv_key``).
+* genera un valore ``keys_to_attest`` firmando l'``integrity_assertion`` ottenuto per la key Attestation utilizzando la chiave privata della coppia di chiavi di Credenziale generata inizialmente (``priv_key``).
 
 **Passi 20-21 (Richiesta di Emissione della Key Attestation)**: L'Istanza del Wallet:
 

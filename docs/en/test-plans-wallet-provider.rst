@@ -185,7 +185,7 @@ This section lists the test cases from Sections:
      - The Keystore or the WSCA/Remote WSCD requires User authentication (wallet unlock: PIN or biometric) before any signature or key-use operation. The User retains exclusive control of the private keys.
    * - WP_014d
      - Trust, Security
-     - PID High vs other credentials key storage
+     - PID High vs other Credentials key storage
      - Keys of IT-Wallet ID and (Q)EAA are stored in the hardware-backed Keystore. Keys of a PID at Level of Assurance High MUST be generated and stored only in the WSCA operating within the Remote WSCD. A TEE Protection Profile or similar report is not accepted as evidence of Level of Assurance High.
    * - WP_014e
      - Trust, Security
@@ -508,7 +508,7 @@ This section lists the test cases from Sections:
    * - WP_058
      - Issuance, Interoperability
      - Batch Credential Request
-     - In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the credential type, and a ``proofs`` parameter containing all key proofs.
+     - In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the Credential type, and a ``proofs`` parameter containing all key proofs.
    * - WP_058a
      - Issuance, Security
      - Batch Issuance: key generation
@@ -543,7 +543,7 @@ This section lists the test cases from Sections:
      - Wallet Instance extracts the signature algorithm from the protected header of the mdoc-CBOR ``COSE_Sign1``, retrieves the Credential Issuer’s public key from the ``kid`` or ``x5chain`` in the unprotected header, and verifies the COSE signature over the MSO; if invalid, the Credential is rejected.
    * - WP_063
      - Issuance, Privacy
-     - User consent for credential storage
+     - User consent for Credential storage
      - Wallet Instance prompts the User for consent and stores the Digital Credential only after explicit approval.
    * - WP_064
      - Issuance, Interoperability
@@ -632,7 +632,7 @@ This section lists the test cases from Sections:
    * - WP_075
      - Issuance, UX
      - No consent on new Digital Credential store without ``user_attribute`` update
-     - If the Digital Credential update only concerns credential metadata changes (``update``), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.
+     - If the Digital Credential update only concerns Credential metadata changes (``update``), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.
 
 .. _wallet-credential-presentation-testcases:
 
@@ -710,7 +710,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_087
      - Remote-flow, Presentation, Security
      - Check Relying Party eligibility
-     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified credential.
+     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified Credential.
    * - WP_088
      - Remote-flow, Presentation, Privacy
      - User consent for disclosure
@@ -1071,7 +1071,7 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
    * - WP_122d
      - Backup and Restore, Security
      - Credential identifiers in backup JWT
-     - The ``credentials_backup`` claim contains entries keyed by the Issuer identifier, and each entry lists one or more ``credential_configuration_ids`` corresponding to the issued credentials.
+     - The ``credentials_backup`` claim contains entries keyed by the Issuer identifier, and each entry lists one or more ``credential_configuration_ids`` corresponding to the issued Credentials.
    * - WP_123
      - Backup and Restore, Security
      - Backup JWT signing with attested key
@@ -1237,7 +1237,7 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Key Attestation issuance for PID keys conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_140h
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
-     - OEM Key Attestation APIs for other credentials
+     - OEM Key Attestation APIs for other Credentials
      - Key Attestation issuance for Digital Credentials other than the PID conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_141
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security

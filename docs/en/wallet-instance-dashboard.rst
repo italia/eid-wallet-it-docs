@@ -7,8 +7,8 @@ Wallet Instance Dashboard and Transaction Logging
 
 The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensure transparency, traceability, and User awareness of actions performed through the Wallet Instance as defined in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). The log MUST cover all transactions (including non-completed) in these categories:
 
-- credential issuance and re-issuance;
-- credential presentation to Relying Parties;
+- Credential issuance and re-issuance;
+- Credential presentation to Relying Parties;
 - data deletion requests sent to Relying Parties.
 
 For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in `EUDI-TS 10`_.

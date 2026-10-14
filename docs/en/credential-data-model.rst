@@ -47,7 +47,7 @@ The following table defines the common metadata attributes that are applicable t
   * - **verification**
     - OPTIONAL. Object containing Identity proofing and User data verification information.
 
-The following sections provide format-specific attributes and a mapping of the above metadata attributes to format-specific technical parameters when the credential is encoded in SD-JWT VC or mdoc-CBOR format.
+The following sections provide format-specific attributes and a mapping of the above metadata attributes to format-specific technical parameters when the Credential is encoded in SD-JWT VC or mdoc-CBOR format.
 
 SD-JWT-VC Credential Format
 ---------------------------
