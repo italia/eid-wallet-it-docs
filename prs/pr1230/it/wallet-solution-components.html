@@ -395,10 +395,11 @@
 </section>
 <section id="componente-di-backup-e-ripristino">
 <h3><span class="section-number">9.1.2.2.5. </span>Componente di Backup e Ripristino<a class="headerlink" href="#componente-di-backup-e-ripristino" title="Link to this heading">¶</a></h3>
-<p>Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo componente DEVE aggiungere tutti i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino come specificato nella Sezione <a class="reference internal" href="backup-restore.html#backup-e-ripristino"><span class="std std-ref">Backup e Ripristino</span></a>.</p>
+<p>Per ogni Credenziale Elettronica con associazione al dispositivo diversa dal PID e dall'IT-Wallet ID, questo componente DEVE aggiungere al file di backup i dati necessari per richiedere l'emissione di quella Credenziale Elettronica durante il ripristino, come specificato nella Sezione <a class="reference internal" href="backup-restore.html#flusso-di-backup"><span class="std std-ref">Flusso di Backup</span></a>.</p>
+<p>Questo componente DEVE mantenere l'oggetto di migrazione specificato in <a class="reference internal" href="backup-restore.html#migrazione-verso-una-soluzione-wallet-diversa"><span class="std std-ref">Migrazione verso una Soluzione Wallet diversa</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Attualmente la riemissione del PID e dell'IT-Wallet ID non è gestita dal Componente di Backup e Ripristino.</p>
+<p>Il ripristino del file di backup non richiede l'emissione del PID o dell'IT-Wallet ID. L'oggetto di migrazione elenca entrambi, e l'Istanza del Wallet ricevente ne richiede l'emissione a partire da tale elenco.</p>
 </div>
 </section>
 <section id="dashboard-e-registro-delle-transazioni">
@@ -561,7 +562,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

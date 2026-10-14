@@ -122,7 +122,7 @@ The verification of the Wallet Instance validity MUST be performed:
 
 
 .. note::
-   If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WIA and KA upon issuance as stated in `EUDI-TS 3`_.
+   If Credential Issuers issue Credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WIA and KA upon issuance as stated in `EUDI-TS 3`_.
 
 .. note::
   In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.

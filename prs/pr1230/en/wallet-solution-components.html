@@ -394,10 +394,11 @@
 </section>
 <section id="backup-and-restore-component">
 <h3><span class="section-number">9.1.2.2.5. </span>Backup and Restore Component<a class="headerlink" href="#backup-and-restore-component" title="Link to this heading">¶</a></h3>
-<p>For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p>
+<p>For each device-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore, as specified in Section <a class="reference internal" href="backup-restore.html#backup-flow"><span class="std std-ref">Backup Flow</span></a>.</p>
+<p>This component MUST keep the migration object specified in <a class="reference internal" href="backup-restore.html#migration-to-a-different-wallet-solution"><span class="std std-ref">Migration to a Different Wallet Solution</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently the re-issuance of the PID and IT-Wallet ID is not managed by the Backup and Restore Component.</p>
+<p>Restore of the backup file does not request issuance of the PID or the IT-Wallet ID. The migration object includes references to any PID or IT-Wallet ID present in the source Wallet Instance, enabling the receiving Wallet Instance to request their fresh issuance.</p>
 </div>
 </section>
 <section id="dashboard-and-transaction-log">
@@ -560,7 +561,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

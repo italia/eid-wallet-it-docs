@@ -31,7 +31,7 @@ Per ogni caso di test, la tabella specifica:
 
 - **Test Case ID**: un identificatore univoco.
 - **Purpose**: l'area funzionale coperta dal test.
-- **Description**: il requisito che viene testato, sempre basato su un MUST normativo della specifica.
+- **Description**: il requisito che viene testato, sempre basato su un DEVE normativo della specifica.
 - **Expected Result**: il risultato atteso quando la soluzione è implementata correttamente.
 
 

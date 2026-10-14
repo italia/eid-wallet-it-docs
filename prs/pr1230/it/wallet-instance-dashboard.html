@@ -324,8 +324,8 @@
 <h1><span class="section-number">9.1.4.2.6. </span>Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni<a class="headerlink" href="#dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni" title="Link to this heading">¶</a></h1>
 <p>L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:</p>
 <ul class="simple">
-<li><p>rilascio e ri-rilascio delle credenziali;</p></li>
-<li><p>presentazione delle credenziali alle Relying Party;</p></li>
+<li><p>rilascio e ri-rilascio delle Credenziali;</p></li>
+<li><p>presentazione delle Credenziali alle Relying Party;</p></li>
 <li><p>richieste di cancellazione dei dati inviate alle Relying Party.</p></li>
 </ul>
 <p>Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente contenente gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione, e DEVE aggiornarlo con l’esito finale, ove applicabile.</p>
@@ -337,6 +337,7 @@
 <h2><span class="section-number">9.1.4.2.6.1. </span>Esportazione e Cancellazione dei Record di Transazione<a class="headerlink" href="#esportazione-e-cancellazione-dei-record-di-transazione" title="Link to this heading">¶</a></h2>
 <p><strong>Esportazione</strong>: la dashboard DEVE consentire all’Utente di esportare uno o più record di transazione in un file utilizzando il formato comune e le misure di sicurezza definite in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>Il file esportato DEVE poter essere salvato in una posizione di archiviazione esterna o remota scelta dall’Utente, tra le opzioni di archiviazione supportate dall’Istanza del Wallet.</p>
+<p>Questa esportazione è il download dei record di transazione. Il ripristino del registro delle transazioni in un'Istanza del Wallet ricevente è specificato in <a class="reference internal" href="backup-restore.html#migrazione-verso-una-soluzione-wallet-diversa"><span class="std std-ref">Migrazione verso una Soluzione Wallet diversa</span></a>.</p>
 <p><strong>Cancellazione</strong>: la dashboard DEVE consentire all’Utente di cancellare uno o più record di transazione dall’Istanza del Wallet in qualsiasi momento.</p>
 <p>Prima di cancellare qualsiasi record di transazione, l’Istanza del Wallet DEVE mostrare all’Utente un avviso chiaro sulle possibili conseguenze per i diritti dell’Utente in materia di protezione dei dati.</p>
 <p>La cancellazione dei record di transazione DEVE:</p>
@@ -459,7 +460,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

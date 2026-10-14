@@ -345,8 +345,8 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 <p>Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e non scaduti amministrativamente (ovvero, <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; data corrente della request dell'e-service).</p></li>
-<li><p>Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, indipendentemente dal suo stato.</p></li>
+<li><p>Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle Credenziali in stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e non scaduti amministrativamente (ovvero, <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; data corrente della request dell'e-service).</p></li>
+<li><p>Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle Credenziali identificato dal claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, indipendentemente dal suo stato.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -584,7 +584,7 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

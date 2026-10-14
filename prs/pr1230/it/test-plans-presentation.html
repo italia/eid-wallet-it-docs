@@ -416,9 +416,9 @@
 <td><p>Viene inviata una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-15</p></td>
-<td><p>Gestione Errori</p></td>
-<td><p>Verifica la registrazione degli errori.</p></td>
-<td><p>Gli errori vengono registrati correttamente.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-16</p></td>
 <td><p>Gestione Errori</p></td>
@@ -430,75 +430,95 @@
 <td><p>Test di un cookie HTTP falso.</p></td>
 <td><p>Il Relying Party verifica la coerenza della sessione utente accoppiando il cookie http di sessione con state e nonce forniti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-19</p></td>
+<tr class="row-odd"><td><p>RPR-18</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-19</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Test del reindirizzamento all’endpoint del Relying Party.</p></td>
 <td><p>L’utente viene reindirizzato correttamente, l’endpoint funziona.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-20</p></td>
+<tr class="row-odd"><td><p>RPR-20</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verifica la gestione di un <cite>redirect_uri</cite> non valido.</p></td>
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-23</p></td>
+<tr class="row-even"><td><p>RPR-21</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-22</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-23</p></td>
 <td><p>Presentazione Credenziali</p></td>
 <td><p>Verifica la conformità del formato della risposta.</p></td>
-<td><p>Il Relying Party supporta tutti i formati di credenziali inclusi nel parametro <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> dei suoi metadati.</p></td>
+<td><p>Il Relying Party supporta tutti i formati di Credenziali inclusi nel parametro <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> dei suoi metadati.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-24</p></td>
-<td><p>Risposta di Autorizzazione</p></td>
-<td><p>Test della gestione dei timeout di risposta.</p></td>
-<td><p>I tentativi devono avere successo a meno che non venga acquisita la risposta.</p></td>
+<tr class="row-odd"><td><p>RPR-24</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-25</p></td>
+<tr class="row-even"><td><p>RPR-25</p></td>
 <td><p>Gestione Errori</p></td>
 <td><p>Verifica la gestione di claim malformati nel payload della presentazione.</p></td>
 <td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-26</p></td>
+<tr class="row-odd"><td><p>RPR-26</p></td>
 <td><p>Gestione Errori</p></td>
-<td><p>Verifica la gestione di claim malformati nelle credenziali presentate.</p></td>
+<td><p>Verifica la gestione di claim malformati nelle Credenziali presentate.</p></td>
 <td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-27</p></td>
+<tr class="row-even"><td><p>RPR-27</p></td>
 <td><p>Gestione Errori</p></td>
 <td><p>Test della gestione di richieste scadute.</p></td>
 <td><p>Il titolare viene informato della scadenza.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-28</p></td>
+<tr class="row-odd"><td><p>RPR-28</p></td>
 <td><p>Risposta del Relying Party</p></td>
 <td><p>Verifica l’inclusione del codice di risposta.</p></td>
 <td><p>Il codice di risposta è crittograficamente casuale.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-29</p></td>
+<tr class="row-even"><td><p>RPR-29</p></td>
 <td><p>Risposta del Relying Party</p></td>
 <td><p>Test della gestione di codici di risposta non validi.</p></td>
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-30</p></td>
+<tr class="row-odd"><td><p>RPR-30</p></td>
 <td><p>Endpoint di Stato</p></td>
 <td><p>Verifica la gestione di accessi non autorizzati.</p></td>
 <td><p>L’accesso non autorizzato viene negato.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-31</p></td>
+<tr class="row-even"><td><p>RPR-31</p></td>
 <td><p>Endpoint di Stato</p></td>
 <td><p>Test della gestione di ID di sessione non validi.</p></td>
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-32</p></td>
+<tr class="row-odd"><td><p>RPR-32</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verifica la gestione di sessioni scadute.</p></td>
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-33</p></td>
+<tr class="row-even"><td><p>RPR-33</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Test della gestione di errori del server.</p></td>
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-34</p></td>
+<tr class="row-odd"><td><p>RPR-34</p></td>
 <td><p>Flusso stesso e tra dispositivi</p></td>
 <td><p>Verifica la gestione di condizioni di rete lente.</p></td>
 <td><p>Il Relying Party fornisce la risposta http entro il limite massimo di 2 secondi.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-35</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-36</p></td>
 <td><p>Risposta di Presentazione</p></td>
@@ -571,14 +591,14 @@
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-50</p></td>
-<td><p>Consenso Utente</p></td>
-<td><p>Verifica la notifica all’utente delle modifiche al consenso.</p></td>
-<td><p>L’utente viene informato delle modifiche al consenso.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-51</p></td>
-<td><p>Consenso Utente</p></td>
-<td><p>Test del consenso dell’utente per dati sensibili.</p></td>
-<td><p>L’utente può acconsentire ai dati sensibili.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-52</p></td>
 <td><p>Risposta di Autorizzazione</p></td>
@@ -626,9 +646,9 @@
 <td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-61</p></td>
-<td><p>Consenso Utente</p></td>
-<td><p>Verifica la notifica all’utente della revoca del consenso.</p></td>
-<td><p>L’utente viene informato della revoca del consenso.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-62</p></td>
 <td><p>Consenso Utente</p></td>
@@ -691,14 +711,14 @@
 <td><p>L’utente viene informato del timeout.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-74</p></td>
-<td><p>Flusso tra dispositivi</p></td>
-<td><p>Test della scansione del QR Code con dispositivi diversi.</p></td>
-<td><p>Il QR Code viene scansionato con successo.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-75</p></td>
-<td><p>Flusso tra dispositivi</p></td>
-<td><p>Verifica la scansione del QR Code con app diverse.</p></td>
-<td><p>Il QR Code viene scansionato con successo.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-76</p></td>
 <td><p>Metodo request_uri</p></td>
@@ -806,9 +826,9 @@
 <td><p>Il <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> è correttamente allineato con i metadati della Trust Chain.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
-<td><p>Richiesta Wallet Instance Attestation (WIA)</p></td>
-<td><p>Test che il Relying Party richieda l’Attestato dell'Istanza del Wallet (WIA) tramite DCQL.</p></td>
-<td><p>Il Relying Party richiede correttamente l’Attestato dell'Istanza del Wallet (WIA) usando la query DCQL.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-98</p></td>
 <td><p>Formato Risposta di Errore</p></td>
@@ -821,9 +841,9 @@
 <td><p>La risposta di errore include i parametri error ed <code class="docutils literal notranslate"><span class="pre">error_description</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-100</p></td>
-<td><p>Presentazione Wallet Instance Attestation (WIA)</p></td>
-<td><p>Test che il Relying Party richieda correttamente l’Attestato dell'Istanza del Wallet (WIA) all’istanza Wallet.</p></td>
-<td><p>Il Relying Party valuta correttamente l’Attestato dell'Istanza del Wallet (WIA) quando richiesta.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-101</p></td>
 <td><p>Array Presentazione</p></td>
@@ -876,9 +896,9 @@
 <td><p>La Response URI restituisce HTTP 200 con content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-111</p></td>
-<td><p>Coerenza Codici di Errore</p></td>
-<td><p>Test che i codici di errore siano coerenti tra i diversi endpoint.</p></td>
-<td><p>I codici di errore sono coerenti su tutti gli endpoint del Relying Party.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-112</p></td>
 <td><p>Inclusione Codice di Risposta</p></td>
@@ -886,9 +906,9 @@
 <td><p>Il Relying Party include un nuovo codice di risposta in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-113</p></td>
-<td><p>Sicurezza Redirect URI</p></td>
-<td><p>Test che <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> sia attestato da una terza parte fidata.</p></td>
-<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> è correttamente attestato da una terza parte fidata.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-114</p></td>
 <td><p>Risposta di Errore di Validazione</p></td>
@@ -1381,7 +1401,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

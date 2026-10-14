@@ -389,9 +389,9 @@
 <td><p>Error Response is sent.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-15</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verify error logging.</p></td>
-<td><p>Errors are logged appropriately.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-16</p></td>
 <td><p>Error Handling</p></td>
@@ -403,75 +403,95 @@
 <td><p>Test fake HTTP Cookie.</p></td>
 <td><p>Relying Party checks the User session consistency coupling the session http cookie and the state and nonces provided.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-19</p></td>
+<tr class="row-odd"><td><p>RPR-18</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-19</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Test redirection to Relying Party's endpoint.</p></td>
 <td><p>User is redirected correctly, the endpoint works.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-20</p></td>
+<tr class="row-odd"><td><p>RPR-20</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verify handling of invalid <cite>redirect_uri</cite>.</p></td>
 <td><p>Error response is returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-23</p></td>
+<tr class="row-even"><td><p>RPR-21</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-22</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-23</p></td>
 <td><p>Credential Presentation</p></td>
 <td><p>Verify response format compliance.</p></td>
 <td><p>Relying Party supports all the Credential format included within its <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> metadata parameter.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-24</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Test handling of response timeouts.</p></td>
-<td><p>Retries must be successful unless response is acquired.</p></td>
+<tr class="row-odd"><td><p>RPR-24</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-25</p></td>
+<tr class="row-even"><td><p>RPR-25</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Verify handling of malformed claims in presentation payload.</p></td>
 <td><p>Authorization Error Response is sent.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-26</p></td>
+<tr class="row-odd"><td><p>RPR-26</p></td>
 <td><p>Error Handling</p></td>
-<td><p>Verify handling of malformed claims in presented credentials.</p></td>
+<td><p>Verify handling of malformed claims in presented Credentials.</p></td>
 <td><p>Authorization Error Response is sent.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-27</p></td>
+<tr class="row-even"><td><p>RPR-27</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Test handling of expired requests.</p></td>
 <td><p>Holder is notified of expiration.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-28</p></td>
+<tr class="row-odd"><td><p>RPR-28</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verify inclusion of response code.</p></td>
 <td><p>Response code is cryptographically random.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-29</p></td>
+<tr class="row-even"><td><p>RPR-29</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Test handling of invalid response codes.</p></td>
 <td><p>Error response is returned.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-30</p></td>
+<tr class="row-odd"><td><p>RPR-30</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Verify handling of unauthorized access.</p></td>
 <td><p>Unauthorized access is denied.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-31</p></td>
+<tr class="row-even"><td><p>RPR-31</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Test handling of invalid session IDs.</p></td>
 <td><p>Error response is returned.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-32</p></td>
+<tr class="row-odd"><td><p>RPR-32</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verify handling of expired sessions.</p></td>
 <td><p>Error response is returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-33</p></td>
+<tr class="row-even"><td><p>RPR-33</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Test handling of server errors.</p></td>
 <td><p>Error response is returned.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-34</p></td>
+<tr class="row-odd"><td><p>RPR-34</p></td>
 <td><p>Same and Cross Device Flow</p></td>
 <td><p>Verify handling of slow network conditions.</p></td>
 <td><p>Relying Party provides the http response within the maximum limit of 2 seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-35</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-36</p></td>
 <td><p>Presentation Response</p></td>
@@ -544,14 +564,14 @@
 <td><p>Error response is returned.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-50</p></td>
-<td><p>User Consent</p></td>
-<td><p>Verify user notification of consent changes.</p></td>
-<td><p>User is informed about consent changes.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-51</p></td>
-<td><p>User Consent</p></td>
-<td><p>Test user consent for sensitive data.</p></td>
-<td><p>User can consent to sensitive data.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-52</p></td>
 <td><p>Authorization Response</p></td>
@@ -599,9 +619,9 @@
 <td><p>Error response is returned.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-61</p></td>
-<td><p>User Consent</p></td>
-<td><p>Verify user notification of consent revocation.</p></td>
-<td><p>User is informed about consent revocation.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-62</p></td>
 <td><p>User Consent</p></td>
@@ -664,14 +684,14 @@
 <td><p>User is notified of timeout.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-74</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Test QR Code scanning with different devices.</p></td>
-<td><p>QR Code is scanned successfully.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-75</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verify QR Code scanning with different apps.</p></td>
-<td><p>QR Code is scanned successfully.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-76</p></td>
 <td><p>Request URI Method</p></td>
@@ -779,9 +799,9 @@
 <td><p>The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is correctly aligned with Trust Chain metadata.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
-<td><p>Wallet Instance Attestation (WIA) Request</p></td>
-<td><p>Test that Relying Party requests Wallet Instance Attestation (WIA) via DCQL.</p></td>
-<td><p>Relying Party correctly requests Wallet Instance Attestation (WIA) using DCQL query.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-98</p></td>
 <td><p>Error Response Format</p></td>
@@ -794,9 +814,9 @@
 <td><p>Error response includes error and <code class="docutils literal notranslate"><span class="pre">error_description</span></code> parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-100</p></td>
-<td><p>Wallet Instance Attestation (WIA) Presentation</p></td>
-<td><p>Test that Relying Party correctly requests Wallet Instance Attestation (WIA) from Wallet Instance.</p></td>
-<td><p>Relying Party correctly evaluates Wallet Instance Attestation (WIA) when requested.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-101</p></td>
 <td><p>Presentation Array</p></td>
@@ -849,9 +869,9 @@
 <td><p>Response URI returns HTTP 200 with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> content type.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-111</p></td>
-<td><p>Error Code Consistency</p></td>
-<td><p>Test that error codes are consistent across different endpoints.</p></td>
-<td><p>Error codes are consistent across all Relying Party endpoints.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-112</p></td>
 <td><p>Response Code Inclusion</p></td>
@@ -859,9 +879,9 @@
 <td><p>Relying Party includes fresh response code in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-113</p></td>
-<td><p>Redirect URI Security</p></td>
-<td><p>Test that <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is attested by trusted third party.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter is properly attested by trusted third party.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-114</p></td>
 <td><p>Validation Error Response</p></td>
@@ -914,7 +934,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

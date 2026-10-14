@@ -353,14 +353,12 @@
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
 <td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>erasure_endpoint</strong></p></td>
-<td><p>[CONDIZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema <code class="docutils literal notranslate"><span class="pre">https</span></code>. Alla ricezione di una richiesta di cancellazione, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici per i quali l'Utente richiede la rimozione, applicando l'identity matching come specificato in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching e Identity Reconciliation</span></a>.</p></td>
-</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>I parametri <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> e <code class="docutils literal notranslate"><span class="pre">erasure_endpoint</span></code> sono introdotti in questa specifica.</p>
+<p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> è introdotto in questa specifica.
+L'Istanza del Wallet richiede la cancellazione dei dati personali tramite il contatto di supporto della Relying Party, come specificato in <a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a> e in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts7-common-interface-for-data-deletion-request.md">EUDI-TS 7</a>.</p>
 </div>
 </section>
 
@@ -414,7 +412,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

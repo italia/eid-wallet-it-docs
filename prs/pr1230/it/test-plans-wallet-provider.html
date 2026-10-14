@@ -540,7 +540,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </tr>
 <tr class="row-odd"><td><p>WP_014d</p></td>
 <td><p>Trust, Sicurezza</p></td>
-<td><p>Conservazione chiavi PID High vs altre credenziali</p></td>
+<td><p>Conservazione chiavi PID High vs altre Credenziali</p></td>
 <td><p>Le chiavi di IT-Wallet ID e (Q)EAA sono memorizzate nel Keystore hardware-backed. Le chiavi di un PID a LoA High DEVONO essere generate e memorizzate solo dal WSCA operante nel Remote WSCD. Un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_014e</p></td>
@@ -791,310 +791,315 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </tr>
 <tr class="row-odd"><td><p>WP_045a</p></td>
 <td><p>Trust, Issuance, Interoperabilità</p></td>
-<td><p>Recupero Catalogo degli Attestati Elettronici</p></td>
-<td><p>Istanza del Wallet invia con successo una richiesta HTTP GET al Catalogue Endpoint contenente il Catalogo degli Attestati Elettronici, utilizzando il media type <code class="docutils literal notranslate"><span class="pre">application/jose</span></code>.</p></td>
+<td><p>Recupero di una pagina del Catalogo degli Attestati Elettronici</p></td>
+<td><p>Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di collection del Digital Credentials Catalog, utilizzando il media type <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (firmato) o <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (in chiaro), e legge una pagina identificata da <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">limit</span></code> e <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_046</p></td>
+<tr class="row-even"><td><p>WP_045b</p></td>
+<td><p>Trust, Issuance, Interoperabilità</p></td>
+<td><p>Recupero di una voce del Catalogo degli Attestati Elettronici</p></td>
+<td><p>Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di entry del Digital Credentials Catalog per una coppia <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> e <code class="docutils literal notranslate"><span class="pre">version</span></code> e ottiene quella voce versionata. Una coppia sconosciuta produce HTTP 404.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_046</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Scoprire Credential Issuer dinamicamente dai metadata federazione</p></td>
 <td><p>Istanza del Wallet utilizza con successo gli Endpoint di Federazione (<code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>) per recuperare metadata e configurazioni correnti del Credential Issuer.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_046a</p></td>
+<tr class="row-even"><td><p>WP_046a</p></td>
 <td><p>Trust, Issuance, Sicurezza</p></td>
 <td><p>Validare Trust Chain completa del Credential Issuer al Trust Anchor</p></td>
 <td><p>Istanza del Wallet costruisce e verifica la Trust Chain completa dal Credential Issuer attraverso Intermediari fino al Trust Anchor radice, assicurandosi che ogni firma sia valida.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_047</p></td>
+<tr class="row-odd"><td><p>WP_047</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Flusso Third-Party-Initiated: scansione e decodifica QR Credential Offer</p></td>
 <td><p>In un flusso cross-device Third-Party-Initiated, l'Istanza del Wallet scansiona con successo il codice QR, e ottiene il parametro <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> o <code class="docutils literal notranslate"><span class="pre">credential_offer_uri</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_048</p></td>
+<tr class="row-even"><td><p>WP_048</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Flusso Third-Party-Initiated: parsing Credential Offer</p></td>
 <td><p>In un flusso Third-Party-Initiated, l'Istanza del Wallet estrae e valida tutti i parametri richiesti presenti nell'oggetto Credential Offer.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_049</p></td>
+<tr class="row-odd"><td><p>WP_049</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Flusso Issuer-Initiated: controllo identificativo dell'Authorization Server</p></td>
 <td><p>Istanza del Wallet legge i metadata <code class="docutils literal notranslate"><span class="pre">authorization_servers</span></code> del Credential Issuer e trova l'identificativo dell'Authorization Server configurato in <code class="docutils literal notranslate"><span class="pre">authorization_servers</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_050</p></td>
+<tr class="row-even"><td><p>WP_050</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Flusso Issuer-Initiated: validazione ID degli Attestati Elettronici</p></td>
 <td><p>Istanza del Wallet verifica se ogni identificativo di Attestato Elettronico nei <code class="docutils literal notranslate"><span class="pre">credential_configuration_ids</span></code> è supportato dal Credential Issuer; qualsiasi identificativo non supportato non viene preso in considerazione.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_050a</p></td>
+<tr class="row-odd"><td><p>WP_050a</p></td>
 <td><p>Trust, Issuance, Interoperabilità</p></td>
 <td><p>Applicazione Policy &amp; Trust Marks</p></td>
 <td><p>Istanza del Wallet verifica che il Credential Issuer sia autorizzato a rilasciare l'Attestato Elettronico richiesto attraverso l'applicazione delle policy di metadata e la verifica dei Trust Marks.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_050b</p></td>
+<tr class="row-even"><td><p>WP_050b</p></td>
 <td><p>Trust, Issuance, Interoperabilità</p></td>
 <td><p>Conferma ID supportato</p></td>
 <td><p>Istanza del Wallet verifica che ogni <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> richiesto appaia nei metadata <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> del Credential Issuer; ID mancanti causano il fallimento dell'offerta.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_051</p></td>
+<tr class="row-odd"><td><p>WP_051</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code</p></td>
 <td><p>Istanza del Wallet richiede con successo PID, IT-Wallet ID o (Q)EAA dal Fornitore corrispondente utilizzando il Flusso Authorization Code come in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052</p></td>
+<tr class="row-even"><td><p>WP_052</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta PAR: costruzione payload</p></td>
 <td><p>Istanza del Wallet genera un nuovo PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, JWT PoP Wallet Instance Attestation (WIA), e valore <code class="docutils literal notranslate"><span class="pre">state</span></code>, quindi li avvolge in un Request Object firmato con la sua chiave privata (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>), e lo invia al PAR Endpoint.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_052a</p></td>
+<tr class="row-odd"><td><p>WP_052a</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Generazione sicura <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> PKCE</p></td>
 <td><p>Istanza del Wallet crea il <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> seguendo le raccomandazioni contenute in <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>, come stringa casuale ad alta entropia utilizzando caratteri non riservati con lunghezza tra 43 e 128.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052b</p></td>
+<tr class="row-even"><td><p>WP_052b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Creazione JWT PoP Wallet Instance Attestation (WIA)</p></td>
 <td><p>Istanza del Wallet genera il JWT PoP Wallet Instance Attestation (WIA) (per parametri <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) e include, nel payload, la chiave pubblica effimera referenziata nel <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> della Wallet Instance Attestation (WIA).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_052c</p></td>
+<tr class="row-odd"><td><p>WP_052c</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Firma JWT PoP Wallet Instance Attestation (WIA)</p></td>
 <td><p>Istanza del Wallet firma il JWT PoP con la chiave privata effimera corrispondente alla chiave pubblica valorizzata nel parametro <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> della Wallet Instance Attestation (WIA).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052d</p></td>
+<tr class="row-even"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Specificare tipi degli Attestati Elettronici</p></td>
 <td><p>Istanza del Wallet incorpora i tipi degli Attestati Elettronici nel Request Object utilizzando sia il parametro <code class="docutils literal notranslate"><span class="pre">scope</span></code> (per [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) sia il parametro <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> (per RAR <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_053</p></td>
+<tr class="row-odd"><td><p>WP_053</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Authorization Request</p></td>
 <td><p>Istanza del Wallet invia una PAR all'Authorization Endpoint del Credential Issuer utilizzando il <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> e <code class="docutils literal notranslate"><span class="pre">client_id</span></code> ricevuti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_053a</p></td>
+<tr class="row-even"><td><p>WP_053a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Uso di un unico <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
 <td><p>Istanza del Wallet invia l'Authorization Request con un <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> appena ottenuto, e il Fornitore di Attestati Elettronici verifica che il <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> non è stato usato precedentemente.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_054</p></td>
+<tr class="row-odd"><td><p>WP_054</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Validare l'Authorization Response: parametro richiesto</p></td>
 <td><p>Istanza del Wallet verifica che l'Authorization Response contenga tutti i parametri richiesti (<code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, e <code class="docutils literal notranslate"><span class="pre">iss</span></code>); se vi sono parametri mancanti viene segnalato un errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_054a</p></td>
+<tr class="row-even"><td><p>WP_054a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Validare l'Authorization Response: verificare corrispondenza state</p></td>
 <td><p>Istanza del Wallet confronta il valore <code class="docutils literal notranslate"><span class="pre">state</span></code> restituito con quello originariamente inviato nel Request Object (<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>) e continua solo se corrispondono.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_054b</p></td>
+<tr class="row-odd"><td><p>WP_054b</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Validare l'Authorization Response: confermare identità Credential Issuer</p></td>
 <td><p>Istanza del Wallet verifica che il parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> nell'Authorization Response corrisponda all'identificativo del Credential Issuer con cui ha iniziato la comunicazione (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055</p></td>
+<tr class="row-even"><td><p>WP_055</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Inviare una Token Request</p></td>
 <td><p>Istanza del Wallet invia una richiesta POST al Token Endpoint con URL-encoded body, includendo il <code class="docutils literal notranslate"><span class="pre">code</span></code> ricevuto (nell'Authorization Response), lo stesso <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> (nel Request Object), e il <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_055a</p></td>
+<tr class="row-odd"><td><p>WP_055a</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Parametri prova Token Request</p></td>
 <td><p>La Token Request porta le prove richieste negli header: un JWT prova DPoP, un JWT Wallet Instance Attestation (WIA), e JWT PoP dell'Istanza del Wallet (per <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> e <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055b</p></td>
+<tr class="row-even"><td><p>WP_055b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Generare coppia chiavi/prova DPoP</p></td>
 <td><p>Istanza del Wallet genera una nuova coppia chiavi DPoP e un DPoP JWT seguendo le istruzioni fornite in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-4"><strong>RFC 9449#section-4</strong></a> per la Token Request al Credential Issuer.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_055c</p></td>
+<tr class="row-odd"><td><p>WP_055c</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Firmare prova DPoP</p></td>
 <td><p>Istanza del Wallet firma il DPoP-JWT con la chiave privata DPoP generata precedentemente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055d</p></td>
+<tr class="row-even"><td><p>WP_055d</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Parametri PoP Wallet Instance Attestation (WIA) nella Token Request</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> è firmato utilizzando la chiave privata associata alIstanza del Wallet, dove la sua chiave pubblica correlata è fornita all'interno del Wallet Instance Attestation (WIA) (claim <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_056</p></td>
+<tr class="row-odd"><td><p>WP_056</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta Attestato Elettronico</p></td>
 <td><p>Istanza del Wallet invia una richiesta POST al Credential Endpoint includendo l'Access Token, il DPoP-JWT, tipo Attestato Elettronico (<code class="docutils literal notranslate"><span class="pre">credential_identifier</span></code>), e il PoP valido della chiave associata all'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_056a</p></td>
+<tr class="row-even"><td><p>WP_056a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Recuperare nonce per la dimostrazione di possesso chiave per Issuance di Attestato Elettronico</p></td>
 <td><p>Istanza del Wallet invia una richiesta POST al Nonce Endpoint del Credential Issuer e ottiene un nuovo nonce, che viene poi utilizzato per generare una PoP del materiale crittografico che verrà associato all'Attestato Elettronico rilasciata.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_056b</p></td>
+<tr class="row-odd"><td><p>WP_056b</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Prova DPoP fresca</p></td>
 <td><p>Istanza del Wallet genera una prova DPoP fresca con la stessa chiave utilizzata per il DPoP-JWT della Token Request, e in accordo con <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-4"><strong>RFC 9449#section-4</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_056c</p></td>
+<tr class="row-even"><td><p>WP_056c</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Abbinare la prova chiave Attestato Elettronico alla chiave DPoP</p></td>
 <td><p>Istanza del Wallet include un oggetto JSON come valore del parametro <code class="docutils literal notranslate"><span class="pre">proofs</span></code> nella Credential Request. Al suo interno sono è presente l'array <code class="docutils literal notranslate"><span class="pre">jwt</span></code>. Quest'ultimo è valorizzato con uno o più JWT i cui parametro dell'header <code class="docutils literal notranslate"><span class="pre">jwk</span></code> rappresenta la prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_057</p></td>
+<tr class="row-odd"><td><p>WP_057</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta di Attestati Elettronici multipli</p></td>
 <td><p>Quando un Credential Issuer offre Attestati Elettronici multipli, Istanza del Wallet fa una Credential Request separata e per ogni Attestato Elettronico che intende ottenere.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_058</p></td>
+<tr class="row-even"><td><p>WP_058</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta Attestato Elettronico in Batch</p></td>
 <td><p>In caso di Batch Issuance, Istanza del Wallet invia una Credential Request in batch al Credential Endpoint che include: l'Access Token, un JWT prova DPoP, il tipo di Attestato Elettronico, e un parametro <code class="docutils literal notranslate"><span class="pre">proofs</span></code> contenente tutte le PoP delle chiavi private le cui pubbliche corrispondenti sono da associare all'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_058a</p></td>
+<tr class="row-odd"><td><p>WP_058a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Batch Issuance: generazione chiavi</p></td>
 <td><p>In caso di Batch Issuance, Istanza del Wallet genera un numero di nuove coppie chiavi uguale al valore <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_058b</p></td>
+<tr class="row-even"><td><p>WP_058b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Batch Issuance: PoP delle chiavi Attestati Elettronici batch</p></td>
 <td><p>In caso di Batch Issuance, Istanza del Wallet genera N prove di possesso (PoP) di chiave utilizzando il <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> fornito, una per ogni Attestato Elettronico nel batch, dove N uguale al valore <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_059</p></td>
+<tr class="row-odd"><td><p>WP_059</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Validare la Credential Response per parametri richiesti</p></td>
 <td><p>Istanza del Wallet ispeziona il payload Credential Response, verificando che tutti i parametri PID, IT-Wallet ID o (Q)EAA obbligatori siano presenti e validi come definito in <a class="reference internal" href="credential-issuer-endpoint.html#table-credential-response-claim"><span class="std std-ref">Table of Credential Response</span></a>; se qualsiasi parametro è mancante o non valido, rifiuta la risposta con un errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_060</p></td>
+<tr class="row-even"><td><p>WP_060</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Verificare tipo/schema di un Attestato Elettronico</p></td>
 <td><p>Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim <code class="docutils literal notranslate"><span class="pre">credential</span></code> della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro <a class="reference internal" href="credential-data-model.html#modello-di-dati-degli-attestati-elettronici"><span class="std std-ref">Modello di Dati degli Attestati Elettronici</span></a>; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_061</p></td>
+<tr class="row-odd"><td><p>WP_061</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Validare Trust Chain Credential Issuer</p></td>
 <td><p>Istanza del Wallet verifica la Trust Chain del Fornitore di Attestati che ha emesso l'Attestato Elettronico usando i parametri presenti nel header dell'Attestato Elettronico stesso.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_062</p></td>
+<tr class="row-even"><td><p>WP_062</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Verifica Attestato Elettronico per formato</p></td>
 <td><p>Istanza del Wallet verifica se un Attestato Elettronico è in formato SD-JWT VC o mdoc-CBOR, e quindi esegue le verifiche appropriate. Se queste ultime falliscono, Istanza del Wallet rifiuta l'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_062a</p></td>
+<tr class="row-odd"><td><p>WP_062a</p></td>
 <td><p>Issuance, Sicurezza, Interoperabilità</p></td>
 <td><p>Verificare integrità Attestato Elettronico SD-JWT</p></td>
 <td><p>Istanza del Wallet ottiene i valori <code class="docutils literal notranslate"><span class="pre">alg</span></code> e <code class="docutils literal notranslate"><span class="pre">kid</span></code> dall'header SD-JWT, recupera la chiave pubblica corrispondente, e ne verifica la firma; se la verifica fallisce, l'Attestato Elettronico in formato SD-JWT viene rifiutato.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_062b</p></td>
+<tr class="row-even"><td><p>WP_062b</p></td>
 <td><p>Issuance, Sicurezza, Interoperabilità</p></td>
 <td><p>Verificare integrità Attestato Elettronico mdoc-CBOR</p></td>
 <td><p>Istanza del Wallet estrae l'algoritmo di firma dall'header protetto del <code class="docutils literal notranslate"><span class="pre">COSE_Sign1</span></code> mdoc-CBOR, recupera la chiave pubblica del Credential Issuer dal <code class="docutils literal notranslate"><span class="pre">kid</span></code> o <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> nell'header non protetto, e verifica la firma COSE sull'MSO; se non valida, l'Attestato Elettronico viene rifiutata.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_063</p></td>
+<tr class="row-odd"><td><p>WP_063</p></td>
 <td><p>Issuance, Privacy</p></td>
 <td><p>Consenso utente per archiviazione Attestato Elettronico</p></td>
 <td><p>Istanza del Wallet richiede il consenso dell'Utente e archivia l'Attestato Elettronico solo dopo approvazione esplicita.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_064</p></td>
+<tr class="row-even"><td><p>WP_064</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Gestione Notifiche</p></td>
 <td><p>Istanza del Wallet invia una richiesta HTTP POST al Notification Endpoint con <code class="docutils literal notranslate"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_064a</p></td>
+<tr class="row-odd"><td><p>WP_064a</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Parametri Notifica</p></td>
 <td><p>Il payload Notification Request contiene il <code class="docutils literal notranslate"><span class="pre">notification_id</span></code> dalla Credential Response e il parametro <code class="docutils literal notranslate"><span class="pre">event</span></code> valorizzato <code class="docutils literal notranslate"><span class="pre">credential_accepted</span></code>, <code class="docutils literal notranslate"><span class="pre">credential_deleted</span></code>, o <code class="docutils literal notranslate"><span class="pre">credential_failure</span></code>; può anche includere un <code class="docutils literal notranslate"><span class="pre">event_description</span></code> ASCII valido.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_064b</p></td>
+<tr class="row-even"><td><p>WP_064b</p></td>
 <td><p>Issuance, Privacy</p></td>
 <td><p>Proteggere privacy Utente nel contenuto notifica</p></td>
 <td><p>L'<code class="docutils literal notranslate"><span class="pre">event_description</span></code> contiene solo testo generico, neutrale per l'Utente e non rivela comportamento Utente o stato dispositivo.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_065</p></td>
+<tr class="row-odd"><td><p>WP_065</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Gestire defererd Issuance</p></td>
 <td><p>Istanza del Wallet valuta la Credential Response; se contiene sia <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> che <code class="docutils literal notranslate"><span class="pre">interval</span></code>, Istanza del Wallet riconosce il flusso come defererd Issuance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_066</p></td>
+<tr class="row-even"><td><p>WP_066</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta defererd Issuance dopo interval</p></td>
 <td><p>Istanza del Wallet invia una Deferred Credential Response solo dopo che il <code class="docutils literal notranslate"><span class="pre">interval</span></code> richiesto è passato.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_066a</p></td>
+<tr class="row-odd"><td><p>WP_066a</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta defererd Issuance con transaction_id</p></td>
 <td><p>Istanza del Wallet invia una Deferred Credential Response come HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>, e il corpo richiesta contiene il <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> richiesto.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_066b</p></td>
+<tr class="row-even"><td><p>WP_066b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta defererd con Access Token ancora valido</p></td>
 <td><p>Istanza del Wallet include l'Access Token esistente nella richiesta differita se il valore parametro <code class="docutils literal notranslate"><span class="pre">interval</span></code> è inferiore al tempo di scadenza impostato per l'Access Token.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_066c</p></td>
+<tr class="row-odd"><td><p>WP_066c</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Nuovo Access Token DPoP-bound tramite Refresh</p></td>
 <td><p>Quando l'Access Token esistente scadrebbe prima che la richiesta differita possa essere fatta, Istanza del Wallet ottiene un nuovo Access Token DPoP-bound tramite il flusso Refresh Token.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_067</p></td>
+<tr class="row-even"><td><p>WP_067</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Nuovo flusso Issuance Attestato Elettronico</p></td>
 <td><p>Quando Istanza del Wallet fallisce nel rinnovare un Access Token in scadenza, avvia un flusso Issuance Attestato Elettronico completamente nuovo.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_068</p></td>
+<tr class="row-odd"><td><p>WP_068</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Richiesta Refresh Token</p></td>
 <td><p>Istanza del Wallet invia una richiesta POST al Token Endpoint del Credential Issuer con <code class="docutils literal notranslate"><span class="pre">grant_type=refresh_token</span></code>, un <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> valido, un header DPoP contenente un DPoP-JWT fresco, e un <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> header contenente la Wallet Instance Attestation (WIA) un header <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-JWT</span></code> contenente la PoP della chiave privata associata alla Wallet Instance Attestation (WIA).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_068a</p></td>
+<tr class="row-even"><td><p>WP_068a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Refresh Token: generare prove</p></td>
 <td><p>Per una richiesta refresh Access Token, Istanza del Wallet genera un nuovo JWT DPoP e un nuovo PoP Wallet Instance Attestation (WIA), e li include nella richiesta.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_068b</p></td>
+<tr class="row-odd"><td><p>WP_068b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Refresh Token: mantenere associazione</p></td>
 <td><p>Istanza del Wallet riutilizza la stessa chiave associata al PoP Wallet Instance Attestation (WIA) e alla DPoP-JWT dalla richiesta Access Token originale, assicurandosi che l'Access Token rinnovato rimanga crittograficamente associato al DPoP-JWT e valido.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_069</p></td>
+<tr class="row-even"><td><p>WP_069</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Controllo stato di un Attestato Elettronico</p></td>
 <td><p>Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per <a class="reference internal" href="credential-revocation.html#token-di-status-list"><span class="std std-ref">Token di Status List</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_070</p></td>
+<tr class="row-odd"><td><p>WP_070</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)</p></td>
 <td><p>Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) o <code class="docutils literal notranslate"><span class="pre">0x0F</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) per quell'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_071</p></td>
+<tr class="row-even"><td><p>WP_071</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Flusso re-Issuance: verificare validità Access Token per re-Issuance</p></td>
 <td><p>Quando viene rilevato un aggiornamento per un Attestato Elettronico, Istanza del Wallet verifica la validità dell'Access Token associato. Se il token è valido, Istanza del Wallet procede con la re-Issuance dell'Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_071a</p></td>
+<tr class="row-odd"><td><p>WP_071a</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Flusso re-Issuance: rinnovare Access Token scaduto</p></td>
 <td><p>Se l'Access Token è scaduto ma è disponibile un Refresh Token valido, Istanza del Wallet avvia un flusso Refresh Token per ottenere un nuovo Access Token DPoP-bound, seguendo il Flusso Refresh Token.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_071b</p></td>
+<tr class="row-even"><td><p>WP_071b</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Riavviare rilascio su scadenza completa</p></td>
 <td><p>Istanza del Wallet ri-autentica l'Utente quando avvia un nuovo flusso di Issuance.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_072</p></td>
+<tr class="row-odd"><td><p>WP_072</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Recuperare Attestato Elettronico aggiornato</p></td>
 <td><p>Istanza del Wallet, con un Access Token DPoP-bound valido, invia una richiesta al Credential Endpoint e recupera con successo l'Attestato Elettronico aggiornato.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_073</p></td>
+<tr class="row-even"><td><p>WP_073</p></td>
 <td><p>Issuance, Sicurezza e Privacy</p></td>
 <td><p>Eliminare vecchie Attestati Elettronici</p></td>
 <td><p>Dopo aver archiviato un nuovo Attestato Elettronico, Istanza del Wallet elimina la versione precedente in modo che solo l'ultimo Attestato Elettronico rimanga archiviato.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_073a</p></td>
+<tr class="row-odd"><td><p>WP_073a</p></td>
 <td><p>Issuance, Sicurezza e Privacy</p></td>
 <td><p>Eliminare vecchie Attestati Elettronici batch</p></td>
 <td><p>Quando Istanza del Wallet riceve e archivia un nuovo batch dello stesso Attestato Elettronico con gli stessi claim, elimina gli Attestati Elettronici del batch precedente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_074</p></td>
+<tr class="row-even"><td><p>WP_074</p></td>
 <td><p>Issuance, UX</p></td>
 <td><p>Consenso su nuovo archivio Attestato Elettronico con aggiornamento <code class="docutils literal notranslate"><span class="pre">user_attribute</span></code></p></td>
 <td><p>Se l'aggiornamento Attestato Elettronico coinvolge cambiamenti ai valori degli Attributi dell'Utente (<code class="docutils literal notranslate"><span class="pre">attribute_update</span></code>), Istanza del Wallet richiede il consenso dell'Utente prima di archiviare il nuovo Attestato Elettronico aggiornato.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_075</p></td>
+<tr class="row-odd"><td><p>WP_075</p></td>
 <td><p>Issuance, UX</p></td>
 <td><p>Nessun consenso su nuovo archivio Attestato Elettronico senza aggiornamento <code class="docutils literal notranslate"><span class="pre">user_attribute</span></code></p></td>
 <td><p>Se l'aggiornamento Attestato Elettronico riguarda solo dei cambiamenti nei metadata dell'Attestato Elettronico (<code class="docutils literal notranslate"><span class="pre">update</span></code>), Istanza del Wallet archivia automaticamente il nuovo Attestato Elettronico aggiornato senza richiedere consenso aggiuntivo dall'Utente.</p></td>
@@ -1516,11 +1521,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </section>
 <section id="casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party">
 <span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">19.4.1.4.5. </span>Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party<a class="headerlink" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party" title="Link to this heading">¶</a></h2>
-<p>Questa sezione elenca i casi di test dalle Sezioni:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a></p></li>
-<li><p><a class="reference external" href="relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint">Relying Party Provider Backend Erasure Endpoint</a></p></li>
-</ul>
+<p>Questa sezione elenca i casi di test dalla Sezione <a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 14.3%" />
@@ -1548,33 +1549,33 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Sicurezza</p></td>
-<td><p>Validazione metadata Relying Party per eliminazione</p></td>
-<td><p>Quando un Utente seleziona una Relying Party per l'eliminazione degli Attributi, Istanza del Wallet recupera e valida i suoi metadata di Federazione, confermando la presenza di un Endpoint di Cancellazione della Relying Party.</p></td>
+<td><p>Contatto di supporto della Relying Party per la cancellazione</p></td>
+<td><p>Quando un Utente seleziona una Relying Party per l'eliminazione degli attributi, l'Istanza del Wallet ottiene il contatto di supporto registrato (<code class="docutils literal notranslate"><span class="pre">support_uri</span></code> nel National Trust Framework, oppure il contatto di supporto del Wallet-Relying Party Access Certificate nel EUDIW Trust Framework) e conferma che sia presente almeno un contatto invocabile.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_117</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Interoperabilità</p></td>
-<td><p>Richiesta Cancellazione</p></td>
-<td><p>Istanza del Wallet costruisce correttamente, e invia una Richiesta Cancellazione valida destinata all'Endpoint di Cancellazione della Relying Party.</p></td>
+<td><p>Richiesta di cancellazione dei dati</p></td>
+<td><p>L'Istanza del Wallet invoca l'applicazione esterna corrispondente al contatto selezionato. Per un indirizzo email, il <code class="docutils literal notranslate"><span class="pre">subject</span></code> della bozza richiede la cancellazione ai sensi dell'Articolo 17 del Regolamento (UE) 2016/679 e il <code class="docutils literal notranslate"><span class="pre">body</span></code> identifica gli attributi, oppure richiede la cancellazione di tutti i dati personali precedentemente forniti tramite l'Istanza del Wallet.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_117a</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Privacy</p></td>
-<td><p>Registrazione Richiesta Cancellazione</p></td>
-<td><p>Una voce nel log viene creata per ogni Richiesta Cancellazione, contenente il timestamp, l'identificativo della Relying Party, e gli Attributi specifici la cui eliminazione è richiesta.</p></td>
+<td><p>Registrazione della richiesta di cancellazione dei dati</p></td>
+<td><p>Una voce di log è creata per ogni richiesta di cancellazione dei dati dopo che l'applicazione esterna è stata invocata con successo. La voce contiene la data e l'ora, l'identificativo della Relying Party e gli attributi specifici di cui è richiesta l'eliminazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_118</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, UX</p></td>
-<td><p>Reindirizzamento utente e callback per cancellazione</p></td>
-<td><p>Istanza del Wallet reindirizza con successo l'Utente all'Endpoint di Cancellazione della Relying Party e riceve la Risposta Cancellazione tramite un opportuno meccanismo di callback.</p></td>
+<td><p>Selezione del contatto</p></td>
+<td><p>L'Istanza del Wallet presenta i contatti che la piattaforma può invocare, oppure applica una preferenza dell'Utente memorizzata, e invoca l'applicazione esterna selezionata.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_119</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, Interoperabilità</p></td>
-<td><p>Gestisce risposta eliminazione/errore</p></td>
-<td><p>Istanza del Wallet processa correttamente sia le risposte di successo che di errore per la Risposta Cancellazione dalla Relying Party.</p></td>
+<td><p>Avvio della richiesta</p></td>
+<td><p>L'Istanza del Wallet registra la richiesta di cancellazione dei dati come avviata dopo che l'applicazione esterna è stata invocata con successo. Non richiede una risposta HTTP dalla Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_119a</p></td>
 <td><p>Eliminazione Attributi, Ciclo di vita, UX</p></td>
-<td><p>Notifica utente su cancellazione</p></td>
-<td><p>Istanza del Wallet mostra una notifica chiara all'Utente indicando il successo o fallimento della Richiesta di Cancellazione.</p></td>
+<td><p>Notifica all'Utente sulla richiesta di cancellazione</p></td>
+<td><p>L'Istanza del Wallet informa l'Utente che la richiesta di cancellazione dei dati è stata avviata.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1757,12 +1758,12 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_133a</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Calcolo hash SHA-256</p></td>
-<td><p>Istanza del Wallet calcola con successo un digest SHA-256 (<code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>) sul <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, il <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, e il <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>,</p></td>
+<td><p>Istanza del Wallet calcola con successo un digest SHA-256 (<code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>) degli ottetti UTF-8 del <code class="docutils literal notranslate"><span class="pre">nonce</span></code> immediatamente seguiti dagli ottetti UTF-8 di <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>. Il digest non include <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_133b</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
 <td><p>Key Attestation</p></td>
-<td><p>Istanza del Wallet invoca con successo l'API Key Attestation con il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> e ottiene un attestato firmato dalla Key Attestation API.</p></td>
+<td><p>Istanza del Wallet invoca con successo l'API di Key Attestation al momento della generazione della chiave, passando <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> come challenge di attestazione, e ottiene un attestato firmato.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_134</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza</p></td>
@@ -1792,7 +1793,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_136</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza</p></td>
 <td><p>Verifica associazione crittografica</p></td>
-<td><p>Il Fornitore del Wallet verifica con successo l'associazione crittografica tra il <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, il nonce, e il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito nel parametro <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.</p></td>
+<td><p>Il Fornitore del Wallet estrae <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> dalla <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> validata e verifica che il challenge incorporato sia uguale al digest SHA-256 degli ottetti UTF-8 del <code class="docutils literal notranslate"><span class="pre">nonce</span></code> immediatamente seguiti dagli ottetti UTF-8 di <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_137</p></td>
 <td><p>Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità</p></td>
@@ -1812,7 +1813,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_140</p></td>
 <td><p>Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza</p></td>
 <td><p>Richiesta di Emissione della Wallet Instance Attestation (WIA)</p></td>
-<td><p>Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, e altri parametri correlati alla configurazione.</p></td>
+<td><p>Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, e altri parametri correlati alla configurazione.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_140a</p></td>
 <td><p>Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza</p></td>
@@ -1992,12 +1993,22 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_160</p></td>
 <td><p>Presentation, Sicurezza</p></td>
 <td><p>Presentazione offline e collocazione delle chiavi</p></td>
-<td><p>La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.</p></td>
+<td><p>La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le Credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_161</p></td>
 <td><p>Trust, Sicurezza</p></td>
 <td><p>Endpoint PDND del Fornitore del Wallet autenticati</p></td>
 <td><p>Le chiamate al Catalogo e-Service PDND del Fornitore del Wallet, incluso Notify User Death, sono autenticate e autorizzate. Le richieste non autenticate sono rifiutate. Un Notify User Death riuscito porta alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal PID/IT-Wallet ID Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_162</p></td>
+<td><p>Emissione Key Attestation, Sicurezza</p></td>
+<td><p>Challenge di attestazione Android</p></td>
+<td><p>Su Android, ciascuna chiave di Credenziale è generata con il challenge dell'API di Key Attestation impostato agli ottetti UTF-8 del <code class="docutils literal notranslate"><span class="pre">nonce</span></code>. <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> è usato solo per <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. Ciascun elemento di <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> è un <code class="docutils literal notranslate"><span class="pre">key-attestation-request+jwt</span></code> come definito in <a class="reference internal" href="wallet-provider-endpoint.html#elemento-di-key-attestation"><span class="std std-ref">Elemento di Key Attestation</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_163</p></td>
+<td><p>Emissione Wallet Instance Attestation (WIA), Ciclo di vita</p></td>
+<td><p>Riutilizzo della voce di stato per emittente</p></td>
+<td><p>La Richiesta di Wallet Instance Attestation include <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>. Una prima richiesta per quell'emittente omette <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> e il Fornitore di Wallet assegna un nuovo indice. Una richiesta successiva per lo stesso emittente include quel <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code>. Una richiesta che riutilizza un indice a cui l'Istanza del Wallet non è autorizzata è rifiutata con <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> e <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2120,7 +2131,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

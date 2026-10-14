@@ -323,8 +323,8 @@
 <h1><span class="section-number">9.1.4.2.6. </span>Wallet Instance Dashboard and Transaction Logging<a class="headerlink" href="#wallet-instance-dashboard-and-transaction-logging" title="Link to this heading">¶</a></h1>
 <p>The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensure transparency, traceability, and User awareness of actions performed through the Wallet Instance as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> (Annex 2.02 HLRs, Topic 19). The log MUST cover all transactions (including non-completed) in these categories:</p>
 <ul class="simple">
-<li><p>credential issuance and re-issuance;</p></li>
-<li><p>credential presentation to Relying Parties;</p></li>
+<li><p>Credential issuance and re-issuance;</p></li>
+<li><p>Credential presentation to Relying Parties;</p></li>
 <li><p>data deletion requests sent to Relying Parties.</p></li>
 </ul>
 <p>For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
@@ -336,6 +336,7 @@
 <h2><span class="section-number">9.1.4.2.6.1. </span>Export and Deletion of Transaction Records<a class="headerlink" href="#export-and-deletion-of-transaction-records" title="Link to this heading">¶</a></h2>
 <p><strong>Export</strong>: The dashboard MUST allow the User to export one or more transaction records to a file using the common format and security measures defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>The exported file MUST be storable in an external or remote storage location of the User’s choice, from among the storage options supported by the Wallet Instance.</p>
+<p>This export enables the download of selected transaction records. Restoration of the transaction log into a receiving Wallet Instance is specified in <a class="reference internal" href="backup-restore.html#migration-to-a-different-wallet-solution"><span class="std std-ref">Migration to a Different Wallet Solution</span></a>.</p>
 <p><strong>Deletion</strong>: The dashboard MUST allow the User to delete one or more transaction records from the Wallet Instance at any time.</p>
 <p>Before deleting any transaction record, the Wallet Instance MUST display a clear warning to the User about the potential consequences for the User’s data protection rights.</p>
 <p>Deletion of transaction records MUST:</p>
@@ -458,7 +459,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

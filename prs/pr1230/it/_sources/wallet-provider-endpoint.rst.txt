@@ -263,6 +263,12 @@ Il JWT della richiesta include le seguenti claim nel body:
     * - **hardware_key_tag**
       - Il valore del Tag della Chiave Crittografica Hardware.
       -
+    * - **intended_issuer**
+      - Identificatore URL HTTPS del PID Provider o dell'Attestation Provider a cui l'Istanza del Wallet presenterà la Wallet Instance Attestation.
+      - Sezione 2.5.1 di `EUDI-TS 3`_.
+    * - **status_list_idx**
+      - Intero non negativo. Presente solo quando l'Istanza del Wallet richiede il riutilizzo della voce di status list già assegnata per ``intended_issuer``. Vedi :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`.
+      - Sezione 2.5.1 di `EUDI-TS 3`_.
     * - **cnf**
       - Oggetto JSON contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'istanza del Wallet.
       - :rfc:`7800`.
@@ -295,6 +301,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
+      "intended_issuer": "https://credential-issuer.example.org",
       "cnf": {
         "jwk": {
           "crv": "P-256",
@@ -382,6 +389,9 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``403 Forbidden``
       - ``invalid_request``
       - Il parametro ``iss`` non corrisponde all'identificatore URL previsto dal Fornitore di Wallet.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - L'Istanza del Wallet non è autorizzata a riutilizzare ``status_list_idx`` per ``intended_issuer``.
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza del Wallet non è stata trovata.
@@ -480,7 +490,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
 
 .. note::
-    Come meccanismo di revoca per la WIA, è preferita l’opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
+    Le regole di riutilizzo per emittente di ``client_status.status`` sono definite in :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`.
 
 
 .. note::
@@ -560,13 +570,10 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - Il ``nonce`` ottenuto dal Nonce Endpoint.
       -
     * - **keys_to_attest**
-      - Array JSON di stringhe JWT, ciascuna delle quali rappresenta una ``Key_Attestation_Requests``. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+      - Array JSON di stringhe JWT. Ciascun JWT è un elemento di Key Attestation come definito in :ref:`wallet-provider-endpoint:Elemento di Key Attestation`. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
       -
     * - **hardware_signature**
       - La firma di ``client_data_hash`` ottenuta utilizzando la Cryptographic Hardware Key, codificata nel formato ``base64url``.
-      -
-    * - **integrity_assertion**
-      - L'Integrity Assertion per la Wallet Instance Attestation ottenuta dalle **Device Integrity Service APIs** con holder binding di ``client_data_hash``.
       -
     * - **hardware_key_tag**
       - Il valore del Cryptographic Hardware Key Tag.
@@ -583,6 +590,104 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
     * - **wallet_solution_version**
       - Stringa contenente la versione della Wallet Solution.
       -
+
+
+Elemento di Key Attestation
+...........................
+
+Ciascun elemento di ``keys_to_attest`` è un JWT firmato con la chiave privata corrispondente al proprio claim ``cnf``.
+
+L'header JOSE contiene i seguenti parametri:
+
+.. _table_keys_to_attest_header:
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Parameter**
+      - **Description**
+      - **Reference**
+    * - **alg**
+      - Identificatore di algoritmo di firma digitale, come definito dal registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` né a un identificatore di algoritmo simmetrico (MAC).
+      - [:rfc:`7516#section-4.1.1`]
+    * - **kid**
+      - Thumbprint della JWK contenuta nel claim ``cnf`` di questo JWT.
+      - [:rfc:`7638#section_3`]
+    * - **typ**
+      - Il tipo del JWT. DEVE essere impostato a ``key-attestation-request+jwt``.
+      -
+
+Il body del JWT contiene i seguenti claim:
+
+.. _table_keys_to_attest_jwt:
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **iat**
+      - OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di emissione del JWT.
+      - [:rfc:`7519`]
+    * - **exp**
+      - OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di scadenza del JWT.
+      - [:rfc:`7519`]
+    * - **cnf**
+      - OBBLIGATORIO. Oggetto JSON contenente la chiave pubblica attestata da questo elemento.
+      - :rfc:`7800`.
+    * - **wscd_key_attestation**
+      - OBBLIGATORIO. Oggetto JSON che descrive l'archivio della chiave e, dove applicabile, l'attestazione di piattaforma di questa chiave.
+
+        - **storage_type**: OBBLIGATORIO. Stringa che identifica l'archivio della chiave. Il valore ``LOCAL_NATIVE`` identifica il Keystore locale.
+        - **attestation**: Su Android, quando sono usate le API di Key Attestation (OEM), la key attestation OEM prodotta alla generazione della chiave. L'Istanza del Wallet DEVE omettere questo membro per le chiavi del PID e su iOS. Vedi :ref:`wallet-attestation-issuance:Emissione della Key Attestation` e :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+        - **integrity_assertion**: OBBLIGATORIO su iOS. L'asserzione del Servizio di Integrità del Dispositivo per questa chiave, vincolata a ``client_data_hash``. L'Istanza del Wallet DEVE omettere questo membro su Android.
+      - Questa specifica.
+
+
+Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su Android, quando è incluso materiale OEM.
+
+.. code-block:: json
+
+    {
+      "wscd_key_attestation": {
+        "storage_type": "LOCAL_NATIVE",
+        "attestation": "MIICszCCA..."
+      },
+      "cnf": {
+        "jwk": {
+          "kty": "EC",
+          "crv": "P-256",
+          "x": "xAH9SNfaq9J5dmkzXYQLek5YfpPc8i_PpMRT315hjMk",
+          "y": "PE2XLcpW6eXH4FlYGNP9BhwQQdEiZE1tAdT-EihACC8"
+        }
+      },
+      "iat": 1773053861,
+      "exp": 1773057461
+    }
+
+Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su iOS.
+
+.. code-block:: json
+
+    {
+      "wscd_key_attestation": {
+        "storage_type": "LOCAL_NATIVE",
+        "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw..."
+      },
+      "cnf": {
+        "jwk": {
+          "kty": "EC",
+          "crv": "P-256",
+          "x": "DUQVLhK1KQRd-gx7QNcaSaXCg9x4KtzBk-5b1Y3dye4",
+          "y": "FqV94MekVn_CNf521vmo-QHqfNnMvxgHGsEx9BNW8hQ"
+        }
+      },
+      "iat": 1773053861,
+      "exp": 1773057461
+    }
 
 
 Di seguito è riportato un esempio non normativo dell'header e del payload JWT di una Key Attestation Request.
@@ -602,7 +707,6 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
       "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
       "cnf": {
         "jwk": {
@@ -613,8 +717,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
         }
       },
       "keys_to_attest": [
-        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw",
-        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw"
+        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiJ9.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6e30sImNuZiI6e319.c2lnbmF0dXJl"
       ],
       "platform": "iOS",
       "wallet_solution_id": "Wallet-mobile",
@@ -659,10 +762,10 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
       - **Description**
     * - ``400 Bad Request``
       - ``bad_request``
-      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header, Integrity Assertion o ``keys_to_attest``), oppure include parametri non validi o sconosciuti.
+      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header o ``keys_to_attest``), oppure include parametri non validi o sconosciuti.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - La validazione dell'Integrity Assertion o della Key Attestation (``keys_to_attest``) non è riuscita; l'Integrity Assertion o la Key Attestation (``keys_to_attest``) è stata manomessa oppure firmata in modo non corretto.
+      - La validazione di ``keys_to_attest`` non è riuscita. La key attestation OEM o l'asserzione di integrità iOS è stata manomessa oppure firmata in modo non corretto.
     * - ``403 Forbidden``
       - ``invalid_request``
       - La firma della key Attestation Request non è valida oppure non corrisponde alla chiave pubblica associata (JWK).

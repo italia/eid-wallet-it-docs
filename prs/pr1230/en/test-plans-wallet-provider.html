@@ -539,7 +539,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-odd"><td><p>WP_014d</p></td>
 <td><p>Trust, Security</p></td>
-<td><p>PID High vs other credentials key storage</p></td>
+<td><p>PID High vs other Credentials key storage</p></td>
 <td><p>Keys of IT-Wallet ID and (Q)EAA are stored in the hardware-backed Keystore. Keys of a PID at Level of Assurance High MUST be generated and stored only in the WSCA operating within the Remote WSCD. A TEE Protection Profile or similar report is not accepted as evidence of Level of Assurance High.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_014e</p></td>
@@ -790,313 +790,318 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-odd"><td><p>WP_045a</p></td>
 <td><p>Trust, Issuance, Interoperability</p></td>
-<td><p>Fetch the Digital Credential catalogue</p></td>
-<td><p>Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using either the <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed) or the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (plain) media type.</p></td>
+<td><p>Fetch one page of the Digital Credential catalogue</p></td>
+<td><p>Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalog collection endpoint, using either the <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed) or the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (plain) media type, and reads one page identified by <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_046</p></td>
+<tr class="row-even"><td><p>WP_045b</p></td>
+<td><p>Trust, Issuance, Interoperability</p></td>
+<td><p>Fetch one Digital Credential catalog entry</p></td>
+<td><p>Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalog entry endpoint for a <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> pair and obtains that versioned entry. An unknown pair yields HTTP 404.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_046</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Discover Credential Issuer dynamically from federation metadata</p></td>
 <td><p>Wallet Instance successfully uses Federation API endpoints (<code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>) to retrieve current metadata and configurations of the Credential Issuer.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_046a</p></td>
+<tr class="row-even"><td><p>WP_046a</p></td>
 <td><p>Trust, Issuance, Security</p></td>
 <td><p>Validate Credential Issuer’s full Trust Chain to the Trust Anchor</p></td>
 <td><p>Wallet Instance builds and verifies the full Trust Chain from the Credential Issuer through Intermediaries to the root Trust Anchor, ensuring each signature is valid and confirms the root.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_047</p></td>
+<tr class="row-odd"><td><p>WP_047</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Third-Party-Initiated flow: Credential Offer QR scan &amp; decode</p></td>
 <td><p>In a Third-Party-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and retrieves the <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> or the <code class="docutils literal notranslate"><span class="pre">credential_offer_uri</span></code> parameter.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_048</p></td>
+<tr class="row-even"><td><p>WP_048</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Third-Party-Initiated flow: Credential Offer parsing</p></td>
 <td><p>In a Third-Party-Initiated flow, Wallet Instance extracts and validates all required parameters present in the Credential Offer.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_049</p></td>
+<tr class="row-odd"><td><p>WP_049</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Issuer-Initiated flow: Authorization Server identifier check</p></td>
 <td><p>Wallet Instance reads the Credential Issuer’s metadata <code class="docutils literal notranslate"><span class="pre">authorization_servers</span></code> and finds the configured Authorization Server identifier in <code class="docutils literal notranslate"><span class="pre">authorization_servers</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_050</p></td>
+<tr class="row-even"><td><p>WP_050</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Issuer-Initiated flow: Digital Credential IDs validation</p></td>
 <td><p>Wallet Instance verifies whether each Digital Credential identifier in the <code class="docutils literal notranslate"><span class="pre">credential_configuration_ids</span></code> is supported by the Credential Issuer; any unsupported causes rejection.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_050a</p></td>
+<tr class="row-odd"><td><p>WP_050a</p></td>
 <td><p>Trust, Issuance, Interoperability</p></td>
 <td><p>Policy &amp; Trust Marks enforcement</p></td>
 <td><p>Wallet Instance verifies that the Credential Issuer is authorized to issue the requested Digital Credential through the application of metadata policies and the verification of Trust Marks.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_050b</p></td>
+<tr class="row-even"><td><p>WP_050b</p></td>
 <td><p>Trust, Issuance, Interoperability</p></td>
 <td><p>Supported ID confirmation</p></td>
 <td><p>Wallet Instance verifies that every requested <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> appears in the Credential Issuer’s <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> metadata; missing IDs cause the offer to fail.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_051</p></td>
+<tr class="row-odd"><td><p>WP_051</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Credential Request using OAuth 2.0 code flow</p></td>
 <td><p>Wallet Instance successfully requests PID, IT-Wallet ID or (Q)EAA from the corresponding Provider using the Authorization Code Flow per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052</p></td>
+<tr class="row-even"><td><p>WP_052</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>PAR Request: payload construction</p></td>
 <td><p>Wallet Instance generates a fresh PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, Wallet Instance Attestation (WIA) PoP JWT, and <code class="docutils literal notranslate"><span class="pre">state</span></code> value, then wraps them into a Request Object signed with its private key per <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, and posts it to the PAR Endpoint.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_052a</p></td>
+<tr class="row-odd"><td><p>WP_052a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Secure PKCE <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> generation</p></td>
 <td><p>Wallet Instance creates the <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> following  <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a> recommendations, as a high-entropy random string using unreserved characters with a length between 43 and 128.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052b</p></td>
+<tr class="row-even"><td><p>WP_052b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Wallet Instance Attestation (WIA) PoP JWT creation</p></td>
 <td><p>Wallet Instance generates the Wallet Instance Attestation (WIA) PoP JWT (per OAuth-Client-Attestation-PoP parameters as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) and binds it to the same ephemeral public key referenced in the Wallet Instance Attestation (WIA)’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_052c</p></td>
+<tr class="row-odd"><td><p>WP_052c</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Wallet Instance Attestation (WIA) PoP JWT signing</p></td>
 <td><p>Wallet Instance signs the PoP JWT with the ephemeral private key corresponding to the public key in the Wallet Instance Attestation (WIA)’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_052d</p></td>
+<tr class="row-even"><td><p>WP_052d</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Specify Digital Credential types</p></td>
 <td><p>Wallet Instance embeds correct Digital Credential types in the Request Object using both the <code class="docutils literal notranslate"><span class="pre">scope</span></code> parameter (per [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) and the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> parameter (per RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_053</p></td>
+<tr class="row-odd"><td><p>WP_053</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Authorization Request</p></td>
 <td><p>Wallet Instance sends an Authorization Request to the Credential Issuer Authorization Endpoint using the received <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_053a</p></td>
+<tr class="row-even"><td><p>WP_053a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Enforce one-time <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
 <td><p>Wallet Instance submits the Authorization Request with a freshly obtained <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, and that <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> is accepted only once.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_054</p></td>
+<tr class="row-odd"><td><p>WP_054</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Validate Authorization Response: required parameter</p></td>
 <td><p>Wallet Instance checks that the Authorization Response contains all required parameters (<code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, and <code class="docutils literal notranslate"><span class="pre">iss</span></code>); missing parameters trigger error handling.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_054a</p></td>
+<tr class="row-even"><td><p>WP_054a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Validate Authorization Response: verify state matching</p></td>
 <td><p>Wallet Instance compares the returned <code class="docutils literal notranslate"><span class="pre">state</span></code> value with the one originally sent in the Request Object (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>) and continues only if they match exactly.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_054b</p></td>
+<tr class="row-odd"><td><p>WP_054b</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Validate Authorization Response: confirm Credential Issuer identity</p></td>
 <td><p>Wallet Instance checks that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter in the Authorization Response matches the identifier of the Credential Issuer with which it initiated the communication (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055</p></td>
+<tr class="row-even"><td><p>WP_055</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Send a Token Request</p></td>
 <td><p>Wallet Instance sends a POST request to the Token Endpoint with a URL-encoded body, including the received <code class="docutils literal notranslate"><span class="pre">code</span></code> (in the Authorization Response), the same <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> (in the Request Object), and the <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_055a</p></td>
+<tr class="row-odd"><td><p>WP_055a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Token request proof parameters</p></td>
 <td><p>The Token Request carries the required proofs in headers: a DPoP proof JWT, a Wallet Instance Attestation (WIA) JWT, and Wallet Instance’s PoP JWT (per OAuth-Client-Attestation and OAuth-Client-Attestation-PoP as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055b</p></td>
+<tr class="row-even"><td><p>WP_055b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Generate DPoP key pair/proof</p></td>
 <td><p>Wallet Instance generates a fresh DPoP key pair and its DPoP proof JWT following the instructions provided in <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-4"><strong>RFC 9449#section-4</strong></a> for the Token Request to the Credential Issuer.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_055c</p></td>
+<tr class="row-odd"><td><p>WP_055c</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Sign DPoP proof</p></td>
 <td><p>Wallet Instance signs the DPoP proof JWT with the DPoP private key generated for this scope.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_055d</p></td>
+<tr class="row-even"><td><p>WP_055d</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Token request proof parameters</p></td>
 <td><p>The Wallet Instance Attestation (WIA) JWT is signed using the private key bound to Wallet Instance, where its related public key is provided within the Wallet Instance Attestation (WIA) (<code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_056</p></td>
+<tr class="row-odd"><td><p>WP_056</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Credential Request</p></td>
 <td><p>Wallet Instance sends a POST request to the Credential Endpoint including the Access Token, DPoP Proof JWT, Credential type, and the valid PoP of Credential-bound key.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_056a</p></td>
+<tr class="row-even"><td><p>WP_056a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Fetch nonce for the Digital Credential key proof</p></td>
 <td><p>Wallet Instance sends a POST request to the Credential Issuer’s Nonce Endpoint and obtains a fresh nonce, which is then used to generate the PoP of the key material bound to the issued Digital Credential.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_056b</p></td>
+<tr class="row-odd"><td><p>WP_056b</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Fresh DPoP proof</p></td>
 <td><p>Wallet Instance generates a fresh DPoP proof with the same key used for the Token Request DPoP proof, and in accordance with <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-4"><strong>RFC 9449#section-4</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_056c</p></td>
+<tr class="row-even"><td><p>WP_056c</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Match the Credential key proof to the DPoP key</p></td>
 <td><p>Wallet Instance includes a <code class="docutils literal notranslate"><span class="pre">proofs</span></code> object of type <code class="docutils literal notranslate"><span class="pre">jwt</span></code> in the Credential Request that demonstrates possession of the cryptographic key material; the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in this object matches the public key referenced in the DPoP proof.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_057</p></td>
+<tr class="row-odd"><td><p>WP_057</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Multiple Digital Credential request</p></td>
 <td><p>When a Credential Issuer offers multiple Digital Credentials, Wallet Instance makes a separate and correctly formatted Credential Request for each Digital Credential it intends to accept.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_058</p></td>
+<tr class="row-even"><td><p>WP_058</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Batch Credential Request</p></td>
-<td><p>In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the credential type, and a <code class="docutils literal notranslate"><span class="pre">proofs</span></code> parameter containing all key proofs.</p></td>
+<td><p>In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the Credential type, and a <code class="docutils literal notranslate"><span class="pre">proofs</span></code> parameter containing all key proofs.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_058a</p></td>
+<tr class="row-odd"><td><p>WP_058a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Batch Issuance: key generation</p></td>
 <td><p>In case of Batch Issuance, Wallet Instance generates a number of fresh Digital Credential key pairs equal to the <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> value.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_058b</p></td>
+<tr class="row-even"><td><p>WP_058b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Batch Issuance: PoP of batch Credential keys</p></td>
 <td><p>In case of Batch Issuance, Wallet Instance generates N key proofs using the provided <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code>, one for each Digital Credential in the batch, where N equals the <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> value.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_059</p></td>
+<tr class="row-odd"><td><p>WP_059</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Validate Credential Response for required parameters</p></td>
 <td><p>Wallet Instance inspects the Credential Response payload, verifying all mandatory PID, IT-Wallet ID or (Q)EAA parameters are present and valid as defined in <a class="reference internal" href="credential-issuer-endpoint.html#table-credential-response-claim"><span class="std std-ref">Table of Credential Response</span></a>; if any parameter is missing or invalid, it rejects the response with an error.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_060</p></td>
+<tr class="row-even"><td><p>WP_060</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Verify Digital Credential type/schema</p></td>
 <td><p>Wallet Instance retrieves the issued Digital Credential from the response’s <code class="docutils literal notranslate"><span class="pre">credential</span></code> claim, verifies that its type matches the requested type, and validates the schema against <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>; if either check fails, it rejects the Digital Credential.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_061</p></td>
+<tr class="row-odd"><td><p>WP_061</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Validate Credential Issuer Trust Chain</p></td>
 <td><p>Wallet Instance verifies the Digital Credential’s Trust Chain from its header to confirm that the Credential Issuer is trusted.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_062</p></td>
+<tr class="row-even"><td><p>WP_062</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Format-specific Digital Credential verification</p></td>
 <td><p>Wallet Instance verifies whether a Digital Credential is in SD-JWT VC or mdoc-CBOR format, and then runs the appropriate verification. If it fails, it rejects the Credential.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_062a</p></td>
+<tr class="row-odd"><td><p>WP_062a</p></td>
 <td><p>Issuance, Security, Interoperability</p></td>
 <td><p>Verify SD-JWT Credential integrity</p></td>
 <td><p>Wallet Instance obtains the <code class="docutils literal notranslate"><span class="pre">alg</span></code> and <code class="docutils literal notranslate"><span class="pre">kid</span></code> values from the SD-JWT header, retrieves the corresponding public key, and verifies the signature; if invalid, the SD-JWT Credential is rejected.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_062b</p></td>
+<tr class="row-even"><td><p>WP_062b</p></td>
 <td><p>Issuance, Security, Interoperability</p></td>
 <td><p>Verify mdoc-CBOR Credential integrity</p></td>
 <td><p>Wallet Instance extracts the signature algorithm from the protected header of the mdoc-CBOR <code class="docutils literal notranslate"><span class="pre">COSE_Sign1</span></code>, retrieves the Credential Issuer’s public key from the <code class="docutils literal notranslate"><span class="pre">kid</span></code> or <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> in the unprotected header, and verifies the COSE signature over the MSO; if invalid, the Credential is rejected.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_063</p></td>
+<tr class="row-odd"><td><p>WP_063</p></td>
 <td><p>Issuance, Privacy</p></td>
-<td><p>User consent for credential storage</p></td>
+<td><p>User consent for Credential storage</p></td>
 <td><p>Wallet Instance prompts the User for consent and stores the Digital Credential only after explicit approval.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_064</p></td>
+<tr class="row-even"><td><p>WP_064</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Notification Handling</p></td>
 <td><p>Wallet Instance sends an HTTP POST request to the Notification Endpoint with <code class="docutils literal notranslate"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_064a</p></td>
+<tr class="row-odd"><td><p>WP_064a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Notification Parameters</p></td>
 <td><p>The Notification Request payload contains the <code class="docutils literal notranslate"><span class="pre">notification_id</span></code> from the Credential Response and an <code class="docutils literal notranslate"><span class="pre">event</span></code> value of either <code class="docutils literal notranslate"><span class="pre">credential_accepted</span></code>, <code class="docutils literal notranslate"><span class="pre">credential_deleted</span></code>, or <code class="docutils literal notranslate"><span class="pre">credential_failure</span></code>; it may also include a valid ASCII <code class="docutils literal notranslate"><span class="pre">event_description</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_064b</p></td>
+<tr class="row-even"><td><p>WP_064b</p></td>
 <td><p>Issuance, Privacy</p></td>
 <td><p>Protect User privacy in notification content</p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">event_description</span></code> contains only generic, user-neutral text and does not disclose User behavior or device status.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_065</p></td>
+<tr class="row-odd"><td><p>WP_065</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Handle deferred issuance</p></td>
 <td><p>Wallet Instance evaluates the Credential Response; if it contains both <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> and <code class="docutils literal notranslate"><span class="pre">interval</span></code>, Wallet Instance recognizes the flow as deferred issuance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_066</p></td>
+<tr class="row-even"><td><p>WP_066</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Deferred issuance request after interval</p></td>
 <td><p>Wallet Instance submits a Deferred Credential Request only after the required <code class="docutils literal notranslate"><span class="pre">interval</span></code> has passed.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_066a</p></td>
+<tr class="row-odd"><td><p>WP_066a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Deferred issuance request with transaction_id</p></td>
 <td><p>Wallet Instance sends a Deferred Credential Request as an HTTP POST with <code class="docutils literal notranslate"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>, and the request body contains the required <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_066b</p></td>
+<tr class="row-even"><td><p>WP_066b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Deferred request with still-valid Access Token</p></td>
 <td><p>Wallet Instance includes the existing Access Token in the deferred request if the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter value is less than the expiration time set for the Access Token.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_066c</p></td>
+<tr class="row-odd"><td><p>WP_066c</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Fresh DPoP-bound Access Token via the Refresh</p></td>
 <td><p>When the existing Access Token would expire before the deferred request can be made, Wallet Instance obtains a new DPoP-bound Access Token via the Refresh Token flow.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_067</p></td>
+<tr class="row-even"><td><p>WP_067</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>New Credential Issuance flow</p></td>
 <td><p>When Wallet Instance fails to refresh an expiring Access Token, it initiates an entirely new Credential Issuance flow.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_068</p></td>
+<tr class="row-odd"><td><p>WP_068</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Refresh Token Request</p></td>
 <td><p>Wallet Instance sends a POST request to the Credential Issuer’s Token Endpoint with <code class="docutils literal notranslate"><span class="pre">grant_type=refresh_token</span></code>, a valid refresh_token, a DPoP header with a fresh DPoP proof JWT, and OAuth headers carrying the Wallet Instance Attestation (WIA) JWT and its PoP.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_068a</p></td>
+<tr class="row-even"><td><p>WP_068a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Refresh Token: generate proofs</p></td>
 <td><p>For a refresh Access Token request, Wallet Instance generates a new DPoP JWT and a new Wallet Instance Attestation (WIA) PoP, and includes them in the request.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_068b</p></td>
+<tr class="row-odd"><td><p>WP_068b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Refresh Token: maintain binding</p></td>
 <td><p>Wallet Instance reuses the same key bound to the Wallet Instance Attestation (WIA) PoP and the DPoP proof from the original Access Token request, ensuring the refreshed Access Token remains cryptographically bound and valid.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_069</p></td>
+<tr class="row-even"><td><p>WP_069</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Check Digital Credential status</p></td>
 <td><p>Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating a Status List Token as described in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> and the profiles specified in <cite>:ref:`credential-revocation:Token Status List (Digital Credentials Profile)</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_070</p></td>
+<tr class="row-odd"><td><p>WP_070</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Re-issuance flow: detect re-issuance necessity (update status)</p></td>
 <td><p>Wallet Instance updates a Digital Credential when the Status List shows <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) or <code class="docutils literal notranslate"><span class="pre">0x0F</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) for that Credential.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_071</p></td>
+<tr class="row-even"><td><p>WP_071</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Re-issuance flow: verify Access Token validity for re-issuance</p></td>
 <td><p>When an update is detected for a Digital Credential, Wallet Instance verifies the validity of the associated Access Token. If the token is valid, Wallet Instance proceeds with Credential re-issuance.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_071a</p></td>
+<tr class="row-odd"><td><p>WP_071a</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Re-issuance flow: refresh expired Access Token</p></td>
 <td><p>If the Access Token is expired but a valid Refresh Token is available, Wallet Instance initiates a Refresh Token flow to obtain a new DPoP-bound Access Token, following the Refresh Token Flow.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_071b</p></td>
+<tr class="row-even"><td><p>WP_071b</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Restart issuance on full expiry</p></td>
 <td><p>Wallet Instance re-authenticates the User when initiating  a new Credential Issuance flow.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_072</p></td>
+<tr class="row-odd"><td><p>WP_072</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Retrieve refreshed Credential</p></td>
 <td><p>Wallet Instance, with a valid DPoP-bound Access Token, sends a request to the Credential Endpoint and successfully retrieves the updated Digital Credential.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_073</p></td>
+<tr class="row-even"><td><p>WP_073</p></td>
 <td><p>Issuance, Security and Privacy</p></td>
 <td><p>Delete old Digital Credentials</p></td>
 <td><p>After storing a new Digital Credential, Wallet Instance deletes the previous version so that only the latest Digital Credential remains stored.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_073a</p></td>
+<tr class="row-odd"><td><p>WP_073a</p></td>
 <td><p>Issuance, Security and Privacy</p></td>
 <td><p>Delete old batch Credentials</p></td>
 <td><p>When the Wallet Instance receives and stores a new batch of the same Credential with the same claims, it deletes the previous Credentials.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_074</p></td>
+<tr class="row-even"><td><p>WP_074</p></td>
 <td><p>Issuance, UX</p></td>
 <td><p>Consent on new Digital Credential store with <code class="docutils literal notranslate"><span class="pre">user_attribute</span></code> update</p></td>
 <td><p>If the Digital Credential update involves changes to the User's attribute values (<code class="docutils literal notranslate"><span class="pre">attribute_update</span></code>), Wallet Instance prompts the User for consent before storing the new refreshed Digital Credential.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_075</p></td>
+<tr class="row-odd"><td><p>WP_075</p></td>
 <td><p>Issuance, UX</p></td>
 <td><p>No consent on new Digital Credential store without <code class="docutils literal notranslate"><span class="pre">user_attribute</span></code> update</p></td>
-<td><p>If the Digital Credential update only concerns credential metadata changes (<code class="docutils literal notranslate"><span class="pre">update</span></code>), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.</p></td>
+<td><p>If the Digital Credential update only concerns Credential metadata changes (<code class="docutils literal notranslate"><span class="pre">update</span></code>), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1193,7 +1198,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_087</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Check Relying Party eligibility</p></td>
-<td><p>Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified credential.</p></td>
+<td><p>Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified Credential.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_088</p></td>
 <td><p>Remote-flow, Presentation, Privacy</p></td>
@@ -1515,11 +1520,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </section>
 <section id="test-cases-for-user-attribute-deletion-on-relying-party-side">
 <span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">19.4.1.4.5. </span>Test Cases for User Attribute Deletion on Relying Party Side<a class="headerlink" href="#test-cases-for-user-attribute-deletion-on-relying-party-side" title="Link to this heading">¶</a></h2>
-<p>This section lists the test cases from Sections:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a></p></li>
-<li><p><a class="reference external" href="relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint">Relying Party Provider Backend Erasure Endpoint</a></p></li>
-</ul>
+<p>This section lists the test cases from Section <a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 14.3%" />
@@ -1547,33 +1548,33 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-even"><td><p>WP_116</p></td>
 <td><p>Attribute Deletion, Lifecycle, Security</p></td>
-<td><p>Relying Party metadata validation for deletion</p></td>
-<td><p>When a User selects a Relying Party for attribute deletion, Wallet Instance fetches and validates its federation metadata, confirming the presence of an Erasure Endpoint.</p></td>
+<td><p>Relying Party support contact for deletion</p></td>
+<td><p>When a User selects a Relying Party for attribute deletion, the Wallet Instance obtains the registered support contact (<code class="docutils literal notranslate"><span class="pre">support_uri</span></code> in the National Trust Framework, or the Wallet-Relying Party Access Certificate support contact in the EUDIW Trust Framework) and confirms that at least one invocable contact is present.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_117</p></td>
 <td><p>Attribute Deletion, Lifecycle, Interoperability</p></td>
-<td><p>Erasure Request</p></td>
-<td><p>Wallet Instance correctly constructs, and sends a valid Erasure Request destined for the Relying Party's Erasure Endpoint.</p></td>
+<td><p>Data deletion request</p></td>
+<td><p>The Wallet Instance invokes the external application that matches the selected contact. For an email address, the draft <code class="docutils literal notranslate"><span class="pre">subject</span></code> requests erasure under Article 17 of Regulation (EU) 2016/679 and the <code class="docutils literal notranslate"><span class="pre">body</span></code> identifies the attributes, or requests erasure of all personal data previously provided through the Wallet Instance.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_117a</p></td>
 <td><p>Attribute Deletion, Lifecycle, Privacy</p></td>
-<td><p>Erasure Request logging</p></td>
-<td><p>A log entry is created for each Erasure Request, containing the timestamp, the Relying Party's identifier, and the specific attributes requested for deletion.</p></td>
+<td><p>Data deletion request logging</p></td>
+<td><p>A log entry is created for each data deletion request after the external application has been successfully invoked. The entry contains the date and time, the Relying Party's identifier, and the specific attributes requested for deletion.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_118</p></td>
 <td><p>Attribute Deletion, Lifecycle, UX</p></td>
-<td><p>User redirection and callback for erasure</p></td>
-<td><p>Wallet Instance successfully redirects the User to the Relying Party’s Erasure Endpoint and receives the Erasure Response via its callback mechanism.</p></td>
+<td><p>Contact selection</p></td>
+<td><p>The Wallet Instance presents the contacts that the platform can invoke, or applies a stored User preference, and invokes the selected external application.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_119</p></td>
 <td><p>Attribute Deletion, Lifecycle, Interoperability</p></td>
-<td><p>Handles deletion/error response</p></td>
-<td><p>Wallet Instance correctly processes both success and error responses for the Erasure Response from the Relying Party.</p></td>
+<td><p>Request initiation</p></td>
+<td><p>The Wallet Instance records the data deletion request as initiated after the external application has been successfully invoked. It does not require an HTTP response from the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_119a</p></td>
 <td><p>Attribute Deletion, Lifecycle, UX</p></td>
-<td><p>User notification on erasure</p></td>
-<td><p>Wallet Instance displays a clear notification to the User indicating the success or failure of the Erasure Request.</p></td>
+<td><p>User notification on deletion request</p></td>
+<td><p>The Wallet Instance informs the User that the data deletion request has been initiated.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1644,7 +1645,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_122d</p></td>
 <td><p>Backup and Restore, Security</p></td>
 <td><p>Credential identifiers in backup JWT</p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> claim contains entries keyed by the Issuer identifier, and each entry lists one or more <code class="docutils literal notranslate"><span class="pre">credential_configuration_ids</span></code> corresponding to the issued credentials.</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> claim contains entries keyed by the Issuer identifier, and each entry lists one or more <code class="docutils literal notranslate"><span class="pre">credential_configuration_ids</span></code> corresponding to the issued Credentials.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_123</p></td>
 <td><p>Backup and Restore, Security</p></td>
@@ -1756,12 +1757,12 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_133a</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>SHA-256 hash computation</p></td>
-<td><p>Wallet Instance successfully computes a SHA-256 digest (<code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>) over the <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, and the <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>,</p></td>
+<td><p>Wallet Instance successfully computes a SHA-256 digest (<code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>) of the UTF-8 octets of the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> immediately followed by the UTF-8 octets of <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>. The digest does not include <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_133b</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
 <td><p>Key Attestation</p></td>
-<td><p>Wallet Instance successfully invokes the Key Attestation API with the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> and obtains a signed attestation from the Key Attestation API.</p></td>
+<td><p>Wallet Instance successfully invokes the Key Attestation API at key generation, passing <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> as the attestation challenge, and obtains a signed attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_134</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
@@ -1791,7 +1792,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_136</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Security</p></td>
 <td><p>Cryptographic binding verification</p></td>
-<td><p>Wallet Provider successfully verifies the cryptographic binding between the <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, nonce, and the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> provided in the key_attestation.</p></td>
+<td><p>Wallet Provider extracts <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> from the validated <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> and verifies that the embedded challenge equals the SHA-256 digest of the UTF-8 octets of the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> immediately followed by the UTF-8 octets of <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_137</p></td>
 <td><p>Wallet Initialization / Registration, Lifecycle, Interoperability</p></td>
@@ -1811,7 +1812,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_140</p></td>
 <td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
 <td><p>Wallet Instance Attestation (WIA) Request</p></td>
-<td><p>Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, and other configuration related parameters.</p></td>
+<td><p>Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, and other configuration related parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_140a</p></td>
 <td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
@@ -1850,7 +1851,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-odd"><td><p>WP_140h</p></td>
 <td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security</p></td>
-<td><p>OEM Key Attestation APIs for other credentials</p></td>
+<td><p>OEM Key Attestation APIs for other Credentials</p></td>
 <td><p>Key Attestation issuance for Digital Credentials other than the PID conforms to <a class="reference internal" href="wallet-solution-requirements.html#use-of-key-attestation-apis-oem"><span class="std std-ref">Use of Key Attestation APIs (OEM)</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_141</p></td>
@@ -1998,6 +1999,16 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Authenticated PDND Wallet Provider endpoints</p></td>
 <td><p>Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, are authenticated and authorised. Unauthenticated requests are rejected. A successful Notify User Death leads to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations.</p></td>
 </tr>
+<tr class="row-odd"><td><p>WP_162</p></td>
+<td><p>Key Attestation Issuance, Security</p></td>
+<td><p>Android attestation challenge</p></td>
+<td><p>On Android, each Credential key is generated with the Key Attestation API challenge set to the UTF-8 octets of the <code class="docutils literal notranslate"><span class="pre">nonce</span></code>. <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> is used only for <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. Each <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> element is a <code class="docutils literal notranslate"><span class="pre">key-attestation-request+jwt</span></code> as defined in <a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-element"><span class="std std-ref">Key Attestation Element</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_163</p></td>
+<td><p>Wallet Instance Attestation (WIA) Issuance, Lifecycle</p></td>
+<td><p>Per-issuer status entry reuse</p></td>
+<td><p>The Wallet Instance Attestation Request includes <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>. A first request for that issuer omits <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> and the Wallet Provider assigns a new index. A later request for the same issuer includes that <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code>. A request that reuses an index the Wallet Instance is not entitled to is rejected with <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code> and <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -2119,7 +2130,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
