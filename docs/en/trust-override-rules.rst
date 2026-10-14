@@ -30,6 +30,8 @@ A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit b
       When the process terminates with ``CERTIFICATE_VALID`` AND ``OVERASKING_DETECTED``, i.e., the Authorization Artifact Validation has had a positive outcome, but the Scope Comparison finds the Relying Party requesting more than its registered scope.
     - **Negative Embedded Disclosure Policy evaluation [EUDIW]**.
       When the process terminates with ``CERTIFICATE_VALID`` AND ``EDP_NOT_SATISFIED``, i.e., the Authorization Artifact Validation has had a positive outcome but the Embedded Disclosure Policy would not allow the presentation to the Relying Party.
+      If an EDP URI cannot be resolved to the exact included or preloaded policy, the evaluation failure is not ``EDP_NOT_SATISFIED``.
+      That failure MUST NOT be overridable.
     - **Missing or invalid WRPRC [EUDIW]**.
       When the process terminates with ``CERTIFICATE_INVALID`` during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
       The Wallet Unit MUST warn the User and MUST NOT query the Register, as specified in :ref:`trust-evaluation:EUDIW Authorization`.

@@ -708,6 +708,7 @@ La Wallet Unit DEVE produrre le variabili ``authz_val_state`` e ``edp_state``, e
    La Wallet Unit DEVE associare la policy risolta a ciascuna EAA emessa.
    Durante la Presentazione di Credenziali, per ciascun Attestato Elettronico e per ciascun attributo richiesto, la Wallet Unit DEVE valutare l'EDP associata prima del consenso dell'Utente.
    Se un URI di EDP non può essere risolto nella policy esatta inclusa o precaricata, la valutazione EDP DEVE fallire.
+   Tale fallimento non è ``EDP_NOT_SATISFIED`` ed è *non-overridable*, come specificato in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
    Un'EDP NON DEVE essere valutata per un PID.
    Secondo il ``policy_type`` definito nella Sezione 4.2.5 di [`ETSI TS 119 472-3`_]:
 
@@ -730,13 +731,12 @@ La Wallet Unit DEVE produrre le variabili ``authz_val_state`` e ``edp_state``, e
       DEVE usare il signing path del WRPRC della Relying Party intermediata incluso nella richiesta.
 
    La Wallet Unit DEVE applicare la policy di base alla Credenziale e ogni regola specifica di attributo riconosciuta al path del claim nel formato di Credenziale selezionato.
-   Un attributo divulgato è consentito solo quando sono soddisfatti sia il risultato a livello di Credenziale sia il risultato a livello di attributo applicabile.
    La Wallet Unit DEVE informare l'Utente dei risultati a livello di Credenziale e a livello di attributo, incluso il link alle informazioni sulla policy quando presente, prima del consenso.
-   La Wallet Unit DEVE bloccare ogni Credenziale o attributo non soddisfatto.
+   La Wallet Unit NON DEVE divulgare un attributo quando il risultato a livello di Credenziale o il risultato a livello di attributo applicabile di una policy risolta non è soddisfatto, salvo che l'Utente superi tale risultato come specificato in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
    Le estensioni sconosciute POSSONO essere ignorate solo quando ciò non interrompe l'elaborazione delle regole riconosciute.
 
-   Se i controlli applicabili sono soddisfatti, o non è presente alcuna EDP per una EAA, la Wallet Unit DEVE impostare il risultato della Credenziale o dell'attributo a ``EDP_SATISFIED``.
-   Altrimenti la Wallet Unit DEVE impostare tale risultato a ``EDP_NOT_SATISFIED``.
+   Se i controlli applicabili di una policy risolta sono soddisfatti, o non è presente alcuna EDP per una EAA, la Wallet Unit DEVE impostare il risultato della Credenziale o dell'attributo a ``EDP_SATISFIED``.
+   Se una policy risolta non consente la Credenziale o l'attributo, la Wallet Unit DEVE impostare tale risultato a ``EDP_NOT_SATISFIED``.
 
 **Esito**
 
@@ -788,7 +788,7 @@ La tabella seguente sintetizza i codici.
    * - ``edp_state``
      - ``EDP_NOT_SATISFIED``
      - presentation
-     - La Credenziale selezionata, o l'attributo, non soddisfa l'Embedded Disclosure Policy risolta. La divulgazione o l'emissione dei dati interessati è bloccata.
+     - Una Embedded Disclosure Policy risolta non consente questa Credenziale o questo attributo a questa Relying Party. La Wallet Unit informa l'Utente, che consente o nega la disclosure, come specificato in :ref:`trust-evaluation:Authorization Decision and Override Rules` ([`EIDAS-ARF`_] EDP_07). Questo codice non si applica all'emissione.
 
 La Authorization Decision finale, ``AUTHORIZED`` o ``NOT_AUTHORIZED``, è elaborata dai valori ``authz_art_state``, ``authz_val_state`` e ``edp_state``, come definito in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
