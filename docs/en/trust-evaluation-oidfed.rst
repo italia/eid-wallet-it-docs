@@ -475,9 +475,8 @@ In the second case the Relying Party MUST NOT be considered authenticated and th
 3. Verify each ``readerAuth`` signature over its ``ReaderAuthentication`` data with the validated authentication certificate.
 
 The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
-This National authentication result selects the National Trust Framework path before authorization.
-It MUST NOT be combined with EUDIW WRPAC/WRPRC evidence.
-It MUST NOT be retried under the EUDIW path.
+This National authentication result selects the National Trust Framework path before authorization, as specified in :ref:`trust-evaluation:Selection at Presentation`.
+A failure of this result is handled as specified in :ref:`trust-evaluation:Failure Handling`.
 
 Authorization
 ^^^^^^^^^^^^^^^^^^

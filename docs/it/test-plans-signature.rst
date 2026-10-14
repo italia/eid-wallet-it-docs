@@ -31,7 +31,7 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - L'algoritmo nell'header deve corrispondere all'operazione crittografica.
   * - ATT-004
     - Appropriate Algorithms
-    - Assicurarsi che siano usati solo gli algoritmi elencati come MUST o RECOMMENDED in :ref:`algorithms:Algoritmi Crittografici`. Gli algoritmi elencati come MUST NOT (incluso ``none``) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.
+    - Assicurarsi che siano usati solo gli algoritmi per i quali :ref:`algorithms:Algoritmi Crittografici` indica che DEVONO essere supportati. Gli algoritmi per i quali quella sezione indica che NON DEVONO essere supportati (incluso ``none``) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.
     - Solo gli algoritmi approvati sono accettati; quelli deprecati o non elencati sono rifiutati.
   * - ATT-005
     - Signature Validation

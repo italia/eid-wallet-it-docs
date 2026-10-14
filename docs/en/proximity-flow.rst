@@ -7,12 +7,7 @@ Proximity Flow
 
 This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
 
-The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`. 
-
-- The EUDIW Trust Framework path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities; 
-- The National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a ``registration-entity`` Trust Mark. 
-
-The Wallet Instance validating the *mdoc reader* certificate selects exactly one path. Evidence from one path MUST NOT be combined with the other and a failed trust evaluation SHOULD NOT be retried under the other framework. The selected path is processed through :ref:`trust-evaluation:Selection at Presentation`, :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Relying Party Proximity Authentication`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency` as applicable.
+The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
 
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
@@ -494,7 +489,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
           - **requestInfo** *(map, REQUIRED and non-empty)*. Every `ItemsRequest` MUST contain ``euWrprc`` and ``euWrpRegistrarInfo`` as described below.
 
-            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization (:ref:`trust-evaluation:EUDIW Authorization`). On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization (:ref:`trust-evaluation:Authorization`. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.
+            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization (:ref:`trust-evaluation:EUDIW Authorization`). On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization (:ref:`trust-evaluation:Authorization`). The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path. A failed path is handled as specified in :ref:`trust-evaluation:Failure Handling`. Registrar data MUST NOT replace or override this artifact.
 
             - **euWrpRegistrarInfo** *(map, REQUIRED)*. Mandatory Registrar transparency data. Its ``identifier`` *(array, REQUIRED, non-empty)* contains objects with ``type`` *(tstr, REQUIRED)* and ``identifier`` *(tstr, REQUIRED)*. Its ``srvDescription`` and ``purpose`` *(arrays, REQUIRED, non-empty)* contain objects with ``lang`` *(tstr, REQUIRED)* and ``content`` *(tstr, REQUIRED)*. ``registryURI`` *(tstr, REQUIRED)*, ``intendedUseIdentifier`` *(tstr, REQUIRED)*, and ``policyURI`` *(tstr, REQUIRED)* are mandatory. ``credential`` *(array, OPTIONAL, non-empty when present)* contains ETSI ``Credential``/``Claim`` objects. These fields are used with the selected path's validated authorization artifact for User Transparency.
 

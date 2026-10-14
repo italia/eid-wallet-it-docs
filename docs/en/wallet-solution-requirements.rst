@@ -13,7 +13,7 @@ Wallet-to-Wallet interaction and qualified electronic signature creation are out
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
 - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Instance Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
 - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issuers. In case of Credential Issuers, Wallet Instance presents both Wallet Instance and Key Attestations.
-- The Wallet Instance MUST support both the EUDIW Trust Framework and the National Trust Framework, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+- The Wallet Instance MUST support both the EUDIW Trust Framework and the National Trust Framework, as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 - The Wallet Instance MUST store PID and (Q)EAA, apply selective disclosure, and present them remotely and in proximity, as specified in :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
 - PID issuance, storage and presentation are specified in :ref:`pid-until-notification`.
 - The Wallet Instance MUST support the Credential formats required by [`OPENID4VC-HAIP`_], including ``dc+sd-jwt`` and ``mso_mdoc``.

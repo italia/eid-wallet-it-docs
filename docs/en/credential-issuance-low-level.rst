@@ -18,8 +18,7 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
 
-OpenID Federation 1.0 [`OID-FED`_] MAY be used for issuance by a national Credential Issuer, including the Italian PID Provider, as specified in :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Selection at Issuance`.
-A Wallet Unit that implements only the EUDIW procedures MUST be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+The Trust Framework for issuance is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
 The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Each Credential Issuer MUST support the Authorization Code Grant and MUST advertise its support in Authorization Server metadata [`ETSI TS 119 472-3`_]. Credential Issuers MUST support:
 
@@ -94,11 +93,11 @@ The following diagram shows the *Issuance flow*. The normative trust requirement
 
 Once *User Request flow* is completed, the Wallet Instance MUST perform the following Credential Issuer trust checks before sending the PAR Request:
 
-- **Trust path selection:** It MUST select exactly one trust path according to :ref:`trust-evaluation:Selection at Issuance` and MUST process only that path's authoritative metadata.
+- **Trust path selection:** It selects exactly one trust path according to :ref:`trust-evaluation:Selection at Issuance` and MUST process only that path's authoritative metadata.
 - **EUDIW Authentication:** On the EUDIW path, it MUST retrieve the signed Credential Issuer Metadata, validate the Provider of WRPAC List of Trusted Entities and the WRPAC certification path, and verify the metadata signature according to :ref:`trust-evaluation:List of Trusted Entities Validation`, :ref:`trust-evaluation:EUDIW Authentication`, and :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
 - **EUDIW Authorization:** On the EUDIW path, after successful Authentication, it MUST validate the WRPRC conveyed in ``issuer_info``, including its format, algorithm, signature, certification path, temporal validity, status, and consistency. It MUST then verify the binding between the authenticated Credential Issuer and its registration data, the entitlement for the expected Credential Issuer role, and the exact, case-sensitive registration of the requested Credential type according to :ref:`trust-evaluation:EUDIW Authorization`.
 - **National Authentication, and Authorization:** On the National path, it MUST validate the Credential Issuer's Federation Trust Chain, authenticate the signed protocol artifact, and consume only the applicable final metadata according to :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`. After successful Authentication, it MUST validate the registration Trust Mark, including its signature, temporal validity, and status, and verify the Credential Issuer's entitlement and authorization to issue the offered Credential type according to :ref:`trust-evaluation:Authorization`.
-- **Failure handling:** If Authentication or Authorization does not succeed, the Wallet Instance MUST warn the User, MUST NOT request issuance, and MUST NOT retry the failed evaluation or supplement its evidence through the other trust path, as specified in :ref:`trust-evaluation:Failure Handling`.
+- **Failure handling:** If Authentication or Authorization does not succeed, the Wallet Instance applies :ref:`trust-evaluation:Failure Handling`.
 
 Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the selected metadata, from where the Wallet Instance can get the ``batch_size`` value. Batch issuance applies only to the Credential types for which that metadata is advertised. The Credential Issuer MUST declare whether PID and IT-Wallet ID are in scope. A Credential type without that advertisement MUST be issued as a single Credential (:ref:`CI_203 <credential-issuer-testcases>`).
 

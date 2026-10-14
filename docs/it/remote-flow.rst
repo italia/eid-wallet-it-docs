@@ -4,8 +4,9 @@
 Flusso Remoto
 =============
 
-La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_].
+La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_] e [`ETSI TS 119 472-2`_], come richiesto da [`CIR2024/2982`_].
 Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
+La clausola 6 di [`ETSI TS 119 472-2`_] prevale su [`OPENID4VC-HAIP`_] ove le due fonti differiscono.
 
 A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 

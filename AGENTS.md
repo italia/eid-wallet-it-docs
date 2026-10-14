@@ -14,7 +14,7 @@ This repository is the Sphinx source of the IT-Wallet Technical Specifications (
 
 The specification is bilingual. A normative or structural change in one language belongs in the other (`docs/en` and `docs/it`) in the same change, unless the request is explicitly single-language.
 
-Both languages use the English BCP 14 keywords (`MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `NOT RECOMMENDED`, `MAY`, `OPTIONAL`) only in all capitals. Do not translate those keywords, and do not change their strength unless asked.
+The English edition uses the English BCP 14 keywords (`MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `NOT RECOMMENDED`, `MAY`, `OPTIONAL`) only in all capitals. The Italian edition translates them and keeps them in all capitals, with number agreement: `DEVE` and `DEVONO`, `NON DEVE` and `NON DEVONO`, `PUÒ` and `POSSONO`, `DOVREBBE` and `DOVREBBERO`, `NON DOVREBBE` and `NON DOVREBBERO`, `RACCOMANDATO`, `NON RACCOMANDATO`, `OBBLIGATORIO`, `OPZIONALE`. Do not change their strength unless asked.
 
 ## Git
 

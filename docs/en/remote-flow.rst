@@ -5,7 +5,9 @@
 Remote Flow
 ===========
 
-Remote presentation uses [`OpenID4VP`_] and by the applicable requirements of [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. The ``client_id`` prefix selects the complete trust path: ``x509_hash`` selects the EUDIW path and ``openid_federation`` selects the National Trust Framework extension (see :ref:`trust-evaluation:Selection at Presentation`). ETSI clause 6 prevails over HAIP where the two sources differ. Implementations MUST NOT combine the paths or retry a failed path under the other framework.
+Remote presentation uses [`OpenID4VP`_], profiled by [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
+The Trust Framework is selected through the ``client_id`` prefix, as specified in :ref:`trust-evaluation:Selection at Presentation`.
+[`ETSI TS 119 472-2`_] clause 6 prevails over [`OPENID4VC-HAIP`_] where the two sources differ.
 
 The Relying Party and Wallet Instance MUST support both of the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
 
@@ -767,7 +769,8 @@ Below is a non-normative example of an Authorization Error Response.
   error_description=...
 
 .. warning::
-  The Wallet Instance MUST NOT send an error to an unauthenticated endpoint or reveal whether a Wallet or Credential is available. An error from one trust path MUST NOT trigger retry under the other path.
+  The Wallet Instance MUST NOT send an error to an unauthenticated endpoint or reveal whether a Wallet or Credential is available.
+  An error from one trust path is handled as specified in :ref:`trust-evaluation:Failure Handling`.
 
 In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:
 
@@ -789,7 +792,7 @@ In the following table are listed error codes and descriptions that are supporte
    * - ``access_denied``
      - The Wallet did not have the requested credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
    * - ``invalid_client``
-     - The selected Relying Party trust path cannot authenticate or authorize the Relying Party. The Wallet Instance MUST NOT retry the other path. `OID-FED`_ and `OpenID4VP`_
+     - The selected Relying Party trust path cannot authenticate or authorize the Relying Party. See :ref:`trust-evaluation:Failure Handling`. `OID-FED`_ and `OpenID4VP`_
    * - ``invalid_transaction_data``
      - One or more objects in the ``transaction_data`` structure are invalid. For instance, those objects contain unknown or unsupported types, malformed (e.g., it is an object of a known type but containing unknown fields or contains fields of the wrong type for the transaction data type) or missing fields, invalid values (e.g., the ``credential_ids`` does not match), or references to unavailable Credentials. `OpenID4VP`_
 
