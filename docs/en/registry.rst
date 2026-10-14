@@ -118,7 +118,7 @@ The Federation Trust Anchor MUST provide a discovery mechanism for registry comp
 
 Pagination and filtering of the Digital Credentials Catalog are specified in :ref:`registry:Digital Credentials Catalog Retrieval`.
 
-The Federation Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support:
+The Federation Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support as specified in :ref:`registry:Content Negotiation and Signed Representation`.
 
 - **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
 - **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
@@ -193,7 +193,7 @@ JWT payload structure (when decoded):
   }
 
 Content Negotiation and Signed Representation
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every endpoint of the Registry Infrastructure MUST support content negotiation and serve its content in two representations:
 
