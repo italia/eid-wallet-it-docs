@@ -70,7 +70,11 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
      c. evaluates the eligibility of the Relying Party in the presesntation context. 
      
+<<<<<<< HEAD
        * For ``x509_hash``, authorization is based on the validated WRPRC in the ``verifier_info`` element whose ``format`` is ``registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`; 
+=======
+       * For ``x509_hash``, authorization is based on the validated WRPRC in the ``data`` member of the ``verifier_info`` element whose ``format`` is ``registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`.
+>>>>>>> 06c9d09c6d7f530bb17ee923e7dea140035e2d7f
        * for ``openid_federation``, authorization is based on the validated ``registration-entity`` Trust Mark and follows :ref:`trust-evaluation:Authorization`. 
        
        The Wallet Instance MUST perform exact, case-sensitive entitlement and DCQL scope checks (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
@@ -329,7 +333,11 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "exp": 1672422065
     }
 
+<<<<<<< HEAD
 * For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and the ``identifier`` in the ``data`` of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. 
+=======
+* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and the ``data.identifier`` member of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope.
+>>>>>>> 06c9d09c6d7f530bb17ee923e7dea140035e2d7f
 
 * For ``openid_federation``, it validates the registration Trust Mark, its entitlements, and its exact, case-sensitive scope, and MUST NOT treat WRPAC or WRPRC material as National trust evidence. 
 

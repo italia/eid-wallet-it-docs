@@ -542,11 +542,11 @@ The validation flow depends on the interaction.
 
 - During the Presentation flow the Relying Party MUST convey the Wallet-Relying Party Registration Certificate by value ([`EIDAS-ARF`_] RPRC_19):
 
-    - as a ``registration_cert`` element of the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
+    - in the ``data`` member of the ``verifier_info`` element whose ``format`` is ``registration_cert`` in the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
     - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
 
-   In the Remote Flow, ``verifier_info`` MUST also contain a ``registrar_dataset`` element for ETSI transport and transparency.
-   The dataset MUST contain the registered identifier, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` fields as specified in the Remote Flow.
+   In the Remote Flow, ``verifier_info`` MUST also contain an element whose ``format`` is ``registrar_dataset`` for ETSI transport and transparency.
+   That element's ``data`` object MUST contain the registered identifier, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` fields as specified in the Remote Flow.
    It MUST NOT replace or override the Wallet-Relying Party Registration Certificate as the presentation authorization source ([`EIDAS-ARF`_] RPRC_19a is empty).
 
    In the Proximity Flow, every ``ItemsRequest`` MUST contain a non-empty ``requestInfo.euWrpRegistrarInfo`` with its non-empty ``identifier`` array, non-empty ``srvDescription`` and ``purpose`` arrays, ``registryURI``, ``intendedUseIdentifier`` and ``policyURI``.
@@ -633,7 +633,7 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     - **Credential Issuance**.
       The Wallet Unit MUST match the Credential Issuer identifier with the subject of a supplied Wallet-Relying Party Registration Certificate and with the applicable identifier in ``issuer_info[].data.identifier[]`` of the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22b).
     - **Credential Presentation**.
-      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
+      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``data.identifier`` of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` in the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
       If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
       the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, and the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04).
       Association of a distinct WRPAC to that Relying Party and Service is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
