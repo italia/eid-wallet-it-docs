@@ -216,8 +216,8 @@ Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elet
 
 In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica o in presenza di processi amministrativi o tecnici che non consentono di fornire immediatamente l'Attestato Elettronico di Attributi, gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire che:
 
-- l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato;
-- l'Utente venga informato dal Fornitore di Attestati Elettronici di Attributi non appena l'Attestato Elettronico di Attributi è disponibile.
+- l'Utente, dopo aver preso visione dei propri dati di identificazione personale, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato;
+- l'Utente venga informato dal Fornitore di Attestati Elettronici di Attributi non appena l'Attestato Elettronico di Attributi è disponibile all'ottenimento.
 
 In caso di dati errati all'interno di un Attestato Elettronico di Attributi già ottenuto o in fase di ottenimento, il Fornitore di Wallet DOVREBBE garantire all'Utente un'adeguata assistenza attraverso la propria Istanza del Wallet. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`.
 
