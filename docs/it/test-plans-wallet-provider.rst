@@ -184,7 +184,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Il Keystore o il WSCA/Remote WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
    * - WP_014d
      - Trust, Sicurezza
-     - Conservazione chiavi PID High vs altre credenziali
+     - Conservazione chiavi PID High vs altre Credenziali
      - Le chiavi di IT-Wallet ID e (Q)EAA sono memorizzate nel Keystore hardware-backed. Le chiavi di un PID a LoA High DEVONO essere generate e memorizzate solo dal WSCA operante nel Remote WSCD. Un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
    * - WP_014e
      - Trust, Sicurezza
@@ -1349,7 +1349,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_160
      - Presentation, Sicurezza
      - Presentazione offline e collocazione delle chiavi
-     - La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.
+     - La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le Credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.
    * - WP_161
      - Trust, Sicurezza
      - Endpoint PDND del Fornitore del Wallet autenticati

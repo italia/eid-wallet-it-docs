@@ -110,7 +110,7 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
   * - RPR-23
     - Presentazione Credenziali
     - Verifica la conformità del formato della risposta.
-    - Il Relying Party supporta tutti i formati di credenziali inclusi nel parametro ``vp_formats_supported`` dei suoi metadati.
+    - Il Relying Party supporta tutti i formati di Credenziali inclusi nel parametro ``vp_formats_supported`` dei suoi metadati.
   * - RPR-24
     - Annullato
     - Annullato
@@ -121,7 +121,7 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-26
     - Gestione Errori
-    - Verifica la gestione di claim malformati nelle credenziali presentate.
+    - Verifica la gestione di claim malformati nelle Credenziali presentate.
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-27
     - Gestione Errori

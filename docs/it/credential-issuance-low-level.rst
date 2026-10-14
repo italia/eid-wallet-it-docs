@@ -362,7 +362,7 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 
 **Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size`` (:ref:`WP_058a <wallet-credential-issuance-testcases>`).
 
-**Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size`` (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
+**Passo 18 (Prove di possesso delle Credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size`` (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
 
 .. note::
   Il valore ``c_nonce`` in tutte le proof jwt è identico e non è necessario ottenere valori del nonce diversi.
@@ -443,7 +443,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 
 
 .. note::
-  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
+  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse Credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
 
 
 .. note::
@@ -588,7 +588,7 @@ Il Re-issuance Flow delineato in questa sezione è limitato ai seguenti scenari:
   - Aggiornamento tecnico del modello/formato dei dati;
   - Aggiornamento dell'insieme di attributi dell'Utente.
 
-Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione hardware`).
+Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`).
 
 Nel primo caso, l'insieme di attributi dell'Utente del nuovo Attestato Elettronico corrisponderà a quello originale. Ad esempio, un Credential Issuer potrebbe dover aggiornare i Metadata dell'Attestato Elettronico o il formato dei dati senza modificare l'insieme di attributi dell'Utente. In questo caso, il coinvolgimento diretto dell'Utente non è obbligatorio per la sostituzione e l'archiviazione di un Attestato Elettronico.
 

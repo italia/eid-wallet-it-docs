@@ -87,7 +87,7 @@ La presentazione in prossimità o comunque offline di un Attestato Elettronico D
        }
 
 .. note::
-  In caso di utilizzo di credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali (ad esempio, basata sulla prima in scadenza) e DEVE contrassegnarla come consumata. Al termine del flusso, DEVE ridurre il numero di credenziali disponibili nel batch e, in base a ciò, può verificare se è il momento di richiedere un nuovo batch di credenziali.
+  In caso di utilizzo di Credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali (ad esempio, basata sulla prima in scadenza) e DEVE contrassegnarla come consumata. Al termine del flusso, DEVE ridurre il numero di Credenziali disponibili nel batch e, in base a ciò, può verificare se è il momento di richiedere un nuovo batch di Credenziali.
 
 
 .. toctree::

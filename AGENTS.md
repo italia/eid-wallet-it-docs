@@ -23,5 +23,6 @@ Never create a commit. Never run `git push` or any command that publishes commit
 ## Editing
 
 - Reuse defined terms (Wallet Instance, Credential Issuer, Relying Party, IT-Wallet ID, PID, and so on). Do not introduce synonyms.
+- Write defined terms as they are defined in `defined-terms.rst`, including capitalization, in both editions. In English the defined term is Credential and its plural is Credentials. In Italian the defined term is Credenziale and its plural is Credenziali. Write that capital even mid-sentence. The ordinary phrases authentication credentials and credenziali di autenticazione are not that term. JSON member names and protocol parameter names stay as specified.
 - Example hostnames are `example.org` (or a subdomain of it). Do not use real production URLs in examples.
 - Keep changes limited to the requested section. Do not rewrite surrounding normative text for style.

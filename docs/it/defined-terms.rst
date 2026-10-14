@@ -107,7 +107,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le credenziali non-PID.
+      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le Credenziali non-PID.
       Non presente in ARF 3.0.0; specifico dell'IT-Wallet.
 
     **Keystore**

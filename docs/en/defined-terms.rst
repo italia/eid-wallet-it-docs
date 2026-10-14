@@ -138,7 +138,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **National Identity Provider**
-      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** Credential.
       Not present in ARF 3.0.0.
 
     **National Trust Anchor**

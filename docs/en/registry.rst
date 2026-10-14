@@ -291,7 +291,7 @@ The Taxonomy endpoint URL is published under the ``taxonomy`` key of the Registr
 
 1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
 2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
-3. **Interoperability**: Ensure consistent interpretation of credential classifications
+3. **Interoperability**: Ensure consistent interpretation of Credential classifications
 4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
 5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
 
@@ -307,7 +307,7 @@ Taxonomy Usage
 Digital Credentials Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
+Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, Credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
 
 The hierarchy is defined as follows:
 
@@ -340,7 +340,7 @@ Credential Types enable precise targeting for compliance-driven or regulation-ma
 
 **Purpose (Verification Intent)**
 
-A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+A **Purpose (Verification Intent)** describes *why* a Credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 Purposes MUST describe **verification outcomes**.
 Each Credential Type MUST declare its Domain, Class, and supported Purposes.
 
@@ -657,13 +657,13 @@ Each Credential MUST specify domains, classes and purposes to enable both **Cred
 
     - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification or ``"credential_type":"eid"`` for IT-Wallet ID-specific identity verification.
     - **Police Controls**: ``"credential_type":"mDL"`` for driving license verification.
-    - **Banking KYC**: Specific credential types mandated by financial regulations.
+    - **Banking KYC**: Specific Credential types mandated by financial regulations.
     - **Healthcare Services**: ``"credential_type":"european_disability_card"`` for EU-compliant disability benefit access.
 
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of Credential source for operational efficiency, such as:
 
-    - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
-    - **Subscriptions**: Any credential, among those to which he is authorized to access, with ``given_name``, ``email`` for personalization.
+    - **E-commerce Delivery**: Any Credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
+    - **Subscriptions**: Any Credential, among those to which he is authorized to access, with ``given_name``, ``email`` for personalization.
     - **Service Personalization**: Business applications requiring basic personal data without strong source requirements.
 
 This approach allows:

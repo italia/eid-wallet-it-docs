@@ -435,7 +435,7 @@ If all verifications succeed, the Relying Party updates the User session.
 **Steps 28-29**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`). The Relying Party MUST consider the transaction completed only if the redirect back is received in the same user session in which the flow was initiated; otherwise it MUST reject the presentation.
 
 .. note::
-    During each credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+    During each Credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
     The transaction record MUST be created once the Wallet Instance has accepted the presentation request for processing (i.e., after request validation and Relying Party trust/policy checks, Steps 13–15). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., the requested Credential type(s) and the identifier(s) of the requested attributes), without logging any attribute values.
 
@@ -798,7 +798,7 @@ In the following table are listed error codes and descriptions that are supporte
    * - ``invalid_request``
      - The request is malformed or inconsistent (e.g., it uses the ``vp_token`` Response Type but it does not include a ``dcql_query`` parameter), the Client Identifier Prefix is unsupported, or requirements of a prefix are violated (e.g., ``client_id`` with the ``x509_hash`` prefix without the required ``client_metadata``). `OpenID4VP`_
    * - ``access_denied``
-     - The Wallet did not have the requested credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
+     - The Wallet did not have the requested Credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
    * - ``invalid_client``
      - The selected Relying Party trust path cannot authenticate or authorize the Relying Party. See :ref:`trust-evaluation:Failure Handling`. `OID-FED`_ and `OpenID4VP`_
    * - ``invalid_transaction_data``
@@ -844,7 +844,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
      - The Credentials presented are malformed, invalid or revoked.
    * - ``400 Bad Request``
      - ``invalid_request``
-     - The credential presentation, contained in the ``vp_token`` object, is malformed, doesn't have the required parameters or is incorrectly formatted.
+     - The Credential presentation, contained in the ``vp_token`` object, is malformed, doesn't have the required parameters or is incorrectly formatted.
    * - ``400 Bad Request``
      - ``invalid_request``
      - The "sd-jwt" returned is malformed, missing required parameters or incorrectly formatted.
