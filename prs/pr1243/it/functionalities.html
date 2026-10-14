@@ -809,7 +809,7 @@
 </ul>
 <p>Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici:</p>
 <ul class="simple">
-<li><p>un <strong>header e/o un subheader</strong>, che permette all'Utente di tornare alla pagina precedente;</p></li>
+<li><p>un <strong>header e/o un subheader</strong>, da personalizzare, che permette all'Utente di tornare alla pagina precedente e avere contezza dell'ente di provenienza;</p></li>
 <li><p>un <strong>footer</strong> che include l'informativa privacy, le note legali e la Dichiarazione di Accessibilità, ove previsto da normativa.</p></li>
 </ul>
 <p>Di seguito invece gli elementi specifici caratteristici delle diverse pagine.</p>
@@ -836,7 +836,7 @@
 <p class="admonition-title">Nota</p>
 <p>Questa sezione descrive come visualizzare la Selection Page come parte di un processo di Autenticazione. La stessa pagina DOVREBBE essere utilizzata anche dai Verificatori di Attestati Elettronici durante la presentazione e da terze parti che supportano il Credential Offer per abilitare l'opzione di selezione della Soluzione Wallet. Ulteriori dettagli sono forniti in <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a> e <a class="reference internal" href="credential-issuance-low-level.html#flusso-credential-offer"><span class="std std-ref">Flusso Credential Offer</span></a>.</p>
 </div>
-<p>Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+<p>Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page come resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.</p>
 <figure class="align-center" id="id142">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -856,7 +856,7 @@
 <p>Il Verificatore di Attestati Elettronici PUÒ inserire un componente testuale per promuovere la modalità di Autenticazione tramite IT-Wallet, che rimandi al sito ufficiale del Sistema, come rappresentato nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
 <p><strong>QR Code Page (*solo per modalità cross-device*)</strong></p>
 <p>La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device, e ha lo scopo di invitare l'Utente a scannerizzare, con la propria Istanza del Wallet o con la fotocamera del proprio dispositivo, il codice QR generato.</p>
-<p>Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+<p>Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) come resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.</p>
 <figure class="align-center" id="id147">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -882,7 +882,7 @@
 </ul>
 <p><strong>Thank You Page</strong></p>
 <p>La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di informare l’Utente sull’avvenuta Autenticazione.</p>
-<p>Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+<p>Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page come resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.</p>
 <figure class="align-center" id="id149">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -897,7 +897,7 @@
 </ul>
 <p><strong>Error Page</strong></p>
 <p>La pagina di errore rappresenta quella tipologia di pagina su cui l'Utente atterra in caso di errori nel corso del flusso di Autenticazione, e ha lo scopo di comunicare all'Utente la natura di tali errori (es. errore tecnico, assenza di rete, malfunzionamento dell'Istanza del Wallet, consenso alla presentazione dei dati negato etc.) e di presentare le azioni che l'Utente può intraprendere. Per approfondimenti sulle casistiche di errore si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
-<p>Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
+<p>Il Verificatore di Attestati Elettronici DEVE implementare la Error Page come resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.</p>
 <figure class="align-center" id="id151">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
