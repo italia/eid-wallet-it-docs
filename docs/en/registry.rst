@@ -171,7 +171,6 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
        * **credential_catalog**: URI of the Digital Credentials Catalog collection endpoint. See :ref:`registry:Digital Credentials Catalog Retrieval`.
        * **taxonomy**: URI of the Taxonomy resource.
        * **schema_registry**: URI of the Catalogue of Attestations API root. See :ref:`registry:Catalogue of Attestations`.
-       * **attribute_catalog**: URI of the Catalogue of Attributes. See :ref:`registry:Catalogue of Attributes`.
    * - **content_negotiation**
      - REQUIRED. Array of content types supported by the discovery endpoint (e.g., ``["application/json", "application/jwt"]``).
 
@@ -188,8 +187,7 @@ JWT payload structure (when decoded):
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "attribute_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/attributes"
+      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -222,8 +220,6 @@ This requirement applies to all the endpoints of the Registry Infrastructure lis
      - Absolute URL published under the ``authentic_sources`` key of the discovery document.
    * - Schema Registry
      - Absolute URL published under the ``schema_registry`` key of the discovery document. It is the Catalogue of Attestations API root.
-   * - Catalogue of Attributes
-     - Absolute URL published under the ``attribute_catalog`` key of the discovery document.
    * - Taxonomy
      - Absolute URL published under the ``taxonomy`` key of the discovery document.
    * - Digital Credentials Catalog
@@ -856,7 +852,7 @@ The Claims Registry maintains language-neutral, technical definitions for semant
    * - **items**
      - OPTIONAL. JSON object describing the schema of each element in a simple ``array`` type claim (e.g., ``{"type": "string"}`` for ``nationalities``).
    * - **attribute_identifier**
-     - CONDITIONAL. REQUIRED when the claim is published in the :ref:`registry:Catalogue of Attributes`. It MUST equal the Attribute ``identifier``.
+     - OPTIONAL. Identifier of the corresponding attribute in the EUDIW Catalogue of Attributes when the claim is aligned to that catalogue, as described in :ref:`registry:Registry Integration and Cross-References`. When present, it MUST equal that attribute ``identifier``.
 
 A non-normative example of Claims Registry structure is given below:
 
@@ -883,34 +879,6 @@ A non-normative example of a localization bundle output is given below:
   }
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
-
-Catalogue of Attributes
-^^^^^^^^^^^^^^^^^^^^^^^
-
-The Federation Trust Anchor MUST publish the Catalogue of Attributes of Section 2 of [`EUDI-TS 11`_].
-The publication URL is the absolute URL under the ``attribute_catalog`` key of the Registry Discovery document.
-The document MUST be a JSON array. Each element MUST validate against the JSON Schema of Annex A.1 ([`EUDI-TS 11 Attribute Schema`_]).
-The element MUST NOT contain properties outside that schema.
-
-An attribute listed in Annex VI of [`EIDAS`_] that relies on a public-sector Authentic Source MUST appear in this catalogue.
-Any other claim of the Claims Registry MAY appear.
-
-``name`` MUST include at least one English value. The language of a string is the ``@`` tag defined by Annex A.1, such as ``Given name@en``.
-``identifier`` MUST be a URI that contains the namespace, the local identifier and the version of the attribute.
-``description`` MUST be present in English, with the same language tag.
-``distributions`` MUST contain at least one element whose ``mediaType`` is ``application/json-schema``.
-``contactInfo`` MUST contain at least one URI.
-``authenticSources`` MUST contain a ``DataService`` for each verification point. ``country``, ``endpointDescription`` and ``endpointURI`` are REQUIRED. For an Italian public-sector Authentic Source, ``country`` MUST be ``IT`` and ``endpointURI`` MUST be the ``endpoint`` of ``verification_endpoint`` in the :ref:`registry:Authentic Source Registry`.
-Section 2.1.1 of [`EUDI-TS 11`_] names that URI ``endpointURL``. Annex A.1 names it ``endpointURI``. The published document MUST use ``endpointURI``.
-
-Discovery of the verification services and the verification call MUST follow Section 3 of [`EUDI-TS 11`_].
-
-A claim published in this catalogue MUST set ``attribute_identifier`` in the Claims Registry to the Attribute ``identifier``.
-
-The following non-normative example is one Attribute.
-
-.. literalinclude:: ../../examples/attribute-catalog-example.json
-   :language: JSON
 
 Authentic Source Registry
 -------------------------
@@ -1838,9 +1806,9 @@ Cross-border Attribute Verification by a QTSP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This journey describes how a Qualified Trust Service Provider (QTSP), possibly established in another Member State, verifies the value of an Annex VI attribute against an Italian public-sector Authentic Source to issue a QEAA.
-It exercises the EUDIW Catalogue of Attributes and the ``verification_endpoint`` of the :ref:`registry:Authentic Source Registry`, and it does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.
+It uses the ``verification_endpoint`` of the :ref:`registry:Authentic Source Registry`, which is the national counterpart of the verification-point discovery in the EUDIW Catalogue of Attributes. It does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.
 
-1.  **Verification-point discovery**: The QTSP queries the Catalogue of Attributes for the required attribute and resolves the Italian ``Attribute`` entry, obtaining ``authenticSources[].endpointURI``, the ``legalBasis`` and the description of how to initiate the verification request. ``endpointURI`` is the ``endpoint`` of ``verification_endpoint`` in the :ref:`registry:Authentic Source Registry`. Discovery and the verification call follow Section 3 of [`EUDI-TS 11`_].
+1.  **Verification-point discovery**: The QTSP discovers the verification point from ``data_capabilities[].verification_endpoint`` in the :ref:`registry:Authentic Source Registry`. ``endpoint`` is the verification point. The EUDIW Catalogue of Attributes is the cross-border counterpart of this discovery, as described in :ref:`registry:Registry Integration and Cross-References`. The Federation Trust Anchor does not publish that catalogue.
 
 2.  **Interface selection**: Depending on ``verification_endpoint.method``, the QTSP uses the ISO 15000/eDelivery interface (``oots_edelivery``) or the REST + OAuth 2.0 interface (``rest_oauth2``) of ETSI TS 119 478 Section 6.
 
