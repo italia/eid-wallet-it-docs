@@ -332,7 +332,7 @@ La tabella seguente fornisce una panoramica completa del modello dati dell'Embed
 
        * ``"no_policy"``: Indica che non si applicano restrizioni di policy per la EAA associata.
        * ``"authorized_rp_only"``: L'accesso è ristretto a un elenco esplicito di Relying Party consentite.
-       * ``"specific_root_of_trust"``: L'accesso è ristretto alle Relying Party il cui signing path del WRPRC contiene un certificato root o intermedio fidato specificato.
+       * ``"specific_root_of_trust"``: L'accesso è ristretto alle Relying Party autenticate il cui signing path del WRPAC contiene un certificato root o intermedio fidato specificato.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
@@ -376,8 +376,8 @@ La tabella seguente fornisce una panoramica completa del modello dati dell'Embed
 
    * - ``trusted_roots``
      - OBBLIGATORIO. array of objects. se ``policy_type`` è ``"specific_root_of_trust"``.
-       Definisce un elenco preciso di certificati root o intermedi fidati usati per firmare i WRPRC.
-       Solo le RP il cui signing path del WRPRC contiene uno di questi certificati sono autorizzate all'accesso.
+       Definisce un elenco preciso di certificati root o intermedi fidati usati per firmare i WRPAC.
+       Solo le Relying Party autenticate il cui signing path del WRPAC contiene uno di questi certificati sono autorizzate all'accesso.
      - Clausola 4.2.5.2 di [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``

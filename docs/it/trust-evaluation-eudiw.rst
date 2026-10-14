@@ -722,13 +722,13 @@ La Wallet Unit DEVE produrre le variabili ``authz_val_state`` e ``edp_state``, e
       La Wallet Unit NON DEVE usare identificatori dal WRPAC, incluso il subject DN della Relying Party di un Wallet-Relying Party Access Certificate.
       Se ``authorized_parties[].subject_dn`` è presente, è la codifica ETSI definita in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` e NON DEVE essere usato come sostituto di ``sub``.
       In una presentazione **intermediata** il WRPRC nella richiesta è quello della Relying Party intermediata.
-    - ``specific_root_of_trust``: solo le Relying Party il cui Wallet-Relying Party Registration Certificate è firmato sotto uno dei ``trusted_roots`` sono autorizzate ([`EIDAS-ARF`_] EDP_03).
+    - ``specific_root_of_trust``: solo le Relying Party autenticate il cui Wallet-Relying Party Access Certificate è firmato sotto uno dei ``trusted_roots`` sono autorizzate ([`EIDAS-ARF`_] EDP_03).
       La Wallet Unit DEVE abbinare ciascuna entry ``trusted_roots`` per ``issuer_dn`` usando il confronto LDAP DN e ``serial_number`` usando il confronto intero.
-      DEVE confrontare tutti i certificati nel signing path del WRPRC con quei certificati root o intermedi autorizzati.
-      Il path comprende i certificati presentati con il WRPRC e il Trust Anchor recuperato dalla LoTE dei Provider of WRPRC.
+      DEVE confrontare tutti i certificati nel signing path del WRPAC con quei certificati root o intermedi autorizzati.
+      Il path comprende il WRPAC presentato in ``x5c`` e il Trust Anchor recuperato dalla LoTE dei Provider of WRPAC.
       Se nessuno di questi certificati è incluso nell'elenco, la Wallet Unit DEVE considerare fallita la valutazione EDP.
-      In una presentazione **intermediata** la Wallet Unit NON DEVE confrontare la catena WRPAC dell'Intermediary.
-      DEVE usare il signing path del WRPRC della Relying Party intermediata incluso nella richiesta.
+      In una presentazione **intermediata** la Relying Party autenticata è l'Intermediary.
+      La Wallet Unit DEVE confrontare il signing path del WRPAC di tale Intermediary.
 
    La Wallet Unit DEVE applicare la policy di base alla Credenziale e ogni regola specifica di attributo riconosciuta al path del claim nel formato di Credenziale selezionato.
    La Wallet Unit DEVE informare l'Utente dei risultati a livello di Credenziale e a livello di attributo, incluso il link alle informazioni sulla policy quando presente, prima del consenso.

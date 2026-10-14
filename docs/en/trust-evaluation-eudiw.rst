@@ -692,13 +692,13 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
       The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
       If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for ``sub``.
       In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
-    - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
+    - ``specific_root_of_trust``: only authenticated Relying Parties whose Wallet-Relying Party Access Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
       The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
-      It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.
-      The path comprises the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE.
+      It MUST compare all certificates in the WRPAC signing path with those authorised root or intermediate certificates.
+      The path comprises the WRPAC presented in ``x5c`` and the Trust Anchor retrieved from the Providers of WRPAC LoTE.
       If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
-      In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
-      It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request.
+      In an **intermediated** presentation the authenticated Relying Party is the Intermediary.
+      The Wallet Unit MUST compare that Intermediary's WRPAC signing path.
 
    The Wallet Unit MUST apply the base policy to the Credential and any recognized attribute-specific rule to the selected Credential-format claim path.
    The Wallet Unit MUST inform the User of the Credential-level and attribute-level results, including the policy information link when present, before consent.

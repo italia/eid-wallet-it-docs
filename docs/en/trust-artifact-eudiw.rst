@@ -330,7 +330,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
-       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties whose WRPRC signing path contains a specified trusted root or intermediate certificate.
+       * ``"specific_root_of_trust"``: Access is restricted to authenticated Relying Parties whose WRPAC signing path contains a specified trusted root or intermediate certificate.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
@@ -373,8 +373,8 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``trusted_roots``
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
-        Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
-        Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
+        Defines a precise list of trusted root or intermediate certificates used for signing WRPACs.
+        Only authenticated Relying Parties whose WRPAC signing path contains one of these certificates are permitted access.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``
