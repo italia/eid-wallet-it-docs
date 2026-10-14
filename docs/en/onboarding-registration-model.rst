@@ -227,12 +227,7 @@ The table below maps each Data Identifier to the fields of the destination data 
        
        and the ``authentic_sources``, or the ``parent_credentials``, that provide the data of the Credential type.
    * - `credential_technical_specification`
-     - In the Digital Credentials Catalog:
-     
-         - ``schema_uri``, 
-         - ``format``, 
-         - ``vct``,
-         - ``docType``.
+     - In the Digital Credentials Catalog, ``schemaId``. The formats and the schema documents are the ``supportedFormats`` and ``schemaURIs`` of the ``SchemaMeta`` identified by that ``schemaId``.
    * - `credential_policies`
      - In the Digital Credentials Catalog:
      

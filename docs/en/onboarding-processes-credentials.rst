@@ -42,7 +42,9 @@ The schema is one of the requirements for the activation of a Credential type, s
 
 **Input**
 
-The schema of the Credential type follows the Schema Definition Parameters of :ref:`registry:Schema Registry`: its ``credential_type`` and ``version``, the ``format`` it applies to, a JSON Schema for the SD-JWT VC format or a CBOR Schema for the mdoc-CBOR format, and the ``schema_uri`` with its integrity digest.
+The schema of the Credential type is a ``SchemaMeta`` registered through the :ref:`registry:Catalogue of Attestations`: its ``version``, the ``supportedFormats``, the format-specific schema document at ``schemaURIs[].uri``, and the ``rulebookURI``.
+The format-specific document follows Section 4.3.4 of [`EUDI-TS 11`_].
+Integrity, when used, is the ``#integrity`` suffix of that URI as defined in [`W3C-SRI`_].
 The schema is provided by the Attestation Scheme Provider together with the definition of the Credential type, and it is composed of the claims defined in :ref:`registry:Claims Registry`. A claim still missing activates the :ref:`onboarding-system:Claim Registration`.
 
 **Outcome**
@@ -54,7 +56,7 @@ This satisfies the schema requirement of the activation of the Credential type, 
 
 1. The claims that compose the schema are available in the Claims Registry, otherwise the Claim Registration is activated for the missing claim.
 2. The schema is generated from the data model for a Credential defined at national level, or it is registered in alignment with the external Rulebook.
-3. The Claims and Schema Management registers the schema in the Schema Registry, with its integrity digest, for each supported format.
+3. The Claims and Schema Management registers one ``SchemaMeta`` in the Catalogue of Attestations, covering every supported format.
 
 Credential Type Registration
 """"""""""""""""""""""""""""

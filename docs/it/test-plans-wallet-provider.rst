@@ -386,8 +386,12 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet ottiene con successo la lista dei Credential Issuer fidati utilizzando il Catalogo degli Attestati Elettronici.
    * - WP_045a
      - Trust, Issuance, Interoperabilità
-     - Recupero Catalogo degli Attestati Elettronici
-     - Istanza del Wallet invia con successo una richiesta HTTP GET al Catalogue Endpoint contenente il Catalogo degli Attestati Elettronici, utilizzando il media type ``application/jose``.
+     - Recupero di una pagina del Catalogo degli Attestati Elettronici
+     - Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di collection del Digital Credentials Catalog, utilizzando il media type ``application/jwt`` (firmato) o ``application/json`` (in chiaro), e legge una pagina identificata da ``total``, ``limit`` e ``offset``.
+   * - WP_045b
+     - Trust, Issuance, Interoperabilità
+     - Recupero di una voce del Catalogo degli Attestati Elettronici
+     - Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di entry del Digital Credentials Catalog per una coppia ``credential_type`` e ``version`` e ottiene quella voce versionata. Una coppia sconosciuta produce HTTP 404.
    * - WP_046
      - Issuance, Interoperabilità
      - Scoprire Credential Issuer dinamicamente dai metadata federazione

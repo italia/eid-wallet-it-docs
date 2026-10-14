@@ -227,12 +227,7 @@ La tabella seguente mappa ciascun Data Identifier sui campi dei data model di de
        
        e le ``authentic_sources``, o le ``parent_credentials``, che forniscono i dati del tipo di Credenziale.
    * - `credential_technical_specification`
-     - Nel Digital Credentials Catalog:
-     
-         - ``schema_uri``, 
-         - ``format``, 
-         - ``vct``,
-         - ``docType``.
+     - Nel Digital Credentials Catalog, ``schemaId``. I formati e i documenti di schema sono i ``supportedFormats`` e gli ``schemaURIs`` dello ``SchemaMeta`` identificato da tale ``schemaId``.
    * - `credential_policies`
      - Nel Digital Credentials Catalog:
      

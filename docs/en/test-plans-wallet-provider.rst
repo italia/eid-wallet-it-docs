@@ -387,8 +387,12 @@ This section lists the test cases from Sections:
      - Wallet Instance successfully discovers trusted Digital Credential Issuers using the Credential Catalogue.
    * - WP_045a
      - Trust, Issuance, Interoperability
-     - Fetch the Digital Credential catalogue
-     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using either the ``application/jwt`` (signed) or the ``application/json`` (plain) media type.
+     - Fetch one page of the Digital Credential catalogue
+     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalog collection endpoint, using either the ``application/jwt`` (signed) or the ``application/json`` (plain) media type, and reads one page identified by ``total``, ``limit`` and ``offset``.
+   * - WP_045b
+     - Trust, Issuance, Interoperability
+     - Fetch one Digital Credential catalog entry
+     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalog entry endpoint for a ``credential_type`` and ``version`` pair and obtains that versioned entry. An unknown pair yields HTTP 404.
    * - WP_046
      - Issuance, Interoperability
      - Discover Credential Issuer dynamically from federation metadata

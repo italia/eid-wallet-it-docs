@@ -5,7 +5,7 @@ This repository is the Sphinx source of the IT-Wallet Technical Specifications (
 ## Where content lives
 
 - Published specification: `docs/en/` and `docs/it/` (reStructuredText). Shared link targets live in `docs/common/common_definitions.rst`.
-- Examples included from the spec: `examples/`.
+- Examples included from the spec: `examples/`. An example that is the same in English and Italian (code, JSON, HTTP, or any other sample) belongs in `examples/` and is included from both `docs/en` and `docs/it` with `literalinclude`. Do not paste that example into both language files.
 - Editorial conventions: `CONTRIBUTING-RULES.md`. Follow them when changing the spec.
 - Rules for editing the specification are in `docs/AGENTS.md`. They apply when working under `docs/`.
 - Files outside `docs/` (analyses, notes, reports, draft regulations, certification drafts) are working material. Do not copy them into the specification unless asked.
