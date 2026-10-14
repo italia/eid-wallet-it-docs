@@ -318,7 +318,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Provider of WRPRC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
       Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
-      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida di un Servizio e un WRPAC valido di quel Servizio, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida nel Register e un WRPAC valido, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Conforme con ARF 3.0.0.
 
     **Federation Registry**

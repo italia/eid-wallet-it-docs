@@ -318,7 +318,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of WRPRC**
       Legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPRC.
-      It issues those certificates automatically once the Entity has a valid registration of a Service and a valid WRPAC of that Service.
+      It issues those certificates automatically once the Entity has a valid registration in the Register and a valid WRPAC, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Aligned with ARF 3.0.0.
 
     **Federation Registry**
