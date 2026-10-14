@@ -114,7 +114,7 @@ PID
 The **PID** is the Person Identification Data under the European Digital Identity framework (see :ref:`credential-data-model-pid:PID Data Model` and :term:`Person Identification Data`). It is issued by the PID Provider as a technical PID (signed data structure) for presentation from the Wallet Instance.
 
 - The Wallet Instance in the **Operational** state allows the PID issuance. Upon successful issuance of a valid PID, the Wallet Instance MUST transition to the **Valid** state (see :ref:`wallet-instance-lifecycle:Transition to Valid`).
-- While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further credential issuance according to this specification and the EUDI framework.
+- While the Wallet Instance is **Valid** and the PID is active/valid, the User MAY present the PID and use it for authentication and further Credential issuance according to this specification and the EUDI framework.
 - Revocation, expiry, or deletion of the PID MUST transition the Wallet Instance back to **Operational** (see :ref:`wallet-instance-lifecycle:Transition to Operational`).
 - Where the User revokes the PID, the Wallet Provider MUST handle the consequences on the Wallet Instance lifecycle and on dependent EAAs as defined in this specification.
 - The PID is intended for use also in cross-border interactions within the EUDI Wallet ecosystem, in addition to national use.
@@ -351,20 +351,20 @@ Following is represented for illustrative purposes the page with the :ref:`funct
 .. only:: format_html
 
   .. figure:: ./images/svg/Credential-offer-ENG.svg
-    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
     :align: center
 
-    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
 
 
 .. only:: format_latex
 
   .. figure:: ./images/pdf/Credential-offer-ENG.pdf
-    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
 
-    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
 
 
 Engagement Button
@@ -1206,7 +1206,7 @@ This section outlines three different categories of requirements for managing ea
 
 - **Its status**: to allow the User to verify whether an Electronic Attestation is valid or invalid;
 - **Its usage**: to enable the User to view and manage the history of presentations carried out with an Electronic Attestation;
-- **Its data**: to allow the User to backup and restore each Electronic Attestation of Attributes in compliance with the principle of data portability.
+- **Its data**: to allow the User to back up and restore each Electronic Attestation of Attributes, and to migrate to a new  Wallet Instance of the same or a different Wallet Solution, in compliance with the principle of data portability. See :ref:`backup-restore:Backup and Restore`.
 
 Below are the key aspects that impact and define the User Experience in managing Electronic Attestations though the Wallet Instance, along with the functional requirements associated with each category.
 
@@ -1378,8 +1378,9 @@ Backup and Restore of Electronic Attestation of Attributes
 
 With the aim of ensuring the principle of data portability, the Wallet Solution MUST guarantee the User to have access to specific functionalities, particularly to:
 
-- Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance;
-- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance.
+- Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance, as specified in :ref:`backup-restore:Backup Flow`;
+- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in :ref:`backup-restore:Restore flow for a Device-Bound Credential`;
+- Request migration to a new Wallet Instance through the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 Deactivation of the Wallet Instance
 ------------------------------------

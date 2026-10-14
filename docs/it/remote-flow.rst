@@ -4,8 +4,9 @@
 Flusso Remoto
 =============
 
-La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_].
+La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_] e [`ETSI TS 119 472-2`_], come richiesto da [`CIR2024/2982`_].
 Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
+La clausola 6 di [`ETSI TS 119 472-2`_] prevale su [`OPENID4VC-HAIP`_] ove le due fonti differiscono.
 
 A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 
@@ -354,7 +355,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 **Passaggi 28-29**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`). La Relying Party DEVE considerare la transazione completata solo se il reindirizzamento di ritorno viene ricevuto nella stessa sessione utente in cui il flusso è stato avviato; in caso contrario, DEVE rifiutare la presentazione.
 
 .. note::
-    Durante ciascuna transazione di presentazione di credenziali eseguita tramite il flusso remoto, l'Istanza del Wallet DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni (vedere :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
+    Durante ciascuna transazione di presentazione di Credenziali eseguita tramite il flusso remoto, l'Istanza del Wallet DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni (vedere :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
 
     Il record di transazione DEVE essere creato una volta che l'Istanza del Wallet ha accettato la richiesta di presentazione per l’elaborazione (ossia, dopo la validazione della richiesta e i controlli di trust/policy della Relying Party, Passaggi 13–15). A questo punto, il record DEVE includere i metadati della transazione e il contesto della richiesta disponibile in quella fase (ad esempio, il/i tipo/i di Credenziale richiesti e l’/gli identificativo/i degli attributi richiesti), senza registrare alcun valore degli attributi.
 
@@ -543,12 +544,16 @@ I parametri del payload JWT sono descritti qui:
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
         - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
   * - **verifier_info**
-    - OBBLIGATORIO quando ``client_id`` utilizza un prefisso ``x509_hash``. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito in [`ETSI TS 119 472-2`_] e nella Sezione 5.1 di [`OpenID4VP`_]. Ciascun oggetto DEVE contenere:
+    - OBBLIGATORIO sul percorso EUDIW [`ETSI TS 119 472-2`_]. Array di oggetti, come richiesto da :ref:`trust-evaluation:EUDIW Authorization`.
 
-        - **registration_cert**: OBBLIGATORIO. Il Wallet-Relying Party Registration Certificate del Servizio applicabile, incluso per valore ([`EIDAS-ARF`_] RPRC_19).
-        - **registrar_dataset**: OPZIONALE. Le informazioni di registrazione del Servizio applicabile, solo per pubblicazione e trasparenza.
-
-      La Wallet Unit DEVE usare ``registration_cert`` come specificato in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` NON DEVE essere usato come sostituto di ``registration_cert``.
+      Ciascun oggetto DEVE contenere ``format`` e ``data``.
+      L'array DEVE contenere un oggetto il cui ``format`` è ``registrar_dataset``.
+      Il suo ``data`` DEVE essere un oggetto non vuoto contenente i membri registrati ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` e ``policyURI``.
+      ``srvDescription`` e ``purpose`` DEVONO usare valori ``MultiLangString`` registrati.
+      L'array DEVE contenere un oggetto il cui ``format`` è ``registration_cert``.
+      Il suo ``data`` DEVE essere la serializzazione base64url del WRPRC.
+      L'array NON DEVE contenere ``credential_ids`` [`ETSI TS 119 472-2`_].
+      Questi oggetti non sono richiesti per ``openid_federation``, i cui dati equivalenti di autorizzazione e trasparenza provengono dal Trust Mark di registrazione validato (vedi :ref:`trust-evaluation:Metadata Retrieval and Validation`).
   * - **response_mode**
     - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**
