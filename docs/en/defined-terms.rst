@@ -138,7 +138,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **National Identity Provider**
-      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** Credential.
       Not present in ARF 3.0.0.
 
     **National Trust Anchor**
@@ -318,7 +318,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of WRPRC**
       Legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPRC.
-      It issues those certificates automatically once the Entity has a valid registration of a Service and a valid WRPAC of that Service.
+      It issues those certificates automatically once the Entity has a valid registration in the Register and a valid WRPAC, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Aligned with ARF 3.0.0.
 
     **Federation Registry**

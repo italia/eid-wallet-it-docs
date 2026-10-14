@@ -121,7 +121,7 @@ This section provides the set of test cases designed for technical implementers 
     - Authorization Error Response is sent.
   * - RPR-26
     - Error Handling
-    - Verify handling of malformed claims in presented credentials.
+    - Verify handling of malformed claims in presented Credentials.
     - Authorization Error Response is sent.
   * - RPR-27
     - Error Handling

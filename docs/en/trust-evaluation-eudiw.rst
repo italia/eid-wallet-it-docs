@@ -356,21 +356,21 @@ Within the EUDIW Trust Framework the following applies.
 
 **Input**
 
-- ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` is the first certificate of the chain and ``C_n`` is the end-entity certificate.
-  For any ``i`` in ``1, ..., n-1``, ``C_i`` is the issuer of ``C_i+1``.
+- ``path``: the sequence of ``n`` certificates ``C_1, ..., C_n`` provided by the Entity, where ``C_1`` MUST be the end-entity certificate corresponding to the private key used to sign the artifact or Attestation and ``C_n`` MUST be the certificate signed by the ``trust_anchor``. The Trust Anchor certificate MUST NOT be included in ``path``.
+  For any ``i`` in ``1, ..., n-1``, ``C_i+1`` MUST be the issuer of ``C_i``.
 - ``trust_anchor``: the trusted certificate obtained from the ``ServiceDigitalIdentity`` of the validated List of Trusted Entities or Trusted List.
-  It MUST contain the public key used to sign ``C_1``.
+  It MUST contain the public key used to sign ``C_n``.
   Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.
 - ``current_time``: the current date and time.
 
 **Outcome**
 
-- The validated end-entity certificate ``C_n``, or a failure.
+- The validated end-entity certificate ``C_1``, or a failure.
 
 **Process**
 
-1. Build the certification path from the end-entity certificate ``C_n`` to the ``trust_anchor``.
-2. Execute the path validation defined in :rfc:`5280#section-6`, using the ``trust_anchor`` as the trust anchor input of the algorithm and ``current_time`` as the validation time.
+1. Build the certification path from the end-entity certificate ``C_1`` towards the ``trust_anchor``, ending with ``C_n``.
+2. Execute the path validation defined in :rfc:`5280#section-6`, using the ``trust_anchor`` as the trust anchor input of the algorithm and ``current_time`` as the validation time. The RFC 5280 validation processes the certificates from ``C_n`` to ``C_1``; this does not change the order of the presented ``path``.
 3. Verify the revocation status of the certificates in the path according to :rfc:`5280` and :rfc:`6960`, unless the check is skipped as described above.
 
 If any step fails, the certification path MUST be considered invalid and the artifact signature MUST NOT be verified with the presented certificate chain.
@@ -383,15 +383,11 @@ It is invoked during the issuance and presentation flows to validate the signatu
 
 The process MUST be structured as follows:
 
-- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
-
-  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
-
-  - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (only for PID or WIA).
+- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, the signature validation procedure below MUST be executed using the Sign/Seal Certificate and the associated X.509 trust chain contained in the Attestation, with the Trust Anchor present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
 
 - If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
 
-The **Base Signature Validation** is structured as follows:
+The signature validation procedure is structured as follows:
 
 **Input**
 
@@ -429,37 +425,11 @@ This process depends on the Attestation type:
 
   In each of the above cases, for an Attestation in mdoc format, the Mobile Security Object carries the Document Signer certificate in the ``x5chain`` header, as defined in [`ISO18013-5`_]. For an Attestation in SD-JWT VC format, the issuer certificate chain is carried in the ``x5c`` header of the JOSE signature.
 
-If **Base Signature Validation** results in failure, the Entity validating the Attestation MUST execute **Fallback Signature Validation** as follows:
-
-.. warning::
-  
-  This process only applies to **PID** and **WIA** Attestation types.
-
-**Input**
-
-- The received Attestation.
-- The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities.
-
-**Outcome**
-
-- The validated Attestation, or a validation failure.
-
-**Process**
-
-1. Fetch the applicable List of Trusted Entities according to the type of Attestation, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-2. Verify the Attestation signature directly using the validated Trust Anchor acting as the signer certificate.
-
-.. warning::
-
-   Although the IT Wallet specification requires the Trust Anchor certificates notified to the Commission and included in the LoTE to be *different* from the Sign/Seal Certificates of the related Entities, Clause 4.2 of [`ETSI TS 119 412-6`_] allows LoTE Trust Anchors to serve directly as Sign/Seal Certificates.
-   In this case, these certificates MUST NOT be included in the Attestation, forcing the verification process to adhere to the **Fallback Signature Validation** procedure.
-   To ensure interoperability, EUDIW Attestation Signature Validation implementations MUST support both validation mechanisms.
-
 .. note::
 
   When verifying signatures or seals made by historical keys, the same process applies albeit with the following difference: the Trust Anchor is retrieved from the `ServiceHistory.ServiceDigitalIdentity` element instead of the `ServiceInformation.ServiceDigitalIdentity` element.
 
-If both **Base Signature Validation** and **Fallback Signature Validation** fail, the Attestation MUST NOT be considered as issued by a trusted Entity.
+If signature validation fails, the Attestation MUST NOT be considered as issued by a trusted Entity.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
@@ -469,13 +439,15 @@ It establishes trust by validating the Wallet-Relying Party X.509 certificate ch
 The Wallet-Relying Party Access Certificate is profiled in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
 
 For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
+The Wallet Unit MUST perform this authentication and validation itself.
+The Wallet Unit MUST NOT delegate it to an operating system browser or to another intermediary application ([`CIR2024/2982`_] Article 3(1), as replaced by [`CIR2026/1731`_]).
 
 **Input**
 
 The Authentication outcome MUST be based only on information derived from:
 
 - the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities;
-- the X.509 certificate path terminating with the Wallet-Relying Party Access Certificate end-entity certificate;
+- the X.509 certificate path starting with the Wallet-Relying Party Access Certificate end-entity certificate;
 - a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.
 
 **Outcome**
@@ -489,8 +461,8 @@ If ``NON_AUTHENTICATED``, the Wallet Unit MUST inform the User that the identity
 The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:
 
 1. **Retrieve the Trust Anchor**: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see :ref:`trust-evaluation:List of Trusted Entities Validation`).
-   To select the correct entry, match the ``issuer.organizationIdentifier`` of the first certificate of the chain, whose semantics are defined in clause 5.1.4 of [`ETSI EN 319 412-1`_], with the ``TrustedEntitiesList[].TrustedEntity.TETradeName`` of the List of Trusted Entities.
-   The certificates in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field constitute the Trust Anchor.
+   When present, the ``issuer.organizationIdentifier`` of the last certificate of the chain MAY be used to locate candidate entries by matching it against the registration identifier in ``TrustedEntitiesList[].TrustedEntityInformation.TETradeName``, as defined in clause 5.1.4 of [`ETSI EN 319 412-1`_] and Annex F, Table F.2 of [`ETSI TS 119 602`_].
+   The Wallet Unit MUST retrieve candidate Trust Anchor certificates from the ``ServiceDigitalIdentity`` of the entry's service whose ``ServiceTypeIdentifier`` is ``http://uri.etsi.org/19602/SvcType/WRPAC/Issuance``, as defined in Annex F, Table F.3 of [`ETSI TS 119 602`_]. The selected Trust Anchor MUST validate the presented certification path at step 3.
 
 2. **Construct the Certification Path**: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (``C_1``) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (``C_n``).
    The simplest path consists of a single certificate, where ``n = 1``.
@@ -515,8 +487,8 @@ Wallet-Relying Party Access Certificate Validation
 The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm` with the ``path`` and ``trust_anchor`` defined there.
 The inputs are the following:
 
-- ``C_n`` is the first certificate of the chain provided by the Wallet-Relying Party;
-- ``C_1`` is the Wallet-Relying Party Access Certificate;
+- ``C_1`` is the first certificate of the chain provided by the Wallet-Relying Party and is the Wallet-Relying Party Access Certificate used to sign the artifact;
+- ``C_n`` is the last certificate of the chain and is signed by the ``trust_anchor``;
 - ``trust_anchor`` is a certificate of the Provider of Wallet-Relying Party Access Certificate obtained from the List of Trusted Entities.
 
 .. warning::
@@ -570,11 +542,11 @@ The validation flow depends on the interaction.
 
 - During the Presentation flow the Relying Party MUST convey the Wallet-Relying Party Registration Certificate by value ([`EIDAS-ARF`_] RPRC_19):
 
-    - as a ``registration_cert`` element of the ``verifier_info`` parameter of the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
+    - in the ``data`` member of the ``verifier_info`` element whose ``format`` is ``registration_cert`` in the Request Object, in the Remote Flow, as defined in [`ETSI TS 119 472-2`_] and Section 5.1 of [`OpenID4VP`_];
     - in the ``euWrprc`` member of ``requestInfo`` in the ISO ``DeviceRequest``, in the Proximity Flow, as defined in Section 5.3 of [`ETSI TS 119 472-2`_] and in [`ISO18013-5`_].
 
-   In the Remote Flow, ``verifier_info`` MUST also contain a ``registrar_dataset`` element for ETSI transport and transparency.
-   The dataset MUST contain the registered identifier, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` fields as specified in the Remote Flow.
+   In the Remote Flow, ``verifier_info`` MUST also contain an element whose ``format`` is ``registrar_dataset`` for ETSI transport and transparency.
+   That element's ``data`` object MUST contain the registered identifier, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` fields as specified in the Remote Flow.
    It MUST NOT replace or override the Wallet-Relying Party Registration Certificate as the presentation authorization source ([`EIDAS-ARF`_] RPRC_19a is empty).
 
    In the Proximity Flow, every ``ItemsRequest`` MUST contain a non-empty ``requestInfo.euWrpRegistrarInfo`` with its non-empty ``identifier`` array, non-empty ``srvDescription`` and ``purpose`` arrays, ``registryURI``, ``intendedUseIdentifier`` and ``policyURI``.
@@ -661,7 +633,7 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
     - **Credential Issuance**.
       The Wallet Unit MUST match the Credential Issuer identifier with the subject of a supplied Wallet-Relying Party Registration Certificate and with the applicable identifier in ``issuer_info[].data.identifier[]`` of the Credential Issuer Metadata ([`EIDAS-ARF`_] RPRC_22b).
     - **Credential Presentation**.
-      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``verifier_info.data.identifier`` of the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
+      The Wallet Unit MUST first assume the **direct** scenario and match the Relying Party identifier in the Wallet-Relying Party Access Certificate (``organizationIdentifier`` or ``serialNumber``) with the ``sub`` of the Wallet-Relying Party Registration Certificate, and with the ``data.identifier`` of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` in the Request Object in the Remote Flow or an applicable registered identifier in the ``docRequests[].itemsRequest[].requestInfo.euWrpRegistrarInfo.identifier`` array in the Proximity Flow.
       If the match fails, the Wallet Unit MUST attempt the **intermediated** scenario ([`EIDAS-ARF`_] RPRC_17a):
       the WRPAC subject is the Intermediary, the WRPRC identifies a different Relying Party, and the WRPRC ``intermediary`` object identifies this Intermediary ([`EIDAS-ARF`_] RPRC_04).
       Association of a distinct WRPAC to that Relying Party and Service is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
@@ -708,6 +680,7 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
    The Wallet Unit MUST associate the resolved policy with each issued EAA.
    During Credential Presentation, for each Digital Credential and each requested attribute, the Wallet Unit MUST evaluate the associated EDP before User consent.
    If an EDP URI cannot be resolved to the exact included or preloaded policy, the EDP evaluation MUST fail.
+   That failure is not ``EDP_NOT_SATISFIED`` and is *non-overridable*, as specified in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
    An EDP MUST NOT be evaluated for a PID.
    According to the ``policy_type`` defined in Section 4.2.5 of [`ETSI TS 119 472-3`_]:
 
@@ -721,22 +694,21 @@ The Wallet Unit MUST output the ``authz_val_state`` and ``edp_state`` variables,
       The Wallet Unit MUST NOT use identifiers from the WRPAC, including the Relying Party subject DN of a Wallet-Relying Party Access Certificate.
       If ``authorized_parties[].subject_dn`` is present, it is the ETSI encoding defined in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)` and MUST NOT be used as a substitute for ``sub``.
       In an **intermediated** presentation the WRPRC in the request is that of the intermediated Relying Party.
-    - ``specific_root_of_trust``: only Relying Parties whose Wallet-Relying Party Registration Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
+    - ``specific_root_of_trust``: only authenticated Relying Parties whose Wallet-Relying Party Access Certificate is signed under one of the ``trusted_roots`` are authorized ([`EIDAS-ARF`_] EDP_03).
       The Wallet Unit MUST match each ``trusted_roots`` entry by ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison.
-      It MUST compare all certificates in the WRPRC signing path with those authorised root or intermediate certificates.
-      The path comprises the certificates presented with the WRPRC and the Trust Anchor retrieved from the Providers of WRPRC LoTE.
+      It MUST compare all certificates in the WRPAC signing path with those authorised root or intermediate certificates.
+      The path comprises the WRPAC presented in ``x5c`` and the Trust Anchor retrieved from the Providers of WRPAC LoTE.
       If none of these certificates is included in the list, the Wallet Unit MUST consider the EDP evaluation to have failed.
-      In an **intermediated** presentation the Wallet Unit MUST NOT compare the Intermediary WRPAC chain.
-      It MUST use the signing path of the intermediated Relying Party's WRPRC included in the request.
+      In an **intermediated** presentation the authenticated Relying Party is the Intermediary.
+      The Wallet Unit MUST compare that Intermediary's WRPAC signing path.
 
    The Wallet Unit MUST apply the base policy to the Credential and any recognized attribute-specific rule to the selected Credential-format claim path.
-   A disclosed attribute is permitted only when both the Credential-level result and its applicable attribute-level result are satisfied.
    The Wallet Unit MUST inform the User of the Credential-level and attribute-level results, including the policy information link when present, before consent.
-   The Wallet Unit MUST block every unsatisfied Credential or attribute.
+   The Wallet Unit MUST NOT disclose an attribute when the Credential-level result or its applicable attribute-level result of a resolved policy is unsatisfied, unless the User overrides that result as specified in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
    Unknown extensions MAY be ignored only when doing so does not break processing of recognized rules.
 
-   If the applicable checks are satisfied, or no EDP is present for an EAA, the Wallet Unit MUST set the Credential or attribute result to ``EDP_SATISFIED``.
-   Otherwise the Wallet Unit MUST set that result to ``EDP_NOT_SATISFIED``.
+   If the applicable checks of a resolved policy are satisfied, or no EDP is present for an EAA, the Wallet Unit MUST set the Credential or attribute result to ``EDP_SATISFIED``.
+   If a resolved policy does not permit the Credential or attribute, the Wallet Unit MUST set that result to ``EDP_NOT_SATISFIED``.
 
 **Outcome**
 
@@ -788,7 +760,7 @@ The table below summarizes the codes.
    * - ``edp_state``
      - ``EDP_NOT_SATISFIED``
      - presentation
-     - The selected Credential, or attribute, does not satisfy the resolved Embedded Disclosure Policy. Disclosure or issuance of the affected data is blocked.
+     - A resolved Embedded Disclosure Policy does not permit this Credential or attribute for this Relying Party. The Wallet Unit informs the User, who allows or denies the disclosure, as specified in :ref:`trust-evaluation:Authorization Decision and Override Rules` ([`EIDAS-ARF`_] EDP_07). This code does not apply to issuance.
 
 The final Authorization Decision, ``AUTHORIZED`` or ``NOT_AUTHORIZED``, is elaborated from the ``authz_art_state``, ``authz_val_state`` and ``edp_state`` values, as defined in :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
