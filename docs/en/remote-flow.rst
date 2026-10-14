@@ -70,7 +70,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
      c. evaluates the eligibility of the Relying Party in the presesntation context. 
      
-       * For ``x509_hash``, authorization is based on the validated WRPRC in ``verifier_info.registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`; 
+       * For ``x509_hash``, authorization is based on the validated WRPRC in the ``verifier_info`` element whose ``format`` is ``registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`; 
        * for ``openid_federation``, authorization is based on the validated ``registration-entity`` Trust Mark and follows :ref:`trust-evaluation:Authorization`. 
        
        The Wallet Instance MUST perform exact, case-sensitive entitlement and DCQL scope checks (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
@@ -258,21 +258,19 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       },
       "verifier_info": [
         {
-          "registrar_dataset": {
-            "data": {
-              "identifier": "https://relying-party.example.org",
-              "srvDescription": [{"lang": "en", "value": "Example service"}],
-              "registryURI": "https://registrar.example.org",
-              "intendedUseIdentifier": "https://example.org/use/presentation",
-              "purpose": [{"lang": "en", "value": "Identity verification"}],
-              "policyURI": "https://example.org/policy"
-            }
+          "format": "registrar_dataset",
+          "data": {
+            "identifier": "https://relying-party.example.org",
+            "srvDescription": [{"lang": "en", "value": "Example service"}],
+            "registryURI": "https://registrar.example.org",
+            "intendedUseIdentifier": "https://example.org/use/presentation",
+            "purpose": [{"lang": "en", "value": "Identity verification"}],
+            "policyURI": "https://example.org/policy"
           }
         },
         {
-          "registration_cert": {
-            "data": "<WRPRC-base64url>"
-          }
+          "format": "registration_cert",
+          "data": "<WRPRC-base64url>"
         }
       ],
       "response_uri": "https://relying-party.example.org/response_uri",
@@ -331,7 +329,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "exp": 1672422065
     }
 
-* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and ``registrar_dataset.identifier`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. 
+* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and the ``identifier`` in the ``data`` of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. 
 
 * For ``openid_federation``, it validates the registration Trust Mark, its entitlements, and its exact, case-sensitive scope, and MUST NOT treat WRPAC or WRPRC material as National trust evidence. 
 
@@ -620,13 +618,15 @@ The JWT payload parameters are described herein:
    * - **dcql_query**
      - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_. On the EUDIW path, each applicable query MUST use the ETSI Trusted Lists Authority Key Identifier mechanism with ``trusted_authorities`` type ``etsi_tl``.
    * - **verifier_info**
-     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array containing a ``registrar_dataset`` object and a separate ``registration_cert`` object, as required by :ref:`trust-evaluation:EUDIW Authorization`.
-    
-       It MUST NOT contain ``credential_ids`` [`ETSI TS 119 472-2`_]. 
-      
-       - The ``registrar_dataset`` object MUST contain non-empty object ``data`` and the registered ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose``, and ``policyURI`` members; ``srvDescription`` and ``purpose`` MUST use registered ``MultiLangString`` values. 
-       - The ``registration_cert`` object's ``data`` MUST be the base64url serialization of the WRPRC. 
-      
+     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array of objects, as required by :ref:`trust-evaluation:EUDIW Authorization`.
+
+       Each object MUST contain ``format`` and ``data``.
+       The array MUST contain one object whose ``format`` is ``registrar_dataset``.
+       Its ``data`` MUST be a non-empty object containing the registered ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` members.
+       ``srvDescription`` and ``purpose`` MUST use registered ``MultiLangString`` values.
+       The array MUST contain one object whose ``format`` is ``registration_cert``.
+       Its ``data`` MUST be the base64url serialization of the WRPRC.
+       The array MUST NOT contain ``credential_ids`` [`ETSI TS 119 472-2`_].
        These objects are not required for ``openid_federation``, whose equivalent authorization and transparency data comes from the validated registration Trust Mark (see :ref:`trust-evaluation:Metadata Retrieval and Validation`).
    * - **transaction_data**
      - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:

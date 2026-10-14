@@ -544,12 +544,16 @@ I parametri del payload JWT sono descritti qui:
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
         - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
   * - **verifier_info**
-    - OBBLIGATORIO quando ``client_id`` utilizza un prefisso ``x509_hash``. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito in [`ETSI TS 119 472-2`_] e nella Sezione 5.1 di [`OpenID4VP`_]. Ciascun oggetto DEVE contenere:
+    - OBBLIGATORIO sul percorso EUDIW [`ETSI TS 119 472-2`_]. Array di oggetti, come richiesto da :ref:`trust-evaluation:EUDIW Authorization`.
 
-        - **registration_cert**: OBBLIGATORIO. Il Wallet-Relying Party Registration Certificate del Servizio applicabile, incluso per valore ([`EIDAS-ARF`_] RPRC_19).
-        - **registrar_dataset**: OPZIONALE. Le informazioni di registrazione del Servizio applicabile, solo per pubblicazione e trasparenza.
-
-      La Wallet Unit DEVE usare ``registration_cert`` come specificato in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` NON DEVE essere usato come sostituto di ``registration_cert``.
+      Ciascun oggetto DEVE contenere ``format`` e ``data``.
+      L'array DEVE contenere un oggetto il cui ``format`` è ``registrar_dataset``.
+      Il suo ``data`` DEVE essere un oggetto non vuoto contenente i membri registrati ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` e ``policyURI``.
+      ``srvDescription`` e ``purpose`` DEVONO usare valori ``MultiLangString`` registrati.
+      L'array DEVE contenere un oggetto il cui ``format`` è ``registration_cert``.
+      Il suo ``data`` DEVE essere la serializzazione base64url del WRPRC.
+      L'array NON DEVE contenere ``credential_ids`` [`ETSI TS 119 472-2`_].
+      Questi oggetti non sono richiesti per ``openid_federation``, i cui dati equivalenti di autorizzazione e trasparenza provengono dal Trust Mark di registrazione validato (vedi :ref:`trust-evaluation:Metadata Retrieval and Validation`).
   * - **response_mode**
     - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` sia nel Flusso Same Device sia nel Flusso Cross Device (:ref:`RPR-90 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**
