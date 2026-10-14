@@ -43,5 +43,3 @@ All other presentation failures, including binding failures or intermediary bind
 
 In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
 User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.
-
-The *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` MUST be executed during every Credential Presentation against the Wallet-Relying Party Registration Certificate included in the request, as specified in :ref:`trust-evaluation:EUDIW Authorization`.

@@ -43,5 +43,3 @@ Tutti gli altri fallimenti di presentazione, inclusi i fallimenti di binding o i
 
 In caso di fallimenti non-overridable, la Wallet Unit DEVE informare chiaramente l'Utente sull'esito negativo.
 Le informazioni rilevanti per l'Utente relative agli esiti overridable DEVONO essere presentate come avvisi, e l'approvazione dell'Utente DEVONO essere un passo distinto rispetto alla Authorization Decision finale.
-
-La *Scope Comparison Procedure* in :ref:`trust-evaluation:Authorization Validation` DEVE essere eseguita durante ogni Presentazione di Attestati rispetto al Wallet-Relying Party Registration Certificate incluso nella richiesta, come specificato in :ref:`trust-evaluation:EUDIW Authorization`.
