@@ -3,6 +3,7 @@
 .. _EUDI-TS 5: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md
 .. _EUDI-TS 5 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml
 .. _EUDI-TS 5 JSON Schema: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-json-common-rp-data-model.json
+.. _EUDI-TS 7: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts7-common-interface-for-data-deletion-request.md
 .. _EUDI-TS 10: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md
 .. _EUDI-TS 11: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md
 .. _EUDI-TS 11 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-cat-of-attestations-jwt-openapi31.yml
@@ -25,6 +26,7 @@
 .. _ETSI EN 319 411-2: https://www.etsi.org/deliver/etsi_en/319400_319499/31941102/02.05.01_60/en_31941102v020501p.pdf
 .. _ETSI TS 119 411-8: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf
 .. _ETSI TS 119 475: https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf
+.. _ETSI TS 119 472-1: https://www.etsi.org/deliver/etsi_ts/119400_119499/11947201/01.02.01_60/ts_11947201v010201p.pdf
 .. _ETSI TS 119 472-2: https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf
 .. _ETSI TS 119 472-3: https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf
 .. _ETSI EN 319 102-1: https://www.etsi.org/deliver/etsi_en/319100_319199/31910201/01.04.01_60/en_31910201v010401p.pdf

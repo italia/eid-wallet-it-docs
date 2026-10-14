@@ -185,7 +185,7 @@ This section lists the test cases from Sections:
      - The Keystore or the WSCA/Remote WSCD requires User authentication (wallet unlock: PIN or biometric) before any signature or key-use operation. The User retains exclusive control of the private keys.
    * - WP_014d
      - Trust, Security
-     - PID High vs other credentials key storage
+     - PID High vs other Credentials key storage
      - Keys of IT-Wallet ID and (Q)EAA are stored in the hardware-backed Keystore. Keys of a PID at Level of Assurance High MUST be generated and stored only in the WSCA operating within the Remote WSCD. A TEE Protection Profile or similar report is not accepted as evidence of Level of Assurance High.
    * - WP_014e
      - Trust, Security
@@ -512,7 +512,7 @@ This section lists the test cases from Sections:
    * - WP_058
      - Issuance, Interoperability
      - Batch Credential Request
-     - In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the credential type, and a ``proofs`` parameter containing all key proofs.
+     - In case of Batch Issuance, Wallet Instance sends a batch Credential request to the Credential Endpoint that includes: the Access Token, a DPoP proof JWT, the Credential type, and a ``proofs`` parameter containing all key proofs.
    * - WP_058a
      - Issuance, Security
      - Batch Issuance: key generation
@@ -547,7 +547,7 @@ This section lists the test cases from Sections:
      - Wallet Instance extracts the signature algorithm from the protected header of the mdoc-CBOR ``COSE_Sign1``, retrieves the Credential Issuer’s public key from the ``kid`` or ``x5chain`` in the unprotected header, and verifies the COSE signature over the MSO; if invalid, the Credential is rejected.
    * - WP_063
      - Issuance, Privacy
-     - User consent for credential storage
+     - User consent for Credential storage
      - Wallet Instance prompts the User for consent and stores the Digital Credential only after explicit approval.
    * - WP_064
      - Issuance, Interoperability
@@ -636,7 +636,7 @@ This section lists the test cases from Sections:
    * - WP_075
      - Issuance, UX
      - No consent on new Digital Credential store without ``user_attribute`` update
-     - If the Digital Credential update only concerns credential metadata changes (``update``), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.
+     - If the Digital Credential update only concerns Credential metadata changes (``update``), Wallet Instance automatically stores the new refreshed Digital Credential without requesting additional consent from the User.
 
 .. _wallet-credential-presentation-testcases:
 
@@ -714,7 +714,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_087
      - Remote-flow, Presentation, Security
      - Check Relying Party eligibility
-     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified credential.
+     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified Credential.
    * - WP_088
      - Remote-flow, Presentation, Privacy
      - User consent for disclosure
@@ -973,10 +973,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
 Test Cases for User Attribute Deletion on Relying Party Side
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the test cases from Sections:
-
-- :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+This section lists the test cases from Section :ref:`user-attribute-deletion:User's Attributes Deletion`.
 
 .. list-table::
    :class: longtable
@@ -997,28 +994,28 @@ This section lists the test cases from Sections:
      - The transaction log view shows Relying Parties in possession of the User's attributes.
    * - WP_116
      - Attribute Deletion, Lifecycle, Security
-     - Relying Party metadata validation for deletion
-     - When a User selects a Relying Party for attribute deletion, Wallet Instance fetches and validates its federation metadata, confirming the presence of an Erasure Endpoint.
+     - Relying Party support contact for deletion
+     - When a User selects a Relying Party for attribute deletion, the Wallet Instance obtains the registered support contact (``support_uri`` in the National Trust Framework, or the Wallet-Relying Party Access Certificate support contact in the EUDIW Trust Framework) and confirms that at least one invocable contact is present.
    * - WP_117
      - Attribute Deletion, Lifecycle, Interoperability
-     - Erasure Request
-     - Wallet Instance correctly constructs, and sends a valid Erasure Request destined for the Relying Party's Erasure Endpoint.
+     - Data deletion request
+     - The Wallet Instance invokes the external application that matches the selected contact. For an email address, the draft ``subject`` requests erasure under Article 17 of Regulation (EU) 2016/679 and the ``body`` identifies the attributes, or requests erasure of all personal data previously provided through the Wallet Instance.
    * - WP_117a
      - Attribute Deletion, Lifecycle, Privacy
-     - Erasure Request logging
-     - A log entry is created for each Erasure Request, containing the timestamp, the Relying Party's identifier, and the specific attributes requested for deletion.
+     - Data deletion request logging
+     - A log entry is created for each data deletion request after the external application has been successfully invoked. The entry contains the date and time, the Relying Party's identifier, and the specific attributes requested for deletion.
    * - WP_118
      - Attribute Deletion, Lifecycle, UX
-     - User redirection and callback for erasure
-     - Wallet Instance successfully redirects the User to the Relying Party’s Erasure Endpoint and receives the Erasure Response via its callback mechanism.
+     - Contact selection
+     - The Wallet Instance presents the contacts that the platform can invoke, or applies a stored User preference, and invokes the selected external application.
    * - WP_119
      - Attribute Deletion, Lifecycle, Interoperability
-     - Handles deletion/error response
-     - Wallet Instance correctly processes both success and error responses for the Erasure Response from the Relying Party.
+     - Request initiation
+     - The Wallet Instance records the data deletion request as initiated after the external application has been successfully invoked. It does not require an HTTP response from the Relying Party.
    * - WP_119a
      - Attribute Deletion, Lifecycle, UX
-     - User notification on erasure
-     - Wallet Instance displays a clear notification to the User indicating the success or failure of the Erasure Request.
+     - User notification on deletion request
+     - The Wallet Instance informs the User that the data deletion request has been initiated.
 
 .. _credential-backup-testcases:
 
@@ -1075,7 +1072,7 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
    * - WP_122d
      - Backup and Restore, Security
      - Credential identifiers in backup JWT
-     - The ``credentials_backup`` claim contains entries keyed by the Issuer identifier, and each entry lists one or more ``credential_configuration_ids`` corresponding to the issued credentials.
+     - The ``credentials_backup`` claim contains entries keyed by the Issuer identifier, and each entry lists one or more ``credential_configuration_ids`` corresponding to the issued Credentials.
    * - WP_123
      - Backup and Restore, Security
      - Backup JWT signing with attested key
@@ -1166,11 +1163,11 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_133a
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - SHA-256 hash computation
-     - Wallet Instance successfully computes a SHA-256 digest (``client_data_hash``) over the ``nonce``, the ``hardware_key_pub``, and the ``hardware_key_tag``,
+     - Wallet Instance successfully computes a SHA-256 digest (``client_data_hash``) of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``. The digest does not include ``hardware_key_pub``.
    * - WP_133b
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Key Attestation
-     - Wallet Instance successfully invokes the Key Attestation API with the ``client_data_hash`` and obtains a signed attestation from the Key Attestation API.
+     - Wallet Instance successfully invokes the Key Attestation API at key generation, passing ``client_data_hash`` as the attestation challenge, and obtains a signed attestation.
    * - WP_134
      - Wallet Initialization / Registration, Lifecycle, Security
      - Key Binding request
@@ -1194,7 +1191,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_136
      - Wallet Initialization / Registration, Lifecycle, Security
      - Cryptographic binding verification
-     - Wallet Provider successfully verifies the cryptographic binding between the ``hardware_key_tag``, ``hardware_key_pub``, nonce, and the ``client_data_hash`` provided in the key_attestation.
+     - Wallet Provider extracts ``hardware_key_pub`` from the validated ``key_attestation`` and verifies that the embedded challenge equals the SHA-256 digest of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``.
    * - WP_137
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Wallet Instance Registration
@@ -1210,7 +1207,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_140
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Wallet Instance Attestation (WIA) Request
-     - Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, and other configuration related parameters.
+     - Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, and other configuration related parameters.
    * - WP_140a
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Hardware key existence check/re-initialization
@@ -1241,7 +1238,7 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Key Attestation issuance for PID keys conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_140h
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
-     - OEM Key Attestation APIs for other credentials
+     - OEM Key Attestation APIs for other Credentials
      - Key Attestation issuance for Digital Credentials other than the PID conforms to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
    * - WP_141
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
@@ -1359,5 +1356,13 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Trust, Security
      - Authenticated PDND Wallet Provider endpoints
      - Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, are authenticated and authorised. Unauthenticated requests are rejected. A successful Notify User Death leads to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations.
+   * - WP_162
+     - Key Attestation Issuance, Security
+     - Android attestation challenge
+     - On Android, each Credential key is generated with the Key Attestation API challenge set to the UTF-8 octets of the ``nonce``. ``client_data_hash`` is used only for ``hardware_signature``. Each ``keys_to_attest`` element is a ``key-attestation-request+jwt`` as defined in :ref:`wallet-provider-endpoint:Key Attestation Element`.
+   * - WP_163
+     - Wallet Instance Attestation (WIA) Issuance, Lifecycle
+     - Per-issuer status entry reuse
+     - The Wallet Instance Attestation Request includes ``intended_issuer``. A first request for that issuer omits ``status_list_idx`` and the Wallet Provider assigns a new index. A later request for the same issuer includes that ``status_list_idx``. A request that reuses an index the Wallet Instance is not entitled to is rejected with ``403 Forbidden`` and ``invalid_request``.
 
 

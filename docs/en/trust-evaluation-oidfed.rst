@@ -219,7 +219,7 @@ X.509 Certificate Chain Validation
 This variant applies when an artifact is provided along with the X.509 certificate chain used for the signature.
 For artifacts in JOSE format the chain is carried in the ``x5c`` header parameter, as defined in :rfc:`7515` and used in IT-Wallet in the Request Object of the presentation flow (see :ref:`remote-flow:Request Object`).
 For Credentials in mdoc format the chain is carried in the ``x5chain`` unprotected header (element 33) of the Mobile Security Object, as defined in :rfc:`9360` and in :ref:`credential-data-model:Mobile Security Object`.
-The chain contains the Document Signer certificate and any intermediate certificate.
+The chain MUST start with the end-entity certificate corresponding to the private key used to sign the artifact or Attestation, followed by any intermediate certificates in issuer order. Each subsequent certificate MUST certify the preceding certificate.
 It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in :ref:`trust-evaluation:Signing Trust Anchor Distribution`.
 
 The certification path validation is the standard X.509 path validation defined in :rfc:`5280#section-6`, with the revocation status checking defined in :rfc:`5280` and :rfc:`6960`.
@@ -475,9 +475,8 @@ In the second case the Relying Party MUST NOT be considered authenticated and th
 3. Verify each ``readerAuth`` signature over its ``ReaderAuthentication`` data with the validated authentication certificate.
 
 The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
-This National authentication result selects the National Trust Framework path before authorization.
-It MUST NOT be combined with EUDIW WRPAC/WRPRC evidence.
-It MUST NOT be retried under the EUDIW path.
+This National authentication result selects the National Trust Framework path before authorization, as specified in :ref:`trust-evaluation:Selection at Presentation`.
+A failure of this result is handled as specified in :ref:`trust-evaluation:Failure Handling`.
 
 Authorization
 ^^^^^^^^^^^^^^^^^^
@@ -586,7 +585,7 @@ The transparency claims carried in the Trust Mark are the following:
 - ``privacy_policy``, the URL of the privacy policy, for a Relying Party that requests Credentials;
 - ``supervisory_authority``, the Data Protection Authority to which the User can report anomalies;
 - ``public_body``, whether the entity is a public sector body;
-- ``support_uri``, the contact for requests related to the entity, such as data deletion or portability.
+- ``support_uri``, the support contact used for a data deletion request, as specified in :ref:`user-attribute-deletion:User's Attributes Deletion`.
 
 Their definitions are provided in :ref:`infrastructure-trust:Trust Mark Types and Schema`.
 

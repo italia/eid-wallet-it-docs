@@ -41,7 +41,6 @@
   "registryURI": "https://registry.example.it/api",
   "services": [
     {
-      "serviceIdentifier": "svc-bridge-01",
       "serviceTradeName": "TrustBridge Wallet Intermediation",
       "supportURI": "https://trustbridge.example/support",
       "email": "wallet-intermediary@trustbridge.example",
@@ -59,9 +58,7 @@
         ]
       ],
       "isIntermediary": true,
-      "servedWRPServices": [
-        "svc-mobile-01"
-      ]
+      "servedWRPServices": []
     }
   ]
 }

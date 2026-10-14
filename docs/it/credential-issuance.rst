@@ -8,7 +8,6 @@ Questa sezione descrive il flusso di emissione di un Attestato Elettronico di Da
 
 L'emissione utilizza [`OpenID4VCI`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_].
 Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Issuance`.
-Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
 L'emissione del PID prima della notifica EUDIW è specificata in :ref:`pid-until-notification`.
 
 
