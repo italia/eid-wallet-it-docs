@@ -607,7 +607,7 @@ The re-issuance process outlined in this section is limited to the following sce
   - Data model/format technical update;
   - User's attribute set update.
 
-This flow does not apply to device migration or backup restore. In those cases the Wallet Instance MUST perform a Wallet-Initiated Authorization Code Issuance Flow as defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow` (see Section :ref:`backup-restore:Restore flow for Hardware Binding Credential`).
+This flow does not apply to device migration or backup restore. In those cases the Wallet Instance MUST perform a Wallet-Initiated Authorization Code Issuance Flow as defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow` (see Section :ref:`backup-restore:Restore flow for a Device-Bound Credential`).
 
 In the first case, the new Digital Credential's Users attribute set will match the original one. For example, a Credential Issuer may need to update the Digital Credential metadata or data format without changing the User's attribute set. In this case, the direct involvement of the User is not mandatory for the replacement and storage of a Digital Credential.
 

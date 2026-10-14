@@ -589,7 +589,7 @@ Il Re-issuance Flow delineato in questa sezione è limitato ai seguenti scenari:
   - Aggiornamento tecnico del modello/formato dei dati;
   - Aggiornamento dell'insieme di attributi dell'Utente.
 
-Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione hardware`).
+Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`).
 
 Nel primo caso, l'insieme di attributi dell'Utente del nuovo Attestato Elettronico corrisponderà a quello originale. Ad esempio, un Credential Issuer potrebbe dover aggiornare i Metadata dell'Attestato Elettronico o il formato dei dati senza modificare l'insieme di attributi dell'Utente. In questo caso, il coinvolgimento diretto dell'Utente non è obbligatorio per la sostituzione e l'archiviazione di un Attestato Elettronico.
 

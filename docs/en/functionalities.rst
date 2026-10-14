@@ -1379,7 +1379,7 @@ Backup and Restore of Electronic Attestation of Attributes
 With the aim of ensuring the principle of data portability, the Wallet Solution MUST guarantee the User to have access to specific functionalities, particularly to:
 
 - Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance, as specified in :ref:`backup-restore:Backup Flow`;
-- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in :ref:`backup-restore:Restore flow for Hardware Binding Credential`;
+- Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in :ref:`backup-restore:Restore flow for a Device-Bound Credential`;
 - Request migration to a new Wallet Instance through the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 Deactivation of the Wallet Instance

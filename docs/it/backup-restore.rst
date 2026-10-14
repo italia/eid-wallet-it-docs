@@ -19,7 +19,7 @@ L'Istanza del Wallet DEVE consentire all'Utente di esercitare i diritti di porta
 
 L'Istanza del Wallet DEVE supportare l'esportazione sicura e la portabilità dei dati personali dell'Utente, ove tecnicamente fattibile e ad eccezione degli asset critici, in modo che l'Utente possa migrare verso un'Istanza del Wallet di una Soluzione Wallet diversa mantenendo il livello di garanzia alto di cui al Regolamento di esecuzione (UE) 2015/1502. Si tratta dell'articolo 13 di [`CIR2024/2979`_].
 
-Il file di backup specificato in :ref:`backup-restore:Flusso di Backup` è il backup e il recupero dei riferimenti alle Credenziali Elettroniche con associazione hardware.
+Il file di backup specificato in :ref:`backup-restore:Flusso di Backup` è il backup e il recupero dei riferimenti alle Credenziali Elettroniche con associazione al dispositivo.
 
 Il download dei dati dell'Utente e degli attestati elettronici di attributi, e la portabilità verso una Soluzione Wallet diversa, utilizzano l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
@@ -66,7 +66,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 
 **Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (:ref:`WP_122 <credential-backup-testcases>`):
 
-- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup (:ref:`WP_122d <credential-backup-testcases>`).
+- Per ciascuna delle Credenziali con chiave vincolata al dispositivo, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup (:ref:`WP_122d <credential-backup-testcases>`).
 - Il file di backup NON DEVE contenere un attestato non vincolato al dispositivo.
 - Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Instance Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Instance Attestation (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità della Wallet Instance Attestation prima di firmare il JWT di backup (:ref:`WP_123 <credential-backup-testcases>`).
 - Aggiunge il JWT di backup firmato come voce al file di backup (:ref:`WP_122 <credential-backup-testcases>`).
@@ -139,8 +139,8 @@ Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI (:ref:`WP_122b 
     - Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziali. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al ``credential_configuration_id`` che identifica la specifica Credenziale Elettronica che è stata emessa.
 
 
-Flusso di ripristino per Credenziale con associazione hardware
---------------------------------------------------------------
+Flusso di ripristino per Credenziale con associazione al dispositivo
+--------------------------------------------------------------------
 
 .. _fig_Restore_flow:
 
@@ -170,7 +170,7 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (:ref:`WP_126 <credential-backup-testcases>`, :ref:`WP_127 <credential-backup-testcases>`).
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (:ref:`WP_129 <credential-backup-testcases>`). Per fare ciò, estrae prima il JWT della Wallet Instance Attestation dal claim ``wallet_instance_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Instance Attestation (claim ``cnf``) come specificato in :ref:`WP_128 <credential-backup-testcases>`.
 
-**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
+**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione al dispositivo nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
 
 - Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (:ref:`WP_130a <credential-backup-testcases>`).
 - Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di emissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (:ref:`WP_130b <credential-backup-testcases>`).

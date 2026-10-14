@@ -1378,7 +1378,7 @@ Archiviazione e ripristino degli Attestati Elettronici di Attributi
 Con l'obiettivo di garantire il principio di data portability, la Soluzione Wallet DEVE garantire all'Utente l'accesso a specifiche funzionalità per:
 
 - richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di Backup`
-- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione hardware`
+- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`
 - richiedere la migrazione verso una Soluzione Wallet diversa tramite l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
 Disattivazione dell'Istanza del Wallet

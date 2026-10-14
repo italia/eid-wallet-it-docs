@@ -5,7 +5,7 @@
 Backup and Restore
 ==================
 
-**Backup and restore** enables the :term:`User` to recover access to previously issued hardware-bound Digital Credentials in a new Wallet Instance. The :term:`User`  obtains a PID or IT-Wallet ID when activating the new Wallet Instance, before restoring the other credentials.
+**Backup and restore** enables the :term:`User` to recover access to previously issued device-bound Digital Credentials in a new Wallet Instance. The :term:`User`  obtains a PID or IT-Wallet ID when activating the new Wallet Instance, before restoring the other credentials.
 
 - The mobile device has been **lost**, **stolen**, **damaged**, or **compromised** (e.g., due to unauthorized access).
 - The :term:`User` replaces an existing :term:`Wallet Instance` with a new instance of the same :term:`Wallet Solution`.
@@ -21,7 +21,7 @@ The :term:`Wallet Instance` MUST enable the :term:`User` to exercise the User's 
 
 The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the :term:`User` can migrate to a :term:`Wallet Instance` of the same or a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
 
-The backup file specified in :ref:`backup-restore:Backup Flow` is the backup and recovery of references to hardware-bound Digital Credentials.
+The backup file specified in :ref:`backup-restore:Backup Flow` is the backup and recovery of references to device-bound Digital Credentials.
 
 Download of the User's data and of electronic attestations of attributes, and portability to the same or a different :term:`Wallet Solution`, use the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
@@ -68,7 +68,7 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
 
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
-- For each of the HW bound key Credentials, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT (:ref:`WP_122d <credential-backup-testcases>`).
+- For each device-bound Credential, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT (:ref:`WP_122d <credential-backup-testcases>`).
 - The backup file MUST NOT contain a non-device-bound attestation.
 - Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet Instance Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet Instance Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet Instance Attestation` before signing the backup JWT (:ref:`WP_123 <credential-backup-testcases>`).
 - Add the signed backup JWT as an entry to the backup file (:ref:`WP_122 <credential-backup-testcases>`).
@@ -141,8 +141,8 @@ The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <cr
     - Object that describes specifics of the:term:`Credential` that are backed up. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
 
 
-Restore flow for Hardware Binding Credential
---------------------------------------------
+Restore flow for a Device-Bound Credential
+------------------------------------------
 
 .. _fig_Restore_flow:
 
@@ -172,7 +172,7 @@ Below, the description of the steps of :numref:`fig_Restore_flow`:
 The :term:`User` selects `restore Digital Credentials backup` in the :term:`Wallet Instance` app and a prompt with the import function is provided to the User (:ref:`WP_126 <credential-backup-testcases>`). The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases (:ref:`WP_127 <credential-backup-testcases>`).
 To check the authenticity of the file, the :term:`Wallet Instance` MUST verify the backup JWT's signature to ensure its authenticity (:ref:`WP_129 <credential-backup-testcases>`). To do this, it first extracts the :term:`Wallet Instance Attestation` JWT from ``wallet_instance_attestation`` claim and obtains the related public key using the :term:`Wallet Instance Attestation` (``cnf`` claim) as per :ref:`WP_128 <credential-backup-testcases>`.
 
-**Steps 7-8**: The :term:`Wallet Instance` for each HW binding credentials entry in the payload of the backup JWT performs the following steps (:ref:`WP_130 <credential-backup-testcases>`):
+**Steps 7-8**: The :term:`Wallet Instance` for each device-bound Credential entry in the payload of the backup JWT performs the following steps (:ref:`WP_130 <credential-backup-testcases>`):
 
 - It extracts the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the :term:`Credential Issuer` (:ref:`WP_130a <credential-backup-testcases>`).
 - Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes an issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the :term:`Credential` (:ref:`WP_130b <credential-backup-testcases>`).

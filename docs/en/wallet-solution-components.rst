@@ -84,7 +84,7 @@ Following the implementation profile in Section :ref:`credential-presentation:Di
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each hardware-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore, as specified in Section :ref:`backup-restore:Backup Flow`.
+For each device-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore, as specified in Section :ref:`backup-restore:Backup Flow`.
 
 This component MUST keep the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
