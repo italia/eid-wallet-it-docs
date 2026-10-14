@@ -50,75 +50,10 @@ The Status Endpoint is an optional endpoint that allows the user-agent to monito
 For detailed implementation requirements, see :ref:`remote-flow:Status Endpoint` and :ref:`remote-flow:Status Endpoint Errors`.
 
 
-User Data Management Endpoints
-""""""""""""""""""""""""""""""
+Data Deletion Request
+"""""""""""""""""""""
 
-The following endpoint supports user data management and privacy compliance requirements for remote flows:
-
-Relying Party Erasure Endpoint
-..............................
-
-The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.
-
-Erasure Request
-................
-
-The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.
-
-Below is a non-normative example of an Erasure Request where the call back URL is passed as a query parameter.
-
-.. code-block:: http
-
-  GET /erasure-endpoint?callback_url=https://wallet-instance/erasure_response HTTP/1.1
-  Host: relying-party.example.org
-
-Erasure Response
-.................
-
-If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.
-
-If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with ``application/json`` as the content type and MUST include the following parameters:
-
-    - ``error``: The error code.
-    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 20 60
-    :header-rows: 1
-
-    * - **Status Code**
-      - **Error Code**
-      - **Description**
-    * - ``400 Bad Request``
-      - ``bad_request``
-      - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
-    * - ``401 Unauthorized``
-      - ``unauthorized``
-      - The request could not be fulfilled due to invalid authentication by the User.
-    * - ``500 Internal Server Error``
-      - ``server_error``
-      - The request cannot be fulfilled because the Erasure Endpoint encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
-    * - ``503 Service Unavailable``
-      - ``temporarily_unavailable``
-      - The request cannot be fulfilled because the Erasure Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (:rfc:`6749#section-4.1.2.1`).
-
-
-The following is an example of an error response from Erasure Endpoint:
-
-.. code-block:: http
-
-  HTTP/1.1 500 Internal Server Error
-  Content-Type: application/json
-
-  {
-   "error": "server_error",
-   "error_description": "The request cannot be fulfilled due to an internal server error."
-  }
-
-Upon receiving an error response, the Wallet Instance which made the Erasure Request MUST inform the User of the error condition in an appropriate manner.
+The Wallet Instance initiates a data deletion request through the Relying Party support contact, as specified in :ref:`user-attribute-deletion:User's Attributes Deletion` and in `EUDI-TS 7`_.
 
 
 Security Considerations
