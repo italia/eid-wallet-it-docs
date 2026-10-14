@@ -216,8 +216,8 @@ The Wallet Provider MUST allow the User to remove an Electronic Attestation of A
 
 In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the actors involved MAY support a deferred issuance process. In this case the Wallet Provider MUST guarantee that:
 
-- Upon reaching the final step of the process, the User visualizes a message prompting them to wait until the Electronic Attestation of Attributes can be issued.
-- The User is informed by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available.
+- Upon viewing their personal identification data, the User visualizes a message prompting them to wait until the Electronic Attestation of Attributes can be issued.
+- The User is informed by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available for issuance.
 
 If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the :ref:`functionalities:User Assistance` section.
 
