@@ -1162,11 +1162,11 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_133a
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - SHA-256 hash computation
-     - Wallet Instance successfully computes a SHA-256 digest (``client_data_hash``) over the ``nonce``, the ``hardware_key_pub``, and the ``hardware_key_tag``,
+     - Wallet Instance successfully computes a SHA-256 digest (``client_data_hash``) of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``. The digest does not include ``hardware_key_pub``.
    * - WP_133b
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Key Attestation
-     - Wallet Instance successfully invokes the Key Attestation API with the ``client_data_hash`` and obtains a signed attestation from the Key Attestation API.
+     - Wallet Instance successfully invokes the Key Attestation API at key generation, passing ``client_data_hash`` as the attestation challenge, and obtains a signed attestation.
    * - WP_134
      - Wallet Initialization / Registration, Lifecycle, Security
      - Key Binding request
@@ -1190,7 +1190,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_136
      - Wallet Initialization / Registration, Lifecycle, Security
      - Cryptographic binding verification
-     - Wallet Provider successfully verifies the cryptographic binding between the ``hardware_key_tag``, ``hardware_key_pub``, nonce, and the ``client_data_hash`` provided in the key_attestation.
+     - Wallet Provider extracts ``hardware_key_pub`` from the validated ``key_attestation`` and verifies that the embedded challenge equals the SHA-256 digest of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``.
    * - WP_137
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Wallet Instance Registration
@@ -1206,7 +1206,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_140
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Wallet Instance Attestation (WIA) Request
-     - Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, and other configuration related parameters.
+     - Wallet Instance successfully constructs the Wallet Instance Attestation (WIA) Request JWT with the required claims: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, and other configuration related parameters.
    * - WP_140a
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Hardware key existence check/re-initialization
@@ -1355,5 +1355,13 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Trust, Security
      - Authenticated PDND Wallet Provider endpoints
      - Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Death, are authenticated and authorised. Unauthenticated requests are rejected. A successful Notify User Death leads to Wallet Instance revocation as for other PID/IT-Wallet ID Provider-initiated revocations.
+   * - WP_162
+     - Key Attestation Issuance, Security
+     - Android attestation challenge
+     - On Android, each Credential key is generated with the Key Attestation API challenge set to the UTF-8 octets of the ``nonce``. ``client_data_hash`` is used only for ``hardware_signature``. Each ``keys_to_attest`` element is a ``key-attestation-request+jwt`` as defined in :ref:`wallet-provider-endpoint:Key Attestation Element`.
+   * - WP_163
+     - Wallet Instance Attestation (WIA) Issuance, Lifecycle
+     - Per-issuer status entry reuse
+     - The Wallet Instance Attestation Request includes ``intended_issuer``. A first request for that issuer omits ``status_list_idx`` and the Wallet Provider assigns a new index. A later request for the same issuer includes that ``status_list_idx``. A request that reuses an index the Wallet Instance is not entitled to is rejected with ``403 Forbidden`` and ``invalid_request``.
 
 
