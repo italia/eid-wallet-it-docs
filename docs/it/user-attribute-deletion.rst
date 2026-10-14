@@ -23,17 +23,17 @@ Nel National Trust Framework, il contatto è il ``support_uri`` del Trust Mark d
 
 Nel EUDIW Trust Framework, i contatti sono i valori di helpdesk e supporto nel Subject Alternative Name del Wallet-Relying Party Access Certificate, come specificato in `EUDI-TS 7`_.
 
-**Passo 6:** L'Istanza del Wallet registra l'avvio della richiesta di cancellazione dei dati come definito in :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
-
-  * la data e l'ora della richiesta,
-  * la Relying Party a cui è stata fatta la richiesta,
-  * gli attributi di cui è stata richiesta la rimozione.
-
-**Passi 7 - 8:** L'Istanza del Wallet DEVE mostrare i contatti che la piattaforma può invocare, oppure applicare una preferenza dell'Utente configurata in precedenza. L'Istanza del Wallet DEVE invocare l'applicazione esterna che corrisponde al contatto selezionato (:ref:`WP_117 <user-attribute-deletion-testcases>`, :ref:`WP_118 <user-attribute-deletion-testcases>`).
+**Passi 6 - 7:** L'Istanza del Wallet DEVE mostrare i contatti che la piattaforma può invocare, oppure applicare una preferenza dell'Utente configurata in precedenza. L'Istanza del Wallet DEVE invocare l'applicazione esterna che corrisponde al contatto selezionato (:ref:`WP_117 <user-attribute-deletion-testcases>`, :ref:`WP_118 <user-attribute-deletion-testcases>`).
 
 - L'Istanza del Wallet DEVE aprire un URL HTTPS in un browser esterno.
 - L'Istanza del Wallet DEVE aprire un indirizzo email in un client di posta esterno, quando un client di posta è disponibile, come URI ``mailto``. Il ``subject`` DEVE indicare che l'Utente richiede la cancellazione dei dati personali ai sensi dell'Articolo 17 del Regolamento (UE) 2016/679 precedentemente forniti tramite l'Istanza del Wallet. Il ``body`` DOVREBBE identificare gli attributi di cui è richiesta la cancellazione, oppure indicare che è richiesta la cancellazione di tutti i dati personali precedentemente forniti tramite l'Istanza del Wallet.
 - L'Istanza del Wallet DEVE aprire un numero di telefono nell'applicazione telefonica, quando un'applicazione telefonica è disponibile.
+
+**Passo 8:** L'Istanza del Wallet registra l'avvio della richiesta di cancellazione dei dati, come definito in :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`, solo dopo che l'Utente ha selezionato un contatto e l'Istanza del Wallet ha invocato con successo l'applicazione esterna corrispondente. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+
+  * la data e l'ora della richiesta,
+  * la Relying Party a cui è stata fatta la richiesta,
+  * gli attributi di cui è stata richiesta la rimozione.
 
 **Passo 9:** Prima di eliminare gli attributi, la Relying Party DEVE autenticare l'Utente, o la richiesta, con un meccanismo di autenticazione di sua scelta. La Relying Party DOVREBBE usare le funzionalità di autenticazione e di firma dell'Istanza del Wallet dell'Utente. Dopo l'autenticazione dell'Utente, la Relying Party DEVE eliminare gli attributi degli Attestati Elettronici individuati con l'identity matching, come specificato in :ref:`identity-matching`.
 

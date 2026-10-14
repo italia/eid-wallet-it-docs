@@ -24,17 +24,17 @@ In the National Trust Framework, the contact is the ``support_uri`` of the regis
 
 In the EUDIW Trust Framework, the contacts are the helpdesk and support values in the Subject Alternative Name of the Wallet-Relying Party Access Certificate, as specified in `EUDI-TS 7`_.
 
-**Step 6:** The Wallet Instance logs the initiation of the data deletion request as defined in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
-
-  * the date and time of the request,
-  * the Relying Party to which the request was made,
-  * the attributes requested to be removed.
-
-**Steps 7 - 8:** The Wallet Instance MUST display the contacts that the platform can invoke, or apply a previously configured User preference. It MUST then invoke the external application that corresponds to the selected contact (:ref:`WP_117 <user-attribute-deletion-testcases>`, :ref:`WP_118 <user-attribute-deletion-testcases>`).
+**Steps 6 - 7:** The Wallet Instance MUST display the contacts that the platform can invoke, or apply a previously configured User preference. It MUST then invoke the external application that corresponds to the selected contact (:ref:`WP_117 <user-attribute-deletion-testcases>`, :ref:`WP_118 <user-attribute-deletion-testcases>`).
 
 - The Wallet Instance MUST open an HTTPS URL in an external browser.
 - The Wallet Instance MUST open an email address in an external mail client, when a mail client is available, as a ``mailto`` URI. The ``subject`` MUST state that the User requests the erasure of personal data pursuant to Article 17 of Regulation (EU) 2016/679 previously provided through the Wallet Instance. The ``body`` SHOULD identify the attributes requested for erasure, or state that all personal data previously provided through the Wallet Instance are requested for erasure.
 - The Wallet Instance MUST open a telephone number in the phone application, when a phone application is available.
+
+**Step 8:** The Wallet Instance logs the initiation of the data deletion request, as defined in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`, only after the User has selected a contact and the Wallet Instance has successfully invoked the corresponding external application. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+
+  * the date and time of the request,
+  * the Relying Party to which the request was made,
+  * the attributes requested to be removed.
 
 **Step 9:** Before deleting the attributes, the Relying Party MUST authenticate the User, or the request, with an appropriate authentication mechanism of its choice. The Relying Party SHOULD use the authentication and signature facilities of the User's Wallet Instance. Upon authenticating the User, the Relying Party MUST delete the attributes of the Digital Credentials identified by identity matching, as specified in :ref:`identity-matching`.
 

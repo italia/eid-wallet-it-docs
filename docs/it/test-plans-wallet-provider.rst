@@ -998,7 +998,7 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`user-attribute-deletion
    * - WP_117a
      - Eliminazione Attributi, Ciclo di vita, Privacy
      - Registrazione della richiesta di cancellazione dei dati
-     - Una voce di log è creata per ogni richiesta di cancellazione dei dati, contenente la data e l'ora, l'identificativo della Relying Party e gli attributi specifici di cui è richiesta l'eliminazione.
+     - Una voce di log è creata per ogni richiesta di cancellazione dei dati dopo che l'applicazione esterna è stata invocata con successo. La voce contiene la data e l'ora, l'identificativo della Relying Party e gli attributi specifici di cui è richiesta l'eliminazione.
    * - WP_118
      - Eliminazione Attributi, Ciclo di vita, UX
      - Selezione del contatto
@@ -1006,7 +1006,7 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`user-attribute-deletion
    * - WP_119
      - Eliminazione Attributi, Ciclo di vita, Interoperabilità
      - Avvio della richiesta
-     - L'Istanza del Wallet registra la richiesta di cancellazione dei dati come avviata. Non richiede una risposta HTTP dalla Relying Party.
+     - L'Istanza del Wallet registra la richiesta di cancellazione dei dati come avviata dopo che l'applicazione esterna è stata invocata con successo. Non richiede una risposta HTTP dalla Relying Party.
    * - WP_119a
      - Eliminazione Attributi, Ciclo di vita, UX
      - Notifica all'Utente sulla richiesta di cancellazione

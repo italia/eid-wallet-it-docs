@@ -22,8 +22,8 @@ end box
 
   app -> user: Show available contacts
   user -> app: Select the contact
-  app -> app: Log the data deletion request
   app -> ext: Invoke browser, mail client, or phone
+  app -> app: Log the data deletion request
   ext -> rp: Data deletion request
 
   note over user, rp

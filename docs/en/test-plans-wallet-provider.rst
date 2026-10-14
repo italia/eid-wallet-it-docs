@@ -999,7 +999,7 @@ This section lists the test cases from Section :ref:`user-attribute-deletion:Use
    * - WP_117a
      - Attribute Deletion, Lifecycle, Privacy
      - Data deletion request logging
-     - A log entry is created for each data deletion request, containing the date and time, the Relying Party's identifier, and the specific attributes requested for deletion.
+     - A log entry is created for each data deletion request after the external application has been successfully invoked. The entry contains the date and time, the Relying Party's identifier, and the specific attributes requested for deletion.
    * - WP_118
      - Attribute Deletion, Lifecycle, UX
      - Contact selection
@@ -1007,7 +1007,7 @@ This section lists the test cases from Section :ref:`user-attribute-deletion:Use
    * - WP_119
      - Attribute Deletion, Lifecycle, Interoperability
      - Request initiation
-     - The Wallet Instance records the data deletion request as initiated. It does not require an HTTP response from the Relying Party.
+     - The Wallet Instance records the data deletion request as initiated after the external application has been successfully invoked. It does not require an HTTP response from the Relying Party.
    * - WP_119a
      - Attribute Deletion, Lifecycle, UX
      - User notification on deletion request
