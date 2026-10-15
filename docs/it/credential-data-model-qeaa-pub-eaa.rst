@@ -56,16 +56,18 @@ Un attestato il cui ``legal_type`` è ``eaa`` MUST NOT contenere ``category`` ([
 Identificazione dell'Issuer
 ---------------------------
 
-Il certificato del firmatario MUST essere un certificato qualificato.
+Il certificato del firmatario DEVE essere un certificato qualificato.
 Un QEAA usa il profilo in :ref:`infrastructure-trust:(Q)EAA Provider Sign/Seal Certificate`.
 Un PuB-EAA usa il profilo in :ref:`infrastructure-trust:PuB-EAA Provider Sign/Seal Certificate`.
-La firma MUST essere una firma elettronica qualificata o un sigillo elettronico qualificato ([`ETSI TS 119 472-1`_] QEAA-5.6.2-01, PuB-EAA-5.6.3-01, QEAA-6.6.2-01 e PuB-EAA-6.6.3-01).
+La firma DEVE essere una firma elettronica qualificata o un sigillo elettronico qualificato ([`ETSI TS 119 472-1`_] QEAA-5.6.2-01, PuB-EAA-5.6.3-01, QEAA-6.6.2-01 e PuB-EAA-6.6.3-01).
 
-L'identificativo di registrazione in quel certificato MUST seguire il capitolo 5.1.4 di [`ETSI EN 319 412-1`_] ([`ETSI TS 119 472-1`_] QEAA-5.2.4.2-04, PuB-EAA-5.2.4.3-04, QEAA-6.2.4.2-02 e PuB-EAA-6.2.4.3-02).
+L'identificativo di registrazione in quel certificato DEVE seguire il capitolo 5.1.4 di [`ETSI EN 319 412-1`_] ([`ETSI TS 119 472-1`_] QEAA-5.2.4.2-04, PuB-EAA-5.2.4.3-04, QEAA-6.2.4.2-02 e PuB-EAA-6.2.4.3-02).
 In SD-JWT VC il certificato qualificato a supporto della firma è incorporato nel parametro di header ``x5c``, come richiesto in :ref:`credential-data-model-qeaa-pub-eaa:Header Protetto`.
-Un QEAA o un PuB-EAA in SD-JWT VC MUST NOT contenere ``issuing_authority`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-03).
-Un QEAA o un PuB-EAA in SD-JWT VC MUST NOT contenere ``issuing_country`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-07).
-Il claim o l'elemento ``iss_reg_id`` MUST NOT essere presente quando il certificato qualificato contiene già l'identificativo di registrazione ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11 e EAA-6.2.4.1-13).
+Un QEAA o un PuB-EAA in SD-JWT VC NON DEVE contenere ``issuing_authority`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-03).
+Un QEAA o un PuB-EAA in SD-JWT VC NON DEVE contenere ``issuing_country`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-07).
+Un QEAA o un PuB-EAA in SD-JWT VC NON DEVE contenere ``iss_reg_id`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11).
+In mdoc il certificato qualificato a supporto della firma è incorporato nell'header ``x5chain``, come richiesto in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
+Un QEAA o un PuB-EAA in mdoc NON DEVE contenere ``iss_reg_id`` ([`ETSI TS 119 472-1`_] EAA-6.2.4.1-13).
 
 Identità dell'Attestato
 -----------------------
@@ -239,7 +241,7 @@ Namespace org.etsi.01947201.010101
       - CONDITIONAL. Stringa di testo. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Soggetto`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.5.2-01
     * - ``iss_reg_id``
-      - Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`. Stringa di testo quando è presente.
+      - NON DEVE essere presente. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.4.1-13
     * - ``shortLived``
       - OPTIONAL. Booleano. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.

@@ -65,7 +65,9 @@ The registration identifier in that certificate MUST follow clause 5.1.4 of [`ET
 In SD-JWT VC the qualified certificate supporting the signature is incorporated in the ``x5c`` header parameter, as required in :ref:`credential-data-model-qeaa-pub-eaa:Protected Header`.
 An SD-JWT VC QEAA or PuB-EAA MUST NOT contain ``issuing_authority`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-03).
 An SD-JWT VC QEAA or PuB-EAA MUST NOT contain ``issuing_country`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-07).
-The claim or element ``iss_reg_id`` MUST NOT be present when the qualified certificate already contains the registration identifier ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11 and EAA-6.2.4.1-13).
+An SD-JWT VC QEAA or PuB-EAA MUST NOT contain ``iss_reg_id`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11).
+In mdoc the qualified certificate supporting the signature is incorporated in the ``x5chain`` header, as required in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
+An mdoc QEAA or PuB-EAA MUST NOT contain ``iss_reg_id`` ([`ETSI TS 119 472-1`_] EAA-6.2.4.1-13).
 
 Attestation Identity
 --------------------
@@ -239,7 +241,7 @@ Namespace org.etsi.01947201.010101
       - CONDITIONAL. Text string. See :ref:`credential-data-model-qeaa-pub-eaa:Subject`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.5.2-01
     * - ``iss_reg_id``
-      - See :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`. Text string when present.
+      - MUST NOT be present. See :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.4.1-13
     * - ``shortLived``
       - OPTIONAL. Boolean. See :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.

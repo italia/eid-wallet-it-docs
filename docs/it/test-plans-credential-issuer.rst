@@ -1029,5 +1029,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Claim dell'issuer assenti quando il certificato è in x5c
     - Un QEAA o un PuB-EAA in SD-JWT VC che contiene ``issuing_authority`` o ``issuing_country`` è rifiutato, perché ``x5c`` incorpora il certificato qualificato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_214
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Identificativo di registrazione assente quando il certificato è incorporato
+    - Un QEAA o un PuB-EAA che contiene ``iss_reg_id`` è rifiutato, in SD-JWT VC e in mdoc, perché il certificato qualificato è incorporato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
 
 
