@@ -304,7 +304,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "client_id": "openid_federation:https://relying-party.example.org",
       "response_mode": "direct_post.jwt",
       "response_type": "vp_token",
-      "dcql_query": {"credentials": [{"id": "pid", "format": "dc+sd-jwt", "meta": {"vct_values": ["urn:eudi:pid:it:1"]}}]},
+      "dcql_query": {"credentials": [{"id": "pid", "format": "dc+sd-jwt", "meta": {"vct_values": ["$national_eaa_vct"]}}]},
       "response_uri": "https://relying-party.example.org/response_uri",
       "client_metadata": {
          "jwks": {"keys": [{"kty": "EC", "use": "enc", "crv": "P-256", "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU", "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0", "kid": "20260202-abc123", "alg": "ECDH-ES"}]},
