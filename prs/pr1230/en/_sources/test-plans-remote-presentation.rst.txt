@@ -57,8 +57,8 @@ This section provides the set of test cases designed for technical implementers 
     - Relying Party accepts defaults to GET method.
   * - RPR-10
     - Metadata
-    - Verify parameters match OpenID Credential Verifier metadata.
-    - Only allowed parameters will be considered.
+    - Verify that Relying Party metadata follows the ``client_id`` prefix.
+    - For ``openid_federation``, parameters match ``openid_credential_verifier`` metadata and only allowed parameters are considered. For ``x509_hash``, Relying Party metadata is carried in ``client_metadata``, and authorization data is carried in ``verifier_info``.
   * - RPR-11
     - User Consent
     - Test eligibility of a Credential Verifier in requesting User attributes.
@@ -330,19 +330,17 @@ This section provides the set of test cases designed for technical implementers 
     - QR Code uses the required Q error correction level.
 
   * - RPR-78
-    - Wallet Instance Attestation (WIA) Request
-    - Test that Wallet Instance Attestation (WIA) request uses standard DCQL query.
-    - Wallet Instance Attestation (WIA) request correctly uses standard DCQL query.
-
+    - Voided
+    - Voided
+    - Voided
   * - RPR-79
-    - Wallet Instance Attestation (WIA) Request
-    - Verify that ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
-    - ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
-
+    - Voided
+    - Voided
+    - Voided
   * - RPR-80
-    - Wallet Instance Attestation (WIA) Request
-    - Test that ``vct_values`` parameter is required in DCQL query for Wallet Instance Attestation (WIA).
-    - ``vct_values`` parameter is correctly required in DCQL query.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-81
     - Wallet Nonce
@@ -366,8 +364,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-85
     - Endpoint Security
-    - Test that ``request_uri`` is attested by trusted third party.
-    - ``request_uri`` parameter is properly attested by trusted third party.
+    - Test that ``request_uri`` is attested under the selected trust framework.
+    - On the national path, ``request_uri`` exactly matches one value of ``request_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``request_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
   * - RPR-86
     - Privacy Protection
@@ -416,13 +414,13 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-95
     - Response URI Security
-    - Test that ``response_uri`` is attested by trusted third party.
-    - ``response_uri`` parameter is properly attested by trusted third party.
+    - Test that ``response_uri`` is attested under the selected trust framework.
+    - On the national path, ``response_uri`` exactly matches one value of ``response_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``response_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
   * - RPR-96
     - Client Metadata Handling
-    - Test that Relying Party correctly handles Wallet Instance ``client_metadata``.
-    - The ``client_metadata`` is correctly aligned with Trust Chain metadata.
+    - Test that ``client_metadata`` follows the selected ``client_id`` prefix.
+    - For ``openid_federation``, ``client_metadata`` does not override Trust Chain metadata, except ``jwks`` and the response-encryption capability parameters. For ``x509_hash``, applicable Relying Party metadata is carried in ``client_metadata``.
 
   * - RPR-97
     - Voided
@@ -523,5 +521,25 @@ This section provides the set of test cases designed for technical implementers 
     - Identity Matching
     - Test Attribute-Based Binding when a PID is presented without ``personal_administrative_number``.
     - The Relying Party matches at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
+
+  * - RPR-117
+    - Client Identifier Prefix
+    - Test that ``client_id`` uses exactly one Client Identifier Prefix for the whole request.
+    - ``client_id`` uses exactly one of ``openid_federation`` or ``x509_hash`` for the whole request.
+
+  * - RPR-118
+    - EUDIW Request Object
+    - Test the ``x5c`` header when ``client_id`` uses the ``x509_hash`` prefix.
+    - ``x5c`` starts with the WRPAC and excludes the trust anchor. The signature key is the WRPAC key, and ``client_id`` is the hash of that certificate.
+
+  * - RPR-119
+    - National Request Object
+    - Test the header when ``client_id`` uses the ``openid_federation`` prefix.
+    - The header uses ``kid`` and may include ``trust_chain``. WRPAC and ``x5c`` are not national trust evidence.
+
+  * - RPR-120
+    - EUDIW Authorization
+    - Test ``verifier_info`` when ``client_id`` uses the ``x509_hash`` prefix.
+    - ``verifier_info`` contains ``registrar_dataset`` and ``registration_cert`` (the WRPRC). Those objects are not required for ``openid_federation``.
 
 

@@ -666,19 +666,19 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_078
      - Remote-flow, Trust, Presentation, Interoperability
      - Relying Party identity discovery
-     - Wallet Instance successfully uses Federation API endpoints (``.well-known/openid-federation``, ``/fetch``) to retrieve current metadata and configurations of the Relying Party.
+     - The ``client_id`` prefix selects exactly one framework. For ``openid_federation``, the Wallet Instance uses Federation Entity Authentication. For ``x509_hash``, the Wallet Instance uses EUDIW Authentication of the WRPAC against the Providers of WRPAC LoTE.
    * - WP_079
      - Remote-flow, Trust, Presentation, Interoperability
-     - Relying Party Trust Chain evaluation
-     - Wallet Instance successfully validates the Trust Chain of the Relying Party (provided statically or built through a Federation Entity Discovery process) from the Trust Anchor down to the Relying Party itself, confirming that the Relying Party is a recognized and trusted member of the federation.
+     - Relying Party trust path evaluation
+     - On the national path, the Wallet Instance validates the Relying Party Trust Chain. On the EUDIW path, it validates the WRPAC path. A failed evaluation is not retried under the other framework.
    * - WP_080
      - Remote-flow, Trust, Presentation, Interoperability
-     - Relying Party Trust Mark check
-     - Wallet Instance successfully evaluates any Trust Marks included in the Relying Party’s Entity Configuration to ensure they are valid and indicate compliance with federation policies.
+     - Relying Party authorization evidence
+     - On the national path, the Wallet Instance validates the registration Trust Mark. On the EUDIW path, it authorizes the request through the WRPRC in ``verifier_info``. WRPAC and WRPRC material is not national trust evidence.
    * - WP_081
      - Remote-flow, Trust, Presentation, Security
      - Validate ``request_uri``
-     - Wallet Instance checks the ``request_uri`` against its locally cached list of allowed URIs (from the ``openid_credential_verifier.request_uris`` in the Trust Chain) and only proceeds when it finds an exact match; if no match is found, it rejects the request.
+     - On the national path, ``request_uri`` exactly matches one value of ``request_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``request_uri`` is bound by the WRPAC and the WRPRC. A mismatch rejects the request. Evidence from the other framework does not authorize the endpoint.
    * - WP_082
      - Remote-flow, Presentation, Interoperability
      - GET Request Object
@@ -690,7 +690,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, and optionally ``client_id_prefixes_supported`` and ``request_object_signing_alg_values_supported`` per Section 10.1 of [`OpenID4VP`_].
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes ``vp_formats_supported`` and ``client_id_prefixes_supported``, and optionally ``request_object_signing_alg_values_supported``, per Section 10.1 of [`OpenID4VP`_]. ``client_id_prefixes_supported`` contains both ``x509_hash`` and ``openid_federation``.
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -702,7 +702,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_084
      - Remote-flow, Trust, Presentation, Security
      - Relying Party public key retrieval
-     - Wallet Instance fetches the correct Relying Party’s public key exclusively from the ``metadata.openid_credential_verifier.jwks`` field located within the Relying Party's Entity Configuration provided by the Trust Chain, and using the key identifier (``kid``) from the request JWT header.
+     - On the national path, the signature key is the key identified by ``kid`` in the federation metadata. On the EUDIW path, the signature key is the WRPAC key in ``x5c``. The Wallet Instance does not switch paths.
    * - WP_085
      - Remote-flow, Presentation, Security
      - Request Object signature verification
@@ -710,11 +710,11 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_086
      - Remote-flow, Presentation, Security
      - Match ``client_id`` across contexts
-     - Wallet Instance confirms that the ``iss`` claim in the signed Request Object exactly equals both the ``client_id`` it originally extracted from the Authorization Request URL and the ``sub`` value in the Relying Party’s Entity Configuration. Any discrepancy causes the request to be rejected.
+     - ``iss`` equals the prefix-qualified ``client_id`` from the Authorization Request. On the national path, it also matches the Entity Configuration ``sub``. A mismatch rejects the request.
    * - WP_087
      - Remote-flow, Presentation, Security
      - Check Relying Party eligibility
-     - Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified Credential.
+     - On the national path, the Wallet Instance checks the registration Trust Mark scope. On the EUDIW path, it checks the service-provider entitlement and the exact DCQL scope. A failed evaluation is not retried under the other framework.
    * - WP_088
      - Remote-flow, Presentation, Privacy
      - User consent for disclosure
@@ -742,7 +742,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_091a
      - Remote-flow, Presentation, Security
      - Validate ``response_uri``
-     - Before sending the Authorization Response, Wallet Instance confirms the ``response_uri`` exactly matches one of the Relying Party’s attested ``response_uris`` in its metadata; a mismatch aborts the request.
+     - On the national path, ``response_uri`` exactly matches one value of ``response_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``response_uri`` is bound by the WRPAC and the WRPRC. A mismatch aborts the request. Evidence from the other framework does not authorize the endpoint.
    * - WP_092
      - Remote-flow, Presentation, Security
      - Encrypt Authorization Response
@@ -770,7 +770,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_094a
      - Remote-flow, Trust, Presentation, Security
      - Validate ``redirect_uri``
-     - Wallet Instance verifies that the ``redirect_uri`` exactly matches one of the URIs listed in the Relying Party’s ``redirect_uris`` metadata. If it does not match, aborts the flow.
+     - On the national path, ``redirect_uri`` exactly matches one value of ``redirect_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``redirect_uri`` is bound by the WRPAC and the WRPRC. A mismatch aborts the flow. Evidence from the other framework does not authorize the endpoint.
    * - WP_095
      - Proximity-flow, Presentation, Security
      - Support supervised/unsupervised retrieval

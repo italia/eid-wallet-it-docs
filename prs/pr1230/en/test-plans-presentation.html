@@ -391,8 +391,8 @@
 </tr>
 <tr class="row-odd"><td><p>RPR-10</p></td>
 <td><p>Metadata</p></td>
-<td><p>Verify parameters match OpenID Credential Verifier metadata.</p></td>
-<td><p>Only allowed parameters will be considered.</p></td>
+<td><p>Verify that Relying Party metadata follows the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix.</p></td>
+<td><p>For <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, parameters match <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata and only allowed parameters are considered. For <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, Relying Party metadata is carried in <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>, and authorization data is carried in <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-11</p></td>
 <td><p>User Consent</p></td>
@@ -730,19 +730,19 @@
 <td><p>QR Code uses the required Q error correction level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-78</p></td>
-<td><p>Wallet Instance Attestation (WIA) Request</p></td>
-<td><p>Test that Wallet Instance Attestation (WIA) request uses standard DCQL query.</p></td>
-<td><p>Wallet Instance Attestation (WIA) request correctly uses standard DCQL query.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-79</p></td>
-<td><p>Wallet Instance Attestation (WIA) Request</p></td>
-<td><p>Verify that <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Instance Attestation (WIA).</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter is not included in DCQL query for Wallet Instance Attestation (WIA).</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-80</p></td>
-<td><p>Wallet Instance Attestation (WIA) Request</p></td>
-<td><p>Test that <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter is required in DCQL query for Wallet Instance Attestation (WIA).</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter is correctly required in DCQL query.</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
+<td><p>Voided</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-81</p></td>
 <td><p>Wallet Nonce</p></td>
@@ -766,8 +766,8 @@
 </tr>
 <tr class="row-even"><td><p>RPR-85</p></td>
 <td><p>Endpoint Security</p></td>
-<td><p>Test that <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> is attested by trusted third party.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter is properly attested by trusted third party.</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> is attested under the selected trust framework.</p></td>
+<td><p>On the national path, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> exactly matches one value of <code class="docutils literal notranslate"><span class="pre">request_uris</span></code> in <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata. On the EUDIW path, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-86</p></td>
 <td><p>Privacy Protection</p></td>
@@ -816,13 +816,13 @@
 </tr>
 <tr class="row-even"><td><p>RPR-95</p></td>
 <td><p>Response URI Security</p></td>
-<td><p>Test that <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is attested by trusted third party.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">response_uri</span></code> parameter is properly attested by trusted third party.</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is attested under the selected trust framework.</p></td>
+<td><p>On the national path, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> exactly matches one value of <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> in <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata. On the EUDIW path, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-96</p></td>
 <td><p>Client Metadata Handling</p></td>
-<td><p>Test that Relying Party correctly handles Wallet Instance <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>.</p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is correctly aligned with Trust Chain metadata.</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> follows the selected <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix.</p></td>
+<td><p>For <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> does not override Trust Chain metadata, except <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and the response-encryption capability parameters. For <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, applicable Relying Party metadata is carried in <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
 <td><p>Voided</p></td>
@@ -923,6 +923,26 @@
 <td><p>Identity Matching</p></td>
 <td><p>Test Attribute-Based Binding when a PID is presented without <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>.</p></td>
 <td><p>The Relying Party matches at least <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (or <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) and <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a> (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-117</p></td>
+<td><p>Client Identifier Prefix</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses exactly one Client Identifier Prefix for the whole request.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses exactly one of <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> or <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> for the whole request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-118</p></td>
+<td><p>EUDIW Request Object</p></td>
+<td><p>Test the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header when <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x5c</span></code> starts with the WRPAC and excludes the trust anchor. The signature key is the WRPAC key, and <code class="docutils literal notranslate"><span class="pre">client_id</span></code> is the hash of that certificate.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-119</p></td>
+<td><p>National Request Object</p></td>
+<td><p>Test the header when <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> prefix.</p></td>
+<td><p>The header uses <code class="docutils literal notranslate"><span class="pre">kid</span></code> and may include <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>. WRPAC and <code class="docutils literal notranslate"><span class="pre">x5c</span></code> are not national trust evidence.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-120</p></td>
+<td><p>EUDIW Authorization</p></td>
+<td><p>Test <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code> when <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">verifier_info</span></code> contains <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> (the WRPRC). Those objects are not required for <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

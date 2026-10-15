@@ -1139,22 +1139,22 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_078</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Interoperabilità</p></td>
 <td><p>Scoperta identità Relying Party</p></td>
-<td><p>Istanza del Wallet utilizza con successo gli Endpoint di Federazione (<code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>) per recuperare metadata e configurazioni correnti della Relying Party.</p></td>
+<td><p>Il prefisso di <code class="docutils literal notranslate"><span class="pre">client_id</span></code> seleziona esattamente un Trust Framework. Per <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, l'Istanza del Wallet usa la Federation Entity Authentication. Per <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, l'Istanza del Wallet usa l'autenticazione EUDIW del WRPAC rispetto ai Providers of WRPAC LoTE.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_079</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Interoperabilità</p></td>
-<td><p>Valutazione Trust Chain Relying Party</p></td>
-<td><p>Istanza del Wallet valida con successo la Trust Chain della Relying Party (fornita staticamente o costruita attraverso un processo Federation Entity Discovery) dal Trust Anchor fino alla Relying Party stessa, confermando che la Relying Party è un membro riconosciuto e fidato della Federazione.</p></td>
+<td><p>Valutazione del percorso di trust della Relying Party</p></td>
+<td><p>Nel percorso nazionale, l'Istanza del Wallet valida la Trust Chain della Relying Party. Nel percorso EUDIW, valida il percorso del WRPAC. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_080</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Interoperabilità</p></td>
-<td><p>Controllo Trust Mark Relying Party</p></td>
-<td><p>Istanza del Wallet valuta con successo qualsiasi Trust Mark incluso nell'Entity Configuration della Relying Party per assicurare che siano validi e indichino conformità alle policy della Federazione.</p></td>
+<td><p>Evidenza di autorizzazione della Relying Party</p></td>
+<td><p>Nel percorso nazionale, l'Istanza del Wallet valida il Trust Mark di registrazione. Nel percorso EUDIW, autorizza la richiesta attraverso il WRPRC in <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code>. Il materiale WRPAC e WRPRC non è evidenza di trust nazionale.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_081</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Sicurezza</p></td>
 <td><p>Validare <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
-<td><p>Istanza del Wallet controlla che il <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> sia nella lista di URI consentiti alla Relying Party (dai <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier.request_uris</span></code> nella Trust Chain) e procede solo quando trova una corrispondenza esatta; se non viene trovata corrispondenza, rifiuta la richiesta.</p></td>
+<td><p>Nel percorso nazionale, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> corrisponde esattamente a un valore di <code class="docutils literal notranslate"><span class="pre">request_uris</span></code> nei metadati <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>. Nel percorso EUDIW, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza rifiuta la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_082</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
@@ -1169,7 +1169,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Costruire <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Istanza del Wallet formatta il <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON che include <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, opzionalmente <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code> e <code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code> per Sezione 10.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>].</p></td>
+<td><p>L'Istanza del Wallet formatta <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON che include <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> e <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code>, e opzionalmente <code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code>, secondo la Sezione 10.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]. <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code> contiene sia <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> sia <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Flusso-remoto, Presentazione, Privacy</p></td>
@@ -1184,7 +1184,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_084</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Sicurezza</p></td>
 <td><p>Recupero chiave pubblica Relying Party</p></td>
-<td><p>Istanza del Wallet recupera la chiave pubblica corretta della Relying Party dal campo <code class="docutils literal notranslate"><span class="pre">metadata.openid_credential_verifier.jwks</span></code>, situato all'interno dell'Entity Configuration della Relying Party fornita dalla Trust Chain, utilizzando l'identificativo di chiave (<code class="docutils literal notranslate"><span class="pre">kid</span></code>) dall'header del Request Object.</p></td>
+<td><p>Nel percorso nazionale, la chiave di firma è la chiave identificata da <code class="docutils literal notranslate"><span class="pre">kid</span></code> nei metadati di federazione. Nel percorso EUDIW, la chiave di firma è la chiave del WRPAC in <code class="docutils literal notranslate"><span class="pre">x5c</span></code>. L'Istanza del Wallet non cambia percorso.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_085</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
@@ -1194,12 +1194,12 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_086</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Abbinare <code class="docutils literal notranslate"><span class="pre">client_id</span></code> tra contesti</p></td>
-<td><p>Istanza del Wallet conferma che il claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> nel Request Object firmato abbia lo stesso <code class="docutils literal notranslate"><span class="pre">client_id</span></code> che ha originariamente estratto dall'URL dell'Authorization Request che il valore <code class="docutils literal notranslate"><span class="pre">sub</span></code> nell'Entity Configuration della Relying Party. Qualsiasi discrepanza causa il rifiuto dell Request Object.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">iss</span></code> è uguale al <code class="docutils literal notranslate"><span class="pre">client_id</span></code> qualificato dal prefisso dell'Authorization Request. Nel percorso nazionale, corrisponde anche al <code class="docutils literal notranslate"><span class="pre">sub</span></code> dell'Entity Configuration. Una mancata corrispondenza rifiuta la richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_087</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Controllare idoneità Relying Party</p></td>
-<td><p>Istanza del Wallet autorizza la richiesta e procede con il flusso quando verifica che i metadata, le policy e un Trust Mark valido della Relying Party consentono a quest'ultima di richiedere l'Attestato Elettronico specificato.</p></td>
+<td><p>Nel percorso nazionale, l'Istanza del Wallet controlla l'ambito del Trust Mark di registrazione. Nel percorso EUDIW, controlla l'entitlement di service provider e l'ambito DCQL esatto. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_088</p></td>
 <td><p>Flusso-remoto, Presentazione, Privacy</p></td>
@@ -1234,7 +1234,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_091a</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Validare <code class="docutils literal notranslate"><span class="pre">response_uri</span></code></p></td>
-<td><p>Prima di inviare l'Authorization Response, Istanza del Wallet conferma che il <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> corrisponda esattamente a uno dei <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> attestati della Relying Party nei suoi metadata; una mancata corrispondenza interrompe il flusso.</p></td>
+<td><p>Nel percorso nazionale, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> corrisponde esattamente a un valore di <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> nei metadati <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>. Nel percorso EUDIW, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
@@ -1269,7 +1269,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_094a</p></td>
 <td><p>Flusso-remoto, Trust, Presentazione, Sicurezza</p></td>
 <td><p>Validare <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code></p></td>
-<td><p>Istanza del Wallet verifica che il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> corrisponda esattamente a uno degli URI elencati nei metadata <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> della Relying Party. Se non corrisponde, interrompe il flusso.</p></td>
+<td><p>Nel percorso nazionale, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> corrisponde esattamente a un valore di <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> nei metadati <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>. Nel percorso EUDIW, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe il flusso. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_095</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>

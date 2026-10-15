@@ -1138,22 +1138,22 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_078</p></td>
 <td><p>Remote-flow, Trust, Presentation, Interoperability</p></td>
 <td><p>Relying Party identity discovery</p></td>
-<td><p>Wallet Instance successfully uses Federation API endpoints (<code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>) to retrieve current metadata and configurations of the Relying Party.</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix selects exactly one framework. For <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, the Wallet Instance uses Federation Entity Authentication. For <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, the Wallet Instance uses EUDIW Authentication of the WRPAC against the Providers of WRPAC LoTE.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_079</p></td>
 <td><p>Remote-flow, Trust, Presentation, Interoperability</p></td>
-<td><p>Relying Party Trust Chain evaluation</p></td>
-<td><p>Wallet Instance successfully validates the Trust Chain of the Relying Party (provided statically or built through a Federation Entity Discovery process) from the Trust Anchor down to the Relying Party itself, confirming that the Relying Party is a recognized and trusted member of the federation.</p></td>
+<td><p>Relying Party trust path evaluation</p></td>
+<td><p>On the national path, the Wallet Instance validates the Relying Party Trust Chain. On the EUDIW path, it validates the WRPAC path. A failed evaluation is not retried under the other framework.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_080</p></td>
 <td><p>Remote-flow, Trust, Presentation, Interoperability</p></td>
-<td><p>Relying Party Trust Mark check</p></td>
-<td><p>Wallet Instance successfully evaluates any Trust Marks included in the Relying Party’s Entity Configuration to ensure they are valid and indicate compliance with federation policies.</p></td>
+<td><p>Relying Party authorization evidence</p></td>
+<td><p>On the national path, the Wallet Instance validates the registration Trust Mark. On the EUDIW path, it authorizes the request through the WRPRC in <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code>. WRPAC and WRPRC material is not national trust evidence.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_081</p></td>
 <td><p>Remote-flow, Trust, Presentation, Security</p></td>
 <td><p>Validate <code class="docutils literal notranslate"><span class="pre">request_uri</span></code></p></td>
-<td><p>Wallet Instance checks the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> against its locally cached list of allowed URIs (from the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier.request_uris</span></code> in the Trust Chain) and only proceeds when it finds an exact match; if no match is found, it rejects the request.</p></td>
+<td><p>On the national path, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> exactly matches one value of <code class="docutils literal notranslate"><span class="pre">request_uris</span></code> in <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata. On the EUDIW path, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> is bound by the WRPAC and the WRPRC. A mismatch rejects the request. Evidence from the other framework does not authorize the endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_082</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
@@ -1168,7 +1168,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
 <td><p>Construct <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code> and <code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code> per Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>].</p></td>
+<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> and <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code>, per Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]. <code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code> contains both <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Remote-flow, Presentation, Privacy</p></td>
@@ -1183,7 +1183,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_084</p></td>
 <td><p>Remote-flow, Trust, Presentation, Security</p></td>
 <td><p>Relying Party public key retrieval</p></td>
-<td><p>Wallet Instance fetches the correct Relying Party’s public key exclusively from the <code class="docutils literal notranslate"><span class="pre">metadata.openid_credential_verifier.jwks</span></code> field located within the Relying Party's Entity Configuration provided by the Trust Chain, and using the key identifier (<code class="docutils literal notranslate"><span class="pre">kid</span></code>) from the request JWT header.</p></td>
+<td><p>On the national path, the signature key is the key identified by <code class="docutils literal notranslate"><span class="pre">kid</span></code> in the federation metadata. On the EUDIW path, the signature key is the WRPAC key in <code class="docutils literal notranslate"><span class="pre">x5c</span></code>. The Wallet Instance does not switch paths.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_085</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
@@ -1193,12 +1193,12 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_086</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Match <code class="docutils literal notranslate"><span class="pre">client_id</span></code> across contexts</p></td>
-<td><p>Wallet Instance confirms that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim in the signed Request Object exactly equals both the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> it originally extracted from the Authorization Request URL and the <code class="docutils literal notranslate"><span class="pre">sub</span></code> value in the Relying Party’s Entity Configuration. Any discrepancy causes the request to be rejected.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">iss</span></code> equals the prefix-qualified <code class="docutils literal notranslate"><span class="pre">client_id</span></code> from the Authorization Request. On the national path, it also matches the Entity Configuration <code class="docutils literal notranslate"><span class="pre">sub</span></code>. A mismatch rejects the request.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_087</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Check Relying Party eligibility</p></td>
-<td><p>Wallet Instance authorizes the request and proceeds with the flow when the Relying Party's metadata, policies, and a valid Trust Mark collectively confirm its permission to request the specified Credential.</p></td>
+<td><p>On the national path, the Wallet Instance checks the registration Trust Mark scope. On the EUDIW path, it checks the service-provider entitlement and the exact DCQL scope. A failed evaluation is not retried under the other framework.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_088</p></td>
 <td><p>Remote-flow, Presentation, Privacy</p></td>
@@ -1233,7 +1233,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_091a</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Validate <code class="docutils literal notranslate"><span class="pre">response_uri</span></code></p></td>
-<td><p>Before sending the Authorization Response, Wallet Instance confirms the <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> exactly matches one of the Relying Party’s attested <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> in its metadata; a mismatch aborts the request.</p></td>
+<td><p>On the national path, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> exactly matches one value of <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> in <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata. On the EUDIW path, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is bound by the WRPAC and the WRPRC. A mismatch aborts the request. Evidence from the other framework does not authorize the endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
@@ -1268,7 +1268,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_094a</p></td>
 <td><p>Remote-flow, Trust, Presentation, Security</p></td>
 <td><p>Validate <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code></p></td>
-<td><p>Wallet Instance verifies that the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> exactly matches one of the URIs listed in the Relying Party’s <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> metadata. If it does not match, aborts the flow.</p></td>
+<td><p>On the national path, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> exactly matches one value of <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> in <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata. On the EUDIW path, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is bound by the WRPAC and the WRPRC. A mismatch aborts the flow. Evidence from the other framework does not authorize the endpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_095</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
