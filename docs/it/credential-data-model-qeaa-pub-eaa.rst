@@ -222,8 +222,21 @@ Gli elementi definiti da [`ETSI TS 119 472-1`_] DEVONO usare il namespace ``org.
 Header del Mobile Security Object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per un QEAA o un PuB-EAA il protected header di ``issuerAuth`` è specificato in questa sezione.
-La regola che limita il protected header all'algoritmo di firma si applica solo agli altri Attestati Elettronici, come indicato in :ref:`credential-data-model:Mobile Security Object`.
+Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``issuerAuth`` è un ``COSE_Sign1`` il cui protected header contiene solo l'algoritmo di firma, come specificato in :ref:`credential-data-model:Mobile Security Object`.
+Per un QEAA o un PuB-EAA in mdoc, ``issuerAuth`` DEVE essere una firma digitale CB-AdES ([`ETSI TS 119 472-1`_] EAA-6.6.1-01).
+Il protected header di quella firma CB-AdES è specificato in questa sezione.
+
+.. warning::
+  **Firma issuerAuth in mdoc**
+
+  Gli altri Attestati Elettronici in mdoc usano un ``COSE_Sign1`` il cui protected header contiene solo l'algoritmo di firma.
+  [`ETSI TS 119 472-1`_] EAA-6.6.1-01 richiede una firma digitale CB-AdES.
+  QEAA-6.6.2-02 e PuB-EAA-6.6.3-02 collocano ``x5u`` e ``x5t`` in quel protected header.
+  QEAA-6.6.2-04 e PuB-EAA-6.6.3-04 collocano ``x5chain`` in quel protected header come indicazione DOVREBBE.
+  Questa specifica usa CB-AdES per un QEAA o un PuB-EAA in mdoc.
+  Il protected header contiene l'algoritmo di firma, ``x5u`` e ``x5t``.
+  ``x5chain`` resta nell'unprotected header, come richiesto per ogni mdoc in :ref:`credential-data-model:Mobile Security Object`.
+  Gli altri Attestati Elettronici in mdoc restano un ``COSE_Sign1``.
 
 Il protected header DEVE contenere l'algoritmo di firma, label ``1``.
 Il protected header DEVE contenere ``x5u``, label ``35``, come specificato in :rfc:`9360` ([`ETSI TS 119 472-1`_] QEAA-6.6.2-02 e PuB-EAA-6.6.3-02).

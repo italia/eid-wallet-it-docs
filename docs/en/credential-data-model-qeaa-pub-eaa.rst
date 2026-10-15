@@ -222,8 +222,21 @@ Data elements defined by [`ETSI TS 119 472-1`_] MUST use the namespace ``org.ets
 Mobile Security Object Headers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For a QEAA or a PuB-EAA the protected header of ``issuerAuth`` is specified in this section.
-The rule that limits the protected header to the signature algorithm applies only to other Digital Credentials, as stated in :ref:`credential-data-model:Mobile Security Object`.
+For a Digital Credential that is not a QEAA or a PuB-EAA, ``issuerAuth`` is a ``COSE_Sign1`` whose protected header contains only the signature algorithm, as specified in :ref:`credential-data-model:Mobile Security Object`.
+For an mdoc QEAA or PuB-EAA, ``issuerAuth`` MUST be a CB-AdES digital signature ([`ETSI TS 119 472-1`_] EAA-6.6.1-01).
+The protected header of that CB-AdES signature is specified in this section.
+
+.. warning::
+  **mdoc issuerAuth signature**
+
+  Other mdoc credentials use a ``COSE_Sign1`` whose protected header contains only the signature algorithm.
+  [`ETSI TS 119 472-1`_] EAA-6.6.1-01 requires a CB-AdES digital signature.
+  QEAA-6.6.2-02 and PuB-EAA-6.6.3-02 place ``x5u`` and ``x5t`` in that protected header.
+  QEAA-6.6.2-04 and PuB-EAA-6.6.3-04 place ``x5chain`` there as a should.
+  This specification uses CB-AdES for an mdoc QEAA or PuB-EAA.
+  The protected header contains the signature algorithm, ``x5u`` and ``x5t``.
+  ``x5chain`` stays in the unprotected header, as required for every mdoc in :ref:`credential-data-model:Mobile Security Object`.
+  Other mdoc credentials remain a ``COSE_Sign1``.
 
 The protected header MUST contain the signature algorithm, label ``1``.
 The protected header MUST contain ``x5u``, label ``35``, as specified in :rfc:`9360` ([`ETSI TS 119 472-1`_] QEAA-6.6.2-02 and PuB-EAA-6.6.3-02).

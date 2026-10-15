@@ -1021,7 +1021,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_211
     - Data Model and lifecycle, Security
     - mdoc signer certificate location
-    - The protected header contains ``x5u`` and ``x5t`` with SHA-256. The unprotected ``x5chain`` end-entity certificate matches the certificate retrieved from ``x5u``. A mismatch is rejected.
+    - For a QEAA or a PuB-EAA, the mdoc ``issuerAuth`` is a CB-AdES signature. The protected header contains ``x5u`` and ``x5t`` with SHA-256. The unprotected ``x5chain`` end-entity certificate matches the certificate retrieved from ``x5u``. A mismatch is rejected. For a Digital Credential that is not a QEAA or a PuB-EAA, ``issuerAuth`` is a ``COSE_Sign1`` whose protected header contains only the signature algorithm, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
   * - CI_212
     - Data Model and lifecycle, Interoperability
     - Single subject

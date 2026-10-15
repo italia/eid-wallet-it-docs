@@ -1020,7 +1020,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_211
     - Modello di Dati e ciclo di vita, Sicurezza
     - Ubicazione del certificato del firmatario mdoc
-    - Il protected header contiene ``x5u`` e ``x5t`` con SHA-256. Il certificato end-entity dell'``x5chain`` non protetto corrisponde al certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata.
+    - Per un QEAA o un PuB-EAA, l'elemento ``issuerAuth`` mdoc è una firma CB-AdES. Il protected header contiene ``x5u`` e ``x5t`` con SHA-256. Il certificato end-entity dell'elemento ``x5chain`` non protetto corrisponde al certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata. Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``issuerAuth`` è un ``COSE_Sign1`` il cui protected header contiene solo l'algoritmo di firma, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
   * - CI_212
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Soggetto unico
