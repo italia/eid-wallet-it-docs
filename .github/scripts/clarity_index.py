@@ -2,8 +2,9 @@
 """Editorial clarity index for the published specification.
 
 The index runs from 0 to 100. Higher is clearer. Prose is scored after
-directives, literals, and links are removed. A document starts at 100 and
-loses:
+build directives, literals, and links are removed. A directive block,
+including its options and indented body, is markup for the HTML build and
+is not editorial. A document starts at 100 and loses:
 
 - up to 40 points for the share of sentences longer than 35 words
   (1.2 points per percent, capped)
@@ -40,26 +41,44 @@ IT_KEYWORDS = re.compile(
     r"OBBLIGATORIO|OPZIONALE)\b"
 )
 
-SKIP_DIRECTIVES = (
-    ".. code-block",
-    ".. literalinclude",
-    ".. plantuml",
-    ".. parsed-literal",
-)
+# Markup that drives the HTML build. The directive line, its options, and
+# its indented body are not editorial prose. Names are matched case-insensitively.
+DROP_DIRECTIVES = frozenset({
+    "note", "warning", "attention", "important", "hint", "tip", "seealso",
+    "admonition", "caution", "danger", "error",
+    "figure", "image",
+    "include", "toctree", "only", "raw", "contents", "highlight", "role", "rubric",
+    "list-table", "csv-table",
+    "code-block", "code", "literalinclude", "parsed-literal", "plantuml",
+})
+
+DIRECTIVE_RE = re.compile(r"^(\s*)\.\.\s+([A-Za-z0-9_-]+)::")
+TARGET_RE = re.compile(r"^\s*\.\.\s+_")
+COMMENT_RE = re.compile(r"^\s*\.\.\s+\S")
+
+
+def _indent(line: str) -> int:
+    return len(line) - len(line.lstrip(" \t"))
 
 
 def strip_rst(text: str) -> str:
     lines: list[str] = []
-    skip = False
+    skip_deeper_than: int | None = None
     for line in text.splitlines():
-        stripped = line.strip()
-        if stripped.startswith(SKIP_DIRECTIVES):
-            skip = True
-            continue
-        if skip:
-            if stripped == "" or line.startswith(("   ", "\t")):
+        if skip_deeper_than is not None:
+            if line.strip() == "" or _indent(line) > skip_deeper_than:
                 continue
-            skip = False
+            skip_deeper_than = None
+
+        directive = DIRECTIVE_RE.match(line)
+        if directive and directive.group(2).lower() in DROP_DIRECTIVES:
+            skip_deeper_than = _indent(line)
+            continue
+        if TARGET_RE.match(line):
+            continue
+        if COMMENT_RE.match(line) and directive is None:
+            skip_deeper_than = _indent(line)
+            continue
         lines.append(line)
     prose = "\n".join(lines)
     prose = re.sub(r"``.*?``", " TOKEN ", prose)

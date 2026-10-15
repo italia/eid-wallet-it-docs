@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 .. Included via wallet-instance.rst at title level '"' (level 3).
 
 Wallet Instance Lifecycle
@@ -8,7 +8,7 @@ The Wallet Provider is in charge of the implementation and provision of Wallet I
 
 In this section, state machines are presented to explain the Wallet Instance and Digital Credential states and their transitions and relations.
 
-.. Note::
+.. note::
   PID is a specialized Digital Credential type that has impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if they were issued using the presentation of the PID.
   When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.
 
@@ -17,7 +17,7 @@ As shown in :numref:`fig_Wallet_Instance_States`, the Wallet Instance has four d
 Each state represents a specific functional status and determines the actions that can be performed.
 
 .. _fig_Wallet_Instance_States:
-.. Plantuml:: plantuml/wallet-instance-states.puml
+.. plantuml:: plantuml/wallet-instance-states.puml
     :width: 99%
     :alt: The figure illustrates the Wallet Instance States.
     :caption: `Wallet Instance States. <https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40>`_
@@ -30,7 +30,7 @@ Each state represents a specific functional status and determines the actions th
 
 ..     Wallet Instance Lifecycle.
 
-.. Note::
+.. note::
   The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically check the Wallet Instances security and compliance status.
 
 Transition to Installed
@@ -47,7 +47,7 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
 * death of the User.
 * illegal activities reported by Judicial or Supervisory Bodies.
 
-.. Note::
+.. note::
   As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Instance Attestation by using the status management mechanism.
   The Wallet Provider can simply change the status of the Wallet Instance Attestation in the Wallet Instance Attestation Status List to mark it as revoked and inform the Users concerning the reason for revoking the Wallet Instance.
 
@@ -59,7 +59,7 @@ At this stage, a User account MUST be created with the Wallet Provider and assoc
 Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
 This association allows the User to directly request Wallet Instance revocation from the Wallet Provider.
 
-.. Note::
+.. note::
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
@@ -85,7 +85,7 @@ Transition to Valid
 A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**), as specified in :ref:`pid-until-notification`. Obtaining an IT-Wallet ID MUST NOT cause this transition. In the **Valid** state, Users can obtain and present
 new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
 
-.. Note::
+.. note::
   Users can have only one Wallet Instance in **Valid** state for the same Wallet Solution. Thus, when a User installs and obtains a PID on a new Wallet
   Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance became
   **Operational**.
@@ -104,7 +104,7 @@ While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet I
 and the effect on their local storage.
 
 .. _fig_Wallet_Instance_Lifecycle:
-.. Plantuml:: plantuml/wallet-instance-lifecycle.puml
+.. plantuml:: plantuml/wallet-instance-lifecycle.puml
     :width: 99%
     :alt: The figure illustrates the Wallet Instance Lifecycle Management.
     :caption: `Wallet Instance Lifecycle Management. <https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000>`_
@@ -129,5 +129,5 @@ A Wallet Provider instead is responsible for:
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
 
 
-.. Note::
+.. note::
   A Wallet Provider MUST choose the technical validity period of the Wallet Instance Attestation and MUST maintain the revocation list for the whole validity period of the Wallet Instance Attestation Status List as defined by the ``client_status.exp`` claim in the Wallet Instance Attestation.

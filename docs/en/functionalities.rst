@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 .. Included via index.rst at title level '=' (document title).
 
 
@@ -9,7 +9,7 @@ This chapter specifies User Experience requirements.
 Issuance and presentation protocols are specified in :ref:`digital-credential-flows:Digital Credential Flows`.
 Credential lifecycle, revocation, and status checks are specified in :ref:`credential-revocation:Digital Credential Lifecycle`.
 
-.. Include:: design.rst
+.. include:: design.rst
 
 
 Functionalities Overview
@@ -17,18 +17,18 @@ Functionalities Overview
 
 The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/UX-phases-usage.svg
+  .. figure:: ./images/svg/UX-phases-usage.svg
     :alt: User Experience phases of Wallet usage
     :width: 100%
     :align: center
 
     User Experience phases of Wallet usage
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/UX-phases-usage.pdf
+  .. figure:: ./images/pdf/UX-phases-usage.pdf
     :alt: User Experience phases of Wallet usage
     :width: 100%
     :align: center
@@ -71,26 +71,26 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/IT-Wallet-Activation-1.svg
+  .. figure:: ./images/svg/IT-Wallet-Activation-1.svg
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
     :align: center
 
     Example of User Experience in Activating a Wallet Instance
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Wallet-Activation-01-1.pdf
+  .. figure:: ./images/pdf/A4-Wallet-Activation-01-1.pdf
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
 
     Example of User Experience in Activating a Wallet Instance - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Wallet-Activation-02-1.pdf
+  .. figure:: ./images/pdf/A4-Wallet-Activation-02-1.pdf
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
 
@@ -141,18 +141,18 @@ The **IT-Wallet ID** is the Electronic Attestation of Person Identification Data
 
   Although the term IT-Wallet ID refers to the Electronic Attestation of Personal Identification Data, the IT-Wallet ID graphical asset MAY be used by the Wallet Provider to facilitate the User in identifying, more generally, their personal identification Attestations (IT-Wallet ID / PID).
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ../../official_resources/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg
     :alt: IT-Wallet ID official graphic asset on a light background
     :width: 100%
     :align: center
 
     IT-Wallet ID official graphic asset on a light background
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/IT-Wallet-ID.pdf
+  .. figure:: ./images/pdf/IT-Wallet-ID.pdf
     :alt: IT-Wallet ID official graphic asset on a light background
     :width: 100%
 
@@ -210,7 +210,7 @@ The Authentic Source MAY provide additional information related to an Electronic
 
 Following is an example of informative text:
 
-.. Note::
+.. note::
   **Title:** Who may obtain the document
   **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document. For more details, [read more information] (URL).
 
@@ -229,36 +229,36 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Issuance-from-catalog-1.svg
+  .. figure:: ./images/svg/Issuance-from-catalog-1.svg
     :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-catalog-01-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-01-1.pdf
     :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-catalog-02-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-02-1.pdf
     :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 02
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-catalog-03-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-03-1.pdf
     :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
@@ -284,36 +284,36 @@ In case of errors during the issuance of the Electronic Attestation of Attribute
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Issuance-from-Authentic-Source-1.svg
+  .. figure:: ./images/svg/Issuance-from-Authentic-Source-1.svg
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source
     :width: 100%
     :align: center
 
     Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-01-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01.
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-02-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02.
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-01-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01.
     :width: 100%
     :align: center
@@ -321,9 +321,9 @@ The flow is shown below with illustrative wireframes.
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-02-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02.
     :width: 100%
     :align: center
@@ -331,18 +331,18 @@ The flow is shown below with illustrative wireframes.
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-03-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-03-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03.
     :width: 100%
     :align: center
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-04-1.pdf
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-04-1.pdf
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04.
     :width: 100%
     :align: center
@@ -351,9 +351,9 @@ The flow is shown below with illustrative wireframes.
 
 Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source` flow.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Credential-offer-ENG.svg
+  .. figure:: ./images/svg/Credential-offer-ENG.svg
     :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
     :align: center
@@ -361,9 +361,9 @@ Following is represented for illustrative purposes the page with the :ref:`funct
     Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/Credential-offer-ENG.pdf
+  .. figure:: ./images/pdf/Credential-offer-ENG.pdf
     :alt: Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer
     :width: 100%
 
@@ -444,18 +444,18 @@ In order to guide the Authentic Source in designing and the Wallet Provider in a
  - **Authentic Source name**, which is the identifying name of the data owner or the official database holding the information behind the EAA, defined by the parameter ``data_capabilities.data_origin``.
  - **Provider of Electronic Attestation of Attributes name**, which is the identifying name of the entity that creates and issues the EAA, defined by the parameter ``organization_name``.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Focus-EAA-I-II-Level-ENG.svg
+  .. figure:: ./images/svg/Focus-EAA-I-II-Level-ENG.svg
     :alt: Example of Electronic Attestation of Attributes layout, Detail View
     :width: 100%
     :align: center
 
     Example of Electronic Attestation of Attributes layout, Detail View.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-focus-EAA-I-II-Level-ENG.pdf
+  .. figure:: ./images/pdf/A4-focus-EAA-I-II-Level-ENG.pdf
     :alt: Example of Electronic Attestation of Attributes layout, Detail View
     :width: 100%
 
@@ -544,18 +544,18 @@ The Wallet Provider is the ultimate responsible party for the visual presentatio
 
 Below an example of Electronic Attestation of Attribute layout, in a Preview View, and Detail View.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Focus-EAA.svg
+  .. figure:: ./images/svg/Focus-EAA.svg
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View
     :width: 100%
     :align: center
 
     Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-focus-EAA.pdf
+  .. figure:: ./images/pdf/A4-focus-EAA.pdf
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View
     :width: 100%
 
@@ -608,18 +608,18 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/proximity-presentation-1.svg
+  .. figure:: ./images/svg/proximity-presentation-1.svg
     :alt: Example of User Experience in proximity presentation
     :width: 100%
     :align: center
 
     Example of User Experience in proximity presentation.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Proximity-presentation-1.pdf
+  .. figure:: ./images/pdf/A4-Proximity-presentation-1.pdf
     :alt: Example of User Experience in proximity presentation
     :width: 100%
     :align: center
@@ -652,27 +652,27 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Remote-presentation-same-device-1.svg
+  .. figure:: ./images/svg/Remote-presentation-same-device-1.svg
     :alt: Example of User Experience in remote, same-device presentation
     :width: 100%
     :align: center
 
     Example of User Experience in remote, same-device presentation.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Remote-presentation-same-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-01-1.pdf
     :alt: Example of User Experience in remote, same-device presentation - 01
     :width: 100%
     :align: center
 
     Example of User Experience in remote, same-device presentation  - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Remote-presentation-same-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-02-1.pdf
     :alt: Example of User Experience in remote, same-device presentation - 02
     :width: 100%
     :align: center
@@ -693,9 +693,9 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Remote-presentation-cross-device-1.svg
+  .. figure:: ./images/svg/Remote-presentation-cross-device-1.svg
     :alt: Example of User Experience in remote, cross-device presentation
     :width: 100%
     :align: center
@@ -703,27 +703,27 @@ The flow is shown below with illustrative wireframes.
     Example of User Experience in remote, cross-device presentation.
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Remote-presentation-cross-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-01-1.pdf
     :alt: Example of User Experience in remote, cross-device presentation - 01
     :width: 100%
     :align: center
 
     Example of User Experience in remote, cross-device presentation - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Remote-presentation-cross-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-02-1.pdf
     :alt: Example of User Experience in remote, cross-device presentation - 02
     :width: 100%
     :align: center
 
     Example of User Experience in remote, cross-device presentation - 02
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Remote-presentation-cross-device-03-1.pdf
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-03-1.pdf
     :alt: Example of User Experience in remote, cross-device presentation - 03
     :width: 100%
     :align: center
@@ -732,9 +732,9 @@ The flow is shown below with illustrative wireframes.
 
 Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the :ref:`functionalities:Remote Presentation` flow.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/remote-presentation.svg
+  .. figure:: ./images/svg/remote-presentation.svg
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100%
     :align: center
@@ -742,17 +742,17 @@ Following is represented for illustrative purposes the page with the :ref:`funct
     Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/remote-presentation-1.pdf
+  .. figure:: ./images/pdf/remote-presentation-1.pdf
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100%
 
     Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/remote-presentation-2.pdf
+  .. figure:: ./images/pdf/remote-presentation-2.pdf
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100%
 
@@ -772,72 +772,72 @@ To ensure a consistent and seamless Authentication process across all Relying Pa
 
 Both flows are shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Authentication-same-device-1.svg
+  .. figure:: ./images/svg/Authentication-same-device-1.svg
     :alt: Example of same-device Authentication User Experience
     :width: 100%
     :align: center
 
     Example of same-device Authentication User Experience.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-same-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01-1.pdf
     :alt: Example of same-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
     Example of same-device Authentication User Experience - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-same-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02-1.pdf
     :alt: Example of same-device Authentication User Experience - 02
     :width: 100%
     :align: center
 
     Example of same-device Authentication User Experience - 02
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Authentication-cross-device-1.svg
+  .. figure:: ./images/svg/Authentication-cross-device-1.svg
     :alt: Example of cross-device Authentication User Experience
     :width: 100%
     :align: center
 
     Example of cross-device Authentication User Experience.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-cross-device-01-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01-1.pdf
     :alt: Example of cross-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
     Example of cross-device Authentication User Experience - 01
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-cross-device-02-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02-1.pdf
     :alt: Example of cross-device Authentication User Experience - 02
     :width: 100%
     :align: center
 
     Example of cross-device Authentication User Experience - 02
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-cross-device-03-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03-1.pdf
     :alt: Example of cross-device Authentication User Experience - 03
     :width: 100%
     :align: center
 
     Example of cross-device Authentication User Experience - 03
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Authentication-cross-device-04-1.pdf
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04-1.pdf
     :alt: Example of cross-device Authentication User Experience - 04
     :width: 100%
     :align: center
@@ -847,7 +847,7 @@ Both flows are shown below with illustrative wireframes.
 
 Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.
 
-.. Note::
+.. note::
   The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions.
 
 Relying Parties MUST implement and provide the following pages as part of the Authentication process:
@@ -869,18 +869,18 @@ Specific requirements for each individual page are detailed below.
 
 To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the :ref:`official-resources:Official Resources`.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/discovery-page.svg
+  .. figure:: ./images/svg/discovery-page.svg
      :alt: Layout Model of Discovery Page in grid
      :width: 100%
      :align: center
 
      Layout Model of Discovery Page in grid
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/discovery-page.pdf
+  .. figure:: ./images/pdf/discovery-page.pdf
      :alt: Layout Model of Discovery Page in grid
      :width: 100%
 
@@ -902,48 +902,48 @@ If the User accesses the Discovery Page from the same Touchpoint where the Walle
 
 The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication.
 
-.. Note::
+.. note::
    This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in :ref:`remote-flow:Remote Flow` and :ref:`credential-issuance-low-level:Credential Offer Flow`.
 
 
 The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/selection-page.svg
+  .. figure:: ./images/svg/selection-page.svg
      :alt: Selection Page
      :width: 100%
      :align: center
 
      Selection Page
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/selection-page-desktop-1.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
      :alt: Selection Page desktop
      :width: 100%
 
      Selection Page desktop
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/selection-page-desktop-2.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
      :alt: Selection Page desktop
      :width: 100%
 
      Selection Page desktop
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/selection-page-desktop-3.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
      :alt: Selection Page desktop
      :width: 100%
 
      Selection Page desktop
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/selection-page-mobile.pdf
+  .. figure:: ./images/pdf/selection-page-mobile.pdf
      :alt: Selection Page mobile
      :width: 100%
 
@@ -973,18 +973,18 @@ The QR Code Page is presented to the User who selects IT-Wallet System Authentic
 
 Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/QR-page.svg
+  .. figure:: ./images/svg/QR-page.svg
      :alt: QR Code Page
      :width: 100%
      :align: center
 
      QR Code Page
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/QR-page.pdf
+  .. figure:: ./images/pdf/QR-page.pdf
      :alt: QR Code Page
      :width: 100%
 
@@ -1014,18 +1014,18 @@ The Thank You Page is displayed after the User completes the Authentication proc
 
 Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/thank-you-page.svg
+  .. figure:: ./images/svg/thank-you-page.svg
      :alt: Thank You Page
      :width: 100%
      :align: center
 
      Thank You Page
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/thank-you-page.pdf
+  .. figure:: ./images/pdf/thank-you-page.pdf
      :alt: Thank You Page
      :width: 100%
 
@@ -1043,18 +1043,18 @@ The Error Page is displayed when an issue occurs during the Authentication proce
 
 Relying Parties MUST implement the Error Page provided in the :ref:`official-resources:Official Resources`.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/error-page.svg
+  .. figure:: ./images/svg/error-page.svg
      :alt: Error Page
      :width: 100%
      :align: center
 
      Error Page
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/error-page.pdf
+  .. figure:: ./images/pdf/error-page.pdf
      :alt: Error Page
      :width: 100%
 
@@ -1096,18 +1096,18 @@ The Authentication Button has the following requirements:
 Below are some non-mandatory examples of Authentication Button layout:
 
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/authentication-button-layout.svg
+  .. figure:: ./images/svg/authentication-button-layout.svg
      :alt: Variants of Authentication Button layout
      :width: 100%
      :align: center
 
      Variants of Authentication Button layout
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/authentication-button-layout.pdf
+  .. figure:: ./images/pdf/authentication-button-layout.pdf
      :alt: Variants of Authentication Button layout
      :width: 100%
 
@@ -1115,18 +1115,18 @@ Below are some non-mandatory examples of Authentication Button layout:
 
 The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/discovery-page-layouts.svg
+  .. figure:: ./images/svg/discovery-page-layouts.svg
      :alt: Examples of Discovery Page layouts: grid, tab, and list
      :width: 100%
      :align: center
 
      Examples of Discovery Page layouts: grid, tab, and list
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/discovery-page-layouts.pdf
+  .. figure:: ./images/pdf/discovery-page-layouts.pdf
      :alt: Examples of Discovery Page layouts: grid, tab, and list
      :width: 100%
 
@@ -1146,54 +1146,54 @@ The Official Resource of the Authentication Button is available in the :ref:`off
 **"Login with IT-Wallet" button – svg**
 For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ../../official_resources/Authentication-button-ENG_size_variants.svg
+  .. figure:: ../../official_resources/Authentication-button-ENG_size_variants.svg
      :alt: Authentication button in its dimension variants
      :width: 100%
      :align: center
 
      Example of Authentication button in its dimension variants
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/Authentication-button.pdf
+  .. figure:: ./images/pdf/Authentication-button.pdf
      :alt: Example of Authentication button in its dimension variants
      :width: 100%
 
      Example of Authentication button in its dimension variants
 
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg
      :alt: Authentication button fixed justified
      :width: 100%
      :align: center
 
      Authentication button fixed justified
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Justified.pdf
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Justified.pdf
      :alt: Authentication Button fixed justified
      :width: 100%
 
      Authentication button fixed justified
 
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg
      :alt: Authentication button fixed centered
      :width: 100%
      :align: center
 
      Authentication button fixed centered
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Centered.pdf
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Centered.pdf
      :alt: Authentication Button fixed centered
      :width: 100%
 
@@ -1302,17 +1302,17 @@ Below are the functional requirements supporting the User Experience regarding t
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Update-EAA.svg
+  .. figure:: ./images/svg/Update-EAA.svg
      :alt: Example of User Experience in Updating an Electronic Attestation
      :width: 100%
 
      Example of User Experience in Updating an Electronic Attestation.
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Update-EAA.pdf
+  .. figure:: ./images/pdf/A4-Update-EAA.pdf
     :alt: Example of User Experience in Updating an Electronic Attestation
     :width: 100%
     :align: center
@@ -1346,9 +1346,9 @@ Below are the User Experience requirements that the Wallet Provider MUST guarant
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/Revocation-EAA-from-wallet-1.svg
+  .. figure:: ./images/svg/Revocation-EAA-from-wallet-1.svg
      :alt: Example of User Experience in Revoking an Electronic Attestation
      :width: 100%
      :align: center
@@ -1358,9 +1358,9 @@ The flow is shown below with illustrative wireframes.
      Example of User Experience in Revoking an Electronic Attestation.
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-Revocation-EAA-from-wallet-1.pdf
+  .. figure:: ./images/pdf/A4-Revocation-EAA-from-wallet-1.pdf
     :alt: Example of User Experience in Revoking an Electronic Attestation.
     :width: 100%
     :align: center
@@ -1424,18 +1424,18 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 The flow is shown below with illustrative wireframes.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/wallet-deactivation.svg
+  .. figure:: ./images/svg/wallet-deactivation.svg
      :alt: Example of User Experience in Deactivating a Wallet Instance
      :width: 100%
 
      Example of User Experience in Deactivating a Wallet Instance.
 
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/A4-wallet-deactivation.pdf
+  .. figure:: ./images/pdf/A4-wallet-deactivation.pdf
     :alt: Example of User Experience in Deactivating a Wallet Instance
     :width: 100%
     :align: center
@@ -1463,7 +1463,7 @@ Below is a non-exhaustive list of the main error cases, with reference to the ac
 Activation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. List-table::
+.. list-table::
   :widths: 80 20
   :header-rows: 1
 
@@ -1478,13 +1478,13 @@ Activation of the Wallet Instance Errors
   * - The Authentication process on the National Identity Provider's service was unsuccessful (e.g. technical errors, unrecognized identity, etc.)
     - National Identity Provider
 
-.. Note::
+.. note::
    When electronic document verification is performed in addition to National Identity Provider authentication, additional error scenarios may occur. For detailed error codes and handling procedures, see :ref:`credential-issuance-l2plus:Error Management`.
 
 Issuance of Electronic Attestations of Attributes Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. List-table::
+.. list-table::
   :widths: 80 20
   :header-rows: 1
 
@@ -1506,7 +1506,7 @@ Issuance of Electronic Attestations of Attributes Errors
 Presentation of Electronic Attestations Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. List-table::
+.. list-table::
   :widths: 80 20
   :header-rows: 1
 
@@ -1520,7 +1520,7 @@ Presentation of Electronic Attestations Errors
 Management of Electronic Attestations Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. List-table::
+.. list-table::
   :widths: 80 20
   :header-rows: 1
 
@@ -1536,7 +1536,7 @@ Management of Electronic Attestations Errors
 Deactivation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. List-table::
+.. list-table::
   :widths: 80 20
   :header-rows: 1
 

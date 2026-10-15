@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 .. Included via credential-presentation.rst at title level '=' (document title).
 
 
@@ -27,12 +27,12 @@ To invoke the correct Wallet Instance, the Relying Party SHOULD trigger the Wall
 
 After invocation, the Wallet Instance establishes trust with the Relying Party and evaluates the request under the selected path. If valid, it asks the User to consent to disclosure of the requested Digital Credentials.
 
-.. Note:: "Custom URL Interoperability"
+.. note:: "Custom URL Interoperability"
 
     If a Relying Party in EUDIW interoperability invokes the Wallet via a custom URL, it SHOULD use ``eu-eaap://`` so that the Wallet Unit receiving the Presentation Request supports the URL as required by OIDFVP-HAIP-REDIRECTS-03 of [`ETSI TS 119 472-2`_].
 
 .. _fig_High-Level-Flow-Presentation:
-.. Plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
+.. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
     :width: 99%
     :alt: The figure illustrates the High Level Remote Protocol Flow.
     :caption: `High Level Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/TP9FJy904CNl-oacN9GcslZVS30OGWmdQeLmCI5BEz2LTNVTtThKJ-yEGcqndffqthptU-qCdUVMb--IcV0KcJ1SUUWjk9JeOQB2M6NO0-wWwafIbBLG6qZ2otedi8OnQ-3i0Qe1N9n353sMlj1MV74lj88KFqfqFeh05rQNcm8ivi9Yva5RU4uXqpc2oxW2huC6NnN4yG_AYOEksLZbHWlbuvWnBZs8zS4VfgitybpLmN-D5aC1nYhYicO0bmHsaCxJIGlhz6ay8vHa-ZBhxna2GPg4zFP6ExifVFNNrncj799nTGJNPmnLlgSAozUql9Z0gC1iwyB6x-Y6HdE75aRafWYqLUUMnWJS_Jv7wPzcwVKMrL6hHlLFBGgus_LAscXDvtkQTGwXawiDeN0fQwYQVxqihUYpOQWVhkuR>`_
@@ -68,7 +68,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
 Below is a sequence diagram that details the interactions between all the involved parties.
 
-.. Plantuml:: plantuml/credential-presentation-remote-flow.puml
+.. plantuml:: plantuml/credential-presentation-remote-flow.puml
     :width: 99%
     :alt: The figure illustrates the Remote Protocol Flow.
     :caption: `Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/fLLDRnit4BtlhnYeXzY0_942FTI0YpYosxXnQqMswui1OSGTIOmeSikFbRT5_dk7ItEpjkGMHG01mf8pxxrv77BUEO_MXxKgC7YZmtf6jZWJtbWOt3co0q07ePYPn_Jzni4vrLAG6y1tLtAnzEzLeA9Y42baXTh3u1wL8W-Nch6re1PYypmaCDG1BaZxH805wHAO9J5DI3LIBs3CESthHC_27lJUzLdmInWfoRZxBN3z8eCL-U20oIeZdyWTTUH5W8EVMCq9tDCCRiZ6Ia5ZBHVefT55m1XGqmbCwCz0piFO6a_2KyahpWGhg3WzvLLoBA9DWl4I7S7fQL5JpZudJtOjDK59BOStbL5cqG2o5D5MC9KbL9Rcyh50vM5aZSlc5y0eMUgd2LHi9Mma5s-fb9RrGBJ2MFbNAo6hvRnKGJY1cwNPn5nXoeZNLhxXPO6wMoRb26vmJRju9qzKHqiM-Hzy37ofQxCYICqH7I-Ap7bb12g8xGN8C5ox5CdlJLP5AXP5ZoYyQi1e0c-3yrmv5pstPltLjDQjB0xcocnOHWQQ4FRy7O9DGgV1ocSVqpLnFILdHhJjZTFAjEKnSZxJL1dmFfRe4V1PNXlxjG4kQbG1FUKiWHNEf99UakFGQFmkrWM76WiuSwHVqFzoSGjEBZILNMzUppwp1Tj2elb9p9ExEzDc3QVDoP8MbCuhMl7um_6FKsxe9LpSdL_UjmVGy_SFidBUmFraV3RYM344HJY7c32ClRqLZqgoMnGp9gCT6xjhIisUM5RKf4Or5MbPJkTKaarj-7lxX-fLrjksYKPBbBfLDvSStHtXhWnB2-bymZ-8dUgR9vJVqAwsdFWt-IjPTbIf2ZPvYr2MYMNOnGwxzyj5qUbMmFdeqnKumIPiOrJzvmZxDpN51dwHfAiKDb17sJ8g7X_b1v19SWVnHYkNbuwCpQjWECsoqYBadXeP7IcFhlCEC-NUry8s5KDjFHgkYbcmb-xkDDwnmyyRlz-zdA_Mn0gbBgaY7Us2aQNMDbHmwLmWcvwB7iveIM858x8vZWyAjG-M8BWuLFoIKXALst1lN3om8Jpe3qQL3F-H6dZF2ZYpbr-5cP8YXhAwkD97yYQPtJ1At1fRO-R0FoxRaNDSrs5Fy5qLoqwlvDCsx0bZLf8LjtlbVhgYlGUxcmVFxlk7szlnqTl3j_3zyJ5SVtpGyFSW1yOdOd02I-yh1y6gF5RIqKpZM80lgStJ6FZPA6KsqCzFrp4DhF-XeviMZilz5Mky4LPM7aGygfCNem6SZtQmzhq8apinoKssx3EWIsG1lxdgB-trh3kytkItUVA_uv2mLly0>`_
@@ -93,25 +93,25 @@ The details of each step shown in the previous picture are described below.
   In the **Cross Device Flow**, the Authorization Request is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL.
   Below is represented a non-normative example of a QR Code issued by the Relying Party.
 
-  .. Only:: format_html
+  .. only:: format_html
 
-    .. Figure:: ./images/svg/verifier_qr_code.svg
+    .. figure:: ./images/svg/verifier_qr_code.svg
       :figwidth: 50%
       :align: center
 
-  .. Only:: format_latex
+  .. only:: format_latex
 
-    .. Figure:: ./images/pdf/verifier_qr_code.pdf
+    .. figure:: ./images/pdf/verifier_qr_code.pdf
       :width: 50%
       :align: center
 
-  .. Note::
+  .. note::
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured (:ref:`RPR-77 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
   The URL inside the QR Code contains ``client_id``, ``request_uri``, and optional ``request_uri_method`` parameters (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
   Below is represented a non-normative example of the QR Code raw payload with Request Object by reference:
 
-  .. Code-block:: text
+  .. code-block:: text
 
     https://wallet-solution.example.org/authorization?client_id=openid_federation%3Ahttps%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest&request_uri_method=post
 
@@ -124,7 +124,7 @@ The details of each step shown in the previous picture are described below.
   
   Below is a non-normative example with Request Object by reference:
 
-  .. Code-block:: http
+  .. code-block:: http
 
     HTTP/1.1 302 Found
     Location: eu-eaap://authorize?client_id=x509_hash%3AAbCdEfGhIjKlMnOp&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
@@ -141,7 +141,7 @@ The details of each step shown in the previous picture are described below.
 
     The following is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.
 
-    .. Code-block:: http
+    .. code-block:: http
 
       POST /request HTTP/1.1
       Host: client.example.org
@@ -152,7 +152,7 @@ The details of each step shown in the previous picture are described below.
     
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
 
-    .. Code-block:: json
+    .. code-block:: json
 
       {
         "wallet_metadata": {
@@ -182,7 +182,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
 
   Below is a non-normative example of the Redirect URI Response:
 
-  .. Code-block:: http
+  .. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/oauth-authz-req+jwt
@@ -195,7 +195,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
 
   **EUDIW ``x509_hash`` example**
 
-  .. Code-block:: json
+  .. code-block:: json
 
     {
       "alg": "ES256",
@@ -207,7 +207,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "iat": 1770000000
     }
 
-  .. Code-block:: json
+  .. code-block:: json
 
     {
       "client_id": "x509_hash:AbCdEfGhIjKlMnOp",
@@ -289,7 +289,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
 
   **National ``openid_federation`` example**
 
-  .. Code-block:: json
+  .. code-block:: json
 
     {
       "alg": "ES256",
@@ -298,7 +298,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "trust_chain": ["<entity-statement-base64url>"]
     }
 
-  .. Code-block:: json
+  .. code-block:: json
 
     {
       "client_id": "openid_federation:https://relying-party.example.org",
@@ -328,7 +328,7 @@ A failed evaluation terminates processing and MUST NOT trigger a retry under the
 
   Below is a non-normative example of the Authorization Response:
 
-  .. Code-block:: http
+  .. code-block:: http
 
       POST /response_uri HTTP/1.1
       HOST: relying-party.example.org
@@ -338,7 +338,7 @@ A failed evaluation terminates processing and MUST NOT trigger a retry under the
 
   Below is a non-normative example showing the decrypted JWE protected header and the payload of the JWT contained in the response, before base64url encoding. The ``vp_token`` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
 
-  .. Code-block:: json
+  .. code-block:: json
 
       {
         "alg": "ECDH-ES",
@@ -352,7 +352,7 @@ A failed evaluation terminates processing and MUST NOT trigger a retry under the
         }
       }
 
-  .. Code-block:: json
+  .. code-block:: json
 
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
@@ -362,7 +362,7 @@ A failed evaluation terminates processing and MUST NOT trigger a retry under the
         }
       }
 
-.. Note::
+.. note::
   When returning a requested Credential in ``mso_mdoc`` format in the ``vp_token``, the Wallet MUST cryptographically bind the resulting mdoc presentation to the current OpenID4VP transaction. To achieve this, the Wallet builds the ISO ``SessionTranscript`` used for mdoc device authentication and applies the OpenID4VP profiling rules by setting ``DeviceEngagementBytes`` to ``null`` and ``EReaderKeyBytes`` to ``null``, and sets its ``Handover`` field to an OpenID4VP-defined structure (``OpenID4VPHandover``) derived from the Authorization Request parameters. The Wallet then computes the mdoc device authentication (device signature) over data that includes this ``SessionTranscript``, such that the resulting mdoc presentation is valid only for that specific OpenID4VP transaction. For the normative definition of ``OpenID4VPHandover`` and the corresponding ``SessionTranscript`` profiling rules, see `OpenID4VP`_ Appendix B.2.
 
 **Steps 19-22 (RP Checks)**: The Relying Party verifies the encrypted Authorization Response, extracts the ``vp_token``, and validates its overall format and each presentation against the DCQL query. 
@@ -383,7 +383,7 @@ If all verifications succeed, the Relying Party updates the User session.
 
   The following is a non-normative example of the response in the Same Device Flow.
 
-.. Code-block:: http
+.. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -396,7 +396,7 @@ If all verifications succeed, the Relying Party updates the User session.
 
   Below is a non-normative example of the HTTP Request to the status endpoint, where the parameter ``id`` contains an opaque and random value:
 
-  .. Code-block:: http
+  .. code-block:: http
 
       GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03 HTTP/1.1
       HOST: relying-party.example.org
@@ -404,7 +404,7 @@ If all verifications succeed, the Relying Party updates the User session.
   When the Wallet Instance has provided the presentation to the Relying Party's **response_uri** endpoint and, in the Same Device Flow, the user-agent has successfully returned via ``redirect_uri`` within the same user session, the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.
   The following is a non-normative example of the response with the ``redirect_uri`` from the Relying Party to the user-agent.
 
-  .. Code-block:: http
+  .. code-block:: http
 
       HTTP/1.1 200 OK
       Content-Type: application/json
@@ -415,7 +415,7 @@ If all verifications succeed, the Relying Party updates the User session.
 
 **Steps 28-29**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`). The Relying Party MUST consider the transaction completed only if the redirect back is received in the same user session in which the flow was initiated. Otherwise it MUST reject the presentation.
 
-.. Note::
+.. note::
     During each Credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
     The transaction record MUST be created once the Wallet Instance has accepted the presentation request for processing (i.e., after request validation and Relying Party trust/policy checks, Steps 13–15). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., the requested Credential type(s) and the identifier(s) of the requested attributes), without logging any attribute values.
@@ -430,7 +430,7 @@ Authorization Request
 
 The URL parameters contained in the Relying Party Authorization Request are described in the table below.
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -444,7 +444,7 @@ The URL parameters contained in the Relying Party Authorization Request are desc
    * - **request_uri_method**
      - OPTIONAL only if ``request_uri`` is specified, otherwise MUST NOT be present. The HTTP method MUST be set with ``get`` or ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-08 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-09 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`). The Wallet Instance should use this method to obtain the signed Request Object from the ``request_uri``. If not provided or equal to ``get``, the Wallet Instance SHOULD use the HTTP method ``get``. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/x-www-form-urlencoded``.
 
-.. Note::
+.. note::
    The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
 .. _endpoint-mix-up-protection:
@@ -452,7 +452,7 @@ The URL parameters contained in the Relying Party Authorization Request are desc
 Endpoint Mix-Up Protection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Warning::
+.. warning::
    For redirect flows, to prevent endpoint mix-up attacks, the values of ``request_uri``, ``response_uri`` and ``redirect_uri`` MUST each be attested by a trusted third party.
    Under the National Trust Framework, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`), and the values MUST match the corresponding ``request_uris``, ``response_uris`` and ``redirect_uris`` parameters in the ``openid_credential_verifier`` metadata obtained through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
    Under the EUDIW Trust Framework they MUST satisfy the WRPAC/WRPRC identity and endpoint binding, as specified in :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. Evidence from the unselected framework MUST NOT authorize an endpoint.
@@ -467,13 +467,13 @@ The Relying Party SHOULD provide the POST method with its ``request_uri`` endpoi
 
 This feature can be useful when, for example, the Wallet Instance supports a restricted set of features, supported algorithms or a specific url for its ``authorization_endpoint``, and any other information that it deems necessary to provide to the Relying Party for interoperability.
 
-.. Warning::
+.. warning::
   The Wallet Instance, when providing its technical capabilities to the Relying Party, MUST NOT include any User information or other explicit (:ref:`RPR-86 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`) information regarding the hardware used or usage preferences of its User (:ref:`RPR-86 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
 If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the ``request_uri`` endpoint of the Relying Party, with the method POST and content type set to ``application/x-www-form-urlencoded`` (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 The request and its parameters are defined in Section 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
 
-.. List-table:: Request URI Endpoint Parameters
+.. list-table:: Request URI Endpoint Parameters
    :class: longtable
    :widths: 20 80
    :header-rows: 1
@@ -487,7 +487,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 
 
 .. _table_wallet_metadata_parameters:
-.. List-table:: Wallet Metadata Parameters
+.. list-table:: Wallet Metadata Parameters
    :class: longtable
    :widths: 20 80
    :header-rows: 1
@@ -502,10 +502,10 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
      - OPTIONAL. See OpenID Connect Discovery.
 
 
-.. Note::
+.. note::
   In the IT Wallet, legacy Relying Parties using an ``https`` URI as ``client_id`` are treated as using the ``openid_federation`` prefix for backward compatibility. Their trust is established and validated through Trust Chain resolution. This does not define a third client identifier path or a ``pre-registered`` default.
 
-.. Note::
+.. note::
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
   When present, the Relying Party MUST evaluate it (:ref:`RPR-81 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
@@ -525,7 +525,7 @@ When the Relying Party encounters errors while issuing the Request Object from t
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 20 20 60
    :header-rows: 1
@@ -546,7 +546,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 
 The following is an example of an error response from ``request_uri`` endpoint:
 
-.. Code-block:: http
+.. code-block:: http
 
   HTTP/1.1 500 Internal Server Error
   Content-Type: application/json
@@ -562,7 +562,7 @@ Request Object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The JWT header parameters are described below:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -580,12 +580,12 @@ The JWT header parameters are described below:
    * - **x5c**
      - EUDIW PATH ONLY. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix. It contains the WRPAC first, followed by its certification path up to but excluding the trust anchor. The WRPAC MUST be used to verify the JWT signature. The chain MUST be valid against the Providers of WRPAC LoTE, as defined in :ref:`trust-evaluation:EUDIW Authentication`. The WRPAC binds the Relying Party identity and applicable presentation endpoints according to :ref:`trust-evaluation:EUDIW Authorization`. It is not National authentication evidence.
 
-.. Note::
+.. note::
    For ``x509_hash``, the ``x5c`` header MUST contain the WRPAC first and MUST NOT include the trust anchor as required by `OPENID4VC-HAIP`_. The chain MUST validate to a trust anchor obtained from the Providers of WRPAC LoTE according to :ref:`trust-evaluation:EUDIW Authentication`. See Section :ref:`infrastructure-trust:X.509 Certificate Profile` for background on X.509 certificate chain validation.
 
 The JWT payload parameters are described herein:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -640,10 +640,10 @@ The JWT payload parameters are described herein:
    * - **exp**
      - REQUIRED. Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (:ref:`RPR-94 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
-.. Warning::
+.. warning::
   The ``response_uri`` parameter is subject to :ref:`endpoint-mix-up-protection` (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-95 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
-.. Note::
+.. note::
   The ``transaction_data`` parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the goal is to bind the transaction details to the Authorization Response so that integrity is preserved and the User’s approval can be proven afterwards (non-repudiation).
 
   The binding mechanism depends on the Credential Format:
@@ -651,10 +651,10 @@ The JWT payload parameters are described herein:
   - **dc+sd-jwt**: the Wallet binds the transaction data by returning ``transaction_data_hashes`` (and, when applicable, ``transaction_data_hashes_alg``) inside the Key Binding JWT (KB-JWT). See `OpenID4VP`_, Appendix B.3.3 for further details.
   - **mso_mdoc**: transaction data is bound through mdoc device authentication. For this format, the Wallet MUST check that the requested transaction data ``type`` is supported by the document type and authorized by the issuer (KeyAuthorizations). If it is not authorized, the Wallet MUST reject the request due to an unsupported transaction data type. See `OpenID4VP`_, Appendix B.2.1 for further details.
 
-.. Note::
+.. note::
   The ``state`` parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain the state between the request and response, such as session information or other data the Relying Party needs after the authorization process.
 
-.. Note::
+.. note::
   
   ``client_metadata`` and ``client_metadata.jwks`` are required for both profiled paths because every request supplies a request-specific ephemeral response-encryption public key [`ETSI TS 119 472-2`_].
 
@@ -664,14 +664,14 @@ After obtaining the User authorization and consent for the presentation of the D
 
 Every successful response MUST be encrypted using the mandatory, request-specific ephemeral public key selected from ``client_metadata.jwks`` by its unique ``kid`` and MUST use ``direct_post.jwt`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`). The Verifier MUST support both ``A128GCM`` and ``A256GCM``. The Wallet MUST support at least one and SHOULD prefer ``A256GCM`` when both are available [`ETSI TS 119 472-2`_].
 
-.. Note::
+.. note::
     **Why the response is encrypted?**
 
     The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
 
 Where the following parameters are used (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -688,12 +688,12 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
    * - **state**
      - Unique identifier provided by the Relying Party within the Authorization Request.
 
-.. Note::
+.. note::
     Although `OpenID4VP`_ considers SD-JWT-based Verifiable Credentials (SD-JWT VC) draft -10, the IT Wallet specification considers SD-JWT VC draft -13 (`SD-JWT-VC`_) to be in line with the version identified in `OpenID4VCI`_.
 
 SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT (:ref:`WP_093b <wallet-credential-presentation-testcases>`), as represented in the example below
 
-.. Code-block:: text
+.. code-block:: text
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
 
@@ -701,7 +701,7 @@ To validate the signature on the Key Binding JWT, the Relying Party MUST use the
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (:ref:`WP_093c <wallet-credential-presentation-testcases>`):
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -715,7 +715,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
 
 When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. The KB-JWT MUST contain the following parameters in the JWT payload:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 25 50
    :header-rows: 1
@@ -747,7 +747,7 @@ The Authorization Error Response MUST be encoded in the request body using the f
 
 Below is a non-normative example of an Authorization Error Response.
 
-.. Code-block:: http
+.. code-block:: http
 
   POST /response_uri HTTP/1.1
   HOST: relying-party.example.org
@@ -757,13 +757,13 @@ Below is a non-normative example of an Authorization Error Response.
   error=invalid_request&
   error_description=...
 
-.. Warning::
+.. warning::
   The Wallet Instance MUST NOT send an error to an unauthenticated endpoint or reveal whether a Wallet or Credential is available.
   An error from one trust path is handled as specified in :ref:`trust-evaluation:Failure Handling`.
 
 In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 20 60
    :header-rows: 1
@@ -796,7 +796,7 @@ This redirect allows the Relying Party to seamlessly resume interaction with the
 The Relying Party MUST include a response code within the ``redirect_uri``. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.
 Even if an adversary manages to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.
 
-.. Warning::
+.. warning::
   The ``redirect_uri`` parameter is subject to :ref:`endpoint-mix-up-protection` (:ref:`WP_094a <wallet-credential-presentation-testcases>`).
 
 Relying Party Response Errors
@@ -809,7 +809,7 @@ If any validation check, performed by the Relying Party on the Authorization Res
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 20 20 60
    :header-rows: 1
@@ -847,7 +847,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 
 Below there are two examples of HTTP responses using ``application/json`` that include both the ``error`` and ``error_description`` members:
 
-.. Code-block:: http
+.. code-block:: http
 
   HTTP/1.1 403 Forbidden
   Content-Type: application/json
@@ -858,7 +858,7 @@ Below there are two examples of HTTP responses using ``application/json`` that i
   }
 
 
-.. Code-block:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -897,7 +897,7 @@ If instead any validation check performed by the Relying Party fails, the QRCode
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 20 20 60
    :header-rows: 1
@@ -928,7 +928,7 @@ When the user-agent is redirected to the Redirect URI provided by the Relying Pa
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. List-table::
+.. list-table::
    :class: longtable
    :widths: 20 20 60
    :header-rows: 1

@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 
 
 Ciclo di Vita degli Attestati Elettronici
@@ -22,7 +22,7 @@ Include quattro stati distinti: **Issued**, **Valid**, **Expired** e **Revoked**
 Indipendentemente dallo stato, un Attestato Elettronico può essere eliminato (**PID/(Q)EAA DEL**) e questo termina il suo ciclo di vita.
 
 .. _fig_DigitalCredential_States:
-.. Plantuml:: plantuml/credential-states.puml
+.. plantuml:: plantuml/credential-states.puml
     :width: 80%
     :alt: La figura illustra gli Stati degli Attestati Elettronici.
     :caption: `Transazioni di Stato degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/RP9HRzCm4CVV_IbEtSC0AIAK5Q4ze4Lh2fK6b6MRa807BxwrLXmxifsDWFZks8udjr7xLF_kVtS_dN9XBDMsRmNPSOQ0RMS7O6XgpJlBbIHMTM0Lt2jhLGkCQwm39wUGPV0H9Meg7ATRJLimTX1SRbs9c8RBZdh8y87smgwKj1N_W_1clbUiBBLOQAsUBfLG6ku5hPkZzKz8MUX_EorVSOatErut4es1UNJxJ1k4McbdQ81A1iB539XMARj3VUYeLI_PPGZ3F8VuEmL1zHPr70EQCjwRr1P6sg53w9GO_2EszIOXFzkweqIj9JvuQBou2HB-7nH2L2EY1cRk1UDp1l2Nn4pLcmubGmOdgrMnoFF8h_5HDPuktvqjpXQHbhyxhXEDwsyqbOPRhcHO_ZnwRKoFxAk-euApe30IK1e2cpaD6Ar702Tv_Zvt3Wx_UFKBCistEvjzWDXu3flrylMBRo_BelWfrrK5168jPVsaQVJHCsu729-c8V-SvA5UnjIJTDtf7kVmt5tTLfjft4NZYIQhhiixE1AEbvk4o-yRGjBAhEzSzB0vQTn-yI8fFf7O5vY4qlAznK326T974a_WBp_HN9PNvCADwrln7m00>`_
@@ -35,12 +35,12 @@ Indipendentemente dallo stato, un Attestato Elettronico può essere eliminato (*
 
 ..     Digital Credential Lifecycle.
 
-.. Note::
+.. note::
   Gli Utenti POSSONO presentare un Attestato Elettronico in qualsiasi stato, spetta alla policy della Relying Party accettare un Attestato Elettronico non Valido.
   Un esempio di questo scenario è quando una Relying Party deve verificare che l'Utente non sia minorenne. In questo caso, anche se l'Utente presenta un
   Attestato Elettronico **Issued/Expired/Revoked** o **Suspended**, l'attributo relativo all'età è ancora affidabile.
 
-.. Note::
+.. note::
   Mentre **Issued**, **Valid**, **Expired**, **Revoked** sono esplicitamente menzionati nell'ARF (vedi Figura 5 di ARF v1.4),
   **Suspended** è implicitamente presente in `EIDAS-ARF`_. Questa specifica lo considera esplicitamente.
 
@@ -92,7 +92,7 @@ Nel caso del solo PID e IT-Wallet ID, i seguenti casi si aggiungono a quelli sop
   * rilevamento di una violazione dell'identità digitale rilasciata da un Gestore di Identità Digitale e utilizzata per autenticare l'Utente durante il rilascio del PID/IT-Wallet ID.
   * come risultato dell'ottenimento di un nuovo PID/IT-Wallet ID su una nuova Istanza del Wallet dallo stesso Fornitore di Wallet che ha fornito l'Istanza del Wallet contenente un PID/IT-Wallet ID precedentemente rilasciato.
 
-.. Note::
+.. note::
   Un Fornitore di Attestati Elettronici di Attributi (Q)EAA PUÒ revocare un Attestato Elettronico di Attributi (Q)EAA in caso di revoca del PID/IT-Wallet ID.
 
 Quando un Attestato Elettronico è **Revoked** non può tornare allo stato **Valid**, l'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico
@@ -123,7 +123,7 @@ la :numref:`fig_DigitalCredential_Lifecycle` mostra il punto di vista delle Ista
 e l'effetto sul loro storage locale.
 
 .. _fig_DigitalCredential_Lifecycle:
-.. Plantuml:: plantuml/credential-lifecycle.puml
+.. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: La figura illustra il Ciclo di Vita degli Attestati Elettronici.
     :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
@@ -179,7 +179,7 @@ Mentre il Fornitore di Attestati Elettronici DEVE gestire direttamente lo stato 
 La seguente figura mostra un diagramma delle relazioni tra entità relative al flusso di aggiornamento dello stato.
 
 .. _fig_entity-relation-credential-revocation:
-.. Plantuml:: plantuml/credential-revocation-entities.puml
+.. plantuml:: plantuml/credential-revocation-entities.puml
     :width: 99%
     :alt: La figura illustra le Entità coinvolte nel Flusso di Revoca degli Attestati Elettronici.
     :caption: `Entità coinvolte nel Flusso di Revoca degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/RPJDZjCm4CVlUOgX5ne9QIzxH6ZPR1150gfs4U8KkV5GHgHsv8-KW7XtngcJXhYLAjUJcVd_vYDzi4uOvqyDbCgH8xH0gjDDXv9_G65G8ZyG3UomqxLmf1MyQ_GvUq6gRhn4U5tStnNtLQ5FhLRi_2RBtc-Uoch_NExApy_VjkKwpx8j6glLsbiqhs3rXOyLduDe3_giI1r1qf4SIzMJgbrnwAFsIWhJhy-YQT1LjhSEJnpzTRZ3VhYlSlYJ0NycaD6V51UfQhn6RA8b88JlHw744Iq4kfSMdY97CUUudRirkYF9DOsfjz4mfevt2mjf44h26G_0aXtL61J-PjbLG7Zt8uZNbTNU3FHlHnFi1rEY4TeAmZb31-_uxZHm16oizMW6nLEiD9WxqP0CxMSYvmF0f5wLlou4sj1lbDL1opu0J9PfNKQ6lMz38LQR_d5m_k0brM5nOf1ZsqRYPU1Jb_9voJHmSh9huoFxg3BSx7-LfCCQ7iV1s6MFPt9ntQhhkh52ccxKBhHoWfITDpWefMtCiXqsSTMNUmAhy2BzH5YkOfu6pHRt2Tc0SwgvVspSbFj64Va5Ai59fMxpsIYO-4_QdxIZx_sjUSW0Jrg552b3cc8X3MRwwubb92z7ccCs9DzA4SurJyhpgSroPdaaIpP-cNN3OCUmqxMZxhB_aIXwfZirTVHkxssBIdB40n_-rFm3>`_
@@ -203,7 +203,7 @@ Questa sezione descrive i principali flussi per la gestione degli Aggiornamenti 
   - attivato da un Fornitore di Wallet.
   - attivato da una Fonte Autentica.
 
-.. Note::
+.. note::
   I Flussi dettagliati di Aggiornamento dello Stato per i Gestori di Identità Digitale, le autorità legali e l'Organo di Vigilanza saranno trattati nelle versioni future della specifica tecnica.
 
 Aggiornamento dello Stato relativo all'Utente
@@ -223,13 +223,13 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
 
 Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronico rilasciato, l'Istanza del Wallet DOVREBBE avviare una richiesta di correzione dati tramite il Notification Endpoint come specificato in :ref:`credential-issuance-endpoint:Correzione dati usando credential_failure`. A seguito della conferma della discrepanza, il Fornitore di Attestati Elettronici DOVREBBE seguire il :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
-.. Note::
+.. note::
   Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID/IT-Wallet ID, il precedente PID/IT-Wallet ID DEVE essere revocato. In caso di revoca del PID la precedente Istanza del Wallet DEVE passare allo stato operativo.
 
 In caso di morte dell'Utente, i Fornitori di Attestati Elettronici DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
 La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID/IT-Wallet ID. Pertanto, la Fonte Autentica del PID/IT-Wallet ID (ANPR) DEVE notificare al PID/EAA Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID/EAA Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`.
 
-.. Note::
+.. note::
   Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
@@ -266,17 +266,17 @@ I Fornitori di Attestati Elettronici DEVONO controllare periodicamente il PDND S
 
 La seguente figura illustra ad alto livello il processo di aggiornamento dello stato da parte delle Fonti Autentiche.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/status-update-as.svg
+  .. figure:: ./images/svg/status-update-as.svg
     :alt: Processo di aggiornamento dello stato per le Fonti Autentiche
     :width: 100%
 
     Processo di aggiornamento dello stato delle Fonti Autentiche
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/status-update-as.pdf
+  .. figure:: ./images/pdf/status-update-as.pdf
     :alt: Processo di aggiornamento dello stato per le Fonti Autentiche
     :width: 100%
 
@@ -296,7 +296,7 @@ Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il
 
   * **Trigger raggruppati, aggiornamenti indipendenti**: indipendentemente dall'attore che ha innescato la variazione di stato del batch (ad esempio, la Wallet Instance tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite l'aggiornamento della Status List della Wallet Instance e Key Attestations) l'aggiornamento viene gestito come una o più modifiche di stato separate. Il Fornitore di Attestati Elettronici aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati.
 
-.. Note::
+.. note::
   Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Per impostazione predefinita non richiede la revoca presso il Fornitore di Attestati Elettronici. L’Istanza del Wallet PUÒ offrire all’Utente un prompt opzionale per richiedere la revoca presso il Fornitore di Attestati Elettronici nell’ambito del flusso di eliminazione.
 
 
@@ -306,7 +306,7 @@ Meccanismi di Verifica della Validità
 Per la verifica dello stato di validità di un Attestato Elettronico a lunga durata, Token Status List (`TOKEN-STATUS-LIST`_) DEVE essere supportato sia per lo scenario remoto che per quello di prossimità. La seguente tabella riassume i meccanismi di revoca richiesti per verificare lo stato degli Attestati Elettronici a lunga durata.
 
 .. _table_revocation_mechanisms:
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -351,10 +351,10 @@ Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, a
   - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x30, 0x21]``.
   - comprimere l'array utilizzando DEFLATE.
 
-.. Note::
+.. note::
   Quando il Fornitore di Attestati Elettronici sceglie il numero di bit per trasmettere gli stati degli Attestati Elettronici che emette, PUÒ aggiungere altri stati oltre a quelli descritti sopra. L'aggiunta di molti stati diversi per il ciclo di vita di un Attestato Elettronico deve tuttavia essere attentamente ponderata poiché rivela informazioni alle Relying Party.
 
-.. Note::
+.. note::
   La principale considerazione sulla privacy per una Status List è impedire al Fornitore di Attestati Elettronici di tracciare l'uso dell'Attestato Elettronico quando lo stato viene controllato. Se un Fornitore di Attestati Elettronici offre informazioni sullo stato facendo riferimento a un token specifico, ciò consentirebbe al Fornitore di Attestati Elettronici di creare un profilo per il token emesso correlando la data e l'identità delle Relying Party che richiedono lo stato. Le implementazioni DEVONO quindi integrare le informazioni sullo stato di molti Attestati Elettronici nella stessa lista. Di conseguenza, il Fornitore di Attestati Elettronici non apprende per quale Attestato Elettronico la Relying Party sta richiedendo la Status List. La privacy dell'Utente è protetta dall'anonimato all'interno dell'insieme degli Attestati Elettronici nella Status List, questo limita le possibilità di tracciamento da parte del Fornitore di Attestati Elettronici.
   Questo effetto di privacy di gruppo dipende dal numero di entità all'interno della Status List. Una maggiore quantità di Attestati Elettronici referenziati in essa risulta in una migliore privacy ma influisce anche sulle prestazioni poiché più dati devono essere trasferiti per leggere la Status List. A seconda dei parametri della Status List (ad esempio la quantità di bit che designano i valori dell'Attestato Elettronico), i Fornitori di Attestati Elettronici devono trovare un equilibrio appropriato tra privacy e prestazioni.
 
@@ -367,7 +367,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
 
 
 .. _table_status_list_endpoint_parameters:
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -388,7 +388,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - OBBLIGATORIO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
     - :rfc:`5280`
 
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -412,13 +412,13 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - OBBLIGATORIO. Oggetto JSON che contiene una Status List.
     - `TOKEN-STATUS-LIST`_
 
-.. Note::
+.. note::
   Si RACCOMANDA che il Fornitore di Attestati Elettronici imposti il claim ``exp`` in modo che il Token di Status List abbia una breve durata. In genere, questo comporta che il claim ``exp`` non superi il claim ``iat`` di più di 24 ore.
 
 Una Status List codificata in JSON ha la seguente struttura:
 
 .. _table_status_list_structure:
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -438,7 +438,7 @@ Una Status List codificata in JSON ha la seguente struttura:
 
 Di seguito è riportato un esempio di Token di Status List prima di applicare la firma e la codifica:
 
-.. Code-block:: json
+.. code-block:: json
 
   {
     "alg": "ES256",
@@ -451,7 +451,7 @@ Di seguito è riportato un esempio di Token di Status List prima di applicare la
     ]
   }
 
-.. Code-block:: json
+.. code-block:: json
 
   {
     "exp": 2291720170,
@@ -476,7 +476,7 @@ I Fornitori di Attestati Elettronici, una volta che un Attestato Elettronico è 
 Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con i seguenti parametri
 
 .. _table_status_list_parameters:
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -498,7 +498,7 @@ Verifica degli Stati degli Attestati Elettronici
 Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Wallet Instance, tuttavia, le stesse regole si applicherebbero anche al Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
-.. Plantuml:: plantuml/status-list-flow.puml
+.. plantuml:: plantuml/status-list-flow.puml
     :width: 80%
     :alt: La figura illustra il Flusso di Status List.
     :caption: `Flusso di Status List. <https://www.plantuml.com/plantuml/svg/RS-n2i8m4CRnFKzn15TVm44AWbfm42suk9pj3OVf9UOkvFMDEXMS_p_u-3erp5Rc05T3AmedLeDzYDLXiIXbVb1sgHaUEQ4O-1k6G0QzgA6Cv04LAY_DBjD4Oem1UjL2-QlOkSgmtW9lu42sc3mEmnakz2gavXfggZRsXsYAeWHt0R_wvKyTufF4kuvaQc_U>`_
@@ -520,7 +520,7 @@ La Relying Party DOVREBBE inviare l'Accept-Header ``application/statuslist+jwt``
 
 Di seguito è riportato un esempio non normativo di una richiesta per un Token di Status List:
 
-.. Code-block:: http
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
@@ -538,7 +538,7 @@ Se gli header HTTP relativi alla cache sono presenti nella risposta HTTP, le Rel
 
 Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List con tipo ``application/statuslist+jwt``:
 
-.. Code-block:: http
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -572,7 +572,7 @@ Se, ad esempio, l'array di byte decompresso è ``[0x00, 0x40, 0x21]``, corrispon
 
 In caso di errore durante la generazione della risposta da parte dell'Endpoint del Token di Status, DEVONO essere supportati i seguenti Codici di Stato HTTP:
 
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 80
   :header-rows: 1

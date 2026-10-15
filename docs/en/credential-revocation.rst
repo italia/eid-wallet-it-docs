@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 .. Included via digital-credential-management.rst at title level '=' (document title).
 
 
@@ -23,7 +23,7 @@ It includes four distinct states: **Issued**, **Valid**, **Expired**, and **Revo
 A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this ends its lifecycle.
 
 .. _fig_DigitalCredential_States:
-.. Plantuml:: plantuml/credential-states.puml
+.. plantuml:: plantuml/credential-states.puml
     :width: 80%
     :alt: The figure illustrates the Digital Credential States.
     :caption: `Digital Credential State Transactions. <https://www.plantuml.com/plantuml/svg/RP9HRzCm4CVV_IbEtSC0AIAK5Q4ze4Lh2fK6b6MRa807BxwrLXmxifsDWFZks8udjr7xLF_kVtS_dN9XBDMsRmNPSOQ0RMS7O6XgpJlBbIHMTM0Lt2jhLGkCQwm39wUGPV0H9Meg7ATRJLimTX1SRbs9c8RBZdh8y87smgwKj1N_W_1clbUiBBLOQAsUBfLG6ku5hPkZzKz8MUX_EorVSOatErut4es1UNJxJ1k4McbdQ81A1iB539XMARj3VUYeLI_PPGZ3F8VuEmL1zHPr70EQCjwRr1P6sg53w9GO_2EszIOXFzkweqIj9JvuQBou2HB-7nH2L2EY1cRk1UDp1l2Nn4pLcmubGmOdgrMnoFF8h_5HDPuktvqjpXQHbhyxhXEDwsyqbOPRhcHO_ZnwRKoFxAk-euApe30IK1e2cpaD6Ar702Tv_Zvt3Wx_UFKBCistEvjzWDXu3flrylMBRo_BelWfrrK5168jPVsaQVJHCsu729-c8V-SvA5UnjIJTDtf7kVmt5tTLfjft4NZYIQhhiixE1AEbvk4o-yRGjBAhEzSzB0vQTn-yI8fFf7O5vY4qlAznK326T974a_WBp_HN9PNvCADwrln7m00>`_
@@ -36,12 +36,12 @@ A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this 
 
 ..     Digital Credential Lifecycle.
 
-.. Note::
+.. note::
   Users MAY present a Digital Credential in any state, it is up to the Relying Party's policy to accept a not Valid Digital Credential.
   An example of this scenario is when a Relying Party needs to verify that the User is not a minor. In this case, even if the User presents an
   **Issued/Expired/Revoked** or **Suspended** Digital Credential, the age claim is still reliable.
 
-.. Note::
+.. note::
   While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4),
   **Suspended** is implicitly present in `EIDAS-ARF`_. This specification explicitly considers it.
 
@@ -93,7 +93,7 @@ In the case of PID and IT-Wallet ID only, the following cases are in addition to
   * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID/IT-Wallet ID Issuance.
   * as a result of obtaining a new PID/IT-Wallet ID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID/IT-Wallet ID previously issued.
 
-.. Note::
+.. note::
   A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID/IT-Wallet ID revocation.
 
 When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential
@@ -124,7 +124,7 @@ While :numref:`fig_DigitalCredential_States` shows the different states a Digita
 and the effect on their local storage.
 
 .. _fig_DigitalCredential_Lifecycle:
-.. Plantuml:: plantuml/credential-lifecycle.puml
+.. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Lifecycle.
     :caption: `Digital Credential Lifecycle Management. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
@@ -180,7 +180,7 @@ While the Credential Issuer MUST directly manage the validity status of Digital 
 The following figure shows an entity relationships diagram relating to the Update Flow status.
 
 .. _fig_entity-relation-credential-revocation:
-.. Plantuml:: plantuml/credential-revocation-entities.puml
+.. plantuml:: plantuml/credential-revocation-entities.puml
     :width: 99%
     :alt: The figure illustrates the Entities involved in Credential Revocation Flow.
     :caption: `Entities involved in Credential Revocation Flow. <https://www.plantuml.com/plantuml/svg/RPJDZjCm4CVlUOgX5ne9QIzxH6ZPR1150gfs4U8KkV5GHgHsv8-KW7XtngcJXhYLAjUJcVd_vYDzi4uOvqyDbCgH8xH0gjDDXv9_G65G8ZyG3UomqxLmf1MyQ_GvUq6gRhn4U5tStnNtLQ5FhLRi_2RBtc-Uoch_NExApy_VjkKwpx8j6glLsbiqhs3rXOyLduDe3_giI1r1qf4SIzMJgbrnwAFsIWhJhy-YQT1LjhSEJnpzTRZ3VhYlSlYJ0NycaD6V51UfQhn6RA8b88JlHw744Iq4kfSMdY97CUUudRirkYF9DOsfjz4mfevt2mjf44h26G_0aXtL61J-PjbLG7Zt8uZNbTNU3FHlHnFi1rEY4TeAmZb31-_uxZHm16oizMW6nLEiD9WxqP0CxMSYvmF0f5wLlou4sj1lbDL1opu0J9PfNKQ6lMz38LQR_d5m_k0brM5nOf1ZsqRYPU1Jb_9voJHmSh9huoFxg3BSx7-LfCCQ7iV1s6MFPt9ntQhhkh52ccxKBhHoWfITDpWefMtCiXqsSTMNUmAhy2BzH5YkOfu6pHRt2Tc0SwgvVspSbFj64Va5Ai59fMxpsIYO-4_QdxIZx_sjUSW0Jrg552b3cc8X3MRwwubb92z7ccCs9DzA4SurJyhpgSroPdaaIpP-cNN3OCUmqxMZxhB_aIXwfZirTVHkxssBIdB40n_-rFm3>`_
@@ -204,7 +204,7 @@ This section describes the main flows for managing Digital Credential Status Upd
   - triggered by a Wallet Provider.
   - triggered by an Authentic Source.
 
-.. Note::
+.. note::
   Detailed Status Update Flows for Identity Providers, legal authorities, and the Supervisory Body will be covered in future versions of the technical specification.
 
 Status Update related to the User
@@ -224,13 +224,13 @@ Users MAY change their Digital Credential validity status by:
 
 In addition, when Users detect incorrect data in an issued Digital Credential, the Wallet Instance SHOULD initiate a data correction request via the Notification Endpoint as specified in :ref:`credential-issuance-endpoint:Data Correction using credential_failure`. Upon confirmation of the discrepancy, the Issuer SHOULD follow the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
-.. Note::
+.. note::
   If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID/IT-Wallet ID, the previous PID/IT-Wallet ID MUST be revoked. In case of PID revocation the previous Wallet Instance MUST transition to operational status.
 
 In case of the death of the User, Issuers MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
 The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID/IT-Wallet ID revocation. Therefore, the Authentic Source of the PID/IT-Wallet ID (ANPR) MUST notify the PID/EAA Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID/EAA Provider MUST use the mechanisms provided in the Section :ref:`credential-revocation:Status Update by Authentic Sources`.
 
-.. Note::
+.. note::
   Future versions of this technical specification will define how the information to (Q)EAA Issuers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
 
 Status Update by Wallet Instance
@@ -267,17 +267,17 @@ Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Sign
 
 The following diagram illustrates the high-level status update process for Authentic Sources.
 
-.. Only:: format_html
+.. only:: format_html
 
-  .. Figure:: ./images/svg/status-update-as.svg
+  .. figure:: ./images/svg/status-update-as.svg
     :alt: Status update process for Authentic Sources
     :width: 100%
 
     Status update process of Authentic Sources
 
-.. Only:: format_latex
+.. only:: format_latex
 
-  .. Figure:: ./images/pdf/status-update-as.pdf
+  .. figure:: ./images/pdf/status-update-as.pdf
     :alt: Status update process for Authentic Sources
     :width: 100%
 
@@ -297,7 +297,7 @@ When multiple Digital Credentials are issued together in a single batch, their l
 
   * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Instance and Key Attestation status list) the status updating is handled as one or more separate status changes.  The Credential Issuer updates each Credential's status individually (for instance, by flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). The Wallet Instance MUST NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
 
-.. Note::
+.. note::
   As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
 
 
@@ -307,7 +307,7 @@ Validity Verification Mechanisms
 For the verification of the validity status of a long-lived Digital Credential the Token Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
 
 .. _table_revocation_mechanisms:
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 60 20
   :header-rows: 1
@@ -368,7 +368,7 @@ Checking Credentials Statuses
 The fetching, processing and verification of a Status List Token may be performed by either the Wallet Instance or a Relying Party. The procedure below is described for the Wallet Instance. The same rules apply to the Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
-.. Plantuml:: plantuml/status-list-flow.puml
+.. plantuml:: plantuml/status-list-flow.puml
     :width: 80%
     :alt: The figure illustrates the Status List Flow.
     :caption: `Status List Flow. <https://www.plantuml.com/plantuml/svg/RS-n2i8m4CRnFKzn15TVm44AWbfm42suk9pj3OVf9UOkvFMDEXMS_p_u-3erp5Rc05T3AmedLeDzYDLXiIXbVb1sgHaUEQ4O-1k6G0QzgA6Cv04LAY_DBjD4Oem1UjL2-QlOkSgmtW9lu42sc3mEmnakz2gavXfggZRsXsYAeWHt0R_wvKyTufF4kuvaQc_U>`_
@@ -390,7 +390,7 @@ The Relying Party SHOULD send an ``Accept`` header containing ``application/stat
 
 The following is a non-normative example of a request for a Status List Token:
 
-.. Code-block:: http
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
@@ -408,7 +408,7 @@ If caching-related HTTP headers are present in the HTTP response, Relying Partie
 
 The following is a non-normative example of a response for a Status List Token with type ``application/statuslist+jwt``:
 
-.. Code-block:: http
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -441,7 +441,7 @@ For example, the decompressed byte array ``[0x00, 0x40, 0x21]`` corresponds to t
 
 If an error occurs while the Status List Endpoint generates a response, the following HTTP status codes MUST be supported:
 
-.. List-table::
+.. list-table::
   :class: longtable
   :widths: 20 80
   :header-rows: 1

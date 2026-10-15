@@ -1,4 +1,4 @@
-.. Include:: ../common/common_definitions.rst
+.. include:: ../common/common_definitions.rst
 .. Incluso tramite wallet-instance.rst al livello di titolo '"' (livello 3).
 
 Ciclo di vita dell'Istanza del Wallet
@@ -8,7 +8,7 @@ Il Fornitore di Wallet è responsabile dell'implementazione e della fornitura de
 
 In questa sezione, vengono presentate macchine a stati per spiegare gli stati delle Istanze del Wallet e delle Credenziali Elettroniche e le loro transizioni e relazioni.
 
-.. Note::
+.. note::
   L'Attestato Elettronico di Dati di Identificazione Personale è un tipo specializzato di Credenziale Elettronica che ha impatti sul ciclo di vita dell'Istanza del Wallet. La revoca dell'Attestato Elettronico di Dati di Identificazione Personale PUÒ avere anche potenziali impatti sugli Attestati Elettronici di Attributi (Qualificati), se questi sono stati emessi utilizzando la presentazione dell'Attestato Elettronico di Dati di Identificazione Personale.
   Quando non è necessaria la distinzione tra Attestato Elettronico di Dati di Identificazione Personale e Attestati Elettronici di Attributi (Qualificati), viene utilizzato il termine Credenziale Elettronica.
 
@@ -17,7 +17,7 @@ Come mostrato in :numref:`fig_Wallet_Instance_States`, l'Istanza del Wallet ha q
 Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.
 
 .. _fig_Wallet_Instance_States:
-.. Plantuml:: plantuml/wallet-instance-states.puml
+.. plantuml:: plantuml/wallet-instance-states.puml
     :width: 99%
     :alt: La figura illustra gli Stati dell'Istanza del Wallet.
     :caption: `Stati dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40>`_
@@ -30,7 +30,7 @@ Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che 
 
 ..     Wallet Instance Lifecycle.
 
-.. Note::
+.. note::
   Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet. Per raggiungere questo obiettivo, il Fornitore di Wallet DEVE verificare periodicamente lo stato di sicurezza e conformità delle Istanze del Wallet.
 
 Transizione a Installato
@@ -47,7 +47,7 @@ Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con
 * morte dell'Utente.
 * attività illegali segnalate da Organi Giudiziari o di Vigilanza.
 
-.. Note::
+.. note::
   Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Instance Attestation tramite il meccanismo di gestione dello stato.
   Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Instance nella Status List di Wallet Instance Attestation, contrassegnandola come revocata, e informare gli Utenti riguardo al motivo della revoca dell'Istanza del Wallet.
 
@@ -59,7 +59,7 @@ In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet 
 Key Tag, previa acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli, con i test in :ref:`WP_024 <wallet-instance-testcases>` e :ref:`WP_138 <wallet-instance-optional-testcases>`).
 Questa associazione consente all'utente di richiedere direttamente al Fornitore di Wallet la revoca dell'Istanza del Wallet.
 
-.. Note::
+.. note::
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
@@ -85,7 +85,7 @@ Transizione a Valido
 Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un PID valido (**PID ISS**), come specificato in :ref:`pid-until-notification`. L'ottenimento di un IT-Wallet ID NON DEVE causare questa transizione. Nello stato **Valido**, gli Utenti possono ottenere e presentare
 nuovi Attestati Elettronici di Attributi (Qualificati) (**(Q)EAA ISS/PRE**), e presentare il PID (**PID PRE**). Si prega di fare riferimento a :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
-.. Note::
+.. note::
   Gli Utenti possono avere solo un'Istanza del Wallet in stato **Valido** per la stessa Soluzione Wallet. Pertanto, quando un Utente installa e ottiene un PID su una nuova Istanza
   del Wallet della stessa Soluzione Wallet dallo stesso Fornitore di Wallet, il PID nella precedente Istanza del Wallet DEVE essere revocato e l'Istanza del Wallet diventa
   **Operativa**.
@@ -104,7 +104,7 @@ Mentre :numref:`fig_Wallet_Instance_States` mostra i diversi stati che un'Istanz
 e l'effetto sul loro storage locale.
 
 .. _fig_Wallet_Instance_Lifecycle:
-.. Plantuml:: plantuml/wallet-instance-lifecycle.puml
+.. plantuml:: plantuml/wallet-instance-lifecycle.puml
     :width: 99%
     :alt: La figura illustra la Gestione del Ciclo di Vita dell'Istanza del Wallet.
     :caption: `Gestione del Ciclo di Vita dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000>`_
@@ -129,7 +129,7 @@ Un Fornitore di Wallet invece è responsabile per:
 * **Eliminazione dei Dati**: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.
 
 
-.. Note::
+.. note::
   Il Wallet Provider DEVE scegliere il periodo di validità tecnica della Wallet Instance Attestation e DEVE mantenere la lista di revoca per l’intero periodo di validità della Wallet Instance Attestation Status List, come definito dal claim ``client_status.exp`` nella Wallet Instance Attestation.
 
 
