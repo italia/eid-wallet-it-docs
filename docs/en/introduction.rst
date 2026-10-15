@@ -14,9 +14,9 @@ Similarly to a physical wallet, the IT-Wallet can contain identity or document-r
 
 The main roles in the Wallet ecosystem are listed as follow:
 
-- **Credential Issuers**: parties who issue Digital Credentials to Users;
-- **Relying Parties**: parties who request Digital Credentials presentations to the User, for Authentication and authorization purposes;
-- **Users**: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Relying Parties;
+- **Credential Issuers**: parties who issue Digital Credentials to Users.
+- **Relying Parties**: parties who request Digital Credentials presentations to the User, for Authentication and authorization purposes.
+- **Users**: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Relying Parties.
 
 In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
 The Wallet Instance is typically provided as a mobile application on the User's smartphone.
@@ -26,9 +26,9 @@ The development of the IT-Wallet System includes a phased experimentation proces
 
 Other key elements that characterize this new Digital Identity Wallet paradigm include:
 
-- **Confidentiality and control**: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom;
-- **Security**: Wallets leverage cryptographic mechanism for the integrity and the security of exchanged data. This avoids identity theft, fraud, and unauthorized access;
-- **Interoperability**: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders;
+- **Confidentiality and control**: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom.
+- **Security**: Wallets leverage cryptographic mechanism for the integrity and the security of exchanged data. This avoids identity theft, fraud, and unauthorized access.
+- **Interoperability**: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders.
 - **Efficiency and cost reduction**: Individuals can easily manage their own Credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes.
 
 Scope
@@ -39,9 +39,9 @@ These Technical Specifications are intended to complement the Guidelines provide
 The first one is to provide a clear and structured set of recommendations, resources and design requirements related to the IT-Wallet System elements that impact on the User Experience.
 The document, by distinguishing between mandatory regulatory aspects and good design practices, aims to provide to public entities and private entities interested in taking part in the IT-Wallet System what is necessary to:
 
-- facilitate the understanding and adoption of the Service Model, increasing the number of potential services and usage opportunities for the User;
-- adopt the IT-Wallet System's Visual Identity in order to enhance its reliability and recognizability for the User;
-- ensure design consistency across macro-functionalities and single interactions between the User and the service Touchpoints;
+- facilitate the understanding and adoption of the Service Model, increasing the number of potential services and usage opportunities for the User.
+- adopt the IT-Wallet System's Visual Identity in order to enhance its reliability and recognizability for the User.
+- ensure design consistency across macro-functionalities and single interactions between the User and the service Touchpoints.
 - maintain an adequate level of quality, promoting the principles of usability, accessibility and inclusivity.
 
 

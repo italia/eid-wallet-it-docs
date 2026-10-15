@@ -61,10 +61,14 @@ def _indent(line: str) -> int:
     return len(line) - len(line.lstrip(" \t"))
 
 
+UNDERLINE_RE = re.compile(r"^[=^\"'.-]{3,}\s*$")
+
+
 def strip_rst(text: str) -> str:
     lines: list[str] = []
     skip_deeper_than: int | None = None
-    for line in text.splitlines():
+    raw_lines = text.splitlines()
+    for index, line in enumerate(raw_lines):
         if skip_deeper_than is not None:
             if line.strip() == "" or _indent(line) > skip_deeper_than:
                 continue
@@ -73,12 +77,18 @@ def strip_rst(text: str) -> str:
         directive = DIRECTIVE_RE.match(line)
         if directive and directive.group(2).lower() in DROP_DIRECTIVES:
             skip_deeper_than = _indent(line)
+            if lines and not lines[-1].rstrip().endswith((".", "!", "?")):
+                lines[-1] = lines[-1].rstrip() + "."
             continue
         if TARGET_RE.match(line):
             continue
         if COMMENT_RE.match(line) and directive is None:
             skip_deeper_than = _indent(line)
             continue
+        # A heading is not part of the following sentence.
+        nxt = raw_lines[index + 1] if index + 1 < len(raw_lines) else ""
+        if UNDERLINE_RE.match(nxt) and line.strip() and not line.rstrip().endswith((".", "!", "?")):
+            line = line.rstrip() + "."
         lines.append(line)
     prose = "\n".join(lines)
     prose = re.sub(r"``.*?``", " TOKEN ", prose)

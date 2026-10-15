@@ -49,7 +49,7 @@ La rotazione della Federation Entity Key DEVE essere eseguita come definito nei 
 - L'Entità aggiunge la nuova chiave al ``jwks`` della propria Entity Configuration e DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.
 - Nel processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`) il superiore DEVE leggere il ``jwks`` dall'Entity Configuration, DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata, e DEVE riemettere il Subordinate Statement attestando la nuova chiave.
 - La chiave precedente e la nuova chiave coesistono quindi fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute, e durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.
-- Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave 
+- Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.
 - Poi, quando l'Entità vuole rimuovere la chiave precedente, PUÒ rimuoverla dal ``jwks`` notificando questo cambiamento al superiore attraverso il processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`), e il superiore DEVE rimuoverla dal Subordinate Statement.
 - Il superiore DEVE registrare l'evento come un ``jwks_update`` pubblicato sul Federation Subordinate Events Endpoint.
 
@@ -62,12 +62,12 @@ La distinzione principale è la seguente:
 
 - Per gestire i Wallet-Relying Party Access Certificate e i Sign/Seal Certificate, le entità che agiscono come Trust Anchor per questi certificati DEVONO:
 
-  - rendere disponibile almeno un meccanismo di revoca tra :ref:`infrastructure-trust:Certificate Revocation List (CRL)` e :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
+  - rendere disponibile almeno un meccanismo di revoca tra :ref:`infrastructure-trust:Certificate Revocation List (CRL)` e :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
   - emettere WRPAC e Sign/Seal Certificate con almeno un'estensione corrispondente al meccanismo di revoca fornito.
 
 - Per gestire i Wallet-Relying Party Registration Certificate, ciascun Provider of Wallet Relying Party Registration Certificates DEVE:
 
-  - rendere disponibile un endpoint per richiedere :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
+  - rendere disponibile un endpoint per richiedere :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
   - emettere WRPRC con il parametro appropriato ``status`` come descritto in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::

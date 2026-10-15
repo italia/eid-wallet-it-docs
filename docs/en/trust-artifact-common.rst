@@ -6,7 +6,7 @@ Common Trust Artifacts
 
 This section details the common artifacts involved in both the EUDIW and National Trust Frameworks, including:
 
-- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`;
+- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 - :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
 
 Entity Sign/Seal Certificate Profile

@@ -221,7 +221,7 @@ Il tipo di metadata del Wallet Provider DEVE essere ``openid_wallet_provider``, 
 
 I metadata ``federation_entity`` recano i parametri informativi seguenti insieme ai parametri degli endpoint di federazione.
 I parametri degli endpoint di federazione (``federation_fetch_endpoint``, ``federation_list_endpoint``, ``federation_resolve_endpoint`` e gli altri) sono pubblicati solo dal Federation TA e dagli Intermediate, secondo i loro obblighi definiti nella sezione Federation API Endpoints sopra, e una Foglia non li espone.
-I parametri informativi seguenti sono OPZIONALE in `OID-FED`_; il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.
+I parametri informativi seguenti sono OPZIONALE in `OID-FED`_. Il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.
 
 .. list-table::
   :class: longtable
@@ -267,7 +267,7 @@ Entity Configuration of a Federation TA
 
 Il Federation TA è la root della Trust Chain.
 La sua Entity Configuration non ha ``authority_hints``, e il suo ``jwks`` fornisce, in aggiunta alle Federation Entity Keys, i Signing Trust Anchor della PKI di firma X.509 e gli Authentication Trust Anchor della PKI di autenticazione X.509, come JWK dedicate con ``x5c``.
-Un Signing Trust Anchor è la root della PKI che emette i certificati Document Signer; un Authentication Trust Anchor è la root della PKI che emette i certificati di autenticazione della Relying Party usati per l'mdoc reader authentication nel Proximity Flow.
+Un Signing Trust Anchor è la root della PKI che emette i certificati Document Signer. Un Authentication Trust Anchor è la root della PKI che emette i certificati di autenticazione della Relying Party usati per l'mdoc reader authentication nel Proximity Flow.
 Ciascuna tale JWK è identificata dal suo ``kid`` e dalle proprietà del certificato fornito nel suo ``x5c``.
 
 .. literalinclude:: ../../examples/oidfed-ec-federation-ta.json
@@ -329,7 +329,7 @@ Entity Configuration of a Leaf
 """"""""""""""""""""""""""""""
 
 Ciascuna Foglia pubblica la propria Entity Configuration, puntando al proprio superiore immediato attraverso ``authority_hints`` e recando il proprio Trust Mark di registrazione.
-Gli esempi seguenti riportano i claim principali; i metadata di protocollo sono referenziati alla relativa sezione di metadata.
+Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono referenziati alla relativa sezione di metadata.
 
 **Wallet Provider**
 

@@ -221,7 +221,7 @@ The Wallet Provider metadata type MUST be ``openid_wallet_provider``, the Entity
 
 The ``federation_entity`` metadata carries the informational parameters below together with the federation endpoint parameters.
 The federation endpoint parameters (``federation_fetch_endpoint``, ``federation_list_endpoint``, ``federation_resolve_endpoint`` and the others) are published only by the Federation TA and the Intermediates, according to their obligations defined in the Federation API Endpoints section above, and a Leaf does not expose them.
-The informational parameters below are OPTIONAL in `OID-FED`_; IT-Wallet specification profile supports the claims in the following table.
+The informational parameters below are OPTIONAL in `OID-FED`_. IT-Wallet specification profile supports the claims in the following table.
 
 .. list-table::
   :class: longtable
@@ -267,7 +267,7 @@ Entity Configuration of a Federation TA
 
 The Federation TA is the root of the Trust Chain.
 Its Entity Configuration has no ``authority_hints``, and its ``jwks`` provides, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI and the Authentication Trust Anchors of the X.509 authentication PKI, as dedicated JWKs with ``x5c``.
-A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates; an Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
+A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates. An Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
 Each such JWK is identified by its ``kid`` and by the properties of the certificate provided in its ``x5c``.
 
 .. literalinclude:: ../../examples/oidfed-ec-federation-ta.json
@@ -378,7 +378,7 @@ Within IT-Wallet the ``registration-entity`` Trust Mark is the registration Trus
 The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
-For National proximity presentation, the ``euWrprc`` member of ``requestInfo`` is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only; the authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.
+For National proximity presentation, the ``euWrprc`` member of ``requestInfo`` is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only. The authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.
 
 An entity receives one registration Trust Mark for each role it holds, with the ``<entity_type>`` component of the identifier set accordingly.
 

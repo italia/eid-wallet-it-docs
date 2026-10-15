@@ -25,9 +25,9 @@ The contracted form "IT-Wallet" is the official Brand name that MUST be used in 
 Below are the requirements for the correct spelling and pronunciation.
 All those who intend to refer to the IT-Wallet System:
 
-- MUST use of the uppercase letters in the term “IT” and in the initial letters of Wallet and System;
+- MUST use of the uppercase letters in the term “IT” and in the initial letters of Wallet and System.
 
-- MUST use of the hyphen (“-”) between "IT" and "Wallet",  without any spacing;
+- MUST use of the hyphen (“-”) between "IT" and "Wallet",  without any spacing.
 
 - MUST correctly pronounce the term “IT”, phonetically separating the two letters “I” and “IT”. In Italian, the correct pronunciation is /i ti/ and not /it/, while in English the correct pronunciations is /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/.
 
@@ -84,23 +84,23 @@ The Logo is the official graphical element that ensures immediate recognition of
 
 Below are illustrated the requirements for the use of the Logo. All actors intending to refer to the System:
 
-- MAY use the Logo to refer to the IT-Wallet System but MUST NOT use the Logo to identify a specific Technical Solution;
+- MAY use the Logo to refer to the IT-Wallet System but MUST NOT use the Logo to identify a specific Technical Solution.
 
-- MUST the Logo exactly as provided in the Official Resources and MUST comply with the related usage specifications provided;
+- MUST the Logo exactly as provided in the Official Resources and MUST comply with the related usage specifications provided.
 
-- MUST use the Logo in the ``application/svg+xml`` data format;
+- MUST use the Logo in the ``application/svg+xml`` data format.
 
-- MUST NOT alter, distort, modify the Logo, or replace it with unofficial logos;
+- MUST NOT alter, distort, modify the Logo, or replace it with unofficial logos.
 
-- MUST maintain the minimum clear space as defined in the Brand Manual to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements interfere with this space;
+- MUST maintain the minimum clear space as defined in the Brand Manual to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements interfere with this space.
 
-- MUST NOT resized the Logo below the minimum dimensions specified in the Brand Manual, to maintain legibility across formats and devices;
+- MUST NOT resized the Logo below the minimum dimensions specified in the Brand Manual, to maintain legibility across formats and devices.
 
-- MUST NOT place the Logo on backgrounds that compromise its visibility or legibility. They MUST ensure an adequate contrast between the Logo and the background, in accordance with the Brand Manual;
+- MUST NOT place the Logo on backgrounds that compromise its visibility or legibility. They MUST ensure an adequate contrast between the Logo and the background, in accordance with the Brand Manual.
 
-- MAY displayed the Logo alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual;
+- MAY displayed the Logo alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual.
 
-- MAY use the Logo symbol as a simplified version of the Logo, in accordance with the Brand Manual;
+- MAY use the Logo symbol as a simplified version of the Logo, in accordance with the Brand Manual.
 
 - MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref:`functionalities:Authentication Button`), in accordance with the Brand Manual.
 
@@ -133,21 +133,21 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
 
 Below are illustrated the requirements for the use of the Trust Mark, that apply to both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.). All Primary Actors:
 
-- MUST use the Trust Mark exclusively to indicate their participation in the IT-Wallet System and MUST NOT use it for any other purpose;
+- MUST use the Trust Mark exclusively to indicate their participation in the IT-Wallet System and MUST NOT use it for any other purpose.
 
-- MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process;
+- MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process.
 
-- MUST display the Trust Mark in a clear and visible manner to the User from the first moment they access the Technical Solution and MUST make it available for consultation within the Technical Solution;
+- MUST display the Trust Mark in a clear and visible manner to the User from the first moment they access the Technical Solution and MUST make it available for consultation within the Technical Solution.
 
-- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the :ref:`official-resources:Brand Manual`;
+- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the :ref:`official-resources:Brand Manual`.
 
-- MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements;
+- MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements.
 
-- MUST NOT resize the Trust Mark below the minimum dimensions specified in the :ref:`official-resources:Brand Manual` to maintain legibility across formats and devices;
+- MUST NOT resize the Trust Mark below the minimum dimensions specified in the :ref:`official-resources:Brand Manual` to maintain legibility across formats and devices.
 
-- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability and MUST NOT allow other graphic or textual elements to interfere with this space;
+- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability and MUST NOT allow other graphic or textual elements to interfere with this space.
 
-- MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the :ref:`official-resources:Brand Manual`;
+- MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the :ref:`official-resources:Brand Manual`.
 
 - MAY display the Trust Mark alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual.
 

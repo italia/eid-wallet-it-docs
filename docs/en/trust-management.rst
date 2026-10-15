@@ -49,7 +49,7 @@ The Federation Entity key rotation MUST be perfomed as defined in the following 
 - The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
 - In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.
 - The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
-- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key 
+- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key.
 - Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
 - The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
 
@@ -62,12 +62,12 @@ The main distinction is the following:
 
 - To manage Wallet-Relying Party Access Certificates and Sign/Seal Certificates, the entities acting as Trust Anchors for these certificates MUST:
 
-  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
+  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
   - issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
+  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
