@@ -7,7 +7,10 @@ Wallet Instance Revocation
 
 This section describes the involved entities and modalities to request a Wallet Instance revocation.
 
-The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.
+The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements.
+When, for technical security reasons (for example, compromise of cryptographic material), the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.
+The Wallet Provider MUST reflect that revocation in the status list of the related Wallet Instance Attestation.
+In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.
 
 As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigger the Wallet Instance revocation process (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 

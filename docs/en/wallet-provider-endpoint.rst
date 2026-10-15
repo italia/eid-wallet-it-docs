@@ -888,7 +888,7 @@ According to this specification, a WIA or KA can have one of the following statu
 
 As a result, the Wallet Provider MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``.
 
-The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+Packing of entries, DEFLATE compression, the ZLIB data format, and publication of the Status List are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 **Key Attestation Index Assignment**
 
@@ -901,9 +901,9 @@ The requirement for distinct ``idx`` values applies only to the per-key-attestat
 
 **Status List Token**
 
-The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's ``client_status.status.status_list.uri`` member or the KA's ``key_storage_status.status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
-
-The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of `TOKEN-STATUS-LIST`_.
+The Wallet Provider MUST act as both the Status Issuer and the Status Provider.
+The Wallet Provider MUST publish each SLT by HTTP GET at the URI in the WIA member ``client_status.status.status_list.uri`` or the KA member ``key_storage_status.status.status_list.uri``.
+Media types, the JWT or CWT format, and signature protection are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:
 

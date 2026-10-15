@@ -136,7 +136,7 @@ In mdoc il segnale di vita breve è l'elemento ``shortLived`` impostato a ``true
 Quando il segnale di vita breve è assente, ``status`` DEVE essere presente ([`ETSI TS 119 472-1`_] QEAA-5.2.10.2-01, PuB-EAA-5.2.10.3-01, QEAA-6.2.10.2-01 e PuB-EAA-6.2.10.3-01).
 Quel valore di ``status`` DEVE seguire :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT` per SD-JWT VC.
 Quel valore di ``status`` DEVE seguire :ref:`credential-data-model:Mobile Security Object` per mdoc.
-Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``status_list`` con ``idx`` e ``uri``.
+Il membro ``status_list`` con ``idx`` e ``uri`` è specificato in :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT`.
 Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``type`` con valore ``TokenStatusList`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-04 e EAA-5.2.10.1-05).
 Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``purpose`` con valore ``revocation``.
 Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``index`` e ``uri`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-08 e EAA-5.2.10.1-10).
@@ -293,7 +293,7 @@ La Wallet Unit DEVE validare il percorso del certificato dell'issuer come specif
 Un percorso QEAA termina sulla Trusted List del Qualified Trust Service Provider.
 Un percorso PuB-EAA termina sulla List of Trusted Entities dei PuB-EAA Provider.
 La Wallet Unit DEVE rifiutare l'attestato fuori dalla sua validità tecnica.
-Quando il segnale di vita breve è assente, la Wallet Unit DEVE rifiutare l'attestato quando la Token Status List lo riporta come non valido.
+Quando il segnale di vita breve è assente, il controllo di stato è specificato in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
 La presentazione remota DEVE usare [`OpenID4VP`_] come profilato da [`OPENID4VC-HAIP`_].
 La presentazione in prossimità di un mdoc DEVE usare [`ISO18013-5`_].

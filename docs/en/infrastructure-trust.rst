@@ -5,6 +5,10 @@
 Infrastructure of Trust
 =======================
 
+This chapter specifies Trust Artifacts, certificate profiles, and their lifecycle.
+The trust decision that uses those artifacts is specified in :ref:`trust-evaluation:Trust Evaluation Process`.
+Registration and publication of entities are specified in :ref:`onboarding-system:Onboarding System and Lifecycle Management`.
+
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards.
 This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 

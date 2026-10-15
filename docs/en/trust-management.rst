@@ -581,13 +581,13 @@ For a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBO
 According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``.
 The Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
 
-The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+Packing of entries, DEFLATE compression, the ZLIB data format, and publication of the Status List are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 **Status List Token**
 
-The SLT Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the WRPRC's ``status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT. The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature.
-
-A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as described in Section 5.2, of `TOKEN-STATUS-LIST`_.
+The SLT Provider MUST act as both the Status Issuer and the Status Provider.
+The SLT Provider MUST publish each SLT by HTTP GET at the URI in the WRPRC member ``status.status_list.uri``.
+Media types, the JWT or CWT format, and signature protection are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.
 
