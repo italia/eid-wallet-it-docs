@@ -1,0 +1,12 @@
+{
+  "kty": "EC",
+  "use": "enc",
+  "key_ops": [
+    "deriveKey"
+  ],
+  "kid": "e8a1c2d3-4b56-7890-ab12-cd34ef567890",
+  "crv": "P-256",
+  "x": "vBaSnrH_yauoaYjP3pMzx8bjUxPabE1w83abQ7dTjv8",
+  "y": "Y7fLn7-FHeOs01jed_O107alrdM-M35ANVo6ery89X0",
+  "alg": "ECDH-ES"
+}
