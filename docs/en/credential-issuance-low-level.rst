@@ -493,7 +493,7 @@ An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
 
 To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in Section :ref:`credential-issuance-low-level:Security Considerations`.
 
-Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.
+Figure below shows how to obtain a new DPoP Access Token at the Token Endpoint.
 
 .. _fig_refresh_token_flow:
 .. plantuml:: plantuml/pid-issuance-high-level-flow.puml
@@ -534,7 +534,7 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
   - It MUST validate the DPoP Proof JWT, according to (:RFC:`9449`) Section 4.3.
   - It MUST check that the Refresh Token is not expired, not revoked and is bound to the same set of DPoP key as the ones used in the DPoP Proof JWT.
 
-If the request checks are successful, the Credential Issuer generates a new Access Token and a new Refresh Token and these MUST be both bound to the DPoP key. Both the Access Token and the Refresh Token are then sent back to the Wallet Instance.
+If the request checks are successful, the Credential Issuer generates a new Access Token bound to the same DPoP key. The Token Response is defined in :ref:`credential-issuance-endpoint:Token Response`.
 
 A non-normative example of a successful response is shown below.
 
@@ -546,7 +546,6 @@ A non-normative example of a successful response is shown below.
 
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
-      "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
       "token_type": "DPoP",
       "expires_in": 3600
   }
@@ -620,7 +619,7 @@ If the conditions above are not met, the flow MUST be interrupted.
 Otherwise, the Wallet Instance MUST check the related Access Tokens. If they are still valid, then Step 3 MAY be skipped  (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
 **Step 3**: If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`credential-issuance-low-level:Refresh Token Flow`  (:ref:`WP_071a <wallet-credential-issuance-testcases>`).
-The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required (:ref:`WP_067 <wallet-credential-issuance-testcases>` and :ref:`WP_071b <wallet-credential-issuance-testcases>`).
+The Refresh Token Flow enables the Wallet Instance to obtain a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required (:ref:`WP_067 <wallet-credential-issuance-testcases>` and :ref:`WP_071b <wallet-credential-issuance-testcases>`).
 
 **Step 4**: The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`  (:ref:`WP_072 <wallet-credential-issuance-testcases>`).
 When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one  (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
