@@ -147,7 +147,7 @@ The details of each step shown in the previous picture are described below.
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
 
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
 
@@ -547,11 +547,10 @@ The JWT payload parameters are described herein:
   * - **dcql_query**
     - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
-    - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:
-        - **type**.  String that identifies the transaction data type.
+    - OPTIONAL. Non-empty array of strings. Each string is a base64url-encoded JSON object describing a transaction that the Relying Party requests the User to authorize, as defined in Section 5.1 of `OpenID4VP`_. The decoded object includes:
+        - **type**. String that identifies the transaction data type.
         - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.
-  * - **transaction_data_hashes_alg**
-    - OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
+        - **transaction_data_hashes_alg**. OPTIONAL, and only for ``dc+sd-jwt``. Array of strings, each a hash algorithm identifier listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_ Named Information Hash Algorithm Registry. One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` parameter of the Key Binding JWT. If omitted, the hash algorithm MUST be ``sha-256``. See `OpenID4VP`_, Appendix B.3.3.
   * - **response_type**
     - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-91 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **wallet_nonce**
@@ -654,7 +653,7 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
   * - **iat**
     - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
   * - **aud**
-    - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.
+    - REQUIRED. The intended receiver of the Key Binding JWT. The value MUST be the Client Identifier (``client_id``) of the Relying Party, including its Client Identifier Prefix (``openid_federation`` or ``x509_hash``). For example, ``openid_federation:https://relying-party.example.org``.
   * - **nonce**
     - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
   * - **sd_hash**
@@ -662,7 +661,7 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
   * - **transaction_data_hashes**
     - CONDITIONAL. REQUIRED when the request includes ``transaction_data``. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding ``transaction_data`` item.
   * - **transaction_data_hashes_alg**
-    - CONDITIONAL. REQUIRED only if the request included ``transaction_data_hashes_alg``. String naming the hash algorithm actually used to compute ``transaction_data_hashes``; if that parameter was not provided, the hash function MUST be ``sha-256``.
+    - CONDITIONAL. REQUIRED only when the corresponding ``transaction_data`` object includes ``transaction_data_hashes_alg``. String naming the hash algorithm actually used to compute ``transaction_data_hashes``. If that parameter was not provided, the hash function MUST be ``sha-256``.
 
 
 Authorization Response Errors
