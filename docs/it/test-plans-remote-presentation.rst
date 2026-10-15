@@ -469,8 +469,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-106
     - Audience KB-JWT
-    - Test che ``aud`` di KB-JWT corrisponda all’identificativo del Relying Party.
-    - Il parametro ``aud`` di KB-JWT corrisponde all’identificativo univoco del Relying Party.
+    - Test che ``aud`` di KB-JWT corrisponda al Client Identifier della Relying Party, prefisso incluso.
+    - Il parametro ``aud`` di KB-JWT corrisponde al ``client_id`` della Relying Party, incluso il prefisso del Client Identifier.
 
   * - RPR-107
     - Nonce KB-JWT
