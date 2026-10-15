@@ -379,14 +379,19 @@ L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference intern
 <td><p>Il Credential Issuer DEVE validarla attraverso la Wallet Providers List of Trusted Entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Emissione, Wallet Instance Attestation</p></td>
-<td><p>La Wallet Unit è nazionale.</p></td>
+<td><p>La Wallet Unit è nazionale e l'Attestato richiesto è un PID, una QEAA o una PuB-EAA.</p></td>
+<td><p>Il Credential Issuer DEVE validare la Wallet Instance Attestation attraverso la Wallet Providers List of Trusted Entities.</p></td>
+</tr>
+<tr class="row-even"><td><p>Emissione, Wallet Instance Attestation</p></td>
+<td><p>La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>).</p></td>
 <td><p>Il Credential Issuer PUÒ validarla attraverso il Trust Framework Nazionale (vedere <a class="reference internal" href="#wallet-unit-authentication"><span class="std std-ref">Wallet Unit Authentication</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>Presentazione</p></td>
+<tr class="row-odd"><td><p>Presentazione</p></td>
 <td><p>La richiesta include un PID, una QEAA o una PuB-EAA, oppure un Attestato di un altro Stato membro, oppure la Relying Party offre il servizio al di fuori del pubblico nazionale.</p></td>
 <td><p>La Relying Party DEVE usare il Trust Framework EUDIW per l'intera richiesta.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Presentazione</p></td>
+<tr class="row-even"><td><p>Presentazione</p></td>
 <td><p>La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato ad audience nazionale.</p></td>
 <td><p>La Relying Party DEVE usare il Trust Framework Nazionale.</p></td>
 </tr>

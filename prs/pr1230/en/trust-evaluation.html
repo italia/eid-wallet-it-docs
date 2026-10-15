@@ -378,14 +378,19 @@ The IT-Wallet ID is such a Credential (see <a class="reference internal" href="d
 <td><p>The Credential Issuer MUST validate it through the Wallet Providers List of Trusted Entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Issuance, Wallet Instance Attestation</p></td>
-<td><p>The Wallet Unit is national.</p></td>
+<td><p>The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA.</p></td>
+<td><p>The Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities.</p></td>
+</tr>
+<tr class="row-even"><td><p>Issuance, Wallet Instance Attestation</p></td>
+<td><p>The Wallet Unit is national and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
+The IT-Wallet ID is such a Credential (see <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>).</p></td>
 <td><p>The Credential Issuer MAY validate it through the National Trust Framework (see <a class="reference internal" href="#wallet-unit-authentication"><span class="std std-ref">Wallet Unit Authentication</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p>Presentation</p></td>
+<tr class="row-odd"><td><p>Presentation</p></td>
 <td><p>The request includes a PID, a QEAA or a PuB-EAA, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.</p></td>
 <td><p>The Relying Party MUST use the EUDIW Trust Framework for the whole request.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Presentation</p></td>
+<tr class="row-even"><td><p>Presentation</p></td>
 <td><p>The Relying Party is national and the request contains only a non-qualified Electronic Attestation of Attributes with national scope.</p></td>
 <td><p>The Relying Party MUST use the National Trust Framework.</p></td>
 </tr>

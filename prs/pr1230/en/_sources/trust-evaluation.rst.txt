@@ -76,7 +76,11 @@ Where the configuration published through the EUDIW mechanisms and the configura
       - The Wallet Unit is of another Member State.
       - The Credential Issuer MUST validate it through the Wallet Providers List of Trusted Entities.
     * - Issuance, Wallet Instance Attestation
-      - The Wallet Unit is national.
+      - The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA.
+      - The Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities.
+    * - Issuance, Wallet Instance Attestation
+      - The Wallet Unit is national and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
+        The IT-Wallet ID is such a Credential (see :term:`IT-Wallet ID`).
       - The Credential Issuer MAY validate it through the National Trust Framework (see :ref:`trust-evaluation:Wallet Unit Authentication`).
     * - Presentation
       - The request includes a PID, a QEAA or a PuB-EAA, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.
