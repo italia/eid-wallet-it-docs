@@ -2,12 +2,12 @@
 .. Incluso tramite appendix.rst al livello di titolo '=' (titolo del documento).
 
 
-Decomposizione per Componenti
-=============================
+Decomposizione per Componenti di Cybersicurezza
+================================================
 
-Questa appendice decompone il PID Provider e la Soluzione Wallet con la matrice usata dall'Agenzia per la Cybersicurezza Nazionale (ACN): ambito, sottocomponenti, ambito di certificazione, standard, rischi e controlli.
+Questa appendice guida lo schema di certificazione EUDIW-IT-Cyber dell'Agenzia per la Cybersicurezza Nazionale (ACN). Decompone il PID Provider e la Soluzione Wallet con la matrice di quello schema: ambito, sottocomponenti, ambito di certificazione, standard, rischi e controlli. L'ambito di certificazione segue l'Allegato A della bozza EUDIW-IT-Cyber v1.9.2.
 
-I requisiti funzionali restano nelle sezioni citate nella colonna Standard. Questa appendice non li ripete.
+I requisiti funzionali restano nelle sezioni citate nella colonna Standard. Questa appendice non li ripete e non aggiunge requisiti.
 
 
 PID Provider
@@ -63,21 +63,42 @@ Il PID Provider è il Fornitore di Attestati Elettronici che emette il PID. La F
      - :ref:`authentic-sources:Fonti Autentiche`
      - Emissione di attributi del PID che non provengono dalla Fonte Autentica
      - Recupero tramite l'interfaccia della Fonte Autentica in :ref:`authentic-sources:Fonti Autentiche`
-   * - Dispositivo di firma
-     - Chiave Sign/Seal usata per firmare il PID
+   * - Firma del PID
+     - Modulo crittografico di backend
      - In ambito
      - :ref:`infrastructure-trust:X.509 Certificate Profile`, :ref:`infrastructure-trust:EUDIW Trust Artifacts`
      - Un PID firmato con una chiave che le Relying Party non possono ancorare al PID Provider
      - Trust anchor Sign/Seal pubblicato nella PID Providers LoTE, come specificato in :ref:`infrastructure-trust:EUDIW Trust Artifacts`
+   * - Processi e sistemi ICT
+     - Sistemi ICT e processi usati per fornire il PID
+     - In ambito
+     - :ref:`credential-issuer-solution:Requisiti del Fornitore di Attestati Elettronici`
+     - \-
+     - Come specificato in :ref:`credential-issuer-solution:Requisiti del Fornitore di Attestati Elettronici`
+   * - Fornitore di (Q)EAA
+     - Fornitore di attestati di attributi
+     - Fuori ambito
+     - \-
+     - \-
+     - \-
+   * - Relying Party
+     - Relying Party
+     - Fuori ambito
+     - \-
+     - \-
+     - \-
+   * - Firma o sigillo qualificato
+     - Dispositivo di creazione di firma o sigillo qualificato
+     - Fuori ambito
+     - \-
+     - \-
+     - \-
 
 
 Soluzione Wallet
 ----------------
 
-.. note::
-   Questa tabella non è normativa. La discussione con l'ACN sulla decomposizione della Soluzione Wallet è ancora aperta. L'ambito di certificazione, i rischi e i controlli di questa tabella diventano normativi solo dopo quella discussione. Fino ad allora, i requisiti della Soluzione Wallet restano quelli in :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet` e in :ref:`wallet-solution-components:Componenti della Soluzione Wallet`.
-
-Le righe seguenti nominano i sottocomponenti già specificati per la Soluzione Wallet. L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate sono fuori dall'ambito di questa versione, come specificato in :ref:`wallet-solution:Soluzione Wallet`.
+Questa tabella guida EUDIW-IT-Cyber e non aggiunge requisiti. I requisiti della Soluzione Wallet restano quelli in :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet` e in :ref:`wallet-solution-components:Componenti della Soluzione Wallet`. L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate sono fuori da questa versione della specifica, come specificato in :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`.
 
 .. _table_wallet_solution_decomposition:
 .. list-table:: Decomposizione della Soluzione Wallet
@@ -91,75 +112,99 @@ Le righe seguenti nominano i sottocomponenti già specificati per la Soluzione W
      - **Standard**
      - **Rischi**
      - **Controlli**
+   * - Istanza del Wallet
+     - Interfaccia Utente
+     - In ambito
+     - :ref:`wallet-solution-components:Interfaccia Utente`
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Interfaccia Utente`
+   * - Istanza del Wallet
+     - Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet
+     - In ambito
+     - :ref:`wallet-solution-components:Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet`
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet`
+   * - Istanza del Wallet
+     - Componente Issuer
+     - In ambito
+     - :ref:`wallet-solution-components:Componente Issuer`, [`OpenID4VCI`_]
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente Issuer`
+   * - Istanza del Wallet
+     - Componente di Presentazione
+     - In ambito
+     - :ref:`wallet-solution-components:Componente di Presentazione`, [`OpenID4VP`_], [`ISO18013-5`_]
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente di Presentazione`
+   * - Istanza del Wallet
+     - Componente di Backup e Ripristino
+     - In ambito
+     - :ref:`wallet-solution-components:Componente di Backup e Ripristino`
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente di Backup e Ripristino`
+   * - Istanza del Wallet
+     - Dashboard e Registro delle Transazioni
+     - In ambito
+     - :ref:`wallet-solution-components:Dashboard e Registro delle Transazioni`
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Dashboard e Registro delle Transazioni`
+   * - Istanza del Wallet
+     - Applicazione di creazione della firma
+     - In ambito
+     - \-
+     - \-
+     - Questa specifica non indica ancora quel controllo
+   * - Remote WSCD e WSCA
+     - WSCA/WSCD Interface per il PID a Livello di Garanzia Alto
+     - In ambito
+     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
    * - Backend del Wallet
-     - Componente Frontend
-     - In attesa della discussione ACN
+     - Componente Frontend (portale web dell'Utente)
+     - In ambito
      - :ref:`wallet-solution-components:Componente Frontend`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente Frontend`
    * - Backend del Wallet
      - Interfaccia API
-     - In attesa della discussione ACN
+     - In ambito
      - :ref:`wallet-solution-components:Interfaccia API`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Interfaccia API`
    * - Backend del Wallet
      - Gestione del Ciclo di Vita dell'Istanza del Wallet
-     - In attesa della discussione ACN
+     - In ambito
      - :ref:`wallet-solution-components:Gestione del Ciclo di Vita dell'Istanza del Wallet`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Gestione del Ciclo di Vita dell'Istanza del Wallet`
    * - Backend del Wallet
      - Componente Trust & Security
-     - In attesa della discussione ACN
+     - In ambito
      - :ref:`wallet-solution-components:Componente Trust & Security`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Interfaccia Utente
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Interfaccia Utente`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Componente Issuer
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Componente Issuer`, [`OpenID4VCI`_]
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Componente di Presentazione
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Componente di Presentazione`, [`OpenID4VP`_], [`ISO18013-5`_]
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Componente di Backup e Ripristino
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Componente di Backup e Ripristino`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - Dashboard e Registro delle Transazioni
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:Dashboard e Registro delle Transazioni`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
+     - Affrontato dal controllo citato
+     - :ref:`wallet-solution-components:Componente Trust & Security`
+   * - Backend del Wallet
+     - Rilevamento delle frodi
+     - In ambito
+     - \-
+     - \-
+     - Questa specifica non indica ancora quel controllo
+   * - Backend del Wallet
+     - Modulo crittografico di backend
+     - In ambito
+     - \-
+     - \-
+     - Questa specifica non indica ancora quel controllo
+   * - Dispositivo dell'Utente
      - Keystore
-     - In attesa della discussione ACN
+     - Fuori ambito
      - :ref:`wallet-solution-components:Keystore`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
-   * - Unità di Wallet
-     - WSCA/WSCD Interface
-     - In attesa della discussione ACN
-     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
-     - In attesa della discussione ACN
-     - In attesa della discussione ACN
+     - \-
+     - Il Keystore del dispositivo è fuori da EUDIW-IT-Cyber. Il requisito dell'Istanza del Wallet per le Credenziali vincolate al dispositivo resta in :ref:`wallet-solution-components:Keystore`
+   * - Dispositivo dell'Utente
+     - Sistema operativo e store delle applicazioni
+     - Fuori ambito
+     - \-
+     - \-
+     - \-

@@ -2,12 +2,12 @@
 .. Included via appendix.rst at title level '=' (document title).
 
 
-Component Decomposition
-=======================
+Cybersecurity Component Decomposition
+=====================================
 
-This annex decomposes the PID Provider and the Wallet Solution with the matrix used by the Agenzia per la Cybersicurezza Nazionale (ACN): scope, sub-components, certification scope, standards, risks, and controls.
+This annex guides the EUDIW-IT-Cyber certification scheme of the Agenzia per la Cybersicurezza Nazionale (ACN). It decomposes the PID Provider and the Wallet Solution with the matrix of that scheme: scope, sub-components, certification scope, standards, risks, and controls. Certification scope follows Annex A of EUDIW-IT-Cyber draft v1.9.2.
 
-The functional requirements stay in the sections cited by the Standards column. This annex does not restate them.
+The functional requirements stay in the sections cited by the Standards column. This annex does not restate them and does not add requirements.
 
 
 PID Provider
@@ -63,21 +63,42 @@ The PID Provider is the Credential Issuer that issues the PID. The Authentic Sou
      - :ref:`authentic-sources:Authentic Sources`
      - Issuance of PID attributes that do not come from the Authentic Source
      - Retrieval through the Authentic Source interface in :ref:`authentic-sources:Authentic Sources`
-   * - Signature device
-     - Sign/Seal key used to sign the PID
+   * - PID signature
+     - Backend Crypto Module
      - In scope
      - :ref:`infrastructure-trust:X.509 Certificate Profile`, :ref:`infrastructure-trust:EUDIW Trust Artifacts`
      - A PID signed with a key that Relying Parties cannot anchor to the PID Provider
      - Sign/Seal trust anchor published in the PID Providers LoTE, as specified in :ref:`infrastructure-trust:EUDIW Trust Artifacts`
+   * - Processes and ICT Systems
+     - ICT systems and processes used to provide the PID
+     - In scope
+     - :ref:`credential-issuer-solution:Credential Issuer Requirements`
+     - \-
+     - As specified in :ref:`credential-issuer-solution:Credential Issuer Requirements`
+   * - (Q)EAA Provider
+     - Attribute attestation provider
+     - Out of scope
+     - \-
+     - \-
+     - \-
+   * - Relying Party
+     - Relying Party
+     - Out of scope
+     - \-
+     - \-
+     - \-
+   * - Qualified signature or seal
+     - Qualified signature or seal creation device
+     - Out of scope
+     - \-
+     - \-
+     - \-
 
 
 Wallet Solution
 ---------------
 
-.. note::
-   This table is non-normative. The ACN discussion of the Wallet Solution decomposition is still open. Certification scope, risks, and controls in this table become normative only after that discussion. Until then, the Wallet Solution requirements remain those in :ref:`wallet-solution-requirements:Wallet Solution Requirements` and :ref:`wallet-solution-components:Wallet Solution Components`.
-
-The rows below name the sub-components already specified for the Wallet Solution. Wallet-to-Wallet interaction and qualified electronic signature creation are outside the scope of this version, as specified in :ref:`wallet-solution:Wallet Solution`.
+This table guides EUDIW-IT-Cyber and does not add requirements. The Wallet Solution requirements remain those in :ref:`wallet-solution-requirements:Wallet Solution Requirements` and :ref:`wallet-solution-components:Wallet Solution Components`. Wallet-to-Wallet interaction and qualified electronic signature creation are outside this version of the specification, as specified in :ref:`wallet-solution-requirements:Wallet Solution Requirements`.
 
 .. _table_wallet_solution_decomposition:
 .. list-table:: Wallet Solution decomposition
@@ -91,75 +112,99 @@ The rows below name the sub-components already specified for the Wallet Solution
      - **Standards**
      - **Risks**
      - **Controls**
+   * - Wallet Instance
+     - User Interface
+     - In scope
+     - :ref:`wallet-solution-components:User Interface`
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:User Interface`
+   * - Wallet Instance
+     - Wallet Instance Lifecycle Management Component
+     - In scope
+     - :ref:`wallet-solution-components:Wallet Instance Lifecycle Management Component`
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Wallet Instance Lifecycle Management Component`
+   * - Wallet Instance
+     - Issuer Component
+     - In scope
+     - :ref:`wallet-solution-components:Issuer Component`, [`OpenID4VCI`_]
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Issuer Component`
+   * - Wallet Instance
+     - Presentation Component
+     - In scope
+     - :ref:`wallet-solution-components:Presentation Component`, [`OpenID4VP`_], [`ISO18013-5`_]
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Presentation Component`
+   * - Wallet Instance
+     - Backup and Restore Component
+     - In scope
+     - :ref:`wallet-solution-components:Backup and Restore Component`
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Backup and Restore Component`
+   * - Wallet Instance
+     - Dashboard and Transaction Log
+     - In scope
+     - :ref:`wallet-solution-components:Dashboard and Transaction Log`
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Dashboard and Transaction Log`
+   * - Wallet Instance
+     - Signature Creation Application
+     - In scope
+     - \-
+     - \-
+     - This specification does not yet state that control
+   * - Remote WSCD and WSCA
+     - WSCA/WSCD Interface for the PID at Level of Assurance High
+     - In scope
+     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
    * - Wallet Backend
-     - Frontend Component
-     - Pending ACN discussion
+     - Frontend Component (user web portal)
+     - In scope
      - :ref:`wallet-solution-components:Frontend Component`
-     - Pending ACN discussion
-     - Pending ACN discussion
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Frontend Component`
    * - Wallet Backend
      - API Interface
-     - Pending ACN discussion
+     - In scope
      - :ref:`wallet-solution-components:API Interface`
-     - Pending ACN discussion
-     - Pending ACN discussion
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:API Interface`
    * - Wallet Backend
      - Wallet Instance Lifecycle Management
-     - Pending ACN discussion
+     - In scope
      - :ref:`wallet-solution-components:Wallet Instance Lifecycle Management`
-     - Pending ACN discussion
-     - Pending ACN discussion
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Wallet Instance Lifecycle Management`
    * - Wallet Backend
-     - Trust and Security Component
-     - Pending ACN discussion
+     - Trust & Security Component
+     - In scope
      - :ref:`wallet-solution-components:Trust & Security Component`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - User Interface
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:User Interface`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - Wallet Instance Lifecycle Management Component
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:Wallet Instance Lifecycle Management Component`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - Issuer Component
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:Issuer Component`, [`OpenID4VCI`_]
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - Presentation Component
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:Presentation Component`, [`OpenID4VP`_], [`ISO18013-5`_]
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - Backup and Restore Component
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:Backup and Restore Component`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - Dashboard and Transaction Log
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:Dashboard and Transaction Log`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
+     - Addressed by the cited control
+     - :ref:`wallet-solution-components:Trust & Security Component`
+   * - Wallet Backend
+     - Fraud Detection
+     - In scope
+     - \-
+     - \-
+     - This specification does not yet state that control
+   * - Wallet Backend
+     - Backend Crypto Module
+     - In scope
+     - \-
+     - \-
+     - This specification does not yet state that control
+   * - User device
      - Keystore
-     - Pending ACN discussion
+     - Out of scope
      - :ref:`wallet-solution-components:Keystore`
-     - Pending ACN discussion
-     - Pending ACN discussion
-   * - Wallet Unit
-     - WSCA/WSCD Interface
-     - Pending ACN discussion
-     - :ref:`wallet-solution-components:WSCA/WSCD Interface`
-     - Pending ACN discussion
-     - Pending ACN discussion
+     - \-
+     - The device Keystore is outside EUDIW-IT-Cyber. The Wallet Instance requirement for device-bound Credentials remains in :ref:`wallet-solution-components:Keystore`
+   * - User device
+     - Operating system and application stores
+     - Out of scope
+     - \-
+     - \-
+     - \-
