@@ -328,7 +328,7 @@
 </section>
 <section id="response-uri-endpoint">
 <h2>Response URI Endpoint<a class="headerlink" href="#response-uri-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Response URI Endpoint receives the Authorization Response from the Wallet Instance containing the Verifiable Presentation. This endpoint processes the presentation and validates the credentials.</p>
+<p>The Response URI Endpoint receives the Authorization Response from the Wallet Instance containing the Verifiable Presentation. This endpoint processes the presentation and validates the Credentials.</p>
 <p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#authorization-response"><span class="std std-ref">Authorization Response</span></a> and <a class="reference internal" href="remote-flow.html#relying-party-response"><span class="std std-ref">Relying Party Response</span></a>.</p>
 </section>
 <section id="status-endpoint-optional">
@@ -337,76 +337,9 @@
 <p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> and <a class="reference internal" href="remote-flow.html#status-endpoint-errors"><span class="std std-ref">Status Endpoint Errors</span></a>.</p>
 </section>
 </section>
-<section id="user-data-management-endpoints">
-<h1>User Data Management Endpoints<a class="headerlink" href="#user-data-management-endpoints" title="Link to this heading">¶</a></h1>
-<p>The following endpoint supports user data management and privacy compliance requirements for remote flows:</p>
-<section id="relying-party-erasure-endpoint">
-<h2>Relying Party Erasure Endpoint<a class="headerlink" href="#relying-party-erasure-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-metadata.html#relying-party-metadata"><span class="std std-ref">Relying Party Metadata</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
-</section>
-<section id="erasure-request">
-<h2>Erasure Request<a class="headerlink" href="#erasure-request" title="Link to this heading">¶</a></h2>
-<p>The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.</p>
-<p>Below is a non-normative example of an Erasure Request where the call back URL is passed as a query parameter.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/erasure-endpoint?callback_url=https://wallet-instance/erasure_response</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
-</pre></div>
-</div>
-</section>
-<section id="erasure-response">
-<h2>Erasure Response<a class="headerlink" href="#erasure-response" title="Link to this heading">¶</a></h2>
-<p>If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.</p>
-<p>If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
-</ul>
-</div></blockquote>
-<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
-<th class="head"><p><strong>Error Code</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
-<td><p>The request could not be fulfilled due to invalid authentication by the User.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Erasure Endpoint encountered an internal problem. (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Erasure Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
-</tr>
-</tbody>
-</table>
-<p>The following is an example of an error response from Erasure Endpoint:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w"> </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server_error&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The request cannot be fulfilled due to an internal server error.&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Upon receiving an error response, the Wallet Instance which made the Erasure Request MUST inform the User of the error condition in an appropriate manner.</p>
-</section>
+<section id="data-deletion-request">
+<h1>Data Deletion Request<a class="headerlink" href="#data-deletion-request" title="Link to this heading">¶</a></h1>
+<p>The Wallet Instance initiates a data deletion request through the Relying Party support contact, as specified in <a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a> and in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts7-common-interface-for-data-deletion-request.md">EUDI-TS 7</a>.</p>
 </section>
 <section id="security-considerations">
 <h1>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading">¶</a></h1>
@@ -494,12 +427,7 @@
 <li><a class="reference internal" href="#status-endpoint-optional">Status Endpoint (Optional)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#user-data-management-endpoints">User Data Management Endpoints</a><ul>
-<li><a class="reference internal" href="#relying-party-erasure-endpoint">Relying Party Erasure Endpoint</a></li>
-<li><a class="reference internal" href="#erasure-request">Erasure Request</a></li>
-<li><a class="reference internal" href="#erasure-response">Erasure Response</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#data-deletion-request">Data Deletion Request</a></li>
 <li><a class="reference internal" href="#security-considerations">Security Considerations</a></li>
 <li><a class="reference internal" href="#implementation-notes">Implementation Notes</a></li>
 </ul>
@@ -535,7 +463,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

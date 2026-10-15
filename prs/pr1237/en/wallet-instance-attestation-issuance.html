@@ -36,6 +36,12 @@
         }
       } catch (error) {
         /* ignore storage errors */
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
       }})();
   </script>
   </head><body class="it-docs-body">
@@ -362,7 +368,7 @@
 </div>
 <p><strong>Steps 11-12 (Wallet Instance Attestation Issuance Request)</strong>: The Wallet Instance:</p>
 <ul class="simple">
-<li><p>Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_id</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_version</span></code> and other configuration related parameters (see <a class="reference internal" href="wallet-provider-endpoint.html#table-wia-request-claim"><span class="std std-ref">Table of the Wallet Instance Attestation Request Body</span></a>) and is signed using the private key of the initially generated ephemeral key pair (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
+<li><p>Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_id</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_version</span></code> and, when reusing a status list entry, <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> (see <a class="reference internal" href="wallet-provider-endpoint.html#table-wia-request-claim"><span class="std std-ref">Table of the Wallet Instance Attestation Request Body</span></a> and <a class="reference internal" href="#per-issuer-status-entry-reuse"><span class="std std-ref">Per-Issuer Status Entry Reuse</span></a>). It is signed using the private key of the initially generated ephemeral key pair (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
 <li><p>Submits the Wallet Instance Attestation Request to the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-endpoint"><span class="std std-ref">Wallet Instance Attestation Issuance Endpoint</span></a> of the Wallet Provider Backend.</p></li>
 </ul>
 <p>The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT as an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter in the body of an HTTP request to the Wallet Provider's <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-endpoint"><span class="std std-ref">Wallet Instance Attestation Issuance Endpoint</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_142</span></a>).</p>
@@ -377,6 +383,7 @@
 <li><p>The <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> MUST be validated according to the device manufacturer's guidelines. The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143f</span></a>).</p></li>
 <li><p>The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.</p></li>
 <li><p>The URL in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter MUST match the Wallet Provider's URL identifier (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143g</span></a>).</p></li>
+<li><p>The Wallet Provider MUST apply <a class="reference internal" href="#per-issuer-status-entry-reuse"><span class="std std-ref">Per-Issuer Status Entry Reuse</span></a>.</p></li>
 </ol>
 </div></blockquote>
 <p>Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation that meets <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">the Wallet Instance Attestation lifetime</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>).</p>
@@ -390,6 +397,18 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<section id="per-issuer-status-entry-reuse">
+<h2><span class="section-number">9.1.4.2.2.1. </span>Per-Issuer Status Entry Reuse<a class="headerlink" href="#per-issuer-status-entry-reuse" title="Link to this heading">¶</a></h2>
+<p>The Wallet Provider MUST use the per-issuer reuse option of Section 2.5.1 of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> for the <code class="docutils literal notranslate"><span class="pre">client_status.status</span></code> entry of each Wallet Instance Attestation.</p>
+<p>The Wallet Instance MUST keep the status list index assigned to it for each PID Provider or Attestation Provider.</p>
+<p>The Wallet Instance Attestation Request MUST include <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>.</p>
+<p>When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it already holds an index, the request MUST include <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> set to that index.</p>
+<p>When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it holds no index, the request MUST omit <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> is present, the Wallet Provider MUST verify that the Wallet Instance is entitled to that index for <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code> before issuing a Wallet Instance Attestation that reuses it. The Wallet Provider MUST reject the request when the Wallet Instance is not entitled to that index.</p>
+<p>The Wallet Provider MUST NOT reuse the same status list entry for Wallet Instance Attestations that the same Wallet Instance presents to different PID Providers or Attestation Providers.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> is absent, the Wallet Provider MUST assign a new status list entry for that Wallet Instance and <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>.</p>
+<p>The Wallet Provider MUST document the use of this option in its privacy policy.</p>
+</section>
 </section>
 
 
@@ -415,7 +434,67 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">9.1.4.2.2. Wallet Instance Attestation Issuance</a><ul>
+<li><a class="reference internal" href="#per-issuer-status-entry-reuse">9.1.4.2.2.1. Per-Issuer Status Entry Reuse</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
         </div>
       </aside>
     </div>
@@ -442,7 +521,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

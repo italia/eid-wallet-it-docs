@@ -5,7 +5,9 @@
 Remote Flow
 ===========
 
-Remote presentation uses [`OpenID4VP`_] and by the applicable requirements of [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. The ``client_id`` prefix selects the complete trust path: ``x509_hash`` selects the EUDIW path and ``openid_federation`` selects the National Trust Framework extension (see :ref:`trust-evaluation:Selection at Presentation`). ETSI clause 6 prevails over HAIP where the two sources differ. Implementations MUST NOT combine the paths or retry a failed path under the other framework.
+Remote presentation uses [`OpenID4VP`_], profiled by [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
+The Trust Framework is selected through the ``client_id`` prefix, as specified in :ref:`trust-evaluation:Selection at Presentation`.
+[`ETSI TS 119 472-2`_] clause 6 prevails over [`OPENID4VC-HAIP`_] where the two sources differ.
 
 The Relying Party and Wallet Instance MUST support both of the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
 
@@ -68,7 +70,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
      c. evaluates the eligibility of the Relying Party in the presesntation context. 
      
-       * For ``x509_hash``, authorization is based on the validated WRPRC in ``verifier_info.registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`; 
+       * For ``x509_hash``, authorization is based on the validated WRPRC in the ``data`` member of the ``verifier_info`` element whose ``format`` is ``registration_cert`` and follows :ref:`trust-evaluation:EUDIW Authorization`.
        * for ``openid_federation``, authorization is based on the validated ``registration-entity`` Trust Mark and follows :ref:`trust-evaluation:Authorization`. 
        
        The Wallet Instance MUST perform exact, case-sensitive entitlement and DCQL scope checks (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
@@ -187,7 +189,7 @@ The details of each step shown in the previous picture are described below.
 **Step 12 (Request URI Response)**: The Relying Party issues the Request Object by signing it with one of its cryptographic private keys. 
 
 * For ``openid_federation``, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`), MUST obtain the ``openid_credential_verifier`` metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`, and MUST verify the signature with the key identified by ``kid`` in that metadata.
-* For ``x509_hash``, it verifies the leaf certificate hash against ``client_id``, validates the WRPAC path and SCT against the Providers of WRPAC LoTE, and verifies the signature with the WRPAC key, as defined in :ref:`trust-evaluation:EUDIW Authentication`. 
+* For ``x509_hash``, it verifies the leaf certificate hash against ``client_id``, validates the WRPAC path against the Providers of WRPAC LoTE, and verifies the signature with the WRPAC key, as defined in :ref:`trust-evaluation:EUDIW Authentication`. 
 
 The Wallet Instance MUST NOT switch paths or retry verification with evidence from the other path (:ref:`WP_084 <wallet-credential-presentation-testcases>`).
 
@@ -256,21 +258,19 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       },
       "verifier_info": [
         {
-          "registrar_dataset": {
-            "data": {
-              "identifier": "https://relying-party.example.org",
-              "srvDescription": [{"lang": "en", "value": "Example service"}],
-              "registryURI": "https://registrar.example.org",
-              "intendedUseIdentifier": "https://example.org/use/presentation",
-              "purpose": [{"lang": "en", "value": "Identity verification"}],
-              "policyURI": "https://example.org/policy"
-            }
+          "format": "registrar_dataset",
+          "data": {
+            "identifier": "https://relying-party.example.org",
+            "srvDescription": [{"lang": "en", "value": "Example service"}],
+            "registryURI": "https://registrar.example.org",
+            "intendedUseIdentifier": "https://example.org/use/presentation",
+            "purpose": [{"lang": "en", "value": "Identity verification"}],
+            "policyURI": "https://example.org/policy"
           }
         },
         {
-          "registration_cert": {
-            "data": "<WRPRC-base64url>"
-          }
+          "format": "registration_cert",
+          "data": "<WRPRC-base64url>"
         }
       ],
       "response_uri": "https://relying-party.example.org/response_uri",
@@ -329,7 +329,7 @@ The Wallet Instance MUST NOT switch paths or retry verification with evidence fr
       "exp": 1672422065
     }
 
-* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and ``registrar_dataset.identifier`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope. If the WRPRC is missing or invalid, it MAY query the Register.
+* For ``x509_hash``, the Wallet Instance authenticates the WRPAC, validates the WRPRC, and binds the direct or intermediated Relying Party identity to the WRPAC, WRPRC, and the ``data.identifier`` member of the ``verifier_info`` element whose ``format`` is ``registrar_dataset`` according to :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. It checks the Service Provider entitlement and the exact, case-sensitive DCQL scope.
 
 * For ``openid_federation``, it validates the registration Trust Mark, its entitlements, and its exact, case-sensitive scope, and MUST NOT treat WRPAC or WRPRC material as National trust evidence. 
 
@@ -427,7 +427,7 @@ If all verifications succeed, the Relying Party updates the User session.
 **Steps 28-29**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`). The Relying Party MUST consider the transaction completed only if the redirect back is received in the same user session in which the flow was initiated; otherwise it MUST reject the presentation.
 
 .. note::
-    During each credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+    During each Credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
     The transaction record MUST be created once the Wallet Instance has accepted the presentation request for processing (i.e., after request validation and Relying Party trust/policy checks, Steps 13–15). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., the requested Credential type(s) and the identifier(s) of the requested attributes), without logging any attribute values.
 
@@ -589,7 +589,7 @@ The JWT header parameters are described below:
    * - **trust_chain**
      - NATIONAL PATH ONLY. OPTIONAL sequence of Entity Statements composing the Relying Party Trust Chain, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*. It is not EUDIW authentication evidence.
    * - **x5c**
-     - EUDIW PATH ONLY. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix. It contains the WRPAC first, followed by its certification path up to but excluding the trust anchor. The WRPAC MUST be used to verify the JWT signature; the chain MUST validate and its SCT MUST be valid against the Providers of WRPAC LoTE, as defined in :ref:`trust-evaluation:EUDIW Authentication`. The WRPAC binds the Relying Party identity and applicable presentation endpoints according to :ref:`trust-evaluation:EUDIW Authorization`. It is not National authentication evidence.
+     - EUDIW PATH ONLY. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix. It contains the WRPAC first, followed by its certification path up to but excluding the trust anchor. The WRPAC MUST be used to verify the JWT signature; the chain MUST be valid against the Providers of WRPAC LoTE, as defined in :ref:`trust-evaluation:EUDIW Authentication`. The WRPAC binds the Relying Party identity and applicable presentation endpoints according to :ref:`trust-evaluation:EUDIW Authorization`. It is not National authentication evidence.
 
 .. note::
    For ``x509_hash``, the ``x5c`` header MUST contain the WRPAC first and MUST NOT include the trust anchor as required by `OPENID4VC-HAIP`_. The chain MUST validate to a trust anchor obtained from the Providers of WRPAC LoTE according to :ref:`trust-evaluation:EUDIW Authentication`; see Section :ref:`infrastructure-trust:X.509 Certificate Profile` for background on X.509 certificate chain validation.
@@ -618,13 +618,15 @@ The JWT payload parameters are described herein:
    * - **dcql_query**
      - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_. On the EUDIW path, each applicable query MUST use the ETSI Trusted Lists Authority Key Identifier mechanism with ``trusted_authorities`` type ``etsi_tl``.
    * - **verifier_info**
-     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array containing a ``registrar_dataset`` object and a separate ``registration_cert`` object, as required by :ref:`trust-evaluation:EUDIW Authorization`.
-    
-       It MUST NOT contain ``credential_ids`` [`ETSI TS 119 472-2`_]. 
-      
-       - The ``registrar_dataset`` object MUST contain non-empty object ``data`` and the registered ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose``, and ``policyURI`` members; ``srvDescription`` and ``purpose`` MUST use registered ``MultiLangString`` values. 
-       - The ``registration_cert`` object's ``data`` MUST be the base64url serialization of the WRPRC. 
-      
+     - REQUIRED on the EUDIW path [`ETSI TS 119 472-2`_]. An array of objects, as required by :ref:`trust-evaluation:EUDIW Authorization`.
+
+       Each object MUST contain ``format`` and ``data``.
+       The array MUST contain one object whose ``format`` is ``registrar_dataset``.
+       Its ``data`` MUST be a non-empty object containing the registered ``identifier``, ``srvDescription``, ``registryURI``, ``intendedUseIdentifier``, ``purpose`` and ``policyURI`` members.
+       ``srvDescription`` and ``purpose`` MUST use registered ``MultiLangString`` values.
+       The array MUST contain one object whose ``format`` is ``registration_cert``.
+       Its ``data`` MUST be the base64url serialization of the WRPRC.
+       The array MUST NOT contain ``credential_ids`` [`ETSI TS 119 472-2`_].
        These objects are not required for ``openid_federation``, whose equivalent authorization and transparency data comes from the validated registration Trust Mark (see :ref:`trust-evaluation:Metadata Retrieval and Validation`).
    * - **transaction_data**
      - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:
@@ -767,7 +769,8 @@ Below is a non-normative example of an Authorization Error Response.
   error_description=...
 
 .. warning::
-  The Wallet Instance MUST NOT send an error to an unauthenticated endpoint or reveal whether a Wallet or Credential is available. An error from one trust path MUST NOT trigger retry under the other path.
+  The Wallet Instance MUST NOT send an error to an unauthenticated endpoint or reveal whether a Wallet or Credential is available.
+  An error from one trust path is handled as specified in :ref:`trust-evaluation:Failure Handling`.
 
 In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:
 
@@ -787,9 +790,9 @@ In the following table are listed error codes and descriptions that are supporte
    * - ``invalid_request``
      - The request is malformed or inconsistent (e.g., it uses the ``vp_token`` Response Type but it does not include a ``dcql_query`` parameter), the Client Identifier Prefix is unsupported, or requirements of a prefix are violated (e.g., ``client_id`` with the ``x509_hash`` prefix without the required ``client_metadata``). `OpenID4VP`_
    * - ``access_denied``
-     - The Wallet did not have the requested credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
+     - The Wallet did not have the requested Credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
    * - ``invalid_client``
-     - The selected Relying Party trust path cannot authenticate or authorize the Relying Party. The Wallet Instance MUST NOT retry the other path. `OID-FED`_ and `OpenID4VP`_
+     - The selected Relying Party trust path cannot authenticate or authorize the Relying Party. See :ref:`trust-evaluation:Failure Handling`. `OID-FED`_ and `OpenID4VP`_
    * - ``invalid_transaction_data``
      - One or more objects in the ``transaction_data`` structure are invalid. For instance, those objects contain unknown or unsupported types, malformed (e.g., it is an object of a known type but containing unknown fields or contains fields of the wrong type for the transaction data type) or missing fields, invalid values (e.g., the ``credential_ids`` does not match), or references to unavailable Credentials. `OpenID4VP`_
 
@@ -833,7 +836,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
      - The Credentials presented are malformed, invalid or revoked.
    * - ``400 Bad Request``
      - ``invalid_request``
-     - The credential presentation, contained in the ``vp_token`` object, is malformed, doesn't have the required parameters or is incorrectly formatted.
+     - The Credential presentation, contained in the ``vp_token`` object, is malformed, doesn't have the required parameters or is incorrectly formatted.
    * - ``400 Bad Request``
      - ``invalid_request``
      - The "sd-jwt" returned is malformed, missing required parameters or incorrectly formatted.

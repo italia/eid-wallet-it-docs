@@ -355,14 +355,12 @@
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the request-specific ephemeral response-encryption public keys for the Relying Party. Every key MUST have <code class="docutils literal notranslate"><span class="pre">kid</span></code> and <code class="docutils literal notranslate"><span class="pre">use</span></code> values, and each <code class="docutils literal notranslate"><span class="pre">kid</span></code> MUST identify exactly one key. See <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>erasure_endpoint</strong></p></td>
-<td><p>[CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the <em>https</em> scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching as specified in <a class="reference internal" href="identity-matching.html#identity-matching"><span class="std std-ref">Identity Matching and Identity Reconciliation</span></a>.</p></td>
-</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The parameters <strong>response_uris</strong> and <strong>erasure_endpoint</strong> are introduced in this specification.</p>
+<p>The parameter <strong>response_uris</strong> is introduced in this specification.
+The Wallet Instance requests deletion of personal data through the Relying Party support contact, as specified in <a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a> and in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts7-common-interface-for-data-deletion-request.md">EUDI-TS 7</a>.</p>
 </div>
 </section>
 
@@ -416,7 +414,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

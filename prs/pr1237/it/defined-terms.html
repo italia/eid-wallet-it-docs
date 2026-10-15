@@ -422,7 +422,7 @@ Conforme con ARF 3.0.0.</p>
 </dd>
 <dt id="term-Fornitore-di-Certificati-di-Registrazione"><strong>Fornitore di Certificati di Registrazione</strong><a class="headerlink" href="#term-Fornitore-di-Certificati-di-Registrazione" title="Link to this term">¶</a></dt><dt id="term-Provider-of-Registration-Certificates"><strong>Provider of Registration Certificates</strong><a class="headerlink" href="#term-Provider-of-Registration-Certificates" title="Link to this term">¶</a></dt><dt id="term-Reg.-Cert.-Provider"><strong>Reg. Cert. Provider</strong><a class="headerlink" href="#term-Reg.-Cert.-Provider" title="Link to this term">¶</a></dt><dt id="term-Provider-of-WRPRC"><strong>Provider of WRPRC</strong><a class="headerlink" href="#term-Provider-of-WRPRC" title="Link to this term">¶</a></dt><dd><p>Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
 Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
-Emette tali certificati automaticamente quando l'Entità ha una registrazione valida di un Servizio e un WRPAC valido di quel Servizio, come specificato in <a class="reference internal" href="onboarding-system.html#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.
+Emette tali certificati automaticamente quando l'Entità ha una registrazione valida nel Register e un WRPAC valido, come specificato in <a class="reference internal" href="onboarding-system.html#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.
 Conforme con ARF 3.0.0.</p>
 </dd>
 <dt id="term-Fornitore-di-Servizi"><strong>Fornitore di Servizi</strong><a class="headerlink" href="#term-Fornitore-di-Servizi" title="Link to this term">¶</a></dt><dt id="term-Relying-Party"><strong>Relying Party</strong><a class="headerlink" href="#term-Relying-Party" title="Link to this term">¶</a></dt><dd><p>Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
@@ -468,7 +468,7 @@ Per il PID a Livello di Garanzia Alto, la Key Attestation descrive le proprietà
 È emessa dal Fornitore di Wallet.
 Conforme con ARF 3.0.0 Topic 9 e Technical Specification 3.</p>
 </dd>
-<dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le credenziali non-PID.
+<dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le Credenziali non-PID.
 Non presente in ARF 3.0.0; specifico dell'IT-Wallet.</p>
 </dd>
 <dt id="term-Keystore"><strong>Keystore</strong><a class="headerlink" href="#term-Keystore" title="Link to this term">¶</a></dt><dd><p>Ambiente di archiviazione sicuro hardware-backed fornito dall'OEM del dispositivo per la generazione, l'archiviazione e l'utilizzo di chiavi crittografiche. Sui dispositivi Android, il Keystore si basa sul Trusted Execution Environment (TEE) o Strongbox; sui dispositivi iOS, si basa sul Secure Enclave. Il Keystore è il meccanismo crittografico di default per tutte le operazioni della Wallet Instance e le Credenziali Digitali, ad eccezione del PID che richiede un WSCA/Remote WSCD. Le proprietà del Keystore sono attestate tramite le OEM Key Attestation APIs.
@@ -899,7 +899,7 @@ In linea con la norma ISO 9241-210:2010.</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

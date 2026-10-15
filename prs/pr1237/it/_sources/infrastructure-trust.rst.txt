@@ -9,16 +9,17 @@ L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata 
 Questa infrastruttura fornisce il fondamento per operazioni sicure sugli Attestati Elettronici tra i partecipanti dell'ecosistema.
 
 Nell'IT-Wallet coesistono due Trust Framework.
+Il Trust Framework di ciascuna interazione è selezionato come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
 
   - Il **Trust Framework EUDIW** è definito dal Regolamento eIDAS2 (`EU_2024_1183`_), dai relativi regolamenti di esecuzione e dall'ARF (`EIDAS-ARF`_).
-    È il percorso notificato e interoperabile e MUST essere autonomo per i PID, le (Q)EAA o le PuB-EAA, e per le Wallet-Relying Party, di altri Stati membri: una Wallet Unit che implementa solo le procedure EUDIW MUST poter emettere, presentare e verificare tali Attestati, e autenticare tali Wallet-Relying Party.
-    È obbligatorio e autorevole per tali Attestati e Wallet-Relying Party di altri Stati membri, e per l'interoperabilità transfrontaliera.
-  - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 dedicata alla firma degli Attestati Elettronici che richiedono una PKI X.509.
-    È **fuori dall'ARF**. È il livello di registrazione e onboarding per tutte le entità dell'ecosistema.
-    Un'entità nazionale MAY utilizzare OpenID Federation, anche per l'emissione e la presentazione di un PID, di una (Q)EAA o di una PuB-EAA italiani.
-
-Il Trust Framework Nazionale MUST NOT essere selezionato, e MUST NOT essere usato come fallback, per l'emissione o la presentazione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro.
-Una Wallet-Relying Party nazionale che offre servizi di interoperabilità al di fuori del pubblico nazionale MUST utilizzare il Trust Framework EUDIW, come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
+    Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA di un altro Stato membro.
+    Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di un altro Stato membro.
+    I PID Provider, i QEAA Provider e i PuB-EAA Provider DEVONO supportare il Trust Framework EUDIW.
+  - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 per gli Attestati Elettronici ancorati a tale framework.
+    È **fuori dall'ARF**.
+    Fornisce registrazione, onboarding e discovery per le entità che operano nel perimetro nazionale.
+    La discovery attraverso il Trust Framework Nazionale PUÒ includere le entità ancorate al Trust Framework EUDIW.
+    Tale discovery non sostituisce la registrazione, la notifica o il percorso di trust EUDIW.
 
 Questa sezione fornisce innanzitutto una panoramica delle entità e dei processi coinvolti nell'infrastruttura di trust (:ref:`infrastructure-trust:Overview`).
 Definisce quindi il :ref:`infrastructure-trust:X.509 Certificate Profile` generale e i :ref:`infrastructure-trust:Common Trust Artifacts` condivisi da entrambi i framework, seguiti dagli artifact specifici di ciascun framework (:ref:`infrastructure-trust:EUDIW Trust Artifacts` e :ref:`infrastructure-trust:National Trust Artifacts`).
@@ -27,19 +28,11 @@ Infine, descrive il relativo ciclo di vita (:ref:`infrastructure-trust:Trust Man
 Overview
 --------
 
-L'ecosistema IT-Wallet opera su un'infrastruttura di trust federata, che richiede alle entità partecipanti di stabilire un trust reciproco prima di impegnarsi in qualsiasi interazione che coinvolga attributi dell'Utente.
-Per poter eseguire un processo di trust evaluation, le entità devono prima effettuare l'onboarding nell'ecosistema (vedere :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
-Durante questa fase, i Fornitori di EAA non qualificati e le Relying Party MUST dichiarare se hanno necessità di interoperare con entità europee oppure se operano solo all'interno del perimetro nazionale.
+Per eseguire una trust evaluation, le entità effettuano prima l'onboarding nell'ecosistema (vedere :ref:`onboarding-system:Onboarding System and Lifecycle Management`).
+Un Fornitore di EAA non qualificato e una Relying Party dichiarano lì il Trust Framework di ciascun ruolo, come specificato in :ref:`onboarding-system:Registration Profiles`.
 
-Questa scelta influisce sia sulle procedure di onboarding sia su quelle di trust evaluation, come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
-Ad esempio, l'IT-Wallet ID di ambito nazionale è emesso e validato nell'ambito del Trust Framework Nazionale, mentre un PID, una (Q)EAA o una PuB-EAA di un altro Stato membro appartiene al Trust Framework EUDIW (vedere :term:`IT-Wallet ID`).
-
-.. note::
-    Poiché il Wallet non può sapere in anticipo se sarà utilizzato per interagire con servizi nazionali o europei, MUST essere supportati sia il Trust Framework Nazionale sia il Trust Framework EUDIW.
-    I PID Provider, i QEAA Provider e i PuB-EAA Provider MUST supportare il Trust Framework EUDIW, in quanto emettono Attestati regolati da eIDAS 2.0, in modo che una Wallet Unit di un altro Stato membro possa interagire con essi.
-    L'overlay nazionale MUST NOT ritardare né sostituire il percorso EUDIW specificato sopra.
-
-In entrambi i casi, i processi di onboarding e, ove applicabile, di notifica europea determinano il rilascio o l'aggiornamento dei Trust Artifact (dettagliati nelle sezioni :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` e :ref:`infrastructure-trust:National Trust Artifacts`), quindi utilizzati durante i processi di trust evaluation (dettagliati nella sezione :ref:`trust-evaluation:Trust Evaluation Process`).
+L'onboarding e, ove applicabile, la notifica europea rilasciano o aggiornano i Trust Artifact (vedere :ref:`infrastructure-trust:Common Trust Artifacts`, :ref:`infrastructure-trust:EUDIW Trust Artifacts` e :ref:`infrastructure-trust:National Trust Artifacts`).
+La trust evaluation usa quindi tali artifact (vedere :ref:`trust-evaluation:Trust Evaluation Process`).
 
 
 .. include:: trust-pki-architecture.rst

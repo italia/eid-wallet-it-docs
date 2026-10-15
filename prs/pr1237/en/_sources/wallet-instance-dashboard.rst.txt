@@ -7,8 +7,8 @@ Wallet Instance Dashboard and Transaction Logging
 
 The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensure transparency, traceability, and User awareness of actions performed through the Wallet Instance as defined in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). The log MUST cover all transactions (including non-completed) in these categories:
 
-- credential issuance and re-issuance;
-- credential presentation to Relying Parties;
+- Credential issuance and re-issuance;
+- Credential presentation to Relying Parties;
 - data deletion requests sent to Relying Parties.
 
 For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in `EUDI-TS 10`_.
@@ -27,6 +27,8 @@ Export and Deletion of Transaction Records
 **Export**: The dashboard MUST allow the User to export one or more transaction records to a file using the common format and security measures defined in `EUDI-TS 10`_.
 
 The exported file MUST be storable in an external or remote storage location of the User’s choice, from among the storage options supported by the Wallet Instance.
+
+This export enables the download of selected transaction records. Restoration of the transaction log into a receiving Wallet Instance is specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 **Deletion**: The dashboard MUST allow the User to delete one or more transaction records from the Wallet Instance at any time.
 

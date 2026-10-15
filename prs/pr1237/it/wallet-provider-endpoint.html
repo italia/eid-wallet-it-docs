@@ -581,6 +581,14 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p>Il valore del Tag della Chiave Crittografica Hardware.</p></td>
 <td></td>
 </tr>
+<tr class="row-odd"><td><p><strong>intended_issuer</strong></p></td>
+<td><p>Identificatore URL HTTPS del PID Provider o dell'Attestation Provider a cui l'Istanza del Wallet presenterà la Wallet Instance Attestation.</p></td>
+<td><p>Sezione 2.5.1 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>status_list_idx</strong></p></td>
+<td><p>Intero non negativo. Presente solo quando l'Istanza del Wallet richiede il riutilizzo della voce di status list già assegnata per <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>. Vedi <a class="reference internal" href="wallet-instance-attestation-issuance.html#riutilizzo-della-voce-di-stato-per-emittente"><span class="std std-ref">Riutilizzo della Voce di Stato per Emittente</span></a>.</p></td>
+<td><p>Sezione 2.5.1 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>Oggetto JSON contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'istanza del Wallet.</p></td>
 <td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
@@ -613,6 +621,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;intended_issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
@@ -715,19 +724,23 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> non corrisponde all'identificatore URL previsto dal Fornitore di Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>L'Istanza del Wallet non è autorizzata a riutilizzare <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> per <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
 <td><p>L'istanza del Wallet non è stata trovata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
 <td><p>La richiesta non rispetta il formato richiesto.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
 <td><p>Si è verificato un errore interno del server durante l'elaborazione della richiesta.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
 <td><p>Il servizio non è disponibile. Si prega di riprovare più tardi.</p></td>
 </tr>
@@ -879,7 +892,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Come meccanismo di revoca per la WIA, è preferita l’opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p>
+<p>Le regole di riutilizzo per emittente di <code class="docutils literal notranslate"><span class="pre">client_status.status</span></code> sono definite in <a class="reference internal" href="wallet-instance-attestation-issuance.html#riutilizzo-della-voce-di-stato-per-emittente"><span class="std std-ref">Riutilizzo della Voce di Stato per Emittente</span></a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -964,39 +977,142 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td></td>
 </tr>
 <tr class="row-even"><td><p><strong>keys_to_attest</strong></p></td>
-<td><p>Array JSON di stringhe JWT, ciascuna delle quali rappresenta una <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
+<td><p>Array JSON di stringhe JWT. Ciascun JWT è un elemento di Key Attestation come definito in <a class="reference internal" href="#elemento-di-key-attestation"><span class="std std-ref">Elemento di Key Attestation</span></a>. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
 <td><p>La firma di <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> ottenuta utilizzando la Cryptographic Hardware Key, codificata nel formato <code class="docutils literal notranslate"><span class="pre">base64url</span></code>.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
-<td><p>L'Integrity Assertion per la Wallet Instance Attestation ottenuta dalle <strong>Device Integrity Service APIs</strong> con holder binding di <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
+<tr class="row-even"><td><p><strong>hardware_key_tag</strong></p></td>
 <td><p>Il valore del Cryptographic Hardware Key Tag.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>Oggetto JSON contenente la parte pubblica della prima coppia di chiavi asimmetriche (primo elemento di <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) posseduta dalla Wallet Instance.</p></td>
 <td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>platform</strong></p></td>
+<tr class="row-even"><td><p><strong>platform</strong></p></td>
 <td><p>Stringa contenente il valore del sistema operativo del dispositivo.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>wallet_solution_id</strong></p></td>
+<tr class="row-odd"><td><p><strong>wallet_solution_id</strong></p></td>
 <td><p>Stringa contenente l'identificatore della Wallet Solution.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_solution_version</strong></p></td>
+<tr class="row-even"><td><p><strong>wallet_solution_version</strong></p></td>
 <td><p>Stringa contenente la versione della Wallet Solution.</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<section id="elemento-di-key-attestation">
+<h4><span class="section-number">12.1.5.1.1. </span>Elemento di Key Attestation<a class="headerlink" href="#elemento-di-key-attestation" title="Link to this heading">¶</a></h4>
+<p>Ciascun elemento di <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> è un JWT firmato con la chiave privata corrispondente al proprio claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>.</p>
+<p>L'header JOSE contiene i seguenti parametri:</p>
+<table class="longtable docutils align-default" id="table-keys-to-attest-header">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>Identificatore di algoritmo di firma digitale, come definito dal registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">none</span></code> né a un identificatore di algoritmo simmetrico (MAC).</p></td>
+<td><p>[<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Thumbprint della JWK contenuta nel claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code> di questo JWT.</p></td>
+<td><p>[<span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>Il tipo del JWT. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">key-attestation-request+jwt</span></code>.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Il body del JWT contiene i seguenti claim:</p>
+<table class="longtable docutils align-default" id="table-keys-to-attest-jwt">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di emissione del JWT.</p></td>
+<td><p>[<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di scadenza del JWT.</p></td>
+<td><p>[<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto JSON contenente la chiave pubblica attestata da questo elemento.</p></td>
+<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wscd_key_attestation</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto JSON che descrive l'archivio della chiave e, dove applicabile, l'attestazione di piattaforma di questa chiave.</p>
+<ul class="simple">
+<li><p><strong>storage_type</strong>: OBBLIGATORIO. Stringa che identifica l'archivio della chiave. Il valore <code class="docutils literal notranslate"><span class="pre">LOCAL_NATIVE</span></code> identifica il Keystore locale.</p></li>
+<li><p><strong>attestation</strong>: Su Android, quando sono usate le API di Key Attestation (OEM), la key attestation OEM prodotta alla generazione della chiave. L'Istanza del Wallet DEVE omettere questo membro per le chiavi del PID e su iOS. Vedi <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-key-attestation"><span class="std std-ref">Emissione della Key Attestation</span></a> e <a class="reference internal" href="wallet-solution-requirements.html#uso-delle-api-di-key-attestation-oem"><span class="std std-ref">Uso delle API di Key Attestation (OEM)</span></a>.</p></li>
+<li><p><strong>integrity_assertion</strong>: OBBLIGATORIO su iOS. L'asserzione del Servizio di Integrità del Dispositivo per questa chiave, vincolata a <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>. L'Istanza del Wallet DEVE omettere questo membro su Android.</p></li>
+</ul>
+</td>
+<td><p>Questa specifica.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Di seguito è riportato un esempio non normativo di un payload <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> decodificato su Android, quando è incluso materiale OEM.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;wscd_key_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;storage_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_NATIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIICszCCA...&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xAH9SNfaq9J5dmkzXYQLek5YfpPc8i_PpMRT315hjMk&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PE2XLcpW6eXH4FlYGNP9BhwQQdEiZE1tAdT-EihACC8&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773053861</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773057461</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Di seguito è riportato un esempio non normativo di un payload <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> decodificato su iOS.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;wscd_key_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;storage_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_NATIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DUQVLhK1KQRd-gx7QNcaSaXCg9x4KtzBk-5b1Y3dye4&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FqV94MekVn_CNf521vmo-QHqfNnMvxgHGsEx9BNW8hQ&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773053861</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773057461</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Di seguito è riportato un esempio non normativo dell'header e del payload JWT di una Key Attestation Request.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -1009,7 +1125,6 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1020,8 +1135,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;keys_to_attest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw&quot;</span>
+<span class="w">    </span><span class="s2">&quot;eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiJ9.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6e30sImNuZiI6e319.c2lnbmF0dXJl&quot;</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iOS&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
@@ -1029,6 +1143,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="risposta-all-emissione-della-key-attestation">
 <h3><span class="section-number">12.1.5.2. </span>Risposta all'Emissione della Key Attestation<a class="headerlink" href="#risposta-all-emissione-della-key-attestation" title="Link to this heading">¶</a></h3>
@@ -1071,11 +1186,11 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header, Integrity Assertion o <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>), oppure include parametri non validi o sconosciuti.</p></td>
+<td><p>La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header o <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>), oppure include parametri non validi o sconosciuti.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>La validazione dell'Integrity Assertion o della Key Attestation (<code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) non è riuscita; l'Integrity Assertion o la Key Attestation (<code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) è stata manomessa oppure firmata in modo non corretto.</p></td>
+<td><p>La validazione di <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code> non è riuscita. La key attestation OEM o l'asserzione di integrità iOS è stata manomessa oppure firmata in modo non corretto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -1102,11 +1217,11 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come da registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o qualsiasi identificatore di algoritmo simmetrico (MAC).</p></td>
-<td><p><span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Key Attestation.</p></td>
-<td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>OBBLIGATORIO. DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
@@ -1117,8 +1232,8 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>OBBLIGATORIO. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
-<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/13/">SD-JWT-VC</a> Sezione 3.5.</p></td>
+<td><p>OBBLIGATORIO. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
+<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/13/">SD-JWT-VC</a> Sezione 3.5.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1138,15 +1253,15 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tbody>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp UNIX con il tempo di emissione del JWT.</p></td>
-<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>attested_keys</strong></p></td>
 <td><p>OBBLIGATORIO. Un array non vuoto di chiavi attestate provenienti dallo stesso componente di archiviazione delle chiavi, utilizzando la sintassi JWK, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'istanza del Wallet.</p></td>
-<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
+<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>key_storage</strong></p></td>
 <td><p>OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco del componente di archiviazione delle chiavi e delle chiavi attestate nel parametro <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code>. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:</p>
@@ -1366,7 +1481,10 @@ Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica
 </ul>
 </li>
 <li><a class="reference internal" href="#endpoint-di-emissione-della-key-attestation">12.1.5. Endpoint di Emissione della Key Attestation</a><ul>
-<li><a class="reference internal" href="#richiesta-di-emissione-della-key-attestation">12.1.5.1. Richiesta di Emissione della Key Attestation</a></li>
+<li><a class="reference internal" href="#richiesta-di-emissione-della-key-attestation">12.1.5.1. Richiesta di Emissione della Key Attestation</a><ul>
+<li><a class="reference internal" href="#elemento-di-key-attestation">12.1.5.1.1. Elemento di Key Attestation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#risposta-all-emissione-della-key-attestation">12.1.5.2. Risposta all'Emissione della Key Attestation</a></li>
 <li><a class="reference internal" href="#key-attestation-jwt">12.1.5.3. Key Attestation JWT</a></li>
 </ul>
@@ -1410,7 +1528,7 @@ Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -503,8 +503,9 @@ The way the registries with a trust purpose are read is described in <a class="r
 </section>
 <section id="registry-discovery-endpoint">
 <h2><span class="section-number">7.2. </span>Registry Discovery Endpoint<a class="headerlink" href="#registry-discovery-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Federation Trust Anchor MUST provide a discovery mechanism for registry components through standardized <em>well-known</em> endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.</p>
-<p>The Federation Trust Anchor MUST publish registry discovery metadata at the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> endpoint with content negotiation support:</p>
+<p>The Federation Trust Anchor MUST provide a discovery mechanism for registry components through standardized <em>well-known</em> endpoints providing metadata and REST API discovery information.</p>
+<p>Pagination and filtering of the Digital Credentials Catalog are specified in <a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.</p>
+<p>The Federation Trust Anchor MUST publish registry discovery metadata at the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> endpoint with content negotiation support as specified in <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>.</p>
 <ul class="simple">
 <li><p><strong>Default Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed JWT ensuring authenticity and integrity)</p></li>
 <li><p><strong>Alternative Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (plain JSON for development/debugging purposes)</p></li>
@@ -557,9 +558,9 @@ Content-Type: application/json
 <ul class="simple">
 <li><p><strong>claims_registry</strong>: URI of the Claims Registry API.</p></li>
 <li><p><strong>authentic_sources</strong>: URI of the Authentic Source Registry API.</p></li>
-<li><p><strong>credential_catalog</strong>: URI of the Digital Credentials Catalog well-known endpoint.</p></li>
+<li><p><strong>credential_catalog</strong>: URI of the Digital Credentials Catalog collection endpoint. See <a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.</p></li>
 <li><p><strong>taxonomy</strong>: URI of the Taxonomy resource.</p></li>
-<li><p><strong>schema_registry</strong>: URI of the Schema Registry API.</p></li>
+<li><p><strong>schema_registry</strong>: URI of the Catalogue of Attestations API root. See <a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a>.</p></li>
 </ul>
 </td>
 </tr>
@@ -585,9 +586,8 @@ Content-Type: application/json
 </pre></div>
 </div>
 </section>
-</section>
 <section id="content-negotiation-and-signed-representation">
-<h2><span class="section-number">7.3. </span>Content Negotiation and Signed Representation<a class="headerlink" href="#content-negotiation-and-signed-representation" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">7.2.2. </span>Content Negotiation and Signed Representation<a class="headerlink" href="#content-negotiation-and-signed-representation" title="Link to this heading">¶</a></h3>
 <p>Every endpoint of the Registry Infrastructure MUST support content negotiation and serve its content in two representations:</p>
 <ul class="simple">
 <li><p><strong>Default Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed JWT that provides authenticity and integrity)</p></li>
@@ -617,7 +617,7 @@ Content-Type: application/json
 <td><p>Absolute URL published under the <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> key of the discovery document.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Schema Registry</p></td>
-<td><p>Absolute URL published under the <code class="docutils literal notranslate"><span class="pre">schema_registry</span></code> key of the discovery document.</p></td>
+<td><p>Absolute URL published under the <code class="docutils literal notranslate"><span class="pre">schema_registry</span></code> key of the discovery document. It is the Catalogue of Attestations API root.</p></td>
 </tr>
 <tr class="row-even"><td><p>Taxonomy</p></td>
 <td><p>Absolute URL published under the <code class="docutils literal notranslate"><span class="pre">taxonomy</span></code> key of the discovery document.</p></td>
@@ -686,9 +686,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 </pre></div>
 </div>
+<p>The example requests the first page of the collection. Query parameters, further pages and the entry resource are specified in <a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.</p>
+</section>
 </section>
 <section id="taxonomy">
-<h2><span class="section-number">7.4. </span>Taxonomy<a class="headerlink" href="#taxonomy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Taxonomy<a class="headerlink" href="#taxonomy" title="Link to this heading">¶</a></h2>
 <p>The <strong>Taxonomy</strong> is the authoritative vocabulary that organizes Credentials in the IT-Wallet ecosystem, and it is the semantic foundation of their interoperability. It is independent of the Credential format.</p>
 <p>In a single resource, it defines the hierarchy of Domains, Classes and Purposes that Credential Types reference, supporting authorization policy evaluation and ecosystem-wide standardization.</p>
 <p>The Taxonomy endpoint URL is published under the <code class="docutils literal notranslate"><span class="pre">taxonomy</span></code> key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
@@ -696,12 +698,12 @@ Content-Type: application/json
 <ol class="arabic simple">
 <li><p><strong>Semantic Foundation</strong>: Establish standardized vocabulary for domains and purposes across the ecosystem</p></li>
 <li><p><strong>Policy Framework</strong>: Enable structured authorization decisions based on hierarchical classification</p></li>
-<li><p><strong>Interoperability</strong>: Ensure consistent interpretation of credential classifications</p></li>
+<li><p><strong>Interoperability</strong>: Ensure consistent interpretation of Credential classifications</p></li>
 <li><p><strong>Extensibility</strong>: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes</p></li>
 <li><p><strong>Cross-Border Compliance</strong>: Align with EU regulatory requirements and international standards</p></li>
 </ol>
 <section id="taxonomy-usage">
-<h3><span class="section-number">7.4.1. </span>Taxonomy Usage<a class="headerlink" href="#taxonomy-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span>Taxonomy Usage<a class="headerlink" href="#taxonomy-usage" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Authentic Source Registry</strong>: Authentic Sources declare capabilities using taxonomy classifications</p></li>
 <li><p><strong>Digital Credentials Catalog</strong>: Credential Types specify Domains, Classes and Purposes</p></li>
@@ -709,8 +711,8 @@ Content-Type: application/json
 </ul>
 </section>
 <section id="digital-credentials-hierarchy">
-<h3><span class="section-number">7.4.2. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
-<p>Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.</p>
+<h3><span class="section-number">7.3.2. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
+<p>Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, Credential discovery, and compatibility with both credential-specific and claim-based verification workflows.</p>
 <p>The hierarchy is defined as follows:</p>
 <p><strong>Domain</strong></p>
 <p>A <strong>Domain</strong> represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
@@ -733,7 +735,7 @@ Each Credential Type MUST include:</p>
 </ul>
 <p>Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.</p>
 <p><strong>Purpose (Verification Intent)</strong></p>
-<p>A <strong>Purpose (Verification Intent)</strong> describes <em>why</em> a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+<p>A <strong>Purpose (Verification Intent)</strong> describes <em>why</em> a Credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 Purposes MUST describe <strong>verification outcomes</strong>.
 Each Credential Type MUST declare its Domain, Class, and supported Purposes.</p>
 <p>The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
@@ -1184,7 +1186,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <div><ul class="simple">
 <li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification or <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;eid&quot;</span></code> for IT-Wallet ID-specific identity verification.</p></li>
 <li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> for driving license verification.</p></li>
-<li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
+<li><p><strong>Banking KYC</strong>: Specific Credential types mandated by financial regulations.</p></li>
 <li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> for EU-compliant disability benefit access.</p></li>
 </ul>
 </div></blockquote>
@@ -1193,8 +1195,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>E-commerce Delivery</strong>: Any credential, among those to which he is authorized to access, containing <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code> for shipping.</p></li>
-<li><p><strong>Subscriptions</strong>: Any credential, among those to which he is authorized to access, with <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code> for personalization.</p></li>
+<li><p><strong>E-commerce Delivery</strong>: Any Credential, among those to which he is authorized to access, containing <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code> for shipping.</p></li>
+<li><p><strong>Subscriptions</strong>: Any Credential, among those to which he is authorized to access, with <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code> for personalization.</p></li>
 <li><p><strong>Service Personalization</strong>: Business applications requiring basic personal data without strong source requirements.</p></li>
 </ul>
 </div></blockquote>
@@ -1208,7 +1210,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </div></blockquote>
 </section>
 <section id="taxonomy-structure">
-<h3><span class="section-number">7.4.3. </span>Taxonomy Structure<a class="headerlink" href="#taxonomy-structure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.3. </span>Taxonomy Structure<a class="headerlink" href="#taxonomy-structure" title="Link to this heading">¶</a></h3>
 <p>The taxonomy maintains a four level hierarchical structure, that is the Domains, the Classes, the Credential Types and the Purposes defined in <a class="reference internal" href="#digital-credentials-hierarchy"><span class="std std-ref">Digital Credentials Hierarchy</span></a> above.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1907,7 +1909,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </section>
 </section>
 <section id="claims-registry">
-<h2><span class="section-number">7.5. </span>Claims Registry<a class="headerlink" href="#claims-registry" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.4. </span>Claims Registry<a class="headerlink" href="#claims-registry" title="Link to this heading">¶</a></h2>
 <p>The Claims Registry endpoint URL is published under the <code class="docutils literal notranslate"><span class="pre">claims_registry</span></code> key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
 <p>The Claims Registry MUST contain:</p>
 <blockquote>
@@ -1932,7 +1934,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p>The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.</p>
 </div>
 <section id="claims-registry-usage">
-<h3><span class="section-number">7.5.1. </span>Claims Registry Usage<a class="headerlink" href="#claims-registry-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>Claims Registry Usage<a class="headerlink" href="#claims-registry-usage" title="Link to this heading">¶</a></h3>
 <p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the Claims Registry MUST support the complete ecosystem lifecycle:</p>
 <p><strong>During Onboarding Process</strong>:</p>
 <blockquote>
@@ -1951,7 +1953,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </div></blockquote>
 </section>
 <section id="claims-registry-structure">
-<h3><span class="section-number">7.5.2. </span>Claims Registry Structure<a class="headerlink" href="#claims-registry-structure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span>Claims Registry Structure<a class="headerlink" href="#claims-registry-structure" title="Link to this heading">¶</a></h3>
 <p>The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided via dedicated localization bundles referenced through the <code class="docutils literal notranslate"><span class="pre">localization.base_uri</span></code> field, enabling efficient multilingual support without compromising the registry's structural integrity.</p>
 <table class="longtable docutils align-default" id="id11">
 <caption><span class="caption-number">Table 7.8 </span><span class="caption-text">First-level Fields of the Claims Registry</span><a class="headerlink" href="#id11" title="Link to this table">¶</a></caption>
@@ -2024,6 +2026,9 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 <tr class="row-odd"><td><p><strong>items</strong></p></td>
 <td><p>OPTIONAL. JSON object describing the schema of each element in a simple <code class="docutils literal notranslate"><span class="pre">array</span></code> type claim (e.g., <code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;string&quot;}</span></code> for <code class="docutils literal notranslate"><span class="pre">nationalities</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>attribute_identifier</strong></p></td>
+<td><p>OPTIONAL. Identifier of the corresponding attribute in the EUDIW Catalogue of Attributes when the claim is aligned to that catalogue, as described in <a class="reference internal" href="#registry-integration-and-cross-references"><span class="std std-ref">Registry Integration and Cross-References</span></a>. When present, it MUST equal that attribute <code class="docutils literal notranslate"><span class="pre">identifier</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2394,7 +2399,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </section>
 </section>
 <section id="authentic-source-registry">
-<h2><span class="section-number">7.6. </span>Authentic Source Registry<a class="headerlink" href="#authentic-source-registry" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.5. </span>Authentic Source Registry<a class="headerlink" href="#authentic-source-registry" title="Link to this heading">¶</a></h2>
 <p>The Authentic Source Registry endpoint URL is published under the <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
 <p>The Authentic Source Registry MUST contain at least:</p>
 <blockquote>
@@ -2419,7 +2424,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p>The Authentic Source Registry is a public registry that provides the Credential Issuer with guidance for Credential provisioning.</p>
 </div>
 <section id="authentic-source-registry-usage">
-<h3><span class="section-number">7.6.1. </span>Authentic Source Registry Usage<a class="headerlink" href="#authentic-source-registry-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.5.1. </span>Authentic Source Registry Usage<a class="headerlink" href="#authentic-source-registry-usage" title="Link to this heading">¶</a></h3>
 <p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the Authentic Source Registry supports ecosystem coordination throughout the operational lifecycle:</p>
 <dl class="simple">
 <dt><strong>During Onboarding Process</strong>:</dt><dd><ul class="simple">
@@ -2434,7 +2439,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </dl>
 </section>
 <section id="authentic-source-registry-structure">
-<h3><span class="section-number">7.6.2. </span>Authentic Source Registry Structure<a class="headerlink" href="#authentic-source-registry-structure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.5.2. </span>Authentic Source Registry Structure<a class="headerlink" href="#authentic-source-registry-structure" title="Link to this heading">¶</a></h3>
 <p>During registration, Authentic Sources declare their capabilities before Credential types exist in the catalog. This declaration establishes the foundation for subsequent CI registration and Credential type creation.</p>
 <p><strong>Authentic Source Unique Identifier Schema</strong></p>
 <p>Each Authentic Source MUST be assigned a unique identifier that follows the HTTPS URL schema defined below. This identifier is used for referencing AS entities across the registry system and in the Digital Credentials Catalog, ensuring consistency with OpenID Federation entity identification patterns.</p>
@@ -3038,7 +3043,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </section>
 </section>
 <section id="schema-registry">
-<h2><span class="section-number">7.7. </span>Schema Registry<a class="headerlink" href="#schema-registry" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.6. </span>Schema Registry<a class="headerlink" href="#schema-registry" title="Link to this heading">¶</a></h2>
 <p>The <strong>Schema Registry</strong> is the authoritative inventory of all known and accepted <strong>Credential Schemas</strong> (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.</p>
 <p><strong>Schema Registry Objectives:</strong></p>
 <ol class="arabic simple">
@@ -3048,7 +3053,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <li><p><strong>Credential Lifecycle Support</strong>: Act as a verifiable reference point for schema validation during issuance and presentation.</p></li>
 </ol>
 <section id="schema-registry-usage">
-<h3><span class="section-number">7.7.1. </span>Schema Registry Usage<a class="headerlink" href="#schema-registry-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.6.1. </span>Schema Registry Usage<a class="headerlink" href="#schema-registry-usage" title="Link to this heading">¶</a></h3>
 <p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the main Entities interacting with the Schema Registry are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -3059,116 +3064,111 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </div></blockquote>
 </section>
-<section id="schema-registry-structure">
-<h3><span class="section-number">7.7.2. </span>Schema Registry Structure<a class="headerlink" href="#schema-registry-structure" title="Link to this heading">¶</a></h3>
-<p>The Schema Registry endpoint URL is published under the <code class="docutils literal notranslate"><span class="pre">schema_registry</span></code> key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).
-It allows the discovery of schema URIs and their cryptographic integrity checks.</p>
-<table class="longtable docutils align-default" id="id15">
-<caption><span class="caption-number">Table 7.12 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Field Name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Schema Registry (e.g., <code class="docutils literal notranslate"><span class="pre">urn:schemas:it-wallet</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>version</strong></p></td>
-<td><p>REQUIRED. The version of the Schema Registry (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>REQUIRED. The timestamp indicating when the Schema Registry was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>schemas</strong></p></td>
-<td><p>REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the &quot;Schema Definition Parameters&quot; table below, including schema identification, format specifications, URIs, and integrity verification data.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default" id="id16">
-<caption><span class="caption-number">Table 7.13 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id16" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 75.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Field Name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p>REQUIRED. The unique identifier of the scheme (e.g., <code class="docutils literal notranslate"><span class="pre">mDL+mso_mdoc+org.iso.18013.5.1.mDL</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>version</strong></p></td>
-<td><p>REQUIRED. The version of the schema definition (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>format</strong></p></td>
-<td><p>REQUIRED. The technical format of the schema (e.g., <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, indicating the Verifiable Credential Type (e.g., <code class="docutils literal notranslate"><span class="pre">urn:eudi:mDL:it:1</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>docType</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, indicating the document type used (e.g., <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>schema_uri</strong></p></td>
-<td><p>REQUIRED. The URI where the schema document can be retrieved (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>schema_uri#integrity</strong></p></td>
-<td><p>REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>description</strong></p></td>
-<td><p>OPTIONAL. A human-readable description of the schema, which may be localized (e.g., &quot;Schema tecnico per la mobile Driving License in formato mdoc.&quot;).</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Schema Registry Example:</strong></p>
-<p>A non-normative example of the Schema Registry payload:</p>
+<section id="catalogue-of-attestations">
+<h3><span class="section-number">7.6.2. </span>Catalogue of Attestations<a class="headerlink" href="#catalogue-of-attestations" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">schema_registry</span></code> value in the Registry Discovery document is the root of the Catalogue of Attestations API.
+The Federation Trust Anchor MUST implement Section 5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>] and the OpenAPI document of Annex A.3 ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-cat-of-attestations-jwt-openapi31.yml">EUDI-TS 11 OpenAPI</a>]).
+Each attestation schema MUST be a <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> object as defined in Section 4.3 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>] and MUST validate against the JSON Schema of Annex A.2 ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-json-cat-attestations-data-model.json">EUDI-TS 11 Attestation Schema</a>]).
+The object MUST NOT contain properties outside that schema.</p>
+<p>The API root has these paths:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas</span></code> lists schemas with the query parameters of Annex A.3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas/{schemaId}</span></code> returns one schema. <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> is the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/schemas/{schemaId}</span></code> replaces one schema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/schemas/{schemaId}</span></code> deletes one schema.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">id</span></code> MUST be a UUID assigned by the Federation Trust Anchor when the schema is first registered.
+<code class="docutils literal notranslate"><span class="pre">version</span></code> MUST follow semantic versioning. The first published version MUST be <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>.
+<code class="docutils literal notranslate"><span class="pre">supportedFormats</span></code> and each <code class="docutils literal notranslate"><span class="pre">schemaURIs</span></code> element MUST use the format identifiers of Section 4.3 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+The format-specific schema document served at <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> MUST follow Section 4.3.4 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+A <code class="docutils literal notranslate"><span class="pre">rulebookURI</span></code> or a <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> MAY carry an <code class="docutils literal notranslate"><span class="pre">#integrity</span></code> suffix. The suffix value MUST be integrity metadata as defined in Section 3 of [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]. When the suffix is present, the consumer MUST verify the document as defined in Section 3.3.5 of [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>].
+<code class="docutils literal notranslate"><span class="pre">frameworkType</span></code> <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> MUST be used only for a non-qualified EAA.
+<code class="docutils literal notranslate"><span class="pre">isLoTE</span></code> MUST follow Section 4.3.3 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+The Attestation Rulebook of a QEAA or a PuB-EAA MUST be published as required by Section 4.2 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+Publication of an EAA rulebook is RECOMMENDED.</p>
+<section id="list-of-schemas">
+<h4><span class="section-number">7.6.2.1. </span>List of schemas<a class="headerlink" href="#list-of-schemas" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas</span></code> MUST be available without authentication.
+The response MUST be HTTP 200 when the query is valid.
+The JWT payload MUST contain <code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>.
+<code class="docutils literal notranslate"><span class="pre">data</span></code> MUST contain <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">limit</span></code>, <code class="docutils literal notranslate"><span class="pre">offset</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>.
+The inner <code class="docutils literal notranslate"><span class="pre">data</span></code> array contains the matching <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> objects.
+<code class="docutils literal notranslate"><span class="pre">iss</span></code> MUST identify the Federation Trust Anchor.
+<code class="docutils literal notranslate"><span class="pre">iat</span></code> MUST be the Unix time at which the JWT was issued, as defined in <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">limit</span></code> is absent, the value 20 applies.
+When <code class="docutils literal notranslate"><span class="pre">offset</span></code> is absent, the value 0 applies.
+When no filter is present, the result set is every registered schema, returned from <code class="docutils literal notranslate"><span class="pre">offset</span></code> for at most <code class="docutils literal notranslate"><span class="pre">limit</span></code> entries.
+The Federation Trust Anchor MUST order that set by <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending.
+A client that needs every matching schema MUST request the next page by increasing <code class="docutils literal notranslate"><span class="pre">offset</span></code> by <code class="docutils literal notranslate"><span class="pre">limit</span></code> until <code class="docutils literal notranslate"><span class="pre">offset</span></code> is greater than or equal to <code class="docutils literal notranslate"><span class="pre">total</span></code>.
+The Federation Trust Anchor MUST respond with HTTP 400 when the query does not conform to Annex A.3.</p>
+<p>A successful <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> response MUST include the <code class="docutils literal notranslate"><span class="pre">x-jku-url</span></code> header. Its value MUST be the HTTPS URI of the JSON Web Key Set used to verify the signature.
+The same response MUST also be available as <code class="docutils literal notranslate"><span class="pre">application/json</span></code> under <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>. The JSON body is the JWT payload.</p>
+<p>The following non-normative example is one page of <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas</span></code>.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:schemas:it-wallet&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL+mso_mdoc+org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Schema tecnico per la mobile Driving License in formato mdoc.&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid+dc+sd-jwt+urn:eudi:pid:it:1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:pid:it:1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/pid&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-a1b2c3d4e5f67890...&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Schema tecnico per la Person Identification Data (PID) in formato SD-JWT.&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1742040000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;rulebookURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/rulebooks/mdl&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trustedAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;frameworkType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;etsi_tl&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/lists-of-trusted-entities/mdl-providers&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;isLoTE&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;attestationLoS&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iso_18045_high&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;bindingType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;supportedFormats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;mso_mdoc&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;schemaURIs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;formatIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.example.org/schemas/mdoc/mDL#integrity=sha256-47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU=&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
+<section id="one-schema">
+<h4><span class="section-number">7.6.2.2. </span>One schema<a class="headerlink" href="#one-schema" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas/{schemaId}</span></code> MUST be available without authentication.
+The Federation Trust Anchor MUST respond with HTTP 200 and a JWS whose payload is the matching <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> when <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> exists.
+The Federation Trust Anchor MUST respond with HTTP 404 when <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> does not exist.
+The JWT response MUST include <code class="docutils literal notranslate"><span class="pre">x-jku-url</span></code> as specified for the list.</p>
+</section>
+<section id="update-and-deletion">
+<h4><span class="section-number">7.6.2.3. </span>Update and deletion<a class="headerlink" href="#update-and-deletion" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/schemas/{schemaId}</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/schemas/{schemaId}</span></code> MUST be accepted only from an authenticated representative of the Attestation Scheme Provider that registered the schema, as required by Section 4.5.3 and Section 5.2.2 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+The request body of <code class="docutils literal notranslate"><span class="pre">PUT</span></code> MUST be the complete <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code>.
+A successful <code class="docutils literal notranslate"><span class="pre">PUT</span></code> MUST respond with HTTP 200 and the stored <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> as <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, as specified in Annex A.3. This response is not selected by the content negotiation that applies to <code class="docutils literal notranslate"><span class="pre">GET</span></code>.
+A successful <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> MUST respond with HTTP 204.
+The Federation Trust Anchor MUST respond with HTTP 401 when the caller is not authenticated.
+The Federation Trust Anchor MUST respond with HTTP 403 when the authenticated caller is not a representative of the Attestation Scheme Provider that registered the schema.
+The Federation Trust Anchor MUST respond with HTTP 404 when <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> does not exist.
+Section 5.2.2 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>] leaves the Commission authentication mechanism for a later version. Until that mechanism is defined, the Onboarding System is the representative that the Federation Trust Anchor MUST accept for these two methods.</p>
+<p>The implementation of <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas</span></code> MUST take into account the vulnerabilities described in Section 5.4 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+It SHOULD apply the measures in Section 5.5 and Section 5.6 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].</p>
+</section>
+</section>
 </section>
 <section id="digital-credentials-catalog">
-<h2><span class="section-number">7.8. </span>Digital Credentials Catalog<a class="headerlink" href="#digital-credentials-catalog" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.7. </span>Digital Credentials Catalog<a class="headerlink" href="#digital-credentials-catalog" title="Link to this heading">¶</a></h2>
 <p>The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
 The Digital Credential Catalog MUST contain at least:</p>
-<table class="longtable docutils align-default" id="id17">
-<caption><span class="caption-number">Table 7.14 </span><span class="caption-text">Digital Credential Catalog - Main information</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id15">
+<caption><span class="caption-number">Table 7.12 </span><span class="caption-text">Digital Credential Catalog - Main information</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -3233,7 +3233,7 @@ The Digital Credential Catalog MUST contain at least:</p>
 </ol>
 </div></blockquote>
 <section id="digital-credentials-catalog-usage">
-<h3><span class="section-number">7.8.1. </span>Digital Credentials Catalog Usage<a class="headerlink" href="#digital-credentials-catalog-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.7.1. </span>Digital Credentials Catalog Usage<a class="headerlink" href="#digital-credentials-catalog-usage" title="Link to this heading">¶</a></h3>
 <p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the main Entities involved in the Digital Credential Catalog are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -3248,8 +3248,8 @@ The Digital Credential Catalog MUST contain at least:</p>
 <p>A versioned entry is not provided by a single Entity.
 Its fields come from different sources and they are written in different onboarding phases, as summarized in the table below.
 The Data Identifiers that carry this information through the onboarding, and their mapping to the fields of the entry, are defined in <a class="reference internal" href="onboarding-system.html#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.</p>
-<span id="table-catalog-entry-provision"></span><table class="longtable docutils align-default" id="id18">
-<caption><span class="caption-number">Table 7.15 </span><span class="caption-text">Provision of a Versioned Entry of the Digital Credentials Catalog</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<span id="table-catalog-entry-provision"></span><table class="longtable docutils align-default" id="id16">
+<caption><span class="caption-number">Table 7.13 </span><span class="caption-text">Provision of a Versioned Entry of the Digital Credentials Catalog</span><a class="headerlink" href="#id16" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 40.0%" />
 <col style="width: 32.0%" />
@@ -3270,8 +3270,8 @@ The Data Identifiers that carry this information through the onboarding, and the
 <td><p>The Attestation Scheme Provider, referencing the entries of the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a> or an already registered Credential type</p></td>
 <td><p><a class="reference internal" href="onboarding-system.html#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">format</span></code>, <code class="docutils literal notranslate"><span class="pre">vct</span></code>, <code class="docutils literal notranslate"><span class="pre">docType</span></code></p></td>
-<td><p>The Attestation Scheme Provider, through the schema it makes available in the <a class="reference internal" href="#schema-registry"><span class="std std-ref">Schema Registry</span></a></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schemaId</span></code></p></td>
+<td><p>The Attestation Scheme Provider, through the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> registered in the <a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a></p></td>
 <td><p><a class="reference internal" href="onboarding-system.html#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issuers</span></code></p></td>
@@ -3292,12 +3292,155 @@ The Credential Schema is the JSON Schema or the CBOR Schema that validates the s
 The Attestation Scheme Provider owns the first one and provides the second one as part of the technical specification of the Credential type.</p>
 </div>
 </section>
+<section id="digital-credentials-catalog-retrieval">
+<h3><span class="section-number">7.7.2. </span>Digital Credentials Catalog Retrieval<a class="headerlink" href="#digital-credentials-catalog-retrieval" title="Link to this heading">¶</a></h3>
+<p>The Federation Trust Anchor MUST publish the Digital Credentials Catalog as two HTTP resources.
+Both resources use the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
+<p>The collection URL is the absolute URL published under the <code class="docutils literal notranslate"><span class="pre">credential_catalog</span></code> key of the Registry Discovery document.
+The entry URL is the collection URL with two path segments appended, the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and the <code class="docutils literal notranslate"><span class="pre">version</span></code> of one versioned entry.
+A client MUST build the entry URL from that collection URL.
+Both path segments MUST be percent-encoded as defined in <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>A successful response of either resource is a JWS in compact serialization.
+The header parameters MUST be as defined in the <a class="reference internal" href="#table-catalog-parameters"><span class="std std-ref">corresponding table</span></a>.
+The Federation Trust Anchor MUST sign each response on its own.
+A write that changes one versioned entry does not require a new signature over versioned entries that the write left unchanged.</p>
+<p>The list method and the single-entry method follow Section 5.3.1 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+The response carries the national versioned entry defined in <a class="reference internal" href="#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a>.</p>
+<section id="collection">
+<h4><span class="section-number">7.7.2.1. </span>Collection<a class="headerlink" href="#collection" title="Link to this heading">¶</a></h4>
+<p>The collection endpoint MUST accept HTTP GET on the collection URL.
+The Federation Trust Anchor MUST respond with HTTP 200 to a valid collection request.</p>
+<p>The request MAY include the query parameters in <a class="reference internal" href="#table-catalog-query-parameters"><span class="std std-ref">Query Parameters of the Digital Credentials Catalog Collection</span></a>.
+<code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code> follow Section 5.3.1 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+<code class="docutils literal notranslate"><span class="pre">attestationLoS</span></code>, <code class="docutils literal notranslate"><span class="pre">bindingType</span></code>, <code class="docutils literal notranslate"><span class="pre">trustedAuthoritiesFrameworkType</span></code>, <code class="docutils literal notranslate"><span class="pre">trustedAuthoritiesValue</span></code> and <code class="docutils literal notranslate"><span class="pre">rulebookUri</span></code> are the filters of that section that match a field of the national versioned entry.
+<code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">state</span></code> select that same entry.
+The collection response MUST include a versioned entry only when that entry matches every supplied filter.
+The Federation Trust Anchor MUST respond with HTTP 400 when the request repeats a query parameter, contains a query parameter that is not listed in <a class="reference internal" href="#table-catalog-query-parameters"><span class="std std-ref">Query Parameters of the Digital Credentials Catalog Collection</span></a>, or contains a value that does not satisfy that parameter.</p>
+<p>The Federation Trust Anchor MUST order matching entries by the Unicode code point order of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and, for an equal <code class="docutils literal notranslate"><span class="pre">credential_type</span></code>, by the Unicode code point order of <code class="docutils literal notranslate"><span class="pre">version</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array MUST contain the matching entries in that order, starting after <code class="docutils literal notranslate"><span class="pre">offset</span></code> entries, and it MUST contain at most <code class="docutils literal notranslate"><span class="pre">limit</span></code> entries.
+When no versioned entry matches, or when <code class="docutils literal notranslate"><span class="pre">offset</span></code> is greater than or equal to <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">credentials</span></code> MUST be an empty array and <code class="docutils literal notranslate"><span class="pre">total</span></code> MUST be the number of matching entries.</p>
+<p>A client MUST NOT treat <code class="docutils literal notranslate"><span class="pre">credentials</span></code> as every versioned entry of the catalog.
+When the client requires every matching entry, it MUST request the next page by increasing <code class="docutils literal notranslate"><span class="pre">offset</span></code> by <code class="docutils literal notranslate"><span class="pre">limit</span></code> until <code class="docutils literal notranslate"><span class="pre">offset</span></code> is greater than or equal to <code class="docutils literal notranslate"><span class="pre">total</span></code>.</p>
+<span id="table-catalog-query-parameters"></span><table class="longtable docutils align-default" id="id17">
+<caption><span class="caption-number">Table 7.14 </span><span class="caption-text">Query Parameters of the Digital Credentials Catalog Collection</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">limit</span></code></p></td>
+<td><p>OPTIONAL. Maximum number of versioned entries returned in <code class="docutils literal notranslate"><span class="pre">credentials</span></code>. When absent, the value 20 applies. The value MUST be an integer from 1 to 100 inclusive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">offset</span></code></p></td>
+<td><p>OPTIONAL. Number of matching entries to skip before this page. When absent, the value 0 applies. The value MUST be an integer greater than or equal to 0.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_type</span></code></p></td>
+<td><p>OPTIONAL. Exact match on <code class="docutils literal notranslate"><span class="pre">credential_type</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></td>
+<td><p>OPTIONAL. Exact match on <code class="docutils literal notranslate"><span class="pre">state</span></code>. The value MUST be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> or <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">attestationLoS</span></code></p></td>
+<td><p>OPTIONAL. Exact match on <code class="docutils literal notranslate"><span class="pre">attestationLoS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bindingType</span></code></p></td>
+<td><p>OPTIONAL. Exact match on <code class="docutils literal notranslate"><span class="pre">bindingType</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trustedAuthoritiesFrameworkType</span></code></p></td>
+<td><p>OPTIONAL. The entry matches when at least one object of <code class="docutils literal notranslate"><span class="pre">trustedAuthorities</span></code> has <code class="docutils literal notranslate"><span class="pre">frameworkType</span></code> equal to this value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trustedAuthoritiesValue</span></code></p></td>
+<td><p>OPTIONAL. The entry matches when at least one object of <code class="docutils literal notranslate"><span class="pre">trustedAuthorities</span></code> has <code class="docutils literal notranslate"><span class="pre">value</span></code> equal to this value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rulebookUri</span></code></p></td>
+<td><p>OPTIONAL. Exact match on <code class="docutils literal notranslate"><span class="pre">rulebookURI</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following non-normative example requests the first page of active entries.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog?state=ACTIVE&amp;limit=20&amp;offset=0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/jwt</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/jwt
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+</pre></div>
+</div>
+<p>The payload of a successful collection response MUST contain the fields in <a class="reference internal" href="#table-catalog-collection-payload"><span class="std std-ref">First-level Fields of a Collection Response</span></a>.</p>
+</section>
+<section id="entry">
+<h4><span class="section-number">7.7.2.2. </span>Entry<a class="headerlink" href="#entry" title="Link to this heading">¶</a></h4>
+<p>The entry endpoint MUST accept HTTP GET on the entry URL.
+The path identifies the versioned entry whose <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> are the two path segments.
+The Federation Trust Anchor MUST respond with HTTP 200 when that pair exists.
+The Federation Trust Anchor MUST respond with HTTP 404 when no versioned entry has that pair.</p>
+<span id="table-catalog-entry-payload"></span><table class="longtable docutils align-default" id="id18">
+<caption><span class="caption-number">Table 7.15 </span><span class="caption-text">Payload of a Digital Credentials Catalog Entry Response</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Field Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Issuer identifier. It MUST be the same value as <code class="docutils literal notranslate"><span class="pre">iss</span></code> in the collection response.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>REQUIRED. See <code class="docutils literal notranslate"><span class="pre">iat</span></code> in <a class="reference internal" href="#table-catalog-collection-payload"><span class="std std-ref">First-level Fields of a Collection Response</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<td><p>REQUIRED. The localization object defined for the collection response.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential</strong></p></td>
+<td><p>REQUIRED. The versioned entry identified by the path. Its fields are those in <a class="reference internal" href="#table-catalog-parameters-first-level"><span class="std std-ref">First-level Fields of Each Credential Entry</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following non-normative example requests one versioned entry. The <code class="docutils literal notranslate"><span class="pre">credential</span></code> member is abbreviated.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog/mDL/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1742040000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="digital-credentials-catalog-structure">
-<h3><span class="section-number">7.8.2. </span>Digital Credentials Catalog Structure<a class="headerlink" href="#digital-credentials-catalog-structure" title="Link to this heading">¶</a></h3>
-<p>The Digital Credentials Catalog endpoint URL is published under the <code class="docutils literal notranslate"><span class="pre">credential_catalog</span></code> key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).
-Its signed representation is a JWT. The header parameters MUST be as defined in the <a class="reference internal" href="#table-catalog-parameters"><span class="std std-ref">corresponding table</span></a>, and the payload contains the following parameters:</p>
-<table class="longtable docutils align-default" id="id19">
-<caption><span class="caption-number">Table 7.16 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
+<h3><span class="section-number">7.7.3. </span>Digital Credentials Catalog Structure<a class="headerlink" href="#digital-credentials-catalog-structure" title="Link to this heading">¶</a></h3>
+<p>This section defines the payload of the collection response and the fields of each versioned entry.
+The collection payload contains the following parameters.</p>
+<span id="table-catalog-collection-payload"></span><table class="longtable docutils align-default" id="id19">
+<caption><span class="caption-number">Table 7.16 </span><span class="caption-text">First-level Fields of a Collection Response</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -3315,12 +3458,15 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <td><p>REQUIRED. The version of the Digital Credentials Catalog (e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>REQUIRED. The timestamp indicating when the list was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+<td><p>REQUIRED. The timestamp indicating when the catalog content was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>REQUIRED. Unix time at which this response JWT was issued, as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. <code class="docutils literal notranslate"><span class="pre">last_modified</span></code> records the last change of catalog content. <code class="docutils literal notranslate"><span class="pre">iat</span></code> records the issuance of this JWT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>localization</strong></p></td>
 <td><p>REQUIRED. Localization configuration object containing:</p>
 <ul class="simple">
 <li><p><strong>default_locale</strong>: Default locale code (e.g., <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
@@ -3330,8 +3476,17 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
+<tr class="row-even"><td><p><strong>total</strong></p></td>
+<td><p>REQUIRED. Integer. Number of versioned entries that match the request, before <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code> are applied.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>limit</strong></p></td>
+<td><p>REQUIRED. Integer. The page size applied to this response.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>offset</strong></p></td>
+<td><p>REQUIRED. Integer. The number of matching entries skipped before this page.</p></td>
+</tr>
 <tr class="row-odd"><td><p><strong>credentials</strong></p></td>
-<td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
+<td><p>REQUIRED. Array of versioned entries in this page. The number of elements MUST be less than or equal to <code class="docutils literal notranslate"><span class="pre">limit</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3354,7 +3509,10 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code> and for IT-Wallet ID MUST be <code class="docutils literal notranslate"><span class="pre">eid</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
+<tr class="row-even"><td><p><strong>schemaId</strong></p></td>
+<td><p>REQUIRED. UUID of the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> in the <a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a> for this Credential type. It MUST equal the <code class="docutils literal notranslate"><span class="pre">id</span></code> of that <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>REQUIRED. State of this versioned entry of the Credential type. It MUST be one of:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>: the Credential type can be issued from this versioned entry. An entry can be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> only while at least one Credential Issuer is listed in the <strong>issuers</strong> field, the referenced Authentic Source or parent Credential type is available, and the schema is registered for at least one supported format.</p></li>
@@ -3363,13 +3521,13 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <p>Only one versioned entry of the same <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> MUST be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> at a given time.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>credential_name_l10n_id</strong></p></td>
+<tr class="row-even"><td><p><strong>credential_name_l10n_id</strong></p></td>
 <td><p>REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., <code class="docutils literal notranslate"><span class="pre">mDL.name</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>legal_type</strong></p></td>
+<tr class="row-odd"><td><p><strong>legal_type</strong></p></td>
 <td><p>REQUIRED. Legal classification of the Credential (e.g., <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>). A type whose <code class="docutils literal notranslate"><span class="pre">legal_type</span></code> is <code class="docutils literal notranslate"><span class="pre">qeaa</span></code> or <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code> MUST follow <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#qeaa-and-pub-eaa-data-model"><span class="std std-ref">QEAA and PuB-EAA Data Model</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>restriction_policy</strong></p></td>
+<tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
 <td><p>OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.</p>
 <ul class="simple">
 <li><p><strong>allowed_wallet_ids</strong>: List of allowed Wallet Solutions identifiers.</p></li>
@@ -3378,7 +3536,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>pricing_policy</strong></p></td>
+<tr class="row-odd"><td><p><strong>pricing_policy</strong></p></td>
 <td><p>OPTIONAL. Information about Digital Credential pricing, including:</p>
 <ul class="simple">
 <li><p><strong>models</strong>: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing</p>
@@ -3392,7 +3550,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>validity_info</strong></p></td>
+<tr class="row-even"><td><p><strong>validity_info</strong></p></td>
 <td><p>REQUIRED. Information about Digital Credential validity, including at least:</p>
 <ul class="simple">
 <li><p><strong>max_validity_days</strong>: Maximum validity period in days.</p></li>
@@ -3402,7 +3560,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>authentication</strong></p></td>
+<tr class="row-odd"><td><p><strong>authentication</strong></p></td>
 <td><p>REQUIRED. Digital Credential authentication requirements.</p>
 <ul class="simple">
 <li><p><strong>user_auth_required</strong>: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.</p></li>
@@ -3411,16 +3569,16 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>domains</strong></p></td>
+<tr class="row-even"><td><p><strong>domains</strong></p></td>
 <td><p>REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;MOBILITY_TRAVEL&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>classes</strong></p></td>
+<tr class="row-odd"><td><p><strong>classes</strong></p></td>
 <td><p>REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTIFICATION_DOCUMENTS&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;LICENSES_AUTHORIZATIONS&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>purposes</strong></p></td>
+<tr class="row-even"><td><p><strong>purposes</strong></p></td>
 <td><p>REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AGE_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>issuers</strong></p></td>
+<tr class="row-odd"><td><p><strong>issuers</strong></p></td>
 <td><p>CONDITIONAL. It is REQUIRED only if <strong>state</strong> is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:</p>
 <blockquote>
 <div><ul>
@@ -3451,7 +3609,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: String identifier referencing the Authentic Source entity_id as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
@@ -3459,10 +3617,10 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>parent_credentials</strong></p></td>
 <td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> is absent. Array of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>trustedAuthorities</strong></p></td>
+<tr class="row-even"><td><p><strong>trustedAuthorities</strong></p></td>
 <td><p>REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:</p>
 <blockquote>
 <div><ul class="simple">
@@ -3471,20 +3629,20 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <li><p><strong>isLoTE</strong>: a boolean value that MUST be TRUE when the applicable trust framework type is an ETSI Trusted List (<code class="docutils literal notranslate"><span class="pre">etsi_tl</span></code>) but the trusted list behind the value URI is a list of trusted entities (LoTE) according to ETSI TS 119 602. Value MUST be FALSE if the applicable trusted list specification is ETSI TS 119 612. Attribute MUST NOT be used with other framework types.</p></li>
 </ul>
 </div></blockquote>
-<p>The applicable <code class="docutils literal notranslate"><span class="pre">frameworkType</span></code> follows <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>. For a PID, (Q)EAA or PuB-EAA of another Member State the trust model is based on European Commission managed Lists of Trusted Lists and Lists of Trusted Entities.</p>
+<p>The applicable <code class="docutils literal notranslate"><span class="pre">frameworkType</span></code> is the signing trust anchor of the Credential type, as specified in <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use of <code class="docutils literal notranslate"><span class="pre">isLoTE</span></code> will become unnecessary and must be deprecated once OpenID4VCI specifies a new enumeration for Lists of Trusted Entities according to ETSI TS 119 602, the tentative enumeration is <code class="docutils literal notranslate"><span class="pre">etsi_lote</span></code>.</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>rulebookURI</strong></p></td>
+<tr class="row-odd"><td><p><strong>rulebookURI</strong></p></td>
 <td><p>REQUIRED. URI to the human-readable Attestation Rulebook that defines all the non-machine-readable aspects of the Digital Credential type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>bindingType</strong></p></td>
+<tr class="row-even"><td><p><strong>bindingType</strong></p></td>
 <td><p>REQUIRED. Indicates the type of cryptographic key binding required for issuance of the Digital Credential. Allowed value is a string from the set of: <code class="docutils literal notranslate"><span class="pre">claim</span></code> (binding to a cryptographic claim presented by the User), <code class="docutils literal notranslate"><span class="pre">key</span></code> (binding to a key possessed by the User), <code class="docutils literal notranslate"><span class="pre">biometric</span></code> (binding to presented biometrics of the User) or <code class="docutils literal notranslate"><span class="pre">none</span></code> (no cryptographic binding).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>attestationLoS</strong></p></td>
+<tr class="row-odd"><td><p><strong>attestationLoS</strong></p></td>
 <td><p>REQUIRED. Level of security (LoS) the Digital Credential is to be provided at. Allowed value is a string from the set of: <code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>, <code class="docutils literal notranslate"><span class="pre">iso_18045_moderate</span></code>, <code class="docutils literal notranslate"><span class="pre">iso_18045_enhanced-basic</span></code> or <code class="docutils literal notranslate"><span class="pre">iso_18045_basic</span></code> (see Annex D.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> for more details).</p></td>
 </tr>
 </tbody>
@@ -3497,7 +3655,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <p class="admonition-title">Note</p>
 <p>The union of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> MUST be unique in the Credential Catalog.</p>
 </div>
-<p>The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:</p>
+<p>The following non-normative example is one page of a collection response, decoded as JSON for both the header and the payload.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -3511,6 +3669,10 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1742040000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
@@ -3525,6 +3687,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schemaId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -3651,10 +3814,10 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <p class="admonition-title">Note</p>
 <p>For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:</p>
 <ul class="simple">
-<li><p>Download the basic version of the Digital Credentials Catalog (compact, without localizations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code> endpoint.</p></li>
+<li><p>Request the collection pages it needs, or one versioned entry, as specified in <a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.</p></li>
 <li><p>Determine the User's preferred language.</p></li>
 <li><p>Download only the necessary localization bundles.</p></li>
-<li><p>Dynamically merge localised content with the Digital Credentials Catalog structure.</p></li>
+<li><p>Dynamically merge localised content with the catalog entry.</p></li>
 </ul>
 </div>
 <p>A non-normative example of a localization bundle output is given below:</p>
@@ -3669,18 +3832,18 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <p>A non-normative example of the Italian localization URI for the bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json</strong>.</p>
 </section>
 <section id="decentralization-of-display-and-claim-information">
-<h3><span class="section-number">7.8.3. </span>Decentralization of Display and Claim Information<a class="headerlink" href="#decentralization-of-display-and-claim-information" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.7.4. </span>Decentralization of Display and Claim Information<a class="headerlink" href="#decentralization-of-display-and-claim-information" title="Link to this heading">¶</a></h3>
 <p>The canonical source for display characteristics and claim structure is determined by the <strong>Credential Issuer's Metadata</strong>.</p>
 <p>The overall logic for presenting a Digital Credential is the following:</p>
 <ol class="arabic simple">
-<li><p>Depending on the required Trust Framework, the Wallet or Relying Party retrieves the <a class="reference internal" href="#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> (for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework) to discover the available <cite>credential_type</cite> and the <cite>entity_id</cite> of their Credential Issuers.</p></li>
+<li><p>Depending on the required Trust Framework, the Wallet or Relying Party retrieves the applicable versioned entries from the <a class="reference internal" href="#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>, for both Digital Credentials managed by Credential Issuers anchored in the National or EUDIW Trust Framework, to discover the available <cite>credential_type</cite> and the <cite>entity_id</cite> of their Credential Issuers. Retrieval uses the collection or the entry endpoint specified in <a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.</p></li>
 <li><p>It retrieves the full Credential Issuer Metadata (see <a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer"><span class="std std-ref">Metadata for openid_credential_issuer</span></a>) as described in Section 12.2.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
 <li><p>The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).</p></li>
 </ol>
 </section>
 </section>
 <section id="registry-integration-and-cross-references">
-<h2><span class="section-number">7.9. </span>Registry Integration and Cross-References<a class="headerlink" href="#registry-integration-and-cross-references" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.8. </span>Registry Integration and Cross-References<a class="headerlink" href="#registry-integration-and-cross-references" title="Link to this heading">¶</a></h2>
 <p>As shown in Figure <a class="reference internal" href="#fig-registry-relationships"><span class="std std-ref">Relationships between National Registries</span></a>, the registry components are interconnected and work together to support the complete Credential ecosystem:</p>
 <ol class="arabic simple">
 <li><p><strong>AS Registry</strong> ↔ <strong>Taxonomy</strong>: Authentic Sources declare capabilities using taxonomy classifications for standardized categorization.</p></li>
@@ -3702,7 +3865,7 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 <p>Figure <a class="reference internal" href="#fig-eudiw-national-registry-relationships"><span class="std std-ref">Relationships between National Registries and EUDIW Catalogues</span></a> shows instead the mapping between the EUDIW catalogues and the national counterparts:</p>
 <ul class="simple">
 <li><p><strong>EUDIW Catalogue of Attributes</strong> corresponds to the national <strong>Claims Registry</strong> for the semantic definition of the attributes and to the <strong>Authentic Source Registry</strong> for the discovery of the verification point. Note that national attribute definitions align to the EU-level catalogue for cross-border interoperability.</p></li>
-<li><p><strong>EUDIW Catalogue of Schemes</strong> corresponds to the national <strong>Schema Registry</strong> for the discovery of the attestation schemes and to the <strong>Digital Credentials Catalog</strong> for the discovery of the issuance and presentation requirements. Note that the national registries contain all the information provided in the EUDIW one plus additional information (e.g., pricing model and validity information).</p></li>
+<li><p><strong>EUDIW Catalogue of Schemes</strong> corresponds to the national <strong>Catalogue of Attestations</strong> (<a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a>), which implements Section 5 of [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], and to the <strong>Digital Credentials Catalog</strong> for the national issuance and presentation requirements. The national catalog keeps the additional information, such as the pricing model and the validity information.</p></li>
 </ul>
 <figure class="align-default" id="id22">
 <span id="fig-eudiw-national-registry-relationships"></span><p class="plantuml">
@@ -3720,18 +3883,18 @@ Its signed representation is a JWT. The header parameters MUST be as defined in 
 </div>
 </section>
 <section id="registry-infrastructure-usage-journeys">
-<h2><span class="section-number">7.10. </span>Registry Infrastructure Usage Journeys<a class="headerlink" href="#registry-infrastructure-usage-journeys" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.9. </span>Registry Infrastructure Usage Journeys<a class="headerlink" href="#registry-infrastructure-usage-journeys" title="Link to this heading">¶</a></h2>
 <p>The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities.
 The main Journeys below illustrate the operational interactions that read the Registry Infrastructure.
 The complementary journey that populates the registries is the onboarding registration, which registers the entities, the Authentic Sources, the claims, the schemas and the Credential types, as shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and described in <a class="reference internal" href="onboarding-system.html#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>.</p>
 <section id="catalog-browsing">
-<h3><span class="section-number">7.10.1. </span>Catalog Browsing<a class="headerlink" href="#catalog-browsing" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.9.1. </span>Catalog Browsing<a class="headerlink" href="#catalog-browsing" title="Link to this heading">¶</a></h3>
 <p>This <em>Catalog Browsing</em> journey supports Users (both human users via a <strong>Wallet Instance</strong> and automated systems like <strong>Relying Parties</strong> or web portals) in discovering and selecting available Digital Credentials.</p>
 <ol class="arabic simple">
 <li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong> and of the <strong>Taxonomy</strong>.</p></li>
 <li><p><strong>Navigation and Selection</strong>:</p>
 <ul class="simple">
-<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
+<li><p><strong>Credential Discovery</strong>: The entity requests one or more pages of the collection endpoint (<a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>) and reads the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array of each page to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">eid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>). If needed, it uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localizations.</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the Credential Issuer Metadata (see <a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer"><span class="std std-ref">Metadata for openid_credential_issuer</span></a>) as described in Section 12.2.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information and specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> using the retrieved identifier.</p></li>
 </ul>
@@ -3740,21 +3903,21 @@ The complementary journey that populates the registries is the onboarding regist
 </ol>
 </section>
 <section id="credential-issuance">
-<h3><span class="section-number">7.10.2. </span>Credential Issuance<a class="headerlink" href="#credential-issuance" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.9.2. </span>Credential Issuance<a class="headerlink" href="#credential-issuance" title="Link to this heading">¶</a></h3>
 <p>This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.</p>
 <ol class="arabic simple">
-<li><p><strong>Identifying Requirements</strong>: The Credential Issuer consults the <strong>Digital Credentials Catalog</strong> for the technical requirements of the Credential type to be issued (e.g., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
+<li><p><strong>Identifying Requirements</strong>: The Credential Issuer retrieves the versioned entry of the Credential type from the entry endpoint of the <strong>Digital Credentials Catalog</strong> (<a class="reference internal" href="#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>) and reads the technical requirements of that entry (e.g., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
 <li><p><strong>Schema and Claim Resolution</strong>:</p></li>
 </ol>
 <blockquote>
 <div><p>The Credential Issuer consults:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>EUDIW Catalogue of Schemes to obtain the schema of the sought EUDIW-anchored Digital Credential (<code class="docutils literal notranslate"><span class="pre">schemaURIs</span></code>), or</p></li>
-<li><p><a class="reference internal" href="#schema-registry"><span class="std std-ref">Schema Registry</span></a> to obtain the schema of the sought National-anchored Digital Credential (<code class="docutils literal notranslate"><span class="pre">schema_uri</span></code>).</p></li>
+<li><p>EUDIW Catalogue of Schemes to obtain the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> of the sought EUDIW-anchored Digital Credential, or</p></li>
+<li><p><a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a> to obtain the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> of the sought national Digital Credential through <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas/{schemaId}</span></code>.</p></li>
 </ul>
 </div></blockquote>
-<p>and, in both cases, verifies its integrity. Then, depending on the Trust Framework anchoring the Digital Credential, it accesses the EUDIW Catalogue of Attributes or <a class="reference internal" href="#claims-registry"><span class="std std-ref">Claims Registry</span></a> to retrieve the standardized semantic definitions and data formats of the necessary attributes (claims).</p>
+<p>The Credential Issuer verifies the <code class="docutils literal notranslate"><span class="pre">#integrity</span></code> suffix of each <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> when that suffix is present. Then, depending on the Trust Framework anchoring the Digital Credential, it accesses the Catalogue of Attributes or <a class="reference internal" href="#claims-registry"><span class="std std-ref">Claims Registry</span></a> to retrieve the standardized semantic definitions and data formats of the necessary attributes (claims).</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li><p><strong>Authentic Data Retrieval</strong>:</p></li>
@@ -3770,7 +3933,7 @@ The complementary journey that populates the registries is the onboarding regist
 </ol>
 </section>
 <section id="credential-presentation-and-verification">
-<h3><span class="section-number">7.10.3. </span>Credential Presentation and Verification<a class="headerlink" href="#credential-presentation-and-verification" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.9.3. </span>Credential Presentation and Verification<a class="headerlink" href="#credential-presentation-and-verification" title="Link to this heading">¶</a></h3>
 <p>This journey describes how a <strong>Wallet Instance</strong> and a <strong>Relying Party (RP)</strong> interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.</p>
 <ol class="arabic simple">
 <li><p><strong>Wallet Unit Authorization and Selection</strong>:</p></li>
@@ -3812,13 +3975,13 @@ The complementary journey that populates the registries is the onboarding regist
 <li><p><strong>(EUDIW Trust Framework)</strong>:</p>
 <ul>
 <li><p>The RP validates the Digital Credential signature and evaluates trust with its issuer as described in <a class="reference internal" href="trust-evaluation.html#eudiw-attestation-signature-validation"><span class="std std-ref">EUDIW Attestation Signature Validation</span></a>.</p></li>
-<li><p>The RP consults the EUDIW Catalogue of Schemes to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>) where applicable.</p></li>
+<li><p>The RP consults the EUDIW Catalogue of Schemes and retrieves the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> of the presented Credential, verifying each <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> that carries an <code class="docutils literal notranslate"><span class="pre">#integrity</span></code> suffix as defined in [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>].</p></li>
 </ul>
 </li>
 <li><p><strong>(National Trust Framework)</strong>:</p>
 <ul>
 <li><p>The RP validates the Digital Credential signature and evaluates trust with its issuer as described in <a class="reference internal" href="trust-evaluation.html#signing-trust-anchor-validation-procedure"><span class="std std-ref">Signing Trust Anchor Validation Procedure</span></a>.</p></li>
-<li><p>The RP consults the <a class="reference internal" href="#schema-registry"><span class="std std-ref">Schema Registry</span></a> to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>).</p></li>
+<li><p>The RP retrieves the <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> from <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas/{schemaId}</span></code> on the <a class="reference internal" href="#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a>, using the <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> of the catalog entry, and verifies each <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> that carries an <code class="docutils literal notranslate"><span class="pre">#integrity</span></code> suffix as defined in [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>].</p></li>
 </ul>
 </li>
 </ul>
@@ -3839,11 +4002,11 @@ The complementary journey that populates the registries is the onboarding regist
 </ol>
 </section>
 <section id="cross-border-attribute-verification-by-a-qtsp">
-<h3><span class="section-number">7.10.4. </span>Cross-border Attribute Verification by a QTSP<a class="headerlink" href="#cross-border-attribute-verification-by-a-qtsp" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.9.4. </span>Cross-border Attribute Verification by a QTSP<a class="headerlink" href="#cross-border-attribute-verification-by-a-qtsp" title="Link to this heading">¶</a></h3>
 <p>This journey describes how a Qualified Trust Service Provider (QTSP), possibly established in another Member State, verifies the value of an Annex VI attribute against an Italian public-sector Authentic Source to issue a QEAA.
-It exercises the EUDIW Catalogue of Attributes and the <code class="docutils literal notranslate"><span class="pre">verification_endpoint</span></code> of the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>, and it does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.</p>
+It uses the <code class="docutils literal notranslate"><span class="pre">verification_endpoint</span></code> of the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>, which is the national counterpart of the verification-point discovery in the EUDIW Catalogue of Attributes. It does not use the national OpenID Federation trust evaluation nor the domestic PDND e-Service.</p>
 <ol class="arabic simple">
-<li><p><strong>Verification-point discovery</strong>: The QTSP queries the EUDIW Catalogue of Attributes for the required attribute and resolves the responsible Italian <code class="docutils literal notranslate"><span class="pre">Attribute</span></code> entry, obtaining the <code class="docutils literal notranslate"><span class="pre">authenticSources[].DataService.endpointURL</span></code> (the ETSI TS 119 478 verification interface declared in the AS Registry <code class="docutils literal notranslate"><span class="pre">verification_endpoint</span></code>), the <code class="docutils literal notranslate"><span class="pre">legalBasis</span></code> and the description of how to initiate the verification request. The national counterpart of the Catalogue of Attributes is the pair Claims Registry, for the semantics, and Authentic Source Registry, for the verification point, see <a class="reference internal" href="#registry-integration-and-cross-references"><span class="std std-ref">Registry Integration and Cross-References</span></a>.</p></li>
+<li><p><strong>Verification-point discovery</strong>: The QTSP discovers the verification point from <code class="docutils literal notranslate"><span class="pre">data_capabilities[].verification_endpoint</span></code> in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> is the verification point. The EUDIW Catalogue of Attributes is the cross-border counterpart of this discovery, as described in <a class="reference internal" href="#registry-integration-and-cross-references"><span class="std std-ref">Registry Integration and Cross-References</span></a>. The Federation Trust Anchor does not publish that catalogue.</p></li>
 <li><p><strong>Interface selection</strong>: Depending on <code class="docutils literal notranslate"><span class="pre">verification_endpoint.method</span></code>, the QTSP uses the ISO 15000/eDelivery interface (<code class="docutils literal notranslate"><span class="pre">oots_edelivery</span></code>) or the REST + OAuth 2.0 interface (<code class="docutils literal notranslate"><span class="pre">rest_oauth2</span></code>) of ETSI TS 119 478 Section 6.</p></li>
 <li><p><strong>Verification request</strong>: The QTSP submits the verification request to the endpoint, exposed by the Authentic Source or by the designated national intermediary, which returns the authentic confirmation of the attribute value for the User. As foreseen by Article 45e of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], this is an authenticity verification of the attribute and not an access to the underlying data.</p></li>
 <li><p><strong>Issuance</strong>: The QTSP issues the QEAA under its own Rulebook and trust anchors, that is the EUDIW Trusted Lists. The trust anchoring of the resulting QEAA does not derive from the presence of any scheme in the Catalogue of Schemes, see the note in <a class="reference internal" href="#registry-integration-and-cross-references"><span class="std std-ref">Registry Integration and Cross-References</span></a>.</p></li>
@@ -3929,42 +4092,52 @@ It exercises the EUDIW Catalogue of Attributes and the <code class="docutils lit
 <li><a class="reference internal" href="#registries-and-catalogues-of-the-ecosystem">7.1. Registries and Catalogues of the Ecosystem</a></li>
 <li><a class="reference internal" href="#registry-discovery-endpoint">7.2. Registry Discovery Endpoint</a><ul>
 <li><a class="reference internal" href="#registry-discovery-endpoint-parameters">7.2.1. Registry Discovery Endpoint Parameters</a></li>
+<li><a class="reference internal" href="#content-negotiation-and-signed-representation">7.2.2. Content Negotiation and Signed Representation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#content-negotiation-and-signed-representation">7.3. Content Negotiation and Signed Representation</a></li>
-<li><a class="reference internal" href="#taxonomy">7.4. Taxonomy</a><ul>
-<li><a class="reference internal" href="#taxonomy-usage">7.4.1. Taxonomy Usage</a></li>
-<li><a class="reference internal" href="#digital-credentials-hierarchy">7.4.2. Digital Credentials Hierarchy</a></li>
-<li><a class="reference internal" href="#taxonomy-structure">7.4.3. Taxonomy Structure</a></li>
+<li><a class="reference internal" href="#taxonomy">7.3. Taxonomy</a><ul>
+<li><a class="reference internal" href="#taxonomy-usage">7.3.1. Taxonomy Usage</a></li>
+<li><a class="reference internal" href="#digital-credentials-hierarchy">7.3.2. Digital Credentials Hierarchy</a></li>
+<li><a class="reference internal" href="#taxonomy-structure">7.3.3. Taxonomy Structure</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#claims-registry">7.5. Claims Registry</a><ul>
-<li><a class="reference internal" href="#claims-registry-usage">7.5.1. Claims Registry Usage</a></li>
-<li><a class="reference internal" href="#claims-registry-structure">7.5.2. Claims Registry Structure</a></li>
+<li><a class="reference internal" href="#claims-registry">7.4. Claims Registry</a><ul>
+<li><a class="reference internal" href="#claims-registry-usage">7.4.1. Claims Registry Usage</a></li>
+<li><a class="reference internal" href="#claims-registry-structure">7.4.2. Claims Registry Structure</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#authentic-source-registry">7.6. Authentic Source Registry</a><ul>
-<li><a class="reference internal" href="#authentic-source-registry-usage">7.6.1. Authentic Source Registry Usage</a></li>
-<li><a class="reference internal" href="#authentic-source-registry-structure">7.6.2. Authentic Source Registry Structure</a></li>
+<li><a class="reference internal" href="#authentic-source-registry">7.5. Authentic Source Registry</a><ul>
+<li><a class="reference internal" href="#authentic-source-registry-usage">7.5.1. Authentic Source Registry Usage</a></li>
+<li><a class="reference internal" href="#authentic-source-registry-structure">7.5.2. Authentic Source Registry Structure</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#schema-registry">7.7. Schema Registry</a><ul>
-<li><a class="reference internal" href="#schema-registry-usage">7.7.1. Schema Registry Usage</a></li>
-<li><a class="reference internal" href="#schema-registry-structure">7.7.2. Schema Registry Structure</a></li>
+<li><a class="reference internal" href="#schema-registry">7.6. Schema Registry</a><ul>
+<li><a class="reference internal" href="#schema-registry-usage">7.6.1. Schema Registry Usage</a></li>
+<li><a class="reference internal" href="#catalogue-of-attestations">7.6.2. Catalogue of Attestations</a><ul>
+<li><a class="reference internal" href="#list-of-schemas">7.6.2.1. List of schemas</a></li>
+<li><a class="reference internal" href="#one-schema">7.6.2.2. One schema</a></li>
+<li><a class="reference internal" href="#update-and-deletion">7.6.2.3. Update and deletion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#digital-credentials-catalog">7.8. Digital Credentials Catalog</a><ul>
-<li><a class="reference internal" href="#digital-credentials-catalog-usage">7.8.1. Digital Credentials Catalog Usage</a></li>
-<li><a class="reference internal" href="#digital-credentials-catalog-structure">7.8.2. Digital Credentials Catalog Structure</a></li>
-<li><a class="reference internal" href="#decentralization-of-display-and-claim-information">7.8.3. Decentralization of Display and Claim Information</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#registry-integration-and-cross-references">7.9. Registry Integration and Cross-References</a></li>
-<li><a class="reference internal" href="#registry-infrastructure-usage-journeys">7.10. Registry Infrastructure Usage Journeys</a><ul>
-<li><a class="reference internal" href="#catalog-browsing">7.10.1. Catalog Browsing</a></li>
-<li><a class="reference internal" href="#credential-issuance">7.10.2. Credential Issuance</a></li>
-<li><a class="reference internal" href="#credential-presentation-and-verification">7.10.3. Credential Presentation and Verification</a></li>
-<li><a class="reference internal" href="#cross-border-attribute-verification-by-a-qtsp">7.10.4. Cross-border Attribute Verification by a QTSP</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalog">7.7. Digital Credentials Catalog</a><ul>
+<li><a class="reference internal" href="#digital-credentials-catalog-usage">7.7.1. Digital Credentials Catalog Usage</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalog-retrieval">7.7.2. Digital Credentials Catalog Retrieval</a><ul>
+<li><a class="reference internal" href="#collection">7.7.2.1. Collection</a></li>
+<li><a class="reference internal" href="#entry">7.7.2.2. Entry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#digital-credentials-catalog-structure">7.7.3. Digital Credentials Catalog Structure</a></li>
+<li><a class="reference internal" href="#decentralization-of-display-and-claim-information">7.7.4. Decentralization of Display and Claim Information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registry-integration-and-cross-references">7.8. Registry Integration and Cross-References</a></li>
+<li><a class="reference internal" href="#registry-infrastructure-usage-journeys">7.9. Registry Infrastructure Usage Journeys</a><ul>
+<li><a class="reference internal" href="#catalog-browsing">7.9.1. Catalog Browsing</a></li>
+<li><a class="reference internal" href="#credential-issuance">7.9.2. Credential Issuance</a></li>
+<li><a class="reference internal" href="#credential-presentation-and-verification">7.9.3. Credential Presentation and Verification</a></li>
+<li><a class="reference internal" href="#cross-border-attribute-verification-by-a-qtsp">7.9.4. Cross-border Attribute Verification by a QTSP</a></li>
 </ul>
 </li>
 </ul>
@@ -4002,7 +4175,7 @@ It exercises the EUDIW Catalogue of Attributes and the <code class="docutils lit
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

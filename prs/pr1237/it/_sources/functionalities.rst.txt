@@ -172,7 +172,7 @@ L’Attestato Elettronico di Attributi è un oggetto dinamico che consente all�
 
 A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:
 
-- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Digital Credentials Catalog`).
+- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di Credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Digital Credentials Catalog`).
 
 - **da un Touchpoint della Fonte Autentica** (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica; vedere :ref:`credential-issuance-low-level:Flusso Credential Offer`): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un :ref:`functionalities:Engagement Button`.
 
@@ -1205,7 +1205,7 @@ In questa sezione sono illustrate tre diverse categorie di requisiti per la gest
 
 - **del suo stato**: per consentire all'Utente di appurare la condizione di validità o invalidità di un Attestato Elettronico;
 - **dei suoi utilizzi**: per consentire all'Utente di visualizzare e gestire lo storico delle transazioni effettuate utilizzando un Attestato Elettronico;
-- **dei suoi dati**: per consentire all'Utente di archiviare e ripristinare ogni Attestato Elettronico di Attributi in linea col principio di *data portability*.
+- **dei suoi dati**: per consentire all'Utente di archiviare e ripristinare ogni Attestato Elettronico di Attributi, e di migrare verso una Soluzione Wallet diversa, in linea col principio di *data portability*. Vedere :ref:`backup-restore:Backup e Ripristino`.
 
 Di seguito i principali aspetti che impattano e determinano l'Esperienza Utente nell'ambito della gestione degli Attestati Elettronici per mezzo di un'Istanza del Wallet e i requisiti funzionali riferiti a ciascuna categoria.
 
@@ -1377,8 +1377,9 @@ Archiviazione e ripristino degli Attestati Elettronici di Attributi
 
 Con l'obiettivo di garantire il principio di data portability, la Soluzione Wallet DEVE garantire all'Utente l'accesso a specifiche funzionalità per:
 
-- richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza del Wallet;
-- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet.
+- richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di Backup`
+- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`
+- richiedere la migrazione verso una Soluzione Wallet diversa tramite l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
 Disattivazione dell'Istanza del Wallet
 --------------------------------------

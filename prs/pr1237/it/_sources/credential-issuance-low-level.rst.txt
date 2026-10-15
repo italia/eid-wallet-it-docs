@@ -17,8 +17,7 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
 
-OpenID Federation 1.0 [`OID-FED`_] PUÒ essere utilizzata per l'emissione da parte di un Credential Issuer nazionale, compreso il PID Provider italiano, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust` e in :ref:`trust-evaluation:Selection at Issuance`.
-Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter completare l'emissione di un PID, di una (Q)EAA o di una PuB-EAA di un altro Stato membro, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
+Il Trust Framework per l'emissione è selezionato come specificato in :ref:`trust-evaluation:Selection at Issuance`.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
@@ -94,7 +93,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
 Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-evaluation:Trust Evaluation Process`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``. L'emissione in batch si applica solo ai tipi di Attestato per i quali quei metadati sono dichiarati. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
 
 .. note::
-  **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
+  **Controllo di trust:** L'Istanza del Wallet seleziona il Trust Framework come specificato in :ref:`trust-evaluation:Selection at Issuance` e verifica il Credential Issuer su quel percorso (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
 
 Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione definito sopra, l'Istanza del Wallet DEVE eseguire i seguenti controlli sui parametri della Credential Offer:
 
@@ -363,7 +362,7 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 
 **Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size`` (:ref:`WP_058a <wallet-credential-issuance-testcases>`).
 
-**Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size`` (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
+**Passo 18 (Prove di possesso delle Credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size`` (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
 
 .. note::
   Il valore ``c_nonce`` in tutte le proof jwt è identico e non è necessario ottenere valori del nonce diversi.
@@ -444,7 +443,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 
 
 .. note::
-  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
+  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse Credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
 
 
 .. note::
@@ -589,7 +588,7 @@ Il Re-issuance Flow delineato in questa sezione è limitato ai seguenti scenari:
   - Aggiornamento tecnico del modello/formato dei dati;
   - Aggiornamento dell'insieme di attributi dell'Utente.
 
-Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione hardware`).
+Questo flusso non si applica alla migrazione di dispositivo o al ripristino da backup. In tali casi l'Istanza del Wallet DEVE eseguire un Wallet-Initiated Authorization Code Issuance Flow come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (vedere Sezione :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`).
 
 Nel primo caso, l'insieme di attributi dell'Utente del nuovo Attestato Elettronico corrisponderà a quello originale. Ad esempio, un Credential Issuer potrebbe dover aggiornare i Metadata dell'Attestato Elettronico o il formato dei dati senza modificare l'insieme di attributi dell'Utente. In questo caso, il coinvolgimento diretto dell'Utente non è obbligatorio per la sostituzione e l'archiviazione di un Attestato Elettronico.
 

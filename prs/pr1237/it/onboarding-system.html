@@ -384,8 +384,8 @@ Un'Istanza del Wallet è registrata indirettamente, tramite il proprio Fornitore
 <p>I ruoli dell'infrastruttura di trust sono realizzati, all'interno del Sistema di Onboarding, da un insieme di componenti, ciascuno dei quali fornisce uno o più servizi.
 Un'entità in onboarding interagisce con il sistema tramite un unico punto di ingresso, l'Onboarding UI, che orchestra il flusso e instrada ciascuna richiesta al componente responsabile, e che pertanto non è rappresentata come componente distinto nel diagramma seguente.</p>
 <p>La tabella seguente elenca i componenti, i servizi che ciascuno di essi fornisce e il processo di onboarding che ciascun servizio realizza.</p>
-<table class="longtable docutils align-default" id="id1001">
-<caption><span class="caption-number">Tabella 8.1 </span><span class="caption-text">Componenti, Servizi e Processi</span><a class="headerlink" href="#id1001" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1033">
+<caption><span class="caption-number">Tabella 8.1 </span><span class="caption-text">Componenti, Servizi e Processi</span><a class="headerlink" href="#id1033" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 30.0%" />
@@ -435,7 +435,7 @@ Si sovrappongono solo nei dati di identificazione, così che la separazione mant
 Un componente può realizzare processi di più di una famiglia, quindi i gruppi del diagramma non coincidono con le famiglie di <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, e la corrispondenza è quella data dalla tabella precedente.
 Le Fonti Autentiche si registrano solo nell'AS Registry, senza un record nel Register e senza Trust Artifact, poiché non sono né Wallet-Relying Party né Entità di Federazione.
 I Credential Issuer, invece, si registrano come Entità e dichiarano inoltre i tipi di Credenziale che emettono, e sono aggiunti agli issuer dei tipi che dichiarano nel Digital Credentials Catalog.</p>
-<figure class="align-default" id="id1002">
+<figure class="align-default" id="id1034">
 <p class="plantuml">
 <object data="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.png"><img src="_images/plantuml-8a46b70be0aad0d5b14392f2ca5a3391caf183f6.png" alt="&#64;startuml IT-Wallet Onboarding System
@@ -520,7 +520,7 @@ pkgreg --&gt; pub
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id1002" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7">IT-Wallet Onboarding System.</a></span><a class="headerlink" href="#id1034" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -542,8 +542,8 @@ I dati sono identificati da un <strong>Data Identifier</strong> indipendente dal
 <p>A seconda del ruolo, i dati di registrazione sono poi codificati in un data model diverso, lo schema <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code> del Register per una Wallet-Relying Party (<a class="reference internal" href="infrastructure-trust.html#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>), la voce dell'AS Registry per una Fonte Autentica (<a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>), e il dataset di notifica per un'Entità notificabile.
 I dati di definizione del tipo di Credenziale sono codificati nella voce versionata del Digital Credentials Catalog (<a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>).
 La mappatura verso i data model di destinazione è data in <a class="reference internal" href="#mapping-to-the-registry-data-models"><span class="std std-ref">Mapping to the Registry Data Models</span></a>.</p>
-<table class="longtable docutils align-default" id="id1003">
-<caption><span class="caption-number">Tabella 8.2 </span><span class="caption-text">Base Registration Data</span><a class="headerlink" href="#id1003" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1035">
+<caption><span class="caption-number">Tabella 8.2 </span><span class="caption-text">Base Registration Data</span><a class="headerlink" href="#id1035" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -584,8 +584,8 @@ La mappatura verso i data model di destinazione è data in <a class="reference i
 </table>
 <p>I dati di registrazione estesi sono forniti nella tabella seguente.
 Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, come definito nel corrispondente profilo in <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a>.</p>
-<table class="longtable docutils align-default" id="id1004">
-<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Extended Registration Data</span><a class="headerlink" href="#id1004" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1036">
+<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Extended Registration Data</span><a class="headerlink" href="#id1036" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -668,8 +668,8 @@ Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, 
 Per questo motivo non sono dati di registrazione, non seguono un profilo di <a class="reference internal" href="#registration-profiles"><span class="std std-ref">Registration Profiles</span></a> e sono l'input di <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.
 Sono forniti dall'Attestation Scheme Provider, che possiede l'Attestation Rulebook del tipo di Credenziale, e sono tratti dal Rulebook stesso.
 Lo stesso criterio si applica alla definizione di un claim, registrato tramite <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p>
-<table class="longtable docutils align-default" id="id1005">
-<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Credential Type Definition Data</span><a class="headerlink" href="#id1005" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1037">
+<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Credential Type Definition Data</span><a class="headerlink" href="#id1037" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 46.0%" />
@@ -722,8 +722,8 @@ I due sono distinti: la definizione crea la voce versionata, la dichiarazione ag
 <h3><span class="section-number">8.2.2. </span>Mapping to the Registry Data Models<a class="headerlink" href="#mapping-to-the-registry-data-models" title="Link to this heading">¶</a></h3>
 <p>Il Sistema di Onboarding raccoglie i dati di registrazione e i dati di definizione del tipo di Credenziale, che sono poi codificati nel data model di destinazione, che per i dati di registrazione dipende dal ruolo.
 La tabella seguente mappa ciascun Data Identifier sui campi dei data model di destinazione, per i Data Identifier la cui mappatura non è uno-a-uno con un singolo campo.</p>
-<table class="longtable docutils align-default" id="id1006">
-<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Mapping of the Data Identifiers to the destination data models</span><a class="headerlink" href="#id1006" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1038">
+<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Mapping of the Data Identifiers to the destination data models</span><a class="headerlink" href="#id1038" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -828,16 +828,7 @@ La tabella seguente mappa ciascun Data Identifier sui campi dei data model di de
 </td>
 </tr>
 <tr class="row-even"><td><p><cite>credential_technical_specification</cite></p></td>
-<td><p>Nel Digital Credentials Catalog:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">schema_uri</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">vct</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docType</span></code>.</p></li>
-</ul>
-</div></blockquote>
-</td>
+<td><p>Nel Digital Credentials Catalog, <code class="docutils literal notranslate"><span class="pre">schemaId</span></code>. I formati e i documenti di schema sono i <code class="docutils literal notranslate"><span class="pre">supportedFormats</span></code> e gli <code class="docutils literal notranslate"><span class="pre">schemaURIs</span></code> dello <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> identificato da tale <code class="docutils literal notranslate"><span class="pre">schemaId</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>credential_policies</cite></p></td>
 <td><p>Nel Digital Credentials Catalog:</p>
@@ -905,8 +896,8 @@ All'interno di IT-Wallet l'identity proofing è applicato a ogni entità che si 
 Il modo in cui ciascun artifact è prodotto è descritto in <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>, e gli effetti delle modifiche successive in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
 <p>La tabella mostra gli artifact che variano per ruolo.
 La colonna del certificato X.509 raggruppa i certificati X.509 che l'entità ottiene, in particolare il WRPAC, il Sign/Seal Certificate e il National Authentication Certificate, mentre il WRPRC è mostrato a parte perché non è un certificato X.509 ma un JSON Web Token o un CBOR Web Token.</p>
-<table class="longtable docutils align-default" id="id1007">
-<caption><span class="caption-number">Tabella 8.6 </span><span class="caption-text">Trust Artifacts Registration Outcomes by Entity Type</span><a class="headerlink" href="#id1007" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1039">
+<caption><span class="caption-number">Tabella 8.6 </span><span class="caption-text">Trust Artifacts Registration Outcomes by Entity Type</span><a class="headerlink" href="#id1039" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 12.0%" />
@@ -986,7 +977,9 @@ Detiene la propria Entity Statement e il proprio Trust Mark di registrazione dal
 <p>Questa Sezione descrive la registrazione di ciascun ruolo come un profilo.
 Ogni profilo fornisce i dati di registrazione di base definiti in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>, e ciascun profilo seguente indica solo i dati di registrazione estesi che il ruolo fornisce e come l'entità li popola, insieme a qualsiasi specializzazione dei dati di base.
 Un'entità può detenere più di un entitlement in un unico record di registrazione e per più di un ruolo, quindi i profili non sono mutuamente esclusivi e si compongono.
-Ad esempio, un'entità può essere contemporaneamente una Relying Party e un QEAA Provider, e in tal caso il suo input è l'unione dei due profili e il suo esito è l'unione dei due.</p>
+Ad esempio, un'entità può essere contemporaneamente una Relying Party e un QEAA Provider, e in tal caso il suo input è l'unione dei due profili e il suo esito è l'unione dei due.
+Un Non-Qualified EAA Provider e una Relying Party DEVONO dichiarare, per ciascun ruolo e per ciascun tipo di Attestato, se tale ruolo opera nel Trust Framework EUDIW oppure soltanto all'interno del perimetro nazionale.
+A runtime l'Attestato richiesto seleziona il Trust Framework, come specificato in <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>La definizione di un tipo di Credenziale non fa parte di alcun profilo di registrazione, come descritto in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>.
@@ -1104,7 +1097,7 @@ Oltre ai dati di registrazione di base, un PuB-EAA Provider fornisce i seguenti 
 <li><p><cite>service_supply_point</cite></p></li>
 <li><p><cite>trust_framework_scope</cite></p>
 <ul>
-<li><p>Un Non-Qualified EAA Provider dichiara, in sede di onboarding, se opera nel Trust Framework EUDIW o solo all'interno del perimetro nazionale, e questa scelta incide sugli artifact che ottiene, come descritto in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>. Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW ottiene il record nel Register, il WRPAC e il Sign/Seal Certificate, mentre un Non-Qualified EAA Provider che opera solo all'interno del perimetro nazionale ottiene il solo Sign/Seal Certificate, è autenticato dalla Wallet Unit tramite il National Trust Framework, e i suoi Attestati sono validati rispetto al trust anchor distribuito dall'Entity Configuration del Federation TA. L'IT-Wallet ID, l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale, è un esempio di Attestato emesso da un Non-Qualified EAA Provider che opera all'interno del perimetro nazionale, si veda <a class="reference internal" href="credential-data-model-it-wallet-id.html#modello-di-dati-dell-it-wallet-id"><span class="std std-ref">Modello di Dati dell'IT-Wallet ID</span></a> e <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>. È un EAA e NON DEVE essere confuso con i Person Identification Data EUDI, che non sono un EAA.</p></li>
+<li><p>Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW ottiene il record nel Register, il WRPAC e il Sign/Seal Certificate, mentre un Non-Qualified EAA Provider che opera solo all'interno del perimetro nazionale ottiene il solo Sign/Seal Certificate, è autenticato dalla Wallet Unit tramite il National Trust Framework, e i suoi Attestati sono validati rispetto al trust anchor distribuito dall'Entity Configuration del Federation TA. L'IT-Wallet ID, l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale, è un esempio di Attestato emesso da un Non-Qualified EAA Provider che opera all'interno del perimetro nazionale, si veda <a class="reference internal" href="credential-data-model-it-wallet-id.html#modello-di-dati-dell-it-wallet-id"><span class="std std-ref">Modello di Dati dell'IT-Wallet ID</span></a> e <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>. È un EAA e NON DEVE essere confuso con i Person Identification Data EUDI, che non sono un EAA.</p></li>
 </ul>
 </li>
 </ul>
@@ -1143,7 +1136,7 @@ Oltre ai dati di registrazione di base, un PuB-EAA Provider fornisce i seguenti 
 </li>
 <li><p><cite>trust_framework_scope</cite></p>
 <ul>
-<li><p>La Relying Party dichiara il Trust Framework in cui opera, come specificato in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a> e <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>. Questa scelta incide sugli artifact che ottiene.</p></li>
+<li><p>Gli artifact seguono la dichiarazione di questo ruolo. Il Trust Framework di ciascuna presentazione è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>.</p></li>
 </ul>
 </li>
 </ul>
@@ -1160,8 +1153,8 @@ Nel National Trust Framework l'Intermediario di Relying Party è un Federation I
 Nel Trust Framework EUDIW è registrato con <code class="docutils literal notranslate"><span class="pre">isIntermediary</span></code> impostato, e federa le proprie Relying Party intermediate che operano in ambito transfrontaliero.
 Fornisce gli stessi Data Identifier di una <a class="reference internal" href="#relying-party"><span class="std std-ref">Relying Party</span></a>, con le differenze nella tabella seguente.
 I Data Identifier non elencati qui sono forniti come per una Relying Party.</p>
-<table class="longtable docutils align-default" id="id1008">
-<caption><span class="caption-number">Tabella 8.7 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id1008" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1040">
+<caption><span class="caption-number">Tabella 8.7 </span><span class="caption-text">Relying Party Intermediary Registration Data, differences from the Relying Party</span><a class="headerlink" href="#id1040" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 66.0%" />
@@ -1257,8 +1250,8 @@ Ciascun processo è descritto con il proprio Input, il proprio Outcome e il prop
 <li><p><strong>Enables</strong> sono le capacità che diventano possibili in seguito, che non sono processi del Sistema di Onboarding.</p></li>
 </ul>
 <p>I processi sono eseguiti dai componenti descritti in <a class="reference internal" href="#system-components-and-services"><span class="std std-ref">System Components and Services</span></a>, e viene fornita una tabella per ciascuna famiglia di <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>.</p>
-<span id="table-map-entity"></span><table class="longtable docutils align-default" id="id1009">
-<caption><span class="caption-number">Tabella 8.8 </span><span class="caption-text">Process Map of the Entity Onboarding Processes</span><a class="headerlink" href="#id1009" title="Link to this table">¶</a></caption>
+<span id="table-map-entity"></span><table class="longtable docutils align-default" id="id1041">
+<caption><span class="caption-number">Tabella 8.8 </span><span class="caption-text">Process Map of the Entity Onboarding Processes</span><a class="headerlink" href="#id1041" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1313,8 +1306,8 @@ Ciascun processo è descritto con il proprio Input, il proprio Outcome e il prop
 </tr>
 </tbody>
 </table>
-<span id="table-map-artifacts"></span><table class="longtable docutils align-default" id="id1010">
-<caption><span class="caption-number">Tabella 8.9 </span><span class="caption-text">Process Map of the Certificate and Trust Artifact Issuance Processes</span><a class="headerlink" href="#id1010" title="Link to this table">¶</a></caption>
+<span id="table-map-artifacts"></span><table class="longtable docutils align-default" id="id1042">
+<caption><span class="caption-number">Tabella 8.9 </span><span class="caption-text">Process Map of the Certificate and Trust Artifact Issuance Processes</span><a class="headerlink" href="#id1042" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1363,8 +1356,8 @@ Ciascun processo è descritto con il proprio Input, il proprio Outcome e il prop
 </tr>
 </tbody>
 </table>
-<span id="table-map-attestation"></span><table class="longtable docutils align-default" id="id1011">
-<caption><span class="caption-number">Tabella 8.10 </span><span class="caption-text">Process Map of the Attestation Onboarding Processes</span><a class="headerlink" href="#id1011" title="Link to this table">¶</a></caption>
+<span id="table-map-attestation"></span><table class="longtable docutils align-default" id="id1043">
+<caption><span class="caption-number">Tabella 8.10 </span><span class="caption-text">Process Map of the Attestation Onboarding Processes</span><a class="headerlink" href="#id1043" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 22.0%" />
@@ -1630,7 +1623,7 @@ Entrambe le fonti forniscono i dati di autorizzazione con la stessa logica di [<
 <p>All'interno di IT-Wallet il ciclo di vita di questi certificati è mantenuto distinto dal ciclo di vita della Trust Chain.
 Un certificato ha i propri <code class="docutils literal notranslate"><span class="pre">notBefore</span></code> e <code class="docutils literal notranslate"><span class="pre">notAfter</span></code> ed è governato dalla revoca X.509, quindi la perdita dell'appartenenza alla federazione di un'Entità è riflessa dalla revoca dei suoi certificati, si veda <a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a>, e non dalla scadenza della Trust Chain.</p>
 <p>Il Wallet-Relying Party Registration Certificate e il Trust Mark di registrazione non certificano chiavi, quindi non sono emessi tramite ACME. Il Trust Mark di registrazione è emesso durante la registrazione dell'Entità. Il Wallet-Relying Party Registration Certificate è emesso automaticamente come definito in <a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a>.</p>
-<figure class="align-default" id="id1012">
+<figure class="align-default" id="id1044">
 <p class="plantuml">
 <object data="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png"><img src="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png" alt="&#64;startuml
@@ -1661,7 +1654,7 @@ CA --&gt; E : X.509 certificate
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id1012" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id1044" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1673,8 +1666,8 @@ Il Wallet-Relying Party Registration Certificate e il Trust Mark di registrazion
 <p>Una Certificate Signing Request reca la chiave pubblica da certificare, prova il possesso della corrispondente chiave privata e richiede i valori dei campi del certificato forniti dall'Entità.
 Non determina il contenuto del certificato emesso: la Certification Authority DEVE validare i valori richiesti rispetto ai dati di registrazione e al profilo di certificato applicabile, e DEVE aggiungere o determinare i valori dipendenti dall'emittente richiesti da tale profilo.</p>
 <p>La Certificate Signing Request DEVE essere una <code class="docutils literal notranslate"><span class="pre">CertificationRequest</span></code> come definita in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a> (PKCS #10), codificata in DER, ed è recata nell'ordine ACME come richiesto da <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8555.html#section-7.4"><strong>RFC 8555#section-7.4</strong></a>.</p>
-<table class="longtable docutils align-default" id="id1013">
-<caption><span class="caption-number">Tabella 8.11 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id1013" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1045">
+<caption><span class="caption-number">Tabella 8.11 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id1045" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -1726,8 +1719,8 @@ DEVE essere distinta dalla Federation Entity Key, e una chiave distinta DEVE ess
 </table>
 <p>La tabella seguente definisce i valori di estensione richiesti dall'Entità e i valori di estensione determinati dalla Certification Authority.
 La criticità di ciascuna estensione richiesta DEVE seguire il profilo di certificato applicabile.</p>
-<table class="longtable docutils align-default" id="id1014">
-<caption><span class="caption-number">Tabella 8.12 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id1014" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id1046">
+<caption><span class="caption-number">Tabella 8.12 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id1046" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 55.0%" />
@@ -1961,7 +1954,9 @@ Un claim non è mai rimosso dal Claims Registry, perché le Credenziali già eme
 <p>Lo Schema Provisioning rende disponibile lo schema di un tipo di Credenziale nello Schema Registry, sia generandolo dal data model per le Credenziali definite a livello nazionale, sia registrandolo in allineamento con un Rulebook o uno standard esterno.
 Lo schema è uno dei requisiti per l'attivazione di un tipo di Credenziale, quindi questo processo è una precondizione di <a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a>.</p>
 <p><strong>Input</strong></p>
-<p>Lo schema del tipo di Credenziale segue i Schema Definition Parameters di <a class="reference internal" href="registry.html#schema-registry"><span class="std std-ref">Schema Registry</span></a>: il suo <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> e <code class="docutils literal notranslate"><span class="pre">version</span></code>, il <code class="docutils literal notranslate"><span class="pre">format</span></code> a cui si applica, uno JSON Schema per il formato SD-JWT VC o uno CBOR Schema per il formato mdoc-CBOR, e lo <code class="docutils literal notranslate"><span class="pre">schema_uri</span></code> con il suo digest di integrità.
+<p>Lo schema del tipo di Credenziale è uno <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> registrato tramite il <a class="reference internal" href="registry.html#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a>: la sua <code class="docutils literal notranslate"><span class="pre">version</span></code>, i <code class="docutils literal notranslate"><span class="pre">supportedFormats</span></code>, il documento di schema specifico del formato a <code class="docutils literal notranslate"><span class="pre">schemaURIs[].uri</span></code> e il <code class="docutils literal notranslate"><span class="pre">rulebookURI</span></code>.
+Il documento specifico del formato segue la Section 4.3.4 di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
+L'integrità, quando usata, è il suffisso <code class="docutils literal notranslate"><span class="pre">#integrity</span></code> di tale URI come definito in [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>].
 Lo schema è fornito dall'Attestation Scheme Provider insieme alla definizione del tipo di Credenziale, ed è composto dai claim definiti in <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a>. Un claim ancora mancante attiva il <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a>.</p>
 <p><strong>Outcome</strong></p>
 <p>L'esito è lo schema nello Schema Registry, per almeno uno dei formati supportati, che il tipo di Credenziale referenzia.
@@ -1970,7 +1965,7 @@ Ciò soddisfa il requisito di schema dell'attivazione del tipo di Credenziale, c
 <ol class="arabic simple">
 <li><p>I claim che compongono lo schema sono disponibili nel Claims Registry, altrimenti il Claim Registration è attivato per il claim mancante.</p></li>
 <li><p>Lo schema è generato dal data model per una Credenziale definita a livello nazionale, oppure è registrato in allineamento con il Rulebook esterno.</p></li>
-<li><p>Il Claims and Schema Management registra lo schema nello Schema Registry, con il suo digest di integrità, per ciascun formato supportato.</p></li>
+<li><p>Il Claims and Schema Management registra uno <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> nel Catalogue of Attestations, che copre ogni formato supportato.</p></li>
 </ol>
 </section>
 <section id="credential-type-registration">
@@ -2108,14 +2103,14 @@ Il ciclo di vita dei singoli Attestati Elettronici emessi agli Utenti è una mat
 <p>Questa sezione si applica alle WRP e ai WP in quanto direttamente coinvolti nelle fasi operative.
 Come mostrato in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.3</span></a>, un'Entità ha cinque stati distinti e mutuamente esclusivi: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> e <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Ciascuno stato determina il livello di autorizzazione e le capacità operative dell'Entità.</p>
-<figure class="align-default" id="id1015">
+<figure class="align-default" id="id1047">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id1015" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id1047" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -2178,8 +2173,8 @@ Le Fonti Autentiche seguono il framework PDND, e gli effetti che il loro ciclo d
 <p>Ogni transizione della state machine delle Entità è causata da un evento.
 Per ciascun evento, questa sezione indica chi è titolato a innescare, chi ne è responsabile e, quando applicabile, su quale base normativa e entro quali condizioni.
 Gli eventi che riguardano i tipi di Credenziale e le Fonti Autentiche sono descritti nelle sezioni dedicate seguenti.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id1016">
-<caption><span class="caption-number">Tabella 8.13 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id1016" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id1048">
+<caption><span class="caption-number">Tabella 8.13 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id1048" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -2265,8 +2260,8 @@ Ciò è stabilito dall'Annex IV di [<a class="reference external" href="https://
 L'endpoint e il formato della sua risposta sono descritti in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Ciascun evento della state machine DEVE essere pubblicato come un oggetto dell'array <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code>, utilizzando i tipi di evento definiti in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 La tabella seguente fornisce, per ciascun evento, il valore del parametro <code class="docutils literal notranslate"><span class="pre">event</span></code> e come i parametri dell'oggetto evento sono popolati.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id1017">
-<caption><span class="caption-number">Tabella 8.14 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id1017" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id1049">
+<caption><span class="caption-number">Tabella 8.14 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id1049" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -2324,8 +2319,8 @@ Gli effetti specifici dipendono dal ruolo dell'Entità e dai Trust Artifact che 
 Questa sezione fornisce la relazione tra le categorie di dati registrati e i Trust Artifact che li contengono.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>La tabella seguente fornisce la relazione tra le categorie di dati registrati e i Trust Artifact in cui sono contenuti, per ciascun tipo di Entità.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id1018">
-<caption><span class="caption-number">Tabella 8.15 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id1018" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id1050">
+<caption><span class="caption-number">Tabella 8.15 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id1050" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -2470,8 +2465,8 @@ All'interno di IT-Wallet la notifica è pertanto un obbligo del Credential Issue
 <p>La tabella seguente sintetizza, per ciascun evento, quali registri e cataloghi sono impattati e dove sono descritti gli effetti sui Trust Artifact.
 Copre sia la registrazione iniziale sia i successivi eventi di ciclo di vita.
 La relazione tra un aggiornamento di un'Entità e i Trust Artifact che incide è data in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, e i meccanismi tecnici che pubblicano lo stato di un Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id1019">
-<caption><span class="caption-number">Tabella 8.16 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id1019" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id1051">
+<caption><span class="caption-number">Tabella 8.16 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id1051" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />
@@ -2556,7 +2551,9 @@ L'obbligo del Registrar di conservare i record per 10 anni sopravvive alla cance
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Il Register è un insieme di record per WRP, quindi un evento impatta solo il record dell'Entità interessata.
-Il Digital Credentials Catalog, l'Authentic Source Registry, il Claims Registry, lo Schema Registry e la Taxonomy sono invece singoli documenti firmati, quindi ogni scrittura richiede una nuova firma e una nuova pubblicazione dell'intero documento.</p>
+L'Authentic Source Registry, il Claims Registry e la Taxonomy sono singoli documenti firmati, quindi ogni scrittura richiede una nuova firma e una nuova pubblicazione dell'intero documento.
+Il Digital Credentials Catalog è servito mediante risposte firmate in modo indipendente, come specificato in <a class="reference internal" href="registry.html#digital-credentials-catalog-retrieval"><span class="std std-ref">Digital Credentials Catalog Retrieval</span></a>.
+Il Catalogue of Attestations è servito mediante risposte firmate in modo indipendente, come specificato in <a class="reference internal" href="registry.html#catalogue-of-attestations"><span class="std std-ref">Catalogue of Attestations</span></a>.</p>
 </div>
 </section>
 </section>
@@ -2736,7 +2733,7 @@ Il Digital Credentials Catalog, l'Authentic Source Registry, il Claims Registry,
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

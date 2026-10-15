@@ -37,6 +37,12 @@
         }
       } catch (error) {
         /* ignore storage errors */
+      }try {
+        if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
+          document.documentElement.classList.add("it-docs-navscroll-collapsed");
+        }
+      } catch (error) {
+        /* ignore storage errors */
       }})();
   </script>
   </head><body class="it-docs-body">
@@ -363,7 +369,7 @@
 </div>
 <p><strong>Passi 11-12 (Richiesta di Emissione della Wallet Instance Attestation)</strong>: L'Istanza del Wallet:</p>
 <ul class="simple">
-<li><p>Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_id</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_version</span></code>  e altri parametri relativi alla configurazione (vedi <a class="reference internal" href="wallet-provider-endpoint.html#table-wia-request-claim"><span class="std std-ref">Tabella del Corpo della Richiesta di Wallet Instance Attestation</span></a>) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
+<li><p>Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_id</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_version</span></code> e, quando si riutilizza una voce di status list, <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> (vedi <a class="reference internal" href="wallet-provider-endpoint.html#table-wia-request-claim"><span class="std std-ref">Tabella del Corpo della Richiesta di Wallet Instance Attestation</span></a> e <a class="reference internal" href="#riutilizzo-della-voce-di-stato-per-emittente"><span class="std std-ref">Riutilizzo della Voce di Stato per Emittente</span></a>). È firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
 <li><p>Invia la Wallet Instance Attestation Request all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Instance Attestation</span></a> del Backend del Fornitore del Wallet.</p></li>
 </ul>
 <p>L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Instance Attestation come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di una richiesta HTTP all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Instance Attestation</span></a> del Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_142</span></a>).</p>
@@ -378,6 +384,7 @@
 <li><p>L'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143f</span></a>).</p></li>
 <li><p>Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.</p></li>
 <li><p>L'URL nel parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143g</span></a>).</p></li>
+<li><p>Il Fornitore di Wallet DEVE applicare <a class="reference internal" href="#riutilizzo-della-voce-di-stato-per-emittente"><span class="std std-ref">Riutilizzo della Voce di Stato per Emittente</span></a>.</p></li>
 </ol>
 </div></blockquote>
 <p>Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Instance Attestation che soddisfa <a class="reference internal" href="wallet-solution-requirements.html#wia-time-to-live"><span class="std std-ref">la durata della Wallet Instance Attestation</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_028</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>).</p>
@@ -391,6 +398,18 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<section id="riutilizzo-della-voce-di-stato-per-emittente">
+<h2><span class="section-number">9.1.4.2.2.1. </span>Riutilizzo della Voce di Stato per Emittente<a class="headerlink" href="#riutilizzo-della-voce-di-stato-per-emittente" title="Link to this heading">¶</a></h2>
+<p>Il Fornitore di Wallet DEVE usare l'opzione di riutilizzo per emittente della Sezione 2.5.1 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> per la voce <code class="docutils literal notranslate"><span class="pre">client_status.status</span></code> di ciascuna Wallet Instance Attestation.</p>
+<p>L'Istanza del Wallet DEVE conservare l'indice di status list che le è stato assegnato per ciascun PID Provider o Attestation Provider.</p>
+<p>La Wallet Instance Attestation Request DEVE includere <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>.</p>
+<p>Quando l'Istanza del Wallet richiede una Wallet Instance Attestation per un PID Provider o un Attestation Provider per il quale possiede già un indice, la richiesta DEVE includere <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> impostato a quell'indice.</p>
+<p>Quando l'Istanza del Wallet richiede una Wallet Instance Attestation per un PID Provider o un Attestation Provider per il quale non possiede un indice, la richiesta DEVE omettere <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code>.</p>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> è presente, il Fornitore di Wallet DEVE verificare che l'Istanza del Wallet sia autorizzata a quell'indice per <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code> prima di emettere una Wallet Instance Attestation che lo riutilizza. Il Fornitore di Wallet DEVE rifiutare la richiesta quando l'Istanza del Wallet non è autorizzata a quell'indice.</p>
+<p>Il Fornitore di Wallet NON DEVE riutilizzare la stessa voce di status list per Wallet Instance Attestation che la stessa Istanza del Wallet presenta a PID Provider o Attestation Provider diversi.</p>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">status_list_idx</span></code> è assente, il Fornitore di Wallet DEVE assegnare una nuova voce di status list per quell'Istanza del Wallet e per <code class="docutils literal notranslate"><span class="pre">intended_issuer</span></code>.</p>
+<p>Il Fornitore di Wallet DEVE documentare l'uso di questa opzione nella propria privacy policy.</p>
+</section>
 </section>
 
 
@@ -416,7 +435,67 @@
         </main>
       </div>
 
-      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+      <aside class="col-12 col-lg-3 it-docs-navscroll-col" aria-label="Secondary navigation"><button type="button"
+                class="btn it-docs-navscroll-restore"
+                data-it-docs-navscroll-desktop-toggle
+                aria-controls="itDocsNavscroll"
+                aria-expanded="false"
+                aria-label="Show page contents">
+          <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+        </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <div class="it-docs-navscroll-heading">
+          <h2 class="it-docs-nav-section-label">On this page</h2>
+          <button type="button"
+                  class="btn it-docs-navscroll-collapse-toggle"
+                  data-it-docs-navscroll-desktop-toggle
+                  aria-controls="itDocsNavscroll"
+                  aria-expanded="true"
+                  aria-label="Hide page contents">
+            <svg class="icon icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+          </button>
+        </div>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">9.1.4.2.2. Emissione della Wallet Instance Attestation</a><ul>
+<li><a class="reference internal" href="#riutilizzo-della-voce-di-stato-per-emittente">9.1.4.2.2.1. Riutilizzo della Voce di Stato per Emittente</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
         </div>
       </aside>
     </div>
@@ -443,7 +522,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 01/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
