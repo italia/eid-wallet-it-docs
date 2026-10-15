@@ -345,22 +345,22 @@
 <h1>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading">¶</a></h1>
 <p>All Relying Party endpoints MUST implement appropriate security measures:</p>
 <ul class="simple">
-<li><p><strong>HTTPS Only</strong>: All endpoints MUST be accessible only over HTTPS</p></li>
+<li><p><strong>HTTPS Only</strong>: All endpoints MUST be accessible only over HTTPS.</p></li>
 <li><p><strong>Endpoint Mix-up Protection</strong>: Endpoint URLs MUST be attested by trusted third parties through the respective National or EUDIW Trust Framework.</p></li>
-<li><p><strong>Input Validation</strong>: All endpoints MUST validate input parameters and reject malformed requests</p></li>
-<li><p><strong>Rate Limiting</strong>: Endpoints SHOULD implement rate limiting to prevent abuse</p></li>
-<li><p><strong>Audit Logging</strong>: All endpoint interactions SHOULD be logged for security monitoring</p></li>
+<li><p><strong>Input Validation</strong>: All endpoints MUST validate input parameters and reject malformed requests.</p></li>
+<li><p><strong>Rate Limiting</strong>: Endpoints SHOULD implement rate limiting to prevent abuse.</p></li>
+<li><p><strong>Audit Logging</strong>: All endpoint interactions SHOULD be logged for security monitoring.</p></li>
 </ul>
 <p>For detailed security requirements, see <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and the relevant test cases in <a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>.</p>
 </section>
 <section id="implementation-notes">
 <h1>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>The specific implementation details for most endpoints are left to the Relying Party's discretion</p></li>
-<li><p>Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows</p></li>
-<li><p>Proximity flow endpoints MUST support the lifecycle management of Verifier Apps</p></li>
+<li><p>The specific implementation details for most endpoints are left to the Relying Party's discretion.</p></li>
+<li><p>Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows.</p></li>
+<li><p>Proximity flow endpoints MUST support the lifecycle management of Verifier Apps.</p></li>
 <li><p>For a Relying Party operating in the National Trust Framework, its endpoints MUST be discoverable through the Relying Party's Entity Configuration. For a Relying Party operating in the EUDIW Trust Framework, its endpoints are carried in the signed Request Object which is authenticated by the WRPAC according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.</p></li>
-<li><p>Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions</p></li>
+<li><p>Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions.</p></li>
 </ul>
 <p>For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.</p>
 </section>

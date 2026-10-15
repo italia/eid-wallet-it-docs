@@ -290,8 +290,8 @@ For IT-Wallet ID issuance:
 
 The authentication hints recognized for IT-Wallet ID issuance are the following:
 
-  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification;
-  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
+  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification.
+  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method.
   * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies, and MUST NOT offer or apply eID Substantial Authentication with MRTD Verification for that request. In the absence of a User selection via a Credential Issuer discovery page, the IT-Wallet ID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
 
 .. note::

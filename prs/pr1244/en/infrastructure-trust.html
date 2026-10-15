@@ -463,9 +463,9 @@ A verifying entity has to be able to distinguish which Trust Anchors are usable 
 <h2><span class="section-number">5.3. </span>X.509 Certificate Profile<a class="headerlink" href="#x-509-certificate-profile" title="Link to this heading">¶</a></h2>
 <p>This section defines a general <strong>X.509 Certificate Profile</strong>, which is further specialized for the following artifacts:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a> (EUDIW and National Trust Framework);</p></li>
-<li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a> (EUDIW and National Trust Framework);</p></li>
-<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a> (EUDIW Trust Framework);</p></li>
+<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a> (EUDIW and National Trust Framework).</p></li>
+<li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a> (EUDIW and National Trust Framework).</p></li>
+<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a> (EUDIW Trust Framework).</p></li>
 <li><p><a class="reference internal" href="#registrar-sign-seal-certificate-profile"><span class="std std-ref">Registrar Sign/Seal Certificate Profile</span></a> (EUDIW Trust Framework).</p></li>
 </ul>
 <p>This profile establishes the syntax, semantics and encoding requirements for X.509 certificates based on <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and ETSI EN 319 412.
@@ -565,7 +565,7 @@ The applicable extensions and their profile-specific constraints are defined bel
 <p>The following table specifies the X.509 certificate extensions supported by this specification, including their Object Identifiers (OIDs), type, criticality, description, and normative references. Individual certificate profiles MUST define the presence requirement (REQUIRED, OPTIONAL, or PROHIBITED) for each extension and MAY further constrain its syntax and contents.</p>
 <p>The criticality values used in this specification have the following meaning:</p>
 <ul class="simple">
-<li><p><strong>C</strong>: the extension MUST be marked critical;</p></li>
+<li><p><strong>C</strong>: the extension MUST be marked critical.</p></li>
 <li><p><strong>NC</strong>: the extension MUST be marked non-critical.</p></li>
 </ul>
 <table class="longtable docutils align-default" id="id779">
@@ -656,7 +656,7 @@ The applicable extensions and their profile-specific constraints are defined bel
 <h2><span class="section-number">5.4. </span>Common Trust Artifacts<a class="headerlink" href="#common-trust-artifacts" title="Link to this heading">¶</a></h2>
 <p>This section details the common artifacts involved in both the EUDIW and National Trust Frameworks, including:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>;</p></li>
+<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>.</p></li>
 <li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>.</p></li>
 </ul>
 <section id="entity-sign-seal-certificate-profile">
@@ -3227,7 +3227,7 @@ Furthermore, should there be a necessity for User Authentication by the Credenti
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata carries the informational parameters below together with the federation endpoint parameters.
 The federation endpoint parameters (<code class="docutils literal notranslate"><span class="pre">federation_fetch_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">federation_list_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">federation_resolve_endpoint</span></code> and the others) are published only by the Federation TA and the Intermediates, according to their obligations defined in the Federation API Endpoints section above, and a Leaf does not expose them.
-The informational parameters below are OPTIONAL in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>; IT-Wallet specification profile supports the claims in the following table.</p>
+The informational parameters below are OPTIONAL in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. IT-Wallet specification profile supports the claims in the following table.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -3281,7 +3281,7 @@ The protocol metadata and the pinned key sets are truncated (<code class="docuti
 <h4><span class="section-number">5.6.3.1. </span>Entity Configuration of a Federation TA<a class="headerlink" href="#entity-configuration-of-a-federation-ta" title="Link to this heading">¶</a></h4>
 <p>The Federation TA is the root of the Trust Chain.
 Its Entity Configuration has no <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code>, and its <code class="docutils literal notranslate"><span class="pre">jwks</span></code> provides, in addition to the Federation Entity Keys, the Signing Trust Anchors of the X.509 signing PKI and the Authentication Trust Anchors of the X.509 authentication PKI, as dedicated JWKs with <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.
-A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates; an Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
+A Signing Trust Anchor is the root of the PKI that issues the Document Signer certificates. An Authentication Trust Anchor is the root of the PKI that issues the Relying Party authentication certificates used for the mdoc reader authentication in the Proximity Flow.
 Each such JWK is identified by its <code class="docutils literal notranslate"><span class="pre">kid</span></code> and by the properties of the certificate provided in its <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
@@ -3766,7 +3766,7 @@ Additional Trust Mark purposes, when defined, MAY therefore be issued by other E
 The only Trust Mark issuer for the registration Trust Mark MUST be the Federation TA.
 It attests the registration and carries the authorization data of the entity, that is its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request.
 This registration Trust Mark is the functional analogue of the Wallet-Relying Party Registration Certificate (WRPRC) of the EUDIW Trust Framework.
-For National proximity presentation, the <code class="docutils literal notranslate"><span class="pre">euWrprc</span></code> member of <code class="docutils literal notranslate"><span class="pre">requestInfo</span></code> is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only; the authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.</p>
+For National proximity presentation, the <code class="docutils literal notranslate"><span class="pre">euWrprc</span></code> member of <code class="docutils literal notranslate"><span class="pre">requestInfo</span></code> is a CBOR byte string containing the UTF-8 bytes of this Trust Mark's compact signed JWT. This serialization is National-only. The authenticated reader-certificate path controls decoding and the Trust Mark cannot select or change the path.</p>
 <p>An entity receives one registration Trust Mark for each role it holds, with the <code class="docutils literal notranslate"><span class="pre">&lt;entity_type&gt;</span></code> component of the identifier set accordingly.</p>
 <p>A Relying Party Intermediary receives its registration Trust Mark with the <code class="docutils literal notranslate"><span class="pre">intermediate</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;entity_type&gt;</span></code> in the identifier.</p>
 <p>In the EUDIW Trust Framework the intermediary relationship is expressed in the registration data of the intermediated Relying Party.
@@ -4154,7 +4154,7 @@ A new Federation Entity Key becomes trusted only when the superior attests it in
 <li><p>The Entity adds the new key to the <code class="docutils literal notranslate"><span class="pre">jwks</span></code> of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.</p></li>
 <li><p>In the Entity Update process (see <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>) the superior MUST read the <code class="docutils literal notranslate"><span class="pre">jwks</span></code> from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.</p></li>
 <li><p>The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.</p></li>
-<li><p>Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key</p></li>
+<li><p>Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key.</p></li>
 <li><p>Then, when the Entity wants to remove the old previous key, it MAY remove it from the <code class="docutils literal notranslate"><span class="pre">jwks</span></code> notifying this change to the superior through the Entity Update process (see <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>), and the superior MUST remove it from the Subordinate Statement.</p></li>
 <li><p>The superior MUST register the event as a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> published on the Federation Subordinate Events Endpoint.</p></li>
 </ul>
@@ -4166,13 +4166,13 @@ The main distinction is the following:</p>
 <ul class="simple">
 <li><p>To manage Wallet-Relying Party Access Certificates and Sign/Seal Certificates, the entities acting as Trust Anchors for these certificates MUST:</p>
 <ul>
-<li><p>make available at least one revocation mechanism among <a class="reference internal" href="#certificate-revocation-list-crl"><span class="std std-ref">Certificate Revocation List (CRL)</span></a> and <a class="reference internal" href="#online-certificate-status-protocol-ocsp"><span class="std std-ref">Online Certificate Status Protocol (OCSP)</span></a>;</p></li>
+<li><p>make available at least one revocation mechanism among <a class="reference internal" href="#certificate-revocation-list-crl"><span class="std std-ref">Certificate Revocation List (CRL)</span></a> and <a class="reference internal" href="#online-certificate-status-protocol-ocsp"><span class="std std-ref">Online Certificate Status Protocol (OCSP)</span></a>.</p></li>
 <li><p>issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.</p></li>
 </ul>
 </li>
 <li><p>To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:</p>
 <ul>
-<li><p>make available an endpoint to request <a class="reference internal" href="#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>;</p></li>
+<li><p>make available an endpoint to request <a class="reference internal" href="#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>.</p></li>
 <li><p>issue WRPRCs with the appropriate parameter <code class="docutils literal notranslate"><span class="pre">status</span></code> as described in <a class="reference internal" href="#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.</p></li>
 </ul>
 </li>

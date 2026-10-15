@@ -2043,10 +2043,10 @@ Le Credenziali già emesse dalla versione precedente conservano il proprio stato
 Il suo esito è l'inclusione dell'entità nella List of Trusted Entities del proprio tipo, la cui struttura e firma sono descritte in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
 <p>Le categorie soggette a notifica secondo gli Articoli 4 e 5 di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>], adottato ai sensi dell'Articolo 5a(23) di [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], sono le seguenti:</p>
 <ul class="simple">
-<li><p>Fornitori di Wallet;</p></li>
-<li><p>PID Provider;</p></li>
-<li><p>Provider of WRPAC;</p></li>
-<li><p>Provider of WRPRC, ove applicabile;</p></li>
+<li><p>Fornitori di Wallet.</p></li>
+<li><p>PID Provider.</p></li>
+<li><p>Provider of WRPAC.</p></li>
+<li><p>Provider of WRPRC, ove applicabile.</p></li>
 <li><p>Registrar delle Wallet-Relying Party, insieme ai registri.</p></li>
 </ul>
 <p>I PuB-EAA Provider sono notificati ai sensi dell'Articolo 45f(3) di [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], e le regole di dettaglio sono stabilite in [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
@@ -2055,12 +2055,12 @@ Le Wallet-Relying Party che non appartengono a una categoria notificata non sono
 <p>L'input è costituito dalle informazioni notificabili dell'entità, ossia il sottoinsieme dei suoi dati di registrazione che si applica alla categoria, definito dall'Annex II di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] e, per i PuB-EAA Provider, dall'Annex III di [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
 Le informazioni sono una proiezione del <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">legal_name</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">contact_information</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">service_policies</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_name</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contact_information</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service_policies</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code>.</p></li>
 </ul>
 <p>Per un PID Provider e un Fornitore di Wallet il Sign/Seal Certificate è emesso dalla PKI nazionale, quindi il <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> non è fornito come input dall'entità ma deriva dall'emissione descritta in <a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a>.</p>
 <p>Per un PuB-EAA Provider il Sign/Seal Certificate è un certificato qualificato emesso da un Qualified Trust Service Provider, e il suo Trust Anchor è veicolato dalle eIDAS Trusted Lists che sono al di fuori di questo processo.

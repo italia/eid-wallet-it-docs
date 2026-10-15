@@ -464,9 +464,9 @@ Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizza
 <h2><span class="section-number">5.3. </span>X.509 Certificate Profile<a class="headerlink" href="#x-509-certificate-profile" title="Link to this heading">¶</a></h2>
 <p>Questa sezione definisce un <strong>X.509 Certificate Profile</strong> generale, ulteriormente specializzato per i seguenti artifact:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a> (Trust Framework EUDIW e Nazionale);</p></li>
-<li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a> (Trust Framework EUDIW e Nazionale);</p></li>
-<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a> (Trust Framework EUDIW);</p></li>
+<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a> (Trust Framework EUDIW e Nazionale).</p></li>
+<li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a> (Trust Framework EUDIW e Nazionale).</p></li>
+<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a> (Trust Framework EUDIW).</p></li>
 <li><p><a class="reference internal" href="#registrar-sign-seal-certificate-profile"><span class="std std-ref">Registrar Sign/Seal Certificate Profile</span></a> (Trust Framework EUDIW).</p></li>
 </ul>
 <p>Questo profilo stabilisce i requisiti di sintassi, semantica e codifica per i certificati X.509 sulla base di <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> e ETSI EN 319 412.
@@ -566,7 +566,7 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 <p>La tabella seguente specifica le estensioni dei certificati X.509 supportate da questa specifica, inclusi i relativi Object Identifier (OID), il tipo, la criticità, la descrizione e i riferimenti normativi. I singoli profili di certificato DEVONO definire il requisito di presenza (OBBLIGATORIO, OPZIONALE o VIETATO) per ciascuna estensione e POSSONO ulteriormente vincolarne la sintassi e i contenuti.</p>
 <p>I valori di criticità utilizzati in questa specifica hanno il seguente significato:</p>
 <ul class="simple">
-<li><p><strong>C</strong>: l'estensione DEVE essere marcata come critica;</p></li>
+<li><p><strong>C</strong>: l'estensione DEVE essere marcata come critica.</p></li>
 <li><p><strong>NC</strong>: l'estensione DEVE essere marcata come non critica.</p></li>
 </ul>
 <table class="longtable docutils align-default" id="id779">
@@ -3224,7 +3224,7 @@ Inoltre, qualora sia necessaria l'Autenticazione dell'Utente da parte del Creden
 </div>
 <p>I metadata <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> recano i parametri informativi seguenti insieme ai parametri degli endpoint di federazione.
 I parametri degli endpoint di federazione (<code class="docutils literal notranslate"><span class="pre">federation_fetch_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">federation_list_endpoint</span></code>, <code class="docutils literal notranslate"><span class="pre">federation_resolve_endpoint</span></code> e gli altri) sono pubblicati solo dal Federation TA e dagli Intermediate, secondo i loro obblighi definiti nella sezione Federation API Endpoints sopra, e una Foglia non li espone.
-I parametri informativi seguenti sono OPZIONALE in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>; il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.</p>
+I parametri informativi seguenti sono OPZIONALE in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. Il profilo delle specifiche IT-Wallet supporta i claim nella tabella seguente.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -3278,7 +3278,7 @@ I metadata di protocollo e i key set pinnati sono troncati (<code class="docutil
 <h4><span class="section-number">5.6.3.1. </span>Entity Configuration of a Federation TA<a class="headerlink" href="#entity-configuration-of-a-federation-ta" title="Link to this heading">¶</a></h4>
 <p>Il Federation TA è la root della Trust Chain.
 La sua Entity Configuration non ha <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code>, e il suo <code class="docutils literal notranslate"><span class="pre">jwks</span></code> fornisce, in aggiunta alle Federation Entity Keys, i Signing Trust Anchor della PKI di firma X.509 e gli Authentication Trust Anchor della PKI di autenticazione X.509, come JWK dedicate con <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.
-Un Signing Trust Anchor è la root della PKI che emette i certificati Document Signer; un Authentication Trust Anchor è la root della PKI che emette i certificati di autenticazione della Relying Party usati per l'mdoc reader authentication nel Proximity Flow.
+Un Signing Trust Anchor è la root della PKI che emette i certificati Document Signer. Un Authentication Trust Anchor è la root della PKI che emette i certificati di autenticazione della Relying Party usati per l'mdoc reader authentication nel Proximity Flow.
 Ciascuna tale JWK è identificata dal suo <code class="docutils literal notranslate"><span class="pre">kid</span></code> e dalle proprietà del certificato fornito nel suo <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
@@ -3607,7 +3607,7 @@ Espone gli endpoint fetch e list usati per servire i Subordinate Statement delle
 <section id="entity-configuration-of-a-leaf">
 <h4><span class="section-number">5.6.3.6. </span>Entity Configuration of a Leaf<a class="headerlink" href="#entity-configuration-of-a-leaf" title="Link to this heading">¶</a></h4>
 <p>Ciascuna Foglia pubblica la propria Entity Configuration, puntando al proprio superiore immediato attraverso <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> e recando il proprio Trust Mark di registrazione.
-Gli esempi seguenti riportano i claim principali; i metadata di protocollo sono referenziati alla relativa sezione di metadata.</p>
+Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono referenziati alla relativa sezione di metadata.</p>
 <p><strong>Wallet Provider</strong></p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
@@ -4150,7 +4150,7 @@ Una nuova Federation Entity Key diventa fidata solo quando il superiore la attes
 <li><p>L'Entità aggiunge la nuova chiave al <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della propria Entity Configuration e DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.</p></li>
 <li><p>Nel processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>) il superiore DEVE leggere il <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dall'Entity Configuration, DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata, e DEVE riemettere il Subordinate Statement attestando la nuova chiave.</p></li>
 <li><p>La chiave precedente e la nuova chiave coesistono quindi fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute, e durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.</p></li>
-<li><p>Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave</p></li>
+<li><p>Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.</p></li>
 <li><p>Poi, quando l'Entità vuole rimuovere la chiave precedente, PUÒ rimuoverla dal <code class="docutils literal notranslate"><span class="pre">jwks</span></code> notificando questo cambiamento al superiore attraverso il processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>), e il superiore DEVE rimuoverla dal Subordinate Statement.</p></li>
 <li><p>Il superiore DEVE registrare l'evento come un <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> pubblicato sul Federation Subordinate Events Endpoint.</p></li>
 </ul>
@@ -4162,13 +4162,13 @@ La distinzione principale è la seguente:</p>
 <ul class="simple">
 <li><p>Per gestire i Wallet-Relying Party Access Certificate e i Sign/Seal Certificate, le entità che agiscono come Trust Anchor per questi certificati DEVONO:</p>
 <ul>
-<li><p>rendere disponibile almeno un meccanismo di revoca tra <a class="reference internal" href="#certificate-revocation-list-crl"><span class="std std-ref">Certificate Revocation List (CRL)</span></a> e <a class="reference internal" href="#online-certificate-status-protocol-ocsp"><span class="std std-ref">Online Certificate Status Protocol (OCSP)</span></a>;</p></li>
+<li><p>rendere disponibile almeno un meccanismo di revoca tra <a class="reference internal" href="#certificate-revocation-list-crl"><span class="std std-ref">Certificate Revocation List (CRL)</span></a> e <a class="reference internal" href="#online-certificate-status-protocol-ocsp"><span class="std std-ref">Online Certificate Status Protocol (OCSP)</span></a>.</p></li>
 <li><p>emettere WRPAC e Sign/Seal Certificate con almeno un'estensione corrispondente al meccanismo di revoca fornito.</p></li>
 </ul>
 </li>
 <li><p>Per gestire i Wallet-Relying Party Registration Certificate, ciascun Provider of Wallet Relying Party Registration Certificates DEVE:</p>
 <ul>
-<li><p>rendere disponibile un endpoint per richiedere <a class="reference internal" href="#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>;</p></li>
+<li><p>rendere disponibile un endpoint per richiedere <a class="reference internal" href="#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>.</p></li>
 <li><p>emettere WRPRC con il parametro appropriato <code class="docutils literal notranslate"><span class="pre">status</span></code> come descritto in <a class="reference internal" href="#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.</p></li>
 </ul>
 </li>

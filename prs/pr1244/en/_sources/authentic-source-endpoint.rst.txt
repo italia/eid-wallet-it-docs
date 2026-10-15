@@ -80,8 +80,8 @@ The Credential Issuer MUST update the Digital Credential ``status`` based on Sig
 * **Restoration**: If a suspended dataset returns to ``VALID`` at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from ``SUSPENDED`` to ``VALID``).
 * **Modification**: If a dataset is modified but remains ``VALID`` at the Authentic Source, the Credential Issuer—detecting the change via the ``last_updated`` field—assigns the technical status ``ATTRIBUTE_UPDATE`` to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.
 * **Administrative Expiry**:
-    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry; the Credential Issuer manages the lifecycle independently ensuring technical ``exp`` <= ``expiry_date``.
-    * **Scenario B (Signal-driven)**: If ``expiry_date`` is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to ``INVALID`` and send a Signal via Signal Hub; the Credential Issuer then revokes the Digital Credentials (status transition to ``INVALID``).
+    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry. The Credential Issuer manages the lifecycle independently ensuring technical ``exp`` <= ``expiry_date``.
+    * **Scenario B (Signal-driven)**: If ``expiry_date`` is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to ``INVALID`` and send a Signal via Signal Hub. The Credential Issuer then revokes the Digital Credentials (status transition to ``INVALID``).
 
 Example of Authentic Source response
 """""""""""""""""""""""""""""""""""""
@@ -95,9 +95,9 @@ The endpoint response MUST use the HTTP Content-Type set to ``application/json``
 In summary:
 
 - **userClaims**: user identity data (first name, family name, date/place of birth, tax id or personal administrative number). At least one of ``tax_id_code`` and ``personal_administrative_number`` is required when providing user claims.
-- **attributeClaims**: array of datasets; each element **MUST** contain ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), plus any dataset-specific attributes (e.g. ``nationality``, ``residence_address``).
-- **metadataClaims**: array of metadata per dataset (``object_id`` required; ``issuance_date`` and ``expiry_date`` optional).
-- **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
+- **attributeClaims**: array of datasets. Each element **MUST** contain ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), plus any dataset-specific attributes (e.g. ``nationality``, ``residence_address``).
+- **metadataClaims**: array of metadata per dataset (``object_id`` required. ``issuance_date`` and ``expiry_date`` optional).
+- **interval**: required when the request does not include a ``claims`` parameter. Indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
 
 The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **JSON Payload**, accompanied by the ``Agid-JWT-Signature`` and ``Digest`` integrity headers.
 

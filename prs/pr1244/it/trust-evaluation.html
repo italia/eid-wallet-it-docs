@@ -440,7 +440,7 @@ All'emissione non è offerta alcuna scelta all'Utente.</p>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.03.01_60/ts_119615v010301p.pdf">ETSI TS 119 615</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a>, che definiscono la procedura e le strutture dati per autenticare e interpretare la List of Trusted Lists e le Trusted List degli Stati membri, applicate qui alle List of Trusted Entities.</p></li>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31910201/01.04.01_60/en_31910201v010401p.pdf">ETSI EN 319 102-1</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a>, che definiscono, rispettivamente, la validazione delle firme AdES e il formato JAdES della firma di una List of Trusted Entities.</p></li>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>, <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>, che definiscono, rispettivamente, il Wallet-Relying Party Access Certificate, il Wallet-Relying Party Registration Certificate insieme alle sue entitlement, e gli attributi del subject del certificato.</p></li>
-<li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>, che profilano rispettivamente i protocolli di Presentazione e di Emissione, attraverso i quali una Wallet-Relying Party è autenticata e le sue informazioni di registrazione sono rese disponibili alla Wallet Unit; quest'ultima definisce inoltre l'Embedded Disclosure Policy.</p></li>
+<li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>, che profilano rispettivamente i protocolli di Presentazione e di Emissione, attraverso i quali una Wallet-Relying Party è autenticata e le sue informazioni di registrazione sono rese disponibili alla Wallet Unit. Quest'ultima definisce inoltre l'Embedded Disclosure Policy.</p></li>
 <li><p>IETF RFC 5280 (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) e IETF RFC 6960 (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>), che definiscono la validazione del certification path X.509 e l'Online Certificate Status Protocol.</p></li>
 </ul>
 <div class="admonition note">
@@ -579,7 +579,7 @@ Questi codici confluiscono nella decisione finale:</p>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTE-Status</span> <span class="pre">==</span> <span class="pre">LoTE_VERIFICATION_PASSED</span></code>, o</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LOTL-Status</span> <span class="pre">==</span> <span class="pre">LOTL_VERIFICATION_PASSED</span></code>, o</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EU-TL-Status</span> <span class="pre">==</span> <span class="pre">EU-TL_VERIFICATION_PASSED</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EU-TL-Status</span> <span class="pre">==</span> <span class="pre">EU-TL_VERIFICATION_PASSED</span></code>.</p></li>
 </ul>
 <p>Allora la List of Trusted Entities o la Trusted List è valida e i certificati Trust Anchor (vedi <a class="reference internal" href="infrastructure-trust.html#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>) ivi contenuti DEVONO essere considerati affidabili.</p>
 </div></blockquote>
@@ -589,7 +589,7 @@ Questi codici confluiscono nella decisione finale:</p>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTE-Status</span> <span class="pre">==</span> <span class="pre">LoTE_VERIFICATION_FAILED</span></code>, o</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LOTL-Status</span> <span class="pre">==</span> <span class="pre">LOTL_VERIFICATION_FAILED</span></code>, o</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EU-TL-Status</span> <span class="pre">==</span> <span class="pre">EU-TL_VERIFICATION_FAILED</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EU-TL-Status</span> <span class="pre">==</span> <span class="pre">EU-TL_VERIFICATION_FAILED</span></code>.</p></li>
 </ul>
 <p>Allora la List of Trusted Entities o la Trusted List non è valida e i certificati Trust Anchor (vedi <a class="reference internal" href="infrastructure-trust.html#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>) ivi contenuti NON DEVONO essere considerati affidabili.</p>
 </div></blockquote>
@@ -626,9 +626,9 @@ Qui tale procedura è applicata al modello dati della List of Trusted Entities d
 Le variabili usate di seguito sono gli analoghi della List of Trusted Entities delle variabili LOTL preconfigurate nella clausola 4.0 (GPR-4.0-02) di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.03.01_60/ts_119615v010301p.pdf">ETSI TS 119 615</a>].
 Corrispondono come segue:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">OJEU-LOTL-Loc</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Certs-Set</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">OJEU-LOTL-Certs-Set</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LoTESO-Cert</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">LOTLSO-Cert</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">OJEU-LOTL-Loc</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Certs-Set</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">OJEU-LOTL-Certs-Set</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LoTESO-Cert</span></code> corrisponde a <code class="docutils literal notranslate"><span class="pre">LOTLSO-Cert</span></code>.</p></li>
 <li><p>i claim <code class="docutils literal notranslate"><span class="pre">PointersToOtherLoTE</span></code> e <code class="docutils literal notranslate"><span class="pre">SchemeInformationURI</span></code> corrispondono ai componenti <em>Pointers to other TSLs</em> (clausola 6.3.13 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]) e <em>Scheme information URI</em> (clausola 6.3.7).</p></li>
 </ul>
 <p><strong>List of Trusted Entities Validation Algorithm</strong></p>
@@ -670,7 +670,7 @@ Contare il numero di URI validi che precedono l'URI corrispondente a <code class
 </div></blockquote>
 </li>
 <li><p>(LoTE Location Conflict) Verificare la condizione <code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span> <span class="pre">!=</span> <span class="pre">LoTE</span> <span class="pre">Location</span></code> AND <code class="docutils literal notranslate"><span class="pre">LoTE</span> <span class="pre">!=</span> <span class="pre">Content</span> <span class="pre">at</span> <span class="pre">LoTE</span> <span class="pre">Location</span></code>, dove <code class="docutils literal notranslate"><span class="pre">LoTE</span> <span class="pre">Location</span></code> è l'URI <code class="docutils literal notranslate"><span class="pre">LoTELocation</span></code> nel componente <code class="docutils literal notranslate"><span class="pre">PointersToOtherLoTE</span></code> di <code class="docutils literal notranslate"><span class="pre">LoTE</span></code> con <code class="docutils literal notranslate"><span class="pre">SchemeTerritory</span></code> <code class="docutils literal notranslate"><span class="pre">EU</span></code> (clausola 6.3.13 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]).
-(PRO-4.1.4-05)</p>
+(PRO-4.1.4-05).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Se <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: la validazione DEVE interrompersi con <code class="docutils literal notranslate"><span class="pre">LoTE-Status</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">LoTE_VERIFICATION_FAILED</span></code> e <code class="docutils literal notranslate"><span class="pre">LoTE-Sub-Status</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">LoTE_FILE_CONFLICT</span></code>.</p></li>
@@ -679,7 +679,7 @@ Contare il numero di URI validi che precedono l'URI corrispondente a <code class
 </div></blockquote>
 </li>
 <li><p>(LoTE Freshness) Verificare la condizione <code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span> <span class="pre">==</span> <span class="pre">LoTE</span> <span class="pre">Location</span></code> AND <code class="docutils literal notranslate"><span class="pre">LoTE</span> <span class="pre">!=</span> <span class="pre">Content</span> <span class="pre">at</span> <span class="pre">LoTE</span> <span class="pre">Location</span></code>.
-(PRO-4.1.4-06)</p>
+(PRO-4.1.4-06).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Se <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: impostare <code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span></code> a <code class="docutils literal notranslate"><span class="pre">LoTE</span> <span class="pre">Location</span></code> e ricominciare dal Passo 1.</p></li>
@@ -698,7 +698,7 @@ I campi <em>Country code</em> e <em>Organization</em> nel Subject Distinguished 
 <div><ul class="simple">
 <li><p>Impostare <code class="docutils literal notranslate"><span class="pre">LoTESO-Cert</span></code> a <code class="docutils literal notranslate"><span class="pre">LoTE-Signer-Cert</span></code>.</p></li>
 <li><p>Impostare <code class="docutils literal notranslate"><span class="pre">LoTESO-Certs-Set</span></code> ai certificati trovati nel claim <code class="docutils literal notranslate"><span class="pre">PointersToOtherLoTE</span></code> (scheme territory <code class="docutils literal notranslate"><span class="pre">EU</span></code>) del payload della <code class="docutils literal notranslate"><span class="pre">LoTE</span></code> corrente.
-(PRO-4.1.4-09)</p></li>
+(PRO-4.1.4-09).</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -904,7 +904,7 @@ Le implementazioni DEVONO supportare sia certificati Trust Anchor self-signed si
 </li>
 <li><p><strong>PuB-EAA</strong>.</p>
 <ol class="arabic simple">
-<li><p>Verificare la firma dell'Attestation con il Sign/Seal Certificate fornito nell'Attestation. Una firma elettronica qualificata DEVE essere validata in conformità all'Articolo 32 di [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]; ove il Provider sia una persona giuridica che usa un sigillo elettronico, si applicano gli Articoli 37 e 40.</p></li>
+<li><p>Verificare la firma dell'Attestation con il Sign/Seal Certificate fornito nell'Attestation. Una firma elettronica qualificata DEVE essere validata in conformità all'Articolo 32 di [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>]. Ove il Provider sia una persona giuridica che usa un sigillo elettronico, si applicano gli Articoli 37 e 40.</p></li>
 <li><p>Recuperare e validare la LoTE dei PuB-EAA Provider come definito in <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>, abbinare il Provider e il suo Sign/Seal Certificate con l'oggetto <code class="docutils literal notranslate"><span class="pre">TrustedEntityList</span></code> rilevante, ed estrarre il suo Trust Anchor.</p></li>
 <li><p>Estrarre la catena di certificati del firmatario dall'Attestation e validarla rispetto al Trust Anchor ottenuto dalla LoTE, come definito in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>.</p></li>
 <li><p>Recuperare la Trusted List dello Stato membro corrispondente alla CA emittente, validarla come definito in <a class="reference internal" href="#trusted-list-validation"><span class="std std-ref">Trusted List Validation</span></a>, e stabilire lo status qualificato della CA emittente e del Sign/Seal Certificate.</p></li>
@@ -957,8 +957,8 @@ La Wallet Unit NON DEVE delegarla a un browser del sistema operativo o a un'altr
 <p><strong>Input</strong></p>
 <p>L'esito dell'Autenticazione DEVE basarsi solo su informazioni derivate da:</p>
 <ul class="simple">
-<li><p>il Trust Anchor appropriato ottenuto da un'istanza valida della List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate;</p></li>
-<li><p>il path di certificati X.509 che termina con il certificato end-entity del Wallet-Relying Party Access Certificate;</p></li>
+<li><p>il Trust Anchor appropriato ottenuto da un'istanza valida della List of Trusted Entities dei Provider of Wallet-Relying Party Access Certificate.</p></li>
+<li><p>il path di certificati X.509 che termina con il certificato end-entity del Wallet-Relying Party Access Certificate.</p></li>
 <li><p>una firma della Wallet-Relying Party sull'artifact dell'interazione, recante la prova di possesso della chiave privata referenziata nel Wallet-Relying Party Access Certificate.</p></li>
 </ul>
 <p><strong>Esito</strong></p>
@@ -995,8 +995,8 @@ Per impedire a un attaccante di mascherare un impegno legale come un nonce di pr
 <p>L'Entità che esegue la validazione del Wallet-Relying Party Access Certificate inizializza l'algoritmo in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a> con il <code class="docutils literal notranslate"><span class="pre">path</span></code> e il <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> ivi definiti.
 Gli input sono i seguenti:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">C_n</span></code> è il primo certificato della catena fornita dalla Wallet-Relying Party;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">C_1</span></code> è il Wallet-Relying Party Access Certificate;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_n</span></code> è il primo certificato della catena fornita dalla Wallet-Relying Party.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_1</span></code> è il Wallet-Relying Party Access Certificate.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> è un certificato del Provider of Wallet-Relying Party Access Certificate ottenuto dalla List of Trusted Entities.</p></li>
 </ul>
 <div class="admonition warning">
@@ -1015,7 +1015,7 @@ Durante la Presentazione di Credenziali il Wallet-Relying Party Registration Cer
 Durante l'Emissione di Credenziali un PID Provider o un Attestation Provider DEVE includere il Wallet-Relying Party Registration Certificate per valore nei Metadata del Credential Issuer ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p>
 <p>Il Processo di Autorizzazione EUDIW è suddiviso in:</p>
 <ul>
-<li><p><a class="reference internal" href="#authorization-artifacts-validation"><span class="std std-ref">Authorization Artifacts Validation</span></a>, che valida l'integrità e l'autenticità del Trust Artifact recante i dati di autorizzazione; e</p></li>
+<li><p><a class="reference internal" href="#authorization-artifacts-validation"><span class="std std-ref">Authorization Artifacts Validation</span></a>, che valida l'integrità e l'autenticità del Trust Artifact recante i dati di autorizzazione. E.</p></li>
 <li><p><a class="reference internal" href="#authorization-validation"><span class="std std-ref">Authorization Validation</span></a>, che valida il contenuto informativo dell'artifact validato.
 In particolare questa validazione copre:</p>
 <blockquote>
@@ -1050,7 +1050,7 @@ Il risultato PUÒ essere sovrascritto dall'Utente alle condizioni dettagliate in
 <blockquote>
 <div><blockquote>
 <div><ul class="simple">
-<li><p>come elemento <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> del parametro <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code> del Request Object, nel Remote Flow, come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] e nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>];</p></li>
+<li><p>come elemento <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> del parametro <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code> del Request Object, nel Remote Flow, come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] e nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>].</p></li>
 <li><p>nel membro <code class="docutils literal notranslate"><span class="pre">euWrprc</span></code> di <code class="docutils literal notranslate"><span class="pre">requestInfo</span></code> nell'ISO <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>, nel Proximity Flow, come definito nella Sezione 5.3 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] e in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></li>
 </ul>
 </div></blockquote>
@@ -1086,10 +1086,10 @@ La Wallet Unit NON DEVE interrogare il Register come fallback ([<a class="refere
 <li><p><strong>Temporal validity</strong>: controllare <code class="docutils literal notranslate"><span class="pre">iat</span></code> e <code class="docutils literal notranslate"><span class="pre">exp</span></code> se presenti.</p></li>
 <li><p><strong>Status verification</strong>: controllare lo status di revoca attraverso il campo <code class="docutils literal notranslate"><span class="pre">status</span></code> del Wallet-Relying Party Registration Certificate, come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]:</p>
 <ul class="simple">
-<li><p>recuperare la SLT (vedi <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>) all'URI specificato dal membro <code class="docutils literal notranslate"><span class="pre">status.status_list.uri</span></code> del WRPRC;</p></li>
-<li><p>validare la catena del certificato di firma della SLT come definito in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, usando il Trust Anchor recuperato dall'entry di servizio applicabile nella LoTE dei Provider of WRPRC (cioè, sotto il <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> corrispondente al <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> con valore <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPRC/Revocation</span></code> per il servizio fornito dal Provider of WRPRC);</p></li>
-<li><p>validare la firma della SLT usando la catena del certificato di firma validata, seguendo <a class="reference internal" href="#eudiw-attestation-signature-validation"><span class="std std-ref">EUDIW Attestation Signature Validation</span></a>;</p></li>
-<li><p>validare il modello dati della SLT secondo <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>;</p></li>
+<li><p>recuperare la SLT (vedi <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>) all'URI specificato dal membro <code class="docutils literal notranslate"><span class="pre">status.status_list.uri</span></code> del WRPRC.</p></li>
+<li><p>validare la catena del certificato di firma della SLT come definito in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, usando il Trust Anchor recuperato dall'entry di servizio applicabile nella LoTE dei Provider of WRPRC (cioè, sotto il <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> corrispondente al <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> con valore <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPRC/Revocation</span></code> per il servizio fornito dal Provider of WRPRC).</p></li>
+<li><p>validare la firma della SLT usando la catena del certificato di firma validata, seguendo <a class="reference internal" href="#eudiw-attestation-signature-validation"><span class="std std-ref">EUDIW Attestation Signature Validation</span></a>.</p></li>
+<li><p>validare il modello dati della SLT secondo <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>.</p></li>
 <li><p>decomprimere il valore <code class="docutils literal notranslate"><span class="pre">status_list.lst</span></code>, recuperare l'entry a un bit corrispondente al membro <code class="docutils literal notranslate"><span class="pre">status.status_list.idx</span></code> del WRPRC, e interpretare <code class="docutils literal notranslate"><span class="pre">0x00</span></code> come <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e <code class="docutils literal notranslate"><span class="pre">0x01</span></code> come <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>.</p></li>
 </ul>
 </li>
@@ -1119,8 +1119,8 @@ Se <code class="docutils literal notranslate"><span class="pre">authz_art_state<
 <p><strong>Input</strong></p>
 <p>La Wallet Unit DEVE basare la Authorization Validation solo su:</p>
 <ul class="simple">
-<li><p>la Wallet-Relying Party autenticata e il contesto di interazione, autorevoli solo per l'identità della Wallet-Relying Party;</p></li>
-<li><p>un Authorization Artifact validato, cioè un Wallet-Relying Party Registration Certificate, autorevole per l'identità del subject, le entitlement, l'uso previsto, l'ambito registrato, le relazioni di intermediario, i dati specifici dell'emissione e i riferimenti alla privacy policy, come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>];</p></li>
+<li><p>la Wallet-Relying Party autenticata e il contesto di interazione, autorevoli solo per l'identità della Wallet-Relying Party.</p></li>
+<li><p>un Authorization Artifact validato, cioè un Wallet-Relying Party Registration Certificate, autorevole per l'identità del subject, le entitlement, l'uso previsto, l'ambito registrato, le relazioni di intermediario, i dati specifici dell'emissione e i riferimenti alla privacy policy, come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p></li>
 <li><p>un'Embedded Disclosure Policy verificata, REQUIREDA quando fornita dall'Attestation Provider durante l'Emissione di Credenziali, autorevole quando presente.</p></li>
 </ul>
 <p>Ove il contesto della Wallet-Relying Party autenticata sia in conflitto con l'identità o il binding di intermediario nel contesto di autorizzazione verificato, la Wallet Unit DEVE produrre <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, non sovrascrivibile.</p>
@@ -1130,7 +1130,7 @@ Se <code class="docutils literal notranslate"><span class="pre">authz_art_state<
 <ol class="arabic">
 <li><p><strong>Binding verification</strong>.
 La Wallet Unit DEVE assicurare che l'entità autenticata sia la stessa entità descritta nei dati di autorizzazione.
-L'identità della Wallet-Relying Party è l'<code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> del subject del Wallet-Relying Party Access Certificate (clausola 5.1.4 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>]; il profilo del Wallet-Relying Party Access Certificate è definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>]).</p>
+L'identità della Wallet-Relying Party è l'<code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code> del subject del Wallet-Relying Party Access Certificate (clausola 5.1.4 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>]. Il profilo del Wallet-Relying Party Access Certificate è definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>]).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Credential Issuance</strong>.
@@ -1154,10 +1154,10 @@ La Wallet Unit DEVE verificare che le entitlement dell'Authorization Subject cor
 La Wallet Unit DEVE analizzare il campo <code class="docutils literal notranslate"><span class="pre">entitlements</span></code> del Wallet-Relying Party Registration Certificate e controllare che contenga l'URI di entitlement atteso per l'interazione, tra quelli definiti nell'Allegato A.2 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/PID_Provider</span></code> per i PID Provider, durante l'Emissione di PID;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/QEAA_Provider</span></code> per i QEAA Provider, durante l'Emissione di QEAA;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/PUB_EAA_Provider</span></code> per i PuB-EAA Provider, durante l'Emissione di PuB-EAA;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/Non_Q_EAA_Provider</span></code> per gli EAA Provider, durante l'Emissione di EAA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/PID_Provider</span></code> per i PID Provider, durante l'Emissione di PID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/QEAA_Provider</span></code> per i QEAA Provider, durante l'Emissione di QEAA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/PUB_EAA_Provider</span></code> per i PuB-EAA Provider, durante l'Emissione di PuB-EAA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/Non_Q_EAA_Provider</span></code> per gli EAA Provider, durante l'Emissione di EAA.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/Entitlement/Service_Provider</span></code> per le Relying Party, durante la Presentazione di Credenziali.</p></li>
 </ul>
 <p>Se l'entitlement attesa non è presente, la Wallet Unit DEVE impostare <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> a <code class="docutils literal notranslate"><span class="pre">WRONG_ENTITLEMENT</span></code>.</p>
@@ -1911,8 +1911,8 @@ Le condizioni che determinano questo esito dipendono dalla specifica procedura d
 <li><p>Nel caso in cui la Wallet Unit segua il percorso di valutazione <a class="reference internal" href="#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>, l'esito è:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>durante la <strong>Presentazione di Attestati</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">EDP_SATISFIED</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>;</p></li>
-<li><p>durante l'<strong>Emissione di Attestati</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>;</p></li>
+<li><p>durante la <strong>Presentazione di Attestati</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">EDP_SATISFIED</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>.</p></li>
+<li><p>durante l'<strong>Emissione di Attestati</strong>, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code> altrimenti.</p></li>
 </ul>
 </div></blockquote>
@@ -1920,7 +1920,7 @@ Le condizioni che determinano questo esito dipendono dalla specifica procedura d
 <li><p>Nel caso in cui la Wallet Unit segua il percorso di valutazione Nazionale <a class="reference internal" href="#authorization"><span class="std std-ref">Authorization</span></a>, l'esito è:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">ENTITLEMENT_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>; oppure,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> se il processo termina con <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">ENTITLEMENT_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code>, oppure</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code> altrimenti.</p></li>
 </ul>
 </div></blockquote>
