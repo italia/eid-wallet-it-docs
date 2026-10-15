@@ -19,7 +19,10 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
 
 Il Trust Framework per l'emissione è selezionato come specificato in :ref:`trust-evaluation:Selection at Issuance`.
 
-Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
+Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico.
+Il supporto all'Authorization Code Grant è specificato in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
+Il Credential Issuer DEVE pubblicare tale supporto nei metadata dell'Authorization Server [`ETSI TS 119 472-3`_].
+I Credential Issuer DEVONO supportare:
 
   * **Authorization Code Flow**: Il Credential Issuer richiede l'autenticazione dell'Utente e il consenso all'Authorization Endpoint prima di raccogliere le informazioni dell'Utente per creare e rilasciare un Attestato Elettronico.
   * **Wallet Initiated Flow**: La richiesta dell'Istanza del Wallet viene inviata al Credential Issuer senza alcun input dal Credential Issuer o una terza parte (i.e. tramite supporto al Credential Offer).
@@ -166,19 +169,17 @@ Di seguito un esempio non normativo del `Request Object` firmato senza codifica 
 
 
 .. note::
-  **Controllo di fiducia della Wallet Unit:** Al PAR Endpoint, il Credential Issuer DEVE stabilire la fiducia nel Fornitore di Wallet.
-  Il Credential Issuer DEVE validare la firma dell'Attestato di Unità di Wallet e il materiale crittografico di firma.
-  Il Credential Issuer DEVE controllarne la validità temporale e lo status di revoca.
-  Il Credential Issuer DEVE verificare la prova di possesso ``OAuth-Client-Attestation-PoP``.
-  Per una Wallet Unit di un altro Stato membro, il Credential Issuer DEVE validare l'Attestato di Unità di Wallet attraverso la Wallet Providers List of Trusted Entities secondo :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
-  Per una Wallet Unit nazionale, il Credential Issuer PUÒ validare la Trust Chain del Fornitore di Wallet e l'Attestato di Unità di Wallet secondo :ref:`trust-evaluation:Wallet Unit Authentication`.
+  **Controllo di fiducia della Wallet Unit:** Al PAR Endpoint, il Credential Issuer DEVE validare l'Attestato di Unità di Wallet come specificato in :ref:`trust-evaluation:Selection at Issuance`.
+  Per una Wallet Unit di un altro Stato membro, tale validazione segue :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+  Per una Wallet Unit nazionale, tale validazione segue :ref:`trust-evaluation:Wallet Unit Authentication`.
   Un controllo fallito DEVE terminare la richiesta.
 
 **Passo 3 (`PAR Response`)**: Il Credential Issuer fornisce un valore ``request_uri`` monouso. Il valore ``request_uri`` emesso DEVE essere vincolato all'identificativo del client (``client_id``) che è stato fornito nel `Request Object`.
 
 
 .. note::
-  L'entropia del ``request_uri`` DEVE essere sufficientemente grande. L'adeguata brevità della validità e l'entropia del ``request_uri`` dipendono dal calcolo del rischio basato sul valore della risorsa protetta. Il tempo di validità DOVREBBE essere inferiore a un minuto e il ``request_uri`` DEVE includere un valore casuale crittografico di 128 bit o più (:rfc:`9101`). L'intero ``request_uri`` NON DOVREBBE superare i 512 caratteri ASCII per i seguenti due motivi principali (:rfc:`9101`):
+  L'entropia del ``request_uri`` DEVE essere sufficientemente grande. L'adeguata brevità della validità e l'entropia del ``request_uri`` dipendono dal calcolo del rischio basato sul valore della risorsa protetta.   Il tempo di validità DOVREBBE essere inferiore a un minuto.
+  Il ``request_uri`` DEVE includere un valore casuale crittografico di 128 bit o più (:rfc:`9101`). L'intero ``request_uri`` NON DOVREBBE superare i 512 caratteri ASCII per i seguenti due motivi principali (:rfc:`9101`):
 
     1. Molti telefoni sul mercato ancora non accettano payload di grandi dimensioni. La restrizione è tipicamente di 512 o 1024 caratteri ASCII.
     2. Su una connessione lenta come una connessione mobile 2G, un URL grande causerebbe una risposta lenta; pertanto, l'uso di tale URL non è consigliabile dal punto di vista dell'esperienza utente.

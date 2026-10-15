@@ -61,11 +61,11 @@ Security Considerations
 
 All Relying Party endpoints MUST implement appropriate security measures:
 
-- **HTTPS Only**: All endpoints MUST be accessible only over HTTPS
+- **HTTPS Only**: All endpoints MUST be accessible only over HTTPS.
 - **Endpoint Mix-up Protection**: Endpoint URLs MUST be attested by trusted third parties through the respective National or EUDIW Trust Framework.
-- **Input Validation**: All endpoints MUST validate input parameters and reject malformed requests
-- **Rate Limiting**: Endpoints SHOULD implement rate limiting to prevent abuse
-- **Audit Logging**: All endpoint interactions SHOULD be logged for security monitoring
+- **Input Validation**: All endpoints MUST validate input parameters and reject malformed requests.
+- **Rate Limiting**: Endpoints SHOULD implement rate limiting to prevent abuse.
+- **Audit Logging**: All endpoint interactions SHOULD be logged for security monitoring.
 
 For detailed security requirements, see :ref:`remote-flow:Remote Flow` and the relevant test cases in :ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`.
 
@@ -73,10 +73,10 @@ For detailed security requirements, see :ref:`remote-flow:Remote Flow` and the r
 Implementation Notes
 """"""""""""""""""""
 
-- The specific implementation details for most endpoints are left to the Relying Party's discretion
-- Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows
-- Proximity flow endpoints MUST support the lifecycle management of Verifier Apps
+- The specific implementation details for most endpoints are left to the Relying Party's discretion.
+- Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows.
+- Proximity flow endpoints MUST support the lifecycle management of Verifier Apps.
 - For a Relying Party operating in the National Trust Framework, its endpoints MUST be discoverable through the Relying Party's Entity Configuration. For a Relying Party operating in the EUDIW Trust Framework, its endpoints are carried in the signed Request Object which is authenticated by the WRPAC according to :ref:`trust-evaluation:EUDIW Authentication`.
-- Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions
+- Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions.
 
 For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.

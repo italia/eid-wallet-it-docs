@@ -6,7 +6,10 @@ Revoca dell'Istanza del Wallet
 
 Questa sezione descrive le entità coinvolte e le modalità per richiedere la revoca di un'Istanza del Wallet.
 
-Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza. Quando, per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico) la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
+Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza.
+Quando, per motivi tecnici di sicurezza (ad esempio la compromissione del materiale crittografico), la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
+Il Fornitore di Wallet DEVE riportare tale revoca nella status list della relativa Wallet Instance Attestation.
+In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la relativa Key Attestation.
 
 Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 

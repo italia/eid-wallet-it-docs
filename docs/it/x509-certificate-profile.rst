@@ -6,9 +6,9 @@ X.509 Certificate Profile
 
 Questa sezione definisce un **X.509 Certificate Profile** generale, ulteriormente specializzato per i seguenti artifact:
 
-- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile` (Trust Framework EUDIW e Nazionale);
-- :ref:`infrastructure-trust:Trust Anchor Certificate Profile` (Trust Framework EUDIW e Nazionale);
-- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` (Trust Framework EUDIW);
+- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile` (Trust Framework EUDIW e Nazionale).
+- :ref:`infrastructure-trust:Trust Anchor Certificate Profile` (Trust Framework EUDIW e Nazionale).
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile` (Trust Framework EUDIW).
 - :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile` (Trust Framework EUDIW).
 
 Questo profilo stabilisce i requisiti di sintassi, semantica e codifica per i certificati X.509 sulla base di :rfc:`5280` e ETSI EN 319 412.
@@ -98,7 +98,7 @@ La tabella seguente specifica le estensioni dei certificati X.509 supportate da 
 
 I valori di criticità utilizzati in questa specifica hanno il seguente significato:
 
-- **C**: l'estensione DEVE essere marcata come critica;
+- **C**: l'estensione DEVE essere marcata come critica.
 - **NC**: l'estensione DEVE essere marcata come non critica.
 
 .. list-table:: Estensioni di Certificato Supportate

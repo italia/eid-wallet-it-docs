@@ -10,9 +10,9 @@ Quest'ultima DEVE contenere i parametri definiti nelle Sezioni :ref:`infrastruct
 
 I Fornitori di Attestati Elettronici DEVONO fornire i seguenti Metadata:
 
-- `federation_entity`
-- `oauth_authorization_server`
-- `openid_credential_issuer`
+- `federation_entity`.
+- `oauth_authorization_server`.
+- `openid_credential_issuer`.
 
 Nei casi in cui i Fornitori di Attestati Elettronici di Attributi autenticano gli Utenti utilizzando la loro Istanza del Wallet, allora i Metadata per *openid_credential_verifier* DEVONO essere forniti in aggiunta ai Metadata sopra indicati. Nel caso in cui uno schema nazionale di Identità Digitale sia utilizzato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale per l'autenticazione dell'Utente, essi POSSONO includere i Metadata per *openid_relying_party* all'interno della loro Entity Configuration. I Metadata *openid_relying_party* DEVONO essere conformi alle Regole Tecniche `SPID/CIE-OpenID-Connect-Specifications`_.
 
@@ -30,10 +30,10 @@ Esempio di Entity Configuration di un Fornitore di Attestati Elettronici di Attr
 
 Di seguito è riportato un esempio non normativo di una Entity Configuration di un Fornitore di Attestati Elettronici di Attributi contenente Metadata per:
 
-- `federation_entity`
-- `oauth_authorization_server`
-- `openid_credential_issuer`
-- `openid_credential_verifier`
+- `federation_entity`.
+- `oauth_authorization_server`.
+- `openid_credential_issuer`.
+- `openid_credential_verifier`.
 
 .. literalinclude:: ../../examples/ec-eaa.json
   :language: JSON

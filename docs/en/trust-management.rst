@@ -49,7 +49,7 @@ The Federation Entity key rotation MUST be perfomed as defined in the following 
 - The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
 - In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.
 - The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
-- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key 
+- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key.
 - Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
 - The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
 
@@ -62,12 +62,12 @@ The main distinction is the following:
 
 - To manage Wallet-Relying Party Access Certificates and Sign/Seal Certificates, the entities acting as Trust Anchors for these certificates MUST:
 
-  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
+  - make available at least one revocation mechanism among :ref:`infrastructure-trust:Certificate Revocation List (CRL)` and :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
   - issue WRPACs and Sign/Seal Certificates with at least an extension corresponding to the provided revocation mechanism.
 
 - To manage Wallet-Relying Party Registration Certificates, each Provider of Wallet Relying Party Registration Certificates MUST:
 
-  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
+  - make available an endpoint to request :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
   - issue WRPRCs with the appropriate parameter ``status`` as described in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
@@ -581,13 +581,13 @@ For a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBO
 According to the ARF and [`ETSI TS 119 475`_], the WRPRC status is either ``VALID`` or ``INVALID``.
 The Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``. The value ``0x00`` represents ``VALID``, and ``0x01`` represents ``INVALID``.
 
-The SLT Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+Packing of entries, DEFLATE compression, the ZLIB data format, and publication of the Status List are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 **Status List Token**
 
-The SLT Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the WRPRC's ``status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT. The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature.
-
-A JWT SLT MUST be formatted as described in Section 5.1, and a CWT SLT as described in Section 5.2, of `TOKEN-STATUS-LIST`_.
+The SLT Provider MUST act as both the Status Issuer and the Status Provider.
+The SLT Provider MUST publish each SLT by HTTP GET at the URI in the WRPRC member ``status.status_list.uri``.
+Media types, the JWT or CWT format, and signature protection are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
 Regardless of the format, the SLT Provider for WRPRCs MUST sign each SLT using a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Providers of WRPRC LoTE.
 

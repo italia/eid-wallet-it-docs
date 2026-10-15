@@ -11,10 +11,10 @@ Il suo esito è l'inclusione dell'entità nella List of Trusted Entities del pro
 
 Le categorie soggette a notifica secondo gli Articoli 4 e 5 di [`CIR2024/2980`_], adottato ai sensi dell'Articolo 5a(23) di [`EIDAS`_], sono le seguenti:
 
-- Fornitori di Wallet;
-- PID Provider;
-- Provider of WRPAC;
-- Provider of WRPRC, ove applicabile;
+- Fornitori di Wallet.
+- PID Provider.
+- Provider of WRPAC.
+- Provider of WRPRC, ove applicabile.
 - Registrar delle Wallet-Relying Party, insieme ai registri.
 
 I PuB-EAA Provider sono notificati ai sensi dell'Articolo 45f(3) di [`EIDAS`_], e le regole di dettaglio sono stabilite in [`CIR2025/1569`_].
@@ -26,12 +26,12 @@ Le Wallet-Relying Party che non appartengono a una categoria notificata non sono
 L'input è costituito dalle informazioni notificabili dell'entità, ossia il sottoinsieme dei suoi dati di registrazione che si applica alla categoria, definito dall'Annex II di [`CIR2024/2980`_] e, per i PuB-EAA Provider, dall'Annex III di [`CIR2025/1569`_].
 Le informazioni sono una proiezione del :ref:`onboarding-system:Registration Data Model`:
 
-- ``legal_name``
-- ``identifier``
-- ``contact_information``
-- ``service_policies``
-- ``signing_trust_anchor``
-- ``conformity_assessment``
+- ``legal_name``.
+- ``identifier``.
+- ``contact_information``.
+- ``service_policies``.
+- ``signing_trust_anchor``.
+- ``conformity_assessment``.
 
 Per un PID Provider e un Fornitore di Wallet il Sign/Seal Certificate è emesso dalla PKI nazionale, quindi il ``signing_trust_anchor`` non è fornito come input dall'entità ma deriva dall'emissione descritta in :ref:`onboarding-system:Signature and Seal Certificate Issuance`.
 

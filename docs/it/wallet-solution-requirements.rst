@@ -17,6 +17,12 @@ L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate 
 - L'Istanza del Wallet DEVE memorizzare PID e (Q)EAA, applicare la disclosure selettiva e presentarli in remoto e in prossimità, come specificato in :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 - L'emissione, la memorizzazione e la presentazione del PID sono specificate in :ref:`pid-until-notification`.
 - L'Istanza del Wallet DEVE supportare i formati di Attestato Elettronico richiesti da [`OPENID4VC-HAIP`_], inclusi ``dc+sd-jwt`` e ``mso_mdoc``.
+- I grant di emissione sono specificati in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
+- La Wallet Unit DEVE richiedere un'autorizzazione basata sulla presenza fisica dell'Utente quando ottiene un PID tramite il Pre-Authorized Code Grant.
+- La Wallet Unit DEVE acquisire e associare un EDP consegnato tramite URI insieme ai dati di policy, oppure tramite il solo URI quando la policy esatta è già precaricata.
+- La Wallet Unit DEVE risolvere e valutare l'EDP applicabile prima della disclosure.
+- La Wallet Unit DEVE mostrare il risultato all'Utente.
+- La Wallet Unit DEVE richiedere l'override dell'Utente per la disclosure di ogni Credenziale o attributo che non soddisfa la policy applicabile.
 - L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (:ref:`WP_015 <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.
 - L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;

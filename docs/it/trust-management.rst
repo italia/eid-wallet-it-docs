@@ -49,7 +49,7 @@ La rotazione della Federation Entity Key DEVE essere eseguita come definito nei 
 - L'Entità aggiunge la nuova chiave al ``jwks`` della propria Entity Configuration e DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.
 - Nel processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`) il superiore DEVE leggere il ``jwks`` dall'Entity Configuration, DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata, e DEVE riemettere il Subordinate Statement attestando la nuova chiave.
 - La chiave precedente e la nuova chiave coesistono quindi fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute, e durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.
-- Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave 
+- Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.
 - Poi, quando l'Entità vuole rimuovere la chiave precedente, PUÒ rimuoverla dal ``jwks`` notificando questo cambiamento al superiore attraverso il processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`), e il superiore DEVE rimuoverla dal Subordinate Statement.
 - Il superiore DEVE registrare l'evento come un ``jwks_update`` pubblicato sul Federation Subordinate Events Endpoint.
 
@@ -62,12 +62,12 @@ La distinzione principale è la seguente:
 
 - Per gestire i Wallet-Relying Party Access Certificate e i Sign/Seal Certificate, le entità che agiscono come Trust Anchor per questi certificati DEVONO:
 
-  - rendere disponibile almeno un meccanismo di revoca tra :ref:`infrastructure-trust:Certificate Revocation List (CRL)` e :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`;
+  - rendere disponibile almeno un meccanismo di revoca tra :ref:`infrastructure-trust:Certificate Revocation List (CRL)` e :ref:`infrastructure-trust:Online Certificate Status Protocol (OCSP)`.
   - emettere WRPAC e Sign/Seal Certificate con almeno un'estensione corrispondente al meccanismo di revoca fornito.
 
 - Per gestire i Wallet-Relying Party Registration Certificate, ciascun Provider of Wallet Relying Party Registration Certificates DEVE:
 
-  - rendere disponibile un endpoint per richiedere :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`;
+  - rendere disponibile un endpoint per richiedere :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
   - emettere WRPRC con il parametro appropriato ``status`` come descritto in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
 .. note::
@@ -581,13 +581,13 @@ Per un WRPRC codificato CWT, ``idx`` è un intero non firmato CBOR e ``uri`` è 
 Secondo l'ARF e [`ETSI TS 119 475`_], lo status del WRPRC è ``VALID`` o ``INVALID``.
 Il Provider of WRPRC DEVE impostare il parametro ``bits`` nell'oggetto ``status_list`` della SLT a ``1``. Il valore ``0x00`` rappresenta ``VALID``, e ``0x01`` rappresenta ``INVALID``.
 
-Lo SLT Provider DEVE impacchettare le entry a partire dal bit meno significativo di ciascun byte, comprimere l'array di byte usando DEFLATE con il formato dati ZLIB, e pubblicare la Status List risultante nella SLT.
+L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status Lists`.
 
 **Status List Token**
 
-Lo SLT Provider DEVE agire sia come Status Issuer sia come Status Provider. DEVE rendere ciascuna SLT disponibile via HTTP GET all'URI specificato dal membro ``status.status_list.uri`` del WRPRC, usando ``application/statuslist+jwt`` per una SLT JWT o ``application/statuslist+cwt`` per una SLT CWT. Il formato della SLT PUÒ essere un JWT o un CWT e DEVE essere protetto da una firma crittografica.
-
-Una SLT JWT DEVE essere formattata come descritto nella Sezione 5.1, e una SLT CWT come descritto nella Sezione 5.2, di `TOKEN-STATUS-LIST`_.
+Lo SLT Provider DEVE agire sia come Status Issuer sia come Status Provider.
+Lo SLT Provider DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``status.status_list.uri`` del WRPRC.
+I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in :ref:`credential-revocation:Token Status Lists`.
 
 Indipendentemente dal formato, lo SLT Provider per i WRPRC DEVE firmare ciascuna SLT usando un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE dei Provider of WRPRC.
 

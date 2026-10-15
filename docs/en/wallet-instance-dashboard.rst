@@ -7,8 +7,8 @@ Wallet Instance Dashboard and Transaction Logging
 
 The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensure transparency, traceability, and User awareness of actions performed through the Wallet Instance as defined in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). The log MUST cover all transactions (including non-completed) in these categories:
 
-- Credential issuance and re-issuance;
-- Credential presentation to Relying Parties;
+- Credential issuance and re-issuance.
+- Credential presentation to Relying Parties.
 - data deletion requests sent to Relying Parties.
 
 For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in `EUDI-TS 10`_.
@@ -17,7 +17,7 @@ For presentation transactions, attribute values MUST NOT be logged. If a present
 
 To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface, allowing the User to view an overview of transaction records in the log, access individual record details, export and delete records, and, where a transaction involves a Relying Party, initiate a data deletion request to the corresponding Relying Party (using logged contact information, if available).
 
-The Wallet Provider MUST protect the confidentiality, integrity, and authenticity of the transaction log and of any exported log objects in accordance with `EUDI-TS 10`_; access to the log MUST be restricted to the User and the Wallet Instance.
+The Wallet Provider MUST protect the confidentiality, integrity, and authenticity of the transaction log and of any exported log objects in accordance with `EUDI-TS 10`_. Access to the log MUST be restricted to the User and the Wallet Instance.
 
 Records MUST be retained for at least the minimum legal period as defined in :ref:`log-retention-policy:General Log Retention Policies`. If storage limits require automatic deletion, the Wallet Instance MUST notify the User via the dashboard, warn of consequences, and offer export of affected records before deletion.
 
@@ -36,7 +36,7 @@ Before deleting any transaction record, the Wallet Instance MUST display a clear
 
 Deletion of transaction records MUST:
 
-- apply only to Wallet-local copies of the records;
+- apply only to Wallet-local copies of the records.
 - be irreversible for the Wallet Instance once completed.
 
 The Wallet Instance MUST continue to protect any remaining transaction records in accordance with the confidentiality, integrity, and authenticity requirements defined for the transaction log in this section.
