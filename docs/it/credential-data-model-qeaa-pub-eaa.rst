@@ -136,7 +136,21 @@ In mdoc il segnale di vita breve è l'elemento ``shortLived`` impostato a ``true
 Quando il segnale di vita breve è assente, ``status`` DEVE essere presente ([`ETSI TS 119 472-1`_] QEAA-5.2.10.2-01, PuB-EAA-5.2.10.3-01, QEAA-6.2.10.2-01 e PuB-EAA-6.2.10.3-01).
 Quel valore di ``status`` DEVE seguire :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT` per SD-JWT VC.
 Quel valore di ``status`` DEVE seguire :ref:`credential-data-model:Mobile Security Object` per mdoc.
+Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``status_list`` con ``idx`` e ``uri``.
+Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``type`` con valore ``TokenStatusList`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-04 e EAA-5.2.10.1-05).
+Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``purpose`` con valore ``revocation``.
+Quando ``status`` è presente in un QEAA o in un PuB-EAA in SD-JWT VC, DEVE contenere ``index`` e ``uri`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-08 e EAA-5.2.10.1-10).
+Il valore di ``index`` DEVE essere uguale al valore di ``status_list.idx``.
+Il valore di ``uri`` DEVE essere uguale al valore di ``status_list.uri``.
 Token Status List, già richiesto da quelle sezioni, è il servizio di stato EAA di [`ETSI TS 119 472-1`_] capitolo 5.2.10 e capitolo 6.2.10.
+
+.. warning::
+  **Oggetto status in SD-JWT**
+
+  Il capitolo 5.2.10 di [`ETSI TS 119 472-1`_] colloca ``type``, ``purpose``, ``index`` e ``uri`` sull'oggetto ``status`` di SD-JWT.
+  La Sezione 6.2 di [`TOKEN-STATUS-LIST`_] colloca il riferimento in ``status.status_list``.
+  Entrambe le forme sono presenti e identificano la stessa status list.
+  Il capitolo 6.2.10 di [`ETSI TS 119 472-1`_] usa il membro ``status_list`` per mdoc (EAA-6.2.10.1-03).
 
 Un QEAA o un PuB-EAA PUÒ contenere ``oneTime``.
 In SD-JWT VC, un claim ``oneTime`` presente DEVE avere il valore JSON null ([`ETSI TS 119 472-1`_] EAA-5.2.8.2-05).

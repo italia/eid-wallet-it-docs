@@ -136,7 +136,21 @@ In mdoc the short-lived signal is the element ``shortLived`` set to ``true`` in 
 When the short-lived signal is absent, ``status`` MUST be present ([`ETSI TS 119 472-1`_] QEAA-5.2.10.2-01, PuB-EAA-5.2.10.3-01, QEAA-6.2.10.2-01 and PuB-EAA-6.2.10.3-01).
 That ``status`` value MUST follow :ref:`credential-data-model:Digital Credential SD-JWT Metadata Attributes` for SD-JWT VC.
 That ``status`` value MUST follow :ref:`credential-data-model:Mobile Security Object` for mdoc.
+When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``status_list`` with ``idx`` and ``uri``.
+When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``type`` with the value ``TokenStatusList`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-04 and EAA-5.2.10.1-05).
+When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``purpose`` with the value ``revocation``.
+When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``index`` and ``uri`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-08 and EAA-5.2.10.1-10).
+The value of ``index`` MUST equal the value of ``status_list.idx``.
+The value of ``uri`` MUST equal the value of ``status_list.uri``.
 Token Status List, as already required by those sections, is the EAA status service of [`ETSI TS 119 472-1`_] clause 5.2.10 and clause 6.2.10.
+
+.. warning::
+  **SD-JWT status object**
+
+  Clause 5.2.10 of [`ETSI TS 119 472-1`_] places ``type``, ``purpose``, ``index`` and ``uri`` on the SD-JWT ``status`` object.
+  Section 6.2 of [`TOKEN-STATUS-LIST`_] places the reference in ``status.status_list``.
+  Both shapes are present and identify the same status list.
+  Clause 6.2.10 of [`ETSI TS 119 472-1`_] uses the ``status_list`` member for mdoc (EAA-6.2.10.1-03).
 
 A QEAA or a PuB-EAA MAY contain ``oneTime``.
 In SD-JWT VC, a present ``oneTime`` claim MUST have the JSON null value ([`ETSI TS 119 472-1`_] EAA-5.2.8.2-05).

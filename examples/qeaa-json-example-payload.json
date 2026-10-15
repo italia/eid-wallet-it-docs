@@ -6,6 +6,10 @@
     "exp": 1883000000,
     "date_of_expiry": "2033-03-19",
     "status": {
+        "type": "TokenStatusList",
+        "purpose": "revocation",
+        "index": 5678,
+        "uri": "https://issuer.example.org/status",
         "status_list": {
             "idx": 5678,
             "uri": "https://issuer.example.org/status"

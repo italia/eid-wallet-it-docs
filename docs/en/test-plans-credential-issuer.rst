@@ -1034,4 +1034,8 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Registration identifier absent when the certificate is incorporated
     - A QEAA or a PuB-EAA that contains ``iss_reg_id`` is rejected, in SD-JWT VC and in mdoc, because the qualified certificate is incorporated, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
+  * - CI_215
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT status object shape
+    - An SD-JWT VC QEAA or PuB-EAA whose ``status`` object omits ``type``, ``purpose``, ``index`` or ``uri``, or whose ``index`` or ``uri`` differs from ``status_list``, is rejected. A ``status`` object that contains ``status_list`` and the matching ETSI members is accepted, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
 

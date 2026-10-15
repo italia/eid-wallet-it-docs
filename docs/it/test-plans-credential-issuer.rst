@@ -1033,5 +1033,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Identificativo di registrazione assente quando il certificato è incorporato
     - Un QEAA o un PuB-EAA che contiene ``iss_reg_id`` è rifiutato, in SD-JWT VC e in mdoc, perché il certificato qualificato è incorporato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_215
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Forma dell'oggetto status in SD-JWT
+    - Un QEAA o un PuB-EAA in SD-JWT VC il cui oggetto ``status`` omette ``type``, ``purpose``, ``index`` o ``uri``, o il cui ``index`` o ``uri`` differisce da ``status_list``, è rifiutato. Un oggetto ``status`` che contiene ``status_list`` e i membri ETSI corrispondenti è accettato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
 
 
