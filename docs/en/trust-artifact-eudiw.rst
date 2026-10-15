@@ -64,12 +64,12 @@ Each of its ``services[]`` elements has ``isIntermediary: true``, does not decla
 Register Open APIs
 """"""""""""""""""
 
-The read methods are Section 3 of `EUDI-TS 5`_.
+The read methods are described in Section 3 of `EUDI-TS 5`_.
 Methods, filter parameters, response codes and the slicing of ``services`` when ``serviceidentifier`` is used are defined there.
 
 .. note::
     The published API view excludes only ``postalAddress`` ([`CIR2025/848`_] as amended by [`CIR2026/1730`_], Annex I, point 4).
-    All other fields, including intended-use credential claims, are published as registered.
+    All other fields, including intended-use Credential claims, are published as registered.
     The Register Open APIs remain for publication and transparency ([`EIDAS-ARF`_] Reg_03, Reg_06).
     The Wallet Unit MUST NOT use them as a substitute for a missing or invalid Wallet-Relying Party Registration Certificate during Credential Presentation or Credential Issuance, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
 
@@ -88,7 +88,6 @@ Extensions not specified by that document MUST NOT be present.
 Subject attributes are [`EIDAS-ARF`_] Reg_31, Reg_32 and Reg_34, and `ETSI TS 119 411-8`_.
 Authentication is specified in :ref:`trust-evaluation:EUDIW Authentication`.
 Revocation on suspension or cancellation of the WRP services is specified in :ref:`infrastructure-trust:Trust Management and Lifecycle`.
-The Relying Party Service identifier and one WRPAC per Service are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
 .. note::
     The WRPAC attributes MUST be derived from the Register as specified in clause 5.1.2 of `ETSI TS 119 475`_.
@@ -183,7 +182,7 @@ Below a non-normative example of WRPRC payload for an intermediated Relying Part
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the format and contents of three types of Trust Artifacts, each of which conveys a list of current and historical Trust Anchors (containers of cryptographic materials and identifiers belonging to trusted Entities).
+This section describes the format and contents of three types of Trust Artifacts: Trusted List (TL), Lists of Trusted Lists (LOTL), and Lists of Trusted Entities (LoTE), each of which conveys a list of current and historical Trust Anchors (containers of cryptographic materials and identifiers belonging to trusted Entities).
 
 Ecosystem Entities utilize these lists to:
 
@@ -331,7 +330,7 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
        * ``"no_policy"``: Indicates that no policy restrictions apply for the associated EAA.
        * ``"authorized_rp_only"``: Access is restricted to an explicit list of allowed Relying Parties.
-       * ``"specific_root_of_trust"``: Access is restricted to Relying Parties whose WRPRC signing path contains a specified trusted root or intermediate certificate.
+       * ``"specific_root_of_trust"``: Access is restricted to authenticated Relying Parties whose WRPAC signing path contains a specified trusted root or intermediate certificate.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-06, ISS-MDATA-EBD-4.2.5.2-07, ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``description``
@@ -374,8 +373,8 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 
    * - ``trusted_roots``
      - REQUIRED. array of objects. if ``policy_type`` is ``"specific_root_of_trust"``.
-        Defines a precise list of trusted root or intermediate certificates used for signing WRPRCs.
-        Only RPs whose WRPRC signing path contains one of these certificates are permitted access.
+        Defines a precise list of trusted root or intermediate certificates used for signing WRPACs.
+        Only authenticated Relying Parties whose WRPAC signing path contains one of these certificates are permitted access.
      - Clause 4.2.5.2 of [`ETSI TS 119 472-3`_] (ISS-MDATA-EBD-4.2.5.2-08)
 
    * - ``trusted_roots[].issuer_dn``

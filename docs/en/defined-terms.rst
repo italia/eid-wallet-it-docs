@@ -138,7 +138,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **National Identity Provider**
-      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** credential.
+      Organizational Entity providing preexisting notified electronic identification means used for User authentication (for example CieID / SPID), as distinct from the wallet-held **IT-Wallet ID** Credential.
       Not present in ARF 3.0.0.
 
     **National Trust Anchor**
@@ -187,6 +187,23 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
       Aligned with ARF 3.0.0.
+      The technical profile is :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
+
+    **Attestation identity code**
+      Identifier of one issued Electronic Attestation of Attributes.
+      In SD-JWT VC it is the ``jti`` claim.
+      In mdoc it is the ``document_number`` data element.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Attestation Identity`.
+
+    **Technical validity**
+      Interval during which the encoded attestation and its signature are valid.
+      In SD-JWT VC it is expressed by ``nbf`` and ``exp``.
+      In mdoc it is expressed by ``validFrom`` and ``validUntil``.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
+
+    **Administrative validity**
+      Interval during which the attested attributes remain valid, for example the expiry of a licence.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
 
     **Electronic Attestation of Public Interest**
     **Credential of Public Interest**
@@ -318,7 +335,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of WRPRC**
       Legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPRC.
-      It issues those certificates automatically once the Entity has a valid registration of a Service and a valid WRPAC of that Service.
+      It issues those certificates automatically once the Entity has a valid registration in the Register and a valid WRPAC, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Aligned with ARF 3.0.0.
 
     **Federation Registry**

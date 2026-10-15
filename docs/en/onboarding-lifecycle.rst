@@ -6,7 +6,7 @@ Lifecycle Management
 
 After the registration event, an Entity can be updated, suspended, reactivated or cancelled, and a Credential type can become issuable or stop being issuable, and these changes reflect on the Trust Artifacts and on the registries.
 
-This section describes the states and events that cause an entity or credential type to change state.
+This section describes the states and events that cause an entity or Credential type to change state.
 It also maps each event to the registries and trust artifacts impacted by the event, see :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
 The formats, the parameters and the states of the Trust Artifacts are defined in :ref:`infrastructure-trust:Trust Artifacts Lifecycle State Machine`, and the revocation mechanisms are defined in :ref:`infrastructure-trust:Revocation Mechanisms`.
@@ -350,7 +350,7 @@ The registration of a Credential type and its versioning are described in the re
 Claims and Schemas Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As described above for updating the credential type, claims and schemas registered in the respective registries are not removed, as the Credentials already issued keep referencing them, so removing a claim or a schema would make those Credentials impossible to interpret.
+As described above for updating the Credential type, claims and schemas registered in the respective registries are not removed, as the Credentials already issued keep referencing them, so removing a claim or a schema would make those Credentials impossible to interpret.
 
 When a claim or a schema is deprecated, a new version of it is registered, and the Credential types that use it move to a new version as described above.
 
@@ -460,5 +460,7 @@ The relationship between an Entity update and the Trust Artifacts it affects is 
 
 .. note::
   The Register is a set of records per WRP, so an event impacts only the record of the Entity concerned.
-  The Digital Credentials Catalog, the Authentic Source Registry, the Claims Registry, the Schema Registry and the Taxonomy are instead single signed documents, so every write requires a new signature and a new publication of the whole document.
+  The Authentic Source Registry, the Claims Registry and the Taxonomy are single signed documents, so every write requires a new signature and a new publication of the whole document.
+  The Digital Credentials Catalog is served as independently signed responses, as specified in :ref:`registry:Digital Credentials Catalog Retrieval`.
+  The Catalogue of Attestations is served as independently signed responses, as specified in :ref:`registry:Catalogue of Attestations`.
 

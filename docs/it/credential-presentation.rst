@@ -8,7 +8,6 @@ Questa sezione descrive come un'Istanza di Relying Party richiede a un'Istanza d
 
 La presentazione utilizza [`OpenID4VP`_] per il flusso remoto, profilato da [`OPENID4VC-HAIP`_], e [`ISO18013-5`_] per il flusso di prossimità, come richiesto da [`CIR2024/2982`_].
 Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Presentation`.
-Un'Istanza del Wallet che implementa solo le procedure EUDIW DEVE poter presentare un PID, una (Q)EAA o una PuB-EAA a una Wallet-Relying Party di un altro Stato membro, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust`.
 La presentazione del PID prima della notifica EUDIW è specificata in :ref:`pid-until-notification`.
 
 Quando una Embedded Disclosure Policy è memorizzata con un Attestato Elettronico, la Wallet Unit DEVE applicarla prima della disclosure, come specificato in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
@@ -88,7 +87,7 @@ La presentazione in prossimità o comunque offline di un Attestato Elettronico D
        }
 
 .. note::
-  In caso di utilizzo di credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali (ad esempio, basata sulla prima in scadenza) e DEVE contrassegnarla come consumata. Al termine del flusso, DEVE ridurre il numero di credenziali disponibili nel batch e, in base a ciò, può verificare se è il momento di richiedere un nuovo batch di credenziali.
+  In caso di utilizzo di Credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali (ad esempio, basata sulla prima in scadenza) e DEVE contrassegnarla come consumata. Al termine del flusso, DEVE ridurre il numero di Credenziali disponibili nel batch e, in base a ciò, può verificare se è il momento di richiedere un nuovo batch di Credenziali.
 
 
 .. toctree::

@@ -27,7 +27,7 @@ Credential Issuer Requirements
 
 The Digital Credential Issuer Solution MUST:
 
-   1. Register with the Federation Authority to obtain proper authorization for issuing specific credential types.
+   1. Register with the Federation Authority to obtain proper authorization for issuing specific Credential types.
    2. Implement secure creation and issuance mechanisms that ensure integrity and confidentiality.
    3. Communicate with Authentic Sources through secure and reliable API Services to obtain verified User data.
    4. Authenticate to Wallet Instances during issuance to prove its legitimacy.

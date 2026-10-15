@@ -173,7 +173,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_033
     - Issuance, Security
     - Wallet Instance Attestation (WIA) Attested Cryptographic Key Acceptance
-    - Credential Issuer accepts and uses only cryptographic keys that are properly derived from the attested Wallet Instance during the credential issuance process;
+    - Credential Issuer accepts and uses only cryptographic keys that are properly derived from the attested Wallet Instance during the Credential issuance process;
   * - CI_034
     - Issuance, Security
     - Wallet Instance Attestation (WIA) Device Security and Compliance Verification
@@ -233,7 +233,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_046
     - Issuance, Security and Privacy
     - User Identity Verification during authorization request
-    - Authorization Server successfully verifies the identity of the User who owns the credential through appropriate authentication mechanisms, confirming user ownership before proceeding with credential authorization
+    - Authorization Server successfully verifies the identity of the User who owns the Credential through appropriate authentication mechanisms, confirming user ownership before proceeding with Credential authorization
   * - CI_047
     - Issuance, Security
     - Request URI One-Time Use and Expiration in the Authorization Request
@@ -409,7 +409,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_084a
     - Issuance, Security
     - Credential type check
-    - Credential Issuer ensure the credential type matches the request before issuing the new Credential
+    - Credential Issuer ensure the Credential type matches the request before issuing the new Credential
   * - CI_085
     - Issuance, Interoperability
     - Credential Response Table of HTTP Status Codes
@@ -449,7 +449,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_089c
     - Issuance, Security
     - Credential Endpoint Access Authorization
-    - Access Token allows access to Credential endpoint for Digital Credential refresh/re-issuance of existing credentials
+    - Access Token allows access to Credential endpoint for Digital Credential refresh/re-issuance of existing Credentials
   * - CI_090
     - Voided
     - Voided
@@ -509,11 +509,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_104
     - Issuance, Security
     - Refresh Token Usage Duration Management
-    - Credential Issuers manage and limit the duration for which refresh tokens can be used to refresh credentials versus requiring complete re-issuance flow restart. As specified in `OPENID4VC-HAIP`_
+    - Credential Issuers manage and limit the duration for which refresh tokens can be used to refresh Credentials versus requiring complete re-issuance flow restart. As specified in `OPENID4VC-HAIP`_
   * - CI_105
     - Issuance, Security
     - Recommended Re-issued Credential Expiration Alignment
-    - New Digital Credentials obtained through re-issuance flow maintain the same expiration as the refreshed credential
+    - New Digital Credentials obtained through re-issuance flow maintain the same expiration as the refreshed Credential
   * - CI_106
     - Issuance, Security
     - Post-Expiration Issuance Requirement
@@ -521,7 +521,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_107
     - Issuance, Security
     - Consistent Issuer Requirement for Re-Issuance
-    - New Digital Credentials are issued exclusively by the same Credential Issuers that originally provided the existing credentials to the same Wallet Instance
+    - New Digital Credentials are issued exclusively by the same Credential Issuers that originally provided the existing Credentials to the same Wallet Instance
   * - CI_108
     - Issuance, Security
     - Refresh Token Scope Limitation for Re-issuance
@@ -541,7 +541,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_112
     - Issuance, Security
     - Expiry Date Consistency for Re-Issuance
-    - Newly issued Digital Credentials maintain the same expiry date as the previous credential version
+    - Newly issued Digital Credentials maintain the same expiry date as the previous Credential version
   * - CI_113
     - Issuance, Privacy
     - Optional Out-of-Band Re-Issuance Update Notification
@@ -572,7 +572,7 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
   * - CI_120
     - Data Model and lifecycle, Security
-    - Signature of the SD-JWT credential
+    - Signature of the SD-JWT Credential
     - The Credential in SD-JWT format is signed using the Issuer's private key.
   * - CI_121
     - Data Model and lifecycle, Interoperability
@@ -689,7 +689,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_147a
     - Data Model and lifecycle, Interoperability
     - Not Recommended elements in the Mobile Security Object Protected Header
-    - The protected header does not contain elements different from the signature algorithm
+    - For a Digital Credential that is not a QEAA or a PuB-EAA, the protected header does not contain elements other than the signature algorithm. For a QEAA or a PuB-EAA, the protected header contains the signature algorithm, ``x5u`` and ``x5t`` as specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
   * - CI_148
     - Data Model and lifecycle, Interoperability
     - Mobile Security Object Unprotected Header Parameter Encoding
@@ -757,7 +757,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_156
     - Data Model and lifecycle, Interoperability
     - Optional (Q)EAA Revocation Following PID Revocation
-    - (Q)EAA Provider successfully evaluates PID revocation status and revoke associated (Q)EAA credentials
+    - (Q)EAA Provider successfully evaluates PID revocation status and revoke associated (Q)EAA Credentials
   * - CI_157
     - Data Model and lifecycle, Interoperability
     - (Q)EAA State Change to Suspended
@@ -765,7 +765,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_158
     - Data Model and lifecycle, Interoperability
     - (Q)EAA Suspension Duration and State Recovery
-    - Suspended (Q)EAA remains in Suspended state until suspension conditions are resolved and credential is restored to previous state Issued or Valid, or transitions to Revoked, Expired, or deleted
+    - Suspended (Q)EAA remains in Suspended state until suspension conditions are resolved and Credential is restored to previous state Issued or Valid, or transitions to Revoked, Expired, or deleted
   * - CI_158a
     - Data Model and lifecycle, Interoperability
     - (Q)EAA Suspension - Attribute Validity Changes
@@ -805,7 +805,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_162
     - Data Model and lifecycle, Security
     - User Access to Issuer Web Portal with LoA Authentication
-    - Credential Issuer ensures that users can successfully access the secure area of its web portal. This access requires authentication with a Level of Assurance that is at least equal to the Level of Assurance used during the initial credential issuance.
+    - Credential Issuer ensures that users can successfully access the secure area of its web portal. This access requires authentication with a Level of Assurance that is at least equal to the Level of Assurance used during the initial Credential issuance.
   * - CI_162a
     - Data Model and lifecycle, Interoperability
     - User Access to Digital Credentials Database View
@@ -853,7 +853,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_170a
     - Data Model and lifecycle, Interoperability
     - User Notification of Credential Update
-    - Credential Issuer successfully notifies User of credential changes through registered out-of-band communication channel
+    - Credential Issuer successfully notifies User of Credential changes through registered out-of-band communication channel
   * - CI_171
     - Data Model and lifecycle, Interoperability
     - User Notification on Credential Status INVALID
@@ -864,7 +864,7 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Issuer successfully handles single batch status update request (referencing batch notification_id) from authorized entities (e.g. Wallet Instance via Notification Endpoint with event=credential_deleted, or Wallet Provider via PDND) as N separate individual status changes, with each Credential's status updated independently (for example, flipping its status-list bit to INVALID or SUSPENDED).
   * - CI_173
     - Data Model and lifecycle, Interoperability
-    - Batch revocation upon credential Update Request
+    - Batch revocation upon Credential Update Request
     - Credential Issuer successfully processes batch update request as revoke all requests, marking every Credential in the batch as revoked and emitting single notification covering the entire batch.
   * - CI_174
     - Data Model and lifecycle, Interoperability
@@ -953,7 +953,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_194
     - Data Model and lifecycle, Interoperability
     - Digital Credential Catalogue Required Information
-    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalog_parameters>`.
+    - Credential Issuer provides its Credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalog_parameters>`.
   * - CI_195
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
@@ -998,4 +998,44 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Authentication
     - LoA nomenclature mapping
     - In the L2+ flow, LoA3 (ISO/IEC 29115) maps to eIDAS Substantial and to the national L2 means (SPID L2 / CieID Substantial). LoA High maps to eIDAS High and CIE L3. Tests fail if a Substantial authentication is recorded as High.
+  * - CI_206
+    - Data Model and lifecycle, Interoperability
+    - QEAA category in SD-JWT VC
+    - A QEAA contains ``category`` with value ``urn:etsi:esi:eaa:eu:qualified``. Any other value is rejected, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Category`.
+  * - CI_207
+    - Data Model and lifecycle, Interoperability
+    - PuB-EAA category in SD-JWT VC
+    - A PuB-EAA contains ``category`` with value ``urn:etsi:esi:eaa:eu:pub``. Any other value is rejected, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Category`.
+  * - CI_208
+    - Data Model and lifecycle, Interoperability
+    - Category in mdoc
+    - The mdoc element ``category`` in namespace ``org.etsi.01947201.010101`` carries the same URN as the SD-JWT VC claim for that ``legal_type``.
+  * - CI_209
+    - Data Model and lifecycle, Interoperability
+    - Status when the attestation is not short-lived
+    - A QEAA or a PuB-EAA without the short-lived signal contains ``status`` as specified in :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`. A missing ``status`` is rejected.
+  * - CI_210
+    - Data Model and lifecycle, Security
+    - SD-JWT VC signer certificate location
+    - The protected JOSE header of a QEAA or a PuB-EAA contains ``x5u`` and ``x5t#S256``. ``x5t#S256`` is the base64url-encoded SHA-256 digest of the DER encoding of the end-entity certificate in ``x5c``. It is the same digest of the certificate retrieved from ``x5u``. A mismatch is rejected.
+  * - CI_211
+    - Data Model and lifecycle, Security
+    - mdoc signer certificate location
+    - For a QEAA or a PuB-EAA, the mdoc ``issuerAuth`` is a CB-AdES signature. The protected header contains ``x5u`` and ``x5t`` with SHA-256. ``x5t`` is the SHA-256 digest of the DER encoding of the certificate retrieved from ``x5u``. The unprotected ``x5chain`` end-entity certificate matches the certificate retrieved from ``x5u``. A mismatch is rejected. For a Digital Credential that is not a QEAA or a PuB-EAA, ``issuerAuth`` is a ``COSE_Sign1`` whose protected header contains only the signature algorithm, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
+  * - CI_212
+    - Data Model and lifecycle, Interoperability
+    - Single subject
+    - A QEAA or a PuB-EAA that contains ``subAttrs`` or ``SubAttr`` is rejected. A PuB-EAA in SD-JWT VC that contains both ``sub`` and ``also_known_as``, or neither, is rejected.
+  * - CI_213
+    - Data Model and lifecycle, Interoperability
+    - Issuer claims absent when the certificate is in x5c
+    - An SD-JWT VC QEAA or PuB-EAA that contains ``issuing_authority`` or ``issuing_country`` is rejected, because ``x5c`` incorporates the qualified certificate, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
+  * - CI_214
+    - Data Model and lifecycle, Interoperability
+    - Registration identifier absent when the certificate is incorporated
+    - A QEAA or a PuB-EAA that contains ``iss_reg_id`` is rejected, in SD-JWT VC and in mdoc, because the qualified certificate is incorporated, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
+  * - CI_215
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT status object shape
+    - An SD-JWT VC QEAA or PuB-EAA whose ``status`` object omits ``type``, ``purpose``, ``index`` or ``uri``, or whose ``index`` or ``uri`` differs from ``status_list``, is rejected. A ``status`` object that contains ``status_list`` and the matching ETSI members is accepted, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
 

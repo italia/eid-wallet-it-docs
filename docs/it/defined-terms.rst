@@ -107,7 +107,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 3.0.0; specifico di IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le credenziali non-PID.
+      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le Credenziali non-PID.
       Non presente in ARF 3.0.0; specifico dell'IT-Wallet.
 
     **Keystore**
@@ -179,6 +179,23 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
       Conforme con ARF 3.0.0.
+      Il profilo tecnico è :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
+
+    **Codice di identità dell'attestato**
+      Identificatore di un Electronic Attestation of Attributes emesso.
+      In SD-JWT VC è il claim ``jti``.
+      In mdoc è l'elemento ``document_number``.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identità dell'Attestato`.
+
+    **Validità tecnica**
+      Intervallo durante il quale l'attestato codificato e la sua firma sono validi.
+      In SD-JWT VC è espresso da ``nbf`` e ``exp``.
+      In mdoc è espresso da ``validFrom`` e ``validUntil``.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
+
+    **Validità amministrativa**
+      Intervallo durante il quale gli attributi attestati restano validi, ad esempio la scadenza di una licenza.
+      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
 
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
@@ -318,7 +335,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Provider of WRPRC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
       Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
-      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida di un Servizio e un WRPAC valido di quel Servizio, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida nel Register e un WRPAC valido, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
       Conforme con ARF 3.0.0.
 
     **Federation Registry**
