@@ -6,8 +6,8 @@ Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni
 
 L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:
 
-- rilascio e ri-rilascio delle credenziali;
-- presentazione delle credenziali alle Relying Party;
+- rilascio e ri-rilascio delle Credenziali;
+- presentazione delle Credenziali alle Relying Party;
 - richieste di cancellazione dei dati inviate alle Relying Party.
 
 Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente contenente gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione, e DEVE aggiornarlo con l’esito finale, ove applicabile.
@@ -26,6 +26,8 @@ Esportazione e Cancellazione dei Record di Transazione
 **Esportazione**: la dashboard DEVE consentire all’Utente di esportare uno o più record di transazione in un file utilizzando il formato comune e le misure di sicurezza definite in `EUDI-TS 10`_.
 
 Il file esportato DEVE poter essere salvato in una posizione di archiviazione esterna o remota scelta dall’Utente, tra le opzioni di archiviazione supportate dall’Istanza del Wallet.
+
+Questa esportazione è il download dei record di transazione. Il ripristino del registro delle transazioni in un'Istanza del Wallet ricevente è specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
 **Cancellazione**: la dashboard DEVE consentire all’Utente di cancellare uno o più record di transazione dall’Istanza del Wallet in qualsiasi momento.
 

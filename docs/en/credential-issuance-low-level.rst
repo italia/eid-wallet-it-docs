@@ -18,8 +18,7 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID4VC High Assurance Interoperability Profile** [`OPENID4VC-HAIP`_].
 
-OpenID Federation 1.0 [`OID-FED`_] MAY be used for issuance by a national Credential Issuer, including the Italian PID Provider, as specified in :ref:`infrastructure-trust:Infrastructure of Trust` and :ref:`trust-evaluation:Selection at Issuance`.
-A Wallet Unit that implements only the EUDIW procedures MUST be able to complete issuance of a PID, (Q)EAA or PuB-EAA of another Member State, as specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+The Trust Framework for issuance is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
 The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Each Credential Issuer MUST support the Authorization Code Grant and MUST advertise its support in Authorization Server metadata [`ETSI TS 119 472-3`_]. Credential Issuers MUST support:
 
@@ -94,11 +93,11 @@ The following diagram shows the *Issuance flow*. The normative trust requirement
 
 Once *User Request flow* is completed, the Wallet Instance MUST perform the following Credential Issuer trust checks before sending the PAR Request:
 
-- **Trust path selection:** It MUST select exactly one trust path according to :ref:`trust-evaluation:Selection at Issuance` and MUST process only that path's authoritative metadata.
+- **Trust path selection:** It selects exactly one trust path according to :ref:`trust-evaluation:Selection at Issuance` and MUST process only that path's authoritative metadata.
 - **EUDIW Authentication:** On the EUDIW path, it MUST retrieve the signed Credential Issuer Metadata, validate the Provider of WRPAC List of Trusted Entities and the WRPAC certification path, and verify the metadata signature according to :ref:`trust-evaluation:List of Trusted Entities Validation`, :ref:`trust-evaluation:EUDIW Authentication`, and :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
 - **EUDIW Authorization:** On the EUDIW path, after successful Authentication, it MUST validate the WRPRC conveyed in ``issuer_info``, including its format, algorithm, signature, certification path, temporal validity, status, and consistency. It MUST then verify the binding between the authenticated Credential Issuer and its registration data, the entitlement for the expected Credential Issuer role, and the exact, case-sensitive registration of the requested Credential type according to :ref:`trust-evaluation:EUDIW Authorization`.
 - **National Authentication, and Authorization:** On the National path, it MUST validate the Credential Issuer's Federation Trust Chain, authenticate the signed protocol artifact, and consume only the applicable final metadata according to :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Metadata Retrieval and Validation`. After successful Authentication, it MUST validate the registration Trust Mark, including its signature, temporal validity, and status, and verify the Credential Issuer's entitlement and authorization to issue the offered Credential type according to :ref:`trust-evaluation:Authorization`.
-- **Failure handling:** If Authentication or Authorization does not succeed, the Wallet Instance MUST warn the User, MUST NOT request issuance, and MUST NOT retry the failed evaluation or supplement its evidence through the other trust path, as specified in :ref:`trust-evaluation:Failure Handling`.
+- **Failure handling:** If Authentication or Authorization does not succeed, the Wallet Instance applies :ref:`trust-evaluation:Failure Handling`.
 
 Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the selected metadata, from where the Wallet Instance can get the ``batch_size`` value. Batch issuance applies only to the Credential types for which that metadata is advertised. The Credential Issuer MUST declare whether PID and IT-Wallet ID are in scope. A Credential type without that advertisement MUST be issued as a single Credential (:ref:`CI_203 <credential-issuer-testcases>`).
 
@@ -118,7 +117,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`  (:ref:`WP_052a <wallet-credential-issuance-testcases>`).
   * Signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation ``cnf.jwk`` claim  (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
   * MUST use the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint  (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
-  * MUST specify the types of the requested credentials using both the ``scope`` parameter, as required by [`OPENID4VC-HAIP`_], and the ``authorization_details`` [RAR :rfc:`9396`] parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
+  * MUST specify the types of the requested Credentials using both the ``scope`` parameter, as required by [`OPENID4VC-HAIP`_], and the ``authorization_details`` [RAR :rfc:`9396`] parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 .. note::
   This specification uses JAR [:rfc:`9101`] to ensure end-to-end integrity of authorization requests for all Request Object parameters.
@@ -607,7 +606,7 @@ The re-issuance process outlined in this section is limited to the following sce
   - Data model/format technical update;
   - User's attribute set update.
 
-This flow does not apply to device migration or backup restore. In those cases the Wallet Instance MUST perform a Wallet-Initiated Authorization Code Issuance Flow as defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow` (see Section :ref:`backup-restore:Restore flow for Hardware Binding Credential`).
+This flow does not apply to device migration or backup restore. In those cases the Wallet Instance MUST perform a Wallet-Initiated Authorization Code Issuance Flow as defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow` (see Section :ref:`backup-restore:Restore flow for a Device-Bound Credential`).
 
 In the first case, the new Digital Credential's Users attribute set will match the original one. For example, a Credential Issuer may need to update the Digital Credential metadata or data format without changing the User's attribute set. In this case, the direct involvement of the User is not mandatory for the replacement and storage of a Digital Credential.
 
@@ -666,11 +665,11 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
 
 .. note::
-    During each credential issuance and, where supported, each re-issuance/refresh transaction executed through the flows described in this section, the Wallet Instance MUST create and maintain a corresponding transaction record in the Wallet Instance transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+    During each Credential issuance and, where supported, each re-issuance/refresh transaction executed through the flows described in this section, the Wallet Instance MUST create and maintain a corresponding transaction record in the Wallet Instance transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
-    The Wallet Instance MUST create a transaction record for each credential issuance process. The record MUST capture relevant contextual information necessary to ensure traceability and accountability of the transaction.
+    The Wallet Instance MUST create a transaction record for each Credential issuance process. The record MUST capture relevant contextual information necessary to ensure traceability and accountability of the transaction.
 
-    The record MUST be updated as the flow progresses to reflect the evolving transaction state and outcome context (e.g., the issued credential type(s) and quantity). In cases where the transaction does not complete successfully, the record MUST indicate the corresponding reason for non-completion.
+    The record MUST be updated as the flow progresses to reflect the evolving transaction state and outcome context (e.g., the issued Credential type(s) and quantity). In cases where the transaction does not complete successfully, the record MUST indicate the corresponding reason for non-completion.
 
 
 Credential Offer Flow

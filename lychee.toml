@@ -46,5 +46,5 @@ exclude = [
   # ETSI URI identifiers. They name entitlements and service types; the resolver returns 404.
   "^https://uri\\.etsi\\.org/19475/SubEntitlement/psp/psp-ai$",
   "^https://uri\\.etsi\\.org/19475/Entitlement/(Non_Q_EAA_Provider|PID_Provider|PUB_EAA_Provider|QEAA_Provider|Service_Provider)$",
-  "^http://uri\\.etsi\\.org/19602/SvcType/WRPRC/(Issuance|Revocation)$",
+  "^http://uri\\.etsi\\.org/19602/SvcType/WRP(AC|RC)/(Issuance|Revocation)$",
 ]

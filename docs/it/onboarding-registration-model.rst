@@ -227,12 +227,7 @@ La tabella seguente mappa ciascun Data Identifier sui campi dei data model di de
        
        e le ``authentic_sources``, o le ``parent_credentials``, che forniscono i dati del tipo di Credenziale.
    * - `credential_technical_specification`
-     - Nel Digital Credentials Catalog:
-     
-         - ``schema_uri``, 
-         - ``format``, 
-         - ``vct``,
-         - ``docType``.
+     - Nel Digital Credentials Catalog, ``schemaId``. I formati e i documenti di schema sono i ``supportedFormats`` e gli ``schemaURIs`` dello ``SchemaMeta`` identificato da tale ``schemaId``.
    * - `credential_policies`
      - Nel Digital Credentials Catalog:
      
@@ -358,6 +353,8 @@ Questa Sezione descrive la registrazione di ciascun ruolo come un profilo.
 Ogni profilo fornisce i dati di registrazione di base definiti in :ref:`onboarding-system:Registration Data Model`, e ciascun profilo seguente indica solo i dati di registrazione estesi che il ruolo fornisce e come l'entità li popola, insieme a qualsiasi specializzazione dei dati di base.
 Un'entità può detenere più di un entitlement in un unico record di registrazione e per più di un ruolo, quindi i profili non sono mutuamente esclusivi e si compongono.
 Ad esempio, un'entità può essere contemporaneamente una Relying Party e un QEAA Provider, e in tal caso il suo input è l'unione dei due profili e il suo esito è l'unione dei due.
+Un Non-Qualified EAA Provider e una Relying Party DEVONO dichiarare, per ciascun ruolo e per ciascun tipo di Attestato, se tale ruolo opera nel Trust Framework EUDIW oppure soltanto all'interno del perimetro nazionale.
+A runtime l'Attestato richiesto seleziona il Trust Framework, come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
 
 .. note::
    La definizione di un tipo di Credenziale non fa parte di alcun profilo di registrazione, come descritto in :ref:`onboarding-system:Registration Data Model`.
@@ -457,7 +454,7 @@ Oltre ai dati di registrazione di base, un Non-Qualified EAA Provider fornisce i
 - `service_supply_point`
 - `trust_framework_scope`
   
-  - Un Non-Qualified EAA Provider dichiara, in sede di onboarding, se opera nel Trust Framework EUDIW o solo all'interno del perimetro nazionale, e questa scelta incide sugli artifact che ottiene, come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`. Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW ottiene il record nel Register, il WRPAC e il Sign/Seal Certificate, mentre un Non-Qualified EAA Provider che opera solo all'interno del perimetro nazionale ottiene il solo Sign/Seal Certificate, è autenticato dalla Wallet Unit tramite il National Trust Framework, e i suoi Attestati sono validati rispetto al trust anchor distribuito dall'Entity Configuration del Federation TA. L'IT-Wallet ID, l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale, è un esempio di Attestato emesso da un Non-Qualified EAA Provider che opera all'interno del perimetro nazionale, si veda :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID` e :term:`IT-Wallet ID`. È un EAA e NON DEVE essere confuso con i Person Identification Data EUDI, che non sono un EAA.
+  - Un Non-Qualified EAA Provider che opera nel Trust Framework EUDIW ottiene il record nel Register, il WRPAC e il Sign/Seal Certificate, mentre un Non-Qualified EAA Provider che opera solo all'interno del perimetro nazionale ottiene il solo Sign/Seal Certificate, è autenticato dalla Wallet Unit tramite il National Trust Framework, e i suoi Attestati sono validati rispetto al trust anchor distribuito dall'Entity Configuration del Federation TA. L'IT-Wallet ID, l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale, è un esempio di Attestato emesso da un Non-Qualified EAA Provider che opera all'interno del perimetro nazionale, si veda :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID` e :term:`IT-Wallet ID`. È un EAA e NON DEVE essere confuso con i Person Identification Data EUDI, che non sono un EAA.
 
 
 Relying Party
@@ -485,7 +482,7 @@ Oltre ai dati di registrazione di base, una Relying Party fornisce i seguenti da
   - Una Certificate Signing Request per ciascun certificato X.509 di cui la Relying Party ha bisogno, ossia un WRPAC quando opera nel Trust Framework EUDIW, e il National Authentication Certificate quando opera solo nel National Trust Framework e supporta il Proximity Flow.
 - `trust_framework_scope`
 
-  - La Relying Party dichiara il Trust Framework in cui opera, come specificato in :ref:`infrastructure-trust:Infrastructure of Trust` e :ref:`trust-evaluation:Selection at Presentation`. Questa scelta incide sugli artifact che ottiene.
+  - Gli artifact seguono la dichiarazione di questo ruolo. Il Trust Framework di ciascuna presentazione è selezionato come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
 
 .. note::
    Una Relying Party (intermediata o meno) DEVE registrarsi tramite il Sistema di Onboarding per ottenere un Trust Mark di registrazione (si veda :ref:`infrastructure-trust:Trust Mark registration-entity`) e, nel caso di una Mobile Relying Party Instance, per ottenere un Authentication X.509 Certificate. 

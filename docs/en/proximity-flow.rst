@@ -7,12 +7,7 @@ Proximity Flow
 
 This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
 
-The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`. 
-
-- The EUDIW Trust Framework path uses a Wallet-Relying Party Access Certificate (WRPAC), Wallet-Relying Party Registration Certificate (WRPRC), and applicable Lists of Trusted Entities; 
-- The National Trust Framework path uses a Relying Party authentication certificate, an Authentication Trust Anchor distributed in the Federation Trust Anchor Entity Configuration, and a ``registration-entity`` Trust Mark. 
-
-The Wallet Instance validating the *mdoc reader* certificate selects exactly one path. Evidence from one path MUST NOT be combined with the other and a failed trust evaluation SHOULD NOT be retried under the other framework. The selected path is processed through :ref:`trust-evaluation:Selection at Presentation`, :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization`, :ref:`trust-evaluation:Relying Party Proximity Authentication`, :ref:`trust-evaluation:Authorization`, and :ref:`trust-evaluation:User Transparency` as applicable.
+The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
 
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
@@ -168,7 +163,7 @@ The Wallet Instance validating the *mdoc reader* certificate path MUST select ex
 
 **Step 11**: After successful *mdoc reader* authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
 
-For EUDIW it MUST validate the WRPAC path, revocation, SCT and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`).
+For EUDIW it MUST validate the WRPAC path, revocation, and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`).
 
 For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See :ref:`trust-evaluation:Authorization`).
 
@@ -202,7 +197,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
 .. note::
-    During each credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+    During each Credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
 
      The transaction record MUST be created once the Wallet Instance has successfully authenticated the reader (i.e., after decrypting the ``SessionEstablishment`` message and verifying reader authentication, Step 10). At this point, the record records only an authenticated request and MUST include the selected framework and request context available at that stage, without logging any attribute values.
 
@@ -494,7 +489,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
           - **requestInfo** *(map, REQUIRED and non-empty)*. Every `ItemsRequest` MUST contain ``euWrprc`` and ``euWrpRegistrarInfo`` as described below.
 
-            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization (:ref:`trust-evaluation:EUDIW Authorization`). On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization (:ref:`trust-evaluation:Authorization`. The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path or retry another path. Registrar data MUST NOT replace or override this artifact.
+            - **euWrprc** *(bstr, REQUIRED)*. On the EUDIW path, the byte string contains the serialized ``rc-wrp+cwt`` WRPRC, which is authoritative for authorization (:ref:`trust-evaluation:EUDIW Authorization`). On the National path, it contains the UTF-8 bytes of the compact signed ``registration-entity`` Trust Mark JWT, which is authoritative for authorization (:ref:`trust-evaluation:Authorization`). The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path. A failed path is handled as specified in :ref:`trust-evaluation:Failure Handling`. Registrar data MUST NOT replace or override this artifact.
 
             - **euWrpRegistrarInfo** *(map, REQUIRED)*. Mandatory Registrar transparency data. Its ``identifier`` *(array, REQUIRED, non-empty)* contains objects with ``type`` *(tstr, REQUIRED)* and ``identifier`` *(tstr, REQUIRED)*. Its ``srvDescription`` and ``purpose`` *(arrays, REQUIRED, non-empty)* contain objects with ``lang`` *(tstr, REQUIRED)* and ``content`` *(tstr, REQUIRED)*. ``registryURI`` *(tstr, REQUIRED)*, ``intendedUseIdentifier`` *(tstr, REQUIRED)*, and ``policyURI`` *(tstr, REQUIRED)* are mandatory. ``credential`` *(array, OPTIONAL, non-empty when present)* contains ETSI ``Credential``/``Claim`` objects. These fields are used with the selected path's validated authorization artifact for User Transparency.
 

@@ -25,7 +25,7 @@ Do not copy the same requirement or explanation into several places. Put it in o
 State each requirement in one place. Do not give the same object conflicting keywords in different sections (a `MUST` in one place and a `SHOULD` or `MAY` for the same behavior in another). Do not put conflicting keywords in the same sentence. One sentence states one requirement.
 
 ```rst
-The Wallet Instance MUST reject an expired credential.
+The Wallet Instance MUST reject an expired Credential.
 
 See :ref:`credential-revocation:Credential Status`.
 ```
@@ -37,6 +37,8 @@ Do not join clauses with a semicolon. Use separate sentences.
 ## Defined terms and acronyms
 
 In `defined-terms.rst` (the glossary and the Acronyms table), describe the term. Do not use BCP 14 keywords there. Put the requirement in the body of the specification and, if needed, point to that section from the definition.
+
+Write defined terms as they are defined in `defined-terms.rst`, including capitalization, in both editions. In English the defined term is Credential and its plural is Credentials. In Italian the defined term is Credenziale and its plural is Credenziali. Write that capital even mid-sentence. The ordinary phrases authentication credentials and credenziali di autenticazione are not that term. JSON member names and protocol parameter names stay as specified.
 
 ## reStructuredText
 
@@ -52,4 +54,11 @@ JSON fields and HTTP parameters are wrapped in double backticks in the RST sourc
 
 Static images need both SVG (HTML) and PDF (LaTeX), selected with `.. only:: format_html` and `.. only:: format_latex`. PlantUML sources live in `plantuml/*.puml` and use the `plantuml` directive. Every figure has an `:alt:` and a label `.. _fig_name:`.
 
-Use `list-table` with `:widths:`, `:header-rows: 1`, bold headers, and a label `.. _table_name:`. Larger examples go in `examples/` and are pulled in with `literalinclude`. Mark examples as non-normative in the surrounding text.
+Use `list-table` with `:widths:`, `:header-rows: 1`, bold headers, and a label `.. _table_name:`.
+
+An example that is the same in English and Italian (code, JSON, HTTP, or any other sample) belongs in `examples/`. Include it from both language files with `literalinclude`. Do not paste that example into both `docs/en` and `docs/it`. Mark examples as non-normative in the surrounding text.
+
+```rst
+.. literalinclude:: ../../examples/request-object-header.json
+   :language: JSON
+```

@@ -54,7 +54,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 11-12 (Wallet Instance Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and other configuration related parameters (see :ref:`Table of the Wallet Instance Attestation Request Body <table_wia_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and, when reusing a status list entry, ``status_list_idx`` (see :ref:`Table of the Wallet Instance Attestation Request Body <table_wia_request_claim>` and :ref:`wallet-instance-attestation-issuance:Per-Issuer Status Entry Reuse`). It is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Submits the Wallet Instance Attestation Request to the :ref:`wallet-provider-endpoint:Wallet Instance Attestation Issuance Endpoint` of the Wallet Provider Backend.
 
 
@@ -70,6 +70,7 @@ The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT
   6. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines. The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
   8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  9. The Wallet Provider MUST apply :ref:`wallet-instance-attestation-issuance:Per-Issuer Status Entry Reuse`.
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation that meets :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 
@@ -86,5 +87,27 @@ Below is a non-normative example of the response.
   {
     "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+
+Per-Issuer Status Entry Reuse
+-----------------------------
+
+The Wallet Provider MUST use the per-issuer reuse option of Section 2.5.1 of `EUDI-TS 3`_ for the ``client_status.status`` entry of each Wallet Instance Attestation.
+
+The Wallet Instance MUST keep the status list index assigned to it for each PID Provider or Attestation Provider.
+
+The Wallet Instance Attestation Request MUST include ``intended_issuer``.
+
+When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it already holds an index, the request MUST include ``status_list_idx`` set to that index.
+
+When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it holds no index, the request MUST omit ``status_list_idx``.
+
+When ``status_list_idx`` is present, the Wallet Provider MUST verify that the Wallet Instance is entitled to that index for ``intended_issuer`` before issuing a Wallet Instance Attestation that reuses it. The Wallet Provider MUST reject the request when the Wallet Instance is not entitled to that index.
+
+The Wallet Provider MUST NOT reuse the same status list entry for Wallet Instance Attestations that the same Wallet Instance presents to different PID Providers or Attestation Providers.
+
+When ``status_list_idx`` is absent, the Wallet Provider MUST assign a new status list entry for that Wallet Instance and ``intended_issuer``.
+
+The Wallet Provider MUST document the use of this option in its privacy policy.
 
 

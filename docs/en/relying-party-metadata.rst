@@ -34,9 +34,8 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
      - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values`` listing acceptable signing algorithms; for mdoc-CBOR, the value MUST include ``issuerauth_alg_values`` and ``deviceauth_alg_values``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
    * - **jwks**
      - JSON Web Key Set document, passed by value, containing the request-specific ephemeral response-encryption public keys for the Relying Party. Every key MUST have ``kid`` and ``use`` values, and each ``kid`` MUST identify exactly one key. See `JWK`_.
-   * - **erasure_endpoint**
-     - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. Upon receiving an erasure request, the Relying Party MUST uniquely identify one or more Digital Credentials for which the User requests deletion, by applying identity matching as specified in :ref:`identity-matching`.
 
 
 .. note::
-  The parameters **response_uris** and **erasure_endpoint** are introduced in this specification.
+  The parameter **response_uris** is introduced in this specification.
+  The Wallet Instance requests deletion of personal data through the Relying Party support contact, as specified in :ref:`user-attribute-deletion:User's Attributes Deletion` and in `EUDI-TS 7`_.

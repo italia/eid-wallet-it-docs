@@ -140,7 +140,7 @@ The *openid_credential_issuer* metadata contains the following claims.
 
            - **embedded_disclosure_policy**: OPTIONAL. Object carrying the EDP for this Credential configuration. It MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``. The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together. The EDP MUST NOT be present for a PID. The Wallet Unit MUST associate the resolved EDP with every issued EAA and MUST reject an unresolved URI.
 
-        - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
+        - **schema_id**: REQUIRED. The ``id`` of the ``SchemaMeta`` in the :ref:`registry:Catalogue of Attestations`.
         - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **issuer_info**

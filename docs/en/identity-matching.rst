@@ -71,6 +71,6 @@ Application to User Attribute Deletion
 
 When the User requests deletion of presented attributes, the Relying Party MUST uniquely identify one or more Digital Credentials by applying identity matching, as specified in :ref:`user-attribute-deletion:User's Attributes Deletion`.
 
-When the User authenticates at the Erasure Endpoint by presenting a Digital Credential from the Wallet Instance, the Relying Party MUST apply the matching patterns of this Section.
+When the User authenticates for a data deletion request by presenting a Digital Credential from the Wallet Instance, the Relying Party MUST apply the matching patterns of this Section.
 
-When the User authenticates at the Erasure Endpoint without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation using person identification attributes obtained from a preexisting national authentication scheme (for example CieID), where those attributes uniquely identify the User in the Relying Party's records.
+When the User authenticates for a data deletion request without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation using person identification attributes obtained from a preexisting national authentication scheme (for example CieID), where those attributes uniquely identify the User in the Relying Party's records.

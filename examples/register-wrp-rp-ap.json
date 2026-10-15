@@ -47,7 +47,6 @@
   "registryURI": "https://registry.example.it/api",
   "services": [
     {
-      "serviceIdentifier": "svc-mobile-01",
       "serviceTradeName": "ExampleBank Mobile",
       "supportURI": "https://examplebank.eu/support",
       "srvDescription": [
@@ -102,7 +101,6 @@
       ]
     },
     {
-      "serviceIdentifier": "svc-qeaa-account-01",
       "serviceTradeName": "ExampleBank Account Attestations",
       "supportURI": "https://examplebank.eu/support",
       "srvDescription": [
