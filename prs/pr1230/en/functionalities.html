@@ -306,24 +306,27 @@
             
   <section id="user-experience-design">
 <h1><span class="section-number">4. </span>User Experience Design<a class="headerlink" href="#user-experience-design" title="Link to this heading">¶</a></h1>
+<p>This chapter specifies User Experience requirements.
+Issuance and presentation protocols are specified in <a class="reference internal" href="digital-credential-flows.html#digital-credential-flows"><span class="std std-ref">Digital Credential Flows</span></a>.
+Credential lifecycle, revocation, and status checks are specified in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p>
 <section id="design-principles">
 <h2><span class="section-number">4.1. </span>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h2>
 <p>The IT-Wallet System adheres to the Digital Identity Wallet Paradigm, aiming to provide Users with a simple, fast, and more secure experience when accessing services.</p>
 <p>The Wallet Solution serves as the primary Touchpoint, enabling Users to manage and use their personal identification data and Attributes when interacting with public or private entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience.</p>
 <p>To ensure service quality from a User Experience perspective, Primary Actors, both public and private entities, MUST ensure the usability and accessibility of their Technical Solutions while aligning with the distinctive elements of the IT-Wallet System. Specifically:</p>
 <ul class="simple">
-<li><p><strong>Usability</strong>: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public entities MUST adhere to [GL_DESIGN], whereas private entities MAY refer to it as a best practice.</p></li>
-<li><p><strong>Accessibility</strong>: Technical Solutions MUST be designed and maintained to meet high accessibility standards to ensure service access regardless of individual abilities, technological skills, or external and contextual constraints. Public entities MUST adhere to [REF_ACCESSIBILITY], whereas private entities MUST comply with applicable regulations.</p></li>
+<li><p><strong>Usability</strong>: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public entities MUST adhere to [GL_DESIGN]. Private entities MAY refer to it as a best practice.</p></li>
+<li><p><strong>Accessibility</strong>: Technical Solutions MUST be designed and maintained to meet high accessibility standards to ensure service access regardless of individual abilities, technological skills, or external and contextual constraints. Public entities MUST adhere to [REF_ACCESSIBILITY]. Private entities MUST comply with applicable regulations.</p></li>
 <li><p><strong>Consistency</strong>: Technical Solutions MUST be designed and maintained in adherence to the IT-Wallet System's Brand Identity and User Experience functional requirements in this document, to promote the recognizability of components, to ensure the overall system consistency, and to minimize the User's cognitive load.</p></li>
 </ul>
 </section>
 <section id="functionalities-overview">
 <h2><span class="section-number">4.2. </span>Functionalities Overview<a class="headerlink" href="#functionalities-overview" title="Link to this heading">¶</a></h2>
 <p>The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use.</p>
-<figure class="align-center" id="id129">
+<figure class="align-center" id="id130">
 <a class="reference internal image-reference" href="_images/UX-phases-usage.svg"><img alt="User Experience phases of Wallet usage" src="_images/UX-phases-usage.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">User Experience phases of Wallet usage</span><a class="headerlink" href="#id129" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">User Experience phases of Wallet usage</span><a class="headerlink" href="#id130" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.</p>
@@ -331,8 +334,8 @@
 <p>The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.</p>
 <p>To ensure a correct and consistent implementation, Primary Actors:</p>
 <ul class="simple">
-<li><p>MUST use the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST comply with all related usage specifications provided;</p></li>
-<li><p>MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> or the <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>;</p></li>
+<li><p>MUST use the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST comply with all related usage specifications provided.</p></li>
+<li><p>MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> or the <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>.</p></li>
 <li><p>MUST keep used resources up to date, in line with the latest available version of the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 </ul>
 </section>
@@ -341,22 +344,22 @@
 <p>Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity (see <a class="reference internal" href="wallet-instance-lifecycle.html#wallet-instance-lifecycle"><span class="std std-ref">Wallet Instance Lifecycle</span></a>). After Authentication, the User obtains a person identification Attestation — either the EUDI <strong>PID</strong> or the national <strong>IT-Wallet ID</strong> — as described in <a class="reference internal" href="#focus-on-person-identification-attestations"><span class="std std-ref">Focus on Person Identification Attestations</span></a>.</p>
 <p>Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:</p>
 <ul class="simple">
-<li><p>The User downloads the Wallet Solution onto their device to generate their Wallet Instance;</p></li>
-<li><p>The User sets an unlock PIN for their Wallet Instance if one has not been previously set in the app. In addition to the PIN, the User can decide to use their own unlock mechanism used within the device and managed at the operating system level (e.g., biometric authentication) as an alternative to the PIN. The User uses the unlock method whenever an authorization is required to ensure security and protect their information;</p></li>
-<li><p>The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Wallet Provider and from the issuer of the person identification Attestation (PID Provider or IT-Wallet ID provider) and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation;</p></li>
-<li><p>The User selects an Authentication option from those available;</p></li>
-<li><p>The User completes the Authentication flow with the National Identity Provider's service;</p></li>
-<li><p>The User receives confirmation of the Authentication process outcome. If successful the User views a preview of the person identification Attestation (PID or IT-Wallet ID). The User confirms the previewed information to proceed, or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
+<li><p>The User downloads the Wallet Solution onto their device to generate their Wallet Instance.</p></li>
+<li><p>The User sets an unlock PIN for their Wallet Instance if one has not been previously set in the app. In addition to the PIN, the User can decide to use their own unlock mechanism used within the device and managed at the operating system level (e.g., biometric authentication) as an alternative to the PIN. The User uses the unlock method whenever an authorization is required to ensure security and protect their information.</p></li>
+<li><p>The User reviews all relevant information regarding the activation process and service usage. Additionally, the User reads any policy from the Wallet Provider and from the issuer of the person identification Attestation (PID Provider or IT-Wallet ID provider) and/or the service's terms and conditions. The User gives their consent to proceed or declines to cancel the operation.</p></li>
+<li><p>The User selects an Authentication option from those available.</p></li>
+<li><p>The User completes the Authentication flow with the National Identity Provider's service.</p></li>
+<li><p>The User receives confirmation of the Authentication process outcome. If successful the User views a preview of the person identification Attestation (PID or IT-Wallet ID). The User confirms the previewed information to proceed, or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
 <li><p>The User receives confirmation of the successful activation of the Wallet Instance.</p></li>
 </ul>
 <p>The Wallet Provider MUST allow the User to remove a person identification Attestation issued within the Authentication phase. In addition, the relevant issuer (PID Provider or IT-Wallet ID provider) SHOULD allow the User to revoke that Attestation through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance"><span class="std std-ref">Deactivation of the Wallet Instance</span></a> and <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a> sections.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id131">
+<figure class="align-center" id="id132">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Activation-1.svg"><img alt="Example of User Experience in Activating a Wallet Instance" src="_images/IT-Wallet-Activation-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Example of User Experience in Activating a Wallet Instance</span><a class="headerlink" href="#id131" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Example of User Experience in Activating a Wallet Instance</span><a class="headerlink" href="#id132" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="focus-on-person-identification-attestations">
@@ -364,11 +367,11 @@
 <p>This section defines User Experience requirements for person identification Attestations held in the Wallet Instance: the EUDI <strong>PID</strong> and the national <strong>IT-Wallet ID</strong> (Electronic Attestation of Person Identification Data with national scope). Both convey a verified minimum set of information about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>), but they differ in legal scope, issuer type, Wallet Instance lifecycle impact, and use cases for presentation supported.</p>
 <p>Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the personal identification Attestation (PID and/or IT-Wallet ID). The Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST correctly display the person identification Attestation across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
-<li><p>MUST display the Attestation status if different from valid, to provide transparency on its lifecycle, and MAY display it if valid. Specific details about an invalid status MAY be provided (e.g., the reason why the Attestation was revoked);</p></li>
-<li><p>MUST include Action Buttons to enable lifecycle management of the Attestation and allow the User to revoke or update it at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
-<li><p>MUST guarantee that the Attestation is a functional element for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts where applicable, and to request the issuance of additional EAAs where the related issuer requires person identification data (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>);</p></li>
-<li><p>MUST display a method of assistance provided by the relevant issuer of the Attestation (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>MUST correctly display the person identification Attestation across all devices, ensuring a consistent experience on screens of varying sizes.</p></li>
+<li><p>MUST display the Attestation status if different from valid, to provide transparency on its lifecycle, and MAY display it if valid. Specific details about an invalid status MAY be provided (e.g., the reason why the Attestation was revoked).</p></li>
+<li><p>MUST include Action Buttons to enable lifecycle management of the Attestation and allow the User to revoke or update it at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>).</p></li>
+<li><p>MUST guarantee that the Attestation is a functional element for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts where applicable, and to request the issuance of additional EAAs where the related issuer requires person identification data (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>).</p></li>
+<li><p>MUST display a method of assistance provided by the relevant issuer of the Attestation (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>).</p></li>
 <li><p>MUST guarantee that the Attestation is recognizable by the User and distinguishable from other EAAs.</p></li>
 </ul>
 <section id="pid">
@@ -386,25 +389,25 @@
 <h4><span class="section-number">4.3.1.2. </span>IT-Wallet ID<a class="headerlink" href="#it-wallet-id" title="Link to this heading">¶</a></h4>
 <p>The <strong>IT-Wallet ID</strong> is the Electronic Attestation of Person Identification Data with national scope, issued for national use only (see <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a> and <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>). It is an EAA issued by an Electronic Attestation of Attributes Provider, unlike the PID.</p>
 <ul>
-<li><p>Issuance of the IT-Wallet ID does <strong>not</strong> transition the Wallet Instance to the <strong>Valid</strong> state; the Wallet Instance remains <strong>Operational</strong> (see <a class="reference internal" href="wallet-instance-lifecycle.html#id1"><span class="std std-ref">Transition to Operational</span></a>).</p></li>
+<li><p>Issuance of the IT-Wallet ID does <strong>not</strong> transition the Wallet Instance to the <strong>Valid</strong> state. The Wallet Instance remains <strong>Operational</strong> (see <a class="reference internal" href="wallet-instance-lifecycle.html#id1"><span class="std std-ref">Transition to Operational</span></a>).</p></li>
 <li><p>The IT-Wallet ID is exclusively intended for national use and not for cross-border interactions.</p></li>
 <li><p>To ensure a consistent identification and representation of the IT-Wallet ID across different Wallet Solutions, the Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST use the official naming “IT-Wallet ID” in their Wallet Solutions;</p></li>
-<li><p>MUST use the IT-Wallet ID official graphic asset available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST comply with the related usage specifications provided;</p></li>
-<li><p>MUST use the IT-Wallet ID graphic asset in the <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data format;</p></li>
-<li><p>MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets;</p></li>
-<li><p>MUST maintain the minimum clear space as defined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;</p></li>
-<li><p>MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to maintain legibility across formats and devices;</p></li>
+<li><p>MUST use the official naming “IT-Wallet ID” in their Wallet Solutions.</p></li>
+<li><p>MUST use the IT-Wallet ID official graphic asset available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST comply with the related usage specifications provided.</p></li>
+<li><p>MUST use the IT-Wallet ID graphic asset in the <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data format.</p></li>
+<li><p>MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets.</p></li>
+<li><p>MUST maintain the minimum clear space as defined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space.</p></li>
+<li><p>MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> to maintain legibility across formats and devices.</p></li>
 <li><p>MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 </ul>
 <p>Although the term IT-Wallet ID refers to the Electronic Attestation of Personal Identification Data, the IT-Wallet ID graphical asset MAY be used by the Wallet Provider to facilitate the User in identifying, more generally, their personal identification Attestations (IT-Wallet ID / PID).</p>
 </li>
 </ul>
-<figure class="align-center" id="id134">
+<figure class="align-center" id="id135">
 <a class="reference internal image-reference" href="_images/IT-Wallet-ID-Primary-BlueItalia.svg"><img alt="IT-Wallet ID official graphic asset on a light background" src="_images/IT-Wallet-ID-Primary-BlueItalia.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">IT-Wallet ID official graphic asset on a light background</span><a class="headerlink" href="#id134" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">IT-Wallet ID official graphic asset on a light background</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The IT-Wallet ID Official Resource is provided in the related <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> Section. Additional documentation on the IT-Wallet ID graphic asset is available in the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section.</p>
@@ -416,36 +419,36 @@
 <p>Once activation is complete, the User MAY request and obtain one or more Electronic Attestations of Attributes within their Wallet Instance.</p>
 <p>The Electronic Attestations of Attributes is a dynamic object that enables the User to demonstrate or certify in a reliable and verifiable manner, a condition, status or right, based on the information it contains. In particular, the Electronic Attestations of Attributes:</p>
 <ul class="simple">
-<li><p><strong>is defined by an Authentic Source</strong>, the entity holding the source data;</p></li>
-<li><p><strong>consists of a set of Attributes</strong>, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) or a status (e.g. “student”);</p></li>
+<li><p><strong>is defined by an Authentic Source</strong>, the entity holding the source data.</p></li>
+<li><p><strong>consists of a set of Attributes</strong>, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) or a status (e.g. “student”).</p></li>
 <li><p><strong>is issued by a Provider of Electronic Attestation of Attributes</strong>, the entity that emits it on the basis of the information acquired and manages its lifecycle.</p></li>
 </ul>
 <p>Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:</p>
 <ul class="simple">
 <li><p><strong>from the Wallet Instance Catalog</strong>: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for Credential types eligible for public discovery as determined by the Supervisory body policies during the onboarding process (see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>).</p></li>
-<li><p><strong>from a Touchpoint of the Authentic Source</strong> (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p></li>
+<li><p><strong>from a Touchpoint of the Authentic Source</strong> (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source. (see <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p></li>
 </ul>
 <p>Although the methods for initiating the request are different, the issuance flows share a similar structure and process.</p>
 <section id="issuance-from-the-wallet-instance-catalog">
 <h3><span class="section-number">4.4.1. </span>Issuance from the Wallet Instance Catalog<a class="headerlink" href="#issuance-from-the-wallet-instance-catalog" title="Link to this heading">¶</a></h3>
 <p>Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalog that the Wallet Solution Provider MUST guarantee through their own Wallet Solution:</p>
 <ul class="simple">
-<li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User selects the Electronic Attestation of Attributes they wish to request from the available options in the Catalog;</p></li>
-<li><p>The User selects from which Electronic Attestation Provider they want to obtain the Electronic Attribute Attestation, if there is more than one;</p></li>
-<li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes from the Authentic Source;</p></li>
-<li><p>The User views their personal identification data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
-<li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
-<li><p>The User views the positive outcome of the request;</p></li>
-<li><p>The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source;</p></li>
+<li><p>The User accesses their Wallet Instance using the unlock method previously set.</p></li>
+<li><p>The User selects the Electronic Attestation of Attributes they wish to request from the available options in the Catalog.</p></li>
+<li><p>The User selects from which Electronic Attestation Provider they want to obtain the Electronic Attribute Attestation, if there is more than one.</p></li>
+<li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes from the Authentic Source.</p></li>
+<li><p>The User views their personal identification data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation.</p></li>
+<li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
+<li><p>The User views the positive outcome of the request.</p></li>
+<li><p>The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source.</p></li>
 <li><p>The User has access to all issued Electronic Attestations by navigating the Wallet Instance.</p></li>
 </ul>
 <p>The Authentic Source MAY provide additional information related to an Electronic Attestation of Attributes. This information MUST be displayed by the Wallet Instance to the User, before initiating the process of issuing the Electronic Attestation of Attributes. In order to properly draft this informational content, the Authentic Source:</p>
 <ul class="simple">
-<li><p>MUST use clear language (e.g. avoid technical or complex terms), be concise (e.g. avoid excessively long or elaborate texts) and inclusive (e.g. avoid ability-based verbs), following the best practices for writing, language and tone of voice described in [REF_ACCESSIBILITY] and, in the case of public entities, in [GL_DESIGN];</p></li>
-<li><p>MUST adhere to the specific purpose of the text, communicating useful information to the User before engaging in the issuance process (e.g. listing prerequisites or stating limitations that could affect the successful outcome of the procedure);</p></li>
-<li><p>MUST ensure that the information is constantly updated;</p></li>
+<li><p>MUST use clear language (e.g. avoid technical or complex terms), be concise (e.g. avoid excessively long or elaborate texts) and inclusive (e.g. avoid ability-based verbs), following the best practices for writing, language and tone of voice described in [REF_ACCESSIBILITY] and, in the case of public entities, in [GL_DESIGN].</p></li>
+<li><p>MUST adhere to the specific purpose of the text, communicating useful information to the User before engaging in the issuance process (e.g. listing prerequisites or stating limitations that could affect the successful outcome of the procedure).</p></li>
+<li><p>MUST ensure that the information is constantly updated.</p></li>
 <li><p>MUST include a title and text in which it MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests.</p></li>
 </ul>
 <p>Following is an example of informative text:</p>
@@ -464,10 +467,10 @@
 <p>If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id136">
+<figure class="align-center" id="id137">
 <a class="reference internal image-reference" href="_images/Issuance-from-catalog-1.svg"><img alt="Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog" src="_images/Issuance-from-catalog-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog</span><a class="headerlink" href="#id136" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog</span><a class="headerlink" href="#id137" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -475,30 +478,30 @@
 <h3><span class="section-number">4.4.2. </span>Issuance from a Touchpoint of the Authentic Source<a class="headerlink" href="#issuance-from-a-touchpoint-of-the-authentic-source" title="Link to this heading">¶</a></h3>
 <p>Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from a Touchpoint of the Authentic Source (also known as <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>) that the Authentic Source MUST guarantee through their Touchpoint:</p>
 <ul class="simple">
-<li><p>The User interacts with the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> clearly displayed in the Touchpoint interface;</p></li>
-<li><p>The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the <em>Selection Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
-<li><p>(<em>cross-device only</em>) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the <em>QR Code Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section; alternatively the User can exit the flow.</p></li>
-<li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User views their personal identification data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation;</p></li>
-<li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes;</p></li>
-<li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
-<li><p>The User views the positive outcome of the request;</p></li>
+<li><p>The User interacts with the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> clearly displayed in the Touchpoint interface.</p></li>
+<li><p>The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the <em>Selection Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p></li>
+<li><p>(<em>cross-device only</em>) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the <em>QR Code Page</em> in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section. Alternatively the User can exit the flow.</p></li>
+<li><p>The User accesses their Wallet Instance using the unlock method previously set.</p></li>
+<li><p>The User views their personal identification data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting the required data to the Electronic Attestation of Attributes Provider, or cancels the operation.</p></li>
+<li><p>The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes.</p></li>
+<li><p>The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
+<li><p>The User views the positive outcome of the request.</p></li>
 <li><p>The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the names of the Authentic Sources.</p></li>
 </ul>
 <p>In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id140">
+<figure class="align-center" id="id141">
 <a class="reference internal image-reference" href="_images/Issuance-from-Authentic-Source-1.svg"><img alt="Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source" src="_images/Issuance-from-Authentic-Source-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.12 </span><span class="caption-text">Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.</span><a class="headerlink" href="#id140" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.12 </span><span class="caption-text">Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.</span><a class="headerlink" href="#id141" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Following is represented for illustrative purposes the page with the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the <a class="reference internal" href="#issuance-from-a-touchpoint-of-the-authentic-source"><span class="std std-ref">Issuance from a Touchpoint of the Authentic Source</span></a> flow.</p>
-<figure class="align-center" id="id147">
+<figure class="align-center" id="id148">
 <a class="reference internal image-reference" href="_images/Credential-offer-ENG.svg"><img alt="Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer" src="_images/Credential-offer-ENG.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.19 </span><span class="caption-text">Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer</span><a class="headerlink" href="#id147" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.19 </span><span class="caption-text">Illustrative page with Engagement Button, Selection page and QR code page for the Credential offer</span><a class="headerlink" href="#id148" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="engagement-button">
@@ -507,11 +510,11 @@
 <p>Relying Parties MAY make available the Engagement Button in their Touchpoint's page to allow the User to use their services through a Wallet Instance.</p>
 <p>The Engagement Button:</p>
 <ul class="simple">
-<li><p>MUST be used exactly as outlined in the Official Resources and MUST NOT be redesigned ad hoc;</p></li>
-<li><p>MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden;</p></li>
-<li><p>MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements;</p></li>
-<li><p>MUST maintain a minimum distance from other elements (quiet zone) of at least 24px;</p></li>
-<li><p>MUST state in their label the action to be done followed by &quot;IT-Wallet&quot;, for example &quot;Login with IT-Wallet&quot;, &quot;Add to IT-Wallet&quot;, &quot;Verify with IT-Wallet&quot;;</p></li>
+<li><p>MUST be used exactly as outlined in the Official Resources and MUST NOT be redesigned ad hoc.</p></li>
+<li><p>MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden.</p></li>
+<li><p>MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements.</p></li>
+<li><p>MUST maintain a minimum distance from other elements (quiet zone) of at least 24px.</p></li>
+<li><p>MUST state in their label the action to be done followed by &quot;IT-Wallet&quot;, for example &quot;Login with IT-Wallet&quot;, &quot;Add to IT-Wallet&quot;, &quot;Verify with IT-Wallet&quot;.</p></li>
 <li><p>MAY be accompanied by text explaining the added value of performing that action using the IT-Wallet system.</p></li>
 <li><p>Actors wishing to integrate the Engagement Button into their Touchpoints MUST ensure that it is translated into other languages, at least English.</p></li>
 </ul>
@@ -531,8 +534,8 @@
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>opportunity and perceived value</strong>: what the EAA can attest, in which contexts of use and by whom;</p></li>
-<li><p><strong>ease of understanding</strong>: how simple and intuitive it is for those who use it and for those who verify it;</p></li>
+<li><p><strong>opportunity and perceived value</strong>: what the EAA can attest, in which contexts of use and by whom.</p></li>
+<li><p><strong>ease of understanding</strong>: how simple and intuitive it is for those who use it and for those who verify it.</p></li>
 <li><p><strong>communicative effectiveness</strong>: how recognizable or reliable it is perceived to be by those who use or verify it.</p></li>
 </ul>
 </div></blockquote>
@@ -541,14 +544,14 @@
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p>the provisions set out in these Technical Specifications, with a view to ensuring system consistency and adherence to the principles of usability [GL_DESIGN] and accessibility [REF_ACCESSIBILITY];</p></li>
-<li><p>the provisions of the Authentic Sources Registry and the Digital Credentials Catalog (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>);</p></li>
+<li><p>the provisions set out in these Technical Specifications, with a view to ensuring system consistency and adherence to the principles of usability [GL_DESIGN] and accessibility [REF_ACCESSIBILITY].</p></li>
+<li><p>the provisions of the Authentic Sources Registry and the Digital Credentials Catalog (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>).</p></li>
 <li><p>the UX/UI design of their Wallet Solution.</p></li>
 </ul>
 </div></blockquote>
 <p>In order to guide the Authentic Source in designing and the Wallet Provider in accurately representing an EAA, below are the elements to be considered and the structure to be adopted at the Detail View level:</p>
 <ul class="simple">
-<li><p><strong>EAA name</strong>, which is the official, distinctive and human-readable name of an EAA;</p></li>
+<li><p><strong>EAA name</strong>, which is the official, distinctive and human-readable name of an EAA.</p></li>
 <li><p><strong>Identification Attributes</strong> (if available), the User’s basic personal details in the following order:</p></li>
 </ul>
 <blockquote>
@@ -567,8 +570,8 @@
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>List of descriptions</strong>, which is a list of values relating to the same object;</p></li>
-<li><p><strong>List of Attributes with value</strong>, which is a list of additional objects with associated values;</p></li>
+<li><p><strong>List of descriptions</strong>, which is a list of values relating to the same object.</p></li>
+<li><p><strong>List of Attributes with value</strong>, which is a list of additional objects with associated values.</p></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -576,14 +579,14 @@
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Authentic Source name</strong>, which is the identifying name of the data owner or the official database holding the information behind the EAA, defined by the parameter <code class="docutils literal notranslate"><span class="pre">data_capabilities.data_origin</span></code>;</p></li>
+<li><p><strong>Authentic Source name</strong>, which is the identifying name of the data owner or the official database holding the information behind the EAA, defined by the parameter <code class="docutils literal notranslate"><span class="pre">data_capabilities.data_origin</span></code>.</p></li>
 <li><p><strong>Provider of Electronic Attestation of Attributes name</strong>, which is the identifying name of the entity that creates and issues the EAA, defined by the parameter <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>.</p></li>
 </ul>
 </div></blockquote>
-<figure class="align-center" id="id149">
+<figure class="align-center" id="id150">
 <a class="reference internal image-reference" href="_images/Focus-EAA-I-II-Level-ENG.svg"><img alt="Example of Electronic Attestation of Attributes layout, Detail View" src="_images/Focus-EAA-I-II-Level-ENG.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.21 </span><span class="caption-text">Example of Electronic Attestation of Attributes layout, Detail View.</span><a class="headerlink" href="#id149" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.21 </span><span class="caption-text">Example of Electronic Attestation of Attributes layout, Detail View.</span><a class="headerlink" href="#id150" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below are the detailed requirements for the design and the representation of EAA within the Wallet Solutions (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a> and <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>). In particular:</p>
@@ -591,34 +594,34 @@
 <ul class="simple">
 <li><p>MUST specify the <strong>EAA name</strong> using the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter. In particular, the Authentic Source:</p>
 <ul>
-<li><p>MUST use terms or phrases that correspond to or are similar to the name of any pre-existing version of the document to which the EAA corresponds, so as to facilitate recognition by the User;</p></li>
-<li><p>MUST use clear and simple terms, avoiding anglicisms, acronyms or technical terms where possible;</p></li>
+<li><p>MUST use terms or phrases that correspond to or are similar to the name of any pre-existing version of the document to which the EAA corresponds, so as to facilitate recognition by the User.</p></li>
+<li><p>MUST use clear and simple terms, avoiding anglicisms, acronyms or technical terms where possible.</p></li>
 <li><p>SHOULD define a short and concise name.</p></li>
 </ul>
 </li>
 <li><p>MUST specify the data owner or data source name using the parameter <code class="docutils literal notranslate"><span class="pre">data_capabilities.data_origin</span></code>. In particular, the Authentic Source:</p>
 <ul>
-<li><p>MUST use the official name to ensure maximum recognisability and trust by the User;</p></li>
-<li><p>MUST follow the structure “[Acronym] - [Name]” if it wishes to use an acronym alongside the full name (e.g. “ANIS - National Register of higher education”);</p></li>
+<li><p>MUST use the official name to ensure maximum recognisability and trust by the User.</p></li>
+<li><p>MUST follow the structure “[Acronym] - [Name]” if it wishes to use an acronym alongside the full name (e.g. “ANIS - National Register of higher education”).</p></li>
 <li><p>MAY follow the structure “[Primary entity acronym] - [Secondary entity name]” if it is useful to separate the acronym from the full name in order to add a further level of detail and enhance the recognisability and sense of reliability of the entity in charge (e.g. “MIT - General Directorate for Motor Vehicles”).</p></li>
 </ul>
 </li>
 <li><p>MAY provide the <strong>Authentic Source’s logo</strong> in two versions, a compact version via the <code class="docutils literal notranslate"><span class="pre">organization_info.logo_uri</span></code> parameter and an extended version via the <code class="docutils literal notranslate"><span class="pre">organization_info.logo_extended_uri</span></code> parameter. In particular, the Authentic Source:</p>
 <ul>
-<li><p>MUST provide the logo only in one of the following formats: <code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/svg+xml</span></code>, or <code class="docutils literal notranslate"><span class="pre">image/webp</span></code>;</p></li>
-<li><p>MUST provide the logo in both a positive and a negative version, if available;</p></li>
-<li><p>MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version;</p></li>
-<li><p>MUST provide the logo with an aspect ratio of 1:1, in its compact version;</p></li>
-<li><p>MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version;</p></li>
-<li><p>MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version;</p></li>
+<li><p>MUST provide the logo only in one of the following formats: <code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/svg+xml</span></code>, or <code class="docutils literal notranslate"><span class="pre">image/webp</span></code>.</p></li>
+<li><p>MUST provide the logo in both a positive and a negative version, if available.</p></li>
+<li><p>MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version.</p></li>
+<li><p>MUST provide the logo with an aspect ratio of 1:1, in its compact version.</p></li>
+<li><p>MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version.</p></li>
+<li><p>MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version.</p></li>
 <li><p>MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version.</p></li>
 </ul>
 </li>
 <li><p>MAY provide a distinctive <strong>EAA logo</strong> via the <code class="docutils literal notranslate"><span class="pre">data_capabilities.logo_uri</span></code> parameter. In particular, the Authentic Source:</p>
 <ul>
-<li><p>MUST provide the logo only in one of the following formats: <code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/svg+xml</span></code>, or <code class="docutils literal notranslate"><span class="pre">image/webp</span></code>;</p></li>
-<li><p>MUST provide the logo in both a positive and a negative version, if available;</p></li>
-<li><p>MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels;</p></li>
+<li><p>MUST provide the logo only in one of the following formats: <code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/svg+xml</span></code>, or <code class="docutils literal notranslate"><span class="pre">image/webp</span></code>.</p></li>
+<li><p>MUST provide the logo in both a positive and a negative version, if available.</p></li>
+<li><p>MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels.</p></li>
 <li><p>MUST provide the logo with a maximum file size of 150 KB.</p></li>
 </ul>
 </li>
@@ -631,55 +634,55 @@
 <ul>
 <li><p>MUST order the data according to the default structure:</p>
 <ul>
-<li><p>Identification Attributes (optional);</p></li>
-<li><p>Level I Attributes;</p></li>
-<li><p>Level II Attributes (optional);</p></li>
+<li><p>Identification Attributes (optional).</p></li>
+<li><p>Level I Attributes.</p></li>
+<li><p>Level II Attributes (optional).</p></li>
 </ul>
 </li>
-<li><p>MUST NOT exceed two levels of nesting in the organisation of attributes;</p></li>
-<li><p>SHOULD NOT exceed a maximum of 15 Attributes per level;</p></li>
-<li><p>SHOULD NOT exceed a maximum of 85 characters for Attribute values;</p></li>
+<li><p>MUST NOT exceed two levels of nesting in the organisation of attributes.</p></li>
+<li><p>SHOULD NOT exceed a maximum of 15 Attributes per level.</p></li>
+<li><p>SHOULD NOT exceed a maximum of 85 characters for Attribute values.</p></li>
 <li><p>SHOULD NOT exceed a maximum of 181 characters for the value of each description in the case of Level II Attributes with a “list of descriptions”.</p></li>
 </ul>
 </li>
 </ul>
 <p>The Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST clearly and accessibly display the identifying <strong>EAA name</strong> as defined by the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter within the <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>;</p></li>
+<li><p>MUST clearly and accessibly display the identifying <strong>EAA name</strong> as defined by the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter within the <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>.</p></li>
 <li><p>MUST clearly and accessibly display the <strong>EAA Attributes</strong>, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims_order</span></code> within the <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. In particular, the Wallet Provider:</p>
 <ul>
 <li><p>MUST represent the EAA in accordance with the predefined structure:</p>
 <ul>
-<li><p>EAA name;</p></li>
-<li><p>Identification Attributes (optional);</p></li>
-<li><p>Level I Attributes;</p></li>
-<li><p>Level II Attributes (optional);</p></li>
+<li><p>EAA name.</p></li>
+<li><p>Identification Attributes (optional).</p></li>
+<li><p>Level I Attributes.</p></li>
+<li><p>Level II Attributes (optional).</p></li>
 <li><p>Metadata.</p></li>
 </ul>
 </li>
-<li><p>MUST include the <strong>Authentic Source’s logo</strong> and/or the specific <strong>EAA logo</strong> if provided by the Authentic Source through the <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>;</p></li>
+<li><p>MUST include the <strong>Authentic Source’s logo</strong> and/or the specific <strong>EAA logo</strong> if provided by the Authentic Source through the <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
 <li><p>MUST ensure the adoption of the <strong>EAA color</strong> defined by the Authentic Source, if specified within the <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices.</p></li>
 </ul>
 </li>
 </ul>
 <p>The Wallet Provider is the ultimate responsible party for the visual presentation of the Electronic Attestation of Attributes within its Wallet Solutions. Therefore, to ensure a high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN], further user experience requirements are set out below. In particular, the Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST correctly display the EAA across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
-<li><p>MAY display the EAAs issued in the form of cards stacked in a list in the Preview View, in line with approaches already used by other digital wallets in the market;</p></li>
-<li><p>MUST optimize the EAA layout in the Preview View for scalability and usability, especially when multiple EAAs are displayed on the same screen;</p></li>
-<li><p>MUST display clearly the name of the EAA, as defined within the Digital Credentials Catalog via the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter (see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), in both the Detail View and the Preview View;</p></li>
-<li><p>MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked);</p></li>
-<li><p>MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo and/or the color, as defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>);</p></li>
-<li><p>MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA;</p></li>
-<li><p>MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update an EAA at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
-<li><p>MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see <a class="reference internal" href="#presentation-of-electronic-attestations"><span class="std std-ref">Presentation of Electronic Attestations</span></a>);</p></li>
+<li><p>MUST correctly display the EAA across all devices, ensuring a consistent experience on screens of varying sizes.</p></li>
+<li><p>MAY display the EAAs issued in the form of cards stacked in a list in the Preview View, in line with approaches already used by other digital wallets in the market.</p></li>
+<li><p>MUST optimize the EAA layout in the Preview View for scalability and usability, especially when multiple EAAs are displayed on the same screen.</p></li>
+<li><p>MUST display clearly the name of the EAA, as defined within the Digital Credentials Catalog via the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter (see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), in both the Detail View and the Preview View.</p></li>
+<li><p>MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked).</p></li>
+<li><p>MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo and/or the color, as defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>).</p></li>
+<li><p>MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>). MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA.</p></li>
+<li><p>MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update an EAA at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>).</p></li>
+<li><p>MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see <a class="reference internal" href="#presentation-of-electronic-attestations"><span class="std std-ref">Presentation of Electronic Attestations</span></a>).</p></li>
 <li><p>MUST display in the Detail View a method of assistance given by the Authentic Source via the <code class="docutils literal notranslate"><span class="pre">data_capabilities.contacts</span></code> parameter (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> and see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>).</p></li>
 </ul>
 <p>Below an example of Electronic Attestation of Attribute layout, in a Preview View, and Detail View.</p>
-<figure class="align-center" id="id151">
+<figure class="align-center" id="id152">
 <a class="reference internal image-reference" href="_images/Focus-EAA.svg"><img alt="Example of Electronic Attestation of Attribute layout, Preview View, and Detail View" src="_images/Focus-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.23 </span><span class="caption-text">Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.</span><a class="headerlink" href="#id151" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.23 </span><span class="caption-text">Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.</span><a class="headerlink" href="#id152" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -702,29 +705,29 @@
 <p>Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution.</p>
 <p><strong>Supervised Mode</strong></p>
 <ul class="simple">
-<li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User navigates to the feature dedicated to QR Code generation;</p></li>
-<li><p>The User presents the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system;</p></li>
-<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
+<li><p>The User accesses their Wallet Instance using the unlock method previously set.</p></li>
+<li><p>The User navigates to the feature dedicated to QR Code generation.</p></li>
+<li><p>The User presents the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system.</p></li>
+<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p><strong>Unsupervised Mode</strong></p>
 <ul class="simple">
-<li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User navigates to the feature dedicated to QR Code generation;</p></li>
-<li><p>The User presents the generated QR Code to the designated device (e.g., a turnstile) of the Relying Party for scanning;</p></li>
-<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
+<li><p>The User accesses their Wallet Instance using the unlock method previously set.</p></li>
+<li><p>The User navigates to the feature dedicated to QR Code generation.</p></li>
+<li><p>The User presents the generated QR Code to the designated device (e.g., a turnstile) of the Relying Party for scanning.</p></li>
+<li><p>The User reviews their requested personal identification data and/or EAA data, the name of the requesting Service Provider, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id153">
+<figure class="align-center" id="id154">
 <a class="reference internal image-reference" href="_images/proximity-presentation-1.svg"><img alt="Example of User Experience in proximity presentation" src="_images/proximity-presentation-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.25 </span><span class="caption-text">Example of User Experience in proximity presentation.</span><a class="headerlink" href="#id153" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.25 </span><span class="caption-text">Example of User Experience in proximity presentation.</span><a class="headerlink" href="#id154" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -733,51 +736,51 @@
 <p>Remote presentation allows the User to present their personal identification data and/or EAA data by interacting with a Relying Party's Touchpoint through the designated <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>.</p>
 <p>This presentation can occur in two different modes, depending on the type of device used to access the service:</p>
 <ul class="simple">
-<li><p><strong>Same-device mode</strong>: when the User accesses an online digital service integrated with a special verification system (<a class="reference internal" href="relying-party-instance.html#web-relying-party-instance"><span class="std std-ref">Web Relying Party Instance</span></a>) using the same device which the Wallet Instance is installed on;</p></li>
+<li><p><strong>Same-device mode</strong>: when the User accesses an online digital service integrated with a special verification system (<a class="reference internal" href="relying-party-instance.html#web-relying-party-instance"><span class="std std-ref">Web Relying Party Instance</span></a>) using the same device which the Wallet Instance is installed on.</p></li>
 <li><p><strong>Cross-device mode</strong>: when the User accesses a digital service integrated with a special verification system (<a class="reference internal" href="relying-party-instance.html#web-relying-party-instance"><span class="std std-ref">Web Relying Party Instance</span></a>) using a different device from the one which the Wallet Instance is installed on.</p></li>
 </ul>
 <p>Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution.</p>
 <p><strong>Same-Device Mode</strong></p>
 <ul class="simple">
-<li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Relying Party's Touchpoint;</p></li>
-<li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
-<li><p>The User accesses their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
-<li><p>The User receives confirmation of the successful presentation within the Wallet Instance;</p></li>
+<li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Relying Party's Touchpoint.</p></li>
+<li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p></li>
+<li><p>The User accesses their Wallet Instance using the unlock method previously set.</p></li>
+<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
+<li><p>The User receives confirmation of the successful presentation within the Wallet Instance.</p></li>
 <li><p>The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id155">
+<figure class="align-center" id="id156">
 <a class="reference internal image-reference" href="_images/Remote-presentation-same-device-1.svg"><img alt="Example of User Experience in remote, same-device presentation" src="_images/Remote-presentation-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.27 </span><span class="caption-text">Example of User Experience in remote, same-device presentation.</span><a class="headerlink" href="#id155" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.27 </span><span class="caption-text">Example of User Experience in remote, same-device presentation.</span><a class="headerlink" href="#id156" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Cross-Device Mode</strong></p>
 <ul class="simple">
-<li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;</p></li>
-<li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
-<li><p>The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section;</p></li>
-<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation;</p></li>
-<li><p>The User authorizes the operation using the unlock method previously set;</p></li>
-<li><p>The User receives confirmation of the successful presentation within the Wallet Instance;</p></li>
+<li><p>The User clicks the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a> provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed.</p></li>
+<li><p>The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p></li>
+<li><p>The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device. The QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p></li>
+<li><p>The User reviews the requested personal identification data and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory data (Selective Disclosure). The User provides consent to proceed or cancels the operation.</p></li>
+<li><p>The User authorizes the operation using the unlock method previously set.</p></li>
+<li><p>The User receives confirmation of the successful presentation within the Wallet Instance.</p></li>
 <li><p>The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id158">
+<figure class="align-center" id="id159">
 <a class="reference internal image-reference" href="_images/Remote-presentation-cross-device-1.svg"><img alt="Example of User Experience in remote, cross-device presentation" src="_images/Remote-presentation-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.30 </span><span class="caption-text">Example of User Experience in remote, cross-device presentation.</span><a class="headerlink" href="#id158" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.30 </span><span class="caption-text">Example of User Experience in remote, cross-device presentation.</span><a class="headerlink" href="#id159" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Following is represented for illustrative purposes the page with the <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the <a class="reference internal" href="#remote-presentation"><span class="std std-ref">Remote Presentation</span></a> flow.</p>
-<figure class="align-center" id="id162">
+<figure class="align-center" id="id163">
 <a class="reference internal image-reference" href="_images/remote-presentation.svg"><img alt="Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation" src="_images/remote-presentation.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.34 </span><span class="caption-text">Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation</span><a class="headerlink" href="#id162" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.34 </span><span class="caption-text">Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="authentication">
@@ -787,16 +790,16 @@
 <p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>.</p>
 <p>To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].</p>
 <p>Both flows are shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id165">
+<figure class="align-center" id="id166">
 <a class="reference internal image-reference" href="_images/Authentication-same-device-1.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Authentication-same-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.37 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id165" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.37 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id166" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id168">
+<figure class="align-center" id="id169">
 <a class="reference internal image-reference" href="_images/Authentication-cross-device-1.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Authentication-cross-device-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.40 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id168" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.40 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id169" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Relying Parties SHOULD use the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.</p>
@@ -806,10 +809,10 @@
 </div>
 <p>Relying Parties MUST implement and provide the following pages as part of the Authentication process:</p>
 <ul class="simple">
-<li><p><strong>Discovery Page</strong>: lists all the available Authentication methods;</p></li>
-<li><p><strong>Selection Page</strong>: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with;</p></li>
-<li><p><strong>QR Code Page</strong> (<em>cross-device only</em>): prompts the User to scan a QR code;</p></li>
-<li><p><strong>Thank You Page</strong>: confirms the successful Authentication;</p></li>
+<li><p><strong>Discovery Page</strong>: lists all the available Authentication methods.</p></li>
+<li><p><strong>Selection Page</strong>: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with.</p></li>
+<li><p><strong>QR Code Page</strong> (<em>cross-device only</em>): prompts the User to scan a QR code.</p></li>
+<li><p><strong>Thank You Page</strong>: confirms the successful Authentication.</p></li>
 <li><p><strong>Error Page</strong>: displays error messages related to the Authentication process.</p></li>
 </ul>
 <p>Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:</p>
@@ -820,17 +823,17 @@
 <p>Specific requirements for each individual page are detailed below.</p>
 <p><strong>Discovery Page</strong></p>
 <p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id173">
+<figure class="align-center" id="id174">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Layout Model of Discovery Page in grid" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.45 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id173" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.45 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id174" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a> section.</p>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST display all available Digital Identity Authentication methods, including the IT-Wallet System Authentication through the Authentication Button;</p></li>
-<li><p>MAY also present alternative Authentication methods, if available;</p></li>
+<li><p>MUST display all available Digital Identity Authentication methods, including the IT-Wallet System Authentication through the Authentication Button.</p></li>
+<li><p>MAY also present alternative Authentication methods, if available.</p></li>
 <li><p>SHOULD provide essential supporting information to help the User make an informed and conscious choice.</p></li>
 </ul>
 <p>If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR Code Page.</p>
@@ -842,77 +845,77 @@
 <p>This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>.</p>
 </div>
 <p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id175">
+<figure class="align-center" id="id176">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.47 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id175" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.47 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id176" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the <a class="reference internal" href="brand-identity.html#visual-identity"><span class="std std-ref">Visual Identity</span></a> section;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
-<li><p>MUST present each Wallet Solution in the IT-Wallet System Register through a modular component that displays the logo and name in full retrieved as described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>;</p></li>
-<li><p>MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when the Wallet Solution number is less than 2, the Selection Page MUST distribute the Wallet Solutions within a center-column layout. Otherwise, when the Wallet Solution number is equal or superior than 3, the Selection Page MUST distribute the Wallet Solutions in a 2-column grid; in all cases random sorting MUST be guaranteed;</p></li>
-<li><p>MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present;</p></li>
-<li><p>MUST allow the User to find out, when needed, which Wallet Solutions are available in the IT-Wallet System Register by preparing a cross-reference to the official site of the IT-Wallet System;</p></li>
+<li><p>MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the <a class="reference internal" href="brand-identity.html#visual-identity"><span class="std std-ref">Visual Identity</span></a> section.</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
+<li><p>MUST present each Wallet Solution in the IT-Wallet System Register through a modular component that displays the logo and name in full retrieved as described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>.</p></li>
+<li><p>MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when the Wallet Solution number is less than 2, the Selection Page MUST distribute the Wallet Solutions within a center-column layout. Otherwise, when the Wallet Solution number is equal or superior than 3, the Selection Page MUST distribute the Wallet Solutions in a 2-column grid. In all cases random sorting MUST be guaranteed.</p></li>
+<li><p>MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present.</p></li>
+<li><p>MUST allow the User to find out, when needed, which Wallet Solutions are available in the IT-Wallet System Register by preparing a cross-reference to the official site of the IT-Wallet System.</p></li>
 <li><p>MUST include a Call to Action that allows the User to abort the operation and return to the previous page (e.g., the Discovery Page in case of an Authentication process).</p></li>
 </ul>
 <p>The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.</p>
 <p>Relying Parties MUST implement the QR Code Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id180">
+<figure class="align-center" id="id181">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.52 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id180" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.52 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id181" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
-<li><p>MUST include a Call To Action allowing the User to generate a new QR code, if it has an expiration;</p></li>
+<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo.</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
+<li><p>MUST include a Call To Action allowing the User to generate a new QR code, if it has an expiration.</p></li>
 <li><p>MUST include a Call To Action allowing the User to cancel the operation and return to the Discovery Page.</p></li>
 </ul>
 <p>Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the Relying Parties:</p>
 <ul class="simple">
-<li><p>MUST respect the minimum recommended dimensions to ensure effective scanning. A size of 150x150 pixels is generally adequate, but for codes with high data density (e.g. long URLs or numerous characters), it is advisable to increase it to 300x300 pixels or more;</p></li>
-<li><p>MUST ensure minimum contrast between the QR code and the background (the ideal condition provides for a white background with a black QR code);</p></li>
-<li><p>MUST avoid color inversions between background and QR code;</p></li>
-<li><p>MUST limit the presence to only one QR code per page;</p></li>
-<li><p>MUST ensure sharpness and high quality;</p></li>
-<li><p>MUST ensure SVG format;</p></li>
+<li><p>MUST respect the minimum recommended dimensions to ensure effective scanning. A size of 150x150 pixels is generally adequate, but for codes with high data density (e.g. long URLs or numerous characters), it is advisable to increase it to 300x300 pixels or more.</p></li>
+<li><p>MUST ensure minimum contrast between the QR code and the background (the ideal condition provides for a white background with a black QR code).</p></li>
+<li><p>MUST avoid color inversions between background and QR code.</p></li>
+<li><p>MUST limit the presence to only one QR code per page.</p></li>
+<li><p>MUST ensure sharpness and high quality.</p></li>
+<li><p>MUST ensure SVG format.</p></li>
 <li><p>MUST ensure that it is not partially hidden by text or other elements.</p></li>
 </ul>
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.</p>
 <p>Relying Parties MUST implement the Thank You Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id182">
+<figure class="align-center" id="id183">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.54 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id182" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.54 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id183" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
+<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message.</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 <li><p>MUST include a Call To Action prompting the User to proceed to the Touchpoint authenticated area.</p></li>
 </ul>
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>Relying Parties MUST implement the Error Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id184">
+<figure class="align-center" id="id185">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.56 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id184" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.56 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id185" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
+<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error.</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 <li><p>MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).</p></li>
 </ul>
 <section id="authentication-button">
@@ -921,55 +924,55 @@
 <p>Relying Parties MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services using the Wallet Instance under their control.</p>
 <p>The Authentication Button has the following requirements:</p>
 <ul class="simple">
-<li><p>The Authentication Button MUST be used exactly as outlined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST NOT be redesigned ad hoc;</p></li>
-<li><p>The Authentication Button MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden;</p></li>
-<li><p>The Authentication Button MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements;</p></li>
-<li><p>Actors wishing to integrate the Authentication Button into their Technical Solution MUST ensure that it is translated into other languages, at least English;</p></li>
-<li><p>The Authentication Button MUST maintain a minimum distance from other elements (<code class="docutils literal notranslate"><span class="pre">quiet</span> <span class="pre">zone</span></code>) of at least 24px;</p></li>
-<li><p>The Authentication Button MUST state &quot;Login with IT-Wallet&quot;;</p></li>
-<li><p>The Authentication Button SHOULD always be accompanied by an external link (e.g., &quot;Learn more&quot;) that links to the official website of the IT-Wallet System, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section;</p></li>
+<li><p>The Authentication Button MUST be used exactly as outlined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST NOT be redesigned ad hoc.</p></li>
+<li><p>The Authentication Button MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden.</p></li>
+<li><p>The Authentication Button MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements.</p></li>
+<li><p>Actors wishing to integrate the Authentication Button into their Technical Solution MUST ensure that it is translated into other languages, at least English.</p></li>
+<li><p>The Authentication Button MUST maintain a minimum distance from other elements (<code class="docutils literal notranslate"><span class="pre">quiet</span> <span class="pre">zone</span></code>) of at least 24px.</p></li>
+<li><p>The Authentication Button MUST state &quot;Login with IT-Wallet&quot;.</p></li>
+<li><p>The Authentication Button SHOULD always be accompanied by an external link (e.g., &quot;Learn more&quot;) that links to the official website of the IT-Wallet System, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section.</p></li>
 <li><p>Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text: &quot;IT-Wallet is the Italian digital wallet system that allows you to authenticate online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.&quot;.</p></li>
 </ul>
 <p>Below are some non-mandatory examples of Authentication Button layout:</p>
-<figure class="align-center" id="id186">
+<figure class="align-center" id="id187">
 <a class="reference internal image-reference" href="_images/authentication-button-layout.svg"><img alt="Variants of Authentication Button layout" src="_images/authentication-button-layout.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.58 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id186" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.58 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id187" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
-<figure class="align-center" id="id188">
+<figure class="align-center" id="id189">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="Examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.60 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id188" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.60 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id189" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
 <p><strong>&quot;Login with IT-Wallet&quot; button - html code</strong></p>
 <p>The button is available in three variants of dimensions (S - default / M / L) as per the .Italia Design System, and in &quot;get&quot; (call to an external page) and &quot;post&quot; (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:</p>
 <ul class="simple">
-<li><p>the fixed-width version with icon on the left and centered text;</p></li>
+<li><p>the fixed-width version with icon on the left and centered text.</p></li>
 <li><p>the fixed‑width version with icon and text centered.</p></li>
 </ul>
 <p>The Official Resource of the Authentication Button is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> of these Technical Specification.</p>
 <p><strong>&quot;Login with IT-Wallet&quot; button – svg</strong>
 For further information on the Authentication button refer to the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section. The Authentication button Official Resource is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section of these Technical Specifications.</p>
-<figure class="align-center" id="id190">
+<figure class="align-center" id="id191">
 <a class="reference internal image-reference" href="_images/Authentication-button-ENG_size_variants.svg"><img alt="Authentication button in its dimension variants" src="_images/Authentication-button-ENG_size_variants.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.62 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id190" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.62 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id191" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id192">
+<figure class="align-center" id="id193">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg"><img alt="Authentication button fixed justified" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.64 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id192" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.64 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id193" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id194">
+<figure class="align-center" id="id195">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg"><img alt="Authentication button fixed centered" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.66 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id194" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.66 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id195" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -981,8 +984,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>The Wallet Provider, via their Wallet Solution, and the PID provider or Electronic Attestations of Attributes Provider, via dedicated Touchpoints, MUST let the User manage their Electronic Attestations at any time.</p>
 <p>This section outlines three different categories of requirements for managing each Electronic Attestations, specifically regarding:</p>
 <ul class="simple">
-<li><p><strong>Its status</strong>: to allow the User to verify whether an Electronic Attestation is valid or invalid;</p></li>
-<li><p><strong>Its usage</strong>: to enable the User to view and manage the history of presentations carried out with an Electronic Attestation;</p></li>
+<li><p><strong>Its status</strong>: to allow the User to verify whether an Electronic Attestation is valid or invalid.</p></li>
+<li><p><strong>Its usage</strong>: to enable the User to view and manage the history of presentations carried out with an Electronic Attestation.</p></li>
 <li><p><strong>Its data</strong>: to allow the User to back up and restore each Electronic Attestation of Attributes, and to migrate to a new  Wallet Instance of the same or a different Wallet Solution, in compliance with the principle of data portability. See <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p></li>
 </ul>
 <p>Below are the key aspects that impact and define the User Experience in managing Electronic Attestations though the Wallet Instance, along with the functional requirements associated with each category.</p>
@@ -991,11 +994,11 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations issued within their Wallet Instance, based on the information received from the Electronic Attestations Provider, which manages their lifecycle.</p>
 <p>The admissible statuses for an Electronic Attestation are as follows:</p>
 <ul class="simple">
-<li><p><strong>Valid</strong> (<code class="docutils literal notranslate"><span class="pre">valid</span></code>): the EAA is issued without any evidence of criticalities or issues. In this case, the Wallet Instance MUST guarantee the User full presentation functionalities, both in proximity and remote scenarios;</p></li>
+<li><p><strong>Valid</strong> (<code class="docutils literal notranslate"><span class="pre">valid</span></code>): the EAA is issued without any evidence of criticalities or issues. In this case, the Wallet Instance MUST guarantee the User full presentation functionalities, both in proximity and remote scenarios.</p></li>
 <li><p><strong>Suspended</strong> (<code class="docutils literal notranslate"><span class="pre">suspended</span></code>): the EAA is temporarily invalid, in a reversible condition (e.g., suspended driving license). In this case, the Wallet Instance:</p>
 <ul>
-<li><p>MUST provide the User with adequate evidence of this status;</p></li>
-<li><p>MUST invite the User to wait for the EAA to automatically return to a valid status at the end of the suspension period;</p></li>
+<li><p>MUST provide the User with adequate evidence of this status.</p></li>
+<li><p>MUST invite the User to wait for the EAA to automatically return to a valid status at the end of the suspension period.</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </li>
@@ -1008,8 +1011,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 </li>
 <li><p>If one or more of the EAA Attributes are obsolete:</p>
 <ul>
-<li><p>MUST provide the User with adequate evidence;</p></li>
-<li><p>MUST invite the User to update the EAA through a new issuance process;</p></li>
+<li><p>MUST provide the User with adequate evidence.</p></li>
+<li><p>MUST invite the User to update the EAA through a new issuance process.</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </li>
@@ -1017,15 +1020,15 @@ For further information on the Authentication button refer to the Brand Manual, 
 </li>
 <li><p><strong>Invalid</strong> (<code class="docutils literal notranslate"><span class="pre">invalid</span></code>): the EAA is invalid, in an irreversible condition (e.g., revoked driving license). In this case, the Wallet Instance:</p>
 <ul>
-<li><p>MUST provide the User with adequate evidence;</p></li>
-<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA);</p></li>
+<li><p>MUST provide the User with adequate evidence.</p></li>
+<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA).</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </li>
 </ul>
 <p>In addition to the statuses listed above, it should be specified that an EAA is subject to expiration. Two types of expiration are distinguished:</p>
 <ul class="simple">
-<li><p><strong>Administrative expiration</strong>: characterizes certain EAAs and is provided by the Authentic Source within the Attributes of the EAA itself (e.g., driving license expiration date);</p></li>
+<li><p><strong>Administrative expiration</strong>: characterizes certain EAAs and is provided by the Authentic Source within the Attributes of the EAA itself (e.g., driving license expiration date).</p></li>
 <li><p><strong>Technical expiration</strong>: characterizes all EAAs and is defined by the Authentic Source in synergy with the Electronic Attestations Provider with the aim of mitigating security risks. This expiration is generally set at 1 year or, in any case, at a period less than or equal to the administrative expiration date.</p></li>
 </ul>
 <p>Consequently, the EAA assumes the following additional statuses:</p>
@@ -1034,8 +1037,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <ul>
 <li><p>If the administrative expiration is approaching (e.g. 30 days remaining):</p>
 <ul class="simple">
-<li><p>SHOULD provide the User with adequate evidence;</p></li>
-<li><p>SHOULD invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the driving license at the competent offices);</p></li>
+<li><p>SHOULD provide the User with adequate evidence.</p></li>
+<li><p>SHOULD invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the driving license at the competent offices).</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios.</p></li>
 </ul>
 </li>
@@ -1046,7 +1049,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p>MUST replace the previous one without resulting in unexpected duplicates, disruption or notification to the User;</p></li>
+<li><p>MUST replace the previous one without resulting in unexpected duplicates, disruption or notification to the User.</p></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -1054,8 +1057,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p>MUST provide the User with adequate evidence of the potential loss of entitlement to the EAA itself;</p></li>
-<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA);</p></li>
+<li><p>MUST provide the User with adequate evidence of the potential loss of entitlement to the EAA itself.</p></li>
+<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA).</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </div></blockquote>
@@ -1074,15 +1077,15 @@ For further information on the Authentication button refer to the Brand Manual, 
 <ul class="simple">
 <li><p>If the administrative expiration date has passed:</p>
 <ul>
-<li><p>MUST provide the User with adequate evidence;</p></li>
-<li><p>MUST invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the license at the competent offices);</p></li>
+<li><p>MUST provide the User with adequate evidence.</p></li>
+<li><p>MUST invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the license at the competent offices).</p></li>
 <li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </li>
 <li><p>If the technical expiration date has passed (automatic update not performed or failed):</p>
 <ul>
-<li><p>MUST provide the User with adequate evidence, distinguishing this specific case from an administrative expiration;</p></li>
-<li><p>MUST invite the User to update the EAA by initiating an EAA re-issuance flow;</p></li>
+<li><p>MUST provide the User with adequate evidence, distinguishing this specific case from an administrative expiration.</p></li>
+<li><p>MUST invite the User to update the EAA by initiating an EAA re-issuance flow.</p></li>
 <li><p>MUST allow the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
 </li>
@@ -1091,16 +1094,16 @@ For further information on the Authentication button refer to the Brand Manual, 
 </ul>
 <p>Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:</p>
 <ul class="simple">
-<li><p>The User sees in the Electronic Attestation Preview View that its status is not valid;</p></li>
-<li><p>The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and MAY find out more information;</p></li>
-<li><p>The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and MAY close the message or proceed with any action requested by the Electronic Attestation Provider;</p></li>
+<li><p>The User sees in the Electronic Attestation Preview View that its status is not valid.</p></li>
+<li><p>The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and MAY find out more information.</p></li>
+<li><p>The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and MAY close the message or proceed with any action requested by the Electronic Attestation Provider.</p></li>
 <li><p>The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p></li>
 </ul>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id196">
+<figure class="align-default" id="id197">
 <a class="reference internal image-reference" href="_images/Update-EAA.svg"><img alt="Example of User Experience in Updating an Electronic Attestation" src="_images/Update-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.68 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id196" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.68 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id197" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="revocation-of-electronic-attestations">
@@ -1110,8 +1113,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><p><strong>Active revocation</strong>: This refers to the revocation of an Electronic Attestation at the User's request. This process affects only the Electronic Attestation and not its corresponding physical document, if one exists. Below is an illustrative list of scenarios in which the Wallet Provider MUST give the User the ability to request the revocation of an Electronic Attestation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The User decides they no longer wish to use a specific Electronic Attestation;</p></li>
-<li><p>The User decides to deactivate their Wallet Instance, thereby revoking all previously obtained Electronic Attestations;</p></li>
+<li><p>The User decides they no longer wish to use a specific Electronic Attestation.</p></li>
+<li><p>The User decides to deactivate their Wallet Instance, thereby revoking all previously obtained Electronic Attestations.</p></li>
 <li><p>The User no longer has possession of the device on which their Wallet Instance is installed due to loss or theft.</p></li>
 </ul>
 </div></blockquote>
@@ -1119,8 +1122,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><p><strong>Passive revocation</strong>: This refers to the revocation of an Electronic Attestation managed by the respective Electronic Attestation Provider on behalf of the Authentic Source. In this case, the Wallet Instance MUST inform the User of the status change of the Electronic Attestation and the Electronic Attestation Provider MAY additionally notify the User via other Touchpoints. Below is an illustrative list of scenarios that could lead to the revocation of an Electronic Attestation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The physical document corresponding to the Electronic Attestation has been reported lost or damaged by the User through the appropriate channel/ Touchpoint;</p></li>
-<li><p>The physical document corresponding to the Electronic Attestation has been revoked by the competent authorities;</p></li>
+<li><p>The physical document corresponding to the Electronic Attestation has been reported lost or damaged by the User through the appropriate channel/ Touchpoint.</p></li>
+<li><p>The physical document corresponding to the Electronic Attestation has been revoked by the competent authorities.</p></li>
 <li><p>The minimum security and/ or reliability requirements for one or more involved parties are no longer met.</p></li>
 <li><p>The User's device no longer meets the minimum security requirements (rooted or jailbroken).</p></li>
 </ul>
@@ -1128,15 +1131,15 @@ For further information on the Authentication button refer to the Brand Manual, 
 </li>
 </ul>
 <p>Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:
-- The User opens the Detailed view of the Electronic Attestation that they want to revoke;
-- The User selects the Call to Action to revoke the Electronic Attestation;
-- The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
+- The User opens the Detailed view of the Electronic Attestation that they want to revoke.
+- The User selects the Call to Action to revoke the Electronic Attestation.
+- The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation.
 - The User sees the successful outcome of the revocation.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id198">
+<figure class="align-center" id="id199">
 <a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet-1.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id198" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id199" title="Link to this image">¶</a></p>
 <div class="legend">
 <p>Example of User Experience in Revoking an Electronic Attestation.</p>
 </div>
@@ -1148,9 +1151,9 @@ For further information on the Authentication button refer to the Brand Manual, 
 <h3><span class="section-number">4.6.2. </span>Transaction Logging<a class="headerlink" href="#transaction-logging" title="Link to this heading">¶</a></h3>
 <p>To ensure the principles of visibility and transparency, the Wallet Provider MUST provide a user-friendly dashboard in the Wallet Instance that allows the User to view the history of transactions performed using their Wallet Instance (e.g., Electronic Attestation issuance or presentation). In particular, the dashboard MUST:</p>
 <ul class="simple">
-<li><p>provide an overview of all recorded transactions and allow the User to access detailed views of individual transactions;</p></li>
-<li><p>enable the User, where a transaction involves a Relying Party, to easily initiate a data deletion request to the corresponding Relying Party (using logged contact information);</p></li>
-<li><p>support export of one or more transaction records to a file;</p></li>
+<li><p>provide an overview of all recorded transactions and allow the User to access detailed views of individual transactions.</p></li>
+<li><p>enable the User, where a transaction involves a Relying Party, to easily initiate a data deletion request to the corresponding Relying Party (using logged contact information).</p></li>
+<li><p>support export of one or more transaction records to a file.</p></li>
 <li><p>allow the User to delete one or more transaction records with prior warning.</p></li>
 </ul>
 </section>
@@ -1158,8 +1161,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <h3><span class="section-number">4.6.3. </span>Backup and Restore of Electronic Attestation of Attributes<a class="headerlink" href="#backup-and-restore-of-electronic-attestation-of-attributes" title="Link to this heading">¶</a></h3>
 <p>With the aim of ensuring the principle of data portability, the Wallet Solution MUST guarantee the User to have access to specific functionalities, particularly to:</p>
 <ul class="simple">
-<li><p>Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance, as specified in <a class="reference internal" href="backup-restore.html#backup-flow"><span class="std std-ref">Backup Flow</span></a>;</p></li>
-<li><p>Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in <a class="reference internal" href="backup-restore.html#restore-flow-for-a-device-bound-credential"><span class="std std-ref">Restore flow for a Device-Bound Credential</span></a>;</p></li>
+<li><p>Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance, as specified in <a class="reference internal" href="backup-restore.html#backup-flow"><span class="std std-ref">Backup Flow</span></a>.</p></li>
+<li><p>Request the restore of their Electronic Attestations of Attributes on another Wallet Instance, as specified in <a class="reference internal" href="backup-restore.html#restore-flow-for-a-device-bound-credential"><span class="std std-ref">Restore flow for a Device-Bound Credential</span></a>.</p></li>
 <li><p>Request migration to a new Wallet Instance through the migration object specified in <a class="reference internal" href="backup-restore.html#migration-to-a-different-wallet-solution"><span class="std std-ref">Migration to a Different Wallet Solution</span></a>.</p></li>
 </ul>
 </section>
@@ -1171,8 +1174,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><p>By the User, in cases such as:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The device has been lost or stolen;</p></li>
-<li><p>The device has been compromised;</p></li>
+<li><p>The device has been lost or stolen.</p></li>
+<li><p>The device has been compromised.</p></li>
 <li><p>The device has been reset to factory settings.</p></li>
 </ul>
 </div></blockquote>
@@ -1187,27 +1190,27 @@ For further information on the Authentication button refer to the Brand Manual, 
 </ul>
 <p>The Wallet Provider MUST guarantee the User the ability to voluntarily deactivate their Wallet Instance through:</p>
 <ul class="simple">
-<li><p>The Wallet Instance itself;</p></li>
-<li><p>A Touchpoint (e.g., a website) provided by the Wallet Provider;</p></li>
+<li><p>The Wallet Instance itself.</p></li>
+<li><p>A Touchpoint (e.g., a website) provided by the Wallet Provider.</p></li>
 <li><p>The device's app store, by uninstalling the Wallet Instance.</p></li>
 </ul>
 <p>Below are the functional and User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:</p>
 <ul class="simple">
-<li><p>The User accesses their Wallet Instance using the previously configured unlock method or Authenticates at the Touchpoint provided by the Wallet Provider;</p></li>
-<li><p>The User selects the Wallet Instance deactivation functionality;</p></li>
-<li><p>The User is informed that deactivating the Wallet Instance will invalidate previously obtained Electronic Attestations;</p></li>
-<li><p>The User confirms the action to proceed with deactivation, or cancels the operation;</p></li>
-<li><p>The User receives confirmation of successful deactivation;</p></li>
+<li><p>The User accesses their Wallet Instance using the previously configured unlock method or Authenticates at the Touchpoint provided by the Wallet Provider.</p></li>
+<li><p>The User selects the Wallet Instance deactivation functionality.</p></li>
+<li><p>The User is informed that deactivating the Wallet Instance will invalidate previously obtained Electronic Attestations.</p></li>
+<li><p>The User confirms the action to proceed with deactivation, or cancels the operation.</p></li>
+<li><p>The User receives confirmation of successful deactivation.</p></li>
 <li><p>The User is notified that the Wallet Instance is inactive when logging in again.</p></li>
 </ul>
 <p>The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the <a class="reference internal" href="#activation-of-the-wallet-instance"><span class="std std-ref">Activation of the Wallet Instance</span></a> section.</p>
 <p>Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a> and <a class="reference internal" href="#backup-and-restore-of-electronic-attestation-of-attributes"><span class="std std-ref">Backup and Restore of Electronic Attestation of Attributes</span></a>.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id200">
+<figure class="align-default" id="id201">
 <a class="reference internal image-reference" href="_images/wallet-deactivation.svg"><img alt="Example of User Experience in Deactivating a Wallet Instance" src="_images/wallet-deactivation.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.72 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id200" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.72 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id201" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1217,11 +1220,11 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>Effective communication in case of an error also provides benefits for the actors involved, as it contributes to the reduction of assistance requests and, thus, to the minimisation of the impact on support systems.</p>
 <p>Each Primary Actor MUST implement a proper error management, in compliance with current Technical Specification, in order to communicate errors and exceptions to the User and through the IT-Wallet Instance. Errors can be categorized, based on their nature, as follows:</p>
 <ul class="simple">
-<li><p><strong>The stage of the User Experience</strong> where the error may occur: activation or deactivation of the Wallet Instance, obtaining, presenting, or managing Electronic Attestations of Attributes;</p></li>
-<li><p><strong>The type of error</strong>: system error, communication error between actors, etc.;</p></li>
-<li><p><strong>The actor responsible</strong> for the error: Wallet Provider, PID Provider, Electronic Attestations of Attributes Provider, Authentic Source;</p></li>
-<li><p><strong>The way the error is displayed</strong>: message on the page, banner, toast message, and so on;</p></li>
-<li><p><strong>Suggested actions for the User</strong> to resolve the error: suggestion to wait, request to try again, referral to FAQs and/or customer care, etc.;</p></li>
+<li><p><strong>The stage of the User Experience</strong> where the error may occur: activation or deactivation of the Wallet Instance, obtaining, presenting, or managing Electronic Attestations of Attributes.</p></li>
+<li><p><strong>The type of error</strong>: system error, communication error between actors, etc..</p></li>
+<li><p><strong>The actor responsible</strong> for the error: Wallet Provider, PID Provider, Electronic Attestations of Attributes Provider, Authentic Source.</p></li>
+<li><p><strong>The way the error is displayed</strong>: message on the page, banner, toast message, and so on.</p></li>
+<li><p><strong>Suggested actions for the User</strong> to resolve the error: suggestion to wait, request to try again, referral to FAQs and/or customer care, etc..</p></li>
 <li><p><strong>The method for error management</strong>: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p></li>
 </ul>
 <p>Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. The detailed list of errors to be managed for each interaction endpoint with the User is available in the dedicated error sections within <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a>.</p>
@@ -1356,7 +1359,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 </tr>
 </tbody>
 </table>
-<p>In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User's decision to abandon or cancel a flow (e.g. Activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User's choice, and it MAY include a Call to Action to continue.</p>
+<p>In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User's decision to abandon or cancel a flow (e.g. activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User's choice, and it MAY include a Call to Action to continue.</p>
 </section>
 </section>
 <section id="user-assistance">
@@ -1378,11 +1381,11 @@ For further information on the Authentication button refer to the Brand Manual, 
 </div></blockquote>
 <p>Below are the User Experience requirements that the Wallet Solution Provider MUST guarantee through their own Wallet Solution:</p>
 <ul class="simple">
-<li><p>The User accesses to assistance options at any point during the User Experience, with a clear indication of how to access them;</p></li>
-<li><p>The User opens an assistance request through their Wallet Instance or other Touchpoints provided by the Wallet Provider;</p></li>
-<li><p>When a support request is open, the User receives prompt confirmation that the request has been acknowledged;</p></li>
-<li><p>The User is informed in advance if it is necessary to present their data with third parties;</p></li>
-<li><p>The User is informed when an assistance request needs to be managed outside of their Wallet Instance, such as on third-party channels;</p></li>
+<li><p>The User accesses to assistance options at any point during the User Experience, with a clear indication of how to access them.</p></li>
+<li><p>The User opens an assistance request through their Wallet Instance or other Touchpoints provided by the Wallet Provider.</p></li>
+<li><p>When a support request is open, the User receives prompt confirmation that the request has been acknowledged.</p></li>
+<li><p>The User is informed in advance if it is necessary to present their data with third parties.</p></li>
+<li><p>The User is informed when an assistance request needs to be managed outside of their Wallet Instance, such as on third-party channels.</p></li>
 <li><p>The User tracks the status of the request at any time through functionalities that MUST be made available by the actors dealing with the request.</p></li>
 </ul>
 </section>
@@ -1391,7 +1394,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>User feedback collection allows for monitoring the User Experience, identifying potential areas for optimization, and continuously measuring the effectiveness of the service. Each Wallet Provider SHOULD establish a structured feedback collection system to monitor and improve the User Experience.</p>
 <p>This feedback system MAY be fed by two different types of feedback collection:</p>
 <ul class="simple">
-<li><p><strong>Transactional Feedback</strong> (Customer Effort Score, Customer Satisfaction): collected in response to specific actions, such as adding an Electronic Attestation or completing a presentation and verification process;</p></li>
+<li><p><strong>Transactional Feedback</strong> (Customer Effort Score, Customer Satisfaction): collected in response to specific actions, such as adding an Electronic Attestation or completing a presentation and verification process.</p></li>
 <li><p><strong>Relational Feedback</strong> (Net Promoter Score): not in connection with specific actions, collected to measure the overall perception of the User in terms of satisfaction, loyalty, and likelihood of recommending the service to third-party users.</p></li>
 </ul>
 <p>Here are some suggestions for implementing these types of feedback tools:</p>
@@ -1400,9 +1403,9 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><p><strong>Customer Effort Score (CES)</strong>: To measure the ease of use of the functionalities, surveys MAY be provided, for example, through components like modals or pop-ups within the Wallet Instance, triggered at the conclusion of specific actions or processes. Examples include:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>After completing the process of obtaining an Electronic Attestation;</p></li>
-<li><p>After the Authentication process, if positive;</p></li>
-<li><p>After the presentation process, particularly at the end of the first presentation opportunity and no more than once every 6 months;</p></li>
+<li><p>After completing the process of obtaining an Electronic Attestation.</p></li>
+<li><p>After the Authentication process, if positive.</p></li>
+<li><p>After the presentation process, particularly at the end of the first presentation opportunity and no more than once every 6 months.</p></li>
 <li><p>After the revocation and deactivation processes, to explore the reasons behind these actions.</p></li>
 </ul>
 </div></blockquote>
@@ -1575,7 +1578,7 @@ For further information on the Authentication button refer to the Brand Manual, 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

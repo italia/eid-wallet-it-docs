@@ -290,8 +290,8 @@ Per l'emissione di un IT-Wallet ID:
 
 Gli *hint* di autenticazione riconosciuti per l'emissione dell'IT-Wallet ID sono i seguenti:
 
-  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD;
-  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo;
+  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD.
+  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo.
   * l'assenza dell'oggetto ``it_l2+document_proof`` NON costituisce, di per sé, un mandato dell'Istanza del Wallet sul metodo di autenticazione: in tal caso l'*Authorization Server* applica le proprie politiche e NON DEVE offrire o applicare l'Autenticazione eID Substantial con Verifica MRTD per quella richiesta. In assenza di selezione dell'Utente tramite pagina di *discovery* del Credential Issuer, il metodo di autenticazione di *default* del Provider di IT-Wallet ID DEVE essere CieID con Livello di Garanzia Alto (CIE L3).
 
 .. note::

@@ -351,9 +351,9 @@ official app store of their device's operating system (this ensures authenticity
 <p>When the state is <strong>Installed</strong>, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from <strong>Operational</strong> or <strong>Valid</strong> to <strong>Installed</strong>. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
 (see <a class="reference internal" href="#id1"><span class="std std-ref">Transition to Operational</span></a>), as not usable anymore. Revocation can occur in the following cases:</p>
 <ul class="simple">
-<li><p>for technical security reasons (e.g., relating to the compromise of cryptographic material);</p></li>
-<li><p>in case of explicit User requests (e.g., due to loss, or theft of the Wallet Instance);</p></li>
-<li><p>death of the User;</p></li>
+<li><p>for technical security reasons (e.g., relating to the compromise of cryptographic material).</p></li>
+<li><p>in case of explicit User requests (e.g., due to loss, or theft of the Wallet Instance).</p></li>
+<li><p>death of the User.</p></li>
 <li><p>illegal activities reported by Judicial or Supervisory Bodies.</p></li>
 </ul>
 <div class="admonition note">
@@ -373,9 +373,9 @@ This association allows the User to directly request Wallet Instance revocation 
 <p>As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
 This specification mandates the use of at least a second-factor for User authentication.</p>
 </div>
-<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard Credentials; WSCA operating within a Remote WSCD for the PID).
+<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard Credentials, WSCA operating within a Remote WSCD for the PID).
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
-<p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
+<p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance. This MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Please refer to <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>.</p>
 <p>In the <strong>Operational</strong> state, Users can request the issuance of the national <strong>IT-Wallet ID</strong> (which does <strong>not</strong> cause a transition to <strong>Valid</strong>), or of (Q)EAAs if the PID is not required in the issuance
@@ -423,7 +423,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 <p>A Wallet Provider instead is responsible for:</p>
 <ul class="simple">
 <li><p><strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.</p></li>
-<li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Instance Attestation, which is reflected on the Wallet Instance Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
+<li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): the Wallet Instance is revoked as specified in <a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation"><span class="std std-ref">Wallet Instance Revocation</span></a>. The Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
 <li><p><strong>Data Purging</strong>: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.</p></li>
 </ul>
 <div class="admonition note">
@@ -547,7 +547,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

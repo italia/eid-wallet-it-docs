@@ -352,9 +352,9 @@ store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'
 <p>Quando lo stato è <strong>Installato</strong>, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da <strong>Operativo</strong> o <strong>Valido</strong> a <strong>Installato</strong>. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi <a class="reference internal" href="#transizione-a-operativo"><span class="std std-ref">Transizione a Operativo</span></a>), come non più utilizzabile. La revoca può avvenire nei seguenti casi:</p>
 <ul class="simple">
-<li><p>per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico);</p></li>
-<li><p>in caso di richieste esplicite dell'Utente (ad esempio, a causa di perdita o furto dell'Istanza del Wallet);</p></li>
-<li><p>morte dell'Utente;</p></li>
+<li><p>per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico).</p></li>
+<li><p>in caso di richieste esplicite dell'Utente (ad esempio, a causa di perdita o furto dell'Istanza del Wallet).</p></li>
+<li><p>morte dell'Utente.</p></li>
 <li><p>attività illegali segnalate da Organi Giudiziari o di Vigilanza.</p></li>
 </ul>
 <div class="admonition note">
@@ -374,9 +374,9 @@ Questa associazione consente all'utente di richiedere direttamente al Fornitore 
 <p>Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
 Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.</p>
 </div>
-<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard; WSCA operante in un Remote WSCD per il PID).
+<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard. WSCA operante in un Remote WSCD per il PID).
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
-<p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
+<p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet. Questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
 personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>.</p>
 <p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione dell'<strong>IT-Wallet ID</strong> (che <strong>non</strong> causa la transizione allo stato <strong>Valido</strong>), o di Attestati Elettronici di Attributi (Qualificati) se il PID non è richiesto nell'emissione
@@ -424,7 +424,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
 <p>Un Fornitore di Wallet invece è responsabile per:</p>
 <ul class="simple">
 <li><p><strong>Attivazione dell'Istanza del Wallet</strong> (<strong>WI ACT</strong>): un account Utente DEVE essere creato e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione di almeno due fattori per l'Utente per interagire con il portale del Fornitore di Wallet.</p></li>
-<li><p><strong>Revoca dell'Istanza del Wallet</strong> (<strong>WI REV</strong>): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Instance Attestation, che viene riportata nella Wallet Instance Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.</p></li>
+<li><p><strong>Revoca dell'Istanza del Wallet</strong> (<strong>WI REV</strong>): l'Istanza del Wallet è revocata come specificato in <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>. Il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'Utente.</p></li>
 <li><p><strong>Eliminazione dei Dati</strong>: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.</p></li>
 </ul>
 <div class="admonition note">
@@ -548,7 +548,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

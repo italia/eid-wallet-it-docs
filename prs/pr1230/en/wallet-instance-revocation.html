@@ -322,7 +322,10 @@
   <section id="wallet-instance-revocation">
 <h1><span class="section-number">9.1.4.2.4. </span>Wallet Instance Revocation<a class="headerlink" href="#wallet-instance-revocation" title="Link to this heading">¶</a></h1>
 <p>This section describes the involved entities and modalities to request a Wallet Instance revocation.</p>
-<p>The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.</p>
+<p>The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements.
+When, for technical security reasons (for example, compromise of cryptographic material), the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.
+The Wallet Provider MUST reflect that revocation in the status list of the related Wallet Instance Attestation.
+In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.</p>
 <p>As shown in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, other actors MAY trigger the Wallet Instance revocation process (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>):</p>
 <ul class="simple">
 <li><p><strong>Users</strong>, connecting to the Wallet Provider's web portal from their Wallet Instance or using an external browser.</p></li>
@@ -545,7 +548,7 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

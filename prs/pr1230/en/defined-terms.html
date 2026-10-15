@@ -325,6 +325,14 @@ Aligned with ARF 3.0.0.</p>
 <dt id="term-Accreditation-Process"><strong>Accreditation Process</strong><a class="headerlink" href="#term-Accreditation-Process" title="Link to this term">¶</a></dt><dd><p>Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
 Not present in ARF 3.0.0; specific to IT-Wallet.</p>
 </dd>
+<dt id="term-Administrative-validity"><strong>Administrative validity</strong><a class="headerlink" href="#term-Administrative-validity" title="Link to this term">¶</a></dt><dd><p>Interval during which the attested attributes remain valid, for example the expiry of a licence.
+See <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#technical-and-administrative-validity"><span class="std std-ref">Technical and Administrative Validity</span></a>.</p>
+</dd>
+<dt id="term-Attestation-identity-code"><strong>Attestation identity code</strong><a class="headerlink" href="#term-Attestation-identity-code" title="Link to this term">¶</a></dt><dd><p>Identifier of one issued Electronic Attestation of Attributes.
+In SD-JWT VC it is the <code class="docutils literal notranslate"><span class="pre">jti</span></code> claim.
+In mdoc it is the <code class="docutils literal notranslate"><span class="pre">document_number</span></code> data element.
+See <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#attestation-identity"><span class="std std-ref">Attestation Identity</span></a>.</p>
+</dd>
 <dt id="term-Attestation-Rulebook"><strong>Attestation Rulebook</strong><a class="headerlink" href="#term-Attestation-Rulebook" title="Link to this term">¶</a></dt><dd><p>Human-readable document that defines a type of Attestation by specifying the identifiers, the syntax, the semantics and the encoding of its Attributes, the proof mechanisms and, where needed, the trust and the presentation mechanisms.
 Aligned with Section 5.5 of the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>.</p>
 </dd>
@@ -384,7 +392,8 @@ Not present under this wording in ARF 3.0.0; specific to IT-Wallet.</p>
 Aligned with ARF 3.0.0.</p>
 </dd>
 <dt id="term-Electronic-Attestation-of-Attributes-issued-by-or-on-behalf-of-a-public-sector-body"><strong>Electronic Attestation of Attributes issued by or on behalf of a public sector body</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-issued-by-or-on-behalf-of-a-public-sector-body" title="Link to this term">¶</a></dt><dt id="term-Public-Electronic-Attestation-of-Attributes"><strong>Public Electronic Attestation of Attributes</strong><a class="headerlink" href="#term-Public-Electronic-Attestation-of-Attributes" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
-Aligned with ARF 3.0.0.</p>
+Aligned with ARF 3.0.0.
+The technical profile is <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#qeaa-and-pub-eaa-data-model"><span class="std std-ref">QEAA and PuB-EAA Data Model</span></a>.</p>
 </dd>
 <dt id="term-Electronic-Attestation-of-Attributes-Provider"><strong>Electronic Attestation of Attributes Provider</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-Provider" title="Link to this term">¶</a></dt><dt id="term-Electronic-Attestation-Provider"><strong>Electronic Attestation Provider</strong><a class="headerlink" href="#term-Electronic-Attestation-Provider" title="Link to this term">¶</a></dt><dd><p>Organizational Entity providing EAAs.
 Aligned with ARF 3.0.0.</p>
@@ -543,6 +552,11 @@ Not present in ARF 3.0.0; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Technical-Specifications"><strong>Technical Specifications</strong><a class="headerlink" href="#term-Technical-Specifications" title="Link to this term">¶</a></dt><dd><p>Specifications providing technical architecture, implementation framework, and design requirements.
 Aligned with ARF 3.0.0.</p>
+</dd>
+<dt id="term-Technical-validity"><strong>Technical validity</strong><a class="headerlink" href="#term-Technical-validity" title="Link to this term">¶</a></dt><dd><p>Interval during which the encoded attestation and its signature are valid.
+In SD-JWT VC it is expressed by <code class="docutils literal notranslate"><span class="pre">nbf</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code>.
+In mdoc it is expressed by <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and <code class="docutils literal notranslate"><span class="pre">validUntil</span></code>.
+See <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#technical-and-administrative-validity"><span class="std std-ref">Technical and Administrative Validity</span></a>.</p>
 </dd>
 <dt id="term-Trust"><strong>Trust</strong><a class="headerlink" href="#term-Trust" title="Link to this term">¶</a></dt><dd><p>Confidence in the security, reliability, and integrity of entities and their actions.
 Not present in ARF 3.0.0.</p>
@@ -869,7 +883,7 @@ Aligned with ISO 9241-210:2010.</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

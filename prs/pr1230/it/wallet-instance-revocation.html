@@ -323,7 +323,10 @@
   <section id="revoca-dell-istanza-del-wallet">
 <h1><span class="section-number">9.1.4.2.4. </span>Revoca dell'Istanza del Wallet<a class="headerlink" href="#revoca-dell-istanza-del-wallet" title="Link to this heading">¶</a></h1>
 <p>Questa sezione descrive le entità coinvolte e le modalità per richiedere la revoca di un'Istanza del Wallet.</p>
-<p>Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza. Quando, per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico) la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.</p>
+<p>Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza.
+Quando, per motivi tecnici di sicurezza (ad esempio la compromissione del materiale crittografico), la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
+Il Fornitore di Wallet DEVE riportare tale revoca nella status list della relativa Wallet Instance Attestation.
+In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la relativa Key Attestation.</p>
 <p>Come mostrato in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>):</p>
 <ul class="simple">
 <li><p><strong>Utenti</strong>, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.</p></li>
@@ -546,7 +549,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

@@ -688,7 +688,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_147a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Elementi Non Raccomandati nell'Header Protetto Oggetto Sicurezza Mobile
-    - L'header protetto non contiene elementi diversi dall'algoritmo firma
+    - Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, l'header protetto non contiene elementi diversi dall'algoritmo di firma. Per un QEAA o un PuB-EAA, l'header protetto contiene l'algoritmo di firma, ``x5u`` e ``x5t`` come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
   * - CI_148
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Codifica Parametro Header Non Protetto Oggetto Sicurezza Mobile
@@ -997,5 +997,45 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Autenticazione
     - Mappatura della nomenclatura LoA
     - Nel flusso L2+, LoA3 (ISO/IEC 29115) corrisponde a eIDAS Substantial e ai mezzi nazionali L2 (SPID L2 / CieID Substantial). LoA High corrisponde a eIDAS High e CIE L3. Il test fallisce se un'autenticazione Substantial è registrata come High.
+  * - CI_206
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria QEAA in SD-JWT VC
+    - Un QEAA contiene ``category`` con valore ``urn:etsi:esi:eaa:eu:qualified``. Qualsiasi altro valore è rifiutato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Categoria`.
+  * - CI_207
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria PuB-EAA in SD-JWT VC
+    - Un PuB-EAA contiene ``category`` con valore ``urn:etsi:esi:eaa:eu:pub``. Qualsiasi altro valore è rifiutato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Categoria`.
+  * - CI_208
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria in mdoc
+    - L'elemento mdoc ``category`` nel namespace ``org.etsi.01947201.010101`` reca lo stesso URN del claim SD-JWT VC per quel ``legal_type``.
+  * - CI_209
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Stato quando l'attestato non è a vita breve
+    - Un QEAA o un PuB-EAA senza il segnale di vita breve contiene ``status`` come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`. Un ``status`` assente è rifiutato.
+  * - CI_210
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Ubicazione del certificato del firmatario SD-JWT VC
+    - Il protected header JOSE di un QEAA o di un PuB-EAA contiene ``x5u`` e ``x5t#S256``. ``x5t#S256`` è il digest SHA-256, codificato in base64url, della codifica DER del certificato end-entity in ``x5c``. È lo stesso digest del certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata.
+  * - CI_211
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Ubicazione del certificato del firmatario mdoc
+    - Per un QEAA o un PuB-EAA, l'elemento ``issuerAuth`` mdoc è una firma CB-AdES. Il protected header contiene ``x5u`` e ``x5t`` con SHA-256. ``x5t`` è il digest SHA-256 della codifica DER del certificato recuperato da ``x5u``. Il certificato end-entity dell'elemento ``x5chain`` non protetto corrisponde al certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata. Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``issuerAuth`` è un ``COSE_Sign1`` il cui protected header contiene solo l'algoritmo di firma, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
+  * - CI_212
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Soggetto unico
+    - Un QEAA o un PuB-EAA che contiene ``subAttrs`` o ``SubAttr`` è rifiutato. Un PuB-EAA in SD-JWT VC che contiene sia ``sub`` sia ``also_known_as``, o nessuno dei due, è rifiutato.
+  * - CI_213
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim dell'issuer assenti quando il certificato è in x5c
+    - Un QEAA o un PuB-EAA in SD-JWT VC che contiene ``issuing_authority`` o ``issuing_country`` è rifiutato, perché ``x5c`` incorpora il certificato qualificato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_214
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Identificativo di registrazione assente quando il certificato è incorporato
+    - Un QEAA o un PuB-EAA che contiene ``iss_reg_id`` è rifiutato, in SD-JWT VC e in mdoc, perché il certificato qualificato è incorporato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_215
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Forma dell'oggetto status in SD-JWT
+    - Un QEAA o un PuB-EAA in SD-JWT VC il cui oggetto ``status`` omette ``type``, ``purpose``, ``index`` o ``uri``, o il cui ``index`` o ``uri`` differisce da ``status_list``, è rifiutato. Un oggetto ``status`` che contiene ``status_list`` e i membri ETSI corrispondenti è accettato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
 
 

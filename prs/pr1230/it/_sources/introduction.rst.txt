@@ -13,9 +13,9 @@ Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati 
 
 I principali ruoli nell'ecosistema Wallet sono elencati di seguito:
 
-- **Fornitore di Attestati Elettronici**: soggetti che rilasciano Attestati Elettronici agli Utenti;
-- **Verificatori di Attestati Elettronici**: soggetti che richiedono all'Utente presentazioni di Attestati Elettronici, per finalità di Autenticazione e autorizzazione;
-- **Utenti**: individui che possiedono un'Istanza del Wallet e hanno il controllo sugli Attestati Elettronici che possono richiedere, acquisire, memorizzare e presentare alle Verificatori di Attestati Elettronici;
+- **Fornitore di Attestati Elettronici**: soggetti che rilasciano Attestati Elettronici agli Utenti.
+- **Verificatori di Attestati Elettronici**: soggetti che richiedono all'Utente presentazioni di Attestati Elettronici, per finalità di Autenticazione e autorizzazione.
+- **Utenti**: individui che possiedono un'Istanza del Wallet e hanno il controllo sugli Attestati Elettronici che possono richiedere, acquisire, memorizzare e presentare alle Verificatori di Attestati Elettronici.
 
 In questo modello, il Fornitore di Attestati Elettronici (ad esempio, un'istituzione educativa) fornisce Attestati Elettronici all'Utente, che può memorizzarle nella propria Istanza del Wallet.
 L'Istanza del Wallet è tipicamente fornita come applicazione mobile sullo smartphone dell'Utente.
@@ -25,9 +25,9 @@ Lo sviluppo del Sistema IT-Wallet include un processo di sperimentazione gradual
 
 Altri elementi chiave che caratterizzano questo nuovo paradigma di Portafoglio di Identità Digitale includono:
 
-- **Riservatezza e controllo**: i Wallet consentono agli individui di mantenere il controllo sulle informazioni fornite all'interno degli Attestati Elettronici presentate. Possono scegliere quali attributi o Attestati Elettronici presentare e a chi;
-- **Sicurezza**: i Wallet sfruttano meccanismi crittografici per l'integrità e la sicurezza dei dati scambiati. Ciò evita il furto di identità, le frodi e gli accessi non autorizzati;
-- **Interoperabilità**: i Wallet promuovono l'interoperabilità consentendo a diversi sistemi e organizzazioni di riconoscere e verificare le identità, abilitando interazioni affidabili tra individui, organizzazioni e persino oltre i confini;
+- **Riservatezza e controllo**: i Wallet consentono agli individui di mantenere il controllo sulle informazioni fornite all'interno degli Attestati Elettronici presentate. Possono scegliere quali attributi o Attestati Elettronici presentare e a chi.
+- **Sicurezza**: i Wallet sfruttano meccanismi crittografici per l'integrità e la sicurezza dei dati scambiati. Ciò evita il furto di identità, le frodi e gli accessi non autorizzati.
+- **Interoperabilità**: i Wallet promuovono l'interoperabilità consentendo a diversi sistemi e organizzazioni di riconoscere e verificare le identità, abilitando interazioni affidabili tra individui, organizzazioni e persino oltre i confini.
 - **Efficienza e riduzione dei costi**: gli individui possono gestire facilmente i propri Attestati Elettronici, evitare di gestire più token di identità e ridurre i processi ripetitivi di verifica dell'identità.
 
 Ambito
@@ -38,9 +38,9 @@ Queste Specifiche Tecniche sono destinate a completare le Linee Guida previste d
 Il primo obiettivo è quello di fornire un insieme chiaro e strutturato di raccomandazioni, risorse e requisiti di progettazione relativi agli elementi del Sistema IT-Wallet che impattano sull'Esperienza dell'Utente.
 Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche progettuali e implementative, mira a fornire agli enti pubblici e privati interessati a partecipare al Sistema IT-Wallet quanto necessario per:
 
-- facilitare la comprensione e l'adozione del Modello di Servizio, aumentando il numero di potenziali servizi e opportunità di utilizzo per l'Utente;
-- adottare l'Identità Visiva del Sistema IT-Wallet al fine di migliorarne l'affidabilità e la riconoscibilità per l'Utente;
-- garantire la coerenza di progettazione tra macro-funzionalità e singole interazioni tra l'Utente e i Touchpoint del servizio;
+- facilitare la comprensione e l'adozione del Modello di Servizio, aumentando il numero di potenziali servizi e opportunità di utilizzo per l'Utente.
+- adottare l'Identità Visiva del Sistema IT-Wallet al fine di migliorarne l'affidabilità e la riconoscibilità per l'Utente.
+- garantire la coerenza di progettazione tra macro-funzionalità e singole interazioni tra l'Utente e i Touchpoint del servizio.
 - mantenere un adeguato livello di qualità, promuovendo i principi di usabilità, accessibilità e inclusività.
 
 

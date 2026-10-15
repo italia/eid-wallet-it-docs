@@ -23,7 +23,7 @@ Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che 
     :caption: `Stati dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40>`_
 
 
-.. .. figure:: ../../images/Wallet_Instance_States.svg
+.. .. Figure:: ../../images/Wallet_Instance_States.svg
 ..     :figwidth: 100%
 ..     :align: center
 ..     :target: https://www.plantuml.com/plantuml/svg/XPBHIuH04CRVzwyOk9SAH8ipGaHESW-4kEpihg1wi7ElMzXRHLUY_lfMAvtMZlD5cUytttpZxgnMMQMQlI0xdZDW-r9zGCxgJSLBnGj9Y0OKWrZgjn0iXyby7hgEyrE_BLcLjM0cOBBLJw-iCy4rxJXNJbzRIJxuH9TJT-eI0W1FPozWvSMxj89XaWSFCSIBzBubXd8FjcOONIt-Wol-jbEQHa4xEhpkK5m_xcpWWctLAF6IhaUaET_V5AAel5VHiE3axfI68SHfQYTBwjkT51pCrltMlmv97BNjkFKR0wifZT5c7trCxDz6U9POrelO4RqvP3jU6n4egB4gnQlYiJWLKf7fyUF14bWQrHTBHwZv9_FEBmBVRhy2CcCorrV-2m00
@@ -42,9 +42,9 @@ store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'
 Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da **Operativo** o **Valido** a **Installato**. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi :ref:`wallet-instance-lifecycle:Transizione a Operativo`), come non più utilizzabile. La revoca può avvenire nei seguenti casi:
 
-* per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico);
-* in caso di richieste esplicite dell'Utente (ad esempio, a causa di perdita o furto dell'Istanza del Wallet);
-* morte dell'Utente;
+* per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico).
+* in caso di richieste esplicite dell'Utente (ad esempio, a causa di perdita o furto dell'Istanza del Wallet).
+* morte dell'Utente.
 * attività illegali segnalate da Organi Giudiziari o di Vigilanza.
 
 .. note::
@@ -63,10 +63,10 @@ Questa associazione consente all'utente di richiedere direttamente al Fornitore 
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
-Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard; WSCA operante in un Remote WSCD per il PID).
+Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard. WSCA operante in un Remote WSCD per il PID).
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
 
-Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
+Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet. Questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
 personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
@@ -110,7 +110,7 @@ e l'effetto sul loro storage locale.
     :caption: `Gestione del Ciclo di Vita dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000>`_
 
 
-.. .. figure:: ../../images/wallet_instance_lifecycle.svg
+.. .. Figure:: ../../images/wallet_instance_lifecycle.svg
 ..     :figwidth: 100%
 ..     :align: center
 ..     :target: https://www.plantuml.com/plantuml/svg/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00
@@ -125,7 +125,7 @@ eliminare le coppie di Cryptographic Hardware Key (:ref:`WP_149 <wallet-instance
 Un Fornitore di Wallet invece è responsabile per:
 
 * **Attivazione dell'Istanza del Wallet** (**WI ACT**): un account Utente DEVE essere creato e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione di almeno due fattori per l'Utente per interagire con il portale del Fornitore di Wallet.
-* **Revoca dell'Istanza del Wallet** (**WI REV**): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Instance Attestation, che viene riportata nella Wallet Instance Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.
+* **Revoca dell'Istanza del Wallet** (**WI REV**): l'Istanza del Wallet è revocata come specificato in :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`. Il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'Utente.
 * **Eliminazione dei Dati**: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.
 
 

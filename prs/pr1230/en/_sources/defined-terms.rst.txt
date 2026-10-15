@@ -187,6 +187,23 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
       Aligned with ARF 3.0.0.
+      The technical profile is :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
+
+    **Attestation identity code**
+      Identifier of one issued Electronic Attestation of Attributes.
+      In SD-JWT VC it is the ``jti`` claim.
+      In mdoc it is the ``document_number`` data element.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Attestation Identity`.
+
+    **Technical validity**
+      Interval during which the encoded attestation and its signature are valid.
+      In SD-JWT VC it is expressed by ``nbf`` and ``exp``.
+      In mdoc it is expressed by ``validFrom`` and ``validUntil``.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
+
+    **Administrative validity**
+      Interval during which the attested attributes remain valid, for example the expiry of a licence.
+      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
 
     **Electronic Attestation of Public Interest**
     **Credential of Public Interest**

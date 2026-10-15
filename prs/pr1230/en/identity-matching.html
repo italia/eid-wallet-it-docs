@@ -343,8 +343,8 @@
 <p>When <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> is not presented, the Relying Party MUST perform <em>Attribute-Based Binding</em> by matching at least <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_date</span></code> (or <code class="docutils literal notranslate"><span class="pre">birthdate</span></code>) and <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> after normalisation of case, whitespace and diacritics. The Relying Party MUST apply the same normalisation to the presented attributes and to the stored User record, including the string members of <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> (<code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">region</span></code>, <code class="docutils literal notranslate"><span class="pre">locality</span></code>). Comparison of the date of birth MUST use the ISO 8601 calendar date (<code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>), independent of display format.</p>
 <p>The Relying Party MUST NOT complete identity matching on a subset of those attributes that would allow a person swap (<a class="reference internal" href="test-plans-credential-issuer.html#credential-issuer-testcases"><span class="std std-ref">CI_202</span></a>). In particular:</p>
 <ul class="simple">
-<li><p>matching only a pair of names, only a name and a date of birth, or any subset that omits <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code>, MUST NOT be treated as a successful identity match;</p></li>
-<li><p>a mismatch on any attribute of the minimum set MUST fail identity matching; the Relying Party MUST NOT ignore a current-name mismatch (for example after a name change) in order to force a match;</p></li>
+<li><p>matching only a pair of names, only a name and a date of birth, or any subset that omits <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code>, MUST NOT be treated as a successful identity match.</p></li>
+<li><p>a mismatch on any attribute of the minimum set MUST fail identity matching. The Relying Party MUST NOT ignore a current-name mismatch (for example after a name change) in order to force a match.</p></li>
 <li><p>if Attribute-Based Binding matches more than one stored User record, the Relying Party MUST NOT complete identity matching. It MAY request a unique national identifier, or apply a supplementary binding method that uniquely identifies the person.</p></li>
 </ul>
 </section>
@@ -353,9 +353,9 @@
 <h2><span class="section-number">11.2.3.4. </span>Supplementary Binding Methods<a class="headerlink" href="#supplementary-binding-methods" title="Link to this heading">¶</a></h2>
 <p>The following methods MAY supplement Attribute-Based Binding. They MUST NOT replace the Attribute-Based Binding minimum set when no unique national identifier is presented:</p>
 <ul class="simple">
-<li><p><strong>Session-Based Binding</strong>: the presentation occurs within an authenticated session already bound to the User;</p></li>
-<li><p><strong>Issuer-Attested Binding</strong>: the Issuer attests that the presented attributes belong to the same subject (for example through a stable Issuer subject identifier);</p></li>
-<li><p><strong>Relying Party-Specific Identifiers</strong>: identifiers previously issued by the Relying Party to that User after a successful identity match;</p></li>
+<li><p><strong>Session-Based Binding</strong>: the presentation occurs within an authenticated session already bound to the User.</p></li>
+<li><p><strong>Issuer-Attested Binding</strong>: the Issuer attests that the presented attributes belong to the same subject (for example through a stable Issuer subject identifier).</p></li>
+<li><p><strong>Relying Party-Specific Identifiers</strong>: identifiers previously issued by the Relying Party to that User after a successful identity match.</p></li>
 <li><p><strong>Cryptographic Binding</strong>: proving that the private keys of the presented Digital Credentials are managed by the same Keystore or WSCD.</p></li>
 </ul>
 </section>
@@ -490,7 +490,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

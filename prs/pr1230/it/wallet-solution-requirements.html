@@ -334,6 +334,12 @@ L'interazione Wallet-to-Wallet e la creazione di firme elettroniche qualificate 
 <li><p>L'Istanza del Wallet DEVE memorizzare PID e (Q)EAA, applicare la disclosure selettiva e presentarli in remoto e in prossimità, come specificato in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a> e <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>.</p></li>
 <li><p>L'emissione, la memorizzazione e la presentazione del PID sono specificate in <a class="reference internal" href="credential-data-model-pid.html#pid-until-notification"><span class="std std-ref">Emissione del PID prima della notifica EUDIW</span></a>.</p></li>
 <li><p>L'Istanza del Wallet DEVE supportare i formati di Attestato Elettronico richiesti da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>], inclusi <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> e <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>.</p></li>
+<li><p>I grant di emissione sono specificati in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>.</p></li>
+<li><p>La Wallet Unit DEVE richiedere un'autorizzazione basata sulla presenza fisica dell'Utente quando ottiene un PID tramite il Pre-Authorized Code Grant.</p></li>
+<li><p>La Wallet Unit DEVE acquisire e associare un EDP consegnato tramite URI insieme ai dati di policy, oppure tramite il solo URI quando la policy esatta è già precaricata.</p></li>
+<li><p>La Wallet Unit DEVE risolvere e valutare l'EDP applicabile prima della disclosure.</p></li>
+<li><p>La Wallet Unit DEVE mostrare il risultato all'Utente.</p></li>
+<li><p>La Wallet Unit DEVE richiedere l'override dell'Utente per la disclosure di ogni Credenziale o attributo che non soddisfa la policy applicabile.</p></li>
 <li><p>L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_015</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;</p></li>
@@ -554,7 +560,7 @@ Esso dimostra principalmente l'<strong>autenticità</strong>, l'<strong>integrit
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

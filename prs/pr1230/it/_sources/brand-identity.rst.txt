@@ -11,7 +11,7 @@ La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e 
 Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche.
 In particolare, tutti gli Attori Primari:
 
-- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`;
+- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
 - DEVONO utilizzare esclusivamente le Risorse Ufficiali che sono disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche.
 
 
@@ -25,9 +25,9 @@ La declinazione contratta "IT-Wallet" rappresenta, invece, il Brand naming uffic
 Di seguito sono riportati i requisiti di scrittura e pronuncia.
 Tutti coloro che intendono riferirsi al Sistema IT-Wallet:
 
-- DEVONO rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema";
+- DEVONO rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema".
 
-- DEVONO rispettare l'uso del trattino tra i termini “IT” e “Wallet”, senza l'uso di spaziature;
+- DEVONO rispettare l'uso del trattino tra i termini “IT” e “Wallet”, senza l'uso di spaziature.
 
 - DEVONO rispettare la corretta pronuncia del termine “IT”, separando foneticamente le due lettere “I” e “T”. In italiano la fonetica corretta è /i ti/ e non /it/, mentre in inglese la fonetica corretta è /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/.
 
@@ -84,23 +84,23 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli attori che intendono riferirsi al Sistema:
 
-- POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet ma NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica;
+- POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet ma NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica.
 
-- DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite;
+- DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite.
 
-- DEVONO utilizzare il Logo in formato ``application/svg+xml``;
+- DEVONO utilizzare il Logo in formato ``application/svg+xml``.
 
-- NON DEVONO alterare, distorcere, modificare il Logo o sostituirlo con loghi non ufficiali;
+- NON DEVONO alterare, distorcere, modificare il Logo o sostituirlo con loghi non ufficiali.
 
-- DEVONO utilizzare il Logo garantendo l’area di rispetto minima stabilita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere che altri elementi grafici o testuali interferiscano con questa area di rispetto;
+- DEVONO utilizzare il Logo garantendo l’area di rispetto minima stabilita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere che altri elementi grafici o testuali interferiscano con questa area di rispetto.
 
-- NON DEVONO ridimensionare il Logo oltre i limiti minimi stabiliti nel Brand Manual, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
+- NON DEVONO ridimensionare il Logo oltre i limiti minimi stabiliti nel Brand Manual, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo.
 
-- NON DEVONO utilizzare il Logo su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantire un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nel Brand Manual;
+- NON DEVONO utilizzare il Logo su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantire un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nel Brand Manual.
 
-- POSSONO utilizzare il Logo in associazione a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual;
+- POSSONO utilizzare il Logo in associazione a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.
 
-- POSSONO utilizzare il pittogramma del Logo come versione sintetica del Logo, in accordo con quando stabilito nel Brand Manual;
+- POSSONO utilizzare il pittogramma del Logo come versione sintetica del Logo, in accordo con quando stabilito nel Brand Manual.
 
 - POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per rendere evidente il richiamo a IT-Wallet, come per esempio negli Engagement Buttons (vedi :ref:`functionalities:Authentication Button`), in accordo con quando stabilito nel Brand Manual.
 
@@ -133,21 +133,21 @@ Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'ap
 
 Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.). Tutti gli Attori Primari:
 
-- DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi;
+- DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi.
 
-- DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione;
+- DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione.
 
-- DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica e DEVONO renderlo consultabile all'interno della Soluzione Tecnica;
+- DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica e DEVONO renderlo consultabile all'interno della Soluzione Tecnica.
 
-- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel :ref:`official-resources:Brand Manual`;
+- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel :ref:`official-resources:Brand Manual`.
 
-- NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali;
+- NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali.
 
-- NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal :ref:`official-resources:Brand Manual`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
+- NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal :ref:`official-resources:Brand Manual`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo.
 
-- DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel :ref:`official-resources:Brand Manual`, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto;
+- DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel :ref:`official-resources:Brand Manual`, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto.
 
-- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`;
+- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`.
 
 - POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.
 

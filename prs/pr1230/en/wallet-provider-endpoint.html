@@ -1358,7 +1358,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <p>This section profiles the Token Status List (TSL) mechanism of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> for Wallet Unit Attestations. A TSL conveys the current status of many Wallet Unit Attestations in a compact, signed Status List Token (SLT).</p>
 <p>The SLT Provider MUST be the Wallet Provider.</p>
 <p><strong>Status List</strong></p>
-<p>A Status List contains a compressed byte array whose entries represent the statuses of many Wallet Instance Attestations (WIAs) or Key Attestations (KAs). A WIA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list</span></code>, and a KA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list</span></code>. Each Status List reference MUST contain <code class="docutils literal notranslate"><span class="pre">idx</span></code> and <code class="docutils literal notranslate"><span class="pre">uri</span></code>. Both WIAs and KAs are JWTs; therefore, <code class="docutils literal notranslate"><span class="pre">idx</span></code> is a JSON integer and <code class="docutils literal notranslate"><span class="pre">uri</span></code> is a JSON string in each reference. In both cases, <code class="docutils literal notranslate"><span class="pre">uri</span></code> MUST be a URI conforming to <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>A Status List contains a compressed byte array whose entries represent the statuses of many Wallet Instance Attestations (WIAs) or Key Attestations (KAs). A WIA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list</span></code>, and a KA MUST include its Status List reference in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list</span></code>. Each Status List reference MUST contain <code class="docutils literal notranslate"><span class="pre">idx</span></code> and <code class="docutils literal notranslate"><span class="pre">uri</span></code>. Both WIAs and KAs are JWTs. Therefore, <code class="docutils literal notranslate"><span class="pre">idx</span></code> is a JSON integer and <code class="docutils literal notranslate"><span class="pre">uri</span></code> is a JSON string in each reference. In both cases, <code class="docutils literal notranslate"><span class="pre">uri</span></code> MUST be a URI conforming to <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
 <p>According to this specification, a WIA or KA can have one of the following statuses:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1367,7 +1367,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </ul>
 </div></blockquote>
 <p>As a result, the Wallet Provider MUST set the <code class="docutils literal notranslate"><span class="pre">bits</span></code> parameter in the SLT's <code class="docutils literal notranslate"><span class="pre">status_list</span></code> object to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
-<p>The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.</p>
+<p>Packing of entries, DEFLATE compression, the ZLIB data format, and publication of the Status List are specified in <a class="reference internal" href="credential-revocation.html#token-status-list-digital-credentials-profile"><span class="std std-ref">Token Status List (Digital Credentials Profile)</span></a>.</p>
 <p><strong>Key Attestation Index Assignment</strong></p>
 <p>According to R_KA_1 of <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>, a Wallet Provider MUST choose one of the following index-assignment options for the <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code> claim in a KA. The selected option determines whether the status-list index is shared by KAs for the same type of key storage or is specific to an individual KA:</p>
 <ul class="simple">
@@ -1376,11 +1376,12 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </ul>
 <p>The requirement for distinct <code class="docutils literal notranslate"><span class="pre">idx</span></code> values applies only to the per-key-attestation option. KAs using a type-shared index are exempt.</p>
 <p><strong>Status List Token</strong></p>
-<p>The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> member or the KA's <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code> member, using <code class="docutils literal notranslate"><span class="pre">application/statuslist+jwt</span></code> for a JWT SLT or <code class="docutils literal notranslate"><span class="pre">application/statuslist+cwt</span></code> for a CWT SLT.</p>
-<p>The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a>.</p>
+<p>The Wallet Provider MUST act as both the Status Issuer and the Status Provider.
+The Wallet Provider MUST publish each SLT by HTTP GET at the URI in the WIA member <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> or the KA member <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code>.
+Media types, the JWT or CWT format, and signature protection are specified in <a class="reference internal" href="credential-revocation.html#token-status-list-digital-credentials-profile"><span class="std std-ref">Token Status List (Digital Credentials Profile)</span></a>.</p>
 <p>Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:</p>
 <ul class="simple">
-<li><p>a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework; or</p></li>
+<li><p>a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework. Or.</p></li>
 <li><p>a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.</p></li>
 </ul>
 <p><strong>Privacy Considerations</strong></p>
@@ -1561,7 +1562,7 @@ Calls to the e-Service PDND Wallet Provider Catalogue, including Notify User Dea
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

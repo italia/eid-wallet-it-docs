@@ -20,7 +20,10 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
 
 The Trust Framework for issuance is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
-The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Each Credential Issuer MUST support the Authorization Code Grant and MUST advertise its support in Authorization Server metadata [`ETSI TS 119 472-3`_]. Credential Issuers MUST support:
+The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential.
+Support for the Authorization Code Grant is specified in :ref:`credential-issuance:Digital Credential Issuance`.
+The Credential Issuer MUST advertise that support in Authorization Server metadata [`ETSI TS 119 472-3`_].
+Credential Issuers MUST support:
 
   * **Authorization Code Flow**: The Credential Issuer requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer or a third party (i.e. via Credential Offer support).
@@ -175,12 +178,9 @@ Below is a non-normative example of the signed Request Object without encoding a
 
 
 .. note::
-  **Wallet Unit trust check:** At the PAR Endpoint, the Credential Issuer MUST establish trust in the Wallet Provider.
-  The Credential Issuer MUST validate the Wallet Instance Attestation signature and signing cryptographic material.
-  The Credential Issuer MUST check its temporal validity and revocation status.
-  The Credential Issuer MUST verify the ``OAuth-Client-Attestation-PoP`` proof of possession.
-  For a Wallet Unit of another Member State, the Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities according to :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
-  For a national Wallet Unit, the Credential Issuer MAY validate the Wallet Provider Trust Chain and the Wallet Instance Attestation according to :ref:`trust-evaluation:Wallet Unit Authentication`.
+  **Wallet Unit trust check:** At the PAR Endpoint, the Credential Issuer MUST validate the Wallet Instance Attestation as specified in :ref:`trust-evaluation:Selection at Issuance`.
+  For a Wallet Unit of another Member State, that validation follows :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+  For a national Wallet Unit, that validation follows :ref:`trust-evaluation:Wallet Unit Authentication`.
   A failed check MUST terminate the request.
 
 
@@ -188,7 +188,8 @@ Below is a non-normative example of the signed Request Object without encoding a
 
 
 .. note::
-  The entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
+  The entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected.   The validity time SHOULD be less than a minute.
+  The ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
 
     1. Many phones on the market still do not accept large payloads. The restriction is typically either 512 or 1024 ASCII characters.
     2. On a slow connection such as a 2G mobile connection, a large URL would cause a slow response; therefore, the use of such is not advisable from the user-experience point of view.

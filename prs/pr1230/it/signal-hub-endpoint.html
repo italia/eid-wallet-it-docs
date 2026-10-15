@@ -316,8 +316,8 @@
 <h1><span class="section-number">12.5. </span>Endpoint di PDND Signal Hub<a class="headerlink" href="#endpoint-di-pdnd-signal-hub" title="Link to this heading">¶</a></h1>
 <dl class="simple">
 <dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
-<li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;</p></li>
-<li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
+<li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali. In questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali.</p></li>
+<li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti. In questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
 </ul>
 </dd>
 </dl>
@@ -325,7 +325,7 @@
 <p>Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,</dt><dd><ul class="simple">
-<li><p>la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali;</p></li>
+<li><p>la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali.</p></li>
 <li><p>il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di e-Service PDNDConsumer dell'e-Service di Distribuzione Segnali.</p></li>
 </ul>
 </dd>
@@ -341,15 +341,15 @@
 <p>Prima di utilizzare Signal Hub, tutte le Fonti Autentiche DEVONO:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>essersi registrate come Provider del loro e-Service presso PDND;</p></li>
-<li><p>essersi registrate come Consumer dell'e-Service di Raccolta Segnali di Signal Hub;</p></li>
+<li><p>essersi registrate come Provider del loro e-Service presso PDND.</p></li>
+<li><p>essersi registrate come Consumer dell'e-Service di Raccolta Segnali di Signal Hub.</p></li>
 </ul>
 </div></blockquote>
 <p>Prima di utilizzare Signal Hub, tutti i Fornitori di Attestati Elettronici DEVONO:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>essersi registrati come Consumer degli e-Service delle Fonti Autentiche pertinenti;</p></li>
-<li><p>essersi registrati come Consumer dell'e-Service di Distribuzione Segnali di Signal Hub;</p></li>
+<li><p>essersi registrati come Consumer degli e-Service delle Fonti Autentiche pertinenti.</p></li>
+<li><p>essersi registrati come Consumer dell'e-Service di Distribuzione Segnali di Signal Hub.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -361,12 +361,12 @@
 <p>Le Fonti Autentiche nell'ecosistema IT Wallet utilizzano l'e-Service di Raccolta Segnali per:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>notificare al Fornitore di Attestati Elettronici un cambiamento di stato e/o valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici;</p></li>
+<li><p>notificare al Fornitore di Attestati Elettronici un cambiamento di stato e/o valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici.</p></li>
 <li><p>notificare al Fornitore di Attestati Elettronici la disponibilità degli Attributi relativi a un Attestato Elettronico specifico che un Utente ha richiesto nel suo Wallet.</p></li>
 </ul>
 </div></blockquote>
 <p>L'ultimo caso, denominato <em>deferred issuance</em>, si verifica quando il Fornitore di Attestati Elettronici ha richiesto gli Attributi di un Attestato Elettronico dalla Fonte Autentica (invocando l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>) e la Fonte Autentica non può rispondere immediatamente con gli Attributi richiesti. Pertanto, la Fonte Autentica notifica al Fornitore di Attestati Elettronici tramite Signal Hub in un momento successivo che gli Attributi richiesti sono ora disponibili.</p>
-<p>L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Autentiche per depositare i Segnali in Signal Hub tramite una request di Raccolta Segnali. Quest'ultima DEVE essere una richiesta POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, il cui header DEVE avere i parametri descritti nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> e il cui body DEVE contenere i seguenti parametri:</p>
+<p>L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Autentiche per depositare i Segnali in Signal Hub tramite una request di Raccolta Segnali. Quest'ultima DEVE essere una richiesta POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Il suo header DEVE avere i parametri descritti nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Il suo body DEVE contenere i seguenti parametri:</p>
 <table class="docutils align-default" id="table-signal-deposit-request-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -432,10 +432,10 @@
 <p class="admonition-title">Nota</p>
 <p>La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
 </div>
-<p>La Fonte Autentica DEVE implementare la logica necessaria per gestire le richieste all'endpoint dell'e-Service di Raccolta Segnali, nel fare ciò deve considerare i seguenti aspetti:</p>
+<p>La Fonte Autentica DEVE implementare la logica necessaria per gestire le richieste all'endpoint dell'e-Service di Raccolta Segnali. Nel fare ciò deve considerare i seguenti aspetti.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>I Segnali vengono inviati per e-Service PDND, pertanto la Fonte Autentica DOVREBBE implementare un ciclo di deposito Segnali per ogni e-Service ID di cui è Provider PDND;</p></li>
+<li><p>I Segnali vengono inviati per e-Service PDND. La Fonte Autentica DOVREBBE implementare un ciclo di deposito Segnali per ogni e-Service ID di cui è Provider PDND.</p></li>
 <li><p>I Segnali sono etichettati da un identificativo univoco, il <code class="docutils literal notranslate"><span class="pre">signalId</span></code>, che è un numero intero positivo a 64 bit. Il <code class="docutils literal notranslate"><span class="pre">signalId</span></code> DEVE essere incrementato di 1 per ogni nuovo Segnale che la Fonte Autentica desidera depositare nell'endpoint dell'e-Service di Raccolta Segnali. Spetta alla Fonte Autentica tenere traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> che ha inviato. I Segnali con valori <code class="docutils literal notranslate"><span class="pre">signalId</span></code> più bassi sono considerati più vecchi dall'endpoint dell'e-Service di Raccolta Segnali e genereranno un errore quando ricevuti.</p></li>
 </ul>
 </div></blockquote>
@@ -445,11 +445,11 @@
 <p>I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>verificare i cambiamenti nello stato e/o il valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici stesso;</p></li>
+<li><p>verificare i cambiamenti nello stato e/o il valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici stesso.</p></li>
 <li><p>verificare la disponibilità degli Attributi relativi a un Attestato Elettronico richiesto da un Utente.</p></li>
 </ul>
 </div></blockquote>
-<p>L'endpoint dell'e-Service di Distribuzione Segnali viene utilizzato dai Fornitori di Attestati Elettronici per recuperare i Segnali da Signal Hub tramite una richiesta di Distribuzione Segnali. Quest'ultima DEVE essere una richiesta HTTP con metodo GET e DEVE avere i seguenti parametri:</p>
+<p>L'endpoint dell'e-Service di Distribuzione Segnali viene utilizzato dai Fornitori di Attestati Elettronici per recuperare i Segnali da Signal Hub tramite una richiesta di Distribuzione Segnali. Quest'ultima DEVE essere una richiesta HTTP con metodo GET. Essa DEVE avere i seguenti parametri:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Parametri di Path:</p>
@@ -469,7 +469,7 @@
 <p>Se la richiesta di Distribuzione Segnali viene elaborata correttamente, l'e-Service risponderà con Status Code:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HTTP 200 OK se la richiesta è formata correttamente e non ci sono più Segnali da richiedere;</p></li>
+<li><p>HTTP 200 OK se la richiesta è formata correttamente e non ci sono più Segnali da richiedere.</p></li>
 <li><p>HTTP 206 OK se la richiesta è formata correttamente ma ci sono più Segnali da richiedere.</p></li>
 </ul>
 </div></blockquote>
@@ -480,12 +480,12 @@
 <p class="admonition-title">Nota</p>
 <p>La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
 </div>
-<p>Il Fornitore di Attestati Elettronici DEVE implementare la logica necessaria per gestire il polling presso l'endpoint dell'e-Service di Distribuzione Segnali, nel fare ciò deve considerare i seguenti aspetti:</p>
+<p>Il Fornitore di Attestati Elettronici DEVE implementare la logica necessaria per gestire il polling presso l'endpoint dell'e-Service di Distribuzione Segnali. Nel fare ciò deve considerare i seguenti aspetti.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>I Segnali vengono richiesti e recuperati per e-Service PDND, il che significa che il Fornitore di Attestati Elettronici DEVE implementare un ciclo di polling per ogni e-Service;</p></li>
-<li><p>il periodo di conservazione dei Segnali in Signal Hub è specificato nella <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. I Segnali più vecchi del periodo di conservazione specificato non saranno disponibili per il recupero;</p></li>
-<li><p>Signal Hub non tiene traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notificato ai Fornitori di Attestati Elettronici. Ogni Fornitore di Attestati Elettronici DEVE tenere traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> che ha ricevuto per ogni e-Service ID PDND;</p></li>
+<li><p>I Segnali vengono richiesti e recuperati per e-Service PDND. Il Fornitore di Attestati Elettronici DEVE implementare un ciclo di polling per ogni e-Service.</p></li>
+<li><p>il periodo di conservazione dei Segnali in Signal Hub è specificato nella <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. I Segnali più vecchi del periodo di conservazione specificato non saranno disponibili per il recupero.</p></li>
+<li><p>Signal Hub non tiene traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notificato ai Fornitori di Attestati Elettronici. Ogni Fornitore di Attestati Elettronici DEVE tenere traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> che ha ricevuto per ogni e-Service ID PDND.</p></li>
 <li><p>l'endpoint dell'e-Service di Distribuzione Segnali restituisce i Segnali in batch. La dimensione massima del batch è specificata nella <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. L'e-Service di Distribuzione Segnali indicherà se sono disponibili Segnali aggiuntivi per il recupero.</p></li>
 </ul>
 </div></blockquote>
@@ -493,16 +493,16 @@
 </section>
 <section id="elaborazione-dei-segnali">
 <h2><span class="section-number">12.5.3. </span>Elaborazione dei Segnali<a class="headerlink" href="#elaborazione-dei-segnali" title="Link to this heading">¶</a></h2>
-<p>Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue:</p>
+<p>Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue.</p>
 <blockquote>
 <div><ul>
 <li><p>Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore <code class="docutils literal notranslate"><span class="pre">SignalType</span></code>:</p>
 <ul class="simple">
-<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> fa riferimento al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;</p></li>
-<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;</p></li>
+<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> fa riferimento al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti.</p></li>
+<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili.</p></li>
 </ul>
 <p>Se l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.</p>
-<p>Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore <code class="docutils literal notranslate"><span class="pre">signalId</span></code>; oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.</p>
+<p>Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore <code class="docutils literal notranslate"><span class="pre">signalId</span></code>. Oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -629,7 +629,7 @@
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
