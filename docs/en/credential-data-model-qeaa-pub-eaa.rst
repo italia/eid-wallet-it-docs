@@ -136,7 +136,7 @@ In mdoc the short-lived signal is the element ``shortLived`` set to ``true`` in 
 When the short-lived signal is absent, ``status`` MUST be present ([`ETSI TS 119 472-1`_] QEAA-5.2.10.2-01, PuB-EAA-5.2.10.3-01, QEAA-6.2.10.2-01 and PuB-EAA-6.2.10.3-01).
 That ``status`` value MUST follow :ref:`credential-data-model:Digital Credential SD-JWT Metadata Attributes` for SD-JWT VC.
 That ``status`` value MUST follow :ref:`credential-data-model:Mobile Security Object` for mdoc.
-When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``status_list`` with ``idx`` and ``uri``.
+The ``status_list`` member with ``idx`` and ``uri`` is specified in :ref:`credential-data-model:Digital Credential SD-JWT Metadata Attributes`.
 When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``type`` with the value ``TokenStatusList`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-04 and EAA-5.2.10.1-05).
 When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``purpose`` with the value ``revocation``.
 When ``status`` is present in an SD-JWT VC QEAA or PuB-EAA, it MUST contain ``index`` and ``uri`` ([`ETSI TS 119 472-1`_] EAA-5.2.10.1-08 and EAA-5.2.10.1-10).
@@ -293,7 +293,7 @@ The Wallet Unit MUST validate the issuer certificate path as specified in :ref:`
 A QEAA path ends at the Trusted List of the Qualified Trust Service Provider.
 A PuB-EAA path ends at the PuB-EAA Providers List of Trusted Entities.
 The Wallet Unit MUST reject the attestation outside its technical validity.
-When the short-lived signal is absent, the Wallet Unit MUST reject the attestation when the Token Status List reports it as invalid.
+When the short-lived signal is absent, the status check is specified in :ref:`credential-revocation:Checking Credentials Statuses`.
 
 Remote presentation MUST use [`OpenID4VP`_] as profiled by [`OPENID4VC-HAIP`_].
 Proximity presentation of an mdoc MUST use [`ISO18013-5`_].

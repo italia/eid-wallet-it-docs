@@ -14,11 +14,11 @@ The specification is organized into the following major sections:
 - **Section** :ref:`introduction:Introduction`:
   Establishes scope, and normative language for the IT-Wallet ecosystem.
 
-- **Section** :ref:`architecture-overview:Architecture Overview`:
-  Provides high-level view on the Architecture in terms of governance and operational processes enabled.
-
 - **Section** :ref:`brand-identity:Brand Identity`:
   Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.
+
+- **Section** :ref:`architecture-overview:Architecture Overview`:
+  Provides high-level view on the Architecture in terms of governance and operational processes enabled.
 
 - **Section** :ref:`functionalities:User Experience Design`:
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
@@ -47,14 +47,26 @@ The specification is organized into the following major sections:
 - **Section** :ref:`endpoints:Endpoints`:
   Technical specifications for all API endpoints exposed by each entity type, including federation endpoints and specialized service integrations.
 
-- **Section** :ref:`algorithms:Cryptographic Algorithms`, :ref:`security-privacy-considerations:Security and Privacy Considerations`, and :ref:`log-retention-policy:General Log Retention Policies` (**Implementation Support**):
-  Cryptographic requirements, security and privacy considerations, and log retention policies essential for compliant implementations.
+- **Section** :ref:`algorithms:Cryptographic Algorithms`:
+  Cryptographic requirements for compliant implementations.
 
-- **Section** :ref:`defined-terms-and-references:Defined Terms and References`, :ref:`official-resources:Official Resources`, :ref:`contribute:How to contribute`, and :ref:`open-source:Open Source Releases` (**Terminology and References**):
-  Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
+- **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`:
+  Security and privacy considerations for compliant implementations.
+
+- **Section** :ref:`log-retention-policy:General Log Retention Policies`:
+  Log retention policies for compliant implementations.
+
+- **Section** :ref:`defined-terms-and-references:Defined Terms and References`:
+  Lookup for defined terms and normative references. Official Resources is part of this chapter. Consult it when a term is unfamiliar.
+
+- **Section** :ref:`contribute:How to contribute`:
+  Contribution guidelines.
+
+- **Section** :ref:`open-source:Open Source Releases`:
+  Open source releases.
 
 - **Section** :ref:`appendix:Appendix`:
-  Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.
+  Supplementary technical details. Mobile Application Instance, e-Service PDND, the PDND e-Service Template, and Test Plans are sections of this Appendix.
 
 
 Reading Paths by Role
@@ -81,8 +93,6 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
-
 **Phase 2: Design**
 
 To understand the requirements and design the features, functionalities and specific characteristics underlying a (Q)EAA to be issued.
@@ -91,7 +101,7 @@ To understand the requirements and design the features, functionalities and spec
 
 - **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical and functional requirements related to (Q)EAA lifecycle.
 
-- **Section** :ref:`e-service-pdnd-template:PDND e-Service Template`: Standardized blueprint containing all necessary technical and descriptive metadata for the e-service definition.
+- **Appendix** :ref:`e-service-pdnd-template:PDND e-Service Template`: Standardized blueprint containing all necessary technical and descriptive metadata for the e-service definition.
 
 **Phase 3: Implementation**
 
@@ -99,7 +109,7 @@ To implement the technological interfaces required to communicate with Credentia
 
 - **Section** :ref:`authentic-sources:Authentic Sources`: Authentic Source role and responsibilities.
 
-- **Section** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for publishing an e-service.
+- **Appendix** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for publishing an e-service.
 
 - **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: Key requirements for the implementation of APIs enabling the Credential Issuer to securely and consistently retrieve authoritative data and to manage the data lifecycle through Signal Hub endpoints.
 
@@ -107,7 +117,7 @@ To implement the technological interfaces required to communicate with Credentia
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General log retention requirements and specific requirements for Authentic Sources in accordance with ISO/IEC 27001.
 
-- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
+- **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
 **Phase 4: Registration**
 
@@ -134,8 +144,6 @@ To understand the general functioning of the ecosystem, the technical architectu
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
-
-- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
 **Phase 2: Design**
 
@@ -165,9 +173,9 @@ To implement the Wallet Solution in line with specific technological standards t
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General log retention requirements and requirements specific for Wallet Providers, in accordance with ISO/IEC 27001.
 
-- **Section** :ref:`mobile-application-instance:Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response.
+- **Appendix** :ref:`mobile-application-instance:Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response.
 
-- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
+- **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
 **Phase 4: Registration**
 
@@ -195,8 +203,6 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
-
 **Phase 2: Design**
 
 To understand the requirements and technically design (Q)EAA by structuring metadata to meet technical and regulatory requirements.
@@ -217,13 +223,13 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 
 - **Section** :ref:`algorithms:Cryptographic Algorithms`: Selection and implementation of cryptographic standards required to secure keys and transactions.
 
-- **Section** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for accessing authoritative data required for (Q)EAA issuance.
+- **Appendix** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for accessing authoritative data required for (Q)EAA issuance.
 
 - **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions.
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General log retention requirements and requirements specific for Credential Issuers in accordance with ISO/IEC 27001.
 
-- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
+- **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
 **Phase 4: Registration**
 
@@ -251,8 +257,6 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
-
 **Phase 2: Design**
 
 To understand the User Experience requirements and design the verification functionalities necessary to provide the service to the end User.
@@ -279,7 +283,7 @@ To implement verification functionalities following specific protocols, to send 
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General log retention requirements and requirements specific for Relying Parties, in accordance with ISO/IEC 27001.
 
-- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
+- **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
 **Phase 4: Registration**
 

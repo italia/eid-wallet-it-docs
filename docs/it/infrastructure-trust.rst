@@ -5,6 +5,10 @@
 Infrastructure of Trust
 =======================
 
+Questo capitolo specifica i Trust Artifact, i profili dei certificati e il loro ciclo di vita.
+La decisione di trust che usa tali artifact è specificata in :ref:`trust-evaluation:Trust Evaluation Process`.
+La registrazione e la pubblicazione delle entità sono specificate in :ref:`onboarding-system:Onboarding System and Lifecycle Management`.
+
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata in cui le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità a standard di sicurezza comuni.
 Questa infrastruttura fornisce il fondamento per operazioni sicure sugli Attestati Elettronici tra i partecipanti dell'ecosistema.
 

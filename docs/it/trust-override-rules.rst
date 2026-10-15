@@ -9,13 +9,13 @@ Le condizioni che determinano questo esito dipendono dalla specifica procedura d
 
 - Nel caso in cui la Wallet Unit segua il percorso di valutazione :ref:`trust-evaluation:EUDIW Authorization`, l'esito è:
 
-    - durante la **Presentazione di Attestati**, ``AUTHORIZED`` se il processo termina con ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``;
-    - durante l'**Emissione di Attestati**, ``AUTHORIZED`` se il processo termina con ``CERTIFICATE_VALID`` AND ``VERIFICATION_PASSED``;
+    - durante la **Presentazione di Attestati**, ``AUTHORIZED`` se il processo termina con ``CERTIFICATE_VALID`` AND ``EDP_SATISFIED`` AND ``VERIFICATION_PASSED``.
+    - durante l'**Emissione di Attestati**, ``AUTHORIZED`` se il processo termina con ``CERTIFICATE_VALID`` AND ``VERIFICATION_PASSED``.
     - ``NOT_AUTHORIZED`` altrimenti.
 
 - Nel caso in cui la Wallet Unit segua il percorso di valutazione Nazionale :ref:`trust-evaluation:Authorization`, l'esito è:
 
-    - ``AUTHORIZED`` se il processo termina con ``TRUST_MARK_VALID`` AND ``ENTITLEMENT_VALID`` AND ``VERIFICATION_PASSED``; oppure,
+    - ``AUTHORIZED`` se il processo termina con ``TRUST_MARK_VALID`` AND ``ENTITLEMENT_VALID`` AND ``VERIFICATION_PASSED``, oppure
     - ``NOT_AUTHORIZED`` altrimenti.
 
 **Principi di Override**

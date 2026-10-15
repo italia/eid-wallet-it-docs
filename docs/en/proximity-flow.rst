@@ -132,7 +132,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
-**Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message containing ``EReaderKey.Pub`` and the encrypted ``DeviceRequest``. Every ``DocRequest`` in the ``DeviceRequest`` MUST contain its own ``readerAuth`` signed over ``ReaderAuthentication``; the ``SessionEstablishment`` envelope MUST NOT be described as signed. The ``SessionEstablishment`` message MUST be encrypted using the session keys derived in the previous step (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+**Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message containing ``EReaderKey.Pub`` and the encrypted ``DeviceRequest``. Every ``DocRequest`` in the ``DeviceRequest`` MUST contain its own ``readerAuth`` signed over ``ReaderAuthentication``. The ``SessionEstablishment`` envelope MUST NOT be described as signed. The ``SessionEstablishment`` message MUST be encrypted using the session keys derived in the previous step (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
 
 Below are non-normative examples using the diagnostic notation of a CBOR-encoded EUDIW and National ``DeviceRequest``. Each decoded request is encrypted inside ``SessionEstablishment``.
@@ -159,13 +159,10 @@ Below are non-normative examples using the diagnostic notation of a CBOR-encoded
 
 **Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate either every ``readerAuth`` in every ``DocRequest`` or the ``readerAuthAll`` over its ``ReaderAuthentication`` data. The unprotected COSE ``x5chain`` header (label ``33``) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor. 
 
-The Wallet Instance validating the *mdoc reader* certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to :ref:`trust-evaluation:EUDIW Authentication`; National uses the Relying Party authentication certificate and Authentication Trust Anchor.
+The Wallet Instance validating the *mdoc reader* certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to :ref:`trust-evaluation:EUDIW Authentication`. National uses the Relying Party authentication certificate and Authentication Trust Anchor.
 
-**Step 11**: After successful *mdoc reader* authentication, the Wallet Instance MUST execute authorization under the selected path before consent. 
-
-For EUDIW it MUST validate the WRPAC path, revocation, and proof of possession, validate the by-value WRPRC, bind direct or intermediated identity, verify the Service Provider entitlement, compare the exact case-sensitive ``docType`` and namespace scope, and evaluate any applicable EDP; it MUST NOT query the Register for a missing or invalid WRPRC. (See :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`).
-
-For National it MUST validate the reader path and revocation against the Authentication Trust Anchor, validate the by-value Trust Mark, bind the certificate identity, Trust Mark subject and official identifiers, and ``euWrpRegistrarInfo.identifier`` to the same direct Relying Party, then verify entitlement, exact case-sensitive overasking, and transparency claims. (See :ref:`trust-evaluation:Authorization`).
+**Step 11**: After successful *mdoc reader* authentication, the Wallet Instance MUST execute authorization under the selected path before consent.
+Authentication and Authorization for that path are specified in :ref:`trust-evaluation:Selection at Presentation`.
 
 Authentication and binding failures are terminal.
 
@@ -179,7 +176,7 @@ For the National direct path it MUST use validated Trust Mark transparency claim
 
 .. admonition:: Box C
 
-   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It MUST place every disclosed issuer-signed attribute in ``issuerSigned`` and MAY place an attribute in ``deviceSigned`` only when the Provider explicitly authorized it. A successful ``Document`` is an ISO/mdoc EAAP only when it has no ``errors``; an error-bearing document is not a successful EAAP. The Wallet Instance MUST sign ``deviceSignature`` over the required device-authentication data, encrypt the CBOR ``DeviceResponse`` in ``SessionData``, and transmit it over the secure channel (:ref:`WP_109–112 <wallet-credential-presentation-testcases>`).
+   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It MUST place every disclosed issuer-signed attribute in ``issuerSigned`` and MAY place an attribute in ``deviceSigned`` only when the Provider explicitly authorized it. A successful ``Document`` is an ISO/mdoc EAAP only when it has no ``errors``. An error-bearing document is not a successful EAAP. The Wallet Instance MUST sign ``deviceSignature`` over the required device-authentication data, encrypt the CBOR ``DeviceResponse`` in ``SessionData``, and transmit it over the secure channel (:ref:`WP_109–112 <wallet-credential-presentation-testcases>`).
    Refer to (:ref:`WP_112a–112b <wallet-credential-presentation-testcases>`):
 
    - Sec 8.2.2.4 for ``SessionData`` over BLE, and
@@ -190,9 +187,9 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 .. literalinclude:: ../../examples/iso-device-response.txt
   :language: text
 
-**Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the `TOKEN-STATUS-LIST`_.
+**Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. For a long-lived Digital Credential, the revocation status check is specified in :ref:`credential-revocation:Checking Credentials Statuses`.
 
-**Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
+**Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message. This can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
@@ -203,7 +200,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
      The record MUST be updated as the transaction progresses to reflect authorization, the User decision, the disclosure result, and failure reason, without logging any attribute values.
 
-    The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).
+    The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated. Steps 13–14 and Session Termination).
 
 ``DeviceEngagement`` over QR Code
 ----------------------------------
@@ -252,8 +249,8 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 - Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it MUST have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record MUST be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 For example:
-For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths;
-For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters;
+For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths.
+For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters.
 If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF Exchange Protocol) service name used to send the ``SessionEstablishment`` message during handover.
 
 .. note::
@@ -271,11 +268,11 @@ If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF
    Use of Negotiated Handover for Device Engagement allows negotiation of transfer methods. For BLE, it additionally allows negotiation of keys used by the transmission layer. This provides improved user experience and enhances the security of data transmission [`ISO18013-5`_ #9.2.1].
 
 .. note::
-   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` MUST also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
+   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service. The same ``SessionEstablishment`` MUST also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
 **Step 5**: [Optional] Relying Party Instance opens the TNEP service named [urn:placeholder] with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
 
-**Step 6**: Relying Party Instance sends ``SessionEstablishment`` (e.g., ``EReaderKey`` + encrypted ``DeviceRequest``). Wallet Instance processes it; data retrieval has not started yet.
+**Step 6**: Relying Party Instance sends ``SessionEstablishment`` (e.g., ``EReaderKey`` + encrypted ``DeviceRequest``). Wallet Instance processes it. Data retrieval has not started yet.
 
 **Step 7**: Relying Party Instance closes the TNEP service.
 
@@ -303,7 +300,7 @@ The following figure illustrates the low-level flow compliant with `ISO18013-5`_
 **Step 2-5**: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [`ISO18013-5`_ #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur.
 
 .. note::
-   The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time; therefore, it is faster to implement methods to identify the correct Relying Party Instance [`ISO18013-5`_ #11.1.3.1] (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
+   The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time. Therefore, it is faster to implement methods to identify the correct Relying Party Instance [`ISO18013-5`_ #11.1.3.1] (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
 
 **Step 6**: Relying Party Instance sends the encrypted ``SessionEstablishment`` message (includes ``EReaderKey`` and encrypted ``DeviceRequest``) over the established BLE connection.
 
@@ -446,7 +443,7 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
 
         - **HandoverSessionEstablishmentSupport** *(bool, OPTIONAL)*. If present, it MUST be set to `true`. It indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #9.2.3] (:ref:`PPR-024 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
-        - **ReaderAuthAllSupport** *(bool, OPTIONAL)*. If present, it MUST be set to `true`. It indicates support for receiving the optional `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #10.2.6]; it does not make ``readerAuthAll`` required and cannot replace per-`DocRequest` ``readerAuth`` (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+        - **ReaderAuthAllSupport** *(bool, OPTIONAL)*. If present, it MUST be set to `true`. It indicates support for receiving the optional `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #10.2.6]. It does not make ``readerAuthAll`` required and cannot replace per-`DocRequest` ``readerAuth`` (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 
    * - **OriginInfos**
      - *(array)*. Describes the interface used to receive and deliver the engagement structure.
@@ -553,7 +550,7 @@ Each document in **documents** MUST be compliant with the following structure, a
      - *(map)*. Contains the ``nameSpaces`` ``DeviceNameSpaces`` structure and the ``deviceAuth`` structure. It MAY contain attributes only when the Provider explicitly authorized those attributes to be device-signed. See the table below for details.
 
    * - **errors**
-     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. A ``Document`` without ``errors`` is an ISO/mdoc EAAP success; an error-bearing ``Document`` is not a successful EAAP. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
+     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. A ``Document`` without ``errors`` is an ISO/mdoc EAAP success. An error-bearing ``Document`` is not a successful EAAP. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
 
 
 A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:
@@ -582,8 +579,8 @@ Session Termination
 
 The session MUST be terminated if at least one of the following conditions occur (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_113–113a <wallet-credential-presentation-testcases>`):
 
-- After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
-- When the Wallet Instance does not accept any more requests;
+- After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds.
+- When the Wallet Instance does not accept any more requests.
 - When the Relying Party Instance does not send any further requests.
 
 If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (:ref:`PPR-007 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_113 <wallet-credential-presentation-testcases>`):
@@ -593,7 +590,7 @@ If the Wallet Instance and the Relying Party Instance do not send or receive any
 
 When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (:ref:`WP_114 <wallet-credential-presentation-testcases>`):
 
-- Destruction of session keys and related ephemeral key material;
+- Destruction of session keys and related ephemeral key material.
 - Closure of the communication channel used for data retrieval.
 
 .. note::

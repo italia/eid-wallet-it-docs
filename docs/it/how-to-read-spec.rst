@@ -14,11 +14,11 @@ La specifica è organizzata nelle seguenti sezioni principali:
 - **Sezione** :ref:`introduction:Introduzione`:
   Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.
 
-- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
-  Fornisce una visione di alto livello dell'Architettura, in termini di governance e processi operativi abilitati.
-
 - **Sezione** :ref:`brand-identity:Brand Identity`:
   Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l'ecosistema.
+
+- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
+  Fornisce una visione di alto livello dell'Architettura, in termini di governance e processi operativi abilitati.
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`:
   Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.
@@ -47,14 +47,26 @@ La specifica è organizzata nelle seguenti sezioni principali:
 - **Sezione** :ref:`endpoints:Endpoints`:
   Specifiche tecniche per tutti gli endpoint API esposti da ciascun tipo di entità, inclusi gli endpoint di federazione e le integrazioni di servizi specializzati.
 
-- **Sezione** :ref:`algorithms:Algoritmi Crittografici`, :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, e :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` (**Supporto all'Implementazione**):
-  Requisiti crittografici, considerazioni sulla sicurezza e sulla privacy, e politiche di conservazione dei log essenziali per implementazioni conformi.
+- **Sezione** :ref:`algorithms:Algoritmi Crittografici`:
+  Requisiti crittografici per implementazioni conformi.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`, :ref:`official-resources:Risorse Ufficiali`, :ref:`contribute:Come contribuire`, e :ref:`open-source:Rilasci Open Source` (**Terminologia e Riferimenti**):
-  Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
+- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`:
+  Considerazioni sulla sicurezza e sulla privacy per implementazioni conformi.
+
+- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`:
+  Politiche di conservazione dei log per implementazioni conformi.
+
+- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`:
+  Consultazione dei termini definiti e dei riferimenti normativi. Le Risorse Ufficiali fanno parte di questo capitolo. Si consulta quando un termine non è noto.
+
+- **Sezione** :ref:`contribute:Come contribuire`:
+  Linee guida per i contributi.
+
+- **Sezione** :ref:`open-source:Rilasci Open Source`:
+  Rilasci open source.
 
 - **Sezione** :ref:`appendix:Appendice`:
-  Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
+  Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND, PDND e-Service Template e Test Plans sono sezioni di questa Appendice.
 
 
 Percorsi di lettura per ruolo
@@ -81,8 +93,6 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
-
 **Fase 2: Progettazione**
 
 Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere.
@@ -91,7 +101,7 @@ Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratter
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
-- **Sezione** :ref:`e-service-pdnd-template:PDND e-Service Template`: Modello di riferimento contenente tutti i metadati tecnici e descrittivi necessari per la definizione dell’e-service.
+- **Appendice** :ref:`e-service-pdnd-template:PDND e-Service Template`: Modello di riferimento contenente tutti i metadati tecnici e descrittivi necessari per la definizione dell’e-service.
 
 **Fase 3: Implementazione**
 
@@ -99,7 +109,7 @@ Implementare le interfacce tecnologiche necessarie per comunicare con il Fornito
 
 - **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Ruolo e responsabilità della Fonte Autentica.
 
-- **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l'integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
+- **Appendice** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l'integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
 
 - **Sezione** :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`: Requisiti chiave per l'implementazione delle API che consentono al Credential Issuer di recuperare in modo sicuro e coerente i dati autorevoli e di gestirne il ciclo di vita tramite gli endpoint del Signal Hub.
 
@@ -107,7 +117,7 @@ Implementare le interfacce tecnologiche necessarie per comunicare con il Fornito
 
 - **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per le Fonti Autentiche, in conformità alla norma ISO/IEC 27001.
 
-- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell'ambiente di test e alla validazione delle interazioni backend tramite l'utilizzo delle matrici di test fornite dall'ecosistema.
+- **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell'ambiente di test e alla validazione delle interazioni backend tramite l'utilizzo delle matrici di test fornite dall'ecosistema.
 
 **Fase 4: Registrazione**
 
@@ -134,8 +144,6 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 - **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
-
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
 **Fase 2: Progettazione**
 
@@ -165,9 +173,9 @@ Implementare la Soluzione Wallet in conformità a specifici standard tecnologici
 
 - **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Wallet, in conformità alla norma ISO/IEC 27001.
 
-- **Sezione** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Requisiti relativi all’istanza dell’applicazione mobile, con riferimento alla richiesta e alla risposta di inizializzazione.
+- **Appendice** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Requisiti relativi all’istanza dell’applicazione mobile, con riferimento alla richiesta e alla risposta di inizializzazione.
 
-- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
+- **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
 **Fase 4: Registrazione**
 
@@ -195,8 +203,6 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
-
 **Fase 2: Progettazione**
 
 Comprendere i requisiti e progettare tecnicamente i (Q)EAA, strutturandone i metadati in conformità ai requisiti tecnici e normativi.
@@ -217,13 +223,13 @@ Sviluppare endpoint secondo specifici protocolli e implementare le funzionalità
 
 - **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Selezione e implementazione degli standard crittografici necessari a garantire la sicurezza delle chiavi e delle transazioni.
 
-- **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l’integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
+- **Appendice** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l’integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: Requisiti di sicurezza e conformità per le soluzioni implementate.
 
 - **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Attestati Elettronici, in conformità alla norma ISO/IEC 27001.
 
-- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
+- **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
 **Fase 4: Registrazione**
 
@@ -251,8 +257,6 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
-
 **Fase 2: Progettazione**
 
 Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di verifica necessarie all’erogazione del servizio all’Utente finale.
@@ -279,7 +283,7 @@ Implementare le funzionalità di verifica secondo specifici protocolli, al fine 
 
 - **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per le Relying Party, in conformità alla norma ISO/IEC 27001.
 
-- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
+- **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
 **Fase 4: Registrazione**
 

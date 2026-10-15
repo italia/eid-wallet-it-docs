@@ -168,9 +168,9 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
 
-**Passo 13**: L'Istanza di Relying Party riceve il ``SessionData``, quindi DEVE decifrarlo e DEVE verificare la firma dell'Istanza del Wallet per garantire l'integrità dei dati e che provengano dal dispositivo previsto (device binding). DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici Digitali di lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando il `TOKEN-STATUS-LIST`_.
+**Passo 13**: L'Istanza di Relying Party riceve il ``SessionData``, quindi DEVE decifrarlo e DEVE verificare la firma dell'Istanza del Wallet per garantire l'integrità dei dati e che provengano dal dispositivo previsto (device binding). DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. Per una Credenziale di lunga durata, il controllo dello stato di revoca è specificato in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
-**Passo 14**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. La sessione può essere terminata inviando lo status code per la *Session Termination* in un messaggio ``SessionData``; questo può essere inviato insieme a una la Richiesta mdoc o Risposta mdoc [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). Se viene utilizzato BLE, questo può comportare l'invio di uno *status code* per la *Session Termination* o il comando "End". In questo scenario, il Client GATT (Istanza di Relying Party) DEVE annullare l'iscrizione dalle caratteristiche e disconnettersi dal server GATT (Istanza del Wallet) (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
+**Passo 14**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. La sessione può essere terminata inviando lo status code per la *Session Termination* in un messaggio ``SessionData``. Questo può essere inviato insieme a una la Richiesta mdoc o Risposta mdoc [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). Se viene utilizzato BLE, questo può comportare l'invio di uno *status code* per la *Session Termination* o il comando "End". In questo scenario, il Client GATT (Istanza di Relying Party) DEVE annullare l'iscrizione dalle caratteristiche e disconnettersi dal server GATT (Istanza del Wallet) (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Considerazione Finale**: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.
 
@@ -181,7 +181,7 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 
     Il record DEVE essere aggiornato man mano che la transazione procede, in modo da riflettere l’evoluzione dello stato della transazione e il contesto del risultato (ad esempio, quanto effettivamente presentato dopo il consenso dell’Utente e la preparazione/invio della risposta, Passi 11–12), senza registrare alcun valore degli attributi.
 
-    Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata; Passi 13–14 e Session Termination).
+    Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata. Passi 13–14 e Session Termination).
 
 ``DeviceEngagement`` tramite QR Code
 ------------------------------------
@@ -222,16 +222,16 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
     :caption: `Device Engagement tramite NFC. <https://www.plantuml.com/plantuml/img/dLDDJ-Cm4BtFhtZoXUOGJfooAaA28hWKr7QrPpSUWYNNpjfEilpxdPIIRRLKIEGG9NdpFkObkKbPnzpj7Eak1z_jjXo9g9M7jhQjzXdgbtQECtvwcnLqmd0Ahvxnw4N6rxo7Uo9TPzlhp38wNVPqWR8iiRo_XU7UrWpsZMvunw8o4m6HH8Zmt8HiXMAAaK3Ry0VgKvOYGBkCzJltLNiJUiaFEVgol1ugh5WRF1m0hDbnBMQRjvPnXOrk2XbcbnZBoVLKPn2Tlf8DhQ0Eoxl5FRGHDDl4QPf5uhXFDrDTz9L_gQlagmzK5OTCOwGfpOf_Tvp6tRks3N6qhdMCbcCg3jwZzN_fbRhRDx7uLuI2qLaND6xZ3O7a32bENkN5V0wbrfoI3NuXDM-TJQyVh2vQtnmlFxdDGfk5eLs1-Pn8xhuZ8_vuykuDzWN3-tSqjMTmM1pMuxEbVc2pN3nFrTg4JbYNrAEyXZJvrB8_7JcNSAAinsA-dBfr8PqNEx6aiMeYmqSV-j7DG3U2o__r5m00>`_
 
 ``DeviceEngagement`` tramite NFC è basato su *NFC Forum Connection Handover Technical Specification*, Versione 1.5. È supportata solo la modalità Reader/Writer utilizzando un Tag di Tipo 4. Il protocollo Connection Handover è sempre avviato dall'Istanza di Relying Party, che assume il ruolo di *Handover Requester*. L'Istanza del Wallet agisce come NFC Tag Device e l'Istanza di Relying Party come NFC Reader Device. L'Istanza del Wallet DEVE utilizzare Static Handover o *Negotiated Handover*:
-- **Static Handover**: L'Istanza di Relying Party recupera un messaggio *Handover Select* direttamente dal Tag di Tipo 4 dell'Istanza del Wallet. Questo messaggio contiene almeno un Alternative Carrier Record, ognuno indicante un metodo di recupero supportato dall'Istanza del Wallet  (:ref:`WP_103a <wallet-credential-presentation-testcases>`). L'Istanza di Relying Party DEVE selezionare una di queste tecnologie di trasmissione. (vedere Passo 1)
-- **Negotiated Handover**: L'Istanza del Wallet include il servizio ``urn:nfc:sn:handover`` in un Service Parameter Record del messaggio NDEF (NFC Data Exchange Format) iniziale  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Selezionando questo servizio, l'Istanza di Relying Party invia una *Handover Request* con un Alternative Carrier Record per ogni carrier che supporta. L'Istanza del Wallet risponde con un messaggio *Handover Select* contenente esattamente un carrier selezionato. (Vedere Passi 2-4)
+- **Static Handover**: L'Istanza di Relying Party recupera un messaggio *Handover Select* direttamente dal Tag di Tipo 4 dell'Istanza del Wallet. Questo messaggio contiene almeno un Alternative Carrier Record, ognuno indicante un metodo di recupero supportato dall'Istanza del Wallet  (:ref:`WP_103a <wallet-credential-presentation-testcases>`). L'Istanza di Relying Party DEVE selezionare una di queste tecnologie di trasmissione. (vedere Passo 1).
+- **Negotiated Handover**: L'Istanza del Wallet include il servizio ``urn:nfc:sn:handover`` in un Service Parameter Record del messaggio NDEF (NFC Data Exchange Format) iniziale  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Selezionando questo servizio, l'Istanza di Relying Party invia una *Handover Request* con un Alternative Carrier Record per ogni carrier che supporta. L'Istanza del Wallet risponde con un messaggio *Handover Select* contenente esattamente un carrier selezionato. (Vedere Passi 2-4).
 
 **Passo 1**: L'Istanza di Relying Party legge il Tag NFC di Tipo 4 del Wallet per ottenere un messaggio *Handover Select*, che include:
 - Alternative Carrier Record: un record NDEF all'interno di un messaggio *Handover Select* o *Handover Request*. Punta a una possibile tecnologia di comunicazione (chiamata "carrier"), come NFC o BLE. Informa il lettore sul carrier supportato e un puntatore (Auxiliary Data Reference) a informazioni più dettagliate. L'Alternative Carrier Record per la tecnologia di trasmissione *Device Retrieval* NFC DEVE fare riferimento al Carrier Configuration Record con il riferimento ID "nfc".
 - Carrier Configuration Record: fornisce i parametri tecnici necessari per utilizzare effettivamente quel carrier. Per la tecnologia di trasmissione *Device Retrieval NFC*, DEVE avere il tipo "iso.org:18013:nfc" e il riferimento ID "nfc". Il contenuto binario del Carrier Configuration Record DEVE essere codificato secondo la Tabella 1 di [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 Per esempio:
-Per NFC, questo definisce le lunghezze massime di comando/risposta APDU (Application Protocol Data Unit);
-Per BLE, definisce l'UUID del servizio dell'Istanza del Wallet, gli UUID delle caratteristiche, la dimensione MTU (Maximum Transmission Unit) e parametri di connessione opzionali;
+Per NFC, questo definisce le lunghezze massime di comando/risposta APDU (Application Protocol Data Unit).
+Per BLE, definisce l'UUID del servizio dell'Istanza del Wallet, gli UUID delle caratteristiche, la dimensione MTU (Maximum Transmission Unit) e parametri di connessione opzionali.
 Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome del servizio TNEP (Tag NDEF Exchange Protocol) utilizzato per inviare il messaggio ``SessionEstablishment`` durante l'handover.
 
 .. note::
@@ -249,11 +249,11 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
     L'uso di *Negotiated Handover* per il *Device Engagement* consente la negoziazione dei metodi di trasferimento. Per BLE, consente inoltre la negoziazione delle chiavi utilizzate dal livello di trasmissione. Questo fornisce un'esperienza utente migliorata e migliora la sicurezza della trasmissione dei dati [`ISO18013-5`_ #9.2.1].
 
 .. note::
-    Procedere solo se le Capabilities di ``DeviceEngagement`` includono ``HandoverSessionEstablishmentSupport`` impostato su ``true``  (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Altrimenti, saltare il ``SessionEstablishment`` anticipato. Il ``SessionEstablishment`` anticipato viene inviato tramite un servizio TNEP dedicato; lo stesso ``SessionEstablishment`` DEVE anche essere inviato nuovamente durante il *Device Retrieval* e DEVE corrispondere. Se non corrisponde, l'Istanza del Wallet termina (:ref:`WP_103g <wallet-credential-presentation-testcases>`). Se il ``SessionEstablishment`` anticipato non riesce a essere inviato, procedere normalmente (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
+    Procedere solo se le Capabilities di ``DeviceEngagement`` includono ``HandoverSessionEstablishmentSupport`` impostato su ``true``  (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Altrimenti, saltare il ``SessionEstablishment`` anticipato. Il ``SessionEstablishment`` anticipato viene inviato tramite un servizio TNEP dedicato. Lo stesso ``SessionEstablishment`` DEVE anche essere inviato nuovamente durante il *Device Retrieval* e DEVE corrispondere. Se non corrisponde, l'Istanza del Wallet termina (:ref:`WP_103g <wallet-credential-presentation-testcases>`). Se il ``SessionEstablishment`` anticipato non riesce a essere inviato, procedere normalmente (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
 **Passo 5**: [Opzionale] L'Istanza di Relying Party apre il servizio TNEP denominato [urn:placeholder] con l'Istanza del Wallet durante l'handover negoziato per consegnare il messaggio ``SessionEstablishment`` anticipato.
 
-**Passo 6**: L'Istanza di Relying Party invia ``SessionEstablishment`` (ad esempio, ``EReaderKey`` + ``DeviceRequest`` cifrato). L'Istanza del Wallet lo elabora; il *Device Retrieval* non è ancora iniziato.
+**Passo 6**: L'Istanza di Relying Party invia ``SessionEstablishment`` (ad esempio, ``EReaderKey`` + ``DeviceRequest`` cifrato). L'Istanza del Wallet lo elabora. Il *Device Retrieval* non è ancora iniziato.
 
 **Passo 7**: L'Istanza di Relying Party chiude il servizio TNEP.
 
@@ -281,7 +281,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 **Passi 2-5**: [Opzionale] L'Istanza del Wallet avvia la verifica preparandosi a controllare l'identità della Relying Party tramite la caratteristica Ident, che è una caratteristica BLE GATT che trasporta un valore identificatore come descritto in [`ISO18013-5`_ #11.1.3.2]. L'Istanza del Wallet deriva il valore Ident atteso e legge la caratteristica Ident della Relying Party, confrontandola con l'Ident atteso, e terminando la connessione BLE qualora non vi sia corrispondenza (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
 
 .. note::
-    Lo scopo della caratteristica Ident è unicamente di verificare se l'Istanza del Wallet è connessa all'Istanza di Relying Party corretta prima di iniziare il *Device Retrieval*. Se l'Istanza del Wallet è connessa all'Istanza di Relying Party sbagliata, il *Session Establishment* fallirà. Connettersi e disconnettersi a un'Istanza di Relying Party richiede una quantità relativamente grande di tempo; pertanto, è più veloce implementare metodi per identificare l'Istanza di Relying Party corretta [`ISO18013-5`_ #11.1.3.1].
+    Lo scopo della caratteristica Ident è unicamente di verificare se l'Istanza del Wallet è connessa all'Istanza di Relying Party corretta prima di iniziare il *Device Retrieval*. Se l'Istanza del Wallet è connessa all'Istanza di Relying Party sbagliata, il *Session Establishment* fallirà. Connettersi e disconnettersi a un'Istanza di Relying Party richiede una quantità relativamente grande di tempo. Pertanto, è più veloce implementare metodi per identificare l'Istanza di Relying Party corretta [`ISO18013-5`_ #11.1.3.1].
 
 **Passo 6**: L'Istanza di Relying Party invia il messaggio ``SessionEstablishment`` cifrato (includendo ``EReaderKey`` e ``DeviceRequest`` cifrato) tramite la connessione BLE stabilita.
 
@@ -518,7 +518,7 @@ Ogni elemento in **documents** DEVE essere conforme alla seguente struttura e DE
      - **Descrizione**
 
    * - **docType**
-     - *(tstr)*. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``.
+     - *(tstr)*. Identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
      - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR`.
@@ -556,8 +556,8 @@ Session Termination
 
 La sessione DEVE chiudersi qualora si verifichi almeno una delle seguenti condizioni (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_113–113a <wallet-credential-presentation-testcases>`):
 
-- Dopo un timeout di inattività nel quale non sono scambiati messaggi di *Session Establishment* o *Session Data*. Questo timeout di inattività viene implementato dall'Istanza del Wallet e dall'Istanza di Relying Party e DOVREBBE essere non inferiore a 300 secondi;
-- Quando l'Istanza del Wallet non accetta più richieste;
+- Dopo un timeout di inattività nel quale non sono scambiati messaggi di *Session Establishment* o *Session Data*. Questo timeout di inattività viene implementato dall'Istanza del Wallet e dall'Istanza di Relying Party e DOVREBBE essere non inferiore a 300 secondi.
+- Quando l'Istanza del Wallet non accetta più richieste.
 - Quando l'Istanza di Relying Party non invia ulteriori richieste.
 
 Se l'Istanza del Wallet e l'Istanza di Relying Party non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_113 <wallet-credential-presentation-testcases>`):
@@ -567,7 +567,7 @@ Se l'Istanza del Wallet e l'Istanza di Relying Party non inviano o ricevono ulte
 
 Quando una sessione viene terminata, l'Istanza del Wallet e l'Istanza di Relying Party DEVONO eseguire almeno le seguenti azioni (:ref:`WP_114 <wallet-credential-presentation-testcases>`):
 
-- Distruzione delle chiavi di sessione e del materiale di chiavi effimere correlato;
+- Distruzione delle chiavi di sessione e del materiale di chiavi effimere correlato.
 - Chiusura del canale di comunicazione utilizzato per il *Device Retrieval*.
 
 .. note::

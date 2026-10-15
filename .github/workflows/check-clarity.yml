@@ -1,0 +1,56 @@
+# Editorial clarity index. Standalone from the HTML build.
+
+name: check-clarity
+
+on:
+  push:
+    branches: ["*"]
+    paths:
+      - "docs/**"
+      - ".github/scripts/clarity_index.py"
+      - ".github/clarity-baseline.json"
+      - ".github/workflows/check-clarity.yml"
+  pull_request:
+    branches: ["*"]
+    paths:
+      - "docs/**"
+      - ".github/scripts/clarity_index.py"
+      - ".github/clarity-baseline.json"
+      - ".github/workflows/check-clarity.yml"
+  workflow_dispatch:
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: "true"
+          same_content_newer: "true"
+
+  clarity:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Editorial clarity index
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD > /tmp/clarity-changed.txt
+          elif git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+            git diff --name-only HEAD~1 HEAD > /tmp/clarity-changed.txt
+          else
+            : > /tmp/clarity-changed.txt
+          fi
+          python .github/scripts/clarity_index.py --changed-from /tmp/clarity-changed.txt
