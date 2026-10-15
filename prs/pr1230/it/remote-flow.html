@@ -891,39 +891,37 @@ Questi oggetti non sono richiesti per <code class="docutils literal notranslate"
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data</strong></p></td>
 <td><dl class="simple">
-<dt>OPZIONALE. Un array non vuoto di oggetti JSON, ognuno dei quali descrive una transazione che la Relying Party richiede all’Utente di autorizzare.  Ogni oggetto di transazione include:</dt><dd><ul class="simple">
+<dt>OPZIONALE. Array non vuoto di stringhe. Ciascuna stringa è un oggetto JSON codificato in base64url che descrive una transazione che la Relying Party richiede all’Utente di autorizzare, come definito nella Sezione 5.1 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>. L’oggetto decodificato include:</dt><dd><ul class="simple">
 <li><p><strong>type</strong>. Stringa che identifica il tipo di dati della transazione.</p></li>
 <li><p><strong>credential_ids</strong>. Array che fa riferimento a una o più Credenziali provenienti dalla <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> che possono autorizzare la transazione.</p></li>
+<li><p><strong>transaction_data_hashes_alg</strong>. OPZIONALE, e solo per <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Array di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash elencato nel registro IANA. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> del Key Binding JWT. Se omesso, l’algoritmo di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>. Vedere <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, Appendice B.3.3.</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>OPZIONALE. Un array di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash, corrispondente a un nome di algoritmo di hash elencato nel registro IANA. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro di risposta <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se omesso, l’algoritmo di hash predefinito è sha-256.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>response_type</strong></p></td>
+<tr class="row-even"><td><p><strong>response_type</strong></p></td>
 <td><p>OBBLIGATORIO. DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-91</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>wallet_nonce</strong></p></td>
+<tr class="row-odd"><td><p><strong>wallet_nonce</strong></p></td>
 <td><p>OBBLIGATORIO se precedentemente fornito dall'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-81</span></a>). Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>response_uri</strong></p></td>
 <td><p>OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-92</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-93</span></a>)..</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>state</strong></p></td>
+<tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>RACCOMANDATO. Identificatore univoco della Authorization Request, il suo valore DOVREBBE essere opaco per l’Istanza del Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>OBBLIGATORIO. L'entità che ha emesso il JWT. Sarà popolato con il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> della Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora in cui il JWT è stato emesso.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-94</span></a>).</p></td>
 </tr>
 </tbody>
@@ -1029,7 +1027,7 @@ Questi oggetti non sono richiesti per <code class="docutils literal notranslate"
 <td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore di questo parametro DEVE corrispondere all'identificatore di entità (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) univoco della Relying Party.</p></td>
+<td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore DEVE essere il Client Identifier (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) della Relying Party, incluso il prefisso del Client Identifier (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> o <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>). Ad esempio, <code class="docutils literal notranslate"><span class="pre">openid_federation:https://relying-party.example.org</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>OBBLIGATORIO. Garantisce l'unicità della firma. Il valore di questa <em>claim</em> DEVE essere una stringa e deve corrispondere a quello fornito nel Request Object.</p></td>
@@ -1041,7 +1039,7 @@ Questi oggetti non sono richiesti per <code class="docutils literal notranslate"
 <td><p>CONDIZIONALE. OBBLIGATORIO quando la richiesta include <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>CONDIZIONALE. OBBLIGATORIO solo se la richiesta includeva <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se tale parametro non è stato fornito, la funzione di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
+<td><p>CONDIZIONALE. OBBLIGATORIO solo quando l’oggetto <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> corrispondente include <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se tale parametro non è stato fornito, la funzione di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
