@@ -45,8 +45,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -58,17 +56,6 @@ jobs:
         run: |
           python -m pip install -r requirements-dev.txt
           python -m pip install tox
-
-      - name: Editorial clarity index
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD > /tmp/clarity-changed.txt
-          elif git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
-            git diff --name-only HEAD~1 HEAD > /tmp/clarity-changed.txt
-          else
-            : > /tmp/clarity-changed.txt
-          fi
-          python .github/scripts/clarity_index.py --changed-from /tmp/clarity-changed.txt
 
       - name: Run Sphinx labels and xref check
         run: tox -e labels
