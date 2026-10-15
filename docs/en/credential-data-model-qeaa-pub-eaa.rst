@@ -155,8 +155,10 @@ Token Status List, as already required by those sections, is the EAA status serv
 A QEAA or a PuB-EAA MAY contain ``oneTime``.
 In SD-JWT VC, a present ``oneTime`` claim MUST have the JSON null value ([`ETSI TS 119 472-1`_] EAA-5.2.8.2-05).
 In mdoc, ``oneTime`` MUST be a boolean in the namespace ``org.etsi.01947201.010101`` ([`ETSI TS 119 472-1`_] EAA-6.2.8.2-03).
-When ``oneTime`` is present in SD-JWT VC, the Wallet Unit MUST present the attestation only once.
-When ``oneTime`` is ``true`` in mdoc, the Wallet Unit MUST present the attestation only once.
+When ``oneTime`` is present in SD-JWT VC, the Wallet Unit MUST present the attestation only once ([`ETSI TS 119 472-1`_] EAA-5.2.8.2-03).
+When ``oneTime`` is present in SD-JWT VC, the Wallet Unit MUST NOT retain the attestation for future use ([`ETSI TS 119 472-1`_] EAA-5.2.8.2-03).
+When ``oneTime`` is ``true`` in mdoc, the Wallet Unit MUST present the attestation only once ([`ETSI TS 119 472-1`_] EAA-6.2.8.2-04).
+When ``oneTime`` is ``true`` in mdoc, the Wallet Unit MUST NOT retain the attestation for future use ([`ETSI TS 119 472-1`_] EAA-6.2.8.2-04).
 
 Components Not Used
 -------------------
