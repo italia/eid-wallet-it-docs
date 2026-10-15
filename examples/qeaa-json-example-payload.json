@@ -4,8 +4,6 @@
     "iat": 1683000000,
     "nbf": 1683000000,
     "exp": 1883000000,
-    "issuing_authority": "Credential Issuer Organization",
-    "issuing_country": "IT",
     "date_of_expiry": "2033-03-19",
     "status": {
         "status_list": {

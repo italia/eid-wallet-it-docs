@@ -1026,4 +1026,8 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Single subject
     - A QEAA or a PuB-EAA that contains ``subAttrs`` or ``SubAttr`` is rejected. A PuB-EAA in SD-JWT VC that contains both ``sub`` and ``also_known_as``, or neither, is rejected.
+  * - CI_213
+    - Data Model and lifecycle, Interoperability
+    - Issuer claims absent when the certificate is in x5c
+    - An SD-JWT VC QEAA or PuB-EAA that contains ``issuing_authority`` or ``issuing_country`` is rejected, because ``x5c`` incorporates the qualified certificate, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
 

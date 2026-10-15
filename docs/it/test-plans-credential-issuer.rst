@@ -1025,5 +1025,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Soggetto unico
     - Un QEAA o un PuB-EAA che contiene ``subAttrs`` o ``SubAttr`` è rifiutato. Un PuB-EAA in SD-JWT VC che contiene sia ``sub`` sia ``also_known_as``, o nessuno dei due, è rifiutato.
+  * - CI_213
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim dell'issuer assenti quando il certificato è in x5c
+    - Un QEAA o un PuB-EAA in SD-JWT VC che contiene ``issuing_authority`` o ``issuing_country`` è rifiutato, perché ``x5c`` incorpora il certificato qualificato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
 
 

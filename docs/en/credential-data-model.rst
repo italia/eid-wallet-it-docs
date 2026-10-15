@@ -127,10 +127,10 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - REQUIRED for a PID and an EAA. OPTIONAL otherwise. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, and Commission Implementing Regulation `EU_2026/1731`_ Annex I, Section 4.2.
     * - **issuing_authority**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
+      - REQUIRED for a Digital Credential that is not a QEAA or a PuB-EAA. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. For a QEAA or a PuB-EAA, ``issuing_authority`` follows :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuing_country**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
+      - REQUIRED for a Digital Credential that is not a QEAA or a PuB-EAA. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. For a QEAA or a PuB-EAA, ``issuing_country`` follows :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuance_date**
       - OPTIONAL. *String*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the JWT ``iat`` claim.

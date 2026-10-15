@@ -62,9 +62,9 @@ A PuB-EAA uses the profile in :ref:`infrastructure-trust:PuB-EAA Provider Sign/S
 The signature MUST be a qualified electronic signature or a qualified electronic seal ([`ETSI TS 119 472-1`_] QEAA-5.6.2-01, PuB-EAA-5.6.3-01, QEAA-6.6.2-01 and PuB-EAA-6.6.3-01).
 
 The registration identifier in that certificate MUST follow clause 5.1.4 of [`ETSI EN 319 412-1`_] ([`ETSI TS 119 472-1`_] QEAA-5.2.4.2-04, PuB-EAA-5.2.4.3-04, QEAA-6.2.4.2-02 and PuB-EAA-6.2.4.3-02).
-The claims ``issuing_authority`` and ``issuing_country`` remain those specified in :ref:`credential-data-model:Digital Credential SD-JWT Metadata Attributes` and in [`EU_2024/2977`_].
-The value of ``issuing_authority`` MUST be equal to the issuer name in the qualified certificate.
-The value of ``issuing_country`` MUST be equal to the country in the qualified certificate.
+In SD-JWT VC the qualified certificate supporting the signature is incorporated in the ``x5c`` header parameter, as required in :ref:`credential-data-model-qeaa-pub-eaa:Protected Header`.
+An SD-JWT VC QEAA or PuB-EAA MUST NOT contain ``issuing_authority`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-03).
+An SD-JWT VC QEAA or PuB-EAA MUST NOT contain ``issuing_country`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-07).
 The claim or element ``iss_reg_id`` MUST NOT be present when the qualified certificate already contains the registration identifier ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11 and EAA-6.2.4.1-13).
 
 Attestation Identity

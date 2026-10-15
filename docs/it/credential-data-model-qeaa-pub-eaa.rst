@@ -62,9 +62,9 @@ Un PuB-EAA usa il profilo in :ref:`infrastructure-trust:PuB-EAA Provider Sign/Se
 La firma MUST essere una firma elettronica qualificata o un sigillo elettronico qualificato ([`ETSI TS 119 472-1`_] QEAA-5.6.2-01, PuB-EAA-5.6.3-01, QEAA-6.6.2-01 e PuB-EAA-6.6.3-01).
 
 L'identificativo di registrazione in quel certificato MUST seguire il capitolo 5.1.4 di [`ETSI EN 319 412-1`_] ([`ETSI TS 119 472-1`_] QEAA-5.2.4.2-04, PuB-EAA-5.2.4.3-04, QEAA-6.2.4.2-02 e PuB-EAA-6.2.4.3-02).
-I claim ``issuing_authority`` e ``issuing_country`` restano quelli specificati in :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT` e in [`EU_2024/2977`_].
-Il valore di ``issuing_authority`` MUST essere uguale al nome dell'issuer nel certificato qualificato.
-Il valore di ``issuing_country`` MUST essere uguale al paese nel certificato qualificato.
+In SD-JWT VC il certificato qualificato a supporto della firma è incorporato nel parametro di header ``x5c``, come richiesto in :ref:`credential-data-model-qeaa-pub-eaa:Header Protetto`.
+Un QEAA o un PuB-EAA in SD-JWT VC MUST NOT contenere ``issuing_authority`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-03).
+Un QEAA o un PuB-EAA in SD-JWT VC MUST NOT contenere ``issuing_country`` ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-07).
 Il claim o l'elemento ``iss_reg_id`` MUST NOT essere presente quando il certificato qualificato contiene già l'identificativo di registrazione ([`ETSI TS 119 472-1`_] EAA-5.2.4.1-11 e EAA-6.2.4.1-13).
 
 Identità dell'Attestato

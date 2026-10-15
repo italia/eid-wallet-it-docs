@@ -126,10 +126,10 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OBBLIGATORIO per un PID e un EAA. Altrimenti è OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, e Regolamento di esecuzione della Commissione `EU_2026/1731`_ Allegato I, Sezione 4.2.
     * - **issuing_authority**
-      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO per un Attestato Elettronico che non è un QEAA o un PuB-EAA. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Per un QEAA o un PuB-EAA, ``issuing_authority`` segue :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **issuing_country**
-      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO per un Attestato Elettronico che non è un QEAA o un PuB-EAA. *Stringa*. Identificativo del dato `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Per un QEAA o un PuB-EAA, ``issuing_country`` segue :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **issuance_date**
       - OPZIONALE. *Stringa*. Identificativo del dato `issuance_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce alla data amministrativa di emissione dell'Attestato Elettronico, che è tipicamente diverso dalla data tecnica di emissione espresso dal claim JWT ``iat``.
