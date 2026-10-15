@@ -178,6 +178,7 @@ Header Protetto
 
 Il protected header JOSE DEVE contenere ``x5u`` ([`ETSI TS 119 472-1`_] QEAA-5.6.2-02 e PuB-EAA-5.6.3-02).
 Il protected header JOSE DEVE contenere ``x5t#S256`` ([`ETSI TS 119 472-1`_] QEAA-5.6.2-02 e PuB-EAA-5.6.3-02).
+``x5t#S256`` è il digest SHA-256, codificato in base64url, della codifica DER del certificato di firma, come specificato in :rfc:`7515`.
 ``x5u`` DEVE essere un URI HTTPS presso il quale il certificato del firmatario è disponibile gratuitamente.
 ``x5c`` resta OBBLIGATORIO come specificato in :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT`.
 Il certificato end-entity in ``x5c`` DEVE essere il certificato identificato da ``x5u`` e ``x5t#S256``.
@@ -246,7 +247,7 @@ L'algoritmo di hash dentro ``x5t`` DEVE essere SHA-256 ([`ETSI TS 119 472-1`_] Q
 
 L'unprotected header DEVE contenere ``x5chain``, label ``33``, come specificato in :ref:`credential-data-model:Mobile Security Object`.
 La Wallet Unit DEVE recuperare il certificato del firmatario da ``x5u``.
-La Wallet Unit DEVE rifiutare l'attestato quando l'impronta SHA-256 di quel certificato differisce da ``x5t``.
+La Wallet Unit DEVE rifiutare l'attestato quando il digest SHA-256 della codifica DER di quel certificato differisce da ``x5t``.
 La Wallet Unit DEVE rifiutare l'attestato quando il certificato end-entity in ``x5chain`` differisce dal certificato recuperato da ``x5u``.
 
 Namespace org.etsi.01947201.010101
@@ -283,6 +284,9 @@ Verifica
 La Wallet Unit DEVE rifiutare un QEAA il cui ``category`` differisce da ``urn:etsi:esi:eaa:eu:qualified``.
 La Wallet Unit DEVE rifiutare un PuB-EAA il cui ``category`` differisce da ``urn:etsi:esi:eaa:eu:pub``.
 La Wallet Unit DEVE validare la firma qualificata o il sigillo qualificato.
+La Wallet Unit DEVE rifiutare un QEAA o un PuB-EAA in SD-JWT VC quando ``x5t#S256`` differisce dal digest del certificato end-entity in ``x5c`` specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header Protetto`.
+La Wallet Unit DEVE rifiutare un QEAA o un PuB-EAA in SD-JWT VC quando ``x5t#S256`` differisce da quel digest del certificato recuperato da ``x5u``.
+Per un mdoc, la Wallet Unit DEVE applicare il confronto già richiesto per ``x5t`` in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
 La Wallet Unit DEVE validare il percorso del certificato dell'issuer come specificato in :ref:`trust-evaluation:Trust Evaluation Process`.
 Un percorso QEAA termina sulla Trusted List del Qualified Trust Service Provider.
 Un percorso PuB-EAA termina sulla List of Trusted Entities dei PuB-EAA Provider.

@@ -1017,11 +1017,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_210
     - Data Model and lifecycle, Security
     - SD-JWT VC signer certificate location
-    - The protected JOSE header of a QEAA or a PuB-EAA contains ``x5u`` and ``x5t#S256``. The end-entity certificate in ``x5c`` matches that certificate.
+    - The protected JOSE header of a QEAA or a PuB-EAA contains ``x5u`` and ``x5t#S256``. ``x5t#S256`` is the base64url-encoded SHA-256 digest of the DER encoding of the end-entity certificate in ``x5c``. It is the same digest of the certificate retrieved from ``x5u``. A mismatch is rejected.
   * - CI_211
     - Data Model and lifecycle, Security
     - mdoc signer certificate location
-    - For a QEAA or a PuB-EAA, the mdoc ``issuerAuth`` is a CB-AdES signature. The protected header contains ``x5u`` and ``x5t`` with SHA-256. The unprotected ``x5chain`` end-entity certificate matches the certificate retrieved from ``x5u``. A mismatch is rejected. For a Digital Credential that is not a QEAA or a PuB-EAA, ``issuerAuth`` is a ``COSE_Sign1`` whose protected header contains only the signature algorithm, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
+    - For a QEAA or a PuB-EAA, the mdoc ``issuerAuth`` is a CB-AdES signature. The protected header contains ``x5u`` and ``x5t`` with SHA-256. ``x5t`` is the SHA-256 digest of the DER encoding of the certificate retrieved from ``x5u``. The unprotected ``x5chain`` end-entity certificate matches the certificate retrieved from ``x5u``. A mismatch is rejected. For a Digital Credential that is not a QEAA or a PuB-EAA, ``issuerAuth`` is a ``COSE_Sign1`` whose protected header contains only the signature algorithm, as specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
   * - CI_212
     - Data Model and lifecycle, Interoperability
     - Single subject
