@@ -30,6 +30,10 @@ The Wallet Instance MUST reject an expired Credential.
 See :ref:`credential-revocation:Credential Status`.
 ```
 
+## Test plans
+
+When the requirements of a section change, update the test cases that section cites, and any other test case that covers the same behavior, in the same change and in both languages. The test states the current requirement. A test that no longer applies keeps its identifier. Empty its purpose, description, and expected result with `Voided` in English and `Annullato` in Italian. Do not delete the row, and do not reuse the identifier.
+
 ## Sentences
 
 Do not join clauses with a semicolon. Use separate sentences.

@@ -665,19 +665,19 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_078
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
      - Scoperta identità Relying Party
-     - Istanza del Wallet utilizza con successo gli Endpoint di Federazione (``.well-known/openid-federation``, ``/fetch``) per recuperare metadata e configurazioni correnti della Relying Party.
+     - Il prefisso di ``client_id`` seleziona esattamente un Trust Framework. Per ``openid_federation``, l'Istanza del Wallet usa la Federation Entity Authentication. Per ``x509_hash``, l'Istanza del Wallet usa l'autenticazione EUDIW del WRPAC rispetto ai Providers of WRPAC LoTE.
    * - WP_079
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
-     - Valutazione Trust Chain Relying Party
-     - Istanza del Wallet valida con successo la Trust Chain della Relying Party (fornita staticamente o costruita attraverso un processo Federation Entity Discovery) dal Trust Anchor fino alla Relying Party stessa, confermando che la Relying Party è un membro riconosciuto e fidato della Federazione.
+     - Valutazione del percorso di trust della Relying Party
+     - Nel percorso nazionale, l'Istanza del Wallet valida la Trust Chain della Relying Party. Nel percorso EUDIW, valida il percorso del WRPAC. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.
    * - WP_080
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
-     - Controllo Trust Mark Relying Party
-     - Istanza del Wallet valuta con successo qualsiasi Trust Mark incluso nell'Entity Configuration della Relying Party per assicurare che siano validi e indichino conformità alle policy della Federazione.
+     - Evidenza di autorizzazione della Relying Party
+     - Nel percorso nazionale, l'Istanza del Wallet valida il Trust Mark di registrazione. Nel percorso EUDIW, autorizza la richiesta attraverso il WRPRC in ``verifier_info``. Il materiale WRPAC e WRPRC non è evidenza di trust nazionale.
    * - WP_081
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Validare ``request_uri``
-     - Istanza del Wallet controlla che il ``request_uri`` sia nella lista di URI consentiti alla Relying Party (dai ``openid_credential_verifier.request_uris`` nella Trust Chain) e procede solo quando trova una corrispondenza esatta; se non viene trovata corrispondenza, rifiuta la richiesta.
+     - Nel percorso nazionale, ``request_uri`` corrisponde esattamente a un valore di ``request_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``request_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza rifiuta la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_082
      - Flusso-remoto, Presentazione, Interoperabilità
      - GET Request Object
@@ -689,7 +689,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, opzionalmente ``client_id_prefixes_supported`` e ``request_object_signing_alg_values_supported`` per Sezione 10.1 di [`OpenID4VP`_].
+     - L'Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported`` e ``client_id_prefixes_supported``, e opzionalmente ``request_object_signing_alg_values_supported``, secondo la Sezione 10.1 di [`OpenID4VP`_]. ``client_id_prefixes_supported`` contiene sia ``x509_hash`` sia ``openid_federation``.
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``
@@ -701,7 +701,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_084
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Recupero chiave pubblica Relying Party
-     - Istanza del Wallet recupera la chiave pubblica corretta della Relying Party dal campo ``metadata.openid_credential_verifier.jwks``, situato all'interno dell'Entity Configuration della Relying Party fornita dalla Trust Chain, utilizzando l'identificativo di chiave (``kid``) dall'header del Request Object.
+     - Nel percorso nazionale, la chiave di firma è la chiave identificata da ``kid`` nei metadati di federazione. Nel percorso EUDIW, la chiave di firma è la chiave del WRPAC in ``x5c``. L'Istanza del Wallet non cambia percorso.
    * - WP_085
      - Flusso-remoto, Presentazione, Sicurezza
      - Verifica firma Request Object
@@ -709,11 +709,11 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_086
      - Flusso-remoto, Presentazione, Sicurezza
      - Abbinare ``client_id`` tra contesti
-     - Istanza del Wallet conferma che il claim ``iss`` nel Request Object firmato abbia lo stesso ``client_id`` che ha originariamente estratto dall'URL dell'Authorization Request che il valore ``sub`` nell'Entity Configuration della Relying Party. Qualsiasi discrepanza causa il rifiuto dell Request Object.
+     - ``iss`` è uguale al ``client_id`` qualificato dal prefisso dell'Authorization Request. Nel percorso nazionale, corrisponde anche al ``sub`` dell'Entity Configuration. Una mancata corrispondenza rifiuta la richiesta.
    * - WP_087
      - Flusso-remoto, Presentazione, Sicurezza
      - Controllare idoneità Relying Party
-     - Istanza del Wallet autorizza la richiesta e procede con il flusso quando verifica che i metadata, le policy e un Trust Mark valido della Relying Party consentono a quest'ultima di richiedere l'Attestato Elettronico specificato.
+     - Nel percorso nazionale, l'Istanza del Wallet controlla l'ambito del Trust Mark di registrazione. Nel percorso EUDIW, controlla l'entitlement di service provider e l'ambito DCQL esatto. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.
    * - WP_088
      - Flusso-remoto, Presentazione, Privacy
      - Consenso utente per divulgazione
@@ -741,7 +741,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_091a
      - Flusso-remoto, Presentazione, Sicurezza
      - Validare ``response_uri``
-     - Prima di inviare l'Authorization Response, Istanza del Wallet conferma che il ``response_uri`` corrisponda esattamente a uno dei ``response_uris`` attestati della Relying Party nei suoi metadata; una mancata corrispondenza interrompe il flusso.
+     - Nel percorso nazionale, ``response_uri`` corrisponde esattamente a un valore di ``response_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``response_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_092
      - Flusso-remoto, Presentazione, Sicurezza
      - Cifrare l'Authorization Response
@@ -769,7 +769,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_094a
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Validare ``redirect_uri``
-     - Istanza del Wallet verifica che il ``redirect_uri`` corrisponda esattamente a uno degli URI elencati nei metadata ``redirect_uris`` della Relying Party. Se non corrisponde, interrompe il flusso.
+     - Nel percorso nazionale, ``redirect_uri`` corrisponde esattamente a un valore di ``redirect_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``redirect_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe il flusso. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_095
      - Flusso-prossimità, Presentazione, Sicurezza
      - Supportare recupero supervisionato/non supervisionato
