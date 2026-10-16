@@ -75,7 +75,9 @@ Metodi, parametri di filtro, codici di risposta e la riduzione di ``services`` q
 
 Il file YAML della specifica OpenAPI descritta nella Sezione 3 di `EUDI-TS 5`_ è disponibile come `EUDI-TS 5 OpenAPI`_.
 Lo JSON Schema dell'oggetto ``WalletRelyingParty``, incluso l'array ``services`` di ``WalletRelyingPartyService``, è disponibile come `EUDI-TS 5 JSON Schema`_.
-Il profilo di lettura nazionale di tale API è disponibile :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">qui</a>`.
+
+.. note::
+    L'API nazionale del Register fornisce solo i metodi di lettura e si basa su `EUDI-TS 5 OpenAPI`_.
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -4,9 +4,9 @@
     {
       "itemsRequest": 24(<<
         {
-          "docType": "org.iso.18013.5.1.mDL",
+          "docType": "it.wallet.trust-registry.example.1",
           "nameSpaces": {
-            "org.iso.18013.5.1": {
+            "it.wallet.trust-registry.example": {
               "family_name": true,
               "document_number": true,
               "portrait": false
@@ -29,7 +29,7 @@
               "intendedUseIdentifier": "identity-verification",
               "policyURI": "https://example.org/national-privacy",
               "credential": [
-                {"format": "mso_mdoc", "meta": {"doctype_value": "org.iso.18013.5.1.mDL"}, "claim": ["org.iso.18013.5.1/family_name", "org.iso.18013.5.1/document_number"]}
+                {"format": "mso_mdoc", "meta": {"doctype_value": "it.wallet.trust-registry.example.1"}, "claim": ["it.wallet.trust-registry.example/family_name", "it.wallet.trust-registry.example/document_number"]}
               ]
             }
           }

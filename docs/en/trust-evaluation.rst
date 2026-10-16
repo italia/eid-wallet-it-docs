@@ -123,8 +123,6 @@ On the EUDIW path the Wallet Unit MUST authenticate and validate the Wallet-Rely
 On the National path the Wallet Unit MUST validate the reader certificate as specified in :ref:`trust-evaluation:Relying Party Proximity Authentication`.
 The Wallet Unit MUST run Authorization under the selected framework only.
 The Relying Party uses the certificate that corresponds to the selected row.
-The Wallet Unit MUST NOT present a PID, a QEAA or a PuB-EAA in a presentation that follows the National Trust Framework, in the remote and in the proximity flow.
-If the request includes such a Credential, the Wallet Unit MUST stop the interaction.
 
 Failure Handling
 ^^^^^^^^^^^^^^^^

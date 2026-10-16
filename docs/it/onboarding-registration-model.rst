@@ -493,7 +493,7 @@ Relying Party Intermediary
 
 Un Intermediario di Relying Party dichiara di agire come intermediario sia nel National Trust Framework sia nel Trust Framework EUDIW.
 Nel National Trust Framework l'Intermediario di Relying Party è un Federation Intermediate, ossia effettua l'onboarding delle Relying Party intermediate in autonomia, pubblicandone i Subordinate Statement, come descritto in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-Nel Trust Framework EUDIW è registrato con ``isIntermediary`` impostato, e federa le proprie Relying Party intermediate che operano in ambito transfrontaliero.
+Nel Trust Framework EUDIW è registrato con ``isIntermediary`` impostato, e federa le Relying Party intermediate che operano nel Trust Framework EUDIW, come dichiarato nel loro ``trust_framework_scope``.
 Fornisce gli stessi Data Identifier di una :ref:`onboarding-system:Relying Party`, con le differenze nella tabella seguente.
 I Data Identifier non elencati qui sono forniti come per una Relying Party.
 

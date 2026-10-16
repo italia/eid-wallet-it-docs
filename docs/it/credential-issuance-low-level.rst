@@ -170,8 +170,6 @@ Di seguito un esempio non normativo del `Request Object` firmato senza codifica 
 
 .. note::
   **Controllo di fiducia della Wallet Unit:** Al PAR Endpoint, il Credential Issuer DEVE validare l'Attestato di Unità di Wallet come specificato in :ref:`trust-evaluation:Selection at Issuance`.
-  Per una Wallet Unit di un altro Stato membro, tale validazione segue :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
-  Per una Wallet Unit nazionale, tale validazione segue :ref:`trust-evaluation:Wallet Unit Authentication`.
   Un controllo fallito DEVE terminare la richiesta.
 
 **Passo 3 (`PAR Response`)**: Il Credential Issuer fornisce un valore ``request_uri`` monouso. Il valore ``request_uri`` emesso DEVE essere vincolato all'identificativo del client (``client_id``) che è stato fornito nel `Request Object`.
@@ -322,6 +320,13 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
  5. Il parametro dell'header NON DEVE contenere una chiave privata.
  6. La firma sul JWT di Key Attestation, come valore del parametro di intestazione ``key_attestation``, DEVE essere verificata utilizzando la chiave pubblica del Wallet Provider, identificata dal parametro di intestazione kid all’interno del JWT di Key Attestation.
  7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
+ 8. Per ciascuna Key Attestation di una Wallet Unit, il Credential Issuer DEVE stabilire la fiducia nel Wallet Provider attraverso il Trust Framework selezionato per la Wallet Instance Attestation, come specificato in :ref:`trust-evaluation:Selection at Issuance`.
+    Il Credential Issuer DEVE validare la catena del certificato di firma della Key Attestation secondo :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+    Il Credential Issuer DEVE controllare la validità temporale della Key Attestation.
+    Il Credential Issuer DEVE controllare lo stato di revoca della Key Attestation.
+    Il Credential Issuer DEVE verificare la prova di possesso associata.
+    Il Credential Issuer DEVE verificare che la protezione della chiave attestata soddisfi la politica del Credential Issuer, ove presente.
+    Un controllo fallito DEVE terminare la richiesta.
 
 
 .. note::

@@ -78,7 +78,6 @@ The JSON Schema of the ``WalletRelyingParty`` object, including the ``services``
 
 .. note::
     The national Register API provides only the read methods and is based on `EUDI-TS 5 OpenAPI`_.
-    
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
