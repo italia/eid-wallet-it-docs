@@ -1379,11 +1379,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <p>The Wallet Provider MUST act as both the Status Issuer and the Status Provider.
 The Wallet Provider MUST publish each SLT by HTTP GET at the URI in the WIA member <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> or the KA member <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code>.
 Media types, the JWT or CWT format, and signature protection are specified in <a class="reference internal" href="credential-revocation.html#token-status-list-digital-credentials-profile"><span class="std std-ref">Token Status List (Digital Credentials Profile)</span></a>.</p>
-<p>Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:</p>
-<ul class="simple">
-<li><p>a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework. Or.</p></li>
-<li><p>a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.</p></li>
-</ul>
+<p>Regardless of the format, the Wallet Provider MUST sign the SLT with the Trust Anchor used to validate its Wallet Instance Attestations, as specified in <a class="reference internal" href="infrastructure-trust.html#revocation-trust-anchors"><span class="std std-ref">Revocation Trust Anchors</span></a>.</p>
 <p><strong>Privacy Considerations</strong></p>
 <p>To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST aggregate the status information for multiple WIAs or KAs using per-key-attestation indexes in the same Status List and MUST publish the SLT at the same <code class="docutils literal notranslate"><span class="pre">uri</span></code> for those attestations. Where appropriate, each Status List SHOULD contain approximately 10,000 entries, in accordance with <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> and <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>. These aggregation and size requirements do not apply to KAs using a type-shared index.</p>
 </section>
