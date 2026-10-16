@@ -66,7 +66,7 @@ Where the configuration published through the EUDIW mechanisms and the configura
       - **Condition**
       - **Trust Framework**
     * - Issuance, Credential Issuer
-      - The requested Credential is a PID, a QEAA or a PuB-EAA, or the Credential Issuer is of another Member State.
+      - The requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or the Credential Issuer is of another Member State.
       - The Wallet Unit MUST use the EUDIW Trust Framework.
     * - Issuance, Credential Issuer
       - The Credential Issuer is a national entity and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
@@ -76,14 +76,14 @@ Where the configuration published through the EUDIW mechanisms and the configura
       - The Wallet Unit is of another Member State.
       - The Credential Issuer MUST validate it through the Wallet Providers List of Trusted Entities.
     * - Issuance, Wallet Instance Attestation
-      - The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA.
+      - The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook.
       - The Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities.
     * - Issuance, Wallet Instance Attestation
       - The Wallet Unit is national and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
         The IT-Wallet ID is such a Credential (see :term:`IT-Wallet ID`).
       - The Credential Issuer MAY validate it through the National Trust Framework (see :ref:`trust-evaluation:Wallet Unit Authentication`).
     * - Presentation
-      - The request includes a PID, a QEAA or a PuB-EAA, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.
+      - The request includes a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.
       - The Relying Party MUST use the EUDIW Trust Framework for the whole request.
     * - Presentation
       - The Relying Party is national and the request contains only a non-qualified Electronic Attestation of Attributes with national scope.
@@ -123,6 +123,8 @@ On the EUDIW path the Wallet Unit MUST authenticate and validate the Wallet-Rely
 On the National path the Wallet Unit MUST validate the reader certificate as specified in :ref:`trust-evaluation:Relying Party Proximity Authentication`.
 The Wallet Unit MUST run Authorization under the selected framework only.
 The Relying Party uses the certificate that corresponds to the selected row.
+The Wallet Unit MUST NOT present a PID, a QEAA or a PuB-EAA in a presentation that follows the National Trust Framework, in the remote and in the proximity flow.
+If the request includes such a Credential, the Wallet Unit MUST stop the interaction.
 
 Failure Handling
 ^^^^^^^^^^^^^^^^
