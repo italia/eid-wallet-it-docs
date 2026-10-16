@@ -47,8 +47,8 @@ Quando ``personal_administrative_number`` non è presentato, la Relying Party DE
 
 La Relying Party NON DEVE completare l'identity matching su un sottoinsieme di tali attributi che consentirebbe uno scambio di persona (:ref:`CI_202 <credential-issuer-testcases>`). In particolare:
 
-- il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta ``place_of_birth``, NON DEVE essere trattato come identity matching andato a buon fine;
-- una discordanza su qualsiasi attributo del set minimo DEVE far fallire l'identity matching; la Relying Party NON DEVE ignorare una discordanza sul nome attuale (ad esempio dopo un cambio di nome) per forzare un match;
+- il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta ``place_of_birth``, NON DEVE essere trattato come identity matching andato a buon fine.
+- una discordanza su qualsiasi attributo del set minimo DEVE far fallire l'identity matching. La Relying Party NON DEVE ignorare una discordanza sul nome attuale (ad esempio dopo un cambio di nome) per forzare un match.
 - se l'Attribute-Based Binding corrisponde a più di un record Utente memorizzato, la Relying Party NON DEVE completare l'identity matching. PUÒ richiedere un identificativo nazionale univoco, oppure applicare un metodo di binding supplementare che identifichi univocamente la persona.
 
 Metodi di Binding Supplementari
@@ -56,9 +56,9 @@ Metodi di Binding Supplementari
 
 I metodi seguenti POSSONO integrare l'Attribute-Based Binding. NON DEVONO sostituire il set minimo di Attribute-Based Binding quando non è presentato un identificativo nazionale univoco:
 
-- **Session-Based Binding**: la presentazione avviene all'interno di una sessione autenticata già associata all'Utente;
-- **Issuer-Attested Binding**: l'Issuer attesta che gli attributi presentati appartengono allo stesso soggetto (ad esempio tramite un identificativo di soggetto stabile dell'Issuer);
-- **Identificativi specifici della Relying Party**: identificativi precedentemente emessi dalla Relying Party a quell'Utente dopo un identity matching andato a buon fine;
+- **Session-Based Binding**: la presentazione avviene all'interno di una sessione autenticata già associata all'Utente.
+- **Issuer-Attested Binding**: l'Issuer attesta che gli attributi presentati appartengono allo stesso soggetto (ad esempio tramite un identificativo di soggetto stabile dell'Issuer).
+- **Identificativi specifici della Relying Party**: identificativi precedentemente emessi dalla Relying Party a quell'Utente dopo un identity matching andato a buon fine.
 - **Cryptographic Binding**: dimostrando che le chiavi private degli Attestati Elettronici presentati sono gestite dallo stesso Keystore o WSCD.
 
 Privacy e Selective Disclosure
@@ -71,6 +71,6 @@ Applicazione all'Eliminazione degli Attributi dell'Utente
 
 Quando l'Utente richiede la cancellazione degli attributi presentati, la Relying Party DEVE individuare univocamente uno o più Attestati Elettronici applicando l'identity matching, come specificato in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`.
 
-Quando l'Utente si autentica all'Endpoint di Cancellazione presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.
+Quando l'Utente si autentica per una richiesta di cancellazione dei dati presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.
 
-Quando l'Utente si autentica all'Endpoint di Cancellazione senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.
+Quando l'Utente si autentica per una richiesta di cancellazione dei dati senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.

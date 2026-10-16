@@ -10,7 +10,7 @@ The Relying Party MUST expose a set of endpoints for handling the lifecycle of V
 Relying Party Provider Backend Federation Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`infrastructure-trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 
 Relying Party Provider Backend Nonce Endpoint
@@ -223,12 +223,5 @@ The following table lists HTTP Status Codes and related error codes that MUST be
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
-
-Relying Party Provider Backend Erasure Endpoint
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.
-
-For detailed implementation requirements, see :ref:`relying-party-remote-flow-endpoints:Relying Party Erasure Endpoint`.
 
 

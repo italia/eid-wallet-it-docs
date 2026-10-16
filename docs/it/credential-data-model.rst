@@ -8,18 +8,19 @@ Un modello di dati dell'Attestato Elettronico ha la seguente struttura:
 
 - **Attributi di metadati**:
 
-  - **Format-Agnostic**: Sono attributi di metadati di alto livello che descrivono l'Attestato Elettronico indipendentemente dal suo formato di codifica. Rappresentano le informazioni semantiche sulla credenziale (ad esempio, credential_type, issuing_authority, expiry_date) e rimangono concettualmente coerenti tra i diversi formati. Quando una credenziale viene codificata, questi attributi di metadati comuni vengono mappati a parametri tecnici specifici del formato secondo le regole di codifica di ciascun formato (SD-JWT-VC o mdoc-CBOR).
+  - **Format-Agnostic**: Sono attributi di metadati di alto livello che descrivono l'Attestato Elettronico indipendentemente dal suo formato di codifica. Rappresentano le informazioni semantiche sulla Credenziale (ad esempio, credential_type, issuing_authority, expiry_date) e rimangono concettualmente coerenti tra i diversi formati. Quando una Credenziale viene codificata, questi attributi di metadati comuni vengono mappati a parametri tecnici specifici del formato secondo le regole di codifica di ciascun formato (SD-JWT-VC o mdoc-CBOR).
   - **Format-Specific**: Sono parametri di metadati intrinseci al formato di codifica specifico e servono a scopi tecnici relativi al modello di sicurezza e ai requisiti di protocollo del formato.
 
 - **Attributi dell'Utente**: Informazioni sull'Utente, come identità o qualifiche.
 
 Gli Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) sono rilasciati dai Fornitori di (Q)EAA a un'Istanza del Wallet e DEVONO essere forniti in formato SD-JWT VC o mdoc-CBOR.
+Un QEAA e un PuB-EAA MUST anche seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
 Mentre il modello dati (Q)EAA è guidato dal caso d'uso e può includere diversi attributi dell'Utente, gli attributi di metadati specifici per ciascun formato dati sono forniti nelle sezioni seguenti.
 
 Attributi di Metadati Format-Agnostic dell'Attestato Elettronico
 ----------------------------------------------------------------
 
-La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla credenziale.
+La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla Credenziale.
 
 .. _table_format_agnostic_attributes:
 .. list-table::
@@ -46,7 +47,7 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
   * - **verification**
     - OPZIONALE. Oggetto contenente informazioni di Identity proofing e verifica dei dati dell'Utente.
 
-Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
+Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la Credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
 
 Formato Attestato Elettronico SD-JWT-VC
 ---------------------------------------
@@ -122,13 +123,13 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
-      - OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
-      - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - OBBLIGATORIO per un PID e un EAA. Altrimenti è OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
+      - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, e Regolamento di esecuzione della Commissione `EU_2026/1731`_ Allegato I, Sezione 4.2.
     * - **issuing_authority**
-      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO per un Attestato Elettronico che non è un QEAA o un PuB-EAA. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Per un QEAA o un PuB-EAA, ``issuing_authority`` segue :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **issuing_country**
-      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO per un Attestato Elettronico che non è un QEAA o un PuB-EAA. *Stringa*. Identificativo del dato `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Per un QEAA o un PuB-EAA, ``issuing_country`` segue :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **issuance_date**
       - OPZIONALE. *Stringa*. Identificativo del dato `issuance_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce alla data amministrativa di emissione dell'Attestato Elettronico, che è tipicamente diverso dalla data tecnica di emissione espresso dal claim JWT ``iat``.
@@ -137,7 +138,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. *Stringa*. Identificativo del dato `expiry_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce al periodo di validità amministrativa dell'Attestato Elettronico, che è tipicamente diverso dal periodo di validità tecnica espresso dal claim JWT ``exp``.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
-      - OPZIONALE. OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`.
+      - OPZIONALE. OBBLIGATORIO solo se l'Attestato Elettronico è long-lived e non è un QEAA o un PuB-EAA. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
@@ -146,8 +147,8 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OBBLIGATORIO. *Stringa*. Identificativo del dato `credential_type_identifier` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere impostato utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici, il confronto dei caratteri letterali inclusi in questa URN DEVE essere eseguito in modo case-sensitive. È l'identificativo del tipo di SD-JWT VC e DEVE essere impostato con un valore resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione del tipo di Attestato Elettronico. A meno che non sia diversamente specificato da `EIDAS-ARF`_ e dagli EUDI Rulebook, il ``vct`` DOVREBBE seguire una struttura come ``urn:it-wallet:{credential_type}:{credential_type_version}``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
-      - OPZIONALE. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
-      - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
+      - OBBLIGATORIO per un PID e un EAA. Altrimenti è OPZIONALE. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
+      - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_], [`ETSI TS 119 472-1`_] EAA-5.2.1.2-03, e Regolamento di esecuzione della Commissione `EU_2026/1731`_ Allegato I, Sezione 4 e Allegato IV.
     * - **verification**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Include i seguenti sotto-valori:
 
@@ -258,10 +259,6 @@ Type Metadata dell'Attestato Elettronico
 
 Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
-In aggiunta ai parametri definiti nella sezione 9.2 di [`SD-JWT-VC`_], il seguente parametro DOVREBBE essere incluso:
-
-  - ``name``: Nome "human-readable" dell'Attributo destinato agli utenti finali.
-
 In conformità con la Sezione 6.3.3 di `SD-JWT-VC`_, il documento JSON del *Type Metadata* PUÒ essere recuperato tramite un *well-known* endpoint.
 Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/type-metadata``. A tale endpoint DEVE essere aggiunto il parametro di query ``vct``.
 L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` come content type.
@@ -347,7 +344,8 @@ Il **protected header** DEVE contenere il seguente parametro codificato in forma
       - :rfc:`9053`
 
 .. note::
-  Solo l'algoritmo di firma DEVE essere presente nel protected header, altri elementi NON DOVREBBERO essere presenti.
+  Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, solo l'algoritmo di firma MUST essere presente nel protected header.
+  Per un QEAA o un PuB-EAA, il protected header è specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
 
 L'**unprotected header** DEVE contenere i seguenti parametri, se non diversamente specificato:
 
@@ -362,7 +360,7 @@ L'**unprotected header** DEVE contenere i seguenti parametri, se non diversament
       - **Riferimento**
     * - **4**
       - *(tstr, OPZIONALE)*. Identificativo univoco del JWK dell'Emittente. Richiesto quando l'Emittente del documento mdoc utilizza OpenID Federation.
-      - :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+      - :ref:`infrastructure-trust:Infrastructure of Trust`
     * - **33**
       - *(array)*. Catena di certificati X.509 relativa all'Emittente. Obbligatorio se l'autenticazione è basata su certificato X.509.
       - :rfc:`9360`
@@ -400,7 +398,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - *(map, OBBLIGATORIO)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
 
           * **signed** *(tdate, OPZIONALE)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
-          * **validFrom** *(tdate, OPZIONALE)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
+          * **validFrom** *(tdate)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`. Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``validFrom`` è OPTIONAL. Per un QEAA o un PuB-EAA, ``validFrom`` è REQUIRED come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
           * **validUntil** *(tdate, OBBLIGATORIO)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
 
       - [ISO 18013-5#9.1.2.4]
@@ -419,7 +417,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_.
+      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived) e non è un QEAA o un PuB-EAA. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::

@@ -109,7 +109,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Metodo utilizzato per derivare il **code challenge**. DEVE essere valorizzato con ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - OBBLIGATORIO. Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato, come richiesto da [`OPENID4VC-HAIP`_]. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``, per l'IT-Wallet ID può essere valorizzato con ``eid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio. L'Istanza del Wallet DEVE utilizzare il valore ``scope`` dichiarato per la Credential Configuration richiesta, ottenuto dai Metadata del Credential Issuer o, nel flusso avviato dall'Issuer, dalla Credential Offer.
+      - OBBLIGATORIO. Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato, come richiesto da [`OPENID4VC-HAIP`_]. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Digital Credentials Catalog`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``, per l'IT-Wallet ID può essere valorizzato con ``eid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio. L'Istanza del Wallet DEVE utilizzare il valore ``scope`` dichiarato per la Credential Configuration richiesta, ottenuto dai Metadata del Credential Issuer o, nel flusso avviato dall'Issuer, dalla Credential Offer.
       - :rfc:`6749` e [`OPENID4VC-HAIP`_].
     * - **authorization_details**
       - OBBLIGATORIO. Array di Oggetti JSON. L'array DEVE contenere almeno un Oggetto JSON di tipo ``openid_credential``. Ogni Oggetto JSON di tipo ``openid_credential`` DEVE includere i seguenti claim:
@@ -290,8 +290,8 @@ Per l'emissione di un IT-Wallet ID:
 
 Gli *hint* di autenticazione riconosciuti per l'emissione dell'IT-Wallet ID sono i seguenti:
 
-  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD;
-  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo;
+  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD.
+  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo.
   * l'assenza dell'oggetto ``it_l2+document_proof`` NON costituisce, di per sé, un mandato dell'Istanza del Wallet sul metodo di autenticazione: in tal caso l'*Authorization Server* applica le proprie politiche e NON DEVE offrire o applicare l'Autenticazione eID Substantial con Verifica MRTD per quella richiesta. In assenza di selezione dell'Utente tramite pagina di *discovery* del Credential Issuer, il metodo di autenticazione di *default* del Provider di IT-Wallet ID DEVE essere CieID con Livello di Garanzia Alto (CIE L3).
 
 .. note::
@@ -799,7 +799,7 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
     - Rappresenta la chiave pubblica scelta dall'Istanza del Wallet, in formato JSON Web Key (JWK) [:rfc:`7517`] a cui l'Attestato Elettronico sarà vincolato, come definito nella Sezione 4.1.3 del [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
   * - **key_attestation**
-    - Representa la Key Attestation.
+    - Rappresenta la Key Attestation.
     - [`OpenID4VCI`_].
 
 .. list-table::

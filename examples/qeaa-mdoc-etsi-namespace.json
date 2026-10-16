@@ -1,0 +1,6 @@
+{
+    "namespace": "org.etsi.01947201.010101",
+    "category": "urn:etsi:esi:eaa:eu:qualified",
+    "shortLived": false,
+    "oneTime": false
+}

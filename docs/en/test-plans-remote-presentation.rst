@@ -15,10 +15,10 @@ This section provides the set of test cases designed for technical implementers 
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - RPR-01
     - Same Device Flow
     - Verify HTTP redirect (302) URL.
@@ -57,8 +57,8 @@ This section provides the set of test cases designed for technical implementers 
     - Relying Party accepts defaults to GET method.
   * - RPR-10
     - Metadata
-    - Verify parameters match OpenID Credential Verifier metadata.
-    - Only allowed parameters will be considered.
+    - Verify that Relying Party metadata follows the ``client_id`` prefix.
+    - For ``openid_federation``, parameters match ``openid_credential_verifier`` metadata and only allowed parameters are considered. For ``x509_hash``, Relying Party metadata is carried in ``client_metadata``, and authorization data is carried in ``verifier_info``.
   * - RPR-11
     - User Consent
     - Test eligibility of a Credential Verifier in requesting User attributes.
@@ -76,9 +76,9 @@ This section provides the set of test cases designed for technical implementers 
     - Test invalid Request Object handling.
     - Error Response is sent.
   * - RPR-15
-    - Error Handling
-    - Verify error logging.
-    - Errors are logged appropriately.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-16
     - Error Handling
     - Test recovery from Authorization Request Error.
@@ -87,6 +87,10 @@ This section provides the set of test cases designed for technical implementers 
     - Error Handling
     - Test fake HTTP Cookie.
     - Relying Party checks the User session consistency coupling the session http cookie and the state and nonces provided.
+  * - RPR-18
+    - Voided
+    - Voided
+    - Voided
   * - RPR-19
     - Redirect URI
     - Test redirection to Relying Party's endpoint.
@@ -95,21 +99,29 @@ This section provides the set of test cases designed for technical implementers 
     - Redirect URI
     - Verify handling of invalid `redirect_uri`.
     - Error response is returned.
+  * - RPR-21
+    - Voided
+    - Voided
+    - Voided
+  * - RPR-22
+    - Voided
+    - Voided
+    - Voided
   * - RPR-23
     - Credential Presentation
     - Verify response format compliance.
     - Relying Party supports all the Credential format included within its ``vp_formats_supported`` metadata parameter.
   * - RPR-24
-    - Authorization Response
-    - Test handling of response timeouts.
-    - Retries must be successful unless response is acquired.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-25
     - Error Handling
     - Verify handling of malformed claims in presentation payload.
     - Authorization Error Response is sent.
   * - RPR-26
     - Error Handling
-    - Verify handling of malformed claims in presented credentials.
+    - Verify handling of malformed claims in presented Credentials.
     - Authorization Error Response is sent.
   * - RPR-27
     - Error Handling
@@ -143,6 +155,10 @@ This section provides the set of test cases designed for technical implementers 
     - Same and Cross Device Flow
     - Verify handling of slow network conditions.
     - Relying Party provides the http response within the maximum limit of 2 seconds.
+  * - RPR-35
+    - Voided
+    - Voided
+    - Voided
   * - RPR-36
     - Presentation Response
     - Verify handling of large response payloads.
@@ -200,13 +216,13 @@ This section provides the set of test cases designed for technical implementers 
     - Test handling of unsupported content types.
     - Error response is returned.
   * - RPR-50
-    - User Consent
-    - Verify user notification of consent changes.
-    - User is informed about consent changes.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-51
-    - User Consent
-    - Test user consent for sensitive data.
-    - User can consent to sensitive data.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-52
     - Authorization Response
     - Verify handling of response decryption failures.
@@ -244,9 +260,9 @@ This section provides the set of test cases designed for technical implementers 
     - Test handling of invalid HTTP methods.
     - Error response is returned.
   * - RPR-61
-    - User Consent
-    - Verify user notification of consent revocation.
-    - User is informed about consent revocation.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-62
     - User Consent
     - Test user consent for optional data.
@@ -296,13 +312,13 @@ This section provides the set of test cases designed for technical implementers 
     - Verify handling of user timeouts.
     - User is notified of timeout.
   * - RPR-74
-    - Cross Device Flow
-    - Test QR Code scanning with different devices.
-    - QR Code is scanned successfully.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-75
-    - Cross Device Flow
-    - Verify QR Code scanning with different apps.
-    - QR Code is scanned successfully.
+    - Voided
+    - Voided
+    - Voided
   * - RPR-76
     - Request URI Method
     - Test handling of unsupported HTTP methods.
@@ -314,19 +330,17 @@ This section provides the set of test cases designed for technical implementers 
     - QR Code uses the required Q error correction level.
 
   * - RPR-78
-    - Wallet Instance Attestation (WIA) Request
-    - Test that Wallet Instance Attestation (WIA) request uses standard DCQL query.
-    - Wallet Instance Attestation (WIA) request correctly uses standard DCQL query.
-
+    - Voided
+    - Voided
+    - Voided
   * - RPR-79
-    - Wallet Instance Attestation (WIA) Request
-    - Verify that ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
-    - ``claims`` parameter is not included in DCQL query for Wallet Instance Attestation (WIA).
-
+    - Voided
+    - Voided
+    - Voided
   * - RPR-80
-    - Wallet Instance Attestation (WIA) Request
-    - Test that ``vct_values`` parameter is required in DCQL query for Wallet Instance Attestation (WIA).
-    - ``vct_values`` parameter is correctly required in DCQL query.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-81
     - Wallet Nonce
@@ -350,8 +364,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-85
     - Endpoint Security
-    - Test that ``request_uri`` is attested by trusted third party.
-    - ``request_uri`` parameter is properly attested by trusted third party.
+    - Test that ``request_uri`` is attested under the selected trust framework.
+    - On the national path, ``request_uri`` exactly matches one value of ``request_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``request_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
   * - RPR-86
     - Privacy Protection
@@ -400,18 +414,18 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-95
     - Response URI Security
-    - Test that ``response_uri`` is attested by trusted third party.
-    - ``response_uri`` parameter is properly attested by trusted third party.
+    - Test that ``response_uri`` is attested under the selected trust framework.
+    - On the national path, ``response_uri`` exactly matches one value of ``response_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``response_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
   * - RPR-96
     - Client Metadata Handling
-    - Test that Relying Party correctly handles Wallet Instance ``client_metadata``.
-    - The ``client_metadata`` is correctly aligned with Trust Chain metadata.
+    - Test that ``client_metadata`` follows the selected ``client_id`` prefix.
+    - For ``openid_federation``, ``client_metadata`` does not override Trust Chain metadata, except ``jwks`` and the response-encryption capability parameters. For ``x509_hash``, applicable Relying Party metadata is carried in ``client_metadata``.
 
   * - RPR-97
-    - Wallet Instance Attestation (WIA) Request
-    - Test that Relying Party requests Wallet Instance Attestation (WIA) via DCQL.
-    - Relying Party correctly requests Wallet Instance Attestation (WIA) using DCQL query.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-98
     - Error Response Format
@@ -424,9 +438,9 @@ This section provides the set of test cases designed for technical implementers 
     - Error response includes error and ``error_description`` parameters.
 
   * - RPR-100
-    - Wallet Instance Attestation (WIA) Presentation
-    - Test that Relying Party correctly requests Wallet Instance Attestation (WIA) from Wallet Instance.
-    - Relying Party correctly evaluates Wallet Instance Attestation (WIA) when requested.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-101
     - Presentation Array
@@ -455,8 +469,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-106
     - KB-JWT Audience
-    - Test that KB-JWT ``aud`` matches Relying Party identifier.
-    - KB-JWT ``aud`` parameter matches Relying Party unique entity identifier.
+    - Test that KB-JWT ``aud`` matches the Relying Party Client Identifier, including its Client Identifier Prefix.
+    - KB-JWT ``aud`` parameter equals the Relying Party ``client_id``, including its Client Identifier Prefix.
 
   * - RPR-107
     - KB-JWT Nonce
@@ -479,9 +493,9 @@ This section provides the set of test cases designed for technical implementers 
     - Response URI returns HTTP 200 with ``application/json`` content type.
 
   * - RPR-111
-    - Error Code Consistency
-    - Test that error codes are consistent across different endpoints.
-    - Error codes are consistent across all Relying Party endpoints.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-112
     - Response Code Inclusion
@@ -489,9 +503,9 @@ This section provides the set of test cases designed for technical implementers 
     - Relying Party includes fresh response code in ``redirect_uri``.
 
   * - RPR-113
-    - Redirect URI Security
-    - Test that ``redirect_uri`` is attested by trusted third party.
-    - ``redirect_uri`` parameter is properly attested by trusted third party.
+    - Voided
+    - Voided
+    - Voided
 
   * - RPR-114
     - Validation Error Response
@@ -507,5 +521,25 @@ This section provides the set of test cases designed for technical implementers 
     - Identity Matching
     - Test Attribute-Based Binding when a PID is presented without ``personal_administrative_number``.
     - The Relying Party matches at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` after normalisation and MUST NOT complete matching on a subset that would allow person swap, as specified in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
+
+  * - RPR-117
+    - Client Identifier Prefix
+    - Test that ``client_id`` uses exactly one Client Identifier Prefix for the whole request.
+    - ``client_id`` uses exactly one of ``openid_federation`` or ``x509_hash`` for the whole request.
+
+  * - RPR-118
+    - EUDIW Request Object
+    - Test the ``x5c`` header when ``client_id`` uses the ``x509_hash`` prefix.
+    - ``x5c`` starts with the WRPAC and excludes the trust anchor. The signature key is the WRPAC key, and ``client_id`` is the hash of that certificate.
+
+  * - RPR-119
+    - National Request Object
+    - Test the header when ``client_id`` uses the ``openid_federation`` prefix.
+    - The header uses ``kid`` and may include ``trust_chain``. WRPAC and ``x5c`` are not national trust evidence.
+
+  * - RPR-120
+    - EUDIW Authorization
+    - Test ``verifier_info`` when ``client_id`` uses the ``x509_hash`` prefix.
+    - ``verifier_info`` contains ``registrar_dataset`` and ``registration_cert`` (the WRPRC). Those objects are not required for ``openid_federation``.
 
 

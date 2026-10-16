@@ -38,8 +38,8 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Instance Attestation JWT.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - **It MUST be set to a value containing the Wallet Instance Attestation JWT.**
+      - **`OAUTH-ATTESTATION-CLIENT-AUTH`_.**
     * - **OAuth-Client-Attestation-PoP**
       - It MUST be set to a value containing the Wallet Instance Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
@@ -265,7 +265,7 @@ Authorization endpoint
 """"""""""""""""""""""
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
-The authorization server MUST first verify the identity of the User that own the credential.
+The authorization server MUST first verify the identity of the User that own the Credential.
 
 
 User Authentication Method Selection
@@ -290,8 +290,8 @@ For IT-Wallet ID issuance:
 
 The authentication hints recognized for IT-Wallet ID issuance are the following:
 
-  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification;
-  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
+  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification.
+  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method.
   * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies, and MUST NOT offer or apply eID Substantial Authentication with MRTD Verification for that request. In the absence of a User selection via a Credential Issuer discovery page, the IT-Wallet ID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
 
 .. note::
@@ -624,7 +624,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - **Description**
     - **Reference**
   * - **iss**
-    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the credential.
+    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the Credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
     - REQUIRED. It identifies the subject of the JWT.
@@ -775,7 +775,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
     - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID in SD-JWT VC format, it can be set to ``dc_sd_jwt_pid``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
+    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named ``jwt`` containing an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
 
 

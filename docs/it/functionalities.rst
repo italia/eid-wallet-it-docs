@@ -4,6 +4,9 @@
 Design dell'Esperienza Utente
 =============================
 
+Questo capitolo specifica i requisiti di Esperienza Utente.
+I protocolli di emissione e di presentazione sono specificati in :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`.
+Il ciclo di vita, la revoca e il controllo di stato di una Credenziale sono specificati in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 .. include:: design.rst
 
@@ -39,9 +42,9 @@ Le Risorse Ufficiali descrivono le modalità di interazione Utente-Istanza del W
 
 Per garantire un’implementazione corretta e coerente, gli Attori Primari:
 
-* DEVONO utilizzare esclusivamente le :ref:`official-resources:Risorse Ufficiali` e DEVONO rispettare tutte le relative specifiche di utilizzo fornite;
+* DEVONO utilizzare esclusivamente le :ref:`official-resources:Risorse Ufficiali` e DEVONO rispettare tutte le relative specifiche di utilizzo fornite.
 
-* POSSONO scegliere quale configurazione implementare, tra quelle rese disponibili, ma DEVONO comunque garantire il corretto utilizzo dei componenti atomici come l':ref:`functionalities:Engagement Button` o l':ref:`functionalities:Authentication Button`;
+* POSSONO scegliere quale configurazione implementare, tra quelle rese disponibili, ma DEVONO comunque garantire il corretto utilizzo dei componenti atomici come l':ref:`functionalities:Engagement Button` o l':ref:`functionalities:Authentication Button`.
 
 * DEVONO garantire il costante aggiornamento delle risorse utilizzate, in linea con l'ultima versione delle :ref:`official-resources:Risorse Ufficiali` resa disponibile.
 
@@ -52,13 +55,13 @@ L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo del
 
 Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
 
-- l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet;
-- l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;
-- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'Attestato di identificazione personale (PID Provider o fornitore dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
-- l'Utente sceglie una tra le modalità di Autenticazione disponibili;
-- l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale;
-- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima dell'Attestato di identificazione personale, (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione;
-- l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
+- l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet.
+- l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni.
+- l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'Attestato di identificazione personale (PID Provider o fornitore dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione.
+- l'Utente sceglie una tra le modalità di Autenticazione disponibili.
+- l‘Utente conclude il flusso di Autenticazione sul servizio del Gestore di Identità Digitale.
+- l'Utente riceve conferma dell'esito del processo di Autenticazione e, se positivo, visualizza l'anteprima dell'Attestato di identificazione personale, (PID o IT-Wallet ID). L'Utente conferma le informazioni mostrate in anteprima per procedere oppure annulla l'operazione.
+- l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
 - l'Utente visualizza l'esito positivo dell'avvenuta attivazione dell'Istanza del Wallet.
 
 Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato di identificazione personale ottenuto in fase di attivazione. Inoltre, il relativo fornitore (PID Provider o fornitore dell'IT-Wallet ID) DOVREBBE permettere all'Utente di revocare tale Attestato tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
@@ -100,11 +103,11 @@ Questa sezione definisce i requisiti di Esperienza Utente per gli Attestati di i
 
 Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo dell'Attestato di identificazione personale (PID e/o IT-Wallet ID) uniforme e coerente. Il Fornitore di Wallet:
 
-- DEVE mostrare correttamente l'Attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
-- DEVE mostrare lo stato dell'Attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca dell'Attestato);
-- DEVE includere Action Button per consentire la gestione del ciclo di vita dell'Attestato e permettere all'Utente di revocarlo o aggiornarlo in qualsiasi momento (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
-- DEVE garantire che l'Attestato sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso una Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità ove applicabile e per richiedere l'emissione di ulteriori EAA ove il relativo fornitore richieda dati di identificazione personale (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
-- DEVE mostrare un metodo di assistenza reso disponibile dal relativo fornitore dell'Attestato (vedere :ref:`functionalities:Assistenza Utente`);
+- DEVE mostrare correttamente l'Attestato di identificazione personale su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse.
+- DEVE mostrare lo stato dell'Attestato, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido. Dettagli specifici sullo stato non valido POSSONO essere forniti (ad esempio, il motivo della revoca dell'Attestato).
+- DEVE includere Action Button per consentire la gestione del ciclo di vita dell'Attestato e permettere all'Utente di revocarlo o aggiornarlo in qualsiasi momento (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`).
+- DEVE garantire che l'Attestato sia un elemento dispositivo, affinché l'Utente lo possa usare per autenticarsi presso una Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità ove applicabile e per richiedere l'emissione di ulteriori EAA ove il relativo fornitore richieda dati di identificazione personale (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`).
+- DEVE mostrare un metodo di assistenza reso disponibile dal relativo fornitore dell'Attestato (vedere :ref:`functionalities:Assistenza Utente`).
 - DEVE garantire che l'Attestato sia riconoscibile dall'Utente e distinguibile da altri EAA.
 
 PID
@@ -123,16 +126,16 @@ IT-Wallet ID
 
 L'**IT-Wallet ID** è l'Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale rilasciato esclusivamente per usi nazionali (vedere :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID` e :term:`IT-Wallet ID`). È un EAA rilasciato da un Fornitore di Attestati Elettronici di Attributi, a differenza del PID.
 
-- L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**; l'Istanza del Wallet rimane **Operativa** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
+- L'emissione dell'IT-Wallet ID **non** fa transitare l'Istanza del Wallet nello stato **Valido**. L'Istanza del Wallet rimane **Operativa** (vedere :ref:`wallet-instance-lifecycle:Transizione a Operativo`).
 - L'IT-Wallet ID è destinato esclusivamente ad interazioni nazionali e non cross-border.
 - Per assicurare un'identificazione e una rappresentazione coerente dell'IT-Wallet ID tra tutte le Soluzioni Wallet, il Fornitore di Wallet:
 
-  - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” nelle sue Soluzioni Wallet;
-  - DEVE utilizzare l'elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite;
-  - DEVE utilizzare l'elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data;
-  - NON DEVE alterare, distorcere, modificare o sostituire l'elemento grafico di IT-Wallet ID con elementi grafici non ufficiali;
-  - DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto;
-  - NON DEVE ridimensionare l'elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;
+  - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” nelle sue Soluzioni Wallet.
+  - DEVE utilizzare l'elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite.
+  - DEVE utilizzare l'elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data.
+  - NON DEVE alterare, distorcere, modificare o sostituire l'elemento grafico di IT-Wallet ID con elementi grafici non ufficiali.
+  - DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto.
+  - NON DEVE ridimensionare l'elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo.
   - NON DEVE utilizzare l'elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`.
 
   Sebbene il termine IT-Wallet ID rappresenti l'Attestato Elettronico di Dati di Identificazione personale, la risorsa grafica IT-Wallet ID PUÒ essere utilizzata dal Fornitore di Wallet per facilitare l'Utente nell'individuazione, più in generale, dei suoi Attestati di identificazione personale (IT-Wallet ID / PID).
@@ -164,17 +167,17 @@ Una volta che l’attivazione è conclusa, l'Utente PUÒ richiedere e ottenere n
 
 L’Attestato Elettronico di Attributi è un oggetto dinamico che consente all’Utente di dimostrare o attestare, in modo affidabile e verificabile, una condizione, uno stato o un diritto, sulla base delle informazioni in esso contenute. Nello specifico, l’Attestato Elettronico:
 
-- **viene definito da una Fonte Autentica**, il soggetto titolare dei dati sorgente;
+- **viene definito da una Fonte Autentica**, il soggetto titolare dei dati sorgente.
 
-- **è costituito da un insieme di Attributi**, i dati granulari che lo definiscono (no immagini statiche o pdf) quali, ad esempio, una caratteristica (es. “residente”) o una qualifica (es. “studente”);
+- **è costituito da un insieme di Attributi**, i dati granulari che lo definiscono (no immagini statiche o pdf) quali, ad esempio, una caratteristica (es. “residente”) o una qualifica (es. “studente”).
 
 - **è emesso da un Fornitore di Attestati Elettronici di Attributi**, il soggetto che lo rilascia sulla base delle informazioni acquisite e ne gestisce il ciclo di vita.
 
 A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:
 
-- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Catalogo degli Attestati Elettronici`).
+- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di Credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Digital Credentials Catalog`).
 
-- **da un Touchpoint della Fonte Autentica** (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica; vedere :ref:`credential-issuance-low-level:Flusso Credential Offer`): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un :ref:`functionalities:Engagement Button`.
+- **da un Touchpoint della Fonte Autentica** (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica. Vedere :ref:`credential-issuance-low-level:Flusso Credential Offer`): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un :ref:`functionalities:Engagement Button`.
 
 Nonostante le modalità di avvio della richiesta siano diverse, i flussi di ottenimento condividono una struttura e un processo simili.
 
@@ -183,24 +186,24 @@ Ottenimento dal Catalogo dell'Istanza del Wallet
 
 Di seguito, sono illustrati i requisiti dell'Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Catalogo che il Fornitore di Wallet DEVE garantire attraverso la propria Soluzione Wallet:
 
-- l'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- l'Utente seleziona l'Attestato Elettronico di Attributi che intende aggiungere alla sua Istanza del Wallet scegliendo tra quelli disponibili nel Catalogo;
-- l’Utente seleziona da quale Fornitore di Attestati Elettronici vuole ottenere l’Attestato Elettronico di Attributi, se presente più di uno;
-- l’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi, provenienti dalla Fonte Autentica;
-- l'Utente prende visione dei suoi dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
-- l'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;
-- l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
-- l'Utente visualizza l'esito positivo dell'ottenimento avvenuto;
-- l'Utente visualizza i dettagli dell'Attestato Elettronico di Attributi ottenuto ovvero: i dati in esso contenuti, il nome del Fornitore di Attestati Elettronici di Attributi che ha emesso l'Attestato Elettronico di Attributi e il nome della Fonte Autentica;
+- l'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata.
+- l'Utente seleziona l'Attestato Elettronico di Attributi che intende aggiungere alla sua Istanza del Wallet scegliendo tra quelli disponibili nel Catalogo.
+- l’Utente seleziona da quale Fornitore di Attestati Elettronici vuole ottenere l’Attestato Elettronico di Attributi, se presente più di uno.
+- l’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi, provenienti dalla Fonte Autentica.
+- l'Utente prende visione dei suoi dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione.
+- l'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione.
+- l'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
+- l'Utente visualizza l'esito positivo dell'ottenimento avvenuto.
+- l'Utente visualizza i dettagli dell'Attestato Elettronico di Attributi ottenuto ovvero: i dati in esso contenuti, il nome del Fornitore di Attestati Elettronici di Attributi che ha emesso l'Attestato Elettronico di Attributi e il nome della Fonte Autentica.
 - l'Utente ha evidenza di tutti gli Attestati Elettronici ottenuti navigando la sua Istanza del Wallet.
 
 La Fonte Autentica PUÒ fornire all’Utente delle informazioni aggiuntive relative a un Attestato Elettronico di Attributi. Tali informazioni DEVONO essere mostrate dal Fornitore di Wallet all’Utente nell’Istanza del Wallet prima di avviare l’effettivo flusso di ottenimento dell’Attestato Elettronico di Attributi. Al fine di redigere correttamente questo contenuto informativo, la Fonte Autentica:
 
-- DEVE utilizzare un linguaggio chiaro (e.g. evitare termini tecnici o complessi), essenziale (es. evitare testi eccessivamente lunghi o articolati) e inclusivo (es. evitare i verbi abilisti) seguendo le buone pratiche di scrittura, linguaggio e tono di voce descritte nelle [RIF_ACCESSIBILITÀ] e, nel caso di enti pubblici, nelle [LG_DESIGN];
+- DEVE utilizzare un linguaggio chiaro (e.g. evitare termini tecnici o complessi), essenziale (es. evitare testi eccessivamente lunghi o articolati) e inclusivo (es. evitare i verbi abilisti) seguendo le buone pratiche di scrittura, linguaggio e tono di voce descritte nelle [RIF_ACCESSIBILITÀ] e, nel caso di enti pubblici, nelle [LG_DESIGN].
 
-- DEVE attenersi allo scopo specifico del testo, ossia quello di comunicare informazioni utili all’Utente prima di intraprendere il processo di ottenimento (es. elencare i prerequisiti o dichiarare delle limitazioni che potrebbero influenzare il buon esito della procedura di ottenimento);
+- DEVE attenersi allo scopo specifico del testo, ossia quello di comunicare informazioni utili all’Utente prima di intraprendere il processo di ottenimento (es. elencare i prerequisiti o dichiarare delle limitazioni che potrebbero influenzare il buon esito della procedura di ottenimento).
 
-- DEVE garantire l’aggiornamento costante delle informazioni;
+- DEVE garantire l’aggiornamento costante delle informazioni.
 
 - DEVE prevedere un titolo e un testo all’interno del quale PUÒ includere il riferimento a canali esterni per indirizzare verso una procedura, approfondire un determinato argomento e/o aprire richieste di supporto.
 
@@ -210,13 +213,13 @@ Segue un esempio di testo informativo:
   **Titolo:** Chi può ottenere il documento.
   **Testo:** La versione digitale del [Nome documento] è disponibile solo per coloro che possiedono già la versione fisica. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL).
 
-Per approfondimenti si rimanda alla sezione :ref:`registry:Registro delle Fonti Autentiche` (vedi claim ``data_capabilities.user_information``).
+Per approfondimenti si rimanda alla sezione :ref:`registry:Authentic Source Registry` (vedi claim ``data_capabilities.user_information``).
 
 Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elettronico di Attributi dalla sua Istanza del Wallet in ogni momento. In caso di assenza del dispositivo su cui è stata attivata l'Istanza del Wallet, il Fornitore di Wallet DEVE permettere all'Utente di disattivare l'intera Istanza del Wallet tramite un Touchpoint dedicato. Inoltre, i Fornitori di Attestati Elettronici di Attributi DOVREBBERO permettere all'Utente la revoca degli Attestati Elettronici ottenuti, tramite specifici Touchpoint. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`.
 
 In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica o in presenza di processi amministrativi o tecnici che non consentono di fornire immediatamente l'Attestato Elettronico di Attributi, gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire che:
 
-- l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato;
+- l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato.
 - l'Utente venga informato dal Fornitore di Attestati Elettronici di Attributi non appena l'Attestato Elettronico di Attributi è disponibile.
 
 In caso di dati errati all'interno di un Attestato Elettronico di Attributi già ottenuto o in fase di ottenimento, il Fornitore di Wallet DOVREBBE garantire all'Utente un'adeguata assistenza attraverso la propria Istanza del Wallet. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`.
@@ -265,15 +268,15 @@ Ottenimento dal Touchpoint della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Touchpoint della Fonte Autentica (chiamato anche :ref:`credential-issuance-low-level:Flusso Credential Offer`) che questa DEVE garantire attraverso il proprio Touchpoint:
 
-- L’Utente interagisce con l':ref:`functionalities:Engagement Button` chiaramente esposto nell’interfaccia del Touchpoint;
-- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
-- (*solo cross-device*) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`; in alternativa l’Utente può uscire da flusso.
-- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente prende visione dei propri dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;
-- L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi;
-- L'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione;
-- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente visualizza l'esito positivo dell'ottenimento avvenuto;
+- L’Utente interagisce con l':ref:`functionalities:Engagement Button` chiaramente esposto nell’interfaccia del Touchpoint.
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`.
+- (*solo cross-device*) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`. In alternativa l’Utente può uscire da flusso.
+- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente prende visione dei propri dati di identificazione personale, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati richiesti o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione.
+- L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi.
+- L'Utente visualizza l'anteprima dell'Attestato Elettronico di Attributi. L'Utente conferma i dati mostrati in anteprima per procedere all'ottenimento oppure annulla l'operazione.
+- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente visualizza l'esito positivo dell'ottenimento avvenuto.
 - L'Utente visualizza i dettagli dell'Attestato Elettronico di Attributi ottenuto ovvero: i dati in esso contenuti, il nome del Fornitore di Attestati Elettronici di Attributi che ha emesso l'Attestato Elettronico di Attributi e il nome della Fonte Autentica.
 
 In caso di errori nell'ottenimento dell'Attestato Elettronico di Attributi, la Fonte Autentica DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
@@ -375,19 +378,19 @@ I Verificatori di Attestati Elettronici POSSONO rendere disponibile l'Engagement
 
 L'Engagement Button:
 
-- DEVE essere utilizzato esattamente come indicato nelle Risorse Ufficiali e NON DEVE essere riprogettato ad hoc;
+- DEVE essere utilizzato esattamente come indicato nelle Risorse Ufficiali e NON DEVE essere riprogettato ad hoc.
 
-- DEVE essere utilizzato esclusivamente nelle forme, colori e proporzioni stabilite e NON DEVE essere alterato, distorto o nascosto;
+- DEVE essere utilizzato esclusivamente nelle forme, colori e proporzioni stabilite e NON DEVE essere alterato, distorto o nascosto.
 
-- DEVE adattarsi a tutte le risoluzioni di schermo e DEVE essere integrato nella Discovery Page in modo da garantire i requisiti minimi di usabilità e accessibilità;
+- DEVE adattarsi a tutte le risoluzioni di schermo e DEVE essere integrato nella Discovery Page in modo da garantire i requisiti minimi di usabilità e accessibilità.
 
-- DEVE mantenere una distanza minima da altri elementi (quiet zone) di almeno 24px;
+- DEVE mantenere una distanza minima da altri elementi (quiet zone) di almeno 24px.
 
-- DEVE riportare nella dicitura l’azione da svolgere seguita da “IT-Wallet”, ad esempio "Entra con IT-Wallet", “Aggiungi a IT-Wallet”, “Verifica con IT-Wallet”);
+- DEVE riportare nella dicitura l’azione da svolgere seguita da “IT-Wallet”, ad esempio "Entra con IT-Wallet", “Aggiungi a IT-Wallet”, “Verifica con IT-Wallet”).
 
 - PUÒ essere accompagnato da un testo che spiega il valore aggiunto dal fare quell’azione usando il sistema IT-Wallet.
 
-- Gli attori che intendono integrare l'Engagement Button nel proprio Touchpoint DEVONO garantirne la traduzione in altre lingue, almeno quella inglese;
+- Gli attori che intendono integrare l'Engagement Button nel proprio Touchpoint DEVONO garantirne la traduzione in altre lingue, almeno quella inglese.
 
 Di seguito alcuni esempi non normativi di dicitura dell'Engagement Button:
 - Entra con IT-Wallet / Login with IT-Wallet (vedere :ref:`functionalities:Authentication Button`)
@@ -404,20 +407,20 @@ Progettare e rappresentare in modo adeguato un Attestato Elettronico di Attribut
 
 - La Fonte Autentica è responsabile della progettazione di tutte le caratteristiche alla base dell’Attestato Elettronico di Attributi in termini di:
 
- - **opportunità e valore percepito**: cosa l’EAA è in grado di attestare, in quali contesti d’uso e da parte di chi;
- - **facilità di comprensione**: quanto è semplice e intuitivo per chi lo utilizza e per chi lo verifica;
+ - **opportunità e valore percepito**: cosa l’EAA è in grado di attestare, in quali contesti d’uso e da parte di chi.
+ - **facilità di comprensione**: quanto è semplice e intuitivo per chi lo utilizza e per chi lo verifica.
  - **efficacia comunicativa**: quanto è considerato riconoscibile o percepito come affidabile da parte di chi lo utilizza o verifica.
 
 
 - Il Fornitore di Wallet è responsabile della rappresentazione dell’Attestato Elettronico di Attributi in linea con:
 
- - quanto definito dalle presenti Specifiche Tecniche in ottica di coerenza di sistema e di aderenza ai principi di usabilità [LG_DESIGN] e di accessibilità [RIF_ACCESSIBILITÀ];
- - quanto veicolato dal Registro delle Fonti Autentiche e dal Catalogo delle Credenziali Digitali (vedi :ref:`registry:Infrastruttura del Registro`);
+ - quanto definito dalle presenti Specifiche Tecniche in ottica di coerenza di sistema e di aderenza ai principi di usabilità [LG_DESIGN] e di accessibilità [RIF_ACCESSIBILITÀ].
+ - quanto veicolato dal Registro delle Fonti Autentiche e dal Catalogo delle Credenziali Digitali (vedi :ref:`registry:Registry Infrastructure`).
  - quanto progettato a livello di UX/UI nella propria Soluzione Wallet.
 
 Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet nel rappresentare adeguatamente un EAA, si definiscono a seguire gli elementi da considerare e la struttura da adottare a livello di Vista di Dettaglio:
 
-- **Nome EAA**, ossia la denominazione ufficiale, distintiva e comprensibile dall’Utente di un EAA;
+- **Nome EAA**, ossia la denominazione ufficiale, distintiva e comprensibile dall’Utente di un EAA.
 
 - **Attributi identificativi** (se previsti), ossia le informazioni anagrafiche di base dell’Utente secondo l’ordine:
 
@@ -428,16 +431,16 @@ Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet ne
   - Luogo di nascita
   - Etc.
 
-- **Attributi I livello**, ossia i dati che rappresentano e identificano la natura specifica dell’EAA (es. Numero patente, Categoria, Data scadenza, etc.);
+- **Attributi I livello**, ossia i dati che rappresentano e identificano la natura specifica dell’EAA (es. numero patente, Categoria, Data scadenza, etc.).
 
 - **Attributi II livello** (se previsti), ossia i dati di dettaglio utili a descrivere o approfondire un determinato Attributo di I livello. Tali Attributi di II livello possono essere strutturati attraverso una:
 
-  - **Lista di descrizioni**, ossia una lista di valori afferenti allo stesso oggetto;
-  - **Lista di Attributi con valore**, ossia una lista di ulteriori oggetti con valore associato;
+  - **Lista di descrizioni**, ossia una lista di valori afferenti allo stesso oggetto.
+  - **Lista di Attributi con valore**, ossia una lista di ulteriori oggetti con valore associato.
 
 - **Metadati**, ossia i dati che identificano gli estremi dell’EAA a livello di:
 
-  - **Nome Fonte Autentica**, ossia il nome identificativo del soggetto titolare o della base dati ufficiale che detiene le informazioni alla base dell’EAA, definito dal parametro ``data_capabilities.data_origin``;
+  - **Nome Fonte Autentica**, ossia il nome identificativo del soggetto titolare o della base dati ufficiale che detiene le informazioni alla base dell’EAA, definito dal parametro ``data_capabilities.data_origin``.
   - **Nome Fornitore di Attestati Elettronici di Attributi**, ossia il nome identificativo del soggetto che realizza ed emette operativamente l’EAA, definito dal parametro ``organization_name``.
 
 .. only:: format_html
@@ -457,37 +460,37 @@ Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet ne
 
     Esempio di layout di Attestato Elettronico di Attributi, Vista di Dettaglio
 
-Di seguito sono riportati i requisiti di dettaglio per la progettazione e la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Registro delle Fonti Autentiche` e :ref:`registry:Catalogo degli Attestati Elettronici`). In particolare:
+Di seguito sono riportati i requisiti di dettaglio per la progettazione e la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Authentic Source Registry` e :ref:`registry:Digital Credentials Catalog`). In particolare:
 
 La Fonte Autentica:
 
 - DEVE indicare il **nome dell’EAA** tramite il parametro ``credential_name``. In particolare, la Fonte Autentica:
 
-  - DEVE utilizzare termini o locuzioni corrispondenti o affini al nome di una eventuale versione preesistente del documento a cui corrisponde l’EAA, così da agevolare la riconoscibilità da parte dell’Utente;
-  - DEVE utilizzare termini chiari e semplici evitando, dove possibile, inglesismi, acronimi o termini tecnici;
+  - DEVE utilizzare termini o locuzioni corrispondenti o affini al nome di una eventuale versione preesistente del documento a cui corrisponde l’EAA, così da agevolare la riconoscibilità da parte dell’Utente.
+  - DEVE utilizzare termini chiari e semplici evitando, dove possibile, inglesismi, acronimi o termini tecnici.
   - DOVREBBE definire un nome breve e conciso.
 
 - DEVE indicare il **nome del responsabile dei dati o della fonte dei dati** tramite il parametro ``data_capabilities.data_origin``. In particolare, la Fonte Autentica:
 
-  - DEVE utilizzare il nome ufficiale per garantire massima riconoscibilità e fiducia da parte dell’Utente;
-  - DEVE seguire la struttura “[Acronimo] - [Nome]” in caso voglia utilizzare un acronimo unitamente al nome per esteso (es. “ANIS - Anagrafe Nazionale dell’istruzione superiore”);
+  - DEVE utilizzare il nome ufficiale per garantire massima riconoscibilità e fiducia da parte dell’Utente.
+  - DEVE seguire la struttura “[Acronimo] - [Nome]” in caso voglia utilizzare un acronimo unitamente al nome per esteso (es. “ANIS - Anagrafe Nazionale dell’istruzione superiore”).
   - PUÒ seguire la struttura “[Acronimo soggetto primario] - [Nome soggetto secondario]” in caso sia utile disaccoppiare l’acronimo dal nome per esteso così da aggiungere un ulteriore livello di dettaglio e favorire la riconoscibilità e il senso di affidabilità del soggetto titolare (es. “MIT - Direzione Generale per la Motorizzazione”).
 
 - PUÒ rendere disponibile il **logo della Fonte Autentica** in due versioni, una versione compatta tramite il parametro ``organization_info.logo_uri`` e una versione estesa tramite il parametro ``organization_info.logo_extended_uri``. In particolare, la Fonte Autentica:
 
-  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml`` o ``image/webp``;
-  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile;
-  - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta;
-  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta;
-  - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta;
-  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa;
+  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml`` o ``image/webp``.
+  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile.
+  - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta.
+  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta.
+  - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta.
+  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa.
   - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa.
 
 - PUÒ rendere disponibile un **logo dell’EAA** tramite il parametro ``data_capabilities.logo_uri``. In particolare, la Fonte Autentica:
 
-  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``;
-  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile;
-  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel;
+  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``.
+  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile.
+  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel.
   - DEVE fornire un logo che non ecceda il peso massimo di 150 KB.
 
 - PUÒ definire un **colore dell'EAA** tramite il parametro ``data_capabilities.background_color``. In particolare, la Fonte Autentica:
@@ -498,20 +501,20 @@ La Fonte Autentica:
 
   - DEVE ordinare i dati secondo la struttura predefinita:
 
-    - Attributi identificativi (opzionali);
-    - Attributi I livello;
+    - Attributi identificativi (opzionali).
+    - Attributi I livello.
     - Attributi II livello (opzionali).
 
-  - NON DEVE superare i due livelli di annidamento nell’organizzazione degli Attributi;
-  - NON DOVREBBE superare il numero massimo di 15 Attributi per ciascun livello;
-  - NON DOVREBBE superare un massimo di 85 caratteri per la valorizzazione degli Attributi;
+  - NON DEVE superare i due livelli di annidamento nell’organizzazione degli Attributi.
+  - NON DOVREBBE superare il numero massimo di 15 Attributi per ciascun livello.
+  - NON DOVREBBE superare un massimo di 85 caratteri per la valorizzazione degli Attributi.
   - NON DOVREBBE superare un massimo di 181 caratteri per la valorizzazione di ciascuna descrizione in caso di Attributi di II livello con “lista di descrizioni”.
 
 Il Fornitore di Wallet:
 
-- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del :ref:`registry:Catalogo degli Attestati Elettronici`;
+- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del :ref:`registry:Digital Credentials Catalog`.
 
-- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del :ref:`registry:Registro delle Fonti Autentiche`. In particolare, la Fornitore di Wallet:
+- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del :ref:`registry:Authentic Source Registry`. In particolare, la Fornitore di Wallet:
 
   - DEVE rappresentare l’EAA secondo la struttura predefinita:
 
@@ -521,22 +524,22 @@ Il Fornitore di Wallet:
     - Attributi II livello (opzionali)
     - Metadati
 
-  - DEVE includere il **logo della Fonte Autentica** e/o il **logo dell’EAA** specifico se forniti dalla Fonte Autentica per mezzo del :ref:`registry:Registro delle Fonti Autentiche`;
+  - DEVE includere il **logo della Fonte Autentica** e/o il **logo dell’EAA** specifico se forniti dalla Fonte Autentica per mezzo del :ref:`registry:Authentic Source Registry`.
 
-  - DEVE garantire l’adozione del colore dell’EAA definito dalla Fonte Autentica se indicato all’interno del :ref:`registry:Registro delle Fonti Autentiche` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default.
+  - DEVE garantire l’adozione del colore dell’EAA definito dalla Fonte Autentica se indicato all’interno del :ref:`registry:Authentic Source Registry` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default.
 
 Il Fornitore di Wallet è il responsabile ultimo della resa grafica degli Attestati Elettronici di Attributi nelle proprie Soluzioni Wallet. Pertanto, per garantire un elevato livello di accessibilità [RIF_ACCESSIBILITÀ] e usabilità [LG_DESIGN], di seguito sono riportati ulteriori requisiti di Esperienza Utente. In particolare, il Fornitore di Wallet:
 
-- DEVE mostrare l’EAA correttamente su tutti i dispositivi, garantendo un’esperienza coerente su schermi di dimensioni diverse;
-- PUÒ mostrare gli EAA ottenuti in formato tessera nella Vista in Anteprima, in linea con gli approcci già utilizzati da altri portafogli digitali nel mercato;
-- DEVE garantire un layout dell'EAA ottimizzato per scalabilità e usabilità, nella Vista in Anteprima, specialmente quando più EAA vengono visualizzati sulla stessa schermata;
-- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro `credential_name` (vedi :ref:`registry:Catalogo degli Attestati Elettronici`), sia nella Vista di Anteprima che nelle Vista di Dettaglio;
-- DEVE mostrare lo stato dell’EAA, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido, sia nella Vista di Anteprima che nella Vista di Dettaglio. Evidenze specifiche sullo stato dell’EAA, se non valido, POSSONO essere fornite nella Vista di Dettaglio (ad esempio, il motivo per cui l’EAA è stato revocato);
-- PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo e/o il colore, come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`);
-- DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`); PUÒ includere elementi informativi aggiuntivi nella Vista di Dettaglio, ad esempio informazioni relative agli scenari di utilizzo o al motivo dell'eventuale invalidità dell’EAA;
-- DEVE includere Action Button nella Vista di Dettaglio per consentire la gestione del ciclo di vita dell’EAA e permettere all'Utente di revocare o aggiornare un'EAA in qualsiasi momento (vedi :ref:`functionalities:Gestione degli Attestati Elettronici`);
-- DEVE garantire che l’EAA sia un elemento funzionale, affinché l'Utente possa accedere ai servizi forniti dai Verificatori di Attestati Elettronici in contesti digitali e di prossimità (vedi :ref:`functionalities:Presentazione degli Attestati Elettronici`);
-- DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro `data_capabilities.contacts `(vedi :ref:`functionalities:Assistenza Utente` e vedi :ref:`registry:Registro delle Fonti Autentiche`).
+- DEVE mostrare l’EAA correttamente su tutti i dispositivi, garantendo un’esperienza coerente su schermi di dimensioni diverse.
+- PUÒ mostrare gli EAA ottenuti in formato tessera nella Vista in Anteprima, in linea con gli approcci già utilizzati da altri portafogli digitali nel mercato.
+- DEVE garantire un layout dell'EAA ottimizzato per scalabilità e usabilità, nella Vista in Anteprima, specialmente quando più EAA vengono visualizzati sulla stessa schermata.
+- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro `credential_name` (vedi :ref:`registry:Digital Credentials Catalog`), sia nella Vista di Anteprima che nelle Vista di Dettaglio.
+- DEVE mostrare lo stato dell’EAA, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido, sia nella Vista di Anteprima che nella Vista di Dettaglio. Evidenze specifiche sullo stato dell’EAA, se non valido, POSSONO essere fornite nella Vista di Dettaglio (ad esempio, il motivo per cui l’EAA è stato revocato).
+- PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo e/o il colore, come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi :ref:`registry:Authentic Source Registry`).
+- DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi :ref:`registry:Authentic Source Registry`). PUÒ includere elementi informativi aggiuntivi nella Vista di Dettaglio, ad esempio informazioni relative agli scenari di utilizzo o al motivo dell'eventuale invalidità dell’EAA.
+- DEVE includere Action Button nella Vista di Dettaglio per consentire la gestione del ciclo di vita dell’EAA e permettere all'Utente di revocare o aggiornare un'EAA in qualsiasi momento (vedi :ref:`functionalities:Gestione degli Attestati Elettronici`).
+- DEVE garantire che l’EAA sia un elemento funzionale, affinché l'Utente possa accedere ai servizi forniti dai Verificatori di Attestati Elettronici in contesti digitali e di prossimità (vedi :ref:`functionalities:Presentazione degli Attestati Elettronici`).
+- DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro `data_capabilities.contacts `(vedi :ref:`functionalities:Assistenza Utente` e vedi :ref:`registry:Authentic Source Registry`).
 
 Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio.
 
@@ -563,7 +566,7 @@ Presentazione degli Attestati Elettronici
 
 Il processo di presentazione permette all'Utente di accedere a un servizio oppure di dimostrare la titolarità di un dato o l'idoneità a effettuare una determinata azione. La presentazione degli Attestati Elettronici e la loro conseguente verifica, prevede l'interazione tra un'Istanza del Wallet, gestita dall'Utente, e un'Istanza di Relying Party (o App di Verifica). A seconda delle circostanze e del contesto di interazione si possono delineare i seguenti scenari:
 
-- **Presentazione in prossimità**: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposto alla verifica in presenza;
+- **Presentazione in prossimità**: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposto alla verifica in presenza.
 
 - **Presentazione da remoto**: l'Utente presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.
 
@@ -574,7 +577,7 @@ Presentazione in prossimità
 
 La presentazione in prossimità consente all'Utente di esibire i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità:
 
-- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Mobile`);
+- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Mobile`).
 
 - **Modalità non supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta i propri dati di identificazione personale e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded).
 
@@ -582,22 +585,22 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 
 **Modalità supervisionata**
 
-- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente accede alla funzionalità dedicata alla generazione del QR Code;
-- L'Utente mostra il QR Code generato al soggetto che opera per conto del Verificatore di Attestati Elettronici, il quale provvede a scansionarlo tramite apposita app o sistema di verifica;
-- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
-- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
+- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente accede alla funzionalità dedicata alla generazione del QR Code.
+- L'Utente mostra il QR Code generato al soggetto che opera per conto del Verificatore di Attestati Elettronici, il quale provvede a scansionarlo tramite apposita app o sistema di verifica.
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione.
+- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
 - L'Utente visualizza l'esito positivo della presentazione avvenuta.
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
 **Modalità non supervisionata**
 
-- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente accede alla funzionalità dedicata alla generazione del QR Code;
-- L'Utente mostra il QR Code generato al dispositivo preposto (ad esempio un tornello) del Verificatore di Attestati Elettronici per permetterne la scansione;
-- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
-- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
+- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente accede alla funzionalità dedicata alla generazione del QR Code.
+- L'Utente mostra il QR Code generato al dispositivo preposto (ad esempio un tornello) del Verificatore di Attestati Elettronici per permetterne la scansione.
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione.
+- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
 - L'Utente visualizza l'esito positivo della presentazione avvenuta.
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
@@ -629,19 +632,19 @@ La presentazione da remoto consente all'Utente di esibire i propri dati di ident
 
 Tale presentazione può avvenire in due diverse modalità, sulla base del tipo di dispositivo utilizzato per accedere al servizio di interesse:
 
-- **Same-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale online integrato con un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Web`) utilizzando lo stesso dispositivo su cui ha installato l'Istanza del Wallet;
+- **Same-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale online integrato con un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Web`) utilizzando lo stesso dispositivo su cui ha installato l'Istanza del Wallet.
 - **Cross-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale integrato con un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Web`) utilizzando un dispositivo differente rispetto a quello su cui ha installato l'Istanza del Wallet.
 
 Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità che il Fornitore di Wallet DEVE garantire attraverso la propria Soluzione Wallet.
 
 **Same-device**
 
-- L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici;
-- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
-- L'Utente accede all'Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
-- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;
+- L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici.
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`.
+- L'Utente accede all'Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione.
+- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta.
 - L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata.
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
@@ -677,12 +680,12 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 **Cross-device**
 
-- L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet;
-- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
-- L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet o la fotocamera del proprio dispositivo; l’interfaccia del QR Code DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`;
-- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione;
-- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata;
-- L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta;
+- L'Utente clicca l':ref:`functionalities:Engagement Button` reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet.
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`.
+- L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet o la fotocamera del proprio dispositivo. L’interfaccia del QR Code DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`.
+- L'Utente prende visione dei propri dati di identificazione personale e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione.
+- L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata.
+- L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta.
 - L'Utente torna sul Touchpoint del Verificatore di Attestati Elettronici e visualizza l'esito della presentazione completata.
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
@@ -848,15 +851,15 @@ I Verificatori di Attestati Elettronici DOVREBBERO utilizzare le :ref:`official-
 
 I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il processo di Autenticazione rendendo disponibili le seguenti pagine:
 
-- **Discovery Page**: ha l'obiettivo di mostrare all'Utente tutti i metodi di Autenticazione disponibili;
-- **Selection Page**: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e permettere di scegliere con quale continuare il processo di Autenticazione;
-- **QR Code Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a inquadrare il codice QR;
-- **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione;
+- **Discovery Page**: ha l'obiettivo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
+- **Selection Page**: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e permettere di scegliere con quale continuare il processo di Autenticazione.
+- **QR Code Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a inquadrare il codice QR.
+- **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione.
 - **Error Page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione.
 
 Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici:
 
-- un **header e/o un subheader**, che permette all'Utente di tornare alla pagina precedente;
+- un **header e/o un subheader**, che permette all'Utente di tornare alla pagina precedente.
 - un **footer** che include l'informativa privacy, le note legali e la Dichiarazione di Accessibilità, ove previsto da normativa.
 
 Di seguito invece gli elementi specifici caratteristici delle diverse pagine.
@@ -886,8 +889,8 @@ In alternativa, il Verificatore di Attestati Elettronici PUÒ mantenere la propr
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE garantire la presenza di tutte le modalità di Autenticazione tramite l'identità digitale tra cui la modalità di Autenticazione del Sistema IT-Wallet, quindi tramite l'Authentication Button;
-- PUÒ presentare anche modalità di Autenticazione alternative, se disponibili;
+- DEVE garantire la presenza di tutte le modalità di Autenticazione tramite l'identità digitale tra cui la modalità di Autenticazione del Sistema IT-Wallet, quindi tramite l'Authentication Button.
+- PUÒ presentare anche modalità di Autenticazione alternative, se disponibili.
 - DOVREBBE garantire informazioni minime a supporto, per permettere all'Utente di compiere una scelta consapevole e informata.
 
 Nel caso l'Utente stia navigando la pagina del Verificatore di Attestati Elettronici da un Touchpoint diverso da quello su cui ha attivato l'Istanza del Wallet (modalità cross-device), la scelta di Autenticazione tramite il Sistema IT-Wallet DEVE condurre l'Utente alla QR Code Page.
@@ -947,17 +950,17 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione :ref:`brand-identity:Identità Visiva`;
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione :ref:`brand-identity:Identità Visiva`.
 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.
 
-- DEVE presentare ogni Soluzione Wallet presente nel Registro del Sistema IT-Wallet attraverso un componente modulare che mostra il logo e il nome per esteso recuperati come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`;
+- DEVE presentare ogni Soluzione Wallet presente nel Registro del Sistema IT-Wallet attraverso un componente modulare che mostra il logo e il nome per esteso recuperati come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
 
-- DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando il numero di Solutioni Wallet è inferiore a 2, la Selection Page DEVE distribuire le Soluzioni Wallet all'interno di un layout ad una colonna centrale. Altrimenti, quando il numero di Soluzioni Wallet è pari o superiore a 3, la Selection Page DEVE distribuire le Soluzioni Wallet in una griglia a 2 colonne; in ogni caso DEVE essere garantito un ordinamento randomico;
+- DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando il numero di Solutioni Wallet è inferiore a 2, la Selection Page DEVE distribuire le Soluzioni Wallet all'interno di un layout ad una colonna centrale. Altrimenti, quando il numero di Soluzioni Wallet è pari o superiore a 3, la Selection Page DEVE distribuire le Soluzioni Wallet in una griglia a 2 colonne. In ogni caso DEVE essere garantito un ordinamento randomico.
 
-- DEVE permettere all’Utente di cercare una Soluzione Wallet attraverso una funzionalità di filtro per nome, quando presenti più di 5 Soluzioni Wallet;
+- DEVE permettere all’Utente di cercare una Soluzione Wallet attraverso una funzionalità di filtro per nome, quando presenti più di 5 Soluzioni Wallet.
 
-- DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet;
+- DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet.
 
 - DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla pagina precedente (ad esempio la Discovery Page nel caso di un processo di Autenticazione).
 
@@ -988,19 +991,19 @@ Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flus
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo;
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;
-- DEVE includere una Call to Action che, se prevista la scadenza del codice QR, permetta all'Utente di generare un nuovo codice QR;
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo.
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.
+- DEVE includere una Call to Action che, se prevista la scadenza del codice QR, permetta all'Utente di generare un nuovo codice QR.
 - DEVE includere una Call to Action che permetta all'Utente di annullare l'operazione e tornare alla Discovery Page.
 
 Inoltre, nel rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Verificatore di Attestati Elettronici:
 
-- DEVE rispettare le dimensioni minime raccomandate per garantire una scansione efficace. Una misura di 150x150 pixel è generalmente adeguata, ma per codici con alta densità di dati (e.g. URL lunghi o numerosi caratteri), è consigliabile aumentarla a 300x300 pixel o più;
-- DEVE garantire un contrasto minimo tra il codice QR e lo sfondo (la condizione ideale prevede uno sfondo bianco con un codice QR nero);
-- DEVE evitare inversioni di colore tra sfondo e codice QR;
-- DEVE limitare la presenza a un solo codice QR per pagina;
-- DEVE garantire nitidezza e alta qualità;
-- DEVE garantire il formato SVG;
+- DEVE rispettare le dimensioni minime raccomandate per garantire una scansione efficace. Una misura di 150x150 pixel è generalmente adeguata, ma per codici con alta densità di dati (e.g. URL lunghi o numerosi caratteri), è consigliabile aumentarla a 300x300 pixel o più.
+- DEVE garantire un contrasto minimo tra il codice QR e lo sfondo (la condizione ideale prevede uno sfondo bianco con un codice QR nero).
+- DEVE evitare inversioni di colore tra sfondo e codice QR.
+- DEVE limitare la presenza a un solo codice QR per pagina.
+- DEVE garantire nitidezza e alta qualità.
+- DEVE garantire il formato SVG.
 - DEVE garantire che non venga parzialmente nascosto da testo o altri elementi.
 
 
@@ -1029,8 +1032,8 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page res
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare il messaggio della pagina;
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare il messaggio della pagina.
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.
 - DEVE prevedere una Call to Action che inviti l'Utente a proseguire nell'area riservata del Verificatore di Attestati Elettronici.
 
 **Error Page**
@@ -1058,8 +1061,8 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa di
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore;
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore.
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.).
 
 
@@ -1072,19 +1075,19 @@ I Verificatori di Attestati Elettronici DEVONO rendere disponibile l'Authenticat
 
 L'Authentication Button è caratterizzato dai seguenti requisiti:
 
-- DEVE essere implementato utilizzando esclusivamente quanto reso disponibile nelle :ref:`official-resources:Risorse Ufficiali`, e NON DEVE essere ricostruito ad hoc;
+- DEVE essere implementato utilizzando esclusivamente quanto reso disponibile nelle :ref:`official-resources:Risorse Ufficiali`, e NON DEVE essere ricostruito ad hoc.
 
-- DEVE essere utilizzato esclusivamente nelle forme, colori e proporzioni stabilite e NON DEVE essere alterato, distorto o nascosto;
+- DEVE essere utilizzato esclusivamente nelle forme, colori e proporzioni stabilite e NON DEVE essere alterato, distorto o nascosto.
 
--  DEVE adattarsi a tutte le risoluzioni di schermo e DEVE essere integrato nella Discovery Page in modo da garantirne i requisiti minimi di usabilità e accessibilità;
+-  DEVE adattarsi a tutte le risoluzioni di schermo e DEVE essere integrato nella Discovery Page in modo da garantirne i requisiti minimi di usabilità e accessibilità.
 
-- DEVE mantenere una distanza minima da altri elementi (``quiet zone``) di almeno 24px;
+- DEVE mantenere una distanza minima da altri elementi (``quiet zone``) di almeno 24px.
 
-- DEVE riportare la dicitura "Entra con IT-Wallet";
+- DEVE riportare la dicitura "Entra con IT-Wallet".
 
-- DOVREBBE essere sempre accompagnato da un link esterno (ad es. "Scopri di più") che rimanda al sito ufficiale del Sistema IT-Wallet, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`;
+- DOVREBBE essere sempre accompagnato da un link esterno (ad es. "Scopri di più") che rimanda al sito ufficiale del Sistema IT-Wallet, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
 
-- Gli attori che intendono integrare l'Authentication Button nella propria Soluzione Tecnica DEVONO garantirne la traduzione in altre lingue, almeno quella inglese;
+- Gli attori che intendono integrare l'Authentication Button nella propria Soluzione Tecnica DEVONO garantirne la traduzione in altre lingue, almeno quella inglese.
 
 - Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, l'Authentication Button DOVREBBE essere accompagnato da un testo descrittivo: "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte.".
 
@@ -1134,7 +1137,7 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
 
 Il pulsante è disponibile in tre varianti di dimensione (S - default / M / L ) come da Design System .Italia, ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Oltre alle varianti di dimensione, sono previste due varianti di pulsante a larghezza fissa utilizzabili in situazioni in cui è preferibile mantenere coerenza con altri pulsanti simili:
 
-- la versione giustificata (con icona a sinistra e testo centrato);
+- la versione giustificata (con icona a sinistra e testo centrato).
 - la versione centrata (con icona e testo centrati).
 
 La Risorsa Ufficiale dell'Authentication button html è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche.
@@ -1203,9 +1206,9 @@ Il Fornitore di Wallet, attraverso la propria Soluzione Wallet, e il PID Provide
 
 In questa sezione sono illustrate tre diverse categorie di requisiti per la gestione del ciclo di vita di ogni Attestato Elettronico e nello specifico per la gestione:
 
-- **del suo stato**: per consentire all'Utente di appurare la condizione di validità o invalidità di un Attestato Elettronico;
-- **dei suoi utilizzi**: per consentire all'Utente di visualizzare e gestire lo storico delle transazioni effettuate utilizzando un Attestato Elettronico;
-- **dei suoi dati**: per consentire all'Utente di archiviare e ripristinare ogni Attestato Elettronico di Attributi in linea col principio di *data portability*.
+- **del suo stato**: per consentire all'Utente di appurare la condizione di validità o invalidità di un Attestato Elettronico.
+- **dei suoi utilizzi**: per consentire all'Utente di visualizzare e gestire lo storico delle transazioni effettuate utilizzando un Attestato Elettronico.
+- **dei suoi dati**: per consentire all'Utente di archiviare e ripristinare ogni Attestato Elettronico di Attributi, e di migrare verso una Soluzione Wallet diversa, in linea col principio di *data portability*. Vedere :ref:`backup-restore:Backup e Ripristino`.
 
 Di seguito i principali aspetti che impattano e determinano l'Esperienza Utente nell'ambito della gestione degli Attestati Elettronici per mezzo di un'Istanza del Wallet e i requisiti funzionali riferiti a ciascuna categoria.
 
@@ -1216,12 +1219,12 @@ Per garantire l'affidabilità e promuovere il corretto utilizzo della propria So
 
 Gli stati ammissibili per un Attestato Elettronico sono i seguenti:
 
-- **Valido** (``valid``): l’EAA risulta emesso senza alcuna evidenza di criticità o problematiche. In questo caso, l’Istanza del Wallet DEVE garantire all’Utente piene funzionalità a livello di presentazione, sia in prossimità che in remoto;
+- **Valido** (``valid``): l’EAA risulta emesso senza alcuna evidenza di criticità o problematiche. In questo caso, l’Istanza del Wallet DEVE garantire all’Utente piene funzionalità a livello di presentazione, sia in prossimità che in remoto.
 
 - **Sospeso** (``suspended``): l’EAA risulta temporaneamente non valido, in una condizione di reversibilità (es. patente di guida sospesa). In questo caso, l’Istanza del Wallet:
 
-  - DEVE darne all’Utente adeguata evidenza;
-  - DEVE invitare l’Utente ad attendere che l’EAA torni automaticamente in stato valido alla fine del periodo di sospensione;
+  - DEVE darne all’Utente adeguata evidenza.
+  - DEVE invitare l’Utente ad attendere che l’EAA torni automaticamente in stato valido alla fine del periodo di sospensione.
   - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
 - **Da aggiornare** (``update`` o ``attribute_update``): l’EAA risulta non valido in quanto una o più delle sue informazioni, a livello di metadata o di Attributi, è obsoleta. In questo caso, l’Istanza del Wallet:
@@ -1232,19 +1235,19 @@ Gli stati ammissibili per un Attestato Elettronico sono i seguenti:
 
   - Qualora ad essere obsoleto sia uno o più degli Attributi dell’EAA:
 
-    - DEVE darne all’Utente adeguata evidenza;
-    - DEVE invitare l’Utente ad aggiornare l’EAA attraverso un nuovo processo di emissione;
+    - DEVE darne all’Utente adeguata evidenza.
+    - DEVE invitare l’Utente ad aggiornare l’EAA attraverso un nuovo processo di emissione.
     - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
 - **Non valido** (``invalid``): l’EAA risulta non valido, in una condizione di irreversibilità (es. patente di guida revocata). In questo caso, l’Istanza del Wallet:
 
-  - DEVE darne all’Utente adeguata evidenza;
-  - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA);
+  - DEVE darne all’Utente adeguata evidenza.
+  - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA).
   - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
 Oltre agli stati sopra elencati, è bene specificare che un EAA è soggetto a scadenza. Si distinguono due tipologie di scadenza:
 
-- **La scadenza amministrativa**: caratterizza alcuni EAA ed è fornita dalla Fonte Autentica tra gli Attributi dell’EAA stesso (es. data di scadenza della patente di guida);
+- **La scadenza amministrativa**: caratterizza alcuni EAA ed è fornita dalla Fonte Autentica tra gli Attributi dell’EAA stesso (es. data di scadenza della patente di guida).
 - **La scadenza tecnica**: caratterizza tutti gli EAA ed è definita dalla Fonte Autentica in sinergia con il Fornitore di Attestati Elettronici con l’obiettivo di mitigare i rischi di sicurezza. Tale scadenza è generalmente fissata a 1 anno o comunque a un periodo inferiore o uguale alla data di scadenza amministrativa.
 
 Di conseguenza, l’EAA assume i seguenti ulteriori stati:
@@ -1253,8 +1256,8 @@ Di conseguenza, l’EAA assume i seguenti ulteriori stati:
 
   - Qualora ad essere vicina sia la data di scadenza amministrativa (es. mancano 30 giorni):
 
-    - DOVREBBE darne all’Utente adeguata evidenza;
-    - DOVREBBE invitare l’Utente a compiere eventuali azioni necessarie per poter riottenere l’EAA aggiornato (es. rinnovare la patente di guida presso gli uffici competenti);
+    - DOVREBBE darne all’Utente adeguata evidenza.
+    - DOVREBBE invitare l’Utente a compiere eventuali azioni necessarie per poter riottenere l’EAA aggiornato (es. rinnovare la patente di guida presso gli uffici competenti).
     - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto.
 
   - Qualora ad essere vicina sia la data di scadenza tecnica (es. mancano 7 giorni):
@@ -1263,12 +1266,12 @@ Di conseguenza, l’EAA assume i seguenti ulteriori stati:
 
     - Se l’aggiornamento automatico va a buon fine e restituisce l’EAA aggiornato:
 
-     - DEVE sostituirlo al precedente senza generare duplicazioni inattese, disservizi o notifiche all’Utente;
+     - DEVE sostituirlo al precedente senza generare duplicazioni inattese, disservizi o notifiche all’Utente.
 
     - Se l’aggiornamento automatico va a buon fine ma non restituisce alcun EAA:
 
-     - DEVE adeguatamente informare l’Utente circa la potenziale perdita di titolarità nei confronti dell’EAA stesso;
-     - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA);
+     - DEVE adeguatamente informare l’Utente circa la potenziale perdita di titolarità nei confronti dell’EAA stesso.
+     - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA).
      - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
     - Se l’aggiornamento automatico non dovesse andare a buon fine per indisponibilità del servizio o altri errori tecnici:
@@ -1279,20 +1282,20 @@ Di conseguenza, l’EAA assume i seguenti ulteriori stati:
 
   - Qualora sia stata superata la data di scadenza amministrativa:
 
-    - DEVE darne all’Utente adeguata evidenza;
-    - DEVE invitare l’Utente a compiere eventuali azioni necessarie per riottenere l’EAA aggiornato (es. rinnovare la patente presso gli uffici competenti);
+    - DEVE darne all’Utente adeguata evidenza.
+    - DEVE invitare l’Utente a compiere eventuali azioni necessarie per riottenere l’EAA aggiornato (es. rinnovare la patente presso gli uffici competenti).
     - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
   - Qualora sia stata superata la data di scadenza tecnica (aggiornamento automatico non effettuato o fallito):
 
-    - DEVE darne all’Utente adeguata evidenza, distinguendo il caso specifico da quello di un’eventuale scadenza amministrativa;
-    - DEVE invitare l’Utente ad aggiornare l’EAA, ossia ad intraprendere un flusso di riemissione dell’EAA stesso;
+    - DEVE darne all’Utente adeguata evidenza, distinguendo il caso specifico da quello di un’eventuale scadenza amministrativa.
+    - DEVE invitare l’Utente ad aggiornare l’EAA, ossia ad intraprendere un flusso di riemissione dell’EAA stesso.
     - DEVE consentire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
 
 Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi all’aggiornamento dell'Attestato Elettronico che il Fornitore di Attestati Elettronici DEVE garantire attraverso la Soluzione Wallet:
 
-- L'Utente visualizza nella Vista in Anteprima dell’Attestato che il suo stato è diverso da valido;
-- L'Utente visualizza nella Vista di Dettaglio un messaggio che lo informa del nuovo stato dell’Attestato e PUÒ scoprire maggiori informazioni;
+- L'Utente visualizza nella Vista in Anteprima dell’Attestato che il suo stato è diverso da valido.
+- L'Utente visualizza nella Vista di Dettaglio un messaggio che lo informa del nuovo stato dell’Attestato e PUÒ scoprire maggiori informazioni.
 - L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative allo stato dell’Attestato Elettronico di Attributi e PUÒ chiudere il messaggio oppure procedere con un eventuale azione richiesta dal Fornitore di Attestati Elettronici.
 - L'Utente visualizza all'interno della Vista di Dettaglio apposite Call To Action per eliminare l'Attestato Elettronico o aggiornarlo se in stato non più valido.
 
@@ -1323,21 +1326,21 @@ La revoca si configura come quel meccanismo che determina il passaggio di un Att
 
 - **Revoca attiva**: ovvero la revoca di un Attestato Elettronico su richiesta dell'Utente. Tale processo comporta la sola revoca dell'Attestato Elettronico e non del corrispettivo documento fisico, se esistente. Di seguito un elenco esemplificativo di scenari in cui il Fornitore di Wallet DEVE dare possibilità all'Utente di richiedere la revoca di un Attestato Elettronico:
 
-   - l'Utente decide di non voler più possedere uno specifico Attestato Elettronico;
-   - l'Utente decide di disattivare la propria Istanza del Wallet e, di conseguenza, tutti gli Attestati Elettronici precedentemente ottenuti;
+   - l'Utente decide di non voler più possedere uno specifico Attestato Elettronico.
+   - l'Utente decide di disattivare la propria Istanza del Wallet e, di conseguenza, tutti gli Attestati Elettronici precedentemente ottenuti.
    - l'Utente non è più in possesso del dispositivo su cui è installata la propria Istanza del Wallet a causa di uno smarrimento o un furto.
 
 - **Revoca passiva**: ovvero la revoca di un Attestato Elettronico gestita dal relativo Fornitore di Attestati Elettronici per conto della Fonte Autentica. In questo caso l'Istanza del Wallet DEVE informare l'Utente del cambiamento di stato dell'Attestato Elettronico e, in aggiunta, il Fornitore di Attestati Elettronici PUÒ informare l'Utente attraverso altri Touchpoint. Di seguito un elenco esemplificativo di scenari che porterebbero alla revoca di un Attestato Elettronico:
 
-   - il documento fisico corrispondente all'Attestato Elettronico è stato dichiarato smarrito o danneggiato da parte dell'Utente tramite apposito canale/ Touchpoint;
-   - il documento fisico corrispondente all'Attestato Elettronico è stato revocato dalle autorità competenti;
-   - non sussistono più i requisiti minimi di sicurezza e/o affidabilità di una o più delle parti coinvolte;
+   - il documento fisico corrispondente all'Attestato Elettronico è stato dichiarato smarrito o danneggiato da parte dell'Utente tramite apposito canale/ Touchpoint.
+   - il documento fisico corrispondente all'Attestato Elettronico è stato revocato dalle autorità competenti.
+   - non sussistono più i requisiti minimi di sicurezza e/o affidabilità di una o più delle parti coinvolte.
    - il dispositivo dell'Utente non soddisfa più i requisiti minimi di sicurezza (dispositivo rootato o jailbroken).
 
 Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
-- l'Utente apre la Vista di Dettaglio dell’Attestato Elettronico che vuole revocare;
-- l'Utente seleziona la Call to Action per la revoca dell’Attestato Elettronico;
-- l'Utente prende visione di tutte le informazioni rilevanti l’azione in corso e dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
+- l'Utente apre la Vista di Dettaglio dell’Attestato Elettronico che vuole revocare.
+- l'Utente seleziona la Call to Action per la revoca dell’Attestato Elettronico.
+- l'Utente prende visione di tutte le informazioni rilevanti l’azione in corso e dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione.
 - l’Utente visualizza l'esito positivo della revoca avvenuta.
 
 Il flusso è rappresentato di seguito con wireframe esemplificativi.
@@ -1367,9 +1370,9 @@ Registrazione delle Transazioni
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Al fine di garantire i principi di visibilità e trasparenza, il Fornitore di Wallet DEVE mettere a disposizione, nell’Istanza del Wallet, una dashboard intuitiva che consenta all’Utente di visualizzare lo storico delle transazioni effettuate tramite la propria Istanza del Wallet (ad esempio, emissione o presentazione di Attestati Elettronici). In particolare, la dashboard DEVE:
 
-- fornire una panoramica di tutte le transazioni registrate e consentire all’Utente di accedere a viste di dettaglio delle singole transazioni;
-- consentire all’Utente, qualora una transazione coinvolga una Relying Party, di avviare facilmente una richiesta di cancellazione dei dati verso la relativa Relying Party (utilizzando le informazioni di contatto registrate);
-- supportare l’esportazione di uno o più record di transazione in un file;
+- fornire una panoramica di tutte le transazioni registrate e consentire all’Utente di accedere a viste di dettaglio delle singole transazioni.
+- consentire all’Utente, qualora una transazione coinvolga una Relying Party, di avviare facilmente una richiesta di cancellazione dei dati verso la relativa Relying Party (utilizzando le informazioni di contatto registrate).
+- supportare l’esportazione di uno o più record di transazione in un file.
 - consentire all’Utente di cancellare uno o più record di transazione, previa adeguata informativa.
 
 Archiviazione e ripristino degli Attestati Elettronici di Attributi
@@ -1377,8 +1380,9 @@ Archiviazione e ripristino degli Attestati Elettronici di Attributi
 
 Con l'obiettivo di garantire il principio di data portability, la Soluzione Wallet DEVE garantire all'Utente l'accesso a specifiche funzionalità per:
 
-- richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza del Wallet;
-- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet.
+- richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di Backup`
+- richiedere il ripristino dei propri Attestati Elettronici di Attributi su un'altra Istanza del Wallet, come specificato in :ref:`backup-restore:Flusso di ripristino per Credenziale con associazione al dispositivo`
+- richiedere la migrazione verso una Soluzione Wallet diversa tramite l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
 
 Disattivazione dell'Istanza del Wallet
 --------------------------------------
@@ -1387,8 +1391,8 @@ La disattivazione dell'Istanza del Wallet è la funzionalità che rende l'Istanz
 
 - da parte dell'Utente nel caso in cui, ad esempio:
 
-   - il dispositivo sia stato smarrito o rubato;
-   - il dispositivo risulti compromesso;
+   - il dispositivo sia stato smarrito o rubato.
+   - il dispositivo risulti compromesso.
    - il dispositivo sia stato resettato alle impostazioni di fabbrica.
 
 - da parte di un ente terzo titolato nel caso in cui, ad esempio:
@@ -1397,17 +1401,17 @@ La disattivazione dell'Istanza del Wallet è la funzionalità che rende l'Istanz
 
 Il Fornitore di Wallet DEVE, quindi, garantire all'Utente la possibilità di disattivare volontariamente la propria Istanza del Wallet tramite:
 
-- l'Istanza del Wallet stessa;
-- un Touchpoint (e.g. un sito web) fornito dal Fornitore di Wallet;
+- l'Istanza del Wallet stessa.
+- un Touchpoint (e.g. un sito web) fornito dal Fornitore di Wallet.
 - l'app store del proprio dispositivo, disinstallando l'Istanza del Wallet.
 
 Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi alla disattivazione dell'Istanza del Wallet che il Fornitore di Wallet DEVE garantire attraverso la propria Soluzione Wallet:
 
-- l'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata oppure si Autentica presso il Touchpoint reso disponibile dal Fornitore di Wallet;
-- l'Utente seleziona la funzionalità di disattivazione dell'Istanza del Wallet;
-- l'Utente viene informato che la disattivazione dell'Istanza del Wallet renderà non più utilizzabili gli Attestati Elettronici precedentemente ottenuti;
-- l'Utente conferma l'azione per procedere con la disattivazione oppure annulla l'operazione;
-- l'Utente visualizza l'esito positivo della disattivazione avvenuta;
+- l'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata oppure si Autentica presso il Touchpoint reso disponibile dal Fornitore di Wallet.
+- l'Utente seleziona la funzionalità di disattivazione dell'Istanza del Wallet.
+- l'Utente viene informato che la disattivazione dell'Istanza del Wallet renderà non più utilizzabili gli Attestati Elettronici precedentemente ottenuti.
+- l'Utente conferma l'azione per procedere con la disattivazione oppure annulla l'operazione.
+- l'Utente visualizza l'esito positivo della disattivazione avvenuta.
 - l'Utente, in caso di nuovo accesso, prende visione del fatto che l'Istanza del Wallet è disattiva.
 
 L'Utente ha la possibilità di riattivare l'Istanza del Wallet riscaricando l'app dall'app store, in caso di cancellazione, e/o ripercorrendo il processo di attivazione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Attivazione dell'Istanza del Wallet`.
@@ -1446,12 +1450,12 @@ Una comunicazione efficace in caso di errore determina un vantaggio anche per gl
 
 Ciascun Attore Primario DEVE implementare una corretta gestione degli errori, in conformità alle attuali Specifiche Tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza del Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue:
 
-- **la fase dell'Esperienza Utente** in cui l'errore può verificarsi: attivazione o disattivazione dell'Istanza del Wallet, ottenimento, presentazione o gestione degli Attestati Elettronici;
-- **la tipologia di errore**: di sistema, di comunicazione tra attori, etc.;
-- **l'attore responsabile dell'errore**: Fornitore di Wallet, PID Provider, Fornitore di Attestati Elettronici di Attributi, Fonte Autentica;
-- **la modalità di restituzione dell'errore**: messaggio in pagina, banner, toast message, etc.;
-- **le azioni suggerite all'Utente per risolvere l'errore**: suggerimento di attesa, richiesta di effettuare un nuovo tentativo, rimando alle domande frequenti e/o al servizio di assistenza, etc.;
-- **le modalità di presa in carico dell'errore**: apertura di una richiesta di assistenza tramite l'Istanza del Wallet, rimando ad altri canali di approfondimento, etc. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`.
+- **la fase dell'Esperienza Utente** in cui l'errore può verificarsi: attivazione o disattivazione dell'Istanza del Wallet, ottenimento, presentazione o gestione degli Attestati Elettronici.
+- **la tipologia di errore**: di sistema, di comunicazione tra attori, etc..
+- **l'attore responsabile dell'errore**: Fornitore di Wallet, PID Provider, Fornitore di Attestati Elettronici di Attributi, Fonte Autentica.
+- **la modalità di restituzione dell'errore**: messaggio in pagina, banner, toast message, etc..
+- **le azioni suggerite all'Utente per risolvere l'errore**: suggerimento di attesa, richiesta di effettuare un nuovo tentativo, rimando alle domande frequenti e/o al servizio di assistenza, etc..
+- **le modalità di presa in carico dell'errore**: apertura di una richiesta di assistenza tramite l'Istanza del Wallet, rimando ad altri canali di approfondimento, etc. per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`.
 
 Di seguito, una lista non esaustiva delle principali casistiche di errore, con riferimento all'attore responsabile della loro gestione, per ciascuna fase dell'Esperienza Utente. La lista dettagliata degli errori da gestire per ogni endpoint di interazione con l'Utente è disponibile nelle sottosezioni dedicate agli errori all'interno di :ref:`endpoints:Endpoints`.
 
@@ -1565,11 +1569,11 @@ Per applicare queste buone pratiche, gli attori coinvolti DOVREBBERO implementar
 
 Di seguito i requisiti di Esperienza Utente che il Fornitore di Wallet DEVE garantire attraverso la propria Soluzione Wallet:
 
-- l'Utente ha accesso a modalità di assistenza in ogni momento dell'Esperienza Utente, attraverso una chiara indicazione del punto di accesso;
-- l'Utente ha la possibilità di aprire una richiesta di assistenza tramite la propria Istanza del Wallet o altri Touchpoint messi a disposizione dal Fornitore di Wallet;
-- nel caso di apertura di una richiesta di assistenza, l'Utente riceve conferma tempestiva dell'avvenuta presa in carico;
-- l'Utente è informato preventivamente nel caso in cui sia necessario condividere i propri dati con soggetti terzi;
-- l'Utente è informato nei casi in cui la richiesta di assistenza debba essere gestita al di fuori della propria Istanza del Wallet, quindi su canali terzi;
+- l'Utente ha accesso a modalità di assistenza in ogni momento dell'Esperienza Utente, attraverso una chiara indicazione del punto di accesso.
+- l'Utente ha la possibilità di aprire una richiesta di assistenza tramite la propria Istanza del Wallet o altri Touchpoint messi a disposizione dal Fornitore di Wallet.
+- nel caso di apertura di una richiesta di assistenza, l'Utente riceve conferma tempestiva dell'avvenuta presa in carico.
+- l'Utente è informato preventivamente nel caso in cui sia necessario condividere i propri dati con soggetti terzi.
+- l'Utente è informato nei casi in cui la richiesta di assistenza debba essere gestita al di fuori della propria Istanza del Wallet, quindi su canali terzi.
 - l'Utente monitora l'esito della richiesta in ogni momento attraverso funzionalità che DEVONO essere messe a disposizione dagli attori che hanno preso in carico la richiesta.
 
 Feedback Utente
@@ -1579,7 +1583,7 @@ La raccolta dei feedback degli Utenti permette di monitorare l'Esperienza Utente
 
 Tale sistema di feedback POTREBBE essere alimentato da due diverse tipologie di raccolta feedback:
 
-- **feedback transazionali** (Customer Effort Score, Customer Satisfaction): raccolta contestuale ad azioni specifiche, come l'aggiunta di un Attestato Elettronico o il completamento di un'operazione di presentazione e verifica;
+- **feedback transazionali** (Customer Effort Score, Customer Satisfaction): raccolta contestuale ad azioni specifiche, come l'aggiunta di un Attestato Elettronico o il completamento di un'operazione di presentazione e verifica.
 - **feedback relazionali** (Net Promoter Score): raccolta non contestuale ad azioni specifiche, per la misurazione della percezione generale dell'Utente, in termini di soddisfazione, fedeltà e possibile raccomandazione ad Utenti terzi.
 
 Di seguito, le indicazioni proposte per l'implementazione di tali tipologie di feedback:
@@ -1588,9 +1592,9 @@ Di seguito, le indicazioni proposte per l'implementazione di tali tipologie di f
 
 - **Customer Effort Score (CES)**: per misurare la facilità di utilizzo delle funzionalità POSSONO essere predisposti questionari, ad esempio tramite componenti quali modali o pop-up nell'Istanza del Wallet, al termine di azioni specifiche o specifici processi, ad esempio:
 
-   - a conclusione del processo di ottenimento di un Attestato Elettronico;
-   - a conclusione del processo di Autenticazione, se positivo;
-   - a conclusione del processo di presentazione, in particolare a conclusione della prima occasione di presentazione e non più di una volta ogni 6 mesi;
+   - a conclusione del processo di ottenimento di un Attestato Elettronico.
+   - a conclusione del processo di Autenticazione, se positivo.
+   - a conclusione del processo di presentazione, in particolare a conclusione della prima occasione di presentazione e non più di una volta ogni 6 mesi.
    - a conclusione dei processi di revoca e disattivazione, per approfondirne le motivazioni.
 
 - **Customer Satisfaction Survey (CSAT)**: per misurare la soddisfazione generale dell'Utente dopo un periodo prolungato di utilizzo dell'Istanza del Wallet POSSONO essere predisposti questionari, ad esempio tramite componenti quali modali o pop-up nell'Istanza del Wallet. Si consiglia di utilizzare il CSAT ad intervalli non inferiori a sei mesi e come alternativa al CES, per evitare di somministrare questionari con troppa frequenza.

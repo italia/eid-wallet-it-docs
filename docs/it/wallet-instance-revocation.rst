@@ -6,7 +6,10 @@ Revoca dell'Istanza del Wallet
 
 Questa sezione descrive le entità coinvolte e le modalità per richiedere la revoca di un'Istanza del Wallet.
 
-Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza. Quando, per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico) la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
+Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza.
+Quando, per motivi tecnici di sicurezza (ad esempio la compromissione del materiale crittografico), la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
+Il Fornitore di Wallet DEVE riportare tale revoca nella status list della relativa Wallet Instance Attestation.
+In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la relativa Key Attestation.
 
 Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
@@ -119,10 +122,15 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
 - **Durante il ciclo di vita dell'Istanza del Wallet** da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet RACCOMANDA di utilizzare la Status List della Wallet Instance Attestation.
 
+
+.. note::
+  Se i Credential Issuer rilasciano Credenziali con un periodo di validità inferiore a 24 ore, devono verificare il periodo di validità della WIA e della KA solo al momento del rilascio, come indicato in `EUDI-TS 3`_.
+
 .. note::
   Nell'attuale versione della specifica, i Fornitori di Attestati vengono notificati direttamente della revoca di un'Istanza del Wallet dal Fornitore di Wallet tramite un servizio e-service PDND.
 
 .. note::
   Durante la fase di presentazione degli Attestati Elettronici, una Relying Party può verificare indirettamente la revoca dell'Istanza del Wallet verificando la revoca degli Attestati Elettronici. Quando un'Istanza del Wallet viene revocata, il Fornitore di Wallet revoca le corrispondenti Wallet Instance Attestation, innescando la revoca degli Attestati Elettronici da parte del Fornitore di Attestati Elettronici.
+
 
 

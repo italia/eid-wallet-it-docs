@@ -11,7 +11,7 @@ Questa Sezione definisce un protocollo di Autenticazione eID Substantial con Ver
 	- Correlazione di sessione e binding di sicurezza tra gli step di autenticazione.
 	- Integrazione con i flussi di emissione Attestati Elettronici.
 
-Mentre l'autenticazione CIEid con LoA High rimane il metodo primario per l'attivazione Wallet e l'emissione dell'IT-Wallet ID, il meccanismo di Autenticazione eID Substantial con Verifica MRTD definito in questa Sezione fornisce un approccio alternativo per migliorare l'accessibilità e l'usabilità del servizio, senza compromettere la sicurezza complessiva dell'ecosistema IT-Wallet.
+Mentre l'autenticazione CIEid con LoA High rimane il metodo preferito per l'attivazione Wallet e l'emissione dell'IT-Wallet ID, il meccanismo di Autenticazione eID Substantial con Verifica MRTD definito in questa Sezione fornisce un approccio alternativo per migliorare l'accessibilità e l'usabilità del servizio, senza compromettere la sicurezza complessiva dell'ecosistema IT-Wallet.
 
 .. note::
   Questa Sezione attualmente supporta solo la carta d'identità CIE per il protocollo di verifica MRTD, ma il protocollo descritto in questa Sezione PUÒ essere esteso per supportare altri Documenti MRTD come i Passaporti Elettronici.

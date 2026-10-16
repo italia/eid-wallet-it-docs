@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
     "iss": "https://trust-registry.eid-wallet.example.it",
+    "iat": 1742040000,
+    "total": 1,
+    "limit": 20,
+    "offset": 0,
     "localization": {
         "available_locales": [
             "en",
@@ -15,7 +19,9 @@
     "credentials": [
         {
             "version": "1",
+            "state": "ACTIVE",
             "credential_type": "mDL",
+            "schemaId": "550e8400-e29b-41d4-a716-446655440000",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",
             "restriction_policy": {
@@ -107,6 +113,7 @@
                     "issuance_flows": {
                         "wallet_initiated": true,
                         "issuer_initiated": true,
+                        "immediate_flow": false,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [
@@ -121,7 +128,17 @@
                     "id": "https://motorizzazione.gov.example",
                     "dataset_id": "38832801"
                 }
-            ]
+            ],
+            "trustedAuthorities": [
+                {
+                    "frameworkType": "etsi_tl",
+                    "value": "https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers",
+                    "isLoTE": true
+                }
+            ],
+            "rulebookURI": "https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/tree/main/rulebooks/mdl",
+            "bindingType": "key",
+            "attestationLoS": "iso_18045_high"
         }
     ]
 }

@@ -19,7 +19,7 @@
     },
     "metadata": {
         "federation_entity": {
-            "homepage_uri": "https://eaa-provider.example.org/",
+            "organization_uri": "https://eaa-provider.example.org/",
             "organization_name": "Organization Name",
             "contacts": [
                 "informazioni@example.it",
@@ -160,6 +160,20 @@
                         }
 
                     ],
+                    "embedded_disclosure_policy": {
+                        "policy_uri": "https://eaa-provider.example.org/policies/edp/v1/european-disability-card",
+                        "policy_type": "authorized_rp_only",
+                        "description": "Access is restricted to Relying Party Services authorised to request the European Disability Card.",
+                        "policy_authority": "https://eaa-provider.example.org",
+                        "policy_info_url": "https://eaa-provider.example.org/policies/edp/european-disability-card.html",
+                        "authorized_parties": [
+                            {
+                                "identifier": "VATIT-12345678901",
+                                "service_identifier": "svc-disability-card-01",
+                                "subject_dn": "CN=European Disability Card Service,O=Example Service Provider,ORGID=VATIT-12345678901,C=IT"
+                            }
+                        ]
+                    },
                     "credential_metadata": {
                         "display": [
                             {
@@ -897,7 +911,7 @@
             "status_list_aggregation_endpoint": "https://eaa-provider.example.org/statuslists/aggregation"
         },
         "openid_credential_verifier": {
-            // see relying party metadata section and endpoints
+            "response_types_supported": ["vp_token"]
         },
         "jwks": {
             "keys": [
@@ -911,5 +925,4 @@
             ]
         }
     }
-}
 }

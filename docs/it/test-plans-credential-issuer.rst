@@ -172,7 +172,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_033
     - Emissione, Sicurezza
     - Accettazione delle chiavi crittografiche attestate nella Wallet Instance Attestation (WIA)
-    - Il Credential Issuer accetta e utilizza solo chiavi crittografiche correttamente derivate dall’istanza del Wallet attestata durante il processo di emissione della credenziale.
+    - Il Credential Issuer accetta e utilizza solo chiavi crittografiche correttamente derivate dall’istanza del Wallet attestata durante il processo di emissione della Credenziale.
   * - CI_034
     - Emissione, Sicurezza
     - Verifica della sicurezza e conformità del dispositivo tramite Wallet Instance Attestation (WIA)
@@ -232,7 +232,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_046
     - Emissione, Sicurezza e Privacy
     - Verifica dell’identità dell’utente durante la richiesta di autorizzazione
-    - L’Authorization Server verifica con successo l’identità dell’utente proprietario della credenziale tramite meccanismi di autenticazione appropriati, confermando la titolarità prima di procedere con l’autorizzazione della credenziale.
+    - L’Authorization Server verifica con successo l’identità dell’utente proprietario della Credenziale tramite meccanismi di autenticazione appropriati, confermando la titolarità prima di procedere con l’autorizzazione della Credenziale.
   * - CI_047
     - Emissione, Sicurezza
     - Monouso e scadenza del request_uri nella richiesta di autorizzazione
@@ -275,7 +275,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il (Q)EAA Provider fornisce con successo la richiesta di presentazione al Wallet.
   * - CI_057
     - Emissione, Privacy
-    - Raccolta opzionale dei dati di contatto per le credenziali
+    - Raccolta opzionale dei dati di contatto per le Credenziali
     - I Credential Issuer richiedono i dati di contatto dell’utente (email, numero di telefono) per l’invio di notifiche relative agli Attestati Elettronici emessi.
   * - CI_058
     - Emissione, Interoperabilità
@@ -433,6 +433,18 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Notification Endpoint
     - L'Access Token consente l'accesso al Notification endpoint per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer.
+  * - CI_089
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089a
+    - Annullato
+    - Annullato
+    - Annullato
+  * - CI_089b
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_089c
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Credential Endpoint
@@ -508,7 +520,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_107
     - Emissione, Sicurezza
     - Obbligo di coerenza dell’Issuer nella Ri-emissione
-    - I nuovi Attestati Elettronici sono emessi esclusivamente dallo stesso Credential Issuer che ha originariamente fornito le credenziali al Wallet Instance.
+    - I nuovi Attestati Elettronici sono emessi esclusivamente dallo stesso Credential Issuer che ha originariamente fornito le Credenziali al Wallet Instance.
   * - CI_108
     - Emissione, Sicurezza
     - Limitazione dello scope del Refresh Token per la Ri-emissione
@@ -518,13 +530,13 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Limitazione dello scope del processo di Ri-emissione
     - Il processo di ri-emissione è limitato a due specifici tipi di aggiornamento: aggiornamenti tecnici del modello/formato dei dati e aggiornamenti dell’insieme di attributi dell’Utente.
   * - CI_110
-    - Emissione, Sicurezza
-    - Aggiornamenti tecnici senza interazione utente
-    - Per aggiornamenti tecnici del modello/formato dei dati, la sostituzione e l'archiviazione degli Attestati Elettronici non richiedono il coinvolgimento diretto dell'Utente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_111
-    - Emissione, Sicurezza e Privacy
-    - Autorizzazione utente per aggiornamento attributi
-    - Per aggiornamenti dell'insieme di attributi dell'Utente, il Wallet Instance informa l'Utente delle modifiche e richiede esplicita autorizzazione prima di archiviare il nuovo Attestato Elettronico.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_112
     - Emissione, Sicurezza
     - Coerenza della data di scadenza nella Ri-emissione
@@ -559,7 +571,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Annullato
   * - CI_120
     - Modello di Dati e ciclo di vita, Sicurezza
-    - Firma della credenziale SD-JWT
+    - Firma della Credenziale SD-JWT
     - La Credenziale in formato SD-JWT è firmata utilizzando la chiave privata del Fornitore di Attestati Elettronici
   * - CI_121
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -676,7 +688,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_147a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Elementi Non Raccomandati nell'Header Protetto Oggetto Sicurezza Mobile
-    - L'header protetto non contiene elementi diversi dall'algoritmo firma
+    - Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, l'header protetto non contiene elementi diversi dall'algoritmo di firma. Per un QEAA o un PuB-EAA, l'header protetto contiene l'algoritmo di firma, ``x5u`` e ``x5t`` come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
   * - CI_148
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Codifica Parametro Header Non Protetto Oggetto Sicurezza Mobile
@@ -710,9 +722,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Gestione Processo Revoca Credenziale
     - Una Credenziale Digitale cambia con successo dagli stati Emesso, Valido o Sospeso allo stato Revocato quando è attivamente revocata dal Fornitore di Attestati Elettronici tramite un processo di revoca (PID/(Q)EAA REV).
   * - CI_155
-    - Modello di Dati e ciclo di vita, Interoperabilità
-    - Casi d'Uso Revoca Credenziale Digitale
-    - La Revoca Credenziale Digitale è implementata correttamente per ogni caso d'uso
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_155a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Revoca Credenziale Digitale - Compromissione Sicurezza Tecnica
@@ -724,7 +736,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_155c
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Revoca Credenziale Digitale - Aggiornamenti Attributi
-    - La Credenziale Digitale è revocata automaticamente quando le Fonti Autentiche notificano cambiamenti di attributi che invalidano la credenziale, innescando il processo di riemissione se applicabile.
+    - La Credenziale Digitale è revocata automaticamente quando le Fonti Autentiche notificano cambiamenti di attributi che invalidano la Credenziale, innescando il processo di riemissione se applicabile.
   * - CI_155d
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Revoca Credenziale Digitale - Revoca Avviata dalla Fonte
@@ -744,7 +756,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_156
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Revoca (Q)EAA Opzionale Seguendo Revoca PID
-    - Il Fornitore (Q)EAA valuta con successo lo stato di revoca PID e revoca le credenziali (Q)EAA associate
+    - Il Fornitore (Q)EAA valuta con successo lo stato di revoca PID e revoca le Credenziali (Q)EAA associate
   * - CI_157
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Cambio Stato (Q)EAA a Sospeso
@@ -752,7 +764,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_158
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Durata Sospensione (Q)EAA e Recupero Stato
-    - La (Q)EAA sospesa rimane nello stato Sospeso finché le condizioni di sospensione non sono risolte e la credenziale è ripristinata allo stato precedente Emesso o Valido, o transita a Revocato, Scaduto, o eliminato
+    - La (Q)EAA sospesa rimane nello stato Sospeso finché le condizioni di sospensione non sono risolte e la Credenziale è ripristinata allo stato precedente Emesso o Valido, o transita a Revocato, Scaduto, o eliminato
   * - CI_158a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Sospensione (Q)EAA - Cambiamenti Validità Attributi
@@ -792,7 +804,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_162
     - Modello di Dati e ciclo di vita, Sicurezza
     - Accesso Utente al Portale Web del Fornitore di Attestati Elettronici con Autenticazione LoA
-    - Il Fornitore di Attestati Elettronici assicura che gli utenti possano accedere con successo all'area sicura del suo portale web. Questo accesso richiede autenticazione con un Livello di Garanzia almeno pari al Livello di Garanzia utilizzato durante l'emissione iniziale della credenziale.
+    - Il Fornitore di Attestati Elettronici assicura che gli utenti possano accedere con successo all'area sicura del suo portale web. Questo accesso richiede autenticazione con un Livello di Garanzia almeno pari al Livello di Garanzia utilizzato durante l'emissione iniziale della Credenziale.
   * - CI_162a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Accesso Utente alla Vista Database Credenziali Digitali
@@ -840,7 +852,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_170a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Notifica Utente di Aggiornamento Credenziale
-    - Il Fornitore di Attestati Elettronici notifica con successo l'Utente dei cambiamenti della credenziale attraverso canale di comunicazione out-of-band registrato
+    - Il Fornitore di Attestati Elettronici notifica con successo l'Utente dei cambiamenti della Credenziale attraverso canale di comunicazione out-of-band registrato
   * - CI_171
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Notifica Utente su Stato Credenziale INVALIDA
@@ -851,7 +863,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il Fornitore di Attestati Elettronici gestisce con successo la richiesta di aggiornamento stato batch singola (che riferisce batch notification_id) da entità autorizzate (es. Istanza di Wallet tramite Endpoint Notifica con event=credential_deleted, o Fornitore di Wallet tramite PDND) come N cambiamenti individuali separati, con lo stato di ogni Credenziale aggiornato indipendentemente (per esempio, cambiando il suo bit status-list a INVALIDO o SOSPESO).
   * - CI_173
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Revoca batch su Richiesta Aggiornamento credenziale
+    - Revoca batch su Richiesta Aggiornamento Credenziale
     - Il Fornitore di Attestati Elettronici processa con successo la richiesta aggiornamento batch come richiesta revoca tutto, contrassegnando ogni Credenziale nel batch come revocata ed emettendo singola notifica coprendo l'intero batch.
   * - CI_174
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -872,14 +884,14 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_178
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Configurazione dei Bit della Status List per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici definisce il numero di bit, k (che può essere 1, 2, 4 o 8), che rappresenta la quantità di bit usata per descrivere lo stato di ogni Credenziale Digitale all'interno della Status List. Il Fornitore di Attestati Elettronici configura il numero di bit e, di conseguenza, ogni credenziale può avere 2^k stati possibili.
+    - Il Fornitore di Attestati Elettronici definisce il numero di bit, k (che può essere 1, 2, 4 o 8), che rappresenta la quantità di bit usata per descrivere lo stato di ogni Credenziale Digitale all'interno della Status List. Il Fornitore di Attestati Elettronici configura il numero di bit e, di conseguenza, ogni Credenziale può avere 2^k stati possibili.
   * - CI_179
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Creazione di un Array di Byte per la Status List e Assegnazione della Posizione della Credenziale.
     - Il Fornitore di Credenziali crea con successo array byte di dimensione = (quantità di Credenziali Digitali) * k / 8 o maggiore, con ogni byte corrispondente a 8/k stati a seconda del valore k (8 se k=1, 4 se k=2, 2 se k=4, o 1 se k=8), e assegna ogni Credenziale Digitale emessa a una posizione nell'array.
   * - CI_180
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Impostazione dei valori di stato delle credenziali digitali nella Status List in un array di byte
+    - Impostazione dei valori di stato delle Credenziali digitali nella Status List in un array di byte
     - Il Fornitore di Credenziali imposta con successo valori stato per tutte le Credenziali Digitali emesse all'interno dell'array byte, con ogni stato Credenziale Digitale identificato utilizzando un indice che mappa a bit specifici all'interno dell'array byte, conteggio indice da 0 a (quantità di Credenziale Digitale) - 1, bit contati dal bit meno significativo ("0") al bit più significativo ("7"), e tutti i bit dell'array byte a un particolare indice impostati a un valore stato.
   * - CI_181
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -899,7 +911,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella sezione :ref:`credential-revocation:Token Status Lists`.
   * - CI_184
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Status List Definizione degli stati opzionali di stato delle credenziali digitali
+    - Status List Definizione degli stati opzionali di stato delle Credenziali digitali
     - Il Fornitore di Attestati Elettronici aggiunge con successo altri stati oltre a quelli descritti sopra quando sceglie il numero di bit per trasmettere gli stati delle Credenziali Digitali emesse, con attenta considerazione per la divulgazione di informazioni alle Relying Party quando aggiunge molti stati diversi per il ciclo di vita della Credenziale Digitale.
   * - CI_185
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -940,11 +952,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_194
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Richieste Catalogo Credenziale Digitale
-    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalog_parameters>` corrispondente.
+    - Il Fornitore di Attestati Elettronici fornisce le sue Credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalog_parameters>` corrispondente.
   * - CI_195
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
-    - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalog_parameters_first_level>` corrispondente.
+    - Ogni elemento dell'array delle Credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalog_parameters_first_level>` corrispondente.
   * - CI_196
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Attributi utente dell'IT-Wallet ID
@@ -985,5 +997,45 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Autenticazione
     - Mappatura della nomenclatura LoA
     - Nel flusso L2+, LoA3 (ISO/IEC 29115) corrisponde a eIDAS Substantial e ai mezzi nazionali L2 (SPID L2 / CieID Substantial). LoA High corrisponde a eIDAS High e CIE L3. Il test fallisce se un'autenticazione Substantial è registrata come High.
+  * - CI_206
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria QEAA in SD-JWT VC
+    - Un QEAA contiene ``category`` con valore ``urn:etsi:esi:eaa:eu:qualified``. Qualsiasi altro valore è rifiutato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Categoria`.
+  * - CI_207
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria PuB-EAA in SD-JWT VC
+    - Un PuB-EAA contiene ``category`` con valore ``urn:etsi:esi:eaa:eu:pub``. Qualsiasi altro valore è rifiutato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Categoria`.
+  * - CI_208
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Categoria in mdoc
+    - L'elemento mdoc ``category`` nel namespace ``org.etsi.01947201.010101`` reca lo stesso URN del claim SD-JWT VC per quel ``legal_type``.
+  * - CI_209
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Stato quando l'attestato non è a vita breve
+    - Un QEAA o un PuB-EAA senza il segnale di vita breve contiene ``status`` come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`. Un ``status`` assente è rifiutato.
+  * - CI_210
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Ubicazione del certificato del firmatario SD-JWT VC
+    - Il protected header JOSE di un QEAA o di un PuB-EAA contiene ``x5u`` e ``x5t#S256``. ``x5t#S256`` è il digest SHA-256, codificato in base64url, della codifica DER del certificato end-entity in ``x5c``. È lo stesso digest del certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata.
+  * - CI_211
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Ubicazione del certificato del firmatario mdoc
+    - Per un QEAA o un PuB-EAA, l'elemento ``issuerAuth`` mdoc è una firma CB-AdES. Il protected header contiene ``x5u`` e ``x5t`` con SHA-256. ``x5t`` è il digest SHA-256 della codifica DER del certificato recuperato da ``x5u``. Il certificato end-entity dell'elemento ``x5chain`` non protetto corrisponde al certificato recuperato da ``x5u``. Una mancata corrispondenza è rifiutata. Per un Attestato Elettronico che non è un QEAA o un PuB-EAA, ``issuerAuth`` è un ``COSE_Sign1`` il cui protected header contiene solo l'algoritmo di firma, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Header del Mobile Security Object`.
+  * - CI_212
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Soggetto unico
+    - Un QEAA o un PuB-EAA che contiene ``subAttrs`` o ``SubAttr`` è rifiutato. Un PuB-EAA in SD-JWT VC che contiene sia ``sub`` sia ``also_known_as``, o nessuno dei due, è rifiutato.
+  * - CI_213
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim dell'issuer assenti quando il certificato è in x5c
+    - Un QEAA o un PuB-EAA in SD-JWT VC che contiene ``issuing_authority`` o ``issuing_country`` è rifiutato, perché ``x5c`` incorpora il certificato qualificato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_214
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Identificativo di registrazione assente quando il certificato è incorporato
+    - Un QEAA o un PuB-EAA che contiene ``iss_reg_id`` è rifiutato, in SD-JWT VC e in mdoc, perché il certificato qualificato è incorporato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.
+  * - CI_215
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Forma dell'oggetto status in SD-JWT
+    - Un QEAA o un PuB-EAA in SD-JWT VC il cui oggetto ``status`` omette ``type``, ``purpose``, ``index`` o ``uri``, o il cui ``index`` o ``uri`` differisce da ``status_list``, è rifiutato. Un oggetto ``status`` che contiene ``status_list`` e i membri ETSI corrispondenti è accettato, come specificato in :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
 
 

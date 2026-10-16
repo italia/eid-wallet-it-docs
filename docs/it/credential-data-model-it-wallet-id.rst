@@ -9,6 +9,7 @@ L'**IT-Wallet ID** (*Attestato Elettronico di Dati di Identificazione Personale 
 L'IT-Wallet ID è destinato **esclusivamente all'uso nazionale** con Relying Party che operano nell'ambito della giurisdizione nazionale per l'accesso ai servizi online. NON DEVE essere utilizzato per interazioni cross-border e **non** costituisce un PID ai sensi del quadro europeo di Identità Digitale.
 
 Lo scopo principale dell'IT-Wallet ID è consentire alle persone fisiche di essere autenticate per l'accesso a un servizio o a una risorsa protetta nell'ambito della giurisdizione nazionale.
+Viene inoltre presentato a un Fornitore di Credenziali che agisce come Relying Party per ottenere altri Attestati Elettronici di Attributi, secondo :ref:`pid-until-notification` e :ref:`credential-issuance-high-level:Flusso ad Alto Livello per (Q)EAA`.
 Gli attributi dell'Utente forniti all'interno dell'IT-Wallet ID sono quelli elencati di seguito:
 
 - Cognome attuale

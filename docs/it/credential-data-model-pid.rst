@@ -6,9 +6,18 @@ Modello di Dati del PID
 
 Il PID è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT VC e mdoc-CBOR.
 
-.. note::
-  Il PID non sarà rilasciato finché l’IT-Wallet non sarà notificato EUDIW; l’**IT-Wallet ID** ha lo scopo di consentire l’accesso ai servizi online dei RP nazionali al posto del PID.
-  
+.. _pid-until-notification:
+
+Emissione del PID prima della notifica EUDIW
+--------------------------------------------
+
+.. warning::
+
+   Il PID NON DEVE essere emesso, memorizzato o presentato finché l'IT-Wallet non è pienamente operativo e notificato come Portafoglio di Identità Digitale Europea ai sensi di [`CIR2024/2980`_].
+   Fino a quella notifica, l'identificazione nazionale utilizza l':term:`IT-Wallet ID`.
+
+Attributi del PID
+-----------------
 
 Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
 Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], gli attributi dell'Utente forniti all'interno del PID italiano sono quelli elencati di seguito:
@@ -74,8 +83,8 @@ In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDA
       - OBBLIGATORIO. *Array di stringhe*. Uno o più codici paese alpha-2 come specificato in ISO 3166-1.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
     * - **picture**
-      - OBBLIGATORIO. *Stringa*. Immagine facciale codificata come data URL contenente il ritratto JPEG in base64, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Salvo il caso in cui l'Utente eserciti esplicitamente l'opt-out, ove applicabile; in caso di opt-out, il valore DEVE essere vuoto, come specificato nell'ARF HLR **PID_03**. L'inclusione obbligatoria dell'attributo portrait si applica a decorrere da 24 mesi dall'entrata in vigore del Regolamento che modifica `EU_2024/2977`_.
-      - Regolamento di esecuzione della Commissione `EU_2024/2977`_ e ARF PID Rulebook
+      - OBBLIGATORIO. *Stringa*. Immagine facciale codificata come data URL contenente il ritratto JPEG in base64, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Prima del termine dei 24 mesi dall'entrata in vigore del Regolamento di esecuzione della Commissione `EU_2026/1731`_ (11 agosto 2028), il valore PUÒ essere configurato come vuoto.
+      - Regolamento di esecuzione della Commissione `EU_2026/1731`_ (Allegato I), `EU_2024/2977`_ e ARF PID Rulebook
     * - **personal_administrative_number**
       - OPZIONALE. *Stringa*. Identificativo univoco nazionale di una persona fisica. DEVE essere conforme con ETSI EN 319 412-1 Sezione 5.1.3. Gli unici identificativi semantici per persone fisiche (**NAT-5.1.3-03**) supportati all'interno di IT-Wallet sono ``PNO`` e ``TIN``. Per IDANPR, DEVE essere usato ``PNO``, mentre per il Codice Fiscale, DEVE essere usato ``TIN``. 
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
@@ -216,7 +225,7 @@ In base a `EU_2024/2977`_ e alla **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDA
       - OBBLIGATORIO. *(array di tstr)*. Uno o più codici paese alpha-2 come specificato in ISO 3166-1. Codificato come tipo CDDL ``nationalities`` (array di codici paese).
       - ``eu.europa.ec.eudi.pid.1``
     * - **portrait**
-      - OBBLIGATORIO. *(bstr)*. Immagine facciale in formato JPEG, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Salvo il caso in cui l'Utente eserciti esplicitamente l'opt-out, ove applicabile; in caso di opt-out, il valore DEVE essere vuoto, come specificato nell'ARF HLR **PID_03**. L'inclusione obbligatoria dell'attributo portrait si applica a decorrere da 24 mesi dall'entrata in vigore del Regolamento che modifica `EU_2024/2977`_.
+      - OBBLIGATORIO. *(bstr)*. Immagine facciale in formato JPEG, conforme ai requisiti di qualità per il tipo di immagine frontale completa definiti in ISO/IEC 39794-5 o, per retrocompatibilità, ISO/IEC 19794-5, clausole 8.2, 8.3 e 8.4. NON DEVE includere le intestazioni o i blocchi specificati nella clausola 5 di ISO/IEC 19794-5, ad eccezione dei soli dati dell'immagine. Prima del termine dei 24 mesi dall'entrata in vigore del Regolamento di esecuzione della Commissione `EU_2026/1731`_ (11 agosto 2028), il valore PUÒ essere configurato come vuoto.
       - ``eu.europa.ec.eudi.pid.1``
     * - **personal_administrative_number**
       - OPZIONALE. *(tstr)*. Identificativo univoco nazionale di una persona fisica generato da ANPR.

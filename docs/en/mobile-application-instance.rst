@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via appendix.rst at title level '=' (document title).
 
 
 Mobile Application Instance
@@ -39,23 +40,32 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`).
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint`). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
 **Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met (:ref:`WP_132 <wallet-instance-optional-testcases>`):
 
   1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.
-  2. It MUST generate a pair of asymmetric Elliptic Curve keys (``hardware_key_pub``, ``hardware_key_priv``) via a local WSCD.
-  3. It SHOULD obtain a unique identifier Cryptographic Hardware Key Tag (``hardware_key_tag``) for the generated Cryptographic Hardware Keys from the operating system. If the operating system permits specifying a tag during the creation of keys, then a random string for the ``hardware_key_tag`` MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, consider using a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.
-  4. If the previous points are satisfied, it MUST store the ``hardware_key_tag`` in local storage.
+  2. It SHOULD obtain a unique Cryptographic Hardware Key Tag (``hardware_key_tag``) for the Cryptographic Hardware Keys from the operating system before generating the key pair. If the operating system permits specifying a tag during the creation of the keys, it MUST select a random string as ``hardware_key_tag`` before generating the key pair. The random value MUST be collision-resistant and unpredictable. The Mobile Application Instance MUST use a secure random number generator provided by the operating system or a reputable cryptographic library to select that value.
+  3. It MUST compute ``client_data_hash`` as the SHA-256 digest of the UTF-8 octets of the ``nonce`` immediately followed by the UTF-8 octets of ``hardware_key_tag``. The digest MUST NOT include ``hardware_key_pub`` (:ref:`WP_133a <wallet-instance-optional-testcases>`).
+  4. It MUST generate an asymmetric Elliptic Curve key pair (``hardware_key_pub``, ``hardware_key_priv``) through a **Keystore**, using ``client_data_hash`` as the Key Attestation challenge.
+  5. If the previous points are satisfied, it MUST store the ``hardware_key_tag`` in local storage.
 
 .. note::
-  **WSCD**: The Mobile Application Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing, on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
+  **Keystore**: The Mobile Application Instance uses the device's hardware-backed **Keystore** for all cryptographic operations, including key generation, secure storage, and cryptographic processing. The Keystore is the default secure storage mechanism for all Digital Credentials except the PID:
 
-  If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
+  - **Android**: Strongbox Keymaster (a dedicated Hardware Security Module embedded in the device motherboard) is RECOMMENDED. The Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable.
+  - **iOS**: The Secure Enclave MUST be used.
 
-**Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation (:ref:`WP_133b <wallet-instance-optional-testcases>`).
+  Given that each OEM offers a distinct SDK for accessing the Keystore, the discussion hereafter will address this topic in a general context.
+
+  If the Keystore fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
+
+.. note::
+  **WSCA/WSCD**: For PID issuance at Level of Assurance High, the Wallet Instance interacts with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for LoA High.
+
+**Step 7**: The Mobile Application Instance obtains the Key Attestation produced for the ``client_data_hash`` computed in Step 6 (:ref:`WP_133b <wallet-instance-optional-testcases>`).
 
 .. note::
   **Key Attestation APIs**: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
@@ -70,7 +80,7 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 
 **Step 8**: The Key Attestation APIs performs the following actions:
 
-* Creates a Key Attestation that is linked with the provided ``client_data_hash`` and the public key of the Application Instance Hardware.
+* Creates a Key Attestation using ``client_data_hash`` as the challenge, with an attestation certificate containing the Application Instance Hardware public key.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
@@ -78,13 +88,12 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`).
-  This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
+  The public key is bound by the attestation certificate. It is not an input to ``client_data_hash``. The platform attestation challenge must be known before the public key exists, and the Application Provider can read that public key only after it has validated the attestation.
 
 **Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature (:ref:`WP_135–137 <wallet-instance-optional-testcases>`), therefore:
 
   1. It MUST verify that the ``nonce`` was generated by Application Provider and has not already been used (:ref:`WP_135a <wallet-instance-optional-testcases>`).
-  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines (:ref:`WP_135b <wallet-instance-optional-testcases>`). The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``client_data_hash`` provided in the Key Attestation (:ref:`WP_136 <wallet-instance-optional-testcases>`).
+  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines (:ref:`WP_135b <wallet-instance-optional-testcases>`). It MUST extract ``hardware_key_pub`` from the validated attestation. It MUST verify that the challenge embedded in the attestation is equal to the SHA-256 digest of the UTF-8 octets of the received ``nonce`` immediately followed by the UTF-8 octets of the received ``hardware_key_tag`` (:ref:`WP_136 <wallet-instance-optional-testcases>`).
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider (:ref:`WP_135b <wallet-instance-optional-testcases>`).
   4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device (:ref:`WP_137 <wallet-instance-optional-testcases>`).
 

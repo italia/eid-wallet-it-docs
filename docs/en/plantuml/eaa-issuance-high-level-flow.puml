@@ -1,12 +1,12 @@
-@startuml High-Level (Q)EAA Issuance Flow
-!include <C4/C4_Component>
+@startuml
+!include <C4/C4_Container>
 
 HIDE_STEREOTYPE()
 LAYOUT_LEFT_RIGHT()
 
 skinparam linetype ortho
 skinparam nodesep 100
-skinparam ranksep 239
+skinparam ranksep 170
 
 ' Define SPRITES
 !include <tupadr3/common>
@@ -27,20 +27,27 @@ skinparam ranksep 239
 AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
 
 Person(user, "User", "Wallet Instance holder")
-Component(wi, "Wallet Instance", "OID4VCI / OID4VP", "",$sprite="wallet")
-Boundary(qeaaProvider, "(Q)EAA Provider") {
-    Component(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
-    Component(rp, "Relying Party Component", "OID4VP", "",$sprite="cogs")
+Container(wi, "Wallet Instance", "OID4VCI / OID4VP", " ", $sprite="wallet")
+Boundary(pidProvider, "PID Provider") {
+    Container(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
+    Container(rp, "Relying Party Component", "OIDC / SAML", "",$sprite="cogs")
 }
-Component_Ext(as, "Authentic Source", "", "",$sprite="database")
-Component_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
+Boundary(IdentityProvider, "CIEid Digital Identity\n Federation") {
+    System_Ext(idp, "Identity Provider", "Digital Identity scheme based on CIEid LoA High (L3)", $sprite="institution")
+}
+Container_Ext(as, "Authentic Source", "ANPR", "",$sprite="database")
+Container_Ext(ta, "Trust Services and Digital Credentials Catalog", "EUDIW/National Registry", "",$sprite="lock")
 
-Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a (Q)EAA","")
-Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\n(Q)EAA Provider Discovery\nand Trust","")
-Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests\n(Q)EAA","")
+Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a PID","")
+Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nPID Provider Discovery\nand Trust","")
+Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests PID","")
 Rel(vci,ta,"<size:16><color red><b>3</b></color></size>\nWallet Provider Discovery and Trust","")
-Rel_U(rp,wi,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User","")
+Rel(rp,idp,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User","")
 Rel_U(vci,as,"<size:16><color red><b>5</b></color></size>\nObtains\nAttributes","")
 BiRel(vci,rp,"","",$tags="async")
-Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues\n(Q)EAA","")
+Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues PID","")
+note right of ta
+Trust at Issuance uses the National path: Federation Entity Authentication and National Authorization.
+
+end note
 @enduml

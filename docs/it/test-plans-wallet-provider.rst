@@ -6,7 +6,7 @@ Matrice di Test per Wallet Provider
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 
-- :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+- :ref:`infrastructure-trust:Infrastructure of Trust`
 - :ref:`wallet-solution:Soluzione Wallet`
 - :ref:`credential-issuance:Emissione di Attestati Elettronici`
 - :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`
@@ -165,35 +165,35 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_013
      - Ciclo di vita, Interoperabilità
      - Architettura componente frontend
-     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, e Archiviazione Sicura) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
+     - Istanza del Wallet supporta tutti i componenti (Interfaccia Utente, Gestione Ciclo di Vita, Fornitore di Attestato Elettronico, Presentazione, Backup/Ripristino, Keystore e WSCA/WSCD Interface per il PID) come mostrato in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
    * - WP_014
      - Trust, Sicurezza
-     - Profilo Keystore / WSCD
-     - Il profilo implementativo attuale usa esclusivamente un Keystore hardware-backed interno locale (TEE o StrongBox su Android, Secure Enclave su iOS). L'Istanza del Wallet genera e memorizza le chiavi private dell'Utente in quel Keystore e non usa un keystore solo software. WSCD indica un dispositivo certificabile High (HSM o smart card, almeno Common Criteria EAL4+ AVA_VAN.5).
+     - Implementazione Keystore
+     - Istanza del Wallet utilizza il Keystore hardware-backed (Strongbox o TEE su Android; Secure Enclave su iOS) per tutte le operazioni crittografiche richieste, come generare firme e gestire le chiavi, per tutte le Credenziali Digitali eccetto il PID. Per l'emissione e la gestione del PID, la Wallet Instance interagisce con il WSCA operante nel Remote WSCD (HSM remoto), per conformarsi ai requisiti di Livello di Garanzia Alto. Un Keystore hardware-backed non è un WSCD e non è prova di Livello di Garanzia Alto.
    * - WP_014a
      - Trust, Sicurezza
      - Solo Keystore hardware-backed
-     - I tentativi di generare o importare chiavi private dell'Utente in un keystore solo software sono rifiutati. Le operazioni crittografiche per WIA, KA, IT-Wallet ID e (Q)EAA usano il Local Internal Keystore.
+     - I tentativi di generare o importare chiavi private dell'Utente in un keystore solo software sono rifiutati. Le operazioni crittografiche per WIA, KA, IT-Wallet ID e (Q)EAA usano il Keystore hardware-backed.
    * - WP_014b
      - Trust, Sicurezza
      - Non esportabilità delle chiavi private
-     - Il Keystore o il WSCD non consente l'esportazione in chiaro delle chiavi private dell'Utente. Se il dispositivo dichiara la chiave privata come esportabile, il Fornitore del Wallet rifiuta la Key Attestation e non attiva l'Istanza del Wallet.
+     - Il Keystore o il WSCA/Remote WSCD non consente l'esportazione in chiaro delle chiavi private dell'Utente. Se il dispositivo dichiara la chiave privata come esportabile, il Fornitore del Wallet rifiuta la Key Attestation e non attiva l'Istanza del Wallet.
    * - WP_014c
      - Trust, Sicurezza
      - Sole Control e autenticazione Utente
-     - Il Keystore o il WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
+     - Il Keystore o il WSCA/Remote WSCD richiede l'autenticazione dell'Utente (sblocco wallet: PIN o biometrico) prima di qualsiasi firma o uso della chiave. L'Utente mantiene il controllo esclusivo delle chiavi private.
    * - WP_014d
      - Trust, Sicurezza
-     - Conservazione chiavi PID High vs IT-Wallet ID
-     - Le chiavi di IT-Wallet ID e (Q)EAA POSSONO essere memorizzate nel Local Internal Keystore (eIDAS Substantial). Le chiavi di un PID a LoA High DEVONO essere memorizzate solo in un WSCD. Il profilo attuale non emette un PID High; un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
+     - Conservazione chiavi PID High vs altre Credenziali
+     - Le chiavi di IT-Wallet ID e (Q)EAA sono memorizzate nel Keystore hardware-backed. Le chiavi di un PID a LoA High DEVONO essere generate e memorizzate solo dal WSCA operante nel Remote WSCD. Un report TEE Protection Profile o equivalente non è accettato come prova di LoA High.
    * - WP_014e
      - Trust, Sicurezza
      - Collocazione chiavi WIA
-     - Le chiavi private associate alla WIA sono generate e memorizzate nello stesso Keystore o WSCD che la WIA attesta.
+     - Le chiavi private associate alla WIA sono generate e memorizzate nello stesso Keystore o WSCA/Remote WSCD che la WIA attesta.
    * - WP_014f
      - Trust, Sicurezza
      - Chiavi della Mobile Relying Party Instance
-     - Una Mobile Relying Party Instance che non memorizza chiavi di identità dell'Utente PUÒ usare il Local Internal Keystore. Non è richiesto un WSCD certificabile High.
+     - Una Mobile Relying Party Instance che non memorizza chiavi di identità dell'Utente PUÒ usare il Keystore hardware-backed. Non è richiesto un WSCA/Remote WSCD.
    * - WP_015
      - Ciclo di vita, UX
      - Compatibilità Android/iOS
@@ -241,7 +241,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_022b
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - KA per WSCD remoto o locale esterno
-     - Se un profilo futuro usa un WSCD remoto (HSM) o un WSCD locale esterno (smart card, token), la KA è prodotta da quel WSCD, non dal TEE del telefono. È verificato il Sole Control dell'Utente sulle chiavi remote. Questo caso è fuori dal profilo attuale.
+     - Per un PID a Livello di Garanzia Alto, la KA è prodotta dal WSCA operante nel Remote WSCD (HSM remoto), non dal TEE del telefono. È verificato il Sole Control dell'Utente su quelle chiavi remote.
    * - WP_023
      - Inizializzazione / Registrazione Wallet, Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
@@ -386,8 +386,12 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet ottiene con successo la lista dei Credential Issuer fidati utilizzando il Catalogo degli Attestati Elettronici.
    * - WP_045a
      - Trust, Issuance, Interoperabilità
-     - Recupero Catalogo degli Attestati Elettronici
-     - Istanza del Wallet invia con successo una richiesta HTTP GET al Catalogue Endpoint contenente il Catalogo degli Attestati Elettronici, utilizzando il media type ``application/jose``.
+     - Recupero di una pagina del Catalogo degli Attestati Elettronici
+     - Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di collection del Digital Credentials Catalog, utilizzando il media type ``application/jwt`` (firmato) o ``application/json`` (in chiaro), e legge una pagina identificata da ``total``, ``limit`` e ``offset``.
+   * - WP_045b
+     - Trust, Issuance, Interoperabilità
+     - Recupero di una voce del Catalogo degli Attestati Elettronici
+     - Istanza del Wallet invia con successo una richiesta HTTP GET all'endpoint di entry del Digital Credentials Catalog per una coppia ``credential_type`` e ``version`` e ottiene quella voce versionata. Una coppia sconosciuta produce HTTP 404.
    * - WP_046
      - Issuance, Interoperabilità
      - Scoprire Credential Issuer dinamicamente dai metadata federazione
@@ -661,19 +665,19 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_078
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
      - Scoperta identità Relying Party
-     - Istanza del Wallet utilizza con successo gli Endpoint di Federazione (``.well-known/openid-federation``, ``/fetch``) per recuperare metadata e configurazioni correnti della Relying Party.
+     - Il prefisso di ``client_id`` seleziona esattamente un Trust Framework. Per ``openid_federation``, l'Istanza del Wallet usa la Federation Entity Authentication. Per ``x509_hash``, l'Istanza del Wallet usa l'autenticazione EUDIW del WRPAC rispetto ai Providers of WRPAC LoTE.
    * - WP_079
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
-     - Valutazione Trust Chain Relying Party
-     - Istanza del Wallet valida con successo la Trust Chain della Relying Party (fornita staticamente o costruita attraverso un processo Federation Entity Discovery) dal Trust Anchor fino alla Relying Party stessa, confermando che la Relying Party è un membro riconosciuto e fidato della Federazione.
+     - Valutazione del percorso di trust della Relying Party
+     - Nel percorso nazionale, l'Istanza del Wallet valida la Trust Chain della Relying Party. Nel percorso EUDIW, valida il percorso del WRPAC. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.
    * - WP_080
      - Flusso-remoto, Trust, Presentazione, Interoperabilità
-     - Controllo Trust Mark Relying Party
-     - Istanza del Wallet valuta con successo qualsiasi Trust Mark incluso nell'Entity Configuration della Relying Party per assicurare che siano validi e indichino conformità alle policy della Federazione.
+     - Evidenza di autorizzazione della Relying Party
+     - Nel percorso nazionale, l'Istanza del Wallet valida il Trust Mark di registrazione. Nel percorso EUDIW, autorizza la richiesta attraverso il WRPRC in ``verifier_info``. Il materiale WRPAC e WRPRC non è evidenza di trust nazionale.
    * - WP_081
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Validare ``request_uri``
-     - Istanza del Wallet controlla che il ``request_uri`` sia nella lista di URI consentiti alla Relying Party (dai ``openid_credential_verifier.request_uris`` nella Trust Chain) e procede solo quando trova una corrispondenza esatta; se non viene trovata corrispondenza, rifiuta la richiesta.
+     - Nel percorso nazionale, ``request_uri`` corrisponde esattamente a un valore di ``request_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``request_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza rifiuta la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_082
      - Flusso-remoto, Presentazione, Interoperabilità
      - GET Request Object
@@ -685,7 +689,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON secondo :ref:`remote-flow:Richiesta all'Endpoint URI Request`, includendo ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` impostato su ``["vp_token"]`` quando presente.
+     - L'Istanza del Wallet formatta ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported`` e ``client_id_prefixes_supported``, e opzionalmente ``request_object_signing_alg_values_supported``, secondo la Sezione 10.1 di [`OpenID4VP`_]. ``client_id_prefixes_supported`` contiene sia ``x509_hash`` sia ``openid_federation``.
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``
@@ -697,7 +701,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_084
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Recupero chiave pubblica Relying Party
-     - Istanza del Wallet recupera la chiave pubblica corretta della Relying Party dal campo ``metadata.openid_credential_verifier.jwks``, situato all'interno dell'Entity Configuration della Relying Party fornita dalla Trust Chain, utilizzando l'identificativo di chiave (``kid``) dall'header del Request Object.
+     - Nel percorso nazionale, la chiave di firma è la chiave identificata da ``kid`` nei metadati di federazione. Nel percorso EUDIW, la chiave di firma è la chiave del WRPAC in ``x5c``. L'Istanza del Wallet non cambia percorso.
    * - WP_085
      - Flusso-remoto, Presentazione, Sicurezza
      - Verifica firma Request Object
@@ -705,11 +709,11 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_086
      - Flusso-remoto, Presentazione, Sicurezza
      - Abbinare ``client_id`` tra contesti
-     - Istanza del Wallet conferma che il claim ``iss`` nel Request Object firmato abbia lo stesso ``client_id`` che ha originariamente estratto dall'URL dell'Authorization Request che il valore ``sub`` nell'Entity Configuration della Relying Party. Qualsiasi discrepanza causa il rifiuto dell Request Object.
+     - ``iss`` è uguale al ``client_id`` qualificato dal prefisso dell'Authorization Request. Nel percorso nazionale, corrisponde anche al ``sub`` dell'Entity Configuration. Una mancata corrispondenza rifiuta la richiesta.
    * - WP_087
      - Flusso-remoto, Presentazione, Sicurezza
      - Controllare idoneità Relying Party
-     - Istanza del Wallet autorizza la richiesta e procede con il flusso quando verifica che i metadata, le policy e un Trust Mark valido della Relying Party consentono a quest'ultima di richiedere l'Attestato Elettronico specificato.
+     - Nel percorso nazionale, l'Istanza del Wallet controlla l'ambito del Trust Mark di registrazione. Nel percorso EUDIW, controlla l'entitlement di service provider e l'ambito DCQL esatto. Una valutazione fallita non viene ripetuta nell'altro Trust Framework.
    * - WP_088
      - Flusso-remoto, Presentazione, Privacy
      - Consenso utente per divulgazione
@@ -737,7 +741,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_091a
      - Flusso-remoto, Presentazione, Sicurezza
      - Validare ``response_uri``
-     - Prima di inviare l'Authorization Response, Istanza del Wallet conferma che il ``response_uri`` corrisponda esattamente a uno dei ``response_uris`` attestati della Relying Party nei suoi metadata; una mancata corrispondenza interrompe il flusso.
+     - Nel percorso nazionale, ``response_uri`` corrisponde esattamente a un valore di ``response_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``response_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe la richiesta. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_092
      - Flusso-remoto, Presentazione, Sicurezza
      - Cifrare l'Authorization Response
@@ -765,7 +769,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_094a
      - Flusso-remoto, Trust, Presentazione, Sicurezza
      - Validare ``redirect_uri``
-     - Istanza del Wallet verifica che il ``redirect_uri`` corrisponda esattamente a uno degli URI elencati nei metadata ``redirect_uris`` della Relying Party. Se non corrisponde, interrompe il flusso.
+     - Nel percorso nazionale, ``redirect_uri`` corrisponde esattamente a un valore di ``redirect_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``redirect_uri`` è vincolato dal WRPAC e dal WRPRC. Una mancata corrispondenza interrompe il flusso. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
    * - WP_095
      - Flusso-prossimità, Presentazione, Sicurezza
      - Supportare recupero supervisionato/non supervisionato
@@ -968,10 +972,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
 Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione elenca i casi di test dalle Sezioni:
-
-- :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+Questa sezione elenca i casi di test dalla Sezione :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`.
 
 .. list-table::
    :class: longtable
@@ -992,28 +993,28 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - La vista dei log delle transazioni mostra le Relying Party in possesso degli attributi dell'Utente.
    * - WP_116
      - Eliminazione Attributi, Ciclo di vita, Sicurezza
-     - Validazione metadata Relying Party per eliminazione
-     - Quando un Utente seleziona una Relying Party per l'eliminazione degli Attributi, Istanza del Wallet recupera e valida i suoi metadata di Federazione, confermando la presenza di un Endpoint di Cancellazione della Relying Party.
+     - Contatto di supporto della Relying Party per la cancellazione
+     - Quando un Utente seleziona una Relying Party per l'eliminazione degli attributi, l'Istanza del Wallet ottiene il contatto di supporto registrato (``support_uri`` nel National Trust Framework, oppure il contatto di supporto del Wallet-Relying Party Access Certificate nel EUDIW Trust Framework) e conferma che sia presente almeno un contatto invocabile.
    * - WP_117
      - Eliminazione Attributi, Ciclo di vita, Interoperabilità
-     - Richiesta Cancellazione
-     - Istanza del Wallet costruisce correttamente, e invia una Richiesta Cancellazione valida destinata all'Endpoint di Cancellazione della Relying Party.
+     - Richiesta di cancellazione dei dati
+     - L'Istanza del Wallet invoca l'applicazione esterna corrispondente al contatto selezionato. Per un indirizzo email, il ``subject`` della bozza richiede la cancellazione ai sensi dell'Articolo 17 del Regolamento (UE) 2016/679 e il ``body`` identifica gli attributi, oppure richiede la cancellazione di tutti i dati personali precedentemente forniti tramite l'Istanza del Wallet.
    * - WP_117a
      - Eliminazione Attributi, Ciclo di vita, Privacy
-     - Registrazione Richiesta Cancellazione
-     - Una voce nel log viene creata per ogni Richiesta Cancellazione, contenente il timestamp, l'identificativo della Relying Party, e gli Attributi specifici la cui eliminazione è richiesta.
+     - Registrazione della richiesta di cancellazione dei dati
+     - Una voce di log è creata per ogni richiesta di cancellazione dei dati dopo che l'applicazione esterna è stata invocata con successo. La voce contiene la data e l'ora, l'identificativo della Relying Party e gli attributi specifici di cui è richiesta l'eliminazione.
    * - WP_118
      - Eliminazione Attributi, Ciclo di vita, UX
-     - Reindirizzamento utente e callback per cancellazione
-     - Istanza del Wallet reindirizza con successo l'Utente all'Endpoint di Cancellazione della Relying Party e riceve la Risposta Cancellazione tramite un opportuno meccanismo di callback.
+     - Selezione del contatto
+     - L'Istanza del Wallet presenta i contatti che la piattaforma può invocare, oppure applica una preferenza dell'Utente memorizzata, e invoca l'applicazione esterna selezionata.
    * - WP_119
      - Eliminazione Attributi, Ciclo di vita, Interoperabilità
-     - Gestisce risposta eliminazione/errore
-     - Istanza del Wallet processa correttamente sia le risposte di successo che di errore per la Risposta Cancellazione dalla Relying Party.
+     - Avvio della richiesta
+     - L'Istanza del Wallet registra la richiesta di cancellazione dei dati come avviata dopo che l'applicazione esterna è stata invocata con successo. Non richiede una risposta HTTP dalla Relying Party.
    * - WP_119a
      - Eliminazione Attributi, Ciclo di vita, UX
-     - Notifica utente su cancellazione
-     - Istanza del Wallet mostra una notifica chiara all'Utente indicando il successo o fallimento della Richiesta di Cancellazione.
+     - Notifica all'Utente sulla richiesta di cancellazione
+     - L'Istanza del Wallet informa l'Utente che la richiesta di cancellazione dei dati è stata avviata.
 
 .. _credential-backup-testcases:
 
@@ -1161,11 +1162,11 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_133a
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Calcolo hash SHA-256
-     - Istanza del Wallet calcola con successo un digest SHA-256 (``client_data_hash``) sul ``nonce``, il ``hardware_key_pub``, e il ``hardware_key_tag``,
+     - Istanza del Wallet calcola con successo un digest SHA-256 (``client_data_hash``) degli ottetti UTF-8 del ``nonce`` immediatamente seguiti dagli ottetti UTF-8 di ``hardware_key_tag``. Il digest non include ``hardware_key_pub``.
    * - WP_133b
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Key Attestation
-     - Istanza del Wallet invoca con successo l'API Key Attestation con il ``client_data_hash`` e ottiene un attestato firmato dalla Key Attestation API.
+     - Istanza del Wallet invoca con successo l'API di Key Attestation al momento della generazione della chiave, passando ``client_data_hash`` come challenge di attestazione, e ottiene un attestato firmato.
    * - WP_134
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Richiesta Key Binding
@@ -1189,7 +1190,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_136
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Verifica associazione crittografica
-     - Il Fornitore del Wallet verifica con successo l'associazione crittografica tra il ``hardware_key_tag``, ``hardware_key_pub``, il nonce, e il ``client_data_hash`` fornito nel parametro ``key_attestation``.
+     - Il Fornitore del Wallet estrae ``hardware_key_pub`` dalla ``key_attestation`` validata e verifica che il challenge incorporato sia uguale al digest SHA-256 degli ottetti UTF-8 del ``nonce`` immediatamente seguiti dagli ottetti UTF-8 di ``hardware_key_tag``.
    * - WP_137
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Registrazione Istanza del Wallet
@@ -1205,7 +1206,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_140
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Richiesta di Emissione della Wallet Instance Attestation (WIA)
-     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, e altri parametri correlati alla configurazione.
+     - Istanza del Wallet costruisce con successo il JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) con i claim richiesti: ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, e altri parametri correlati alla configurazione.
    * - WP_140a
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Controllo esistenza chiave hardware/ri-inizializzazione
@@ -1230,6 +1231,14 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Includere claim ``cnf``
      - Il claim ``cnf`` nel payload del JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) contiene la chiave pubblica effimera, collegando la chiave all'attestato.
+   * - WP_140g
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Nessuna API di Key Attestation OEM per il PID
+     - L'emissione della Key Attestation per chiavi del PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+   * - WP_140h
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - API di Key Attestation OEM per gli altri Attestati Elettronici
+     - L'emissione della Key Attestation per Attestati Elettronici diversi dal PID è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_141
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Firma della Richiesta di Emissione della Wallet Instance Attestation (WIA)
@@ -1270,6 +1279,10 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica parametro ``iss``
      - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) corrisponda al suo identificativo URL.
+   * - WP_143h
+     - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
+     - Ambito di validazione delle API di Key Attestation OEM
+     - La validazione da parte del Fornitore del Wallet del materiale delle API di Key Attestation (OEM) in ``keys_to_attest`` è conforme a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
    * - WP_144
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Rilascio Attestato
@@ -1337,10 +1350,18 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_160
      - Presentation, Sicurezza
      - Presentazione offline e collocazione delle chiavi
-     - La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.
+     - La presentazione offline o in prossimità di una Credenziale Digitale ha successo solo se le chiavi private associate sono in un Keystore o WSCD locale. Le Credenziali le cui chiavi sono in un WSCD remoto non sono presentate offline.
    * - WP_161
      - Trust, Sicurezza
      - Endpoint PDND del Fornitore del Wallet autenticati
      - Le chiamate al Catalogo e-Service PDND del Fornitore del Wallet, incluso Notify User Death, sono autenticate e autorizzate. Le richieste non autenticate sono rifiutate. Un Notify User Death riuscito porta alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal PID/IT-Wallet ID Provider.
+   * - WP_162
+     - Emissione Key Attestation, Sicurezza
+     - Challenge di attestazione Android
+     - Su Android, ciascuna chiave di Credenziale è generata con il challenge dell'API di Key Attestation impostato agli ottetti UTF-8 del ``nonce``. ``client_data_hash`` è usato solo per ``hardware_signature``. Ciascun elemento di ``keys_to_attest`` è un ``key-attestation-request+jwt`` come definito in :ref:`wallet-provider-endpoint:Elemento di Key Attestation`.
+   * - WP_163
+     - Emissione Wallet Instance Attestation (WIA), Ciclo di vita
+     - Riutilizzo della voce di stato per emittente
+     - La Richiesta di Wallet Instance Attestation include ``intended_issuer``. Una prima richiesta per quell'emittente omette ``status_list_idx`` e il Fornitore di Wallet assegna un nuovo indice. Una richiesta successiva per lo stesso emittente include quel ``status_list_idx``. Una richiesta che riutilizza un indice a cui l'Istanza del Wallet non è autorizzata è rifiutata con ``403 Forbidden`` e ``invalid_request``.
 
 
