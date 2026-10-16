@@ -905,10 +905,7 @@ The Wallet Provider MUST act as both the Status Issuer and the Status Provider.
 The Wallet Provider MUST publish each SLT by HTTP GET at the URI in the WIA member ``client_status.status.status_list.uri`` or the KA member ``key_storage_status.status.status_list.uri``.
 Media types, the JWT or CWT format, and signature protection are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
-Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:
-
-- a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework. Or.
-- a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.
+Regardless of the format, the Wallet Provider MUST sign the SLT with the Trust Anchor used to validate its Wallet Instance Attestations, as specified in :ref:`infrastructure-trust:Revocation Trust Anchors`.
 
 **Privacy Considerations**
 
