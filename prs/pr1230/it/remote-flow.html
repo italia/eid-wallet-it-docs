@@ -397,7 +397,7 @@ L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate">
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li><p><em>Risposta di Autorizzazione POST</em>: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.</p></li>
-<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.</p></li>
+<li><p><em>Controlli RP</em>: La Relying Party convalida la risposta cifrata e le Credenziali presentate. La fiducia in ciascuna Credenziale presentata segue <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a> ed è indipendente dal Trust Framework della Relying Party.</p></li>
 <li><p><em>Risposta della Relying Party</em>: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.</p></li>
 </ol>
 </div></blockquote>

@@ -66,7 +66,7 @@ Ove la configurazione pubblicata attraverso i meccanismi EUDIW e la configurazio
       - **Condizione**
       - **Trust Framework**
     * - Emissione, Credential Issuer
-      - L'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure il Credential Issuer è di un altro Stato membro.
+      - L'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure il Credential Issuer è di un altro Stato membro.
       - La Wallet Unit DEVE usare il Trust Framework EUDIW.
     * - Emissione, Credential Issuer
       - Il Credential Issuer è un'entità nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
@@ -76,14 +76,14 @@ Ove la configurazione pubblicata attraverso i meccanismi EUDIW e la configurazio
       - La Wallet Unit è di un altro Stato membro.
       - Il Credential Issuer DEVE validarla attraverso la Wallet Providers List of Trusted Entities.
     * - Emissione, Wallet Instance Attestation
-      - La Wallet Unit è nazionale e l'Attestato richiesto è un PID, una QEAA o una PuB-EAA.
+      - La Wallet Unit è nazionale e l'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook.
       - Il Credential Issuer DEVE validare la Wallet Instance Attestation attraverso la Wallet Providers List of Trusted Entities.
     * - Emissione, Wallet Instance Attestation
       - La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
         L'IT-Wallet ID è un Attestato di questo tipo (vedere :term:`IT-Wallet ID`).
       - Il Credential Issuer PUÒ validarla attraverso il Trust Framework Nazionale (vedere :ref:`trust-evaluation:Wallet Unit Authentication`).
     * - Presentazione
-      - La richiesta include un PID, una QEAA o una PuB-EAA, oppure un Attestato di un altro Stato membro, oppure la Relying Party offre il servizio al di fuori del pubblico nazionale.
+      - La richiesta include un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure un Attestato di un altro Stato membro, oppure la Relying Party offre il servizio al di fuori del pubblico nazionale.
       - La Relying Party DEVE usare il Trust Framework EUDIW per l'intera richiesta.
     * - Presentazione
       - La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato ad audience nazionale.

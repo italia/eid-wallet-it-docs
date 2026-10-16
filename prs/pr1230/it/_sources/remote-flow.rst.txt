@@ -73,7 +73,7 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
     c. Valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. L'artifact di autorizzazione applicabile segue il Trust Framework selezionato dal prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`: il Wallet-Relying Party Registration Certificate sotto il Trust Framework EUDIW, oppure le politiche ottenute con la Trust Chain sotto il Trust Framework Nazionale (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.
-  6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.
+  6. *Controlli RP*: La Relying Party convalida la risposta cifrata e le Credenziali presentate. La fiducia in ciascuna Credenziale presentata segue :ref:`trust-evaluation:Trust Framework Selection` ed è indipendente dal Trust Framework della Relying Party.
   7. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.

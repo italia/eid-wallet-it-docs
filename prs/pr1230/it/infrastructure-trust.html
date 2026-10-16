@@ -317,8 +317,8 @@ Il Trust Framework di ciascuna interazione è selezionato come specificato in <a
 <blockquote>
 <div><ul class="simple">
 <li><p>Il <strong>Trust Framework EUDIW</strong> è definito dal Regolamento eIDAS2 (<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>), dai relativi regolamenti di esecuzione e dall'ARF (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>).
-Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA di un altro Stato membro.
-Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di un altro Stato membro.
+Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA emessi da un Provider di qualunque Stato membro.
+Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di qualunque Stato membro che richiede tali Credenziali.
 I PID Provider, i QEAA Provider e i PuB-EAA Provider DEVONO supportare il Trust Framework EUDIW.</p></li>
 <li><p>Il <strong>Trust Framework Nazionale</strong> è un overlay nazionale basato su OpenID Federation (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>) combinato con una PKI X.509 per gli Attestati Elettronici ancorati a tale framework.
 È <strong>fuori dall'ARF</strong>.
@@ -2040,8 +2040,11 @@ Le Register Open APIs restano per pubblicazione e trasparenza ([<a class="refere
 La Wallet Unit NON DEVE usarle come sostituto di un Wallet-Relying Party Registration Certificate mancante o non valido durante la Presentazione di Credenziali o l'Emissione di Credenziali, come specificato in <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.</p>
 </div>
 <p>Il file YAML della specifica OpenAPI descritta nella Sezione 3 di <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md">EUDI-TS 5</a> è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.
-Lo JSON Schema dell'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code>, incluso l'array <code class="docutils literal notranslate"><span class="pre">services</span></code> di <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.
-Il profilo di lettura nazionale di tale API è disponibile <span class="raw-html"><a href="OAS3-Register-API-READ.html" target="_blank">qui</a></span>.</p>
+Lo JSON Schema dell'oggetto <code class="docutils literal notranslate"><span class="pre">WalletRelyingParty</span></code>, incluso l'array <code class="docutils literal notranslate"><span class="pre">services</span></code> di <code class="docutils literal notranslate"><span class="pre">WalletRelyingPartyService</span></code>, è disponibile come <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-json-common-rp-data-model.json">EUDI-TS 5 JSON Schema</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>L'API nazionale del Register fornisce solo i metodi di lettura e si basa su <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml">EUDI-TS 5 OpenAPI</a>.</p>
+</div>
 </section>
 </section>
 <section id="wallet-relying-party-access-certificate-wrpac-profile">
