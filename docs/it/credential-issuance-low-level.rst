@@ -504,7 +504,7 @@ Un Access Token ottenuto come risultato di un Refresh Token Flow DEVE essere lim
 
 Per mitigare l'impatto di un Refresh Token rubato, i Refresh Token DEVONO essere DPoP. Questi aspetti sono dettagliati e discussi nella Sezione :ref:`credential-issuance-low-level:Considerazioni di Sicurezza`.
 
-La figura seguente mostra come ottenere un nuovo Access Token DPoP e un nuovo Refresh Token DPoP dal Token Endpoint.
+La figura seguente mostra come ottenere un nuovo Access Token DPoP dal Token Endpoint.
 
 .. _fig_refresh_token_flow:
 .. plantuml:: plantuml/pid-issuance-high-level-flow.puml
@@ -545,7 +545,7 @@ Un esempio non normativo della richiesta di token per un Access Token DPoP utili
   - DEVE validare il JWT di `DPoP proof`, secondo la Sezione 4.3 di (RFC 9449).
   - DEVE verificare che il Refresh Token non sia scaduto, non sia revocato e sia associato allo stesso set di chiavi DPoP di quelle utilizzate nel JWT di `DPoP proof`.
 
-Se i controlli della richiesta hanno successo, il Credential Issuer genera un nuovo Access Token e un nuovo Refresh Token e questi DEVONO essere entrambi associati alla chiave DPoP. Sia l'Access Token che il Refresh Token vengono quindi inviati all'Istanza del Wallet.
+Se i controlli della richiesta hanno successo, il Credential Issuer genera un nuovo Access Token associato alla stessa chiave DPoP. La Token Response è definita in :ref:`credential-issuance-endpoint:Token Response`.
 
 Un esempio non normativo di una risposta di successo è mostrato di seguito.
 
@@ -557,7 +557,6 @@ Un esempio non normativo di una risposta di successo è mostrato di seguito.
 
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
-      "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
       "token_type": "DPoP",
       "expires_in": 3600
   }
@@ -631,7 +630,7 @@ Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.
 Altrimenti, l'Istanza del Wallet DEVE verificare i relativi Access Token. Se sono ancora validi, il Passo 3 PUÒ essere saltato (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
 **Passo 3**: Se l'Access Token è scaduto e l'Istanza del Wallet ha ancora un Refresh Token valido, l'Istanza del Wallet DEVE ottenere un nuovo Access Token avviando un Refresh Token Flow, secondo la Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` (:ref:`WP_071a <wallet-credential-issuance-testcases>`).
-Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Refresh Token e un nuovo Access Token DPoP per aggiornare l'Attestato Elettronico. Se il Refresh Token è scaduto, è necessario un nuovo flusso di emissione che autentichi l'Utente (:ref:`WP_067 <wallet-credential-issuance-testcases>` e :ref:`WP_071b <wallet-credential-issuance-testcases>`).
+Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Access Token DPoP per aggiornare l'Attestato Elettronico. Se il Refresh Token è scaduto, è necessario un nuovo flusso di emissione che autentichi l'Utente (:ref:`WP_067 <wallet-credential-issuance-testcases>` e :ref:`WP_071b <wallet-credential-issuance-testcases>`).
 
 **Passo 4**: L'Istanza del Wallet DEVE utilizzare un Access Token DPoP valido per recuperare il nuovo Attestato Elettronico, richiedendolo al Credential Endpoint seguendo i passi da 12 a 22 della Figura 9 nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (:ref:`WP_072 <wallet-credential-issuance-testcases>`).
 Quando il nuovo Attestato Elettronico è memorizzato con successo nel secure storage, l'Istanza del Wallet DEVE eliminare quello precedente (:ref:`WP_073 <wallet-credential-issuance-testcases>`).

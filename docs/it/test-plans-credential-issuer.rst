@@ -468,11 +468,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_094
     - Emissione, Sicurezza
     - Generazione e Binding dell’Access Token
-    - Quando tutte le verifiche hanno esito positivo, il Credential Issuer genera un nuovo Access Token e un nuovo Refresh Token, entrambi vincolati alla chiave DPoP.
+    - Quando tutte le verifiche hanno esito positivo, il Credential Issuer genera un nuovo Access Token vincolato alla chiave DPoP e non emette un nuovo Refresh Token.
   * - CI_095
     - Emissione, Sicurezza
-    - Risposta positiva con Refresh Token
-    - Sia l’Access Token che il Refresh Token sono inviati al Wallet Instance.
+    - Risposta positiva della richiesta Refresh Token
+    - La risposta contiene l'Access Token e non contiene ``refresh_token``.
   * - CI_096
     - Emissione, Sicurezza
     - Gestione errori per Refresh Token non valido

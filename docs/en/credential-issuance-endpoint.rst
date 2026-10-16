@@ -520,7 +520,7 @@ If the Token Request is successfully validated, the Authorization Server provide
       - REQUIRED. The *DPoP-bound Access Token*, in signed JWT format, allows accessing the Credential Endpoint for obtaining the Credential.
       - [:rfc:`6749`].
     * - **refresh_token**
-      - OPTIONAL. The *DPoP-bound Refresh Token*, in signed JWT format, which can be used to obtain a new Access Token at the Credential Issuer Token Endpoint.
+      - OPTIONAL when the grant type is ``authorization_code``. The *DPoP-bound Refresh Token*, in signed JWT format, which can be used to obtain a new Access Token at the Credential Issuer Token Endpoint. It MUST NOT be present when the grant type is ``refresh_token``. The Refresh Token presented by the Wallet Instance MUST remain valid until it expires or is revoked.
       - [:rfc:`6749`].
     * - **token_type**
       - REQUIRED. Type of *Access Token* returned. It MUST be equal to ``DPoP``.
