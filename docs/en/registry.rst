@@ -279,7 +279,7 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✓ email_address (generic, no prefix)
     -   ✓ tax_id_code (universal, no prefix)
 
-5) **Abbreviations MUST NOT be used, except for acronyms and initialisms that are established by applicable technical standards**.
+5) **Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards**.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
   
@@ -290,6 +290,9 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✗ grad_dt
 
 An alias MAY be associated with a claim already present in the Claim Registry. The alias MUST resolve to the registered claim and MUST NOT alter its canonical name or semantic meaning.
+
+
+Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards.
 
 Authentic Source Registry
 -------------------------
