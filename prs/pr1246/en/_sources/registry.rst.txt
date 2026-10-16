@@ -291,9 +291,6 @@ When a suitable claim is not available in the Claim Registry and there are no sp
 
 An alias MAY be associated with a claim already present in the Claim Registry. The alias MUST resolve to the registered claim and MUST NOT alter its canonical name or semantic meaning.
 
-
-Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards.
-
 Authentic Source Registry
 -------------------------
 
