@@ -47,3 +47,7 @@ The architecture enables the following core interaction processes:
   4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management, including selective disclosure as required by [`CIR2024/2979`_].
 
   5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Remote presentation uses [`OpenID4VP`_] profiled by [`OPENID4VC-HAIP`_]; proximity presentation uses [`ISO18013-5`_], as required by [`CIR2024/2982`_]. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification. The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
+
+The PID Provider and the Wallet Solution are decomposed in :ref:`component-decomposition:Cybersecurity Component Decomposition` in line with the EUDIW-IT-Cyber certification scheme [#eudiw-it-cyber]_.
+
+.. [#eudiw-it-cyber] The draft has not yet been made public.

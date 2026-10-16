@@ -50,6 +50,8 @@ The Digital Credential Issuer Solution MUST:
 Component Details
 -----------------
 
+The PID Provider decomposition is in :ref:`component-decomposition:PID Provider`.
+
 Frontend Component
 ^^^^^^^^^^^^^^^^^^
 

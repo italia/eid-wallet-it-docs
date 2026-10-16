@@ -47,6 +47,8 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
 Dettagli dei Componenti
 -----------------------
 
+La decomposizione del PID Provider è in :ref:`component-decomposition:PID Provider`.
+
 Componente Frontend
 ^^^^^^^^^^^^^^^^^^^
 
