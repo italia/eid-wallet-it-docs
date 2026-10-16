@@ -235,6 +235,62 @@ A non-normative example of a localization bundle output is given below:
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
+Claim naming rules
+^^^^^^^^^^^^^^^^^^
+
+Before defining a new claim for an Electronic Attestation of Attributes, the Claim Registry MUST be consulted to determine whether a claim representing the same semantic concept already exists. An existing claim MUST be reused whenever it has the required meaning if there are no external standards.
+
+When a suitable claim is not available in the Claim Registry and there are no specific external standard (e.g IANA registry for SD-JWT VC, ISO 18013-5 for mdoc-cbor), a new claim name MUST comply with the following rules:
+
+1) **The claim name MUST use ``snake_case``**: it MUST contain only lowercase words separated by underscores. Camel case and hyphens MUST NOT be used.
+
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+
+    -   ✓ degree_level
+    -   ✓ graduation_date
+    -   ✗ DegreeLevel (CamelCase)
+    -   ✗ degree-level (hyphen)
+    -   ✗ DEGREE_LEVEL (uppercase)
+
+2) **The claim name MUST be in English**. The semantic description and the label displayed in the user interface MUST be provided at least in Italian.
+
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+
+    -   ✓ graduation_date → Label UI: 'Data conseguimento'
+    -   ✓ institution_name → Label UI: 'Istituto'
+    -   ✗ data_laurea (Italian name)
+    -   ✗ denominazione_corso (Italian name)
+
+3) **A claim MUST represent one semantic concept only**. Correlated information MUST be represented by separate claims or by properties of a structured object, as appropriate.
+
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+
+    -   ✓ given_name + family_name (separate claims)
+    -   ✓ place_of_birth: { country, region, locality } (structured object)
+    -   ✗ full_name (aggregation of two distinct pieces of information)
+    -   ✗ birth_info: '1990-01-01 Roma' (composite string)
+
+4) **A domain prefix MUST be added when the claim is specific to a vertical domain. A prefix MUST NOT be added to a generic claim that can be reused across domains**.
+
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+  
+    -   ✓ edu_degree_level (education domain)
+    -   ✓ badge_type (work/access domain)
+    -   ✓ email_address (generic, no prefix)
+    -   ✓ tax_id_code (universal, no prefix)
+
+5) **Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards**.
+
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+  
+    -   ✓ institution_name
+    -   ✓ graduation_date
+    -   ✓ tax_id_code (standard acronym)
+    -   ✗ inst_name
+    -   ✗ grad_dt
+
+An alias MAY be associated with a claim already present in the Claim Registry. The alias MUST resolve to the registered claim and MUST NOT alter its canonical name or semantic meaning.
+
 Authentic Source Registry
 -------------------------
 
