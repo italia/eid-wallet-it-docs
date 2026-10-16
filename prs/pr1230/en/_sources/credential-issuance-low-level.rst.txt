@@ -179,7 +179,6 @@ Below is a non-normative example of the signed Request Object without encoding a
 
 .. note::
   **Wallet Unit trust check:** At the PAR Endpoint, the Credential Issuer MUST validate the Wallet Instance Attestation as specified in :ref:`trust-evaluation:Selection at Issuance`.
-  For a Wallet Unit of another Member State, that validation follows :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
   For a national Wallet Unit, that validation follows :ref:`trust-evaluation:Wallet Unit Authentication`.
   A failed check MUST terminate the request.
 
@@ -332,7 +331,7 @@ Below is a non-normative example of a Nonce Response:
  5. The header parameter MUST NOT contain a private key.
  6. The signature on the Key Attestation JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key which is identified by the ``kid`` header parameter inside the Key Attestation JWT.
  7. If a ``c_nonce`` value was previously provided by the server, the ``nonce`` claim in the JWT MUST match this ``c_nonce`` value. Furthermore, the creation time of the JWT, as indicated by the ``iat`` claim or a server-managed timestamp via the ``nonce`` claim, MUST be within an acceptable window of time as determined by the server.
- 8. For each Key Attestation of a Wallet Unit, the Credential Issuer MUST establish trust in the Wallet Provider through the Wallet Providers List of Trusted Entities according to :ref:`trust-evaluation:List of Trusted Entities Validation` and validate the Key Attestation signing certificate chain according to :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`. It MUST also check the Key Attestation's temporal validity and revocation status, verify the associated proof of possession, and verify that the attested key protection satisfies the Credential Issuer policy, if any. A failed check MUST terminate the request.
+ 8. For each Key Attestation of a Wallet Unit, the Credential Issuer MUST establish trust in the Wallet Provider through the Trust Framework selected for the Wallet Instance Attestation, as specified in :ref:`trust-evaluation:Selection at Issuance`, and validate the Key Attestation signing certificate chain according to :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
 
 
 .. note::
