@@ -374,7 +374,7 @@ Entitlement and DCQL scope checks follow <a class="reference internal" href="tru
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li><p><em>Authorization Response</em>: the Wallet Instance presents the requested information using <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></li>
-<li><p><em>RP Checks</em>: The Relying Party validates the encrypted response and presented Credentials. Trust in each Credential Issuer is governed by that Credential Issuer's Trust Framework and is independent of the Relying Party's Trust Framework.</p></li>
+<li><p><em>RP Checks</em>: The Relying Party validates the encrypted response and presented Credentials. Trust in each presented Credential is governed by the Rulebook of its Credential type, as detailed in <a class="reference internal" href="trust-evaluation.html#trust-framework-selection"><span class="std std-ref">Trust Framework Selection</span></a>, and is independent of the Relying Party's Trust Framework.</p></li>
 <li><p><em>Relying Party Response</em>: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.</p></li>
 </ol>
 </div></blockquote>

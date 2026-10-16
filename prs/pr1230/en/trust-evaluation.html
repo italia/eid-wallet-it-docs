@@ -365,7 +365,7 @@ The same Credential Issuer MAY be evaluated under different frameworks in differ
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Issuance, Credential Issuer</p></td>
-<td><p>The requested Credential is a PID, a QEAA or a PuB-EAA, or the Credential Issuer is of another Member State.</p></td>
+<td><p>The requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or the Credential Issuer is of another Member State.</p></td>
 <td><p>The Wallet Unit MUST use the EUDIW Trust Framework.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Issuance, Credential Issuer</p></td>
@@ -378,7 +378,7 @@ The IT-Wallet ID is such a Credential (see <a class="reference internal" href="d
 <td><p>The Credential Issuer MUST validate it through the Wallet Providers List of Trusted Entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Issuance, Wallet Instance Attestation</p></td>
-<td><p>The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA.</p></td>
+<td><p>The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook.</p></td>
 <td><p>The Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities.</p></td>
 </tr>
 <tr class="row-even"><td><p>Issuance, Wallet Instance Attestation</p></td>
@@ -387,7 +387,7 @@ The IT-Wallet ID is such a Credential (see <a class="reference internal" href="d
 <td><p>The Credential Issuer MAY validate it through the National Trust Framework (see <a class="reference internal" href="#wallet-unit-authentication"><span class="std std-ref">Wallet Unit Authentication</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>Presentation</p></td>
-<td><p>The request includes a PID, a QEAA or a PuB-EAA, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.</p></td>
+<td><p>The request includes a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.</p></td>
 <td><p>The Relying Party MUST use the EUDIW Trust Framework for the whole request.</p></td>
 </tr>
 <tr class="row-even"><td><p>Presentation</p></td>
@@ -423,7 +423,9 @@ The Relying Party Instance provides an X.509 certificate in the <code class="doc
 On the EUDIW path the Wallet Unit MUST authenticate and validate the Wallet-Relying Party Access Certificate as specified in <a class="reference internal" href="#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.
 On the National path the Wallet Unit MUST validate the reader certificate as specified in <a class="reference internal" href="#relying-party-proximity-authentication"><span class="std std-ref">Relying Party Proximity Authentication</span></a>.
 The Wallet Unit MUST run Authorization under the selected framework only.
-The Relying Party uses the certificate that corresponds to the selected row.</p>
+The Relying Party uses the certificate that corresponds to the selected row.
+The Wallet Unit MUST NOT present a PID, a QEAA or a PuB-EAA in a presentation that follows the National Trust Framework, in the remote and in the proximity flow.
+If the request includes such a Credential, the Wallet Unit MUST stop the interaction.</p>
 </section>
 <section id="failure-handling">
 <h3><span class="section-number">6.1.3. </span>Failure Handling<a class="headerlink" href="#failure-handling" title="Link to this heading">¶</a></h3>
