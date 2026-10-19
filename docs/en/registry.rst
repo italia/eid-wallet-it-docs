@@ -242,7 +242,7 @@ Before defining a new claim for an Electronic Attestation of Attributes, the Cla
 
 When a suitable claim is not available in the Claim Registry and there are no specific external standard (e.g IANA registry for SD-JWT VC, ISO 18013-5 for mdoc-cbor), a new claim name MUST comply with the following rules:
 
-1) **The claim name MUST use ``snake_case``**: it MUST contain only lowercase words separated by underscores. Camel case and hyphens MUST NOT be used.
+1. **The claim name MUST use ``snake_case``**: it MUST contain only lowercase words separated by underscores. Camel case and hyphens MUST NOT be used.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
 
@@ -252,7 +252,7 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✗ degree-level (hyphen)
     -   ✗ DEGREE_LEVEL (uppercase)
 
-2) **The claim name MUST be in English**. The semantic description and the label displayed in the user interface MUST be provided at least in Italian.
+2. **The claim name MUST be in English**. The semantic description and the label displayed in the user interface MUST be provided at least in Italian.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
 
@@ -261,7 +261,7 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✗ data_laurea (Italian name)
     -   ✗ denominazione_corso (Italian name)
 
-3) **A claim MUST represent one semantic concept only**. Correlated information MUST be represented by separate claims or by properties of a structured object, as appropriate.
+3. **A claim MUST represent one semantic concept only**. Correlated information MUST be represented by separate claims or by properties of a structured object, as appropriate.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
 
@@ -270,7 +270,7 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✗ full_name (aggregation of two distinct pieces of information)
     -   ✗ birth_info: '1990-01-01 Roma' (composite string)
 
-4) **A domain prefix MUST be added when the claim is specific to a vertical domain. A prefix MUST NOT be added to a generic claim that can be reused across domains**.
+4. **A domain prefix MUST be added when the claim is specific to a vertical domain. A prefix MUST NOT be added to a generic claim that can be reused across domains**.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
   
@@ -279,7 +279,7 @@ When a suitable claim is not available in the Claim Registry and there are no sp
     -   ✓ email_address (generic, no prefix)
     -   ✓ tax_id_code (universal, no prefix)
 
-5) **Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards**.
+5. **Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards**.
 
     The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
   
