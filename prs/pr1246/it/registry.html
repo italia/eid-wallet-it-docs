@@ -912,6 +912,61 @@ Content-Type: application/json
 </div>
 <p>I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e <code class="docutils literal notranslate"><span class="pre">.json</span></code> al valore <code class="docutils literal notranslate"><span class="pre">localization.base_uri</span></code> (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json</span></code>).</p>
 </section>
+<section id="regole-per-la-denominazione-dei-claim">
+<h3><span class="section-number">7.3.3. </span>Regole per la denominazione dei claim<a class="headerlink" href="#regole-per-la-denominazione-dei-claim" title="Link to this heading">¶</a></h3>
+<p>Prima di definire un nuovo claim per un’Attestazione Elettronica di Attributi, il Claim Registry <strong>DEVE</strong> essere consultato per verificare se esista già un claim che rappresenti il medesimo concetto semantico. Un claim esistente <strong>DEVE</strong> essere riutilizzato ogniqualvolta abbia il significato richiesto, in assenza di standard esterni.</p>
+<p>Quando nel Claim Registry non è disponibile un claim adeguato e non esistono standard esterni specifici (ad esempio, il registro IANA per SD-JWT VC o ISO 18013-5 per mdoc-cbor), il nome di un nuovo claim <strong>DEVE</strong> rispettare le regole seguenti:</p>
+<ol class="arabic">
+<li><p><strong>Il nome del claim DEVE utilizzare il formato `snake_case`</strong>: DEVE contenere esclusivamente parole in minuscolo separate da underscore. Non DEVONO essere utilizzati né il CamelCase né i trattini.</p>
+<p>Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):</p>
+<ul class="simple">
+<li><p>✓ <cite>degree_level</cite></p></li>
+<li><p>✓ <cite>graduation_date</cite></p></li>
+<li><p>✗ <cite>DegreeLevel</cite> (CamelCase)</p></li>
+<li><p>✗ <cite>degree-level</cite> (trattino)</p></li>
+<li><p>✗ <cite>DEGREE_LEVEL</cite> (maiuscolo)</p></li>
+</ul>
+</li>
+<li><p><strong>Il nome del claim DEVE essere in inglese</strong>. La descrizione semantica e l’etichetta visualizzata nell’interfaccia utente DEVONO essere fornite almeno in italiano.</p>
+<p>Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):</p>
+<ul class="simple">
+<li><p>✓ <cite>graduation_date</cite> → Etichetta UI: &quot;Data conseguimento&quot;</p></li>
+<li><p>✓ <cite>institution_name</cite> → Etichetta UI: &quot;Istituto&quot;</p></li>
+<li><p>✗ <cite>data_laurea</cite> (nome in italiano)</p></li>
+<li><p>✗ <cite>denominazione_corso</cite> (nome in italiano)</p></li>
+</ul>
+</li>
+<li><p><strong>Un claim DEVE rappresentare un solo concetto semantico</strong>. Le informazioni correlate DEVONO essere rappresentate mediante claim distinti oppure, ove appropriato, mediante proprietà di un oggetto strutturato.</p>
+<p>Gli esempi seguenti illustrano nomi e strutture di claim conformi (✓) e non conformi (✗):</p>
+<ul class="simple">
+<li><p>✓ <cite>given_name</cite> + <cite>family_name</cite> (claim distinti)</p></li>
+<li><p>✓ <cite>place_of_birth</cite>: <cite>{ country, region, locality }</cite> (oggetto strutturato)</p></li>
+<li><p>✗ <cite>full_name</cite> (aggregazione di due informazioni distinte)</p></li>
+<li><p>✗ <cite>birth_info</cite>: <cite>&quot;1990-01-01 Roma&quot;</cite> (stringa composita)</p></li>
+</ul>
+</li>
+<li><p><strong>Quando il claim è specifico di un dominio, DEVE essere aggiunto un prefisso di dominio. Un prefisso NON DEVE essere aggiunto a un claim generico riutilizzabile in più domini</strong>.</p>
+<p>Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):</p>
+<ul class="simple">
+<li><p>✓ <cite>edu_degree_level</cite> (dominio dell’istruzione)</p></li>
+<li><p>✓ <cite>badge_type</cite> (dominio lavorativo/di accesso)</p></li>
+<li><p>✓ <cite>email_address</cite> (generico, senza prefisso)</p></li>
+<li><p>✓ <cite>tax_id_code</cite> (universale, senza prefisso)</p></li>
+</ul>
+</li>
+<li><p><strong>I nomi dei claim DEVONO essere sempre scritti per esteso, fatta eccezione per gli acronimi e le sigle definiti dagli standard tecnici applicabili</strong>.</p>
+<p>Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):</p>
+<ul class="simple">
+<li><p>✓ <cite>institution_name</cite></p></li>
+<li><p>✓ <cite>graduation_date</cite></p></li>
+<li><p>✓ <cite>tax_id_code</cite> (acronimo standard)</p></li>
+<li><p>✗ <cite>inst_name</cite></p></li>
+<li><p>✗ <cite>grad_dt</cite></p></li>
+</ul>
+</li>
+</ol>
+<p>A un claim già presente nel Claim Registry <strong>PUÒ</strong> essere associato un alias. L’alias <strong>DEVE</strong> risolversi nel claim registrato e <strong>NON DEVE</strong> modificarne il nome canonico né il significato semantico.</p>
+</section>
 </section>
 <section id="registro-delle-fonti-autentiche">
 <h2><span class="section-number">7.4. </span>Registro delle Fonti Autentiche<a class="headerlink" href="#registro-delle-fonti-autentiche" title="Link to this heading">¶</a></h2>
@@ -3602,6 +3657,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 <li><a class="reference internal" href="#registro-dei-claims">7.3. Registro dei Claims</a><ul>
 <li><a class="reference internal" href="#utilizzo-del-registro-dei-claims">7.3.1. Utilizzo del Registro dei Claims</a></li>
 <li><a class="reference internal" href="#struttura-del-registro-dei-claims">7.3.2. Struttura del Registro dei Claims</a></li>
+<li><a class="reference internal" href="#regole-per-la-denominazione-dei-claim">7.3.3. Regole per la denominazione dei claim</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#registro-delle-fonti-autentiche">7.4. Registro delle Fonti Autentiche</a><ul>
@@ -3671,7 +3727,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 16/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 19/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
