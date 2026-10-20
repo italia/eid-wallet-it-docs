@@ -33,8 +33,6 @@ app->app: Generate ""client_data_hash"" as SHA256(""nonce"", [""key_pub_1"",...,
 
 app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash"", ""hardware_key_tag""), ""hardware_key_priv"")
 
-app->aats: ""client_data_hash"" for Integrity Assertion
-aats->aats: Generate ""integrity_assertion""\nbound to nonce 
 
 alt Keys bound to a Digital Credential other than the PID
 
