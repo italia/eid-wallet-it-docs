@@ -35,7 +35,6 @@ app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign
 
 app->aats: ""client_data_hash"" for Integrity Assertion
 aats->aats: Generate ""integrity_assertion""\nbound to nonce 
-aats-->app: ""integrity_assertion"" for Wallet Instance
 
 alt Keys bound to a Digital Credential other than the PID
 
