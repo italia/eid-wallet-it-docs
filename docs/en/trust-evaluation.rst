@@ -124,10 +124,16 @@ On the National path the Wallet Unit MUST validate the reader certificate as spe
 The Wallet Unit MUST run Authorization under the selected framework only.
 The Relying Party uses the certificate that corresponds to the selected row.
 
+In the remote flow and in the proximity flow, when the presentation follows the National Trust Framework, the Wallet Unit MUST stop the interaction before Authorization if the request includes a PID, a QEAA, a PuB-EAA, a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or a Credential of another Member State.
+
 Failure Handling
 ^^^^^^^^^^^^^^^^
 
 The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
+
+When the presentation follows the National Trust Framework and :ref:`trust-evaluation:Selection at Presentation` requires the Wallet Unit to stop the interaction before Authorization, that stop is a failure of Trust Framework selection.
+The Wallet Unit MUST NOT treat it as overasking.
+It is not overridable.
 
 If Relying Party authentication fails for any reason, the Wallet Unit SHALL notify the User. In addition, the Wallet Unit SHALL either not present the requested attributes to the Relying Party, or give the User the choice to present the requested attributes or not. ([`EIDAS-ARF`_] RPA_06a).
 The same applies under the National Trust Framework: a ``NON_AUTHENTICATED`` outcome MUST stop the interaction.
