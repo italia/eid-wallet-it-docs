@@ -80,7 +80,7 @@ The Credential Issuer MUST update the Digital Credential ``status`` based on Sig
 * **Restoration**: If a suspended dataset returns to ``VALID`` at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from ``SUSPENDED`` to ``VALID``).
 * **Modification**: If a dataset is modified but remains ``VALID`` at the Authentic Source, the Credential Issuer—detecting the change via the ``last_updated`` field—assigns the technical status ``ATTRIBUTE_UPDATE`` to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.
 * **Administrative Expiry**:
-    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry. The Credential Issuer manages the lifecycle independently ensuring technical ``exp`` <= ``expiry_date``.
+    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry. Technical ``exp`` follows the Expiry Hierarchy above and ``max_validity_days`` in :ref:`registry:Digital Credentials Catalog`. When ``expiry_date`` is present as an attribute, the Wallet Instance applies :ref:`functionalities:Status of Electronic Attestations`.
     * **Scenario B (Signal-driven)**: If ``expiry_date`` is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to ``INVALID`` and send a Signal via Signal Hub. The Credential Issuer then revokes the Digital Credentials (status transition to ``INVALID``).
 
 Example of Authentic Source response
