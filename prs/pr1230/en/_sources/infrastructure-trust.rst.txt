@@ -12,7 +12,7 @@ Registration and publication of entities are specified in :ref:`onboarding-syste
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards.
 This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-Two trust frameworks coexist in IT-Wallet.
+Two Trust Frameworks coexist in IT-Wallet.
 The Trust Framework of each interaction is selected as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_).
