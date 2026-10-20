@@ -425,10 +425,14 @@ Sul percorso EUDIW la Wallet Unit DEVE autenticare e validare il Wallet-Relying 
 Sul percorso nazionale la Wallet Unit DEVE validare il certificato di reader come specificato in <a class="reference internal" href="#relying-party-proximity-authentication"><span class="std std-ref">Relying Party Proximity Authentication</span></a>.
 La Wallet Unit DEVE eseguire l'Authorization esclusivamente nell'ambito del framework selezionato.
 La Relying Party utilizza il certificato che corrisponde alla riga selezionata.</p>
+<p>Nel flusso remoto e nel flusso di prossimità, quando la presentazione segue il Trust Framework Nazionale, la Wallet Unit DEVE interrompere l'interazione prima dell'Authorization se la richiesta include un PID, una QEAA, una PuB-EAA, un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure un Attestato di un altro Stato membro.</p>
 </section>
 <section id="failure-handling">
 <h3><span class="section-number">6.1.3. </span>Failure Handling<a class="headerlink" href="#failure-handling" title="Link to this heading">¶</a></h3>
 <p>Il fallimento della trust evaluation nell'ambito del framework selezionato NON DEVE essere valutato nuovamente nell'ambito dell'altro framework.</p>
+<p>Quando la presentazione segue il Trust Framework Nazionale e <a class="reference internal" href="#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a> richiede che la Wallet Unit interrompa l'interazione prima dell'Authorization, tale interruzione è un fallimento della selezione del Trust Framework.
+La Wallet Unit NON DEVE trattarla come overasking.
+Tale fallimento non è overridable.</p>
 <p>Se l'autenticazione della Relying Party fallisce per qualsiasi motivo, la Wallet Unit DEVE informare l'Utente. Inoltre, la Wallet Unit DEVE non presentare gli attributi richiesti alla Relying Party, oppure dare all'Utente la scelta di presentare o meno gli attributi richiesti ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPA_06a).
 Lo stesso vale nell'ambito del Trust Framework Nazionale: un esito <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code> DEVE interrompere l'interazione.</p>
 <p>Se l'Authentication ha successo e l'Authorization fallisce, la Wallet Unit DEVE applicare <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.
@@ -2138,7 +2142,7 @@ Le informazioni rilevanti per l'Utente relative agli esiti overridable DEVONO es
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 16/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 20/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
