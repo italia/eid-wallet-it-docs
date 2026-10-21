@@ -3,7 +3,7 @@
 
 Algoritmi Crittografici
 =======================
-Questa sezione elenca gli algoritmi crittografici utilizzati nell'ecosistema IT Wallet. Gli identificatori degli algoritmi sono espressi principalmente come valori JOSE ``alg``; quando viene utilizzato COSE, i corrispondenti algoritmi COSE sono indicati esplicitamente (ad esempio, ESP256 rispetto a ES256).
+Questa sezione elenca gli algoritmi crittografici utilizzati nell'ecosistema IT-Wallet. Gli identificatori degli algoritmi sono espressi principalmente come valori JOSE ``alg``; quando viene utilizzato COSE, i corrispondenti algoritmi COSE sono indicati esplicitamente (ad esempio, ESP256 rispetto a ES256).
 
 I seguenti algoritmi DEVONO essere supportati:
 

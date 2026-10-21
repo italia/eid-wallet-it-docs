@@ -321,179 +321,50 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - `TOKEN-STATUS-LIST`_.
 
 
-Token Status Lists
-^^^^^^^^^^^^^^^^^^
+Token Status List (Profilo degli Attestati Elettronici)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione definisce una struttura di dati Status List, che viene utilizzata per trasmettere informazioni riguardanti gli stati individuali di più Attestati Elettronici. Gli Attestati Elettronici possono essere di qualsiasi formato, come SD-JWT o mdoc ISO/IEC 18013-5. Una Status List descrive lo stato degli Attestati Elettronici codificando la loro validità in un array di bit. A ciascun Attestato Elettronico viene assegnato un indice durante l'emissione. Questo indice rappresenta la sua posizione all'interno dell'array di bit. Il valore del bit o dei bit in questo indice corrisponde allo stato degli Attestati Elettronici. Una Status List viene fornita all'interno di un Token di Status List firmato crittograficamente in formato JWT. Per i dettagli, vedere `TOKEN-STATUS-LIST`_.
+Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LIST`_ per gli Attestati Elettronici. Una TSL convoglia lo stato corrente di molti Attestati Elettronici in un Status List Token (SLT) compatto e firmato.
 
-In questa specifica, i ruoli di Fornitore di Attestati Elettronici e Status Issuer (cioè, l'entità che emette il Token di Status List sulle informazioni di stato dell'Attestato Elettronico) coincidono, mentre lo Status Provider (cioè, l'entità che fornisce il Token di Status List su un endpoint pubblico) PUÒ essere il Fornitore di Attestati Elettronici stesso o un'altra entità.
+Lo SLT Provider DEVE essere il Fornitore di Attestati Elettronici.
 
-Il Fornitore di Attestati Elettronici DEVE
+**Status List**
 
-  - definire un numero di bit, k, (1, 2, 4 o 8) che rappresenta la quantità di bit utilizzati per descrivere lo stato di ciascun Attestato Elettronico all'interno di questa Status List. Il Fornitore di Attestati Elettronici DEVE configurare il numero di bit. Ogni Attestato Elettronico avrà quindi 2^k (dove k è il numero di bit scelto) possibili stati.
-  - creare un array di byte di dimensione = (quantità di Attestati Elettronici) * k / 8 o maggiore. A seconda di k, ogni byte nell'array corrisponde a 8/k stati (8 se k=1, 4 se k=2, 2 se k=1, o 1 se k=8). Ogni volta che viene emesso un Attestato Elettronico, il Fornitore di Attestati Elettronici lo assegna a una posizione nell'array.
-  - impostare i valori di stato per tutti gli Attestati Elettronici emessi all'interno dell'array di byte. Lo stato di ciascun Attestato Elettronico viene identificato utilizzando un indice che mappa a uno o più bit specifici all'interno dell'array di byte. L'indice inizia a contare da 0 e termina con (quantità di Attestati Elettronici) - 1 (essendo l'ultima voce valida). I bit all'interno di un array vengono contati dal bit meno significativo ("0") al bit più significativo ("7"). Tutti i bit dell'array di byte a un particolare indice sono impostati su un valore di stato.
-  - comprimere l'array di byte utilizzando DEFLATE [:rfc:`1951`] con il formato dati ZLIB [:rfc:`1950`]. Si RACCOMANDA alle implementazioni di utilizzare il livello di compressione più alto disponibile.
-  - rendere disponibile alle Relying Party e alle Istanze del Wallet un endpoint per richiedere le Status Lists.
+Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molti Attestati Elettronici. Il Fornitore di Attestati Elettronici DEVE assegnare a ciascun Attestato Elettronico emesso un valore ``idx`` distinto e non negativo e includerlo, insieme all'``uri`` della SLT, nel riferimento alla status list dell'Attestato Elettronico. Per un Attestato Elettronico SD-JWT, il riferimento è in ``status.status_list``, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. Per un MSO mdoc, il riferimento è in ``issuerAuth.status_list``, ``idx`` è un intero non firmato CBOR e ``uri`` è una text string CBOR. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
 
-Il Fornitore di Attestati Elettronici DEVE utilizzare i seguenti valori per i possibili Stati degli Attestati Elettronici emessi:
+Secondo questa specifica, un Attestato Elettronico può avere uno dei seguenti stati:
 
-  - 0x00 - ``VALID`` - L'Attestato Elettronico è valido.
-  - 0x01 - ``INVALID`` - L'Attestato Elettronico è revocato.
-  - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è solitamente temporaneo.
-  - 0x03 - ``UPDATE`` - I parametri dei metadata dell'Attestato Elettronico sono cambiati.
-  - 0x0F - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
+  - ``VALID``. L'Attestato Elettronico è valido. Questo stato è rappresentato da ``0x00`` nella SLT.
+  - ``INVALID``. L'Attestato Elettronico è revocato. Questo stato è rappresentato da ``0x01`` nella SLT.
+  - ``SUSPENDED``. L'Attestato Elettronico è temporaneamente non valido e può essere ripristinato a ``VALID``. Questo stato è rappresentato da ``0x02`` nella SLT.
+  - ``UPDATE``. I parametri dei metadata dell'Attestato Elettronico sono cambiati. Questo stato è rappresentato da ``0x03`` nella SLT.
+  - ``ATTRIBUTE_UPDATE``. Gli attributi dell'Attestato Elettronico sono cambiati. Questo stato è rappresentato da ``0x0F`` nella SLT.
 
-Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 3, 1, 2, rispettivamente. Farà:
+Di conseguenza, il Fornitore di Attestati Elettronici DEVE impostare il parametro ``bits`` nell'oggetto ``status_list`` della SLT a ``4``.
 
-  - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x30, 0x21]``.
-  - comprimere l'array utilizzando DEFLATE.
+Il Fornitore di Attestati Elettronici PUÒ definire stati aggiuntivi specifici dell'applicazione nell'intervallo supportato da ``bits``. DOVREBBE considerare con attenzione le informazioni divulgate alle Relying Party quando definisce stati aggiuntivi per il ciclo di vita dell'Attestato Elettronico.
 
-.. note::
-  Quando il Fornitore di Attestati Elettronici sceglie il numero di bit per trasmettere gli stati degli Attestati Elettronici che emette, PUÒ aggiungere altri stati oltre a quelli descritti sopra. L'aggiunta di molti stati diversi per il ciclo di vita di un Attestato Elettronico deve tuttavia essere attentamente ponderata poiché rivela informazioni alle Relying Party.
+Il Fornitore di Attestati Elettronici DEVE impacchettare le entry a partire dal bit meno significativo di ciascun byte, comprimere l'array di byte con DEFLATE nel formato dati ZLIB e pubblicare la Status List risultante nella SLT.
 
-.. note::
-  La principale considerazione sulla privacy per una Status List è impedire al Fornitore di Attestati Elettronici di tracciare l'uso dell'Attestato Elettronico quando lo stato viene controllato. Se un Fornitore di Attestati Elettronici offre informazioni sullo stato facendo riferimento a un token specifico, ciò consentirebbe al Fornitore di Attestati Elettronici di creare un profilo per il token emesso correlando la data e l'identità delle Relying Party che richiedono lo stato. Le implementazioni DEVONO quindi integrare le informazioni sullo stato di molti Attestati Elettronici nella stessa lista. Di conseguenza, il Fornitore di Attestati Elettronici non apprende per quale Attestato Elettronico la Relying Party sta richiedendo la Status List. La privacy dell'Utente è protetta dall'anonimato all'interno dell'insieme degli Attestati Elettronici nella Status List, questo limita le possibilità di tracciamento da parte del Fornitore di Attestati Elettronici.
-  Questo effetto di privacy di gruppo dipende dal numero di entità all'interno della Status List. Una maggiore quantità di Attestati Elettronici referenziati in essa risulta in una migliore privacy ma influisce anche sulle prestazioni poiché più dati devono essere trasferiti per leggere la Status List. A seconda dei parametri della Status List (ad esempio la quantità di bit che designano i valori dell'Attestato Elettronico), i Fornitori di Attestati Elettronici devono trovare un equilibrio appropriato tra privacy e prestazioni.
+**Status List Token**
 
-Una volta che la Relying Party riceve un Attestato Elettronico, questo le consente di richiedere la Status List per validare il suo stato attraverso il parametro URI fornito e cercare l'indice corrispondente. Tuttavia, la Relying Party è in grado di memorizzare l'URI e l'indice dell'Attestato Elettronico per richiedere nuovamente la Status List in un momento successivo. Facendolo regolarmente, la Relying Party può creare un profilo dello stato di validità dell'Attestato Elettronico. Questo comportamento potrebbe anche essere abusato in casi in cui non è intenzionale e sconosciuto all'Utente, ad esempio profilando la sospensione di una patente di guida. Questo comportamento potrebbe essere mitigato, ad esempio, con la regolare riemissione dell'Attestato Elettronico.
+Il Fornitore di Attestati Elettronici DEVE agire sia come Status Issuer sia come Status Provider. DEVE rendere disponibile ciascuna SLT tramite HTTP GET all'URI specificato dal riferimento alla status list dell'Attestato Elettronico, usando ``application/statuslist+jwt`` per una SLT JWT oppure ``application/statuslist+cwt`` per una SLT CWT.
 
-Token di Status List
-""""""""""""""""""""
+Il formato della SLT PUÒ essere JWT oppure CWT. DEVE essere protetto da una firma crittografica. Indipendentemente dal formato scelto, la SLT DEVE essere conforme alla Sezione 5.1 per i JWT oppure alla Sezione 5.2 per i CWT di `TOKEN-STATUS-LIST`_.
 
-Il Token di Status List è disponibile all'Endpoint di Status List e contiene i seguenti parametri.
+Indipendentemente dal formato, il Fornitore di Attestati Elettronici DEVE firmare la SLT in uno dei modi seguenti:
 
+- un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE del Fornitore di Attestati Elettronici, quando quest'ultimo è registrato nel Trust Framework EUDIW, oppure
+- una chiave valida attestata dalla Entity Configuration del Fornitore di Attestati Elettronici, quando quest'ultimo è registrato nel Trust Framework Nazionale.
 
-.. _table_status_list_endpoint_parameters:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
+**Considerazioni sulla privacy**
 
-  * - **Header**
-    - **Descrizione**
-    - **Riferimento**
-  * - **alg**
-    - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
-    - [:rfc:`7515`], [:rfc:`7517`].
-  * - **typ**
-    - OBBLIGATORIO. DEVE corrispondere al valore ``statuslist+jwt``.
-    - `TOKEN-STATUS-LIST`_
-  * - **kid**
-    - OBBLIGATORIO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
-    - :rfc:`7638#section_3`.
-  * - **x5c**
-    - OBBLIGATORIO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
-    - :rfc:`5280`
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Descrizione**
-    - **Riferimento**
-  * - **sub**
-    - OBBLIGATORIO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
-    - [:rfc:`7519`]
-  * - **iat**
-    - OBBLIGATORIO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
-    - [:rfc:`7519`]
-  * - **exp**
-    - RACCOMANDATO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
-    - [:rfc:`7519`]
-  * - **ttl**
-    - RACCOMANDATO. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
-    - `TOKEN-STATUS-LIST`_
-  * - **status_list**
-    - OBBLIGATORIO. Oggetto JSON che contiene una Status List.
-    - `TOKEN-STATUS-LIST`_
-
-.. note::
-  Si RACCOMANDA che il Fornitore di Attestati Elettronici imposti il claim ``exp`` in modo che il Token di Status List abbia una breve durata. In genere, questo comporta che il claim ``exp`` non superi il claim ``iat`` di più di 24 ore.
-
-Una Status List codificata in JSON ha la seguente struttura:
-
-.. _table_status_list_structure:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Parametro**
-    - **Descrizione**
-    - **Riferimento**
-  * - **bits**
-    - OBBLIGATORIO. Intero JSON che specifica il numero di bit per Attestato Elettronico nell'array di byte compresso (`lst`). I valori consentiti per bits sono 1,2,4 e 8.
-    - `TOKEN-STATUS-LIST`_
-  * - **lst**
-    - OBBLIGATORIO. Stringa JSON che contiene i valori di stato per tutti gli Attestato Elettronici di cui trasmette gli stati. Il valore DEVE essere l'array di byte compresso codificato in base64url.
-    - `TOKEN-STATUS-LIST`_
-  * - **aggregation_uri**
-    - OPZIONALE. Stringa JSON che contiene un URI per recuperare l'Aggregazione di Status List per questo tipo di Attestato Elettronico o Fornitore di Attestati Elettronici.
-    - `TOKEN-STATUS-LIST`_
-
-Di seguito è riportato un esempio di Token di Status List prima di applicare la firma e la codifica:
-
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "kid": "$KID",
-    "typ": "statuslist+jwt",
-    "x5c": [
-      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
-      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
-      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
-    ]
-  }
-
-.. code-block:: json
-
-  {
-    "exp": 2291720170,
-    "iat": 1686920170,
-    "status_list": {
-      "bits": 1,
-      "lst": "eNrbuRgAAhcBXQ"
-    },
-    "sub": "https://example-issuer.com/statuslists/",
-    "ttl": 43200
-  }
-
-
-Gestione dello Stato degli Attestati Elettronici con Token di Status List
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-I Fornitori di Attestati Elettronici, una volta che un Attestato Elettronico è stato generato, DEVONO:
-
-  - Memorizzarlo localmente con il set minimo di dati necessari per gestire il suo ciclo di vita, incluso lo stato di validità di quell'Attestato Elettronico.
-  - Includere un claim ``status_list`` all'interno dell'Oggetto JSON ``status`` claim dell'Attestato Elettronico.
-
-Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con i seguenti parametri
-
-.. _table_status_list_parameters:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Parametro**
-    - **Descrizione**
-    - **Riferimento**
-  * - **idx**
-    - OBBLIGATORIO. Il claim idx (indice) DEVE specificare un Intero che rappresenta l'indice da controllare per le informazioni sullo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente il valore zero o maggiore.
-    - `TOKEN-STATUS-LIST`_
-  * - **uri**
-    - OBBLIGATORIO. Il claim uri (URI) DEVE specificare un valore String che identifica il Token di Status List contenente le informazioni sullo stato per l'Attestato Elettronico. Il valore di uri DEVE essere un URI conforme a [:rfc:`3986`].
-    - `TOKEN-STATUS-LIST`_
-
+Per impedire ai Fornitori di Attestati Elettronici di tracciare o profilare gli Utenti in base all'uso degli Attestati Elettronici, i Fornitori di Attestati Elettronici DEVONO integrare le informazioni di stato di molti Attestati Elettronici nella stessa lista e DEVONO pubblicare la SLT allo stesso ``uri`` per tutti quegli Attestati Elettronici. I Fornitori di Attestati Elettronici DEVONO configurare le Status List con almeno 100.000 voci di stato. Se vengono emessi ulteriori Attestati Elettronici, il Fornitore di Attestati Elettronici PUÒ creare SLT aggiuntive oppure aumentare il numero di entry nell'array, in base a considerazioni pratiche quali la dimensione totale di ciascuna SLT e la gestione di più endpoint.
 
 Verifica degli Stati degli Attestati Elettronici
-""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Wallet Instance, tuttavia, le stesse regole si applicherebbero anche al Relying Party.
+Il recupero, l'elaborazione e la verifica di un Status List Token possono essere eseguiti dall'Istanza del Wallet oppure da una Relying Party. La procedura seguente è descritta per l'Istanza del Wallet. Le stesse regole si applicano alla Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml
@@ -512,11 +383,11 @@ Il recupero, l'elaborazione e la verifica di un Token di Status List possono ess
 Richiesta HTTP di Status List
 .............................
 
-Per ottenere il Token di Status List, la Relying Party DEVE inviare una richiesta HTTP GET al valore ``status.status_list.uri`` fornito all'interno dell'Attestato Elettronico.
+Per ottenere il Token di Status List, la Relying Party DEVE inviare una richiesta HTTP GET all'URI specificato dal riferimento alla status list dell'Attestato Elettronico.
 
-La Relying Party DOVREBBE inviare l'Accept-Header ``application/statuslist+jwt`` per indicare che il tipo di risposta richiesto per il Token di Status List è il formato JWT.
+La Relying Party DOVREBBE inviare un header ``Accept`` che contiene ``application/statuslist+jwt`` per un Token di Status List JWT oppure ``application/statuslist+cwt`` per un Token di Status List CWT.
 
-Di seguito è riportato un esempio non normativo di una richiesta per un Token di Status List:
+Di seguito è riportato un esempio non normativo di una richiesta di Token di Status List:
 
 .. code-block:: http
 
@@ -528,47 +399,46 @@ Di seguito è riportato un esempio non normativo di una richiesta per un Token d
 Risposta HTTP di Status List
 ............................
 
-L'Endpoint di Status List risponde con un Token di Status List e DEVE utilizzare un codice di stato HTTP nell'intervallo 2xx. In caso di risposta andata a buon fine, lo Status Provider DEVE utilizzare il content-type ``application/statuslist+jwt`` per il Token di Status List in formato JWT.
+L'Endpoint di Status List risponde con un Token di Status List e DEVE utilizzare un codice di stato HTTP nell'intervallo 2xx. Nella risposta andata a buon fine, lo Status Provider DEVE utilizzare ``application/statuslist+jwt`` per un Token di Status List JWT oppure ``application/statuslist+cwt`` per un Token di Status List CWT.
 
 La risposta HTTP DOVREBBE utilizzare la Content-Encoding gzip come definito in [:rfc:`9110`].
 
-Se gli header HTTP relativi alla cache sono presenti nella risposta HTTP, le Relying Party DOVREBBERO dare priorità ai claim ``exp`` e ``ttl`` all'interno del Token di Status List rispetto agli header HTTP per determinare il comportamento della cache.
+Se nella risposta HTTP sono presenti header relativi alla cache, le Relying Party DOVREBBERO dare priorità ai claim ``exp`` e ``ttl`` all'interno del Token di Status List rispetto agli header HTTP per determinare il comportamento della cache.
 
-Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List con tipo ``application/statuslist+jwt``:
+Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List di tipo ``application/statuslist+jwt``:
 
 .. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjEsImxzdCI6ImVOcmJ1UmdBQWhjQlhRIn0sInN1YiI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSIsInR0bCI6NDMyMDB9.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjQsImxzdCI6ImVKeGpjRkFFQUFDa0FHSSJ9LCJzdWIiOiJodHRwczovL2V4YW1wbGUuY29tL3N0YXR1c2xpc3RzLzEiLCJ0dGwiOjQzMjAwfQ.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
 
-Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguire la validazione dell'Attestato Elettronico stesso (ad esempio, controllando gli attributi previsti, la firma valida e il tempo di scadenza). Se questa validazione non ha successo, l'Attestato Elettronico DEVE essere rifiutata. Se la validazione ha avuto successo, la Relying Party DEVE eseguire i seguenti passaggi di validazione per valutare lo stato dell'Attestato Elettronico:
+Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguire la validazione dell'Attestato Elettronico stesso (ad esempio, il controllo degli attributi attesi, della firma valida e del tempo di scadenza). Se questa validazione non ha successo, l'Attestato Elettronico DEVE essere rifiutato. Se la validazione ha avuto successo, la Relying Party DEVE eseguire i seguenti passaggi di validazione per valutare lo stato dell'Attestato Elettronico:
 
-- Controllare l'esistenza di un claim ``status``, controllare l'esistenza di un claim ``status_list`` all'interno del claim ``status`` e validare che il contenuto di ``status_list`` aderisca alle regole definite nella Sezione :ref:`credential-revocation:Gestione dello Stato degli Attestati Elettronici con Token di Status List`.
+- Per un Attestato Elettronico SD-JWT, controllare il riferimento ``status.status_list``. Per un MSO mdoc, controllare il riferimento ``issuerAuth.status_list``. In entrambi i casi, validare il riferimento alla status list secondo :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
 
-  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`.
+   - Validare la firma del Token di Status List secondo la Sezione 7.2 di :rfc:`7519` per una SLT JWT oppure la Sezione 7.2 di :rfc:`8392` per una SLT CWT. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
-  - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.
+   - Controllare l'esistenza dei claim richiesti come definito in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
+   - Controllare tutti gli altri claim nel Token di Status List secondo :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`:
 
-- Tutti i claim esistenti nel Token di Status List DEVONO essere controllati secondo :ref:`credential-revocation:Token di Status List`.
+     - Il claim ``sub`` di una SLT JWT, oppure il claim ``2`` di una SLT CWT, DEVE essere uguale al membro ``uri`` nel riferimento alla status list dell'Attestato Elettronico.
+     - Se la Relying Party ha una politica di freschezza, DOVREBBE controllare il claim JWT ``iat`` oppure il claim CWT ``6``.
+     - Se presente, il claim JWT ``exp`` oppure il claim CWT ``4`` DEVE essere controllato per determinare se il Token di Status List è scaduto.
+     - Se la Relying Party utilizza un sistema di cache, DOVREBBE controllare il claim JWT ``ttl`` oppure il claim CWT ``65534`` e recuperare una copia aggiornata quando ``resolution_time + ttl < current_time``.
 
-  - Il claim subject del Token di Status List DEVE essere uguale al claim ```uri``` nell'oggetto ``status_list`` dell'Attestato Elettronico.
-  - Se la Relying Party ha politiche personalizzate riguardanti la freschezza del Token di Status List, DOVREBBE controllare il claim ``iat``.
-  - Se il tempo di scadenza è definito, DEVE essere controllato se il Token di Status List è scaduto.
-  - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim ``ttl`` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
-
-- Decomprimere la Status List con un decompressore compatibile con DEFLATE [:rfc:`1951`] e ZLIB [:rfc:`1950`].
-- Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`. Fallire se l'indice fornito è fuori dai limiti della Status List.
+- Decomprimere la Status List con un decompressore compatibile con DEFLATE (:rfc:`1951`) e con il formato dati ZLIB (:rfc:`1950`).
+- Recuperare il valore di stato all'indice specificato nel riferimento alla status list dell'Attestato Elettronico, come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`. Il controllo fallisce se l'indice fornito è fuori dai limiti della Status List.
 - Controllare il valore di stato come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
-Se uno di questi controlli fallisce, non è possibile fare alcuna dichiarazione sullo stato dell'Attestato Elettronico e l'Attestato Elettronico DOVREBBE essere rifiutato.
+Se uno di questi controlli fallisce, non è possibile fare alcuna dichiarazione sullo stato dell'Attestato Elettronico. L'Attestato Elettronico DOVREBBE essere rifiutato.
 
-Se, ad esempio, l'array di byte decompresso è ``[0x00, 0x40, 0x21]``, corrisponde all'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]``. Lo Stato dell'Attestato Elettronico il cui valore del claim ``idx`` è ``5`` in questo array si riferisce all'ultima coppia di 4 bit (cioè, ``[0, 0, 1, 0] = 0x02``) il cui valore di stato è ``SUSPENDED``.
+Ad esempio, l'array di byte decompresso ``[0x00, 0x40, 0x21]`` corrisponde all'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]``. Lo stato dell'Attestato Elettronico il cui claim ``idx`` ha valore ``5`` si riferisce all'ultima coppia di 4 bit (cioè ``[0, 0, 1, 0] = 0x02``), il cui stato è ``SUSPENDED``.
 
-In caso di errore durante la generazione della risposta da parte dell'Endpoint del Token di Status, DEVONO essere supportati i seguenti Codici di Stato HTTP:
+Se si verifica un errore mentre l'Endpoint di Status List genera una risposta, DEVONO essere supportati i seguenti codici di stato HTTP:
 
 .. list-table::
   :class: longtable
@@ -583,5 +453,3 @@ In caso di errore durante la generazione della risposta da parte dell'Endpoint d
     - Il Provider di Status List è temporaneamente non disponibile.
   * - *504 Gateway Timeout* [OPZIONALE]
     - Il Provider di Status List non può soddisfare la richiesta entro l'intervallo di tempo definito.
-
-

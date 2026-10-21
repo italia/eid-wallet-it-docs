@@ -581,13 +581,13 @@ Per un WRPRC codificato CWT, ``idx`` è un intero non firmato CBOR e ``uri`` è 
 Secondo l'ARF e [`ETSI TS 119 475`_], lo status del WRPRC è ``VALID`` o ``INVALID``.
 Il Provider of WRPRC DEVE impostare il parametro ``bits`` nell'oggetto ``status_list`` della SLT a ``1``. Il valore ``0x00`` rappresenta ``VALID``, e ``0x01`` rappresenta ``INVALID``.
 
-L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status Lists`.
+L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
 
 **Status List Token**
 
 Lo SLT Provider DEVE agire sia come Status Issuer sia come Status Provider.
 Lo SLT Provider DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``status.status_list.uri`` del WRPRC.
-I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in :ref:`credential-revocation:Token Status Lists`.
+I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
 
 Indipendentemente dal formato, lo SLT Provider per i WRPRC DEVE firmare ciascuna SLT usando un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE dei Provider of WRPRC.
 

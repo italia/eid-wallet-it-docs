@@ -183,7 +183,12 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
   - Quando la Relying Party non supporta ``request_uri_method`` con valore ``post``, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
-**Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`) come estratto dall'Istanza del Wallet per :ref:`WP_084 <wallet-credential-presentation-testcases>`. L'Istanza del Wallet ottiene il Request Object firmato.
+**Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo con una delle sue chiavi private crittografiche.
+
+* Per ``openid_federation``, la Wallet Unit DEVE valutare la fiducia usando la Federation Entity Authentication e l'Authorization nazionale (:ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Authorization`), DEVE ottenere i metadata ``openid_credential_verifier`` tramite :ref:`trust-evaluation:Metadata Retrieval and Validation` e DEVE verificare la firma con la chiave identificata da ``kid`` in quei metadata.
+* Per ``x509_hash``, verifica l'hash del certificato foglia rispetto a ``client_id``, valida il percorso del WRPAC rispetto alla LoTE dei Provider of WRPAC e verifica la firma con la chiave del WRPAC, come definito in :ref:`trust-evaluation:EUDIW Authentication`.
+
+L'Istanza del Wallet NON DEVE cambiare percorso né ripetere la verifica con evidenze dell'altro percorso (:ref:`WP_084 <wallet-credential-presentation-testcases>`).
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
 
@@ -194,39 +199,36 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
     eyJhbGciOiJFUzI1NiIs...9t2LQ
 
-**Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`).
+**Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato, e controlla che ``client_id``, ``iss`` e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`).
 
-  Un esempio non normativo di un Oggetto di Richiesta sotto forma di intestazione e payload decodificati è mostrato di seguito:
+  Di seguito sono riportati esempi non normativi di Request Object sotto forma di intestazioni e payload decodificati. Ciascun esempio usa esattamente un Trust Framework.
+
+  **Esempio EUDIW ``x509_hash``**
 
   .. code-block:: json
 
     {
       "alg": "ES256",
       "typ": "oauth-authz-req+jwt",
-      "kid": "9tjiCaivhWLVUJ3AxwGGz_9",
-      "trust_chain": [
-        "MIICajCCAdOgAwIBAgIC...awz",
-        "MIICajCCAdOgAwIBAgIC...2w3",
-        "MIICajCCAdOgAwIBAgIC...sf2"
-      ],
       "x5c": [
-        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
-        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
-        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
-      ]
+        "<WRPAC-leaf-base64url>",
+        "<WRPAC-intermediate-base64url>"
+      ],
+      "iat": 1770000000
     }
 
   .. code-block:: json
 
     {
-      "client_id": "openid_federation:https://relying-party.example.org",
+      "client_id": "x509_hash:AbCdEfGhIjKlMnOp",
       "response_mode": "direct_post.jwt",
       "response_type": "vp_token",
       "dcql_query": {
-        "credentials": [
+         "credentials": [
           {
-            "id": "personal id data",
-            "format": "dc+sd-jwt",
+             "id": "personal id data",
+             "format": "dc+sd-jwt",
+             "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
             "meta": {
               "vct_values": [ "urn:eudi:pid:it:1" ]
             },
@@ -235,12 +237,13 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
               {"path": ["family_name"]},
               {"path": ["birthdate"]}
             ]
-             },
-            {
-            "id": "mobile driving license",
-            "format": "mso_mdoc",
+          },
+          {
+             "id": "mobile driving license",
+             "format": "mso_mdoc",
+             "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
             "meta": {
-              "doctype_value": "org.iso.18013.5.1.mDL" 
+              "doctype_value": "org.iso.18013.5.1.mDL"
             },
             "claims": [
               {"path": ["org.iso.18013.5.1", "given_name"]},
@@ -250,35 +253,86 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
           }
         ]
       },
+      "verifier_info": [
+        {
+          "format": "registrar_dataset",
+          "data": {
+            "identifier": "https://relying-party.example.org",
+            "srvDescription": [{"lang": "en", "value": "Example service"}],
+            "registryURI": "https://registrar.example.org",
+            "intendedUseIdentifier": "https://example.org/use/presentation",
+            "purpose": [{"lang": "en", "value": "Identity verification"}],
+            "policyURI": "https://example.org/policy"
+          }
+        },
+        {
+          "format": "registration_cert",
+          "data": "<WRPRC-base64url>"
+        }
+      ],
       "response_uri": "https://relying-party.example.org/response_uri",
+      "aud": "https://wallet.example.org",
       "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
       "wallet_nonce": "qPmxiNFCR3QTm19POc8u",
       "client_metadata": {
-        "jwks": {
-          "keys": [
-            {
-              "kty": "EC",
-              "use": "enc",
-              "crv": "P-256",
-              "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
-              "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
-              "kid": "20260202-abc123",
-              "alg": "ECDH-ES"
-            }
-          ]
-        },
-        "encrypted_response_alg_values_supported": ["ECDH-ES"],
-        "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
+          "jwks": {
+            "keys": [
+              {
+                "kty": "EC",
+                "use": "enc",
+                "crv": "P-256",
+                "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
+                "kid": "20260202-abc123",
+                "alg": "ECDH-ES"
+              }
+            ]
+          },
+          "encrypted_response_alg_values_supported": ["ECDH-ES"],
+          "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
       },
       "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-      "iss": "https://relying-party.example.org",
+      "iss": "x509_hash:AbCdEfGhIjKlMnOp",
       "iat": 1672418465,
       "exp": 1672422065
     }
 
-  Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
+  **Esempio nazionale ``openid_federation``**
 
-**Passaggi 16-17 (Consenso dell'Utente)**: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando e o deselezionando i dati personali da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
+  .. code-block:: json
+
+    {
+      "alg": "ES256",
+      "typ": "oauth-authz-req+jwt",
+      "kid": "national-signing-key",
+      "trust_chain": ["<entity-statement-base64url>"]
+    }
+
+  .. code-block:: json
+
+    {
+      "client_id": "openid_federation:https://relying-party.example.org",
+      "response_mode": "direct_post.jwt",
+      "response_type": "vp_token",
+      "dcql_query": {"credentials": [{"id": "it-wallet id", "format": "dc+sd-jwt", "meta": {"vct_values": ["urn:it-wallet:eid:1"]}}]},
+      "response_uri": "https://relying-party.example.org/response_uri",
+      "client_metadata": {
+         "jwks": {"keys": [{"kty": "EC", "use": "enc", "crv": "P-256", "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU", "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0", "kid": "20260202-abc123", "alg": "ECDH-ES"}]},
+        "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
+      },
+      "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
+      "iss": "openid_federation:https://relying-party.example.org",
+      "iat": 1672418465,
+      "exp": 1672422065
+    }
+
+* Per ``x509_hash``, l'Istanza del Wallet autentica il WRPAC, valida il WRPRC e vincola l'identità della Relying Party diretta o intermediata al WRPAC, al WRPRC e al membro ``data.identifier`` dell'elemento ``verifier_info`` il cui ``format`` è ``registrar_dataset``, secondo :ref:`trust-evaluation:EUDIW Authentication` e :ref:`trust-evaluation:EUDIW Authorization`. Controlla l'entitlement di Service Provider e lo scope DCQL esatto e sensibile alle maiuscole.
+
+* Per ``openid_federation``, valida il Trust Mark di registrazione, i suoi entitlement e il suo scope esatto e sensibile alle maiuscole, e NON DEVE trattare il materiale WRPAC o WRPRC come evidenza di fiducia del Trust Framework Nazionale.
+
+Una valutazione fallita termina l'elaborazione e NON DEVE innescare un nuovo tentativo nell'ambito dell'altro framework (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
+
+**Passaggi 16-17 (Consenso dell'Utente)**: Prima della divulgazione, l'Istanza del Wallet DEVE mostrare la Relying Party e il Service verificati, l'uso previsto o lo scopo, e le Credenziali e gli attributi richiesti tratti dall'artifact di autorizzazione autorevole. Nel percorso Nazionale DEVE inoltre mostrare sia la Relying Party sia il Federation Intermediate, ove applicabile. In un flusso EUDIW intermediato DEVE mostrare la Relying Party intermediata e il Service e NON DEVE mostrare le denominazioni commerciali dell'Intermediario. L'Utente autorizza e acconsente alla presentazione selezionando i dati da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
 
 **Passaggio 18 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST utilizzando modalità di risposta ``direct_post.jwt``.
 

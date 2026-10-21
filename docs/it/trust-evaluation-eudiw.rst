@@ -383,15 +383,11 @@ Questo processo valida la firma su un'Attestation (Attestato Elettronico o Walle
 
 Il processo DEVE essere strutturato come segue:
 
-- Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, allora si applica uno dei seguenti casi:
-
-  - **Base Signature Validation**: Eseguita quando l'Attestation contiene il Sign/Seal Certificate e la catena di fiducia X.509 associata, e il Trust Anchor è presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).
-
-  - **Fallback Signature Validation**: Eseguita quando l'Attestation non contiene il Sign/Seal Certificate, che è invece attestato direttamente come Trust Anchor nella LoTE (solo per PID o WIA).
+- Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, la procedura di validazione della firma seguente DEVE essere eseguita usando il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation, con il Trust Anchor presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).
 
 - Se l'Attestation la cui firma è in verifica è una EAA non qualificata, allora le informazioni relative alla trust evaluation sono governate dal Rulebook corrispondente.
 
-La **Base Signature Validation** è strutturata come segue:
+La procedura di validazione della firma è strutturata come segue:
 
 **Input**
 
@@ -429,37 +425,11 @@ Questo processo dipende dal tipo di Attestation:
 
   In ciascuno dei casi precedenti, per un'Attestation in formato mdoc, il Mobile Security Object reca il certificato Document Signer nell'header ``x5chain``, come definito in [`ISO18013-5`_]. Per un'Attestation in formato SD-JWT VC, la catena di certificati dell'issuer è recata nell'header ``x5c`` della firma JOSE.
 
-Se la **Base Signature Validation** risulta in un fallimento, l'Entità che valida l'Attestation DEVE eseguire la **Fallback Signature Validation** come segue:
-
-.. warning::
-  
-  Questo processo si applica solo ai tipi di Attestation **PID** e **WIA**.
-
-**Input**
-
-- L'Attestation ricevuta.
-- Il tipo di artifact (cioè, il tipo di Attestato Elettronico o Wallet Instance Attestation) usato per selezionare la List of Trusted Entities applicabile.
-
-**Esito**
-
-- L'Attestation validata, oppure un fallimento di validazione.
-
-**Processo**
-
-1. Recuperare la List of Trusted Entities applicabile in base al tipo di Attestation, validarla come definito in :ref:`trust-evaluation:List of Trusted Entities Validation`, ed estrarre il Trust Anchor appropriato dal campo ``ServiceDigitalIdentity`` dell'Entità rilevante.
-2. Verificare la firma dell'Attestation direttamente usando il Trust Anchor validato che agisce come certificato firmatario.
-
-.. warning::
-
-   Sebbene la specifica IT Wallet richieda che i certificati Trust Anchor notificati alla Commissione e inclusi nella LoTE siano *diversi* dai Sign/Seal Certificate delle Entità correlate, la Clausola 4.2 di [`ETSI TS 119 412-6`_] consente ai Trust Anchor della LoTE di servire direttamente come Sign/Seal Certificate.
-   In questo caso, tali certificati NON DEVONO essere inclusi nell'Attestation, costringendo il processo di verifica ad attenersi alla procedura di **Fallback Signature Validation**.
-   Per assicurare l'interoperabilità, le implementazioni di EUDIW Attestation Signature Validation DEVONO supportare entrambi i meccanismi di validazione.
-
 .. note::
 
   Quando si verificano firme o sigilli realizzati da chiavi storiche, si applica lo stesso processo con la seguente differenza: il Trust Anchor è recuperato dall'elemento `ServiceHistory.ServiceDigitalIdentity` invece che dall'elemento `ServiceInformation.ServiceDigitalIdentity`.
 
-Se sia la **Base Signature Validation** sia la **Fallback Signature Validation** falliscono, l'Attestation NON DEVE essere considerata emessa da un'Entità fidata.
+Se la validazione della firma fallisce, l'Attestation NON DEVE essere considerata emessa da un'Entità fidata.
 
 EUDIW Authentication
 ^^^^^^^^^^^^^^^^^^^^
