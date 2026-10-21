@@ -38,7 +38,7 @@ app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign
 app->aats: ""client_data_hash""
 aats-->app: ""integrity_assertion""
 
-app->app: Generate Wallet Instance Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version"" \nsigned with ephemeral ""ephemeral_key_priv""
+app->app: Generate Wallet Instance Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""intended_issuer"", ""ephemeral_key_pub"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""\nand, when reusing a status list entry, ""status_list_idx""\nsigned with ephemeral ""ephemeral_key_priv""
 app->bck: Send Wallet Instance Attestation Request
 activate bck
 rnote over bck,bck #LIGHTGREEN
