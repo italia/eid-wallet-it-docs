@@ -21,7 +21,7 @@ This repository hosts the IT-Wallet Technical Specifications: the technical arch
 
 For more information on the IT-Wallet System please refer to the [official page]([url](https://innovazione.gov.it/progetti/sistema-it-wallet/)).
 
-The repository is structured as sphinx project tree. **The first stable release is v1.0**; older releases are considered experimental.
+The repository is structured as sphinx project tree.
 
 
 ## Versioning and preview
