@@ -464,7 +464,7 @@ Below are the main defined terms and definitions related to User Experience aspe
       Document defining the rules and standards for the correct and consistent use of a Brand’s distinctive elements, including visual, verbal, and application-related aspects, across different Touchpoints.
 
     **Catalog**
-      Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
+      Section of the Wallet Instance that lists the Credential types that the Wallet Solution offers and from which the User starts issuance.
 
     **Call To Action**
       A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.

@@ -40,7 +40,7 @@ Do not join clauses with a semicolon. Use separate sentences.
 
 ## Defined terms and acronyms
 
-In `defined-terms.rst` (the glossary and the Acronyms table), describe the term. Do not use BCP 14 keywords there. Put the requirement in the body of the specification and, if needed, point to that section from the definition.
+In `defined-terms.rst` (the glossary and the Acronyms table), describe the term. Do not use BCP 14 keywords there. Do not use a `:ref:`, a hyperlink, or any other reference to another part of the specification. Defined terms sit above the rest of the specification and must not depend on a section. Put the requirement in the body of the specification.
 
 Write defined terms as they are defined in `defined-terms.rst`, including capitalization, in both editions. In English the defined term is Credential and its plural is Credentials. In Italian the defined term is Credenziale and its plural is Credenziali. Write that capital even mid-sentence. The ordinary phrases authentication credentials and credenziali di autenticazione are not that term. JSON member names and protocol parameter names stay as specified.
 

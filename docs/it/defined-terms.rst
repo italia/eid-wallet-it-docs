@@ -467,7 +467,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Documento che definisce le regole e gli standard per l’utilizzo corretto e coerente degli elementi distintivi di un Brand, inclusi gli aspetti visivi, verbali e applicativi, nei diversi Touchpoint.
 
     **Catalogo**
-      Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'Istanza del Wallet, e dalle quali è possibile avviare il processo di emissione.
+      Sezione dell'Istanza del Wallet che elenca i tipi di Credenziale che la Soluzione Wallet offre e da cui l'Utente avvia il rilascio.
 
     **Call To Action**
       Suggerimento chiaro e diretto che incoraggia gli Utenti a intraprendere un'azione specifica. Può essere un pulsante, un link o un altro elemento che guida l'Utente verso un obiettivo specifico.

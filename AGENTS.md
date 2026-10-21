@@ -24,6 +24,7 @@ Never create a commit. Never run `git push` or any command that publishes commit
 
 - Reuse defined terms (Wallet Instance, Credential Issuer, Relying Party, IT-Wallet ID, PID, and so on). Do not introduce synonyms.
 - Write defined terms as they are defined in `defined-terms.rst`, including capitalization, in both editions. In English the defined term is Credential and its plural is Credentials. In Italian the defined term is Credenziale and its plural is Credenziali. Write that capital even mid-sentence. The ordinary phrases authentication credentials and credenziali di autenticazione are not that term. JSON member names and protocol parameter names stay as specified.
+- In `defined-terms.rst`, describe the term and stop there. Do not use a `:ref:`, a hyperlink, or any other reference to another part of the specification. Defined terms sit above the rest of the specification and must not depend on a section.
 - Example hostnames are `example.org` (or a subdomain of it). Do not use real production URLs in examples.
 - Keep changes limited to the requested section. Do not rewrite surrounding normative text for style.
 - When the requirements of a section change, update the test cases that section cites, and any other test case that covers the same behavior, in the same change and in both languages. The test states the current requirement. A test that no longer applies keeps its identifier. Empty its purpose, description, and expected result with `Voided` in English and `Annullato` in Italian. Do not delete the row, and do not reuse the identifier.
