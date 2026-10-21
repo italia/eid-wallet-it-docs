@@ -110,6 +110,7 @@ Technical and Administrative Validity
 
 Technical validity is the interval during which the encoded attestation and its signature are valid.
 Administrative validity is the interval during which the attested attributes remain administratively valid, such as the expiry of a licence.
+Passing that date does not revoke the attestation. Revocation does not require that date to have passed. See :ref:`authentic-source-endpoint:Credential Lifecycle States Mapping`.
 
 In SD-JWT VC, technical validity MUST be expressed by ``nbf`` and ``exp``, as already required for an EAA in :ref:`credential-data-model:Digital Credential SD-JWT Metadata Attributes` ([`ETSI TS 119 472-1`_] EAA-5.2.7.1-01 and EAA-5.2.7.1-03).
 Administrative validity MUST be expressed by ``issuance_date`` and ``date_of_expiry`` when the credential type defines them.

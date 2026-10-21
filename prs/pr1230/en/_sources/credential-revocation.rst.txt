@@ -67,8 +67,7 @@ A Digital Credential changes to **Valid** state when:
 Credential Transition to Expired
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA EXP**),
-indicating they are no longer valid for use.
+A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA expiration**).
 
 If a Digital Credential is **Expired** the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (**PID/(Q)EAA DEL**).
 This ends its lifecycle.
@@ -82,7 +81,6 @@ still valid temporally and contains a valid Credential Issuer signature. Revocat
 
   * for technical security reasons relating to the compromise of cryptographic material.
   * in case of explicit User requests.
-  * as a consequence of an attribute update by Authentic Sources.
   * in case of a revocation of the attributes contained in the Digital Credential notified by the Authentic Source.
   * death of the User.
   * revocation of Wallet Instance to which the Digital Credential was issued.

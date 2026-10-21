@@ -66,8 +66,7 @@ Un Attestato Elettronico passa allo stato **Valid** quando:
 Transizione dell'Attestato Elettronico a Expired
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Un Attestato Elettronico passa naturalmente allo stato **Expired** quando scade automaticamente al raggiungimento della sua data di fine validità (**PID/(Q)EAA EXP**),
-indicando che non è più valido per l'uso.
+Un Attestato Elettronico passa naturalmente allo stato **Expired** quando scade automaticamente al raggiungimento della sua data di fine validità (**PID/(Q)EAA EXP**).
 
 Se un Attestato Elettronico è **Expired**, l'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico è scaduto e l'Utente PUÒ eliminarlo (**PID/(Q)EAA DEL**).
 Questo termina il suo ciclo di vita.
@@ -81,7 +80,6 @@ ancora temporalmente valido e contiene una firma valida del Fornitore di Attesta
 
   * per motivi tecnici di sicurezza relativi alla compromissione del materiale crittografico.
   * in caso di richieste esplicite dell'Utente.
-  * come conseguenza di un aggiornamento degli attributi da parte delle Fonti Autentiche.
   * in caso di revoca degli attributi contenuti nell'Attestato Elettronico notificata dalla Fonte Autentica.
   * morte dell'Utente.
   * revoca dell'Istanza del Wallet a cui è stato rilasciato l'Attestato Elettronico.
