@@ -185,8 +185,8 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo con una delle sue chiavi private crittografiche.
 
-* Per ``openid_federation``, la Wallet Unit DEVE valutare la fiducia usando la Federation Entity Authentication e l'Authorization nazionale (:ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Authorization`), DEVE ottenere i metadata ``openid_credential_verifier`` tramite :ref:`trust-evaluation:Metadata Retrieval and Validation` e DEVE verificare la firma con la chiave identificata da ``kid`` in quei metadata.
-* Per ``x509_hash``, verifica l'hash del certificato foglia rispetto a ``client_id``, valida il percorso del WRPAC rispetto alla LoTE dei Provider of WRPAC e verifica la firma con la chiave del WRPAC, come definito in :ref:`trust-evaluation:EUDIW Authentication`.
+* Per ``openid_federation``, la Wallet Unit DEVE valutare la fiducia usando la Federation Entity Authentication e l'Authorization nazionale (:ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Authorization`). La Wallet Unit DEVE ottenere i metadata ``openid_credential_verifier`` tramite :ref:`trust-evaluation:Metadata Retrieval and Validation`. La Wallet Unit DEVE verificare la firma con la chiave identificata da ``kid`` in quei metadata.
+* Per ``x509_hash``, verifica l'hash del certificato foglia rispetto a ``client_id`` e valida il percorso del WRPAC rispetto alla LoTE dei Provider of WRPAC. Verifica la firma con la chiave del WRPAC, come definito in :ref:`trust-evaluation:EUDIW Authentication`.
 
 L'Istanza del Wallet NON DEVE cambiare percorso né ripetere la verifica con evidenze dell'altro percorso (:ref:`WP_084 <wallet-credential-presentation-testcases>`).
 
@@ -199,7 +199,7 @@ L'Istanza del Wallet NON DEVE cambiare percorso né ripetere la verifica con evi
 
     eyJhbGciOiJFUzI1NiIs...9t2LQ
 
-**Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato, e controlla che ``client_id``, ``iss`` e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`).
+**Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato. Controlla che ``client_id``, ``iss`` e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`).
 
   Di seguito sono riportati esempi non normativi di Request Object sotto forma di intestazioni e payload decodificati. Ciascun esempio usa esattamente un Trust Framework.
 
@@ -326,13 +326,13 @@ L'Istanza del Wallet NON DEVE cambiare percorso né ripetere la verifica con evi
       "exp": 1672422065
     }
 
-* Per ``x509_hash``, l'Istanza del Wallet autentica il WRPAC, valida il WRPRC e vincola l'identità della Relying Party diretta o intermediata al WRPAC, al WRPRC e al membro ``data.identifier`` dell'elemento ``verifier_info`` il cui ``format`` è ``registrar_dataset``, secondo :ref:`trust-evaluation:EUDIW Authentication` e :ref:`trust-evaluation:EUDIW Authorization`. Controlla l'entitlement di Service Provider e lo scope DCQL esatto e sensibile alle maiuscole.
+* Per ``x509_hash``, l'Istanza del Wallet autentica il WRPAC e valida il WRPRC. Vincola l'identità della Relying Party diretta o intermediata al WRPAC, al WRPRC e al membro ``data.identifier`` dell'elemento ``verifier_info`` il cui ``format`` è ``registrar_dataset``, secondo :ref:`trust-evaluation:EUDIW Authentication` e :ref:`trust-evaluation:EUDIW Authorization`. Controlla l'entitlement di Service Provider e lo scope DCQL esatto e sensibile alle maiuscole.
 
-* Per ``openid_federation``, valida il Trust Mark di registrazione, i suoi entitlement e il suo scope esatto e sensibile alle maiuscole, e NON DEVE trattare il materiale WRPAC o WRPRC come evidenza di fiducia del Trust Framework Nazionale.
+* Per ``openid_federation``, valida il Trust Mark di registrazione, i suoi entitlement e il suo scope esatto e sensibile alle maiuscole. L'Istanza del Wallet NON DEVE trattare il materiale WRPAC o WRPRC come evidenza di fiducia del Trust Framework Nazionale.
 
 Una valutazione fallita termina l'elaborazione e NON DEVE innescare un nuovo tentativo nell'ambito dell'altro framework (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-**Passaggi 16-17 (Consenso dell'Utente)**: Prima della divulgazione, l'Istanza del Wallet DEVE mostrare la Relying Party e il Service verificati, l'uso previsto o lo scopo, e le Credenziali e gli attributi richiesti tratti dall'artifact di autorizzazione autorevole. Nel percorso Nazionale DEVE inoltre mostrare sia la Relying Party sia il Federation Intermediate, ove applicabile. In un flusso EUDIW intermediato DEVE mostrare la Relying Party intermediata e il Service e NON DEVE mostrare le denominazioni commerciali dell'Intermediario. L'Utente autorizza e acconsente alla presentazione selezionando i dati da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
+**Passaggi 16-17 (Consenso dell'Utente)**: Prima della divulgazione, l'Istanza del Wallet DEVE mostrare la Relying Party e il Service verificati. L'Istanza del Wallet DEVE mostrare l'uso previsto o lo scopo e le Credenziali e gli attributi richiesti tratti dall'artifact di autorizzazione autorevole. Nel percorso Nazionale l'Istanza del Wallet DEVE inoltre mostrare sia la Relying Party sia il Federation Intermediate, ove applicabile. In un flusso EUDIW intermediato l'Istanza del Wallet DEVE mostrare la Relying Party intermediata e il Service. L'Istanza del Wallet NON DEVE mostrare le denominazioni commerciali dell'Intermediario. L'Utente autorizza e acconsente alla presentazione selezionando i dati da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
 
 **Passaggio 18 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST utilizzando modalità di risposta ``direct_post.jwt``.
 
