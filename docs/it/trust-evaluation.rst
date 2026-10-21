@@ -124,7 +124,14 @@ Sul percorso nazionale la Wallet Unit DEVE validare il certificato di reader com
 La Wallet Unit DEVE eseguire l'Authorization esclusivamente nell'ambito del framework selezionato.
 La Relying Party utilizza il certificato che corrisponde alla riga selezionata.
 
-Nel flusso remoto e nel flusso di prossimità, quando la presentazione segue il Trust Framework Nazionale, la Wallet Unit DEVE interrompere l'interazione prima dell'Authorization se la richiesta include un PID, una QEAA, una PuB-EAA, un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure un Attestato di un altro Stato membro.
+Il requisito seguente si applica nel flusso remoto e nel flusso di prossimità.
+Quando la presentazione segue il Trust Framework Nazionale, la Wallet Unit DEVE interrompere l'interazione prima dell'Authorization se la richiesta include uno qualsiasi dei seguenti Attestati.
+
+* un PID.
+* una QEAA.
+* una PuB-EAA.
+* un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook.
+* un Attestato di un altro Stato membro.
 
 Failure Handling
 ^^^^^^^^^^^^^^^^

@@ -124,7 +124,14 @@ On the National path the Wallet Unit MUST validate the reader certificate as spe
 The Wallet Unit MUST run Authorization under the selected framework only.
 The Relying Party uses the certificate that corresponds to the selected row.
 
-In the remote flow and in the proximity flow, when the presentation follows the National Trust Framework, the Wallet Unit MUST stop the interaction before Authorization if the request includes a PID, a QEAA, a PuB-EAA, a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or a Credential of another Member State.
+The following requirement applies in the remote flow and in the proximity flow.
+When the presentation follows the National Trust Framework, the Wallet Unit MUST stop the interaction before Authorization if the request includes any of the following.
+
+* a PID.
+* a QEAA.
+* a PuB-EAA.
+* a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook.
+* a Credential of another Member State.
 
 Failure Handling
 ^^^^^^^^^^^^^^^^
