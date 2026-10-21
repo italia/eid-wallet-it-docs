@@ -734,7 +734,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_090
      - Remote-flow, Presentation, Interoperability
      - Notify Relying Party on invalid request
-     - If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s ``response_uri`` Endpoint.
+     - If the Request Object is invalid or fails verification, and the selected path has authenticated ``response_uri``, the Wallet Instance sends an Authorization Error Response via HTTP POST to that endpoint. Otherwise the flow terminates locally and does not disclose Wallet or Credential availability.
    * - WP_091
      - Remote-flow, Presentation, Interoperability
      - Send Authorization Response

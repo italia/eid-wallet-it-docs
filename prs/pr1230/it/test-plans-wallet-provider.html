@@ -1224,7 +1224,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_090</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Notificare Relying Party su richiesta non valida</p></td>
-<td><p>Se il Request Object è non valido o ne fallisse la verifica, Istanza del Wallet invia una Authorization Error Response tramite HTTP POST al Response Endpoint (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code>) della Relying Party.</p></td>
+<td><p>Se il Request Object è non valido o ne fallisce la verifica, e il percorso selezionato ha autenticato <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>, l'Istanza del Wallet invia una Authorization Error Response tramite HTTP POST a quell'endpoint. Altrimenti il flusso termina in locale e non rivela la disponibilità del Wallet o della Credenziale.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_091</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>

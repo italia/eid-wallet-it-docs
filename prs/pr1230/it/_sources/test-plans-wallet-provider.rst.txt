@@ -733,7 +733,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_090
      - Flusso-remoto, Presentazione, Interoperabilità
      - Notificare Relying Party su richiesta non valida
-     - Se il Request Object è non valido o ne fallisse la verifica, Istanza del Wallet invia una Authorization Error Response tramite HTTP POST al Response Endpoint (``response_uri``) della Relying Party.
+     - Se il Request Object è non valido o ne fallisce la verifica, e il percorso selezionato ha autenticato ``response_uri``, l'Istanza del Wallet invia una Authorization Error Response tramite HTTP POST a quell'endpoint. Altrimenti il flusso termina in locale e non rivela la disponibilità del Wallet o della Credenziale.
    * - WP_091
      - Flusso-remoto, Presentazione, Interoperabilità
      - Inviare l'Authorization Response

@@ -1223,7 +1223,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_090</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
 <td><p>Notify Relying Party on invalid request</p></td>
-<td><p>If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> Endpoint.</p></td>
+<td><p>If the Request Object is invalid or fails verification, and the selected path has authenticated <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>, the Wallet Instance sends an Authorization Error Response via HTTP POST to that endpoint. Otherwise the flow terminates locally and does not disclose Wallet or Credential availability.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_091</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
