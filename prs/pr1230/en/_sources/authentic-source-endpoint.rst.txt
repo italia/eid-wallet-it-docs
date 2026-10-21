@@ -68,7 +68,7 @@ State changes of a Digital Credential at the Credential Issuer level DO NOT impl
 * **Expiry Hierarchy**: The technical expiry (``exp``) MUST NOT be later than the administrative expiry (``expiry_date``). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.
 * **Re-issuance**: If a Digital Credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.
 * **Metadata Verification**: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.
-* **Irreversibility**: When a Digital Credential moves to ``INVALID``, that Digital Credential cannot return to ``VALID``. Any new issuance uses a new dataset. When ``expiry_date`` passes, the Digital Credential keeps its current status.
+* **Irreversibility**: When a Digital Credential moves to ``INVALID``, that Digital Credential cannot return to ``VALID``. A new issuance after ``INVALID`` uses a new ``object_id``. When ``expiry_date`` passes, the Digital Credential keeps its current status.
 * **Signal Processing**: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.
 
 **Status Mapping and Case Logic:**
@@ -78,10 +78,12 @@ The Credential Issuer MUST update the Digital Credential ``status`` based on Sig
 * **Revocation**: If a dataset is revoked at the Authentic Source (status ``INVALID``), the Credential Issuer MUST revoke the Digital Credentials that use that dataset (status transition from ``VALID/SUSPENDED`` to ``INVALID``).
 * **Suspension**: If a dataset is suspended at the Authentic Source (status ``SUSPENDED``), the Credential Issuer MUST suspend the Digital Credentials (status transition from ``VALID`` to ``SUSPENDED``).
 * **Restoration**: If a suspended dataset returns to ``VALID`` at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from ``SUSPENDED`` to ``VALID``).
-* **Modification**: If a dataset is modified but remains ``VALID`` at the Authentic Source, the Credential Issuer—detecting the change via the ``last_updated`` field—assigns the technical status ``ATTRIBUTE_UPDATE`` to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.
+* **Modification**: The Authentic Source chooses how a change of the dataset is represented.
+    * It MAY set the dataset to ``INVALID`` and identify the replacement with a new ``object_id``. The Credential Issuer applies **Revocation** to the Digital Credentials that use the previous ``object_id``.
+    * It MAY keep the same ``object_id`` and leave the status ``VALID``. It updates the attributes and ``last_updated`` and sends a Signal with ``signalType=UPDATE``. The Credential Issuer sets ``ATTRIBUTE_UPDATE``. The Wallet Instance follows the re-issuance flow when it checks the status.
 * **Administrative Expiry**:
-    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry. Technical ``exp`` follows the Expiry Hierarchy above and ``max_validity_days`` in :ref:`registry:Digital Credentials Catalog`. When ``expiry_date`` is present as an attribute, the Wallet Instance applies :ref:`functionalities:Status of Electronic Attestations`.
-    * When the Credential type has an administrative expiry, the Authentic Source MUST include ``expiry_date`` in the dataset and in ``metadataClaims``. The Credential Issuer MUST include that value as an attribute of the Digital Credential. The Authentic Source MUST NOT change the dataset status only because ``expiry_date`` has passed. The Authentic Source MUST NOT send a Signal only because ``expiry_date`` has passed. A later dataset status of ``INVALID`` or ``SUSPENDED`` is handled as **Revocation** or **Suspension**.
+    * **Scenario A (Date in the dataset)**: When ``expiry_date`` is present in ``attributeClaims``, the Authentic Source MUST NOT send a Signal when that date passes. Technical ``exp`` follows the Expiry Hierarchy above and ``max_validity_days`` in :ref:`registry:Digital Credentials Catalog`. When ``expiry_date`` is present as an attribute, the Wallet Instance applies :ref:`functionalities:Status of Electronic Attestations`.
+    * When the Credential type has an administrative expiry, the Authentic Source MUST include ``expiry_date`` in ``attributeClaims``. The Credential Issuer MUST include that value as an attribute of the Digital Credential. The Authentic Source MUST NOT change the dataset status only because ``expiry_date`` has passed. A later dataset status of ``INVALID`` or ``SUSPENDED`` is handled as **Revocation** or **Suspension**.
 
 Example of Authentic Source response
 """""""""""""""""""""""""""""""""""""
@@ -95,8 +97,8 @@ The endpoint response MUST use the HTTP Content-Type set to ``application/json``
 In summary:
 
 - **userClaims**: user identity data (first name, family name, date/place of birth, tax id or personal administrative number). At least one of ``tax_id_code`` and ``personal_administrative_number`` is required when providing user claims.
-- **attributeClaims**: array of datasets. Each element **MUST** contain ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), plus any dataset-specific attributes (e.g. ``nationality``, ``residence_address``).
-- **metadataClaims**: array of metadata per dataset (``object_id`` required. ``issuance_date`` and ``expiry_date`` optional).
+- **attributeClaims**: array of datasets. Each element contains ``object_id``, optional ``issuance_date`` and ``expiry_date``, and the attributes that go into the Credential (e.g. ``nationality``, ``residence_address``).
+- **metadataClaims**: array of metadata per dataset. Each element contains ``object_id``, ``description``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), and ``interval``.
 - **interval**: required when the request does not include a ``claims`` parameter. Indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
 
 The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **JSON Payload**, accompanied by the ``Agid-JWT-Signature`` and ``Digest`` integrity headers.
