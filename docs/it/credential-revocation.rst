@@ -85,7 +85,7 @@ ancora temporalmente valido e contiene una firma valida del Fornitore di Attesta
   * revoca dell'Istanza del Wallet a cui è stato rilasciato l'Attestato Elettronico.
   * attività illegali dell'Utente segnalate da Organi Giudiziari o di Vigilanza.
 
-Nel caso del solo PID e IT-Wallet ID, i seguenti casi si aggiungono a quelli sopra elencati:
+Nel caso del solo PID e IT-Wallet ID, i seguenti casi si aggiungono a quelli sopra elencati.
 
   * rilevamento di una violazione dell'identità digitale rilasciata da un Gestore di Identità Digitale e utilizzata per autenticare l'Utente durante il rilascio del PID/IT-Wallet ID.
   * come risultato dell'ottenimento di un nuovo PID/IT-Wallet ID su una nuova Istanza del Wallet dallo stesso Fornitore di Wallet che ha fornito l'Istanza del Wallet contenente un PID/IT-Wallet ID precedentemente rilasciato.
