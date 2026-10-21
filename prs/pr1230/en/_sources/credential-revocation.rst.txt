@@ -86,7 +86,7 @@ still valid temporally and contains a valid Credential Issuer signature. Revocat
   * revocation of Wallet Instance to which the Digital Credential was issued.
   * illegal activities of the User reported by Judicial or Supervisory Bodies.
 
-In the case of PID and IT-Wallet ID only, the following cases are in addition to those listed above:
+In the case of PID and IT-Wallet ID only, the following cases are in addition to those listed above.
 
   * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID/IT-Wallet ID Issuance.
   * as a result of obtaining a new PID/IT-Wallet ID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID/IT-Wallet ID previously issued.
