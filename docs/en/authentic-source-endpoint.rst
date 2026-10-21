@@ -68,7 +68,7 @@ State changes of a Digital Credential at the Credential Issuer level DO NOT impl
 * **Expiry Hierarchy**: The technical expiry (``exp``) MUST NOT be later than the administrative expiry (``expiry_date``). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.
 * **Re-issuance**: If a Digital Credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.
 * **Metadata Verification**: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.
-* **Irreversibility**: After a transition to ``INVALID``, the Digital Credential cannot return to a ``VALID`` state. A new issuance is required for a new dataset. This applies to both explicit revocation and administrative expiry.
+* **Irreversibility**: When a Digital Credential moves to ``INVALID``, that Digital Credential cannot return to ``VALID``. Any new issuance uses a new dataset. When ``expiry_date`` passes, the Digital Credential keeps its current status.
 * **Signal Processing**: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.
 
 **Status Mapping and Case Logic:**
@@ -81,7 +81,7 @@ The Credential Issuer MUST update the Digital Credential ``status`` based on Sig
 * **Modification**: If a dataset is modified but remains ``VALID`` at the Authentic Source, the Credential Issuer—detecting the change via the ``last_updated`` field—assigns the technical status ``ATTRIBUTE_UPDATE`` to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.
 * **Administrative Expiry**:
     * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry. Technical ``exp`` follows the Expiry Hierarchy above and ``max_validity_days`` in :ref:`registry:Digital Credentials Catalog`. When ``expiry_date`` is present as an attribute, the Wallet Instance applies :ref:`functionalities:Status of Electronic Attestations`.
-    * **Scenario B (Signal-driven)**: If ``expiry_date`` is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to ``INVALID`` and send a Signal via Signal Hub. The Credential Issuer then revokes the Digital Credentials (status transition to ``INVALID``).
+    * When the Credential type has an administrative expiry, the Authentic Source MUST include ``expiry_date`` in the dataset and in ``metadataClaims``. The Credential Issuer MUST include that value as an attribute of the Digital Credential. The Authentic Source MUST NOT change the dataset status only because ``expiry_date`` has passed. The Authentic Source MUST NOT send a Signal only because ``expiry_date`` has passed. A later dataset status of ``INVALID`` or ``SUSPENDED`` is handled as **Revocation** or **Suspension**.
 
 Example of Authentic Source response
 """""""""""""""""""""""""""""""""""""

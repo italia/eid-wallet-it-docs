@@ -22,15 +22,6 @@ bck->bck: Generate ""nonce""
 bck-->app: ""nonce""
 deactivate bck
 
-<<<<<<< HEAD
-=======
-
-app->app: Generate ""client_data_hash"" as SHA256(""nonce"", [""key_pub_1"",..., ""key_pub_n""]) 
-
-app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash"", ""hardware_key_tag""), ""hardware_key_priv"")
-
-
->>>>>>> 581dd11f543763f5dd92014e49d66b378af3b308
 alt Keys bound to a Digital Credential other than the PID
 
 alt Android

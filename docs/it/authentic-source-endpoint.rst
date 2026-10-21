@@ -67,7 +67,7 @@ I cambiamenti di stato di un Attestato Elettronico a livello di Fornitore di Att
 * **Gerarchia delle Scadenze**: La scadenza tecnica (``exp``) NON DEVE essere successiva alla scadenza amministrativa (``expiry_date``). Per esempio, una patente di guida può essere amministrativamente valida per 10 anni, mentre l'Attestato Elettronico emesso può avere una scadenza tecnica di 1 anno.
 * **Riemissione**: Se un Attestato Elettronico raggiunge la sua scadenza tecnica (``exp``) ma il dataset è ancora amministrativamente valido, lo stato OpenAPI rimane ``VALID``, consentendo all'Attestato Elettronico di essere riemesso più volte entro l'arco temporale amministrativo.
 * **Verifica dei Metadati**: Il Fornitore di Attestati Elettronici DEVE verificare l'effettiva usabilità controllando sia i claim tecnici che le date amministrative.
-* **Irreversibilità**: Dopo una transizione a ``INVALID``, l'Attestato Elettronico non può tornare a uno stato ``VALID``. È richiesta una nuova emissione per un nuovo dataset. Questo si applica sia alla revoca esplicita che alla scadenza amministrativa.
+* **Irreversibilità**: Quando un Attestato Elettronico passa allo stato ``INVALID``, quell'Attestato Elettronico non può tornare allo stato ``VALID``. Ogni nuova emissione usa un nuovo dataset. Quando ``expiry_date`` è superata, l'Attestato Elettronico mantiene lo stato corrente.
 * **Elaborazione dei Segnali**: I Segnali DEVONO essere elaborati sequenzialmente. Se un Segnale invalida un Attestato Elettronico, i successivi Segnali di correzione per lo stesso oggetto vengono ignorati.
 
 **Mapping degli Stati e Logica dei Casi:**
@@ -80,7 +80,7 @@ Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attesta
 * **Modifica**: Se un dataset viene modificato ma rimane ``VALID`` presso la Fonte Autentica, il Fornitore di Attestati Elettronici — rilevando il cambiamento tramite il campo ``last_updated`` — assegna lo stato tecnico ``ATTRIBUTE_UPDATE`` all'Attestato Elettronico. Questo avvia un flusso di riemissione quando l'Istanza del Wallet controlla lo stato.
 * **Scadenza Amministrativa**:
     * **Scenario A (Basato sui metadati)**: Se ``expiry_date`` è stata condivisa con il Fornitore di Attestati Elettronici nei metadati, la Fonte Autentica NON invia Segnali alla scadenza. L'``exp`` tecnico segue la Gerarchia delle Scadenze sopra indicata e ``max_validity_days`` in :ref:`registry:Digital Credentials Catalog`. Quando ``expiry_date`` è presente come attributo, l'Istanza del Wallet applica :ref:`functionalities:Stato degli Attestati Elettronici`.
-    * **Scenario B (Basato sui segnali)**: Se ``expiry_date`` NON è presente nei metadati e il dataset scade, la Fonte Autentica DEVE impostare il suo stato su ``INVALID`` e inviare un Segnale via Signal Hub. Il Fornitore di Attestati Elettronici revoca quindi gli Attestati Elettronici (transizione di stato a ``INVALID``).
+    * Quando il tipo di Attestato Elettronico ha una scadenza amministrativa, la Fonte Autentica DEVE includere ``expiry_date`` nel dataset e in ``metadataClaims``. Il Fornitore di Attestati Elettronici DEVE includere tale valore come attributo dell'Attestato Elettronico. La Fonte Autentica NON DEVE modificare lo stato del dataset solo perché ``expiry_date`` è stata superata. La Fonte Autentica NON DEVE inviare un Segnale solo perché ``expiry_date`` è stata superata. Un successivo stato del dataset ``INVALID`` o ``SUSPENDED`` è trattato come **Revoca** o **Sospensione**.
 
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
