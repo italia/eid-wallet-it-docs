@@ -64,11 +64,26 @@ end
 
 else Keys bound to a PID
 
-app->app: ""keys_to_attest"" JWT: ""iat"", ""exp"", ""cnf"",\n""wscd_key_attestation"" for the Remote WSCD, without OEM material,\nsigned with ""key_priv""
+app->app: ""keys_to_attest"" JWT:\n""iat"", ""exp"", ""cnf"", ""wscd_key_attestation""\nfor the Remote WSCD, without OEM material
+app->wsca: Request signature of JWT\nwith the corresponding PID private key
+wsca-->app: Signature
+app->app: Assemble signed ""keys_to_attest"" JWT
 
 end
 
-app->app: Key Attestation Request JWT (""ka-request+jwt""):\n""iss"", ""iat"", ""exp"", ""nonce"", ""keys_to_attest"", ""hardware_signature"",\n""hardware_key_tag"", ""cnf"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""\nsigned with the private key of the first ""cnf""
+app->app: Key Attestation Request JWT (""ka-request+jwt""):\n""iss"", ""iat"", ""exp"", ""nonce"", ""keys_to_attest"", ""hardware_signature"",\n""hardware_key_tag"", ""cnf"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""
+
+alt Keys bound to a Digital Credential other than the PID
+
+app->app: Sign the Key Attestation Request JWT\nwith the private key corresponding to the first ""cnf""
+
+else Keys bound to a PID
+
+app->wsca: Request signature of the Key Attestation Request JWT\nwith the private key corresponding to the first ""cnf""
+wsca-->app: Signature
+app->app: Assemble the signed Key Attestation Request JWT
+
+end
 app->bck: Send ""assertion""
 activate bck
 
