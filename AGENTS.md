@@ -23,6 +23,7 @@ Never create a commit. Never run `git push` or any command that publishes commit
 ## Editing
 
 - Reuse defined terms (Wallet Instance, Credential Issuer, Relying Party, IT-Wallet ID, PID, and so on). Do not introduce synonyms.
+- When a sentence uses a normative keyword, name the subject before the keyword. Do not start the sentence with the keyword. Do not use a pronoun as that subject. Repeat the defined term, as in `The Wallet Instance MUST` and `La Wallet Unit DEVE`.
 - Write defined terms as they are defined in `defined-terms.rst`, including capitalization, in both editions. In English the defined term is Credential and its plural is Credentials. In Italian the defined term is Credenziale and its plural is Credenziali. Write that capital even mid-sentence. The ordinary phrases authentication credentials and credenziali di autenticazione are not that term. JSON member names and protocol parameter names stay as specified.
 - In `defined-terms.rst`, describe the term and stop there. Do not use a `:ref:`, a hyperlink, or any other reference to another part of the specification. Defined terms sit above the rest of the specification and must not depend on a section.
 - Example hostnames are `example.org` (or a subdomain of it). Do not use real production URLs in examples.

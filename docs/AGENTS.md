@@ -24,8 +24,12 @@ Do not copy the same requirement or explanation into several places. Put it in o
 
 State each requirement in one place. Do not give the same object conflicting keywords in different sections (a `MUST` in one place and a `SHOULD` or `MAY` for the same behavior in another). Do not put conflicting keywords in the same sentence. One sentence states one requirement.
 
+Name the subject before the normative keyword. Do not start a sentence with the keyword. Do not use a pronoun as that subject. Repeat the defined term.
+
 ```rst
 The Wallet Instance MUST reject an expired Credential.
+
+La Wallet Unit DEVE rifiutare una Credenziale scaduta.
 
 See :ref:`credential-revocation:Credential Status`.
 ```
