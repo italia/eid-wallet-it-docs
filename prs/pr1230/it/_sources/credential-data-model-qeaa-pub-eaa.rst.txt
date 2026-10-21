@@ -109,7 +109,7 @@ Validità Tecnica e Amministrativa
 ---------------------------------
 
 La validità tecnica è l'intervallo in cui l'attestato codificato e la sua firma sono validi.
-La validità amministrativa è l'intervallo in cui gli attributi attestati restano validi, ad esempio la scadenza di una licenza.
+La validità amministrativa è l'intervallo in cui gli attributi attestati restano amministrativamente validi, ad esempio la scadenza di una licenza.
 Il superamento di tale data non revoca l'Attestato Elettronico. La revoca non richiede che tale data sia stata superata. Vedere :ref:`authentic-source-endpoint:Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici`.
 
 In SD-JWT VC, la validità tecnica DEVE essere espressa da ``nbf`` e ``exp``, già richiesti per un EAA in :ref:`credential-data-model:Attributi Metadata degli Attestati Elettronici SD-JWT` ([`ETSI TS 119 472-1`_] EAA-5.2.7.1-01 e EAA-5.2.7.1-03).

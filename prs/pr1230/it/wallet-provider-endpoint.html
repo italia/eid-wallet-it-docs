@@ -1354,8 +1354,38 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </div>
 </section>
 </section>
+<section id="token-status-list-profilo-dell-attestato-di-wallet-unit">
+<h2><span class="section-number">12.1.6. </span>Token Status List (Profilo dell'Attestato di Wallet Unit)<a class="headerlink" href="#token-status-list-profilo-dell-attestato-di-wallet-unit" title="Link to this heading">¶</a></h2>
+<p>Questa sezione profila il meccanismo Token Status List (TSL) di <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> per le Wallet Unit Attestation. Una TSL convoglia lo stato corrente di molte Wallet Unit Attestation in un Status List Token (SLT) compatto e firmato.</p>
+<p>Lo SLT Provider DEVE essere il Fornitore di Wallet.</p>
+<p><strong>Status List</strong></p>
+<p>Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list</span></code> e una KA DEVE includere il proprio riferimento alla Status List in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list</span></code>. Ciascun riferimento alla Status List DEVE contenere <code class="docutils literal notranslate"><span class="pre">idx</span></code> e <code class="docutils literal notranslate"><span class="pre">uri</span></code>. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero JSON e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una stringa JSON. In entrambi i casi, <code class="docutils literal notranslate"><span class="pre">uri</span></code> DEVE essere un URI conforme a <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
+<p>Secondo questa specifica, una WIA o una KA può avere uno dei seguenti stati:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VALID</span></code>. La WIA o la KA è valida. Questo stato è rappresentato da <code class="docutils literal notranslate"><span class="pre">0x00</span></code> nella SLT.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVALID</span></code>. La WIA o la KA è revocata. Questo stato è rappresentato da <code class="docutils literal notranslate"><span class="pre">0x01</span></code> nella SLT.</p></li>
+</ul>
+</div></blockquote>
+<p>Di conseguenza, il Fornitore di Wallet DEVE impostare il parametro <code class="docutils literal notranslate"><span class="pre">bits</span></code> nell'oggetto <code class="docutils literal notranslate"><span class="pre">status_list</span></code> della SLT a <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in <a class="reference internal" href="credential-revocation.html#token-status-list-profilo-degli-attestati-elettronici"><span class="std std-ref">Token Status List (Profilo degli Attestati Elettronici)</span></a>.</p>
+<p><strong>Assegnazione dell'indice della Key Attestation</strong></p>
+<p>Secondo R_KA_1 di <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>, un Fornitore di Wallet DEVE scegliere una delle seguenti opzioni di assegnazione dell'indice per il claim <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code> di una KA. L'opzione selezionata determina se l'indice della status list è condiviso dalle KA dello stesso tipo di archiviazione delle chiavi oppure è specifico di una singola KA.</p>
+<ul class="simple">
+<li><p><strong>Indice condiviso per tipo.</strong> Tutte le KA che attestano chiavi archiviate nello stesso tipo di WSCD o di keystore DEVONO contenere lo stesso valore di indice in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code>. Di conseguenza, lo stato rappresentato da quell'indice è condiviso da tutte tali KA.</p></li>
+<li><p><strong>Indice per Key Attestation.</strong> Una KA che attesta chiavi archiviate in un singolo WSCD o keystore DEVE contenere in <code class="docutils literal notranslate"><span class="pre">key_storage_status.status</span></code> un valore di indice univoco rispetto a ogni altra KA. Di conseguenza, ciascuna KA ha una entry distinta nella status list e il suo stato di revoca può essere gestito in modo indipendente.</p></li>
+</ul>
+<p>Il requisito di valori <code class="docutils literal notranslate"><span class="pre">idx</span></code> distinti si applica solo all'opzione per Key Attestation. Le KA che usano un indice condiviso per tipo ne sono esenti.</p>
+<p><strong>Status List Token</strong></p>
+<p>Il Fornitore di Wallet DEVE agire sia come Status Issuer sia come Status Provider.
+Il Fornitore di Wallet DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro <code class="docutils literal notranslate"><span class="pre">client_status.status.status_list.uri</span></code> della WIA oppure nel membro <code class="docutils literal notranslate"><span class="pre">key_storage_status.status.status_list.uri</span></code> della KA.
+I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in <a class="reference internal" href="credential-revocation.html#token-status-list-profilo-degli-attestati-elettronici"><span class="std std-ref">Token Status List (Profilo degli Attestati Elettronici)</span></a>.</p>
+<p>Indipendentemente dal formato, il Fornitore di Wallet DEVE firmare la SLT con il Trust Anchor usato per validare le sue Wallet Instance Attestation, come specificato in <a class="reference internal" href="infrastructure-trust.html#revocation-trust-anchors"><span class="std std-ref">Revocation Trust Anchors</span></a>.</p>
+<p><strong>Considerazioni sulla privacy</strong></p>
+<p>Per impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation, i Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation e DEVONO pubblicare la SLT allo stesso <code class="docutils literal notranslate"><span class="pre">uri</span></code> per tali attestazioni. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a> e <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.</p>
+</section>
 <section id="catalogo-e-service-pdnd-del-fornitore-di-wallet">
-<h2><span class="section-number">12.1.6. </span>Catalogo e-Service PDND del Fornitore di Wallet<a class="headerlink" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1.7. </span>Catalogo e-Service PDND del Fornitore di Wallet<a class="headerlink" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
 <p>La morte dell'Utente porta alla revoca delle Istanze di Wallet dell'Utente e all'eliminazione dell'account dell'Utente presso il Fornitore di Wallet. Per questo motivo, il Fornitore di Wallet fornisce il seguente e-service tramite PDND.
 Un Provider di PID/IT-Wallet ID che è stato notificato dalla Fonte Autentica del PID/IT-Wallet ID della morte dell'Utente DEVE inviare una notifica ai Fornitori di Wallet utilizzando questo endpoint.
 Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica Morte Utente, DEVONO essere autenticate e autorizzate. Le richieste non autenticate DEVONO essere rifiutate. Una Notifica Morte Utente andata a buon fine DEVE portare alla revoca dell'Istanza del Wallet come per le altre revoche avviate dal Provider di PID/IT-Wallet ID (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_161</span></a>).</p>
@@ -1364,7 +1394,7 @@ Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica
 <p>Una Specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">qui</a></span>.</p>
 </div>
 <section id="notifica-morte-utente">
-<h3><span class="section-number">12.1.6.1. </span>Notifica Morte Utente<a class="headerlink" href="#notifica-morte-utente" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.7.1. </span>Notifica Morte Utente<a class="headerlink" href="#notifica-morte-utente" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1489,8 +1519,9 @@ Le chiamate al Catalogo e-Service PDND del Fornitore di Wallet, inclusa Notifica
 <li><a class="reference internal" href="#key-attestation-jwt">12.1.5.3. Key Attestation JWT</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet">12.1.6. Catalogo e-Service PDND del Fornitore di Wallet</a><ul>
-<li><a class="reference internal" href="#notifica-morte-utente">12.1.6.1. Notifica Morte Utente</a></li>
+<li><a class="reference internal" href="#token-status-list-profilo-dell-attestato-di-wallet-unit">12.1.6. Token Status List (Profilo dell'Attestato di Wallet Unit)</a></li>
+<li><a class="reference internal" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet">12.1.7. Catalogo e-Service PDND del Fornitore di Wallet</a><ul>
+<li><a class="reference internal" href="#notifica-morte-utente">12.1.7.1. Notifica Morte Utente</a></li>
 </ul>
 </li>
 </ul>

@@ -7,7 +7,7 @@ Flussi Dettagliati per l'Emissione di Attestati Elettronici
 Issuance Flow
 -------------
 
-Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_], come richiesto da [`CIR2024/2982`_], profilato da [`OPENID4VC-HAIP`_], e i seguenti standard/specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
+Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su [`OpenID4VCI`_], come richiesto da [`CIR2024/2982`_], profilato da [`OPENID4VC-HAIP`_], e controllato da [`ETSI TS 119 472-3`_] V1.1.1, clausole da 4.1 a 4.3, laddove ETSI specializza quelle specifiche. I seguenti standard e specifiche di riferimento principali DEVONO essere supportati in aggiunta a `OpenID4VCI`_:
 
   * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], come raccomandato nella Sezione 3 di [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], come raccomandato nella Sezione 5 di [`OpenID4VCI`_].
@@ -93,12 +93,20 @@ Il seguente diagramma mostra il *flusso di emissione*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-evaluation:Trust Evaluation Process`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``. L'emissione in batch si applica solo ai tipi di Attestato per i quali quei metadati sono dichiarati. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet DEVE eseguire i seguenti controlli di trust sul Credential Issuer prima di inviare la PAR Request:
+
+- **Selezione del percorso di trust.** Seleziona esattamente un percorso di trust secondo :ref:`trust-evaluation:Selection at Issuance` e DEVE elaborare solo i metadata autorevoli di quel percorso.
+- **EUDIW Authentication.** Sul percorso EUDIW DEVE recuperare i Credential Issuer Metadata firmati, validare la List of Trusted Entities dei Provider of WRPAC e il percorso di certificazione del WRPAC, e verificare la firma dei metadata secondo :ref:`trust-evaluation:List of Trusted Entities Validation`, :ref:`trust-evaluation:EUDIW Authentication` e :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
+- **EUDIW Authorization.** Sul percorso EUDIW, dopo un'Authentication riuscita, DEVE validare il WRPRC convogliato in ``issuer_info``, inclusi formato, algoritmo, firma, percorso di certificazione, validità temporale, stato e coerenza. DEVE quindi verificare il vincolo tra il Credential Issuer autenticato e i suoi dati di registrazione, l'entitlement per il ruolo di Credential Issuer atteso e la registrazione esatta, sensibile alle maiuscole, del tipo di Credenziale richiesto, secondo :ref:`trust-evaluation:EUDIW Authorization`.
+- **Authentication e Authorization nazionali.** Sul percorso Nazionale DEVE validare la Federation Trust Chain del Credential Issuer, autenticare l'artifact di protocollo firmato e consumare solo i metadata finali applicabili, secondo :ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Metadata Retrieval and Validation`. Dopo un'Authentication riuscita DEVE validare il Trust Mark di registrazione, inclusi firma, validità temporale e stato, e verificare l'entitlement e l'autorizzazione del Credential Issuer a emettere il tipo di Credenziale offerto, secondo :ref:`trust-evaluation:Authorization`.
+- **Gestione del fallimento.** Se l'Authentication o l'Authorization non ha successo, l'Istanza del Wallet applica :ref:`trust-evaluation:Failure Handling`.
+
+Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare il supporto dell'emissione in batch cercando l'oggetto ``batch_credential_issuance`` nei metadata selezionati, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``. L'emissione in batch si applica solo ai tipi di Credenziale per i quali quei metadata sono dichiarati. Il Credential Issuer DEVE dichiarare se il PID e l'IT-Wallet ID rientrano nel perimetro. Un tipo di Credenziale senza tale dichiarazione DEVE essere emesso come singola Credenziale (:ref:`CI_203 <credential-issuer-testcases>`).
 
 .. note::
-  **Controllo di trust:** L'Istanza del Wallet seleziona il Trust Framework come specificato in :ref:`trust-evaluation:Selection at Issuance` e verifica il Credential Issuer su quel percorso (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
+  **Controllo di trust sul percorso selezionato.** L'Istanza del Wallet DEVE completare i controlli di Authentication, Authorization e Metadata Retrieval and Validation del Credential Issuer sopra indicati prima di proseguire il flusso Authorization Code Grant (:ref:`WP_046 <wallet-credential-issuance-testcases>`).
 
-Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione definito sopra, l'Istanza del Wallet DEVE eseguire i seguenti controlli sui parametri della Credential Offer:
+Nel caso del flusso avviato dall'Issuer, oltre al Federation Check definito sopra, l'Istanza del Wallet DEVE eseguire i seguenti controlli sui parametri della Credential Offer:
 
   * Per ogni identificativo di Attestato Elettronico contenuto nell'array ``credential_configuration_ids``, verificare se è supportato dal Credential Issuer (:ref:`WP_050 <wallet-credential-issuance-testcases>`).
   * L'identificativo dell'Authorization Server (se presente) è contenuto nel parametro ``authorization_servers`` dei Metadata del Credential Issuer (:ref:`WP_049 <wallet-credential-issuance-testcases>`).
@@ -623,7 +631,7 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
-**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).
+**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato recuperando un Token di Status List valido se non è già disponibile, secondo il profilo in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)` e la procedura di verifica in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`, come previsto da :ref:`WP_069 <wallet-credential-issuance-testcases>`.
 L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x0F`` - ``ATTRIBUTE_UPDATE``.
 
 Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.

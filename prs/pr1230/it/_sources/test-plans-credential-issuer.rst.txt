@@ -880,19 +880,19 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_177
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Formato Crittografico Status List Token
-    - La Status List è fornita con successo all'interno del Status List Token firmato crittograficamente in formato JWT.
+    - La Status List è fornita con successo all'interno di un Status List Token firmato crittograficamente in formato JWT o CWT.
   * - CI_178
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Configurazione dei Bit della Status List per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici definisce il numero di bit, k (che può essere 1, 2, 4 o 8), che rappresenta la quantità di bit usata per descrivere lo stato di ogni Credenziale Digitale all'interno della Status List. Il Fornitore di Attestati Elettronici configura il numero di bit e, di conseguenza, ogni Credenziale può avere 2^k stati possibili.
+    - Il Fornitore di Attestati Elettronici imposta con successo il parametro ``bits`` a ``4``. Ciascun Attestato Elettronico è rappresentato da 4 bit, il che consente 16 valori di stato.
   * - CI_179
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Creazione di un Array di Byte per la Status List e Assegnazione della Posizione della Credenziale.
-    - Il Fornitore di Credenziali crea con successo array byte di dimensione = (quantità di Credenziali Digitali) * k / 8 o maggiore, con ogni byte corrispondente a 8/k stati a seconda del valore k (8 se k=1, 4 se k=2, 2 se k=4, o 1 se k=8), e assegna ogni Credenziale Digitale emessa a una posizione nell'array.
+    - Il Fornitore di Attestati Elettronici crea con successo un array di byte di dimensione pari a (numero di Attestati Elettronici) * 4 / 8 o maggiore, in cui ciascun byte corrisponde a due valori di stato da 4 bit, e assegna ciascun Attestato Elettronico emesso a una posizione nell'array.
   * - CI_180
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Impostazione dei valori di stato delle Credenziali digitali nella Status List in un array di byte
-    - Il Fornitore di Credenziali imposta con successo valori stato per tutte le Credenziali Digitali emesse all'interno dell'array byte, con ogni stato Credenziale Digitale identificato utilizzando un indice che mappa a bit specifici all'interno dell'array byte, conteggio indice da 0 a (quantità di Credenziale Digitale) - 1, bit contati dal bit meno significativo ("0") al bit più significativo ("7"), e tutti i bit dell'array byte a un particolare indice impostati a un valore stato.
+    - Il Fornitore di Attestati Elettronici imposta con successo i valori di stato di tutti gli Attestati Elettronici emessi nell'array di byte. Ciascuno stato è identificato da un indice che corrisponde a quattro bit nell'array. Gli indici contano da 0 a (numero di Attestati Elettronici) - 1. I bit sono contati dal bit meno significativo ("0") al bit più significativo ("7"). Ciascun valore di quattro bit è impostato allo stato corrispondente.
   * - CI_181
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Livello di Compressione Raccomandato per la Status List delle Credenziali Digitali
@@ -908,15 +908,15 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_183
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione dei Valori di Stato per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella sezione :ref:`credential-revocation:Token Status Lists`.
+    - Il Fornitore di Attestati Elettronici utilizza con successo i valori di stato definiti in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
   * - CI_184
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione degli stati opzionali di stato delle Credenziali digitali
-    - Il Fornitore di Attestati Elettronici aggiunge con successo altri stati oltre a quelli descritti sopra quando sceglie il numero di bit per trasmettere gli stati delle Credenziali Digitali emesse, con attenta considerazione per la divulgazione di informazioni alle Relying Party quando aggiunge molti stati diversi per il ciclo di vita della Credenziale Digitale.
+    - Il Fornitore di Attestati Elettronici definisce con successo stati aggiuntivi specifici dell'applicazione nell'intervallo supportato da ``bits``, considerando con attenzione le informazioni divulgate alle Relying Party sul ciclo di vita dell'Attestato Elettronico.
   * - CI_185
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Parametri del Token all’Endpoint
-    - Il Token Status List è disponibile con successo presso lo Status List Endpoint e contiene i parametri nella :ref:`tabella <table_status_list_endpoint_parameters>` corrispondente.
+    - Il Token di Status List è disponibile con successo presso lo Status List Endpoint ed è conforme a `TOKEN-STATUS-LIST`_ e ai profili specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
   * - CI_186
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Impostazione Consigliata di Scadenza Breve del Token Status List
@@ -924,7 +924,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_187
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Struttura Status List Codificata JSON
-    - La struttura della Status List codificata JSON è conforme alla :ref:`Tabella <table_status_list_structure>` corrispondente.
+    - La struttura della Status List codificata in JSON è conforme a `TOKEN-STATUS-LIST`_ e ai profili specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
   * - CI_188
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Archiviazione Locale delle Credenziali Digitali
@@ -936,11 +936,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_190
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Parametri dell’Oggetto JSON della Status List Claim
-    - Il valore del claim *status_list* è con successo un Oggetto JSON con i :ref:`parametri corrispondenti <table_status_list_parameters>`.
+    - Il valore del claim *status_list* è un oggetto JSON con i parametri definiti in `TOKEN-STATUS-LIST`_ e nei profili specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
   * - CI_191
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Risposta Riuscita dello Status List Endpoint
-    - Lo Status List Endpoint risponde con successo con il Token Status List utilizzando il codice stato HTTP nell'intervallo 2xx, con Fornitore Stato che utilizza content-type ``application/statuslist+jwt`` per il Token Status List in formato JWT nella risposta riuscita.
+    - Lo Status List Endpoint risponde con successo con un Token di Status List utilizzando un codice di stato HTTP nell'intervallo 2xx. Lo Status Provider utilizza ``application/statuslist+jwt`` per un Token di Status List JWT oppure ``application/statuslist+cwt`` per un Token di Status List CWT.
   * - CI_192
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Content-Encoding Gzip Risposta Status List HTTP

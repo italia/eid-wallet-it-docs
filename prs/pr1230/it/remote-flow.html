@@ -481,7 +481,12 @@ Di seguito è riportato un esempio non normativo per un Request Object by refere
 <li><p>Quando la Relying Party non supporta <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> con valore <code class="docutils literal notranslate"><span class="pre">post</span></code>, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_082</span></a>).</p></li>
 </ul>
 </div></blockquote>
-<p><strong>Passaggio 12 (URI Request Response)</strong>: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>) come estratto dall'Istanza del Wallet per <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_084</span></a>. L'Istanza del Wallet ottiene il Request Object firmato.</p>
+<p><strong>Passaggio 12 (URI Request Response)</strong>: La Relying Party emette il Request Object firmandolo con una delle sue chiavi private crittografiche.</p>
+<ul class="simple">
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, la Wallet Unit DEVE valutare la fiducia usando la Federation Entity Authentication e l'Authorization nazionale (<a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a> e <a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>), DEVE ottenere i metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> tramite <a class="reference internal" href="trust-evaluation.html#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a> e DEVE verificare la firma con la chiave identificata da <code class="docutils literal notranslate"><span class="pre">kid</span></code> in quei metadata.</p></li>
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, verifica l'hash del certificato foglia rispetto a <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, valida il percorso del WRPAC rispetto alla LoTE dei Provider of WRPAC e verifica la firma con la chiave del WRPAC, come definito in <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.</p></li>
+</ul>
+<p>L'Istanza del Wallet NON DEVE cambiare percorso né ripetere la verifica con evidenze dell'altro percorso (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_084</span></a>).</p>
 <blockquote>
 <div><p>Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -491,35 +496,31 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Passaggi 13-15 (Controlli WI)</strong>: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085–086</span></a>).</p>
+<p><strong>Passaggi 13-15 (Controlli WI)</strong>: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato, e controlla che <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">iss</span></code> e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085–086</span></a>).</p>
 <blockquote>
-<div><p>Un esempio non normativo di un Oggetto di Richiesta sotto forma di intestazione e payload decodificati è mostrato di seguito:</p>
+<div><p>Di seguito sono riportati esempi non normativi di Request Object sotto forma di intestazioni e payload decodificati. Ciascun esempio usa esattamente un Trust Framework.</p>
+<p><strong>Esempio EUDIW ``x509_hash``</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-authz-req+jwt&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9tjiCaivhWLVUJ3AxwGGz_9&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...awz&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...2w3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...sf2&quot;</span>
-<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;MIIDqjCCApKgAwIBAgIESLNEvDA ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;MIICwzCCAasCCQCKVy9eKjvi+jA ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;MIIDTDCCAjSgAwIBAgIJAPlnQYH...&quot;</span>
-<span class="w">  </span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;&lt;WRPAC-leaf-base64url&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;&lt;WRPAC-intermediate-base64url&gt;&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1770000000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_federation:https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x509_hash:AbCdEfGhIjKlMnOp&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;response_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;direct_post.jwt&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vp_token&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;dcql_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">     </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal id data&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal id data&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;trusted_authorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;etsi_tl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trusted-list.example.org&quot;</span><span class="p">]}],</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;urn:eudi:pid:it:1&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -528,10 +529,11 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;birthdate&quot;</span><span class="p">]}</span>
 <span class="w">        </span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mobile driving license&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mobile driving license&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;trusted_authorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;etsi_tl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trusted-list.example.org&quot;</span><span class="p">]}],</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;doctype_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span>
 <span class="w">        </span><span class="p">},</span>
@@ -543,36 +545,84 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;verifier_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registrar_dataset&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;srvDescription&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example service&quot;</span><span class="p">}],</span>
+<span class="w">        </span><span class="nt">&quot;registryURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registrar.example.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;intendedUseIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/use/presentation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity verification&quot;</span><span class="p">}],</span>
+<span class="w">        </span><span class="nt">&quot;policyURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/policy&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration_cert&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;WRPRC-base64url&gt;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;response_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org/response_uri&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qPmxiNFCR3QTm19POc8u&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;client_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enc&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20260202-abc123&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECDH-ES&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;encrypted_response_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ECDH-ES&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;encrypted_response_enc_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">]</span>
+<span class="w">      </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20260202-abc123&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECDH-ES&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;encrypted_response_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ECDH-ES&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;encrypted_response_enc_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x509_hash:AbCdEfGhIjKlMnOp&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672418465</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672422065</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p>
+<p><strong>Esempio nazionale ``openid_federation``</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-authz-req+jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;national-signing-key&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;entity-statement-base64url&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_federation:https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;response_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;direct_post.jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vp_token&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dcql_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-wallet id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;urn:it-wallet:eid:1&quot;</span><span class="p">]}}]},</span>
+<span class="w">  </span><span class="nt">&quot;response_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org/response_uri&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;client_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enc&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20260202-abc123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECDH-ES&quot;</span><span class="p">}]},</span>
+<span class="w">    </span><span class="nt">&quot;encrypted_response_enc_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_federation:https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672418465</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672422065</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div></blockquote>
-<p><strong>Passaggi 16-17 (Consenso dell'Utente)</strong>: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando e o deselezionando i dati personali da rilasciare (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_088</span></a>).</p>
+<ul class="simple">
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, l'Istanza del Wallet autentica il WRPAC, valida il WRPRC e vincola l'identità della Relying Party diretta o intermediata al WRPAC, al WRPRC e al membro <code class="docutils literal notranslate"><span class="pre">data.identifier</span></code> dell'elemento <code class="docutils literal notranslate"><span class="pre">verifier_info</span></code> il cui <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code>, secondo <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a> e <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>. Controlla l'entitlement di Service Provider e lo scope DCQL esatto e sensibile alle maiuscole.</p></li>
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, valida il Trust Mark di registrazione, i suoi entitlement e il suo scope esatto e sensibile alle maiuscole, e NON DEVE trattare il materiale WRPAC o WRPRC come evidenza di fiducia del Trust Framework Nazionale.</p></li>
+</ul>
+<p>Una valutazione fallita termina l'elaborazione e NON DEVE innescare un nuovo tentativo nell'ambito dell'altro framework (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p>
+<p><strong>Passaggi 16-17 (Consenso dell'Utente)</strong>: Prima della divulgazione, l'Istanza del Wallet DEVE mostrare la Relying Party e il Service verificati, l'uso previsto o lo scopo, e le Credenziali e gli attributi richiesti tratti dall'artifact di autorizzazione autorevole. Nel percorso Nazionale DEVE inoltre mostrare sia la Relying Party sia il Federation Intermediate, ove applicabile. In un flusso EUDIW intermediato DEVE mostrare la Relying Party intermediata e il Service e NON DEVE mostrare le denominazioni commerciali dell'Intermediario. L'Utente autorizza e acconsente alla presentazione selezionando i dati da rilasciare (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_088</span></a>).</p>
 <p><strong>Passaggio 18 (Authorization Response)</strong>: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST utilizzando modalità di risposta <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p>
 <blockquote>
 <div><p>Di seguito è riportato un esempio non normativo della Authorization Response:</p>

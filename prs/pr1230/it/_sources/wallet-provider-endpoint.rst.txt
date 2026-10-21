@@ -874,6 +874,46 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
     Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel claim ``key_storage_status.exp``.
 
 
+Token Status List (Profilo dell'Attestato di Wallet Unit)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LIST`_ per le Wallet Unit Attestation. Una TSL convoglia lo stato corrente di molte Wallet Unit Attestation in un Status List Token (SLT) compatto e firmato.
+
+Lo SLT Provider DEVE essere il Fornitore di Wallet.
+
+**Status List**
+
+Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in ``client_status.status.status_list`` e una KA DEVE includere il proprio riferimento alla Status List in ``key_storage_status.status.status_list``. Ciascun riferimento alla Status List DEVE contenere ``idx`` e ``uri``. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
+
+Secondo questa specifica, una WIA o una KA può avere uno dei seguenti stati:
+
+  - ``VALID``. La WIA o la KA è valida. Questo stato è rappresentato da ``0x00`` nella SLT.
+  - ``INVALID``. La WIA o la KA è revocata. Questo stato è rappresentato da ``0x01`` nella SLT.
+
+Di conseguenza, il Fornitore di Wallet DEVE impostare il parametro ``bits`` nell'oggetto ``status_list`` della SLT a ``1``.
+
+L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
+
+**Assegnazione dell'indice della Key Attestation**
+
+Secondo R_KA_1 di `CIR2026/1731`_, un Fornitore di Wallet DEVE scegliere una delle seguenti opzioni di assegnazione dell'indice per il claim ``key_storage_status.status`` di una KA. L'opzione selezionata determina se l'indice della status list è condiviso dalle KA dello stesso tipo di archiviazione delle chiavi oppure è specifico di una singola KA.
+
+* **Indice condiviso per tipo.** Tutte le KA che attestano chiavi archiviate nello stesso tipo di WSCD o di keystore DEVONO contenere lo stesso valore di indice in ``key_storage_status.status``. Di conseguenza, lo stato rappresentato da quell'indice è condiviso da tutte tali KA.
+* **Indice per Key Attestation.** Una KA che attesta chiavi archiviate in un singolo WSCD o keystore DEVE contenere in ``key_storage_status.status`` un valore di indice univoco rispetto a ogni altra KA. Di conseguenza, ciascuna KA ha una entry distinta nella status list e il suo stato di revoca può essere gestito in modo indipendente.
+
+Il requisito di valori ``idx`` distinti si applica solo all'opzione per Key Attestation. Le KA che usano un indice condiviso per tipo ne sono esenti.
+
+**Status List Token**
+
+Il Fornitore di Wallet DEVE agire sia come Status Issuer sia come Status Provider.
+Il Fornitore di Wallet DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``client_status.status.status_list.uri`` della WIA oppure nel membro ``key_storage_status.status.status_list.uri`` della KA.
+I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
+
+Indipendentemente dal formato, il Fornitore di Wallet DEVE firmare la SLT con il Trust Anchor usato per validare le sue Wallet Instance Attestation, come specificato in :ref:`infrastructure-trust:Revocation Trust Anchors`.
+
+**Considerazioni sulla privacy**
+
+Per impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation, i Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation e DEVONO pubblicare la SLT allo stesso ``uri`` per tali attestazioni. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a `EUDI-TS 3`_ e `CIR2026/1731`_. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.
 
 
 Catalogo e-Service PDND del Fornitore di Wallet

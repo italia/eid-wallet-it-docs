@@ -370,7 +370,7 @@ Lo stesso Credential Issuer PUÒ essere valutato nell'ambito di framework divers
 <td><p>La Wallet Unit DEVE usare il Trust Framework EUDIW.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Emissione, Credential Issuer</p></td>
-<td><p>Il Credential Issuer è un'entità nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+<td><p>Il Credential Issuer è un'entità nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato di ambito nazionale.
 L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>).</p></td>
 <td><p>La Wallet Unit DEVE usare il Trust Framework Nazionale.</p></td>
 </tr>
@@ -383,7 +383,7 @@ L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference intern
 <td><p>Il Credential Issuer DEVE validare la Wallet Instance Attestation attraverso la Wallet Providers List of Trusted Entities.</p></td>
 </tr>
 <tr class="row-even"><td><p>Emissione, Wallet Instance Attestation</p></td>
-<td><p>La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+<td><p>La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato di ambito nazionale.
 L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>).</p></td>
 <td><p>Il Credential Issuer PUÒ validarla attraverso il Trust Framework Nazionale (vedere <a class="reference internal" href="#wallet-unit-authentication"><span class="std std-ref">Wallet Unit Authentication</span></a>).</p></td>
 </tr>
@@ -392,7 +392,7 @@ L'IT-Wallet ID è un Attestato di questo tipo (vedere <a class="reference intern
 <td><p>La Relying Party DEVE usare il Trust Framework EUDIW per l'intera richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>Presentazione</p></td>
-<td><p>La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato ad audience nazionale.</p></td>
+<td><p>La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato di ambito nazionale.</p></td>
 <td><p>La Relying Party DEVE usare il Trust Framework Nazionale.</p></td>
 </tr>
 </tbody>
@@ -884,15 +884,10 @@ Le implementazioni DEVONO supportare sia certificati Trust Anchor self-signed si
 È invocato durante i flussi di emissione e presentazione per validare la firma sull'Attestation.</p>
 <p>Il processo DEVE essere strutturato come segue:</p>
 <ul class="simple">
-<li><p>Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, allora si applica uno dei seguenti casi:</p>
-<ul>
-<li><p><strong>Base Signature Validation</strong>: Eseguita quando l'Attestation contiene il Sign/Seal Certificate e la catena di fiducia X.509 associata, e il Trust Anchor è presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).</p></li>
-<li><p><strong>Fallback Signature Validation</strong>: Eseguita quando l'Attestation non contiene il Sign/Seal Certificate, che è invece attestato direttamente come Trust Anchor nella LoTE (solo per PID o WIA).</p></li>
-</ul>
-</li>
+<li><p>Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, la procedura di validazione della firma seguente DEVE essere eseguita usando il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation, con il Trust Anchor presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).</p></li>
 <li><p>Se l'Attestation la cui firma è in verifica è una EAA non qualificata, allora le informazioni relative alla trust evaluation sono governate dal Rulebook corrispondente.</p></li>
 </ul>
-<p>La <strong>Base Signature Validation</strong> è strutturata come segue:</p>
+<p>La procedura di validazione della firma è strutturata come segue:</p>
 <p><strong>Input</strong></p>
 <ul class="simple">
 <li><p>L'Attestation ricevuta e la catena di certificati del firmatario ivi contenuta.</p></li>
@@ -932,36 +927,11 @@ Le implementazioni DEVONO supportare sia certificati Trust Anchor self-signed si
 <p class="admonition-title">Nota</p>
 <p>In ciascuno dei casi precedenti, per un'Attestation in formato mdoc, il Mobile Security Object reca il certificato Document Signer nell'header <code class="docutils literal notranslate"><span class="pre">x5chain</span></code>, come definito in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]. Per un'Attestation in formato SD-JWT VC, la catena di certificati dell'issuer è recata nell'header <code class="docutils literal notranslate"><span class="pre">x5c</span></code> della firma JOSE.</p>
 </div>
-<p>Se la <strong>Base Signature Validation</strong> risulta in un fallimento, l'Entità che valida l'Attestation DEVE eseguire la <strong>Fallback Signature Validation</strong> come segue:</p>
-<div class="admonition warning">
-<p class="admonition-title">Avvertimento</p>
-<p>Questo processo si applica solo ai tipi di Attestation <strong>PID</strong> e <strong>WIA</strong>.</p>
-</div>
-<p><strong>Input</strong></p>
-<ul class="simple">
-<li><p>L'Attestation ricevuta.</p></li>
-<li><p>Il tipo di artifact (cioè, il tipo di Attestato Elettronico o Wallet Instance Attestation) usato per selezionare la List of Trusted Entities applicabile.</p></li>
-</ul>
-<p><strong>Esito</strong></p>
-<ul class="simple">
-<li><p>L'Attestation validata, oppure un fallimento di validazione.</p></li>
-</ul>
-<p><strong>Processo</strong></p>
-<ol class="arabic simple">
-<li><p>Recuperare la List of Trusted Entities applicabile in base al tipo di Attestation, validarla come definito in <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>, ed estrarre il Trust Anchor appropriato dal campo <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> dell'Entità rilevante.</p></li>
-<li><p>Verificare la firma dell'Attestation direttamente usando il Trust Anchor validato che agisce come certificato firmatario.</p></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Avvertimento</p>
-<p>Sebbene la specifica IT Wallet richieda che i certificati Trust Anchor notificati alla Commissione e inclusi nella LoTE siano <em>diversi</em> dai Sign/Seal Certificate delle Entità correlate, la Clausola 4.2 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>] consente ai Trust Anchor della LoTE di servire direttamente come Sign/Seal Certificate.
-In questo caso, tali certificati NON DEVONO essere inclusi nell'Attestation, costringendo il processo di verifica ad attenersi alla procedura di <strong>Fallback Signature Validation</strong>.
-Per assicurare l'interoperabilità, le implementazioni di EUDIW Attestation Signature Validation DEVONO supportare entrambi i meccanismi di validazione.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Quando si verificano firme o sigilli realizzati da chiavi storiche, si applica lo stesso processo con la seguente differenza: il Trust Anchor è recuperato dall'elemento <cite>ServiceHistory.ServiceDigitalIdentity</cite> invece che dall'elemento <cite>ServiceInformation.ServiceDigitalIdentity</cite>.</p>
 </div>
-<p>Se sia la <strong>Base Signature Validation</strong> sia la <strong>Fallback Signature Validation</strong> falliscono, l'Attestation NON DEVE essere considerata emessa da un'Entità fidata.</p>
+<p>Se la validazione della firma fallisce, l'Attestation NON DEVE essere considerata emessa da un'Entità fidata.</p>
 </section>
 <section id="eudiw-authentication">
 <h3><span class="section-number">6.2.5. </span>EUDIW Authentication<a class="headerlink" href="#eudiw-authentication" title="Link to this heading">¶</a></h3>
