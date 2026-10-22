@@ -34,6 +34,22 @@ La Wallet Unit DEVE rifiutare una Credenziale scaduta.
 See :ref:`credential-revocation:Credential Status`.
 ```
 
+## Coherence of a change
+
+Before adding or editing a normative sentence, apply the checks below in both `docs/en` and `docs/it`.
+
+Search both editions for the same behavior, including `architecture-overview.rst` and `functionalities.rst`. If the requirement already exists, point to it with `:ref:` and do not restate it. Those two chapters describe the system and cite the normative section. They are not a second place for the requirement.
+
+The English sentence and the Italian sentence state the same behavior. Pair the keywords: `MUST`/`DEVE` and `DEVONO`, `MUST NOT`/`NON DEVE` and `NON DEVONO`, `SHOULD`/`DOVREBBE` and `DOVREBBERO`, `SHOULD NOT`/`NON DOVREBBE` and `NON DOVREBBERO`, `MAY`/`PUÒ` and `POSSONO`, `REQUIRED`/`OBBLIGATORIO`, `RECOMMENDED`/`RACCOMANDATO`, `NOT RECOMMENDED`/`NON RACCOMANDATO`, `OPTIONAL`/`OPZIONALE`. Do not update one edition and leave the other with a different meaning or a different strength.
+
+If the same behavior already uses two different strengths, do not pick one to make them match. Name both places and ask which formulation remains. Do not change a keyword's strength unless asked.
+
+The test states the requirement and does not add a behavior the specification does not state. A `:ref:` to a test identifier must resolve to a row that exists. When the requirement changes, update the purpose, description, and expected result of every test that section cites and of every test that covers the same behavior, in both languages.
+
+A section marked as a draft or work in progress is not a source of requirements for other sections or for tests.
+
+When a sentence you are already editing can be read as two requirements, or its subject is a pronoun, split it and name the defined term. Leave neighboring normative sentences as they are.
+
 ## Test plans
 
 When the requirements of a section change, update the test cases that section cites, and any other test case that covers the same behavior, in the same change and in both languages. The test states the current requirement. A test that no longer applies keeps its identifier. Empty its purpose, description, and expected result with `Voided` in English and `Annullato` in Italian. Do not delete the row, and do not reuse the identifier.

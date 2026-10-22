@@ -152,7 +152,8 @@ exclude_patterns = ['.DS_Store', 'README', 'README.md', '.venv*', '.env*']
 # Note: sections of these files are labelled under the *including* page, i.e.
 # `infrastructure-trust:<Section>` / `trust-evaluation:<Section>`.
 exclude_patterns += [
-    # included by introduction.rst
+    # included by introduction.rst (and, for HTML, by index.rst)
+    'introduction-lead.rst',
     'how-to-read-spec.rst',
     # included by infrastructure-trust.rst
     'trust-pki-architecture.rst',
