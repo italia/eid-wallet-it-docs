@@ -79,8 +79,8 @@ Sono popolati dai processi di onboarding descritti in :ref:`onboarding-system:On
 
 Le Entità che **forniscono** le informazioni sono le seguenti:
 
-  - l'Attestation Scheme Provider, per la definizione di un tipo di Credenziale e del suo schema;
-  - le Fonti Autentiche, per le loro capacità dati dichiarate;
+  - l'Attestation Scheme Provider, per la definizione di un tipo di Credenziale e del suo schema.
+  - le Fonti Autentiche, per le loro capacità dati dichiarate.
   - le Wallet-Relying Party e i Fornitori di Wallet, per i loro dati di registrazione.
 
 Questi ruoli sono descritti in :ref:`onboarding-system:System Actors and Roles`.
