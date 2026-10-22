@@ -369,8 +369,8 @@
 </tr>
 <tr class="row-even"><td><p>FA_007</p></td>
 <td><p>Security</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">exp</span></code> validation tolerance</p></td>
-<td><p>Validation rejects Entity Configuration if <code class="docutils literal notranslate"><span class="pre">exp</span></code> is in the past; a maximum clock skew of 120 seconds MAY be applied when comparing current time to <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp</span></code> validation</p></td>
+<td><p>Validation rejects Entity Configuration if <code class="docutils literal notranslate"><span class="pre">exp</span></code> is in the past.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FA_008</p></td>
 <td><p>Security</p></td>
@@ -380,7 +380,7 @@
 <tr class="row-even"><td><p>FA_009</p></td>
 <td><p>Interoperability</p></td>
 <td><p>Subordinate Statement schema</p></td>
-<td><p>Subordinate Statement contains the subordinate's public keys (directly or by reference) and applicable metadata policies or metadata, conforming to draft-43 structure.</p></td>
+<td><p>Subordinate Statement contains the subordinate's public keys (directly or by reference) and applicable metadata policies or metadata, conforming to OpenID Federation 1.0 (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>FA_010</p></td>
 <td><p>Discovery</p></td>
@@ -400,7 +400,7 @@
 <tr class="row-even"><td><p>FA_013</p></td>
 <td><p>Security</p></td>
 <td><p>Key rotation propagation</p></td>
-<td><p>After rotating keys, <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> and <code class="docutils literal notranslate"><span class="pre">/historical-jwks</span></code> are updated atomically or within a documented maximum propagation window. Verification with the new key succeeds, and the old key appears in historical.</p></td>
+<td><p>After rotating keys, <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> and <code class="docutils literal notranslate"><span class="pre">/historical-jwks</span></code> are updated together. Verification with the new key succeeds, and the old key appears in historical.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FA_014</p></td>
 <td><p>Security</p></td>
@@ -435,7 +435,7 @@
 <tr class="row-odd"><td><p>FA_020</p></td>
 <td><p>Security</p></td>
 <td><p>Metadata policy application (if used)</p></td>
-<td><p>When metadata policies are used in Subordinate Statements, the resulting effective metadata computed from policy + source metadata conforms to draft-43 rules; conflicts are resolved deterministically.</p></td>
+<td><p>When metadata policies are used in Subordinate Statements, the resulting effective metadata computed from policy + source metadata conforms to OpenID Federation 1.0 (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>); conflicts are resolved deterministically.</p></td>
 </tr>
 </tbody>
 </table>

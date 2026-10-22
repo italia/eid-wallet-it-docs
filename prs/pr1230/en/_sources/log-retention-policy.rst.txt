@@ -13,7 +13,7 @@ Logs related to Wallet data exchange activities (e.g., accesses and transactions
 
 Organizational Entities are responsible for log retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, Authentic Sources, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange processes and logs.
 
-Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, **the maximum retention period for data logs is 12 months**. Logs MUST be securely stored to ensure integrity and immutability.
+Unless a legal obligation requires otherwise, exchange logs MUST NOT be retained for more than 12 months. Logs MUST be securely stored to ensure integrity and immutability.
 
 ISO/IEC 27001 Logging General Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,7 +36,7 @@ Organizational Entities MUST implement appropriate technical and organizational 
 Wallet Provider Log Retention Policy
 ------------------------------------
 
-Information related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
+Information related to the registration and management of Wallet Instances MAY be retained for up to 12 months after the deactivation or revocation of the Wallet or the associated User account, unless a legal obligation requires longer retention.
 
 
 Credential Issuer Log Retention Policy
@@ -50,7 +50,7 @@ Authentic Source Log Retention Policy
 
 Authentic Sources are Organizational Entities for the purposes of this chapter: relevant logs cover accesses and transactions on endpoints and services used to provide Credential Issuers with the official data used to generate Electronic Attestations of Attributes in the IT-Wallet System, including—where applicable—e-services exposed via the National Digital Data Platform (`PDND`_).
 
-Unless specific legal obligations or sector-specific regulations require otherwise, the **12-month** maximum retention period stated in the introductory section applies to these logs. GDPR requirements on minimization, storage limitation, and lawful basis for processing remain applicable in all cases.
+Unless a legal obligation or a sector-specific regulation requires otherwise, these logs MUST NOT be retained for more than 12 months. GDPR requirements on minimization, storage limitation, and lawful basis for processing remain applicable in all cases.
 
 
 Relying Party Log Retention Policy

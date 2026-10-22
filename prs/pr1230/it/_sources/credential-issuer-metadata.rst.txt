@@ -129,7 +129,7 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
             - **path**: OBBLIGATORIO. Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
             - **mandatory**: OBBLIGATORIO. Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
             - **sd**: OBBLIGATORIO. Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
-            - **display**: CONDIZIONALE. OBBLIGATORIO solo per i *claims* che vengono mostrati all'Utente. Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
+            - **display**: OBBLIGATORIO solo per i *claims* che vengono mostrati all'Utente. Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
 
                 - **name**: OBBLIGATORIO. Nome dell'attributo in formato stringa.
                 - **label**: OPZIONALE. Nome dell'attributo in formato stringa.
@@ -137,8 +137,8 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
                 - **locale**: OBBLIGATORIO. Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
         - **schema_id**: OBBLIGATORIO. L'``id`` dello ``SchemaMeta`` nel :ref:`registry:Catalogo delle Attestazioni`.
-        - **authentic_sources**: CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
-        - **parent_credentials**: CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
+        - **authentic_sources**: È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
+        - **parent_credentials**: È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
   * - **issuer_info**
     - OBBLIGATORIO per i Fornitori di PID e i Fornitori di Attestati Elettronici nel Trust Framework EUDIW. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_]. Ciascun oggetto DEVE contenere:
 

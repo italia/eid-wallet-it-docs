@@ -59,7 +59,7 @@ This specification is based on the following set of requirements:
     - R2, R4, R5
   * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Annex 2 - Security Patterns* [`MODI`_]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.
     - R1, R2
-  * - **[INTEGRITY_REST_02]** REST Payload Integrity in PDND (*Annex 2 - Security Patterns* [`MODI`_]): CONDITIONAL. It ensures the integrity of the payload of the REST Consumer request and the REST Provider response, within the PDND Infrastructure. It is REQUIRED whenever the request/response carries a payload.
+  * - **[INTEGRITY_REST_02]** REST Payload Integrity in PDND (*Annex 2 - Security Patterns* [`MODI`_]): It ensures the integrity of the payload of the REST Consumer request and the REST Provider response, within the PDND Infrastructure. It is REQUIRED whenever the request/response carries a payload.
     - R2, R4
   * - **[AUDIT_REST_02]** Submission of audit data within the REST request with correlation (*Annex 2 - Security Patterns* [`MODI`_]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.
     - R3, R4

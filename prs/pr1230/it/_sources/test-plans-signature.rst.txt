@@ -78,9 +78,9 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - Assicurarsi che COSE/JOSE non siano sostituiti in contesti diversi.
     - COSE/JOSE deve essere validato per l'uso specifico del contesto.
   * - ATT-013
-    - Issued At Validation
-    - Verificare che il parametro `issued at` sia impostato all'ora corrente, permettendo un periodo di grazia non superiore a 120 secondi.
-    - Il valore `issued at` deve essere entro 120 secondi dall'ora corrente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - ATT-014
     - Expiration Validation
     - Assicurarsi che il tempo di `expiration` sia maggiore del tempo `issued at`.

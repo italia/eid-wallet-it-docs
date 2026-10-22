@@ -1024,7 +1024,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the organization's logo image.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.logo_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's logo image.
@@ -1033,7 +1033,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the organization's extended logo image.
    * - **organization_info.logo_extended_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.logo_extended_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's extended logo image.
@@ -1081,10 +1081,10 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Indicates if the Authentic Source supports deferred data provision.
    * - **data_capabilities[].data_provision.max_response_time_minutes**
      - integer
-     - CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if ``deferred_flow`` is ``true``.
+     - Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if ``deferred_flow`` is ``true``.
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
-     - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+     - Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
@@ -1099,7 +1099,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the logo image related to the data.
    * - **data_capabilities[].logo_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **data_capabilities[].logo_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's logo image.
@@ -1586,7 +1586,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **purposes**
     - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - CONDITIONAL. It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
+    - It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
 
        * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
        * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
@@ -1605,16 +1605,16 @@ Each element of the ``credentials`` array contains at least the following inform
           * **immediate_flow**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
           * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
           * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
-          * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
-          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
+          * **max_deferred_issuance_time_minutes**: Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
+          * **notification_methods**: String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
 
   * - **authentic_sources**
-    - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
+    - It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 
       * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
       * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
   * - **parent_credentials**
-    - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
+    - It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
   * - **trustedAuthorities**
     - REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:
 

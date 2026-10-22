@@ -129,7 +129,7 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **path**: REQUIRED. It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: REQUIRED. Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
             - **sd**: REQUIRED.String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
-            - **display**: CONDITIONAL. REQUIRED only for the claims that are shown to the User. Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
+            - **display**: REQUIRED only for the claims that are shown to the User. Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
 
                 - **name**: REQUIRED. String value of a display name for the claim.
                 - **label**: OPTIONAL. String value of a display name for the claim.
@@ -141,8 +141,8 @@ The *openid_credential_issuer* metadata contains the following claims.
            - **embedded_disclosure_policy**: OPTIONAL. Object carrying the EDP for this Credential configuration. It MUST contain a ``policy_uri`` and MAY contain the complete policy data in ``policy_data``. The Wallet Unit MAY receive only ``policy_uri`` when the exact policy identified by that URI is already preloaded; otherwise the URI and policy data MUST be provided together. The EDP MUST NOT be present for a PID. The Wallet Unit MUST associate the resolved EDP with every issued EAA and MUST reject an unresolved URI.
 
         - **schema_id**: REQUIRED. The ``id`` of the ``SchemaMeta`` in the :ref:`registry:Catalogue of Attestations`.
-        - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
-        - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
+        - **authentic_sources**: It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
+        - **parent_credentials**: It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **issuer_info**
     - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Top-level array of signed-payload objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each element MUST contain:
       

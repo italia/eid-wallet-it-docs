@@ -58,7 +58,7 @@ Questa specifica si basa sul seguente insieme di requisiti:
     - R2, R4, R5
   * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OBBLIGATORIO. Protegge la comunicazione tra il Fruitore e l'Erogatore garantendo riservatezza, integrità, identificazione dell'Erogatore e mitigazione contro attacchi di replay e spoofing.
     - R1, R2
-  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.
+  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.
     - R2, R4
   * - **[AUDIT_REST_02]** Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.
     - R3, R4

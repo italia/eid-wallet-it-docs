@@ -2572,7 +2572,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+<td><p>Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.logo_alt_text_l10n_id</strong></p></td>
 <td><p>string</p></td>
@@ -2584,7 +2584,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+<td><p>Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text_l10n_id</strong></p></td>
 <td><p>string</p></td>
@@ -2648,11 +2648,11 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
 <td><p>integer</p></td>
-<td><p>CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+<td><p>Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+<td><p>Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].user_information_l10n_id</strong></p></td>
 <td><p>string</p></td>
@@ -2672,7 +2672,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+<td><p>Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].logo_alt_text_l10n_id</strong></p></td>
 <td><p>string</p></td>
@@ -3579,7 +3579,7 @@ The collection payload contains the following parameters.</p>
 <td><p>REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AGE_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuers</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED only if <strong>state</strong> is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:</p>
+<td><p>It is REQUIRED only if <strong>state</strong> is <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:</p>
 <blockquote>
 <div><ul>
 <li><p><strong>entity_id</strong>: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter of the Credential Issuer Entity Configuration.</p></li>
@@ -3600,8 +3600,8 @@ The collection payload contains the following parameters.</p>
 <li><p><strong>immediate_flow</strong>: REQUIRED. Boolean. Indicates if the immediate issuance is supported.</p></li>
 <li><p><strong>wallet_initiated</strong>: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.</p></li>
 <li><p><strong>issuer_initiated</strong>: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).</p></li>
-<li><p><strong>max_deferred_issuance_time_minutes</strong>: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-<li><p><strong>notification_methods</strong>: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;polling&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>max_deferred_issuance_time_minutes</strong>: Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>notification_methods</strong>: String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;polling&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -3610,7 +3610,7 @@ The collection payload contains the following parameters.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
+<td><p>It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: String identifier referencing the Authentic Source entity_id as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
 <li><p><strong>dataset_id</strong>: String identifier of the specific data capability/dataset used by the Issuer from the AS.</p></li>
@@ -3618,7 +3618,7 @@ The collection payload contains the following parameters.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>parent_credentials</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> is absent. Array of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.</p></td>
+<td><p>It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> is absent. Array of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trustedAuthorities</strong></p></td>
 <td><p>REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:</p>

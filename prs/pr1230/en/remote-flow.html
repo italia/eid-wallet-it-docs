@@ -1081,10 +1081,10 @@ The <code class="docutils literal notranslate"><span class="pre">vp_token</span>
 <td><p>REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>transaction_data_hashes</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED when the request includes <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> item.</p></td>
+<td><p>REQUIRED when the request includes <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> item.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED only when the corresponding <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> object includes <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. String naming the hash algorithm actually used to compute <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. If that parameter was not provided, the hash function MUST be <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
+<td><p>REQUIRED only when the corresponding <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> object includes <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. String naming the hash algorithm actually used to compute <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. If that parameter was not provided, the hash function MUST be <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

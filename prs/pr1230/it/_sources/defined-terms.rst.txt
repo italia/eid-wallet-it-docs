@@ -591,6 +591,5 @@ Nel testo italiano le forme seguenti, interamente in maiuscolo, hanno lo stesso 
   - NON DOVREBBE, NON DOVREBBERO e NON RACCOMANDATO hanno il significato di SHOULD NOT o NOT RECOMMENDED.
   - OBBLIGATORIO ha il significato di REQUIRED.
   - OPZIONALE ha il significato di OPTIONAL.
-  - CONDIZIONALE ha il significato di CONDITIONAL.
 
 

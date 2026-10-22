@@ -1069,10 +1069,10 @@ L'Istanza del Wallet DOVREBBE preferire <code class="docutils literal notranslat
 <td><p>OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le <em>selective disclosures</em> selezionate dall'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>transaction_data_hashes</strong></p></td>
-<td><p>CONDIZIONALE. OBBLIGATORIO quando la richiesta include <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>.</p></td>
+<td><p>OBBLIGATORIO quando la richiesta include <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>CONDIZIONALE. OBBLIGATORIO solo quando l’oggetto <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> corrispondente include <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se tale parametro non è stato fornito, la funzione di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
+<td><p>OBBLIGATORIO solo quando l’oggetto <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> corrispondente include <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se tale parametro non è stato fornito, la funzione di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

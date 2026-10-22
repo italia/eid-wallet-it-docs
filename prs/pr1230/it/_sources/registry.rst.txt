@@ -1024,7 +1024,7 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
      - OPZIONALE. URL dell'immagine del logo dell'organizzazione.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **organization_info.logo_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
@@ -1033,7 +1033,7 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
      - OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.
    * - **organization_info.logo_extended_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica di integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo esteso per la verifica di integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **organization_info.logo_extended_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.
@@ -1081,10 +1081,10 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
      - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.
    * - **data_capabilities[].data_provision.max_response_time_minutes**
      - integer
-     - CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+     - Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
-     - CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, quali ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+     - Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, quali ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPZIONALE. Chiave di localizzazione che referenzia una stringa formattata in Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (ad es., ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo in chiaro o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere veicolata tramite questa chiave.
@@ -1099,7 +1099,7 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
      - OPZIONALE. URL dell'immagine del logo relativa ai dati.
    * - **data_capabilities[].logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **data_capabilities[].logo_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
@@ -1195,7 +1195,7 @@ Un ``rulebookURI`` o un ``schemaURIs[].uri`` PUÒ recare un suffisso ``#integrit
 Il ``frameworkType`` ``openid_federation`` DEVE essere usato solo per un EAA non qualificato.
 ``isLoTE`` DEVE seguire la Section 4.3.3 di [`EUDI-TS 11`_].
 L'Attestation Rulebook di una QEAA o di una PuB-EAA DEVE essere pubblicato come richiesto dalla Section 4.2 di [`EUDI-TS 11`_].
-La pubblicazione del rulebook di un EAA è RECOMMENDED.
+La pubblicazione del rulebook di un EAA è RACCOMANDATO.
 
 List of schemas
 """""""""""""""
@@ -1582,7 +1582,7 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
   * - **purposes**
     - OBBLIGATORIO. Array di ID di scopo di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, che definiscono contesti di utilizzo specifici e i claim richiesti per ciascun purpose (ad es., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - CONDIZIONALE. È OBBLIGATORIO solo se **state** è ``ACTIVE``. Array di informazioni rilevanti sui Credential Issuer autorizzati, compresi dati amministrativi e tecnici quali il nome dell'organizzazione, un riferimento al documento di specifica API e i meccanismi di emissione supportati. Ciascun elemento dell'array contiene:
+    - È OBBLIGATORIO solo se **state** è ``ACTIVE``. Array di informazioni rilevanti sui Credential Issuer autorizzati, compresi dati amministrativi e tecnici quali il nome dell'organizzazione, un riferimento al documento di specifica API e i meccanismi di emissione supportati. Ciascun elemento dell'array contiene:
 
        * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE coincidere con il valore contenuto nel parametro ``iss`` dell'Entity Configuration del Credential Issuer.
        * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che referenzia il nome localizzato dell'organizzazione nel bundle di localizzazione (ad es., ``issuer1.name``).
@@ -1601,16 +1601,16 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
           * **immediate_flow**: OBBLIGATORIO. Boolean. Indica se l'emissione immediata è supportata.
           * **wallet_initiated**: OBBLIGATORIO. Boolean. Indica se il flusso Wallet-Initiated è supportato.
           * **issuer_initiated**: OBBLIGATORIO. Boolean. Indica se l'emissione del flusso Issuer-Initiated è supportata (Third Party Initiated Flow).
-          * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Integer. Tempo massimo in minuti per la disponibilità dell'emissione della Credenziale. OBBLIGATORIO se ``deferred_flow`` è ``true``.
-          * **notification_methods**: CONDIZIONALE. String Array. Contiene i metodi di notifica supportati dal Credential Issuer per l'emissione differita, quali ``"push"``, ``"polling"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+          * **max_deferred_issuance_time_minutes**: Integer. Tempo massimo in minuti per la disponibilità dell'emissione della Credenziale. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+          * **notification_methods**: String Array. Contiene i metodi di notifica supportati dal Credential Issuer per l'emissione differita, quali ``"push"``, ``"polling"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
 
   * - **authentic_sources**
-    - CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON Fonte Autentica che referenziano le Fonti Autentiche autorizzate. Ciascun oggetto DEVE contenere l'identificativo dell'entità AS e l'identificativo della specifica capacità dati:
+    - È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON Fonte Autentica che referenziano le Fonti Autentiche autorizzate. Ciascun oggetto DEVE contenere l'identificativo dell'entità AS e l'identificativo della specifica capacità dati:
 
       * **id**: Identificativo stringa che referenzia l'entity_id della Fonte Autentica come registrato nell':ref:`registry:Authentic Source Registry`.
       * **dataset_id**: Identificativo stringa della specifica capacità dati/dataset utilizzato dall'Issuer dalla AS.
   * - **parent_credentials**
-    - CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array di identificativi ``credential_type`` corrispondenti alle Credenziali designate come fonti dati. Ciascun elemento identifica una Credenziale che agisce come Fonte Autentica durante il processo di emissione dell'Attestato Elettronico.
+    - È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array di identificativi ``credential_type`` corrispondenti alle Credenziali designate come fonti dati. Ciascun elemento identifica una Credenziale che agisce come Fonte Autentica durante il processo di emissione dell'Attestato Elettronico.
   * - **trustedAuthorities**
     - OBBLIGATORIO. Array di oggetti JSON che risolvono i trust anchor applicabili, contenenti:
 

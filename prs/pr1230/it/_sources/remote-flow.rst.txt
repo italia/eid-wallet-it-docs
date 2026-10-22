@@ -737,9 +737,9 @@ Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla 
   * - **sd_hash**
     - OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le *selective disclosures* selezionate dall'Utente.
   * - **transaction_data_hashes**  
-    - CONDIZIONALE. OBBLIGATORIO quando la richiesta include ``transaction_data``. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento ``transaction_data``.
+    - OBBLIGATORIO quando la richiesta include ``transaction_data``. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento ``transaction_data``.
   * - **transaction_data_hashes_alg**
-    - CONDIZIONALE. OBBLIGATORIO solo quando l’oggetto ``transaction_data`` corrispondente include ``transaction_data_hashes_alg``. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare ``transaction_data_hashes``. Se tale parametro non è stato fornito, la funzione di hash DEVE essere ``sha-256``.
+    - OBBLIGATORIO solo quando l’oggetto ``transaction_data`` corrispondente include ``transaction_data_hashes_alg``. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare ``transaction_data_hashes``. Se tale parametro non è stato fornito, la funzione di hash DEVE essere ``sha-256``.
 
 
 Errori della Authorization Response
