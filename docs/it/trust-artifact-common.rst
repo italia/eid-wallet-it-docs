@@ -71,7 +71,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
 Di seguito un esempio non normativo di PID Provider Sign/Seal Certificate per persone giuridiche.
 
 .. literalinclude:: ../../examples/pid-sign-seal.txt
-  :language: text
+   :language: text
 
 Wallet Provider Sign/Seal Certificate
 """""""""""""""""""""""""""""""""""""
@@ -126,7 +126,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
 Di seguito un esempio non normativo di Wallet Provider Sign/Seal Certificate per persone giuridiche.
 
 .. literalinclude:: ../../examples/wp-sign-seal.txt
-  :language: text
+   :language: text
 
 (Q)EAA Provider Sign/Seal Certificate
 """""""""""""""""""""""""""""""""""""
@@ -185,7 +185,7 @@ Sia per i QEAA sia per gli EAA Provider, se gestiscono il ciclo di vita degli At
 Di seguito un esempio non normativo di QEAA Provider Sign/Seal Certificate per persone giuridiche.
 
 .. literalinclude:: ../../examples/qeaa-sign-seal.txt
-  :language: text
+   :language: text
 
 PuB-EAA Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""""""
@@ -245,7 +245,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
 Di seguito un esempio non normativo di PuB-EAA Provider Sign/Seal Certificate per persone giuridiche.
 
 .. literalinclude:: ../../examples/pubeaa-sign-seal.txt
-  :language: text
+   :language: text
 
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -338,4 +338,4 @@ I campi non elencati nella tabella restano soggetti ai requisiti definiti nel :r
 Di seguito un esempio non normativo di Trust Anchor Certificate.
 
 .. literalinclude:: ../../examples/trust-anchor-cert.txt
-  :language: text
+   :language: text

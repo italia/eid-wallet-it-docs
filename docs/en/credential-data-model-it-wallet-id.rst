@@ -91,15 +91,15 @@ SD-JWT-VC IT-Wallet ID Non-Normative Example
 In the following, the non-normative example of the payload of a IT-Wallet ID represented in JSON format.
 
 .. literalinclude:: ../../examples/pid-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The corresponding SD-JWT version for IT-Wallet ID is given by
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The disclosure list is presented below.
 
@@ -167,6 +167,6 @@ The disclosure list is presented below.
 The combined format for the IT-Wallet ID issuance is given by:
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 

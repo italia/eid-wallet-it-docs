@@ -161,19 +161,19 @@ Below is a non-normative example of the PAR Request.
 Below is a non-normative example of the Wallet Instance Attestation Proof of Possession (WIA-PoP) header and body:
 
 .. literalinclude:: ../../examples/wa-pop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/wa-pop-payload.json
-  :language: JSON
+   :language: JSON
 
 
 Below is a non-normative example of the signed Request Object without encoding and signature applied:
 
 .. literalinclude:: ../../examples/request-object-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/request-object-payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -197,7 +197,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
    :language: http
 
 .. literalinclude:: ../../examples/par-response.json
-  :language: JSON
+   :language: JSON
 
 **Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the Credential Issuer Authorization Endpoint (:ref:`WP_053 <wallet-credential-issuance-testcases>`). Parts of this Authorization Request content, for example the ``code_challenge`` parameter value, are unique to a particular Authorization Request. The Wallet Instance MUST use a ``request_uri`` value once (:rfc:`9126`) as per :ref:`WP_053a <wallet-credential-issuance-testcases>`. The Credential Issuer performs the following checks upon the receipt of the Authorization Request:
 
@@ -251,23 +251,23 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
     Cache-Control: no-store
 
 .. literalinclude:: ../../examples/token-response.json
-  :language: JSON
+   :language: JSON
 
 A non-normative example of the DPoP Access Token is given below.
 
 .. literalinclude:: ../../examples/at-dpop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/at-dpop-payload.json
-  :language: JSON
+   :language: JSON
 
 A non-normative example of the DPoP Refresh Token is given below.
 
 .. literalinclude:: ../../examples/rt-dpop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/rt-dpop-payload.json
-  :language: JSON
+   :language: JSON
 
 **Step 12 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce``. The Wallet Instance can use that ``c_nonce`` to create the proof of possession of key material for the subsequent request to the Credential Endpoint (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
 
@@ -292,7 +292,7 @@ Below is a non-normative example of a Nonce Response:
     Cache-Control: no-store
 
 .. literalinclude:: ../../examples/nonce-response.json
-  :language: JSON
+   :language: JSON
 
 
 **Step 14 (DPoP Proof for Credential Endpoint)**: The Wallet Instance creates a DPoP Proof JWT using the same key in **Step 8** and according to (:rfc:`9449`) Section 4 (:ref:`WP_056b <wallet-credential-issuance-testcases>`).
@@ -335,15 +335,15 @@ A non-normative example of the Credential Request is provided below.
    :language: http
 
 .. literalinclude:: ../../examples/credential-request.json
-  :language: JSON
+   :language: JSON
 
 Where a non-normative example of the decoded content of the ``jwt`` parameter is represented below, without encoding and signature.
 
 .. literalinclude:: ../../examples/credential-jwt-proof-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
-  :language: JSON
+   :language: JSON
 
 **Step 17 (Fresh Digital Credential Keys Generation)**: The Wallet Instance generates N fresh Credential key pairs, where the number of key pairs (N) is determined by the value defined in the ``batch_size`` (:ref:`WP_058a <wallet-credential-issuance-testcases>`).
 
@@ -372,7 +372,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 
 .. literalinclude:: ../../examples/batch-credential-request.json
-  :language: JSON
+   :language: JSON
 
 
 The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
@@ -402,7 +402,7 @@ Below is a non-normative example of a successful response containing a Credentia
    :language: http
 
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 Below is a non-normative example of a successful response containing a Credential in mdoc format.
@@ -411,7 +411,7 @@ Below is a non-normative example of a successful response containing a Credentia
    :language: http
 
 .. literalinclude:: ../../examples/mdoc-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 Below is a non-normative example of a successful response containing a batch of Credentials in SD-JWT VC format:
@@ -420,7 +420,7 @@ Below is a non-normative example of a successful response containing a batch of 
    :language: http
 
 .. literalinclude:: ../../examples/sd-jwt-batch-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -435,7 +435,7 @@ Below is a non-normative example of a successful response containing a batch of 
 .. literalinclude:: ../../examples/shared/credential-issuance-low-level-9.http
    :language: http
 .. literalinclude:: ../../examples/notification-request.json
-  :language: JSON
+   :language: JSON
 
 
 **Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, the Credential Issuer MUST respond with an HTTP status code *204*. Section 11.2 of [`OpenID4VCI`_] recommends that status code. Below is a non-normative example of response to a successful Notification Request:

@@ -46,19 +46,19 @@ Di seguito alcuni esempi non normativi di oggetti ``WalletRelyingParty`` memoriz
 Una banca registrata come Relying Party che richiede PID per procedure know-your-customer, con un Relying Party Service.
 
 .. literalinclude:: ../../examples/register-wrp-rp.json
-  :language: JSON
+   :language: JSON
 
 Una banca registrata sia come Relying Party che richiede PID sia come QEAA Provider (che emette attestation di conto bancario al Wallet).
 Registra due Service: un Service con ``intendedUses`` e un Service con ``providesAttestations``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-ap.json
-  :language: JSON
+   :language: JSON
 
 Un'entità registrata come Intermediary designato che agisce per conto di WRP durante le interazioni con il Wallet.
 Ciascun suo elemento ``services[]`` ha ``isIntermediary: true``, non dichiara ``intendedUses`` o entitlement, e elenca i Service serviti in ``servedWRPServices``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-intermediary.json
-  :language: JSON
+   :language: JSON
 
 
 Register Open APIs
@@ -99,7 +99,7 @@ L'identificatore del Relying Party Service e un WRPAC per Service sono rinviati 
 Di seguito un esempio di WRPAC per persone giuridiche secondo la NCP.
 
 .. literalinclude:: ../../examples/wrpac-ncp.txt
-  :language: text
+   :language: text
 
 Registrar Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -143,7 +143,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
 Di seguito un esempio non normativo di Registrar Sign/Seal Certificate per persone giuridiche (non self-signed).
 
 .. literalinclude:: ../../examples/registrar-sign-seal.txt
-  :language: text
+   :language: text
 
 
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
@@ -164,15 +164,15 @@ La Wallet Unit valuta la presentazione intermediata come specificato in :ref:`tr
 Di seguito un esempio non normativo di header e payload WRPRC per una Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-jwt-header.json
-  :language: json
+   :language: json
 
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
-  :language: json
+   :language: json
 
 Di seguito un esempio non normativo di payload WRPRC per una Relying Party intermediata.
 
 .. literalinclude:: ../../examples/wrprc-payload-rpi.json
-  :language: json
+   :language: json
 
 .. warning::
 
@@ -270,7 +270,7 @@ Gli schemi JSON e XML normativi delle List of Trusted Entities sono pubblicati i
 L'esempio seguente mostra un esempio non normativo di payload di una List of Trusted Entities per PID Provider.
 
 .. literalinclude:: ../../examples/lote-pid.json
-  :language: json
+   :language: json
 
 Embedded Disclosure Policy (EDP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -407,10 +407,10 @@ La tabella seguente fornisce una panoramica completa del modello dati dell'Embed
 Di seguito esempi non normativi di EDP con i tipi di policy Authorized Relying Parties Only e Specific Root of Trust.
 
 .. literalinclude:: ../../examples/edp-authorized-rps.json
-  :language: json
+   :language: json
 
 .. literalinclude:: ../../examples/edp-specific-root.json
-  :language: json
+   :language: json
 
 Embedded Disclosure Policy Lifecycle
 """"""""""""""""""""""""""""""""""""

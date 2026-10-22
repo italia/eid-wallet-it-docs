@@ -305,19 +305,19 @@ The following examples are non-normative.
 SD-JWT VC protected header for a QEAA:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-profile-header.json
-    :language: JSON
+   :language: JSON
 
 SD-JWT VC claims that this section adds, shown without selective-disclosure encoding:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-profile-claims.json
-    :language: JSON
+   :language: JSON
 
 The same claims for a PuB-EAA, with ``category`` set to ``urn:etsi:esi:eaa:eu:pub``:
 
 .. literalinclude:: ../../examples/pub-eaa-sd-jwt-profile-claims.json
-    :language: JSON
+   :language: JSON
 
 mdoc elements in the namespace ``org.etsi.01947201.010101`` for a QEAA, shown in diagnostic JSON and not as encoded CBOR:
 
 .. literalinclude:: ../../examples/qeaa-mdoc-etsi-namespace.json
-    :language: JSON
+   :language: JSON

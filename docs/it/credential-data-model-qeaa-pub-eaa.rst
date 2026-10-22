@@ -305,19 +305,19 @@ Gli esempi seguenti sono non normativi.
 Protected header SD-JWT VC per un QEAA:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-profile-header.json
-    :language: JSON
+   :language: JSON
 
 Claim SD-JWT VC aggiunti da questa sezione, mostrati senza la codifica di disclosure selettiva:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-profile-claims.json
-    :language: JSON
+   :language: JSON
 
 Gli stessi claim per un PuB-EAA, con ``category`` impostato a ``urn:etsi:esi:eaa:eu:pub``:
 
 .. literalinclude:: ../../examples/pub-eaa-sd-jwt-profile-claims.json
-    :language: JSON
+   :language: JSON
 
 Elementi mdoc nel namespace ``org.etsi.01947201.010101`` per un QEAA, mostrati in JSON diagnostico e non come CBOR codificato:
 
 .. literalinclude:: ../../examples/qeaa-mdoc-etsi-namespace.json
-    :language: JSON
+   :language: JSON

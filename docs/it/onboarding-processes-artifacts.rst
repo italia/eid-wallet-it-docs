@@ -127,7 +127,7 @@ Le estensioni non applicabili, o non elencate, nel profilo di certificato applic
 Di seguito un esempio non normativo di una Certificate Signing Request per un WRPAC, con dati di test.
 
 .. literalinclude:: ../../examples/csr-wrpac.txt
-  :language: text
+   :language: text
 
 Wallet-Relying Party Access Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""

@@ -381,7 +381,7 @@ Quando è inviato su HTTP usando POST, il body di questa richiesta DEVE contener
 Di seguito un esempio non normativo di una richiesta OCSP:
 
 .. literalinclude:: ../../examples/ocsp-request.txt
-  :language: text
+   :language: text
 
 Online Certificate Status Protocol Response Format
 ...................................................
@@ -564,7 +564,7 @@ Ciascuna ``SingleResponse`` è una *SEQUENCE* ASN.1 che reca i seguenti parametr
 Di seguito un esempio non normativo di una risposta OCSP con un singolo status ``good``.
 
 .. literalinclude:: ../../examples/ocsp-response.txt
-  :language: text
+   :language: text
 
 Token Status List (WRPRC Profile)
 """"""""""""""""""""""""""""""""""

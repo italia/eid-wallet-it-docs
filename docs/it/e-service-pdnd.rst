@@ -148,14 +148,14 @@ Flusso del Voucher PDND per e-Service
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-1.json
    :language: json
-  :caption: Esempio non normativo dell'header di ``TrackingEvidence``
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
+   :caption: Esempio non normativo dell'header di ``TrackingEvidence``
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-2.json
    :language: json
-  :caption: Esempio non normativo del payload di ``TrackingEvidence``
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
+   :caption: Esempio non normativo del payload di ``TrackingEvidence``
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
 
 .. note::
   I passi 1-2 sono richiesti solo quando si rispetta il pattern di sicurezza ``AUDIT_REST_02`` o l'implementazione ``POP_TPoP``.
@@ -169,20 +169,20 @@ Flusso del Voucher PDND per e-Service
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-3.http
    :language: http
-    :caption: Esempio non normativo della `Voucher Request`
-    :name: code_VoucherIssuance_eService_Flow_Request
+   :caption: Esempio non normativo della `Voucher Request`
+   :name: code_VoucherIssuance_eService_Flow_Request
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-4.json
    :language: json
-    :caption: Esempio non normativo del JOSE header di ``client_assertion``
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
+   :caption: Esempio non normativo del JOSE header di ``client_assertion``
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-5.json
    :language: json
-    :caption: Esempio non normativo del payload di ``client_assertion``
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
+   :caption: Esempio non normativo del payload di ``client_assertion``
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
 
 .. note::
   Il claim ``purposeId`` nel payload di ``client_assertion`` è richiesto solo quando si richiede un Voucher per e-Service.
@@ -226,18 +226,18 @@ L'Authorization Server PDND DEVE anche validare il JWT ``client_assertion`` come
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-6.http
    :language: http
-    :caption: Esempio non normativo della `Voucher Response`
-    :name: code_VoucherIssuance_eService_Flow_Response
+   :caption: Esempio non normativo della `Voucher Response`
+   :name: code_VoucherIssuance_eService_Flow_Response
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-7.json
    :language: json
-    :caption: Esempio non normativo del JOSE header di ``access_token``
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
+   :caption: Esempio non normativo del JOSE header di ``access_token``
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-8.json
    :language: json
-    :caption: Esempio non normativo del payload di ``access_token``
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
+   :caption: Esempio non normativo del payload di ``access_token``
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
 
 .. note::
   Il claim ``digest`` nel payload di ``access_token`` è richiesto solo quando si rispetta il pattern di sicurezza ``AUDIT_REST_02`` o l'implementazione ``POP_TPoP``. Se presente, corrisponde al valore del claim ``digest`` contenuto in ``client_assertion``.
@@ -275,18 +275,18 @@ Flusso del Voucher per API di Interoperabilità
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-9.http
    :language: http
-  :caption: Esempio non normativo della `Voucher Request`
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
+   :caption: Esempio non normativo della `Voucher Request`
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-10.json
    :language: json
-  :caption: Esempio non normativo del JOSE header di ``client_assertion``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
+   :caption: Esempio non normativo del JOSE header di ``client_assertion``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-11.json
    :language: json
-  :caption: Esempio non normativo del payload di ``client_assertion``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
+   :caption: Esempio non normativo del payload di ``client_assertion``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
 
 Alla ricezione della `Voucher Request`, l'Authorization Server PDND DEVE eseguire i seguenti controlli sui parametri del relativo body:
 
@@ -314,18 +314,18 @@ L'Authorization Server PDND DEVE anche validare il JWT ``client_assertion`` come
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-12.http
    :language: http
-  :caption: Esempio non normativo della `Voucher Response`
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
+   :caption: Esempio non normativo della `Voucher Response`
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-13.json
    :language: json
-  :caption: Esempio non normativo del JOSE header di ``access_token``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
+   :caption: Esempio non normativo del JOSE header di ``access_token``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-14.json
    :language: json
-  :caption: Esempio non normativo del payload di ``access_token``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
+   :caption: Esempio non normativo del payload di ``access_token``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
 
 
 Endpoint Authorization Server PDND
@@ -534,8 +534,8 @@ Se si verificano errori durante la validazione della `Voucher Request`, l'Endpoi
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-15.http
    :language: http
-  :caption: Esempio non normativo di una `Voucher Error Response`
-  :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
+   :caption: Esempio non normativo di una `Voucher Error Response`
+   :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -606,8 +606,8 @@ Chiavi dell'Authorization Server PDND
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-16.http
    :language: http
-  :caption: Esempio non normativo della `Keys Response`
-  :name: _code_KeyRetrieval_PDND_Flow_Response
+   :caption: Esempio non normativo della `Keys Response`
+   :name: _code_KeyRetrieval_PDND_Flow_Response
 
 Endpoint .well-known dell'Authorization Server PDND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -631,8 +631,8 @@ Se si verificano errori durante il reperimento delle chiavi, l'Endpoint .well-kn
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-17.http
    :language: http
-  :caption: Esempio non normativo di una `Keys Error Response`
-  :name: code_KeyRetrieval_Endpoint_WellKnown_Error
+   :caption: Esempio non normativo di una `Keys Error Response`
+   :name: code_KeyRetrieval_Endpoint_WellKnown_Error
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -686,15 +686,15 @@ Flusso di Reperimento delle Chiavi degli Aderenti
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-18.http
    :language: http
-    :caption: Esempio non normativo della `Key Request`
-    :name: _code_KeyRetrieval_Participant_Flow_Request
+   :caption: Esempio non normativo della `Key Request`
+   :name: _code_KeyRetrieval_Participant_Flow_Request
 
 **Passo 2 (Risposta)**: L'Endpoint API di Interoperabilità restituisce la chiave richiesta, come un ``JWK`` [:rfc:`7517`].
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-19.http
    :language: http
-  :caption: Esempio non normativo della `Key Response`
-  :name: _code_KeyRetrieval_Participant_Flow_Response
+   :caption: Esempio non normativo della `Key Response`
+   :name: _code_KeyRetrieval_Participant_Flow_Response
 
 
 .. note::
@@ -734,8 +734,8 @@ In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-20.http
    :language: http
-    :caption: Esempio non normativo di una `Key Error Response` in caso di errori 401
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
+   :caption: Esempio non normativo di una `Key Error Response` in caso di errori 401
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
 
 Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come tipo di contenuto. La risposta DEVE includere i seguenti parametri.
 
@@ -744,8 +744,8 @@ Per tutti gli altri errori, la risposta DEVE aderire al formato di errore defini
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-21.http
    :language: http
-    :caption: Esempio non normativo di una `Key Error Response` in caso di altri errori
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
+   :caption: Esempio non normativo di una `Key Error Response` in caso di altri errori
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -814,13 +814,13 @@ Flusso di Utilizzo dell'e-Service
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-22.json
    :language: json
-    :caption: Esempio non normativo dell'header di ``Signature``
-    :name: _code_Usage_Flow_Signature_Header
+   :caption: Esempio non normativo dell'header di ``Signature``
+   :name: _code_Usage_Flow_Signature_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-23.json
    :language: json
-    :caption: Esempio non normativo del payload di ``Signature``
-    :name: _code_Usage_Flow_Signature_Payload
+   :caption: Esempio non normativo del payload di ``Signature``
+   :name: _code_Usage_Flow_Signature_Payload
 
 .. note::
   Il passo 1 è richiesto per rispettare il pattern di sicurezza ``INTEGRITY_REST_02``.
@@ -834,8 +834,8 @@ Flusso di Utilizzo dell'e-Service
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-24.http
    :language: http
-    :caption: Esempio non normativo della `e-Service Request`
-    :name: _code_Usage_Flow_Request
+   :caption: Esempio non normativo della `e-Service Request`
+   :name: _code_Usage_Flow_Request
 
 L'Erogatore DEVE validare la `DPoP proof` [:rfc:`9449`].
 
@@ -911,8 +911,8 @@ Se uno qualsiasi dei controlli precedenti fallisce, l'Erogatore DEVE rifiutare l
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-25.http
    :language: http
-  :caption: Esempio non normativo della `e-Service Response`
-  :name: _code_Usage_Flow_Response
+   :caption: Esempio non normativo della `e-Service Response`
+   :name: _code_Usage_Flow_Response
 
 Il Fruitore DEVE validare il JWT ``Signature`` come segue:
 
@@ -1151,8 +1151,8 @@ In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-26.http
    :language: http
-    :caption: Esempio non normativo di una `e-Service Error Response` in caso di errori 401
-    :name: code_Usage_Endpoint_eService_Error_401
+   :caption: Esempio non normativo di una `e-Service Error Response` in caso di errori 401
+   :name: code_Usage_Endpoint_eService_Error_401
 
 Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`9457`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type``. La risposta DEVE includere i seguenti parametri.
 
@@ -1164,8 +1164,8 @@ Per tutti gli altri errori, la risposta DEVE aderire al formato di errore defini
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-27.http
    :language: http
-    :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
-    :name: code_Usage_Endpoint_eService_Error
+   :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
+   :name: code_Usage_Endpoint_eService_Error
 
 
 La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per la risposta di errore:

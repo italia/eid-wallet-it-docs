@@ -426,10 +426,10 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
 
 .. literalinclude:: ../../examples/wa-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/wa-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -739,10 +739,10 @@ Il Fornitore di Wallet DEVE impostare ``key_storage`` e ``user_authentication`` 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
 .. literalinclude:: ../../examples/ka-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/ka-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::

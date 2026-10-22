@@ -271,7 +271,7 @@ A Signing Trust Anchor is the root of the PKI that issues the Document Signer ce
 Each such JWK is identified by its ``kid`` and by the properties of the certificate provided in its ``x5c``.
 
 .. literalinclude:: ../../examples/oidfed-ec-federation-ta.json
-  :language: JSON
+   :language: JSON
 
 Subordinate Statement of Leaf issued by the Federation TA
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,17 +282,17 @@ The statement carries the Federation Entity Keys of the Leaf, the ``metadata_pol
 The following non-normative example is the Subordinate Statement that the Federation TA issues about a Wallet Provider Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-wallet-provider.json
-  :language: JSON
+   :language: JSON
 
 The following non-normative example is the Subordinate Statement that the Federation TA issues about a Relying Party Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-relying-party.json
-  :language: JSON
+   :language: JSON
 
 The following non-normative example is the Subordinate Statement that the Federation TA issues about a Credential Issuer Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-credential-issuer.json
-  :language: JSON
+   :language: JSON
 
 Subordinate Statement of an Intermediate
 """"""""""""""""""""""""""""""""""""""""
@@ -302,7 +302,7 @@ The ``constraints`` restrict the subtree of the Intermediate to the Relying Part
 It carries no ``metadata_policy``: the affiliated Relying Parties are bound by the Intermediate in the Subordinate Statements it issues about them.
 
 .. literalinclude:: ../../examples/oidfed-ss-intermediate.json
-  :language: JSON
+   :language: JSON
 
 Subordinate Statement about a Leaf issued by a Federation Intermediate
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -313,7 +313,7 @@ The ``constraints`` of the subtree are set by the Federation TA in the statement
 In the National Trust Framework an Intermediary intermediates only Relying Parties.
 
 .. literalinclude:: ../../examples/oidfed-ss-intermediate-leaf.json
-  :language: JSON
+   :language: JSON
 
 Entity Configuration of a Federation Intermediate
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -323,7 +323,7 @@ Its Entity Configuration points to the Federation TA through ``authority_hints``
 It exposes the fetch and list endpoints used to serve the Subordinate Statements of its affiliated Relying Parties.
 
 .. literalinclude:: ../../examples/oidfed-ec-federation-intermediate.json
-  :language: JSON
+   :language: JSON
 
 Entity Configuration of a Leaf
 """"""""""""""""""""""""""""""
@@ -334,17 +334,17 @@ The examples below report the main claims, the protocol metadata is referenced t
 The following non-normative example is the Entity Configuration of a Wallet Provider Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-wallet-provider.json
-  :language: JSON
+   :language: JSON
 
 The following non-normative example is the Entity Configuration of a Relying Party Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-relying-party.json
-  :language: JSON
+   :language: JSON
 
 The following non-normative example is the Entity Configuration of a Credential Issuer Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-credential-issuer.json
-  :language: JSON
+   :language: JSON
 
 Trust Marks
 ^^^^^^^^^^^
@@ -538,16 +538,16 @@ The following non-normative examples illustrate the registration Trust Mark JWT 
 Credential Issuer, a public non-qualified EAA Provider issuing the Employee Badge:
 
 .. literalinclude:: ../../examples/oidfed-trust-mark-credential-issuer.json
-  :language: JSON
+   :language: JSON
 
 Relying Party, a private organization requesting the Employee Badge for physical access control:
 
 .. literalinclude:: ../../examples/oidfed-trust-mark-relying-party.json
-  :language: JSON
+   :language: JSON
 
 Relying Party Intermediary.
 It declares no intended use of its own, so its registration Trust Mark carries no ``credentials`` and no ``purpose``.
 It is a Federation Intermediate, and its affiliated Relying Parties set their ``authority_hints`` to it.
 
 .. literalinclude:: ../../examples/oidfed-trust-mark-intermediate.json
-  :language: JSON
+   :language: JSON

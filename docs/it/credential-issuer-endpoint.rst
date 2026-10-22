@@ -36,7 +36,7 @@ Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i 
 Di seguito è riportato un esempio non normativo dei metadati del Credential Issuer firmati:
 
 .. literalinclude:: ../../examples/credential-issuer-metadata.txt
-  :language: text
+   :language: text
 
 Gli elementi contenuti in ``authorization_servers`` nei metadati del Credential Issuer possono essere utilizzati per ottenere i metadati dell'OAuth Authorization Server tramite l’endpoint ``/.well-known/oauth-authorization-server``, come definito nella Sezione 3 del :rfc:`8414`.
 Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server.

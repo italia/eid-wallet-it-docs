@@ -95,8 +95,8 @@ Example of Authentic Source response
 The endpoint response MUST use the HTTP Content-Type set to ``application/json``. Below is a concrete example with fictitious data to clarify the expected shape and content.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
-  :language: json
-  :caption: Example of the response JSON payload (Get Attribute Claims)
+   :language: json
+   :caption: Example of the response JSON payload (Get Attribute Claims)
 
 In summary:
 

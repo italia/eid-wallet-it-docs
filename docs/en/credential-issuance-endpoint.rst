@@ -216,7 +216,7 @@ Below is a non-normative example of an error response.
   Content-Type: application/json
 
 .. literalinclude:: ../../examples/par-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -539,7 +539,7 @@ Below is a non-normative example of an error response.
    :language: http
 
 .. literalinclude:: ../../examples/token-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -857,7 +857,7 @@ Below is a non-normative example of an error response.
    :language: http
 
 .. literalinclude:: ../../examples/credential-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -933,7 +933,7 @@ If Credential Issuers, supporting this flow, are not able to immediately issue a
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-response-deferred.json
-  :language: JSON
+   :language: JSON
 
 The Wallet Instance MUST use the value given in the *interval* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *interval* time value). Credential Issuers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the Credential Issuer.
 
@@ -1028,7 +1028,7 @@ Below is a non-normative example of an error response.
    :language: http
 
 .. literalinclude:: ../../examples/notification-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 

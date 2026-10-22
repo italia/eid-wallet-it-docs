@@ -381,7 +381,7 @@ When sent over HTTP using POST, the body of this request MUST contain the raw DE
 Below is a non-normative example of an OCSP request:
 
 .. literalinclude:: ../../examples/ocsp-request.txt
-  :language: text
+   :language: text
 
 Online Certificate Status Protocol Response Format
 ...................................................
@@ -564,7 +564,7 @@ Each ``SingleResponse`` is an ASN.1 *SEQUENCE* that carries the following parame
 Below is a non-normative example of an OCSP response with a single ``good`` status.
 
 .. literalinclude:: ../../examples/ocsp-response.txt
-  :language: text
+   :language: text
 
 Token Status List (WRPRC Profile)
 """"""""""""""""""""""""""""""""""

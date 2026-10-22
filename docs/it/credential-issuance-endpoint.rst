@@ -216,7 +216,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
   Content-Type: application/json
 
 .. literalinclude:: ../../examples/par-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -540,7 +540,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
    :language: http
 
 .. literalinclude:: ../../examples/token-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -858,7 +858,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
    :language: http
 
 .. literalinclude:: ../../examples/credential-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -934,7 +934,7 @@ Se i Credential Issuer, che supportano questo flusso, non sono in grado di emett
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-response-deferred.json
-  :language: JSON
+   :language: JSON
 
 L'Istanza del Wallet DEVE utilizzare il valore fornito nel parametro *interval* per informare l'Utente quando l'Attestato Elettronico diventa disponibile (ad esempio utilizzando una notifica locale innescata dal valore di tempo *interval*). I Credential Issuer POSSONO inviare una notifica all'Utente tramite un canale di comunicazione (ad esempio indirizzo email), se precedentemente fornito dall'Utente al Credential Issuer.
 
@@ -1029,7 +1029,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
    :language: http
 
 .. literalinclude:: ../../examples/notification-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 

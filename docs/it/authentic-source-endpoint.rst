@@ -94,8 +94,8 @@ Esempio di risposta della Authentic Source
 La risposta DEVE avere come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
-  :language: json
-  :caption: Esempio di payload JSON di risposta (Get Attribute Claims)
+   :language: json
+   :caption: Esempio di payload JSON di risposta (Get Attribute Claims)
 
 In sintesi:
 

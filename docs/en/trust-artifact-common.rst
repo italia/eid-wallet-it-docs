@@ -71,7 +71,7 @@ Extensions not listed in the table MUST NOT be present.
 The following is a non-normative example of a PID Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/pid-sign-seal.txt
-  :language: text
+   :language: text
 
 Wallet Provider Sign/Seal Certificate
 """""""""""""""""""""""""""""""""""""
@@ -126,7 +126,7 @@ Extensions not listed in the table MUST NOT be present.
 The following is a non-normative example of a Wallet Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/wp-sign-seal.txt
-  :language: text
+   :language: text
 
 (Q)EAA Provider Sign/Seal Certificate
 """""""""""""""""""""""""""""""""""""
@@ -185,7 +185,7 @@ For both QEAA and EAA Providers, if they manage the lifecycle of the Digital Cre
 The following is a non-normative example of a QEAA Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/qeaa-sign-seal.txt
-  :language: text
+   :language: text
 
 PuB-EAA Provider Sign/Seal Certificate
 """"""""""""""""""""""""""""""""""""""
@@ -245,7 +245,7 @@ Extensions not listed in the table MUST NOT be present.
 The following is a non-normative example of a PuB-EAA Provider Sign/Seal Certificate for legal persons.
 
 .. literalinclude:: ../../examples/pubeaa-sign-seal.txt
-  :language: text
+   :language: text
 
 Trust Anchor Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -338,4 +338,4 @@ Fields not listed in the table remain subject to the requirements defined in the
 The following is a non-normative example of a Trust Anchor Certificate.
 
 .. literalinclude:: ../../examples/trust-anchor-cert.txt
-  :language: text
+   :language: text

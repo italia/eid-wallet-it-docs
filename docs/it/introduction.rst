@@ -62,7 +62,8 @@ Le parole chiave in questo documento devono essere interpretate come descritto i
 - NOT RECOMMENDED.
 - MAY.
 - OPTIONAL.
-Nel testo italiano, le forme interamente in maiuscolo elencate in :ref:`defined-terms:Linguaggio Normativo e Convenzioni` hanno lo stesso significato delle parole chiave inglesi corrispondenti.
+
+Nel testo italiano, le forme interamente in maiuscolo elencate in :ref:`introduction:Linguaggio normativo` hanno lo stesso significato delle parole chiave inglesi corrispondenti.
 
 .. include:: how-to-read-spec.rst
 

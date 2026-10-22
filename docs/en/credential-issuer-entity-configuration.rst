@@ -36,6 +36,6 @@ Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider
 - `openid_credential_verifier`.
 
 .. literalinclude:: ../../examples/ec-eaa.json
-  :language: JSON
+   :language: JSON
 
 

@@ -108,15 +108,15 @@ Esempi Non Normativi di PID
 Di seguito, l'esempio non normativo del payload di un PID rappresentato in formato JSON.
 
 .. literalinclude:: ../../examples/pid-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 La versione SD-JWT corrispondente per il PID è data da
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 L'elenco delle disclosure è presentato di seguito.
 
@@ -183,7 +183,7 @@ L'elenco delle disclosure è presentato di seguito.
 Il formato combinato per l'emissione del PID è dato da:
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 
 Modello Dati PID in formato mdoc-CBOR
@@ -267,6 +267,6 @@ Esempio non normativo del PID in mdoc-CBOR
 Un esempio non normativo di un PID in formato mdoc-CBOR (notazione diagnostica) è mostrato di seguito:
 
 .. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
-  :language: text
+   :language: text
 
 

@@ -127,7 +127,7 @@ Extensions not applicable to, or not listed in, the applicable certificate profi
 The following is a non-normative example of a Certificate Signing Request for a WRPAC, with test data.
 
 .. literalinclude:: ../../examples/csr-wrpac.txt
-  :language: text
+   :language: text
 
 Wallet-Relying Party Access Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""

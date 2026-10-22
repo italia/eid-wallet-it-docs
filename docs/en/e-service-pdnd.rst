@@ -149,14 +149,14 @@ PDND Voucher for e-Services Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-1.json
    :language: json
-  :caption: Non-normative example of the ``TrackingEvidence`` header
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
+   :caption: Non-normative example of the ``TrackingEvidence`` header
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-2.json
    :language: json
-  :caption: Non-normative example of the ``TrackingEvidence`` payload
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
+   :caption: Non-normative example of the ``TrackingEvidence`` payload
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
 
 .. note::
   Steps 1-2 are required only when complying with the ``AUDIT_REST_02`` security pattern or the ``POP_TPoP`` implementation.
@@ -170,20 +170,20 @@ PDND Voucher for e-Services Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-3.http
    :language: http
-    :caption: Non-normative example of the Voucher Request
-    :name: code_VoucherIssuance_eService_Flow_Request
+   :caption: Non-normative example of the Voucher Request
+   :name: code_VoucherIssuance_eService_Flow_Request
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-4.json
    :language: json
-    :caption: Non-normative example of the ``client_assertion`` JOSE header
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
+   :caption: Non-normative example of the ``client_assertion`` JOSE header
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
 
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-5.json
    :language: json
-    :caption: Non-normative example of the ``client_assertion`` payload
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
+   :caption: Non-normative example of the ``client_assertion`` payload
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
 
 .. note::
   The ``purposeId`` claim in the ``client_assertion`` payload is required only when requesting a Voucher for e-Service.
@@ -227,18 +227,18 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-6.http
    :language: http
-    :caption: Non-normative example of the Voucher Response
-    :name: code_VoucherIssuance_eService_Flow_Response
+   :caption: Non-normative example of the Voucher Response
+   :name: code_VoucherIssuance_eService_Flow_Response
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-7.json
    :language: json
-    :caption: Non-normative example of the ``access_token`` JOSE header
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
+   :caption: Non-normative example of the ``access_token`` JOSE header
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-8.json
    :language: json
-    :caption: Non-normative example of the ``access_token`` payload
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
+   :caption: Non-normative example of the ``access_token`` payload
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
 
 .. note::
   The ``digest`` claim in the ``access_token`` payload is required only when complying with the ``AUDIT_REST_02`` security pattern or the ``POP_TPoP`` implementation. If present, it corresponds to the value of the ``digest`` claim contained in the ``client_assertion``.
@@ -276,18 +276,18 @@ Voucher for Interoperability API Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-9.http
    :language: http
-  :caption: Non-normative example of the Voucher Request
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
+   :caption: Non-normative example of the Voucher Request
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-10.json
    :language: json
-  :caption: Non-normative example of the ``client_assertion`` JOSE header
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
+   :caption: Non-normative example of the ``client_assertion`` JOSE header
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-11.json
    :language: json
-  :caption: Non-normative example of the ``client_assertion`` payload
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
+   :caption: Non-normative example of the ``client_assertion`` payload
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
 
 Upon the receipt of the Voucher Request, the PDND Authorization Server MUST perform the following checks on the Voucher Request body parameters:
 
@@ -315,18 +315,18 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-12.http
    :language: http
-  :caption: Non-normative example of the Voucher Response
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
+   :caption: Non-normative example of the Voucher Response
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-13.json
    :language: json
-  :caption: Non-normative example of the ``access_token`` JOSE header
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
+   :caption: Non-normative example of the ``access_token`` JOSE header
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-14.json
    :language: json
-  :caption: Non-normative example of the ``access_token`` payload
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
+   :caption: Non-normative example of the ``access_token`` payload
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
 
 
 PDND Authorization Server Endpoint
@@ -535,8 +535,8 @@ If any errors occur during the validation of the Voucher Request, the PDND Autho
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-15.http
    :language: http
-  :caption: Non-normative example of a Voucher Error Response
-  :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
+   :caption: Non-normative example of a Voucher Error Response
+   :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
 
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
@@ -607,8 +607,8 @@ PDND Authorization Server Keys
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-16.http
    :language: http
-  :caption: Non-normative example of the Keys Response
-  :name: _code_KeyRetrieval_PDND_Flow_Response
+   :caption: Non-normative example of the Keys Response
+   :name: _code_KeyRetrieval_PDND_Flow_Response
 
 PDND Authorization Server .well-known Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -632,8 +632,8 @@ If any errors occur during the retrieval of the keys, the .well-known Endpoint M
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-17.http
    :language: http
-  :caption: Non-normative example of a Keys Error Response
-  :name: code_KeyRetrieval_Endpoint_WellKnown_Error
+   :caption: Non-normative example of a Keys Error Response
+   :name: code_KeyRetrieval_Endpoint_WellKnown_Error
 
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
@@ -687,15 +687,15 @@ Participants' Key Retrieval Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-18.http
    :language: http
-    :caption: Non-normative example of the Key Request
-    :name: _code_KeyRetrieval_Participant_Flow_Request
+   :caption: Non-normative example of the Key Request
+   :name: _code_KeyRetrieval_Participant_Flow_Request
 
 **Step 2 (Key Response)**: The Interoperability API Endpoint returns the requested key, as a ``JWK`` [:rfc:`7517`].
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-19.http
    :language: http
-  :caption: Non-normative example of the Key Response
-  :name: _code_KeyRetrieval_Participant_Flow_Response
+   :caption: Non-normative example of the Key Response
+   :name: _code_KeyRetrieval_Participant_Flow_Response
 
 
 .. note::
@@ -735,8 +735,8 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-20.http
    :language: http
-    :caption: Non-normative example of a Key Error Response in case of 401 errors
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
+   :caption: Non-normative example of a Key Error Response in case of 401 errors
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
 
 For all other errors, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type. The response MUST include the following parameters.
 
@@ -745,8 +745,8 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-21.http
    :language: http
-    :caption: Non-normative example of a Key Error Response in case of other errors
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
+   :caption: Non-normative example of a Key Error Response in case of other errors
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
 
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
@@ -815,13 +815,13 @@ e-Service Usage Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-22.json
    :language: json
-    :caption: Non-normative example of the ``Signature`` header
-    :name: _code_Usage_Flow_Signature_Header
+   :caption: Non-normative example of the ``Signature`` header
+   :name: _code_Usage_Flow_Signature_Header
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-23.json
    :language: json
-    :caption: Non-normative example of the ``Signature`` payload
-    :name: _code_Usage_Flow_Signature_Payload
+   :caption: Non-normative example of the ``Signature`` payload
+   :name: _code_Usage_Flow_Signature_Payload
 
 .. note::
   Step 1 is required to comply with the ``INTEGRITY_REST_02`` security pattern.
@@ -835,8 +835,8 @@ e-Service Usage Flow
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-24.http
    :language: http
-    :caption: Non-normative example of the e-Service Request
-    :name: _code_Usage_Flow_Request
+   :caption: Non-normative example of the e-Service Request
+   :name: _code_Usage_Flow_Request
 
 The Provider MUST validate the DPoP proof [:rfc:`9449`].
 
@@ -912,8 +912,8 @@ If any of the previous checks fail, the Provider MUST reject the Request.
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-25.http
    :language: http
-  :caption: Non-normative example of the e-Service Response
-  :name: _code_Usage_Flow_Response
+   :caption: Non-normative example of the e-Service Response
+   :name: _code_Usage_Flow_Response
 
 The Consumer MUST validate the ``Signature`` JWT as follows:
 
@@ -1152,8 +1152,8 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-26.http
    :language: http
-    :caption: Non-normative example of an e-Service Error Response in case of 401 errors
-    :name: code_Usage_Endpoint_eService_Error_401
+   :caption: Non-normative example of an e-Service Error Response in case of 401 errors
+   :name: code_Usage_Endpoint_eService_Error_401
 
 For all other errors, the response MUST adhere to the error format defined in :rfc:`9457`. The response MUST use ``application/problem+json`` (according to MODI ``RAC_GEN_FORMAT_002``) as the content type. The response includes the following parameters.
 
@@ -1165,8 +1165,8 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 .. literalinclude:: ../../examples/shared/e-service-pdnd-27.http
    :language: http
-    :caption: Non-normative example of an e-Service Error Response in case of other errors
-    :name: code_Usage_Endpoint_eService_Error
+   :caption: Non-normative example of an e-Service Error Response in case of other errors
+   :name: code_Usage_Endpoint_eService_Error
 
 
 The following table lists the HTTP Status Codes that MUST be supported for the error response:

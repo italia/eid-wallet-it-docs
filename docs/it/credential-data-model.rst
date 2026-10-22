@@ -175,15 +175,15 @@ Esempi Non Normativi di (Q)EAA
 Di seguito è riportato un esempio non normativo di (Q)EAA in JSON.
 
 .. literalinclude:: ../../examples/qeaa-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 Il corrispondente SD-JWT è rappresentato di seguito, con header e payload decodificati in JSON.
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 Di seguito è riportato l'elenco delle disclosure:
 
@@ -252,7 +252,7 @@ Di seguito è riportato l'elenco delle disclosure:
 Il formato combinato per l'emissione del (Q)EAA è rappresentato di seguito:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 Type Metadata dell'Attestato Elettronico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,12 +507,12 @@ Esempi mdoc-CBOR
 Un esempio non normativo di un mDL codificato in CBOR è mostrato di seguito in codifica binaria.
 
 .. literalinclude:: ../../examples/mDL-cbor-encoded-example.txt
-  :language: text
+   :language: text
 
 La Notazione Diagnostica del mDL codificato in CBOR è riportata di seguito.
 
 .. literalinclude:: ../../examples/mDL-mdoc-cbor-example.txt
-  :language: text
+   :language: text
 
 Acronimi CBOR
 ^^^^^^^^^^^^^

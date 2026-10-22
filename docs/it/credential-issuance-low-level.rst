@@ -160,19 +160,19 @@ Di seguito un esempio non normativo di `PAR Request`.
 Di seguito un esempio non normativo dell'header e del body della prova di possesso dell'Attestato di Unità di Wallet (WIA-PoP):
 
 .. literalinclude:: ../../examples/wa-pop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/wa-pop-payload.json
-  :language: JSON
+   :language: JSON
 
 
 Di seguito un esempio non normativo del `Request Object` firmato senza codifica e firma applicata:
 
 .. literalinclude:: ../../examples/request-object-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/request-object-payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -195,7 +195,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
    :language: http
 
 .. literalinclude:: ../../examples/par-response.json
-  :language: JSON
+   :language: JSON
 
 **Passi 4-5 (`Authorization Request`)**: L'Istanza del Wallet invia una richiesta di autorizzazione all'Authorization Endpoint del Credential Issuer (:ref:`WP_053 <wallet-credential-issuance-testcases>`). Parti del contenuto di questa `Authorization Request`, ad esempio il valore del parametro ``code_challenge``, sono unici per una particolare `Authorization Request`. L'Istanza del Wallet DEVE utilizzare un valore ``request_uri`` una sola volta (:rfc:`9126`) come da :ref:`WP_053a <wallet-credential-issuance-testcases>`. Il Credential Issuer esegue i seguenti controlli alla ricezione della `Authorization Request`:
 
@@ -249,23 +249,23 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
     Cache-Control: no-store
 
 .. literalinclude:: ../../examples/token-response.json
-  :language: JSON
+   :language: JSON
 
 Un esempio non normativo dell'Access Token DPoP è fornito di seguito.
 
 .. literalinclude:: ../../examples/at-dpop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/at-dpop-payload.json
-  :language: JSON
+   :language: JSON
 
 Un esempio non normativo del Refresh Token DPoP è fornito di seguito.
 
 .. literalinclude:: ../../examples/rt-dpop-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/rt-dpop-payload.json
-  :language: JSON
+   :language: JSON
 
 **Passo 12 (`Nonce Request`)**: Secondo la Sezione 7.1 di [`OpenID4VCI`_], l'Istanza del Wallet invia una richiesta HTTP POST al Nonce Endpoint per ottenere un nuovo ``c_nonce``. L'Istanza del Wallet può usare quel ``c_nonce`` per creare la prova di possesso del materiale crittografico per la successiva richiesta al Credential Endpoint (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
 
@@ -290,7 +290,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
     Cache-Control: no-store
 
 .. literalinclude:: ../../examples/nonce-response.json
-  :language: JSON
+   :language: JSON
 
 
 **Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`) (:ref:`WP_056b <wallet-credential-issuance-testcases>`).
@@ -333,15 +333,15 @@ Un esempio non normativo della `Credential Request` è fornito di seguito.
    :language: http
 
 .. literalinclude:: ../../examples/credential-request.json
-  :language: JSON
+   :language: JSON
 
 Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` è rappresentato di seguito, senza codifica e firma.
 
 .. literalinclude:: ../../examples/credential-jwt-proof-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
-  :language: JSON
+   :language: JSON
 
 **Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali. Il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size`` (:ref:`WP_058a <wallet-credential-issuance-testcases>`).
 
@@ -370,7 +370,7 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 
 .. literalinclude:: ../../examples/batch-credential-request.json
-  :language: JSON
+   :language: JSON
 
 
 Il contenuto decodificato degli elementi ``jwt`` nell'array ``jwt`` è simile a quanto spiegato nel **Passo 16**.
@@ -392,7 +392,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
    :language: http
 
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 Di seguito è riportato un esempio non normativo di una risposta di successo contenente un Attestato Elettronico nel formato mdoc.
@@ -401,7 +401,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
    :language: http
 
 .. literalinclude:: ../../examples/mdoc-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 Di seguito è riportato un esempio non normativo di una risposta di successo contenente un batch di Attestati Elettronici nel formato SD-JWT VC.
@@ -410,7 +410,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
    :language: http
 
 .. literalinclude:: ../../examples/sd-jwt-batch-credential-response.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -426,7 +426,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 .. literalinclude:: ../../examples/shared/credential-issuance-low-level-9.http
    :language: http
 .. literalinclude:: ../../examples/notification-request.json
-  :language: JSON
+   :language: JSON
 
 
 **Passo 26 (`Notification Response`)**: Quando il Credential Issuer ha ricevuto con successo la `Notification Request` dal Wallet, il Credential Issuer DEVE rispondere con un codice di stato HTTP *204*. La Sezione 11.2 di [`OpenID4VCI`_] raccomanda tale codice di stato. Di seguito è riportato un esempio non normativo di risposta a una `Notification Request` riuscita:

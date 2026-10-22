@@ -176,15 +176,15 @@ The ``status`` parameter ``status_list``, it MUST be a *JSON object* compliant w
 Below is a non-normative example of (Q)EAA in JSON.
 
 .. literalinclude:: ../../examples/qeaa-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 In the following the disclosure list is given:
 
@@ -253,7 +253,7 @@ In the following the disclosure list is given:
 The combined format for the (Q)EAA issuance is represented below:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 Digital Credential Type Metadata Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -508,12 +508,12 @@ mdoc-CBOR Examples
 A non-normative example of an mDL encoded in CBOR is shown below in binary encoding.
 
 .. literalinclude:: ../../examples/mDL-cbor-encoded-example.txt
-  :language: text
+   :language: text
 
 The Diagnostic Notation of the CBOR-encoded mDL is given below.
 
 .. literalinclude:: ../../examples/mDL-mdoc-cbor-example.txt
-  :language: text
+   :language: text
 
 CBOR Acronyms
 ^^^^^^^^^^^^^

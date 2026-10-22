@@ -144,12 +144,12 @@ Below are non-normative examples using the diagnostic notation of a CBOR-encoded
 The following non-normative example is the EUDIW ``DeviceRequest``.
 
 .. literalinclude:: ../../examples/iso-device-request-eudiw.txt
-  :language: text
+   :language: text
 
 The following non-normative example is the National Trust Framework ``DeviceRequest``.
 
 .. literalinclude:: ../../examples/iso-device-request-oidfed.txt
-  :language: text
+   :language: text
 
 .. admonition:: Box B
 
@@ -189,7 +189,7 @@ For the National direct path it MUST use validated Trust Mark transparency claim
 Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceResponse`` transported inside encrypted ``SessionData``.
 
 .. literalinclude:: ../../examples/iso-device-response.txt
-  :language: text
+   :language: text
 
 **Step 13**: The Relying Party Instance receives the ``SessionData``. The Relying Party Instance MUST decrypt the ``SessionData``. The Relying Party Instance MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). The Relying Party Instance MUST also check the validity of the mdoc, including its Issuer's signature. For a long-lived Digital Credential, the revocation status check is specified in :ref:`credential-revocation:Checking Credentials Statuses`.
 
@@ -223,14 +223,14 @@ Non-Normative Example with BLE as Data Retrieval
 Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for Device Engagement and Bluetooth Low Energy (BLE) for data retrieval.
 
  .. literalinclude:: ../../examples/iso-device-engagement-BLE.txt
-  :language: text
+    :language: text
 
 Non-Normative Example with NFC as Data Retrieval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for Device Engagement and NFC for data retrieval.
 
  .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
-  :language: text
+    :language: text
 
 **Step 2**: The Relying Party uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
 
@@ -287,7 +287,7 @@ Non-Normative Example
 ^^^^^^^^^^^^^^^^^^^^^^^
 Below is a non-normative example of a ``DeviceEngagement`` structure for Data Retrieval over BLE and NFC.
   .. literalinclude:: ../../examples/iso-device-engagement-NFC-BLE.txt
-   :language: text
+     :language: text
 
 ``SessionEstablishment`` over BLE
 ----------------------------------

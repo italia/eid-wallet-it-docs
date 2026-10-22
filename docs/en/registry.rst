@@ -696,7 +696,7 @@ Taxonomy JSON Structure
 A non-normative example of Taxonomy structure is given below:
 
 .. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the Taxonomy, an Entity consulting it SHOULD:
@@ -812,7 +812,7 @@ The Claims Registry maintains language-neutral, technical definitions for semant
 A non-normative example of Claims Registry structure is given below:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Claims Registry, an Entity consulting it SHOULD:
@@ -1079,7 +1079,7 @@ Authentic Source Registry Example
 A non-normative example of AS Registry structure is given below:
 
 .. literalinclude:: ../../examples/as-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Authentic Source Registry, an Entity consulting it SHOULD:
@@ -1560,10 +1560,10 @@ Each element of the ``credentials`` array contains at least the following inform
 The following non-normative example is one page of a collection response, decoded as JSON for both the header and the payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:

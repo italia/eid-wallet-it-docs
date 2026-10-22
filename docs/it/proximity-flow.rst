@@ -140,7 +140,7 @@ La sessione stabilita PUÒ essere successivamente terminata in base alle condizi
 Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
-  :language: text
+   :language: text
 
 .. admonition:: Box B
 
@@ -170,7 +170,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazione diagnostica che contiene la Risposta mdoc di un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-data.txt
-  :language: text
+   :language: text
 
 **Passo 13**: L'Istanza di Relying Party riceve il ``SessionData``. L'Istanza di Relying Party DEVE decifrare il ``SessionData``. L'Istanza di Relying Party DEVE verificare la firma dell'Istanza del Wallet per garantire l'integrità dei dati e che provengano dal dispositivo previsto (device binding). L'Istanza di Relying Party DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. Per una Credenziale di lunga durata, il controllo dello stato di revoca è specificato in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
@@ -204,14 +204,14 @@ Esempio Non Normativo con BLE come Device Retrieval
 Di seguito è riportato un esempio non normativo di``DeviceEngagement`` nella notazione diagnostica che utilizza QR per il *Device Engagement* e Bluetooth Low Energy (BLE) per il recupero dei dati.
 
  .. literalinclude:: ../../examples/iso-device-engagement-BLE.txt
-  :language: text
+    :language: text
 
 Esempio Non Normativo con NFC come Device Retrieval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Di seguito è riportato un esempio non normativo di ``DeviceEngagement`` nella notazione diagnostica che utilizza QR per il *Device Engagement* e NFC per il recupero dei dati.
 
  .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
-  :language: text
+    :language: text
 
 **Passo 2**: Il verificatore utilizza la sua Istanza di Relying Party per scansionare il QR code e recuperare i dati ``DeviceEngagement`` dall'mdoc. Esso DEVE selezionare una delle tecnologie di trasmissione tra quelle fornite nella struttura ``DeviceEngagement``.
 
@@ -268,7 +268,7 @@ Esempio Non Normativo
 ^^^^^^^^^^^^^^^^^^^^^
 Di seguito è riportato un esempio non normativo di una struttura ``DeviceEngagement`` per *Device Retrieval* tramite BLE e NFC.
   .. literalinclude:: ../../examples/iso-device-engagement-NFC-BLE.txt
-   :language: text
+     :language: text
 
 ``SessionEstablishment`` tramite BLE
 ------------------------------------

@@ -696,7 +696,7 @@ Struttura JSON della Taxonomy
 Di seguito è fornito un esempio non normativo della struttura della Taxonomy:
 
 .. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione della Taxonomy, un'Entità che la consulta DOVREBBE:
@@ -812,7 +812,7 @@ Il Claims Registry mantiene definizioni tecniche language-neutral per la coerenz
 Di seguito è fornito un esempio non normativo della struttura del Claims Registry:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Claims Registry, un'Entità che lo consulta DOVREBBE:
@@ -1074,7 +1074,7 @@ Esempio di Authentic Source Registry
 Di seguito è fornito un esempio non normativo della struttura dell'AS Registry:
 
 .. literalinclude:: ../../examples/as-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nell'Authentic Source Registry, un'Entità che lo consulta DOVREBBE:
@@ -1555,10 +1555,10 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
 L'esempio non normativo seguente è una pagina di una risposta di collection, decodificata in JSON sia per l'header sia per il payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Digital Credentials Catalog, un'Entità che lo consulta DOVREBBE:

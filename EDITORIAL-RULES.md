@@ -82,7 +82,7 @@ Clarity is measured by the editorial clarity index in `.github/scripts/clarity_i
 - up to 30 points for semicolons per 1 000 words, at 6 points each
 - up to 30 points for sentences that contain two or more normative keywords per 1 000 words, at 12 points each
 
-Directives, literals, and test plans are not scored. A document with fewer than 8 sentences after that removal is not scored. Every scored document must be at least 90.
+Directives, their options (`:language:`, `:caption:`, `:sorted:`, and the same kind of line), literals, and test plans are not scored. The indentation of that markup is not scored either. A document with fewer than 8 sentences after that removal is not scored. Every scored document must be at least 90.
 
 ## Certificate chain
 

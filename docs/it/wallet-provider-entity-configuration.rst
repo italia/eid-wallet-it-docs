@@ -67,6 +67,6 @@ Di seguito è riportato un esempio non normativo di payload di una Entity Config
 - `openid_wallet_provider`
 
 .. literalinclude:: ../../examples/ec-wp.json
-  :language: JSON
+   :language: JSON
 
 
