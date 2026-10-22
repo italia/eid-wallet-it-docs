@@ -207,7 +207,7 @@ The following claims apply in addition to :ref:`credential-data-model:Digital Cr
       - OPTIONAL. String. Attestation identity code. See :ref:`credential-data-model-qeaa-pub-eaa:Attestation Identity`.
       - [`ETSI TS 119 472-1`_] EAA-5.2.3-02
     * - ``also_known_as``
-      - CONDITIONAL. See :ref:`credential-data-model-qeaa-pub-eaa:Subject`.
+      - See :ref:`credential-data-model-qeaa-pub-eaa:Subject`.
       - [`ETSI TS 119 472-1`_] EAA-5.2.5.2-02
     * - ``shortLived``
       - OPTIONAL. JSON null. See :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
@@ -269,7 +269,7 @@ Namespace org.etsi.01947201.010101
       - REQUIRED. Text string. Values are specified in :ref:`credential-data-model-qeaa-pub-eaa:Category`.
       - [`ETSI TS 119 472-1`_] clause 6.2.2
     * - ``also_known_as``
-      - CONDITIONAL. Text string. See :ref:`credential-data-model-qeaa-pub-eaa:Subject`.
+      - Text string. See :ref:`credential-data-model-qeaa-pub-eaa:Subject`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.5.2-01
     * - ``iss_reg_id``
       - MUST NOT be present. See :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.

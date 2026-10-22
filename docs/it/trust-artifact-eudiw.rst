@@ -133,7 +133,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - OBBLIGATORIO.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
      - OBBLIGATORIO. DEVE includere una struttura ``AccessDescription`` con ``accessMethod`` impostato a ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) e ``accessLocation`` che specifica almeno una access location di un certificato CA valido della CA emittente.

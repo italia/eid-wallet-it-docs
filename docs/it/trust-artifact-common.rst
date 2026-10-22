@@ -54,7 +54,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - OBBLIGATORIO.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
        Se presente, DEVE contenere almeno un riferimento a una CRL pubblicamente disponibile.
 
@@ -109,7 +109,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - OBBLIGATORIO.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
        Se presente, DEVE contenere almeno un riferimento a una CRL pubblicamente disponibile.
 
@@ -161,7 +161,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - OBBLIGATORIO.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
        Se presente, DEVE contenere almeno un riferimento a una CRL pubblicamente disponibile.
 
@@ -221,7 +221,7 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.
      - OBBLIGATORIO.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
+     - **OBBLIGATORIO SE:** il certificato non include alcuna access location di un responder OCSP o l'estensione validity assured come definita in `ETSI EN 319 412-1`_.
 
        Se presente, DEVE contenere almeno un riferimento a una CRL pubblicamente disponibile.
 
@@ -290,7 +290,7 @@ I campi non elencati nella tabella restano soggetti ai requisiti definiti nel :r
      - **Descrizione**
 
    * - ``authorityKeyIdentifier``
-     - CONDITIONAL. **OBBLIGATORIO SE:** il certificato non è self-signed.
+     - **OBBLIGATORIO SE:** il certificato non è self-signed.
        Per i certificati self-signed, è RACCOMANDATO.
        Se l'estensione è presente, il valore del campo ``keyIdentifier`` DOVREBBE essere derivato dalla chiave pubblica usando i metodi definiti in :rfc:`5280#section-4.2.1.1`.
 

@@ -207,7 +207,7 @@ I claim seguenti si applicano in aggiunta a :ref:`credential-data-model:Attribut
       - OPZIONALE. Stringa. Codice di identità dell'attestato. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identità dell'Attestato`.
       - [`ETSI TS 119 472-1`_] EAA-5.2.3-02
     * - ``also_known_as``
-      - CONDIZIONALE. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Soggetto`.
+      - Vedere :ref:`credential-data-model-qeaa-pub-eaa:Soggetto`.
       - [`ETSI TS 119 472-1`_] EAA-5.2.5.2-02
     * - ``shortLived``
       - OPZIONALE. JSON null. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
@@ -269,7 +269,7 @@ Namespace org.etsi.01947201.010101
       - OBBLIGATORIO. Stringa di testo. I valori sono specificati in :ref:`credential-data-model-qeaa-pub-eaa:Categoria`.
       - [`ETSI TS 119 472-1`_] capitolo 6.2.2
     * - ``also_known_as``
-      - CONDIZIONALE. Stringa di testo. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Soggetto`.
+      - Stringa di testo. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Soggetto`.
       - [`ETSI TS 119 472-1`_] EAA-6.2.5.2-01
     * - ``iss_reg_id``
       - NON DEVE essere presente. Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identificazione dell'Issuer`.

@@ -128,4 +128,6 @@
 .. _OAS3: https://spec.openapis.org/oas/v3.0.3
 .. _ICAO 9303: https://www.icao.int/publications/doc-series/doc-9303
 .. _BSI-03110: https://www.bundesanzeiger.de/download/BAnzAT1142010B1/03_BSI_TR-03110.pdf
+.. _Adaptive chosen-ciphertext attack: https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack
+.. _SOG-IS Agreed Cryptographic Mechanisms: https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf
 

@@ -54,7 +54,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
        If present, it MUST contain at least one reference to a publicly available CRL.
 
@@ -109,7 +109,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
        If present, it MUST contain at least one reference to a publicly available CRL.
 
@@ -161,7 +161,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
        If present, it MUST contain at least one reference to a publicly available CRL.
 
@@ -221,7 +221,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
        If present, it MUST contain at least one reference to a publicly available CRL.
 
@@ -290,7 +290,7 @@ Fields not listed in the table remain subject to the requirements defined in the
      - **Description**
 
    * - ``authorityKeyIdentifier``
-     - CONDITIONAL. **REQUIRED IF:** the certificate is not self-signed.
+     - **REQUIRED IF:** the certificate is not self-signed.
        For self-signed certificates, it is RECOMMENDED.
        If the extension is present, the value of the ``keyIdentifier`` field SHOULD be derived from the public key using the methods defined in :rfc:`5280#section-4.2.1.1`.
 

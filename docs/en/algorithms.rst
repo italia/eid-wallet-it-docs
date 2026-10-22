@@ -142,13 +142,13 @@ The following algorithms MUST NOT be supported:
     - Signature
     - :rfc:`7518`.
   * - **RSA_1_5**
-    - RSAES with PKCS1-v1_5 padding scheme. Use of this algorithm is generally not recommended.
+    - RSAES with PKCS1-v1_5 padding scheme. This algorithm MUST NOT be supported.
     - Key Encryption
-    - :rfc:`7516`, `[Security Vulnerability] <https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack>`_, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
+    - :rfc:`7516`, `Adaptive chosen-ciphertext attack`_, `SOG-IS Agreed Cryptographic Mechanisms`_.
   * - **RSA-OAEP**
     - RSA Encryption Scheme with Optimal Asymmetric Encryption Padding (OAEP) using default parameters.
     - Key Encryption
-    - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
+    - :rfc:`7518`, `SOG-IS Agreed Cryptographic Mechanisms`_.
   * - **HS256**
     - HMAC using SHA-256.
     - Signature

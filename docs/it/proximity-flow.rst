@@ -130,7 +130,7 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
 **Passo 7**: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` e :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
-**Passo 8**: L'Istanza di Relying Party DEVE preparare il ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'*mdoc reader* come specificato in [`ISO18013-5`_ #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio ``SessionEstablishment`` DEVE includere la ``EReaderKey.Pub`` e una richiesta per specifici attributi (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+**Passo 8**: L'Istanza di Relying Party DEVE preparare un messaggio ``SessionEstablishment`` contenente ``EReaderKey.Pub`` e il ``DeviceRequest`` cifrato. Ogni ``DocRequest`` nel ``DeviceRequest`` DEVE contenere il proprio ``readerAuth`` firmato su ``ReaderAuthentication``. La busta ``SessionEstablishment`` NON DEVE essere descritta come firmata. Il messaggio ``SessionEstablishment`` DEVE essere cifrato utilizzando le chiavi di sessione derivate nel passo precedente (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
 
 Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
@@ -140,7 +140,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 .. admonition:: Box B
 
-   L'Istanza di Relying Party DEVE trasmettere il messaggio ``SessionEstablishment`` cifrato e firmato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement.
+   L'Istanza di Relying Party DEVE trasmettere il messaggio ``SessionEstablishment`` cifrato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement.
    Fare riferimento a:
 
    - Sez 8.2.2.3 per ``SessionEstablishment`` tramite BLE, e
@@ -148,7 +148,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 **Passo 9**: L'Istanza del Wallet DEVE calcolare la chiave di sessione, come descritto nel Passo 7.
 
-**Passo 10**: Al ricevimento del ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [`ISO18013-5`_ #12.5 *mdoc reader authentication*]) per garantire l'autenticità del messaggio (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
+**Passo 10**: Al ricevimento del messaggio ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE validare ogni ``readerAuth`` di ogni ``DocRequest`` oppure il ``readerAuthAll`` sui dati ``ReaderAuthentication`` (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` e :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
 **Passo 11**: Dopo l'autenticazione riuscita del lettore mdoc, l'Istanza del Wallet DEVE eseguire l'autorizzazione sul percorso selezionato prima del consenso. Autenticazione e autorizzazione per quel percorso sono specificate in :ref:`trust-evaluation:Selection at Presentation`. I fallimenti di autenticazione e di binding sono terminali. L'Istanza del Wallet DEVE mostrare, in forma leggibile, l'identità verificata della Relying Party e del Servizio, la finalità, gli Attestati Elettronici e gli attributi richiesti, l'intenzione di conservazione e le informazioni sulla privacy policy tratte dall'artifact di autorizzazione validato del percorso selezionato e dalle informazioni del Registrar (:ref:`WP_107a <wallet-credential-presentation-testcases>`). Per l'intermediazione EUDIW, l'Istanza del Wallet DEVE mostrare la Relying Party e il Servizio intermediati e NON DEVE mostrare i nomi commerciali dell'Intermediario. Per il percorso nazionale diretto, l'Istanza del Wallet DEVE usare i claim di trasparenza del Trust Mark validato (:ref:`trust-evaluation:Authorization` e :ref:`trust-evaluation:User Transparency`).
 
@@ -471,12 +471,12 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
            - **euWrpRegistrarInfo** *(map, OBBLIGATORIO)*. Dati di trasparenza del Registrar. ``identifier`` *(array, OBBLIGATORIO, non vuoto)* contiene oggetti con ``type`` *(tstr, OBBLIGATORIO)* e ``identifier`` *(tstr, OBBLIGATORIO)*. ``srvDescription`` e ``purpose`` *(array, OBBLIGATORIO, non vuoti)* contengono oggetti con ``lang`` *(tstr, OBBLIGATORIO)* e ``content`` *(tstr, OBBLIGATORIO)*. ``registryURI`` *(tstr, OBBLIGATORIO)*, ``intendedUseIdentifier`` *(tstr, OBBLIGATORIO)* e ``policyURI`` *(tstr, OBBLIGATORIO)* sono obbligatori. ``credential`` *(array, OPZIONALE, non vuoto quando presente)* contiene oggetti ETSI ``Credential`` e ``Claim``. Questi campi sono usati con l'artifact di autorizzazione validato del percorso selezionato per la trasparenza verso l'Utente.
 
-       - **readerAuth** *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'Istanza di Relying Party per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #12.5].
+       - **readerAuth** *(COSE_Sign1)*. Utilizzato per autenticare l'Istanza di Relying Party per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #12.5].
 
          Questo componente DEVE essere presente solo se ``readerAuthAll`` non viene utilizzato (:ref:`PPR-025 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
    * - **readerAuthAll**
-     - *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare la Relying Party una volta per tutte le `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #12.5].
+     - *(COSE_Sign1)*. Utilizzato per autenticare la Relying Party una volta per tutte le `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #12.5].
 
        Questo componente DEVE essere presente solo se ``ReaderAuthAllSupport`` è impostato su ``true`` nel messaggio di DeviceEngagement, e i campi individuali ``readerAuth`` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 

@@ -744,9 +744,9 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
    * - **sd_hash**
      - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
    * - **transaction_data_hashes**
-     - CONDITIONAL. REQUIRED when the request includes ``transaction_data``. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding ``transaction_data`` item.
+     - REQUIRED when the request includes ``transaction_data``. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding ``transaction_data`` item.
    * - **transaction_data_hashes_alg**
-     - CONDITIONAL. REQUIRED only when the corresponding ``transaction_data`` object includes ``transaction_data_hashes_alg``. String naming the hash algorithm actually used to compute ``transaction_data_hashes``. If that parameter was not provided, the hash function MUST be ``sha-256``.
+     - REQUIRED only when the corresponding ``transaction_data`` object includes ``transaction_data_hashes_alg``. String naming the hash algorithm actually used to compute ``transaction_data_hashes``. If that parameter was not provided, the hash function MUST be ``sha-256``.
 
 
 Authorization Response Errors

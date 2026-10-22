@@ -12,7 +12,7 @@ I log relativi alle attività di scambio dati del Wallet (accessi e transazioni 
 
 Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziali, alle Fonti Autentiche e alle Relying Party DEVONO implementare la registrazione di audit per le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
 
-A meno che specifici obblighi legali non dispongano diversamente, e con la definizione di normative specifiche di settore che definiscano motivazioni appropriate, **il periodo massimo di conservazione per i log dei dati è di 12 mesi**. I log DEVONO essere archiviati in modo sicuro per garantirne l'integrità e l'immutabilità.
+Salvo un obbligo di legge che disponga diversamente, i log di scambio NON DEVONO essere conservati per più di 12 mesi. I log DEVONO essere archiviati in modo sicuro per garantirne l'integrità e l'immutabilità.
 
 Requisiti Generali di Logging ISO/IEC 27001
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,7 +35,7 @@ Le Entità Organizzative DEVONO implementare misure tecniche e organizzative app
 Politica di Conservazione dei Log del Fornitore di Wallet
 ---------------------------------------------------------
 
-Le informazioni relative alla registrazione e alla gestione delle Istanze del Wallet possono essere conservate fino a 12 mesi dopo la disattivazione/revoca del Wallet o dell'account Utente associato, a meno che obblighi legali non richiedano una conservazione più lunga.
+Le informazioni relative alla registrazione e alla gestione delle Istanze del Wallet POSSONO essere conservate fino a 12 mesi dopo la disattivazione o la revoca del Wallet o dell'account Utente associato, a meno che un obbligo di legge non richieda una conservazione più lunga.
 
 
 Politica di Conservazione dei Log del Fornitore di Credenziali
@@ -49,7 +49,7 @@ Politica di Conservazione dei Log delle Fonti Autentiche
 
 Le Fonti Autentiche sono Entità Organizzative ai fini del presente capitolo: i log riguardano gli accessi e le transazioni su endpoint e servizi utilizzati per fornire ai Fornitori di Credenziali i dati ufficiali impiegati per la generazione degli Attestati Elettronici di Attributi nell'ambito del Sistema IT-Wallet, inclusi—ove ricorrono—gli e-service esposti tramite la Piattaforma Digitale Nazionale Dati (`PDND`_).
 
-Salvo obblighi di legge o normativa settoriale che dispongano diversamente, per tali log si applica il periodo massimo di conservazione di **12 mesi** stabilito nel paragrafo introduttivo. Permangono in ogni caso i vincoli del GDPR sulla minimizzazione, sulla limitazione della conservazione e sulla base giuridica del trattamento.
+Salvo obblighi di legge o normativa settoriale che dispongano diversamente, tali log NON DEVONO essere conservati per più di 12 mesi. Permangono in ogni caso i vincoli del GDPR sulla minimizzazione, sulla limitazione della conservazione e sulla base giuridica del trattamento.
 
 
 Politica di Conservazione dei Log della Relying Party

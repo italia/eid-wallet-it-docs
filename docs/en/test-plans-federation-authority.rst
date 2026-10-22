@@ -49,8 +49,8 @@ All validations  align with (`OID-FED`_).
     - ``jwks.keys[*]`` entries use permitted algorithms and key sizes; keys are not expired or revoked per ``/historical-jwks``; each ``kid`` is unique.
   * - FA_007
     - Security
-    - ``exp`` validation tolerance
-    - Validation rejects Entity Configuration if ``exp`` is in the past; a maximum clock skew of 120 seconds MAY be applied when comparing current time to ``iat``/``exp``.
+    - ``exp`` validation
+    - Validation rejects Entity Configuration if ``exp`` is in the past.
   * - FA_008
     - Security
     - Subordinate Statement signature and lifetime
@@ -58,7 +58,7 @@ All validations  align with (`OID-FED`_).
   * - FA_009
     - Interoperability
     - Subordinate Statement schema
-    - Subordinate Statement contains the subordinate's public keys (directly or by reference) and applicable metadata policies or metadata, conforming to draft-43 structure.
+    - Subordinate Statement contains the subordinate's public keys (directly or by reference) and applicable metadata policies or metadata, conforming to OpenID Federation 1.0 (`OID-FED`_).
   * - FA_010
     - Discovery
     - Listing subordinates
@@ -74,7 +74,7 @@ All validations  align with (`OID-FED`_).
   * - FA_013
     - Security
     - Key rotation propagation
-    - After rotating keys, ``/.well-known/openid-federation`` and ``/historical-jwks`` are updated atomically or within a documented maximum propagation window. Verification with the new key succeeds, and the old key appears in historical.
+    - After rotating keys, ``/.well-known/openid-federation`` and ``/historical-jwks`` are updated together. Verification with the new key succeeds, and the old key appears in historical.
   * - FA_014
     - Security
     - Disallow ``alg":"none`` and weak algorithms
@@ -102,6 +102,6 @@ All validations  align with (`OID-FED`_).
   * - FA_020
     - Security
     - Metadata policy application (if used)
-    - When metadata policies are used in Subordinate Statements, the resulting effective metadata computed from policy + source metadata conforms to draft-43 rules; conflicts are resolved deterministically.
+    - When metadata policies are used in Subordinate Statements, the resulting effective metadata computed from policy + source metadata conforms to OpenID Federation 1.0 (`OID-FED`_); conflicts are resolved deterministically.
 
 
