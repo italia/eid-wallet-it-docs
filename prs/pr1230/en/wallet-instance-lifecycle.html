@@ -7,7 +7,7 @@
 
     <title>9.1.4.1. Wallet Instance Lifecycle &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -346,8 +382,7 @@ Each state represents a specific functional status and determines the actions th
 </div>
 <section id="transition-to-installed">
 <h2><span class="section-number">9.1.4.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h2>
-<p>The state machine begins with the Wallet Instance installation (<strong>WI INST</strong>) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
-official app store of their device's operating system (this ensures authenticity via system checks), leading to the <strong>Installed</strong> state.</p>
+<p>The state machine begins with the Wallet Instance installation (<strong>WI INST</strong>) transition. Users download and install a Wallet Instance provided by the Wallet Provider using the official app store of their device's operating system. The official app store ensures authenticity via system checks. The installation leads to the <strong>Installed</strong> state.</p>
 <p>When the state is <strong>Installed</strong>, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from <strong>Operational</strong> or <strong>Valid</strong> to <strong>Installed</strong>. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
 (see <a class="reference internal" href="#id1"><span class="std std-ref">Transition to Operational</span></a>), as not usable anymore. Revocation can occur in the following cases:</p>
 <ul class="simple">
@@ -365,21 +400,19 @@ The Wallet Provider can simply change the status of the Wallet Instance Attestat
 <section id="id1">
 <h2><span class="section-number">9.1.4.1.2. </span>Transition to Operational<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>After installation, the User opens the Wallet Instance and an activation begins (<strong>WI ACT</strong>).
-At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
-Hardware Key Tag, subject to obtaining the User's consent (see <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a> for more details, with tests in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_024</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>).
+At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. The creation is subject to obtaining the User's consent (see <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a> for more details, with tests in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_024</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>).
 This association allows the User to directly request Wallet Instance revocation from the Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
 This specification mandates the use of at least a second-factor for User authentication.</p>
 </div>
-<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard Credentials, WSCA operating within a Remote WSCD for the PID).
+<p>As part of the activation, the Wallet Provider MUST evaluate the following. The evaluation covers the operating system and the general technical capabilities of the device. The evaluation covers the trustworthiness of the Keystore and of the WSCA/Remote WSCD for PID issuance. The evaluation checks compliance with the technical and security requirements. The evaluation checks the authenticity and integrity of the installed Wallet Instance. The evaluation checks that the keys used for key binding reside in a secure hardware-backed environment. That environment is the Keystore for standard Credentials and a WSCA operating within a Remote WSCD for the PID.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
 <p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance. This MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Please refer to <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>.</p>
-<p>In the <strong>Operational</strong> state, Users can request the issuance of the national <strong>IT-Wallet ID</strong> (which does <strong>not</strong> cause a transition to <strong>Valid</strong>), or of (Q)EAAs if the PID is not required in the issuance
-(<strong>(Q)EEA ISS</strong>). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
+<p>In the <strong>Operational</strong> state, Users can request the issuance of the national <strong>IT-Wallet ID</strong> (which does <strong>not</strong> cause a transition to <strong>Valid</strong>). Users can also request (Q)EAAs if the PID is not required in the issuance (<strong>(Q)EEA ISS</strong>). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
 without transitioning the Wallet Instance to another state (<strong>(Q)EEA PRE</strong> transition). The IT-Wallet ID MAY likewise be presented while the Wallet Instance remains <strong>Operational</strong>.</p>
 <p>The <strong>PID ISS</strong> transition is subject to <a class="reference internal" href="credential-data-model-pid.html#pid-until-notification"><span class="std std-ref">PID issuance before EUDIW notification</span></a>.
 Until then the Wallet Instance remains <strong>Operational</strong> with the IT-Wallet ID.</p>
@@ -403,9 +436,7 @@ uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninst
 </section>
 <section id="wallet-instance-lifecycle-management">
 <h2><span class="section-number">9.1.4.1.5. </span>Wallet Instance Lifecycle Management<a class="headerlink" href="#wallet-instance-lifecycle-management" title="Link to this heading">¶</a></h2>
-<p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 9.2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
-<a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 9.3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
-and the effect on their local storage.</p>
+<p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 9.2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle, <a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 9.3</span></a> shows the point of view of Wallet Instances and Wallet Providers. That figure shows how Wallet Instances and Wallet Providers manage the Wallet Instance lifecycle and the effect on their local storage.</p>
 <figure class="align-default" id="id4">
 <span id="fig-wallet-instance-lifecycle"></span><p class="plantuml">
 <object data="_images/plantuml-4e8af812087e77bddaf273295da21ed5c7fb809a.svg" type="image/svg+xml" style="width:99%">
@@ -468,18 +499,6 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

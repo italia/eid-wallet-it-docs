@@ -7,7 +7,7 @@
 
     <title>16. Termini Definiti e Riferimenti &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -79,7 +88,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -278,9 +314,8 @@
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">16. Termini Definiti e Riferimenti</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html">16.1. Definizioni e Acronimi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#linguaggio-normativo-e-convenzioni">16.2. Linguaggio Normativo e Convenzioni</a></li>
-<li class="toctree-l2"><a class="reference internal" href="normative-ref.html">16.3. Riferimenti Normativi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html">16.4. Technical References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normative-ref.html">16.2. Riferimenti Normativi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html">16.3. Technical References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
@@ -314,28 +349,27 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronimi">16.1.1. Acronimi</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#linguaggio-normativo-e-convenzioni">16.2. Linguaggio Normativo e Convenzioni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="normative-ref.html">16.3. Riferimenti Normativi</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="normative-ref.html#risorse-ufficiali">16.3.1. Risorse Ufficiali</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#sito-ufficiale">16.3.1.1. Sito Ufficiale</a></li>
-<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#risorse-grafiche">16.3.1.2. Risorse Grafiche</a></li>
-<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#componenti-html">16.3.1.3. Componenti HTML</a></li>
-<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#brand-manual">16.3.1.4. Brand Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normative-ref.html">16.2. Riferimenti Normativi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="normative-ref.html#risorse-ufficiali">16.2.1. Risorse Ufficiali</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#sito-ufficiale">16.2.1.1. Sito Ufficiale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#risorse-grafiche">16.2.1.2. Risorse Grafiche</a></li>
+<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#componenti-html">16.2.1.3. Componenti HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="normative-ref.html#brand-manual">16.2.1.4. Brand Manual</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">16.4. Technical References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#wallet-architecture-and-reference-frameworks">16.4.1. Wallet Architecture and Reference Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#eudi-wallet-standards-and-technical-specifications">16.4.2. EUDI Wallet Standards and Technical Specifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#infrastructure-of-trust">16.4.3. Infrastructure of Trust</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-data-format">16.4.4. Digital Credential Data Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-issuance">16.4.5. Digital Credential Issuance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-presentation">16.4.6. Digital Credential Presentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-revocation-check-mechanisms">16.4.7. Digital Credential Revocation Check Mechanisms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#national-data-interoperability-platform-specifications">16.4.8. National Data Interoperability Platform Specifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#national-digital-identity-platform-specifications">16.4.9. National Digital Identity Platform Specifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html#security-and-protection-profiles">16.4.10. Security and Protection Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">16.3. Technical References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#wallet-architecture-and-reference-frameworks">16.3.1. Wallet Architecture and Reference Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#eudi-wallet-standards-and-technical-specifications">16.3.2. EUDI Wallet Standards and Technical Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#infrastructure-of-trust">16.3.3. Infrastructure of Trust</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-data-format">16.3.4. Digital Credential Data Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-issuance">16.3.5. Digital Credential Issuance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-presentation">16.3.6. Digital Credential Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#digital-credential-revocation-check-mechanisms">16.3.7. Digital Credential Revocation Check Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#national-data-interoperability-platform-specifications">16.3.8. National Data Interoperability Platform Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#national-digital-identity-platform-specifications">16.3.9. National Digital Identity Platform Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html#security-and-protection-profiles">16.3.10. Security and Protection Profiles</a></li>
 </ul>
 </li>
 </ul>

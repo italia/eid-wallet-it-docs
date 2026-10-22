@@ -34,12 +34,8 @@ Upon a successful request, the Wallet Provider generates and returns the nonce v
 
 Below is a non-normative example of the ``client_data`` JSON object.
 
-.. code-block:: json
-
-  {
-    "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
-    "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-  }
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-1.json
+   :language: json
 
 
 **Steps 8-10**: The Wallet Instance:
@@ -79,14 +75,8 @@ Upon successful completion of all checks, the Wallet Provider issues a Wallet In
 
 Below is a non-normative example of the response.
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-
-  {
-    "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
-  }
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-2.http
+   :language: http
 
 
 Per-Issuer Status Entry Reuse

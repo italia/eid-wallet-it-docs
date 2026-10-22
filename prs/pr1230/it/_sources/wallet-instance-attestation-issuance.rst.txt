@@ -33,12 +33,8 @@ In caso di richiesta riuscita, il Fornitore di Wallet genera e restituisce il va
 
 Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data``.
 
-.. code-block:: json
-
-  {
-    "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
-    "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-  }
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-1.json
+   :language: json
 
 
 **Passi 8-10**: L'Istanza del Wallet:
@@ -78,14 +74,8 @@ Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emet
 
 Di seguito è riportato un esempio non normativo della risposta.
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-
-  {
-    "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
-  }
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-2.http
+   :language: http
 
 
 Riutilizzo della Voce di Stato per Emittente

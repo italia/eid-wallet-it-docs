@@ -59,7 +59,7 @@ The Wallet Instance initiates a data deletion request through the Relying Party 
 Security Considerations
 """""""""""""""""""""""
 
-All Relying Party endpoints MUST implement appropriate security measures:
+All Relying Party endpoints MUST implement appropriate security measures.
 
 - **HTTPS Only**: All endpoints MUST be accessible only over HTTPS.
 - **Endpoint Mix-up Protection**: Endpoint URLs MUST be attested by trusted third parties through the respective National or EUDIW Trust Framework.

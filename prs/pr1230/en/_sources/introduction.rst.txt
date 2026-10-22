@@ -8,7 +8,7 @@ Introduction
 .. include:: introduction-lead.rst
 
 Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their Wallet, the information required for accessing services provided by public and private entities in the form of Digital Credentials.
-Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or verifiable attribute.
+Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card. The IT-Wallet can also contain a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or verifiable attribute.
 
 The main roles in the Wallet ecosystem are listed as follow:
 
@@ -50,7 +50,19 @@ Additional documentation, tools and resources - hereinafter defined Official Res
 Normative Language and Conventions
 ----------------------------------
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+
+- MUST.
+- MUST NOT.
+- REQUIRED.
+- SHALL.
+- SHALL NOT.
+- SHOULD.
+- SHOULD NOT.
+- RECOMMENDED.
+- NOT RECOMMENDED.
+- MAY.
+- OPTIONAL.
 
 .. include:: how-to-read-spec.rst
 

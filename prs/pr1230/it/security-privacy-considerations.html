@@ -7,7 +7,7 @@
 
     <title>14. Considerazioni di Sicurezza e Privacy &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -315,22 +351,22 @@
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Il focus dell'analisi è la conformità delle scelte progettuali nella specifica IT-Wallet rispetto ai protocolli OpenID4VC.
-Sono attualmente fuori ambito <em>(i)</em> l'analisi della progettazione del flusso di prossimità basato su ISO 18013-5, e <em>(ii)</em> l'analisi dell'implementazione;
-di conseguenza 7 requisiti specificamente relativi all'implementazione non sono considerati (ad esempio, SV-00: il Verifier deve implementare il protocollo in modo sicuro e corretto).</p>
+Sono attualmente fuori ambito <em>(i)</em> l'analisi della progettazione del flusso di prossimità basato su ISO 18013-5, e <em>(ii)</em> l'analisi dell'implementazione.
+Di conseguenza 7 requisiti specificamente relativi all'implementazione non sono considerati (ad esempio, SV-00: il Verifier deve implementare il protocollo in modo sicuro e corretto).</p>
 </div>
 <p>Come in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>], tutti i requisiti sono numerati per riferimento. Insieme al rispettivo componente che deve implementare il requisito:</p>
 <ul class="simple">
-<li><p><strong>CF</strong>: Formato della Credenziale;</p></li>
-<li><p><strong>P</strong>: Protocollo;</p></li>
-<li><p><strong>E</strong>: Ecosistema;</p></li>
+<li><p><strong>CF</strong>: Formato della Credenziale.</p></li>
+<li><p><strong>P</strong>: Protocollo.</p></li>
+<li><p><strong>E</strong>: Ecosistema.</p></li>
 <li><p><strong>I</strong>: Issuer. Nell'analisi, il Fornitore di Attestati Elettronici.</p></li>
 <li><p><strong>V</strong>: Verifier. Nell'analisi, la Relying Party.</p></li>
 <li><p><strong>W</strong>: Wallet.</p></li>
 </ul>
 <p>Questa specifica aggiunge la categoria del requisito come prefisso:</p>
 <ul class="simple">
-<li><p><strong>SR</strong>: Requisiti di Sicurezza;</p></li>
-<li><p><strong>PR</strong>: Requisiti di Privacy;</p></li>
+<li><p><strong>SR</strong>: Requisiti di Sicurezza.</p></li>
+<li><p><strong>PR</strong>: Requisiti di Privacy.</p></li>
 <li><p><strong>SPR</strong>: Requisiti di Sicurezza e Privacy.</p></li>
 </ul>
 <p>L'identificatore finale utilizza il seguente spazio dei nomi: <em>categoria_requisito-componente-id</em>.</p>
@@ -353,8 +389,8 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </table>
 <p>La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Attestati Elettronici.</p>
 <ul class="simple">
-<li><p>Per SD-JWT, la verifica viene eseguita utilizzando l'algoritmo specificato nel parametro dell'header <strong>alg</strong> di SD-JWT e un riferimento verificabile alla chiave pubblica che deve essere utilizzata per la verifica della firma. Utilizzando OpenID Federation, il riferimento verificabile al materiale crittografico pubblico è l'header <strong>kid</strong> dell'SD-JWT, dove il materiale crittografico viene ottenuto dalla Trust Chain relativa al Credential Issuer, specificato nel claim <strong>iss</strong>.</p></li>
-<li><p>Per mdoc-CBOR, la firma del Fornitore di Attestati Elettronici è contenuta nel <em>Mobile Security Object</em> (MSO) e deve essere convalidata utilizzando la chiave pubblica del Fornitore di Attestati Elettronici attraverso una catena di certificati attendibile contenuta nel parametro dell'header <strong>x5chain</strong>.</p></li>
+<li><p>Per SD-JWT, la verifica usa l'algoritmo specificato nel parametro dell'header <strong>alg</strong> di SD-JWT. La verifica usa anche un riferimento verificabile alla chiave pubblica per la verifica della firma. Con OpenID Federation, quel riferimento è l'header <strong>kid</strong> dell'SD-JWT. Il materiale crittografico si ottiene dalla Trust Chain relativa al Fornitore di Attestati Elettronici, indicata nel claim <strong>iss</strong>.</p></li>
+<li><p>Per mdoc-CBOR, la firma del Fornitore di Attestati Elettronici è contenuta nel <em>Mobile Security Object</em> (MSO). La firma si convalida con la chiave pubblica del Fornitore di Attestati Elettronici. La chiave è presa da una catena di certificati attendibile nel parametro dell'header <strong>x5chain</strong>.</p></li>
 </ul>
 </section>
 <section id="sr-cf-20">
@@ -401,7 +437,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Attestati Elettronici) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.</p>
+<p>Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Attestati Elettronici) sia identificata in modo univoco attraverso chiavi crittografiche e metadati. Chiavi e metadati sono distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.</p>
 </section>
 <section id="sr-e-30">
 <h3><span class="section-number">14.1.5. </span>SR-E-30<a class="headerlink" href="#sr-e-30" title="Link to this heading">¶</a></h3>
@@ -476,7 +512,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il Fornitore di Attestati Elettronici è l'entità responsabile della revoca di una Credenziale. La specifica descrive diversi casi d'uso che possono attivare un processo di revoca e dettaglia il flusso di revoca in cui il Fornitore di Attestati Elettronici revoca le Credenziali su richiesta dell'Utente (attraverso l'Istanza del Wallet) dopo aver verificato il possesso delle Credenziali.</p>
+<p>Il Fornitore di Attestati Elettronici è l'entità responsabile della revoca di una Credenziale. La specifica descrive diversi casi d'uso che possono attivare un processo di revoca. La specifica dettaglia il flusso di revoca in cui il Fornitore di Attestati Elettronici revoca le Credenziali su richiesta dell'Utente (attraverso l'Istanza del Wallet) dopo aver verificato il possesso delle Credenziali.</p>
 </section>
 <section id="sr-i-40">
 <h3><span class="section-number">14.1.10. </span>SR-I-40<a class="headerlink" href="#sr-i-40" title="Link to this heading">¶</a></h3>
@@ -491,9 +527,9 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.5</span></a>):</p>
+<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 11.5</span></a>).</p>
 <ul class="simple">
-<li><p>Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Attestati Elettronici autentica l'Utente utilizzando uno schema CieID o un PID/IT-Wallet ID valido, fornendo il Token di Accesso all'Utente.</p></li>
+<li><p>Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione. Il Fornitore di Attestati Elettronici autentica l'Utente utilizzando uno schema CieID o un PID/IT-Wallet ID valido. Il Fornitore di Attestati Elettronici fornisce il Token di Accesso all'Utente.</p></li>
 <li><p>Prova di Possesso della Chiave (Passi 12-13, 16-17): Il Wallet crea un DPoP Proof JWT, legando il Token di Accesso all'Istanza del Wallet. La stessa chiave viene poi utilizzata successivamente per richiedere la Credenziale, garantendo la continuità della proprietà.</p></li>
 <li><p>Emissione della Credenziale (Passi 18-21): La richiesta di Credenziale viene verificata utilizzando la prova di possesso, che è crittograficamente legata all'Utente. L'uso della stessa chiave nel DPoP garantisce che il materiale chiave sia controllato dall'Istanza del Wallet, e non da una terza parte.</p></li>
 </ul>
@@ -534,7 +570,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 </tr>
 </tbody>
 </table>
-<p>Questo requisito è affrontato mediante l'identificazione sicura del Fornitore di Attestati Elettronici. Il parametro ^iss^ nella risposta di autorizzazione assicura al Wallet che la risposta provenga dal Fornitore di Attestati Elettronici previsto e la verifica crittografica dei token ricevuti garantisce che siano stati emessi dal legittimo Fornitore di Attestati Elettronici. Inoltre, l'uso di PKCE evita l'iniezione del codice da un'altra sessione alla sessione dell'Utente.</p>
+<p>Questo requisito è affrontato mediante l'identificazione sicura del Fornitore di Attestati Elettronici. Il parametro ^iss^ nella risposta di autorizzazione assicura al Wallet che la risposta provenga dal Fornitore di Attestati Elettronici previsto. La verifica crittografica dei token ricevuti garantisce che i token siano stati emessi dal legittimo Fornitore di Attestati Elettronici. Inoltre, l'uso di PKCE evita l'iniezione del codice da un'altra sessione nella sessione dell'Utente.</p>
 </section>
 <section id="sr-p-30">
 <h3><span class="section-number">14.1.13. </span>SR-P-30<a class="headerlink" href="#sr-p-30" title="Link to this heading">¶</a></h3>
@@ -549,7 +585,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 </tr>
 </tbody>
 </table>
-<p>Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di <strong>nonce</strong>, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e la Relying Party. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.</p>
+<p>Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel flusso remoto, Request Objects firmati, l'uso di <strong>nonce</strong>, la validazione della Trust Chain, la Wallet Attestation e l'associazione del Titolare proteggono lo scambio. Nessuna terza parte può interferire o modificare le informazioni trasmesse tra il Wallet e la Relying Party. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30. I meccanismi proteggono l'interazione da manomissioni o attacchi di iniezione.</p>
 </section>
 <section id="sr-p-40">
 <h3><span class="section-number">14.1.14. </span>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
@@ -568,8 +604,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 La Relying Party dovrebbe mantenere una mappatura tra le sessioni dell'Utente e il <strong>nonce</strong> che è previsto nel flusso. La Relying Party dovrebbe accettare una presentazione solo se il <strong>nonce</strong> nella presentazione
 corrisponde al <strong>nonce</strong> che è previsto per la sessione dell'Utente. Con questa contromisura, la Relying Party deve rilevare se viene inviata una presentazione che non era legata alla sessione dell'Utente o se non
 esiste affatto una sessione dell'Utente, prevenendo l'attacco.</p>
-<p>Per il flusso cross-device il requisito è parzialmente soddisfatto in quanto il flusso è vulnerabile agli attacchi di Cross-Device Consent Phishing (un attaccante potrebbe iniziare il flusso di presentazione,
-ottenere il Request Object firmato e il codice QR, e inoltrarlo alla vittima).</p>
+<p>Per il flusso cross-device il requisito è parzialmente soddisfatto. Il flusso è vulnerabile agli attacchi di Cross-Device Consent Phishing. Un attaccante potrebbe iniziare il flusso di presentazione, ottenere il Request Object firmato e il codice QR, e inoltrarli alla vittima.</p>
 <p>Alcune misure di sicurezza sono già in atto, come l'uso di <strong>nonce</strong> e state. Il <strong>nonce</strong> garantisce la freschezza della richiesta, e lo state lega il flusso a una transazione unica,
 riducendo così l'opportunità per un attacco di successo.</p>
 <div class="admonition note">
@@ -595,8 +630,7 @@ dove viene discussa una lista di mitigazioni da [<a class="reference external" h
 </tr>
 </tbody>
 </table>
-<p>Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e la Relying Party, ad esempio,
-l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. Dato ciò, la corretta implementazione di TLS garantisce la riservatezza, evitando la fuga della risposta.
+<p>Un prerequisito per un attacco di questo tipo è l'accesso dell'attaccante ad alcuni messaggi tra il Wallet e la Relying Party. Ad esempio, l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. La corretta implementazione di TLS garantisce la riservatezza ed evita la fuga della risposta.
 Oltre a TLS, l'implementazione esistente dei controlli <strong>nonce</strong> e audience nel protocollo di presentazione dovrebbe aiutare a soddisfare il requisito di sicurezza P-41.
 Per quanto riguarda il claim <strong>nonce</strong>, la Relying Party DEVE verificare che il valore <strong>nonce</strong> nel Token VP corrisponda al valore <strong>nonce</strong> che è creato dalla Relying Party durante la richiesta di autorizzazione.
 Per quanto riguarda il valore <strong>aud</strong>, la Relying Party deve verificare che l'audience della presentazione corrisponda all'identificatore della Relying Party.</p>
@@ -617,11 +651,7 @@ Per quanto riguarda il valore <strong>aud</strong>, la Relying Party deve verifi
 <p>Nella fase di emissione, l'associazione del Titolare avviene alla richiesta di Credenziale all'endpoint protetto della Credenziale. Ciò significa che l'attaccante deve ottenere il token di accesso
 prima e quindi inviare la richiesta all'endpoint della Credenziale e legare le Credenziali alle chiavi sotto il suo controllo. La specifica IT-Wallet richiede l'uso di un
 token di accesso vincolato al mittente, il che significa che il token di accesso si lega al dispositivo utilizzando materiali crittografici.</p>
-<p>La seconda superficie per l'attacco è correlata alla gestione delle chiavi. Nel caso di utilizzo di chiavi basate su software, è possibile clonare le chiavi e spostarle su un dispositivo sotto
-il controllo dell'attaccante, e nel caso di furto delle Credenziali, l'attaccante può facilmente creare una prova di possesso delle chiavi. IT-Wallet è meno vulnerabile a questi attacchi in quanto supporta
-un Keystore hardware-backed che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
-profilo di certificazione che certifichi il Keystore (TEE) contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
-come mostrato ad esempio in questo <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Rapporto di Certificazione</a> o <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">sito Global Platform</a> rende il requisito solo parzialmente soddisfatto per le Credenziali Digitali standard. Per il PID, questa limitazione è superata richiedendo un WSCA operante in un Remote WSCD (HSM remoto lato server), che fornisce certificazione a un livello più elevato.</p>
+<p>La seconda superficie per l'attacco è correlata alla gestione delle chiavi. Con chiavi basate su software, le chiavi possono essere clonate e spostate su un dispositivo sotto il controllo dell'attaccante. Se le Credenziali sono rubate, l'attaccante può creare una prova di possesso delle chiavi. IT-Wallet è meno vulnerabile a questi attacchi perché supporta un Keystore basato su hardware. Manca ancora un profilo di certificazione che certifichi il Keystore (TEE) contro attaccanti altamente capaci. Le soluzioni TEE attuali sul mercato raggiungono al massimo AVA_VAN.3, come mostrato ad esempio in questo <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Rapporto di Certificazione</a> o sul <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">sito Global Platform</a>. Il requisito è quindi soddisfatto solo in parte per le Credenziali Digitali standard. Per il PID, questa limitazione è superata richiedendo una WSCA operante in un Remote WSCD (HSM remoto lato server). Il Remote WSCD fornisce certificazione a un livello più elevato.</p>
 </section>
 <section id="sr-v-10">
 <h3><span class="section-number">14.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
@@ -641,7 +671,7 @@ come mostrato ad esempio in questo <a class="reference external" href="https://w
 <p class="admonition-title">Nota</p>
 <p>Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, la Wallet Attestation garantisce
 che l'Istanza del Wallet stia operando su un dispositivo sicuro e affidabile e aderisca alle rigorose politiche di sicurezza stabilite dal Fornitore di Wallet. Tuttavia, l'attestato non garantisce direttamente che ogni
-Credenziale all'interno del Wallet sia memorizzata in modo sicuro; verifica la sicurezza complessiva dell'ambiente del Wallet, all'interno del quale risiedono le Credenziali. Pertanto, mentre l'attestato supporta la
+Credenziale all'interno del Wallet sia memorizzata in modo sicuro. L'attestato verifica la sicurezza complessiva dell'ambiente del Wallet, all'interno del quale risiedono le Credenziali. Pertanto, mentre l'attestato supporta la
 fiducia della Relying Party che la Credenziale provenga da una fonte sicura, è in definitiva una garanzia ampia della sicurezza del Wallet, piuttosto che una convalida specifica della memorizzazione individuale della Credenziale.</p>
 </div>
 </section>
@@ -677,7 +707,7 @@ fiducia della Relying Party che la Credenziale provenga da una fonte sicura, è 
 </tr>
 </tbody>
 </table>
-<p>L'Istanza del Wallet scopre i Fornitori di Attestati Elettronici affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Attestati Elettronici e i Trust Mark per filtrare il Fornitore di PID.</p>
+<p>L'Istanza del Wallet scopre i Fornitori di Attestati Elettronici affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione. Un esempio è l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari. L'Istanza del Wallet ispeziona i metadati del Fornitore di Attestati Elettronici e i Trust Mark per filtrare il Fornitore di PID.</p>
 <p>Le informazioni del Fornitore di Attestati Elettronici vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
 Oltre alle informazioni del Fornitore di Attestati Elettronici, il <em>Type Metadata</em> dell'Attestato Elettronico contiene anche informazioni sulla Fonte Autentica.</p>
 </section>
@@ -834,7 +864,7 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 </tbody>
 </table>
 <p>Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a>] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.</p>
-<p>La revoca di un'Entità di Federazione (cioè, Fornitore di Attestati Elettronici, Relying Party, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.</p>
+<p>La revoca di un'Entità di Federazione (Fornitore di Attestati Elettronici, Relying Party o Fornitore di Wallet) è possibile non emettendo la corrispondente Subordinate Statement su quell'Entità. Una breve scadenza della Trust Chain impedisce l'uso improprio durante la compromissione.</p>
 <div class="admonition tip">
 <p class="admonition-title">Suggerimento</p>
 <p>Inoltre, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.</p>
@@ -855,8 +885,8 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 </table>
 <p>Per mitigare questa minaccia, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza nel processo di emissione:</p>
 <ul class="simple">
-<li><p><em>TLS</em>: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.</p></li>
-<li><p><em>Wallet Attestation</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici, fornendo ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.</p></li>
+<li><p><em>TLS</em>: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici. I dati in transito sono crittografati e protetti dall'intercettazione da parte di attaccanti.</p></li>
+<li><p><em>Wallet Attestation</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici. L'attestato dà ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.</p></li>
 <li><p><em>DPoP</em>: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.</p></li>
 <li><p><em>Associazione del Titolare</em>: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Attestati Elettronici.</p></li>
 <li><p><em>validazione redirect_uri</em>: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del <strong>redirect_uri</strong> è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.</p></li>
@@ -878,13 +908,12 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 </table>
 <p>L'IT Wallet è conforme ai requisiti di P-60 garantendo che tutte le connessioni di rete siano protette da TLS.</p>
 <p>Inoltre, poiché la Risposta di Autorizzazione contiene PII è importante che non venga inviata a un endpoint controllato dall'attaccante.
-Nella specifica IT Wallet il <strong>response_uri</strong>, che è l'endpoint dove il Wallet invia la Risposta di Autorizzazione, è incluso nel Request Object firmato,
-che viene verificato dal Wallet utilizzando la chiave pubblica della Relying Party e la Trust Chain. Questo garantisce che la Risposta di Autorizzazione venga inviata all'endpoint corretto.
+Nella specifica IT Wallet il <strong>response_uri</strong> è l'endpoint dove il Wallet invia la Risposta di Autorizzazione. Il <strong>response_uri</strong> è incluso nel Request Object firmato. Il Wallet verifica quell'oggetto con la chiave pubblica della Relying Party e la Trust Chain. Questo garantisce che la Risposta di Autorizzazione venga inviata all'endpoint corretto.
 Inoltre, la Risposta di Autorizzazione è crittografata con la chiave pubblica della Relying Party, garantendo che solo il destinatario previsto possa decrittografare e leggere le informazioni sensibili,
 proteggendo ulteriormente la trasmissione.</p>
 <p>Un altro endpoint da validare è il <strong>redirect_uri</strong>, che viene utilizzato per reindirizzare l'Utente alla Relying Party dopo che la presentazione della Credenziale è completata.
-Nella specifica IT-Wallet, il <strong>redirect_uri</strong> è registrato e validato in anticipo durante l'onboarding della Relying Party utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet deve validare questo valore verificando la fiducia con la Relying Party secondo la Sezione <a class="reference external" href="trust.html#trust-evaluation-mechanism">Meccanismo di Valutazione della Fiducia</a></p>
-<p>Per essere sicuri che il <strong>redirect_uri</strong> sia ricevuto da un Wallet legittimo e non dall'attaccante, l'endpoint di risposta della Relying Party al ricevimento di una risposta di autorizzazione valida crea un valore crittografico fresco che è collegato alla risposta di autorizzazione e lo allega al <strong>redirect_uri</strong> che viene inviato al Wallet.
+Nella specifica IT-Wallet, il <strong>redirect_uri</strong> è registrato e validato in anticipo durante l'onboarding della Relying Party utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet valida questo valore verificando la fiducia nella Relying Party secondo <a class="reference external" href="trust.html#trust-evaluation-mechanism">Meccanismo di Valutazione della Fiducia</a>.</p>
+<p>L'endpoint di risposta della Relying Party verifica che il <strong>redirect_uri</strong> provenga da un Wallet legittimo e non da un attaccante. Al ricevimento di una risposta di autorizzazione valida, l'endpoint crea un valore crittografico fresco collegato a quella risposta. L'endpoint allega il valore al <strong>redirect_uri</strong> inviato al Wallet.
 Quando la Relying Party riceve il reindirizzamento, può estrarre il codice di risposta e verificare con il suo endpoint di risposta se il codice di risposta era associato a questa Risposta di Autorizzazione. (Vedi <a class="reference internal" href="remote-flow.html#uri-di-reindirizzamento"><span class="std std-ref">URI di Reindirizzamento</span></a>).</p>
 </section>
 <section id="spr-p-70">
@@ -903,8 +932,8 @@ Quando la Relying Party riceve il reindirizzamento, può estrarre il codice di r
 <p>Nel processo di emissione, poiché la Credenziale all'interno di una Risposta di Credenziale contiene PII, è necessario che la Credenziale non venga inviata o intercettata da un attaccante.
 Per mitigare queste minacce, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza:</p>
 <ul class="simple">
-<li><p><em>TLS</em>: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.</p></li>
-<li><p><em>Attestato dell'Istanza del Wallet</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici, fornendo ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.</p></li>
+<li><p><em>TLS</em>: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici. I dati in transito sono crittografati e protetti dall'intercettazione da parte di attaccanti.</p></li>
+<li><p><em>Attestato dell'Istanza del Wallet</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici. L'attestato dà ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.</p></li>
 <li><p><em>DPoP</em>: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.</p></li>
 <li><p><em>Associazione del Titolare</em>: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Attestati Elettronici.</p></li>
 <li><p><em>validazione redirect_uri</em>: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del <strong>redirect_uri</strong> è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.</p></li>
@@ -949,7 +978,7 @@ Inoltre, Status List che preserva la privacy, garantisce che mentre la Relying P
 </tr>
 </tbody>
 </table>
-<p>Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del Keystore (o del WSCA/Remote WSCD per il PID), garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.</p>
+<p>Per prevenire l'accesso non autorizzato, il Wallet viene sbloccato sul dispositivo dell'Utente con un numero di identificazione personale (PIN) o con l'autenticazione biometrica. L'autenticazione biometrica comprende l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Le chiavi crittografiche sono memorizzate nel Keystore, oppure nel WSCA/Remote WSCD per il PID. Solo l'Utente può accedere a quelle chiavi. Tale conservazione impedisce l'uso non autorizzato o la manomissione.</p>
 </section>
 </section>
 </section>
@@ -989,18 +1018,6 @@ Inoltre, Status List che preserva la privacy, garantisce che mentre la Relying P
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

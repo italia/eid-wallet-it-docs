@@ -7,7 +7,7 @@
 
     <title>1. Introduction &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -306,10 +342,10 @@
             
   <section id="introduction">
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
-<p>These Technical Specifications define the technical architecture, the implementation framework and the design requirements to be adopted by IT-Wallet Solutions. These Technical Specifications complement the Guidelines provided for in Article 64-quater of Legislative Decree No. 82 of 7 March 2005 (CAD) and, once formally adopted, form part of the regulatory framework for the IT-Wallet System. These Technical Specifications are drafted through an open and collaborative process. This version of these Technical Specifications enables the notification of the IT-Wallet System to the European Commission, in conformity with the eIDAS Regulation ([<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>]) and its implementing regulations.</p>
-<p>In Italy, Decree-Law No. 19 of 2 March 2024, converted, with amendments, by Law No. 56 of 29 April 2024, introduced Article 64-quater of Legislative Decree No. 82 of 7 March 2005, establishing the Italian Digital Wallet System - IT-Wallet System. The IT-Wallet System allows natural or legal persons to access public and private services through the secure presentation of Digital Credential, attesting to entitlements, delegations, characteristics, licenses or qualifications. Article 64-quater also provides for the adoption of one or more implementing decrees (decreti attuativi) to define the rules governing the operation of the IT-Wallet System, including the roles of the entities involved, technical and security requirements, and principles of economic sustainability.</p>
+<p>These Technical Specifications define the technical architecture, the implementation framework and the design requirements to be adopted by IT-Wallet Solutions. These Technical Specifications complement the Guidelines provided for in Article 64-quater of Legislative Decree No. 82 of 7 March 2005 (CAD) and, once formally adopted, form part of the regulatory framework for the IT-Wallet System. These Technical Specifications are drafted through an open and collaborative process. This version of these Technical Specifications enables the notification of the IT-Wallet System to the European Commission. The notification is in conformity with the eIDAS Regulation ([<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>]) and its implementing regulations.</p>
+<p>In Italy, Decree-Law No. 19 of 2 March 2024, converted, with amendments, by Law No. 56 of 29 April 2024, introduced Article 64-quater of Legislative Decree No. 82 of 7 March 2005, establishing the Italian Digital Wallet System - IT-Wallet System. The IT-Wallet System allows natural or legal persons to access public and private services through the secure presentation of Digital Credential, attesting to entitlements, delegations, characteristics, licenses or qualifications. Article 64-quater also provides for the adoption of one or more implementing decrees (decreti attuativi) to define the rules governing the operation of the IT-Wallet System. The decrees include the roles of the entities involved, technical and security requirements, and principles of economic sustainability.</p>
 <p>Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their Wallet, the information required for accessing services provided by public and private entities in the form of Digital Credentials.
-Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or verifiable attribute.</p>
+Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card. The IT-Wallet can also contain a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or verifiable attribute.</p>
 <p>The main roles in the Wallet ecosystem are listed as follow:</p>
 <ul class="simple">
 <li><p><strong>Credential Issuers</strong>: parties who issue Digital Credentials to Users.</p></li>
@@ -343,7 +379,20 @@ The document distinguishes mandatory regulatory aspects from good design practic
 </section>
 <section id="normative-language-and-conventions">
 <h2><span class="section-number">1.2. </span>Normative Language and Conventions<a class="headerlink" href="#normative-language-and-conventions" title="Link to this heading">¶</a></h2>
-<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</p>
+<p>The key words in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</p>
+<ul class="simple">
+<li><p>MUST.</p></li>
+<li><p>MUST NOT.</p></li>
+<li><p>REQUIRED.</p></li>
+<li><p>SHALL.</p></li>
+<li><p>SHALL NOT.</p></li>
+<li><p>SHOULD.</p></li>
+<li><p>SHOULD NOT.</p></li>
+<li><p>RECOMMENDED.</p></li>
+<li><p>NOT RECOMMENDED.</p></li>
+<li><p>MAY.</p></li>
+<li><p>OPTIONAL.</p></li>
+</ul>
 </section>
 <section id="how-to-read-the-specification">
 <h2><span class="section-number">1.3. </span>How to Read the Specification<a class="headerlink" href="#how-to-read-the-specification" title="Link to this heading">¶</a></h2>
@@ -400,21 +449,26 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <section id="authentic-source">
 <h4><span class="section-number">1.3.2.1. </span>Authentic Source<a class="headerlink" href="#authentic-source" title="Link to this heading">¶</a></h4>
 <p>The Authentic Source focuses on securely exposing, managing, and guaranteeing the absolute accuracy and integrity of the authoritative raw data underlying (Q)EAA.</p>
-<p><strong>Phase 1: Discovery</strong></p>
+<section id="authentic-source-phase-1-discovery">
+<h5><span class="section-number">1.3.2.1.1. </span>Authentic Source: Phase 1: Discovery<a class="headerlink" href="#authentic-source-phase-1-discovery" title="Link to this heading">¶</a></h5>
 <p>To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 </ul>
-<p><strong>Phase 2: Design</strong></p>
+</section>
+<section id="authentic-source-phase-2-design">
+<h5><span class="section-number">1.3.2.1.2. </span>Authentic Source: Phase 2: Design<a class="headerlink" href="#authentic-source-phase-2-design" title="Link to this heading">¶</a></h5>
 <p>To understand the requirements and design the features, functionalities and specific characteristics underlying a (Q)EAA to be issued.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: Key requirements on how to enable Users to obtain (Q)EAAs, (Q)EAA structures, status and management over time.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Technical and functional requirements related to (Q)EAA lifecycle.</p></li>
 <li><p><strong>Appendix</strong> <a class="reference internal" href="e-service-pdnd-template.html#pdnd-e-service-template"><span class="std std-ref">PDND e-Service Template</span></a>: Standardized blueprint containing all necessary technical and descriptive metadata for the e-service definition.</p></li>
 </ul>
-<p><strong>Phase 3: Implementation</strong></p>
+</section>
+<section id="authentic-source-phase-3-implementation">
+<h5><span class="section-number">1.3.2.1.3. </span>Authentic Source: Phase 3: Implementation<a class="headerlink" href="#authentic-source-phase-3-implementation" title="Link to this heading">¶</a></h5>
 <p>To implement the technological interfaces required to communicate with Credential Issuers and to manage the entire (Q)EAA data lifecycle.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="authentic-sources.html#authentic-sources"><span class="std std-ref">Authentic Sources</span></a>: Authentic Source role and responsibilities.</p></li>
@@ -424,7 +478,9 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>: General log retention requirements and specific requirements for Authentic Sources in accordance with ISO/IEC 27001.</p></li>
 <li><p><strong>Appendix</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.</p></li>
 </ul>
-<p><strong>Phase 4: Registration</strong></p>
+</section>
+<section id="authentic-source-phase-4-registration">
+<h5><span class="section-number">1.3.2.1.4. </span>Authentic Source: Phase 4: Registration<a class="headerlink" href="#authentic-source-phase-4-registration" title="Link to this heading">¶</a></h5>
 <p>To become registered as an Authentic Source within the system by completing the administrative and technical procedures required.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Authentic Source registration process.</p></li>
@@ -432,24 +488,30 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
+</section>
 <section id="wallet-provider">
 <h4><span class="section-number">1.3.2.2. </span>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h4>
 <p>The Wallet Provider focuses on designing and developing the Wallet Solution that enables the User to store, manage, and present their PID and (Q)EAAs.</p>
-<p><strong>Phase 1: Discovery</strong></p>
+<section id="wallet-provider-phase-1-discovery">
+<h5><span class="section-number">1.3.2.2.1. </span>Wallet Provider: Phase 1: Discovery<a class="headerlink" href="#wallet-provider-phase-1-discovery" title="Link to this heading">¶</a></h5>
 <p>To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 </ul>
-<p><strong>Phase 2: Design</strong></p>
+</section>
+<section id="wallet-provider-phase-2-design">
+<h5><span class="section-number">1.3.2.2.2. </span>Wallet Provider: Phase 2: Design<a class="headerlink" href="#wallet-provider-phase-2-design" title="Link to this heading">¶</a></h5>
 <p>To understand the User Experience requirements and design the Wallet Solution following common patterns to ensure the usability and accessibility of the solutions.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>: Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Wallet Provider.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: Key requirements on Interaction Models and Interface layouts and graphic assets to ensure an effective and seamless User Experience and coherence among Wallet Solutions.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Technical and functional requirements related to (Q)EAA lifecycle.</p></li>
 </ul>
-<p><strong>Phase 3: Implementation</strong></p>
+</section>
+<section id="wallet-provider-phase-3-implementation">
+<h5><span class="section-number">1.3.2.2.3. </span>Wallet Provider: Phase 3: Implementation<a class="headerlink" href="#wallet-provider-phase-3-implementation" title="Link to this heading">¶</a></h5>
 <p>To implement the Wallet Solution in line with specific technological standards to ensure the communication between the Wallet Solution and other actors.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="wallet-solution.html#wallet-solution"><span class="std std-ref">Wallet Solution</span></a>: Technical and functional requirements on components, functionalities and lifecycle to configure the Wallet Solution.</p></li>
@@ -462,7 +524,9 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Appendix</strong> <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance"><span class="std std-ref">Mobile Application Instance</span></a>: Requirements for mobile application instance, related to initialization request and response.</p></li>
 <li><p><strong>Appendix</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.</p></li>
 </ul>
-<p><strong>Phase 4: Registration</strong></p>
+</section>
+<section id="wallet-provider-phase-4-registration">
+<h5><span class="section-number">1.3.2.2.4. </span>Wallet Provider: Phase 4: Registration<a class="headerlink" href="#wallet-provider-phase-4-registration" title="Link to this heading">¶</a></h5>
 <p>To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Wallet Provider registration process.</p></li>
@@ -470,23 +534,29 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
+</section>
 <section id="credential-issuer">
 <h4><span class="section-number">1.3.2.3. </span>Credential Issuer<a class="headerlink" href="#credential-issuer" title="Link to this heading">¶</a></h4>
 <p>The Credential Issuer focuses on transforming authoritative raw data from Authentic Sources into (Q)EAAs, and managing their entire lifecycle from issuance to revocation or expiration.</p>
-<p><strong>Phase 1: Discovery</strong></p>
+<section id="credential-issuer-phase-1-discovery">
+<h5><span class="section-number">1.3.2.3.1. </span>Credential Issuer: Phase 1: Discovery<a class="headerlink" href="#credential-issuer-phase-1-discovery" title="Link to this heading">¶</a></h5>
 <p>To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 </ul>
-<p><strong>Phase 2: Design</strong></p>
+</section>
+<section id="credential-issuer-phase-2-design">
+<h5><span class="section-number">1.3.2.3.2. </span>Credential Issuer: Phase 2: Design<a class="headerlink" href="#credential-issuer-phase-2-design" title="Link to this heading">¶</a></h5>
 <p>To understand the requirements and technically design (Q)EAA by structuring metadata to meet technical and regulatory requirements.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: Key requirements on (Q)EAA structure, issuance, status and management over time.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Technical and functional requirements related to (Q)EAA lifecycle.</p></li>
 </ul>
-<p><strong>Phase 3: Implementation</strong></p>
+</section>
+<section id="credential-issuer-phase-3-implementation">
+<h5><span class="section-number">1.3.2.3.3. </span>Credential Issuer: Phase 3: Implementation<a class="headerlink" href="#credential-issuer-phase-3-implementation" title="Link to this heading">¶</a></h5>
 <p>To develop endpoints based on specific protocols, and to implement (Q)EAA issuance, renewal, revocation and all the technical lifecycle management functions.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution"><span class="std std-ref">Credential Issuer Solution</span></a>: Technical and functional requirements on components and interaction patterns to issue and manage (Q)EAAs lifecycle.</p></li>
@@ -498,7 +568,9 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>: General log retention requirements and requirements specific for Credential Issuers in accordance with ISO/IEC 27001.</p></li>
 <li><p><strong>Appendix</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.</p></li>
 </ul>
-<p><strong>Phase 4: Registration</strong></p>
+</section>
+<section id="credential-issuer-phase-4-registration">
+<h5><span class="section-number">1.3.2.3.4. </span>Credential Issuer: Phase 4: Registration<a class="headerlink" href="#credential-issuer-phase-4-registration" title="Link to this heading">¶</a></h5>
 <p>To become registered as a Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Credential Issuer registration process.</p></li>
@@ -506,24 +578,30 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
 </section>
+</section>
 <section id="relying-party">
 <h4><span class="section-number">1.3.2.4. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
 <p>The Relying Party focuses on securely requesting, receiving, and verifying the authenticity and validity of the PID and (Q)EAAs presented by the User to grant access to online and offline services.</p>
-<p><strong>Phase 1: Discovery</strong></p>
+<section id="relying-party-phase-1-discovery">
+<h5><span class="section-number">1.3.2.4.1. </span>Relying Party: Phase 1: Discovery<a class="headerlink" href="#relying-party-phase-1-discovery" title="Link to this heading">¶</a></h5>
 <p>To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>: Scope and regulatory context of the IT-Wallet System.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.</p></li>
 </ul>
-<p><strong>Phase 2: Design</strong></p>
+</section>
+<section id="relying-party-phase-2-design">
+<h5><span class="section-number">1.3.2.4.2. </span>Relying Party: Phase 2: Design<a class="headerlink" href="#relying-party-phase-2-design" title="Link to this heading">¶</a></h5>
 <p>To understand the User Experience requirements and design the verification functionalities necessary to provide the service to the end User.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>: Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Relying Party.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: Key requirements on Interaction Models, Interface layouts and graphic assets to ensure an effective and seamless User Experience, and coherence among presentation and verification systems.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Technical and functional requirements related to (Q)EAA lifecycle.</p></li>
 </ul>
-<p><strong>Phase 3: Implementation</strong></p>
+</section>
+<section id="relying-party-phase-3-implementation">
+<h5><span class="section-number">1.3.2.4.3. </span>Relying Party: Phase 3: Implementation<a class="headerlink" href="#relying-party-phase-3-implementation" title="Link to this heading">¶</a></h5>
 <p>To implement verification functionalities following specific protocols, to send verification requests to the Wallet and receive a response with the User authorization.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="relying-party-solution.html#relying-party-solution"><span class="std std-ref">Relying Party Solution</span></a>: Technical and functional requirements on components and functionalities for PID and (Q)EAA verification.</p></li>
@@ -534,13 +612,16 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><p><strong>Section</strong> <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>: General log retention requirements and requirements specific for Relying Parties, in accordance with ISO/IEC 27001.</p></li>
 <li><p><strong>Appendix</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.</p></li>
 </ul>
-<p><strong>Phase 4: Registration</strong></p>
+</section>
+<section id="relying-party-phase-4-registration">
+<h5><span class="section-number">1.3.2.4.4. </span>Relying Party: Phase 4: Registration<a class="headerlink" href="#relying-party-phase-4-registration" title="Link to this heading">¶</a></h5>
 <p>To become registered as a Relying Party within the system, by completing the administrative and technical procedure and becoming a reliable actor when requesting User data.</p>
 <ul class="simple">
 <li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Overview of the onboarding system architecture and the Relying Party registration process.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Focus on implementation procedures for Relying Party registration.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.</p></li>
 </ul>
+</section>
 </section>
 </section>
 </section>
@@ -581,18 +662,6 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -625,10 +694,34 @@ Supplementary technical details. Mobile Application Instance, e-Service PDND, th
 <li><a class="reference internal" href="#how-to-read-the-specification">1.3. How to Read the Specification</a><ul>
 <li><a class="reference internal" href="#specification-structure-overview">1.3.1. Specification Structure Overview</a></li>
 <li><a class="reference internal" href="#reading-paths-by-role">1.3.2. Reading Paths by Role</a><ul>
-<li><a class="reference internal" href="#authentic-source">1.3.2.1. Authentic Source</a></li>
-<li><a class="reference internal" href="#wallet-provider">1.3.2.2. Wallet Provider</a></li>
-<li><a class="reference internal" href="#credential-issuer">1.3.2.3. Credential Issuer</a></li>
-<li><a class="reference internal" href="#relying-party">1.3.2.4. Relying Party</a></li>
+<li><a class="reference internal" href="#authentic-source">1.3.2.1. Authentic Source</a><ul>
+<li><a class="reference internal" href="#authentic-source-phase-1-discovery">1.3.2.1.1. Authentic Source: Phase 1: Discovery</a></li>
+<li><a class="reference internal" href="#authentic-source-phase-2-design">1.3.2.1.2. Authentic Source: Phase 2: Design</a></li>
+<li><a class="reference internal" href="#authentic-source-phase-3-implementation">1.3.2.1.3. Authentic Source: Phase 3: Implementation</a></li>
+<li><a class="reference internal" href="#authentic-source-phase-4-registration">1.3.2.1.4. Authentic Source: Phase 4: Registration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wallet-provider">1.3.2.2. Wallet Provider</a><ul>
+<li><a class="reference internal" href="#wallet-provider-phase-1-discovery">1.3.2.2.1. Wallet Provider: Phase 1: Discovery</a></li>
+<li><a class="reference internal" href="#wallet-provider-phase-2-design">1.3.2.2.2. Wallet Provider: Phase 2: Design</a></li>
+<li><a class="reference internal" href="#wallet-provider-phase-3-implementation">1.3.2.2.3. Wallet Provider: Phase 3: Implementation</a></li>
+<li><a class="reference internal" href="#wallet-provider-phase-4-registration">1.3.2.2.4. Wallet Provider: Phase 4: Registration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credential-issuer">1.3.2.3. Credential Issuer</a><ul>
+<li><a class="reference internal" href="#credential-issuer-phase-1-discovery">1.3.2.3.1. Credential Issuer: Phase 1: Discovery</a></li>
+<li><a class="reference internal" href="#credential-issuer-phase-2-design">1.3.2.3.2. Credential Issuer: Phase 2: Design</a></li>
+<li><a class="reference internal" href="#credential-issuer-phase-3-implementation">1.3.2.3.3. Credential Issuer: Phase 3: Implementation</a></li>
+<li><a class="reference internal" href="#credential-issuer-phase-4-registration">1.3.2.3.4. Credential Issuer: Phase 4: Registration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relying-party">1.3.2.4. Relying Party</a><ul>
+<li><a class="reference internal" href="#relying-party-phase-1-discovery">1.3.2.4.1. Relying Party: Phase 1: Discovery</a></li>
+<li><a class="reference internal" href="#relying-party-phase-2-design">1.3.2.4.2. Relying Party: Phase 2: Design</a></li>
+<li><a class="reference internal" href="#relying-party-phase-3-implementation">1.3.2.4.3. Relying Party: Phase 3: Implementation</a></li>
+<li><a class="reference internal" href="#relying-party-phase-4-registration">1.3.2.4.4. Relying Party: Phase 4: Registration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

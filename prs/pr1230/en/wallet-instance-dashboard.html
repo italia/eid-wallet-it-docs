@@ -7,7 +7,7 @@
 
     <title>9.1.4.2.6. Wallet Instance Dashboard and Transaction Logging &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -327,9 +363,9 @@
 <li><p>Credential presentation to Relying Parties.</p></li>
 <li><p>data deletion requests sent to Relying Parties.</p></li>
 </ul>
-<p>For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
-<p>For presentation transactions, attribute values MUST NOT be logged. If a presentation request contains sensitive transactional data (such as a payment or a digital signature), the Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md">EUDI-TS 12</a> associated with the requested attestation and in accordance with data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.</p>
-<p>To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface, allowing the User to view an overview of transaction records in the log, access individual record details, export and delete records, and, where a transaction involves a Relying Party, initiate a data deletion request to the corresponding Relying Party (using logged contact information, if available).</p>
+<p>For each such transaction, the Wallet Instance MUST create a corresponding transaction record. The record contains the data elements specified in the applicable ARF requirements for that transaction category. Where applicable, the Wallet Instance MUST update the record with the final outcome as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
+<p>For presentation transactions, attribute values MUST NOT be logged. A presentation request may contain sensitive transactional data, such as a payment or a digital signature. The Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md">EUDI-TS 12</a>. The logging stays associated with the requested attestation. The logging follows data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.</p>
+<p>To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface. The dashboard allows the User to view an overview of transaction records in the log. The dashboard allows the User to access individual record details. The dashboard allows the User to export and delete records. Where a transaction involves a Relying Party, the dashboard allows the User to initiate a data deletion request to that Relying Party, using logged contact information if available.</p>
 <p>The Wallet Provider MUST protect the confidentiality, integrity, and authenticity of the transaction log and of any exported log objects in accordance with <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>. Access to the log MUST be restricted to the User and the Wallet Instance.</p>
 <p>Records MUST be retained for at least the minimum legal period as defined in <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>. If storage limits require automatic deletion, the Wallet Instance MUST notify the User via the dashboard, warn of consequences, and offer export of affected records before deletion.</p>
 <section id="export-and-deletion-of-transaction-records">
@@ -384,18 +420,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

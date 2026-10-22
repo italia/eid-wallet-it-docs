@@ -24,7 +24,7 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
 
     1. **PID Provider Discovery and Trust**: the Wallet Unit discovers the trusted PID Provider using the Digital Credential Catalogue. Issuance of a PID uses the EUDIW Trust Framework, as specified in :ref:`trust-evaluation:Selection at Issuance`. The Wallet Unit obtains metadata that discloses the formats of the PID, the algorithms supported and other interoperability parameters (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **PID Request**: the Wallet Unit requests the PID using the Authorization Code Grant supported by the PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
-    3. **Wallet Provider Discovery and Trust**: the PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
+    3. **Wallet Provider Discovery and Trust**: the PID Provider checks the authenticity and validity of the Wallet Instance. The PID Provider establishes the trust to the Wallet Provider and obtains Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
     4. **User Authentication**: the PID Provider authenticates the User according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
     5. **Fetch of PID data from National Public Registry**: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **PID Issuance**: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
@@ -45,7 +45,7 @@ The high-level flow begins with the User who wants to obtain a IT-Wallet ID and 
 
     1. **IT-Wallet ID Provider Discovery and Trust**: the Wallet Unit discovers the trusted IT-Wallet ID EAA Provider using the Digital Credential Catalogue. Issuance of the IT-Wallet ID uses the National Trust Framework, as specified in :ref:`trust-evaluation:Selection at Issuance`. The metadata discloses the formats of the IT-Wallet ID, the algorithms supported, and other interoperability parameters (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **IT-Wallet ID Request**: the Wallet Unit requests the IT-Wallet ID using the Authorization Code Grant(:ref:`WP_051 <wallet-credential-issuance-testcases>`).
-    3. **Wallet Provider Discovery and Trust**: the IT-Wallet ID EAA Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
+    3. **Wallet Provider Discovery and Trust**: the IT-Wallet ID EAA Provider checks the authenticity and validity of the Wallet Instance. The IT-Wallet ID EAA Provider establishes the trust to the Wallet Provider and obtains Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
     4. **User Authentication**: the IT-Wallet ID EAA Provider authenticates the User according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`. For the L2+ protocol flow, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance`.
     5. **Fetch of IT-Wallet ID data from National Public Registry**: the IT-Wallet ID EAA Provider obtains the required IT-Wallet ID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **IT-Wallet ID Issuance**: the IT-Wallet ID EAA Provider releases a IT-Wallet ID bound to the key material held by the requesting Wallet Instance.
@@ -53,10 +53,10 @@ The high-level flow begins with the User who wants to obtain a IT-Wallet ID and 
 High-Level EAA flow
 ----------------------
 
-The :numref:`fig_High-Level-Flow-ITWallet-EAA-Issuance` shows a general architecture and highlights the main operations involved in the issuance of a EAA, following the assumptions listed below:
+The :numref:`fig_High-Level-Flow-ITWallet-EAA-Issuance` shows a general architecture and highlights the main operations involved in the issuance of a EAA. The assumptions are listed below.
 
-  - the User has a valid PID stored in their own Wallet Instance, or a valid IT-Wallet ID when requested according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`;
-  - the (Q)EAA requires a high security implementation profile.
+  - The User has a valid PID stored in the Wallet Instance, or a valid IT-Wallet ID when requested according to :ref:`credential-issuance-endpoint:User Authentication Method Selection`.
+  - The (Q)EAA requires a high security implementation profile.
 
 .. _fig_High-Level-Flow-ITWallet-EAA-Issuance:
 .. plantuml:: plantuml/eaa-issuance-high-level-flow.puml

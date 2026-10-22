@@ -7,7 +7,7 @@
 
     <title>9.1.4.2.4. Wallet Instance Revocation &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -326,11 +362,11 @@
 When, for technical security reasons (for example, compromise of cryptographic material), the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.
 The Wallet Provider MUST reflect that revocation in the status list of the related Wallet Instance Attestation.
 In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.</p>
-<p>As shown in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, other actors MAY trigger the Wallet Instance revocation process (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>):</p>
+<p>As shown in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, other actors MAY trigger the Wallet Instance revocation process (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>).</p>
 <ul class="simple">
-<li><p><strong>Users</strong>, connecting to the Wallet Provider's web portal from their Wallet Instance or using an external browser.</p></li>
-<li><p><strong>PID Providers and IT-Wallet ID EAA Providers</strong> when notified by the Authentic Source of the PID/IT-Wallet ID (ANPR) of the User's death.</p></li>
-<li><p><strong>Legal Authorities or the Supervisory Body</strong> in cases of proven illegal activities.</p></li>
+<li><p><strong>Users</strong> connect to the Wallet Provider's web portal from their Wallet Instance or using an external browser.</p></li>
+<li><p><strong>PID Providers and IT-Wallet ID EAA Providers</strong> trigger revocation when notified by the Authentic Source of the PID/IT-Wallet ID (ANPR) of the User's death.</p></li>
+<li><p><strong>Legal Authorities or the Supervisory Body</strong> trigger revocation in cases of proven illegal activities.</p></li>
 </ul>
 <figure class="align-default" id="id1">
 <span id="fig-wallet-instance-revoc-entities"></span><p class="plantuml">
@@ -342,11 +378,11 @@ In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the rela
 <p><span class="caption-number">Fig. 9.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLBDZjCm4BxxAOPUw4gWlUmHeMNRI0JnKxLT8QHAaHiFhKLg5tlS4X3lpjZhR27cjfMgn1D_FpFVt7gIZiAX4y-qQRkW45xDRgvdDytC7exMeA7NGhojvrMpMbVBwjFwowAQNWcnGEUjcGQFxWLCxlanuMTbI5CFzcoqsG7j4JRci-mw9AWDIvaM9mo-iy4ewVhfENrhVEy93upFTrVfFBc2NmBuzsXbkAyp5oF6x5oA_m_Io1rwYFwUUvZhdIRPmSoXOXujEyy-_ijzTFQa5NSrK2zoOQ3EPmyZQP16mHctm98dtM9K-2t4HK06saVnjl4skEJ-pL22LIeL6d6m88cStWRYCzaqrThxW2uf7dAdiNoIdLOn07P4WGrSr9lgnuC3w_HFLCtMgZuP62gGijFe1m-hS8oDUEjwkEFRIUrTKBhbyK46KX_plFIeax7OGJs_hjSlXndDYp6c5lm_BHIO-37duSUZ5MA9NTw_SNJ5Mi0IJxQLfAtXr-yiJ94YCXJOSiSY-1kEyuuc8a5i-QacojLu7EH7I_fh3_SFYxmn2YNjitIHP-aXmskkxs9iBUbJYZbBD-_B2GJ_DtHZBhuPT8j6XKFt1m00">Entities involved in the Wallet Instance revocation process.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Regardless of who triggered the revocation, the Wallet Provider MUST inform Users when their Wallet Unit is revoked, according to the following requirements (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_034</span></a>):</p>
+<p>Regardless of who triggered the revocation, the Wallet Provider MUST inform Users when their Wallet Unit is revoked. The notification follows <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_034</span></a>.</p>
 <ul class="simple">
-<li><p>Out-of-band alerts (e.g., email or SMS) MUST be sent as the primary notification mechanism alongside the Wallet Unit itself.</p></li>
+<li><p>Out-of-band alerts (for example, email or SMS) MUST be sent as the primary notification mechanism alongside the Wallet Unit itself.</p></li>
 <li><p>The alert MUST occur within 24 hours from the effective Wallet Unit revocation.</p></li>
-<li><p>A user-friendly explanation about the reason of the revocation MUST be provided to the User alongside with the instruction to reactive the Wallet Unit if possible.</p></li>
+<li><p>The Wallet Provider MUST provide the User with a plain explanation of the revocation. The Wallet Provider MUST provide instructions to reactivate the Wallet Unit when reactivation is possible.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -366,7 +402,7 @@ In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the rela
 <p>In both cases, by using the Wallet Provider portal (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_005–006</span></a>):</p>
 <ul class="simple">
 <li><p>Users MUST authenticate with at least a second-factor authentication mechanism, or have an active session that meets this requirement.</p></li>
-<li><p>The Wallet Provider MUST allow Users to view the state of their Wallet Instances associated with their authenticated session and ask for revocation, sending a Wallet Instance Retrieval or Revocation Request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_033</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>), as applicable, to the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint"><span class="std std-ref">Wallet Instance Management Endpoint</span></a> of the Wallet Provider Backend.</p></li>
+<li><p>The Wallet Provider MUST allow Users to view the state of their Wallet Instances associated with their authenticated session. The Wallet Provider MUST allow Users to ask for revocation. The Wallet Provider sends a Wallet Instance Retrieval or Revocation Request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_033</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>), as applicable, to the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint"><span class="std std-ref">Wallet Instance Management Endpoint</span></a> of the Wallet Provider Backend.</p></li>
 </ul>
 <p>Below is a non-normative example of a Wallet Instances Retrieval Request.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/wallet-instances</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -417,7 +453,7 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
 <h2><span class="section-number">9.1.4.2.4.3. </span>Revocation Check Mechanisms<a class="headerlink" href="#revocation-check-mechanisms" title="Link to this heading">¶</a></h2>
 <p>The verification of the Wallet Instance validity MUST be performed:</p>
 <ul class="simple">
-<li><p><strong>During Digital Credential issuance</strong> by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet Instance Attestation and Key Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Instance Attestation (i.e., not expired, not revoked checking the Wallet Instance Attestation Status List, and signed by a trusted Wallet Provider).</p></li>
+<li><p><strong>During Digital Credential issuance</strong> by the Credential Issuers. Only Wallet Instances in Operational or Valid state have a valid Wallet Instance Attestation and a valid Key Attestation. Credential Issuers verify the validity of a Wallet Instance indirectly. Credential Issuers check for a valid Wallet Instance Attestation. A valid attestation is not expired. A valid attestation is not revoked, according to the Wallet Instance Attestation Status List. A valid attestation is signed by a trusted Wallet Provider.</p></li>
 <li><p><strong>During the validity period of the Digital Credential</strong>, when that period is at least 24 hours, the Credential Issuers repeat the check every 24 hours. The Credential Issuers check the Wallet Instance Attestation Status List of the Wallet Instance that holds the PID and the Key Attestation Status List. Indeed, if the Wallet Instance or the Key Attestation is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too.</p></li>
 <li><p><strong>During the Wallet Instance lifecycle</strong> by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification RECOMMENDS to use the Status List of the Wallet Instance Attestation.</p></li>
 </ul>
@@ -468,18 +504,6 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

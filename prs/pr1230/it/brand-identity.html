@@ -7,7 +7,7 @@
 
     <title>2. Brand Identity &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -309,7 +345,7 @@
 <h1><span class="section-number">2. </span>Brand Identity<a class="headerlink" href="#brand-identity" title="Link to this heading">¶</a></h1>
 <p>La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell'Identità Visiva. Questa contribuisce e valorizza il Modello della Fiducia alla base dell'intero ecosistema, introducendo elementi visivi riconoscibili.</p>
 <p>È importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint.</p>
-<p>Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche.
+<p>La presenza della Brand Identity nelle diverse Soluzioni Tecniche è uniforme e coerente. La Brand Identity favorisce un’Esperienza Utente di qualità. Gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche.
 In particolare, tutti gli Attori Primari:</p>
 <ul class="simple">
 <li><p>DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p></li>
@@ -329,8 +365,8 @@ Tutti coloro che intendono riferirsi al Sistema IT-Wallet:</p>
 </section>
 <section id="identita-visiva">
 <h2><span class="section-number">2.2. </span>Identità Visiva<a class="headerlink" href="#identita-visiva" title="Link to this heading">¶</a></h2>
-<p>Il Brand &quot;IT-Wallet&quot; ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla per dare visibilità della propria partecipazione al Sistema IT-Wallet, ma NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o la propria Soluzione Tecnica.</p>
-<p>Per garantire una corretta coesistenza tra l’Identità Visiva del Brand “IT-Wallet” e l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche, gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali e rispettare le indicazioni del Brand Manual.</p>
+<p>Il Brand &quot;IT-Wallet&quot; ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicare l'Identità Visiva per dare visibilità della propria partecipazione al Sistema IT-Wallet. I partecipanti dell'ecosistema NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o della propria Soluzione Tecnica.</p>
+<p>Gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali. Gli Attori Primari DEVONO rispettare le indicazioni del Brand Manual. Questi obblighi mantengono compatibile l’Identità Visiva del Brand “IT-Wallet” con l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche.</p>
 <section id="logo">
 <h3><span class="section-number">2.2.1. </span>Logo<a class="headerlink" href="#logo" title="Link to this heading">¶</a></h3>
 <p>Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilità del Sistema IT-Wallet. È composto da un pittogramma e dal logotipo “IT-Wallet”.</p>
@@ -348,8 +384,8 @@ Tutti coloro che intendono riferirsi al Sistema IT-Wallet:</p>
 </figure>
 <p>Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli attori che intendono riferirsi al Sistema:</p>
 <ul class="simple">
-<li><p>POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet ma NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica.</p></li>
-<li><p>DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite.</p></li>
+<li><p>Gli attori che intendono riferirsi al Sistema POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet. Gli attori che intendono riferirsi al Sistema NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica.</p></li>
+<li><p>Gli attori che intendono riferirsi al Sistema DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali. Gli attori che intendono riferirsi al Sistema DEVONO rispettare tutte le relative specifiche di utilizzo fornite.</p></li>
 <li><p>DEVONO utilizzare il Logo in formato <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code>.</p></li>
 <li><p>NON DEVONO alterare, distorcere, modificare il Logo o sostituirlo con loghi non ufficiali.</p></li>
 <li><p>DEVONO utilizzare il Logo garantendo l’area di rispetto minima stabilita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere che altri elementi grafici o testuali interferiscano con questa area di rispetto.</p></li>
@@ -357,7 +393,7 @@ Tutti coloro che intendono riferirsi al Sistema IT-Wallet:</p>
 <li><p>NON DEVONO utilizzare il Logo su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantire un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nel Brand Manual.</p></li>
 <li><p>POSSONO utilizzare il Logo in associazione a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.</p></li>
 <li><p>POSSONO utilizzare il pittogramma del Logo come versione sintetica del Logo, in accordo con quando stabilito nel Brand Manual.</p></li>
-<li><p>POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per rendere evidente il richiamo a IT-Wallet, come per esempio negli Engagement Buttons (vedi <a class="reference internal" href="functionalities.html#authentication-button"><span class="std std-ref">Authentication Button</span></a>), in accordo con quando stabilito nel Brand Manual.</p></li>
+<li><p>Gli attori POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per richiamare IT-Wallet. Un esempio sono gli Engagement Buttons (vedi <a class="reference internal" href="functionalities.html#authentication-button"><span class="std std-ref">Authentication Button</span></a>). L'uso resta in accordo con quanto stabilito nel Brand Manual.</p></li>
 </ul>
 <p>Per approfondimenti sul Logo e relativo pittogramma, consultare il Brand Manual, indicato nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.
 Le Risorse Ufficiali del Logo sono disponibili nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a> di queste Specifiche Tecniche.</p>
@@ -373,14 +409,14 @@ Le Risorse Ufficiali del Logo sono disponibili nella sezione <a class="reference
 </figure>
 <p>Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.). Tutti gli Attori Primari:</p>
 <ul class="simple">
-<li><p>DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi.</p></li>
+<li><p>Gli Attori Primari DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet. Gli Attori Primari NON DEVONO utilizzare il Trust Mark per scopi diversi.</p></li>
 <li><p>DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione.</p></li>
-<li><p>DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica e DEVONO renderlo consultabile all'interno della Soluzione Tecnica.</p></li>
-<li><p>DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>.</p></li>
+<li><p>Gli Attori Primari DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica. Gli Attori Primari DEVONO rendere il Trust Mark consultabile all'interno della Soluzione Tecnica.</p></li>
+<li><p>Gli Attori Primari DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali. Gli Attori Primari DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>.</p></li>
 <li><p>NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali.</p></li>
 <li><p>NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo.</p></li>
 <li><p>DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto.</p></li>
-<li><p>NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>.</p></li>
+<li><p>Gli Attori Primari NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità. Gli Attori Primari DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel <a class="reference internal" href="official-resources.html#brand-manual"><span class="std std-ref">Brand Manual</span></a>.</p></li>
 <li><p>POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.</p></li>
 </ul>
 <p>Per approfondimenti sul Trust Mark, consultare il Brand Manual, indicato nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>. La Risorsa Ufficiale del Trust Mark è disponibile nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a> di queste specifiche tecniche.</p>
@@ -423,18 +459,6 @@ Le Risorse Ufficiali del Logo sono disponibili nella sezione <a class="reference
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

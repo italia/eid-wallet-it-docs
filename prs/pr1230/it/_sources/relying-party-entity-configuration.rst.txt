@@ -29,6 +29,6 @@ Di seguito un esempio non normativo della richiesta effettuata dall'Istanza del 
 Di seguito un esempio non normativo di risposta:
 
 .. literalinclude:: ../../examples/ec-rp.json
-  :language: JSON
+   :language: JSON
 
 

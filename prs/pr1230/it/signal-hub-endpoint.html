@@ -7,7 +7,7 @@
 
     <title>12.5. Endpoint di PDND Signal Hub &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -315,13 +351,13 @@
   <section id="endpoint-di-pdnd-signal-hub">
 <h1><span class="section-number">12.5. </span>Endpoint di PDND Signal Hub<a class="headerlink" href="#endpoint-di-pdnd-signal-hub" title="Link to this heading">¶</a></h1>
 <dl class="simple">
-<dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
+<dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub.</dt><dd><ul class="simple">
 <li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali. In questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali.</p></li>
 <li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti. In questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
 </ul>
 </dd>
 </dl>
-<p>Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.</p>
+<p>Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali. Il PDND Manager richiede a ciascun e-Service PDNDProvider di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.</p>
 <p>Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,</dt><dd><ul class="simple">
@@ -358,14 +394,14 @@
 <p>Questa sezione descrive gli endpoint disponibili per gli e-Service di Raccolta e Distribuzione di Signal Hub, incluse le loro funzionalità e i formati di richiesta e risposta previsti.</p>
 <section id="e-service-di-raccolta-segnali">
 <h3><span class="section-number">12.5.2.1. </span>e-Service di Raccolta Segnali<a class="headerlink" href="#e-service-di-raccolta-segnali" title="Link to this heading">¶</a></h3>
-<p>Le Fonti Autentiche nell'ecosistema IT Wallet utilizzano l'e-Service di Raccolta Segnali per:</p>
+<p>Le Fonti Autentiche nell'ecosistema IT Wallet utilizzano l'e-Service di Raccolta Segnali per le seguenti finalità.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>notificare al Fornitore di Attestati Elettronici un cambiamento di stato e/o valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici.</p></li>
 <li><p>notificare al Fornitore di Attestati Elettronici la disponibilità degli Attributi relativi a un Attestato Elettronico specifico che un Utente ha richiesto nel suo Wallet.</p></li>
 </ul>
 </div></blockquote>
-<p>L'ultimo caso, denominato <em>deferred issuance</em>, si verifica quando il Fornitore di Attestati Elettronici ha richiesto gli Attributi di un Attestato Elettronico dalla Fonte Autentica (invocando l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>) e la Fonte Autentica non può rispondere immediatamente con gli Attributi richiesti. Pertanto, la Fonte Autentica notifica al Fornitore di Attestati Elettronici tramite Signal Hub in un momento successivo che gli Attributi richiesti sono ora disponibili.</p>
+<p>L'ultimo caso, denominato <em>deferred issuance</em>, si verifica quando il Fornitore di Attestati Elettronici ha richiesto gli Attributi di un Attestato Elettronico dalla Fonte Autentica (invocando l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). La Fonte Autentica non può rispondere immediatamente con gli Attributi richiesti. Pertanto, la Fonte Autentica notifica al Fornitore di Attestati Elettronici tramite Signal Hub in un momento successivo che gli Attributi richiesti sono ora disponibili.</p>
 <p>L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Autentiche per depositare i Segnali in Signal Hub tramite una request di Raccolta Segnali. Quest'ultima DEVE essere una richiesta POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Il suo header DEVE avere i parametri descritti nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Il suo body DEVE contenere i seguenti parametri:</p>
 <table class="docutils align-default" id="table-signal-deposit-request-parameters">
 <colgroup>
@@ -442,7 +478,7 @@
 </section>
 <section id="e-service-di-distribuzione-segnali">
 <h3><span class="section-number">12.5.2.2. </span>e-Service di Distribuzione Segnali<a class="headerlink" href="#e-service-di-distribuzione-segnali" title="Link to this heading">¶</a></h3>
-<p>I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per:</p>
+<p>I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per le seguenti finalità.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>verificare i cambiamenti nello stato e/o il valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici stesso.</p></li>
@@ -496,12 +532,12 @@
 <p>Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue.</p>
 <blockquote>
 <div><ul>
-<li><p>Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore <code class="docutils literal notranslate"><span class="pre">SignalType</span></code>:</p>
+<li><p>Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore <code class="docutils literal notranslate"><span class="pre">SignalType</span></code>.</p>
 <ul class="simple">
 <li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> fa riferimento al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti.</p></li>
 <li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili.</p></li>
 </ul>
-<p>Se l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.</p>
+<p>Se l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> della Fonte Autentica per recuperare le informazioni aggiornate. Se le informazioni aggiornate sono applicabili, il Fornitore di Attestati Elettronici DEVE applicare il nuovo stato o il nuovo Attributo all'Attestato Elettronico corrispondente.</p>
 <p>Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore <code class="docutils literal notranslate"><span class="pre">signalId</span></code>. Oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.</p>
 </li>
 </ul>
@@ -548,18 +584,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

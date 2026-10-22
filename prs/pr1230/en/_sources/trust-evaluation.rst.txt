@@ -149,7 +149,7 @@ If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply :
 During presentation, a User choice to proceed is allowed only for the overridable Authorization outcomes defined there.
 Authentication failure is not overridable.
 
-During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance ([`EIDAS-ARF`_] RPRC_22a).
+During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User. The Wallet Unit MUST NOT request the issuance ([`EIDAS-ARF`_] RPRC_22a).
 No User choice is offered at issuance.
 
 .. include:: trust-evaluation-eudiw.rst

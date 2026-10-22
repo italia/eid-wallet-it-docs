@@ -7,7 +7,7 @@
 
     <title>9.1.4.1. Ciclo di vita dell&#39;Istanza del Wallet &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -347,8 +383,7 @@ Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che 
 </div>
 <section id="transizione-a-installato">
 <h2><span class="section-number">9.1.4.1.1. </span>Transizione a Installato<a class="headerlink" href="#transizione-a-installato" title="Link to this heading">¶</a></h2>
-<p>La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (<strong>WI INST</strong>), dove gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo
-store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato <strong>Installato</strong>.</p>
+<p>La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (<strong>WI INST</strong>). Gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo store ufficiale del sistema operativo del loro dispositivo. Lo store ufficiale garantisce l'autenticità tramite controlli di sistema. L'installazione porta allo stato <strong>Installato</strong>.</p>
 <p>Quando lo stato è <strong>Installato</strong>, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da <strong>Operativo</strong> o <strong>Valido</strong> a <strong>Installato</strong>. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi <a class="reference internal" href="#transizione-a-operativo"><span class="std std-ref">Transizione a Operativo</span></a>), come non più utilizzabile. La revoca può avvenire nei seguenti casi:</p>
 <ul class="simple">
@@ -366,15 +401,14 @@ Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Insta
 <section id="transizione-a-operativo">
 <h2><span class="section-number">9.1.4.1.2. </span>Transizione a Operativo<a class="headerlink" href="#transizione-a-operativo" title="Link to this heading">¶</a></h2>
 <p>Dopo l'installazione, l'Utente apre l'Istanza del Wallet e inizia un'attivazione (<strong>WI ACT</strong>).
-In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware
-Key Tag, previa acquisizione del consenso dell'Utente (vedi <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> per maggiori dettagli, con i test in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_024</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>).
+In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. La creazione è subordinata all'acquisizione del consenso dell'Utente (vedi <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> per maggiori dettagli, con i test in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_024</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>).
 Questa associazione consente all'utente di richiedere direttamente al Fornitore di Wallet la revoca dell'Istanza del Wallet.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
 Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.</p>
 </div>
-<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard. WSCA operante in un Remote WSCD per il PID).
+<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare quanto segue. La valutazione riguarda il sistema operativo e le capacità tecniche generali del dispositivo. La valutazione riguarda l'affidabilità del Keystore e del WSCA/Remote WSCD per l'emissione del PID. La valutazione verifica la conformità ai requisiti tecnici e di sicurezza. La valutazione verifica l'autenticità e l'integrità dell'Istanza del Wallet installata. La valutazione verifica che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro. Tale ambiente è il Keystore per le Credenziali standard e un WSCA operante in un Remote WSCD per il PID.
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
 <p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet. Questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
@@ -404,9 +438,7 @@ del Wallet della stessa Soluzione Wallet dallo stesso Fornitore di Wallet, il PI
 </section>
 <section id="gestione-del-ciclo-di-vita-dell-istanza-del-wallet">
 <h2><span class="section-number">9.1.4.1.5. </span>Gestione del Ciclo di Vita dell'Istanza del Wallet<a class="headerlink" href="#gestione-del-ciclo-di-vita-dell-istanza-del-wallet" title="Link to this heading">¶</a></h2>
-<p>Mentre <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 9.2</span></a> mostra i diversi stati che un'Istanza del Wallet può acquisire durante il suo ciclo di vita,
-<a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 9.3</span></a> mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Wallet nella gestione del ciclo di vita dell'Istanza del Wallet
-e l'effetto sul loro storage locale.</p>
+<p>Mentre <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 9.2</span></a> mostra i diversi stati che un'Istanza del Wallet può acquisire durante il suo ciclo di vita, <a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 9.3</span></a> mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Wallet. Tale figura mostra come le Istanze del Wallet e i Fornitori di Wallet gestiscono il ciclo di vita dell'Istanza del Wallet e l'effetto sul loro storage locale.</p>
 <figure class="align-default" id="id3">
 <span id="fig-wallet-instance-lifecycle"></span><p class="plantuml">
 <object data="_images/plantuml-4e8af812087e77bddaf273295da21ed5c7fb809a.svg" type="image/svg+xml" style="width:99%">
@@ -469,18 +501,6 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

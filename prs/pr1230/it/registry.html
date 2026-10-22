@@ -7,7 +7,7 @@
 
     <title>7. Registry Infrastructure &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -695,7 +731,8 @@ Content-Type: application/json
 <p>La <strong>Taxonomy</strong> è il vocabolario autorevole che organizza le Credenziali nell'ecosistema IT-Wallet, ed è il fondamento semantico della loro interoperabilità. È indipendente dal formato della Credenziale.</p>
 <p>In una singola risorsa, definisce la gerarchia di Domain, Class e Purpose che i tipi di Credenziale referenziano, a supporto della valutazione delle policy di autorizzazione e della standardizzazione a livello di ecosistema.</p>
 <p>L'URL dell'endpoint Taxonomy è pubblicato sotto la chiave <code class="docutils literal notranslate"><span class="pre">taxonomy</span></code> del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
-<p><strong>Taxonomy Objectives:</strong></p>
+<section id="taxonomy-objectives">
+<h3><span class="section-number">7.3.1. </span>Taxonomy Objectives<a class="headerlink" href="#taxonomy-objectives" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Fondamento semantico</strong>: Stabilire un vocabolario standardizzato per i domain e i purpose nell'ecosistema</p></li>
 <li><p><strong>Framework di policy</strong>: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica</p></li>
@@ -703,8 +740,9 @@ Content-Type: application/json
 <li><p><strong>Estensibilità</strong>: Supportare l'evoluzione dell'ecosistema con nuovi Domain, Class, tipi di Credenziale e Purpose</p></li>
 <li><p><strong>Conformità transfrontaliera</strong>: Allinearsi ai requisiti regolamentari UE e agli standard internazionali</p></li>
 </ol>
+</section>
 <section id="taxonomy-usage">
-<h3><span class="section-number">7.3.1. </span>Taxonomy Usage<a class="headerlink" href="#taxonomy-usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.2. </span>Taxonomy Usage<a class="headerlink" href="#taxonomy-usage" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Authentic Source Registry</strong>: Le Fonti Autentiche dichiarano le capacità utilizzando le classificazioni della taxonomy</p></li>
 <li><p><strong>Digital Credentials Catalog</strong>: I tipi di Credenziale specificano Domain, Class e Purpose</p></li>
@@ -712,13 +750,16 @@ Content-Type: application/json
 </ul>
 </section>
 <section id="digital-credentials-hierarchy">
-<h3><span class="section-number">7.3.2. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.3. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
 <p>Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet sono classificati e standardizzati secondo il seguente modello gerarchico a più livelli, progettato per migliorare la chiarezza semantica, la discovery delle Credenziali e la compatibilità sia con i workflow di verifica specifici della Credenziale sia con quelli basati sui claim.</p>
 <p>La gerarchia è definita come segue:</p>
-<p><strong>Domain</strong></p>
+<section id="domain">
+<h4><span class="section-number">7.3.3.1. </span>Domain<a class="headerlink" href="#domain" title="Link to this heading">¶</a></h4>
 <p>Un <strong>Domain</strong> rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali relative allo stesso contesto ampio (ad es., Identity, Health, Education, Mobility).
 I Domain forniscono uno strato organizzativo di primo livello.</p>
-<p><strong>Credential Class</strong></p>
+</section>
+<section id="credential-class">
+<h4><span class="section-number">7.3.3.2. </span>Credential Class<a class="headerlink" href="#credential-class" title="Link to this heading">¶</a></h4>
 <p>Una <strong>Credential Class</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es., Identification Documents, Civil Status Certificates).</p>
 <p>Ciascuna Class DOVREBBE definire:</p>
 <ul class="simple">
@@ -726,7 +767,9 @@ I Domain forniscono uno strato organizzativo di primo livello.</p>
 <li><p>la semantica attesa della Credential Family.</p></li>
 </ul>
 <p>Le Class consentono alle Relying Party e alle Soluzioni Wallet di richiedere o abbinare Credenziali in base alla loro categoria di tipo.</p>
-<p><strong>Credential Type</strong></p>
+</section>
+<section id="credential-type">
+<h4><span class="section-number">7.3.3.3. </span>Credential Type<a class="headerlink" href="#credential-type" title="Link to this heading">¶</a></h4>
 <p>Un <strong>Credential Type</strong> rappresenta una Credenziale specifica all'interno di una Class (ad es. Digital Travel Credential, Birth Certificate, Mobile Driving License).
 Ciascun Credential Type DEVE includere:</p>
 <ul class="simple">
@@ -735,7 +778,9 @@ Ciascun Credential Type DEVE includere:</p>
 <li><p>l'insieme di Attributi che possono essere inclusi nelle presentazioni.</p></li>
 </ul>
 <p>I Credential Type consentono un targeting preciso per i flussi di verifica guidati dalla conformità o imposti dalla regolamentazione.</p>
-<p><strong>Purpose (Verification Intent)</strong></p>
+</section>
+<section id="purpose-verification-intent">
+<h4><span class="section-number">7.3.3.4. </span>Purpose (Verification Intent)<a class="headerlink" href="#purpose-verification-intent" title="Link to this heading">¶</a></h4>
 <p>Un <strong>Purpose (Verification Intent)</strong> descrive <em>perché</em> una Credenziale può essere richiesta da una Relying Party (ad es., Identity Verification, Age Verification, Eligibility for specific services).
 I Purpose DEVONO descrivere <strong>esiti di verifica</strong>.
 Ciascun Credential Type DEVE dichiarare il proprio Domain, la propria Class e i Purpose supportati.</p>
@@ -1210,16 +1255,20 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 </ul>
 </div></blockquote>
 </section>
+</section>
 <section id="taxonomy-structure">
-<h3><span class="section-number">7.3.3. </span>Taxonomy Structure<a class="headerlink" href="#taxonomy-structure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.4. </span>Taxonomy Structure<a class="headerlink" href="#taxonomy-structure" title="Link to this heading">¶</a></h3>
 <p>La taxonomy mantiene una struttura gerarchica a quattro livelli, ossia i Domain, le Class, i Credential Type e i Purpose definiti in <a class="reference internal" href="#digital-credentials-hierarchy"><span class="std std-ref">Digital Credentials Hierarchy</span></a> sopra.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Il Credential Type è un concetto definito a livello di Digital Credentials Catalog, non all'interno della Taxonomy. La Taxonomy fornisce il vocabolario di classificazione (Domain, Class, Purpose) che i Credential Type nel Catalog referenziano.</p>
 </div>
-<p><strong>Supporto alla localizzazione:</strong></p>
+<section id="supporto-alla-localizzazione">
+<h4><span class="section-number">7.3.4.1. </span>Supporto alla localizzazione<a class="headerlink" href="#supporto-alla-localizzazione" title="Link to this heading">¶</a></h4>
 <p>La taxonomy supporta ambienti multilingue tramite il pattern di suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code>, consentendo una gestione efficiente della localizzazione per le interfacce utente e le implementazioni transfrontaliere.</p>
-<p><strong>Struttura JSON della Taxonomy:</strong></p>
+</section>
+<section id="struttura-json-della-taxonomy">
+<h4><span class="section-number">7.3.4.2. </span>Struttura JSON della Taxonomy<a class="headerlink" href="#struttura-json-della-taxonomy" title="Link to this heading">¶</a></h4>
 <table class="longtable docutils align-default" id="id10">
 <caption><span class="caption-number">Tabella 7.7 </span><span class="caption-text">First-level Fields of the Taxonomy</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -1909,6 +1958,7 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json</strong>.</p>
 </section>
 </section>
+</section>
 <section id="claims-registry">
 <h2><span class="section-number">7.4. </span>Claims Registry<a class="headerlink" href="#claims-registry" title="Link to this heading">¶</a></h2>
 <p>L'URL dell'endpoint Claims Registry è pubblicato sotto la chiave <code class="docutils literal notranslate"><span class="pre">claims_registry</span></code> del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda <a class="reference internal" href="#content-negotiation-and-signed-representation"><span class="std std-ref">Content Negotiation and Signed Representation</span></a>).</p>
@@ -1937,7 +1987,8 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <section id="claims-registry-usage">
 <h3><span class="section-number">7.4.1. </span>Claims Registry Usage<a class="headerlink" href="#claims-registry-usage" title="Link to this heading">¶</a></h3>
 <p>Come mostrato nella Figura <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> e nella Figura <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, il Claims Registry DEVE supportare l'intero ciclo di vita dell'ecosistema:</p>
-<p><strong>Durante il processo di Onboarding</strong>:</p>
+<section id="claims-registry-usage-durante-il-processo-di-onboarding">
+<h4><span class="section-number">7.4.1.1. </span>Claims Registry Usage: Durante il processo di Onboarding<a class="headerlink" href="#claims-registry-usage-durante-il-processo-di-onboarding" title="Link to this heading">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Registrazione AS</strong>: Le Fonti Autentiche dichiarano i claim disponibili dal registro standardizzato durante la registrazione delle capacità.</p></li>
@@ -1945,13 +1996,16 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <li><p><strong>Registrazione RP</strong>: Le Relying Party specificano i requisiti di autorizzazione utilizzando domain/purpose per attributi specifici dell'Utente.</p></li>
 </ul>
 </div></blockquote>
-<p><strong>Durante le attività operative</strong>:</p>
+</section>
+<section id="claims-registry-usage-durante-le-attivita-operative">
+<h4><span class="section-number">7.4.1.2. </span>Claims Registry Usage: Durante le attività operative<a class="headerlink" href="#claims-registry-usage-durante-le-attivita-operative" title="Link to this heading">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Emissione delle Credenziali</strong>: Le definizioni dei claim assicurano una rappresentazione coerente dei dati tra tipi di Credenziale diversi.</p></li>
 <li><p><strong>Richieste di presentazione</strong>: Le Relying Party referenziano i claim per la validazione dello schema e la verifica dell'autorizzazione sia negli scenari specifici della Credenziale sia in quelli agnostici rispetto alla Credenziale.</p></li>
 </ul>
 </div></blockquote>
+</section>
 </section>
 <section id="claims-registry-structure">
 <h3><span class="section-number">7.4.2. </span>Claims Registry Structure<a class="headerlink" href="#claims-registry-structure" title="Link to this heading">¶</a></h3>
@@ -2433,16 +2487,21 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <li><p><strong>Discovery CI</strong>: I Credential Issuer cercano entità Fonte Autentica in base ai claim richiesti e ai tipi di Credenziale previsti.</p></li>
 </ul>
 </dd>
-<dt><strong>Durante le attività operative</strong>:</dt><dd><ul class="simple">
+</dl>
+<section id="authentic-source-registry-usage-durante-le-attivita-operative">
+<h4><span class="section-number">7.5.1.1. </span>Authentic Source Registry Usage: Durante le attività operative<a class="headerlink" href="#authentic-source-registry-usage-durante-le-attivita-operative" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>Emissione delle Credenziali</strong>: I sistemi del Credential Issuer referenziano l'Authentic Source Registry per l'accesso ai dati in tempo reale durante l'emissione delle Credenziali.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
+</section>
 </section>
 <section id="authentic-source-registry-structure">
 <h3><span class="section-number">7.5.2. </span>Authentic Source Registry Structure<a class="headerlink" href="#authentic-source-registry-structure" title="Link to this heading">¶</a></h3>
 <p>Durante la registrazione, le Fonti Autentiche dichiarano le proprie capacità prima che esistano tipi di Credenziale nel catalogo. Questa dichiarazione costituisce il fondamento per la successiva registrazione dei CI e la creazione dei tipi di Credenziale.</p>
-<p><strong>Schema dell'identificativo univoco della Fonte Autentica</strong></p>
+<section id="schema-dell-identificativo-univoco-della-fonte-autentica">
+<h4><span class="section-number">7.5.2.1. </span>Schema dell'identificativo univoco della Fonte Autentica<a class="headerlink" href="#schema-dell-identificativo-univoco-della-fonte-autentica" title="Link to this heading">¶</a></h4>
 <p>A ciascuna Fonte Autentica DEVE essere assegnato un identificativo univoco che segue lo schema URL HTTPS definito di seguito. Questo identificativo è utilizzato per referenziare le entità AS nel sistema di registro e nel Digital Credentials Catalog, assicurando coerenza con i pattern di identificazione delle entità OpenID Federation.</p>
 <p><em>Schema dell'identificativo AS:</em></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://{organization_domain}[/{optional_path}]
@@ -2467,7 +2526,9 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <li><p><code class="docutils literal notranslate"><span class="pre">https://registry.anpr.example</span></code>: Pubblico - Anagrafe Nazionale della Popolazione Residente</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">https://api.bank.example/auth-source</span></code>: Privato - Servizi finanziari Banca Esempio</p></li>
 </ul>
-<p><strong>Parametri dell'Authentic Source Registry</strong></p>
+</section>
+<section id="parametri-dell-authentic-source-registry">
+<h4><span class="section-number">7.5.2.2. </span>Parametri dell'Authentic Source Registry<a class="headerlink" href="#parametri-dell-authentic-source-registry" title="Link to this heading">¶</a></h4>
 <p>L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:</p>
 <table class="longtable docutils align-default" id="id13">
 <caption><span class="caption-number">Tabella 7.10 </span><span class="caption-text">First-level Fields of the Authentic Source Registry</span><a class="headerlink" href="#id13" title="Link to this table">¶</a></caption>
@@ -2697,7 +2758,9 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <p class="admonition-title">Nota</p>
 <p>Per ulteriori dettagli sulle funzionalità richieste e sull'esito atteso in termini di esperienza utente, si veda la Sezione <a class="reference internal" href="functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet"><span class="std std-ref">Ottenimento dal Catalogo dell'Istanza del Wallet</span></a> per il parametro <cite>data_capabilities.user_information</cite> e la Sezione <a class="reference internal" href="functionalities.html#focus-sugli-attestati-elettronici-di-attributi"><span class="std std-ref">Focus sugli Attestati Elettronici di Attributi</span></a> per i parametri <cite>organization_info.logo_uri</cite>, <cite>organization_info.logo_extended_uri</cite>, <cite>data_capabilities.logo_uri</cite>, <cite>data_capabilities.background_color</cite> e <cite>data_capabilities.available_claims.order</cite>.</p>
 </div>
-<p><strong>Esempio di Authentic Source Registry</strong></p>
+</section>
+<section id="esempio-di-authentic-source-registry">
+<h4><span class="section-number">7.5.2.3. </span>Esempio di Authentic Source Registry<a class="headerlink" href="#esempio-di-authentic-source-registry" title="Link to this heading">¶</a></h4>
 <p>Di seguito è fornito un esempio non normativo della struttura dell'AS Registry:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:authentic-sources:it-wallet&quot;</span><span class="p">,</span>
@@ -3035,18 +3098,21 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 <p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/it.json</strong>.</p>
 </section>
 </section>
+</section>
 <section id="schema-registry">
 <h2><span class="section-number">7.6. </span>Schema Registry<a class="headerlink" href="#schema-registry" title="Link to this heading">¶</a></h2>
 <p>Lo <strong>Schema Registry</strong> è l'inventario autorevole di tutti gli <strong>Schema delle Credenziali</strong> noti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet.</p>
-<p><strong>Schema Registry Objectives:</strong></p>
+<section id="schema-registry-objectives">
+<h3><span class="section-number">7.6.1. </span>Schema Registry Objectives<a class="headerlink" href="#schema-registry-objectives" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Centralizzazione degli schema</strong>: Fornire un punto di accesso centralizzato per tutti gli schema tecnici utilizzati dagli Attestati Elettronici.</p></li>
 <li><p><strong>Integrità e autenticità</strong>: Assicurare l'integrità e l'autenticità dei documenti di schema tramite digest crittografici.</p></li>
 <li><p><strong>Interoperabilità</strong>: Facilitare l'integrazione senza soluzione di continuità dei Fornitori di Wallet e delle Relying Party fornendo versioni di schema coerenti.</p></li>
 <li><p><strong>Supporto al ciclo di vita delle Credenziali</strong>: Agire come punto di riferimento verificabile per la validazione dello schema durante l'emissione e la presentazione.</p></li>
 </ol>
+</section>
 <section id="utilizzo-dello-schema-registry">
-<h3><span class="section-number">7.6.1. </span>Utilizzo dello Schema Registry<a class="headerlink" href="#utilizzo-dello-schema-registry" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.6.2. </span>Utilizzo dello Schema Registry<a class="headerlink" href="#utilizzo-dello-schema-registry" title="Link to this heading">¶</a></h3>
 <p>Come mostrato nella Figura <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> e nella Figura <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, le principali Entità che interagiscono con lo Schema Registry sono:</p>
 <blockquote>
 <div><ul class="simple">
@@ -3058,7 +3124,7 @@ Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi <strong>P
 </div></blockquote>
 </section>
 <section id="catalogo-delle-attestazioni">
-<h3><span class="section-number">7.6.2. </span>Catalogo delle Attestazioni<a class="headerlink" href="#catalogo-delle-attestazioni" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.6.3. </span>Catalogo delle Attestazioni<a class="headerlink" href="#catalogo-delle-attestazioni" title="Link to this heading">¶</a></h3>
 <p>Il valore <code class="docutils literal notranslate"><span class="pre">schema_registry</span></code> nel documento Registry Discovery è la radice dell'API del Catalogue of Attestations.
 Il Federation Trust Anchor DEVE implementare la Section 5 di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>] e il documento OpenAPI dell'Annex A.3 ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-cat-of-attestations-jwt-openapi31.yml">EUDI-TS 11 OpenAPI</a>]).
 Ciascuno schema di attestazione DEVE essere un oggetto <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> come definito nella Section 4.3 di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>]. Lo schema DEVE essere valido rispetto allo JSON Schema dell'Annex A.2 ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/api/ts11-json-cat-attestations-data-model.json">EUDI-TS 11 Attestation Schema</a>]).
@@ -3080,7 +3146,7 @@ Il <code class="docutils literal notranslate"><span class="pre">frameworkType</s
 L'Attestation Rulebook di una QEAA o di una PuB-EAA DEVE essere pubblicato come richiesto dalla Section 4.2 di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
 La pubblicazione del rulebook di un EAA è RACCOMANDATO.</p>
 <section id="list-of-schemas">
-<h4><span class="section-number">7.6.2.1. </span>List of schemas<a class="headerlink" href="#list-of-schemas" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">7.6.3.1. </span>List of schemas<a class="headerlink" href="#list-of-schemas" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas</span></code> DEVE essere disponibile senza autenticazione.
 La risposta DEVE essere HTTP 200 quando la query è valida.
 Il payload del JWT DEVE contenere <code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">iat</span></code> e <code class="docutils literal notranslate"><span class="pre">data</span></code>.
@@ -3135,14 +3201,14 @@ La stessa risposta DEVE essere disponibile anche come <code class="docutils lite
 </div>
 </section>
 <section id="one-schema">
-<h4><span class="section-number">7.6.2.2. </span>One schema<a class="headerlink" href="#one-schema" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">7.6.3.2. </span>One schema<a class="headerlink" href="#one-schema" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/schemas/{schemaId}</span></code> DEVE essere disponibile senza autenticazione.
 Il Federation Trust Anchor DEVE rispondere con HTTP 200 e un JWS il cui payload è lo <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> corrispondente quando <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> esiste.
 Il Federation Trust Anchor DEVE rispondere con HTTP 404 quando <code class="docutils literal notranslate"><span class="pre">schemaId</span></code> non esiste.
 La risposta JWT DEVE includere <code class="docutils literal notranslate"><span class="pre">x-jku-url</span></code> come specificato per l'elenco.</p>
 </section>
 <section id="update-and-deletion">
-<h4><span class="section-number">7.6.2.3. </span>Update and deletion<a class="headerlink" href="#update-and-deletion" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">7.6.3.3. </span>Update and deletion<a class="headerlink" href="#update-and-deletion" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/schemas/{schemaId}</span></code> e <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/schemas/{schemaId}</span></code> DEVONO essere accettati solo da un rappresentante autenticato dell'Attestation Scheme Provider che ha registrato lo schema, come richiesto dalla Section 4.5.3 e dalla Section 5.2.2 di [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>].
 Il corpo della richiesta <code class="docutils literal notranslate"><span class="pre">PUT</span></code> DEVE essere lo <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> completo.
 Un <code class="docutils literal notranslate"><span class="pre">PUT</span></code> con esito positivo DEVE rispondere con HTTP 200 e lo <code class="docutils literal notranslate"><span class="pre">SchemaMeta</span></code> memorizzato come <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, come specificato nell'Annex A.3. Questa risposta non è selezionata dalla content negotiation che si applica al <code class="docutils literal notranslate"><span class="pre">GET</span></code>.
@@ -4043,18 +4109,6 @@ Utilizza il <code class="docutils literal notranslate"><span class="pre">verific
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -4089,27 +4143,51 @@ Utilizza il <code class="docutils literal notranslate"><span class="pre">verific
 </ul>
 </li>
 <li><a class="reference internal" href="#taxonomy">7.3. Taxonomy</a><ul>
-<li><a class="reference internal" href="#taxonomy-usage">7.3.1. Taxonomy Usage</a></li>
-<li><a class="reference internal" href="#digital-credentials-hierarchy">7.3.2. Digital Credentials Hierarchy</a></li>
-<li><a class="reference internal" href="#taxonomy-structure">7.3.3. Taxonomy Structure</a></li>
+<li><a class="reference internal" href="#taxonomy-objectives">7.3.1. Taxonomy Objectives</a></li>
+<li><a class="reference internal" href="#taxonomy-usage">7.3.2. Taxonomy Usage</a></li>
+<li><a class="reference internal" href="#digital-credentials-hierarchy">7.3.3. Digital Credentials Hierarchy</a><ul>
+<li><a class="reference internal" href="#domain">7.3.3.1. Domain</a></li>
+<li><a class="reference internal" href="#credential-class">7.3.3.2. Credential Class</a></li>
+<li><a class="reference internal" href="#credential-type">7.3.3.3. Credential Type</a></li>
+<li><a class="reference internal" href="#purpose-verification-intent">7.3.3.4. Purpose (Verification Intent)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#taxonomy-structure">7.3.4. Taxonomy Structure</a><ul>
+<li><a class="reference internal" href="#supporto-alla-localizzazione">7.3.4.1. Supporto alla localizzazione</a></li>
+<li><a class="reference internal" href="#struttura-json-della-taxonomy">7.3.4.2. Struttura JSON della Taxonomy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#claims-registry">7.4. Claims Registry</a><ul>
-<li><a class="reference internal" href="#claims-registry-usage">7.4.1. Claims Registry Usage</a></li>
+<li><a class="reference internal" href="#claims-registry-usage">7.4.1. Claims Registry Usage</a><ul>
+<li><a class="reference internal" href="#claims-registry-usage-durante-il-processo-di-onboarding">7.4.1.1. Claims Registry Usage: Durante il processo di Onboarding</a></li>
+<li><a class="reference internal" href="#claims-registry-usage-durante-le-attivita-operative">7.4.1.2. Claims Registry Usage: Durante le attività operative</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#claims-registry-structure">7.4.2. Claims Registry Structure</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#authentic-source-registry">7.5. Authentic Source Registry</a><ul>
-<li><a class="reference internal" href="#authentic-source-registry-usage">7.5.1. Authentic Source Registry Usage</a></li>
-<li><a class="reference internal" href="#authentic-source-registry-structure">7.5.2. Authentic Source Registry Structure</a></li>
+<li><a class="reference internal" href="#authentic-source-registry-usage">7.5.1. Authentic Source Registry Usage</a><ul>
+<li><a class="reference internal" href="#authentic-source-registry-usage-durante-le-attivita-operative">7.5.1.1. Authentic Source Registry Usage: Durante le attività operative</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authentic-source-registry-structure">7.5.2. Authentic Source Registry Structure</a><ul>
+<li><a class="reference internal" href="#schema-dell-identificativo-univoco-della-fonte-autentica">7.5.2.1. Schema dell'identificativo univoco della Fonte Autentica</a></li>
+<li><a class="reference internal" href="#parametri-dell-authentic-source-registry">7.5.2.2. Parametri dell'Authentic Source Registry</a></li>
+<li><a class="reference internal" href="#esempio-di-authentic-source-registry">7.5.2.3. Esempio di Authentic Source Registry</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#schema-registry">7.6. Schema Registry</a><ul>
-<li><a class="reference internal" href="#utilizzo-dello-schema-registry">7.6.1. Utilizzo dello Schema Registry</a></li>
-<li><a class="reference internal" href="#catalogo-delle-attestazioni">7.6.2. Catalogo delle Attestazioni</a><ul>
-<li><a class="reference internal" href="#list-of-schemas">7.6.2.1. List of schemas</a></li>
-<li><a class="reference internal" href="#one-schema">7.6.2.2. One schema</a></li>
-<li><a class="reference internal" href="#update-and-deletion">7.6.2.3. Update and deletion</a></li>
+<li><a class="reference internal" href="#schema-registry-objectives">7.6.1. Schema Registry Objectives</a></li>
+<li><a class="reference internal" href="#utilizzo-dello-schema-registry">7.6.2. Utilizzo dello Schema Registry</a></li>
+<li><a class="reference internal" href="#catalogo-delle-attestazioni">7.6.3. Catalogo delle Attestazioni</a><ul>
+<li><a class="reference internal" href="#list-of-schemas">7.6.3.1. List of schemas</a></li>
+<li><a class="reference internal" href="#one-schema">7.6.3.2. One schema</a></li>
+<li><a class="reference internal" href="#update-and-deletion">7.6.3.3. Update and deletion</a></li>
 </ul>
 </li>
 </ul>

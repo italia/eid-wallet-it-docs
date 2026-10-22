@@ -7,7 +7,7 @@
 
     <title>18. Rilasci Open Source &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -309,11 +345,11 @@
 <h1><span class="section-number">18. </span>Rilasci Open Source<a class="headerlink" href="#rilasci-open-source" title="Link to this heading">¶</a></h1>
 <section id="principi-generali">
 <h2><span class="section-number">18.1. </span>1. Principi Generali<a class="headerlink" href="#principi-generali" title="Link to this heading">¶</a></h2>
-<p>L'ecosistema IT-Wallet è costruito su principi di apertura e trasparenza. In conformità con il <strong>Codice dell'Amministrazione Digitale (CAD)</strong> e con il <strong>Regolamento europeo eIDAS 2.0</strong>, l'adozione di framework open source, anche durante la fase di sperimentazione, è fortemente incoraggiata come fattore abilitante chiave per garantire fiducia, collaborazione, revisione tra pari e miglioramenti condivisi in tutto l'ecosistema. Questo quadro è allineato con l'<strong>Interoperable Europe Act</strong>, con l'obiettivo di massimizzare il valore pubblico e la sicurezza attraverso la trasparenza.</p>
+<p>L'ecosistema IT-Wallet è costruito su principi di apertura e trasparenza. In conformità con il <strong>Codice dell'Amministrazione Digitale (CAD)</strong> e con il <strong>Regolamento europeo eIDAS 2.0</strong>, l'adozione di framework open source, anche durante la fase di sperimentazione, è fortemente incoraggiata. L'adozione è un fattore abilitante chiave per garantire fiducia, collaborazione, revisione tra pari e miglioramenti condivisi in tutto l'ecosistema. Questo quadro è allineato con l'<strong>Interoperable Europe Act</strong>, con l'obiettivo di massimizzare il valore pubblico e la sicurezza attraverso la trasparenza.</p>
 </section>
 <section id="requisiti-standard">
 <h2><span class="section-number">18.2. </span>2. Requisiti Standard<a class="headerlink" href="#requisiti-standard" title="Link to this heading">¶</a></h2>
-<p>Tutte le entità (Fornitori di Wallet, Fornitori di Credenziali, Relying Party) coinvolte nell'ecosistema IT-Wallet (di seguito &quot;Proprietari di Progetto&quot;) <strong>DOVREBBERO</strong> aderire alle migliori pratiche del settore per garantire che il software sia utilizzabile, conforme e sicuro, seguendo almeno quelle elencate nelle sezioni seguenti.</p>
+<p>Tutte le entità (Fornitori di Wallet, Fornitori di Credenziali, Relying Party) coinvolte nell'ecosistema IT-Wallet, di seguito Proprietari di Progetto, <strong>DOVREBBERO</strong> aderire alle migliori pratiche del settore elencate nelle sezioni seguenti. Le pratiche rendono il software utilizzabile, conforme e sicuro.</p>
 <section id="licenze">
 <h3><span class="section-number">18.2.1. </span>2.1 Licenze<a class="headerlink" href="#licenze" title="Link to this heading">¶</a></h3>
 <ul class="simple">
@@ -368,11 +404,11 @@
 </section>
 <section id="divulgazione-responsabile-e-gestione-delle-vulnerabilita">
 <h2><span class="section-number">18.5. </span>5. Divulgazione Responsabile e Gestione delle Vulnerabilità<a class="headerlink" href="#divulgazione-responsabile-e-gestione-delle-vulnerabilita" title="Link to this heading">¶</a></h2>
-<p>In conformità con il <strong>Cyber Resilience Act (CRA)</strong> e la <strong>Direttiva NIS2 (UE) 2022/2555</strong>:</p>
+<p>In conformità con il <strong>Cyber Resilience Act (CRA)</strong> e la <strong>Direttiva NIS2 (UE) 2022/2555</strong>.</p>
 <ul class="simple">
 <li><p><strong>Politica di Sicurezza</strong>: Tutti i repository Open Source <strong>DOVREBBERO</strong> contenere un file <code class="docutils literal notranslate"><span class="pre">SECURITY.md</span></code> che descriva la procedura per la segnalazione delle vulnerabilità.</p></li>
 <li><p><strong>Segnalazione</strong>: I Proprietari di Progetto <strong>DOVREBBERO</strong> istituire un canale per la divulgazione responsabile, al fine di gestire i problemi di sicurezza in modo riservato prima del rilascio pubblico.</p></li>
-<li><p><strong>Vulnerabilità sfruttate</strong>: I Proprietari di Progetto <strong>DEVONO</strong> cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate e seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.</p></li>
+<li><p><strong>Vulnerabilità sfruttate</strong>: I Proprietari di Progetto <strong>DEVONO</strong> cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate. I Proprietari di Progetto <strong>DEVONO</strong> seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.</p></li>
 </ul>
 </section>
 </section>
@@ -412,18 +448,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

@@ -7,7 +7,7 @@
 
     <title>9.1.5. Backup and Restore &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -330,9 +366,9 @@
 </ul>
 <p>Migration, or data portability, enables the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to recover their Credentials and transaction log in a new Wallet Instance of the same or a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a>, using the migration object.
 The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST carry out backup, restore, export and portability under this section in a manner that is user-friendly, transparent and traceable by the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a>.</p>
-<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST enable the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible, as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>].</p>
+<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST enable the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible. That download is as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>].</p>
 <p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST enable the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to exercise the User's rights to data portability, as required by Article 5a(4)(g) of that Regulation.</p>
-<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> can migrate to a <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> of the same or a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].</p>
+<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets. The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> can then migrate to a <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> of the same or a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].</p>
 <p>The backup file specified in <a class="reference internal" href="#backup-flow"><span class="std std-ref">Backup Flow</span></a> is the backup and recovery of references to device-bound Digital Credentials.</p>
 <p>Download of the User's data and of electronic attestations of attributes, and portability to the same or a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a>, use the migration object specified in <a class="reference internal" href="#migration-to-a-different-wallet-solution"><span class="std std-ref">Migration to a Different Wallet Solution</span></a>.</p>
 <p>Download of transaction records also uses the dashboard export specified in <a class="reference internal" href="wallet-instance-dashboard.html#export-and-deletion-of-transaction-records"><span class="std std-ref">Export and Deletion of Transaction Records</span></a>.</p>
@@ -399,7 +435,7 @@ The <a class="reference internal" href="defined-terms.html#term-User"><span clas
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The JOSE header of the backup JWT MUST contain the following REQUIRED parameters (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122a</span></a>):</p>
+<p>The JOSE header of the backup JWT MUST contain the following parameters (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122a</span></a>). Those parameters are REQUIRED.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -498,7 +534,7 @@ To check the authenticity of the file, the <a class="reference internal" href="d
 <p>When the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> indicates that they are stored, the migration object MUST contain that non-device-bound attestation as the attestation itself, as specified in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>When the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> does not indicate that they are stored, the migration object MUST NOT contain that non-device-bound attestation.</p>
 <p>The migration object MUST contain the transaction log.</p>
-<p>For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the Credential, and the provider's service supply point, as specified in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
+<p>For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the Credential, and the provider's service supply point. The content is as specified in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>The attestation type, the provider that issued the Credential, and the provider's service supply point for that non-device-bound attestation remain in the Credential list.</p>
 <p>The Credential list MUST NOT contain attribute identifiers or attribute values.</p>
 <p>The Credential list MUST NOT contain a private key.</p>
@@ -506,7 +542,7 @@ To check the authenticity of the file, the <a class="reference internal" href="d
 <p>The migration object MUST NOT contain a <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> or a <a class="reference internal" href="defined-terms.html#term-Key-Attestation"><span class="xref std std-term">Key Attestation</span></a>.</p>
 <p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST protect the confidentiality, integrity and authenticity of the migration object with the measures specified in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST NOT protect the migration object by signing it as a <code class="docutils literal notranslate"><span class="pre">wallet-unit-credentials-backup+jwt</span></code>.</p>
-<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST allow the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to store the migration object (which is a password-protected and encrypted file) in an external or remote location of the User's choice, among the storage options supported by the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>.</p>
+<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST allow the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to store the migration object in an external or remote location of the User's choice, among the storage options supported by the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>. The migration object is a password-protected and encrypted file.</p>
 <p>Directly after installation, the new <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST enable the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> to import a migration object from a location the User indicates, among the storage options supported by the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>.</p>
 <p>The new <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST ask the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> whether to restore the transaction log from the migration object.</p>
 <p>When the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> agrees, the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST restore that log.</p>
@@ -569,18 +605,6 @@ To check the authenticity of the file, the <a class="reference internal" href="d
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

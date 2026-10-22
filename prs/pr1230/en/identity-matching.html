@@ -7,7 +7,7 @@
 
     <title>11.2.3. Identity Matching and Identity Reconciliation &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -317,12 +353,74 @@
   <section id="identity-matching">
 <span id="identity-matching-and-identity-reconciliation"></span><h1><span class="section-number">11.2.3. </span>Identity Matching and Identity Reconciliation<a class="headerlink" href="#identity-matching" title="Link to this heading">¶</a></h1>
 <p><strong>Identity matching</strong> is the process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person. It is the same practical approach used in any legacy authentication and authorization infrastructure. It is not a Wallet Instance feature, nor a step of the presentation protocol. Cryptographic verification of the Digital Credential remains a distinct prerequisite, and identity reconciliation is a subsequent, optional step.</p>
-<p>After cryptographic verification of a presented Digital Credential, in remote or proximity flows, the Relying Party MUST first perform <strong>identity matching</strong>, to establish that the person identification attributes presented in the current transaction refer to the same natural person. Only after a successful identity matching, the Relying Party MAY perform <strong>identity reconciliation</strong>, linking that natural person to a previous User session or stored User record.</p>
-<p>If identity matching fails, the Relying Party MUST NOT perform identity reconciliation and MUST NOT treat the presenter as a previously known User.</p>
+<p>After cryptographic verification of a presented Digital Credential, in remote or proximity flows, the Relying Party MUST first perform <strong>identity matching</strong>. Identity matching establishes that the person identification attributes presented in the current transaction refer to the same natural person. Only after a successful identity matching, the Relying Party MAY perform <strong>identity reconciliation</strong>, linking that natural person to a previous User session or stored User record.</p>
+<p>If identity matching fails, the Relying Party MUST NOT perform identity reconciliation. The Relying Party MUST NOT treat the presenter as a previously known User.</p>
 <p>This Section specifies the matching and reconciliation rules that apply to person identification Digital Credentials (PID and IT-Wallet ID). Correlation of identities during IT-Wallet ID issuance (IdP–MRTD) is specified in <a class="reference internal" href="credential-issuance-l2plus.html#eid-substantial-authentication-with-mrtd-verification-for-it-wallet-id-issuance"><span class="std std-ref">eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance</span></a> and is out of scope of this Section.</p>
 <section id="id1">
 <h2><span class="section-number">11.2.3.1. </span>Identity Matching<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>Identity matching determines whether the presented person identification attributes identify one natural person.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a Relying Party needs to distinguish the User during authentication, the Relying Party MUST do so on the basis of the information contained in the Digital Credentials requested in the presentation request. The Relying Party must include the corresponding claims in the presentation request. The Relying Party distinguishes the User by evaluating the values of the claims actually presented.</p>
+<p>Non-normative examples are provided below.</p>
+<ol class="arabic">
+<li><p><strong>PID or IT-Wallet ID.</strong> The Relying Party requests the identification claims defined by the relevant data model, for example <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code> and <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> for the PID, or <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> for the IT-Wallet ID. See <a class="reference internal" href="credential-data-model-pid.html#pid-data-model"><span class="std std-ref">PID Data Model</span></a> and <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a>.</p>
+<p>Example of a <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> in the remote flow (PID in SD-JWT VC format):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;urn:eudi:pid:it:1&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">]}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The same claims, in the proximity flow, are requested in the mdoc <code class="docutils literal notranslate"><span class="pre">ItemsRequest</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudi.pid.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nameSpaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;eu.europa.ec.eudi.pid.1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Another Digital Credential from the catalog.</strong> The Relying Party requests the claims defined by the schema of the Digital Credential published in the <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>. The corresponding data model is defined by the related schema in the <a class="reference internal" href="registry.html#schema-registry"><span class="std std-ref">Schema Registry</span></a>.</p>
+<p>Example of a <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> in the remote flow for an mDL (<code class="docutils literal notranslate"><span class="pre">credential_type</span></code> <code class="docutils literal notranslate"><span class="pre">mDL</span></code>, mdoc-CBOR format, <code class="docutils literal notranslate"><span class="pre">docType</span></code> <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mobile driving license&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;doctype_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">]}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 <p>The Relying Party MUST apply the matching pattern of the presented Digital Credential type, as defined below. Different Digital Credential types MAY define different identity matching patterns. For the PID User attributes, see <a class="reference internal" href="credential-data-model-pid.html#pid-data-model"><span class="std std-ref">PID Data Model</span></a>. For the IT-Wallet ID User attributes, see <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a>.</p>
 </section>
 <section id="identity-reconciliation">
@@ -361,13 +459,13 @@
 </section>
 <section id="privacy-and-selective-disclosure">
 <h2><span class="section-number">11.2.3.5. </span>Privacy and Selective Disclosure<a class="headerlink" href="#privacy-and-selective-disclosure" title="Link to this heading">¶</a></h2>
-<p>Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF, to be fully applicable when the IT-Wallet will be notified as an EUDIW solution.</p>
+<p>Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction. The use is in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF. Those principles are fully applicable when the IT-Wallet will be notified as an EUDIW solution.</p>
 </section>
 <section id="application-to-user-attribute-deletion">
 <h2><span class="section-number">11.2.3.6. </span>Application to User Attribute Deletion<a class="headerlink" href="#application-to-user-attribute-deletion" title="Link to this heading">¶</a></h2>
 <p>When the User requests deletion of presented attributes, the Relying Party MUST uniquely identify one or more Digital Credentials by applying identity matching, as specified in <a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a>.</p>
 <p>When the User authenticates for a data deletion request by presenting a Digital Credential from the Wallet Instance, the Relying Party MUST apply the matching patterns of this Section.</p>
-<p>When the User authenticates for a data deletion request without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation using person identification attributes obtained from a preexisting national authentication scheme (for example CieID), where those attributes uniquely identify the User in the Relying Party's records.</p>
+<p>When the User authenticates for a data deletion request without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation. The Relying Party uses person identification attributes obtained from a preexisting national authentication scheme (for example CieID). Those attributes uniquely identify the User in the Relying Party's records.</p>
 </section>
 </section>
 
@@ -406,18 +504,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

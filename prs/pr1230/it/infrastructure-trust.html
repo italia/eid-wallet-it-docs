@@ -7,7 +7,7 @@
 
     <title>5. Infrastructure of Trust &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -425,10 +461,10 @@ Il Sign/Seal Certificate di un PuB-EAA Provider è un sigillo elettronico qualif
 <h4><span class="section-number">5.2.1.1. </span>Revocation Trust Anchors<a class="headerlink" href="#revocation-trust-anchors" title="Link to this heading">¶</a></h4>
 <p>Nell'ambito di queste specifiche, si applicano le seguenti condizioni aggiuntive relative ai Trust Anchor di revoca:</p>
 <ul class="simple">
-<li><p>Nell'ambito del Trust Framework EUDIW, i Trust Anchor utilizzati per validare i meccanismi di revoca delle catene di certificati WRPRC, PID e PuB-EAA sono gli stessi Trust Anchor notificati utilizzati dalle corrispondenti PKI di firma.</p></li>
+<li><p>Nell'ambito del Trust Framework EUDIW, i Trust Anchor utilizzati per validare i meccanismi di revoca delle catene di certificati WRPRC, PID e PuB-EAA sono i Trust Anchor notificati delle corrispondenti PKI di firma.</p></li>
 <li><p>Nell'ambito del Trust Framework Nazionale, i Signing Trust Anchor degli EAA Provider sono anche i Trust Anchor utilizzati per validare lo stato di revoca delle catene di certificati di firma EAA.</p></li>
-<li><p>Per le Wallet Instance Attestation e le Key Attestation, il Fornitore di Wallet DEVE utilizzare lo stesso Trust Anchor per la validazione della firma e per la validazione delle informazioni di stato o di revoca applicabili. Nel Trust Framework EUDIW, questo Trust Anchor è pubblicato nella Wallet Providers LoTE; nel Trust Framework Nazionale, lo stesso materiale di chiave è distribuito come National Wallet Trust Anchor attraverso la Federation Trust Anchor Entity Configuration (vedere <a class="reference internal" href="trust-evaluation.html#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>).</p></li>
-<li><p>Quando un Fornitore di Wallet opera in entrambi i Trust Framework, il suo National Wallet Trust Anchor DEVE essere lo stesso certificato del Trust Anchor notificato alla Commissione Europea e pubblicato nella Wallet Providers LoTE sotto la <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> del Fornitore di Wallet. La Entity Configuration nazionale è un canale di distribuzione aggiuntivo e NON DEVE introdurre un secondo Trust Anchor.</p></li>
+<li><p>Per le Wallet Instance Attestation e le Key Attestation, il Fornitore di Wallet DEVE utilizzare lo stesso Trust Anchor per la validazione della firma e per la validazione delle informazioni di stato o di revoca applicabili. Nel Trust Framework EUDIW, questo Trust Anchor è pubblicato nella Wallet Providers LoTE. Nel Trust Framework Nazionale, lo stesso materiale di chiave è distribuito come National Wallet Trust Anchor attraverso la Federation Trust Anchor Entity Configuration (vedere <a class="reference internal" href="trust-evaluation.html#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>).</p></li>
+<li><p>Quando un Fornitore di Wallet opera in entrambi i Trust Framework, il suo National Wallet Trust Anchor DEVE essere lo stesso certificato del Trust Anchor notificato alla Commissione Europea. Quel Trust Anchor è pubblicato nella Wallet Providers LoTE sotto la <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> del Fornitore di Wallet. La Entity Configuration nazionale è un canale di distribuzione aggiuntivo. La Entity Configuration nazionale NON DEVE introdurre un secondo Trust Anchor.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -437,7 +473,7 @@ Il Sign/Seal Certificate di un PuB-EAA Provider è un sigillo elettronico qualif
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Le Federation Entity Key non sono certificate dalle Autorità di Certificazione descritte in questa sezione.
-Il vincolo tra una Federation Entity e le sue chiavi è fornito dalla Entity Configuration e dal Subordinate Statement emesso dal suo superiore, che sono validati attraverso la Federation Trust Chain e non con un certification path (vedere <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>).
+Il vincolo tra una Federation Entity e le sue chiavi è fornito dalla Entity Configuration e dal Subordinate Statement emesso dal suo superiore, che sono validati attraverso la Federation Trust Chain e non con una catena di certificati (vedere <a class="reference internal" href="#national-trust-artifacts"><span class="std std-ref">National Trust Artifacts</span></a>).
 La Entity Configuration del Federation Trust Anchor è utilizzata come canale di distribuzione dei Trust Anchor delle gerarchie X.509.</p>
 </div>
 </section>
@@ -446,14 +482,14 @@ La Entity Configuration del Federation Trust Anchor è utilizzata come canale di
 <h3><span class="section-number">5.2.2. </span>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h3>
 <p>Le gerarchie descritte sopra seguono i principi elencati di seguito.</p>
 <ul class="simple">
-<li><p><strong>Una Sign/Seal Certification Authority per ruolo notificato.</strong> Ciascun ruolo che firma o sigilla un artifact ha una distinta Sign/Seal Certification Authority.</p></li>
-<li><p><strong>Una singola WRPAC Certification Authority.</strong> All'interno dell'IT-Wallet i certificati di accesso sono emessi da una singola Autorità di Certificazione, sia alle Wallet-Relying Party sia ai PID Provider, in quanto seguono lo stesso profilo e la stessa certificate policy.
+<li><p><strong>Una Sign/Seal Certification Authority per ruolo notificato</strong>. Ciascun ruolo che firma o sigilla un artifact ha una distinta Sign/Seal Certification Authority.</p></li>
+<li><p><strong>Una singola WRPAC Certification Authority</strong>. All'interno dell'IT-Wallet i certificati di accesso sono emessi da una singola Autorità di Certificazione. Tale Autorità di Certificazione li emette sia alle Wallet-Relying Party sia ai PID Provider. Tali certificati seguono lo stesso profilo e la stessa certificate policy.
 I certificati di autenticazione della Relying Party del Trust Framework Nazionale sono emessi da una distinta Autorità di Certificazione.</p></li>
 <li><p><strong>Nessun Trust Anchor senza un consumatore.</strong> All'interno dell'IT-Wallet un Trust Anchor è pubblicato in un canale di distribuzione solo quando una procedura di trust evaluation definita in questa specifica lo ottiene da tale canale.</p></li>
-<li><p><strong>La Root Certification Authority è al di fuori del validation path.</strong> Il certificato Trust Anchor è il punto di terminazione del trust della path validation (vedere <a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>), pertanto la Root Certification Authority non è mai valutata a runtime e il suo certificato non è pubblicato in alcuna List.
-Essa fornisce una governance comune alle Autorità di Certificazione subordinate e nessuna relazione di trust di per sé.
+<li><p><strong>La Root Certification Authority è al di fuori della catena di certificati</strong>. Il certificato Trust Anchor è il punto di terminazione del trust della path validation (vedere <a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>). La Root Certification Authority non è mai valutata a runtime. Il suo certificato non è pubblicato in alcuna lista.
+La Root Certification Authority fornisce una governance comune alle Autorità di Certificazione subordinate e nessuna relazione di trust di per sé.
 Una compromissione della Root Certification Authority non è rilevata dalla path validation ordinaria e, all'interno dell'IT-Wallet, è gestita re-emettendo e ri-notificando i Trust Anchor interessati.</p></li>
-<li><p><strong>Solo end entity al di sotto di un Trust Anchor pubblicato.</strong> All'interno dell'IT-Wallet il Trust Anchor pubblicato è l'Autorità di Certificazione subordinata del servizio, e nessun ulteriore strato di Autorità di Certificazione è emesso al di sotto di essa.
+<li><p><strong>Solo end entity al di sotto di un Trust Anchor pubblicato</strong>. All'interno dell'IT-Wallet il Trust Anchor pubblicato è l'Autorità di Certificazione subordinata del servizio. Nessun ulteriore strato di Autorità di Certificazione è emesso al di sotto di quel Trust Anchor.
 Ciò è coerente con la raccomandazione <code class="docutils literal notranslate"><span class="pre">pathLenConstraint</span></code> di <a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>.</p></li>
 <li><p><strong>Separazione delle chiavi per scopo.</strong> Un Trust Anchor pubblicato per uno scopo non è utilizzato per certificare gli artifact di un altro scopo.
 Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizzabili per quale categoria di Attestation, come richiesto da [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>].</p></li>
@@ -503,9 +539,9 @@ Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformar
 <p class="admonition-title">Nota</p>
 <p>Il resto della sezione dettaglia il solo contenuto del campo <code class="docutils literal notranslate"><span class="pre">tbsCertificate</span></code>. Per informazioni aggiuntive sui campi <code class="docutils literal notranslate"><span class="pre">signatureAlgorithm</span></code> e <code class="docutils literal notranslate"><span class="pre">signatureValue</span></code>, fare riferimento a <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>.</p>
 </div>
-<p>Il campo <code class="docutils literal notranslate"><span class="pre">tbsCertificate</span></code> DEVE contenere una struttura <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code>, i cui campi DEVONO conformarsi a <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.1.2"><strong>RFC 5280#section-4.1.2</strong></a>.</p>
+<p>Il campo <code class="docutils literal notranslate"><span class="pre">tbsCertificate</span></code> DEVE contenere una struttura <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code>. I campi <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code> DEVONO conformarsi a <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.1.2"><strong>RFC 5280#section-4.1.2</strong></a>.</p>
 <p>La tabella seguente definisce i campi del certificato applicabili al profilo di certificato specificato in questo documento.
-Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi, ma NON DEVONO modificare i requisiti di presenza ivi specificati.</p>
+Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi. I singoli profili di certificato NON DEVONO modificare i requisiti di presenza ivi specificati.</p>
 <table class="longtable docutils align-default" id="id796">
 <caption><span class="caption-number">Tabella 5.3 </span><span class="caption-text">Campi TBSCertificate</span><a class="headerlink" href="#id796" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -563,7 +599,7 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 </tr>
 </tbody>
 </table>
-<p>La tabella seguente specifica le estensioni dei certificati X.509 supportate da questa specifica, inclusi i relativi Object Identifier (OID), il tipo, la criticità, la descrizione e i riferimenti normativi. I singoli profili di certificato DEVONO definire il requisito di presenza (OBBLIGATORIO, OPZIONALE o VIETATO) per ciascuna estensione e POSSONO ulteriormente vincolarne la sintassi e i contenuti.</p>
+<p>La tabella seguente specifica le estensioni dei certificati X.509 supportate da questa specifica, inclusi i relativi Object Identifier (OID), il tipo, la criticità, la descrizione e i riferimenti normativi. I singoli profili di certificato DEVONO definire il requisito di presenza per ciascuna estensione. Il valore OBBLIGATORIO si applica quando l'estensione è sempre presente. Il valore OPZIONALE si applica quando l'estensione può essere omessa. Vietato si applica quando l'estensione è proibita. I singoli profili di certificato POSSONO ulteriormente vincolare la sintassi e i contenuti di ciascuna estensione.</p>
 <p>I valori di criticità utilizzati in questa specifica hanno il seguente significato:</p>
 <ul class="simple">
 <li><p><strong>C</strong>: l'estensione DEVE essere marcata come critica.</p></li>
@@ -649,7 +685,7 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p><strong>Prevenzione delle Dipendenze Circolari negli URI</strong></p>
+<p>Prevenzione delle Dipendenze Circolari negli URI</p>
 <p>Per prevenire dipendenze circolari di validazione durante gli handshake TLS, gli URI definiti nelle estensioni <code class="docutils literal notranslate"><span class="pre">cRLDistributionPoints</span></code> e <code class="docutils literal notranslate"><span class="pre">authorityInfoAccess</span></code> DEVONO utilizzare lo schema <code class="docutils literal notranslate"><span class="pre">http://</span></code> invece di <code class="docutils literal notranslate"><span class="pre">https://</span></code>, come suggerito da <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-8"><strong>RFC 5280#section-8</strong></a>.</p>
 </div>
 </section>
@@ -657,7 +693,7 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 <h2><span class="section-number">5.4. </span>Common Trust Artifacts<a class="headerlink" href="#common-trust-artifacts" title="Link to this heading">¶</a></h2>
 <p>Questa sezione dettaglia gli artifact comuni coinvolti sia nel Trust Framework EUDIW sia in quello Nazionale, inclusi:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>;</p></li>
+<li><p><a class="reference internal" href="#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>.</p></li>
 <li><p><a class="reference internal" href="#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>.</p></li>
 </ul>
 <section id="entity-sign-seal-certificate-profile">
@@ -1476,14 +1512,14 @@ Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
 <h3><span class="section-number">5.4.2. </span>Trust Anchor Certificate Profile<a class="headerlink" href="#trust-anchor-certificate-profile" title="Link to this heading">¶</a></h3>
 <p>Questa sezione estende il <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> generale e specifica un <strong>Certificate Profile</strong> per i <strong>Trust Anchors</strong>.
 Un Trust Anchor è una chiave pubblica fidata (e i dati associati) usata come input per <a class="reference internal" href="trust-evaluation.html#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>.
-In questo profilo, il Trust Anchor DEVE essere rappresentato e distribuito come un <strong>certificato X.509</strong>, che PUÒ essere self-signed.</p>
-<p>Le Relying Party, i Credential Issuer e le Wallet Unit validano un Access, Registration o Sign/Seal Certificate presentato costruendo un certification path che DEVONO terminare con un certificato firmato dal subject di un certificato Trust Anchor.
+In questo profilo, il Trust Anchor DEVE essere rappresentato e distribuito come un <strong>certificato X.509</strong>. Tale certificato PUÒ essere self-signed.</p>
+<p>Le Relying Party, i Credential Issuer e le Wallet Unit validano un Access, Registration o Sign/Seal Certificate presentato costruendo una catena di certificati. La catena di certificati DEVE iniziare con il certificato end-entity presentato. La catena di certificati DEVE terminare con un certificato firmato dal subject di un certificato Trust Anchor.
 Il certificato Trust Anchor è usato come punto di terminazione della fiducia per il processo di path validation (cioè, è il valore della variabile <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> in <a class="reference internal" href="trust-evaluation.html#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>).
 Le implementazioni DEVONO supportare la validazione sia di certificati Trust Anchor self-signed sia non self-signed.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Trust Anchor Location.</strong>
-La location del Trust Anchor Certificate è determinata dal Trust Framework specifico selezionato (vedi <a class="reference internal" href="trust-evaluation.html#eudiw-trust-anchor-validation"><span class="std std-ref">EUDIW Trust Anchor Validation</span></a> e <a class="reference internal" href="trust-evaluation.html#federation-trust-anchor-validation"><span class="std std-ref">Federation Trust Anchor Validation</span></a>).</p>
+<p>Trust Anchor Location</p>
+<p>La location del Trust Anchor Certificate è determinata dal Trust Framework specifico selezionato (vedi <a class="reference internal" href="trust-evaluation.html#eudiw-trust-anchor-validation"><span class="std std-ref">EUDIW Trust Anchor Validation</span></a> e <a class="reference internal" href="trust-evaluation.html#federation-trust-anchor-validation"><span class="std std-ref">Federation Trust Anchor Validation</span></a>).</p>
 </div>
 <p>La tabella seguente definisce i requisiti specifici del profilo per i campi del certificato.
 I campi non elencati nella tabella restano soggetti ai requisiti definiti nel <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> comune.</p>
@@ -1528,7 +1564,7 @@ Se l'estensione è presente, il valore del campo <code class="docutils literal n
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subjectKeyIdentifier</span></code></p></td>
 <td><p>OBBLIGATORIO. Fornisce un key identifier per la chiave pubblica del Trust Anchor.
 Il suo valore DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in <span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.2.1.2"><strong>RFC 5280#section-4.2.1.2</strong></a>.
-Questa estensione DOVREBBE supportare una Certificate Path construction affidabile e l'abbinamento dei certificati nei deployment basati su LoTE o TL.</p></td>
+Questa estensione DOVREBBE supportare una costruzione affidabile della catena di certificati e l'abbinamento dei certificati nei deployment basati su LoTE o TL.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">keyUsage</span></code></p></td>
 <td><p>OBBLIGATORIO. DEVE asserire il bit <code class="docutils literal notranslate"><span class="pre">keyCertSign</span></code>.
@@ -1561,8 +1597,8 @@ In tal caso, esso DEVE limitare il numero di certificati CA intermedi non self-i
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Trust Anchor Signature.</strong>
-Un certificato Trust Anchor PUÒ essere self-signed (rappresentando una root CA) o non self-signed (rappresentando una CA intermedia designata come Trust Anchor per policy).
+<p>Trust Anchor Signature</p>
+<p>Un certificato Trust Anchor PUÒ essere self-signed (rappresentando una root CA) o non self-signed (rappresentando una CA intermedia designata come Trust Anchor per policy).
 Le Relying Party NON DEVONO richiedere un issuer aggiuntivo al di sopra di un Trust Anchor recuperato come specificato dal Trust Framework applicabile, anche se non è self-signed, perché il Trust Anchor è un input autorevole all'algoritmo di path validation designato per policy.</p>
 </div>
 <div class="admonition note">
@@ -1659,11 +1695,11 @@ Le Relying Party NON DEVONO richiedere un issuer aggiuntivo al di sopra di un Tr
 <h2><span class="section-number">5.5. </span>EUDIW Trust Artifacts<a class="headerlink" href="#eudiw-trust-artifacts" title="Link to this heading">¶</a></h2>
 <p>Questa sezione definisce i trust artifact richiesti e i loro ruoli concettuali nell'ecosistema EUDIW secondo <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>, inclusi:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>;</p></li>
-<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>;</p></li>
-<li><p><a class="reference internal" href="#registrar-sign-seal-certificate-profile"><span class="std std-ref">Registrar Sign/Seal Certificate Profile</span></a>;</p></li>
-<li><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>;</p></li>
-<li><p><a class="reference internal" href="#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>;</p></li>
+<li><p><a class="reference internal" href="#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.</p></li>
+<li><p><a class="reference internal" href="#wallet-relying-party-access-certificate-wrpac-profile"><span class="std std-ref">Wallet-Relying Party Access Certificate (WRPAC) Profile</span></a>.</p></li>
+<li><p><a class="reference internal" href="#registrar-sign-seal-certificate-profile"><span class="std std-ref">Registrar Sign/Seal Certificate Profile</span></a>.</p></li>
+<li><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.</p></li>
+<li><p><a class="reference internal" href="#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p></li>
 <li><p><a class="reference internal" href="#embedded-disclosure-policy-edp"><span class="std std-ref">Embedded Disclosure Policy (EDP)</span></a>.</p></li>
 </ul>
 <p>Il modello dati di questi Trust Artifact profila le seguenti specifiche esterne.</p>
@@ -2800,7 +2836,7 @@ La Wallet Unit NON DEVE recuperare il contenuto della policy da <code class="doc
 L'identificatore di Service è rinviato come specificato in <a class="reference internal" href="#register-of-wrps"><span class="std std-ref">Register of WRPs</span></a>.
 Fino ad allora, la Wallet Unit confronta l'identificatore univoco a livello UE (<code class="docutils literal notranslate"><span class="pre">sub</span></code>) e, ove presente, l'URI di entitlement.
 <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> (ISS-MDATA-EBD-4.2.5.2-07) codifica inoltre le parti autorizzate per subject DN o per URI di entitlement.
-Il parametro <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> è quella codifica ETSI; non è un input di valutazione rispetto al WRPAC.
+Il parametro <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> è quella codifica ETSI. Il parametro <code class="docutils literal notranslate"><span class="pre">subject_dn</span></code> non è un input di valutazione rispetto al WRPAC.
 Il parametro <code class="docutils literal notranslate"><span class="pre">entitlement_uri</span></code> è abbinato rispetto alle entitlement detenute nel WRPRC.
 L'Allegato A.3 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> definisce sub-entitlement per i Service Provider, attualmente per i Payment Service Provider (ad es. <code class="docutils literal notranslate"><span class="pre">https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai</span></code>).
 Per una presentazione <strong>intermediata</strong> il WRPRC nella richiesta è quello della Relying Party <em>intermediata</em> ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_19).</p>
@@ -3022,7 +3058,7 @@ Le Wallet-Relying Party e i Wallet Provider sono Federation Entity che DEVONO es
 Tutte le Federation Entity DEVONO pubblicare la propria <strong>Entity Configuration</strong> all'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> secondo <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 9.
 Il Federation TA e gli Intermediate espongono inoltre gli endpoint di federazione usati per costruire e validare le Trust Chain e per supportare i Trust Mark.</p>
 <p>Le proprietà della Federation Entity supportate nel profilo delle specifiche IT-Wallet sono definite in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.1.1.
-La tabella seguente elenca gli endpoint di federazione, gli Entity Type che DEVONO esporre ciascuno di essi, i parametri di richiesta usati all'interno di IT-Wallet con il loro status OBBLIGATORIO o OPZIONALE, e la risposta restituita da ciascun endpoint.
+La tabella seguente elenca gli endpoint di federazione e gli Entity Type che DEVONO esporre ciascuno di essi. Per ciascun endpoint la tabella indica i parametri di richiesta usati all'interno di IT-Wallet e se ciascun parametro è richiesto. La tabella indica anche la risposta restituita da ciascun endpoint.
 I parametri di richiesta seguono <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8: sono inviati come query parameter per le richieste GET e nel body per le richieste POST.
 Le risposte seguono i formati di risposta OID-FED referenziati nella tabella.</p>
 <table class="longtable docutils align-default">
@@ -3139,12 +3175,12 @@ La revoca di un Subordinate è espressa dall'assenza di un Subordinate Statement
 <p>Nell'Entity Configuration (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3.1.2):</p>
 <ul class="simple">
 <li><p><strong>metadata</strong> (<code class="docutils literal notranslate"><span class="pre">metadata</span></code>): Oggetto JSON OBBLIGATORIO in cui ciascuna chiave è un identificatore di tipo di metadata e il suo valore è il metadata di tale tipo (vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3.1.1).
-Tutte le Entità DEVONO includere almeno un metadata per <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> nelle proprie Entity Configuration, e POSSONO includere più di una dichiarazione di metadata, ma solo una per ciascun tipo di metadata.
+Tutte le Entità DEVONO includere almeno un metadata per <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> nelle proprie Entity Configuration. Un'Entità PUÒ includere più di una dichiarazione di metadata, con una sola dichiarazione per ciascun tipo di metadata.
 I tipi di metadata sono definiti in <a class="reference internal" href="#entity-type-identifiers-and-metadata"><span class="std std-ref">Entity Type Identifiers and Metadata</span></a>.</p></li>
 <li><p><strong>trust_marks</strong> (<code class="docutils literal notranslate"><span class="pre">trust_marks</span></code>): OBBLIGATORIO per Foglie e Federation Intermediate.
 Array JSON dei Trust Mark del subject.
 Il Trust Mark di registrazione è definito in <a class="reference internal" href="#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.</p></li>
-<li><p><strong>trust_mark_issuers</strong> (<code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>): OBBLIGATORIO solo per Federation TA e NON DEVE essere incluso altrimenti.
+<li><p><strong>trust_mark_issuers</strong> (<code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>): OBBLIGATORIO solo per Federation TA. Il parametro NON DEVE essere incluso altrimenti.
 Oggetto JSON che dichiara, per ciascun tipo di Trust Mark, le Federation Authority fidate a emetterlo, indicate dai loro Federation Entity Identifier.
 All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi DEVE contenere almeno l'identificatore del Federation TA.</p></li>
 </ul>
@@ -3153,10 +3189,10 @@ All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Feder
 <li><p><strong>metadata_policy</strong> (<code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>): OPZIONALE in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.
 Metadata policy vincolata a un tipo di metadata specifico e applicata al sottoalbero, risolta combinando i Claim <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> lungo la Trust Chain, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 6.1.4.
 All'interno di IT-Wallet il Subordinate Statement relativo a una Foglia DEVE recare una <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> che vincola i metadata di protocollo della Foglia ai valori approvati in onboarding.
-Usando gli operatori di metadata policy di <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 6.1.3, DEVE fissare l'<code class="docutils literal notranslate"><span class="pre">organization_name</span></code> dei metadata <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, le chiavi di firma di protocollo (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>) e, quando presente nel tipo di metadata, gli endpoint di servizio e gli URI di request, response e redirect (per esempio i <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> e <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> di <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>).
+Il Subordinate Statement DEVE fissare l'<code class="docutils literal notranslate"><span class="pre">organization_name</span></code> dei metadata <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> e le chiavi di firma di protocollo (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>). Il Subordinate Statement usa gli operatori di metadata policy di <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 6.1.3. Quando tali parametri sono presenti nel tipo di metadata, il Subordinate Statement DEVE fissare anche gli endpoint di servizio e gli URI di request, response e redirect. Esempi sono i <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> e <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> di <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>.
 Questo Subordinate Statement è emesso dal superiore immediato che ha registrato la Foglia, cioè il Federation TA per le Foglie che registra direttamente e un Federation Intermediate per le sue Relying Party affiliate.
 Il Subordinate Statement relativo a un Federation Intermediate non reca una <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>, perché l'Intermediate non ha metadata di protocollo e le sue Relying Party affiliate sono vincolate dall'Intermediate stesso.
-Un superiore PUÒ restringere ulteriormente la metadata policy impostata dai propri superiori, ma NON DEVE allentarla, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 6.1.1.</p></li>
+Un superiore PUÒ restringere ulteriormente la metadata policy impostata dai propri superiori. Un superiore NON DEVE allentare quella metadata policy, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 6.1.1.</p></li>
 <li><p><strong>constraints</strong> (<code class="docutils literal notranslate"><span class="pre">constraints</span></code>): OBBLIGATORIO solo per Federation TA.
 Reca i vincoli applicati al sottoalbero al di sotto dell'issuer.
 DEVE contenere <code class="docutils literal notranslate"><span class="pre">allowed_entity_types</span></code>, che restringe i metadata Entity Type che i Subordinate nel sottoalbero sono autorizzati a pubblicare, e <code class="docutils literal notranslate"><span class="pre">max_path_length</span></code>, che limita il numero di Intermediate tra l'issuer e il subject della Trust Chain.
@@ -3273,7 +3309,7 @@ Vedi <a class="reference external" href="https://openid.net/specs/openid-federat
 <h3><span class="section-number">5.6.3. </span>Entity Statement Examples<a class="headerlink" href="#entity-statement-examples" title="Link to this heading">¶</a></h3>
 <p>Le sezioni seguenti forniscono esempi non normativi di Entity Statement, sia per l'onboarding diretto sotto il Federation TA sia per l'onboarding intermediato sotto un Federation Intermediate.
 Tutte le dichiarazioni sono JWT firmati con l'header JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code>, <code class="docutils literal notranslate"><span class="pre">kid</span></code> e <code class="docutils literal notranslate"><span class="pre">typ</span></code> impostato a <code class="docutils literal notranslate"><span class="pre">entity-statement+jwt</span></code>, e sono mostrati solo i payload.
-I metadata di protocollo e i key set pinnati sono troncati (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>) poiché la loro definizione completa è fornita nelle sezioni di metadata referenziate sopra.</p>
+I metadata di protocollo e i key set della copia locale nota sono troncati (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>) poiché la loro definizione completa è fornita nelle sezioni di metadata referenziate sopra.</p>
 <section id="entity-configuration-of-a-federation-ta">
 <h4><span class="section-number">5.6.3.1. </span>Entity Configuration of a Federation TA<a class="headerlink" href="#entity-configuration-of-a-federation-ta" title="Link to this heading">¶</a></h4>
 <p>Il Federation TA è la root della Trust Chain.
@@ -3359,7 +3395,7 @@ Ciascuna tale JWK è identificata dal suo <code class="docutils literal notransl
 <h4><span class="section-number">5.6.3.2. </span>Subordinate Statement of Leaf issued by the Federation TA<a class="headerlink" href="#subordinate-statement-of-leaf-issued-by-the-federation-ta" title="Link to this heading">¶</a></h4>
 <p>Il Federation TA emette un Subordinate Statement su ciascuna Foglia che registra direttamente.
 La dichiarazione reca le Federation Entity Keys della Foglia, la <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> che fissa le chiavi di protocollo e, quando presenti, gli endpoint di servizio e gli URI della Foglia ai valori approvati in onboarding, e i <code class="docutils literal notranslate"><span class="pre">constraints</span></code> del sottoalbero.</p>
-<p><strong>Wallet Provider</strong></p>
+<p>L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Wallet Provider.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
@@ -3392,7 +3428,7 @@ La dichiarazione reca le Federation Entity Keys della Foglia, la <code class="do
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Relying Party</strong></p>
+<p>L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Relying Party.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
@@ -3440,7 +3476,7 @@ La dichiarazione reca le Federation Entity Keys della Foglia, la <code class="do
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Credential Issuer</strong></p>
+<p>L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Credential Issuer.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
@@ -3608,7 +3644,7 @@ Espone gli endpoint fetch e list usati per servire i Subordinate Statement delle
 <h4><span class="section-number">5.6.3.6. </span>Entity Configuration of a Leaf<a class="headerlink" href="#entity-configuration-of-a-leaf" title="Link to this heading">¶</a></h4>
 <p>Ciascuna Foglia pubblica la propria Entity Configuration, puntando al proprio superiore immediato attraverso <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> e recando il proprio Trust Mark di registrazione.
 Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono referenziati alla relativa sezione di metadata.</p>
-<p><strong>Wallet Provider</strong></p>
+<p>L'esempio non normativo seguente è l'Entity Configuration di una Foglia Wallet Provider.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.it&quot;</span><span class="p">,</span>
@@ -3649,7 +3685,7 @@ Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Relying Party</strong></p>
+<p>L'esempio non normativo seguente è l'Entity Configuration di una Foglia Relying Party.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://access.privatecompany.example.com&quot;</span><span class="p">,</span>
@@ -3690,7 +3726,7 @@ Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Credential Issuer</strong></p>
+<p>L'esempio non normativo seguente è l'Entity Configuration di una Foglia Credential Issuer.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://badge-issuer.example.it&quot;</span><span class="p">,</span>
@@ -3770,7 +3806,8 @@ Nel Trust Framework Nazionale, invece, è espressa attraverso la gerarchia di fe
 Il Trust Mark di registrazione di ciascuna Relying Party affiliata è altresì emesso dal Federation Trust Anchor.
 Per questo motivo nessun campo dedicato all'intermediario è presente nel Trust Mark.
 L'onboarding dell'Intermediary è definito in <a class="reference internal" href="onboarding-system.html#relying-party-intermediary"><span class="std std-ref">Relying Party Intermediary</span></a>.</p>
-<p><strong>Trust Mark Structure</strong></p>
+<section id="trust-mark-types-and-schema-trust-mark-structure">
+<h5><span class="section-number">5.6.4.2.1. </span>Trust Mark Types and Schema: Trust Mark Structure<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-structure" title="Link to this heading">¶</a></h5>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
 <table class="longtable docutils align-default" id="id808">
 <caption><span class="caption-number">Tabella 5.14 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nell'Entity Configuration)</span><a class="headerlink" href="#id808" title="Link to this table">¶</a></caption>
@@ -3795,7 +3832,9 @@ Un JSON Web Token firmato che rappresenta il Trust Mark emesso dalla Federation 
 </tbody>
 </table>
 <p>Il Trust Mark JWT (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> sopra) DEVE essere un JWT firmato che include sia un header JOSE sia un payload, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 7.</p>
-<p><strong>Trust Mark JWT Header</strong></p>
+</section>
+<section id="trust-mark-types-and-schema-trust-mark-jwt-header">
+<h5><span class="section-number">5.6.4.2.2. </span>Trust Mark Types and Schema: Trust Mark JWT Header<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-jwt-header" title="Link to this heading">¶</a></h5>
 <p>L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:</p>
 <table class="longtable docutils align-default" id="id809">
 <caption><span class="caption-number">Tabella 5.15 </span><span class="caption-text">Parametri dell'Header JWT del Trust Mark</span><a class="headerlink" href="#id809" title="Link to this table">¶</a></caption>
@@ -3827,14 +3866,16 @@ I Trust Mark senza un parametro di header <code class="docutils literal notransl
 </tbody>
 </table>
 <p>Un esempio non normativo di un header JWT di Trust Mark:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ta-federation-key-1&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trust-mark+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Trust Mark JWT Payload</strong></p>
+</section>
+<section id="trust-mark-types-and-schema-trust-mark-jwt-payload">
+<h5><span class="section-number">5.6.4.2.3. </span>Trust Mark Types and Schema: Trust Mark JWT Payload<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-jwt-payload" title="Link to this heading">¶</a></h5>
 <p>Il payload del Trust Mark JWT include i seguenti claim:</p>
 <table class="longtable docutils align-default" id="id810">
 <caption><span class="caption-number">Tabella 5.16 </span><span class="caption-text">Claim JWT del Trust Mark</span><a class="headerlink" href="#id810" title="Link to this table">¶</a></caption>
@@ -4073,6 +4114,7 @@ Non dichiara un uso previsto proprio, quindi il suo Trust Mark di registrazione 
 </section>
 </section>
 </section>
+</section>
 <section id="trust-management-and-lifecycle">
 <h2><span class="section-number">5.7. </span>Trust Management and Lifecycle<a class="headerlink" href="#trust-management-and-lifecycle" title="Link to this heading">¶</a></h2>
 <p>Questa sezione descrive il ciclo di vita dei Trust Artifact (<a class="reference internal" href="#trust-artifacts-lifecycle-state-machine"><span class="std std-ref">Trust Artifacts Lifecycle State Machine</span></a>) e i meccanismi usati per gestirne lo status (<a class="reference internal" href="#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>).
@@ -4083,10 +4125,10 @@ Il ciclo di vita delle Entità, gli eventi che modificano la loro registrazione 
 <ul class="simple">
 <li><p>Per WRPAC, WRPRC e Sign/Seal Certificate, gli stati del ciclo di vita sono <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>.
 La transizione da <code class="docutils literal notranslate"><span class="pre">VALID</span></code> a <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> è innescata dalla revoca del Trust Artifact, che può essere avviata dal corrispondente Trust Artifact provider per varie ragioni quali compromissione di chiave, cambiamenti organizzativi, o non conformità alle policy del framework.
-Una volta che un Trust Artifact è nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>, NON DEVE essere considerato fidato per qualsiasi uso operativo all'interno dell'ecosistema, e qualsiasi Entità che vi fa affidamento DEVE rifiutarlo per autenticazione, autorizzazione o qualsiasi altra operazione relativa alla fiducia.</p>
+Una volta che un Trust Artifact è nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>, quel Trust Artifact NON DEVE essere considerato fidato per qualsiasi uso operativo all'interno dell'ecosistema. Qualsiasi Entità che fa affidamento su quel Trust Artifact DEVE rifiutarlo per autenticazione, autorizzazione o qualsiasi altra operazione relativa alla fiducia.</p>
 <ul>
-<li><p>Un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> NON DEVE essere presente nella CRL designata e/o DEVE restituire uno status <code class="docutils literal notranslate"><span class="pre">good</span></code> nella risposta OCSP.
-Un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> DEVE essere presente nella CRL designata e/o DEVE restituire uno status <code class="docutils literal notranslate"><span class="pre">revoked</span></code> nella risposta OCSP.</p></li>
+<li><p>Un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> NON DEVE essere presente nella CRL designata. In alternativa, un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> DEVE restituire uno status <code class="docutils literal notranslate"><span class="pre">good</span></code> nella risposta OCSP.
+Un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> DEVE essere presente nella CRL designata. In alternativa, un WRPAC nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> DEVE restituire uno status <code class="docutils literal notranslate"><span class="pre">revoked</span></code> nella risposta OCSP.</p></li>
 <li><p>Un WRPRC nello stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> DEVE restituire uno status <code class="docutils literal notranslate"><span class="pre">0x00</span></code> nel corrispondente Status List Token.
 Un WRPRC nello stato <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> DEVE avere valore di status <code class="docutils literal notranslate"><span class="pre">0x01</span></code> all'interno del corrispondente Status List Token.</p></li>
 </ul>
@@ -4145,13 +4187,13 @@ state &quot;Trust Marks&quot; as TMGroup {
 <h3><span class="section-number">5.7.2. </span>Federation Entity Key Rotation<a class="headerlink" href="#federation-entity-key-rotation" title="Link to this heading">¶</a></h3>
 <p>La Federation Entity Key di un'Entità è attestata dal Subordinate Statement che il suo superiore immediato pubblica su di essa, e l'Entity Configuration dell'Entità DEVE essere firmata con una chiave che il Subordinate Statement attesta.
 Una nuova Federation Entity Key diventa fidata solo quando il superiore la attesta nel Subordinate Statement.</p>
-<p>La rotazione della Federation Entity Key DEVE essere eseguita come definito nei passi seguenti:</p>
+<p>La rotazione della Federation Entity Key DEVE essere eseguita come definito nei passi seguenti.</p>
 <ul class="simple">
-<li><p>L'Entità aggiunge la nuova chiave al <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della propria Entity Configuration e DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.</p></li>
-<li><p>Nel processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>) il superiore DEVE leggere il <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dall'Entity Configuration, DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata, e DEVE riemettere il Subordinate Statement attestando la nuova chiave.</p></li>
-<li><p>La chiave precedente e la nuova chiave coesistono quindi fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute, e durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.</p></li>
-<li><p>Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.</p></li>
-<li><p>Poi, quando l'Entità vuole rimuovere la chiave precedente, PUÒ rimuoverla dal <code class="docutils literal notranslate"><span class="pre">jwks</span></code> notificando questo cambiamento al superiore attraverso il processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>), e il superiore DEVE rimuoverla dal Subordinate Statement.</p></li>
+<li><p>L'Entità aggiunge la nuova chiave al <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della propria Entity Configuration. L'Entità DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.</p></li>
+<li><p>Nel processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>) il superiore DEVE leggere il <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dall'Entity Configuration. Il superiore DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata. Il superiore DEVE riemettere il Subordinate Statement attestando la nuova chiave.</p></li>
+<li><p>La chiave precedente e la nuova chiave coesistono fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute. Durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.</p></li>
+<li><p>Una volta che la finestra di validità della Trust Chain è scaduta, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.</p></li>
+<li><p>Quando l'Entità vuole rimuovere la chiave precedente, l'Entità PUÒ rimuoverla dal <code class="docutils literal notranslate"><span class="pre">jwks</span></code> e notificare questo cambiamento al superiore attraverso il processo di Entity Update (vedi <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a>). Il superiore DEVE rimuovere quella chiave dal Subordinate Statement.</p></li>
 <li><p>Il superiore DEVE registrare l'evento come un <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> pubblicato sul Federation Subordinate Events Endpoint.</p></li>
 </ul>
 </section>
@@ -4517,7 +4559,7 @@ L'identificatore OID è <code class="docutils literal notranslate"><span class="
 </tr>
 </tbody>
 </table>
-<p>Quando inviata su HTTP usando POST, il body di questa richiesta DEVE contenere la codifica DER raw di questa SEQUENCE <code class="docutils literal notranslate"><span class="pre">OCSPRequest</span></code> e DEVE avere MIME type <code class="docutils literal notranslate"><span class="pre">application/ocsp-request</span></code>.</p>
+<p>Quando è inviato su HTTP usando POST, il body di questa richiesta DEVE contenere la codifica DER raw di questa SEQUENCE <code class="docutils literal notranslate"><span class="pre">OCSPRequest</span></code>. Il body di questa richiesta DEVE avere MIME type <code class="docutils literal notranslate"><span class="pre">application/ocsp-request</span></code>.</p>
 <p>Di seguito un esempio non normativo di una richiesta OCSP:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>OCSPRequest request = {
     tbsRequest: {
@@ -4810,19 +4852,23 @@ Contiene la struttura <code class="docutils literal notranslate"><span class="pr
 <h4><span class="section-number">5.7.3.3. </span>Token Status List (WRPRC Profile)<a class="headerlink" href="#token-status-list-wrprc-profile" title="Link to this heading">¶</a></h4>
 <p>Questa sezione profila il meccanismo Token Status List (TSL) di <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> per i Wallet-Relying Party Registration Certificate (WRPRC). Una TSL convoglia lo status corrente di molti WRPRC in un Status List Token (SLT) compatto e firmato.</p>
 <p>Lo SLT Provider PUÒ essere il Provider of WRPRC o un'entità designata.</p>
-<p><strong>Status List</strong></p>
+<section id="token-status-list-wrprc-profile-status-list">
+<h5><span class="section-number">5.7.3.3.1. </span>Token Status List (WRPRC Profile): Status List<a class="headerlink" href="#token-status-list-wrprc-profile-status-list" title="Link to this heading">¶</a></h5>
 <p>Una Status List contiene un array di byte compresso le cui entry rappresentano gli status di molti WRPRC. Il Provider of WRPRC DEVE assegnare un valore <code class="docutils literal notranslate"><span class="pre">idx</span></code> distinto, non negativo a ciascun WRPRC emesso e includerlo, insieme all'<code class="docutils literal notranslate"><span class="pre">uri</span></code> della SLT, nel membro <code class="docutils literal notranslate"><span class="pre">status.status_list</span></code> del WRPRC. Per un WRPRC codificato JWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero JSON e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una stringa JSON.
 Per un WRPRC codificato CWT, <code class="docutils literal notranslate"><span class="pre">idx</span></code> è un intero non firmato CBOR e <code class="docutils literal notranslate"><span class="pre">uri</span></code> è una text string CBOR. In entrambi i casi, <code class="docutils literal notranslate"><span class="pre">uri</span></code> DEVE essere un URI conforme a <span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>.</p>
 <p>Secondo l'ARF e [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>], lo status del WRPRC è <code class="docutils literal notranslate"><span class="pre">VALID</span></code> o <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>.
 Il Provider of WRPRC DEVE impostare il parametro <code class="docutils literal notranslate"><span class="pre">bits</span></code> nell'oggetto <code class="docutils literal notranslate"><span class="pre">status_list</span></code> della SLT a <code class="docutils literal notranslate"><span class="pre">1</span></code>. Il valore <code class="docutils literal notranslate"><span class="pre">0x00</span></code> rappresenta <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, e <code class="docutils literal notranslate"><span class="pre">0x01</span></code> rappresenta <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>.</p>
 <p>L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in <a class="reference internal" href="credential-revocation.html#token-status-list-profilo-degli-attestati-elettronici"><span class="std std-ref">Token Status List (Profilo degli Attestati Elettronici)</span></a>.</p>
-<p><strong>Status List Token</strong></p>
+</section>
+<section id="token-status-list-wrprc-profile-status-list-token">
+<h5><span class="section-number">5.7.3.3.2. </span>Token Status List (WRPRC Profile): Status List Token<a class="headerlink" href="#token-status-list-wrprc-profile-status-list-token" title="Link to this heading">¶</a></h5>
 <p>Lo SLT Provider DEVE agire sia come Status Issuer sia come Status Provider.
 Lo SLT Provider DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro <code class="docutils literal notranslate"><span class="pre">status.status_list.uri</span></code> del WRPRC.
 I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in <a class="reference internal" href="credential-revocation.html#token-status-list-profilo-degli-attestati-elettronici"><span class="std std-ref">Token Status List (Profilo degli Attestati Elettronici)</span></a>.</p>
 <p>Indipendentemente dal formato, lo SLT Provider per i WRPRC DEVE firmare ciascuna SLT usando un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE dei Provider of WRPRC.</p>
 <p>Per una SLT JWT, la catena del certificato di firma DEVE essere recata nell'header JOSE <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.
 Per una SLT CWT, essa DEVE essere recata nell'header COSE <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> (label <code class="docutils literal notranslate"><span class="pre">33</span></code>).</p>
+</section>
 </section>
 </section>
 </section>
@@ -4863,18 +4909,6 @@ Per una SLT CWT, essa DEVE essere recata nell'header COSE <code class="docutils 
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -4960,7 +4994,12 @@ Per una SLT CWT, essa DEVE essere recata nell'header COSE <code class="docutils 
 </li>
 <li><a class="reference internal" href="#trust-marks">5.6.4. Trust Marks</a><ul>
 <li><a class="reference internal" href="#trust-mark-types-and-schema">5.6.4.1. Trust Mark Types and Schema</a></li>
-<li><a class="reference internal" href="#trust-mark-registration-entity">5.6.4.2. Trust Mark registration-entity</a></li>
+<li><a class="reference internal" href="#trust-mark-registration-entity">5.6.4.2. Trust Mark registration-entity</a><ul>
+<li><a class="reference internal" href="#trust-mark-types-and-schema-trust-mark-structure">5.6.4.2.1. Trust Mark Types and Schema: Trust Mark Structure</a></li>
+<li><a class="reference internal" href="#trust-mark-types-and-schema-trust-mark-jwt-header">5.6.4.2.2. Trust Mark Types and Schema: Trust Mark JWT Header</a></li>
+<li><a class="reference internal" href="#trust-mark-types-and-schema-trust-mark-jwt-payload">5.6.4.2.3. Trust Mark Types and Schema: Trust Mark JWT Payload</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -4978,7 +5017,11 @@ Per una SLT CWT, essa DEVE essere recata nell'header COSE <code class="docutils 
 <li><a class="reference internal" href="#online-certificate-status-protocol-response-format">5.7.3.2.2. Online Certificate Status Protocol Response Format</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#token-status-list-wrprc-profile">5.7.3.3. Token Status List (WRPRC Profile)</a></li>
+<li><a class="reference internal" href="#token-status-list-wrprc-profile">5.7.3.3. Token Status List (WRPRC Profile)</a><ul>
+<li><a class="reference internal" href="#token-status-list-wrprc-profile-status-list">5.7.3.3.1. Token Status List (WRPRC Profile): Status List</a></li>
+<li><a class="reference internal" href="#token-status-list-wrprc-profile-status-list-token">5.7.3.3.2. Token Status List (WRPRC Profile): Status List Token</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

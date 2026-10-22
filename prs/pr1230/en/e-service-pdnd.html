@@ -7,7 +7,7 @@
 
     <title>19.2. e-Service PDND &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -313,10 +349,10 @@
             
   <section id="e-service-pdnd">
 <h1><span class="section-number">19.2. </span>e-Service PDND<a class="headerlink" href="#e-service-pdnd" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> framework empowers Member States to establish the interfaces, terms, and conditions governing communication between Credential Issuers and Authentic Sources. In the Italian context, interoperability is established by leveraging the following guidelines:</p>
+<p>The <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a> framework empowers Member States to establish the interfaces, terms, and conditions governing communication between Credential Issuers and Authentic Sources. In the Italian context, interoperability is established by leveraging the following guidelines.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>&quot;Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>);</p></li>
+<li><p>&quot;Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>).</p></li>
 <li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>).</p></li>
 </ul>
 </div></blockquote>
@@ -400,29 +436,29 @@
 <p>In the current specifications, the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern is implemented in accordance with <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>.</p>
 <p>Alternatively, the proof of possession MAY be attested using the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT to provide additional data. In this context, <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT acts as a proof of possession of the PDND Voucher. Such implementation choices will be referred to as <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> and <code class="docutils literal notranslate"><span class="pre">POP_TPoP</span></code>, respectively.</p>
 </div>
-<p>The following security patterns defined in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> MUST NOT be used as they do not comply with the requirements defined above:</p>
+<p>The following security patterns defined in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> MUST NOT be used. Those patterns do not comply with the requirements defined above.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with <strong>R1</strong>:</p>
+<li><p>The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form). Those patterns do not comply with <strong>R1</strong>.</p>
 <ul>
-<li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>])</p></li>
+<li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust based on PDND via Platform-issued JWT tokens and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[INTEGRITY_REST_01]</strong> REST Payload Integrity (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
-<li><p>The following pattern does not provide correlation between the tracked data and the Voucher, thus not complying with <strong>R3</strong>:</p>
+<li><p>The following pattern does not provide correlation between the tracked data and the Voucher. That pattern does not comply with <strong>R3</strong>.</p>
 <ul>
 <li><p><strong>[AUDIT_REST_01]</strong> Submission of audit data within the REST request (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
-<li><p>The following patterns are based on a SOAP architecture, thus not complying with <strong>R4</strong>:</p>
+<li><p>The following patterns are based on a SOAP architecture. Those patterns do not comply with <strong>R4</strong>.</p>
 <ul>
 <li><p><strong>[ID_AUTH_SOAP_01]</strong> Direct Trust based on X.509 certificate with SOAP (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[ID_AUTH_SOAP_02]</strong> Direct Trust based on X.509 certificate with SOAP and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[INTEGRITY_SOAP_01]</strong> SOAP Payload Integrity (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
-<li><p>The following pattern does not guarantee proof of possession of the Voucher, thus not complying with <strong>R5</strong>:</p>
+<li><p>The following pattern does not guarantee proof of possession of the Voucher. That pattern does not comply with <strong>R5</strong>.</p>
 <ul>
 <li><p><strong>[REST_JWS_2021_Bearer]</strong> JWS Bearer Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]).</p></li>
 </ul>
@@ -512,7 +548,7 @@
 <p class="admonition-title">Note</p>
 <p>Steps 1-2 are required only when complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern or the <code class="docutils literal notranslate"><span class="pre">POP_TPoP</span></code> implementation.</p>
 </div>
-<p><strong>Step 3 (DPoP Key Pair and Proof)</strong>: The Consumer MUST create a new key pair for the DPoP and a fresh DPoP proof JWT following the instruction provided in the Section 4 of <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a> for the token request to the PDND Authorization Server.</p>
+<p><strong>Step 3 (DPoP Key Pair and Proof)</strong>: The Consumer MUST create a new key pair for the DPoP and a fresh DPoP proof JWT as specified in Section 4 of <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. The Consumer uses that proof for the token request to the PDND Authorization Server.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Step 3 is required only when complying with the <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> implementation.</p>
@@ -1061,7 +1097,7 @@
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the validation of the Voucher Request, the PDND Authorization Server Endpoint MUST return an error response as defined in <span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the validation of the Voucher Request, the PDND Authorization Server Endpoint MUST return an error response as defined in <span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type. The response MUST include the following parameters.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -1192,7 +1228,7 @@
 <section id="pdnd-authorization-server-keys-response">
 <h4><span class="section-number">19.2.3.2.2. </span>PDND Authorization Server Keys Response<a class="headerlink" href="#pdnd-authorization-server-keys-response" title="Link to this heading">¶</a></h4>
 <p>The .well-known Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] containing the public keys employed by the PDND Authorization Server to sign Vouchers.</p>
-<p>If any errors occur during the retrieval of the keys, the .well-known Endpoint MUST return an error response. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the retrieval of the keys, the .well-known Endpoint MUST return an error response. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type. The response MUST include the following parameters.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -1336,7 +1372,7 @@
 </pre></div>
 </div>
 </div>
-<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type. The response MUST include the following parameters.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -1461,7 +1497,7 @@
 <p class="admonition-title">Note</p>
 <p>Step 1 is required to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p>
 </div>
-<p><strong>Step 2 (DPoP Proof for e-Service Endpoint)</strong>: The Consumer MUST create a fresh DPoP Proof JWT following the instruction provided in the Section 4 of [<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>] for the token presentation to the e-Service Endpoint.</p>
+<p><strong>Step 2 (DPoP Proof for e-Service Endpoint)</strong>: The Consumer MUST create a fresh DPoP Proof JWT as specified in Section 4 of [<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]. The Consumer uses that proof for the token presentation to the e-Service Endpoint.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Step 2 is required only when complying with the <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> implementation.</p>
@@ -1913,7 +1949,7 @@
 </pre></div>
 </div>
 </div>
-<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9457.html"><strong>RFC 9457</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/problem+json</span></code> (according to MODI <code class="docutils literal notranslate"><span class="pre">RAC_GEN_FORMAT_002</span></code>) as the content type and includes the following parameters:</p>
+<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9457.html"><strong>RFC 9457</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/problem+json</span></code> (according to MODI <code class="docutils literal notranslate"><span class="pre">RAC_GEN_FORMAT_002</span></code>) as the content type. The response includes the following parameters.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: [OPTIONAL] URI reference that identifies the problem type.</p></li>
@@ -2002,18 +2038,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

@@ -14,7 +14,7 @@ Each Credential Issuer MUST support the Authorization Code Grant.
 
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
-A Credential Issuer invoked through the EUDI Wallet flow MUST use the ``eu-eaa-offer://`` scheme for Credential Offers as profiled by [`ETSI TS 119 472-3`_].
+The scheme for Credential Offers in the EUDI Wallet flow is specified in :ref:`credential-issuance-low-level:Credential Offer Flow`.
 PID issuance before EUDIW notification is specified in :ref:`pid-until-notification`.
 
 

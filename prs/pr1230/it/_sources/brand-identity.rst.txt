@@ -8,7 +8,7 @@ La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e 
 
 È importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint.
 
-Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche.
+La presenza della Brand Identity nelle diverse Soluzioni Tecniche è uniforme e coerente. La Brand Identity favorisce un’Esperienza Utente di qualità. Gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche.
 In particolare, tutti gli Attori Primari:
 
 - DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
@@ -35,9 +35,9 @@ Tutti coloro che intendono riferirsi al Sistema IT-Wallet:
 Identità Visiva
 ---------------
 
-Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla per dare visibilità della propria partecipazione al Sistema IT-Wallet, ma NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o la propria Soluzione Tecnica.
+Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicare l'Identità Visiva per dare visibilità della propria partecipazione al Sistema IT-Wallet. I partecipanti dell'ecosistema NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o della propria Soluzione Tecnica.
 
-Per garantire una corretta coesistenza tra l’Identità Visiva del Brand “IT-Wallet” e l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche, gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali e rispettare le indicazioni del Brand Manual.
+Gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali. Gli Attori Primari DEVONO rispettare le indicazioni del Brand Manual. Questi obblighi mantengono compatibile l’Identità Visiva del Brand “IT-Wallet” con l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche.
 
 Logo
 ^^^^
@@ -84,9 +84,9 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli attori che intendono riferirsi al Sistema:
 
-- POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet ma NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica.
+- Gli attori che intendono riferirsi al Sistema POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet. Gli attori che intendono riferirsi al Sistema NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica.
 
-- DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite.
+- Gli attori che intendono riferirsi al Sistema DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali. Gli attori che intendono riferirsi al Sistema DEVONO rispettare tutte le relative specifiche di utilizzo fornite.
 
 - DEVONO utilizzare il Logo in formato ``application/svg+xml``.
 
@@ -102,7 +102,7 @@ Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli a
 
 - POSSONO utilizzare il pittogramma del Logo come versione sintetica del Logo, in accordo con quando stabilito nel Brand Manual.
 
-- POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per rendere evidente il richiamo a IT-Wallet, come per esempio negli Engagement Buttons (vedi :ref:`functionalities:Authentication Button`), in accordo con quando stabilito nel Brand Manual.
+- Gli attori POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per richiamare IT-Wallet. Un esempio sono gli Engagement Buttons (vedi :ref:`functionalities:Authentication Button`). L'uso resta in accordo con quanto stabilito nel Brand Manual.
 
 Per approfondimenti sul Logo e relativo pittogramma, consultare il Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
 Le Risorse Ufficiali del Logo sono disponibili nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche.
@@ -133,13 +133,13 @@ Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'ap
 
 Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.). Tutti gli Attori Primari:
 
-- DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi.
+- Gli Attori Primari DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet. Gli Attori Primari NON DEVONO utilizzare il Trust Mark per scopi diversi.
 
 - DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione.
 
-- DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica e DEVONO renderlo consultabile all'interno della Soluzione Tecnica.
+- Gli Attori Primari DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica. Gli Attori Primari DEVONO rendere il Trust Mark consultabile all'interno della Soluzione Tecnica.
 
-- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel :ref:`official-resources:Brand Manual`.
+- Gli Attori Primari DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali. Gli Attori Primari DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel :ref:`official-resources:Brand Manual`.
 
 - NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali.
 
@@ -147,7 +147,7 @@ Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in 
 
 - DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel :ref:`official-resources:Brand Manual`, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto.
 
-- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`.
+- Gli Attori Primari NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità. Gli Attori Primari DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`.
 
 - POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.
 

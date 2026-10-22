@@ -69,7 +69,7 @@ Credential Transition to Expired
 
 A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA expiration**).
 
-If a Digital Credential is **Expired** the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (**PID/(Q)EAA DEL**).
+If a Digital Credential is **Expired**, the Wallet Instance SHOULD notify the User that the Digital Credential has expired. The User MAY delete the Digital Credential (**PID/(Q)EAA DEL**).
 This ends its lifecycle.
 
 Credential Transition to Revoked
@@ -94,8 +94,7 @@ In the case of PID and IT-Wallet ID only, the following cases are in addition to
 .. note::
   A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID/IT-Wallet ID revocation.
 
-When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential
-has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
+When a Digital Credential is **Revoked**, the Digital Credential cannot transition back to **Valid**. The Wallet Instance SHOULD notify the User that the Digital Credential has been revoked. The User MAY delete the Digital Credential (**PID/(Q)EAA DEL**). This ends its lifecycle.
 
 Credential Transition to Suspended
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -163,17 +162,14 @@ External user-related factors can also influence a Digital Credential's lifecycl
 Entities Involved
 ^^^^^^^^^^^^^^^^^
 
-While the Credential Issuer MUST directly manage the validity status of Digital Credentials it has issued, other actors MAY trigger the Digital Credential revocation/suspension process:
+The Credential Issuer MUST directly manage the validity status of Digital Credentials it has issued. Other actors MAY trigger the Digital Credential revocation/suspension process.
 
-  - Users, through:
-
-    - Their Wallet Instance
-    - Web service provided by the Issuer
-
-  - The Authentic Source when Credential attributes are updated or change validity status
-  - The Wallet Provider when revoking a Wallet Instance
-  - The Identity Provider if the Digital Identity used for PID/IT-Wallet ID issuance is stolen or compromised
-  - Legal authorities or the Supervisory Body in cases of proven illegal activities
+  - Users, through their Wallet Instance.
+  - Users, through the web service provided by the Issuer.
+  - The Authentic Source, when Credential attributes are updated or change validity status.
+  - The Wallet Provider, when revoking a Wallet Instance.
+  - The Identity Provider, if the Digital Identity used for PID/IT-Wallet ID issuance is stolen or compromised.
+  - Legal authorities or the Supervisory Body, in cases of proven illegal activities.
 
 The following figure shows an entity relationships diagram relating to the Update Flow status.
 
@@ -236,9 +232,9 @@ Status Update by Wallet Instance
 
 When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default MUST NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
 
-The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer, and MAY implement, under the User's explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User's intention to revoke the Digital Credential.
+The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer. The Wallet Instance MAY implement, under the User's explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User's intention to revoke the Digital Credential.
 
-If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which MUST then notify the Credential Issuer. Alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
+If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available). The Wallet Instance MUST then notify the Credential Issuer. Alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
 When the revoked Credential is the PID/IT-Wallet ID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
 For any other Credential different from the PID/IT-Wallet ID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
@@ -327,7 +323,8 @@ This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIS
 
 The SLT Provider MUST be the Credential Issuer.
 
-**Status List**
+Status List
+"""""""""""
 
 A Status List contains a compressed byte array whose entries represent the statuses of many Digital Credentials. The Credential Issuer MUST allocate each issued Digital Credential a distinct, non-negative ``idx`` value and include it, together with the SLT ``uri``, in the Digital Credential's status-list reference. For an SD-JWT Digital Credential, the reference is in ``status.status_list``, ``idx`` is a JSON integer, and ``uri`` is a JSON string. For an mdoc MSO, the reference is in ``issuerAuth.status_list``, ``idx`` is a CBOR unsigned integer, and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
 
@@ -343,22 +340,24 @@ As a result, the Credential Issuer MUST set the ``bits`` parameter in the SLT's 
 
 The Credential Issuer MAY define additional application-specific statuses within the range supported by ``bits``. It SHOULD carefully consider the information disclosed to Relying Parties when defining additional statuses for the Digital Credential lifecycle.
 
-The Credential Issuer MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+The Credential Issuer MUST pack entries starting with the least significant bit of each byte. The Credential Issuer MUST compress the byte array using DEFLATE with the ZLIB data format. The Credential Issuer MUST publish the resulting Status List in the SLT.
 
-**Status List Token**
+Status List Token
+"""""""""""""""""
 
 The Credential Issuer MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by the Digital Credential's status-list reference, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
 
-The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of `TOKEN-STATUS-LIST`_.
+The SLT format MAY be either a JWT or a CWT. The SLT MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of `TOKEN-STATUS-LIST`_.
 
-Regardless of the format, the Credential Issuer MUST sign the SLT using one of the following:
+Regardless of the format, the Credential Issuer MUST sign the SLT using one of the following.
 
-- a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Credential Issuer's LoTE when it is registered in the EUDIW Trust Framework, or
-- a valid key attested by the Credential Issuer's Entity Configuration when it is registered in the National Trust Framework.
+- A valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Credential Issuer's LoTE when the Credential Issuer is registered in the EUDIW Trust Framework.
+- A valid key attested by the Credential Issuer's Entity Configuration when the Credential Issuer is registered in the National Trust Framework.
 
-**Privacy Considerations**
+Privacy Considerations
+""""""""""""""""""""""
 
-Credential Issuers MUST integrate the status information for many Digital Credentials into the same list. Credential Issuers MUST publish the SLT at the same ``uri`` for all those Digital Credentials. The purpose is to prevent Credential Issuers from tracking or profiling users based on their use of Digital Credentials. This specification requires Credential Issuers to configure Status Lists with at least 100,000 status entries. If more Digital Credentials are issued, the Credential Issuer MAY create additional SLTs or increase the number of entries in the array, depending on practical considerations such as the total size of each SLT and the management of multiple endpoints.
+Credential Issuers MUST integrate the status information for many Digital Credentials into the same list. Credential Issuers MUST publish the SLT at the same ``uri`` for all those Digital Credentials. The purpose is to prevent Credential Issuers from tracking or profiling users based on their use of Digital Credentials. This specification requires Credential Issuers to configure Status Lists with at least 100,000 status entries. If more Digital Credentials are issued, the Credential Issuer MAY create additional SLTs. The Credential Issuer MAY increase the number of entries in the array. The choice depends on practical considerations such as the total size of each SLT and the management of multiple endpoints.
 
 Checking Credentials Statuses
 """""""""""""""""""""""""""""
@@ -388,11 +387,8 @@ The Relying Party SHOULD send an ``Accept`` header containing ``application/stat
 
 The following is a non-normative example of a request for a Status List Token:
 
-.. code-block:: http
-
-  GET /statuslists HTTP/1.1
-  Host: example-issuer.com
-  Accept: application/statuslist+jwt
+.. literalinclude:: ../../examples/shared/credential-revocation-1.http
+   :language: http
 
 
 HTTP Status List Response
@@ -406,12 +402,8 @@ If caching-related HTTP headers are present in the HTTP response, Relying Partie
 
 The following is a non-normative example of a response for a Status List Token with type ``application/statuslist+jwt``:
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/statuslist+jwt
-
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjQsImxzdCI6ImVKeGpjRkFFQUFDa0FHSSJ9LCJzdWIiOiJodHRwczovL2V4YW1wbGUuY29tL3N0YXR1c2xpc3RzLzEiLCJ0dGwiOjQzMjAwfQ.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
+.. literalinclude:: ../../examples/shared/credential-revocation-2.http
+   :language: http
 
 Upon receiving a Digital Credential, a Relying Party MUST first perform the validation of the Digital Credential itself (e.g., checking for expected attributes, valid signature and expiration time). If this validation is not successful, the Digital Credential MUST be rejected. If the validation was successful, the Relying Party MUST perform the following validation steps to evaluate the status of the Digital Credential:
 

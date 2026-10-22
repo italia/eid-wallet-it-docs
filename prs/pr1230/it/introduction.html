@@ -7,7 +7,7 @@
 
     <title>1. Introduzione &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -308,9 +344,9 @@
   <section id="introduzione">
 <h1><span class="section-number">1. </span>Introduzione<a class="headerlink" href="#introduzione" title="Link to this heading">¶</a></h1>
 <p>Queste Specifiche Tecniche definiscono l'architettura tecnica, il framework di implementazione e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet. Queste Specifiche Tecniche integrano le Linee Guida previste dall'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005 (CAD) e, una volta formalmente adottate, entrano a far parte del quadro normativo del Sistema IT-Wallet. Queste Specifiche Tecniche sono redatte attraverso un processo aperto e collaborativo. Questa versione delle Specifiche Tecniche consente la notifica del Sistema IT-Wallet alla Commissione Europea, in conformità al Regolamento eIDAS ([<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], come modificato da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>]) e ai relativi regolamenti di esecuzione.</p>
-<p>In Italia, il Decreto-Legge n. 19 del 2 marzo 2024, convertito, con modificazioni, dalla Legge n. 56 del 29 aprile 2024, ha introdotto l'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005, istituendo il Sistema di Portafoglio Digitale Italiano - Sistema IT-Wallet. Il Sistema IT-Wallet consente a persone fisiche o giuridiche di accedere a servizi pubblici e privati attraverso la presentazione sicura di Attestati Elettronici, attestanti diritti, deleghe, caratteristiche, licenze o qualifiche. L'articolo 64-quater prevede inoltre l'adozione di uno o più decreti attuativi per definire le regole che disciplinano il funzionamento del Sistema IT-Wallet, compresi i ruoli delle entità coinvolte, i requisiti tecnici e di sicurezza, e i principi di sostenibilità economica.</p>
+<p>In Italia, il Decreto-Legge n. 19 del 2 marzo 2024, convertito, con modificazioni, dalla Legge n. 56 del 29 aprile 2024, ha introdotto l'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005, istituendo il Sistema di Portafoglio Digitale Italiano - Sistema IT-Wallet. Il Sistema IT-Wallet consente a persone fisiche o giuridiche di accedere a servizi pubblici e privati attraverso la presentazione sicura di Attestati Elettronici, attestanti diritti, deleghe, caratteristiche, licenze o qualifiche. L'articolo 64-quater prevede inoltre l'adozione di uno o più decreti attuativi per definire le regole che disciplinano il funzionamento del Sistema IT-Wallet. I decreti comprendono i ruoli delle entità coinvolte, i requisiti tecnici e di sicurezza e i principi di sostenibilità economica.</p>
 <p>Grazie al Sistema IT-Wallet, le persone fisiche e giuridiche possono fornire direttamente, tramite il proprio Wallet, le informazioni necessarie per accedere ai servizi offerti da enti pubblici e privati sotto forma di Attestati Elettronici.
-Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria, nonché una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.</p>
+Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria. Un'Istanza del Wallet può anche contenere una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.</p>
 <p>I principali ruoli nell'ecosistema Wallet sono elencati di seguito:</p>
 <ul class="simple">
 <li><p><strong>Fornitore di Attestati Elettronici</strong>: soggetti che rilasciano Attestati Elettronici agli Utenti.</p></li>
@@ -320,7 +356,7 @@ Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati 
 <p>In questo modello, il Fornitore di Attestati Elettronici (ad esempio, un'istituzione educativa) fornisce Attestati Elettronici all'Utente, che può memorizzarle nella propria Istanza del Wallet.
 L'Istanza del Wallet è tipicamente fornita come applicazione mobile sullo smartphone dell'Utente.</p>
 <p>Ciò che distingue questo nuovo approccio dai precedenti sistemi di gestione dell'accesso all'identità è che gli Attestati Elettronici si riferiscono a caratteristiche, qualità o proprietà, già autenticate alla fonte. Questi Attestati Elettronici possono essere utilizzati dall'Utente senza che i Fornitori di Attestati Elettronici siano a conoscenza del loro utilizzo. Durante l'uso degli Attestati Elettronici, nessuna informazione sull'utilizzo viene rilasciata a terze parti poiché la relazione è esclusiva tra l'Utente e il Verificatore di Attestati Elettronici, in modo trasparente e informato.
-Lo sviluppo del Sistema IT-Wallet include un processo di sperimentazione graduale, finalizzato a testare il Wallet e valutarne l'impatto in contesti reali. Questo processo è progettato per validare componenti tecniche, elementi di esperienza utente e meccanismi di interoperabilità, garantendo al contempo un'adozione progressiva e controllata del Sistema. Inoltre, supporta il miglioramento continuo del Sistema IT-Wallet e il suo graduale allineamento con il Portafoglio Europeo di Identità Digitale (EUDI Wallet), sia in termini di architettura che di conformità con le specifiche europee in evoluzione.</p>
+Lo sviluppo del Sistema IT-Wallet include un processo di sperimentazione graduale, finalizzato a testare il Wallet e valutarne l'impatto in contesti reali. Questo processo è progettato per validare componenti tecniche, elementi di esperienza utente e meccanismi di interoperabilità, garantendo al contempo un'adozione progressiva e controllata del Sistema. Inoltre, supporta il miglioramento continuo del Sistema IT-Wallet e il suo graduale allineamento con il Portafoglio Europeo di Identità Digitale (EUDI Wallet). L'allineamento riguarda sia l'architettura sia la conformità con le specifiche europee in evoluzione.</p>
 <p>Altri elementi chiave che caratterizzano questo nuovo paradigma di Portafoglio di Identità Digitale includono:</p>
 <ul class="simple">
 <li><p><strong>Riservatezza e controllo</strong>: i Wallet consentono agli individui di mantenere il controllo sulle informazioni fornite all'interno degli Attestati Elettronici presentate. Possono scegliere quali attributi o Attestati Elettronici presentare e a chi.</p></li>
@@ -340,18 +376,52 @@ Il documento distingue gli aspetti normativi obbligatori dalle buone pratiche pr
 <li><p>mantenere un adeguato livello di qualità, promuovendo i principi di usabilità, accessibilità e inclusività.</p></li>
 </ul>
 <p>Il secondo focus è definire l'architettura tecnica e il quadro di riferimento che servirà da linea guida per tutte le parti coinvolte nello sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet.</p>
-<p>La documentazione, gli strumenti e le risorse aggiuntive - di seguito definite Risorse Ufficiali - per la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet saranno presto disponibili nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>: e saranno aggiornate periodicamente.</p>
+<p>La documentazione, gli strumenti e le risorse aggiuntive, di seguito definite Risorse Ufficiali, saranno presto disponibili nella sezione <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>. Le Risorse Ufficiali riguardano la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet e saranno aggiornate periodicamente.</p>
 </section>
 <section id="linguaggio-normativo-e-convenzioni">
 <h2><span class="section-number">1.2. </span>Linguaggio Normativo e Convenzioni<a class="headerlink" href="#linguaggio-normativo-e-convenzioni" title="Link to this heading">¶</a></h2>
-<p>Le parole chiave &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot; e &quot;OPTIONAL&quot; in questo documento devono essere interpretate come descritto in BCP 14 [RFC2119] [RFC8174] quando, e solo quando, appaiono in maiuscolo, come mostrato qui.
-Nel testo italiano, le forme interamente in maiuscolo elencate in <a class="reference internal" href="defined-terms.html#linguaggio-normativo-e-convenzioni"><span class="std std-ref">Linguaggio Normativo e Convenzioni</span></a> hanno lo stesso significato delle parole chiave inglesi corrispondenti.</p>
+<p>Le parole chiave in questo documento devono essere interpretate come descritto in BCP 14 [RFC2119] [RFC8174] quando, e solo quando, appaiono in maiuscolo, come mostrato qui.</p>
+<ul class="simple">
+<li><p>MUST.</p></li>
+<li><p>MUST NOT.</p></li>
+<li><p>REQUIRED.</p></li>
+<li><p>SHALL.</p></li>
+<li><p>SHALL NOT.</p></li>
+<li><p>SHOULD.</p></li>
+<li><p>SHOULD NOT.</p></li>
+<li><p>RECOMMENDED.</p></li>
+<li><p>NOT RECOMMENDED.</p></li>
+<li><p>MAY.</p></li>
+<li><p>OPTIONAL.</p></li>
+</ul>
+<p>Nel testo italiano, le forme interamente in maiuscolo elencate in <a class="reference internal" href="#linguaggio-normativo"><span class="std std-ref">Linguaggio normativo</span></a> hanno lo stesso significato delle parole chiave inglesi corrispondenti.</p>
 </section>
 <section id="come-leggere-le-specifiche">
 <h2><span class="section-number">1.3. </span>Come leggere le Specifiche<a class="headerlink" href="#come-leggere-le-specifiche" title="Link to this heading">¶</a></h2>
 <p>Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno del Sistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutare il lettore a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.</p>
+<section id="linguaggio-normativo">
+<h3><span class="section-number">1.3.1. </span>Linguaggio normativo<a class="headerlink" href="#linguaggio-normativo" title="Link to this heading">¶</a></h3>
+<p>Il testo italiano usa parole chiave normative interamente in maiuscolo. La convenzione segue BCP 14, RFC 2119 e RFC 8174. Le parole chiave inglesi corrispondenti sono MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED, MAY e OPTIONAL.</p>
+<p>Ogni forma italiana ha lo stesso valore della parola chiave inglese corrispondente.</p>
+<ul class="simple">
+<li><p>DEVE ha il significato di MUST.</p></li>
+<li><p>DEVONO ha il significato di MUST.</p></li>
+<li><p>NON DEVE ha il significato di MUST NOT.</p></li>
+<li><p>NON DEVONO ha il significato di MUST NOT.</p></li>
+<li><p>PUÒ ha il significato di MAY.</p></li>
+<li><p>POSSONO ha il significato di MAY.</p></li>
+<li><p>DOVREBBE ha il significato di SHOULD.</p></li>
+<li><p>DOVREBBERO ha il significato di SHOULD.</p></li>
+<li><p>RACCOMANDATO ha il significato di RECOMMENDED.</p></li>
+<li><p>NON DOVREBBE ha il significato di SHOULD NOT.</p></li>
+<li><p>NON DOVREBBERO ha il significato di SHOULD NOT.</p></li>
+<li><p>NON RACCOMANDATO ha il significato di NOT RECOMMENDED.</p></li>
+<li><p>OBBLIGATORIO ha il significato di REQUIRED.</p></li>
+<li><p>OPZIONALE ha il significato di OPTIONAL.</p></li>
+</ul>
+</section>
 <section id="panoramica-della-struttura-delle-specifiche">
-<h3><span class="section-number">1.3.1. </span>Panoramica della Struttura delle Specifiche<a class="headerlink" href="#panoramica-della-struttura-delle-specifiche" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>Panoramica della Struttura delle Specifiche<a class="headerlink" href="#panoramica-della-struttura-delle-specifiche" title="Link to this heading">¶</a></h3>
 <p>La specifica è organizzata nelle seguenti sezioni principali:</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>:
@@ -395,28 +465,33 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 </ul>
 </section>
 <section id="percorsi-di-lettura-per-ruolo">
-<h3><span class="section-number">1.3.2. </span>Percorsi di lettura per ruolo<a class="headerlink" href="#percorsi-di-lettura-per-ruolo" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.3. </span>Percorsi di lettura per ruolo<a class="headerlink" href="#percorsi-di-lettura-per-ruolo" title="Link to this heading">¶</a></h3>
 <p>Per facilitare la consultazione degli argomenti trattati in queste specifiche, di seguito sono riportati percorsi di lettura organizzati per ruolo. Ogni percorso è strutturato in base alle diverse fasi di adesione e partecipazione al Sistema IT-Wallet e contiene riferimenti diretti alle sezioni più rilevanti per ciascun ruolo.</p>
 <p>I percorsi di lettura proposti hanno finalità orientativa e non sostituiscono la necessità di consultare le altre sezioni quando è richiesta una comprensione più ampia del sistema.</p>
 <p>Per le entità interessate a operare in più ruoli, si raccomanda di approfondire tutti i percorsi di lettura relativi ai ruoli di interesse.</p>
 <section id="fonte-autentica">
-<h4><span class="section-number">1.3.2.1. </span>Fonte Autentica<a class="headerlink" href="#fonte-autentica" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">1.3.3.1. </span>Fonte Autentica<a class="headerlink" href="#fonte-autentica" title="Link to this heading">¶</a></h4>
 <p>La Fonte Autentica si occupa di rendere disponibili i dati affidabili alla base dei (Q)EAA e di garantirne e gestirne in modo sicuro l’assoluta accuratezza e integrità.</p>
-<p><strong>Fase 1: Scoperta</strong></p>
+<section id="fonte-autentica-fase-1-scoperta">
+<h5><span class="section-number">1.3.3.1.1. </span>Fonte Autentica: Fase 1: Scoperta<a class="headerlink" href="#fonte-autentica-fase-1-scoperta" title="Link to this heading">¶</a></h5>
 <p>Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 </ul>
-<p><strong>Fase 2: Progettazione</strong></p>
+</section>
+<section id="fonte-autentica-fase-2-progettazione">
+<h5><span class="section-number">1.3.3.1.2. </span>Fonte Autentica: Fase 2: Progettazione<a class="headerlink" href="#fonte-autentica-fase-2-progettazione" title="Link to this heading">¶</a></h5>
 <p>Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti chiave relativi alle modalità con cui consentire agli Utenti di ottenere i (Q)EAA, alla struttura dei (Q)EAA, al loro stato e alla loro gestione nel tempo.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.</p></li>
 <li><p><strong>Appendice</strong> <a class="reference internal" href="e-service-pdnd-template.html#pdnd-e-service-template"><span class="std std-ref">PDND e-Service Template</span></a>: Modello di riferimento contenente tutti i metadati tecnici e descrittivi necessari per la definizione dell’e-service.</p></li>
 </ul>
-<p><strong>Fase 3: Implementazione</strong></p>
+</section>
+<section id="fonte-autentica-fase-3-implementazione">
+<h5><span class="section-number">1.3.3.1.3. </span>Fonte Autentica: Fase 3: Implementazione<a class="headerlink" href="#fonte-autentica-fase-3-implementazione" title="Link to this heading">¶</a></h5>
 <p>Implementare le interfacce tecnologiche necessarie per comunicare con il Fornitore di Attestati Elettronici e gestire l’intero ciclo di vita dei dati associati ai (Q)EAA.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-sources.html#fonti-autentiche"><span class="std std-ref">Fonti Autentiche</span></a>: Ruolo e responsabilità della Fonte Autentica.</p></li>
@@ -426,7 +501,9 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>: Requisiti generali per la conservazione dei log e requisiti specifici per le Fonti Autentiche, in conformità alla norma ISO/IEC 27001.</p></li>
 <li><p><strong>Appendice</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guida alla configurazione dell'ambiente di test e alla validazione delle interazioni backend tramite l'utilizzo delle matrici di test fornite dall'ecosistema.</p></li>
 </ul>
-<p><strong>Fase 4: Registrazione</strong></p>
+</section>
+<section id="fonte-autentica-fase-4-registrazione">
+<h5><span class="section-number">1.3.3.1.4. </span>Fonte Autentica: Fase 4: Registrazione<a class="headerlink" href="#fonte-autentica-fase-4-registrazione" title="Link to this heading">¶</a></h5>
 <p>Registrarsi al sistema come Fonte Autentica, completando le procedure amministrative e tecniche richieste.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica.</p></li>
@@ -434,24 +511,30 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
+</section>
 <section id="fornitore-di-wallet">
-<h4><span class="section-number">1.3.2.2. </span>Fornitore di Wallet<a class="headerlink" href="#fornitore-di-wallet" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">1.3.3.2. </span>Fornitore di Wallet<a class="headerlink" href="#fornitore-di-wallet" title="Link to this heading">¶</a></h4>
 <p>Il Fornitore di Wallet si occupa della progettazione e dello sviluppo della Soluzione Wallet, che consente all’Utente di conservare, gestire e presentare il proprio PID e i propri (Q)EAA.</p>
-<p><strong>Fase 1: Scoperta</strong></p>
+<section id="fornitore-di-wallet-fase-1-scoperta">
+<h5><span class="section-number">1.3.3.2.1. </span>Fornitore di Wallet: Fase 1: Scoperta<a class="headerlink" href="#fornitore-di-wallet-fase-1-scoperta" title="Link to this heading">¶</a></h5>
 <p>Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 </ul>
-<p><strong>Fase 2: Progettazione</strong></p>
+</section>
+<section id="fornitore-di-wallet-fase-2-progettazione">
+<h5><span class="section-number">1.3.3.2.2. </span>Fornitore di Wallet: Fase 2: Progettazione<a class="headerlink" href="#fornitore-di-wallet-fase-2-progettazione" title="Link to this heading">¶</a></h5>
 <p>Comprendere i requisiti relativi all’Esperienza Utente e progettare la Soluzione Wallet secondo modelli comuni, al fine di garantirne l’usabilità e l’accessibilità.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>: Panoramica della Brand Identity del Sistema IT-Wallet e indicazioni sugli asset di riferimento per il Fornitore di Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti chiave relativi ai modelli di interazione, ai layout delle interfacce e agli asset grafici, al fine di garantire un’esperienza utente efficace, fluida e assicurare coerenza tra le diverse Soluzioni Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.</p></li>
 </ul>
-<p><strong>Fase 3: Implementazione</strong></p>
+</section>
+<section id="fornitore-di-wallet-fase-3-implementazione">
+<h5><span class="section-number">1.3.3.2.3. </span>Fornitore di Wallet: Fase 3: Implementazione<a class="headerlink" href="#fornitore-di-wallet-fase-3-implementazione" title="Link to this heading">¶</a></h5>
 <p>Implementare la Soluzione Wallet in conformità a specifici standard tecnologici, al fine di garantire la comunicazione tra la Soluzione Wallet e gli altri attori del Sistema.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti tecnici e funzionali relativi ai componenti, alle funzionalità e al ciclo di vita necessari per la configurazione della Soluzione Wallet.</p></li>
@@ -464,7 +547,9 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Appendice</strong> <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>: Requisiti relativi all’istanza dell’applicazione mobile, con riferimento alla richiesta e alla risposta di inizializzazione.</p></li>
 <li><p><strong>Appendice</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.</p></li>
 </ul>
-<p><strong>Fase 4: Registrazione</strong></p>
+</section>
+<section id="fornitore-di-wallet-fase-4-registrazione">
+<h5><span class="section-number">1.3.3.2.4. </span>Fornitore di Wallet: Fase 4: Registrazione<a class="headerlink" href="#fornitore-di-wallet-fase-4-registrazione" title="Link to this heading">¶</a></h5>
 <p>Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.</p></li>
@@ -472,23 +557,29 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
+</section>
 <section id="fornitore-di-attestati-elettronici">
-<h4><span class="section-number">1.3.2.3. </span>Fornitore di Attestati Elettronici<a class="headerlink" href="#fornitore-di-attestati-elettronici" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">1.3.3.3. </span>Fornitore di Attestati Elettronici<a class="headerlink" href="#fornitore-di-attestati-elettronici" title="Link to this heading">¶</a></h4>
 <p>Il Fornitore di Attestati Elettronici si occupa di trasformare i dati autorevoli di origine provenienti dalle Fonti Autentiche in (Q)EAA e di gestirne l’intero ciclo di vita, dall’emissione alla revoca o alla scadenza.</p>
-<p><strong>Fase 1: Scoperta</strong></p>
+<section id="fornitore-di-attestati-elettronici-fase-1-scoperta">
+<h5><span class="section-number">1.3.3.3.1. </span>Fornitore di Attestati Elettronici: Fase 1: Scoperta<a class="headerlink" href="#fornitore-di-attestati-elettronici-fase-1-scoperta" title="Link to this heading">¶</a></h5>
 <p>Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 </ul>
-<p><strong>Fase 2: Progettazione</strong></p>
+</section>
+<section id="fornitore-di-attestati-elettronici-fase-2-progettazione">
+<h5><span class="section-number">1.3.3.3.2. </span>Fornitore di Attestati Elettronici: Fase 2: Progettazione<a class="headerlink" href="#fornitore-di-attestati-elettronici-fase-2-progettazione" title="Link to this heading">¶</a></h5>
 <p>Comprendere i requisiti e progettare tecnicamente i (Q)EAA, strutturandone i metadati in conformità ai requisiti tecnici e normativi.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti chiave relativi alla struttura, all’emissione, allo stato e alla gestione nel tempo dei (Q)EAA.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.</p></li>
 </ul>
-<p><strong>Fase 3: Implementazione</strong></p>
+</section>
+<section id="fornitore-di-attestati-elettronici-fase-3-implementazione">
+<h5><span class="section-number">1.3.3.3.3. </span>Fornitore di Attestati Elettronici: Fase 3: Implementazione<a class="headerlink" href="#fornitore-di-attestati-elettronici-fase-3-implementazione" title="Link to this heading">¶</a></h5>
 <p>Sviluppare endpoint secondo specifici protocolli e implementare le funzionalità di emissione, rinnovo, revoca e tutte le altre funzioni tecniche di gestione del ciclo di vita dei (Q)EAA.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Soluzione del Fornitore di Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi ai componenti e ai modelli di interazione necessari per l’emissione e la gestione del ciclo di vita dei (Q)EAA.</p></li>
@@ -500,7 +591,9 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Attestati Elettronici, in conformità alla norma ISO/IEC 27001.</p></li>
 <li><p><strong>Appendice</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.</p></li>
 </ul>
-<p><strong>Fase 4: Registrazione</strong></p>
+</section>
+<section id="fornitore-di-attestati-elettronici-fase-4-registrazione">
+<h5><span class="section-number">1.3.3.3.4. </span>Fornitore di Attestati Elettronici: Fase 4: Registrazione<a class="headerlink" href="#fornitore-di-attestati-elettronici-fase-4-registrazione" title="Link to this heading">¶</a></h5>
 <p>Registrarsi al sistema come Credential Issuer, completando le procedure amministrative e tecniche previste affinché i (Q)EAA emessi verso i Wallet siano riconosciuti come affidabili dal Sistema.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Attestati Elettronici.</p></li>
@@ -508,24 +601,30 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
 </section>
+</section>
 <section id="fornitori-di-servizi-relying-party">
-<h4><span class="section-number">1.3.2.4. </span>Fornitori di servizi (Relying Party)<a class="headerlink" href="#fornitori-di-servizi-relying-party" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">1.3.3.4. </span>Fornitori di servizi (Relying Party)<a class="headerlink" href="#fornitori-di-servizi-relying-party" title="Link to this heading">¶</a></h4>
 <p>I Fornitori di servizi (Relying Party) si occupano di richiedere, ricevere e verificare in modo sicuro l'autenticità e la validità del PID e dei (Q)EAA presentati dall'Utente per consentire l'accesso ai servizi online e offline.</p>
-<p><strong>Fase 1: Scoperta</strong></p>
+<section id="fornitori-di-servizi-relying-party-fase-1-scoperta">
+<h5><span class="section-number">1.3.3.4.1. </span>Fornitori di servizi (Relying Party): Fase 1: Scoperta<a class="headerlink" href="#fornitori-di-servizi-relying-party-fase-1-scoperta" title="Link to this heading">¶</a></h5>
 <p>Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>: Scopo e contesto normativo del Sistema IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.</p></li>
 </ul>
-<p><strong>Fase 2: Progettazione</strong></p>
+</section>
+<section id="fornitori-di-servizi-relying-party-fase-2-progettazione">
+<h5><span class="section-number">1.3.3.4.2. </span>Fornitori di servizi (Relying Party): Fase 2: Progettazione<a class="headerlink" href="#fornitori-di-servizi-relying-party-fase-2-progettazione" title="Link to this heading">¶</a></h5>
 <p>Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di verifica necessarie all’erogazione del servizio all’Utente finale.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>: Panoramica della Brand Identity del Sistema IT-Wallet e indicazioni sugli asset da adottare da parte della Relying Party.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti chiave relativi ai modelli di interazione, ai layout delle interfacce e agli asset grafici, al fine di garantire un’esperienza utente efficace, fluida e assicurare coerenza tra i sistemi di presentazione e verifica.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.</p></li>
 </ul>
-<p><strong>Fase 3: Implementazione</strong></p>
+</section>
+<section id="fornitori-di-servizi-relying-party-fase-3-implementazione">
+<h5><span class="section-number">1.3.3.4.3. </span>Fornitori di servizi (Relying Party): Fase 3: Implementazione<a class="headerlink" href="#fornitori-di-servizi-relying-party-fase-3-implementazione" title="Link to this heading">¶</a></h5>
 <p>Implementare le funzionalità di verifica secondo specifici protocolli, al fine di inviare richieste di verifica al Wallet e ricevere una risposta con l’autorizzazione dell’Utente.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti tecnici e funzionali relativi ai componenti e alle funzionalità per la verifica del PID e dei (Q)EAA.</p></li>
@@ -536,13 +635,16 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><p><strong>Sezione</strong> <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>: Requisiti generali per la conservazione dei log e requisiti specifici per le Relying Party, in conformità alla norma ISO/IEC 27001.</p></li>
 <li><p><strong>Appendice</strong> <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a>: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.</p></li>
 </ul>
-<p><strong>Fase 4: Registrazione</strong></p>
+</section>
+<section id="fornitori-di-servizi-relying-party-fase-4-registrazione">
+<h5><span class="section-number">1.3.3.4.4. </span>Fornitori di servizi (Relying Party): Fase 4: Registrazione<a class="headerlink" href="#fornitori-di-servizi-relying-party-fase-4-registrazione" title="Link to this heading">¶</a></h5>
 <p>Registrarsi al sistema come Relying Party, completando le procedure amministrative e tecniche previste, e diventare soggetto affidabile per la richiesta dei dati degli Utenti.</p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#overview"><span class="std std-ref">Overview</span></a>: Panoramica dell'architettura del sistema di onboarding e del processo di registrazione della Relying Party.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="infrastructure-trust.html#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a>: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.</p></li>
 </ul>
+</section>
 </section>
 </section>
 </section>
@@ -583,18 +685,6 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -625,12 +715,37 @@ Dettagli tecnici supplementari. Istanza dell'Applicazione Mobile, e-Service PDND
 <li><a class="reference internal" href="#ambito">1.1. Ambito</a></li>
 <li><a class="reference internal" href="#linguaggio-normativo-e-convenzioni">1.2. Linguaggio Normativo e Convenzioni</a></li>
 <li><a class="reference internal" href="#come-leggere-le-specifiche">1.3. Come leggere le Specifiche</a><ul>
-<li><a class="reference internal" href="#panoramica-della-struttura-delle-specifiche">1.3.1. Panoramica della Struttura delle Specifiche</a></li>
-<li><a class="reference internal" href="#percorsi-di-lettura-per-ruolo">1.3.2. Percorsi di lettura per ruolo</a><ul>
-<li><a class="reference internal" href="#fonte-autentica">1.3.2.1. Fonte Autentica</a></li>
-<li><a class="reference internal" href="#fornitore-di-wallet">1.3.2.2. Fornitore di Wallet</a></li>
-<li><a class="reference internal" href="#fornitore-di-attestati-elettronici">1.3.2.3. Fornitore di Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#fornitori-di-servizi-relying-party">1.3.2.4. Fornitori di servizi (Relying Party)</a></li>
+<li><a class="reference internal" href="#linguaggio-normativo">1.3.1. Linguaggio normativo</a></li>
+<li><a class="reference internal" href="#panoramica-della-struttura-delle-specifiche">1.3.2. Panoramica della Struttura delle Specifiche</a></li>
+<li><a class="reference internal" href="#percorsi-di-lettura-per-ruolo">1.3.3. Percorsi di lettura per ruolo</a><ul>
+<li><a class="reference internal" href="#fonte-autentica">1.3.3.1. Fonte Autentica</a><ul>
+<li><a class="reference internal" href="#fonte-autentica-fase-1-scoperta">1.3.3.1.1. Fonte Autentica: Fase 1: Scoperta</a></li>
+<li><a class="reference internal" href="#fonte-autentica-fase-2-progettazione">1.3.3.1.2. Fonte Autentica: Fase 2: Progettazione</a></li>
+<li><a class="reference internal" href="#fonte-autentica-fase-3-implementazione">1.3.3.1.3. Fonte Autentica: Fase 3: Implementazione</a></li>
+<li><a class="reference internal" href="#fonte-autentica-fase-4-registrazione">1.3.3.1.4. Fonte Autentica: Fase 4: Registrazione</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fornitore-di-wallet">1.3.3.2. Fornitore di Wallet</a><ul>
+<li><a class="reference internal" href="#fornitore-di-wallet-fase-1-scoperta">1.3.3.2.1. Fornitore di Wallet: Fase 1: Scoperta</a></li>
+<li><a class="reference internal" href="#fornitore-di-wallet-fase-2-progettazione">1.3.3.2.2. Fornitore di Wallet: Fase 2: Progettazione</a></li>
+<li><a class="reference internal" href="#fornitore-di-wallet-fase-3-implementazione">1.3.3.2.3. Fornitore di Wallet: Fase 3: Implementazione</a></li>
+<li><a class="reference internal" href="#fornitore-di-wallet-fase-4-registrazione">1.3.3.2.4. Fornitore di Wallet: Fase 4: Registrazione</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fornitore-di-attestati-elettronici">1.3.3.3. Fornitore di Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#fornitore-di-attestati-elettronici-fase-1-scoperta">1.3.3.3.1. Fornitore di Attestati Elettronici: Fase 1: Scoperta</a></li>
+<li><a class="reference internal" href="#fornitore-di-attestati-elettronici-fase-2-progettazione">1.3.3.3.2. Fornitore di Attestati Elettronici: Fase 2: Progettazione</a></li>
+<li><a class="reference internal" href="#fornitore-di-attestati-elettronici-fase-3-implementazione">1.3.3.3.3. Fornitore di Attestati Elettronici: Fase 3: Implementazione</a></li>
+<li><a class="reference internal" href="#fornitore-di-attestati-elettronici-fase-4-registrazione">1.3.3.3.4. Fornitore di Attestati Elettronici: Fase 4: Registrazione</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fornitori-di-servizi-relying-party">1.3.3.4. Fornitori di servizi (Relying Party)</a><ul>
+<li><a class="reference internal" href="#fornitori-di-servizi-relying-party-fase-1-scoperta">1.3.3.4.1. Fornitori di servizi (Relying Party): Fase 1: Scoperta</a></li>
+<li><a class="reference internal" href="#fornitori-di-servizi-relying-party-fase-2-progettazione">1.3.3.4.2. Fornitori di servizi (Relying Party): Fase 2: Progettazione</a></li>
+<li><a class="reference internal" href="#fornitori-di-servizi-relying-party-fase-3-implementazione">1.3.3.4.3. Fornitori di servizi (Relying Party): Fase 3: Implementazione</a></li>
+<li><a class="reference internal" href="#fornitori-di-servizi-relying-party-fase-4-registrazione">1.3.3.4.4. Fornitori di servizi (Relying Party): Fase 4: Registrazione</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -7,7 +7,7 @@
 
     <title>9.1.2. Wallet Solution Components &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -394,7 +430,7 @@
 </section>
 <section id="backup-and-restore-component">
 <h3><span class="section-number">9.1.2.2.5. </span>Backup and Restore Component<a class="headerlink" href="#backup-and-restore-component" title="Link to this heading">¶</a></h3>
-<p>For each device-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore, as specified in Section <a class="reference internal" href="backup-restore.html#backup-flow"><span class="std std-ref">Backup Flow</span></a>.</p>
+<p>For each device-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore. The data are specified in Section <a class="reference internal" href="backup-restore.html#backup-flow"><span class="std std-ref">Backup Flow</span></a>.</p>
 <p>This component MUST keep the migration object specified in <a class="reference internal" href="backup-restore.html#migration-to-a-different-wallet-solution"><span class="std std-ref">Migration to a Different Wallet Solution</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -405,19 +441,19 @@
 <h3><span class="section-number">9.1.2.2.6. </span>Dashboard and Transaction Log<a class="headerlink" href="#dashboard-and-transaction-log" title="Link to this heading">¶</a></h3>
 <p>This component MUST provide the Wallet Unit dashboard and transaction log functionality. In particular, this component MUST:</p>
 <ul class="simple">
-<li><p>provide a user-accessible interface enabling the User to access transaction transparency information;</p></li>
-<li><p>maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;</p></li>
+<li><p>provide a user-accessible interface enabling the User to access transaction transparency information.</p></li>
+<li><p>maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions.</p></li>
 <li><p>support User interaction with transaction records, including viewing, export, and deletion.</p></li>
 </ul>
 </section>
 <section id="keystore">
 <h3><span class="section-number">9.1.2.2.7. </span>Keystore<a class="headerlink" href="#keystore" title="Link to this heading">¶</a></h3>
-<p>The Wallet Instance MUST use this component to securely generate, store, and use cryptographic keys for all Digital Credentials. The Keystore relies on the device's OEM hardware-backed cryptographic environment (Strongbox or TEE on Android; Secure Enclave on iOS) and is attested via the OEM Key Attestation APIs. The Keystore is the default secure storage mechanism for all Wallet Instance operations and Digital Credentials.</p>
+<p>The Wallet Instance MUST use this component to securely generate, store, and use cryptographic keys for all Digital Credentials. The Keystore relies on the device's OEM hardware-backed cryptographic environment (Strongbox or TEE on Android, and Secure Enclave on iOS). The Keystore is attested via the OEM Key Attestation APIs. The Keystore is the default secure storage mechanism for all Wallet Instance operations and Digital Credentials.</p>
 </section>
 <section id="wsca-wscd-interface">
 <h3><span class="section-number">9.1.2.2.8. </span>WSCA/WSCD Interface<a class="headerlink" href="#wsca-wscd-interface" title="Link to this heading">¶</a></h3>
-<p>For PID issuance and management at Level of Assurance High, the Wallet Instance MUST interact with a <strong>WSCA operating within a Remote WSCD</strong> implemented as a remote Hardware Security Module (remote HSM) operated server-side. This component provides the interface to the WSCA and the Remote WSCD, and ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for Level of Assurance High.</p>
-<p>The Wallet Provider performs key attestation for the Remote WSCD. After the WSCA generates the PID key pair within the Remote WSCD (remote HSM), the Wallet Provider attests to the properties of both the WSCA and the Remote WSCD based on the attestation information (Public Key Confirmation) provided by the Remote WSCD (remote HSM). The Wallet Provider issues a Key Attestation (KA) that is presented to the PID Provider during PID issuance. The KA for the Remote WSCD differs from the Keystore-based KA in that it describes the remote HSM's security properties rather than the OEM device hardware, providing the higher certification level required for Level of Assurance High.</p>
+<p>For PID issuance and management at Level of Assurance High, the Wallet Instance MUST interact with a <strong>WSCA operating within a Remote WSCD</strong> implemented as a remote Hardware Security Module (remote HSM) operated server-side. This component provides the interface to the WSCA and the Remote WSCD. This component ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for Level of Assurance High.</p>
+<p>The Wallet Provider performs key attestation for the Remote WSCD. After the WSCA generates the PID key pair within the Remote WSCD (remote HSM), the Wallet Provider attests to the properties of both the WSCA and the Remote WSCD. The attestation uses the attestation information (Public Key Confirmation) provided by the Remote WSCD (remote HSM). The Wallet Provider issues a Key Attestation (KA) that is presented to the PID Provider during PID issuance. The KA for the Remote WSCD differs from the Keystore-based KA. The KA for the Remote WSCD describes the remote HSM's security properties rather than the OEM device hardware. That description provides the higher certification level required for Level of Assurance High.</p>
 </section>
 </section>
 </section>
@@ -468,18 +504,6 @@
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

@@ -7,7 +7,7 @@
 
     <title>3. Panoramica dell&#39;Architettura &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -79,7 +88,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -326,7 +362,7 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
 <p><span class="caption-number">Fig. 3.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLTxR-Eu4V_VdsBgEs0J8CuZJWxPHVTmkSIB1ktYqjZNQu42neWSoSHIf41IITHYltj9Yh8bn-irQY21HCw3_FtcCVh5EZIkBkNeJq8nMNE2FzzTdTrTBUzqMMb5olqy-il3_MmvNyoUPhyj_lKuEpeUsIz2LMYm12aKkQOYqCQjzEWTt5Fkbs3--FImcCrxPbrT8JVJCwRBKgkVT-paMha9lf3L9KskpnWP9tB1qD41qXmTPcZf4CEwi0U82RvaQFW1alJALgWAMg9q1uY_e9HqY62fCo6_UwCpeQmJhdOYmEefkAkjqoLOrqYoerlEPv9AKcw1nT6ONXqPXN9y0ZzcnPsMsdmS__0-_i9Qi9nMNrR2KPJJXfD9guMXPdoyRROoeaJJ3ArUNFnqa_63hFvmdbtTt5ozDUo8hOPMVsBPT9eVPlKARwQNxzzQBVHpG44n6jg-kPs-l_bqcEthwylfzQstxI6VAOcc8E02Yv0MByAjm5R8X2fwsUB9utu5fkUzHKuvrj9zyWxduZy45vUzJTQb8Vnt1Fxtc2nSNiVNpzwhKE7jwq19EHIAp9RITA0q7IfbkbRSKxYbSttUr_5lVHqqHhyaXSLAi2-Ah8NB-BwvpyL0fyJNpruA2ugxb-TzB4mu1DCcdFsYls5NoFLBE52Eqj9ev8IJ10-BoHyncs3UM4Sbt1eMs6AkDWGJU6p34cwPqyQEHgDVqosFKi2UmBYJwIn4qV5nkjOxUF9NlFW02rDR1mygDsYTgQC7Rry_2qu6K76uhTsAb1CCvhesZ6mqiFReq3lRQsNi1SR7tc_whMkmrrrQCi_26_KolwbCeudq1B-VoEjYIFz_gpyeWtcIZERyNrZhj45lT6VA2IV8diA30r5MRNvOoDVse3BQQQQbz-fvS8A92eE8TUXg6xt_y_Jw_3tqYhNr52iieh7JyScF3WlxiLyWh7zsz77CTE5ntdNR0DBIK26iYnHjQ7vAY-E4vN2bUuOIHKo1SCrxKGY74kuCyK0FIWiC_OftVz9RXJbRKOb-3JsHslZev50bQjgxFf5iWib7D14uxpDThojJtTswTjIxdrTUtW-OtBhdE0b_ZV-7mODTR2rj6rl-jiDuIuIdHz0v_6x9lBE0pXcHrOxixjX2kyHAU5MQhAFazl4XuZcRB_9QzYDg64tqMcbB779j09bViJ4ermTh3mi1ZUqeimx3rNY2ESLPjEIv8wChCfW9ALmJiRV4Ggw4yQ5MWiNujB7GTlxIueQ_-1gLiUR2WJCeP8-rNK7Px-MUZvrmyMm7-d3VKUut-y_pzk26F5J2QTE0zVy3JdLB46y3j4SKv4QNtJKSEl5Ca7Y7enGlWa9I6fq7qBNo-kq66NliiTu0NHXKjSIEeDWTZ9PjHEkgItMV3aKubDD0ojQcPIroKPYE16UGKMBb_ud-56ijXXqoGJeTRZi3klfx-Q6Vg0_MrcJyzLDHU50Xc1YTR2VeC8SuMtRfx6bvQwyjlz3FaTH7WwhLCevOErLXddQZaR3eJp58cuM7A8IjXCvGYlLMzgGjcj-eL-z0YfnOmoIT-aPB3Qmy6vBMeMD5eJ3qafRLI5hYDMR8Th3kJ88rVMdotLEEsX5sAHBmoonj-8jkSR8FrHVnLZw8VuvpBznMLUyDgqgc38VERtm8-XoqwkeTfm2wJu5GHP2vL2G6eP5msa6avsGN0v4dxp8fLeQitucdYVqpzJoRobHCSVyEEjzbxUHDoIB59qvFoDicnKnJTQKht2fLn1o_HrmPeTh3cwdwAJ20P2zJfkh7_r1l6Fo9hhFG9lv1HkI2JAo2WwX_3ZlDjxepEgZgpBETi1RFw6ZTT7h5RTX4eb71tamk4KvT6AnMtkGpIi4JweQUTP9dAs9VxCOXQoPPC-4KCgitqEo5d-dYcnLi-g6hLjsqjpEZEdPsP5I7uDh0tjIgreg3yV9NP5z8yK5fYdDW0sw5BeOvMUYxx8Luqyr3W9mBrxQTZXSuejFYD81QQaURadG2cNTQLs4df0KT0nU6c9FUfzwkuTxL4zdA-nIPf1WiiHt5rhIYDh-wTcH8Ycv6q7dOtpxvNhvQpDUCVGrVSd-b9fXjCtibgZPUiVzPuOaX4oClVDs5nlRxi46aBXV8ITk1ZfVDIgnyFPNXHY_P-ZO6osz6vB_NP0JPjoMj6zOtPn4xrDUxd1tYPHXPVHyUmhzXesiN9pMFKGjWdCT2T4eGIf41IkF9o4ild_fZyRRRuoJIeHg7X-FHBwHuNSh_0G00">Panoramica dell'architettura IT-Wallet - Attori Primari.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Il livello operativo primario implementa il ciclo di vita principale degli Attestati Elettronici attraverso interazioni coordinate tra Soluzioni Tecniche specializzate, in modo che tutte le operazioni degli attestati mantengano gli standard di sicurezza e privacy consentendo al contempo esperienze utente fluide.</p>
+<p>Il livello operativo primario implementa il ciclo di vita principale degli Attestati Elettronici attraverso interazioni coordinate tra Soluzioni Tecniche specializzate. Tutte le operazioni degli attestati mantengono gli standard di sicurezza e privacy e consentono esperienze utente fluide.</p>
 <figure class="align-default" id="id3">
 <p class="plantuml">
 <object data="_images/plantuml-ae40af0d25978cd0ca11eae19cd8327961730df8.svg" type="image/svg+xml" style="width:99%">
@@ -345,8 +381,8 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
 <li><p><strong>Onboarding delle Entità e Federazione</strong>: Solo le entità qualificate possono partecipare alla federazione attraverso un onboarding sistematico che garantisce la conformità e stabilisce relazioni di trust crittografiche. Il sistema di onboarding include un <strong>Claims Registry</strong> e una <strong>Taxonomy</strong> che standardizzano le definizioni semantiche per tutte le Credenziali, consentendo interoperabilità e governance. L'autorizzazione delle entità segue un approccio basato su policy che concede ambiti operativi specifici basati sulle caratteristiche organizzative e sulla conformità normativa. Vedere Sezione <a class="reference internal" href="onboarding-system.html#onboarding-system-and-lifecycle-management"><span class="std std-ref">Onboarding System and Lifecycle Management</span></a> e <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p></li>
 <li><p><strong>Discovery delle Credenziali e Gestione del Catalogo</strong>: L'ecosistema supporta due meccanismi di discovery delle Credenziali. La discovery pubblica avviene attraverso il <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> per le Credenziali di uso generale. La discovery privata avviene tramite Credential Offer dirette per casi d'uso specifici. Il catalogo è popolato automaticamente in base alle policy dell'Organismo di Supervisione, a partire dalle definizioni registrate nel Claims Registry e nella Taxonomy.</p></li>
 <li><p><strong>Rilascio degli Attestati</strong>: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. L'emissione segue [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>], profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Il rilascio può procedere sia per le Credenziali scoperte nel Catalogo delle Credenziali sia per le Credenziali fornite tramite flussi di Credential Offer. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-issuance"><span class="std std-ref">Selection at Issuance</span></a>. Un QEAA o un PuB-EAA segue inoltre <a class="reference internal" href="credential-data-model-qeaa-pub-eaa.html#modello-di-dati-qeaa-e-pub-eaa"><span class="std std-ref">Modello di Dati QEAA e PuB-EAA</span></a>.</p></li>
-<li><p><strong>Archiviazione e Gestione degli Attestati</strong>: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati, inclusa la disclosure selettiva come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].</p></li>
-<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]; la presentazione in prossimità utilizza [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p></li>
+<li><p><strong>Archiviazione e Gestione degli Attestati</strong>: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti. La gestione sicura del ciclo di vita degli attestati include la disclosure selettiva come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2979/">CIR2024/2979</a>].</p></li>
+<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. La presentazione remota utilizza [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]. La presentazione in prossimità utilizza [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> per la verifica dello schema. Il Trust Framework applicabile è selezionato come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p></li>
 </ol>
 </div></blockquote>
 </section>

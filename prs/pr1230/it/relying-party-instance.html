@@ -7,7 +7,7 @@
 
     <title>9.3.1. App di Verifica &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -356,7 +392,7 @@
 <p>Come mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 9.12</span></a>, l'App di Verifica Mobile ha quattro stati distinti: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong> e <strong>Uninstalled</strong>. Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.</p>
 <section id="transizione-a-installed">
 <h3><span class="section-number">9.3.2.1.1. </span>Transizione a Installed<a class="headerlink" href="#transizione-a-installed" title="Link to this heading">¶</a></h3>
-<p>La macchina a stati inizia con l'installazione della App di Verifica (transizione <strong>RPI INST</strong>), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato <strong>Installed</strong>.</p>
+<p>La macchina a stati inizia con l'installazione della App di Verifica (transizione <strong>RPI INST</strong>). Gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo. L'installazione porta allo stato <strong>Installed</strong>.</p>
 <p>In questo stato, l'App di Verifica DEVE interagire solo con il Backend della Relying Party per essere registrata (cioè, per verificare l'integrità dell'Istanza, registrare le Cryptographic Hardware Keys e ottenere un Certificato di Accesso).</p>
 <p>Quando avviene la revoca dell'App di Verifica (transizione <strong>RPI REV</strong>), l'App di Verifica DEVE tornare da <strong>Verified</strong> a <strong>Installed</strong>. Questa transizione implica le seguenti operazioni:</p>
 <ol class="arabic simple">
@@ -370,7 +406,7 @@
 <li><p>In caso di de-registrazione della Relying Party (come dettagliato in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>, Sezione 6.4.3).</p></li>
 <li><p>Attività illegali segnalate da Organi Giudiziari o di Supervisione.</p></li>
 </ul>
-<p>Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia) durante il quale l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione <strong>RPI DEREG</strong>) e tornare allo stato <strong>Installed</strong>. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.</p>
+<p>Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia). Durante tale periodo di grazia, l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione <strong>RPI DEREG</strong>) e tornare allo stato <strong>Installed</strong>. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.</p>
 </section>
 <section id="transizione-a-verified">
 <h3><span class="section-number">9.3.2.1.2. </span>Transizione a Verified<a class="headerlink" href="#transizione-a-verified" title="Link to this heading">¶</a></h3>
@@ -379,13 +415,13 @@
 <li><p><strong>Inizializzazione</strong>: Dopo la verifica dell'integrità dell'App di Verifica, questa registra una coppia di Cryptographic Hardware Keys.</p></li>
 <li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica ottiene un Certificato di Accesso.</p></li>
 </ol>
-<p>Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica; questa operazione è rappresentata dalla transizione <strong>CERT REISS</strong> verso lo stato <strong>Verified</strong>.</p>
+<p>Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica. Questa operazione è rappresentata dalla transizione <strong>CERT REISS</strong> verso lo stato <strong>Verified</strong>.</p>
 <p>In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (<strong>PID/(Q)EAA PRE</strong>), utilizzando il Certificato di Accesso per autenticarsi.</p>
 </section>
 <section id="transizione-a-unverified">
 <h3><span class="section-number">9.3.2.1.3. </span>Transizione a Unverified<a class="headerlink" href="#transizione-a-unverified" title="Link to this heading">¶</a></h3>
 <p>La scadenza del Certificato di Accesso (transizione <strong>CERT EXP</strong>) porta allo stato <strong>Unverified</strong>.</p>
-<p>In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta <strong>PID/(Q)EAA PRE</strong>. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.</p>
+<p>In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione. Per questo motivo, questa operazione è rappresentata dall'etichetta <strong>PID/(Q)EAA PRE</strong>. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.</p>
 </section>
 <section id="transizione-a-uninstalled">
 <h3><span class="section-number">9.3.2.1.4. </span>Transizione a Uninstalled<a class="headerlink" href="#transizione-a-uninstalled" title="Link to this heading">¶</a></h3>
@@ -405,10 +441,10 @@
 </div>
 <section id="registrazione-app-di-verifica-mobile">
 <h3><span class="section-number">9.3.2.2.1. </span>Registrazione App di Verifica Mobile<a class="headerlink" href="#registrazione-app-di-verifica-mobile" title="Link to this heading">¶</a></h3>
-<p>Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:</p>
+<p>Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party. Il processo consente anche l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:</p>
 <ol class="arabic simple">
-<li><p><strong>Inizializzazione</strong>: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo, che lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso; l'asserzione viene quindi convalidata dal Backend della Relying Party. Ulteriori dettagli sono forniti nella Sezione <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p></li>
-<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica sfruttando le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 9.13</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p></li>
+<li><p><strong>Inizializzazione</strong>: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo. L'asserzione lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso. Il Backend della Relying Party convalida quindi l'asserzione. Ulteriori dettagli sono forniti nella Sezione <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p></li>
+<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica. Il Backend della Relying Party utilizza le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 9.13</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -459,7 +495,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Genera un valore <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> firmando il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> con la chiave privata Cryptographic Hardware, che servirà come prova di possesso per le Cryptographic Hardware Keys.</p></li>
-<li><p>Genera la <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a> sotto forma di JWT. Questo JWT include <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> e <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (che rappresenta <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>); è firmato utilizzando <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p></li>
+<li><p>Genera la <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a> sotto forma di JWT. Questo JWT include <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> e <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (che rappresenta <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>). Il JWT è firmato utilizzando <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p></li>
 <li><p>Invia il JWT firmato <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a> come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di HTTP request all'<a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Endpoint di Associazione Chiavi della Relying Party</span></a>.</p></li>
 </ol>
 </div></blockquote>
@@ -479,7 +515,7 @@
 <p><strong>Passo 13:</strong> Se i controlli hanno successo, il Backend della Relying Party risponde con una conferma di successo (<a class="reference internal" href="relying-party-provider-backend-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a>).</p>
 <p><strong>Passo 14:</strong> L'App di Verifica Mobile genera una Certificate Signing Request (CSR, <code class="docutils literal notranslate"><span class="pre">csr</span></code>) utilizzando <code class="docutils literal notranslate"><span class="pre">key_pub</span></code> e <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p>
 <p><strong>Passo 15:</strong> L'App di Verifica Mobile invia la CSR al <a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Endpoint del Certificato di Accesso della Relying Party</span></a> del Backend della Relying Party, come parte della <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Richiesta del Certificato di Accesso della Relying Party</span></a>.</p>
-<p><strong>Passi 16-17:</strong> Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata, cioè che corrisponda a quella legata alle Cryptographic Hardware Keys attraverso <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.</p>
+<p><strong>Passi 16-17:</strong> Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata. La chiave pubblica corrisponde a quella legata alle Cryptographic Hardware Keys attraverso <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.</p>
 <p><strong>Passi 18-19:</strong> L'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica firma la CSR, ottenendo un Certificato di Accesso valido (<code class="docutils literal notranslate"><span class="pre">access_certificate</span></code>) che invia al Backend della Relying Party.</p>
 <p><strong>Passi 20-21:</strong> Il Backend della Relying Party invia il Certificato di Accesso (come parte della <a class="reference internal" href="relying-party-provider-backend-endpoint.html#risposta-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Risposta del Certificato di Accesso della Relying Party</span></a>) all'App di Verifica Mobile, che lo memorizza per future autenticazioni verso le Istanze del Wallet.</p>
 </section>
@@ -490,7 +526,7 @@
 <section id="revoca-app-di-verifica-mobile">
 <h3><span class="section-number">9.3.2.2.3. </span>Revoca App di Verifica Mobile<a class="headerlink" href="#revoca-app-di-verifica-mobile" title="Link to this heading">¶</a></h3>
 <p>Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza delle App di Verifica.
-Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata), e in ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
+Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata). In ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
 Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla validità dei Certificati di Accesso X.509.</p>
 <p>I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.</p>
 </section>
@@ -560,18 +596,6 @@ Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla va
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

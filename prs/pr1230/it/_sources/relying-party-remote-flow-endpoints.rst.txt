@@ -53,13 +53,13 @@ L'Istanza del Wallet avvia una richiesta di cancellazione dei dati tramite il co
 Considerazioni di Sicurezza
 """""""""""""""""""""""""""
 
-Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di sicurezza:
+Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di sicurezza.
 
-- **Solo HTTPS**: Tutti gli endpoint DEVONO essere accessibili solo tramite HTTPS
-- **Protezione Endpoint Mix-up**: Gli URL degli endpoint DEVONO essere attestati da terze parti fidate attraverso la Trust Chain
-- **Validazione Input**: Tutti gli endpoint DEVONO convalidare i parametri di input e rifiutare richieste malformate
-- **Rate Limiting**: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi
-- **Audit Logging**: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza
+- **Solo HTTPS**: Tutti gli endpoint DEVONO essere accessibili solo tramite HTTPS.
+- **Protezione Endpoint Mix-up**: Gli URL degli endpoint DEVONO essere attestati da terze parti fidate attraverso la Trust Chain.
+- **Validazione Input**: Tutti gli endpoint DEVONO convalidare i parametri di input e rifiutare richieste malformate.
+- **Rate Limiting**: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi.
+- **Audit Logging**: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza.
 
 Per i requisiti di sicurezza dettagliati, vedere :ref:`remote-flow:Flusso Remoto` e i casi di test pertinenti in :ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
 
@@ -67,11 +67,11 @@ Per i requisiti di sicurezza dettagliati, vedere :ref:`remote-flow:Flusso Remoto
 Note di Implementazione
 """""""""""""""""""""""
 
-- I dettagli di implementazione specifici per la maggior parte degli endpoint sono lasciati alla discrezione della Relying Party
-- Gli endpoint DEVONO essere conformi alla specifica OpenID4VP 1.0 per i flussi remoti
-- Gli endpoint per flussi di prossimità DEVONO supportare la gestione del ciclo di vita delle App di Verifica
-- Tutti gli endpoint DEVONO essere scopribili attraverso l'Entity Configuration della Relying Party
-- Le risposte di errore DEVONO seguire i codici di stato HTTP standard e includere appropriate descrizioni degli errori
+- I dettagli di implementazione specifici per la maggior parte degli endpoint sono lasciati alla discrezione della Relying Party.
+- Gli endpoint DEVONO essere conformi alla specifica OpenID4VP 1.0 per i flussi remoti.
+- Gli endpoint per flussi di prossimità DEVONO supportare la gestione del ciclo di vita delle App di Verifica.
+- Tutti gli endpoint DEVONO essere scopribili attraverso l'Entity Configuration della Relying Party.
+- Le risposte di errore DEVONO seguire i codici di stato HTTP standard e includere appropriate descrizioni degli errori.
 
 Per una guida di implementazione completa, fare riferimento alle sezioni degli endpoint individuali e alle matrici di test per i requisiti di validazione.
 

@@ -7,7 +7,7 @@
 
     <title>11.2.2. Proximity Flow &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -316,7 +352,9 @@
             
   <section id="proximity-flow">
 <h1><span class="section-number">11.2.2. </span>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
-<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>], as required by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p>
+<p>This section describes how a Relying Party Instance requests a Wallet Instance to present an <em>mdoc-CBOR</em> Credential.</p>
+<p>The presentation uses the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>], as required by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>].
+ETSI TS 119 472-2 V1.2.1 prevails where it modifies [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p>
 <p>The applicable Trust Framework is selected as specified in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p>
 <p>The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:</p>
 <figure class="align-default" id="id1">
@@ -334,13 +372,13 @@
 <div><p>1. <strong>Device Engagement</strong>: This subphase begins when the User is prompted to disclose specific attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Relying Party Instance, so that the mdoc requests and responses can be exchanged during the communication subphase.
 The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping. Device Engagement data may be transferred using either QR code or NFC technologies.</p>
 <p>2. <strong>Session Establishment</strong>: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
-The established session MAY be later terminated based on the conditions as detailed in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4].</p>
+The conditions for ending the session are specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4].</p>
 <p>3. <strong>Communication - Device Retrieval</strong>: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The Wallet Instance uses the data from the session establishment message to derive the session key and then to decrypt the mdoc request.
 During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party Instance via a session data message.</p>
 </div></blockquote>
-<p>Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows:</p>
+<p>Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows.</p>
 <ul class="simple">
-<li><p><em>Supervised Device Retrieval flow</em> where a human Relying Party is overseeing the verification process in person, or <em>unsupervised flow</em> where verification might happen through automated systems without human oversight (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
+<li><p>The supported flows include the <em>Supervised Device Retrieval flow</em>, where a human Relying Party oversees the verification process in person, or the <em>unsupervised flow</em>. In the <em>unsupervised flow</em>, verification might happen through automated systems without human oversight (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Relying Party Instance Authentication</em> following the mechanisms defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
 <li><p>Domestic <em>Document Type</em> and <em>Namespaces</em> defined in this technical specification in addition to those already defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the mDL (see <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a> for more details) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
 </ul>
@@ -382,7 +420,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </tr>
 </tbody>
 </table>
-<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097a</span></a>)</p>
+<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097a</span></a>).</p>
 <p>The following table shows the supported Device Retrieval technologies, specifying which are mandatory.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -421,7 +459,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </tr>
 </tbody>
 </table>
-<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096b</span></a>)</p>
+<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096b</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>From the second edition, version 3, <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> does not define or support Server Retrieval as a transport option. ETSI requirement <code class="docutils literal notranslate"><span class="pre">ISO/IEC</span> <span class="pre">18013-SUPPORT-01</span></code> in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] prohibits Server Retrieval in this profile. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096a</span></a>).</p>
@@ -451,11 +489,12 @@ During the communication subphase, the Relying Party Instance has the option to 
 <li><p>Sec 8.2.2.2 for <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC</p></li>
 </ul>
 </div>
-<p><strong>Step 6</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
-<p><strong>Step 7</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_104</span></a>).</p>
-<p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message containing <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and the encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>. Every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> in the <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> MUST contain its own <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> signed over <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code>. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> envelope MUST NOT be described as signed. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST be encrypted using the session keys derived in the previous step (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a>).</p>
+<p><strong>Step 6</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret. The public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
+<p><strong>Step 7</strong>: The Wallet Instance and the Relying Party Instance MUST derive the session keys independently. The derivation uses each party's private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_104</span></a>).</p>
+<p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message containing <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and the encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>. Every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> in the <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> MUST contain its own <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> signed over <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code>. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> envelope MUST NOT be described as signed. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST be encrypted using the session keys derived in the previous step (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a>).
+The established session MAY be later terminated based on the conditions as detailed in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4].</p>
 <p>Below are non-normative examples using the diagnostic notation of a CBOR-encoded EUDIW and National <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>. Each decoded request is encrypted inside <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p>
-<p><strong>EUDIW ``DeviceRequest``:</strong></p>
+<p>The following non-normative example is the EUDIW <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;version&quot;: &quot;1.0&quot;,
   &quot;docRequests&quot;: [
@@ -514,7 +553,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 }
 </pre></div>
 </div>
-<p><strong>National Trust Framework ``DeviceRequest``:</strong></p>
+<p>The following non-normative example is the National Trust Framework <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;version&quot;: &quot;1.0&quot;,
   &quot;docRequests&quot;: [
@@ -581,13 +620,13 @@ Refer to:</p>
 </ul>
 </div>
 <p><strong>Step 9</strong>: The Wallet Instance MUST compute the session key, as described in Step 7.</p>
-<p><strong>Step 10</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST validate either every <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> in every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> or the <code class="docutils literal notranslate"><span class="pre">readerAuthAll</span></code> over its <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code> data. The unprotected COSE <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header (label <code class="docutils literal notranslate"><span class="pre">33</span></code>) MUST contain the end-entity reader certificate first and its path up to but excluding the selected Trust Anchor.</p>
-<p>The Wallet Instance validating the <em>mdoc reader</em> certificate path MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>. National uses the Relying Party authentication certificate and Authentication Trust Anchor.</p>
+<p><strong>Step 10</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key. The Wallet Instance MUST validate either every <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> in every <code class="docutils literal notranslate"><span class="pre">DocRequest</span></code> or the <code class="docutils literal notranslate"><span class="pre">readerAuthAll</span></code> over its <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code> data. The unprotected COSE <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header (label <code class="docutils literal notranslate"><span class="pre">33</span></code>) MUST contain the end-entity reader certificate first and the certificate chain up to but excluding the selected Trust Anchor.</p>
+<p>The Wallet Instance validating the <em>mdoc reader</em> certificate chain MUST select exactly one trust path before authorization: EUDIW uses the WRPAC and applicable Lists of Trusted Entities according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>. National uses the Relying Party authentication certificate and Authentication Trust Anchor.</p>
 <p><strong>Step 11</strong>: After successful <em>mdoc reader</em> authentication, the Wallet Instance MUST execute authorization under the selected path before consent.
 Authentication and Authorization for that path are specified in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.</p>
 <p>Authentication and binding failures are terminal.</p>
-<p>The Wallet Instance MUST display human-readable verified Relying Party and Service identity, intended use or purpose, requested Credentials and attributes, retention intent, and privacy-policy information from the selected path's validated authorization artifact and Registrar information.</p>
-<p>For EUDIW intermediation it MUST display the intermediated Relying Party and Service and MUST NOT display Intermediary trade names.</p>
+<p>The Wallet Instance MUST display the following human-readable information. The information includes the verified Relying Party and Service identity, the intended use or purpose, and the requested Credentials and attributes. The information also includes the retention intent and the privacy-policy information from the selected path's validated authorization artifact and Registrar information.</p>
+<p>For EUDIW intermediation, the Wallet Instance MUST display the intermediated Relying Party and Service. The Wallet Instance MUST NOT display Intermediary trade names.</p>
 <p>For the National direct path it MUST use validated Trust Mark transparency claims (<a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>, and <a class="reference internal" href="trust-evaluation.html#user-transparency"><span class="std std-ref">User Transparency</span></a>).</p>
 <p><strong>Step 12</strong>: The User reviews the validated path-specific transparency data and requested attributes and then approves or refuses the presentation. The Wallet Instance MUST NOT require the User approval before authentication and authorization succeed, except where an expressly permitted authorization override applies.</p>
 <div class="admonition-box-c admonition">
@@ -638,7 +677,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
 }
 </pre></div>
 </div>
-<p><strong>Step 13</strong>: The Relying Party Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. For a long-lived Digital Credential, the revocation status check is specified in <a class="reference internal" href="credential-revocation.html#checking-credentials-statuses"><span class="std std-ref">Checking Credentials Statuses</span></a>.</p>
+<p><strong>Step 13</strong>: The Relying Party Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>. The Relying Party Instance MUST decrypt the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>. The Relying Party Instance MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). The Relying Party Instance MUST also check the validity of the mdoc, including its Issuer's signature. For a long-lived Digital Credential, the revocation status check is specified in <a class="reference internal" href="credential-revocation.html#checking-credentials-statuses"><span class="std std-ref">Checking Credentials Statuses</span></a>.</p>
 <p><strong>Step 14</strong>: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message. This can be sent together with an mdoc request or response [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113c</span></a>). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113b</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_114</span></a>).</p>
 <p><strong>Final Consideration</strong>: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.</p>
 <div class="admonition note">
@@ -765,8 +804,8 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
 <p><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance MUST use either Static Handover or Negotiated Handover:
 - <strong>Static Handover</strong>: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103a</span></a>). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
 - <strong>Negotiated Handover</strong>: The Wallet Instance includes the service <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code> in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103b</span></a>). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)</p>
-<p><strong>Step 1</strong>: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes:
-- Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology MUST reference the Carrier Configuration Record with the ID reference “nfc”.
+<p><strong>Step 1</strong>: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message. The message includes the following records.
+- An Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology MUST reference the Carrier Configuration Record with the ID reference “nfc”.
 - Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it MUST have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record MUST be encoded according to Table 1 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.2] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103d</span></a>).</p>
 <p>For example:
 For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths.
@@ -844,13 +883,13 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </figcaption>
 </figure>
 <p><strong>Step 1</strong>: The Wallet Instance and Relying Party Instance establish a secure BLE connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112c</span></a>).</p>
-<p><strong>Step 2-5</strong>: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur.</p>
+<p><strong>Step 2-5</strong>: [Optional] The Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic. The Ident characteristic is a BLE GATT characteristic that carries an identifier value as described in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time. Therefore, it is faster to implement methods to identify the correct Relying Party Instance [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.1] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112d</span></a>).</p>
 </div>
 <p><strong>Step 6</strong>: Relying Party Instance sends the encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message (includes <code class="docutils literal notranslate"><span class="pre">EReaderKey</span></code> and encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>) over the established BLE connection.</p>
-<p><strong>Step 7-8</strong>: [Optional] If the Wallet Unit receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Unit MUST verify if this <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message received during the data retrieval phase (i.e., Step 6). In the event of a mismatch, the Wallet Unit MUST terminate the BLE connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
+<p><strong>Step 7-8</strong>: [Optional] If the Wallet Unit receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Unit MUST verify that it matches the data-retrieval <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message (Step 6). In the event of a mismatch, the Wallet Unit MUST terminate the BLE connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
 </section>
 <section id="sessiondata-over-ble">
 <h2><span class="section-number">11.2.2.4. </span><code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE<a class="headerlink" href="#sessiondata-over-ble" title="Link to this heading">¶</a></h2>
@@ -931,7 +970,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 <p><strong>Step 2</strong>: The Wallet Instance (PICC) responds with File Control Information (FCI) and status words (SW1/SW2), either confirming success (<cite>90 00</cite>) or indicating that more data (<cite>61 XX</cite>) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112e</span></a>).</p>
 <p><strong>Step 3</strong>: The Relying Party Instance sends an ENVELOPE <cite>APDU</cite> carrying the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, which contains the encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> and its ephemeral public key for session setup.</p>
 <p><strong>Step 4</strong>: The Wallet Instance processes <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> and returns an <cite>APDU</cite> response with <cite>SW1/SW2</cite> (<cite>OK</cite> or <cite>more data</cite> to fetch), confirming the start of secure session context (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112f</span></a>).</p>
-<p><strong>Step 5-6</strong>: [Optional] The Wallet Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Instance MUST verify that this <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance MUST terminate the NFC connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
+<p><strong>Step 5-6</strong>: [Optional] If the Wallet Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Instance MUST verify that it matches the data-retrieval <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message (Steps 3-4). In the event of a mismatch, the Wallet Instance MUST terminate the NFC connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
 </section>
 </section>
 <section id="sessiondata-over-nfc">
@@ -1006,8 +1045,8 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </table>
 <section id="mdoc-request">
 <h3><span class="section-number">11.2.2.7.1. </span>mdoc Request<a class="headerlink" href="#mdoc-request" title="Link to this heading">¶</a></h3>
-<p>The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE or NFC protocol (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-026</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-027</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-028</span></a>).</p>
-<p>Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
+<p>The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase. The resulting CBOR byte string for the mdoc Request MUST be transmitted using the BLE or NFC protocol (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-026</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-027</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-028</span></a>).</p>
+<p>Each mdoc Request MUST be compliant with the following structure, unless otherwise specified. Each mdoc Request MUST include the following components, unless otherwise specified.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -1040,7 +1079,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 <ul class="simple">
 <li><p><strong>euWrprc</strong> <em>(bstr, REQUIRED)</em>. On the EUDIW path, the byte string contains the serialized <code class="docutils literal notranslate"><span class="pre">rc-wrp+cwt</span></code> WRPRC, which is authoritative for authorization (<a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>). On the National path, it contains the UTF-8 bytes of the compact signed <code class="docutils literal notranslate"><span class="pre">registration-entity</span></code> Trust Mark JWT, which is authoritative for authorization (<a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a>). The Wallet Instance MUST decode it solely according to the authenticated reader-certificate path, MUST reject the other artifact type, and MUST NOT use the embedded artifact to select or change the path. A failed path is handled as specified in <a class="reference internal" href="trust-evaluation.html#failure-handling"><span class="std std-ref">Failure Handling</span></a>. Registrar data MUST NOT replace or override this artifact.</p></li>
 <li><p><strong>euWrpRegistrarInfo</strong> <em>(map, REQUIRED)</em>. Mandatory Registrar transparency data. Its <code class="docutils literal notranslate"><span class="pre">identifier</span></code> <em>(array, REQUIRED, non-empty)</em> contains objects with <code class="docutils literal notranslate"><span class="pre">type</span></code> <em>(tstr, REQUIRED)</em> and <code class="docutils literal notranslate"><span class="pre">identifier</span></code> <em>(tstr, REQUIRED)</em>. Its <code class="docutils literal notranslate"><span class="pre">srvDescription</span></code> and <code class="docutils literal notranslate"><span class="pre">purpose</span></code> <em>(arrays, REQUIRED, non-empty)</em> contain objects with <code class="docutils literal notranslate"><span class="pre">lang</span></code> <em>(tstr, REQUIRED)</em> and <code class="docutils literal notranslate"><span class="pre">content</span></code> <em>(tstr, REQUIRED)</em>. <code class="docutils literal notranslate"><span class="pre">registryURI</span></code> <em>(tstr, REQUIRED)</em>, <code class="docutils literal notranslate"><span class="pre">intendedUseIdentifier</span></code> <em>(tstr, REQUIRED)</em>, and <code class="docutils literal notranslate"><span class="pre">policyURI</span></code> <em>(tstr, REQUIRED)</em> are mandatory. <code class="docutils literal notranslate"><span class="pre">credential</span></code> <em>(array, OPTIONAL, non-empty when present)</em> contains ETSI <code class="docutils literal notranslate"><span class="pre">Credential</span></code>/<code class="docutils literal notranslate"><span class="pre">Claim</span></code> objects. These fields are used with the selected path's validated authorization artifact for User Transparency.</p></li>
-<li><p><strong>readerAuth</strong> <em>(COSE_Sign1)</em>. Used to authenticate the Relying Party Instance for this <cite>DocRequest</cite>. The signature MUST be computed over <cite>ReaderAuthentication</cite> data using the private key corresponding to the selected path's reader certificate, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]. Its unprotected COSE header MUST contain <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> label <code class="docutils literal notranslate"><span class="pre">33</span></code> with the end-entity certificate first and its path up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path, validated according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>, and a Relying Party certificate on the National path, validated according to <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
+<li><p><strong>readerAuth</strong> <em>(COSE_Sign1)</em>. Used to authenticate the Relying Party Instance for this <cite>DocRequest</cite>. The signature MUST be computed over <cite>ReaderAuthentication</cite> data using the private key corresponding to the selected path's reader certificate, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]. Its unprotected COSE header MUST contain <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> label <code class="docutils literal notranslate"><span class="pre">33</span></code> with the end-entity certificate first and the certificate chain up to but excluding the Trust Anchor. The end-entity certificate is a WRPAC on the EUDIW path, validated according to <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>, and a Relying Party certificate on the National path, validated according to <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>.</p></li>
 </ul>
 </li>
 </ul>
@@ -1062,8 +1101,8 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </section>
 <section id="mdoc-response">
 <h3><span class="section-number">11.2.2.7.2. </span>mdoc Response<a class="headerlink" href="#mdoc-response" title="Link to this heading">¶</a></h3>
-<p>The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-030</span></a>).</p>
-<p>Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
+<p>The messages in the mdoc Response MUST be encoded using CBOR. The messages in the mdoc Response MUST be encrypted with the Session Key obtained after the Device Engagement phase (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-030</span></a>).</p>
+<p>Each mdoc Response MUST be compliant with the following structure, unless otherwise specified. Each mdoc Response MUST include the following components, unless otherwise specified.</p>
 <table class="longtable docutils align-default" id="table-mdoc-attributes">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1089,7 +1128,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </tr>
 </tbody>
 </table>
-<p>Each document in <strong>documents</strong> MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>):</p>
+<p>Each document in <strong>documents</strong> MUST be compliant with the following structure, unless otherwise specified. Each document in <strong>documents</strong> MUST include the following components, unless otherwise specified (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>):</p>
 <table class="longtable docutils align-default" id="table-mdoc-documents-attributes">
 <colgroup>
 <col style="width: 30.0%" />
@@ -1115,7 +1154,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </tr>
 </tbody>
 </table>
-<p>A <strong>deviceSigned</strong> data structure MUST be compliant with the following structure (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_111a</span></a>), and MUST include the following components:</p>
+<p>A <strong>deviceSigned</strong> data structure MUST be compliant with the following structure (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_111a</span></a>). A <strong>deviceSigned</strong> data structure MUST include the following components.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1144,16 +1183,16 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </section>
 <section id="session-termination">
 <h3><span class="section-number">11.2.2.7.3. </span>Session Termination<a class="headerlink" href="#session-termination" title="Link to this heading">¶</a></h3>
-<p>The session MUST be terminated if at least one of the following conditions occur (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113–113a</span></a>):</p>
+<p>The session MUST be terminated if at least one of the following conditions occurs (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113–113a</span></a>).</p>
 <ul class="simple">
 <li><p>After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds.</p></li>
 <li><p>When the Wallet Instance does not accept any more requests.</p></li>
 <li><p>When the Relying Party Instance does not send any further requests.</p></li>
 </ul>
-<p>If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113</span></a>):</p>
+<p>If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated in one of the following ways (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113</span></a>).</p>
 <ul class="simple">
-<li><p>Send the status code for session termination, or</p></li>
-<li><p>Dispatch the &quot;End&quot; command as outlined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.3].</p></li>
+<li><p>The Wallet Instance or the Relying Party Instance sends the status code for session termination.</p></li>
+<li><p>The Wallet Instance or the Relying Party Instance dispatches the &quot;End&quot; command as outlined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.3].</p></li>
 </ul>
 <p>When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_114</span></a>):</p>
 <ul class="simple">
@@ -1203,18 +1242,6 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

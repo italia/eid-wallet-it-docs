@@ -7,7 +7,7 @@
 
     <title>9.1.4.2.4. Revoca dell&#39;Istanza del Wallet &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -327,11 +363,11 @@
 Quando, per motivi tecnici di sicurezza (ad esempio la compromissione del materiale crittografico), la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
 Il Fornitore di Wallet DEVE riportare tale revoca nella status list della relativa Wallet Instance Attestation.
 In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la relativa Key Attestation.</p>
-<p>Come mostrato in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>):</p>
+<p>Come mostrato in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 9.6</span></a>, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>).</p>
 <ul class="simple">
-<li><p><strong>Utenti</strong>, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.</p></li>
-<li><p><strong>PID Provider e EAA Provider di IT-Wallet ID</strong> quando notificati dalla Fonte Autentica del PID/IT-Wallet ID (ANPR) del decesso dell'Utente.</p></li>
-<li><p><strong>Autorità Legali o Organismo di Supervisione</strong> in casi di comprovate attività illegali.</p></li>
+<li><p>Gli <strong>Utenti</strong> si collegano al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzano un browser esterno.</p></li>
+<li><p>I <strong>PID Provider e EAA Provider di IT-Wallet ID</strong> attivano la revoca quando sono notificati dalla Fonte Autentica del PID/IT-Wallet ID (ANPR) del decesso dell'Utente.</p></li>
+<li><p>Le <strong>Autorità Legali o l'Organismo di Supervisione</strong> attivano la revoca in casi di comprovate attività illegali.</p></li>
 </ul>
 <figure class="align-default" id="id1">
 <span id="fig-wallet-instance-revoc-entities"></span><p class="plantuml">
@@ -343,11 +379,11 @@ In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la re
 <p><span class="caption-number">Fig. 9.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLBDZjCm4BxxAOPUw4gWlUmHeMNRI0JnKxLT8QHAaHiFhKLg5tlS4X3lpjZhR27cjfMgn1D_FpFVt7gIZiAX4y-qQRkW45xDRgvdDytC7exMeA7NGhojvrMpMbVBwjFwowAQNWcnGEUjcGQFxWLCxlanuMTbI5CFzcoqsG7j4JRci-mw9AWDIvaM9mo-iy4ewVhfENrhVEy93upFTrVfFBc2NmBuzsXbkAyp5oF6x5oA_m_Io1rwYFwUUvZhdIRPmSoXOXujEyy-_ijzTFQa5NSrK2zoOQ3EPmyZQP16mHctm98dtM9K-2t4HK06saVnjl4skEJ-pL22LIeL6d6m88cStWRYCzaqrThxW2uf7dAdiNoIdLOn07P4WGrSr9lgnuC3w_HFLCtMgZuP62gGijFe1m-hS8oDUEjwkEFRIUrTKBhbyK46KX_plFIeax7OGJs_hjSlXndDYp6c5lm_BHIO-37duSUZ5MA9NTw_SNJ5Mi0IJxQLfAtXr-yiJ94YCXJOSiSY-1kEyuuc8a5i-QacojLu7EH7I_fh3_SFYxmn2YNjitIHP-aXmskkxs9iBUbJYZbBD-_B2GJ_DtHZBhuPT8j6XKFt1m00">Entità coinvolte nel processo di revoca dell'Istanza del Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_034</span></a>):</p>
+<p>Indipendentemente da chi ha attivato il processo di revoca, il Fornitore di Wallet DEVE informare gli Utenti quando la loro Wallet Unit viene revocata. La notifica segue <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_034</span></a>.</p>
 <ul class="simple">
-<li><p>Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.</p></li>
-<li><p>Inviando la notifica entro massimo 24 ore.</p></li>
-<li><p>Includendo una spiegazione chiara e semplice dei motivi della revoca, con eventuali istruzioni per riattivare l'Istanza del Wallet.</p></li>
+<li><p>Il Fornitore di Wallet DEVE inviare un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico). Se possibile, il Fornitore di Wallet DEVE inviare l'avviso anche presso l'Istanza del Wallet revocata.</p></li>
+<li><p>Il Fornitore di Wallet DEVE inviare la notifica entro massimo 24 ore.</p></li>
+<li><p>Il Fornitore di Wallet DEVE includere una spiegazione chiara e semplice dei motivi della revoca. Il Fornitore di Wallet DEVE includere eventuali istruzioni per riattivare l'Istanza del Wallet.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -359,15 +395,15 @@ In caso di vulnerabilità della WSCD, il Fornitore di Wallet DEVE revocare la re
 </div>
 <section id="richiesta-di-revoca-dell-istanza-del-wallet">
 <h2><span class="section-number">9.1.4.2.4.1. </span>Richiesta di Revoca dell'Istanza del Wallet<a class="headerlink" href="#richiesta-di-revoca-dell-istanza-del-wallet" title="Link to this heading">¶</a></h2>
-<p>Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_032</span></a>):</p>
+<p>Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_032</span></a>).</p>
 <ul class="simple">
-<li><p><em>Selezionando la funzionalità di revoca all'interno dalla propria Istanza del Wallet</em>: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.</p></li>
-<li><p><em>Utilizzando un user agent esterno</em>: questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.</p></li>
+<li><p>Gli Utenti selezionano la funzionalità di revoca all'interno della propria Istanza del Wallet. Questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.</p></li>
+<li><p>Gli Utenti utilizzano un user agent esterno. Questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.</p></li>
 </ul>
-<p>In entrambi i casi, utilizzando il portale del Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_005–006</span></a>):</p>
+<p>In entrambi i casi, gli Utenti utilizzano il portale del Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_005–006</span></a>).</p>
 <ul class="simple">
-<li><p>Gli Utenti DEVONO autenticarsi con almeno un meccanismo di autenticazione a due fattori, o avere una sessione attiva che soddisfi questo requisito.</p></li>
-<li><p>Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_033</span></a>, e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>), a seconda dei casi, all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet"><span class="std std-ref">Endpoint di Gestione dell'Istanza di Wallet</span></a> del Backend del Fornitore del Wallet.</p></li>
+<li><p>Gli Utenti DEVONO autenticarsi con almeno un meccanismo di autenticazione a due fattori. In alternativa, gli Utenti DEVONO avere una sessione attiva che soddisfi questo requisito.</p></li>
+<li><p>Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata. Il Fornitore di Wallet DEVE consentire agli Utenti di chiedere la revoca. Il Fornitore di Wallet invia una Richiesta di Recupero o Revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_033</span></a>, e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>), a seconda dei casi, all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet"><span class="std std-ref">Endpoint di Gestione dell'Istanza di Wallet</span></a> del Backend del Fornitore del Wallet.</p></li>
 </ul>
 <p>Di seguito è riportato un esempio non normativo di una Richiesta di Recupero delle Istanze del Wallet.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/wallet-instances</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -418,7 +454,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
 <h2><span class="section-number">9.1.4.2.4.3. </span>Meccanismi di Verifica della Revoca<a class="headerlink" href="#meccanismi-di-verifica-della-revoca" title="Link to this heading">¶</a></h2>
 <p>La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:</p>
 <ul class="simple">
-<li><p><strong>Durante l'emissione dell’Attestato Elettronico di Attributi</strong> da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet Instance Attestation e una Key Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Instance Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Instance Attestation Status List — e firmata da un Fornitore di Portafoglio fidato).</p></li>
+<li><p><strong>Durante l'emissione dell’Attestato Elettronico di Attributi</strong> da parte dei Fornitori di Attestati. Solo le Istanze del Wallet in stato Operativo o Valido possiedono una Wallet Instance Attestation e una Key Attestation valide. I Fornitori di Attestati verificano la validità di un'Istanza del Wallet in modo indiretto. I Fornitori di Attestati controllano la presenza di una Wallet Instance Attestation valida. Un attestato valido non è scaduto. Un attestato valido non è revocato, secondo la Wallet Instance Attestation Status List. Un attestato valido è firmato da un Fornitore di Wallet fidato.</p></li>
 <li><p><strong>Durante il periodo di validità dell’Attestato Elettronico di Attributi</strong>, quando quel periodo è di almeno 24 ore, i Fornitori di Attestati ripetono il controllo ogni 24 ore. I Fornitori di Attestati verificano la Wallet Instance Attestation Status List dell'Istanza del Wallet che detiene il PID e la lista di stato della Key Attestation. Infatti, se la Wallet Instance Attestation o la Key Attestation viene revocata, il PID in essa contenuto DEVE essere revocato. Di conseguenza, qualsiasi altro Attestato Elettronico ottenuto attraverso la presentazione del PID DEVE anch'esso essere revocato.</p></li>
 <li><p><strong>Durante il ciclo di vita dell'Istanza del Wallet</strong> da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet RACCOMANDA di utilizzare la Status List della Wallet Instance Attestation.</p></li>
 </ul>
@@ -469,18 +505,6 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

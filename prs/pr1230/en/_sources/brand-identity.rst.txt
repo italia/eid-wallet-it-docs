@@ -8,7 +8,7 @@ The IT-Wallet Brand Identity defines the system's personality and it's expressed
 
 It is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints.
 
-Therefore, to ensure that the Brand Identity is applied consistently and coherently across the different Technical Solutions, and that it supports a high-quality User Experience, Primary Actors MUST comply with the requirements for applying the IT-Wallet System Brand Identity within their Technical Solutions.
+The Brand Identity is applied consistently and coherently across the different Technical Solutions. The Brand Identity supports a high-quality User Experience. Primary Actors MUST comply with the requirements for applying the IT-Wallet System Brand Identity within their Technical Solutions.
 In particular, all Primary Actors:
 
 - MUST exclusively follow the indications specified in the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section.
@@ -35,9 +35,9 @@ All those who intend to refer to the IT-Wallet System:
 Visual Identity
 ----------------
 
-The “IT-Wallet" Brand has its own Visual Identity. All actors within the ecosystem MUST apply it to provide visibility of their participation in the IT-Wallet System but MUST NOT use “IT-Wallet” Visual Identity as a replacement of the Visual Identity of their own organization or their own Technical Solutions.
+The “IT-Wallet" Brand has its own Visual Identity. All actors within the ecosystem MUST apply the Visual Identity to provide visibility of their participation in the IT-Wallet System. All actors within the ecosystem MUST NOT use “IT-Wallet” Visual Identity as a replacement of the Visual Identity of their own organization or of their own Technical Solutions.
 
-To ensure proper coexistence between the “IT-Wallet” Visual Identity and the Visual Identity of their organization or Technical Solutions, Primary Actors MUST exclusively use the Official Resources and comply with the indications specified in the Brand Manual.
+Primary Actors MUST exclusively use the Official Resources. Primary Actors MUST comply with the indications specified in the Brand Manual. Those obligations keep the “IT-Wallet” Visual Identity compatible with the Visual Identity of the organization or of the Technical Solutions.
 
 Logo
 ^^^^^
@@ -84,9 +84,9 @@ The Logo is the official graphical element that ensures immediate recognition of
 
 Below are illustrated the requirements for the use of the Logo. All actors intending to refer to the System:
 
-- MAY use the Logo to refer to the IT-Wallet System but MUST NOT use the Logo to identify a specific Technical Solution.
+- Actors intending to refer to the System MAY use the Logo to refer to the IT-Wallet System. Actors intending to refer to the System MUST NOT use the Logo to identify a specific Technical Solution.
 
-- MUST the Logo exactly as provided in the Official Resources and MUST comply with the related usage specifications provided.
+- Actors intending to refer to the System MUST use the Logo exactly as provided in the Official Resources. Actors intending to refer to the System MUST comply with the related usage specifications.
 
 - MUST use the Logo in the ``application/svg+xml`` data format.
 
@@ -133,19 +133,19 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
 
 Below are illustrated the requirements for the use of the Trust Mark, that apply to both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.). All Primary Actors:
 
-- MUST use the Trust Mark exclusively to indicate their participation in the IT-Wallet System and MUST NOT use it for any other purpose.
+- Primary Actors MUST use the Trust Mark exclusively to indicate their participation in the IT-Wallet System. Primary Actors MUST NOT use the Trust Mark for any other purpose.
 
 - MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process.
 
-- MUST display the Trust Mark in a clear and visible manner to the User from the first moment they access the Technical Solution and MUST make it available for consultation within the Technical Solution.
+- Primary Actors MUST display the Trust Mark in a clear and visible manner to the User from the first access to the Technical Solution. Primary Actors MUST make the Trust Mark available for consultation within the Technical Solution.
 
-- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the :ref:`official-resources:Brand Manual`.
+- Primary Actors MUST exclusively use the Trust Mark provided in the Official Resources. Primary Actors MUST comply with the related usage specifications provided in the :ref:`official-resources:Brand Manual`.
 
 - MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements.
 
 - MUST NOT resize the Trust Mark below the minimum dimensions specified in the :ref:`official-resources:Brand Manual` to maintain legibility across formats and devices.
 
-- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability and MUST NOT allow other graphic or textual elements to interfere with this space.
+- Primary Actors MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual`. The clear space ensures visibility and recognizability. Primary Actors MUST NOT allow other graphic or textual elements to interfere with this space.
 
 - MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the :ref:`official-resources:Brand Manual`.
 

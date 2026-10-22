@@ -68,16 +68,8 @@ Se si verificano errori durante il processo di recupero, DEVE essere restituita 
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code-block:: http
-
-   HTTP/1.1 403 Forbidden
-   Content-Type: application/json
-   Cache-Control: no-store
-
-   {
-     "error": "forbidden",
-     "error_description": "User is not authorized to retrieve Wallet Instances."
-   }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-1.http
+   :language: http
 
 
 Richiesta di Revoca dell'Istanza di Wallet
@@ -97,16 +89,8 @@ Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere re
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code-block:: http
-
-   HTTP/1.1 400 Bad Request
-   Content-Type: application/json
-   Cache-Control: no-store
-
-   {
-     "error": "bad_request",
-     "error_description": "The request is missing status parameter."
-   }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-2.http
+   :language: http
 
 Gestione degli Errori per la Gestione dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,15 +185,8 @@ Il body della richiesta di emissione della Wallet Instance Attestation contiene 
 
 Di seguito è riportato un esempio non normativo di una richiesta di emissione della Wallet Instance Attestation.
 
-.. code-block:: http
-
-    POST /wallet-instance-attestation HTTP/1.1
-    Host: application-provider.example.org
-    Content-Type: application/json
-
-    {
-      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-3.http
+   :language: http
 
 In particolare, il JWT della richiesta di emissione della Wallet Instance Attestation include i seguenti parametri di intestazione HTTP:
 
@@ -285,35 +262,11 @@ Il JWT della richiesta include le seguenti claim nel body:
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-4.json
+   :language: json
 
-    {
-      "alg": "ES256",
-      "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wia-request+jwt"
-    }
-
-.. code-block:: json
-
-    {
-      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
-      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
-      "intended_issuer": "https://credential-issuer.example.org",
-      "cnf": {
-        "jwk": {
-          "crv": "P-256",
-          "kty": "EC",
-          "x": "8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44",
-          "y": "MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-        }
-      },
-      "platform": "iOS",
-      "wallet_solution_id": "Wallet-mobile",
-      "wallet_solution_version": "1.1.0"
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-5.json
+   :language: json
 
 
 Risposta all'Emissione della Wallet Instance Attestation
@@ -345,15 +298,8 @@ Se si verifica un errore durante il processo, viene restituita una risposta di e
 
 Di seguito è riportato un esempio non normativo di una Wallet Instance Attestation Issuance Response.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-      "error": "invalid_request",
-      "error_description": "The provided challenge is invalid, expired, or already used."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-6.http
+   :language: http
 
 La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore supportati per la risposta di errore, salvo diversa indicazione (:ref:`WP_036–039 <wallet-instance-testcases>` e :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
@@ -480,10 +426,10 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
 
 .. literalinclude:: ../../examples/wa-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/wa-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -516,15 +462,8 @@ Il body della richiesta di emissione Key Attestation contiene un parametro ``ass
 
 Di seguito è riportato un esempio non normativo di una Key Attestation Request.
 
-.. code-block:: http
-
-    POST /key-attestation HTTP/1.1
-    Host: application-provider.example.org
-    Content-Type: application/json
-
-    {
-      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-7.http
+   :language: http
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
 
@@ -649,80 +588,23 @@ Il body del JWT contiene i seguenti claim:
 
 Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su Android, quando è incluso materiale OEM.
 
-.. code-block:: json
-
-    {
-      "wscd_key_attestation": {
-        "storage_type": "LOCAL_NATIVE",
-        "attestation": "MIICszCCA..."
-      },
-      "cnf": {
-        "jwk": {
-          "kty": "EC",
-          "crv": "P-256",
-          "x": "xAH9SNfaq9J5dmkzXYQLek5YfpPc8i_PpMRT315hjMk",
-          "y": "PE2XLcpW6eXH4FlYGNP9BhwQQdEiZE1tAdT-EihACC8"
-        }
-      },
-      "iat": 1773053861,
-      "exp": 1773057461
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-8.json
+   :language: json
 
 Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su iOS.
 
-.. code-block:: json
-
-    {
-      "wscd_key_attestation": {
-        "storage_type": "LOCAL_NATIVE",
-        "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw..."
-      },
-      "cnf": {
-        "jwk": {
-          "kty": "EC",
-          "crv": "P-256",
-          "x": "DUQVLhK1KQRd-gx7QNcaSaXCg9x4KtzBk-5b1Y3dye4",
-          "y": "FqV94MekVn_CNf521vmo-QHqfNnMvxgHGsEx9BNW8hQ"
-        }
-      },
-      "iat": 1773053861,
-      "exp": 1773057461
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-9.json
+   :language: json
 
 
 Di seguito è riportato un esempio non normativo dell'header e del payload JWT di una Key Attestation Request.
 
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-10.json
+   :language: json
 
-    {
-      "alg": "ES256",
-      "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "ka-request+jwt"
-    }
-
-.. code-block:: json
-
-    {
-      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
-      "cnf": {
-        "jwk": {
-          "crv": "P-256",
-          "kty": "EC",
-          "x": "8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44",
-          "y": "MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-        }
-      },
-      "keys_to_attest": [
-        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiJ9.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6e30sImNuZiI6e319.c2lnbmF0dXJl"
-      ],
-      "platform": "iOS",
-      "wallet_solution_id": "Wallet-mobile",
-      "wallet_solution_version": "1.1.0"
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-11.json
+   :language: json
 
 
 Risposta all'Emissione della Key Attestation
@@ -857,10 +739,10 @@ Il Fornitore di Wallet DEVE impostare ``key_storage`` e ``user_authentication`` 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
 .. literalinclude:: ../../examples/ka-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/ka-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -881,7 +763,8 @@ Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LI
 
 Lo SLT Provider DEVE essere il Fornitore di Wallet.
 
-**Status List**
+Status List
+"""""""""""
 
 Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in ``client_status.status.status_list``. Una KA DEVE includere il proprio riferimento alla Status List in ``key_storage_status.status.status_list``. Ciascun riferimento alla Status List DEVE contenere ``idx`` e ``uri``. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
 
@@ -894,7 +777,8 @@ Di conseguenza, il Fornitore di Wallet DEVE impostare il parametro ``bits`` nell
 
 L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
 
-**Assegnazione dell'indice della Key Attestation**
+Assegnazione dell'indice della Key Attestation
+""""""""""""""""""""""""""""""""""""""""""""""
 
 Secondo R_KA_1 di `CIR2026/1731`_, un Fornitore di Wallet DEVE scegliere una delle seguenti opzioni di assegnazione dell'indice per il claim ``key_storage_status.status`` di una KA. L'opzione selezionata determina se l'indice della status list è condiviso dalle KA dello stesso tipo di archiviazione delle chiavi oppure è specifico di una singola KA.
 
@@ -903,7 +787,8 @@ Secondo R_KA_1 di `CIR2026/1731`_, un Fornitore di Wallet DEVE scegliere una del
 
 Il requisito di valori ``idx`` distinti si applica solo all'opzione per Key Attestation. Le KA che usano un indice condiviso per tipo ne sono esenti.
 
-**Status List Token**
+Status List Token
+"""""""""""""""""
 
 Il Fornitore di Wallet DEVE agire sia come Status Issuer sia come Status Provider.
 Il Fornitore di Wallet DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``client_status.status.status_list.uri`` della WIA oppure nel membro ``key_storage_status.status.status_list.uri`` della KA.
@@ -911,7 +796,8 @@ I media type, il formato JWT o CWT e la protezione mediante firma sono specifica
 
 Indipendentemente dal formato, il Fornitore di Wallet DEVE firmare la SLT con il Trust Anchor usato per validare le sue Wallet Instance Attestation, come specificato in :ref:`infrastructure-trust:Revocation Trust Anchors`.
 
-**Considerazioni sulla privacy**
+Considerazioni sulla privacy
+""""""""""""""""""""""""""""
 
 I Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation. I Fornitori di Wallet DEVONO pubblicare la SLT allo stesso ``uri`` per tali attestazioni. Lo scopo è impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a `EUDI-TS 3`_ e `CIR2026/1731`_. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.
 

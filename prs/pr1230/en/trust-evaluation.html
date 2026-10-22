@@ -7,7 +7,7 @@
 
     <title>6. Trust Evaluation Process &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -445,7 +481,7 @@ The same applies under the National Trust Framework: a <code class="docutils lit
 <p>If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.
 During presentation, a User choice to proceed is allowed only for the overridable Authorization outcomes defined there.
 Authentication failure is not overridable.</p>
-<p>During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a).
+<p>During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User. The Wallet Unit MUST NOT request the issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a).
 No User choice is offered at issuance.</p>
 </section>
 </section>
@@ -457,7 +493,7 @@ No User choice is offered at issuance.</p>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31910201/01.04.01_60/en_31910201v010401p.pdf">ETSI EN 319 102-1</a> and <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a>, which define, respectively, the validation of AdES signatures and the JAdES format of the signature of a List of Trusted Entities.</p></li>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf">ETSI TS 119 411-8</a>, <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> and <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>, which define, respectively, the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate together with its entitlements, and the certificate subject attributes.</p></li>
 <li><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a> and <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a>, which profile the Presentation and the Issuance protocols respectively, through which a Wallet-Relying Party is authenticated and its registration information is made available to the Wallet Unit. The latter also defines the Embedded Disclosure Policy.</p></li>
-<li><p>IETF RFC 5280 (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) and IETF RFC 6960 (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>), which define the X.509 certification path validation and the Online Certificate Status Protocol.</p></li>
+<li><p>IETF RFC 5280 (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) and IETF RFC 6960 (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>), which define the X.509 certificate chain validation and the Online Certificate Status Protocol.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -579,14 +615,17 @@ This certificate is published in the Official Journal of the European Union.</p>
 <li><p><a class="reference internal" href="#trusted-list-validation"><span class="std std-ref">Trusted List Validation</span></a>: Validate the digital signature of the TL by verifying it against the corresponding Member State public keys published in the List Of Trusted Lists (LOTL).
 The List Of Trusted Lists (LOTL) itself is authenticated by validating its digital signature against the Official Journal of the European Union.</p></li>
 </ul>
-<p><strong>Input</strong></p>
+<section id="eudiw-trust-anchor-validation-input">
+<h4><span class="section-number">6.2.2.1. </span>EUDIW Trust Anchor Validation: Input<a class="headerlink" href="#eudiw-trust-anchor-validation-input" title="Link to this heading">¶</a></h4>
 <p>The validating Entity MUST base Trust Anchor validation decisions only on information derived from:</p>
 <ul class="simple">
 <li><p>The Official Journal of the EU (OJEU) anchoring trust in the root certificates that signed the Lists of Trusted Entities and List of Trusted Lists.
 The current version of the OJEU is <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202601944">OJEU</a>.</p></li>
 <li><p>A validated Lists of Trusted Entities or List of Trusted Lists and Member State level Trusted Lists.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="eudiw-trust-anchor-validation-outcome">
+<h4><span class="section-number">6.2.2.2. </span>EUDIW Trust Anchor Validation: Outcome<a class="headerlink" href="#eudiw-trust-anchor-validation-outcome" title="Link to this heading">¶</a></h4>
 <p>Each validation procedure (defined in <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a> and <a class="reference internal" href="#trusted-list-validation"><span class="std std-ref">Trusted List Validation</span></a>) gives a granular verification result code when it detects a negative condition.
 These codes feed into the final decision:</p>
 <ul>
@@ -616,8 +655,9 @@ These codes feed into the final decision:</p>
 <p>Within IT-Wallet, a Wallet Unit is expected to cache validated Lists of Trusted Lists, Lists of Trusted Entities and Member States' Trusted Lists, so that it does not retrieve them at every interaction.
 The frequency of updates and the types of lists to cache represent a trade-off between interoperability and resource utilization.</p>
 </div>
+</section>
 <section id="list-key-rotation-and-historical-verification">
-<h4><span class="section-number">6.2.2.1. </span>List Key Rotation and Historical Verification<a class="headerlink" href="#list-key-rotation-and-historical-verification" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.2.2.3. </span>List Key Rotation and Historical Verification<a class="headerlink" href="#list-key-rotation-and-historical-verification" title="Link to this heading">¶</a></h4>
 <p>To support continuous key rotation and regular updates, the LoTE and LOTL implement a <em>pivoting mechanism</em>.
 This mechanism consists of publishing the most recent version of the List at the primary URI referenced in the Official Journal of the European Union, while archiving earlier versions at other distinct URIs called <em>pivots</em>.
 Each List version is signed with a public key referenced within the immediately preceding pivot.
@@ -631,7 +671,7 @@ The specific scenarios in which an Entity update triggers a migration of its con
 <p>Regardless of an Entity's objective when validating the LoTE (whether retrieving a current or historical configuration), the validation mechanism MUST strictly follow Section <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>.</p>
 </section>
 <section id="list-of-trusted-entities-validation">
-<h4><span class="section-number">6.2.2.2. </span>List of Trusted Entities Validation<a class="headerlink" href="#list-of-trusted-entities-validation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.2.2.4. </span>List of Trusted Entities Validation<a class="headerlink" href="#list-of-trusted-entities-validation" title="Link to this heading">¶</a></h4>
 <p>This section defines the validation of a List of Trusted Entities.
 The List of Trusted Entities, its data model and the List of Trusted Entities types used within the EUDIW ecosystem, one for each category of notified provider, are defined in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
 <p>A List of Trusted Entities is a signed list.
@@ -647,9 +687,10 @@ They correspond as follows:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTESO-Cert</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">LOTLSO-Cert</span></code>.</p></li>
 <li><p>the <code class="docutils literal notranslate"><span class="pre">PointersToOtherLoTE</span></code> and <code class="docutils literal notranslate"><span class="pre">SchemeInformationURI</span></code> claims correspond to the <em>Pointers to other TSLs</em> (clause 6.3.13 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]) and <em>Scheme information URI</em> (clause 6.3.7) components.</p></li>
 </ul>
-<p><strong>List of Trusted Entities Validation Algorithm</strong></p>
+<section id="list-of-trusted-entities-validation-algorithm">
+<h5><span class="section-number">6.2.2.4.1. </span>List of Trusted Entities Validation Algorithm<a class="headerlink" href="#list-of-trusted-entities-validation-algorithm" title="Link to this heading">¶</a></h5>
 <p>The validating Entity initializes the following variables, corresponding to the parameters preconfigured in GPR-4.0-02 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.03.01_60/ts_119615v010301p.pdf">ETSI TS 119 615</a>] for the LOTL.</p>
-<p><strong>Input Variables</strong>:</p>
+<p>The input variables of the List of Trusted Entities Validation Algorithm are the following.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OJEU-Loc</span></code>: URI of the latest known Official Journal of the European Union publication.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OJEU-LoTE-Loc</span></code>: URI of the last processed List of Trusted Entities.
@@ -662,13 +703,13 @@ Initialized as <code class="docutils literal notranslate"><span class="pre">NULL
 Initialized as <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTESO-Certs-Set</span></code>: trusted certificates extracted from the <code class="docutils literal notranslate"><span class="pre">PointersToOtherLoTE</span></code> claim (<code class="docutils literal notranslate"><span class="pre">SchemeTerritory</span></code> <code class="docutils literal notranslate"><span class="pre">EU</span></code>, clause 6.3.10 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]) of a List of Trusted Entities.</p></li>
 </ul>
-<p><strong>Output Variables</strong>:</p>
+<p>The output variables of the List of Trusted Entities Validation Algorithm are the following.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Authenticated-LoTE</span></code>: the validated JSON payload.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTE-Status</span></code>: the validation result (e.g., <code class="docutils literal notranslate"><span class="pre">LoTE_VERIFICATION_PASSED</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LoTE-Sub-Status</span></code>: detailed error codes.</p></li>
 </ul>
-<p><strong>Process</strong>:</p>
+<p>The process of the List of Trusted Entities Validation Algorithm is the following.</p>
 <p>The validation MUST perform the following steps.
 Each step indicates the corresponding requirement of clause 4.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.03.01_60/ts_119615v010301p.pdf">ETSI TS 119 615</a>].</p>
 <ol class="arabic">
@@ -823,8 +864,9 @@ This typically implies that a newer version of the Official Journal of the Europ
 </tbody>
 </table>
 </section>
+</section>
 <section id="trusted-list-validation">
-<h4><span class="section-number">6.2.2.3. </span>Trusted List Validation<a class="headerlink" href="#trusted-list-validation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.2.2.5. </span>Trusted List Validation<a class="headerlink" href="#trusted-list-validation" title="Link to this heading">¶</a></h4>
 <p>This section defines the validation of Trusted List.
 In order to validate the Trusted List, the validating Ent MUST:</p>
 <ol class="arabic simple">
@@ -838,13 +880,13 @@ The validation process is analogue to the <a class="reference internal" href="#l
 </section>
 <section id="x509-certificate-chain-validation-algorithm">
 <h3><span class="section-number">6.2.3. </span>X509 Certificate Chain Validation Algorithm<a class="headerlink" href="#x509-certificate-chain-validation-algorithm" title="Link to this heading">¶</a></h3>
-<p>This procedure validates the certification path.
+<p>This procedure validates the certificate chain.
 It is invoked by the <a class="reference internal" href="#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a> and by the <a class="reference internal" href="#authorization-artifacts-validation"><span class="std std-ref">Authorization Artifacts Validation</span></a> to validate the Wallet-Relying Party Access Certificate, the Wallet-Relying Party Registration Certificate and the Registrar Sign/Seal Certificate chains.
 The Trust Anchor consumed as <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> is profiled in <a class="reference internal" href="infrastructure-trust.html#trust-anchor-certificate-profile"><span class="std std-ref">Trust Anchor Certificate Profile</span></a>.</p>
-<p>The certification path validation is the standard X.509 path validation defined in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, with the revocation status checking defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.
+<p>The certificate chain validation is the standard X.509 path validation defined in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, with the revocation status checking defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.
 The certificate lifecycle and the revocation mechanisms, including the CRL and the OCSP formats and parameters, are defined in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.
 The algorithm details are not redefined here.
-This is the same certification path validation used in the National Trust Framework (see <a class="reference internal" href="#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a>), where the difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.</p>
+This is the same certificate chain validation used in the National Trust Framework (see <a class="reference internal" href="#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a>), where the difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.</p>
 <p>Within the EUDIW Trust Framework the following applies.</p>
 <blockquote>
 <div><ul class="simple">
@@ -856,26 +898,32 @@ This is the same certification path validation used in the National Trust Framew
 <p class="admonition-title">Note</p>
 <p>As defined in <a class="reference internal" href="infrastructure-trust.html#revocation-trust-anchors"><span class="std std-ref">Revocation Trust Anchors</span></a>, the Trust Anchor retrieved from the applicable LoTE or Trusted List is the notified Trust Anchor for the corresponding certificate chain. The same Trust Anchor MUST be used to validate the signatures of CRLs or OCSP responses used for revocation checking, as specified in <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a> and <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.</p>
 </div>
-<p><strong>Input</strong></p>
+<section id="x509-certificate-chain-validation-algorithm-input">
+<h4><span class="section-number">6.2.3.1. </span>X509 Certificate Chain Validation Algorithm: Input<a class="headerlink" href="#x509-certificate-chain-validation-algorithm-input" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the sequence of <code class="docutils literal notranslate"><span class="pre">n</span></code> certificates <code class="docutils literal notranslate"><span class="pre">C_1,</span> <span class="pre">...,</span> <span class="pre">C_n</span></code> provided by the Entity, where <code class="docutils literal notranslate"><span class="pre">C_1</span></code> MUST be the end-entity certificate corresponding to the private key used to sign the artifact or Attestation and <code class="docutils literal notranslate"><span class="pre">C_n</span></code> MUST be the certificate signed by the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>. The Trust Anchor certificate MUST NOT be included in <code class="docutils literal notranslate"><span class="pre">path</span></code>.
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the sequence of <code class="docutils literal notranslate"><span class="pre">n</span></code> certificates <code class="docutils literal notranslate"><span class="pre">C_1,</span> <span class="pre">...,</span> <span class="pre">C_n</span></code> provided by the Entity. <code class="docutils literal notranslate"><span class="pre">C_1</span></code> MUST be the end-entity certificate corresponding to the private key used to sign the artifact or Attestation. <code class="docutils literal notranslate"><span class="pre">C_n</span></code> MUST be the certificate signed by the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>. The Trust Anchor certificate MUST NOT be included in <code class="docutils literal notranslate"><span class="pre">path</span></code>.
 For any <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n-1</span></code>, <code class="docutils literal notranslate"><span class="pre">C_i+1</span></code> MUST be the issuer of <code class="docutils literal notranslate"><span class="pre">C_i</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>: the trusted certificate obtained from the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> of the validated List of Trusted Entities or Trusted List.
 It MUST contain the public key used to sign <code class="docutils literal notranslate"><span class="pre">C_n</span></code>.
 Implementations MUST support both self-signed and non-self-signed Trust Anchor certificates.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">current_time</span></code>: the current date and time.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="x509-certificate-chain-validation-algorithm-outcome">
+<h4><span class="section-number">6.2.3.2. </span>X509 Certificate Chain Validation Algorithm: Outcome<a class="headerlink" href="#x509-certificate-chain-validation-algorithm-outcome" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The validated end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_1</span></code>, or a failure.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="x509-certificate-chain-validation-algorithm-process">
+<h4><span class="section-number">6.2.3.3. </span>X509 Certificate Chain Validation Algorithm: Process<a class="headerlink" href="#x509-certificate-chain-validation-algorithm-process" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
-<li><p>Build the certification path from the end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_1</span></code> towards the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>, ending with <code class="docutils literal notranslate"><span class="pre">C_n</span></code>.</p></li>
+<li><p>Build the certificate chain from the end-entity certificate <code class="docutils literal notranslate"><span class="pre">C_1</span></code> towards the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code>, ending with <code class="docutils literal notranslate"><span class="pre">C_n</span></code>.</p></li>
 <li><p>Execute the path validation defined in <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, using the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> as the trust anchor input of the algorithm and <code class="docutils literal notranslate"><span class="pre">current_time</span></code> as the validation time. The RFC 5280 validation processes the certificates from <code class="docutils literal notranslate"><span class="pre">C_n</span></code> to <code class="docutils literal notranslate"><span class="pre">C_1</span></code>. This does not change the order of the presented <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></li>
 <li><p>Verify the revocation status of the certificates in the path according to <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>, unless the check is skipped as described above.</p></li>
 </ol>
-<p>If any step fails, the certification path MUST be considered invalid and the artifact signature MUST NOT be verified with the presented certificate chain.</p>
+<p>If any step fails, the certificate chain MUST be considered invalid. The artifact signature MUST NOT be verified with the presented certificate chain.</p>
+</section>
 </section>
 <section id="eudiw-attestation-signature-validation">
 <h3><span class="section-number">6.2.4. </span>EUDIW Attestation Signature Validation<a class="headerlink" href="#eudiw-attestation-signature-validation" title="Link to this heading">¶</a></h3>
@@ -887,16 +935,21 @@ It is invoked during the issuance and presentation flows to validate the signatu
 <li><p>If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.</p></li>
 </ul>
 <p>The signature validation procedure is structured as follows:</p>
-<p><strong>Input</strong></p>
+<section id="eudiw-attestation-signature-validation-input">
+<h4><span class="section-number">6.2.4.1. </span>EUDIW Attestation Signature Validation: Input<a class="headerlink" href="#eudiw-attestation-signature-validation-input" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The received Attestation and the signer certificate chain carried within it.</p></li>
 <li><p>The type of artifact (i.e., the Digital Credential type or Wallet Instance Attestation) used to select the applicable List of Trusted Entities or Trusted List.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="eudiw-attestation-signature-validation-outcome">
+<h4><span class="section-number">6.2.4.2. </span>EUDIW Attestation Signature Validation: Outcome<a class="headerlink" href="#eudiw-attestation-signature-validation-outcome" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The validated Attestation, or a validation failure.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="eudiw-attestation-signature-validation-process">
+<h4><span class="section-number">6.2.4.3. </span>EUDIW Attestation Signature Validation: Process<a class="headerlink" href="#eudiw-attestation-signature-validation-process" title="Link to this heading">¶</a></h4>
 <p>This process depends on the Attestation type:</p>
 <ul class="simple">
 <li><p><strong>PID</strong> or <strong>WIA</strong>.</p>
@@ -932,6 +985,7 @@ It is invoked during the issuance and presentation flows to validate the signatu
 </div>
 <p>If signature validation fails, the Attestation MUST NOT be considered as issued by a trusted Entity.</p>
 </section>
+</section>
 <section id="eudiw-authentication">
 <h3><span class="section-number">6.2.5. </span>EUDIW Authentication<a class="headerlink" href="#eudiw-authentication" title="Link to this heading">¶</a></h3>
 <p>The Authentication Process enables the Wallet Unit to authenticate a Wallet-Relying Party during an interaction.
@@ -940,26 +994,31 @@ The Wallet-Relying Party Access Certificate is profiled in <a class="reference i
 <p>For the verification of the access certificate, the Wallet Unit MUST accept only the Trust Anchors published in the Lists of Trusted Entities of the Providers of Wallet-Relying Party Access Certificate notified by the Member States (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>).
 The Wallet Unit MUST perform this authentication and validation itself.
 The Wallet Unit MUST NOT delegate it to an operating system browser or to another intermediary application ([<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>] Article 3(1), as replaced by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2026/1731">CIR2026/1731</a>]).</p>
-<p><strong>Input</strong></p>
+<section id="eudiw-authentication-input">
+<h4><span class="section-number">6.2.5.1. </span>EUDIW Authentication: Input<a class="headerlink" href="#eudiw-authentication-input" title="Link to this heading">¶</a></h4>
 <p>The Authentication outcome MUST be based only on information derived from:</p>
 <ul class="simple">
 <li><p>the appropriate Trust Anchor obtained from a valid instance of the Provider of Wallet-Relying Party Access Certificate List of Trusted Entities.</p></li>
-<li><p>the X.509 certificate path starting with the Wallet-Relying Party Access Certificate end-entity certificate.</p></li>
+<li><p>the X.509 certificate chain starting with the Wallet-Relying Party Access Certificate end-entity certificate.</p></li>
 <li><p>a Wallet-Relying Party signature over the artifact of the interaction, carrying the proof of possession of the private key referenced in the Wallet-Relying Party Access Certificate.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="eudiw-authentication-outcome">
+<h4><span class="section-number">6.2.5.2. </span>EUDIW Authentication: Outcome<a class="headerlink" href="#eudiw-authentication-outcome" title="Link to this heading">¶</a></h4>
 <p>The Wallet Unit MUST output a decision: the Wallet-Relying Party is either <code class="docutils literal notranslate"><span class="pre">AUTHENTICATED</span></code> or <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code>.
 If <code class="docutils literal notranslate"><span class="pre">AUTHENTICATED</span></code>, the Wallet Unit proceeds in the interaction flow.
-If <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code>, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified and MUST stop the interaction, as the entity is not trustworthy.</p>
-<p><strong>Process</strong></p>
+If <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code>, the Wallet Unit MUST inform the User that the identity of the Wallet-Relying Party could not be verified. The Wallet Unit MUST stop the interaction, as the entity is not trustworthy.</p>
+</section>
+<section id="eudiw-authentication-process">
+<h4><span class="section-number">6.2.5.3. </span>EUDIW Authentication: Process<a class="headerlink" href="#eudiw-authentication-process" title="Link to this heading">¶</a></h4>
 <p>The Wallet Unit MUST verify the authenticity and integrity of the presented Wallet-Relying Party Access Certificate as follows:</p>
 <ol class="arabic">
 <li><p><strong>Retrieve the Trust Anchor</strong>: obtain the entry of the Provider of Wallet-Relying Party Access Certificate from the validated List of Trusted Entities (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>).
 When present, the <code class="docutils literal notranslate"><span class="pre">issuer.organizationIdentifier</span></code> of the last certificate of the chain MAY be used to locate candidate entries by matching it against the registration identifier in <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList[].TrustedEntityInformation.TETradeName</span></code>, as defined in clause 5.1.4 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.07.00_20/en_31941201v010700a.pdf">ETSI EN 319 412-1</a>] and Annex F, Table F.2 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>].
-The Wallet Unit MUST retrieve candidate Trust Anchor certificates from the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> of the entry's service whose <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> is <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPAC/Issuance</span></code>, as defined in Annex F, Table F.3 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]. The selected Trust Anchor MUST validate the presented certification path at step 3.</p></li>
-<li><p><strong>Construct the Certification Path</strong>: build a path starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (<code class="docutils literal notranslate"><span class="pre">C_1</span></code>) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (<code class="docutils literal notranslate"><span class="pre">C_n</span></code>).
+The Wallet Unit MUST retrieve candidate Trust Anchor certificates from the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> of the entry's service whose <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> is <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPAC/Issuance</span></code>, as defined in Annex F, Table F.3 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a>]. The selected Trust Anchor MUST validate the presented certificate chain at step 3.</p></li>
+<li><p><strong>Construct the Certificate Chain</strong>: build a certificate chain starting from the Wallet-Relying Party Access Certificate presented by the Wallet-Relying Party (<code class="docutils literal notranslate"><span class="pre">C_1</span></code>) and ending with the certificate issued by the Provider of Wallet-Relying Party Access Certificate (<code class="docutils literal notranslate"><span class="pre">C_n</span></code>).
 The simplest path consists of a single certificate, where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
-<li><p><strong>Execute Path Validation</strong>: validate the certification path as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, using the Trust Anchor retrieved at step 1, as described in <a class="reference internal" href="#wallet-relying-party-access-certificate-validation"><span class="std std-ref">Wallet-Relying Party Access Certificate Validation</span></a>.</p></li>
+<li><p><strong>Execute Path Validation</strong>: validate the certificate chain as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, using the Trust Anchor retrieved at step 1, as described in <a class="reference internal" href="#wallet-relying-party-access-certificate-validation"><span class="std std-ref">Wallet-Relying Party Access Certificate Validation</span></a>.</p></li>
 <li><p><strong>Verify the Signature</strong>: use the public key of the validated Wallet-Relying Party Access Certificate to verify the Wallet-Relying Party signature over the artifact it signs in the specific interaction.
 The certificate chain and the signed artifact depend on the flow:</p>
 <blockquote>
@@ -976,8 +1035,9 @@ The certificate chain and the signed artifact depend on the flow:</p>
 <p>A Wallet-Relying Party MUST distinguish between transient authentication (e.g., access control) and content commitment (non-repudiation).
 To prevent an attacker from disguising a legal commitment as a protocol nonce, the Wallet-Relying Party MUST NOT use the Wallet-Relying Party Access Certificate private key to sign arbitrary data that could be controlled by an external party.</p>
 </div>
+</section>
 <section id="wallet-relying-party-access-certificate-validation">
-<h4><span class="section-number">6.2.5.1. </span>Wallet-Relying Party Access Certificate Validation<a class="headerlink" href="#wallet-relying-party-access-certificate-validation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.2.5.4. </span>Wallet-Relying Party Access Certificate Validation<a class="headerlink" href="#wallet-relying-party-access-certificate-validation" title="Link to this heading">¶</a></h4>
 <p>The Entity performing Wallet-Relying Party Access Certificate validation initializes the algorithm in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a> with the <code class="docutils literal notranslate"><span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> defined there.
 The inputs are the following:</p>
 <ul class="simple">
@@ -987,7 +1047,7 @@ The inputs are the following:</p>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>As described in Section 6.1.1 of <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a> the Trust Anchor Certificate needed for the validation of the WRPAC MUST NOT be included in the certificate chain and MUST be always retrieved in the appropriate LoTE.</p>
+<p>As described in Section 6.1.1 of <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>, the Trust Anchor Certificate needed for the validation of the WRPAC MUST NOT be included in the certificate chain. The Trust Anchor Certificate MUST always be retrieved from the appropriate LoTE.</p>
 </div>
 </section>
 </section>
@@ -1057,18 +1117,19 @@ The array MUST contain a <code class="docutils literal notranslate"><span class=
 The <code class="docutils literal notranslate"><span class="pre">registrar_dataset</span></code> MUST NOT replace certificate validation when <code class="docutils literal notranslate"><span class="pre">registration_cert</span></code> is present.
 The Embedded Disclosure Policy is distributed as the <code class="docutils literal notranslate"><span class="pre">embedded_disclosure_policy</span></code> member of <code class="docutils literal notranslate"><span class="pre">credential_metadata</span></code> within <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code>, as defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>] and <a class="reference internal" href="infrastructure-trust.html#embedded-disclosure-policy-edp"><span class="std std-ref">Embedded Disclosure Policy (EDP)</span></a>.</p></li>
 </ul>
-<p>During Credential Presentation, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code> and MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17).
+<p>During Credential Presentation, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>. The Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17).
 The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_16 and RPRC_18 are empty).</p>
-<p>During Credential Issuance, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>, MUST warn the User that it could not obtain or validate the registered information, and MUST NOT request the issuance of a PID or attestation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a).
+<p>During Credential Issuance, if the Wallet-Relying Party Registration Certificate is not available or its validation fails, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>. The Wallet Unit MUST warn the User that the Wallet Unit could not obtain or validate the registered information. The Wallet Unit MUST NOT request the issuance of a PID or attestation ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a).
 The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p>
-<p><strong>Wallet-Relying Party Registration Certificate Validation</strong></p>
+<section id="wallet-relying-party-registration-certificate-validation">
+<h5><span class="section-number">6.2.6.1.1. </span>Wallet-Relying Party Registration Certificate Validation<a class="headerlink" href="#wallet-relying-party-registration-certificate-validation" title="Link to this heading">¶</a></h5>
 <p>When a Wallet-Relying Party Registration Certificate is available, the Wallet Unit MUST validate it before relying on it:</p>
 <ol class="arabic simple">
 <li><p><strong>Format verification</strong>: confirm that <code class="docutils literal notranslate"><span class="pre">typ</span></code> is <code class="docutils literal notranslate"><span class="pre">rc-wrp+jwt</span></code> in the Remote Flow and during Credential Issuance, or <code class="docutils literal notranslate"><span class="pre">rc-wrp+cwt</span></code> in the Proximity Flow, as defined in Section 5.2.1 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>].</p></li>
 <li><p><strong>Algorithm verification</strong>: verify that the signature algorithm is conformant, that is <code class="docutils literal notranslate"><span class="pre">alg</span></code> is neither <code class="docutils literal notranslate"><span class="pre">none</span></code> nor a deprecated algorithm.</p></li>
 <li><p><strong>Signature validation</strong>: verify that the Wallet-Relying Party Registration Certificate signature is valid.</p></li>
 <li><p><strong>Trust Anchor validation</strong>: validate the Providers of WRPRC LoTE (see <a class="reference internal" href="#list-of-trusted-entities-validation"><span class="std std-ref">List of Trusted Entities Validation</span></a>) and retrieve the Trust Anchor from its <code class="docutils literal notranslate"><span class="pre">TrustedEntitiesList.ServiceDigitalIdentity</span></code> field.</p></li>
-<li><p><strong>Path validation</strong>: validate the Wallet-Relying Party Registration Certificate chain as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, using the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> obtained in the previous step. For the WRPRC, the Trust Anchor used for signature validation, certificate path validation, and revocation checking MUST be retrieved from the applicable service entry in the Providers of WRPRC LoTE (i.e., under the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> corresponding to the <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> with value <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPRC/Issuance</span></code>).</p></li>
+<li><p><strong>Path validation</strong>: validate the Wallet-Relying Party Registration Certificate chain as defined in <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>, using the <code class="docutils literal notranslate"><span class="pre">trust_anchor</span></code> obtained in the previous step. For the WRPRC, the Trust Anchor used for signature validation, certificate chain validation, and revocation checking MUST be retrieved from the applicable service entry in the Providers of WRPRC LoTE (i.e., under the <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code> corresponding to the <code class="docutils literal notranslate"><span class="pre">ServiceTypeIdentifier</span></code> with value <code class="docutils literal notranslate"><span class="pre">http://uri.etsi.org/19602/SvcType/WRPRC/Issuance</span></code>).</p></li>
 <li><p><strong>Temporal validity</strong>: check <code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code> if present.</p></li>
 <li><p><strong>Status verification</strong>: check the revocation status through the <code class="docutils literal notranslate"><span class="pre">status</span></code> field of the Wallet-Relying Party Registration Certificate, as defined in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]:</p>
 <ul class="simple">
@@ -1085,12 +1146,14 @@ The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference 
 <p class="admonition-title">Note</p>
 <p>In Step 5 (<strong>Path validation</strong>), the Trust Anchor Certificate needed to validate the WRPRC MUST NOT be included in the certificate chain and MUST always be retrieved from the appropriate LoTE.</p>
 </div>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="authorization-artifacts-validation-outcome">
+<h5><span class="section-number">6.2.6.1.2. </span>Authorization Artifacts Validation: Outcome<a class="headerlink" href="#authorization-artifacts-validation-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>If all the steps succeed and the Wallet-Relying Party Registration Certificate is in the <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_VALID</span></code>.</p></li>
 <li><p>If any step fails, or if no Wallet-Relying Party Registration Certificate is included, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code> to <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code>.
-During Credential Presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register.
-During Credential Issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p></li>
+During Credential Presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17). The Wallet Unit MUST NOT query the Register.
+During Credential Issuance the Wallet Unit MUST warn the User. The Wallet Unit MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1098,11 +1161,13 @@ During Credential Issuance the Wallet Unit MUST warn the User and MUST NOT reque
 That certificate identifies the intermediated Relying Party.</p>
 </div>
 </section>
+</section>
 <section id="authorization-validation">
 <h4><span class="section-number">6.2.6.2. </span>Authorization Validation<a class="headerlink" href="#authorization-validation" title="Link to this heading">¶</a></h4>
 <p>The Authorization Validation MUST follow the Authorization Artifacts Validation when <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_VALID</span></code>.
 If <code class="docutils literal notranslate"><span class="pre">authz_art_state</span> <span class="pre">==</span> <span class="pre">CERTIFICATE_INVALID</span></code>, the Wallet Unit SHOULD NOT execute any Authorization Validation, as it cannot change the final Authorization Decision.</p>
-<p><strong>Input</strong></p>
+<section id="authorization-validation-input">
+<h5><span class="section-number">6.2.6.2.1. </span>Authorization Validation: Input<a class="headerlink" href="#authorization-validation-input" title="Link to this heading">¶</a></h5>
 <p>The Wallet Unit MUST base the Authorization Validation only on:</p>
 <ul class="simple">
 <li><p>the authenticated Wallet-Relying Party and the interaction context, authoritative only for the identity of the Wallet-Relying Party.</p></li>
@@ -1110,9 +1175,13 @@ If <code class="docutils literal notranslate"><span class="pre">authz_art_state<
 <li><p>a verified Embedded Disclosure Policy, REQUIRED when provided by the Attestation Provider during Credential Issuance, authoritative when present.</p></li>
 </ul>
 <p>Where the authenticated Wallet-Relying Party context conflicts with the identity or the intermediary binding in the verified authorization context, the Wallet Unit MUST produce <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, non-overridable.</p>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="authorization-validation-outcome">
+<h5><span class="section-number">6.2.6.2.2. </span>Authorization Validation: Outcome<a class="headerlink" href="#authorization-validation-outcome" title="Link to this heading">¶</a></h5>
 <p>The Wallet Unit MUST output the <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> variables, both initialized to <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p>
-<p><strong>Process</strong></p>
+</section>
+<section id="authorization-validation-process">
+<h5><span class="section-number">6.2.6.2.3. </span>Authorization Validation: Process<a class="headerlink" href="#authorization-validation-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic">
 <li><p><strong>Binding verification</strong>.
 The Wallet Unit MUST ensure that the authenticated entity is the same as the entity described in the authorization data.
@@ -1152,11 +1221,11 @@ The Wallet Unit MUST parse the <code class="docutils literal notranslate"><span 
 <li><p><strong>Attestation Type verification</strong>.
 During Credential Issuance, the Wallet Unit MUST verify that the PID or the Attestation Type being issued is registered for the Credential Issuer.
 A PID Provider issuing PIDs MAY skip this step.
-Otherwise the Wallet Unit MUST match the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> array of the Wallet-Relying Party Registration Certificate (defined in Table 8 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]; [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_23) against the <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> keys of the Credential Issuer Metadata ([<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>]).
+Otherwise the Wallet Unit MUST match the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> array of the Wallet-Relying Party Registration Certificate (defined in Table 8 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>] and in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_23) against the <code class="docutils literal notranslate"><span class="pre">credential_configurations_supported</span></code> keys of the Credential Issuer Metadata ([<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>]).
 The match MUST be exact and case sensitive, on <code class="docutils literal notranslate"><span class="pre">vct</span></code> for SD-JWT VC and on <code class="docutils literal notranslate"><span class="pre">docType</span></code> for mdoc.
 If not found, the Wallet Unit MUST set <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> to <code class="docutils literal notranslate"><span class="pre">ATTESTATION_TYPE_NOT_REGISTERED</span></code>.</p></li>
 <li><p><strong>Scope Comparison</strong>.
-During Credential Presentation, the Wallet Unit MUST verify that the requested Digital Credentials and attributes fall within the registered scope, carried in the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array of the Wallet-Relying Party Registration Certificate included in the request (defined in Table 9 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>]; [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_21).</p>
+During Credential Presentation, the Wallet Unit MUST verify that the requested Digital Credentials and attributes fall within the registered scope, carried in the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array of the Wallet-Relying Party Registration Certificate included in the request (defined in Table 9 of [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a>] and in [<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_21).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Remote Flow</strong>: extract the requested Digital Credentials and attributes from the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> of the Request Object ([<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]) and match them against the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> entries, comparing <code class="docutils literal notranslate"><span class="pre">format</span></code> and <code class="docutils literal notranslate"><span class="pre">meta</span></code> (<code class="docutils literal notranslate"><span class="pre">vct_values</span></code> for SD-JWT VC) and the requested attributes against the <code class="docutils literal notranslate"><span class="pre">claim</span></code> paths.</p></li>
@@ -1204,7 +1273,9 @@ Unknown extensions MAY be ignored only when doing so does not break processing o
 If a resolved policy does not permit the Credential or attribute, the Wallet Unit MUST set that result to <code class="docutils literal notranslate"><span class="pre">EDP_NOT_SATISFIED</span></code>.</p>
 </li>
 </ol>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="authorization-validation-final-outcome">
+<h5><span class="section-number">6.2.6.2.4. </span>Authorization Validation: Final Outcome<a class="headerlink" href="#authorization-validation-final-outcome" title="Link to this heading">¶</a></h5>
 <p>At the end of the Authorization Validation the Wallet Unit MUST output the <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> values.
 The table below summarizes the codes.</p>
 <span id="table-authz-state-codes"></span><table class="longtable docutils align-default" id="id401">
@@ -1231,7 +1302,7 @@ The table below summarizes the codes.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code></p></td>
 <td><p>both</p></td>
-<td><p>A format, signature, trust anchor or status check fails on the presented registration certificate, or no Wallet-Relying Party Registration Certificate is included. During presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17) and MUST NOT query the Register. During issuance the Wallet Unit MUST warn the User and MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p></td>
+<td><p>A format, signature, trust anchor or status check fails on the presented registration certificate, or no Wallet-Relying Party Registration Certificate is included. During presentation the Wallet Unit MUST warn the User ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_17). The Wallet Unit MUST NOT query the Register. During issuance the Wallet Unit MUST warn the User. The Wallet Unit MUST NOT request issuance ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22a). The Wallet Unit MUST NOT query the Register as a fallback ([<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md">EIDAS-ARF</a>] RPRC_22).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">WRONG_ENTITLEMENT</span></code></p></td>
@@ -1283,27 +1354,32 @@ The table below summarizes the codes.</p>
 </figure>
 </section>
 </section>
+</section>
 <section id="eudiw-metadata-retrieval-and-validation">
 <h3><span class="section-number">6.2.7. </span>EUDIW Metadata Retrieval and Validation<a class="headerlink" href="#eudiw-metadata-retrieval-and-validation" title="Link to this heading">¶</a></h3>
 <p>Within the EUDIW Trust Framework the metadata of a Wallet-Relying Party are obtained through the protocol flow and their authenticity is established through the Wallet-Relying Party Access Certificate.
 This applies to Credential Issuance and to Credential Presentation in the Remote Flow.
 In the Proximity Flow no separate metadata retrieval is performed: the Relying Party identity is established through the mdoc reader authentication (see <a class="reference internal" href="#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>).</p>
-<p><strong>Metadata Retrieval</strong></p>
+<section id="metadata-retrieval">
+<h4><span class="section-number">6.2.7.1. </span>Metadata Retrieval<a class="headerlink" href="#metadata-retrieval" title="Link to this heading">¶</a></h4>
 <p>The Wallet Unit obtains the metadata of the Wallet-Relying Party according to the interaction:</p>
 <ul class="simple">
 <li><p>During Credential Issuance, the Credential Issuer Metadata is obtained from the Credential Issuer well-known metadata endpoint, as defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>] (see <a class="reference internal" href="credential-issuer-endpoint.html#metadata-endpoints"><span class="std std-ref">Metadata Endpoints</span></a>).</p></li>
 <li><p>During Credential Presentation in the Remote Flow, the Relying Party metadata is carried in the Request Object of the authorization request, as defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] (see <a class="reference internal" href="remote-flow.html#request-object"><span class="std std-ref">Request Object</span></a>).</p></li>
 </ul>
-<p><strong>Metadata Validation</strong></p>
+</section>
+<section id="metadata-validation">
+<h4><span class="section-number">6.2.7.2. </span>Metadata Validation<a class="headerlink" href="#metadata-validation" title="Link to this heading">¶</a></h4>
 <p>The authenticity of the retrieved metadata is established through the Wallet-Relying Party Access Certificate.
 During Credential Issuance, the Credential Issuer Metadata is signed by the Attestation Provider as defined in Section 12.2.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>], providing the Wallet-Relying Party Access Certificate chain in the protected <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header of the JOSE signature.
 The first certificate MUST be the signing access certificate.
 The trust anchor MUST be excluded.</p>
-<p>The Wallet Unit MUST validate the certificate path and signature before using the payload.
+<p>The Wallet Unit MUST validate the certificate chain and signature before using the payload.
 The Wallet Unit MUST use that authenticated payload as the sole metadata source for the interaction, including its <code class="docutils literal notranslate"><span class="pre">issuer_info</span></code>, grants, reuse policy, and EDP.</p>
 <p>During Credential Presentation in the Remote Flow, the Request Object is signed by the Relying Party and provides the same <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header.
 In both cases the Wallet Unit validates the signature and the certificate chain as defined in <a class="reference internal" href="#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>.
 The Wallet Unit MUST use only the metadata whose signature is verified against the authenticated Wallet-Relying Party Access Certificate.</p>
+</section>
 </section>
 </section>
 <section id="trust-evaluation-in-the-national-trust-framework">
@@ -1414,32 +1490,37 @@ This mechanism is specific to the remote flow and does not apply to the proximit
 <section id="federation-trust-anchor-distribution">
 <h4><span class="section-number">6.3.2.1. </span>Federation Trust Anchor Distribution<a class="headerlink" href="#federation-trust-anchor-distribution" title="Link to this heading">¶</a></h4>
 <p>The configuration of the federation is published by the Federation Trust Anchor within its Entity Configuration, available at the well-known web path <strong>.well-known/openid-federation</strong>.
-All the Entities MUST obtain the federation configuration before entering the operational phase and MUST keep it up to date.
+All the Entities MUST obtain the federation configuration before entering the operational phase. All the Entities MUST keep the federation configuration up to date.
 The federation configuration contains the Federation Trust Anchor public keys for signature operations and the federation endpoints (see <a class="reference internal" href="infrastructure-trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>).</p>
 <p>The Federation Trust Anchor MUST distribute its Federation Public Keys through secure out-of-band mechanisms.
-When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration, and they MUST discard any key that does not match.</p>
+When a Federation Trust Anchor validation is required, all the Entities MUST compare the Federation Trust Anchor public keys with those obtained from the Federation Trust Anchor Entity Configuration. All the Entities MUST discard any key that does not match.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Within IT-Wallet the out-of-band channel is the contact channel established with the Entity during the registration process (see <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>).</p>
 </div>
 <p>Entities MAY additionally pin the Federation Trust Anchor public keys, in their local configuration.
-A pinned configuration MAY be used only while it is valid and MUST be updated when a key rotation occurs.</p>
+A pinned configuration MAY be used only while it is valid. A pinned configuration MUST be updated when a key rotation occurs.</p>
 <p>The Federation Trust Anchor Entity Configuration also provides the Signing Trust Anchors of the X.509 signing PKI, used to verify the Credentials anchored to this framework, and the National Wallet Trust Anchors used to verify Wallet Unit Attestations and Key Attestations.
 Their distribution and validation are defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a> and <a class="reference internal" href="#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>, respectively, as they concern the verification of an attestation and not the validation of the Federation Trust Anchor.</p>
 </section>
 <section id="federation-trust-anchor-validation">
 <h4><span class="section-number">6.3.2.2. </span>Federation Trust Anchor Validation<a class="headerlink" href="#federation-trust-anchor-validation" title="Link to this heading">¶</a></h4>
-<p><strong>Input</strong></p>
+<section id="federation-trust-anchor-validation-input">
+<h5><span class="section-number">6.3.2.2.1. </span>Federation Trust Anchor Validation: Input<a class="headerlink" href="#federation-trust-anchor-validation-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The Federation Entity Identifier of the Federation Trust Anchor.</p></li>
 <li><p>The Federation Trust Anchor public keys obtained out-of-band, or a pinned configuration.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="federation-trust-anchor-validation-outcome">
+<h5><span class="section-number">6.3.2.2.2. </span>Federation Trust Anchor Validation: Outcome<a class="headerlink" href="#federation-trust-anchor-validation-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The validated set of Federation Trust Anchor Federation Public Keys.</p></li>
 <li><p>The federation configuration, including the federation endpoints.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="federation-trust-anchor-validation-process">
+<h5><span class="section-number">6.3.2.2.3. </span>Federation Trust Anchor Validation: Process<a class="headerlink" href="#federation-trust-anchor-validation-process" title="Link to this heading">¶</a></h5>
 <p>The verification of the Entity Configuration is the Entity Statement validation defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 3.2, applied to the self-issued Entity Configuration of the Federation Trust Anchor and completed, within IT-Wallet, with the out-of-band comparison of the keys.</p>
 <ol class="arabic simple">
 <li><p>Fetch the Entity Configuration from the well-known endpoint of the Federation Trust Anchor, served with the media type <code class="docutils literal notranslate"><span class="pre">application/entity-statement+jwt</span></code>.</p></li>
@@ -1450,6 +1531,7 @@ The supported signature algorithms are defined in <a class="reference internal" 
 <li><p>Extract the federation endpoints from the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata, and the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> claim (see <a class="reference internal" href="infrastructure-trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>).</p></li>
 </ol>
 <p>If any step fails, the federation configuration MUST NOT be used.</p>
+</section>
 </section>
 <section id="federation-trust-anchor-key-rotation-and-historical-verification">
 <h4><span class="section-number">6.3.2.3. </span>Federation Trust Anchor Key Rotation and Historical Verification<a class="headerlink" href="#federation-trust-anchor-key-rotation-and-historical-verification" title="Link to this heading">¶</a></h4>
@@ -1491,16 +1573,21 @@ In this case the real-time revocation check is not available, and the freshness 
 Independently of that validity, for the purpose of the revocation status of the Entities a Trust Chain built more than 24 hours before the moment of the verification SHOULD NOT be considered valid.
 When the revocation status of an Entity requires to be relied upon and a real-time online check is not available, a Trust Chain older than 24 hours SHOULD be renewed before the interaction can proceed.
 This 24 hours limit applies to the age of the Trust Chain, computed from its construction, and is independent of its expiration date.</p>
-<p><strong>Input</strong></p>
+<section id="federation-trust-chain-input">
+<h5><span class="section-number">6.3.3.1.1. </span>Federation Trust Chain: Input<a class="headerlink" href="#federation-trust-chain-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The Federation Entity Identifier of the subject, or a statically provided Trust Chain.</p></li>
 <li><p>The validated Federation Trust Anchor Federation Public Keys (see <a class="reference internal" href="#federation-trust-anchor-distribution"><span class="std std-ref">Federation Trust Anchor Distribution</span></a>).</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="federation-trust-chain-outcome">
+<h5><span class="section-number">6.3.3.1.2. </span>Federation Trust Chain: Outcome<a class="headerlink" href="#federation-trust-chain-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>A validated Trust Chain, that is the ordered set of verified statements, with its expiration date.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="federation-trust-chain-process">
+<h5><span class="section-number">6.3.3.1.3. </span>Federation Trust Chain: Process<a class="headerlink" href="#federation-trust-chain-process" title="Link to this heading">¶</a></h5>
 <p>The steps below verify a Trust Chain according to <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, with the pointer to the relevant part of the specification for each step:</p>
 <ol class="arabic simple">
 <li><p>Obtain the Entity Configuration of the subject, or take the first element of the statically provided Trust Chain.</p></li>
@@ -1517,7 +1604,8 @@ Each Subordinate Statement is verified with the Federation Entity Keys of its is
 In particular, verify that the metadata Entity Types published by the subject are within the <code class="docutils literal notranslate"><span class="pre">allowed_entity_types</span></code>, considering that the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> Entity Type is always allowed, and that the number of Intermediates does not exceed the <code class="docutils literal notranslate"><span class="pre">max_path_length</span></code> set by the superiors.</p></li>
 <li><p>Compute the Trust Chain expiration as the earliest <code class="docutils literal notranslate"><span class="pre">exp</span></code> value among the statements.</p></li>
 </ol>
-<p>If any verification fails, the Trust Chain MUST be considered invalid and the subject MUST NOT be trusted on the basis of it.</p>
+<p>If any verification fails, the Trust Chain MUST be considered invalid. The subject MUST NOT be trusted on the basis of that Trust Chain.</p>
+</section>
 </section>
 <section id="x-509-certificate-chain-validation">
 <h4><span class="section-number">6.3.3.2. </span>X.509 Certificate Chain Validation<a class="headerlink" href="#x-509-certificate-chain-validation" title="Link to this heading">¶</a></h4>
@@ -1526,9 +1614,9 @@ For artifacts in JOSE format the chain is carried in the <code class="docutils l
 For Credentials in mdoc format the chain is carried in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> unprotected header (element 33) of the Mobile Security Object, as defined in <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9360.html"><strong>RFC 9360</strong></a> and in <a class="reference internal" href="credential-data-model.html#mobile-security-object"><span class="std std-ref">Mobile Security Object</span></a>.
 The chain MUST start with the end-entity certificate corresponding to the private key used to sign the artifact or Attestation, followed by any intermediate certificates in issuer order. Each subsequent certificate MUST certify the preceding certificate.
 It MUST NOT contain the Signing Trust Anchor certificate, which is distributed as defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.</p>
-<p>The certification path validation is the standard X.509 path validation defined in <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, with the revocation status checking defined in <span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.
+<p>The certificate chain validation is the standard X.509 path validation defined in <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, with the revocation status checking defined in <span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.
 The certificate lifecycle and the revocation mechanisms, including the CRL, are defined in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.
-This is the same certification path validation used in the EUDIW Trust Framework (see <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>); the only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.
+This is the same certificate chain validation used in the EUDIW Trust Framework (see <a class="reference internal" href="#x509-certificate-chain-validation-algorithm"><span class="std std-ref">X509 Certificate Chain Validation Algorithm</span></a>). The only difference is the origin of the trust anchor and the additional extraction of the Federation Entity Identifier.
 In this section, for the National Trust Framework, the algorithm details are not redefined.</p>
 <p>Within the National Trust Framework the following applies.</p>
 <blockquote>
@@ -1545,19 +1633,24 @@ This variant only produces the identifier and it does not by itself establish wh
 <p class="admonition-title">Note</p>
 <p>The issuance of these X.509 Certificates and the operation of the signing PKI are defined in the onboarding procedure and are out of the scope of this section (see <a class="reference internal" href="onboarding-system.html#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>).</p>
 </div>
-<p><strong>Input</strong></p>
+<section id="x-509-certificate-chain-validation-input">
+<h5><span class="section-number">6.3.3.2.1. </span>X.509 Certificate Chain Validation: Input<a class="headerlink" href="#x-509-certificate-chain-validation-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The certificate chain extracted from the artifact header, that is the Document Signer certificate and any intermediate certificate.</p></li>
 <li><p>The applicable Signing Trust Anchor certificate, obtained as defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="x-509-certificate-chain-validation-outcome">
+<h5><span class="section-number">6.3.3.2.2. </span>X.509 Certificate Chain Validation: Outcome<a class="headerlink" href="#x-509-certificate-chain-validation-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The validated end-entity certificate.</p></li>
 <li><p>The OpenID Federation Entity Identifier of the signer, extracted from the <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> URI, to be matched against the expected issuer by the calling process.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="x-509-certificate-chain-validation-process">
+<h5><span class="section-number">6.3.3.2.3. </span>X.509 Certificate Chain Validation: Process<a class="headerlink" href="#x-509-certificate-chain-validation-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
-<li><p>Build the certification path from the end-entity certificate to the Signing Trust Anchor certificate.</p></li>
+<li><p>Build the certificate chain from the end-entity certificate to the Signing Trust Anchor certificate.</p></li>
 <li><p>Execute the path validation defined in <span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-6"><strong>RFC 5280#section-6</strong></a>, using the Signing Trust Anchor as the trust anchor input of the algorithm.</p></li>
 <li><p>Verify the revocation status of the certificates in the path, according to <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> and <span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6960.html"><strong>RFC 6960</strong></a>.</p></li>
 <li><p>Extract the OpenID Federation Entity Identifier from the <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> URI of the end-entity certificate, and return it to the calling process for the match against the expected issuer.</p></li>
@@ -1565,11 +1658,12 @@ This variant only produces the identifier and it does not by itself establish wh
 <p>If any step fails, the artifact signature MUST NOT be verified with the presented certificate chain.</p>
 </section>
 </section>
+</section>
 <section id="signing-trust-anchor-distribution-and-validation">
 <h3><span class="section-number">6.3.4. </span>Signing Trust Anchor Distribution and Validation<a class="headerlink" href="#signing-trust-anchor-distribution-and-validation" title="Link to this heading">¶</a></h3>
 <p>This process provides and validates the root of trust for the verification of the issuer data authentication of an attestation.</p>
 <p>The Signing Trust Anchor is the root of trust of the X.509 PKI used to sign the Digital Credentials whose Rulebook anchors them to the National Trust Framework.</p>
-<p>It is distinct from the Federation Trust Anchor of <a class="reference internal" href="#federation-trust-anchor-distribution"><span class="std std-ref">Federation Trust Anchor Distribution</span></a> as the Federation Trust Anchor is the root of the federation statements, while a Signing Trust Anchor is the root of a certification path that validates the signature of an attestation.
+<p>It is distinct from the Federation Trust Anchor of <a class="reference internal" href="#federation-trust-anchor-distribution"><span class="std std-ref">Federation Trust Anchor Distribution</span></a> as the Federation Trust Anchor is the root of the federation statements, while a Signing Trust Anchor is the root of a certificate chain that validates the signature of an attestation.
 The Federation Trust Anchor and a Signing Trust Anchor MAY be operated by the same organization, but they are different trust relationships, with different lifecycles and different revocation channels.</p>
 <p>There MAY be more than one Signing Trust Anchor.
 Each Credential Issuer that signs Credentials in this framework uses a Signing Trust Anchor as the root of its Document Signer certificates.
@@ -1580,7 +1674,7 @@ Different Credential Issuers MAY rely on different Signing Trust Anchors.</p>
 Each Signing Trust Anchor certificate is provided in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> parameter of a dedicated JWK, distinct from the Federation Entity Keys used to sign the federation statements.
 This distribution mechanism is an IT-Wallet specific implementation and is not defined by <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p>
 <p>Entities MAY pin a Signing Trust Anchor in their local configuration.
-A pinned Signing Trust Anchor MAY be used only while it is valid and MUST be updated when the Signing Trust Anchor is rotated.</p>
+A pinned Signing Trust Anchor MAY be used only while it is valid. A pinned Signing Trust Anchor MUST be updated when the Signing Trust Anchor is rotated.</p>
 <p>The result of this distribution is, for each Trust Evaluator, the set of validated Signing Trust Anchor certificates, each associated with the Federation Entity Identifier of the Credential Issuers that rely on it.
 This set is the trust anchor material consumed by the validation procedure below.</p>
 <div class="admonition note">
@@ -1596,18 +1690,23 @@ The key MUST be resolved within the final metadata of the issuer, obtained throu
 The artifact MAY carry the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> JOSE header to allow the validation without a new discovery process.</p>
 <p>For Credentials in mdoc format the Mobile Security Object carries the Document Signer certificate in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header.
 The signature is verified with that certificate.
-The Signing Trust Anchor of the issuer is validated by extracting the OpenID Federation Entity Identifier from the <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> URI and by validating the certification path against the applicable Signing Trust Anchor obtained as defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.</p>
-<p><strong>Input</strong></p>
+The Signing Trust Anchor of the issuer is validated by extracting the OpenID Federation Entity Identifier from the <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> URI and by validating the certificate chain against the applicable Signing Trust Anchor obtained as defined in <a class="reference internal" href="#signing-trust-anchor-distribution"><span class="std std-ref">Signing Trust Anchor Distribution</span></a>.</p>
+<section id="signing-trust-anchor-validation-procedure-input">
+<h5><span class="section-number">6.3.4.2.1. </span>Signing Trust Anchor Validation Procedure: Input<a class="headerlink" href="#signing-trust-anchor-validation-procedure-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The signed attestation.</p></li>
 <li><p>The validated Federation Trust Anchor configuration and the applicable Signing Trust Anchor.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="signing-trust-anchor-validation-procedure-outcome">
+<h5><span class="section-number">6.3.4.2.2. </span>Signing Trust Anchor Validation Procedure: Outcome<a class="headerlink" href="#signing-trust-anchor-validation-procedure-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The validated trust anchor and the signing key or certificate for the attestation.</p></li>
 <li><p>The confirmation that the signing key belongs to the attestation issuer.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="signing-trust-anchor-validation-procedure-process">
+<h5><span class="section-number">6.3.4.2.3. </span>Signing Trust Anchor Validation Procedure: Process<a class="headerlink" href="#signing-trust-anchor-validation-procedure-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>For JOSE artifacts, derive the issuer final metadata from the Federation Trust Chain (see <a class="reference internal" href="#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a> and <a class="reference internal" href="#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>) and select the key referenced by the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header.</p></li>
 <li><p>For mdoc artifacts, validate the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> as defined in <a class="reference internal" href="#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a> and verify that the OpenID Federation Entity Identifier in the <code class="docutils literal notranslate"><span class="pre">subjectAltName</span></code> URI corresponds to the expected issuer.</p></li>
@@ -1618,8 +1717,9 @@ The Signing Trust Anchor of the issuer is validated by extracting the OpenID Fed
 <p>When required, the Federation Historical Keys endpoint and the published CRLs MUST be used to ensure that the attestation was valid at the time of issuance or presentation (see <a class="reference internal" href="#federation-trust-anchor-key-rotation-and-historical-verification"><span class="std std-ref">Federation Trust Anchor Key Rotation and Historical Verification</span></a> for more details).</p>
 </div>
 <p>The lifecycle of the signing certificates MUST be kept aligned with the federation configuration set of the issuer keys.
-When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated, and the related certificate MUST be revoked accordingly.
-Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail, and therefore a key revoked in either of the two views MUST be considered revoked.</p>
+When a signing key is rotated or is no longer valid, the corresponding JWK MUST be removed from the Entity Configuration or rotated. The related certificate MUST be revoked accordingly.
+Within IT-Wallet, when the federation configuration and the certificate status diverge, the most restrictive state MUST prevail. A key revoked in either of the two views MUST be considered revoked.</p>
+</section>
 </section>
 </section>
 <section id="wallet-trust-anchor-distribution-and-validation">
@@ -1629,18 +1729,23 @@ Within IT-Wallet, when the federation configuration and the certificate status d
 <section id="wallet-trust-anchor-validation">
 <h4><span class="section-number">6.3.5.1. </span>Wallet Trust Anchor Validation<a class="headerlink" href="#wallet-trust-anchor-validation" title="Link to this heading">¶</a></h4>
 <p>For a Wallet Instance Attestation or Key Attestation that carries an X.509 signing certificate chain, the Trust Evaluator MUST validate the chain against the applicable National Wallet Trust Anchor before accepting the attestation signature.</p>
-<p><strong>Input</strong></p>
+<section id="wallet-trust-anchor-validation-input">
+<h5><span class="section-number">6.3.5.1.1. </span>Wallet Trust Anchor Validation: Input<a class="headerlink" href="#wallet-trust-anchor-validation-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The signed Wallet Instance Attestation or Key Attestation and its signing certificate chain.</p></li>
 <li><p>The validated Trust Chain of the Wallet Provider.</p></li>
 <li><p>The applicable National Wallet Trust Anchor obtained as defined in <a class="reference internal" href="#wallet-trust-anchor-distribution"><span class="std std-ref">Wallet Trust Anchor Distribution</span></a>.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="wallet-trust-anchor-validation-outcome">
+<h5><span class="section-number">6.3.5.1.2. </span>Wallet Trust Anchor Validation: Outcome<a class="headerlink" href="#wallet-trust-anchor-validation-outcome" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The validated Wallet Provider signing certificate and attestation.</p></li>
 <li><p>Confirmation that the signing certificate belongs to the Wallet Provider identified by the validated Trust Chain.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="wallet-trust-anchor-validation-process">
+<h5><span class="section-number">6.3.5.1.3. </span>Wallet Trust Anchor Validation: Process<a class="headerlink" href="#wallet-trust-anchor-validation-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Validate the Trust Chain of the Wallet Provider and derive its final metadata as defined in <a class="reference internal" href="#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a> and <a class="reference internal" href="#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>.</p></li>
 <li><p>Extract the signing certificate chain from the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> JOSE header of the Wallet Instance Attestation or Key Attestation. The National Wallet Trust Anchor MUST NOT be included in this chain.</p></li>
@@ -1651,12 +1756,13 @@ Within IT-Wallet, when the federation configuration and the certificate status d
 </ol>
 <p>If any step fails, the Wallet Instance Attestation or Key Attestation MUST NOT be considered issued by a trusted Wallet Provider.</p>
 </section>
+</section>
 <section id="wallet-trust-anchor-distribution">
 <h4><span class="section-number">6.3.5.2. </span>Wallet Trust Anchor Distribution<a class="headerlink" href="#wallet-trust-anchor-distribution" title="Link to this heading">¶</a></h4>
 <p>The National Wallet Trust Anchor MUST be distributed through the Federation Trust Anchor Entity Configuration. It MUST be represented by a dedicated JWK whose <code class="docutils literal notranslate"><span class="pre">x5c</span></code> parameter contains the National Wallet Trust Anchor certificate. The dedicated JWK MUST be distinct from the Federation Entity Keys used to sign federation statements.</p>
 <p>The Trust Evaluator MUST validate the Federation Trust Anchor Entity Configuration and the Wallet Provider's Trust Chain before accepting the National Wallet Trust Anchor. The resulting configuration MUST associate the National Wallet Trust Anchor with the Wallet Provider's Federation Entity Identifier.</p>
-<p>Entities MAY pin the National Wallet Trust Anchor in their local configuration. A pinned National Wallet Trust Anchor MAY be used only while it is valid and MUST be updated when the National Wallet Trust Anchor is rotated.</p>
-<p>When a Wallet Provider operates in both the National Trust Framework and the EUDIW Trust Framework, the National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission and published in the Wallet Providers LoTE under the Wallet Provider's <code class="docutils literal notranslate"><span class="pre">ServiceDigitalIdentity</span></code>.</p>
+<p>Entities MAY pin the National Wallet Trust Anchor in their local configuration. A pinned National Wallet Trust Anchor MAY be used only while it is valid. A pinned National Wallet Trust Anchor MUST be updated when the National Wallet Trust Anchor is rotated.</p>
+<p>When a Wallet Provider operates in both Trust Frameworks, the National Wallet Trust Anchor is the same certificate as the Trust Anchor notified to the European Commission, as specified in <a class="reference internal" href="infrastructure-trust.html#revocation-trust-anchors"><span class="std std-ref">Revocation Trust Anchors</span></a>.</p>
 </section>
 </section>
 <section id="authentication-trust-anchor-distribution">
@@ -1685,17 +1791,22 @@ Three procedures are defined:</p>
 The Trust Evaluated Party authenticates itself in a given interaction by signing the protocol artifact of that interaction with a private key whose public part is published in its final metadata, obtained by resolving the Trust Chain.
 The <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter, as defined in <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>, references a key contained in the final metadata of the Trust Evaluated Party.
 The full set of header parameters of each signed artifact is defined in the corresponding protocol section.</p>
-<p><strong>Input</strong></p>
+<section id="federation-entity-authentication-input">
+<h5><span class="section-number">6.3.7.1.1. </span>Federation Entity Authentication: Input<a class="headerlink" href="#federation-entity-authentication-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The signed protocol artifact.</p></li>
 <li><p>The Federation Entity Identifier claimed by the Trust Evaluated Party.</p></li>
 <li><p>A Trust Chain about the Trust Evaluated Party, provided statically or built through discovery.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="federation-entity-authentication-outcome">
+<h5><span class="section-number">6.3.7.1.2. </span>Federation Entity Authentication: Outcome<a class="headerlink" href="#federation-entity-authentication-outcome" title="Link to this heading">¶</a></h5>
 <p>The Trust Evaluator MUST output <code class="docutils literal notranslate"><span class="pre">AUTHENTICATED</span></code> or <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code>.
-In the second case the Trust Evaluated Party MUST NOT be considered authenticated and the interaction MUST NOT continue.
+In the second case the Trust Evaluated Party MUST NOT be considered authenticated. The interaction MUST NOT continue.
 The User notification and the prohibition of the cross scheme retry are defined in <a class="reference internal" href="#failure-handling"><span class="std std-ref">Failure Handling</span></a>.</p>
-<p><strong>Process</strong></p>
+</section>
+<section id="federation-entity-authentication-process">
+<h5><span class="section-number">6.3.7.1.3. </span>Federation Entity Authentication: Process<a class="headerlink" href="#federation-entity-authentication-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Validate the Trust Chain about the Trust Evaluated Party and derive its final metadata (see <a class="reference internal" href="#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a> and <a class="reference internal" href="#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>).</p></li>
 <li><p>Verify that the entity identifier carried by the artifact, for example the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> or the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim, matches the subject of the Trust Chain.</p></li>
@@ -1703,6 +1814,7 @@ The User notification and the prohibition of the cross scheme retry are defined 
 <li><p>Verify the artifact signature with the selected key.</p></li>
 </ol>
 <p>The successful verification provides both the authentication of the Trust Evaluated Party and the proof of possession of its private key.</p>
+</section>
 </section>
 <section id="wallet-unit-authentication">
 <h4><span class="section-number">6.3.7.2. </span>Wallet Unit Authentication<a class="headerlink" href="#wallet-unit-authentication" title="Link to this heading">¶</a></h4>
@@ -1716,15 +1828,20 @@ To establish trust in the Wallet Unit, the Trust Evaluator MUST:</p>
 <li><p>Establish trust in the Wallet Provider that issued the Wallet Instance Attestation.</p></li>
 <li><p>Validate the Wallet Instance Attestation as defined in <a class="reference internal" href="#wallet-trust-anchor-validation"><span class="std std-ref">Wallet Trust Anchor Validation</span></a> using the National Wallet Trust Anchor.</p></li>
 </ul>
-<p><strong>Input</strong></p>
+<section id="wallet-unit-authentication-input">
+<h5><span class="section-number">6.3.7.2.1. </span>Wallet Unit Authentication: Input<a class="headerlink" href="#wallet-unit-authentication-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The Wallet Instance Attestation presented by the Wallet Unit.</p></li>
 <li><p>The proof of possession of the key attested in the Wallet Instance Attestation.</p></li>
 <li><p>A Trust Chain about the Wallet Provider.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="wallet-unit-authentication-outcome">
+<h5><span class="section-number">6.3.7.2.2. </span>Wallet Unit Authentication: Outcome<a class="headerlink" href="#wallet-unit-authentication-outcome" title="Link to this heading">¶</a></h5>
 <p>The Trust Evaluator MUST output <code class="docutils literal notranslate"><span class="pre">AUTHENTICATED</span></code> or <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code> for the Wallet Unit.</p>
-<p><strong>Process</strong></p>
+</section>
+<section id="wallet-unit-authentication-process">
+<h5><span class="section-number">6.3.7.2.3. </span>Wallet Unit Authentication: Process<a class="headerlink" href="#wallet-unit-authentication-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Validate the Trust Chain about the Wallet Provider that issued the Wallet Instance Attestation and derive its final metadata (see <a class="reference internal" href="#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a> and <a class="reference internal" href="#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>).</p></li>
 <li><p>Validate the Wallet Instance Attestation as defined in <a class="reference internal" href="#wallet-trust-anchor-validation"><span class="std std-ref">Wallet Trust Anchor Validation</span></a> using the National Wallet Trust Anchor.</p></li>
@@ -1732,28 +1849,35 @@ To establish trust in the Wallet Unit, the Trust Evaluator MUST:</p>
 <li><p>Verify the proof of possession of the attested key, according to the protocol in use.</p></li>
 </ol>
 </section>
+</section>
 <section id="relying-party-proximity-authentication">
 <h4><span class="section-number">6.3.7.3. </span>Relying Party Proximity Authentication<a class="headerlink" href="#relying-party-proximity-authentication" title="Link to this heading">¶</a></h4>
 <p>In the Proximity Flow the Relying Party is authenticated through the mdoc reader authentication defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].
 The Relying Party signs each <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code> with the private key of its National authentication certificate and provides the certificate chain in the unprotected <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header (label <code class="docutils literal notranslate"><span class="pre">33</span></code>) of each <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code>. The end-entity certificate is first and the path excludes the Authentication Trust Anchor.
-The certification path terminates in an Authentication Trust Anchor distributed as defined in <a class="reference internal" href="#authentication-trust-anchor-distribution"><span class="std std-ref">Authentication Trust Anchor Distribution</span></a>.</p>
-<p><strong>Input</strong></p>
+The certificate chain terminates in an Authentication Trust Anchor distributed as defined in <a class="reference internal" href="#authentication-trust-anchor-distribution"><span class="std std-ref">Authentication Trust Anchor Distribution</span></a>.</p>
+<section id="relying-party-proximity-authentication-input">
+<h5><span class="section-number">6.3.7.3.1. </span>Relying Party Proximity Authentication: Input<a class="headerlink" href="#relying-party-proximity-authentication-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>Each <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> signed by the Relying Party, with the authentication certificate chain in the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header.</p></li>
 <li><p>The applicable Authentication Trust Anchor.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="relying-party-proximity-authentication-outcome">
+<h5><span class="section-number">6.3.7.3.2. </span>Relying Party Proximity Authentication: Outcome<a class="headerlink" href="#relying-party-proximity-authentication-outcome" title="Link to this heading">¶</a></h5>
 <p>The Trust Evaluator MUST output <code class="docutils literal notranslate"><span class="pre">AUTHENTICATED</span></code> or <code class="docutils literal notranslate"><span class="pre">NON_AUTHENTICATED</span></code>.
-In the second case the Relying Party MUST NOT be considered authenticated and the interaction MUST NOT continue.</p>
-<p><strong>Process</strong></p>
+In the second case the Relying Party MUST NOT be considered authenticated. The interaction MUST NOT continue.</p>
+</section>
+<section id="relying-party-proximity-authentication-process">
+<h5><span class="section-number">6.3.7.3.3. </span>Relying Party Proximity Authentication: Process<a class="headerlink" href="#relying-party-proximity-authentication-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Extract the certificate chain from the <code class="docutils literal notranslate"><span class="pre">x5chain</span></code> header of every <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> and require the National authentication certificate as its end entity.</p></li>
-<li><p>Validate the certification path against the applicable Authentication Trust Anchor as defined in <a class="reference internal" href="#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a>.</p></li>
+<li><p>Validate the certificate chain against the applicable Authentication Trust Anchor as defined in <a class="reference internal" href="#x-509-certificate-chain-validation"><span class="std std-ref">X.509 Certificate Chain Validation</span></a>.</p></li>
 <li><p>Verify each <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> signature over its <code class="docutils literal notranslate"><span class="pre">ReaderAuthentication</span></code> data with the validated authentication certificate.</p></li>
 </ol>
 <p>The successful verification provides both the authentication of the Relying Party and the proof of possession of the private key of its authentication certificate.
 This National authentication result selects the National Trust Framework path before authorization, as specified in <a class="reference internal" href="#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.
 A failure of this result is handled as specified in <a class="reference internal" href="#failure-handling"><span class="std std-ref">Failure Handling</span></a>.</p>
+</section>
 </section>
 </section>
 <section id="authorization">
@@ -1771,7 +1895,7 @@ It applies to all the Wallet-Relying Parties, that is Credential Issuers and Rel
 <li><p>Overasking Check, which verifies at presentation that a Relying Party requests only the Digital Credentials and the attributes it is authorized to request.
 It applies to Relying Parties.</p></li>
 </ol>
-<p>The role authorization common to both phases is performed by the Entitlement Check; the phase specific checks are the Credential type check at issuance, inside the Entitlement Check, and the attribute level Overasking Check at presentation.</p>
+<p>The role authorization common to both phases is performed by the Entitlement Check. The phase specific checks are the Credential type check at issuance, inside the Entitlement Check, and the attribute level Overasking Check at presentation.</p>
 <p>The Trust Evaluator MUST perform the Authorization process only after the Trust Evaluated Party has been successfully authenticated.
 In National direct proximity, the Wallet Unit MUST validate the Trust Mark and bind the National authentication-certificate identity, the Trust Mark subject and official identifiers, and an identifier in <code class="docutils literal notranslate"><span class="pre">euWrpRegistrarInfo.identifier</span></code> to the same direct Relying Party.
 The Wallet Unit MUST validate the entitlement, the exact case-sensitive overasking scope, and the Trust Mark transparency claims.
@@ -1779,16 +1903,21 @@ National proximity MUST exclude EUDIW evidence and fallback.
 National proximity MUST NOT introduce National intermediated-proximity transport.</p>
 <section id="trust-mark-validation">
 <h4><span class="section-number">6.3.8.1. </span>Trust Mark Validation<a class="headerlink" href="#trust-mark-validation" title="Link to this heading">¶</a></h4>
-<p><strong>Input</strong></p>
+<section id="trust-mark-validation-input">
+<h5><span class="section-number">6.3.8.1.1. </span>Trust Mark Validation: Input<a class="headerlink" href="#trust-mark-validation-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The <em>registration-entity</em> Trust Mark, obtained in the Remote Flow from the <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> claim of the Entity Configuration or from the Federation Trust Mark endpoint (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 8.6), or provided by value in the <code class="docutils literal notranslate"><span class="pre">requestInfo.euWrprc</span></code> CBOR byte string of every ISO <code class="docutils literal notranslate"><span class="pre">ItemsRequest</span></code> in the Proximity Flow as the UTF-8 bytes of its compact signed JWT.</p></li>
 <li><p>The validated Federation Trust Anchor configuration.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="trust-mark-validation-outcome">
+<h5><span class="section-number">6.3.8.1.2. </span>Trust Mark Validation: Outcome<a class="headerlink" href="#trust-mark-validation-outcome" title="Link to this heading">¶</a></h5>
 <p>The Trust Evaluator MUST output <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_VALID</span></code> or <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_INVALID</span></code>.
 A <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_INVALID</span></code> outcome on the registration Trust Mark means that the entity is not authorized to operate.
-In this case the Trust Evaluator MUST treat the entity as not authorized and MUST NOT proceed with the Entitlement Check.</p>
-<p><strong>Process</strong></p>
+In this case the Trust Evaluator MUST treat the entity as not authorized. The Trust Evaluator MUST NOT proceed with the Entitlement Check.</p>
+</section>
+<section id="trust-mark-validation-process">
+<h5><span class="section-number">6.3.8.1.3. </span>Trust Mark Validation: Process<a class="headerlink" href="#trust-mark-validation-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Verify that the issuer of the Trust Mark is authorized for that <code class="docutils literal notranslate"><span class="pre">trust_mark_type</span></code>, according to the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> claim of the Federation Trust Anchor Entity Configuration.
 The registration Trust Mark, that is a Trust Mark whose <code class="docutils literal notranslate"><span class="pre">trust_mark_type</span></code> has the <code class="docutils literal notranslate"><span class="pre">registration-entity</span></code> purpose, is subject to two additional checks.
@@ -1798,37 +1927,49 @@ The Trust Mark Validation verifies that the <code class="docutils literal notran
 <li><p>When online, check the Trust Mark status through the Federation Trust Mark Status endpoint (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 8.4).</p></li>
 </ol>
 </section>
+</section>
 <section id="entitlement-check">
 <h4><span class="section-number">6.3.8.2. </span>Entitlement Check<a class="headerlink" href="#entitlement-check" title="Link to this heading">¶</a></h4>
 <p>The entitlements define what the entity is authorized to do, such as the Credential types it may issue or the attributes it may request.
 Within IT-Wallet these authorization data are carried in the registration Trust Mark, in the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code>, <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> and <code class="docutils literal notranslate"><span class="pre">credentials</span></code> claims defined in <a class="reference internal" href="infrastructure-trust.html#trust-mark-types-and-schema"><span class="std std-ref">Trust Mark Types and Schema</span></a>, and MUST NOT be derived from the metadata alone.</p>
-<p><strong>Input</strong></p>
+<section id="entitlement-check-input">
+<h5><span class="section-number">6.3.8.2.1. </span>Entitlement Check: Input<a class="headerlink" href="#entitlement-check-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The validated Trust Marks of the Trust Evaluated Party.</p></li>
 <li><p>The role of the Trust Evaluated Party and the action expected in the current interaction.
 At issuance, the type of Credential Issuer and the Credential types it declares to issue.
 At presentation, the Digital Credentials and the attributes requested by the Relying Party.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="entitlement-check-outcome">
+<h5><span class="section-number">6.3.8.2.2. </span>Entitlement Check: Outcome<a class="headerlink" href="#entitlement-check-outcome" title="Link to this heading">¶</a></h5>
 <p>The Trust Evaluator MUST output <code class="docutils literal notranslate"><span class="pre">ENTITLEMENT_VALID</span></code> or <code class="docutils literal notranslate"><span class="pre">WRONG_ENTITLEMENT</span></code>.</p>
-<p><strong>Process</strong></p>
+</section>
+<section id="entitlement-check-process">
+<h5><span class="section-number">6.3.8.2.3. </span>Entitlement Check: Process<a class="headerlink" href="#entitlement-check-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Extract the <code class="docutils literal notranslate"><span class="pre">entitlements</span></code> from the validated Trust Marks and verify that they match the role expected in the current interaction, for example that an entity acting as Credential Issuer holds an issuing entitlement of <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf">ETSI TS 119 475</a> Annex A.2.</p></li>
 <li><p>During issuance, verify that the offered Credential type is present in the <code class="docutils literal notranslate"><span class="pre">provides_attestations</span></code> of the Trust Mark, comparing the <code class="docutils literal notranslate"><span class="pre">format</span></code> and the <code class="docutils literal notranslate"><span class="pre">meta</span></code> of the offered Credential against the authorized entries.</p></li>
 <li><p>During presentation, the attribute level check against the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> of the Trust Mark is performed by the Overasking Check below.</p></li>
 </ol>
 </section>
+</section>
 <section id="overasking-check">
 <h4><span class="section-number">6.3.8.3. </span>Overasking Check<a class="headerlink" href="#overasking-check" title="Link to this heading">¶</a></h4>
-<p><strong>Input</strong></p>
+<section id="overasking-check-input">
+<h5><span class="section-number">6.3.8.3.1. </span>Overasking Check: Input<a class="headerlink" href="#overasking-check-input" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>The presentation request.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">credentials</span></code> carried in the validated Trust Mark, that is the Credential queries the Relying Party is authorized to request.</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="overasking-check-outcome">
+<h5><span class="section-number">6.3.8.3.2. </span>Overasking Check: Outcome<a class="headerlink" href="#overasking-check-outcome" title="Link to this heading">¶</a></h5>
 <p>The Wallet Unit MUST output <code class="docutils literal notranslate"><span class="pre">VERIFICATION_PASSED</span></code> or <code class="docutils literal notranslate"><span class="pre">OVERASKING_DETECTED</span></code>, identifying the unregistered attributes or Digital Credentials.
-On <code class="docutils literal notranslate"><span class="pre">OVERASKING_DETECTED</span></code> the Wallet Unit MUST NOT disclose the attributes that are not authorized and MUST inform the User of the detected overasking.</p>
-<p><strong>Process</strong></p>
+On <code class="docutils literal notranslate"><span class="pre">OVERASKING_DETECTED</span></code> the Wallet Unit MUST NOT disclose the attributes that are not authorized. The Wallet Unit MUST inform the User of the detected overasking.</p>
+</section>
+<section id="overasking-check-process">
+<h5><span class="section-number">6.3.8.3.3. </span>Overasking Check: Process<a class="headerlink" href="#overasking-check-process" title="Link to this heading">¶</a></h5>
 <ol class="arabic simple">
 <li><p>Extract the requested Digital Credentials and attributes from the request, from the DCQL query defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> in the remote flow, or from the requested namespaces in the proximity flow.</p></li>
 <li><p>For each requested Credential, select in the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> of the Trust Mark the authorized entry with the same <code class="docutils literal notranslate"><span class="pre">format</span></code> and <code class="docutils literal notranslate"><span class="pre">meta</span></code>, for example the same <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> or <code class="docutils literal notranslate"><span class="pre">doctype_value</span></code>.</p></li>
@@ -1837,6 +1978,7 @@ If the request contains a Credential or an attribute with no corresponding autho
 <li><p>Matching MUST be exact and case sensitive.</p></li>
 </ol>
 </section>
+</section>
 <section id="user-transparency">
 <h4><span class="section-number">6.3.8.4. </span>User Transparency<a class="headerlink" href="#user-transparency" title="Link to this heading">¶</a></h4>
 <p>Beyond the automated checks above, the registration Trust Mark provides claims that are not evaluated as a decision rule but are presented to the User for transparency, to support the decision to proceed with the interaction before any attribute is disclosed.
@@ -1844,12 +1986,12 @@ Before the disclosure, the Wallet Unit MUST inform the User of the identity of t
 This is consistent with the User approval that concludes the presentation, as defined in <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.</p>
 <p>The transparency claims carried in the Trust Mark are the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">organization_name</span></code>, the legal name of the entity;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">srv_description</span></code>, the description of the service provided by the entity;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>, the data processing purposes, for a Relying Party that requests Credentials;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">privacy_policy</span></code>, the URL of the privacy policy, for a Relying Party that requests Credentials;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">supervisory_authority</span></code>, the Data Protection Authority to which the User can report anomalies;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">public_body</span></code>, whether the entity is a public sector body;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">organization_name</span></code>, the legal name of the entity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">srv_description</span></code>, the description of the service provided by the entity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>, the data processing purposes, for a Relying Party that requests Credentials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">privacy_policy</span></code>, the URL of the privacy policy, for a Relying Party that requests Credentials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">supervisory_authority</span></code>, the Data Protection Authority to which the User can report anomalies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public_body</span></code>, whether the entity is a public sector body.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">support_uri</span></code>, the support contact used for a data deletion request, as specified in <a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a>.</p></li>
 </ul>
 <p>Their definitions are provided in <a class="reference internal" href="infrastructure-trust.html#trust-mark-types-and-schema"><span class="std std-ref">Trust Mark Types and Schema</span></a>.</p>
@@ -1865,15 +2007,20 @@ It displays the intermediated Relying Party and its Service, as defined in <a cl
 The metadata published in the Entity Configuration MUST NOT be used without this processing.</p>
 <p>The metadata types and their parameters are defined in <a class="reference internal" href="infrastructure-trust.html#entity-type-identifiers-and-metadata"><span class="std std-ref">Entity Type Identifiers and Metadata</span></a> and in the protocol specifications referenced there.</p>
 <p>The Wallet Unit configuration is provided by the Wallet Provider within its metadata as defined in <a class="reference internal" href="wallet-solution-metadata.html#wallet-solution-metadata"><span class="std std-ref">Wallet Solution Metadata</span></a>.</p>
-<p><strong>Input</strong></p>
+<section id="metadata-retrieval-and-validation-input">
+<h4><span class="section-number">6.3.9.1. </span>Metadata Retrieval and Validation: Input<a class="headerlink" href="#metadata-retrieval-and-validation-input" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>A validated Trust Chain about the subject (see <a class="reference internal" href="#federation-trust-chain"><span class="std std-ref">Federation Trust Chain</span></a>).</p></li>
 </ul>
-<p><strong>Outcome</strong></p>
+</section>
+<section id="metadata-retrieval-and-validation-outcome">
+<h4><span class="section-number">6.3.9.2. </span>Metadata Retrieval and Validation: Outcome<a class="headerlink" href="#metadata-retrieval-and-validation-outcome" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The final metadata of the subject, for each metadata type relevant to the interaction.</p></li>
 </ul>
-<p><strong>Process</strong></p>
+</section>
+<section id="metadata-retrieval-and-validation-process">
+<h4><span class="section-number">6.3.9.3. </span>Metadata Retrieval and Validation: Process<a class="headerlink" href="#metadata-retrieval-and-validation-process" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Apply the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> of the superior statements to the metadata published in the subject Entity Configuration, along the Trust Chain, according to <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 6.1, obtaining the final metadata.</p></li>
 <li><p>Select the metadata type corresponding to the role of the subject in the interaction.</p></li>
@@ -1884,8 +2031,9 @@ The metadata published in the Entity Configuration MUST NOT be used without this
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Within IT-Wallet the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> covers only the technical configuration parameters, such as endpoints, cryptographic keys and supported algorithms.
-Entitlements and authorization policies MUST NOT be expressed through metadata policies; they are carried by the Trust Marks, as defined in <a class="reference internal" href="#authorization"><span class="std std-ref">Authorization</span></a>.</p>
+Entitlements and authorization policies MUST NOT be expressed through metadata policies. Entitlements and authorization policies are carried by the Trust Marks, as defined in <a class="reference internal" href="#authorization"><span class="std std-ref">Authorization</span></a>.</p>
 </div>
+</section>
 </section>
 </section>
 <section id="authorization-decision-and-override-rules">
@@ -1911,10 +2059,11 @@ The conditions that determine this outcome depend on the specific Authorization 
 </div></blockquote>
 </li>
 </ul>
-<p><strong>Override Principles</strong></p>
+<section id="override-principles">
+<h3><span class="section-number">6.4.1. </span>Override Principles<a class="headerlink" href="#override-principles" title="Link to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code> decision can be either <em>non-overridable</em> (the Wallet Unit blocks the interaction) or <em>overridable</em> (the Wallet Unit presents the negative outcome and the User can choose to proceed).</p>
 <ul>
-<li><p>During <strong>Credential Issuance</strong> phase, all negative verification outcomes MUST be <em>non-overridable</em>: the Wallet Unit MUST NOT let the User interact with providers whose registration cannot be confirmed.</p></li>
+<li><p>During <strong>Credential Issuance</strong> phase, all negative verification outcomes MUST be <em>non-overridable</em>. The Wallet Unit MUST NOT let the User interact with providers whose registration cannot be confirmed.</p></li>
 <li><p>During the <strong>Presentation</strong> phase, all negative verification outcomes MUST be <em>non-overridable</em>, except for the following cases:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1926,7 +2075,7 @@ If an EDP URI cannot be resolved to the exact included or preloaded policy, the 
 That failure MUST NOT be overridable.</p></li>
 <li><p><strong>Missing or invalid WRPRC [EUDIW]</strong>.
 When the process terminates with <code class="docutils literal notranslate"><span class="pre">CERTIFICATE_INVALID</span></code> during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
-The Wallet Unit MUST warn the User and MUST NOT query the Register, as specified in <a class="reference internal" href="#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.
+The Wallet Unit MUST warn the User. The Wallet Unit MUST NOT query the Register, as specified in <a class="reference internal" href="#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a>.
 Whether the User may still approve follows the Wallet Provider policy.</p></li>
 <li><p><strong>Overasking [National]</strong>.
 When the process terminates with <code class="docutils literal notranslate"><span class="pre">TRUST_MARK_VALID</span></code> AND <code class="docutils literal notranslate"><span class="pre">OVERASKING_DETECTED</span></code>, i.e., the <a class="reference internal" href="#trust-mark-validation"><span class="std std-ref">Trust Mark Validation</span></a> has had a positive outcome, but the <a class="reference internal" href="#overasking-check"><span class="std std-ref">Overasking Check</span></a> finds the Relying Party requesting more than its registered scope.</p></li>
@@ -1936,7 +2085,8 @@ When the process terminates with <code class="docutils literal notranslate"><spa
 </ul>
 <p>All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable as they indicate an integrity problem rather than a user-facing choice.</p>
 <p>In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
-User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.</p>
+User-relevant information about overridable outcomes MUST be presented as advisories. The User approval MUST be a separate step from the final Authorization Decision.</p>
+</section>
 </section>
 </section>
 
@@ -1975,18 +2125,6 @@ User-relevant information about overridable outcomes MUST be presented as adviso
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -2023,66 +2161,161 @@ User-relevant information about overridable outcomes MUST be presented as adviso
 <li><a class="reference internal" href="#trust-evaluation-in-the-eudiw-trust-framework">6.2. Trust Evaluation in the EUDIW Trust Framework</a><ul>
 <li><a class="reference internal" href="#eudiw-trust-evaluation-processes-by-context">6.2.1. EUDIW Trust Evaluation Processes by Context</a></li>
 <li><a class="reference internal" href="#eudiw-trust-anchor-validation">6.2.2. EUDIW Trust Anchor Validation</a><ul>
-<li><a class="reference internal" href="#list-key-rotation-and-historical-verification">6.2.2.1. List Key Rotation and Historical Verification</a></li>
-<li><a class="reference internal" href="#list-of-trusted-entities-validation">6.2.2.2. List of Trusted Entities Validation</a></li>
-<li><a class="reference internal" href="#trusted-list-validation">6.2.2.3. Trusted List Validation</a></li>
+<li><a class="reference internal" href="#eudiw-trust-anchor-validation-input">6.2.2.1. EUDIW Trust Anchor Validation: Input</a></li>
+<li><a class="reference internal" href="#eudiw-trust-anchor-validation-outcome">6.2.2.2. EUDIW Trust Anchor Validation: Outcome</a></li>
+<li><a class="reference internal" href="#list-key-rotation-and-historical-verification">6.2.2.3. List Key Rotation and Historical Verification</a></li>
+<li><a class="reference internal" href="#list-of-trusted-entities-validation">6.2.2.4. List of Trusted Entities Validation</a><ul>
+<li><a class="reference internal" href="#list-of-trusted-entities-validation-algorithm">6.2.2.4.1. List of Trusted Entities Validation Algorithm</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#x509-certificate-chain-validation-algorithm">6.2.3. X509 Certificate Chain Validation Algorithm</a></li>
-<li><a class="reference internal" href="#eudiw-attestation-signature-validation">6.2.4. EUDIW Attestation Signature Validation</a></li>
+<li><a class="reference internal" href="#trusted-list-validation">6.2.2.5. Trusted List Validation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#x509-certificate-chain-validation-algorithm">6.2.3. X509 Certificate Chain Validation Algorithm</a><ul>
+<li><a class="reference internal" href="#x509-certificate-chain-validation-algorithm-input">6.2.3.1. X509 Certificate Chain Validation Algorithm: Input</a></li>
+<li><a class="reference internal" href="#x509-certificate-chain-validation-algorithm-outcome">6.2.3.2. X509 Certificate Chain Validation Algorithm: Outcome</a></li>
+<li><a class="reference internal" href="#x509-certificate-chain-validation-algorithm-process">6.2.3.3. X509 Certificate Chain Validation Algorithm: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eudiw-attestation-signature-validation">6.2.4. EUDIW Attestation Signature Validation</a><ul>
+<li><a class="reference internal" href="#eudiw-attestation-signature-validation-input">6.2.4.1. EUDIW Attestation Signature Validation: Input</a></li>
+<li><a class="reference internal" href="#eudiw-attestation-signature-validation-outcome">6.2.4.2. EUDIW Attestation Signature Validation: Outcome</a></li>
+<li><a class="reference internal" href="#eudiw-attestation-signature-validation-process">6.2.4.3. EUDIW Attestation Signature Validation: Process</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#eudiw-authentication">6.2.5. EUDIW Authentication</a><ul>
-<li><a class="reference internal" href="#wallet-relying-party-access-certificate-validation">6.2.5.1. Wallet-Relying Party Access Certificate Validation</a></li>
+<li><a class="reference internal" href="#eudiw-authentication-input">6.2.5.1. EUDIW Authentication: Input</a></li>
+<li><a class="reference internal" href="#eudiw-authentication-outcome">6.2.5.2. EUDIW Authentication: Outcome</a></li>
+<li><a class="reference internal" href="#eudiw-authentication-process">6.2.5.3. EUDIW Authentication: Process</a></li>
+<li><a class="reference internal" href="#wallet-relying-party-access-certificate-validation">6.2.5.4. Wallet-Relying Party Access Certificate Validation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#eudiw-authorization">6.2.6. EUDIW Authorization</a><ul>
-<li><a class="reference internal" href="#authorization-artifacts-validation">6.2.6.1. Authorization Artifacts Validation</a></li>
-<li><a class="reference internal" href="#authorization-validation">6.2.6.2. Authorization Validation</a></li>
+<li><a class="reference internal" href="#authorization-artifacts-validation">6.2.6.1. Authorization Artifacts Validation</a><ul>
+<li><a class="reference internal" href="#wallet-relying-party-registration-certificate-validation">6.2.6.1.1. Wallet-Relying Party Registration Certificate Validation</a></li>
+<li><a class="reference internal" href="#authorization-artifacts-validation-outcome">6.2.6.1.2. Authorization Artifacts Validation: Outcome</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#eudiw-metadata-retrieval-and-validation">6.2.7. EUDIW Metadata Retrieval and Validation</a></li>
+<li><a class="reference internal" href="#authorization-validation">6.2.6.2. Authorization Validation</a><ul>
+<li><a class="reference internal" href="#authorization-validation-input">6.2.6.2.1. Authorization Validation: Input</a></li>
+<li><a class="reference internal" href="#authorization-validation-outcome">6.2.6.2.2. Authorization Validation: Outcome</a></li>
+<li><a class="reference internal" href="#authorization-validation-process">6.2.6.2.3. Authorization Validation: Process</a></li>
+<li><a class="reference internal" href="#authorization-validation-final-outcome">6.2.6.2.4. Authorization Validation: Final Outcome</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eudiw-metadata-retrieval-and-validation">6.2.7. EUDIW Metadata Retrieval and Validation</a><ul>
+<li><a class="reference internal" href="#metadata-retrieval">6.2.7.1. Metadata Retrieval</a></li>
+<li><a class="reference internal" href="#metadata-validation">6.2.7.2. Metadata Validation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-evaluation-in-the-national-trust-framework">6.3. Trust Evaluation in the National Trust Framework</a><ul>
 <li><a class="reference internal" href="#trust-evaluation-processes-by-context">6.3.1. Trust Evaluation Processes by Context</a></li>
 <li><a class="reference internal" href="#federation-trust-anchor-distribution-and-validation">6.3.2. Federation Trust Anchor Distribution and Validation</a><ul>
 <li><a class="reference internal" href="#federation-trust-anchor-distribution">6.3.2.1. Federation Trust Anchor Distribution</a></li>
-<li><a class="reference internal" href="#federation-trust-anchor-validation">6.3.2.2. Federation Trust Anchor Validation</a></li>
+<li><a class="reference internal" href="#federation-trust-anchor-validation">6.3.2.2. Federation Trust Anchor Validation</a><ul>
+<li><a class="reference internal" href="#federation-trust-anchor-validation-input">6.3.2.2.1. Federation Trust Anchor Validation: Input</a></li>
+<li><a class="reference internal" href="#federation-trust-anchor-validation-outcome">6.3.2.2.2. Federation Trust Anchor Validation: Outcome</a></li>
+<li><a class="reference internal" href="#federation-trust-anchor-validation-process">6.3.2.2.3. Federation Trust Anchor Validation: Process</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#federation-trust-anchor-key-rotation-and-historical-verification">6.3.2.3. Federation Trust Anchor Key Rotation and Historical Verification</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-chain-validation">6.3.3. Trust Chain Validation</a><ul>
-<li><a class="reference internal" href="#federation-trust-chain">6.3.3.1. Federation Trust Chain</a></li>
-<li><a class="reference internal" href="#x-509-certificate-chain-validation">6.3.3.2. X.509 Certificate Chain Validation</a></li>
+<li><a class="reference internal" href="#federation-trust-chain">6.3.3.1. Federation Trust Chain</a><ul>
+<li><a class="reference internal" href="#federation-trust-chain-input">6.3.3.1.1. Federation Trust Chain: Input</a></li>
+<li><a class="reference internal" href="#federation-trust-chain-outcome">6.3.3.1.2. Federation Trust Chain: Outcome</a></li>
+<li><a class="reference internal" href="#federation-trust-chain-process">6.3.3.1.3. Federation Trust Chain: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#x-509-certificate-chain-validation">6.3.3.2. X.509 Certificate Chain Validation</a><ul>
+<li><a class="reference internal" href="#x-509-certificate-chain-validation-input">6.3.3.2.1. X.509 Certificate Chain Validation: Input</a></li>
+<li><a class="reference internal" href="#x-509-certificate-chain-validation-outcome">6.3.3.2.2. X.509 Certificate Chain Validation: Outcome</a></li>
+<li><a class="reference internal" href="#x-509-certificate-chain-validation-process">6.3.3.2.3. X.509 Certificate Chain Validation: Process</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signing-trust-anchor-distribution-and-validation">6.3.4. Signing Trust Anchor Distribution and Validation</a><ul>
 <li><a class="reference internal" href="#signing-trust-anchor-distribution">6.3.4.1. Signing Trust Anchor Distribution</a></li>
-<li><a class="reference internal" href="#signing-trust-anchor-validation-procedure">6.3.4.2. Signing Trust Anchor Validation Procedure</a></li>
+<li><a class="reference internal" href="#signing-trust-anchor-validation-procedure">6.3.4.2. Signing Trust Anchor Validation Procedure</a><ul>
+<li><a class="reference internal" href="#signing-trust-anchor-validation-procedure-input">6.3.4.2.1. Signing Trust Anchor Validation Procedure: Input</a></li>
+<li><a class="reference internal" href="#signing-trust-anchor-validation-procedure-outcome">6.3.4.2.2. Signing Trust Anchor Validation Procedure: Outcome</a></li>
+<li><a class="reference internal" href="#signing-trust-anchor-validation-procedure-process">6.3.4.2.3. Signing Trust Anchor Validation Procedure: Process</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#wallet-trust-anchor-distribution-and-validation">6.3.5. Wallet Trust Anchor Distribution and Validation</a><ul>
-<li><a class="reference internal" href="#wallet-trust-anchor-validation">6.3.5.1. Wallet Trust Anchor Validation</a></li>
+<li><a class="reference internal" href="#wallet-trust-anchor-validation">6.3.5.1. Wallet Trust Anchor Validation</a><ul>
+<li><a class="reference internal" href="#wallet-trust-anchor-validation-input">6.3.5.1.1. Wallet Trust Anchor Validation: Input</a></li>
+<li><a class="reference internal" href="#wallet-trust-anchor-validation-outcome">6.3.5.1.2. Wallet Trust Anchor Validation: Outcome</a></li>
+<li><a class="reference internal" href="#wallet-trust-anchor-validation-process">6.3.5.1.3. Wallet Trust Anchor Validation: Process</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#wallet-trust-anchor-distribution">6.3.5.2. Wallet Trust Anchor Distribution</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#authentication-trust-anchor-distribution">6.3.6. Authentication Trust Anchor Distribution</a></li>
 <li><a class="reference internal" href="#authentication">6.3.7. Authentication</a><ul>
-<li><a class="reference internal" href="#federation-entity-authentication">6.3.7.1. Federation Entity Authentication</a></li>
-<li><a class="reference internal" href="#wallet-unit-authentication">6.3.7.2. Wallet Unit Authentication</a></li>
-<li><a class="reference internal" href="#relying-party-proximity-authentication">6.3.7.3. Relying Party Proximity Authentication</a></li>
+<li><a class="reference internal" href="#federation-entity-authentication">6.3.7.1. Federation Entity Authentication</a><ul>
+<li><a class="reference internal" href="#federation-entity-authentication-input">6.3.7.1.1. Federation Entity Authentication: Input</a></li>
+<li><a class="reference internal" href="#federation-entity-authentication-outcome">6.3.7.1.2. Federation Entity Authentication: Outcome</a></li>
+<li><a class="reference internal" href="#federation-entity-authentication-process">6.3.7.1.3. Federation Entity Authentication: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wallet-unit-authentication">6.3.7.2. Wallet Unit Authentication</a><ul>
+<li><a class="reference internal" href="#wallet-unit-authentication-input">6.3.7.2.1. Wallet Unit Authentication: Input</a></li>
+<li><a class="reference internal" href="#wallet-unit-authentication-outcome">6.3.7.2.2. Wallet Unit Authentication: Outcome</a></li>
+<li><a class="reference internal" href="#wallet-unit-authentication-process">6.3.7.2.3. Wallet Unit Authentication: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relying-party-proximity-authentication">6.3.7.3. Relying Party Proximity Authentication</a><ul>
+<li><a class="reference internal" href="#relying-party-proximity-authentication-input">6.3.7.3.1. Relying Party Proximity Authentication: Input</a></li>
+<li><a class="reference internal" href="#relying-party-proximity-authentication-outcome">6.3.7.3.2. Relying Party Proximity Authentication: Outcome</a></li>
+<li><a class="reference internal" href="#relying-party-proximity-authentication-process">6.3.7.3.3. Relying Party Proximity Authentication: Process</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#authorization">6.3.8. Authorization</a><ul>
-<li><a class="reference internal" href="#trust-mark-validation">6.3.8.1. Trust Mark Validation</a></li>
-<li><a class="reference internal" href="#entitlement-check">6.3.8.2. Entitlement Check</a></li>
-<li><a class="reference internal" href="#overasking-check">6.3.8.3. Overasking Check</a></li>
+<li><a class="reference internal" href="#trust-mark-validation">6.3.8.1. Trust Mark Validation</a><ul>
+<li><a class="reference internal" href="#trust-mark-validation-input">6.3.8.1.1. Trust Mark Validation: Input</a></li>
+<li><a class="reference internal" href="#trust-mark-validation-outcome">6.3.8.1.2. Trust Mark Validation: Outcome</a></li>
+<li><a class="reference internal" href="#trust-mark-validation-process">6.3.8.1.3. Trust Mark Validation: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#entitlement-check">6.3.8.2. Entitlement Check</a><ul>
+<li><a class="reference internal" href="#entitlement-check-input">6.3.8.2.1. Entitlement Check: Input</a></li>
+<li><a class="reference internal" href="#entitlement-check-outcome">6.3.8.2.2. Entitlement Check: Outcome</a></li>
+<li><a class="reference internal" href="#entitlement-check-process">6.3.8.2.3. Entitlement Check: Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#overasking-check">6.3.8.3. Overasking Check</a><ul>
+<li><a class="reference internal" href="#overasking-check-input">6.3.8.3.1. Overasking Check: Input</a></li>
+<li><a class="reference internal" href="#overasking-check-outcome">6.3.8.3.2. Overasking Check: Outcome</a></li>
+<li><a class="reference internal" href="#overasking-check-process">6.3.8.3.3. Overasking Check: Process</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#user-transparency">6.3.8.4. User Transparency</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#metadata-retrieval-and-validation">6.3.9. Metadata Retrieval and Validation</a></li>
+<li><a class="reference internal" href="#metadata-retrieval-and-validation">6.3.9. Metadata Retrieval and Validation</a><ul>
+<li><a class="reference internal" href="#metadata-retrieval-and-validation-input">6.3.9.1. Metadata Retrieval and Validation: Input</a></li>
+<li><a class="reference internal" href="#metadata-retrieval-and-validation-outcome">6.3.9.2. Metadata Retrieval and Validation: Outcome</a></li>
+<li><a class="reference internal" href="#metadata-retrieval-and-validation-process">6.3.9.3. Metadata Retrieval and Validation: Process</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#authorization-decision-and-override-rules">6.4. Authorization Decision and Override Rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorization-decision-and-override-rules">6.4. Authorization Decision and Override Rules</a><ul>
+<li><a class="reference internal" href="#override-principles">6.4.1. Override Principles</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

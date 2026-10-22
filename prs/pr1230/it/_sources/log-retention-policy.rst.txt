@@ -4,13 +4,13 @@
 Politiche Generali di Conservazione dei Log
 ===========================================
 
-La conservazione dei log è un elemento chiave per garantire la sicurezza, inclusa la prevenzione delle frodi, il rilevamento degli incidenti, l'integrità del sistema e la conformità con gli obblighi legali applicabili. La conservazione dei log DEVE anche essere allineata con i requisiti definiti nella norma ISO/IEC 27001, in particolare per quanto riguarda la verificabilità, il controllo degli accessi e l'archiviazione sicura. Poiché la gestione dei log può comportare il trattamento di dati personali, costituisce anche una misura di responsabilizzazione ai sensi del GDPR, con implicazioni per la minimizzazione dei dati, la limitazione della conservazione e la limitazione delle finalità; per questi aspetti, si fa riferimento alle disposizioni pertinenti del GDPR e alle normative specifiche del settore.
+La conservazione dei log è un elemento chiave per garantire la sicurezza. Le finalità includono la prevenzione delle frodi, il rilevamento degli incidenti, l'integrità del sistema e la conformità con gli obblighi legali applicabili. La conservazione dei log DEVE anche essere allineata con i requisiti definiti nella norma ISO/IEC 27001, in particolare per quanto riguarda la verificabilità, il controllo degli accessi e l'archiviazione sicura. La gestione dei log può comportare il trattamento di dati personali. La gestione dei log costituisce anche una misura di responsabilizzazione ai sensi del GDPR. Le implicazioni riguardano la minimizzazione dei dati, la limitazione della conservazione e la limitazione delle finalità. Per questi aspetti, si fa riferimento alle disposizioni pertinenti del GDPR e alle normative specifiche del settore.
 
 Per tutto ciò che riguarda la gestione dei log, i Fornitori di Wallet, i Fornitori di Credenziali, le Fonti Autentiche e le Relying Party sono considerati Entità Organizzative.
 
-I log relativi alle attività di scambio dati del Wallet (accessi e transazioni di emissione di Credenziali e presentazione) riguardanti l'Utente, in quanto interessato, DEVONO essere conservati per un periodo limitato per motivi di sicurezza, prevenzione delle frodi, risoluzione delle controversie e obblighi legali. I log delle Fonti Autentiche che documentano l'erogazione dei dati verso i Fornitori di Credenziali per l'emissione di Attestati Elettronici di Attributi nel Sistema IT-Wallet DEVONO essere conservati per un periodo limitato per le medesime finalità.
+I log relativi alle attività di scambio dati del Wallet riguardanti l'Utente, in quanto interessato, DEVONO essere conservati per un periodo limitato. Le attività comprendono accessi e transazioni di emissione di Credenziali e di presentazione. Le finalità sono sicurezza, prevenzione delle frodi, risoluzione delle controversie e obblighi legali. I log delle Fonti Autentiche che documentano l'erogazione dei dati verso i Fornitori di Credenziali DEVONO essere conservati per un periodo limitato per le medesime finalità. Tali log supportano l'emissione di Attestati Elettronici di Attributi nel Sistema IT-Wallet.
 
-Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziali, alle Fonti Autentiche e alle Relying Party DEVONO implementare la registrazione di audit per le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
+Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziali, alle Fonti Autentiche e alle Relying Party DEVONO implementare la registrazione di audit. La registrazione riguarda le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
 
 Salvo un obbligo di legge che disponga diversamente, i log di scambio NON DEVONO essere conservati per più di 12 mesi. I log DEVONO essere archiviati in modo sicuro per garantirne l'integrità e l'immutabilità.
 
@@ -19,7 +19,7 @@ Requisiti Generali di Logging ISO/IEC 27001
 
 Le Entità Organizzative DEVONO implementare misure tecniche e organizzative appropriate in conformità con ISO/IEC 27001 per mantenere un sistema di gestione della sicurezza delle informazioni per il monitoraggio, l'audit e la risposta agli incidenti. Gli aspetti chiave della gestione dei log secondo ISO/IEC 27001 includono i seguenti requisiti:
 
-- **A.12.4 Logging e Monitoraggio**: Le Entità Organizzative DEVONO produrre log che registrino eccezioni, guasti ed eventi di sicurezza delle informazioni. Quando necessario per motivi di sicurezza, i log DOVREBBERO acquisire le attività degli utenti con un livello di dettaglio appropriato e sufficiente per soddisfare i requisiti di sicurezza, assicurando che i dati raccolti siano pertinenti e non eccessivi. I log DOVREBBERO essere rivisti regolarmente per garantire che gli incidenti di sicurezza siano identificati e affrontati tempestivamente.
+- **A.12.4 Logging e Monitoraggio**: Le Entità Organizzative DEVONO produrre log che registrino eccezioni, guasti ed eventi di sicurezza delle informazioni. Quando necessario per motivi di sicurezza, i log DOVREBBERO acquisire le attività degli utenti con un livello di dettaglio adeguato ai requisiti di sicurezza. I dati raccolti sono pertinenti e non eccessivi. I log DOVREBBERO essere rivisti regolarmente affinché gli incidenti di sicurezza siano identificati e affrontati tempestivamente.
 
 - **A.12.4.1 Registrazione degli Eventi**: Le Entità Organizzative DEVONO stabilire procedure per la registrazione degli eventi, inclusi i tipi di eventi da registrare, le informazioni da acquisire e il periodo di conservazione dei log.
 
@@ -27,7 +27,7 @@ Le Entità Organizzative DEVONO implementare misure tecniche e organizzative app
 
 - **A.12.4.3 Log degli Amministratori e degli Operatori**: Le attività degli amministratori di sistema e degli operatori DEVONO essere registrate e riviste regolarmente. Le Entità Organizzative DEVONO rilevare attività non autorizzate e garantire la responsabilità per le azioni intraprese sui sistemi critici.
 
-- **A.12.4.4 Sincronizzazione degli Orologi**: Tutti i sistemi delle Entità Organizzative coinvolti nella registrazione DEVONO essere sincronizzati con una fonte temporale affidabile, garantendo timestamp accurati per correlare gli eventi tra diversi sistemi e condurre indagini forensi efficaci.
+- **A.12.4.4 Sincronizzazione degli Orologi**: Tutti i sistemi delle Entità Organizzative coinvolti nella registrazione DEVONO essere sincronizzati con una fonte temporale affidabile. La sincronizzazione garantisce timestamp accurati per correlare gli eventi tra diversi sistemi e per condurre indagini forensi efficaci.
 
 - **A.16.1.7 Gestione degli Incidenti di Sicurezza delle Informazioni**: Le Entità Organizzative DEVONO garantire che i log siano disponibili e affidabili per supportare i processi di gestione degli incidenti.
 
@@ -47,7 +47,7 @@ I Fornitori di Credenziali definiscono il periodo di conservazione per le Creden
 Politica di Conservazione dei Log delle Fonti Autentiche
 --------------------------------------------------------
 
-Le Fonti Autentiche sono Entità Organizzative ai fini del presente capitolo: i log riguardano gli accessi e le transazioni su endpoint e servizi utilizzati per fornire ai Fornitori di Credenziali i dati ufficiali impiegati per la generazione degli Attestati Elettronici di Attributi nell'ambito del Sistema IT-Wallet, inclusi—ove ricorrono—gli e-service esposti tramite la Piattaforma Digitale Nazionale Dati (`PDND`_).
+Le Fonti Autentiche sono Entità Organizzative ai fini del presente capitolo. I log riguardano gli accessi e le transazioni su endpoint e servizi utilizzati per fornire ai Fornitori di Credenziali i dati ufficiali. Tali dati sono impiegati per la generazione degli Attestati Elettronici di Attributi nell'ambito del Sistema IT-Wallet. Ove ricorrono, i log includono gli e-service esposti tramite la Piattaforma Digitale Nazionale Dati (`PDND`_).
 
 Salvo obblighi di legge o normativa settoriale che dispongano diversamente, tali log NON DEVONO essere conservati per più di 12 mesi. Permangono in ogni caso i vincoli del GDPR sulla minimizzazione, sulla limitazione della conservazione e sulla base giuridica del trattamento.
 

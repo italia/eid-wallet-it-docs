@@ -7,7 +7,7 @@
 
     <title>11.2.1. Flusso Remoto &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -317,38 +353,11 @@
             
   <section id="flusso-remoto">
 <h1><span class="section-number">11.2.1. </span>Flusso Remoto<a class="headerlink" href="#flusso-remoto" title="Link to this heading">¶</a></h1>
+<p>Questa sezione descrive la presentazione remota di un Attestato Elettronico da un'Istanza del Wallet a un'Istanza di Relying Party web.</p>
 <p>La presentazione remota utilizza [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>], profilato da [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>] e [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>], come richiesto da [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2982/">CIR2024/2982</a>].
 Il Trust Framework è selezionato tramite il prefisso <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, come specificato in <a class="reference internal" href="trust-evaluation.html#selection-at-presentation"><span class="std std-ref">Selection at Presentation</span></a>.
 La clausola 6 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>] prevale su [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>] ove le due fonti differiscono.</p>
-<p>A seconda di come l'Utente stia interagendo con il frontend dell'istanza web della Relying Party, usando cioè il dispositivo in cui risiede l'Istanza del Wallet (<strong>Same Device</strong>) oppure un altro dispositivo (<strong>Cross Device</strong>), la Relying Party DEVE supportare i seguenti flussi remoti (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-84</span></a>):</p>
-<ul class="simple">
-<li><p><strong>Same Device</strong>: la Relying Party DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un <em>redirect</em> (<code class="docutils literal notranslate"><span class="pre">302</span></code>) o un href HTML nella pagina web (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-01</span></a>).</p></li>
-<li><p><strong>Cross Device</strong>: la Relying Party DEVE fornire un Codice QR che l'Utente inquadra con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-03</span></a>).</p></li>
-</ul>
-<p>Per richiamare l'Istanza del Wallet corretta, la Relying Party DOVREBBE invocare l'Istanza del Wallet installata sul dispositivo dell'Utente che l'Utente desidera utilizzare.
-Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selection Page descritta in <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>.</p>
-<ul class="simple">
-<li><p>Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi la Relying Party recupera i Wallet metadata come descritto in <a class="reference internal" href="wallet-metadata-retrieval.html#flusso-di-recupero-dei-wallet-metadata"><span class="std std-ref">Flusso di Recupero dei Wallet Metadata</span></a>. Il contenuto del HTML href o del QR Code dipende dal parametro <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> nei Wallet metadata:</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>Se <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> è presente nei Wallet metadata e il suo valore è un URL HTTPS, quell'URL è un link universale. Il sistema operativo lo associa all'Istanza del Wallet installata e, quando l'Utente lo apre, avvia quell'Istanza. La Relying Party DOVREBBE inserire quell'URL nell'href HTML del flusso Same Device o nel Codice QR del flusso Cross Device.</p></li>
-<li><p>Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> (come definito nella Sezione 13.1.2 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]), <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> (come definito nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]) o <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code> (come definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>]).
-Sul percorso EUDIW, la Relying Party DOVREBBE utilizzare <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>.
-L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code>.
-L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code>.
-L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>.</p></li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li><p>Se la Relying Party non supporta la Selection Page, o se il recupero dei Wallet metadata non riesce, la Relying Party DEVE invocare l'Istanza del Wallet con uno degli schemi URL personalizzati descritti sopra.</p></li>
-</ul>
-<p>Successivamente all'invocazione dell'Istanza del Wallet, l'Istanza del Wallet valida la trust con la Relying Party e ne valuta la richiesta. Se valida e l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>&quot;Interoperabilità degli URL personalizzati&quot;</p>
-<p>La preferenza per <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code> sul percorso EUDIW soddisfa OIDFVP-HAIP-REDIRECTS-03 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>].</p>
-</div>
+<p>Il flusso remoto ha due forme. Nel flusso Same Device lo user-agent e l'Istanza del Wallet sono sullo stesso dispositivo. Nel flusso Cross Device sono su dispositivi diversi. Le regole normative di invocazione sono specificate nei Passaggi 4-7.</p>
 <figure class="align-default" id="id1">
 <span id="fig-high-level-flow-presentation"></span><p class="plantuml">
 <object data="_images/plantuml-ab243d3130f2ad490ff2f94df8a467cc058a8823.svg" type="image/svg+xml" style="width:99%">
@@ -385,7 +394,28 @@ L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate">
 <p>I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di seguito.</p>
 <p><strong>Passaggi 1-2</strong>: L'Utente richiede di accedere a una risorsa protetta della Relying Party.</p>
 <p><strong>Passaggio 3</strong>: La Relying Party crea un valore <em>state</em> fresco, crittograficamente casuale e con entropia sufficiente, lo associa alla sessione dello user-agent (ad esempio, utilizzando un cookie HTTP protetto) e lo memorizza lato server con un tempo di scadenza breve. Quindi ispeziona lo user-agent per determinare se il flusso avviene sullo stesso dispositivo dello user-agent.</p>
-<p><strong>Passaggi 4-7 (Authorization Request)</strong>: La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo <em>state endpoint</em> e all'Istanza del Wallet un URL contenente l'Authorization Request. Il Request Object è passato solo per riferimento. L'URL DEVE contenere <code class="docutils literal notranslate"><span class="pre">client_id</span></code> e <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. L'URL NON DEVE contenere <code class="docutils literal notranslate"><span class="pre">request</span></code>, come dettagliato in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>.</p>
+<p><strong>Passaggi 4-7 (Authorization Request)</strong>: La Relying Party invoca l'Istanza del Wallet e passa l'Authorization Request per riferimento.</p>
+<p>La Relying Party DEVE supportare i seguenti flussi remoti (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-84</span></a>):</p>
+<ul class="simple">
+<li><p><strong>Same Device</strong>: la Relying Party DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un <em>redirect</em> (<code class="docutils literal notranslate"><span class="pre">302</span></code>) o un href HTML nella pagina web (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-01</span></a>).</p></li>
+<li><p><strong>Cross Device</strong>: la Relying Party DEVE fornire un Codice QR che l'Utente inquadra con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-03</span></a>).</p></li>
+</ul>
+<p>La Relying Party DOVREBBE invocare l'Istanza del Wallet della Soluzione Wallet scelta dall'Utente.
+L'Utente DOVREBBE indicare la Soluzione Wallet sulla Selection Page descritta in <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>.</p>
+<p>Quando la Selection Page è supportata, l'Utente seleziona la Soluzione Wallet. La Relying Party recupera quindi i metadata del Wallet come descritto in <a class="reference internal" href="wallet-metadata-retrieval.html#flusso-di-recupero-dei-wallet-metadata"><span class="std std-ref">Flusso di Recupero dei Wallet Metadata</span></a>.</p>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> è presente nei metadata del Wallet e il suo valore è un URL HTTPS, quell'URL è un link universale. Il sistema operativo associa quell'URL all'Istanza del Wallet installata e avvia quell'Istanza del Wallet quando l'Utente lo apre. La Relying Party DOVREBBE inserire quell'URL nell'href HTML del flusso Same Device o nel Codice QR del flusso Cross Device.</p>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> è assente, oppure quando il suo valore non è un URL HTTPS, la Relying Party DEVE utilizzare uno tra <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code>, <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> e <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>. <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> è definito nella Sezione 13.1.2 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]. <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> è definito nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>]. <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code> è definito in [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>].</p>
+<p>Sul percorso EUDIW, la Relying Party DOVREBBE utilizzare <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>.</p>
+<p>L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code>.
+L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code>.
+L'Istanza del Wallet DEVE supportare <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code>.</p>
+<p>Quando la Relying Party non supporta la Selection Page, o quando il recupero dei metadata del Wallet non riesce, la Relying Party DEVE invocare l'Istanza del Wallet con uno degli schemi URL personalizzati descritti sopra.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>&quot;Interoperabilità degli URL personalizzati&quot;</p>
+<p>La preferenza per <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code> sul percorso EUDIW soddisfa OIDFVP-HAIP-REDIRECTS-03 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>].</p>
+</div>
+<p>La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo <em>state endpoint</em> e all'Istanza del Wallet un URL contenente l'Authorization Request. Il Request Object è passato solo per riferimento. L'URL DEVE contenere <code class="docutils literal notranslate"><span class="pre">client_id</span></code> e <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. L'URL NON DEVE contenere <code class="docutils literal notranslate"><span class="pre">request</span></code>, come dettagliato in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>.</p>
 <blockquote>
 <div><p>Nel <strong>Flusso Cross Device</strong>, l'URI dell'Authorization Request viene presentato attraverso un Codice QR mostrato all'Utente. L'Utente scansiona il Codice QR utilizzando l'Istanza del Wallet e recupera un URL.
 Di seguito è rappresentato un esempio non normativo di un Codice QR emesso dalla Relying Party.</p>
@@ -465,7 +495,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <p><strong>Passaggi 13-15 (Controlli WI)</strong>: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato. Controlla che <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">iss</span></code> e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085–086</span></a>).</p>
 <blockquote>
 <div><p>Di seguito sono riportati esempi non normativi di Request Object sotto forma di intestazioni e payload decodificati. Ciascun esempio usa esattamente un Trust Framework.</p>
-<p><strong>Esempio EUDIW ``x509_hash``</strong></p>
+<p>L'esempio non normativo seguente è il Request Object EUDIW che usa <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-authz-req+jwt&quot;</span><span class="p">,</span>
@@ -556,7 +586,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Esempio nazionale ``openid_federation``</strong></p>
+<p>L'esempio non normativo seguente è il Request Object nazionale che usa <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-authz-req+jwt&quot;</span><span class="p">,</span>
@@ -979,6 +1009,7 @@ Sul percorso nazionale, la Wallet Unit DEVE ottenere i metadata del verificatore
 <section id="authorization-response">
 <h2><span class="section-number">11.2.1.6. </span>Authorization Response<a class="headerlink" href="#authorization-response" title="Link to this heading">¶</a></h2>
 <p>Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP con il metodo POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>).</p>
+<p>Quando l'Istanza del Wallet utilizza Credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali, ad esempio basata sulla prima in scadenza. L'Istanza del Wallet DEVE contrassegnare la Credenziale selezionata come consumata. Al termine del flusso, l'Istanza del Wallet DEVE ridurre il numero di Credenziali disponibili nel batch. In base a quel numero, l'Istanza del Wallet può verificare se è il momento di richiedere un nuovo batch di Credenziali.</p>
 <p>Ogni risposta riuscita DEVE essere cifrata con la chiave pubblica effimera specifica della richiesta, selezionata da <code class="docutils literal notranslate"><span class="pre">client_metadata.jwks</span></code> tramite il suo <code class="docutils literal notranslate"><span class="pre">kid</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>).
 Ogni risposta riuscita DEVE usare <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.
 Il verificatore DEVE supportare sia <code class="docutils literal notranslate"><span class="pre">A128GCM</span></code> sia <code class="docutils literal notranslate"><span class="pre">A256GCM</span></code>.
@@ -986,7 +1017,7 @@ L'Istanza del Wallet DEVE supportare almeno uno tra <code class="docutils litera
 L'Istanza del Wallet DOVREBBE preferire <code class="docutils literal notranslate"><span class="pre">A256GCM</span></code> quando entrambi sono disponibili [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf">ETSI TS 119 472-2</a>].</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Perché la risposta è cifrata?</strong></p>
+<p>Perché la risposta è cifrata?</p>
 <p>La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS Termination</a>, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili. Se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.</p>
 </div>
 <p>Nella Authorization Response vengono utilizzati i seguenti parametri (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093</span></a>):</p>
@@ -1363,18 +1394,6 @@ La risposta DEVE includere i seguenti parametri:</p>
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">

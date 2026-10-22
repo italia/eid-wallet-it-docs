@@ -125,25 +125,11 @@ Il Federation Trust Anchor DEVE pubblicare i metadata di discovery del registro 
 
 Di seguito è fornito un esempio non normativo.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-1.http
+   :language: http
 
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-
-.. code-block:: http
-
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
+.. literalinclude:: ../../examples/shared/registry-2.http
+   :language: http
 
 Registry Discovery Endpoint Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,21 +162,8 @@ Il payload JWT della risposta del Registry Discovery DEVE contenere i seguenti p
 
 Struttura del payload JWT (quando decodificato):
 
-.. code-block:: json
-
-  {
-    "id": "urn:it-wallet-registry:it-wallet",
-    "version": "1.0.0",
-    "last_modified": "2024-03-15T10:30:00Z",
-    "endpoints": {
-      "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
-      "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
-      "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas"
-    },
-    "content_negotiation": ["application/json", "application/jwt"]
-  }
+.. literalinclude:: ../../examples/shared/registry-3.json
+   :language: json
 
 Content Negotiation and Signed Representation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,25 +233,11 @@ La rappresentazione in chiaro è lo stesso contenuto, servito come oggetto JSON 
 
 L'esempio non normativo seguente richiede entrambe le rappresentazioni dall'endpoint del Digital Credentials Catalog. L'URL è quello risolto dal documento di discovery, qui accorciato per leggibilità.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-4.http
+   :language: http
 
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
-
-.. code-block:: http
-
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
+.. literalinclude:: ../../examples/shared/registry-5.http
+   :language: http
 
 L'esempio richiede la prima pagina della collection. I parametri di query, le pagine successive e la risorsa entry sono specificati in :ref:`registry:Digital Credentials Catalog Retrieval`.
 
@@ -291,7 +250,8 @@ In una singola risorsa, definisce la gerarchia di Domain, Class e Purpose che i 
 
 L'URL dell'endpoint Taxonomy è pubblicato sotto la chiave ``taxonomy`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
 
-**Taxonomy Objectives:**
+Taxonomy Objectives
+^^^^^^^^^^^^^^^^^^^
 
 1. **Fondamento semantico**: Stabilire un vocabolario standardizzato per i domain e i purpose nell'ecosistema
 2. **Framework di policy**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
@@ -315,12 +275,14 @@ Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet son
 
 La gerarchia è definita come segue:
 
-**Domain**
+Domain
+""""""
 
 Un **Domain** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali relative allo stesso contesto ampio (ad es., Identity, Health, Education, Mobility).
 I Domain forniscono uno strato organizzativo di primo livello.
 
-**Credential Class**
+Credential Class
+""""""""""""""""
 
 Una **Credential Class** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es., Identification Documents, Civil Status Certificates).
 
@@ -331,7 +293,8 @@ Ciascuna Class DOVREBBE definire:
 
 Le Class consentono alle Relying Party e alle Soluzioni Wallet di richiedere o abbinare Credenziali in base alla loro categoria di tipo.
 
-**Credential Type**
+Credential Type
+"""""""""""""""
 
 Un **Credential Type** rappresenta una Credenziale specifica all'interno di una Class (ad es. Digital Travel Credential, Birth Certificate, Mobile Driving License).
 Ciascun Credential Type DEVE includere:
@@ -342,7 +305,8 @@ Ciascun Credential Type DEVE includere:
 
 I Credential Type consentono un targeting preciso per i flussi di verifica guidati dalla conformità o imposti dalla regolamentazione.
 
-**Purpose (Verification Intent)**
+Purpose (Verification Intent)
+"""""""""""""""""""""""""""""
 
 Un **Purpose (Verification Intent)** descrive *perché* una Credenziale può essere richiesta da una Relying Party (ad es., Identity Verification, Age Verification, Eligibility for specific services).
 I Purpose DEVONO descrivere **esiti di verifica**.
@@ -683,12 +647,14 @@ La taxonomy mantiene una struttura gerarchica a quattro livelli, ossia i Domain,
 .. note::
   Il Credential Type è un concetto definito a livello di Digital Credentials Catalog, non all'interno della Taxonomy. La Taxonomy fornisce il vocabolario di classificazione (Domain, Class, Purpose) che i Credential Type nel Catalog referenziano.
 
-**Supporto alla localizzazione:**
+Supporto alla localizzazione
+""""""""""""""""""""""""""""
 
 La taxonomy supporta ambienti multilingue tramite il pattern di suffisso ``_l10n_id``, consentendo una gestione efficiente della localizzazione per le interfacce utente e le implementazioni transfrontaliere.
 
 
-**Struttura JSON della Taxonomy:**
+Struttura JSON della Taxonomy
+"""""""""""""""""""""""""""""
 
 .. list-table:: First-level Fields of the Taxonomy
    :class: longtable
@@ -730,7 +696,7 @@ La taxonomy supporta ambienti multilingue tramite il pattern di suffisso ``_l10n
 Di seguito è fornito un esempio non normativo della struttura della Taxonomy:
 
 .. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione della Taxonomy, un'Entità che la consulta DOVREBBE:
@@ -742,21 +708,8 @@ Di seguito è fornito un esempio non normativo della struttura della Taxonomy:
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
-
-  {
-    "taxonomy.name": "IT-Wallet Taxonomy",
-    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
-    "domain.identity.name": "Identity",
-    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
-    "class.identification_documents.name": "Identification Documents",
-    "purpose.identity_verification.name": "Identity verification",
-    "domain.authentication.name": "Authentication",
-    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
-    "class.access.name": "Access",
-    "purpose.access_permit.name": "Access permit verification",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-6.json
+   :language: json
 
 I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nella taxonomy. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
 
@@ -789,13 +742,15 @@ Claims Registry Usage
 
 Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :ref:`fig_registry_discovery`, il Claims Registry DEVE supportare l'intero ciclo di vita dell'ecosistema:
 
-**Durante il processo di Onboarding**:
+Claims Registry Usage: Durante il processo di Onboarding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   - **Registrazione AS**: Le Fonti Autentiche dichiarano i claim disponibili dal registro standardizzato durante la registrazione delle capacità.
   - **Registrazione CI**: I Credential Issuer selezionano le entità Fonte Autentica in base ai claim richiesti. I tipi di Credenziale che utilizzano tali claim sono registrati nel catalogo dall'Attestation Scheme Provider, si veda :ref:`onboarding-system:Credential Type Registration`.
   - **Registrazione RP**: Le Relying Party specificano i requisiti di autorizzazione utilizzando domain/purpose per attributi specifici dell'Utente.
 
-**Durante le attività operative**:
+Claims Registry Usage: Durante le attività operative
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   - **Emissione delle Credenziali**: Le definizioni dei claim assicurano una rappresentazione coerente dei dati tra tipi di Credenziale diversi.
   - **Richieste di presentazione**: Le Relying Party referenziano i claim per la validazione dello schema e la verifica dell'autorizzazione sia negli scenari specifici della Credenziale sia in quelli agnostici rispetto alla Credenziale.
@@ -857,7 +812,7 @@ Il Claims Registry mantiene definizioni tecniche language-neutral per la coerenz
 Di seguito è fornito un esempio non normativo della struttura del Claims Registry:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Claims Registry, un'Entità che lo consulta DOVREBBE:
@@ -869,14 +824,8 @@ Di seguito è fornito un esempio non normativo della struttura del Claims Regist
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
-
-  {
-    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
-    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
-    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-7.json
+   :language: json
 
 I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
@@ -911,7 +860,8 @@ Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :re
   - **Auto-dichiarazione AS**: Le Fonti Autentiche registrano le capacità prima che esistano tipi di Credenziale nel catalogo.
   - **Discovery CI**: I Credential Issuer cercano entità Fonte Autentica in base ai claim richiesti e ai tipi di Credenziale previsti.
 
-**Durante le attività operative**:
+Authentic Source Registry Usage: Durante le attività operative
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   - **Emissione delle Credenziali**: I sistemi del Credential Issuer referenziano l'Authentic Source Registry per l'accesso ai dati in tempo reale durante l'emissione delle Credenziali.
 
 Authentic Source Registry Structure
@@ -919,7 +869,8 @@ Authentic Source Registry Structure
 
 Durante la registrazione, le Fonti Autentiche dichiarano le proprie capacità prima che esistano tipi di Credenziale nel catalogo. Questa dichiarazione costituisce il fondamento per la successiva registrazione dei CI e la creazione dei tipi di Credenziale.
 
-**Schema dell'identificativo univoco della Fonte Autentica**
+Schema dell'identificativo univoco della Fonte Autentica
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 A ciascuna Fonte Autentica DEVE essere assegnato un identificativo univoco che segue lo schema URL HTTPS definito di seguito. Questo identificativo è utilizzato per referenziare le entità AS nel sistema di registro e nel Digital Credentials Catalog, assicurando coerenza con i pattern di identificazione delle entità OpenID Federation.
 
@@ -948,7 +899,8 @@ L'identificativo AS DEVE seguire queste regole normative:
 - ``https://registry.anpr.example``: Pubblico - Anagrafe Nazionale della Popolazione Residente
 - ``https://api.bank.example/auth-source``: Privato - Servizi finanziari Banca Esempio
 
-**Parametri dell'Authentic Source Registry**
+Parametri dell'Authentic Source Registry
+""""""""""""""""""""""""""""""""""""""""
 
 L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
 
@@ -1116,12 +1068,13 @@ L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fon
 .. note::
   Per ulteriori dettagli sulle funzionalità richieste e sull'esito atteso in termini di esperienza utente, si veda la Sezione :ref:`functionalities:Ottenimento dal Catalogo dell'Istanza del Wallet` per il parametro `data_capabilities.user_information` e la Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` e `data_capabilities.available_claims.order`.
 
-**Esempio di Authentic Source Registry**
+Esempio di Authentic Source Registry
+""""""""""""""""""""""""""""""""""""
 
 Di seguito è fornito un esempio non normativo della struttura dell'AS Registry:
 
 .. literalinclude:: ../../examples/as-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nell'Authentic Source Registry, un'Entità che lo consulta DOVREBBE:
@@ -1133,17 +1086,8 @@ Di seguito è fornito un esempio non normativo della struttura dell'AS Registry:
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
-
-  {
-    "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
-    "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
-    "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
-    "authentic_source2.name": "Banca Esempio SpA",
-    "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
-    "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-8.json
+   :language: json
 
 I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel registro. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
 
@@ -1154,7 +1098,8 @@ Schema Registry
 
 Lo **Schema Registry** è l'inventario autorevole di tutti gli **Schema delle Credenziali** noti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet.
 
-**Schema Registry Objectives:**
+Schema Registry Objectives
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Centralizzazione degli schema**: Fornire un punto di accesso centralizzato per tutti gli schema tecnici utilizzati dagli Attestati Elettronici.
 2. **Integrità e autenticità**: Assicurare l'integrità e l'autenticità dei documenti di schema tramite digest crittografici.
@@ -1412,16 +1357,8 @@ Il client che richiede ogni voce corrispondente DEVE richiedere la pagina succes
 
 L'esempio non normativo seguente richiede la prima pagina delle voci attive.
 
-.. code-block:: http
-
-    GET /.well-known/credential-catalog?state=ACTIVE&limit=20&offset=0 HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+.. literalinclude:: ../../examples/shared/registry-9.http
+   :language: http
 
 Il payload di una risposta di collection con esito positivo DEVE contenere i campi in :ref:`table_catalog_collection_payload`.
 
@@ -1452,32 +1389,11 @@ Il Federation Trust Anchor DEVE rispondere con HTTP 404 quando nessuna voce vers
 
 L'esempio non normativo seguente richiede una voce versionata. Il membro ``credential`` è abbreviato.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-10.http
+   :language: http
 
-    GET /.well-known/credential-catalog/mDL/1 HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-.. code-block:: json
-
-    {
-      "iss": "https://trust-registry.eid-wallet.example.it",
-      "iat": 1742040000,
-      "localization": {
-        "default_locale": "it",
-        "available_locales": ["en", "it"],
-        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/",
-        "version": "1.0.0"
-      },
-      "credential": {
-        "credential_type": "mDL",
-        "version": "1",
-        "...": "..."
-      }
-    }
+.. literalinclude:: ../../examples/shared/registry-11.json
+   :language: json
 
 Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1639,10 +1555,10 @@ Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informaz
 L'esempio non normativo seguente è una pagina di una risposta di collection, decodificata in JSON sia per l'header sia per il payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Digital Credentials Catalog, un'Entità che lo consulta DOVREBBE:
@@ -1654,13 +1570,8 @@ L'esempio non normativo seguente è una pagina di una risposta di collection, de
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
-
-  {
-    "mDL.name": "Patente di Guida",
-    "mDL.issuer1.name": "Esempio di Credential Issuer",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-12.json
+   :language: json
 
 I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel catalogo. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
 
