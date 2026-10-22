@@ -515,12 +515,12 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
   * - RPR-115
     - Identity Matching
     - Test dell'Unique National Identifier Binding quando è presentato ``personal_administrative_number`` o ``tax_id_code``.
-    - La Relying Party usa l'identificativo nazionale univoco come chiave primaria di identity matching prima della riconciliazione, come specificato in :ref:`identity-matching` (:ref:`CI_201 <credential-issuer-testcases>`).
+    - La Relying Party applica l'Unique National Identifier Binding come specificato in :ref:`identity-matching`.
 
   * - RPR-116
     - Identity Matching
     - Test dell'Attribute-Based Binding quando un PID è presentato senza ``personal_administrative_number``.
-    - La Relying Party confronta almeno ``family_name``, ``given_name``, ``birth_date`` (o ``birthdate``) e ``place_of_birth`` dopo normalizzazione e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
+    - La Relying Party applica l'Attribute-Based Binding come specificato in :ref:`identity-matching`.
 
   * - RPR-117
     - Prefisso dell'identificatore del Client
