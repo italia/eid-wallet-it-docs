@@ -1,4 +1,5 @@
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+.. _ARF Annex 1: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-1/annex-1-definitions.md
 .. _EUDI-TS 3: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info
 .. _EUDI-TS 5: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md
 .. _EUDI-TS 5 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml

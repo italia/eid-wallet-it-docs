@@ -41,20 +41,18 @@ Additional documentation and resources are provided in the :ref:`official-resour
 
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
 
-To ensure a correct and consistent implementation, Primary Actors:
-
-- MUST use the :ref:`official-resources:Official Resources` and MUST comply with all related usage specifications provided.
-
-- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button`.
-
-- MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`.
+To ensure a correct and consistent implementation, the Primary Actors MUST use only the :ref:`official-resources:Official Resources`.
+The Primary Actors MUST comply with all related usage specifications provided with the Official Resources.
+The Primary Actors MAY choose which configuration to implement, among those made available.
+The Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button`.
+The Primary Actors MUST keep the resources in use up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`.
 
 Activation of the Wallet Instance
 ----------------------------------
 
 Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity (see :ref:`wallet-instance-lifecycle:Wallet Instance Lifecycle`). After Authentication, the User obtains a person identification Attestation — either the EUDI **PID** or the national **IT-Wallet ID** — as described in :ref:`functionalities:Focus on Person Identification Attestations`.
 
-Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:
+Activation proceeds as follows.
 
 - The User downloads the Wallet Solution onto their device to generate their Wallet Instance.
 - The User sets an unlock PIN for their Wallet Instance if one has not been previously set in the app. In addition to the PIN, the User can decide to use their own unlock mechanism used within the device and managed at the operating system level (e.g., biometric authentication) as an alternative to the PIN. The User uses the unlock method whenever an authorization is required to ensure security and protect their information.

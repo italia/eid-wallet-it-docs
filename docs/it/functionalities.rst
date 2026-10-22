@@ -6,7 +6,7 @@ Design dell'Esperienza Utente
 
 Questo capitolo specifica i requisiti di Esperienza Utente.
 I protocolli di emissione e di presentazione sono specificati in :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`.
-Il ciclo di vita, la revoca e il controllo di stato di una Credenziale sono specificati in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
+Il ciclo di vita, la revoca e il controllo di stato di un Attestato Elettronico sono specificati in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
 .. include:: design.rst
 
@@ -40,22 +40,20 @@ La documentazione e le risorse aggiuntive sono disponibili nella sezione :ref:`o
 
 Le Risorse Ufficiali descrivono le modalità di interazione Utente-Istanza del Wallet e le buone pratiche di progettazione al fine di promuovere coerenza tra le diverse Soluzioni Wallet, in termini di modalità di fruizione delle funzionalità.
 
-Per garantire un’implementazione corretta e coerente, gli Attori Primari:
-
-* DEVONO utilizzare esclusivamente le :ref:`official-resources:Risorse Ufficiali` e DEVONO rispettare tutte le relative specifiche di utilizzo fornite.
-
-* POSSONO scegliere quale configurazione implementare, tra quelle rese disponibili, ma DEVONO comunque garantire il corretto utilizzo dei componenti atomici come l':ref:`functionalities:Engagement Button` o l':ref:`functionalities:Authentication Button`.
-
-* DEVONO garantire il costante aggiornamento delle risorse utilizzate, in linea con l'ultima versione delle :ref:`official-resources:Risorse Ufficiali` resa disponibile.
+Per garantire un’implementazione corretta e coerente, gli Attori Primari DEVONO utilizzare esclusivamente le :ref:`official-resources:Risorse Ufficiali`.
+Gli Attori Primari DEVONO rispettare tutte le specifiche di utilizzo fornite con le Risorse Ufficiali.
+Gli Attori Primari POSSONO scegliere quale configurazione implementare, tra quelle rese disponibili.
+Gli Attori Primari DEVONO garantire il corretto utilizzo dei componenti atomici come l':ref:`functionalities:Engagement Button` o l':ref:`functionalities:Authentication Button`.
+Gli Attori Primari DEVONO garantire il costante aggiornamento delle risorse utilizzate, in linea con l'ultima versione delle :ref:`official-resources:Risorse Ufficiali` resa disponibile.
 
 Attivazione dell'Istanza del Wallet
 -----------------------------------
 
 L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza del Wallet tramite la propria identità digitale (vedere :ref:`wallet-instance-lifecycle:Ciclo di vita dell'Istanza del Wallet`). Dopo l'Autenticazione, l'Utente ottiene un Attestato di identificazione personale — il **PID** EUDI oppure l'**IT-Wallet ID** nazionale — come descritto in :ref:`functionalities:Focus sugli Attestati di Identificazione Personale`.
 
-Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
+L'attivazione procede come segue.
 
-- l'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet.
+- L'Utente scarica la Soluzione Wallet sul suo dispositivo così da generare la propria Istanza del Wallet.
 - l'Utente imposta un metodo di sblocco per la sua Istanza del Wallet se non è già stato impostato in precedenza nell'app. In aggiunta al PIN, l'Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L'Utente utilizza il metodo di sblocco ogni qual volta è richiesta un'autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni.
 - l'Utente prende visione di tutte le informazioni rilevanti sull'attivazione e sulle modalità di utilizzo del servizio. L'Utente inoltre prende visione di eventuali informative del Fornitore di Wallet e del fornitore dell'Attestato di identificazione personale (PID Provider o fornitore dell'IT-Wallet ID) e/o termini e condizioni d'uso del servizio. L'Utente dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione.
 - l'Utente sceglie una tra le modalità di Autenticazione disponibili.

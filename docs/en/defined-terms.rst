@@ -5,7 +5,7 @@
 Defined Terms and Acronyms
 ==========================
 
-This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 3.0.0 (see `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-1/annex-1-definitions.md>`_) and with [`CIR2026/1730`_], which amends [`CIR2025/848`_]. For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.
+This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 3.0.0 (see `ARF Annex 1`_) and with [`CIR2026/1730`_], which amends [`CIR2025/848`_]. For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.
 
 The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *List of Trusted Entities*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, *Wallet Unit Attestation*, *Relying Party Service*, are defined in the `EIDAS-ARF`_.
 
@@ -46,11 +46,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **Identity Matching**
-      Process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person. See :ref:`identity-matching`.
+      Process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Identity Reconciliation**
-      Process by which a Relying Party, after successful identity matching, links that natural person to a previous User session or stored User record. See :ref:`identity-matching`.
+      Process by which a Relying Party, after successful identity matching, links that natural person to a previous User session or stored User record.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Authentic Source**
@@ -187,23 +187,19 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
       Aligned with ARF 3.0.0.
-      The technical profile is :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 
     **Attestation identity code**
       Identifier of one issued Electronic Attestation of Attributes.
       In SD-JWT VC it is the ``jti`` claim.
       In mdoc it is the ``document_number`` data element.
-      See :ref:`credential-data-model-qeaa-pub-eaa:Attestation Identity`.
 
     **Technical validity**
       Interval during which the encoded attestation and its signature are valid.
       In SD-JWT VC it is expressed by ``nbf`` and ``exp``.
       In mdoc it is expressed by ``validFrom`` and ``validUntil``.
-      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
 
     **Administrative validity**
       Interval during which the attested attributes remain valid, for example the expiry of a licence.
-      See :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
 
     **Electronic Attestation of Public Interest**
     **Credential of Public Interest**
@@ -335,7 +331,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of WRPRC**
       Legal person mandated by a Member State to issue Wallet-Relying Party Registration Certificates to Wallet-Relying Parties registered in that Member State.
       In the EUDIW Trust Framework it is the Provider of WRPRC.
-      It issues those certificates automatically once the Entity has a valid registration in the Register and a valid WRPAC, as specified in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+      It issues those certificates automatically once the Entity has a valid registration in the Register and a valid WRPAC.
       Aligned with ARF 3.0.0.
 
     **Federation Registry**
@@ -396,8 +392,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High. Certification of the WSCD, and the distinction from a hardware-backed Keystore, are specified in :ref:`wallet-solution-requirements:WSCA/WSCD Requirements`.
-      Aligned with ARF 3.0.0.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.      Aligned with ARF 3.0.0.
 
     **Wallet Solution**
       Set of Technical Solutions for the proper functioning of Wallet Instances.
@@ -439,12 +434,12 @@ Below is the description of acronyms and definitions which are useful for furthe
       This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_, Article 5b(8)); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity.
 
     **Relying Party Intermediary**
-      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets, and that article prohibits storing data about the content of the transaction between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_ Topic 52). In an intermediated EUDIW presentation the Intermediary authenticates with its WRPAC. The Wallet Unit display rule is specified in :ref:`trust-evaluation:EUDIW Authorization`. Association of a distinct WRPAC to the intermediated Relying Party is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`. IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets, and that article prohibits storing data about the content of the transaction between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_ Topic 52). In an intermediated EUDIW presentation the Intermediary authenticates with its WRPAC. IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
       Aligned with ARF 3.0.0 Topic 52.
 
     **IT-Wallet ID**
     **Electronic Attestation of Person Identification Data**
-      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. The cross-border prohibition is specified in :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`. It does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It is distinct from the EUDI **PID** and from a **National Identity Provider** or national eID scheme (for example CieID / SPID). The term **National EID** is not a synonym for IT-Wallet ID. Not present in ARF 3.0.0; specific to IT-Wallet.
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It is distinct from the EUDI **PID** and from a **National Identity Provider** or national eID scheme (for example CieID / SPID). The term **National EID** is not a synonym for IT-Wallet ID. Not present in ARF 3.0.0; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 3.0.0, the IT-Wallet definition is provided as authoritative for the Italian context.
