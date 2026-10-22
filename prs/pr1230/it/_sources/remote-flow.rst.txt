@@ -8,7 +8,7 @@ La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_
 Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 La clausola 6 di [`ETSI TS 119 472-2`_] prevale su [`OPENID4VC-HAIP`_] ove le due fonti differiscono.
 
-A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
+A seconda di come l'Utente stia interagendo con il frontend dell'istanza web della Relying Party, usando cioè il dispositivo in cui risiede l'Istanza del Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 
 * **Same Device**: la Relying Party DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 * **Cross Device**: la Relying Party DEVE fornire un Codice QR che l'Utente inquadra con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
@@ -465,7 +465,7 @@ La Relying Party DOVREBBE abilitare il metodo POST nel suo Endpoint ``request_ur
 Questa funzionalità può essere utile quando, ad esempio, l'Istanza del Wallet supporta un insieme ristretto di funzionalità, algoritmi o un URL specifico per il suo ``authorization_endpoint``, e qualsiasi altra informazione che ritiene necessario fornire alla Relying Party per l'interoperabilità.
 
 .. warning::
-  L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 Quando ``request_uri_method`` è ``post``, l'Istanza del Wallet fornisce i metadata come specificato nei Passaggi 9-11 (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–WP_083c <wallet-credential-presentation-testcases>`).
@@ -629,7 +629,7 @@ I parametri del payload JWT sono descritti qui:
   * - **response_uri**
     - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-92 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **nonce**
-    - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-93 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`)..
+    - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-93 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **state**
     - RACCOMANDATO. Identificatore univoco della Authorization Request, il suo valore DOVREBBE essere opaco per l’Istanza del Wallet.
   * - **iss**

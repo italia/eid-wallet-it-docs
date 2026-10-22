@@ -13,15 +13,15 @@ Questa sezione fornisce un'analisi informale della sicurezza della specifica IT-
 .. note::
   Il focus dell'analisi è la conformità delle scelte progettuali nella specifica IT-Wallet rispetto ai protocolli OpenID4VC.
   Sono attualmente fuori ambito *(i)* l'analisi della progettazione del flusso di prossimità basato su ISO 18013-5, e *(ii)* l'analisi dell'implementazione;
-  di conseguenza 7 requisiti specificamente relativi all'implementazione non sono considerati (ad esempio, SV-00: Il Verificatore deve implementare il protocollo in modo sicuro e corretto).
+  di conseguenza 7 requisiti specificamente relativi all'implementazione non sono considerati (ad esempio, SV-00: il Verifier deve implementare il protocollo in modo sicuro e corretto).
 
 Come in [`OpenID4VC-SecTrust`_], tutti i requisiti sono numerati per riferimento. Insieme al rispettivo componente che deve implementare il requisito:
 
 * **CF**: Formato della Credenziale;
 * **P**: Protocollo;
 * **E**: Ecosistema;
-* **I**: Fornitore di Credenziali;
-* **V**: Verificatore di Attestati Elettronici;
+* **I**: Issuer. Nell'analisi, il Fornitore di Attestati Elettronici.
+* **V**: Verifier. Nell'analisi, la Relying Party.
 * **W**: Wallet.
 
 Questa specifica aggiunge la categoria del requisito come prefisso:
@@ -44,12 +44,12 @@ SR-CF-10 e SR-E-10
    :widths: 8 92
 
    * - |check-icon|
-     - Per qualsiasi presentazione, il formato della Credenziale e il Trust Framework devono essere progettati in modo sicuro per determinare il Fornitore di Credenziali e verificare che la Credenziale originale sia stata emessa da questo Fornitore di Credenziali (ad esempio, utilizzando una firma crittografica).
+     - Per qualsiasi presentazione, il formato della Credenziale e il Trust Framework devono essere progettati in modo sicuro per determinare il Fornitore di Attestati Elettronici e verificare che la Credenziale originale sia stata emessa da questo Fornitore di Attestati Elettronici (ad esempio, utilizzando una firma crittografica).
 
-La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Credenziali.
+La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Attestati Elettronici.
 
 - Per SD-JWT, la verifica viene eseguita utilizzando l'algoritmo specificato nel parametro dell'header **alg** di SD-JWT e un riferimento verificabile alla chiave pubblica che deve essere utilizzata per la verifica della firma. Utilizzando OpenID Federation, il riferimento verificabile al materiale crittografico pubblico è l'header **kid** dell'SD-JWT, dove il materiale crittografico viene ottenuto dalla Trust Chain relativa al Credential Issuer, specificato nel claim **iss**.
-- Per mdoc-CBOR, la firma del Fornitore di Credenziali è contenuta nel *Mobile Security Object* (MSO) e deve essere convalidata utilizzando la chiave pubblica del Fornitore di Credenziali attraverso una catena di certificati attendibile contenuta nel parametro dell'header **x5chain**.
+- Per mdoc-CBOR, la firma del Fornitore di Attestati Elettronici è contenuta nel *Mobile Security Object* (MSO) e deve essere convalidata utilizzando la chiave pubblica del Fornitore di Attestati Elettronici attraverso una catena di certificati attendibile contenuta nel parametro dell'header **x5chain**.
 
 SR-CF-20
 ^^^^^^^^
@@ -67,11 +67,11 @@ SR-CF-21
    :widths: 8 92
 
    * - |check-icon|
-     - Per l'associazione crittografica con l'Utente, il formato di presentazione richiede al Titolare di dimostrare il possesso della chiave privata associata alla Credenziale. Questo viene tipicamente ottenuto facendo firmare al Titolare una sfida, che consiste in un valore nonce e l'identificatore univoco del Verificatore di Attestati Elettronici.
+     - Per l'associazione crittografica con l'Utente, il formato di presentazione richiede al Titolare di dimostrare il possesso della chiave privata associata alla Credenziale. Questo viene tipicamente ottenuto facendo firmare al Titolare una sfida, che consiste in un valore nonce e l'identificatore univoco della Relying Party.
 
-Sia SD-JWT che mdoc-CBOR supportano l'associazione crittografica con l'Utente definendo come un Titolare può presentare una Credenziale a un Verificatore di Attestati Elettronici, fornendo una prova crittografica del legittimo possesso della Credenziale.
+Sia SD-JWT che mdoc-CBOR supportano l'associazione crittografica con l'Utente definendo come un Titolare può presentare una Credenziale a una Relying Party, fornendo una prova crittografica del legittimo possesso della Credenziale.
 
-Attualmente, per il flusso remoto, IT-Wallet supporta solo presentazioni SD-JWT. In questo scenario, il parametro KB-JWT (Key-Bound JWT) viene utilizzato per dimostrare che il Titolare possiede la chiave privata associata alla Credenziale. Il Titolare firma il KB-JWT utilizzando un **nonce** e un identificatore del Verificatore di Attestati Elettronici, utilizzando il parametro **aud**, come sfida.
+Attualmente, per il flusso remoto, IT-Wallet supporta solo presentazioni SD-JWT. In questo scenario, il parametro KB-JWT (Key-Bound JWT) viene utilizzato per dimostrare che il Titolare possiede la chiave privata associata alla Credenziale. Il Titolare firma il KB-JWT utilizzando un **nonce** e un identificatore della Relying Party, utilizzando il parametro **aud**, come sfida.
 
 SR-E-20
 ^^^^^^^
@@ -79,9 +79,9 @@ SR-E-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il Trust Framework deve garantire che l'identificazione di un Fornitore di Credenziali sia unica e non ambigua. Se ci sono più istanze dello stesso Fornitore di Credenziali che utilizzano lo stesso materiale chiave, il Verificatore di Attestati Elettronici deve fidarsi di tutte le istanze allo stesso modo.
+     - Il Trust Framework deve garantire che l'identificazione di un Fornitore di Attestati Elettronici sia unica e non ambigua. Se ci sono più istanze dello stesso Fornitore di Attestati Elettronici che utilizzano lo stesso materiale chiave, la Relying Party deve fidarsi di tutte le istanze allo stesso modo.
 
-Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziali) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.
+Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Attestati Elettronici) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -89,9 +89,9 @@ SR-E-30
    :widths: 8 92
 
    * - |check-icon|
-     - Il modo in cui il Verificatore di Attestati Elettronici determina l'affidabilità del Fornitore di Credenziali definito nel Trust Framework deve essere protetto dall'influenza di una parte malintenzionata che può, ad esempio, introdurre entità non affidabili in una directory.
+     - Il modo in cui la Relying Party determina l'affidabilità del Fornitore di Attestati Elettronici definito nel Trust Framework deve essere protetto dall'influenza di una parte malintenzionata che può, ad esempio, introdurre entità non affidabili in una directory.
 
-I Fornitori di Credenziali sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziali, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziali sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
+I Fornitori di Attestati Elettronici sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Attestati Elettronici, una Relying Party deve verificare che la Trust Chain relativa al Fornitore di Attestati Elettronici sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
 
 SR-E-40
 ^^^^^^^
@@ -99,9 +99,9 @@ SR-E-40
    :widths: 8 92
 
    * - |check-icon|
-     - Il Trust Framework deve garantire che ci sia un modo per i Verificatori di Attestati Elettronici di mantenere aggiornate le loro informazioni sui Fornitori di Credenziali affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Credenziali.
+     - Il Trust Framework deve garantire che ci sia un modo per le Relying Party di mantenere aggiornate le loro informazioni sui Fornitori di Attestati Elettronici affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Attestati Elettronici.
 
-Se l'Entity Statement di un Fornitore di Credenziali viene revocato o non è disponibile, significa che il Fornitore di Credenziali non è più considerato valido all'interno della federazione. Ciò garantisce che i Verificatori di Attestati Elettronici abbiano accesso in tempo reale allo stato delle entità affidabili e possano revocare la fiducia se necessario. Tuttavia, i Verificatori di Attestati Elettronici devono controllare attivamente lo stato del Fornitore di Credenziali interrogando gli endpoint della federazione (cioè, l'endpoint fetch per ottenere la Subordinate Statement).
+Se l'Entity Statement di un Fornitore di Attestati Elettronici viene revocato o non è disponibile, significa che il Fornitore di Attestati Elettronici non è più considerato valido all'interno della federazione. Ciò garantisce che le Relying Party abbiano accesso in tempo reale allo stato delle entità affidabili e possano revocare la fiducia se necessario. Tuttavia, le Relying Party devono controllare attivamente lo stato del Fornitore di Attestati Elettronici interrogando gli endpoint della federazione (cioè, l'endpoint fetch per ottenere la Subordinate Statement).
 
 SR-I-10
 ^^^^^^^
@@ -109,7 +109,7 @@ SR-I-10
    :widths: 8 92
 
    * - |check-icon|
-     - Il Fornitore di Credenziali deve autenticare e identificare l'Utente correttamente secondo le aspettative del Verificatore di Attestati Elettronici (che possono essere definite in una specifica, Trust Framework o per convenzione).
+     - Il Fornitore di Attestati Elettronici deve autenticare e identificare l'Utente correttamente secondo le aspettative della Relying Party (che possono essere definite in una specifica, Trust Framework o per convenzione).
 
 Il processo di emissione utilizza flussi basati su OAuth 2.0, in particolare il flusso Authorization Code, per autenticare in modo sicuro l'Utente. Inoltre, l'autenticazione dell'Utente viene eseguita utilizzando lo schema CieID con alto LoA, l'Autenticazione eID Substantial con Verifica MRTD oppure il PID/IT-Wallet ID.
 
@@ -119,9 +119,9 @@ SR-I-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il Fornitore di Credenziali deve utilizzare solo attributi corretti e aggiornati sull'Utente nella Credenziale dove sono previsti dati verificati.
+     - Il Fornitore di Attestati Elettronici deve utilizzare solo attributi corretti e aggiornati sull'Utente nella Credenziale dove sono previsti dati verificati.
 
-Quando sono previsti dati verificati, il Fornitore di Credenziali ottiene gli attributi corretti e aggiornati dalle relative Fonti Autentiche, garantendone l'accuratezza al momento dell'emissione.
+Quando sono previsti dati verificati, il Fornitore di Attestati Elettronici ottiene gli attributi corretti e aggiornati dalle relative Fonti Autentiche, garantendone l'accuratezza al momento dell'emissione.
 
 SR-I-30
 ^^^^^^^
@@ -129,9 +129,9 @@ SR-I-30
    :widths: 8 92
 
    * - |check-icon|
-     - Il Fornitore di Credenziali deve revocare una Credenziale una volta che il Fornitore di Credenziali viene a conoscenza di un potenziale abuso della Credenziale.
+     - Il Fornitore di Attestati Elettronici deve revocare una Credenziale una volta che il Fornitore di Attestati Elettronici viene a conoscenza di un potenziale abuso della Credenziale.
 
-Il Fornitore di Credenziali è l'entità responsabile della revoca di una Credenziale. La specifica descrive diversi casi d'uso che possono attivare un processo di revoca e dettaglia il flusso di revoca in cui il Fornitore di Credenziali revoca le Credenziali su richiesta dell'Utente (attraverso l'Istanza del Wallet) dopo aver verificato il possesso delle Credenziali.
+Il Fornitore di Attestati Elettronici è l'entità responsabile della revoca di una Credenziale. La specifica descrive diversi casi d'uso che possono attivare un processo di revoca e dettaglia il flusso di revoca in cui il Fornitore di Attestati Elettronici revoca le Credenziali su richiesta dell'Utente (attraverso l'Istanza del Wallet) dopo aver verificato il possesso delle Credenziali.
 
 SR-I-40
 ^^^^^^^
@@ -139,11 +139,11 @@ SR-I-40
    :widths: 8 92
 
    * - |check-icon|
-     - Il Fornitore di Credenziali deve includere nella Credenziale solo dati di associazione del Titolare che sono legati all'Utente effettivo (e non, ad esempio, includere una chiave crittografica sotto il controllo di una terza parte).
+     - Il Fornitore di Attestati Elettronici deve includere nella Credenziale solo dati di associazione del Titolare che sono legati all'Utente effettivo (e non, ad esempio, includere una chiave crittografica sotto il controllo di una terza parte).
 
 Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`):
 
-* Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Credenziali autentica l'Utente utilizzando uno schema CieID o un PID/IT-Wallet ID valido, fornendo il Token di Accesso all'Utente.
+* Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Attestati Elettronici autentica l'Utente utilizzando uno schema CieID o un PID/IT-Wallet ID valido, fornendo il Token di Accesso all'Utente.
 * Prova di Possesso della Chiave (Passi 12-13, 16-17): Il Wallet crea un DPoP Proof JWT, legando il Token di Accesso all'Istanza del Wallet. La stessa chiave viene poi utilizzata successivamente per richiedere la Credenziale, garantendo la continuità della proprietà.
 * Emissione della Credenziale (Passi 18-21): La richiesta di Credenziale viene verificata utilizzando la prova di possesso, che è crittograficamente legata all'Utente. L'uso della stessa chiave nel DPoP garantisce che il materiale chiave sia controllato dall'Istanza del Wallet, e non da una terza parte.
 
@@ -153,13 +153,13 @@ SR-I-50
    :widths: 8 92
 
    * - |check-icon|
-     - (condizionale rispetto a I-10) Il Fornitore di Credenziali deve garantire che la Credenziale sia stata memorizzata in un Wallet sicuro.
+     - (condizionale rispetto a I-10) Il Fornitore di Attestati Elettronici deve garantire che la Credenziale sia stata memorizzata in un Wallet sicuro.
 
 Un Wallet Attestation affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
 Nei Passi 5-6 di :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
 firmata con la chiave privata del Wallet. Questo attestato conferma che l'Istanza del Wallet è genuina ed è stata verificata dal Fornitore di Wallet.
 
-Il Fornitore di Credenziali verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
+Il Fornitore di Attestati Elettronici verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
 Successivamente, tutte le chiavi crittografiche generate e utilizzate nel processo provengono da questa Istanza del Wallet attestata.
 
 .. note::
@@ -171,9 +171,9 @@ SR-P-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che nessuna terza parte possa interferire con il processo di emissione in modo tale che il Fornitore di Credenziali emetta Credenziali per la terza parte all'Utente.
+     - Il protocollo deve garantire che nessuna terza parte possa interferire con il processo di emissione in modo tale che il Fornitore di Attestati Elettronici emetta Credenziali per la terza parte all'Utente.
 
-Questo requisito è affrontato mediante l'identificazione sicura del Fornitore di Credenziali. Il parametro ^iss^ nella risposta di autorizzazione assicura al Wallet che la risposta provenga dal Fornitore di Credenziali previsto e la verifica crittografica dei token ricevuti garantisce che siano stati emessi dal legittimo Fornitore di Credenziali. Inoltre, l'uso di PKCE evita l'iniezione del codice da un'altra sessione alla sessione dell'Utente.
+Questo requisito è affrontato mediante l'identificazione sicura del Fornitore di Attestati Elettronici. Il parametro ^iss^ nella risposta di autorizzazione assicura al Wallet che la risposta provenga dal Fornitore di Attestati Elettronici previsto e la verifica crittografica dei token ricevuti garantisce che siano stati emessi dal legittimo Fornitore di Attestati Elettronici. Inoltre, l'uso di PKCE evita l'iniezione del codice da un'altra sessione alla sessione dell'Utente.
 
 SR-P-30
 ^^^^^^^
@@ -181,9 +181,9 @@ SR-P-30
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che l'interazione tra il Wallet e il Verificatore di Attestati Elettronici sia protetta in modo tale che nessuna terza parte possa interferire con l'interazione modificando le informazioni trasmesse.
+     - Il protocollo deve garantire che l'interazione tra il Wallet e la Relying Party sia protetta in modo tale che nessuna terza parte possa interferire con l'interazione modificando le informazioni trasmesse.
 
-Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di **nonce**, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.
+Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di **nonce**, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e la Relying Party. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.
 
 SR-P-40
 ^^^^^^^
@@ -191,11 +191,11 @@ SR-P-40
    :widths: 8 92
 
    * - |partially-check-icon|
-     - Il protocollo deve garantire che l'interazione tra un attaccante e un Verificatore di Attestati Elettronici non possa essere inoltrata e completata con successo da un Utente.
+     - Il protocollo deve garantire che l'interazione tra un attaccante e una Relying Party non possa essere inoltrata e completata con successo da un Utente.
 
-Nel caso del flusso sullo stesso dispositivo, questo può essere prevenuto utilizzando e controllando correttamente il valore **nonce**, che viene creato e inviato dal Verificatore di Attestati Elettronici nella richiesta di autorizzazione.
-Il Verificatore di Attestati Elettronici dovrebbe mantenere una mappatura tra le sessioni dell'Utente e il **nonce** che è previsto nel flusso. Il Verificatore di Attestati Elettronici dovrebbe accettare una presentazione solo se il **nonce** nella presentazione
-corrisponde al **nonce** che è previsto per la sessione dell'Utente. Con questa contromisura, il Verificatore di Attestati Elettronici deve rilevare se viene inviata una presentazione che non era legata alla sessione dell'Utente o se non
+Nel caso del flusso sullo stesso dispositivo, questo può essere prevenuto utilizzando e controllando correttamente il valore **nonce**, che viene creato e inviato dalla Relying Party nella richiesta di autorizzazione.
+La Relying Party dovrebbe mantenere una mappatura tra le sessioni dell'Utente e il **nonce** che è previsto nel flusso. La Relying Party dovrebbe accettare una presentazione solo se il **nonce** nella presentazione
+corrisponde al **nonce** che è previsto per la sessione dell'Utente. Con questa contromisura, la Relying Party deve rilevare se viene inviata una presentazione che non era legata alla sessione dell'Utente o se non
 esiste affatto una sessione dell'Utente, prevenendo l'attacco.
 
 Per il flusso cross-device il requisito è parzialmente soddisfatto in quanto il flusso è vulnerabile agli attacchi di Cross-Device Consent Phishing (un attaccante potrebbe iniziare il flusso di presentazione,
@@ -217,13 +217,13 @@ SR-P-41
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che un attaccante non possa inoltrare con successo un'interazione tra un Wallet e un Verificatore di Attestati Elettronici a un Verificatore di Attestati Elettronici sotto il controllo dell'attaccante.
+     - Il protocollo deve garantire che un attaccante non possa inoltrare con successo un'interazione tra un Wallet e una Relying Party a una Relying Party sotto il controllo dell'attaccante.
 
-Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e il Verificatore di Attestati Elettronici, ad esempio,
+Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e la Relying Party, ad esempio,
 l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. Dato ciò, la corretta implementazione di TLS garantisce la riservatezza, evitando la fuga della risposta.
 Oltre a TLS, l'implementazione esistente dei controlli **nonce** e audience nel protocollo di presentazione dovrebbe aiutare a soddisfare il requisito di sicurezza P-41.
-Per quanto riguarda il claim **nonce**, il Verificatore di Attestati Elettronici DEVE verificare che il valore **nonce** nel Token VP corrisponda al valore **nonce** che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione.
-Per quanto riguarda il valore **aud**, il Verificatore di Attestati Elettronici deve verificare che l'audience della presentazione corrisponda all'identificatore del Verificatore di Attestati Elettronici.
+Per quanto riguarda il claim **nonce**, la Relying Party DEVE verificare che il valore **nonce** nel Token VP corrisponda al valore **nonce** che è creato dalla Relying Party durante la richiesta di autorizzazione.
+Per quanto riguarda il valore **aud**, la Relying Party deve verificare che l'audience della presentazione corrisponda all'identificatore della Relying Party.
 
 SR-P-50
 ^^^^^^^
@@ -249,15 +249,15 @@ SR-V-10
    :widths: 8 92
 
    * - |partially-check-icon|
-     - (condizionale rispetto a I-50+V-20) Il Verificatore di Attestati Elettronici deve garantire che la Credenziale sia memorizzata in un Wallet sicuro.
+     - (condizionale rispetto a I-50+V-20) La Relying Party deve garantire che la Credenziale sia memorizzata in un Wallet sicuro.
 
-Il Verificatore di Attestati Elettronici controlla la Wallet Attestation durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dal Verificatore di Attestati Elettronici e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
+La Relying Party controlla la Wallet Attestation durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dalla Relying Party e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
 
 .. note::
   Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [`OpenID4VC-SecTrust`_] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, la Wallet Attestation garantisce
   che l'Istanza del Wallet stia operando su un dispositivo sicuro e affidabile e aderisca alle rigorose politiche di sicurezza stabilite dal Fornitore di Wallet. Tuttavia, l'attestato non garantisce direttamente che ogni
   Credenziale all'interno del Wallet sia memorizzata in modo sicuro; verifica la sicurezza complessiva dell'ambiente del Wallet, all'interno del quale risiedono le Credenziali. Pertanto, mentre l'attestato supporta la
-  fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da una fonte sicura, è in definitiva una garanzia ampia della sicurezza del Wallet, piuttosto che una convalida specifica della memorizzazione individuale della Credenziale.
+  fiducia della Relying Party che la Credenziale provenga da una fonte sicura, è in definitiva una garanzia ampia della sicurezza del Wallet, piuttosto che una convalida specifica della memorizzazione individuale della Credenziale.
 
 SR-V-20
 ^^^^^^^
@@ -265,9 +265,9 @@ SR-V-20
    :widths: 8 92
 
    * - |check-icon|
-     - (condizionale rispetto a I-10) Il Verificatore di Attestati Elettronici deve garantire che la Credenziale sia stata emessa da un Fornitore di Credenziali che emette Credenziali solo a Wallet affidabili.
+     - (condizionale rispetto a I-10) La Relying Party deve garantire che la Credenziale sia stata emessa da un Fornitore di Attestati Elettronici che emette Credenziali solo a Wallet affidabili.
 
-Controllando l'affidabilità del Fornitore di Credenziali, il Verificatore di Attestati Elettronici garantisce che la Credenziale sia stata emessa da un Fornitore di Credenziali affidabile impegnato a emettere Credenziali solo a Wallet sicuri (come per SR-I-50).
+Controllando l'affidabilità del Fornitore di Attestati Elettronici, la Relying Party garantisce che la Credenziale sia stata emessa da un Fornitore di Attestati Elettronici affidabile impegnato a emettere Credenziali solo a Wallet sicuri (come per SR-I-50).
 
 .. note::
   Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [`OpenID4VC-SecTrust`_], configurando questo elemento come qualcosa che richiede ulteriori sviluppi e chiarimenti.
@@ -278,12 +278,12 @@ SR-W-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Credenziali all'Utente.
+     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Attestati Elettronici all'Utente.
 
-L'Istanza del Wallet scopre i Fornitori di Credenziali affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziali e i Trust Mark per filtrare il Fornitore di PID.
+L'Istanza del Wallet scopre i Fornitori di Attestati Elettronici affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Attestati Elettronici e i Trust Mark per filtrare il Fornitore di PID.
 
-Le informazioni del Fornitore di Credenziali vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
-Oltre alle informazioni del Fornitore di Credenziali, il *Type Metadata* dell'Attestato Elettronico contiene anche informazioni sulla Fonte Autentica.
+Le informazioni del Fornitore di Attestati Elettronici vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
+Oltre alle informazioni del Fornitore di Attestati Elettronici, il *Type Metadata* dell'Attestato Elettronico contiene anche informazioni sulla Fonte Autentica.
 
 SR-W-30
 ^^^^^^^
@@ -291,9 +291,9 @@ SR-W-30
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve fornire informazioni affidabili e complete sui Verificatori di Attestati Elettronici all'Utente.
+     - Il Wallet deve fornire informazioni affidabili e complete sulle Relying Party all'Utente.
 
-Il Wallet convalida la Trust Chain relativa al Verificatore di Attestati Elettronici e le sue informazioni vengono visualizzate all'Utente prima della presentazione.
+Il Wallet convalida la Trust Chain relativa alla Relying Party e le sue informazioni vengono visualizzate all'Utente prima della presentazione.
 
 Requisiti di Privacy
 --------------------
@@ -304,9 +304,9 @@ PR-CF-30
    :widths: 8 92
 
    * - |check-icon|
-     - Il Formato della Credenziale deve garantire che ci sia un meccanismo robusto per garantire che i dati che non devono essere rilasciati a un Verificatore di Attestati Elettronici non possano essere estratti dal Verificatore di Attestati Elettronici (Divulgazione Selettiva).
+     - Il Formato della Credenziale deve garantire che ci sia un meccanismo robusto per garantire che i dati che non devono essere rilasciati a una Relying Party non possano essere estratti dalla Relying Party (Divulgazione Selettiva).
 
-Sia SD-JWT che mdoc-CBOR forniscono la capacità di Divulgazione Selettiva, permettendo ai Titolari di rivelare solo campi specifici al Verificatore di Attestati Elettronici.
+Sia SD-JWT che mdoc-CBOR forniscono la capacità di Divulgazione Selettiva, permettendo ai Titolari di rivelare solo campi specifici alla Relying Party.
 
 PR-CF-40
 ^^^^^^^^
@@ -316,10 +316,10 @@ PR-CF-40
    * - |partially-check-icon|
      - Il Formato della Credenziale deve supportare la protezione dalla correlazione.
 
-Mentre la Divulgazione Selettiva è uno strumento forte per prevenire la correlazione, la completa non collegabilità non è garantita in tutti i casi. Possono sorgere problemi come la collusione del Verificatore di Attestati Elettronici o il tracciamento del Fornitore di Credenziali.
+Mentre la Divulgazione Selettiva è uno strumento forte per prevenire la correlazione, la completa non collegabilità non è garantita in tutti i casi. Possono sorgere problemi come la collusione della Relying Party o il tracciamento del Fornitore di Attestati Elettronici.
 
 .. tip::
-  L'emissione in batch, utilizzando diverse chiavi di associazione e salt per ogni Credenziale, può mitigare i rischi di non collegabilità Verificatore di Attestati Elettronici/Verificatore di Attestati Elettronici e di presentazione.
+  L'emissione in batch, utilizzando diverse chiavi di associazione e salt per ogni Credenziale, può mitigare i rischi di non collegabilità Relying Party/Relying Party e di presentazione.
 
 PR-E-60
 ^^^^^^^
@@ -327,10 +327,10 @@ PR-E-60
    :widths: 8 92
 
    * - |check-icon|
-     - Il Trust Framework deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
+     - Il Trust Framework deve garantire che il Fornitore di Attestati Elettronici non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [`OID-FED`_] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
-Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [`TOKEN-STATUS-LIST`_], la specifica IT-Wallet garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
+La Relying Party che esegue la Trust Evaluation sul Fornitore di Attestati Elettronici di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Attestati Elettronici sull'Istanza del Wallet con cui sta interagendo. Utilizzando [`OID-FED`_] il Fornitore di Attestati Elettronici non sa chi è l'Utente che presenta la Credenziale.
+Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [`TOKEN-STATUS-LIST`_], la specifica IT-Wallet garantisce che mentre la Relying Party controlla la validità della Credenziale, il Fornitore di Attestati Elettronici non apprende dove o quando la Credenziale viene utilizzata.
 
 PR-E-70
 ^^^^^^^
@@ -342,8 +342,8 @@ PR-E-70
 
 I seguenti meccanismi possono essere implementati per ridurre la correlazione:
 
-- *Verificatore di Attestati Elettronici-Verificatore di Attestati Elettronici*: meccanismi di valutazione per garantire che un Verificatore di Attestati Elettronici richieda solo le informazioni che è autorizzato a ottenere dal Wallet. Questo approccio minimizza lo scambio di dati e aiuta a prevenire la profilazione dell'Utente attraverso potenziali collusioni tra Verificatori di Attestati Elettronici.
-- *Fornitore di Credenziali-Verificatore di Attestati Elettronici*: Il Fornitore di Credenziali non richiede l'autenticazione del Verificatore di Attestati Elettronici durante la Trust Evaluation. In linea di principio, il Fornitore di Credenziali non sa quali Verificatori di Attestati Elettronici l'Utente sta accedendo e eviterà la profilazione dell'attività dell'Utente basata sull'accesso del Verificatore di Attestati Elettronici.
+- *Relying Party-Relying Party*: meccanismi di valutazione per garantire che una Relying Party richieda solo le informazioni che è autorizzata a ottenere dal Wallet. Questo approccio minimizza lo scambio di dati e aiuta a prevenire la profilazione dell'Utente attraverso potenziali collusioni tra Relying Party.
+- *Fornitore di Attestati Elettronici-Relying Party*: Il Fornitore di Attestati Elettronici non richiede l'autenticazione della Relying Party durante la Trust Evaluation. In linea di principio, il Fornitore di Attestati Elettronici non sa quali Relying Party l'Utente sta accedendo e eviterà la profilazione dell'attività dell'Utente basata sull'accesso della Relying Party.
 
 .. tip::
  I Trust Mark di OpenID Federation consentono la definizione di politiche personalizzate adatte alla soddisfazione di questo requisito.
@@ -354,9 +354,9 @@ PR-W-40
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve chiedere all'Utente un consenso significativo prima che una Credenziale venga utilizzata. Il Wallet deve fornire all'Utente l'opportunità di rivedere qualsiasi dato che viene rilasciato a un Verificatore di Attestati Elettronici.
+     - Il Wallet deve chiedere all'Utente un consenso significativo prima che una Credenziale venga utilizzata. Il Wallet deve fornire all'Utente l'opportunità di rivedere qualsiasi dato che viene rilasciato a una Relying Party.
 
-Dopo aver stabilito la fiducia con il Verificatore di Attestati Elettronici, il Wallet chiede il consenso dell'Utente e fornisce all'Utente l'opportunità di rivedere e selezionare i dati da presentare al Verificatore di Attestati Elettronici.
+Dopo aver stabilito la fiducia con la Relying Party, il Wallet chiede il consenso dell'Utente e fornisce all'Utente l'opportunità di rivedere e selezionare i dati da presentare alla Relying Party.
 
 PR-W-60
 ^^^^^^^
@@ -364,7 +364,7 @@ PR-W-60
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
+     - Il Wallet deve garantire che il Fornitore di Attestati Elettronici non possa sapere dove l'Utente utilizza la Credenziale.
 
 Come per SR-P-80.
 
@@ -374,9 +374,9 @@ PR-W-70
    :widths: 8 92
 
    * - |uncheck-icon|
-     - Il Wallet deve garantire che il Verificatore di Attestati Elettronici non possa sapere che lo stesso Utente sta utilizzando altri Verificatori di Attestati Elettronici.
+     - Il Wallet deve garantire che la Relying Party non possa sapere che lo stesso Utente sta utilizzando altre Relying Party.
 
-Per mitigare la collegabilità Verificatore di Attestati Elettronici/Verificatore di Attestati Elettronici per le Credenziali SD-JWT, una soluzione proposta è l'emissione in batch, che prevede l'utilizzo di diverse chiavi crittografiche utilizzate nell'associazione delle chiavi e salt per ogni Credenziale emessa. Tuttavia, l'efficacia di questi metodi non è stata ancora valutata a fondo, anche in considerazione degli impatti che questi potrebbero avere sull'esperienza dell'utente, e non è ancora disponibile per IT-Wallet.
+Per mitigare la collegabilità Relying Party/Relying Party per le Credenziali SD-JWT, una soluzione proposta è l'emissione in batch, che prevede l'utilizzo di diverse chiavi crittografiche utilizzate nell'associazione delle chiavi e salt per ogni Credenziale emessa. Tuttavia, l'efficacia di questi metodi non è stata ancora valutata a fondo, anche in considerazione degli impatti che questi potrebbero avere sull'esperienza dell'utente, e non è ancora disponibile per IT-Wallet.
 
 Requisiti di Sicurezza e Privacy
 --------------------------------
@@ -391,7 +391,7 @@ SPR-E-50
 
 Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status List [`TOKEN-STATUS-LIST`_] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.
 
-La revoca di un'Entità di Federazione (cioè, Fornitore di Credenziali, Verificatore di Attestati Elettronici, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.
+La revoca di un'Entità di Federazione (cioè, Fornitore di Attestati Elettronici, Relying Party, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.
 
 .. tip::
   Inoltre, [`OID-FED`_] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.
@@ -402,14 +402,14 @@ SPR-P-10
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che nessuna terza parte possa leggere la Credenziale emessa dal Fornitore di Credenziali.
+     - Il protocollo deve garantire che nessuna terza parte possa leggere la Credenziale emessa dal Fornitore di Attestati Elettronici.
 
 Per mitigare questa minaccia, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza nel processo di emissione:
 
-- *TLS*: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Credenziali, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.
-- *Wallet Attestation*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziali, fornendo ulteriore garanzia che il Fornitore di Credenziali stia interagendo con un'Istanza del Wallet legittima.
+- *TLS*: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.
+- *Wallet Attestation*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici, fornendo ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.
 - *DPoP*: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.
-- *Associazione del Titolare*: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Credenziali.
+- *Associazione del Titolare*: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Attestati Elettronici.
 - *validazione redirect_uri*: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del **redirect_uri** è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.
 - *PKCE*: Evita l'iniezione di un **code** di autorizzazione legittimo in un'altra sessione.
 
@@ -419,22 +419,22 @@ SPR-P-60
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che durante un'interazione con un Verificatore di Attestati Elettronici, un attaccante non possa leggere PII.
+     - Il protocollo deve garantire che durante un'interazione con una Relying Party, un attaccante non possa leggere PII.
 
 L'IT Wallet è conforme ai requisiti di P-60 garantendo che tutte le connessioni di rete siano protette da TLS.
 
 Inoltre, poiché la Risposta di Autorizzazione contiene PII è importante che non venga inviata a un endpoint controllato dall'attaccante.
 Nella specifica IT Wallet il **response_uri**, che è l'endpoint dove il Wallet invia la Risposta di Autorizzazione, è incluso nel Request Object firmato,
-che viene verificato dal Wallet utilizzando la chiave pubblica del Verificatore di Attestati Elettronici e la Trust Chain. Questo garantisce che la Risposta di Autorizzazione venga inviata all'endpoint corretto.
-Inoltre, la Risposta di Autorizzazione è crittografata con la chiave pubblica del Verificatore di Attestati Elettronici, garantendo che solo il destinatario previsto possa decrittografare e leggere le informazioni sensibili,
+che viene verificato dal Wallet utilizzando la chiave pubblica della Relying Party e la Trust Chain. Questo garantisce che la Risposta di Autorizzazione venga inviata all'endpoint corretto.
+Inoltre, la Risposta di Autorizzazione è crittografata con la chiave pubblica della Relying Party, garantendo che solo il destinatario previsto possa decrittografare e leggere le informazioni sensibili,
 proteggendo ulteriormente la trasmissione.
 
-Un altro endpoint da validare è il **redirect_uri**, che viene utilizzato per reindirizzare l'Utente al Verificatore di Attestati Elettronici dopo che la presentazione della Credenziale è completata.
-Nella specifica IT-Wallet, il **redirect_uri** è registrato e validato in anticipo durante l'onboarding del Verificatore di Attestati Elettronici utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet deve validare questo valore verificando la fiducia con il Verificatore di Attestati Elettronici secondo la Sezione `Meccanismo di Valutazione della Fiducia <trust.html#trust-evaluation-mechanism>`_
+Un altro endpoint da validare è il **redirect_uri**, che viene utilizzato per reindirizzare l'Utente alla Relying Party dopo che la presentazione della Credenziale è completata.
+Nella specifica IT-Wallet, il **redirect_uri** è registrato e validato in anticipo durante l'onboarding della Relying Party utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet deve validare questo valore verificando la fiducia con la Relying Party secondo la Sezione `Meccanismo di Valutazione della Fiducia <trust.html#trust-evaluation-mechanism>`_
 
 
-Per essere sicuri che il **redirect_uri** sia ricevuto da un Wallet legittimo e non dall'attaccante, l'endpoint di risposta del Verificatore di Attestati Elettronici al ricevimento di una risposta di autorizzazione valida crea un valore crittografico fresco che è collegato alla risposta di autorizzazione e lo allega al **redirect_uri** che viene inviato al Wallet.
-Quando il Verificatore di Attestati Elettronici riceve il reindirizzamento, può estrarre il codice di risposta e verificare con il suo endpoint di risposta se il codice di risposta era associato a questa Risposta di Autorizzazione. (Vedi :ref:`remote-flow:URI di Reindirizzamento`).
+Per essere sicuri che il **redirect_uri** sia ricevuto da un Wallet legittimo e non dall'attaccante, l'endpoint di risposta della Relying Party al ricevimento di una risposta di autorizzazione valida crea un valore crittografico fresco che è collegato alla risposta di autorizzazione e lo allega al **redirect_uri** che viene inviato al Wallet.
+Quando la Relying Party riceve il reindirizzamento, può estrarre il codice di risposta e verificare con il suo endpoint di risposta se il codice di risposta era associato a questa Risposta di Autorizzazione. (Vedi :ref:`remote-flow:URI di Reindirizzamento`).
 
 SPR-P-70
 ^^^^^^^^
@@ -442,15 +442,15 @@ SPR-P-70
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che durante un'interazione con un Fornitore di Credenziali, un attaccante non possa leggere PII.
+     - Il protocollo deve garantire che durante un'interazione con un Fornitore di Attestati Elettronici, un attaccante non possa leggere PII.
 
 Nel processo di emissione, poiché la Credenziale all'interno di una Risposta di Credenziale contiene PII, è necessario che la Credenziale non venga inviata o intercettata da un attaccante.
 Per mitigare queste minacce, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza:
 
-- *TLS*: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Credenziali, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.
-- *Attestato dell'Istanza del Wallet*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziali, fornendo ulteriore garanzia che il Fornitore di Credenziali stia interagendo con un'Istanza del Wallet legittima.
+- *TLS*: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Attestati Elettronici, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.
+- *Attestato dell'Istanza del Wallet*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Attestati Elettronici, fornendo ulteriore garanzia che il Fornitore di Attestati Elettronici stia interagendo con un'Istanza del Wallet legittima.
 - *DPoP*: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.
-- *Associazione del Titolare*: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Credenziali.
+- *Associazione del Titolare*: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Attestati Elettronici.
 - *validazione redirect_uri*: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del **redirect_uri** è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.
 - *PKCE*: Evita l'iniezione di un **code** di autorizzazione legittimo in un'altra sessione.
 
@@ -467,10 +467,10 @@ SPR-P-80
    :widths: 8 92
 
    * - |check-icon|
-     - Il protocollo deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
+     - Il protocollo deve garantire che il Fornitore di Attestati Elettronici non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali.
-Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
+Il protocollo di scambio non richiede alcuna interazione tra Relying Party e Fornitori di Attestati Elettronici.
+Inoltre, Status List che preserva la privacy, garantisce che mentre la Relying Party controlla la validità della Credenziale, il Fornitore di Attestati Elettronici non apprende dove o quando la Credenziale viene utilizzata.
 
 SPR-W-50
 ^^^^^^^^
