@@ -417,7 +417,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived) e non è un QEAA o un PuB-EAA. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
+      - *(map, OPZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived) e non è un QEAA o un PuB-EAA. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.  Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione 6.3 di TOKEN-STATUS-LIST_. Per un QEAA o un PuB-EAA, ``status`` segue :ref:`credential-data-model-qeaa-pub-eaa:Stato e Attestati a Vita Breve`.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::

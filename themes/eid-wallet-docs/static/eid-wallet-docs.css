@@ -1,6 +1,8 @@
 /**
  * IT-Wallet docs theme — Bootstrap Italia layout for Sphinx.
- * Spacing follows an 8px grid for geometric consistency.
+ * Spacing follows an 8px grid at a 16px root. The root font size is 80% of
+ * the browser default, so zoom 100% shows that grid at 80% (the density that
+ * previously required zooming the page out).
  */
 
 :root {
@@ -51,6 +53,7 @@ html.it-docs-html,
 html:has(body.it-docs-body) {
   height: auto;
   min-height: 100%;
+  font-size: 80%;
 }
 
 body.it-docs-body {
@@ -1488,6 +1491,57 @@ body.it-docs-body > .it-docs-footer {
     font-size: 1rem;
   }
 
+  .custom-navbar-toggler.it-docs-sidebar-toggler {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    line-height: 0;
+    background-color: #004d99;
+    border: 1px solid #004d99;
+    border-radius: var(--it-docs-radius);
+    color: #fff;
+    box-shadow: none;
+  }
+
+  .custom-navbar-toggler.it-docs-sidebar-toggler span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .custom-navbar-toggler.it-docs-sidebar-toggler:hover,
+  .custom-navbar-toggler.it-docs-sidebar-toggler:focus-visible {
+    background-color: #003366;
+    border-color: #003366;
+    color: #fff;
+  }
+
+  .custom-navbar-toggler.it-docs-sidebar-toggler .icon,
+  .custom-navbar-toggler.it-docs-sidebar-toggler svg {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    fill: currentColor;
+    color: inherit;
+    flex: 0 0 auto;
+  }
+
   .it-docs-sidebar-col {
     order: 0;
     height: 0;
@@ -1503,24 +1557,7 @@ body.it-docs-body > .it-docs-footer {
   }
 
   .it-docs-navscroll-col {
-    order: 1;
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: var(--it-docs-space-3);
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .it-docs-navscroll-col:empty {
     display: none;
-  }
-
-  .it-docs-navscroll .custom-navbar-toggler {
-    display: inline-flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: var(--it-docs-space-1);
   }
 
   .it-docs-navscroll.navbar.it-navscroll-wrapper .menu-wrapper {
@@ -1730,66 +1767,6 @@ body.it-docs-body > .it-docs-footer {
 @media (max-width: 575.98px) {
   .it-docs-header-compact .it-docs-header-site-title {
     font-size: 0.9375rem;
-  }
-
-  .custom-navbar-toggler.it-docs-sidebar-toggler span,
-  .it-docs-navscroll .custom-navbar-toggler span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .custom-navbar-toggler.it-docs-sidebar-toggler,
-  .it-docs-navscroll .custom-navbar-toggler {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    min-width: 2.75rem;
-    min-height: 2.75rem;
-    padding: 0.5rem;
-    background-color: #004d99;
-    border: 1px solid #004d99;
-    border-radius: var(--it-docs-radius);
-    color: #fff;
-    box-shadow: none;
-  }
-
-  .it-docs-navscroll.navbar.it-navscroll-wrapper .custom-navbar-toggler,
-  .it-docs-navscroll.navbar.it-navscroll-wrapper .custom-navbar-toggler span {
-    color: #fff;
-  }
-
-  .it-docs-navscroll.navbar.it-navscroll-wrapper .custom-navbar-toggler .icon,
-  .it-docs-navscroll.navbar.it-navscroll-wrapper .custom-navbar-toggler svg {
-    color: #fff;
-    fill: currentColor;
-  }
-
-  .custom-navbar-toggler.it-docs-sidebar-toggler:hover,
-  .custom-navbar-toggler.it-docs-sidebar-toggler:focus-visible,
-  .it-docs-navscroll .custom-navbar-toggler:hover,
-  .it-docs-navscroll .custom-navbar-toggler:focus-visible {
-    background-color: #003366;
-    border-color: #003366;
-    color: #fff;
-  }
-
-  .custom-navbar-toggler.it-docs-sidebar-toggler .icon,
-  .custom-navbar-toggler.it-docs-sidebar-toggler svg,
-  .it-docs-navscroll .custom-navbar-toggler .icon,
-  .it-docs-navscroll .custom-navbar-toggler svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: currentColor;
-    color: inherit;
-    flex-shrink: 0;
   }
 }
 

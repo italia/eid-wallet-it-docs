@@ -42,7 +42,7 @@ The following table defines the common metadata attributes that are applicable t
   * - **expiry_date**
     - OPTIONAL. Date (and if possible time) when the Digital Credential will expire.
   * - **location_status**
-    - OPTIONAL. The location of validity status information on the Digital Credential where the Credential Issuer revoke Digital Credential.
+    - OPTIONAL. The location of validity status information on the Digital Credential where the Credential Issuer revokes the Digital Credential.
   * - **cryptographic_binding**
     - OPTIONAL. Object containing the proof-of-possession key materials.
   * - **verification**
