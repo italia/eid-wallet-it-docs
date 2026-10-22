@@ -1177,7 +1177,7 @@ Catalogo delle Attestazioni
 
 Il valore ``schema_registry`` nel documento Registry Discovery è la radice dell'API del Catalogue of Attestations.
 Il Federation Trust Anchor DEVE implementare la Section 5 di [`EUDI-TS 11`_] e il documento OpenAPI dell'Annex A.3 ([`EUDI-TS 11 OpenAPI`_]).
-Ciascuno schema di attestazione DEVE essere un oggetto ``SchemaMeta`` come definito nella Section 4.3 di [`EUDI-TS 11`_] e DEVE essere valido rispetto allo JSON Schema dell'Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
+Ciascuno schema di attestazione DEVE essere un oggetto ``SchemaMeta`` come definito nella Section 4.3 di [`EUDI-TS 11`_]. Lo schema DEVE essere valido rispetto allo JSON Schema dell'Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
 L'oggetto NON DEVE contenere proprietà esterne a quello schema.
 
 La radice dell'API ha questi path:
@@ -1377,8 +1377,8 @@ La risposta di collection DEVE includere una voce versionata solo quando quella 
 Il Federation Trust Anchor DEVE rispondere con HTTP 400 quando la richiesta ripete un parametro di query, contiene un parametro di query non elencato in :ref:`table_catalog_query_parameters`, o contiene un valore che non soddisfa quel parametro.
 
 Il Federation Trust Anchor DEVE ordinare le voci corrispondenti secondo l'ordine dei code point Unicode di ``credential_type`` e, a parità di ``credential_type``, secondo l'ordine dei code point Unicode di ``version``.
-L'array ``credentials`` DEVE contenere le voci corrispondenti in quell'ordine, a partire dalle voci successive a ``offset``, e DEVE contenere al massimo ``limit`` voci.
-Quando nessuna voce versionata corrisponde, o quando ``offset`` è maggiore o uguale a ``total``, ``credentials`` DEVE essere un array vuoto e ``total`` DEVE essere il numero di voci corrispondenti.
+L'array ``credentials`` DEVE contenere le voci corrispondenti in quell'ordine, a partire dalle voci successive a ``offset``. L'array ``credentials`` DEVE contenere al massimo ``limit`` voci.
+Quando nessuna voce versionata corrisponde, o quando ``offset`` è maggiore o uguale a ``total``, ``credentials`` DEVE essere un array vuoto. In quello stesso caso, ``total`` DEVE essere il numero di voci corrispondenti.
 
 Un client NON DEVE trattare ``credentials`` come l'insieme di tutte le voci versionate del catalogo.
 Il client che richiede ogni voce corrispondente DEVE richiedere la pagina successiva aumentando ``offset`` di ``limit`` fino a quando ``offset`` è maggiore o uguale a ``total``.

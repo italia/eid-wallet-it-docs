@@ -883,7 +883,7 @@ Lo SLT Provider DEVE essere il Fornitore di Wallet.
 
 **Status List**
 
-Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in ``client_status.status.status_list`` e una KA DEVE includere il proprio riferimento alla Status List in ``key_storage_status.status.status_list``. Ciascun riferimento alla Status List DEVE contenere ``idx`` e ``uri``. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
+Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in ``client_status.status.status_list``. Una KA DEVE includere il proprio riferimento alla Status List in ``key_storage_status.status.status_list``. Ciascun riferimento alla Status List DEVE contenere ``idx`` e ``uri``. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
 
 Secondo questa specifica, una WIA o una KA può avere uno dei seguenti stati:
 
@@ -913,7 +913,7 @@ Indipendentemente dal formato, il Fornitore di Wallet DEVE firmare la SLT con il
 
 **Considerazioni sulla privacy**
 
-Per impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation, i Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation e DEVONO pubblicare la SLT allo stesso ``uri`` per tali attestazioni. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a `EUDI-TS 3`_ e `CIR2026/1731`_. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.
+I Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation. I Fornitori di Wallet DEVONO pubblicare la SLT allo stesso ``uri`` per tali attestazioni. Lo scopo è impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a `EUDI-TS 3`_ e `CIR2026/1731`_. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.
 
 
 Catalogo e-Service PDND del Fornitore di Wallet

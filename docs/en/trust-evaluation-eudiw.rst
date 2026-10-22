@@ -381,9 +381,9 @@ EUDIW Attestation Signature Validation
 This process validates the signature on an Attestation (Digital Credential or Wallet Instance Attestation) using the appropriate Sign/Seal Certificate as profiled in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 It is invoked during the issuance and presentation flows to validate the signature on the Attestation.
 
-The process MUST be structured as follows:
+The process MUST be structured as follows.
 
-- If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, the signature validation procedure below MUST be executed using the Sign/Seal Certificate and the associated X.509 trust chain contained in the Attestation, with the Trust Anchor present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
+- The following signature validation procedure applies when the Attestation is a PID, a PuB-EAA, a QEAA, or a Wallet Instance Attestation. The signature validation procedure MUST use the Sign/Seal Certificate and the associated X.509 trust chain contained in the Attestation. The Trust Anchor is the one present in the relevant LoTE for a PID, a WIA, or a PuB-EAA. The Trust Anchor is the one present in the Trusted List for a QEAA.
 
 - If the Attestation whose signature is being checked is a non-qualified EAA, then information regarding trust evaluation is governed by the corresponding Rulebook.
 

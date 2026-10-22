@@ -35,7 +35,7 @@ Le Entità Organizzative DEVONO implementare misure tecniche e organizzative app
 Politica di Conservazione dei Log del Fornitore di Wallet
 ---------------------------------------------------------
 
-Le informazioni relative alla registrazione e alla gestione delle Istanze del Wallet POSSONO essere conservate fino a 12 mesi dopo la disattivazione o la revoca del Wallet o dell'account Utente associato, a meno che un obbligo di legge non richieda una conservazione più lunga.
+Le informazioni relative alla registrazione e alla gestione delle Istanze del Wallet POSSONO essere conservate fino a 12 mesi dopo la disattivazione o la revoca del Wallet o dell'account Utente associato. Un obbligo di legge può richiedere una conservazione più lunga.
 
 
 Politica di Conservazione dei Log del Fornitore di Credenziali

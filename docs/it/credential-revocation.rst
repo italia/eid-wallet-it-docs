@@ -359,7 +359,7 @@ Indipendentemente dal formato, il Fornitore di Attestati Elettronici DEVE firmar
 
 **Considerazioni sulla privacy**
 
-Per impedire ai Fornitori di Attestati Elettronici di tracciare o profilare gli Utenti in base all'uso degli Attestati Elettronici, i Fornitori di Attestati Elettronici DEVONO integrare le informazioni di stato di molti Attestati Elettronici nella stessa lista e DEVONO pubblicare la SLT allo stesso ``uri`` per tutti quegli Attestati Elettronici. I Fornitori di Attestati Elettronici DEVONO configurare le Status List con almeno 100.000 voci di stato. Se vengono emessi ulteriori Attestati Elettronici, il Fornitore di Attestati Elettronici PUÒ creare SLT aggiuntive oppure aumentare il numero di entry nell'array, in base a considerazioni pratiche quali la dimensione totale di ciascuna SLT e la gestione di più endpoint.
+I Fornitori di Attestati Elettronici DEVONO integrare le informazioni di stato di molti Attestati Elettronici nella stessa lista. I Fornitori di Attestati Elettronici DEVONO pubblicare la SLT allo stesso ``uri`` per tutti quegli Attestati Elettronici. Lo scopo è impedire ai Fornitori di Attestati Elettronici di tracciare o profilare gli Utenti in base all'uso degli Attestati Elettronici. I Fornitori di Attestati Elettronici DEVONO configurare le Status List con almeno 100.000 voci di stato. Se vengono emessi ulteriori Attestati Elettronici, il Fornitore di Attestati Elettronici PUÒ creare SLT aggiuntive oppure aumentare il numero di entry nell'array, in base a considerazioni pratiche quali la dimensione totale di ciascuna SLT e la gestione di più endpoint.
 
 Verifica degli Stati degli Attestati Elettronici
 """""""""""""""""""""""""""""""""""""""""""""""""

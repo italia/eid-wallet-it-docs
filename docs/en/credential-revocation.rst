@@ -358,7 +358,7 @@ Regardless of the format, the Credential Issuer MUST sign the SLT using one of t
 
 **Privacy Considerations**
 
-To prevent Credential Issuers from tracking or profiling users based on their use of Digital Credentials, Credential Issuers MUST integrate the status information for many Digital Credentials into the same list and MUST publish the SLT at the same ``uri`` for all those Digital Credentials. This specification requires Credential Issuers to configure Status Lists with at least 100,000 status entries. If more Digital Credentials are issued, the Credential Issuer MAY create additional SLTs or increase the number of entries in the array, depending on practical considerations such as the total size of each SLT and the management of multiple endpoints.
+Credential Issuers MUST integrate the status information for many Digital Credentials into the same list. Credential Issuers MUST publish the SLT at the same ``uri`` for all those Digital Credentials. The purpose is to prevent Credential Issuers from tracking or profiling users based on their use of Digital Credentials. This specification requires Credential Issuers to configure Status Lists with at least 100,000 status entries. If more Digital Credentials are issued, the Credential Issuer MAY create additional SLTs or increase the number of entries in the array, depending on practical considerations such as the total size of each SLT and the management of multiple endpoints.
 
 Checking Credentials Statuses
 """""""""""""""""""""""""""""

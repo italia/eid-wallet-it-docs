@@ -1181,7 +1181,7 @@ Catalogue of Attestations
 
 The ``schema_registry`` value in the Registry Discovery document is the root of the Catalogue of Attestations API.
 The Federation Trust Anchor MUST implement Section 5 of [`EUDI-TS 11`_] and the OpenAPI document of Annex A.3 ([`EUDI-TS 11 OpenAPI`_]).
-Each attestation schema MUST be a ``SchemaMeta`` object as defined in Section 4.3 of [`EUDI-TS 11`_] and MUST validate against the JSON Schema of Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
+Each attestation schema MUST be a ``SchemaMeta`` object as defined in Section 4.3 of [`EUDI-TS 11`_]. The schema MUST validate against the JSON Schema of Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
 The object MUST NOT contain properties outside that schema.
 
 The API root has these paths:
@@ -1381,8 +1381,8 @@ The collection response MUST include a versioned entry only when that entry matc
 The Federation Trust Anchor MUST respond with HTTP 400 when the request repeats a query parameter, contains a query parameter that is not listed in :ref:`table_catalog_query_parameters`, or contains a value that does not satisfy that parameter.
 
 The Federation Trust Anchor MUST order matching entries by the Unicode code point order of ``credential_type`` and, for an equal ``credential_type``, by the Unicode code point order of ``version``.
-The ``credentials`` array MUST contain the matching entries in that order, starting after ``offset`` entries, and it MUST contain at most ``limit`` entries.
-When no versioned entry matches, or when ``offset`` is greater than or equal to ``total``, ``credentials`` MUST be an empty array and ``total`` MUST be the number of matching entries.
+The ``credentials`` array MUST contain the matching entries in that order, starting after ``offset`` entries. The ``credentials`` array MUST contain at most ``limit`` entries.
+When no versioned entry matches, or when ``offset`` is greater than or equal to ``total``, ``credentials`` MUST be an empty array. In that same case, ``total`` MUST be the number of matching entries.
 
 A client MUST NOT treat ``credentials`` as every versioned entry of the catalog.
 When the client requires every matching entry, it MUST request the next page by increasing ``offset`` by ``limit`` until ``offset`` is greater than or equal to ``total``.

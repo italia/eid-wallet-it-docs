@@ -485,7 +485,7 @@ Below are the main defined terms and definitions related to User Experience aspe
       Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
 
     **Selection Page**
-      It's the page of the Touchpoint of the Relying Party or of a third party offering a Credential Offer where the User can see all the Wallet Solutions available in the IT-Wallet System Register and is able to select which one to continue the process of Authentication, presentation or issuance.
+      The Selection Page is the page of the Touchpoint of the Relying Party or of a third party offering a Credential Offer. On that page, the User can see all the Wallet Solutions available in the IT-Wallet System Register and can select which Wallet Solution continues Authentication, presentation, or issuance.
 
     **Service Model**
       Set of interactions between actors and touchpoints necessary for service delivery and fruition.

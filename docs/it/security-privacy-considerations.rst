@@ -251,7 +251,7 @@ SR-V-10
    * - |partially-check-icon|
      - (condizionale rispetto a I-50+V-20) La Relying Party deve garantire che la Credenziale sia memorizzata in un Wallet sicuro.
 
-La Relying Party controlla la Wallet Attestation durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dalla Relying Party e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
+La Relying Party controlla la Wallet Attestation durante gli scambi inviati con la risposta di autorizzazione. Il controllo conferma che la Wallet Attestation soddisfa i criteri di sicurezza richiesti dalla Relying Party. La Wallet Attestation resta sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
 
 .. note::
   Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [`OpenID4VC-SecTrust`_] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, la Wallet Attestation garantisce

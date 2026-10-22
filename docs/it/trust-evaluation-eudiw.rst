@@ -381,9 +381,9 @@ EUDIW Attestation Signature Validation
 Questo processo valida la firma su un'Attestation (Attestato Elettronico o Wallet Instance Attestation) usando il Sign/Seal Certificate appropriato come profilato in :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 È invocato durante i flussi di emissione e presentazione per validare la firma sull'Attestation.
 
-Il processo DEVE essere strutturato come segue:
+Il processo DEVE essere strutturato come segue.
 
-- Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, la procedura di validazione della firma seguente DEVE essere eseguita usando il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation, con il Trust Anchor presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).
+- La procedura di validazione della firma seguente si applica quando l'Attestation è un PID, una PuB-EAA, una QEAA o una Wallet Instance Attestation. La procedura di validazione della firma DEVE usare il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation. Il Trust Anchor è quello presente nella LoTE rilevante per un PID, una WIA o una PuB-EAA. Il Trust Anchor è quello presente nella Trusted List per una QEAA.
 
 - Se l'Attestation la cui firma è in verifica è una EAA non qualificata, allora le informazioni relative alla trust evaluation sono governate dal Rulebook corrispondente.
 
