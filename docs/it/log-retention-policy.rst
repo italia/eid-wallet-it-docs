@@ -4,7 +4,7 @@
 Politiche Generali di Conservazione dei Log
 ===========================================
 
-La conservazione dei log è un elemento chiave per garantire la sicurezza, inclusa la prevenzione delle frodi, il rilevamento degli incidenti, l'integrità del sistema e la conformità con gli obblighi legali applicabili. DEVE anche essere allineata con i requisiti definiti nella norma ISO/IEC 27001, in particolare per quanto riguarda la verificabilità, il controllo degli accessi e l'archiviazione sicura. Poiché la gestione dei log può comportare il trattamento di dati personali, costituisce anche una misura di responsabilizzazione ai sensi del GDPR, con implicazioni per la minimizzazione dei dati, la limitazione della conservazione e la limitazione delle finalità; per questi aspetti, si fa riferimento alle disposizioni pertinenti del GDPR e alle normative specifiche del settore.
+La conservazione dei log è un elemento chiave per garantire la sicurezza, inclusa la prevenzione delle frodi, il rilevamento degli incidenti, l'integrità del sistema e la conformità con gli obblighi legali applicabili. La conservazione dei log DEVE anche essere allineata con i requisiti definiti nella norma ISO/IEC 27001, in particolare per quanto riguarda la verificabilità, il controllo degli accessi e l'archiviazione sicura. Poiché la gestione dei log può comportare il trattamento di dati personali, costituisce anche una misura di responsabilizzazione ai sensi del GDPR, con implicazioni per la minimizzazione dei dati, la limitazione della conservazione e la limitazione delle finalità; per questi aspetti, si fa riferimento alle disposizioni pertinenti del GDPR e alle normative specifiche del settore.
 
 Per tutto ciò che riguarda la gestione dei log, i Fornitori di Wallet, i Fornitori di Credenziali, le Fonti Autentiche e le Relying Party sono considerati Entità Organizzative.
 
@@ -23,7 +23,7 @@ Le Entità Organizzative DEVONO implementare misure tecniche e organizzative app
 
 - **A.12.4.1 Registrazione degli Eventi**: Le Entità Organizzative DEVONO stabilire procedure per la registrazione degli eventi, inclusi i tipi di eventi da registrare, le informazioni da acquisire e il periodo di conservazione dei log.
 
-- **A.12.4.2 Protezione delle Informazioni di Log**: Le Entità Organizzative DEVONO essere protette contro l'accesso non autorizzato e la manomissione. Ciò include l'implementazione di controlli di accesso, crittografia e controlli di integrità per garantire che i dati di log rimangano sicuri e affidabili.
+- **A.12.4.2 Protezione delle Informazioni di Log**: Le informazioni di log DEVONO essere protette contro l'accesso non autorizzato e la manomissione. Ciò include l'implementazione di controlli di accesso, crittografia e controlli di integrità per garantire che i dati di log rimangano sicuri e affidabili.
 
 - **A.12.4.3 Log degli Amministratori e degli Operatori**: Le attività degli amministratori di sistema e degli operatori DEVONO essere registrate e riviste regolarmente. Le Entità Organizzative DEVONO rilevare attività non autorizzate e garantire la responsabilità per le azioni intraprese sui sistemi critici.
 

@@ -5,7 +5,7 @@
 General Log Retention Policies
 =======================================
 
-The retention of logs is a key element for ensuring security, including fraud prevention, incident detection, system integrity, and compliance with applicable legal obligations. It MUST also be aligned with the requirements defined in ISO/IEC 27001, in particular with regard to auditability, access control, and secure storage. As long as log management may involve the processing of personal data, it also constitutes a measure of accountability under the GDPR, with implications for data minimization, storage limitation, and purpose limitation; for these aspects, reference is made to the relevant provisions of the GDPR and sector-specific regulations.
+The retention of logs is a key element for ensuring security, including fraud prevention, incident detection, system integrity, and compliance with applicable legal obligations. The retention of logs MUST also be aligned with the requirements defined in ISO/IEC 27001, in particular with regard to auditability, access control, and secure storage. As long as log management may involve the processing of personal data, it also constitutes a measure of accountability under the GDPR, with implications for data minimization, storage limitation, and purpose limitation; for these aspects, reference is made to the relevant provisions of the GDPR and sector-specific regulations.
 
 For all matters related to log handling, Wallet Providers, Credential Issuers, Authentic Sources, and Relying Parties are considered Organizational Entities.
 
