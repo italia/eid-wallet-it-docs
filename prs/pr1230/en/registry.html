@@ -3166,9 +3166,9 @@ It SHOULD apply the measures in Section 5.5 and Section 5.6 of [<a class="refere
 <section id="digital-credentials-catalog">
 <h2><span class="section-number">7.7. </span>Digital Credentials Catalog<a class="headerlink" href="#digital-credentials-catalog" title="Link to this heading">¶</a></h2>
 <p>The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
-The Digital Credential Catalog MUST contain at least:</p>
+The Digital Credentials Catalog MUST contain at least:</p>
 <table class="longtable docutils align-default" id="id15">
-<caption><span class="caption-number">Table 7.12 </span><span class="caption-text">Digital Credential Catalog - Main information</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.12 </span><span class="caption-text">Digital Credentials Catalog - Main information</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -3221,7 +3221,7 @@ The Digital Credential Catalog MUST contain at least:</p>
 </tr>
 </tbody>
 </table>
-<p>The Digital Credential Catalog MUST ensure to:</p>
+<p>The Digital Credentials Catalog MUST ensure to:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Facilitate Digital Credential discovery for Users.</p></li>
@@ -3234,13 +3234,13 @@ The Digital Credential Catalog MUST contain at least:</p>
 </div></blockquote>
 <section id="digital-credentials-catalog-usage">
 <h3><span class="section-number">7.7.1. </span>Digital Credentials Catalog Usage<a class="headerlink" href="#digital-credentials-catalog-usage" title="Link to this heading">¶</a></h3>
-<p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the main Entities involved in the Digital Credential Catalog are:</p>
+<p>As shown in Figure <a class="reference internal" href="#fig-registry-infrastructure"><span class="std std-ref">Registries and Catalogues of the Ecosystem</span></a> and Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a>, the main Entities involved in the Digital Credentials Catalog are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Attestation Scheme Providers</strong>: The Entities that own the Attestation Rulebook of a Digital Credential and that request the registration of the corresponding versioned entry, see Attestation Scheme Provider.</p></li>
 <li><p><strong>Digital Credential Issuers</strong>: They are added to the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of a versioned entry as a result of the Digital Credentials they declare in their registration data.</p></li>
-<li><p><strong>Relying Parties</strong>: They use the Digital Credential Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.</p></li>
-<li><p><strong>Wallet Providers</strong>: They access the Digital Credential Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.</p></li>
+<li><p><strong>Relying Parties</strong>: They use the Digital Credentials Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.</p></li>
+<li><p><strong>Wallet Providers</strong>: They access the Digital Credentials Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.</p></li>
 <li><p><strong>Users</strong>: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.</p></li>
 <li><p><strong>Authentic Sources</strong>: They are referenced by the versioned entry as its data source and they act as Attestation Scheme Provider when they own the Attestation Rulebook.</p></li>
 </ul>
@@ -3461,7 +3461,7 @@ The collection payload contains the following parameters.</p>
 <td><p>REQUIRED. The timestamp indicating when the catalog content was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
-<td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
+<td><p>REQUIRED. Issuer identifier of the Digital Credentials Catalog.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>REQUIRED. Unix time at which this response JWT was issued, as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. <code class="docutils literal notranslate"><span class="pre">last_modified</span></code> records the last change of catalog content. <code class="docutils literal notranslate"><span class="pre">iat</span></code> records the issuance of this JWT.</p></td>

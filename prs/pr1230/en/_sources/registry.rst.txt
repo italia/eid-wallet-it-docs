@@ -1254,9 +1254,9 @@ Digital Credentials Catalog
 ---------------------------
 
 The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
-The Digital Credential Catalog MUST contain at least:
+The Digital Credentials Catalog MUST contain at least:
 
-.. list-table:: Digital Credential Catalog - Main information
+.. list-table:: Digital Credentials Catalog - Main information
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -1291,7 +1291,7 @@ The Digital Credential Catalog MUST contain at least:
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
 
-The Digital Credential Catalog MUST ensure to:
+The Digital Credentials Catalog MUST ensure to:
 
   1. Facilitate Digital Credential discovery for Users.
   2. Standardize the technical and functional description of Digital Credentials.
@@ -1303,12 +1303,12 @@ The Digital Credential Catalog MUST ensure to:
 Digital Credentials Catalog Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities involved in the Digital Credential Catalog are:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities involved in the Digital Credentials Catalog are:
 
   - **Attestation Scheme Providers**: The Entities that own the Attestation Rulebook of a Digital Credential and that request the registration of the corresponding versioned entry, see Attestation Scheme Provider.
   - **Digital Credential Issuers**: They are added to the ``issuers`` field of a versioned entry as a result of the Digital Credentials they declare in their registration data.
-  - **Relying Parties**: They use the Digital Credential Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
-  - **Wallet Providers**: They access the Digital Credential Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
+  - **Relying Parties**: They use the Digital Credentials Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
+  - **Wallet Providers**: They access the Digital Credentials Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: They are referenced by the versioned entry as its data source and they act as Attestation Scheme Provider when they own the Attestation Rulebook.
 
@@ -1504,7 +1504,7 @@ The collection payload contains the following parameters.
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the catalog content was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **iss**
-     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
+     - REQUIRED. Issuer identifier of the Digital Credentials Catalog.
    * - **iat**
      - REQUIRED. Unix time at which this response JWT was issued, as defined in :rfc:`7519`. ``last_modified`` records the last change of catalog content. ``iat`` records the issuance of this JWT.
    * - **localization**

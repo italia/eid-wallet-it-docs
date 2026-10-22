@@ -18,10 +18,10 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - ID Caso di Test
+    - Scopo
+    - Descrizione
+    - Risultato Atteso
   * - FA_001
     - Discovery, Interoperability
     - Media type dell'Entity Configuration
