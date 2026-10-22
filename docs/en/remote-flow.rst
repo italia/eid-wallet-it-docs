@@ -77,19 +77,13 @@ When the Selection Page is supported, the User selects the Wallet Solution. The 
 
 When ``authorization_endpoint`` is present in the Wallet metadata and its value is an HTTPS URL, that URL is a universal link. The operating system associates that URL with the installed Wallet Instance and starts that Wallet Instance when the User opens it. The Relying Party SHOULD place that URL in the HTML href of the Same Device flow or in the QR Code of the Cross Device flow.
 
-When ``authorization_endpoint`` is absent, or when its value is not an HTTPS URL, the Relying Party MUST use one of ``openid4vp://``, ``haip-vp://``, and ``eu-eaap://``. ``openid4vp://`` is defined in Section 13.1.2 of [`OpenID4VP`_]. ``haip-vp://`` is defined in Section 5.1 of [`OPENID4VC-HAIP`_]. ``eu-eaap://`` is defined in [`ETSI TS 119 472-2`_].
+When ``authorization_endpoint`` is absent, or when its value is not an HTTPS URL, on the EUDIW path the Relying Party MUST use ``eu-eaap://``.
+The Wallet Instance MUST support ``eu-eaap://`` for its ``authorization_endpoint`` ([`ETSI TS 119 472-2`_] clause 6.4.1, OIDFVP-HAIP-REDIRECTS-03).
+The Wallet Instance MUST support ``openid4vp://``. ``openid4vp://`` is defined in Section 13.1.2 of [`OpenID4VP`_].
+The Wallet Instance MUST support ``haip-vp://``. ``haip-vp://`` is defined in Section 5.1 of [`OPENID4VC-HAIP`_].
+When ``authorization_endpoint`` is absent, or when its value is not an HTTPS URL, on the National path the Relying Party MUST use one of ``openid4vp://``, ``haip-vp://``, and ``eu-eaap://``.
 
-On the EUDIW path, the Relying Party SHOULD use ``eu-eaap://``.
-
-The Wallet Instance MUST support ``openid4vp://``.
-The Wallet Instance MUST support ``haip-vp://``.
-The Wallet Instance MUST support ``eu-eaap://``.
-
-When the Relying Party does not support the Selection Page, or when Wallet metadata retrieval fails, the Relying Party MUST invoke the Wallet Instance using one of the custom URL schemes described above.
-
-.. note:: "Custom URL Interoperability"
-
-    The ``eu-eaap://`` preference on the EUDIW path meets OIDFVP-HAIP-REDIRECTS-03 of [`ETSI TS 119 472-2`_].
+When the Relying Party does not support the Selection Page, or when Wallet metadata retrieval fails, the Relying Party MUST invoke the Wallet Instance with the scheme required above for that path.
 
 For a redirect flow, the Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request. The Request Object is passed by reference only. The URL MUST contain ``client_id`` and ``request_uri``. The URL MUST NOT contain ``request``, as detailed in `OPENID4VC-HAIP`_.
 

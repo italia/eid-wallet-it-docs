@@ -40,6 +40,8 @@ A section that owns a requirement states that requirement in its own text, inclu
 
 State each requirement in one place. Do not give the same object conflicting keywords in different sections (a `MUST` in one place and a `SHOULD` or `MAY` for the same behavior in another). Do not put conflicting keywords in the same sentence. One sentence states one requirement.
 
+A choice has one keyword. Do not state a set and then, in the next sentence, select a member of that set with another keyword. Split the cases. Each case names the subject and one keyword. The requirement that comes from an external source cites that source. Support for other options is a separate requirement, with its own subject and its own strength.
+
 Name the subject before the normative keyword. Do not start a sentence with the keyword. Do not use a pronoun as that subject. Repeat the defined term.
 
 ```rst
@@ -58,7 +60,7 @@ Search both editions for the same behavior, including `architecture-overview.rst
 
 The English sentence and the Italian sentence state the same behavior. Pair the keywords: `MUST`/`DEVE` and `DEVONO`, `MUST NOT`/`NON DEVE` and `NON DEVONO`, `SHOULD`/`DOVREBBE` and `DOVREBBERO`, `SHOULD NOT`/`NON DOVREBBE` and `NON DOVREBBERO`, `MAY`/`PUÒ` and `POSSONO`, `REQUIRED`/`OBBLIGATORIO`, `RECOMMENDED`/`RACCOMANDATO`, `NOT RECOMMENDED`/`NON RACCOMANDATO`, `OPTIONAL`/`OPZIONALE`. Do not update one edition and leave the other with a different meaning or a different strength.
 
-If the same behavior already uses two different strengths, do not pick one to make them match. Name both places and ask which formulation remains. Do not change a keyword's strength unless asked.
+When the same choice is a set in one sentence and one member of that set in the next, at a different strength, split the cases as specified in `Normative language`. Do not leave both sentences. For any other pair of strengths on the same behavior, do not pick one to make them match. Name both places and ask which formulation remains. Do not change a keyword's strength unless asked.
 
 The test states the requirement and does not add a behavior the specification does not state. A `:ref:` to a test identifier must resolve to a row that exists. When the requirement changes, update the purpose, description, and expected result of every test that section cites and of every test that covers the same behavior, in both languages.
 

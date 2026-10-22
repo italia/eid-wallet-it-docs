@@ -25,7 +25,7 @@ The metadata JSON Object whose key is ``openid_wallet_provider`` contains the fo
     * - ``wallet_name``
       - REQUIRED. String containing a human-readable name of the Wallet.
     * - ``authorization_endpoint``
-      - REQUIRED. URL of the authorization endpoint, see `OAUTH2`_. For EUDIW invocation it MUST support ``eu-eaap://``, ``openid4vp://``, and ``haip-vp://``; using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.
+      - REQUIRED. URL of the authorization endpoint, see `OAUTH2`_. The invocation schemes are specified in :ref:`remote-flow:Remote Flow`.
     * - ``credential_offer_endpoint``
       - REQUIRED. Credential Offer Endpoint of a Wallet.
     * - ``response_types_supported``
@@ -44,6 +44,7 @@ The metadata JSON Object whose key is ``openid_wallet_provider`` contains the fo
   There are Digital Credential flows that require retrieving Wallet Solution metadata before interacting with the Wallet itself. The flow is described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`.
 
 .. note::
-  For the ``authorization_endpoint``, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP `OPENID4VC-HAIP`_, using ``openid4vp://`` or ``haip-vp://`` as specified in :ref:`remote-flow:Remote Flow`.
+  For the ``authorization_endpoint``, a universal link configured with Assetlinks JSON for Android and Apple App Site Association for iOS reduces the risk of URL hijacking.
+  A universal link also allows the flow to continue in a browser when the Wallet Instance is not installed.
+  The invocation schemes are specified in :ref:`remote-flow:Remote Flow`.
 
