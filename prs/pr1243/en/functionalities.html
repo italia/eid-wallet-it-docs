@@ -459,7 +459,7 @@
 <p>The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance"><span class="std std-ref">Deactivation of the Wallet Instance</span></a> and <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a> sections.</p>
 <p>In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the actors involved MAY support a deferred issuance process. In this case the Wallet Provider MUST guarantee that:</p>
 <ul class="simple">
-<li><p>Upon viewing their personal identification data, the User visualizes a message prompting them to wait until the Electronic Attestation of Attributes can be issued.</p></li>
+<li><p>After approving the presentation of their personal identification data, the User views a message prompting them to wait until the Electronic Attestation of Attributes can be issued.</p></li>
 <li><p>The User is informed by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available for issuance.</p></li>
 </ul>
 <p>If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p>
@@ -815,7 +815,7 @@
 </ul>
 <p>Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:</p>
 <ul class="simple">
-<li><p>A <strong>header and/or subheader</strong>, to customize, allowing Users to navigate back to the previous page and and see where they came from.</p></li>
+<li><p>A <strong>header and/or subheader</strong>, to customize, allowing Users to navigate back to the previous page and see where they came from.</p></li>
 <li><p>A <strong>footer</strong> including the privacy policy, legal notice, and accessibility statement, where required by current regulations.</p></li>
 </ul>
 <p>Specific requirements for each individual page are detailed below.</p>
@@ -842,7 +842,7 @@
 <p class="admonition-title">Note</p>
 <p>This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>.</p>
 </div>
-<p>The Relying Party MUST implement the Selection Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring elements header and/or subheader with its logo.</p>
+<p>The Relying Party MUST implement the Selection Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring header and/or subheader elements with its logo.</p>
 <figure class="align-center" id="id142">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -862,7 +862,7 @@
 <p>The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.</p>
-<p>Relying Parties MUST implement the QR Code Page (cross-device) as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring elements header and/or subheader with its logo.</p>
+<p>Relying Parties MUST implement the QR Code Page (cross-device) as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring header and/or subheader elements with its logo.</p>
 <figure class="align-center" id="id147">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -888,7 +888,7 @@
 </ul>
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.</p>
-<p>Relying Parties MUST implement the Thank You Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring elements header and/or subheader with its logo.</p>
+<p>Relying Parties MUST implement the Thank You Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring header and/or subheader elements with its logo.</p>
 <figure class="align-center" id="id149">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -903,7 +903,7 @@
 </ul>
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
-<p>Relying Parties MUST implement the Error Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring elements header and/or subheader with its logo.</p>
+<p>Relying Parties MUST implement the Error Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, customizing the recurring header and/or subheader elements with its logo.</p>
 <figure class="align-center" id="id151">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -1575,7 +1575,7 @@ For further information on the Authentication button refer to the Brand Manual, 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 14/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 22/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
