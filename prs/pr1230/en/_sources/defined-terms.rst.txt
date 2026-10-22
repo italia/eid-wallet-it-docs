@@ -392,7 +392,8 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.      Aligned with ARF 3.0.0.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.
+      Aligned with ARF 3.0.0.
 
     **Wallet Solution**
       Set of Technical Solutions for the proper functioning of Wallet Instances.
@@ -439,7 +440,8 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **IT-Wallet ID**
     **Electronic Attestation of Person Identification Data**
-      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It is distinct from the EUDI **PID** and from a **National Identity Provider** or national eID scheme (for example CieID / SPID). The term **National EID** is not a synonym for IT-Wallet ID. Not present in ARF 3.0.0; specific to IT-Wallet.
+      An Electronic Attestation of Attributes (EAA) that contains identification data of a natural person and is issued with **national scope** only. The terms **IT-Wallet ID** and **Electronic Attestation of Person Identification Data of national scope** refer to the same national EAA. The qualifier «national scope» distinguishes this EAA from the EUDI **Person Identification Data (PID)**, which is a set of data under the European Digital Identity framework and is **not** an EAA. It enables User authentication and identification towards Relying Parties operating within the national jurisdiction. It does **not** constitute a PID under `EU_2024_1183`_ / `EU_2024/2977`_. It is distinct from the EUDI **PID** and from a **National Identity Provider** or national eID scheme (for example CieID / SPID). The term **National EID** is not a synonym for IT-Wallet ID. 
+      Not present in ARF 3.0.0; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 3.0.0, the IT-Wallet definition is provided as authoritative for the Italian context.
