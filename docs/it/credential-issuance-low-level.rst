@@ -609,9 +609,9 @@ Queste informazioni DOVREBBERO essere ottenute utilizzando la Selection Page des
   - L'Istanza del Wallet DEVE supportare ``eu-eaa-offer://`` ([`ETSI TS 119 472-3`_] Sezione 4.1).
   - L'Istanza del Wallet DEVE supportare ``openid-credential-offer://``. ``openid-credential-offer://`` è definito nella Sezione 4 di [`OpenID4VCI`_].
   - L'Istanza del Wallet DEVE supportare ``haip-vci://``. ``haip-vci://`` è definito nella Sezione 4.2 di [`OPENID4VC-HAIP`_].
-  - Quando ``credential_offer_endpoint`` è assente, oppure quando il suo valore non è un URL HTTPS, sul percorso nazionale il Credential Issuer o la terza parte PUÒ conservare il proprio Universal Link nazionale configurato o un altro meccanismo di invocazione nazionale conservato.
+  - Sul percorso nazionale, quando ``credential_offer_endpoint`` è assente o non è un URL HTTPS, il Credential Issuer o la terza parte PUÒ conservare il proprio Universal Link o altro meccanismo di invocazione nazionale.
 
-  - Quando il Credential Issuer o la terza parte non supporta la Selection Page, o quando il recupero dei metadata del Wallet non riesce, il Credential Issuer o la terza parte DEVE invocare l'Istanza del Wallet con lo schema richiesto sopra per quel percorso.
+  - Senza la Selection Page, o quando il recupero dei metadata non riesce, il Credential Issuer o la terza parte DEVE invocare l'Istanza del Wallet con lo schema richiesto sopra per quel percorso nazionale.
 
 La Credential Offer può essere trasmessa per valore o per riferimento:
 
