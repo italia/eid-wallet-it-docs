@@ -20,7 +20,7 @@ Le tabelle seguenti forniscono:
 - *Dati di definizione del tipo di Credenziale* che descrivono un tipo di Credenziale.
 
 A seconda del ruolo, i dati di registrazione sono poi codificati in un data model diverso, lo schema ``WalletRelyingParty`` del Register per una Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), la voce dell'AS Registry per una Fonte Autentica (:ref:`registry:Authentic Source Registry`), e il dataset di notifica per un'Entità notificabile.
-I dati di definizione del tipo di Credenziale sono codificati nella voce versionata del Digital Credentials Catalog (:ref:`registry:Digital Credentials Catalog`).
+I dati di definizione del tipo di Credenziale sono codificati nella voce versionata del Digital Credentials Catalog (:ref:`registry:Catalogo degli Attestati Elettronici`).
 La mappatura verso i data model di destinazione è data in :ref:`onboarding-system:Mapping to the Registry Data Models`.
 
 .. list-table:: Base Registration Data
@@ -74,7 +74,7 @@ Una data entità fornisce solo il sottoinsieme che si applica al proprio ruolo, 
      - I Relying Party Service registrati dall'entità, come oggetti ``WalletRelyingPartyService`` di `EUDI-TS 5`_. ``serviceIdentifier`` non è richiesto. Il WRPRC è emesso automaticamente come definito in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
      - [`CIR2026/1730`_]; `EUDI-TS 5`_, ``WalletRelyingPartyService``; :ref:`infrastructure-trust:Register of WRPs`
    * - `provided_attestations`
-     - I tipi di Attestato che un Credential Issuer intende emettere. All'interno di IT-Wallet ciascuno di essi fa riferimento a una voce versionata già presente nel Digital Credentials Catalog, e la dichiarazione aggiunge il Credential Issuer al campo ``issuers`` di tale voce, insieme alle capacità di emissione offerte per quel tipo di Credenziale (i flussi di emissione supportati, i parametri dell'emissione differita e la documentazione del servizio di emissione), si veda :ref:`registry:Digital Credentials Catalog`.
+     - I tipi di Attestato che un Credential Issuer intende emettere. All'interno di IT-Wallet ciascuno di essi fa riferimento a una voce versionata già presente nel Digital Credentials Catalog, e la dichiarazione aggiunge il Credential Issuer al campo ``issuers`` di tale voce, insieme alle capacità di emissione offerte per quel tipo di Credenziale (i flussi di emissione supportati, i parametri dell'emissione differita e la documentazione del servizio di emissione), si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
      - Vincolato a un Relying Party Service. Per un Relying Party Service intermediato, il riferimento all'Intermediary Service che utilizza (``usesIntermediaries``). Per un Relying Party Intermediary Service, la dichiarazione che agisce come intermediario (``isIntermediary``) e gli identificativi di Service che serve (``servedWRPServices``, [`CIR2026/1730`_], Annex I). Un Intermediary Service puro NON DEVE registrare un entitlement (`EUDI-TS 5`_).
@@ -124,25 +124,25 @@ Lo stesso criterio si applica alla definizione di un claim, registrato tramite :
      - **Description**
      - **Normative reference**
    * - `credential_type_declaration`
-     - Il tipo di Credenziale, ancorato al proprio Rulebook. Crea la voce versionata del Digital Credentials Catalog e raggruppa i Digital Credential Metadata del tipo (l'identificativo univoco e la versione, il nome leggibile, la classificazione per domain e class, i metodi di autenticazione dell'Utente e il Livello di Garanzia minimo), insieme al riferimento alle Fonti Autentiche, o ai tipi di Credenziale padre, che ne forniscono i dati, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Il tipo di Credenziale, ancorato al proprio Rulebook. Crea la voce versionata del Digital Credentials Catalog e raggruppa i Digital Credential Metadata del tipo (l'identificativo univoco e la versione, il nome leggibile, la classificazione per domain e class, i metodi di autenticazione dell'Utente e il Livello di Garanzia minimo), insieme al riferimento alle Fonti Autentiche, o ai tipi di Credenziale padre, che ne forniscono i dati, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`CIR2025/848`_], Annex I
    * - `credential_technical_specification`
-     - Definizione tecnica di un tipo di Credenziale, che raggruppa i campi Technical Specification del Digital Credentials Catalog, ossia gli schema della Credenziale, i formati della Credenziale e la policy di autenticazione, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Definizione tecnica di un tipo di Credenziale, che raggruppa i campi Technical Specification del Digital Credentials Catalog, ossia gli schema della Credenziale, i formati della Credenziale e la policy di autenticazione, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`CIR2025/848`_], Annex I
    * - `credential_policies`
-     - Condizioni di uso di un tipo di Credenziale, che raggruppano i campi Terms of Use del Digital Credentials Catalog, ossia la validità della Credenziale, la restriction policy, la pricing policy e gli scopi della Credenziale, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Condizioni di uso di un tipo di Credenziale, che raggruppano i campi Terms of Use del Digital Credentials Catalog, ossia la validità della Credenziale, la restriction policy, la pricing policy e gli scopi della Credenziale, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`CIR2025/848`_], Annex I
    * - `trustedAuthorities`
-     - Le autorità fidate che definiscono il trust framework del tipo di Credenziale nel Digital Credentials Catalog, ossia i trust anchor su cui un verificatore fa affidamento per validare l'Attestato, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Le autorità fidate che definiscono il trust framework del tipo di Credenziale nel Digital Credentials Catalog, ossia i trust anchor su cui un verificatore fa affidamento per validare l'Attestato, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `rulebookURI`
-     - L'URI dell'Attestation Rulebook in forma leggibile che definisce gli aspetti non machine-readable del tipo di Credenziale nel Digital Credentials Catalog, si veda :ref:`registry:Digital Credentials Catalog`.
+     - L'URI dell'Attestation Rulebook in forma leggibile che definisce gli aspetti non machine-readable del tipo di Credenziale nel Digital Credentials Catalog, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `bindingType`
-     - Il tipo di associazione crittografica della chiave richiesto per l'emissione del tipo di Credenziale nel Digital Credentials Catalog, uno tra ``claim``, ``key``, ``biometric`` o ``none``, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Il tipo di associazione crittografica della chiave richiesto per l'emissione del tipo di Credenziale nel Digital Credentials Catalog, uno tra ``claim``, ``key``, ``biometric`` o ``none``, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `attestationLoS`
-     - Il livello di sicurezza (Level of Security) dell'attestazione del tipo di Credenziale nel Digital Credentials Catalog, ossia la resistenza al potenziale di attacco richiesta per l'autenticazione dell'utente e per l'archiviazione delle chiavi, si veda :ref:`registry:Digital Credentials Catalog`.
+     - Il livello di sicurezza (Level of Security) dell'attestazione del tipo di Credenziale nel Digital Credentials Catalog, ossia la resistenza al potenziale di attacco richiesta per l'autenticazione dell'utente e per l'archiviazione delle chiavi, si veda :ref:`registry:Catalogo degli Attestati Elettronici`.
      - [`EUDI-TS 11`_], Section 4.3
 
 .. note::
@@ -386,7 +386,7 @@ QEAA Provider
 """""""""""""
 
 Un QEAA Provider è un'Entità di Federazione che emette Qualified Electronic Attestations of Attributes, e il suo Sign/Seal Certificate è il certificato qualificato emesso dal Qualified Trust Service Provider a cui appartiene.
-Gli attestati che emette MUST seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
+Gli Attestati Elettronici che emette DEVONO seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
 Oltre ai dati di registrazione di base, un QEAA Provider fornisce i seguenti dati di registrazione estesi, come definiti in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
@@ -411,7 +411,7 @@ PuB-EAA Provider
 """"""""""""""""
 
 Un PuB-EAA Provider è un'Entità di Federazione che è notificata e registrata nel Trust Framework EUDIW, e il suo trust anchor Sign/Seal è pubblicato nella PuB-EAA Providers LoTE.
-Gli attestati che emette MUST seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
+Gli Attestati Elettronici che emette DEVONO seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
 Oltre ai dati di registrazione di base, un PuB-EAA Provider fornisce i seguenti dati di registrazione estesi, come definiti in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`

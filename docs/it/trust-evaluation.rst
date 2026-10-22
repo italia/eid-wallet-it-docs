@@ -92,7 +92,7 @@ Ove la configurazione pubblicata attraverso i meccanismi EUDIW e la configurazio
 Selection at Issuance
 ^^^^^^^^^^^^^^^^^^^^^
 
-All'emissione la Wallet Unit avvia l'interazione e conosce l'Attestato richiesto (vedere :ref:`registry:Digital Credentials Catalog`).
+All'emissione la Wallet Unit avvia l'interazione e conosce l'Attestato richiesto (vedere :ref:`registry:Catalogo degli Attestati Elettronici`).
 La riga applicabile di :ref:`Trust Framework applicabile per interazione <table_applicable_tf_by_entity>` seleziona il Trust Framework.
 
 Nel percorso EUDIW, Authentication, Authorization e Metadata Retrieval and Validation del Credential Issuer seguono :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization` e :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.

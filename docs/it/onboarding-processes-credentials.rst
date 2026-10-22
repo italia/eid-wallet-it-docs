@@ -42,7 +42,7 @@ Lo schema è uno dei requisiti per l'attivazione di un tipo di Credenziale, quin
 
 **Input**
 
-Lo schema del tipo di Credenziale è uno ``SchemaMeta`` registrato tramite il :ref:`registry:Catalogue of Attestations`: la sua ``version``, i ``supportedFormats``, il documento di schema specifico del formato a ``schemaURIs[].uri`` e il ``rulebookURI``.
+Lo schema del tipo di Credenziale è uno ``SchemaMeta`` registrato tramite il :ref:`registry:Catalogo delle Attestazioni`: la sua ``version``, i ``supportedFormats``, il documento di schema specifico del formato a ``schemaURIs[].uri`` e il ``rulebookURI``.
 Il documento specifico del formato segue la Section 4.3.4 di [`EUDI-TS 11`_].
 L'integrità, quando usata, è il suffisso ``#integrity`` di tale URI come definito in [`W3C-SRI`_].
 Lo schema è fornito dall'Attestation Scheme Provider insieme alla definizione del tipo di Credenziale, ed è composto dai claim definiti in :ref:`registry:Claims Registry`. Un claim ancora mancante attiva il :ref:`onboarding-system:Claim Registration`.

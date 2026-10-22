@@ -173,7 +173,7 @@ L’Attestato Elettronico di Attributi è un oggetto dinamico che consente all�
 
 A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:
 
-- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Il Catalogo dell'Istanza del Wallet elenca ogni tipo di Credenziale che questa Soluzione Wallet offre e da cui l'Utente avvia il rilascio. Tali tipi sono quelli pubblicati nel :ref:`registry:Digital Credentials Catalog`. L'Attestation Scheme Provider richiede tale pubblicazione quando registra il tipo di Credenziale. Il Fornitore di Wallet decide quali di tali tipi di Credenziale questa Soluzione Wallet offre. Un tipo di Credenziale che non vi è pubblicato si richiede con una Credential Offer (:ref:`credential-issuance-low-level:Flusso Credential Offer`).
+- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Il Catalogo dell'Istanza del Wallet elenca ogni tipo di Credenziale che questa Soluzione Wallet offre e da cui l'Utente avvia il rilascio. Tali tipi sono quelli pubblicati nel :ref:`registry:Catalogo degli Attestati Elettronici`. L'Attestation Scheme Provider richiede tale pubblicazione quando registra il tipo di Credenziale. Il Fornitore di Wallet decide quali di tali tipi di Credenziale questa Soluzione Wallet offre. Un tipo di Credenziale che non vi è pubblicato si richiede con una Credential Offer (:ref:`credential-issuance-low-level:Flusso Credential Offer`).
 
 - **da un Touchpoint della Fonte Autentica** (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica. Vedere :ref:`credential-issuance-low-level:Flusso Credential Offer`): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un :ref:`functionalities:Engagement Button`.
 
@@ -458,7 +458,7 @@ Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet ne
 
     Esempio di layout di Attestato Elettronico di Attributi, Vista di Dettaglio
 
-Di seguito sono riportati i requisiti di dettaglio per la progettazione e la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Authentic Source Registry` e :ref:`registry:Digital Credentials Catalog`). In particolare:
+Di seguito sono riportati i requisiti di dettaglio per la progettazione e la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Authentic Source Registry` e :ref:`registry:Catalogo degli Attestati Elettronici`). In particolare:
 
 La Fonte Autentica:
 
@@ -510,7 +510,7 @@ La Fonte Autentica:
 
 Il Fornitore di Wallet:
 
-- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del :ref:`registry:Digital Credentials Catalog`.
+- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
 
 - DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del :ref:`registry:Authentic Source Registry`. In particolare, la Fornitore di Wallet:
 
@@ -531,7 +531,7 @@ Il Fornitore di Wallet è il responsabile ultimo della resa grafica degli Attest
 - DEVE mostrare l’EAA correttamente su tutti i dispositivi, garantendo un’esperienza coerente su schermi di dimensioni diverse.
 - PUÒ mostrare gli EAA ottenuti in formato tessera nella Vista in Anteprima, in linea con gli approcci già utilizzati da altri portafogli digitali nel mercato.
 - DEVE garantire un layout dell'EAA ottimizzato per scalabilità e usabilità, nella Vista in Anteprima, specialmente quando più EAA vengono visualizzati sulla stessa schermata.
-- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro `credential_name` (vedi :ref:`registry:Digital Credentials Catalog`), sia nella Vista di Anteprima che nelle Vista di Dettaglio.
+- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro `credential_name` (vedi :ref:`registry:Catalogo degli Attestati Elettronici`), sia nella Vista di Anteprima che nelle Vista di Dettaglio.
 - DEVE mostrare lo stato dell’EAA, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido, sia nella Vista di Anteprima che nella Vista di Dettaglio. Evidenze specifiche sullo stato dell’EAA, se non valido, POSSONO essere fornite nella Vista di Dettaglio (ad esempio, il motivo per cui l’EAA è stato revocato).
 - PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo e/o il colore, come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi :ref:`registry:Authentic Source Registry`).
 - DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi :ref:`registry:Authentic Source Registry`). PUÒ includere elementi informativi aggiuntivi nella Vista di Dettaglio, ad esempio informazioni relative agli scenari di utilizzo o al motivo dell'eventuale invalidità dell’EAA.
