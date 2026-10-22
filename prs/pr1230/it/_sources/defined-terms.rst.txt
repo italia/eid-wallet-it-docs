@@ -4,7 +4,7 @@
 Definizioni e Acronimi
 =======================
 
-Questa sezione mira ad uniformare la terminologia del Sistema IT-Wallet alle definizioni fornite in ARF 3.0.0 (vedere `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-1/annex-1-definitions.md>`_) e a [`CIR2026/1730`_], che modifica [`CIR2025/848`_]. Per ciascun termine, la definizione di IT-Wallet è stata confrontata e mappata con quella di ARF, includendo note su eventuali differenze o chiarimenti.
+Questa sezione mira ad uniformare la terminologia del Sistema IT-Wallet alle definizioni fornite in ARF 3.0.0 (vedere `ARF Annex 1`_) e a [`CIR2026/1730`_], che modifica [`CIR2025/848`_]. Per ciascun termine, la definizione di IT-Wallet è stata confrontata e mappata con quella di ARF, includendo note su eventuali differenze o chiarimenti.
 
 Le definizioni di *Utente*, *Servizio Fiduciario*, *Trust Model*, *Trusted List*, *List of Trusted Entities*, *Trust Framework*, *Attributo*, *Fornitore di Attestati Elettronici di Attributi* o *Fornitore di servizi fiduciari (TSP)*, *Person Identification Data (PID)*, *Lista di Revoca*, *Fornitore di Attestati Elettronici di Attributi qualificati* o *Fornitore di servizi fiduciari qualificati (QTSP)*, *Attestato Elettronico di Attributi (EAA)*, *Wallet Unit Attestation*, *Servizio di Relying Party*, sono definite nel documento `EIDAS-ARF`_.
 
@@ -35,11 +35,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 3.0.0.
 
     **Identity Matching**
-      Processo con cui una Relying Party accerta che gli attributi di identificazione personale presentati in una transazione si riferiscano alla stessa persona fisica. Vedere :ref:`identity-matching`.
+      Processo con cui una Relying Party accerta che gli attributi di identificazione personale presentati in una transazione si riferiscano alla stessa persona fisica.
       Non presente in ARF 2.7.3. Specifico di IT-Wallet.
 
     **Identity Reconciliation**
-      Processo con cui una Relying Party, dopo un identity matching andato a buon fine, collega quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato. Vedere :ref:`identity-matching`.
+      Processo con cui una Relying Party, dopo un identity matching andato a buon fine, collega quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
       Non presente in ARF 2.7.3. Specifico di IT-Wallet.
 
     **Fonte Autentica**
@@ -76,7 +76,6 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 3.0.0.
 
     **Attestato Elettronico**
-    **Attestato**
       Un set firmato di Attributi in un formato specifico (ad esempio mDoc-CBOR, SD-JWT VC), può essere un PID oppure una (Q)EAA.
       Conforme con ARF 3.0.0.
 
@@ -107,11 +106,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 3.0.0. Specifico di IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le Credenziali non-PID.
+      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Fornitore di Wallet per emettere una Key Attestation per gli Attestati Elettronici diversi dal PID.
       Non presente in ARF 3.0.0. Specifico dell'IT-Wallet.
 
     **Keystore**
-      Ambiente di archiviazione sicuro hardware-backed fornito dall'OEM del dispositivo per la generazione, l'archiviazione e l'utilizzo di chiavi crittografiche. Sui dispositivi Android, il Keystore si basa sul Trusted Execution Environment (TEE) o Strongbox. Sui dispositivi iOS, si basa sul Secure Enclave. Il Keystore è il meccanismo crittografico di default per tutte le operazioni della Wallet Instance e le Credenziali Digitali, ad eccezione del PID che richiede un WSCA/Remote WSCD. Le proprietà del Keystore sono attestate tramite le OEM Key Attestation APIs.
+      Ambiente di archiviazione sicuro hardware-backed fornito dall'OEM del dispositivo per la generazione, l'archiviazione e l'utilizzo di chiavi crittografiche. Sui dispositivi Android, il Keystore si basa sul Trusted Execution Environment (TEE) o Strongbox. Sui dispositivi iOS, si basa sul Secure Enclave. Il Keystore è il meccanismo crittografico di default per tutte le operazioni dell'Istanza del Wallet e degli Attestati Elettronici, ad eccezione del PID che richiede un WSCA/Remote WSCD. Le proprietà del Keystore sono attestate tramite le OEM Key Attestation APIs.
       Non presente in ARF 3.0.0. Specifico di IT-Wallet.
 
     **Livello di Garanzia**
@@ -179,23 +178,19 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
       Conforme con ARF 3.0.0.
-      Il profilo tecnico è :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
 
     **Codice di identità dell'attestato**
       Identificatore di un Electronic Attestation of Attributes emesso.
       In SD-JWT VC è il claim ``jti``.
       In mdoc è l'elemento ``document_number``.
-      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Identità dell'Attestato`.
 
     **Validità tecnica**
       Intervallo durante il quale l'attestato codificato e la sua firma sono validi.
       In SD-JWT VC è espresso da ``nbf`` e ``exp``.
       In mdoc è espresso da ``validFrom`` e ``validUntil``.
-      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
 
     **Validità amministrativa**
       Intervallo durante il quale gli attributi attestati restano validi, ad esempio la scadenza di una licenza.
-      Vedere :ref:`credential-data-model-qeaa-pub-eaa:Validità Tecnica e Amministrativa`.
 
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
@@ -203,7 +198,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **IT-Wallet ID**
     **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale**
-      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. La proibizione cross-border è specificata in :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`. **Non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. È distinto dal **PID** EUDI e da un **Gestore di Identità Digitale** o schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** non è un sinonimo di IT-Wallet ID. Non presente in ARF 3.0.0. Specifico di IT-Wallet.
+      Attestato Elettronico di Attributi (EAA) che contiene dati di identificazione di una persona fisica ed è rilasciato **esclusivamente per usi nazionali**. I termini **IT-Wallet ID** e **Attestato Elettronico di Dati di Identificazione Personale di ambito nazionale** indicano il medesimo EAA nazionale. La qualificazione «di ambito nazionale» distingue questo EAA dai **Dati di Identificazione Personale (PID)** EUDI, che sono un insieme di dati ai sensi del quadro europeo di Identità Digitale e **non** costituiscono un EAA. Consente l'autenticazione e l'identificazione dell'Utente nei confronti delle Relying Party che operano nell'ambito della giurisdizione nazionale. **Non** costituisce un PID ai sensi di `EU_2024_1183`_ / `EU_2024/2977`_. È distinto dal **PID** EUDI e da un **Gestore di Identità Digitale** o schema di eID nazionale (ad esempio CieID / SPID) utilizzato solo per l'autenticazione. Il termine **EID Nazionale** non è un sinonimo di IT-Wallet ID. Non presente in ARF 3.0.0. Specifico di IT-Wallet.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
     **QEAA Provider**
@@ -335,7 +330,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Provider of WRPRC**
       Persona fisica o giuridica incaricata da uno Stato membro di emettere Wallet-Relying Party Registration Certificate alle Wallet-Relying Party registrate in quello Stato membro.
       Nel Trust Framework EUDIW coincide con il Provider of WRPRC.
-      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida nel Register e un WRPAC valido, come specificato in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
+      Emette tali certificati automaticamente quando l'Entità ha una registrazione valida nel Register e un WRPAC valido..
       Conforme con ARF 3.0.0.
 
     **Federation Registry**
@@ -398,7 +393,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 3.0.0.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High. La certificazione del WSCD, e la distinzione rispetto a un Keystore hardware-backed, sono specificate in :ref:`wallet-solution-requirements:Requisiti WSCA/WSCD`.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High.
       Conforme con ARF 3.0.0.
 
     **Soluzione Wallet**
@@ -419,7 +414,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Key Attestation**
     **KA**
       Tipo di Wallet Unit Attestation che attesta la certificazione e le proprietà di una WSCA/WSCD o di un Keystore disponibile alla Wallet Unit, e che contiene una o più chiavi pubbliche le cui chiavi private corrispondenti sono generate e conservate in quella WSCA/WSCD o Keystore.
-      Per il PID a Livello di Garanzia Alto, la Key Attestation descrive le proprietà del WSCA e del Remote WSCD (HSM remoto). Per le altre Credenziali Digitali device-bound, la Key Attestation descrive le proprietà del Keystore tramite le OEM Key Attestation APIs.
+      Per il PID a Livello di Garanzia Alto, la Key Attestation descrive le proprietà del WSCA e del Remote WSCD (HSM remoto). Per gli altri Attestati Elettronici device-bound, la Key Attestation descrive le proprietà del Keystore tramite le OEM Key Attestation APIs.
       È emessa dal Fornitore di Wallet.
       Conforme con ARF 3.0.0 Topic 9 e Technical Specification 3.
 
@@ -441,7 +436,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Intermediario di Relying Party**
     **Soggetto Aggregatore**
-      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea, e tale articolo vieta di conservare dati sul contenuto della transazione tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_ Topic 52). In una presentazione EUDIW intermediata l'Intermediario si autentica con il proprio WRPAC. La regola di visualizzazione dell'Istanza del Wallet è specificata in :ref:`trust-evaluation:EUDIW Authorization`. L'associazione di un WRPAC distinto alla Relying Party intermediata è rinviata come specificato in :ref:`infrastructure-trust:Register of WRPs`. IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle Relying Party sono **considerati Relying Party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea, e tale articolo vieta di conservare dati sul contenuto della transazione tra l'Utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle Wallet Relying Party, inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli, sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_ Topic 52). In una presentazione EUDIW intermediata l'Intermediario si autentica con il proprio WRPAC. IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
       Conforme con ARF 3.0.0 Topic 52.
 
     **Intermediario IT-Wallet**

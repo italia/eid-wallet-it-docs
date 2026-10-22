@@ -350,8 +350,8 @@ The procedure for a Credential anchored to the National Trust Framework is defin
 At runtime the requested Credential selects the Trust Framework of the interaction.
 The same Credential Issuer MAY be evaluated under different frameworks in different interactions.</p>
 <p>Where the configuration published through the EUDIW mechanisms and the configuration published through the federation diverge, the EUDIW configuration MUST prevail.</p>
-<span id="table-applicable-tf-by-entity"></span><table class="longtable docutils align-default" id="id388">
-<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Applicable Trust Framework by Interaction</span><a class="headerlink" href="#id388" title="Link to this table">¶</a></caption>
+<span id="table-applicable-tf-by-entity"></span><table class="longtable docutils align-default" id="id391">
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Applicable Trust Framework by Interaction</span><a class="headerlink" href="#id391" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 46.0%" />
@@ -468,8 +468,8 @@ The parameters they operate on, such as the signed Request Object, the mdoc Requ
 <section id="eudiw-trust-evaluation-processes-by-context">
 <h3><span class="section-number">6.2.1. </span>EUDIW Trust Evaluation Processes by Context<a class="headerlink" href="#eudiw-trust-evaluation-processes-by-context" title="Link to this heading">¶</a></h3>
 <p>The procedures are defined in a general form, with a Trust Evaluator and a Trust Evaluated Party, and the following table defines which entity acts in which role, when and for which purpose.</p>
-<span id="table-eudiw-tf-roles"></span><table class="longtable docutils align-default" id="id389">
-<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Trust Evaluation Processes by Entity and Context in the EUDIW Trust Framework</span><a class="headerlink" href="#id389" title="Link to this table">¶</a></caption>
+<span id="table-eudiw-tf-roles"></span><table class="longtable docutils align-default" id="id392">
+<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Trust Evaluation Processes by Entity and Context in the EUDIW Trust Framework</span><a class="headerlink" href="#id392" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 20.0%" />
@@ -770,19 +770,19 @@ The validating Entity SHOULD repeat the validation process after downloading the
 </ul>
 </div>
 <p>Below is a flowchart summarizing the above steps for the validation of the List of Trusted Entities:</p>
-<figure class="align-default" id="id390">
+<figure class="align-default" id="id393">
 <p class="plantuml">
 <object data="_images/plantuml-f01fec753a9cf950499096f7b62e1ae74ffa26c1.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-f01fec753a9cf950499096f7b62e1ae74ffa26c1.png"><img src="_images/plantuml-f01fec753a9cf950499096f7b62e1ae74ffa26c1.png" alt="The figure illustrates the Flowchart of the List of Trusted Entities Validation Algorithm." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Flowchart of the List of Trusted Entities Validation Algorithm.</span><a class="headerlink" href="#id390" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Flowchart of the List of Trusted Entities Validation Algorithm.</span><a class="headerlink" href="#id393" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below are listed the Sub-Status error codes of the List of Trusted Entities in tabular format.</p>
-<table class="longtable docutils align-default" id="id391">
-<caption><span class="caption-number">Table 6.3 </span><span class="caption-text">List of Trusted Entities Sub-Status Error Codes</span><a class="headerlink" href="#id391" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id394">
+<caption><span class="caption-number">Table 6.3 </span><span class="caption-text">List of Trusted Entities Sub-Status Error Codes</span><a class="headerlink" href="#id394" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 38.0%" />
 <col style="width: 10.0%" />
@@ -1207,8 +1207,8 @@ If a resolved policy does not permit the Credential or attribute, the Wallet Uni
 <p><strong>Outcome</strong></p>
 <p>At the end of the Authorization Validation the Wallet Unit MUST output the <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> values.
 The table below summarizes the codes.</p>
-<span id="table-authz-state-codes"></span><table class="longtable docutils align-default" id="id392">
-<caption><span class="caption-number">Table 6.4 </span><span class="caption-text">Authorization Validation State Codes</span><a class="headerlink" href="#id392" title="Link to this table">¶</a></caption>
+<span id="table-authz-state-codes"></span><table class="longtable docutils align-default" id="id395">
+<caption><span class="caption-number">Table 6.4 </span><span class="caption-text">Authorization Validation State Codes</span><a class="headerlink" href="#id395" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -1271,14 +1271,14 @@ The table below summarizes the codes.</p>
 </tbody>
 </table>
 <p>The final Authorization Decision, <code class="docutils literal notranslate"><span class="pre">AUTHORIZED</span></code> or <code class="docutils literal notranslate"><span class="pre">NOT_AUTHORIZED</span></code>, is elaborated from the <code class="docutils literal notranslate"><span class="pre">authz_art_state</span></code>, <code class="docutils literal notranslate"><span class="pre">authz_val_state</span></code> and <code class="docutils literal notranslate"><span class="pre">edp_state</span></code> values, as defined in <a class="reference internal" href="#authorization-decision-and-override-rules"><span class="std std-ref">Authorization Decision and Override Rules</span></a>.</p>
-<figure class="align-default" id="id393">
+<figure class="align-default" id="id396">
 <p class="plantuml">
 <object data="_images/plantuml-0085e095fb97061639c6912ff7e05c51fc5ce1dc.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-0085e095fb97061639c6912ff7e05c51fc5ce1dc.png"><img src="_images/plantuml-0085e095fb97061639c6912ff7e05c51fc5ce1dc.png" alt="Flowchart of the EUDIW Authorization Algorithm." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Flowchart of the EUDIW Authorization Algorithm.</span><a class="headerlink" href="#id393" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Flowchart of the EUDIW Authorization Algorithm.</span><a class="headerlink" href="#id396" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1318,8 +1318,8 @@ The parameters they operate on, such as the signed Request Object, the mdoc Requ
 <section id="trust-evaluation-processes-by-context">
 <h3><span class="section-number">6.3.1. </span>Trust Evaluation Processes by Context<a class="headerlink" href="#trust-evaluation-processes-by-context" title="Link to this heading">¶</a></h3>
 <p>The procedures are defined in a general form, with a <strong>Trust Evaluator</strong> and a <strong>Trust Evaluated Party</strong> and the following table defines which entity acts in which role, when and for which purpose.</p>
-<span id="table-national-tf-roles"></span><table class="longtable docutils align-default" id="id394">
-<caption><span class="caption-number">Table 6.5 </span><span class="caption-text">Trust Evaluation Processes by Entity and Context in the National Trust Framework</span><a class="headerlink" href="#id394" title="Link to this table">¶</a></caption>
+<span id="table-national-tf-roles"></span><table class="longtable docutils align-default" id="id397">
+<caption><span class="caption-number">Table 6.5 </span><span class="caption-text">Trust Evaluation Processes by Entity and Context in the National Trust Framework</span><a class="headerlink" href="#id397" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 20.0%" />

@@ -33,7 +33,7 @@ Il livello operativo primario implementa il ciclo di vita principale degli Attes
 
 I sistemi esterni forniscono servizi che collegano l'ecosistema IT-Wallet all'infrastruttura digitale nazionale, consentendo l'interoperabilità con i servizi governativi esistenti e le fonti di dati.
 
-Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica delle Credenziali attraverso i componenti centralizzati Claims Registry e Taxonomy, come dettagliato in :ref:`registry:Registry Infrastructure`.
+Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica degli Attestati Elettronici, come specificato in :ref:`registry:Registry Infrastructure`.
 
 L'architettura abilita i seguenti processi di interazione principali:
 
