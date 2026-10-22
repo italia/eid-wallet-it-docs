@@ -5,32 +5,13 @@
 Remote Flow
 ===========
 
+This section describes the remote presentation of a Digital Credential from a Wallet Instance to a web Relying Party Instance.
+
 Remote presentation uses [`OpenID4VP`_], profiled by [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
 The Trust Framework is selected through the ``client_id`` prefix, as specified in :ref:`trust-evaluation:Selection at Presentation`.
 [`ETSI TS 119 472-2`_] clause 6 prevails over [`OPENID4VC-HAIP`_] where the two sources differ.
 
-The Relying Party MUST support both of the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
-
-* **Same Device**: the Relying Party MUST provide the Wallet Instance with an HTTP URL using a redirect (``302``) or an HTML href (:ref:`RPR-01 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-* **Cross Device**: the Relying Party MUST provide a ``QR Code`` which the User frames with the device camera or with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-
-To invoke the correct Wallet Instance, the Relying Party SHOULD trigger the Wallet Instance installed on the User's device the User wishes to use. This information SHOULD be provided by the User using the Selection Page described in :ref:`functionalities:User Experience Design`.
-- If the Selection Page is supported, the User selects the Wallet, and then the Relying Party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The content of the HTML href or QR Code depends on the ``authorization_endpoint`` parameter in the Wallet metadata:
-
-  - If ``authorization_endpoint`` is present in the Wallet metadata and its value is an HTTPS URL, that URL is a universal link. The operating system associates it with the installed Wallet Instance and starts that Instance when the User opens it. The Relying Party SHOULD place that URL in the HTML href of the Same Device flow or in the QR Code of the Cross Device flow.
-  - Otherwise, the Relying Party MUST use one of the custom URL schemes ``openid4vp://`` (as defined in Section 13.1.2 of [`OpenID4VP`_]), ``haip-vp://`` (as defined in Section 5.1 of [`OPENID4VC-HAIP`_]), or ``eu-eaap://`` (as defined in [`ETSI TS 119 472-2`_]).
-    On the EUDIW path, the Relying Party SHOULD use ``eu-eaap://``.
-    The Wallet Instance MUST support ``openid4vp://``.
-    The Wallet Instance MUST support ``haip-vp://``.
-    The Wallet Instance MUST support ``eu-eaap://``.
-
-- If the Relying Party does not support the Selection Page, or Wallet metadata retrieval fails, the Relying Party MUST invoke the Wallet Instance using one of the custom URL schemes described above.
-
-After invocation, the Wallet Instance establishes trust with the Relying Party and evaluates the request under the selected path. If valid, it asks the User to consent to disclosure of the requested Digital Credentials.
-
-.. note:: "Custom URL Interoperability"
-
-    The ``eu-eaap://`` preference on the EUDIW path meets OIDFVP-HAIP-REDIRECTS-03 of [`ETSI TS 119 472-2`_].
+The remote flow has two forms. In the Same Device flow the user-agent and the Wallet Instance are on the same device. In the Cross Device flow they are on different devices. The normative invocation rules are specified in Steps 4-7.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
@@ -82,7 +63,35 @@ The details of each step shown in the previous picture are described below.
 
 **Step 3**: The Relying Party creates a fresh, cryptographically random state value with sufficient entropy, binds it to the user-agent session (e.g., using an HTTP secured cookie), and stores it server-side with a short expiration time. It then inspects the user-agent to determine whether the flow occurs on the same device as the user-agent.
 
-**Steps 4-7 (Authorization Request)**: For a redirect flow, the Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request. The Request Object is passed by reference only. The URL MUST contain ``client_id`` and ``request_uri``. The URL MUST NOT contain ``request``, as detailed in `OPENID4VC-HAIP`_.
+**Steps 4-7 (Authorization Request)**: The Relying Party invokes the Wallet Instance and passes the Authorization Request by reference.
+
+The Relying Party MUST support both of the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
+
+* **Same Device**: the Relying Party MUST provide the Wallet Instance with an HTTP URL using a redirect (``302``) or an HTML href (:ref:`RPR-01 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
+* **Cross Device**: the Relying Party MUST provide a ``QR Code`` which the User frames with the device camera or with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
+
+The Relying Party SHOULD invoke the Wallet Instance of the Wallet Solution that the User chooses.
+The User SHOULD indicate the Wallet Solution on the Selection Page described in :ref:`functionalities:User Experience Design`.
+
+When the Selection Page is supported, the User selects the Wallet Solution. The Relying Party then retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`.
+
+When ``authorization_endpoint`` is present in the Wallet metadata and its value is an HTTPS URL, that URL is a universal link. The operating system associates that URL with the installed Wallet Instance and starts that Wallet Instance when the User opens it. The Relying Party SHOULD place that URL in the HTML href of the Same Device flow or in the QR Code of the Cross Device flow.
+
+When ``authorization_endpoint`` is absent, or when its value is not an HTTPS URL, the Relying Party MUST use one of ``openid4vp://``, ``haip-vp://``, and ``eu-eaap://``. ``openid4vp://`` is defined in Section 13.1.2 of [`OpenID4VP`_]. ``haip-vp://`` is defined in Section 5.1 of [`OPENID4VC-HAIP`_]. ``eu-eaap://`` is defined in [`ETSI TS 119 472-2`_].
+
+On the EUDIW path, the Relying Party SHOULD use ``eu-eaap://``.
+
+The Wallet Instance MUST support ``openid4vp://``.
+The Wallet Instance MUST support ``haip-vp://``.
+The Wallet Instance MUST support ``eu-eaap://``.
+
+When the Relying Party does not support the Selection Page, or when Wallet metadata retrieval fails, the Relying Party MUST invoke the Wallet Instance using one of the custom URL schemes described above.
+
+.. note:: "Custom URL Interoperability"
+
+    The ``eu-eaap://`` preference on the EUDIW path meets OIDFVP-HAIP-REDIRECTS-03 of [`ETSI TS 119 472-2`_].
+
+For a redirect flow, the Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request. The Request Object is passed by reference only. The URL MUST contain ``client_id`` and ``request_uri``. The URL MUST NOT contain ``request``, as detailed in `OPENID4VC-HAIP`_.
 
   In the **Cross Device Flow**, the Authorization Request is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL.
   Below is represented a non-normative example of a QR Code issued by the Relying Party.
@@ -669,7 +678,9 @@ The JWT payload parameters are described herein:
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). 
+After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`).
+
+When the Wallet Instance uses a batch Credential, the Wallet Instance SHOULD implement a Credential selection logic, for example based on the earliest expiring Credential. The Wallet Instance MUST mark the selected Credential as consumed. At the end of the flow, the Wallet Instance MUST decrease the number of available Credentials in the batch. The Wallet Instance can use that number to control when it needs to obtain a new batch of Credentials. 
 
 Every successful response MUST be encrypted using the request-specific ephemeral public key selected from ``client_metadata.jwks`` by its unique ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
 Every successful response MUST use ``direct_post.jwt``.

@@ -109,6 +109,7 @@ The properties of the Keystore are attested by the OEM Key Attestation APIs (e.g
 Private keys bound to a Wallet Instance Attestation MUST be generated and stored in the same Keystore or WSCA/Remote WSCD that the attestation describes (:ref:`WP_014e <wallet-instance-testcases>`).
 A Mobile Relying Party Instance that does not store User identity keys MAY use a Keystore and is not required to use a WSCA/Remote WSCD (:ref:`WP_014f <wallet-instance-testcases>`).
 Digital Credentials whose bound private keys are stored in a Keystore MAY be presented in proximity or otherwise offline. Digital Credentials whose bound private keys are stored in a Remote WSCD MUST NOT be presented offline (:ref:`WP_160 <wallet-instance-testcases>`).
+Proximity or otherwise offline presentation of a Digital Credential MUST succeed only when the bound private keys are stored in a local Keystore or a local WSCD (:ref:`WP_160 <wallet-instance-testcases>`).
 
 For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`, :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`, and :ref:`wallet-attestation-issuance:Key Attestation Issuance` of this document.
 

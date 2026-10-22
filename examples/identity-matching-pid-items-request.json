@@ -1,0 +1,10 @@
+{
+  "docType": "eu.europa.ec.eudi.pid.1",
+  "nameSpaces": {
+    "eu.europa.ec.eudi.pid.1": {
+      "given_name": false,
+      "family_name": false,
+      "personal_administrative_number": false
+    }
+  }
+}

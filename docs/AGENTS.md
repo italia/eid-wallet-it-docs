@@ -20,6 +20,20 @@ RFCs use the `:rfc:` role and do not need an entry in `common_definitions.rst`. 
 
 Do not copy the same requirement or explanation into several places. Put it in one section and point to it with `:ref:`.
 
+## Section openings
+
+The opening of a chapter that introduces other sections orients the reader. It names what the chapter covers and points to the section that owns each topic, with `:ref:`.
+
+Do not use a BCP 14 keyword in that opening. In English that is `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `NOT RECOMMENDED`, `MAY`, and `OPTIONAL`. In Italian that is `DEVE`, `DEVONO`, `NON DEVE`, `NON DEVONO`, `PUÒ`, `POSSONO`, `DOVREBBE`, `DOVREBBERO`, `NON DOVREBBE`, `NON DOVREBBERO`, `RACCOMANDATO`, `NON RACCOMANDATO`, `OBBLIGATORIO`, and `OPZIONALE`.
+
+Do not restate a procedure the owning section already specifies. A pointer is enough.
+
+Put technical detail in the section that owns the behavior. Identity matching belongs in `identity-matching`. Offline presentation and the storage of the bound private keys belong in the Keystore requirements. Consumption of a batch Credential belongs in the Authorization Response of the remote flow. Invocation of the Wallet Instance belongs in Steps 4-7 of the remote flow. The opening of Digital Credential Presentation lists the remote flow and the proximity flow and points to those sections. It does not treat identity matching as a presentation flow.
+
+When a requirement sits only in such an opening, move it to the owning section. Do not drop it. Leave its strength unchanged.
+
+A section that owns a requirement states that requirement in its own text, including near the start of that section. This rule applies to the orienting opening, not to the section that owns the behavior.
+
 ## Normative language
 
 State each requirement in one place. Do not give the same object conflicting keywords in different sections (a `MUST` in one place and a `SHOULD` or `MAY` for the same behavior in another). Do not put conflicting keywords in the same sentence. One sentence states one requirement.

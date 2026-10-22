@@ -1,8 +1,7 @@
 /**
  * IT-Wallet docs theme — Bootstrap Italia layout for Sphinx.
- * Spacing follows an 8px grid at a 16px root. The root font size is 80% of
- * the browser default, so zoom 100% shows that grid at 80% (the density that
- * previously required zooming the page out).
+ * Spacing follows an 8px grid at a 16px root. The root font size is 90% of
+ * the browser default.
  */
 
 :root {
@@ -53,7 +52,7 @@ html.it-docs-html,
 html:has(body.it-docs-body) {
   height: auto;
   min-height: 100%;
-  font-size: 80%;
+  font-size: var(--it-docs-root-font-size, 90%);
 }
 
 body.it-docs-body {
@@ -255,6 +254,52 @@ body.it-docs-body {
   width: 1.125rem;
   height: 1.125rem;
   flex-shrink: 0;
+}
+
+.it-docs-font-size-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button {
+  color: #ffffff !important;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.25rem;
+  min-height: 2rem;
+  min-width: 2rem;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button:hover,
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button:focus {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button .it-docs-font-size-icon {
+  color: #ffffff;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.it-header-slim-wrapper.bg-primary .it-docs-font-size-button .it-docs-font-size-icon path {
+  fill: currentColor;
 }
 
 .it-docs-slim-tools .it-docs-brightness-toggle {

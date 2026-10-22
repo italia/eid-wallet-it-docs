@@ -5,7 +5,10 @@
 Proximity Flow
 ==============
 
-This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance using the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_]. ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
+This section describes how a Relying Party Instance requests a Wallet Instance to present an *mdoc-CBOR* Credential.
+
+The presentation uses the ISO/IEC-mdoc EAAP realization and presentation profile in clauses 4.2 and 5 of V1.2.1 of [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
+ETSI TS 119 472-2 V1.2.1 prevails where it modifies [`ISO18013-5`_].
 
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
 
@@ -23,7 +26,7 @@ The sub-phases are described below:
   The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping. Device Engagement data may be transferred using either QR code or NFC technologies.
 
   2. **Session Establishment**: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
-  The established session MAY be later terminated based on the conditions as detailed in [`ISO18013-5`_ #12.2.4].
+  The conditions for ending the session are specified in [`ISO18013-5`_ #12.2.4].
 
   3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The Wallet Instance uses the data from the session establishment message to derive the session key and then to decrypt the mdoc request.
   During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party Instance via a session data message.
@@ -133,6 +136,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 **Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
 **Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message containing ``EReaderKey.Pub`` and the encrypted ``DeviceRequest``. Every ``DocRequest`` in the ``DeviceRequest`` MUST contain its own ``readerAuth`` signed over ``ReaderAuthentication``. The ``SessionEstablishment`` envelope MUST NOT be described as signed. The ``SessionEstablishment`` message MUST be encrypted using the session keys derived in the previous step (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
+The established session MAY be later terminated based on the conditions as detailed in [`ISO18013-5`_ #12.2.4].
 
 
 Below are non-normative examples using the diagnostic notation of a CBOR-encoded EUDIW and National ``DeviceRequest``. Each decoded request is encrypted inside ``SessionEstablishment``.

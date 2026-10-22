@@ -41,6 +41,20 @@
 </svg>
 {%- endmacro %}
 
+{# A with a minus, for decreasing text size. #}
+{% macro icon_font_decrease(class='icon it-docs-font-size-icon') -%}
+<svg class="{{ class }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+{%- endmacro %}
+
+{# A with a plus, for increasing text size. #}
+{% macro icon_font_increase(class='icon it-docs-font-size-icon') -%}
+<svg class="{{ class }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+{%- endmacro %}
+
 {# Sun icon for content brightness — bold paths for crisp rendering at 18–20px. #}
 {% macro icon_brightness(class='icon it-docs-brightness-icon') -%}
 <svg class="{{ class }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

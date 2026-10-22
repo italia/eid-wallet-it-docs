@@ -19,6 +19,30 @@ Identity Matching
 
 Identity matching determines whether the presented person identification attributes identify one natural person.
 
+.. note::
+  When a Relying Party needs to distinguish the User during authentication, the Relying Party MUST do so on the basis of the information contained in the Digital Credentials requested in the presentation request. The Relying Party must include the corresponding claims in the presentation request. The Relying Party distinguishes the User by evaluating the values of the claims actually presented.
+
+  Non-normative examples are provided below.
+
+  1. **PID or IT-Wallet ID.** The Relying Party requests the identification claims defined by the relevant data model, for example ``given_name``, ``family_name`` and ``personal_administrative_number`` for the PID, or ``tax_id_code`` for the IT-Wallet ID. See :ref:`credential-data-model-pid:PID Data Model` and :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`.
+
+     Example of a ``dcql_query`` in the remote flow (PID in SD-JWT VC format):
+
+     .. literalinclude:: ../../examples/identity-matching-pid-dcql.json
+        :language: json
+
+     The same claims, in the proximity flow, are requested in the mdoc ``ItemsRequest``:
+
+     .. literalinclude:: ../../examples/identity-matching-pid-items-request.json
+        :language: json
+
+  2. **Another Digital Credential from the catalog.** The Relying Party requests the claims defined by the schema of the Digital Credential published in the :ref:`registry:Digital Credentials Catalog`. The corresponding data model is defined by the related schema in the :ref:`registry:Schema Registry`.
+
+     Example of a ``dcql_query`` in the remote flow for an mDL (``credential_type`` ``mDL``, mdoc-CBOR format, ``docType`` ``org.iso.18013.5.1.mDL``):
+
+     .. literalinclude:: ../../examples/identity-matching-mdl-dcql.json
+        :language: json
+
 The Relying Party MUST apply the matching pattern of the presented Digital Credential type, as defined below. Different Digital Credential types MAY define different identity matching patterns. For the PID User attributes, see :ref:`credential-data-model-pid:PID Data Model`. For the IT-Wallet ID User attributes, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model`.
 
 Identity Reconciliation

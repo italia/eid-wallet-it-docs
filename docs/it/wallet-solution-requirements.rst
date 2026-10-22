@@ -109,6 +109,7 @@ I requisiti del Keystore sono definiti di seguito:
 - Le chiavi private vincolate a una Wallet Instance Attestation DEVONO essere generate e memorizzate nello stesso Keystore o WSCA/Remote WSCD descritto dall'attestato (:ref:`WP_014e <wallet-instance-testcases>`).
 - Un'Istanza di Relying Party Mobile che non memorizza chiavi di identità dell'Utente PUÒ usare un Keystore e non è tenuta a usare un WSCA/Remote WSCD (:ref:`WP_014f <wallet-instance-testcases>`).
 - Gli Attestati Elettronici le cui chiavi private vincolate sono memorizzate in un Keystore POSSONO essere presentati in prossimità o comunque offline. Gli Attestati Elettronici le cui chiavi private vincolate sono memorizzate in un Remote WSCD NON DEVONO essere presentati offline (:ref:`WP_160 <wallet-instance-testcases>`).
+- La presentazione in prossimità o comunque offline di un Attestato Elettronico DEVE riuscire solo quando le chiavi private vincolate sono memorizzate in un Keystore locale o in un WSCD locale (:ref:`WP_160 <wallet-instance-testcases>`).
 
 Per informazioni più dettagliate, fare riferimento a :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`, :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation` e :ref:`wallet-attestation-issuance:Emissione della Key Attestation` di questo documento.
 

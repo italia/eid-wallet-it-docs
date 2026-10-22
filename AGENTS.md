@@ -28,5 +28,6 @@ Never create a commit. Never run `git push` or any command that publishes commit
 - In `defined-terms.rst`, describe the term and stop there. Do not use a `:ref:`, a hyperlink, or any other reference to another part of the specification. Defined terms sit above the rest of the specification and must not depend on a section.
 - Example hostnames are `example.org` (or a subdomain of it). Do not use real production URLs in examples.
 - Keep changes limited to the requested section. Do not rewrite surrounding normative text for style.
+- The opening of a chapter that introduces other sections does not use normative keywords. It points to the section that states the requirement. The same applies to the opening of each presentation flow. Follow `Section openings` in `docs/AGENTS.md`.
 - Before adding or editing a normative sentence, follow the `Coherence of a change` section in `docs/AGENTS.md`.
 - When the requirements of a section change, update the test cases that section cites, and any other test case that covers the same behavior, in the same change and in both languages. The test states the current requirement. A test that no longer applies keeps its identifier. Empty its purpose, description, and expected result with `Voided` in English and `Annullato` in Italian. Do not delete the row, and do not reuse the identifier.

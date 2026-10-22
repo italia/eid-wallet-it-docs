@@ -19,6 +19,30 @@ Identity Matching
 
 L'identity matching determina se gli attributi di identificazione personale presentati identificano una sola persona fisica.
 
+.. note::
+  Quando una Relying Party deve distinguere l'Utente in fase di autenticazione, la Relying Party DEVE farlo sulla base delle informazioni contenute negli Attestati Elettronici richiesti nella richiesta di presentazione. La Relying Party deve includere i claim corrispondenti nella richiesta di presentazione. La Relying Party distingue l'Utente valutando i valori dei claim effettivamente presentati.
+
+  Di seguito sono riportati esempi non normativi.
+
+  1. **PID o IT-Wallet ID.** La Relying Party richiede i claim di identificazione previsti dal relativo modello dati, ad esempio ``given_name``, ``family_name`` e ``personal_administrative_number`` per il PID, oppure ``tax_id_code`` per l'IT-Wallet ID. Vedere :ref:`credential-data-model-pid:Modello di Dati del PID` e :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`.
+
+     Esempio di ``dcql_query`` nel flusso remoto (PID in formato SD-JWT VC):
+
+     .. literalinclude:: ../../examples/identity-matching-pid-dcql.json
+        :language: json
+
+     Gli stessi claim, nel flusso di prossimità, sono richiesti nell'``ItemsRequest`` mdoc:
+
+     .. literalinclude:: ../../examples/identity-matching-pid-items-request.json
+        :language: json
+
+  2. **Altro Attestato Elettronico di catalogo.** La Relying Party richiede i claim previsti dallo schema dell'Attestato Elettronico pubblicato nel :ref:`registry:Catalogo degli Attestati Elettronici`. Il relativo modello dati è definito dallo schema corrispondente nel :ref:`registry:Schema Registry`.
+
+     Esempio di ``dcql_query`` nel flusso remoto per una mDL (``credential_type`` ``mDL``, formato mdoc-CBOR, ``docType`` ``org.iso.18013.5.1.mDL``):
+
+     .. literalinclude:: ../../examples/identity-matching-mdl-dcql.json
+        :language: json
+
 La Relying Party DEVE applicare il pattern di matching del tipo di Attestato Elettronico presentato, come definito di seguito. Tipi diversi di Attestato Elettronico POSSONO definire pattern di identity matching differenti. Per gli attributi Utente del PID, vedere :ref:`credential-data-model-pid:Modello di Dati del PID`. Per gli attributi Utente dell'IT-Wallet ID, vedere :ref:`credential-data-model-it-wallet-id:Modello di Dati dell'IT-Wallet ID`.
 
 Identity Reconciliation

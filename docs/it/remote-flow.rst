@@ -4,34 +4,13 @@
 Flusso Remoto
 =============
 
+Questa sezione descrive la presentazione remota di un Attestato Elettronico da un'Istanza del Wallet a un'Istanza di Relying Party web.
+
 La presentazione remota utilizza [`OpenID4VP`_], profilato da [`OPENID4VC-HAIP`_] e [`ETSI TS 119 472-2`_], come richiesto da [`CIR2024/2982`_].
 Il Trust Framework è selezionato tramite il prefisso ``client_id``, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 La clausola 6 di [`ETSI TS 119 472-2`_] prevale su [`OPENID4VC-HAIP`_] ove le due fonti differiscono.
 
-A seconda di come l'Utente stia interagendo con il frontend dell'istanza web della Relying Party, usando cioè il dispositivo in cui risiede l'Istanza del Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
-
-* **Same Device**: la Relying Party DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-* **Cross Device**: la Relying Party DEVE fornire un Codice QR che l'Utente inquadra con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-
-Per richiamare l'Istanza del Wallet corretta, la Relying Party DOVREBBE invocare l'Istanza del Wallet installata sul dispositivo dell'Utente che l'Utente desidera utilizzare. 
-Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`. 
-
--  Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi la Relying Party recupera i Wallet metadata come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`. Il contenuto del HTML href o del QR Code dipende dal parametro ``authorization_endpoint`` nei Wallet metadata:
-
-  - Se ``authorization_endpoint`` è presente nei Wallet metadata e il suo valore è un URL HTTPS, quell'URL è un link universale. Il sistema operativo lo associa all'Istanza del Wallet installata e, quando l'Utente lo apre, avvia quell'Istanza. La Relying Party DOVREBBE inserire quell'URL nell'href HTML del flusso Same Device o nel Codice QR del flusso Cross Device.
-  - Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati ``openid4vp://`` (come definito nella Sezione 13.1.2 di [`OpenID4VP`_]), ``haip-vp://`` (come definito nella Sezione 5.1 di [`OPENID4VC-HAIP`_]) o ``eu-eaap://`` (come definito in [`ETSI TS 119 472-2`_]).
-    Sul percorso EUDIW, la Relying Party DOVREBBE utilizzare ``eu-eaap://``.
-    L'Istanza del Wallet DEVE supportare ``openid4vp://``.
-    L'Istanza del Wallet DEVE supportare ``haip-vp://``.
-    L'Istanza del Wallet DEVE supportare ``eu-eaap://``.
-
--  Se la Relying Party non supporta la Selection Page, o se il recupero dei Wallet metadata non riesce, la Relying Party DEVE invocare l'Istanza del Wallet con uno degli schemi URL personalizzati descritti sopra.
-
-Successivamente all'invocazione dell'Istanza del Wallet, l'Istanza del Wallet valida la trust con la Relying Party e ne valuta la richiesta. Se valida e l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.
-
-.. note:: "Interoperabilità degli URL personalizzati"
-
-    La preferenza per ``eu-eaap://`` sul percorso EUDIW soddisfa OIDFVP-HAIP-REDIRECTS-03 di [`ETSI TS 119 472-2`_].
+Il flusso remoto ha due forme. Nel flusso Same Device lo user-agent e l'Istanza del Wallet sono sullo stesso dispositivo. Nel flusso Cross Device sono su dispositivi diversi. Le regole normative di invocazione sono specificate nei Passaggi 4-7.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
@@ -83,7 +62,35 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggio 3**: La Relying Party crea un valore *state* fresco, crittograficamente casuale e con entropia sufficiente, lo associa alla sessione dello user-agent (ad esempio, utilizzando un cookie HTTP protetto) e lo memorizza lato server con un tempo di scadenza breve. Quindi ispeziona lo user-agent per determinare se il flusso avviene sullo stesso dispositivo dello user-agent.
 
-**Passaggi 4-7 (Authorization Request)**: La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo *state endpoint* e all'Istanza del Wallet un URL contenente l'Authorization Request. Il Request Object è passato solo per riferimento. L'URL DEVE contenere ``client_id`` e ``request_uri``. L'URL NON DEVE contenere ``request``, come dettagliato in `OPENID4VC-HAIP`_. 
+**Passaggi 4-7 (Authorization Request)**: La Relying Party invoca l'Istanza del Wallet e passa l'Authorization Request per riferimento.
+
+La Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
+
+* **Same Device**: la Relying Party DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+* **Cross Device**: la Relying Party DEVE fornire un Codice QR che l'Utente inquadra con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+
+La Relying Party DOVREBBE invocare l'Istanza del Wallet della Soluzione Wallet scelta dall'Utente.
+L'Utente DOVREBBE indicare la Soluzione Wallet sulla Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`.
+
+Quando la Selection Page è supportata, l'Utente seleziona la Soluzione Wallet. La Relying Party recupera quindi i metadata del Wallet come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
+
+Quando ``authorization_endpoint`` è presente nei metadata del Wallet e il suo valore è un URL HTTPS, quell'URL è un link universale. Il sistema operativo associa quell'URL all'Istanza del Wallet installata e avvia quell'Istanza del Wallet quando l'Utente lo apre. La Relying Party DOVREBBE inserire quell'URL nell'href HTML del flusso Same Device o nel Codice QR del flusso Cross Device.
+
+Quando ``authorization_endpoint`` è assente, oppure quando il suo valore non è un URL HTTPS, la Relying Party DEVE utilizzare uno tra ``openid4vp://``, ``haip-vp://`` e ``eu-eaap://``. ``openid4vp://`` è definito nella Sezione 13.1.2 di [`OpenID4VP`_]. ``haip-vp://`` è definito nella Sezione 5.1 di [`OPENID4VC-HAIP`_]. ``eu-eaap://`` è definito in [`ETSI TS 119 472-2`_].
+
+Sul percorso EUDIW, la Relying Party DOVREBBE utilizzare ``eu-eaap://``.
+
+L'Istanza del Wallet DEVE supportare ``openid4vp://``.
+L'Istanza del Wallet DEVE supportare ``haip-vp://``.
+L'Istanza del Wallet DEVE supportare ``eu-eaap://``.
+
+Quando la Relying Party non supporta la Selection Page, o quando il recupero dei metadata del Wallet non riesce, la Relying Party DEVE invocare l'Istanza del Wallet con uno degli schemi URL personalizzati descritti sopra.
+
+.. note:: "Interoperabilità degli URL personalizzati"
+
+    La preferenza per ``eu-eaap://`` sul percorso EUDIW soddisfa OIDFVP-HAIP-REDIRECTS-03 di [`ETSI TS 119 472-2`_].
+
+La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo *state endpoint* e all'Istanza del Wallet un URL contenente l'Authorization Request. Il Request Object è passato solo per riferimento. L'URL DEVE contenere ``client_id`` e ``request_uri``. L'URL NON DEVE contenere ``request``, come dettagliato in `OPENID4VC-HAIP`_. 
 
   Nel **Flusso Cross Device**, l'URI dell'Authorization Request viene presentato attraverso un Codice QR mostrato all'Utente. L'Utente scansiona il Codice QR utilizzando l'Istanza del Wallet e recupera un URL.
   Di seguito è rappresentato un esempio non normativo di un Codice QR emesso dalla Relying Party.
@@ -661,6 +668,8 @@ I parametri del payload JWT sono descritti qui:
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^
 Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint ``response_uri`` della Relying Party utilizzando una richiesta HTTP con il metodo POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`).
+
+Quando l'Istanza del Wallet utilizza Credenziali ottenute in batch, l'Istanza del Wallet DOVREBBE implementare una logica di selezione delle Credenziali, ad esempio basata sulla prima in scadenza. L'Istanza del Wallet DEVE contrassegnare la Credenziale selezionata come consumata. Al termine del flusso, l'Istanza del Wallet DEVE ridurre il numero di Credenziali disponibili nel batch. In base a quel numero, l'Istanza del Wallet può verificare se è il momento di richiedere un nuovo batch di Credenziali.
 
 Ogni risposta riuscita DEVE essere cifrata con la chiave pubblica effimera specifica della richiesta, selezionata da ``client_metadata.jwks`` tramite il suo ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
 Ogni risposta riuscita DEVE usare ``direct_post.jwt``.

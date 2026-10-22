@@ -4,7 +4,10 @@
 Flusso di Prossimità
 ====================
 
-Questa sezione descrive come un'Istanza di Relying Party richiede la presentazione di un Attestato Elettronico *mdoc-CBOR* a un'Istanza del Wallet come dettagliato nella *Specifica ISO 18013-5*, come richiesto da [`CIR2024/2982`_].
+Questa sezione descrive come un'Istanza di Relying Party richiede a un'Istanza del Wallet la presentazione di un Attestato Elettronico *mdoc-CBOR*.
+
+La presentazione utilizza il profilo di realizzazione e presentazione EAAP ISO/IEC-mdoc nelle clausole 4.2 e 5 della V1.2.1 di [`ETSI TS 119 472-2`_], come richiesto da [`CIR2024/2982`_].
+La V1.2.1 di ETSI TS 119 472-2 prevale ove modifica [`ISO18013-5`_].
 
 Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 
@@ -21,7 +24,7 @@ Le sotto-fasi sono descritte di seguito:
   I messaggi scambiati in questa sottofase sono trasmessi attraverso tecnologie a corto raggio per limitare la possibilità di monitorarli o intercettarli da parte di terzi. I dati di *Device Engagement* possono essere trasferiti utilizzando QR code o NFC.
 
   2. **Session Establishment**: Durante la fase di *Session Establishment*, l'Istanza di Relying Party configura una connessione sicura. Tutti i dati trasmessi su questa connessione sono cifrati utilizzando una chiave di sessione, che è nota sia all'Istanza del Wallet che all'Istanza di Relying Party.
-  La sessione stabilita PUÒ essere successivamente terminata in base alle condizioni dettagliate in [`ISO18013-5`_ #12.2.4].
+  Le condizioni per terminare la sessione sono specificate in [`ISO18013-5`_ #12.2.4].
 
   1. **Comunicazione - Device Retrieval**: L'Istanza di Relying Party cifra la Richiesta mdoc con la chiave di sessione appropriata e la invia all'Istanza del Wallet insieme alla sua chiave pubblica nel messaggio di *Session Establishment*. L'Istanza del Wallet utilizza i dati del messaggio di *Session Establishment* per derivare la chiave di sessione e quindi per decifrare la Richiesta mdoc.
   Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione di richiedere informazioni dall'Istanza del Wallet utilizzando richieste e risposte mdoc. La modalità principale di comunicazione è il canale sicuro stabilito durante la configurazione della sessione. L'Istanza del Wallet cifra la Risposta mdoc utilizzando la chiave di sessione e la trasmette all'Istanza di Relying Party mobile tramite un messaggio di *Session Data*.
@@ -131,6 +134,7 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 **Passo 7**: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` e :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
 **Passo 8**: L'Istanza di Relying Party DEVE preparare un messaggio ``SessionEstablishment`` contenente ``EReaderKey.Pub`` e il ``DeviceRequest`` cifrato. Ogni ``DocRequest`` nel ``DeviceRequest`` DEVE contenere il proprio ``readerAuth`` firmato su ``ReaderAuthentication``. La busta ``SessionEstablishment`` NON DEVE essere descritta come firmata. Il messaggio ``SessionEstablishment`` DEVE essere cifrato utilizzando le chiavi di sessione derivate nel passo precedente (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+La sessione stabilita PUÒ essere successivamente terminata in base alle condizioni dettagliate in [`ISO18013-5`_ #12.2.4].
 
 
 Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
