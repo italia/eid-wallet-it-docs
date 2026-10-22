@@ -31,10 +31,10 @@ Altri elementi chiave che caratterizzano questo nuovo paradigma di Portafoglio d
 Ambito
 ------
 
-Queste Specifiche Tecniche saranno periodicamente aggiornate, ove necessario, alla luce dei risultati della fase di sperimentazione, dell'adozione di nuovi atti legislativi nazionali o europei e dei requisiti in evoluzione in termini di sicurezza e interoperabilità. Queste Specifiche Tecniche perseguono due obiettivi principali e rappresentano una componente fondamentale del quadro di implementazione per il Sistema IT-Wallet.
+Queste Specifiche Tecniche saranno periodicamente aggiornate ove necessario. Gli aggiornamenti tengono conto dei risultati della fase di sperimentazione, dell'adozione di nuovi atti legislativi nazionali o europei e dei requisiti in evoluzione in termini di sicurezza e interoperabilità. Queste Specifiche Tecniche perseguono due obiettivi principali e rappresentano una componente fondamentale del quadro di implementazione per il Sistema IT-Wallet.
 
 Il primo obiettivo è quello di fornire un insieme chiaro e strutturato di raccomandazioni, risorse e requisiti di progettazione relativi agli elementi del Sistema IT-Wallet che impattano sull'Esperienza dell'Utente.
-Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche progettuali e implementative, mira a fornire agli enti pubblici e privati interessati a partecipare al Sistema IT-Wallet quanto necessario per:
+Il documento distingue gli aspetti normativi obbligatori dalle buone pratiche progettuali e implementative. Il documento mira a fornire agli enti pubblici e privati interessati a partecipare al Sistema IT-Wallet quanto necessario per i seguenti scopi.
 
 - facilitare la comprensione e l'adozione del Modello di Servizio, aumentando il numero di potenziali servizi e opportunità di utilizzo per l'Utente.
 - adottare l'Identità Visiva del Sistema IT-Wallet al fine di migliorarne l'affidabilità e la riconoscibilità per l'Utente.

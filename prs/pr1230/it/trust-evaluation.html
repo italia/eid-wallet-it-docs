@@ -882,9 +882,9 @@ Le implementazioni DEVONO supportare sia certificati Trust Anchor self-signed si
 <h3><span class="section-number">6.2.4. </span>EUDIW Attestation Signature Validation<a class="headerlink" href="#eudiw-attestation-signature-validation" title="Link to this heading">¶</a></h3>
 <p>Questo processo valida la firma su un'Attestation (Attestato Elettronico o Wallet Instance Attestation) usando il Sign/Seal Certificate appropriato come profilato in <a class="reference internal" href="infrastructure-trust.html#entity-sign-seal-certificate-profile"><span class="std std-ref">Entity Sign/Seal Certificate Profile</span></a>.
 È invocato durante i flussi di emissione e presentazione per validare la firma sull'Attestation.</p>
-<p>Il processo DEVE essere strutturato come segue:</p>
+<p>Il processo DEVE essere strutturato come segue.</p>
 <ul class="simple">
-<li><p>Se l'Attestation la cui firma è in verifica è un Attestato Elettronico avente un Trust Anchor referenziato all'interno di una LoTE o di una Trusted List (cioè un PID, una PuB-EAA, una QEAA), oppure è una Wallet Instance Attestation, la procedura di validazione della firma seguente DEVE essere eseguita usando il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation, con il Trust Anchor presente nella LoTE rilevante (solo per PID, WIA o PuB-EAA) o nella Trusted List (solo per QEAA).</p></li>
+<li><p>La procedura di validazione della firma seguente si applica quando l'Attestation è un PID, una PuB-EAA, una QEAA o una Wallet Instance Attestation. La procedura di validazione della firma DEVE usare il Sign/Seal Certificate e la catena di fiducia X.509 associata contenuti nell'Attestation. Il Trust Anchor è quello presente nella LoTE rilevante per un PID, una WIA o una PuB-EAA. Il Trust Anchor è quello presente nella Trusted List per una QEAA.</p></li>
 <li><p>Se l'Attestation la cui firma è in verifica è una EAA non qualificata, allora le informazioni relative alla trust evaluation sono governate dal Rulebook corrispondente.</p></li>
 </ul>
 <p>La procedura di validazione della firma è strutturata come segue:</p>

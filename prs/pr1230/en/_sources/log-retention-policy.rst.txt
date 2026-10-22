@@ -36,7 +36,7 @@ Organizational Entities MUST implement appropriate technical and organizational 
 Wallet Provider Log Retention Policy
 ------------------------------------
 
-Information related to the registration and management of Wallet Instances MAY be retained for up to 12 months after the deactivation or revocation of the Wallet or the associated User account, unless a legal obligation requires longer retention.
+Information related to the registration and management of Wallet Instances MAY be retained for up to 12 months after the deactivation or revocation of the Wallet or the associated User account. A legal obligation may require longer retention.
 
 
 Credential Issuer Log Retention Policy

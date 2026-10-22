@@ -252,7 +252,7 @@ SR-V-10
    * - |partially-check-icon|
      - (conditional w.r.t I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.
 
-Relying Party checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Relying Party and is under the sole responsibility of its issuer, the trusted Wallet Provider.
+The Relying Party checks the Wallet Attestation during exchanges sent with the authorization response. The check confirms that the Wallet Attestation meets the security criteria required by the Relying Party. The Wallet Attestation remains under the sole responsibility of its issuer, the trusted Wallet Provider.
 
 .. note::
   Currently, no explicit security and privacy measures related to this requirement are specified in [`OpenID4VC-SecTrust`_] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees

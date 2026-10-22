@@ -486,7 +486,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
     **Selection Page**
-      È la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere con quale proseguire il processo di Autenticazione, presentazione o erogazione.
+      La Selection Page è la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer. In quella pagina l'Utente vede tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere la Soluzione Wallet con cui proseguire il processo di Autenticazione, presentazione o erogazione.
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
