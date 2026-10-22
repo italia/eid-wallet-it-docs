@@ -13,33 +13,36 @@ System Actors and Roles
 Due famiglie di attori partecipano all'onboarding, le entità che vengono onboardate e le entità dell'infrastruttura di trust che operano l'onboarding stesso.
 I ruoli dell'infrastruttura di trust sono realizzati dai componenti e dai servizi del Sistema di Onboarding, descritti nella sottosezione successiva.
  
-**Entità oggetto di onboarding**
- 
+System Actors and Roles: Entità oggetto di onboarding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
   - **Fonti Autentiche**: si onboardano per rendere i propri dati disponibili ai Credential Issuer, in modo che i dati possano essere inclusi negli Attestati.
-  - **Wallet-Relying Parties**: si onboardano per essere autorizzate a fare affidamento sulle Wallet Unit e per ottenere i Trust Artifact di cui necessitano per operare. Sono ulteriormente suddivise in:
- 
-    - **Credential Issuer**, che si onboardano per essere autorizzati a emettere i tipi di Credenziale che dichiarano;
+  - **Wallet-Relying Parties**: si onboardano per essere autorizzate a fare affidamento sulle Wallet Unit e per ottenere i Trust Artifact di cui necessitano per operare. Sono ulteriormente suddivise nei ruoli seguenti.
+
+    - **Credential Issuer**, che si onboardano per essere autorizzati a emettere i tipi di Credenziale che dichiarano.
     - **Relying Party** e **Intermediari di Relying Party**, che si onboardano per essere autorizzati a richiedere attributi dell'Utente dalle Wallet Unit.
- 
+
   - **Fornitori di Wallet**: si onboardano per far riconoscere la propria Soluzione Wallet nell'ecosistema e per essere notificati.
- 
-**Entità dell'infrastruttura di trust**
- 
-  - **Organismo di Supervisione**: durante l'onboarding verifica l'eleggibilità e la conformità delle entità, si avvale del Registrar per la registrazione tecnica e agisce come punto di contatto unico nazionale per la notifica alla Commissione Europea.
+
+System Actors and Roles: Entità dell'infrastruttura di trust
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  - **Organismo di Supervisione**: durante l'onboarding l'Organismo di Supervisione verifica l'eleggibilità e la conformità delle entità. L'Organismo di Supervisione si avvale del Registrar per la registrazione tecnica. L'Organismo di Supervisione agisce come punto di contatto unico nazionale per la notifica alla Commissione Europea.
   - **Registrar** e **Register**: il Registrar esegue la registrazione tecnica delle Wallet-Relying Party e scrive i loro record nel **Register** come definito da [`CIR2025/848`_].
   - :term:`Provider of WRPAC` e :term:`Provider of WRPRC`: emettono, rispettivamente, il WRPAC e il WRPRC. Il profilo del WRPAC è definito in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`. L'emissione automatica del WRPRC è definita in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
-  - **National Federation Authorities**: il **Federation Trust Anchor** e i suoi **Federation Intermediate**, che registrano le Entità di Federazione e applicano le metadata policy. Ciascuna Federation Authority emette i certificati X.509 e i Trust Mark per le Entità di Federazione che registra, mentre il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, come descritto in :ref:`infrastructure-trust:Trust Mark registration-entity`.
+  - **National Federation Authorities**: il **Federation Trust Anchor** e i suoi **Federation Intermediate**, che registrano le Entità di Federazione e applicano le metadata policy. Ciascuna Federation Authority emette i certificati X.509 e i Trust Mark per le Entità di Federazione che registra. Il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, come descritto in :ref:`infrastructure-trust:Trust Mark registration-entity`.
     In IT-Wallet il National Trust Anchor opera anche la Certification Authority radice della PKI nazionale di firma X.509, il cui certificato radice e la cui distribuzione sono descritti in :ref:`infrastructure-trust:PKI Architecture`.
  
-**Entità che interagiscono con il Sistema di Onboarding senza essere onboardate**
+System Actors and Roles: Entità che interagiscono con il Sistema di Onboarding senza essere onboardate
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  - **Attestation Scheme Provider**: possiedono l'Attestation Rulebook di un tipo di Credenziale e richiedono la registrazione della corrispondente voce versionata nel Digital Credentials Catalog, fornendo la definizione e lo schema tratti dal Rulebook, si veda :ref:`onboarding-system:Credential Type Registration`. Un Attestation Scheme Provider non è registrato come Entità per questo ruolo. All'interno di IT-Wallet il ruolo è ricoperto da un'organizzazione che possiede il Rulebook.
+  - **Attestation Scheme Provider**: possiedono l'Attestation Rulebook di un tipo di Credenziale. Richiedono la registrazione della corrispondente voce versionata nel Digital Credentials Catalog. Forniscono la definizione e lo schema tratti dal Rulebook, si veda :ref:`onboarding-system:Credential Type Registration`. Un Attestation Scheme Provider non è registrato come Entità per questo ruolo. All'interno di IT-Wallet il ruolo è ricoperto da un'organizzazione che possiede il Rulebook.
 
 .. note::
    Una singola organizzazione PUÒ svolgere contemporaneamente diverse di queste funzioni.
  
 Le Istanze del Wallet non sono Entità di Federazione e non sono onboardate direttamente.
-Un'Istanza del Wallet è registrata indirettamente, tramite il proprio Fornitore di Wallet, si veda :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`, ed è ritenuta affidabile tramite una Wallet Instance Attestation emessa e firmata da tale Fornitore di Wallet, si veda :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
+Un'Istanza del Wallet è registrata indirettamente, tramite il proprio Fornitore di Wallet, si veda :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`. L'Istanza del Wallet è ritenuta affidabile tramite una Wallet Instance Attestation emessa e firmata da tale Fornitore di Wallet, si veda :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
  
 La notifica di un'entità notificata è un processo dello Stato membro definito da [`CIR2024/2980`_], descritto in :ref:`onboarding-system:Notification and Publication`.
  
@@ -47,7 +50,7 @@ System Components and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 I ruoli dell'infrastruttura di trust sono realizzati, all'interno del Sistema di Onboarding, da un insieme di componenti, ciascuno dei quali fornisce uno o più servizi.
-Un'entità in onboarding interagisce con il sistema tramite un unico punto di ingresso, l'Onboarding UI, che orchestra il flusso e instrada ciascuna richiesta al componente responsabile, e che pertanto non è rappresentata come componente distinto nel diagramma seguente.
+Un'entità in onboarding interagisce con il sistema tramite un unico punto di ingresso, l'Onboarding UI. L'Onboarding UI orchestra il flusso e instrada ciascuna richiesta al componente responsabile. L'Onboarding UI pertanto non è rappresentata come componente distinto nel diagramma seguente.
 
 La tabella seguente elenca i componenti, i servizi che ciascuno di essi fornisce e il processo di onboarding che ciascun servizio realizza.
  
@@ -83,7 +86,7 @@ La tabella seguente elenca i componenti, i servizi che ciascuno di essi fornisce
 
 I componenti scrivono nei registri nazionali e negli store di dati descritti in :ref:`registry:Registry Infrastructure`, raggruppati per finalità come in :ref:`registry:Registries and Catalogues of the Ecosystem`.
 
-Due store di dati sono mantenuti distinti di proposito, il Register, che contiene i record di registrazione delle Wallet-Relying Party definiti da [`CIR2025/848`_] e guida l'emissione dei certificati, e il dataset di notifica, che contiene le informazioni notificabili definite da [`CIR2024/2980`_].
+Due store di dati sono mantenuti distinti di proposito. Il Register contiene i record di registrazione delle Wallet-Relying Party definiti da [`CIR2025/848`_] e guida l'emissione dei certificati. Il dataset di notifica contiene le informazioni notificabili definite da [`CIR2024/2980`_].
 Si sovrappongono solo nei dati di identificazione, così che la separazione mantiene distinta la registrazione dalla notifica.
  
 Il diagramma seguente raggruppa i componenti per responsabilità e mostra gli store di dati con cui interagiscono.

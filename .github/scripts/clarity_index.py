@@ -29,7 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "docs"
 BASELINE_PATH = ROOT / ".github" / "clarity-baseline.json"
-THRESHOLD = 55.0
+THRESHOLD = 90.0
 
 EN_KEYWORDS = re.compile(
     r"\b(MUST NOT|MUST|REQUIRED|SHALL NOT|SHALL|SHOULD NOT|SHOULD|"

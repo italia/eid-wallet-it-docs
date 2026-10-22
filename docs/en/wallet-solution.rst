@@ -4,11 +4,11 @@
 Wallet Solution
 ---------------
 
-The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces. The mobile app serves as the primary interface for Users, allowing them to hold their Digital Credentials and interact with other participants of the ecosystem, such as Credential Issuers and Relying Parties. These Digital Credentials are a set of data that can uniquely identify a natural or legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
+The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces. The mobile app serves as the primary interface for Users, allowing them to hold their Digital Credentials and interact with other participants of the ecosystem, such as Credential Issuers and Relying Parties. These Digital Credentials are a set of data that can uniquely identify a natural or legal person. They also include Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
 
 The Keystore, the Remote WSCD, the Wallet Instance Attestation, and the Key Attestation are specified in :ref:`wallet-solution-requirements:Wallet Solution Requirements`.
 
-The Wallet Solution implements the core functionalities of [`CIR2024/2979`_] for the Wallet Unit, except Wallet-to-Wallet interaction and qualified electronic signature creation, which are out of the scope of this version, as specified in :ref:`wallet-solution-requirements:Wallet Solution Requirements`.
+The Wallet Solution implements the core functionalities of [`CIR2024/2979`_] for the Wallet Unit. Wallet-to-Wallet interaction and qualified electronic signature creation are out of the scope of this version, as specified in :ref:`wallet-solution-requirements:Wallet Solution Requirements`.
 PID issuance before EUDIW notification is specified in :ref:`pid-until-notification`.
 
 The following diagram depicts the Wallet Solution High Level Architecture.

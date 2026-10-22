@@ -8,9 +8,9 @@ Identity Matching and Identity Reconciliation
 
 **Identity matching** is the process by which a Relying Party establishes that the person identification attributes presented in a transaction refer to the same natural person. It is the same practical approach used in any legacy authentication and authorization infrastructure. It is not a Wallet Instance feature, nor a step of the presentation protocol. Cryptographic verification of the Digital Credential remains a distinct prerequisite, and identity reconciliation is a subsequent, optional step.
 
-After cryptographic verification of a presented Digital Credential, in remote or proximity flows, the Relying Party MUST first perform **identity matching**, to establish that the person identification attributes presented in the current transaction refer to the same natural person. Only after a successful identity matching, the Relying Party MAY perform **identity reconciliation**, linking that natural person to a previous User session or stored User record.
+After cryptographic verification of a presented Digital Credential, in remote or proximity flows, the Relying Party MUST first perform **identity matching**. Identity matching establishes that the person identification attributes presented in the current transaction refer to the same natural person. Only after a successful identity matching, the Relying Party MAY perform **identity reconciliation**, linking that natural person to a previous User session or stored User record.
 
-If identity matching fails, the Relying Party MUST NOT perform identity reconciliation and MUST NOT treat the presenter as a previously known User.
+If identity matching fails, the Relying Party MUST NOT perform identity reconciliation. The Relying Party MUST NOT treat the presenter as a previously known User.
 
 This Section specifies the matching and reconciliation rules that apply to person identification Digital Credentials (PID and IT-Wallet ID). Correlation of identities during IT-Wallet ID issuance (IdP–MRTD) is specified in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for IT-Wallet ID Issuance` and is out of scope of this Section.
 
@@ -88,7 +88,7 @@ The following methods MAY supplement Attribute-Based Binding. They MUST NOT repl
 Privacy and Selective Disclosure
 --------------------------------
 
-Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction, in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF, to be fully applicable when the IT-Wallet will be notified as an EUDIW solution.
+Selective disclosure MUST be used so that identifying attributes needed only for matching are not released when not required for the specific transaction. The use is in line with Article 5a of the European Digital Identity Regulation and the privacy-preserving combined presentation principles of the ARF. Those principles are fully applicable when the IT-Wallet will be notified as an EUDIW solution.
 
 Application to User Attribute Deletion
 --------------------------------------
@@ -97,4 +97,4 @@ When the User requests deletion of presented attributes, the Relying Party MUST 
 
 When the User authenticates for a data deletion request by presenting a Digital Credential from the Wallet Instance, the Relying Party MUST apply the matching patterns of this Section.
 
-When the User authenticates for a data deletion request without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation using person identification attributes obtained from a preexisting national authentication scheme (for example CieID), where those attributes uniquely identify the User in the Relying Party's records.
+When the User authenticates for a data deletion request without using the Wallet Instance, the Relying Party MAY perform identity matching and identity reconciliation. The Relying Party uses person identification attributes obtained from a preexisting national authentication scheme (for example CieID). Those attributes uniquely identify the User in the Relying Party's records.

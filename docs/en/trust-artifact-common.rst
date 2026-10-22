@@ -252,14 +252,14 @@ Trust Anchor Certificate Profile
 
 This section extends the general :ref:`infrastructure-trust:X.509 Certificate Profile` and specifies a **Certificate Profile** for **Trust Anchors**.
 A Trust Anchor is a trusted public key (and associated data) used as an input to the :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
-In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**, which MAY be self-signed.
+In this profile, the Trust Anchor MUST be represented and distributed as an **X.509 certificate**. That certificate MAY be self-signed.
 
-Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certification path that MUST start with the presented end-entity certificate and MUST end with a certificate signed by the subject of a Trust Anchor certificate.
+Relying Parties, Credential Issuers and Wallet Units validate a presented Access, Registration or Sign/Seal Certificate by building a certificate chain. The certificate chain MUST start with the presented end-entity certificate. The certificate chain MUST end with a certificate signed by the subject of a Trust Anchor certificate.
 The Trust Anchor certificate is used as the trust termination point for the path validation process (i.e., it is the value of the ``trust_anchor`` variable in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`).
 Implementations MUST support validating both self-signed and non-self-signed Trust Anchor certificates.
 
-.. note::
-  **Trust Anchor Location.**
+.. note:: Trust Anchor Location
+
   The location of the Trust Anchor Certificate is determined by the specific Trust Framework selected (see :ref:`trust-evaluation:EUDIW Trust Anchor Validation` and :ref:`trust-evaluation:Federation Trust Anchor Validation`).
 
 The following table defines the profile-specific requirements for the certificate fields.
@@ -297,7 +297,7 @@ Fields not listed in the table remain subject to the requirements defined in the
    * - ``subjectKeyIdentifier``
      - REQUIRED. Provides a key identifier for the Trust Anchor public key.
        Its value SHOULD be derived from the subject public key using the methods defined in :rfc:`5280#section-4.2.1.2`.
-       This extension SHOULD support reliable Certificate Path construction and certificate matching in LoTE- or TL-based deployments.
+       This extension SHOULD support reliable certificate chain construction and certificate matching in LoTE- or TL-based deployments.
 
    * - ``keyUsage``
      - REQUIRED. It MUST assert the ``keyCertSign`` bit.
@@ -326,8 +326,8 @@ Fields not listed in the table remain subject to the requirements defined in the
      
        In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
-.. note::
-  **Trust Anchor Signature.**
+.. note:: Trust Anchor Signature
+
   A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy).
   Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.
 

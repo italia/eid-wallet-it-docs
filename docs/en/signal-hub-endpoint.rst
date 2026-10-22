@@ -7,11 +7,11 @@
 
 PDND Signal Hub Endpoints
 -------------------------
-Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services:
+Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services.
   - the Signal Collection e-Service which is used by e-Service PDNDProviders to deposit Signals, since the e-Service PDNDProvider acts as Consumer of the Signal Collection e-Service.
   - the Signal Distribution e-Service which is used by e-Service PDNDConsumers to retrieve collected Signals, since the e-Service PDNDConsumer also acts as Consumer of the Signal Distribution e-Service.
 
-In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
+In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals. The PDND Manager requires each e-Service PDNDProvider to set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
 
 For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
@@ -45,12 +45,12 @@ This section describes the endpoints available for the Signal Hub Collection and
 Signal Collection e-Service
 """"""""""""""""""""""""""""
 
-Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service to:
+Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service for the following purposes.
 
   - notify the Credential Issuer of a change of status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer.
   - notify the Credential Issuer of the availability of the attributes related to a specific Digital Credential which a User requested in its Wallet.
 
-The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
+The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint). The Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
 
 The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application/json``. Its header MUST have the parameters described in `Signal Hub Guide`_. Its body MUST contain the following parameters:
 
@@ -109,7 +109,7 @@ The Authentic Source MUST implement the necessary logic to handle the requests t
 
 Signal Distribution e-Service
 """"""""""""""""""""""""""""""
-Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Service to:
+Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Service for the following purposes.
 
   - check for changes in the status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer itself.
   - check for the availability of attributes related to a Digital Credential requested by a User.
@@ -152,12 +152,12 @@ Signals Processing
 ^^^^^^^^^^^^^^^^^^^^
 After the Signals have been successfully recovered by the Credential Issuer, the latter MUST process them as follows.
 
-  - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
+  - For each Signal, the Credential Issuer MUST check the ``SignalType`` value.
 
     - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates.
     - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the requested attributes of a specific Digital Credential are now available.
 
-    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
+    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information. Where the updated information applies, the Credential Issuer MUST apply the new status to the corresponding Credential.
 
     When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its ``signalId`` counter. Or, if there are no more Signals to process, it will resume the Pull cycle.
 

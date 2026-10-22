@@ -11,11 +11,11 @@ The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensu
 - Credential presentation to Relying Parties.
 - data deletion requests sent to Relying Parties.
 
-For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in `EUDI-TS 10`_.
+For each such transaction, the Wallet Instance MUST create a corresponding transaction record. The record contains the data elements specified in the applicable ARF requirements for that transaction category. Where applicable, the Wallet Instance MUST update the record with the final outcome as defined in `EUDI-TS 10`_.
 
-For presentation transactions, attribute values MUST NOT be logged. If a presentation request contains sensitive transactional data (such as a payment or a digital signature), the Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by `EUDI-TS 12`_ associated with the requested attestation and in accordance with data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.
+For presentation transactions, attribute values MUST NOT be logged. A presentation request may contain sensitive transactional data, such as a payment or a digital signature. The Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by `EUDI-TS 12`_. The logging stays associated with the requested attestation. The logging follows data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.
 
-To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface, allowing the User to view an overview of transaction records in the log, access individual record details, export and delete records, and, where a transaction involves a Relying Party, initiate a data deletion request to the corresponding Relying Party (using logged contact information, if available).
+To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface. The dashboard allows the User to view an overview of transaction records in the log. The dashboard allows the User to access individual record details. The dashboard allows the User to export and delete records. Where a transaction involves a Relying Party, the dashboard allows the User to initiate a data deletion request to that Relying Party, using logged contact information if available.
 
 The Wallet Provider MUST protect the confidentiality, integrity, and authenticity of the transaction log and of any exported log objects in accordance with `EUDI-TS 10`_. Access to the log MUST be restricted to the User and the Wallet Instance.
 

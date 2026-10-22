@@ -45,8 +45,8 @@ Get Attribute Claims
 
 This e-Service MUST be invoked by the Credential Issuer in the following cases:
 
-  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST NOT be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired (i.e., ``expiry_date`` > current date of the e-service request).
-  - After receiving an update notification through Signal Hub. In this situation, the ``object_id`` claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the ``object_id`` claim independently from its state.
+  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST NOT be used in the e-service request payload. The e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired (i.e., ``expiry_date`` > current date of the e-service request).
+  - After receiving an update notification through Signal Hub. In this situation, the ``object_id`` claim MUST be included in the request payload. The e-service response MUST return only the Credential dataset identified by the ``object_id`` claim independently from its state.
 
 .. note::
   The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
@@ -57,23 +57,27 @@ This e-Service MUST be invoked by the Credential Issuer in the following cases:
 Credential Lifecycle States Mapping
 """"""""""""""""""""""""""""""""""""""""""
 
-To ensure consistency between the "Electronic Attestation Lifecycle" documented in :ref:`credential-revocation:Digital Credential Lifecycle` and the OpenAPI status Enum, the following mapping and operational logic MUST be applied for the ``status`` field in the ``attributeClaims``.
+The following mapping and operational logic MUST be applied for the ``status`` field in the ``attributeClaims``. The mapping keeps consistency with the Electronic Attestation Lifecycle documented in :ref:`credential-revocation:Digital Credential Lifecycle` and with the OpenAPI status Enum.
 
-**Directionality and Responsibility:**
+Directionality and Responsibility
+.................................
+
 State changes of a Digital Credential at the Credential Issuer level DO NOT imply a change at the Authentic Source. Conversely, any state change of a dataset at the Authentic Source MUST be processed by the Credential Issuer to update the technical Digital Credential status.
 
-**Operational Guidance:**
+Operational Guidance
+....................
 
 * **Technical vs Administrative Validity**: Digital Credentials distinguish between a **technical validity** set by the Credential Issuer (claims ``iat`` and ``exp``) and an **administrative validity** determined by the Authentic Source (claims ``issuance_date`` and ``expiry_date``).
 * **Expiry Hierarchy**: The technical expiry (``exp``) MUST NOT be later than the administrative expiry (``expiry_date``). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.
-* **Re-issuance**: If a Digital Credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.
+* **Re-issuance**: If a Digital Credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``. That status allows the Digital Credential to be re-issued multiple times within the administrative timeframe.
 * **Metadata Verification**: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.
 * **Irreversibility**: When a Digital Credential moves to ``INVALID``, that Digital Credential cannot return to ``VALID``. A new issuance after ``INVALID`` uses a new ``object_id``. When ``expiry_date`` passes, the Digital Credential keeps its current status.
 * **Signal Processing**: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.
 
-**Status Mapping and Case Logic:**
+Status Mapping and Case Logic
+..............................
 
-The Credential Issuer MUST update the Digital Credential ``status`` based on Signals received from the Authentic Source via Signal Hub (``signalType=UPDATE``):
+The Credential Issuer MUST update the Digital Credential ``status`` based on Signals received from the Authentic Source via Signal Hub (``signalType=UPDATE``).
 
 * **Revocation**: If a dataset is revoked at the Authentic Source (status ``INVALID``), the Credential Issuer MUST revoke the Digital Credentials that use that dataset (status transition from ``VALID/SUSPENDED`` to ``INVALID``).
 * **Suspension**: If a dataset is suspended at the Authentic Source (status ``SUSPENDED``), the Credential Issuer MUST suspend the Digital Credentials (status transition from ``VALID`` to ``SUSPENDED``).
@@ -104,7 +108,7 @@ In summary:
 The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **JSON Payload**, accompanied by the ``Agid-JWT-Signature`` and ``Digest`` integrity headers.
 
 Signature Verification and Key Management
-'''''''''''''''''''''''''''''''''''''''''
+.........................................
 
 The Credential Issuer (Consumer) MUST verify the integrity and authenticity of the JSON response by validating the ``Agid-JWT-Signature`` and ``Digest`` headers received from the Authentic Source.
 

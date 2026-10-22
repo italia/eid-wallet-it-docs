@@ -149,7 +149,7 @@ Se l'Authentication ha successo e l'Authorization fallisce, la Wallet Unit DEVE 
 Durante la presentazione, una scelta dell'Utente di proseguire è consentita solo per gli esiti di Authorization overridable ivi definiti.
 Il fallimento dell'Authentication non è overridable.
 
-Durante l'Emissione, quando l'Authentication o l'Authorization non ha successo, la Wallet Unit DEVE mostrare un avviso all'Utente e NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a).
+Durante l'Emissione, quando l'Authentication o l'Authorization non ha successo, la Wallet Unit DEVE mostrare un avviso all'Utente. La Wallet Unit NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a).
 All'emissione non è offerta alcuna scelta all'Utente.
 
 .. include:: trust-evaluation-eudiw.rst

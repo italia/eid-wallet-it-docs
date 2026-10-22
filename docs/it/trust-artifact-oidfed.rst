@@ -34,7 +34,7 @@ Tutte le Federation Entity DEVONO pubblicare la propria **Entity Configuration**
 Il Federation TA e gli Intermediate espongono inoltre gli endpoint di federazione usati per costruire e validare le Trust Chain e per supportare i Trust Mark.
 
 Le proprietà della Federation Entity supportate nel profilo delle specifiche IT-Wallet sono definite in `OID-FED`_ Sezione 5.1.1.
-La tabella seguente elenca gli endpoint di federazione, gli Entity Type che DEVONO esporre ciascuno di essi, i parametri di richiesta usati all'interno di IT-Wallet con il loro status OBBLIGATORIO o OPZIONALE, e la risposta restituita da ciascun endpoint.
+La tabella seguente elenca gli endpoint di federazione e gli Entity Type che DEVONO esporre ciascuno di essi. Per ciascun endpoint la tabella indica i parametri di richiesta usati all'interno di IT-Wallet e se ciascun parametro è richiesto. La tabella indica anche la risposta restituita da ciascun endpoint.
 I parametri di richiesta seguono `OID-FED`_ Sezione 8: sono inviati come query parameter per le richieste GET e nel body per le richieste POST.
 Le risposte seguono i formati di risposta OID-FED referenziati nella tabella.
 
@@ -146,12 +146,12 @@ In aggiunta ai parametri comuni OBBLIGATORIO ``iss``, ``sub``, ``iat``, ``exp`` 
 Nell'Entity Configuration (`OID-FED`_ Sezione 3.1.2):
 
 - **metadata** (``metadata``): Oggetto JSON OBBLIGATORIO in cui ciascuna chiave è un identificatore di tipo di metadata e il suo valore è il metadata di tale tipo (vedi `OID-FED`_ Sezione 3.1.1).
-  Tutte le Entità DEVONO includere almeno un metadata per ``federation_entity`` nelle proprie Entity Configuration, e POSSONO includere più di una dichiarazione di metadata, ma solo una per ciascun tipo di metadata.
+  Tutte le Entità DEVONO includere almeno un metadata per ``federation_entity`` nelle proprie Entity Configuration. Un'Entità PUÒ includere più di una dichiarazione di metadata, con una sola dichiarazione per ciascun tipo di metadata.
   I tipi di metadata sono definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
 - **trust_marks** (``trust_marks``): OBBLIGATORIO per Foglie e Federation Intermediate.
   Array JSON dei Trust Mark del subject.
   Il Trust Mark di registrazione è definito in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-- **trust_mark_issuers** (``trust_mark_issuers``): OBBLIGATORIO solo per Federation TA e NON DEVE essere incluso altrimenti.
+- **trust_mark_issuers** (``trust_mark_issuers``): OBBLIGATORIO solo per Federation TA. Il parametro NON DEVE essere incluso altrimenti.
   Oggetto JSON che dichiara, per ciascun tipo di Trust Mark, le Federation Authority fidate a emetterlo, indicate dai loro Federation Entity Identifier.
   All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi DEVE contenere almeno l'identificatore del Federation TA.
 
@@ -160,10 +160,10 @@ Nel Subordinate Statement (`OID-FED`_ Sezione 3.1.3):
 - **metadata_policy** (``metadata_policy``): OPZIONALE in `OID-FED`_.
   Metadata policy vincolata a un tipo di metadata specifico e applicata al sottoalbero, risolta combinando i Claim ``metadata_policy`` lungo la Trust Chain, come definito in `OID-FED`_ Sezione 6.1.4.
   All'interno di IT-Wallet il Subordinate Statement relativo a una Foglia DEVE recare una ``metadata_policy`` che vincola i metadata di protocollo della Foglia ai valori approvati in onboarding.
-  Usando gli operatori di metadata policy di `OID-FED`_ Sezione 6.1.3, DEVE fissare l'``organization_name`` dei metadata ``federation_entity``, le chiavi di firma di protocollo (``jwks``) e, quando presente nel tipo di metadata, gli endpoint di servizio e gli URI di request, response e redirect (per esempio i ``request_uris``, ``response_uris`` e ``redirect_uris`` di ``openid_credential_verifier``).
+  Il Subordinate Statement DEVE fissare l'``organization_name`` dei metadata ``federation_entity`` e le chiavi di firma di protocollo (``jwks``). Il Subordinate Statement usa gli operatori di metadata policy di `OID-FED`_ Sezione 6.1.3. Quando tali parametri sono presenti nel tipo di metadata, il Subordinate Statement DEVE fissare anche gli endpoint di servizio e gli URI di request, response e redirect. Esempi sono i ``request_uris``, ``response_uris`` e ``redirect_uris`` di ``openid_credential_verifier``.
   Questo Subordinate Statement è emesso dal superiore immediato che ha registrato la Foglia, cioè il Federation TA per le Foglie che registra direttamente e un Federation Intermediate per le sue Relying Party affiliate.
   Il Subordinate Statement relativo a un Federation Intermediate non reca una ``metadata_policy``, perché l'Intermediate non ha metadata di protocollo e le sue Relying Party affiliate sono vincolate dall'Intermediate stesso.
-  Un superiore PUÒ restringere ulteriormente la metadata policy impostata dai propri superiori, ma NON DEVE allentarla, come definito in `OID-FED`_ Sezione 6.1.1.
+  Un superiore PUÒ restringere ulteriormente la metadata policy impostata dai propri superiori. Un superiore NON DEVE allentare quella metadata policy, come definito in `OID-FED`_ Sezione 6.1.1.
 - **constraints** (``constraints``): OBBLIGATORIO solo per Federation TA.
   Reca i vincoli applicati al sottoalbero al di sotto dell'issuer.
   DEVE contenere ``allowed_entity_types``, che restringe i metadata Entity Type che i Subordinate nel sottoalbero sono autorizzati a pubblicare, e ``max_path_length``, che limita il numero di Intermediate tra l'issuer e il subject della Trust Chain.
@@ -260,7 +260,7 @@ Entity Statement Examples
 
 Le sezioni seguenti forniscono esempi non normativi di Entity Statement, sia per l'onboarding diretto sotto il Federation TA sia per l'onboarding intermediato sotto un Federation Intermediate.
 Tutte le dichiarazioni sono JWT firmati con l'header JOSE ``alg``, ``kid`` e ``typ`` impostato a ``entity-statement+jwt``, e sono mostrati solo i payload.
-I metadata di protocollo e i key set pinnati sono troncati (``{ ... }``) poiché la loro definizione completa è fornita nelle sezioni di metadata referenziate sopra.
+I metadata di protocollo e i key set della copia locale nota sono troncati (``{ ... }``) poiché la loro definizione completa è fornita nelle sezioni di metadata referenziate sopra.
 
 Entity Configuration of a Federation TA
 """""""""""""""""""""""""""""""""""""""
@@ -279,17 +279,17 @@ Subordinate Statement of Leaf issued by the Federation TA
 Il Federation TA emette un Subordinate Statement su ciascuna Foglia che registra direttamente.
 La dichiarazione reca le Federation Entity Keys della Foglia, la ``metadata_policy`` che fissa le chiavi di protocollo e, quando presenti, gli endpoint di servizio e gli URI della Foglia ai valori approvati in onboarding, e i ``constraints`` del sottoalbero.
 
-**Wallet Provider**
+L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Wallet Provider.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-wallet-provider.json
   :language: JSON
 
-**Relying Party**
+L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Relying Party.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-relying-party.json
   :language: JSON
 
-**Credential Issuer**
+L'esempio non normativo seguente è il Subordinate Statement che il Federation TA emette su una Foglia Credential Issuer.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-credential-issuer.json
   :language: JSON
@@ -331,17 +331,17 @@ Entity Configuration of a Leaf
 Ciascuna Foglia pubblica la propria Entity Configuration, puntando al proprio superiore immediato attraverso ``authority_hints`` e recando il proprio Trust Mark di registrazione.
 Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono referenziati alla relativa sezione di metadata.
 
-**Wallet Provider**
+L'esempio non normativo seguente è l'Entity Configuration di una Foglia Wallet Provider.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-wallet-provider.json
   :language: JSON
 
-**Relying Party**
+L'esempio non normativo seguente è l'Entity Configuration di una Foglia Relying Party.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-relying-party.json
   :language: JSON
 
-**Credential Issuer**
+L'esempio non normativo seguente è l'Entity Configuration di una Foglia Credential Issuer.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-credential-issuer.json
   :language: JSON
@@ -388,7 +388,8 @@ Il Trust Mark di registrazione di ciascuna Relying Party affiliata è altresì e
 Per questo motivo nessun campo dedicato all'intermediario è presente nel Trust Mark.
 L'onboarding dell'Intermediary è definito in :ref:`onboarding-system:Relying Party Intermediary`.
 
-**Trust Mark Structure**
+Trust Mark Types and Schema: Trust Mark Structure
+.................................................
 
 I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
 
@@ -408,7 +409,8 @@ I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti 
 
 Il Trust Mark JWT (contenuto nel claim ``trust_mark`` sopra) DEVE essere un JWT firmato che include sia un header JOSE sia un payload, come definito in `OID-FED`_ Sezione 7.
 
-**Trust Mark JWT Header**
+Trust Mark Types and Schema: Trust Mark JWT Header
+..................................................
 
 L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:
 
@@ -434,15 +436,11 @@ L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:
 
 Un esempio non normativo di un header JWT di Trust Mark:
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/shared/trust-artifact-oidfed-1.json
+   :language: json
 
-  {
-    "alg": "ES256",
-    "kid": "ta-federation-key-1",
-    "typ": "trust-mark+jwt"
-  }
-
-**Trust Mark JWT Payload**
+Trust Mark Types and Schema: Trust Mark JWT Payload
+...................................................
 
 Il payload del Trust Mark JWT include i seguenti claim:
 

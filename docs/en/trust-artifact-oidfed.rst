@@ -34,7 +34,7 @@ All Federation Entities MUST publish their own **Entity Configuration** at the `
 Federation TA and Intermediates additionally expose the federation endpoints used to build and validate the Trust Chains and to support the Trust Marks.
 
 The Federation Entity properties supported in the IT-Wallet specification profile are defined in `OID-FED`_ Section 5.1.1.
-The table below lists the federation endpoints, the Entity Types that MUST expose each of them, the request parameters used within IT-Wallet with their REQUIRED or OPTIONAL status, and the response returned by each endpoint.
+The table below lists the federation endpoints and the Entity Types that MUST expose each of them. For each endpoint the table gives the request parameters used within IT-Wallet and whether each parameter is required. The table also gives the response returned by each endpoint.
 The request parameters follow `OID-FED`_ Section 8: they are sent as query parameters for GET requests and in the body for POST requests.
 The responses follow the OID-FED response formats referenced in the table.
 
@@ -146,12 +146,12 @@ In addition to the REQUIRED common parameters ``iss``, ``sub``, ``iat``, ``exp``
 In Entity Configuration (`OID-FED`_ Section 3.1.2):
 
 - **metadata** (``metadata``): REQUIRED JSON Object where each key is a metadata type identifier and its value is the metadata of that type (see `OID-FED`_ Section 3.1.1).
-  All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations, and it MAY include more than one metadata statement, but only one for each metadata type.
+  All Entities MUST include at least one metadata for ``federation_entity`` in their Entity Configurations. An Entity MAY include more than one metadata statement, with only one statement for each metadata type.
   The metadata types are defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
 - **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates.
   JSON Array of the Trust Marks of the subject.
   The registration Trust Mark is defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-- **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA and MUST NOT be included otherwise.
+- **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA. The parameter MUST NOT be included otherwise.
   JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers.
   Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
 
@@ -160,10 +160,10 @@ In Subordinate Statement (`OID-FED`_ Section 3.1.3):
 - **metadata_policy** (``metadata_policy``): OPTIONAL in `OID-FED`_.
   Metadata policy bound to a specific metadata type and applied to the subtree, resolved by combining the ``metadata_policy`` Claims along the Trust Chain, as defined in `OID-FED`_ Section 6.1.4.
   Within IT-Wallet the Subordinate Statement about a Leaf MUST carry a ``metadata_policy`` that binds the protocol metadata of the Leaf to the values approved at onboarding.
-  Using the metadata policy operators of `OID-FED`_ Section 6.1.3, it MUST fix the ``organization_name`` of the ``federation_entity`` metadata, the protocol signature keys (``jwks``) and, when present in the metadata type, the service endpoints and the request, response and redirect URIs (for example the ``request_uris``, ``response_uris`` and ``redirect_uris`` of the ``openid_credential_verifier``).
+  The Subordinate Statement MUST fix the ``organization_name`` of the ``federation_entity`` metadata and the protocol signature keys (``jwks``). The Subordinate Statement uses the metadata policy operators of `OID-FED`_ Section 6.1.3. When those parameters are present in the metadata type, the Subordinate Statement MUST also fix the service endpoints and the request, response and redirect URIs. Examples are the ``request_uris``, ``response_uris`` and ``redirect_uris`` of the ``openid_credential_verifier``.
   This Subordinate Statement is issued by the immediate superior that registered the Leaf, that is the Federation TA for the Leaves it registers directly and a Federation Intermediate for its affiliated Relying Parties.
   The Subordinate Statement about a Federation Intermediate does not carry a ``metadata_policy``, because the Intermediate has no protocol metadata and its affiliated Relying Parties are bound by the Intermediate itself.
-  A superior MAY further restrict the metadata policy set by its own superiors, but MUST NOT relax it, as defined in `OID-FED`_ Section 6.1.1.
+  A superior MAY further restrict the metadata policy set by its own superiors. A superior MUST NOT relax that metadata policy, as defined in `OID-FED`_ Section 6.1.1.
 - **constraints** (``constraints``): REQUIRED only for Federation TA.
   It carries the constraints applied to the subtree below the issuer.
   It MUST contain ``allowed_entity_types``, that restricts the metadata Entity Types the Subordinates in the subtree are allowed to publish, and ``max_path_length``, that limits the number of Intermediates between the issuer and the Trust Chain subject.
@@ -279,17 +279,17 @@ Subordinate Statement of Leaf issued by the Federation TA
 The Federation TA issues a Subordinate Statement about each Leaf it registers directly.
 The statement carries the Federation Entity Keys of the Leaf, the ``metadata_policy`` that fixes the protocol keys and, when present, the service endpoints and the URIs of the Leaf to the values approved at onboarding, and the ``constraints`` of the subtree.
 
-**Wallet Provider**
+The following non-normative example is the Subordinate Statement that the Federation TA issues about a Wallet Provider Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-wallet-provider.json
   :language: JSON
 
-**Relying Party**
+The following non-normative example is the Subordinate Statement that the Federation TA issues about a Relying Party Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-relying-party.json
   :language: JSON
 
-**Credential Issuer**
+The following non-normative example is the Subordinate Statement that the Federation TA issues about a Credential Issuer Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ss-ta-leaf-credential-issuer.json
   :language: JSON
@@ -331,17 +331,17 @@ Entity Configuration of a Leaf
 Each Leaf publishes its own Entity Configuration, pointing to its immediate superior through ``authority_hints`` and carrying its registration Trust Mark.
 The examples below report the main claims, the protocol metadata is referenced to its metadata section.
 
-**Wallet Provider**
+The following non-normative example is the Entity Configuration of a Wallet Provider Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-wallet-provider.json
   :language: JSON
 
-**Relying Party**
+The following non-normative example is the Entity Configuration of a Relying Party Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-relying-party.json
   :language: JSON
 
-**Credential Issuer**
+The following non-normative example is the Entity Configuration of a Credential Issuer Leaf.
 
 .. literalinclude:: ../../examples/oidfed-ec-leaf-credential-issuer.json
   :language: JSON
@@ -390,7 +390,8 @@ The registration Trust Mark of each affiliated Relying Party is also issued by t
 For this reason no dedicated intermediary field is present in the Trust Mark.
 The onboarding of the Intermediary is defined in :ref:`onboarding-system:Relying Party Intermediary`.
 
-**Trust Mark Structure**
+Trust Mark Types and Schema: Trust Mark Structure
+.................................................
 
 Trust Marks in Entity Configuration MUST be represented as JSON objects containing the following claims:
 
@@ -410,7 +411,8 @@ Trust Marks in Entity Configuration MUST be represented as JSON objects containi
 
 The Trust Mark JWT (contained in the ``trust_mark`` claim above) MUST be a signed JWT that includes both a JOSE header and a payload, as defined in `OID-FED`_ Section 7.
 
-**Trust Mark JWT Header**
+Trust Mark Types and Schema: Trust Mark JWT Header
+..................................................
 
 The JOSE header of the Trust Mark JWT MUST include the following parameters:
 
@@ -436,15 +438,11 @@ The JOSE header of the Trust Mark JWT MUST include the following parameters:
 
 A non-normative example of a Trust Mark JWT header:
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/shared/trust-artifact-oidfed-1.json
+   :language: json
 
-  {
-    "alg": "ES256",
-    "kid": "ta-federation-key-1",
-    "typ": "trust-mark+jwt"
-  }
-
-**Trust Mark JWT Payload**
+Trust Mark Types and Schema: Trust Mark JWT Payload
+...................................................
 
 The Trust Mark JWT payload includes the following claims:
 

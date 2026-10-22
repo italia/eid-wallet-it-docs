@@ -19,19 +19,11 @@ In tal caso, il Credential Issuer può inviare un sottoinsieme dei metadati cont
 
 Di seguito è riportato un esempio non normativo.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-1.http
+   :language: http
 
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/json
-    Accept-Language: it-IT, it;q=0.9
-
-.. code-block:: http
-
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/jwt
-    Accept-Language: it-IT, it;q=0.9
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-2.http
+   :language: http
 
 Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i metadati del Credential Issuer contenenti:
 
@@ -51,10 +43,8 @@ Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibil
 
 Di seguito è riportato un esempio non normativo.
 
-.. code-block:: http
-
-    GET /.well-known/oauth-authorization-server HTTP/1.1
-    Host: oauth-authorization-server.example.com
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-3.http
+   :language: http
 
 OAuth Authorization Server DEVE rispondere con Status Code HTTP 200 e restituire i metadati dell’OAuth Authorization Server, contenenti i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`, all’interno di un documento JSON utilizzando il media type *application/json*.
 

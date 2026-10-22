@@ -4,7 +4,7 @@
 Lifecycle Management
 --------------------
 
-After the registration event, an Entity can be updated, suspended, reactivated or cancelled, and a Credential type can become issuable or stop being issuable, and these changes reflect on the Trust Artifacts and on the registries.
+After the registration event, an Entity can be updated, suspended, reactivated or cancelled. A Credential type can become issuable or stop being issuable. These changes reflect on the Trust Artifacts and on the registries.
 
 This section describes the states and events that cause an entity or Credential type to change state.
 It also maps each event to the registries and trust artifacts impacted by the event, see :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
@@ -25,7 +25,8 @@ Each state determines the authorization level and the operational capabilities o
     :alt: The figure illustrates the lifecycle states of an Entity and the transitions between them.
     :caption: `Entity Lifecycle States. <https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00>`_
 
-**Transition from UNREGISTERED to REGISTERED**
+Transition from UNREGISTERED to REGISTERED
+""""""""""""""""""""""""""""""""""""""""""
 
 - ``UNREGISTERED``: the Entity does not hold a valid registration within the IT-Wallet ecosystem.
   This is the default baseline state.
@@ -36,44 +37,49 @@ Each state determines the authorization level and the operational capabilities o
     Wallet Providers become ``REGISTERED`` when the certification and the onboarding records have been collected and verified.
   - *National Trust Framework*: WRPs and Wallet Providers are in ``REGISTERED`` state when the onboarding records have been collected and verified.
 
-**Transition from REGISTERED to OPERATIONAL**
+Transition from REGISTERED to OPERATIONAL
+"""""""""""""""""""""""""""""""""""""""""
 
 ``OPERATIONAL`` indicates that the Entity has been authorized to perform the operations related to its role.
 
 - *EUDIW Trust Framework*: WRPs are ``OPERATIONAL`` if they were ``REGISTERED`` and they obtained a WRPAC, the corresponding WRPRC(s), and, depending on the role, a Sign/Seal Certificate.
   The signing Trust Anchor of that certificate MUST have been added to the LoTE or to the EUMS TL.
   Wallet Providers are ``OPERATIONAL`` if they were ``REGISTERED`` and they obtained a Sign/Seal Certificate whose signing Trust Anchor has been added to the LoTE.
-- *National Trust Framework*: WRPs and Wallet Providers are ``OPERATIONAL`` if they were ``REGISTERED``, they obtained the Sign/Seal Certificates and the registration Trust Marks, and their Subordinate Statement has been published by the Federation Authority.
+- *National Trust Framework*: WRPs and Wallet Providers are ``OPERATIONAL`` if they were ``REGISTERED``. They obtained the Sign/Seal Certificates and the registration Trust Marks. Their Subordinate Statement has been published by the Federation Authority.
 
-**Transition from OPERATIONAL to REGISTERED**
+Transition from OPERATIONAL to REGISTERED
+"""""""""""""""""""""""""""""""""""""""""
 
 An Entity goes back to ``REGISTERED`` when it no longer holds valid Trust Artifacts.
 This can be triggered by its expiration or revocation following an update of the Entity.
 To return to ``OPERATIONAL`` a new issuance of the Trust Artifacts is required.
 
-**Transition from REGISTERED or OPERATIONAL to SUSPENDED**
+Transition from REGISTERED or OPERATIONAL to SUSPENDED
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ``SUSPENDED`` indicates that the registration is temporarily not valid.
 Differently from the cancellation, the suspension is reversible.
-A WRP whose registration is suspended MUST NOT issue Credentials to Wallet Units nor request attributes from them, and the Credentials it issued are not accepted by the Relying Parties, as described in Section 4.6.5 of [`EIDAS-ARF`_].
+A WRP whose registration is suspended MUST NOT issue Credentials to Wallet Units. That WRP MUST NOT request attributes from Wallet Units. The Credentials that WRP issued are not accepted by the Relying Parties, as described in Section 4.6.5 of [`EIDAS-ARF`_].
 
 The events that lead to this state, and the parties entitled to decide them, are listed in :ref:`onboarding-system:Registration Events and Their Governance`.
 
-**Transition from SUSPENDED to REGISTERED**
+Transition from SUSPENDED to REGISTERED
+"""""""""""""""""""""""""""""""""""""""
 
 The suspension can be lifted by the same party that decided it.
-Because the Trust Artifacts affected by the suspension have been revoked, the Entity returns to ``REGISTERED`` and not directly to ``OPERATIONAL``, and a new issuance of the Trust Artifacts is required to become ``OPERATIONAL`` again.
+Because the Trust Artifacts affected by the suspension have been revoked, the Entity returns to ``REGISTERED`` and not directly to ``OPERATIONAL``. A new issuance of the Trust Artifacts is required to become ``OPERATIONAL`` again.
 
-**Transition from REGISTERED, OPERATIONAL or SUSPENDED to CANCELLED**
+Transition from REGISTERED, OPERATIONAL or SUSPENDED to CANCELLED
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ``CANCELLED`` indicates that the registration has ended.
 The state is the same whether the cancellation was requested by the Entity itself or decided by the competent authority, and only the triggering event differs.
 
-- *EUDIW Trust Framework*: for WRPs it results in the revocation of the WRPAC, the WRPRC and, where applicable, the Sign/Seal Certificates, in the removal of the entry from the Register and in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
+- *EUDIW Trust Framework*: for WRPs the cancellation results in the revocation of the WRPAC, the WRPRC and, where applicable, the Sign/Seal Certificates. The cancellation results in the removal of the entry from the Register. The cancellation results in the update of the status of the signing Trust Anchor in the LoTE or in the EUMS TL.
   For Wallet Providers it results in the update of the Wallet Providers LoTE.
 - *National Trust Framework*: for both WRPs and Wallet Providers it results in the removal of the Subordinate Statement and of the registration Trust Mark, and in the revocation of the National X509 Certificates.
 
-An Entity MUST reject new interactions or transactions started by a ``CANCELLED`` Entity, and all the cryptographic keys, the active attestations and the operational capabilities associated with the Entity MUST be revoked.
+An Entity MUST reject new interactions or transactions started by a ``CANCELLED`` Entity. All the cryptographic keys, the active attestations and the operational capabilities associated with the Entity MUST be revoked.
 Entities MAY however continue to validate historical data, signatures and Credentials generated before the cancellation timestamp, subject to local risk policies.
 An Entity in ``CANCELLED`` state that wants to participate again in the ecosystem MUST complete a new registration.
 
@@ -142,14 +148,14 @@ The decision that triggers the event is the same for both, and it is described b
 The Registrar MUST suspend or cancel the registration of a WRP where the suspension or the cancellation is requested by a Supervisory Body, and where it is requested by the same WRP.
 The Registrar MAY suspend or cancel the registration on its own initiative where:
 
-  - the registration contains information which is inaccurate, out of date or misleading;
-  - the WRP is not compliant with the registration policy;
-  - the WRP is requesting more attributes than the ones it registered;
+  - the registration contains information which is inaccurate, out of date or misleading.
+  - the WRP is not compliant with the registration policy.
+  - the WRP is requesting more attributes than the ones it registered.
   - the WRP is otherwise acting in breach of Union or National law in a manner related to its role.
 
-Before suspending or cancelling a registration on its own initiative, the Registrar MUST conduct a proportionality assessment, taking into account the impact on the fundamental rights, the privacy, the security and the confidentiality of the Users of the ecosystem, the severity of the disruption caused by the measure and the associated costs, both for the WRP and for the User.
+Before suspending or cancelling a registration on its own initiative, the Registrar MUST conduct a proportionality assessment. The assessment takes into account the impact on the fundamental rights, the privacy, the security and the confidentiality of the Users of the ecosystem. The assessment takes into account the severity of the disruption caused by the measure and the associated costs, both for the WRP and for the User.
 
-The Registrar MUST inform the WRP and the relevant Providers of WRPACs and of WRPRCs without undue delay, and in any case not later than 24 hours after the suspension or the cancellation, as set by Article 9(5) of [`CIR2025/848`_].
+The Registrar MUST inform the WRP and the relevant Providers of WRPACs and of WRPRCs without undue delay. The Registrar MUST inform them not later than 24 hours after the suspension or the cancellation, as set by Article 9(5) of [`CIR2025/848`_].
 The information MUST include the reasons for the suspension or the cancellation and the available means of redress or appeal.
 After the notification, the Providers MUST revoke the affected certificates without undue delay, where applicable, as set by Article 9(6) of [`CIR2025/848`_].
 
@@ -161,16 +167,16 @@ Within IT-Wallet the same retention applies to the Federation Authority for the 
   Within IT-Wallet the retention obligation is extended by analogy to the Federation Authority for the records it keeps for the National Trust Framework, since [`CIR2025/848`_] does not address the National Trust Framework.
   Wallet Providers are not registered as WRPs, so the suspension and cancellation of a Wallet Provider follow from the certification of its Wallet Solution and from the notification, and not from Article 9.
 
-Beyond the Supervisory Body, the Registrar and the Entity itself, a suspension or a cancellation of an Entity MAY also be requested or triggered by other parties external to the Onboarding System, for example a judicial authority, an administrative authority competent for the Entity, an authority competent for cybersecurity, a conformity assessment body that withdraws a certification, or the Member State that withdraws a notification.
-In every case the suspension or the cancellation is carried out through the mechanisms described above, where the Federation Authority that registered the Entity acts on its Subordinate Statement and on the registration Trust Mark, and the Trust Artifacts of the Entity are revoked.
-For an Entity registered through a Federation Intermediate, the Subordinate Statement is served by the Intermediate, which withdraws it to suspend or cancel the Entity, while the registration Trust Mark remains issued by the Federation Trust Anchor which is responsible for any effects on the lifecycle of the registration Trust Mark.
+Beyond the Supervisory Body, the Registrar and the Entity itself, a suspension or a cancellation of an Entity MAY also be requested or triggered by other parties external to the Onboarding System. Examples are a judicial authority, an administrative authority competent for the Entity, and an authority competent for cybersecurity. Further examples are a conformity assessment body that withdraws a certification, or the Member State that withdraws a notification.
+In every case the suspension or the cancellation is carried out through the mechanisms described above. The Federation Authority that registered the Entity acts on its Subordinate Statement and on the registration Trust Mark. The Trust Artifacts of the Entity are revoked.
+For an Entity registered through a Federation Intermediate, the Subordinate Statement is served by the Intermediate. The Intermediate withdraws the Subordinate Statement to suspend or cancel the Entity. The registration Trust Mark remains issued by the Federation Trust Anchor. The Federation Trust Anchor is responsible for any effects on the lifecycle of the registration Trust Mark.
 The suspension or the cancellation of a Federation Intermediate MUST propagate to its affiliated Entities, whose Trust Chain runs through it, as described in :ref:`trust-evaluation:Federation Trust Chain`.
 
-Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis, and revoke or reissue the certificates when the changes require it.
+Independently of the notification described above, the Providers of WRPACs and the Providers of WRPRCs monitor the changes in the Register on a continuous basis. Those Providers revoke or reissue the certificates when the changes require it.
 For a WRPRC the re-issuance is automatic, as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 This is set by Annex IV of [`CIR2025/848`_] for the Providers of WRPACs and by Annex V of [`CIR2025/848`_] as amended by [`CIR2026/1730`_] for the Providers of WRPRCs.
 
-Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (``federation_subordinate_events_endpoint``), so that other participants can track the lifecycle of an Entity over time.
+Within the National Trust Framework the events that change the registration of an Entity MUST be published by the Federation Authority as signed events on the Federation Subordinate Events Endpoint (``federation_subordinate_events_endpoint``). Other participants can then track the lifecycle of an Entity over time.
 The endpoint and the format of its response are described in :ref:`infrastructure-trust:Federation API Endpoints`.
 
 Each event of the state machine MUST be published as an object of the ``federation_registration_events`` array, using the event types defined in [`OID-FED-SUBORDINATE-EVENTS`_].
@@ -212,7 +218,7 @@ The table below gives, for each event, the value of the ``event`` parameter and 
      - Time the cancellation is related to.
      - MAY be used to provide further details about the revocation.
 
-When a ``registration`` event is present, the ``metadata_update`` and ``jwks_update`` events MUST NOT be provided at the same time, since the registration is assumed to configure the initial state of the Entity, as specified in [`OID-FED-SUBORDINATE-EVENTS`_].
+When a ``registration`` event is present, the ``metadata_update`` and ``jwks_update`` events MUST NOT be provided at the same time. The registration is assumed to configure the initial state of the Entity, as specified in [`OID-FED-SUBORDINATE-EVENTS`_].
 
 
 Entity Updates and Their Effects on Trust Artifacts
@@ -230,7 +236,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 The procedures that carry out an update, meaning what the Entity submits and which steps the Registrar, the Federation Authority and the Certificate Authorities execute, are described in the Entity Update process.
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.
 
-**Registered Data and Associated Trust Artifact**
+Registered Data and Associated Trust Artifact
+"""""""""""""""""""""""""""""""""""""""""""""
 
 The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.
 
@@ -329,13 +336,14 @@ Within IT-Wallet, a versioned entry is ``ACTIVE`` only while all the following c
 
 Only one versioned entry of the same Credential type is ``ACTIVE`` at a given time.
 
-**Versioning**
+Versioning
+""""""""""
 
 A Credential type is never modified in place.
 When its definition changes, a new versioned entry is registered and activated, and the entry of the previous version is moved to ``INACTIVE``.
 
 The Credentials already issued from the previous version keep their own status and are not revoked by the versioning.
-Where the Credential Issuer needs the Users to obtain the new version, it can drive the re-issuance through the ``0x03`` (``UPDATE``) or the ``0x0F`` (``ATTRIBUTE_UPDATE``) status of the single Digital Credentials, as described in :ref:`credential-revocation:Digital Credential Lifecycle`.
+Where the Credential Issuer needs the Users to obtain the new version, the Credential Issuer can drive the re-issuance through the ``0x03`` (``UPDATE``) or the ``0x0F`` (``ATTRIBUTE_UPDATE``) status of the single Digital Credentials, as described in :ref:`credential-revocation:Digital Credential Lifecycle`.
 
 The registration of a Credential type and its versioning are described in the registration processes, and the structure of the catalog entry in :ref:`registry:Digital Credentials Catalog Structure`.
 
@@ -350,20 +358,20 @@ The registration of a Credential type and its versioning are described in the re
 Claims and Schemas Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As described above for updating the Credential type, claims and schemas registered in the respective registries are not removed, as the Credentials already issued keep referencing them, so removing a claim or a schema would make those Credentials impossible to interpret.
+As described above for updating the Credential type, claims and schemas registered in the respective registries are not removed. The Credentials already issued keep referencing them. Removing a claim or a schema would make those Credentials impossible to interpret.
 
 When a claim or a schema is deprecated, a new version of it is registered, and the Credential types that use it move to a new version as described above.
 
 Authentic Source Lifecycle and PDND Alignment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An Authentic Source is not a WRP and it is not a Federation Entity, and its trust, authorization and operational aspects are governed by the PDND framework, as described in :ref:`e-service-pdnd:e-Service PDND`, and IT-Wallet relies on PDND for all of them.
+An Authentic Source is not a WRP and it is not a Federation Entity. Its trust, authorization and operational aspects are governed by the PDND framework, as described in :ref:`e-service-pdnd:e-Service PDND`. IT-Wallet relies on PDND for all of them.
 Within IT-Wallet an Authentic Source is only registered in the Authentic Source Registry, described in :ref:`registry:Authentic Source Registry`, so that the Credential Issuers can discover which data are available and through which e-Service.
 
 For this reason the IT-Wallet specification profile does not define a lifecycle of the Authentic Sources.
 What this section defines is the effect that the PDND lifecycle produces inside IT-Wallet, because Credential types and Credential Issuers depend on it.
 
-When an Authentic Source stops providing, through PDND, the data on which a Credential type depends, for example because the e-Service is no longer published or because the enrolment of the Credential Issuer has been withdrawn, the condition for the activation of that Credential type is no longer satisfied and the Credential type MUST be moved to ``INACTIVE``.
+When an Authentic Source stops providing, through PDND, the data on which a Credential type depends, the condition for the activation of that Credential type is no longer satisfied. Examples are an e-Service that is no longer published, or an enrolment of the Credential Issuer that has been withdrawn. The Credential type MUST be moved to ``INACTIVE``.
 The Credential type stays registered and its identifier remains valid, so that the type can be activated again when the integration is restored.
 
 The alignment process is not automatic and it works in both directions.

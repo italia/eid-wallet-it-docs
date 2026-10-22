@@ -6,7 +6,7 @@ Common Trust Artifacts
 
 Questa sezione dettaglia gli artifact comuni coinvolti sia nel Trust Framework EUDIW sia in quello Nazionale, inclusi:
 
-- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`;
+- :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`.
 - :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
 
 Entity Sign/Seal Certificate Profile
@@ -252,14 +252,14 @@ Trust Anchor Certificate Profile
 
 Questa sezione estende il :ref:`infrastructure-trust:X.509 Certificate Profile` generale e specifica un **Certificate Profile** per i **Trust Anchors**.
 Un Trust Anchor è una chiave pubblica fidata (e i dati associati) usata come input per :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
-In questo profilo, il Trust Anchor DEVE essere rappresentato e distribuito come un **certificato X.509**, che PUÒ essere self-signed.
+In questo profilo, il Trust Anchor DEVE essere rappresentato e distribuito come un **certificato X.509**. Tale certificato PUÒ essere self-signed.
 
-Le Relying Party, i Credential Issuer e le Wallet Unit validano un Access, Registration o Sign/Seal Certificate presentato costruendo un certification path che DEVONO terminare con un certificato firmato dal subject di un certificato Trust Anchor.
+Le Relying Party, i Credential Issuer e le Wallet Unit validano un Access, Registration o Sign/Seal Certificate presentato costruendo una catena di certificati. La catena di certificati DEVE iniziare con il certificato end-entity presentato. La catena di certificati DEVE terminare con un certificato firmato dal subject di un certificato Trust Anchor.
 Il certificato Trust Anchor è usato come punto di terminazione della fiducia per il processo di path validation (cioè, è il valore della variabile ``trust_anchor`` in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`).
 Le implementazioni DEVONO supportare la validazione sia di certificati Trust Anchor self-signed sia non self-signed.
 
-.. note::
-  **Trust Anchor Location.**
+.. note:: Trust Anchor Location
+
   La location del Trust Anchor Certificate è determinata dal Trust Framework specifico selezionato (vedi :ref:`trust-evaluation:EUDIW Trust Anchor Validation` e :ref:`trust-evaluation:Federation Trust Anchor Validation`).
 
 La tabella seguente definisce i requisiti specifici del profilo per i campi del certificato.
@@ -297,7 +297,7 @@ I campi non elencati nella tabella restano soggetti ai requisiti definiti nel :r
    * - ``subjectKeyIdentifier``
      - OBBLIGATORIO. Fornisce un key identifier per la chiave pubblica del Trust Anchor.
        Il suo valore DOVREBBE essere derivato dalla chiave pubblica del subject usando i metodi definiti in :rfc:`5280#section-4.2.1.2`.
-       Questa estensione DOVREBBE supportare una Certificate Path construction affidabile e l'abbinamento dei certificati nei deployment basati su LoTE o TL.
+       Questa estensione DOVREBBE supportare una costruzione affidabile della catena di certificati e l'abbinamento dei certificati nei deployment basati su LoTE o TL.
 
    * - ``keyUsage``
      - OBBLIGATORIO. DEVE asserire il bit ``keyCertSign``.
@@ -326,8 +326,8 @@ I campi non elencati nella tabella restano soggetti ai requisiti definiti nel :r
      
        In ogni caso, NON DEVE contenere una struttura ``QCStatement`` con ``statementId`` impostato a ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), indicato come ``esi4-qcStatement-7``.
 
-.. note::
-  **Trust Anchor Signature.**
+.. note:: Trust Anchor Signature
+
   Un certificato Trust Anchor PUÒ essere self-signed (rappresentando una root CA) o non self-signed (rappresentando una CA intermedia designata come Trust Anchor per policy).
   Le Relying Party NON DEVONO richiedere un issuer aggiuntivo al di sopra di un Trust Anchor recuperato come specificato dal Trust Framework applicabile, anche se non è self-signed, perché il Trust Anchor è un input autorevole all'algoritmo di path validation designato per policy.
 

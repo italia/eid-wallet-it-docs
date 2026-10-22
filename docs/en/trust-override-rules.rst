@@ -18,11 +18,12 @@ The conditions that determine this outcome depend on the specific Authorization 
     - ``AUTHORIZED`` if the process terminates with ``TRUST_MARK_VALID`` AND ``ENTITLEMENT_VALID`` AND ``VERIFICATION_PASSED``, or
     - ``NOT_AUTHORIZED`` otherwise.
 
-**Override Principles**
+Override Principles
+^^^^^^^^^^^^^^^^^^^
 
 A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit blocks the interaction) or *overridable* (the Wallet Unit presents the negative outcome and the User can choose to proceed).
 
-- During **Credential Issuance** phase, all negative verification outcomes MUST be *non-overridable*: the Wallet Unit MUST NOT let the User interact with providers whose registration cannot be confirmed.
+- During **Credential Issuance** phase, all negative verification outcomes MUST be *non-overridable*. The Wallet Unit MUST NOT let the User interact with providers whose registration cannot be confirmed.
 
 - During the **Presentation** phase, all negative verification outcomes MUST be *non-overridable*, except for the following cases:
 
@@ -34,7 +35,7 @@ A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit b
       That failure MUST NOT be overridable.
     - **Missing or invalid WRPRC [EUDIW]**.
       When the process terminates with ``CERTIFICATE_INVALID`` during Credential Presentation, i.e., the Wallet-Relying Party Registration Certificate is absent, malformed, inauthentic or expired.
-      The Wallet Unit MUST warn the User and MUST NOT query the Register, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
+      The Wallet Unit MUST warn the User. The Wallet Unit MUST NOT query the Register, as specified in :ref:`trust-evaluation:EUDIW Authorization`.
       Whether the User may still approve follows the Wallet Provider policy.
     - **Overasking [National]**.
       When the process terminates with ``TRUST_MARK_VALID`` AND ``OVERASKING_DETECTED``, i.e., the :ref:`trust-evaluation:Trust Mark Validation` has had a positive outcome, but the :ref:`trust-evaluation:Overasking Check` finds the Relying Party requesting more than its registered scope.
@@ -42,4 +43,4 @@ A ``NOT_AUTHORIZED`` decision can be either *non-overridable* (the Wallet Unit b
 All other presentation failures, including binding failures or intermediary binding failures, MUST NOT be overridable as they indicate an integrity problem rather than a user-facing choice.
 
 In case of non-overridable failures, the Wallet Unit MUST clearly inform the User about the negative outcome.
-User-relevant information about overridable outcomes MUST be presented as advisories, and the User approval MUST be a separate step from the final Authorization Decision.
+User-relevant information about overridable outcomes MUST be presented as advisories. The User approval MUST be a separate step from the final Authorization Decision.

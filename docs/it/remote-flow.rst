@@ -178,139 +178,28 @@ L'Istanza del Wallet NON DEVE ripetere la verifica con evidenze dell'altro perco
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
 
-  .. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/oauth-authz-req+jwt
-
-    eyJhbGciOiJFUzI1NiIs...9t2LQ
+  .. literalinclude:: ../../examples/shared/remote-flow-1.http
+     :language: http
 
 **Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica il Request Object, che ha la forma di un JWT firmato. Controlla che ``client_id``, ``iss`` e l'identità della Relying Party della richiesta esterna e della richiesta firmata siano coerenti rispetto al prefisso selezionato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`).
 
   Di seguito sono riportati esempi non normativi di Request Object sotto forma di intestazioni e payload decodificati. Ciascun esempio usa esattamente un Trust Framework.
 
-  **Esempio EUDIW ``x509_hash``**
+  L'esempio non normativo seguente è il Request Object EUDIW che usa ``x509_hash``.
 
-  .. code-block:: json
+  .. literalinclude:: ../../examples/shared/remote-flow-2.json
+     :language: json
 
-    {
-      "alg": "ES256",
-      "typ": "oauth-authz-req+jwt",
-      "x5c": [
-        "<WRPAC-leaf-base64url>",
-        "<WRPAC-intermediate-base64url>"
-      ],
-      "iat": 1770000000
-    }
+  .. literalinclude:: ../../examples/shared/remote-flow-3.json
+     :language: json
 
-  .. code-block:: json
+  L'esempio non normativo seguente è il Request Object nazionale che usa ``openid_federation``.
 
-    {
-      "client_id": "x509_hash:AbCdEfGhIjKlMnOp",
-      "response_mode": "direct_post.jwt",
-      "response_type": "vp_token",
-      "dcql_query": {
-         "credentials": [
-          {
-             "id": "personal id data",
-             "format": "dc+sd-jwt",
-             "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
-            "meta": {
-              "vct_values": [ "urn:eudi:pid:it:1" ]
-            },
-            "claims": [
-              {"path": ["given_name"]},
-              {"path": ["family_name"]},
-              {"path": ["birthdate"]}
-            ]
-          },
-          {
-             "id": "mobile driving license",
-             "format": "mso_mdoc",
-             "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
-            "meta": {
-              "doctype_value": "org.iso.18013.5.1.mDL"
-            },
-            "claims": [
-              {"path": ["org.iso.18013.5.1", "given_name"]},
-              {"path": ["org.iso.18013.5.1", "family_name"]},
-              {"path": ["org.iso.18013.5.1", "document_number"]}
-            ]
-          }
-        ]
-      },
-      "verifier_info": [
-        {
-          "format": "registrar_dataset",
-          "data": {
-            "identifier": "https://relying-party.example.org",
-            "srvDescription": [{"lang": "en", "value": "Example service"}],
-            "registryURI": "https://registrar.example.org",
-            "intendedUseIdentifier": "https://example.org/use/presentation",
-            "purpose": [{"lang": "en", "value": "Identity verification"}],
-            "policyURI": "https://example.org/policy"
-          }
-        },
-        {
-          "format": "registration_cert",
-          "data": "<WRPRC-base64url>"
-        }
-      ],
-      "response_uri": "https://relying-party.example.org/response_uri",
-      "aud": "https://wallet.example.org",
-      "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
-      "wallet_nonce": "qPmxiNFCR3QTm19POc8u",
-      "client_metadata": {
-          "jwks": {
-            "keys": [
-              {
-                "kty": "EC",
-                "use": "enc",
-                "crv": "P-256",
-                "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
-                "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
-                "kid": "20260202-abc123",
-                "alg": "ECDH-ES"
-              }
-            ]
-          },
-          "encrypted_response_alg_values_supported": ["ECDH-ES"],
-          "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
-      },
-      "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-      "iss": "x509_hash:AbCdEfGhIjKlMnOp",
-      "iat": 1672418465,
-      "exp": 1672422065
-    }
+  .. literalinclude:: ../../examples/shared/remote-flow-4.json
+     :language: json
 
-  **Esempio nazionale ``openid_federation``**
-
-  .. code-block:: json
-
-    {
-      "alg": "ES256",
-      "typ": "oauth-authz-req+jwt",
-      "kid": "national-signing-key",
-      "trust_chain": ["<entity-statement-base64url>"]
-    }
-
-  .. code-block:: json
-
-    {
-      "client_id": "openid_federation:https://relying-party.example.org",
-      "response_mode": "direct_post.jwt",
-      "response_type": "vp_token",
-      "dcql_query": {"credentials": [{"id": "it-wallet id", "format": "dc+sd-jwt", "meta": {"vct_values": ["urn:it-wallet:eid:1"]}}]},
-      "response_uri": "https://relying-party.example.org/response_uri",
-      "client_metadata": {
-         "jwks": {"keys": [{"kty": "EC", "use": "enc", "crv": "P-256", "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU", "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0", "kid": "20260202-abc123", "alg": "ECDH-ES"}]},
-        "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
-      },
-      "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-      "iss": "openid_federation:https://relying-party.example.org",
-      "iat": 1672418465,
-      "exp": 1672422065
-    }
+  .. literalinclude:: ../../examples/shared/remote-flow-5.json
+     :language: json
 
 * Per ``x509_hash``, l'Istanza del Wallet autentica il WRPAC e valida il WRPRC. Vincola l'identità della Relying Party diretta o intermediata al WRPAC, al WRPRC e al membro ``data.identifier`` dell'elemento ``verifier_info`` il cui ``format`` è ``registrar_dataset``, secondo :ref:`trust-evaluation:EUDIW Authentication` e :ref:`trust-evaluation:EUDIW Authorization`. Controlla l'entitlement di Service Provider e lo scope DCQL esatto e sensibile alle maiuscole.
 
@@ -324,13 +213,8 @@ Una valutazione fallita termina l'elaborazione. L'Istanza del Wallet NON DEVE in
 
   Di seguito è riportato un esempio non normativo della Authorization Response:
 
-  .. code-block:: http
-
-      POST /response_uri HTTP/1.1
-      HOST: relying-party.example.org
-      Content-Type: application/x-www-form-urlencoded
-
-      response=eyJhbGciOiJFQ0RILUVTIiwiZW5jIjoiQTI1NkdDTSIsImtpZCI6ImVwaGVtZXJhbC0yMDI2MDIwMi1hYmMxMjMiLCJlcGsiOnsi...fX0..5vL9d2X8fQ..dGhpcy1pcy1hLXNhbXBsZS1jaXBoZXJ0ZXh0.ABCDEFGHIJKLMNOPQRS
+  .. literalinclude:: ../../examples/shared/remote-flow-6.http
+     :language: http
 
   Di seguito è riportato un esempio non normativo che mostra l'intestazione protetta del JWE decifrata e il payload del JWT contenuto nel parametro ``response``, prima della codifica base64url. Il valore del parametro ``vp_token`` corrisponde al formato utilizzato quando il linguaggio di query DCQL è utilizzato nella richiesta di presentazione.
 
@@ -348,15 +232,8 @@ Una valutazione fallita termina l'elaborazione. L'Istanza del Wallet NON DEVE in
       }
     }
 
-.. code-block:: json
-
-      {
-        "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-        "vp_token": {
-          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"],
-          "mobile driving license": ["o2Nkb2N0eXBlb3Jzby4xO...Nib3JfZHVtbXk"]
-        }
-      }
+.. literalinclude:: ../../examples/shared/remote-flow-7.json
+   :language: json
 
 .. note::
   Quando restituisce una Credenziale richiesta nel formato ``mso_mdoc`` all'interno di ``vp_token``, l'Istanza del Wallet DEVE vincolare crittograficamente la presentazione mdoc alla transazione OpenID4VP corrente, come definito nell'Appendice B.2 di `OpenID4VP`_.
@@ -387,35 +264,21 @@ Se tutte le verifiche riescono, la Relying Party aggiorna la sessione dell'Utent
 
   Di seguito è riportato un esempio non normativo della risposta nel Flusso Same Device.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
-    }
+.. literalinclude:: ../../examples/shared/remote-flow-8.http
+   :language: http
 
 **Passaggi 26-27**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
 
   Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro ``id`` contiene un valore opaco e casuale:
 
-  .. code-block:: http
-
-      GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03 HTTP/1.1
-      HOST: relying-party.example.org
+  .. literalinclude:: ../../examples/shared/remote-flow-9.http
+     :language: http
 
   Quando l'Istanza del Wallet ha fornito la presentazione all'endpoint **response_uri** della Relying Partye, nel Flusso Same Device, lo user-agent è ritornato correttamente tramite ``redirect_uri`` all'interno della stessa sessione utente, e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo all'user-agent di accedere alla risorsa protetta. Viene fornito un URL di reindirizzamento che trasporta la posizione in cui l'user-agent deve navigare.
   Di seguito è riportato un esempio non normativo della risposta con il redirect_uri dalla Relying Party all'user-agent.
 
-  .. code-block:: http
-
-      HTTP/1.1 200 OK
-      Content-Type: application/json
-
-      {
-        "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
-      }
+  .. literalinclude:: ../../examples/shared/remote-flow-10.http
+     :language: http
 
 **Passaggi 28-29**: Nel Flusso Same Device, lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`). La Relying Party DEVE considerare la transazione completata solo se il reindirizzamento di ritorno viene ricevuto nella stessa sessione utente in cui il flusso è stato avviato. In caso contrario, la Relying Party DEVE rifiutare la presentazione.
 Nel Flusso Cross Device, il completamento non dipende da quel reindirizzamento.
@@ -551,15 +414,8 @@ La seguente tabella elenca gli *HTTP Status Code* e i relativi *Error codes* che
 
 Di seguito è riportato un esempio di *Error Response* dall'endpoint ``request_uri``:
 
-.. code-block:: http
-
-  HTTP/1.1 500 Internal Server Error
-  Content-Type: application/json
-
-  {
-    "error": "server_error",
-    "error_description": "The Request Object cannot be retrieved due to an internal server error."
-  }
+.. literalinclude:: ../../examples/shared/remote-flow-11.http
+   :language: http
 
 Dopo aver ricevuto una *Error Response*, l'Istanza del Wallet DOVREBBE informare l'Utente della condizione di errore in modo appropriato (:ref:`WP_089 <wallet-credential-presentation-testcases>`).
 L'Istanza del Wallet DOVREBBE registrare l'errore (:ref:`WP_089a <wallet-credential-presentation-testcases>`).
@@ -677,8 +533,7 @@ Il verificatore DEVE supportare sia ``A128GCM`` sia ``A256GCM``.
 L'Istanza del Wallet DEVE supportare almeno uno tra ``A128GCM`` e ``A256GCM``.
 L'Istanza del Wallet DOVREBBE preferire ``A256GCM`` quando entrambi sono disponibili [`ETSI TS 119 472-2`_].
 
-.. note::
-    **Perché la risposta è cifrata?**
+.. note:: Perché la risposta è cifrata?
 
     La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di `TLS Termination <https://www.f5.com/glossary/ssl-termination>`_, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili. Se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.
 
@@ -766,15 +621,8 @@ Questa *Error Response* DEVE essere codificata nel corpo della richiesta utilizz
 
 Di seguito è riportato un esempio non normativo di una *Error Response* nella *Authorization Response*.
 
-.. code-block:: http
-
-  POST /response_uri HTTP/1.1
-  HOST: relying-party.example.org
-  Content-Type: application/x-www-form-urlencoded
-
-  state=3be39b69-6ac1-41aa-921b-3e6c07ddcb03&
-  error=invalid_request&
-  error_description=...
+.. literalinclude:: ../../examples/shared/remote-flow-12.http
+   :language: http
 
 .. warning::
   Un errore di un percorso di fiducia è gestito come specificato in :ref:`trust-evaluation:Failure Handling`.
@@ -866,26 +714,12 @@ La seguente tabella elenca gli Status Code HTTP e i relativi *Error codes* che D
 
 Di seguito ci sono due esempi di risposte HTTP che utilizzano ``application/json`` che includono sia i membri ``error`` che ``error_description``:
 
-.. code-block:: http
-
-  HTTP/1.1 403 Forbidden
-  Content-Type: application/json
-
-  {
-    "error": "invalid_request",
-    "error_description": "Trust cannot be established with the issuer: https://issuer.example.com"
-  }
+.. literalinclude:: ../../examples/shared/remote-flow-13.http
+   :language: http
 
 
-.. code-block:: http
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-
-  {
-    "error": "invalid_request",
-    "error_description": "The vp_token is malformed, missing required parameters or incorrectly formatted"
-  }
+.. literalinclude:: ../../examples/shared/remote-flow-14.http
+   :language: http
 
 
 Status Endpoint

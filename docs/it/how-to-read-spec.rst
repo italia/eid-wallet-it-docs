@@ -6,6 +6,28 @@ Come leggere le Specifiche
 
 Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno del Sistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutare il lettore a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.
 
+Linguaggio normativo
+^^^^^^^^^^^^^^^^^^^^
+
+Il testo italiano usa parole chiave normative interamente in maiuscolo. La convenzione segue BCP 14, RFC 2119 e RFC 8174. Le parole chiave inglesi corrispondenti sono MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED, MAY e OPTIONAL.
+
+Ogni forma italiana ha lo stesso valore della parola chiave inglese corrispondente.
+
+- DEVE ha il significato di MUST.
+- DEVONO ha il significato di MUST.
+- NON DEVE ha il significato di MUST NOT.
+- NON DEVONO ha il significato di MUST NOT.
+- PUÒ ha il significato di MAY.
+- POSSONO ha il significato di MAY.
+- DOVREBBE ha il significato di SHOULD.
+- DOVREBBERO ha il significato di SHOULD.
+- RACCOMANDATO ha il significato di RECOMMENDED.
+- NON DOVREBBE ha il significato di SHOULD NOT.
+- NON DOVREBBERO ha il significato di SHOULD NOT.
+- NON RACCOMANDATO ha il significato di NOT RECOMMENDED.
+- OBBLIGATORIO ha il significato di REQUIRED.
+- OPZIONALE ha il significato di OPTIONAL.
+
 Panoramica della Struttura delle Specifiche
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -83,7 +105,8 @@ Fonte Autentica
 
 La Fonte Autentica si occupa di rendere disponibili i dati affidabili alla base dei (Q)EAA e di garantirne e gestirne in modo sicuro l’assoluta accuratezza e integrità.
 
-**Fase 1: Scoperta**
+Fonte Autentica: Fase 1: Scoperta
+.................................
 
 Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.
 
@@ -93,7 +116,8 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-**Fase 2: Progettazione**
+Fonte Autentica: Fase 2: Progettazione
+......................................
 
 Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere.
 
@@ -103,7 +127,8 @@ Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratter
 
 - **Appendice** :ref:`e-service-pdnd-template:PDND e-Service Template`: Modello di riferimento contenente tutti i metadati tecnici e descrittivi necessari per la definizione dell’e-service.
 
-**Fase 3: Implementazione**
+Fonte Autentica: Fase 3: Implementazione
+........................................
 
 Implementare le interfacce tecnologiche necessarie per comunicare con il Fornitore di Attestati Elettronici e gestire l’intero ciclo di vita dei dati associati ai (Q)EAA.
 
@@ -119,7 +144,8 @@ Implementare le interfacce tecnologiche necessarie per comunicare con il Fornito
 
 - **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell'ambiente di test e alla validazione delle interazioni backend tramite l'utilizzo delle matrici di test fornite dall'ecosistema.
 
-**Fase 4: Registrazione**
+Fonte Autentica: Fase 4: Registrazione
+......................................
 
 Registrarsi al sistema come Fonte Autentica, completando le procedure amministrative e tecniche richieste.
 
@@ -135,7 +161,8 @@ Fornitore di Wallet
 
 Il Fornitore di Wallet si occupa della progettazione e dello sviluppo della Soluzione Wallet, che consente all’Utente di conservare, gestire e presentare il proprio PID e i propri (Q)EAA.
 
-**Fase 1: Scoperta**
+Fornitore di Wallet: Fase 1: Scoperta
+.....................................
 
 Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.
 
@@ -145,7 +172,8 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-**Fase 2: Progettazione**
+Fornitore di Wallet: Fase 2: Progettazione
+..........................................
 
 Comprendere i requisiti relativi all’Esperienza Utente e progettare la Soluzione Wallet secondo modelli comuni, al fine di garantirne l’usabilità e l’accessibilità.
 
@@ -155,7 +183,8 @@ Comprendere i requisiti relativi all’Esperienza Utente e progettare la Soluzio
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
-**Fase 3: Implementazione**
+Fornitore di Wallet: Fase 3: Implementazione
+............................................
 
 Implementare la Soluzione Wallet in conformità a specifici standard tecnologici, al fine di garantire la comunicazione tra la Soluzione Wallet e gli altri attori del Sistema.
 
@@ -177,7 +206,8 @@ Implementare la Soluzione Wallet in conformità a specifici standard tecnologici
 
 - **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
-**Fase 4: Registrazione**
+Fornitore di Wallet: Fase 4: Registrazione
+..........................................
 
 Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema.
 
@@ -193,7 +223,8 @@ Fornitore di Attestati Elettronici
 
 Il Fornitore di Attestati Elettronici si occupa di trasformare i dati autorevoli di origine provenienti dalle Fonti Autentiche in (Q)EAA e di gestirne l’intero ciclo di vita, dall’emissione alla revoca o alla scadenza.
 
-**Fase 1: Scoperta**
+Fornitore di Attestati Elettronici: Fase 1: Scoperta
+....................................................
 
 Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.
 
@@ -203,7 +234,8 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-**Fase 2: Progettazione**
+Fornitore di Attestati Elettronici: Fase 2: Progettazione
+.........................................................
 
 Comprendere i requisiti e progettare tecnicamente i (Q)EAA, strutturandone i metadati in conformità ai requisiti tecnici e normativi.
 
@@ -211,7 +243,8 @@ Comprendere i requisiti e progettare tecnicamente i (Q)EAA, strutturandone i met
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
-**Fase 3: Implementazione**
+Fornitore di Attestati Elettronici: Fase 3: Implementazione
+...........................................................
 
 Sviluppare endpoint secondo specifici protocolli e implementare le funzionalità di emissione, rinnovo, revoca e tutte le altre funzioni tecniche di gestione del ciclo di vita dei (Q)EAA.
 
@@ -231,7 +264,8 @@ Sviluppare endpoint secondo specifici protocolli e implementare le funzionalità
 
 - **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
-**Fase 4: Registrazione**
+Fornitore di Attestati Elettronici: Fase 4: Registrazione
+.........................................................
 
 Registrarsi al sistema come Credential Issuer, completando le procedure amministrative e tecniche previste affinché i (Q)EAA emessi verso i Wallet siano riconosciuti come affidabili dal Sistema.
 
@@ -247,7 +281,8 @@ Fornitori di servizi (Relying Party)
 
 I Fornitori di servizi (Relying Party) si occupano di richiedere, ricevere e verificare in modo sicuro l'autenticità e la validità del PID e dei (Q)EAA presentati dall'Utente per consentire l'accesso ai servizi online e offline.
 
-**Fase 1: Scoperta**
+Fornitori di servizi (Relying Party): Fase 1: Scoperta
+......................................................
 
 Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust.
 
@@ -257,7 +292,8 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`infrastructure-trust:Infrastructure of Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-**Fase 2: Progettazione**
+Fornitori di servizi (Relying Party): Fase 2: Progettazione
+...........................................................
 
 Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di verifica necessarie all’erogazione del servizio all’Utente finale.
 
@@ -267,7 +303,8 @@ Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di ve
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
-**Fase 3: Implementazione**
+Fornitori di servizi (Relying Party): Fase 3: Implementazione
+.............................................................
 
 Implementare le funzionalità di verifica secondo specifici protocolli, al fine di inviare richieste di verifica al Wallet e ricevere una risposta con l’autorizzazione dell’Utente.
 
@@ -285,7 +322,8 @@ Implementare le funzionalità di verifica secondo specifici protocolli, al fine 
 
 - **Appendice** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema.
 
-**Fase 4: Registrazione**
+Fornitori di servizi (Relying Party): Fase 4: Registrazione
+...........................................................
 
 Registrarsi al sistema come Relying Party, completando le procedure amministrative e tecniche previste, e diventare soggetto affidabile per la richiesta dei dati degli Utenti.
 

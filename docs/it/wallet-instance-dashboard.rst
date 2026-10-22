@@ -4,17 +4,17 @@
 Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni
 ===================================================================
 
-L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:
+L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet. Il registro garantisce trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in `EIDAS-ARF`_ (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:
 
 - rilascio e ri-rilascio delle Credenziali.
 - presentazione delle Credenziali alle Relying Party.
 - richieste di cancellazione dei dati inviate alle Relying Party.
 
-Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente contenente gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione, e DEVE aggiornarlo con l’esito finale, ove applicabile.
+Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente. Il record contiene gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione. Ove applicabile, l’Istanza del Wallet DEVE aggiornare il record con l’esito finale.
 
-Per le transazioni di presentazione, i valori degli attributi NON DEVONO essere registrati. Qualora una richiesta di presentazione contenga dati transazionali, l’Istanza del Wallet DEVE registrare il valore di tali dati transazionali esclusivamente nella misura esplicitamente richiesta da `EUDI-TS 12`_ in relazione all’attestazione richiesta e nel rispetto dei principi di minimizzazione dei dati. In assenza di tale requisito, i valori dei dati transazionali NON DEVONO essere registrati.
+Per le transazioni di presentazione, i valori degli attributi NON DEVONO essere registrati. Qualora una richiesta di presentazione contenga dati transazionali, l’Istanza del Wallet DEVE registrare il valore di tali dati transazionali esclusivamente nella misura esplicitamente richiesta da `EUDI-TS 12`_. La registrazione resta collegata all’attestazione richiesta. La registrazione rispetta i principi di minimizzazione dei dati. In assenza di tale requisito, i valori dei dati transazionali NON DEVONO essere registrati.
 
-Per supportare l’accesso dell’Utente al registro delle transazioni, l’Istanza del Wallet DEVE fornire un’interfaccia di dashboard che consenta all’Utente di visualizzare una panoramica dei record di transazione presenti nel registro, accedere ai dettagli dei singoli record, esportare e cancellare i record e, ove una transazione coinvolga una Relying Party, avviare una richiesta di cancellazione dei dati verso la relativa Relying Party (utilizzando, se disponibili, le informazioni di contatto registrate).
+Per supportare l’accesso dell’Utente al registro delle transazioni, l’Istanza del Wallet DEVE fornire un’interfaccia di dashboard. La dashboard consente all’Utente di visualizzare una panoramica dei record di transazione presenti nel registro. La dashboard consente all’Utente di accedere ai dettagli dei singoli record. La dashboard consente all’Utente di esportare e cancellare i record. Ove una transazione coinvolga una Relying Party, la dashboard consente all’Utente di avviare una richiesta di cancellazione dei dati verso la relativa Relying Party, utilizzando le informazioni di contatto registrate se disponibili.
 
 Il Fornitore del Wallet DEVE proteggere la riservatezza, l’integrità e l’autenticità del registro delle transazioni e di eventuali oggetti di log esportati in conformità a `EUDI-TS 10`_. L’accesso al registro DEVE essere limitato all’Utente e all’Istanza del Wallet.
 

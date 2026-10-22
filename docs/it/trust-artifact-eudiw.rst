@@ -9,11 +9,11 @@ EUDIW Trust Artifacts
 
 Questa sezione definisce i trust artifact richiesti e i loro ruoli concettuali nell'ecosistema EUDIW secondo `EIDAS-ARF`_, inclusi:
 
-- :ref:`infrastructure-trust:Register of WRPs`;
-- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`;
-- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
-- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
+- :ref:`infrastructure-trust:Register of WRPs`.
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`.
+- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
 - :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 Il modello dati di questi Trust Artifact profila le seguenti specifiche esterne.
@@ -295,7 +295,7 @@ La Wallet Unit NON DEVE recuperare il contenuto della policy da ``policy_uri``.
   L'identificatore di Service è rinviato come specificato in :ref:`infrastructure-trust:Register of WRPs`.
   Fino ad allora, la Wallet Unit confronta l'identificatore univoco a livello UE (``sub``) e, ove presente, l'URI di entitlement.
   `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) codifica inoltre le parti autorizzate per subject DN o per URI di entitlement.
-  Il parametro ``subject_dn`` è quella codifica ETSI; non è un input di valutazione rispetto al WRPAC.
+  Il parametro ``subject_dn`` è quella codifica ETSI. Il parametro ``subject_dn`` non è un input di valutazione rispetto al WRPAC.
   Il parametro ``entitlement_uri`` è abbinato rispetto alle entitlement detenute nel WRPRC.
   L'Allegato A.3 di `ETSI TS 119 475`_ definisce sub-entitlement per i Service Provider, attualmente per i Payment Service Provider (ad es. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``).
   Per una presentazione **intermediata** il WRPRC nella richiesta è quello della Relying Party *intermediata* ([`EIDAS-ARF`_] RPRC_19).

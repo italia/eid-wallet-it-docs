@@ -13,10 +13,10 @@ State Machines for Trust Artifacts are described below:
 
 - For WRPAC, WRPRC and Sign/Seal Certificates, the lifecycle states are ``VALID`` and ``REVOKED``.
   The transition from ``VALID`` to ``REVOKED`` is triggered by the revocation of the Trust Artifact, which can be initiated by the corresponding Trust Artifact provider due to various reasons such as key compromise, organizational changes, or non-compliance with framework policies.
-  Once a Trust Artifact is in the ``REVOKED`` state, it MUST NOT be trusted for any operational use within the ecosystem, and any Entity relying on it MUST reject it for authentication, authorization, or any other trust-related operations.
+  Once a Trust Artifact is in the ``REVOKED`` state, that Trust Artifact MUST NOT be trusted for any operational use within the ecosystem. Any Entity relying on that Trust Artifact MUST reject it for authentication, authorization, or any other trust-related operations.
 
-  - A WRPAC in ``VALID`` state MUST NOT be present in the designated CRL and/or MUST return a ``good`` status in the OCSP response.
-    A WRPAC in ``REVOKED`` state MUST be present in the designated CRL and/or MUST return a ``revoked`` status in the OCSP response.
+  - A WRPAC in the ``VALID`` state MUST NOT be present in the designated CRL. Alternatively, a WRPAC in the ``VALID`` state MUST return a ``good`` status in the OCSP response.
+    A WRPAC in the ``REVOKED`` state MUST be present in the designated CRL. Alternatively, a WRPAC in the ``REVOKED`` state MUST return a ``revoked`` status in the OCSP response.
   - A WRPRC in ``VALID`` state MUST return a ``0x00`` status in the corresponding Status List Token.
     A WRPRC in ``REVOKED`` state MUST have status value ``0x01`` within the corresponding Status List Token.
 - For Trust Lists (LoTE, LOTL, EUMS TL), the lifecycle states are ``CURRENT`` and ``HISTORICAL``.
@@ -44,13 +44,13 @@ Federation Entity Key Rotation
 The Federation Entity Key of an Entity is attested by the Subordinate Statement that its immediate superior publishes about it, and the Entity Configuration of the Entity MUST be signed with a key that the Subordinate Statement attests.
 A new Federation Entity Key becomes trusted only when the superior attests it in the Subordinate Statement.
 
-The Federation Entity key rotation MUST be perfomed as defined in the following steps:
+The Federation Entity key rotation MUST be performed as defined in the following steps.
 
-- The Entity adds the new key to the ``jwks`` of its Entity Configuration and it MUST keep signing the Entity Configuration with the previous key, which is still attested.
-- In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration, it MUST check that the Entity Configuration is signed with an attested key, and it MUST re-issue the Subordinate Statement attesting the new key.
-- The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired, and during the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
-- Once that the validity windows of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key.
-- Then, when the Entity wants to remove the old previous key, it MAY remove it from the ``jwks`` notifying this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`), and the superior MUST remove it from the Subordinate Statement.
+- The Entity adds the new key to the ``jwks`` of its Entity Configuration. The Entity MUST keep signing the Entity Configuration with the previous key, which is still attested.
+- In the Entity Update process (see :ref:`onboarding-system:Entity Update`) the superior MUST read the ``jwks`` from the Entity Configuration. The superior MUST check that the Entity Configuration is signed with an attested key. The superior MUST re-issue the Subordinate Statement attesting the new key.
+- The previous key and the new key then coexist until the Trust Chains built with the previous Subordinate Statement have expired. During the coexistence the Entity keeps signing with the previous key, so that both the previous and the new Subordinate Statement validate its Entity Configuration.
+- Once the validity window of the Trust Chain has passed, the Entity MAY sign its Entity Configuration with the new key.
+- When the Entity wants to remove the previous key, the Entity MAY remove it from the ``jwks`` and notify this change to the superior through the Entity Update process (see :ref:`onboarding-system:Entity Update`). The superior MUST remove that key from the Subordinate Statement.
 - The superior MUST register the event as a ``jwks_update`` published on the Federation Subordinate Events Endpoint.
 
 
@@ -376,7 +376,7 @@ The following table lists the requested ones:
        Identifier OID is ``id-pkix-ocsp-nonce``.
      - [:rfc:`6960`, clause 4.4.1]
 
-When sent over HTTP using POST, the body of this request MUST contain the raw DER encoding of this ``OCSPRequest`` SEQUENCE and MUST have MIME type ``application/ocsp-request``.
+When sent over HTTP using POST, the body of this request MUST contain the raw DER encoding of this ``OCSPRequest`` SEQUENCE. The body of this request MUST have MIME type ``application/ocsp-request``.
 
 Below is a non-normative example of an OCSP request:
 
@@ -573,7 +573,8 @@ This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIS
 
 The SLT Provider MAY be the Provider of WRPRC or a designated entity.
 
-**Status List**
+Token Status List (WRPRC Profile): Status List
+..............................................
 
 A Status List contains a compressed byte array whose entries represent the statuses of many WRPRCs. The Provider of WRPRC MUST allocate a distinct, non-negative ``idx`` value to each issued WRPRC and include it, together with the SLT ``uri``, in the WRPRC's ``status.status_list`` member. For a JWT-encoded WRPRC, ``idx`` is a JSON integer and ``uri`` is a JSON string.
 For a CWT-encoded WRPRC, ``idx`` is a CBOR unsigned integer and ``uri`` is a CBOR text string. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
@@ -583,7 +584,8 @@ The Provider of WRPRC MUST set the ``bits`` parameter in the SLT's ``status_list
 
 Packing of entries, DEFLATE compression, the ZLIB data format, and publication of the Status List are specified in :ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
 
-**Status List Token**
+Token Status List (WRPRC Profile): Status List Token
+....................................................
 
 The SLT Provider MUST act as both the Status Issuer and the Status Provider.
 The SLT Provider MUST publish each SLT by HTTP GET at the URI in the WRPRC member ``status.status_list.uri``.

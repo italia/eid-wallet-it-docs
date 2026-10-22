@@ -19,7 +19,7 @@ The following tables provide:
 - *Extended registration data* provided by an entity depending on its role, where each :ref:`onboarding-system:Registration Profiles` instance specifies which extended data the role provides and how the entity populates it.
 - *Credential type definition data* that describes a Credential type.
 
-Depending on the role, the registration data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), and the notification dataset for a notifiable Entity.
+Depending on the role, the registration data is then encoded in a different data model. For a Wallet-Relying Party the data model is the ``WalletRelyingParty`` schema of the Register (:ref:`infrastructure-trust:Register of WRPs`). For an Authentic Source the data model is the entry of the AS Registry (:ref:`registry:Authentic Source Registry`). For a notifiable Entity the data model is the notification dataset.
 The Credential type definition data is encoded in the versioned entry of the Digital Credentials Catalog (:ref:`registry:Digital Credentials Catalog`).
 The mapping to the destination data models is given in :ref:`onboarding-system:Mapping to the Registry Data Models`.
 
@@ -244,14 +244,14 @@ The table below maps each Data Identifier to the fields of the destination data 
      - In the notification dataset, the trust anchor.
 
 Some information are present both in the registered data and in the self-signed Entity Configuration of the Entity.
-The registered value is authoritative, asserted by the Registrar in the Register and by the Federation Trust Anchor in the registration Trust Mark, while the informational parameters of the ``federation_entity`` metadata are published under the responsibility of the Entity.
-Where the Onboarding System requires a value that the Entity also publishes in its Entity Configuration, it MUST read the Entity Configuration and MUST verify the match. A mismatch MUST block the registration, and after the registration it MUST be solved through an :ref:`onboarding-system:Entity Update`.
-Within IT-Wallet the ``metadata_policy`` of the Subordinate Statement fixes the ``organization_name`` of the ``federation_entity`` metadata to the registered value, so the name shown to the User cannot diverge from the one carried by the WRPAC and by the WRPRC. The other informational parameters are not fixed.
+The registered value is authoritative. The Registrar asserts it in the Register and the Federation Trust Anchor asserts it in the registration Trust Mark. The informational parameters of the ``federation_entity`` metadata are published under the responsibility of the Entity.
+Where the Onboarding System requires a value that the Entity also publishes in its Entity Configuration, the Onboarding System MUST read the Entity Configuration. The Onboarding System MUST verify the match. A mismatch MUST block the registration. After the registration, a mismatch MUST be solved through an :ref:`onboarding-system:Entity Update`.
+Within IT-Wallet the ``metadata_policy`` of the Subordinate Statement fixes the ``organization_name`` of the ``federation_entity`` metadata to the registered value. The name shown to the User cannot diverge from the one carried by the WRPAC and by the WRPRC. The other informational parameters are not fixed.
 
 Eligibility and Compliance Preconditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body, which relies on the Registrar for the entities it registers and, for the notified categories, acts as the National point of contact toward the European Commission.
+Before any technical registration, the eligibility and the compliance of an entity MUST be verified by the Supervisory Body. The Supervisory Body relies on the Registrar for the entities the Registrar registers. For the notified categories, the Supervisory Body acts as the National point of contact toward the European Commission.
 Where a National and an EUDIW obligation overlap, the EUDIW obligation is authoritative.
 
 The verification applies to Authentic Sources, Wallet Providers and Wallet-Relying Parties, and its content depends on the role.
@@ -262,7 +262,7 @@ The verification applies to Authentic Sources, Wallet Providers and Wallet-Relyi
     The assessment covers the security of the wallet architecture, its data-protection mechanisms and its user-privacy features, and it is the precondition for the Wallet Solution to be certified.
     The certification of the Wallet Solution is an external process, and this phase uses its outcome as an input.
     The certification follows the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and the functional testing follows the EU functional conformity assessment framework (FCAF).
-  - **PID Providers**: validated per National designation as providers of Person Identification Data, subject to the National certification scheme operated by the Italian National Cybersecurity Agency (ACN), and to the functional testing under the EU functional conformity assessment framework (FCAF).
+  - **PID Providers**: validated per National designation as providers of Person Identification Data. PID Providers are subject to the National certification scheme operated by the Italian National Cybersecurity Agency (ACN). PID Providers are subject to the functional testing under the EU functional conformity assessment framework (FCAF).
   - **QEAA Providers**: validated through the qualification and the supervision of the issuing Qualified Trust Service Provider.
   - **PuB-EAA Providers**: validated through the conformity assessment required by Article 45f of the eIDAS2 Regulation.
   - **Non-qualified EAA Providers**: validated for the eligibility to issue.
@@ -273,9 +273,9 @@ The verification applies to Authentic Sources, Wallet Providers and Wallet-Relyi
   .. note::
    The Credential Issuer declares the Credential types it intends to issue, each anchored to its Rulebook, and its integration with the relevant Authentic Sources is authorized where needed.
 
-The Supervisory Body also approves the claims, the schemas and the Credential types before they are registered in the registries, and that approval is a precondition of the :ref:`onboarding-system:Claim Registration`, of the :ref:`onboarding-system:Schema Provisioning` and of the :ref:`onboarding-system:Credential Type Registration`.
+The Supervisory Body also approves the claims, the schemas and the Credential types before they are registered in the registries. That approval is a precondition of the :ref:`onboarding-system:Claim Registration`, of the :ref:`onboarding-system:Schema Provisioning` and of the :ref:`onboarding-system:Credential Type Registration`.
 
-The identity proofing of the Wallet-Relying Parties MUST be carried out by the Registrar according to [`ETSI TS 119 461`_], and the verification of the entitlements MUST follow Annex III of [`CIR2025/848`_].
+The identity proofing of the Wallet-Relying Parties MUST be carried out by the Registrar according to [`ETSI TS 119 461`_]. The verification of the entitlements MUST follow Annex III of [`CIR2025/848`_].
 Within IT-Wallet the identity proofing is applied to every entity that onboards, including the entities that do not operate in the EUDIW Trust Framework, even where it is not strictly required for them.
 
 For the notified entities the certifications are a mandatory input to the onboarding, and in every case the eligibility and compliance verification is a mandatory precondition for the technical registration.
@@ -288,7 +288,7 @@ A successful registration produces, depending on the role and on the scope of op
 The way each artifact is produced is described in :ref:`onboarding-system:Onboarding Processes`, and the effects of the later changes in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
 The table shows the artifacts that vary by role.
-The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate, while the WRPRC is shown on its own because it is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.
+The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate. The WRPRC is shown on its own. The WRPRC is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.
 
 .. list-table:: Trust Artifacts Registration Outcomes by Entity Type
    :class: longtable
@@ -350,9 +350,9 @@ Registration Profiles
 ^^^^^^^^^^^^^^^^^^^^^
 
 This Section describes the registration of each role as a profile.
-Every profile provides the base registration data defined in :ref:`onboarding-system:Registration Data Model`, and each profile below states only the extended registration data the role provides and how the entity populates it, together with any specialization of the base data.
+Every profile provides the base registration data defined in :ref:`onboarding-system:Registration Data Model`. Each profile below states only the extended registration data the role provides and how the entity populates it, together with any specialization of the base data.
 An entity can hold more than one entitlement in a single registration record and for more than one role, so the profiles are not mutually exclusive and they compose.
-For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.
+For example, an entity can be at the same time a Relying Party and a QEAA Provider. In that case the input of the entity is the union of the two profiles and the outcome of the entity is the union of the two.
 A Non-Qualified EAA Provider and a Relying Party MUST declare, for each role and for each Credential type, whether that role operates in the EUDIW Trust Framework or only within the national boundary.
 At runtime the requested Credential selects the Trust Framework, as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 
@@ -366,20 +366,20 @@ PID Provider
 A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
 In addition to the base registration data, a PID Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `relying_party_services`
+- `entitlements`.
+- `service_description`.
+- `relying_party_services`.
 
   - The Services of the PID Provider, as ``WalletRelyingPartyService`` objects of `EUDI-TS 5`_. The Service carries ``provided_attestations`` for the PID type. ``serviceIdentifier`` is not required.
-- `provided_attestations`
-- `federation_entity_identifier`
-- `federation_entity_key`
-- `certificate_signing_requests`
+- `provided_attestations`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
+- `certificate_signing_requests`.
 
   - One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units.
   - One Certificate Signing Request for the Sign/Seal Certificate, with which it signs the issued PID.
-- `conformity_assessment`
-- `service_supply_point`
+- `conformity_assessment`.
+- `service_supply_point`.
 
 
 QEAA Provider
@@ -389,20 +389,20 @@ A QEAA Provider is a Federation Entity that issues Qualified Electronic Attestat
 The attestations it issues MUST follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 In addition to the base registration data, a QEAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `relying_party_services`
+- `entitlements`.
+- `service_description`.
+- `relying_party_services`.
 
   - The Services of the QEAA Provider, as ``WalletRelyingPartyService`` objects of `EUDI-TS 5`_. The Service carries ``provided_attestations``. ``serviceIdentifier`` is not required.
-- `provided_attestations`
-- `federation_entity_identifier`
-- `federation_entity_key`
-- `certificate_signing_requests`
+- `provided_attestations`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
+- `certificate_signing_requests`.
 
   - One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.
-- `conformity_assessment`
-- `service_supply_point`
-- `signing_trust_anchor`
+- `conformity_assessment`.
+- `service_supply_point`.
+- `signing_trust_anchor`.
 
   - Provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
 
@@ -414,22 +414,22 @@ A PuB-EAA Provider is a Federation Entity that is notified and registered in the
 The attestations it issues MUST follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 In addition to the base registration data, a PuB-EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `relying_party_services`
+- `entitlements`.
+- `service_description`.
+- `relying_party_services`.
 
   - The Services of the PuB-EAA Provider, as ``WalletRelyingPartyService`` objects of `EUDI-TS 5`_. The Service carries ``provided_attestations``. ``serviceIdentifier`` is not required.
-- `provided_attestations`
-- `federation_entity_identifier`
-- `federation_entity_key`
-- `certificate_signing_requests`
+- `provided_attestations`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
+- `certificate_signing_requests`.
 
   - One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.
-- `conformity_assessment`:
+- `conformity_assessment`.
 
   - The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [`EIDAS`_].
-- `service_supply_point`
-- `signing_trust_anchor`
+- `service_supply_point`.
+- `signing_trust_anchor`.
 
   - Provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
 
@@ -439,22 +439,22 @@ Non-Qualified EAA Provider
 
 In addition to the base registration data, a Non-Qualified EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `relying_party_services`
+- `entitlements`.
+- `service_description`.
+- `relying_party_services`.
 
   - REQUIRED where the Non-Qualified EAA Provider operates in the EUDIW Trust Framework. The Services of the Provider, as ``WalletRelyingPartyService`` objects of `EUDI-TS 5`_. ``serviceIdentifier`` is not required.
-- `provided_attestations`
-- `federation_entity_identifier`
-- `federation_entity_key`
-- `certificate_signing_requests`
+- `provided_attestations`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
+- `certificate_signing_requests`.
 
   - One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA.
   - A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.
-- `service_supply_point`
-- `trust_framework_scope`
+- `service_supply_point`.
+- `trust_framework_scope`.
   
-  - A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
+  - A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate. A Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone. The Wallet Unit authenticates that Provider through the National Trust Framework. The Attestations of that Provider are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 
 
 Relying Party
@@ -462,25 +462,25 @@ Relying Party
 
 Besides the base registration data, a Relying Party provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `relying_party_services`
+- `entitlements`.
+- `service_description`.
+- `relying_party_services`.
 
   - REQUIRED where the Relying Party operates in the EUDIW Trust Framework. The Services of the Relying Party, as ``WalletRelyingPartyService`` objects of `EUDI-TS 5`_. ``serviceIdentifier`` is not required.
-- `intended_use`:
+- `intended_use`.
 
   - Nested in `relying_party_services`. The Attestation type and optionally the attributes the Relying Party intends to request from the Wallet Units.
-- `intermediary_relationship`
+- `intermediary_relationship`.
 
-  - Nested in `relying_party_services`. In the EUDIW Trust Framework, REQUIRED where the Relying Party Service operates through a RP Intermediary, and in that case it references the Intermediary Service identifier (``usesIntermediaries``). In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its ``authority_hints`` to the RP Intermediary that federates it. The RP Intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
-- `federation_entity_identifier`
-- `federation_entity_key`:
+  - Nested in `relying_party_services`. In the EUDIW Trust Framework, REQUIRED where the Relying Party Service operates through a RP Intermediary, and in that case it references the Intermediary Service identifier (``usesIntermediaries``). In the National Trust Framework the Relying Party does not declare the relationship. The relationship with the RP Intermediary is established through the federation. The Relying Party sets its ``authority_hints`` to the RP Intermediary that federates the Relying Party. The RP Intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
 
   - REQUIRED for a Relying Party that operates without an intermediary. A Relying Party operating through a RP Intermediary MUST NOT provide it, because it is registered by its RP Intermediary according to the National Trust Framework.
-- `certificate_signing_requests`
+- `certificate_signing_requests`.
 
-  - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is one WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
-- `trust_framework_scope`
+  - One Certificate Signing Request for each X.509 certificate the Relying Party needs. That request is one WRPAC when the Relying Party operates in the EUDIW Trust Framework. That request is the National Authentication Certificate when the Relying Party operates only in the National Trust Framework and supports the Proximity Flow.
+- `trust_framework_scope`.
 
   - The artifacts follow the declaration of this role. The Trust Framework of each presentation is selected as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 
@@ -530,14 +530,14 @@ A Wallet Provider is a Federation Entity that is notified, but it is not registe
 Its registration data is part of the notification dataset, and its Sign/Seal trust anchor is published in the Wallet Providers LoTE.
 Besides the base registration data, a Wallet Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `entitlements`
-- `service_description`
-- `federation_entity_identifier`
-- `federation_entity_key`
-- `certificate_signing_requests`
+- `entitlements`.
+- `service_description`.
+- `federation_entity_identifier`.
+- `federation_entity_key`.
+- `certificate_signing_requests`.
 
   - One Certificate Signing Request for the Sign/Seal Certificate, with which the Wallet Provider signs the Wallet Unit Attestations.
-- `conformity_assessment`
+- `conformity_assessment`.
 
 
 Authentic Source
@@ -548,8 +548,8 @@ It is not registered in the Register and it is not a Federation Entity, so it do
 Its registration data is the entry of the AS Registry.
 In addition to the base registration data, an Authentic Source provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-- `provided_claims_purposes`
-- `visual_identity`
-- `verification_endpoint`
+- `provided_claims_purposes`.
+- `visual_identity`.
+- `verification_endpoint`.
 
   - Provided only where the Authentic Source is responsible for an attribute exported to the EUDIW Catalogue of Attributes, so that a Qualified Trust Service Provider of another Member State can reach its verification interface.

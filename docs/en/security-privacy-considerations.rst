@@ -13,22 +13,22 @@ This section provides an informal security analysis of the IT-Wallet specificati
 
 .. note::
   The focus of the analysis is the compliance of the design choices in the IT-Wallet specification with respect to the OpenID4VC protocols.
-  It is currently out-of-scope *(i)* the analysis of the design of the proximity flow based on ISO 18013-5, and *(ii)* the analysis of the implementation;
-  as a consequence 7 requirements specifically related to the implementation are not considered (e.g., SV-00: The Verifier must implement the protocol securely and correctly).
+  It is currently out-of-scope *(i)* the analysis of the design of the proximity flow based on ISO 18013-5, and *(ii)* the analysis of the implementation.
+  As a consequence 7 requirements specifically related to the implementation are not considered (e.g., SV-00: The Verifier must implement the protocol securely and correctly).
 
 As in [`OpenID4VC-SecTrust`_], all requirements are numbered for reference. Together with the respective component that needs to implement the requirement:
 
-* **CF**: Credential Format;
-* **P**: Protocol;
-* **E**: Ecosystem;
-* **I**: Issuer;
-* **V**: Verifier;
+* **CF**: Credential Format.
+* **P**: Protocol.
+* **E**: Ecosystem.
+* **I**: Issuer.
+* **V**: Verifier.
 * **W**: Wallet.
 
 This specification adds the requirement category as a prefix:
 
-* **SR**: Security Requirements;
-* **PR**: Privacy Requirements;
+* **SR**: Security Requirements.
+* **PR**: Privacy Requirements.
 * **SPR**: Security and Privacy Requirements.
 
 The final identifier uses the following name space: *requirement_category-component-id*.
@@ -49,8 +49,8 @@ SR-CF-10 and SR-E-10
 
 The IT-Wallet specification supports both SD-JWT VC and mdoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Credential Issuer's signature.
 
-- For SD-JWT, the verification is performed using the algorithm specified in the **alg** header parameter of SD-JWT and a verifiable reference to the public key that must be used for the signature verification. Using OpenID Federation, the verifiable reference to the public cryptographic material is the **kid** header of the SD-JWT, where the cryptographic material is obtained from the Trust Chain about the Credential Issuer, specified in **iss** claim.
-- For mdoc-CBOR, the Credential Issuer's signature is contained in the *Mobile Security Object* (MSO) and must be validated using the Credential Issuer's public key through a trusted certificate chain contained in the **x5chain** header parameter.
+- For SD-JWT, the verification uses the algorithm specified in the **alg** header parameter of SD-JWT. The verification also uses a verifiable reference to the public key for the signature verification. Using OpenID Federation, that reference is the **kid** header of the SD-JWT. The cryptographic material is obtained from the Trust Chain about the Credential Issuer, specified in the **iss** claim.
+- For mdoc-CBOR, the Credential Issuer's signature is contained in the *Mobile Security Object* (MSO). The signature is validated using the Credential Issuer's public key. The key is taken from a trusted certificate chain in the **x5chain** header parameter.
 
 SR-CF-20
 ^^^^^^^^
@@ -82,7 +82,7 @@ SR-E-20
    * - |check-icon|
      - The Trust Framework must ensure that the identification of an Issuer is unique and unambiguous. If there are multiple instances of the same Issuer using the same key material, the Verifier must trust all instances equally.
 
-The IT Wallet Trust Framework ensures that each entity (e.g., a Credential Issuer) is uniquely identified through cryptographic keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
+The IT Wallet Trust Framework ensures that each entity (for example, a Credential Issuer) is uniquely identified through cryptographic keys and metadata. The keys and metadata are distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -132,7 +132,7 @@ SR-I-30
    * - |check-icon|
      - The Issuer must revoke a Credential once the Issuer learns about potential abuse of the Credential.
 
-The Credential Issuer is the entity responsible for revoking a Credential. The specification describes several use cases that may trigger a revocation process and details the revocation flow in which the Credential Issuer revokes Credentials at the User's request (through the Wallet Instance) after verifying possession of the Credentials.
+The Credential Issuer is the entity responsible for revoking a Credential. The specification describes several use cases that may trigger a revocation process. The specification details the revocation flow in which the Credential Issuer revokes Credentials at the User's request (through the Wallet Instance) after verifying possession of the Credentials.
 
 SR-I-40
 ^^^^^^^
@@ -142,9 +142,9 @@ SR-I-40
    * - |check-icon|
      - The Issuer must only include Holder-binding data into the Credential that is tied to the actual User (and not, e.g., include a cryptographic key under control by a third party).
 
-The issuance process securely binds the Credential to the User as follows (see :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`):
+The issuance process securely binds the Credential to the User as follows (see :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`).
 
-* Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Credential Issuer authenticates the User using a CieID scheme or a valid PID/IT-Wallet ID, providing the Access Token to the User.
+* Authorization (Steps 8-10): The Wallet Instance sends an authorization request. The Credential Issuer authenticates the User using a CieID scheme or a valid PID/IT-Wallet ID. The Credential Issuer provides the Access Token to the User.
 * Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.
 * Credential Issuance (Steps 18-21): The Credential request is verified using proof of possession, which is cryptographically bound to the User. The use of the same key in the DPoP ensures that the key material is controlled by the Wallet Instance, and not by a third party.
 
@@ -174,7 +174,7 @@ SR-P-20
    * - |check-icon|
      - The protocol must ensure that no third party can interfere with the issuance process such that the Issuer issues Credentials for the third party to the User.
 
-This requirement is addressed by secure identification of the Credential Issuer. The ^iss^ parameter in the authorization response assures the Wallet that the response is coming from the expected Credential Issuer and the cryptographic verification of the received tokens ensures that they were issued by the legitimate Credential Issuer. In addition, the use of PKCE avoids injection of the code from another session to the User session.
+This requirement is addressed by secure identification of the Credential Issuer. The ^iss^ parameter in the authorization response assures the Wallet that the response comes from the expected Credential Issuer. The cryptographic verification of the received tokens ensures that the tokens were issued by the legitimate Credential Issuer. In addition, the use of PKCE avoids injection of the code from another session into the User session.
 
 SR-P-30
 ^^^^^^^
@@ -184,7 +184,7 @@ SR-P-30
    * - |check-icon|
      - The protocol must ensure that the interaction between the Wallet and Verifier is protected such that no third party can interfere with the interaction by modifying the information transmitted.
 
-The presentation process occurs through different flows, including remote and proximity. In the case of the remote flow, a combination of signed Request Objects, **nonce** usage, Trust Chain validation, Wallet Attestation, and Holder binding ensures that no third party can interfere with or modify the information transmitted between the Wallet and the Relying Party. These mechanisms align with Security Requirement P-30, protecting the interaction from tampering or injection attacks.
+The presentation process occurs through different flows, including remote and proximity. In the remote flow, signed Request Objects, **nonce** usage, Trust Chain validation, Wallet Attestation, and Holder binding protect the exchange. No third party can interfere with or modify the information transmitted between the Wallet and the Relying Party. These mechanisms align with Security Requirement P-30. The mechanisms protect the interaction from tampering or injection attacks.
 
 SR-P-40
 ^^^^^^^
@@ -199,8 +199,7 @@ The Relying Party should maintain a mapping between User sessions and the **nonc
 matches the **nonce** that is expected for the User session. With this countermeasure, the Relying Party must detect if a presentation is sent that was not bound to the User's session or if no
 User session exists at all, preventing the attack.
 
-For cross-device flow the requirement is partially satisfied as the flow is vulnerable to Cross-Device Consent Phishing attacks (an attacker could initiate the presentation flow,
-obtain the signed Request Object and QR code, and forward it to the victim).
+For the cross-device flow the requirement is partially satisfied. The flow is vulnerable to Cross-Device Consent Phishing attacks. An attacker could initiate the presentation flow, obtain the signed Request Object and QR code, and forward them to the victim.
 
 Some security measures are already in place, such as the use of **nonce** and state. The **nonce** ensures freshness of the request, and the state binds the flow to a unique transaction,
 thus reducing the opportunity for a successful attack.
@@ -220,8 +219,7 @@ SR-P-41
    * - |check-icon|
      - The protocol must ensure that an attacker cannot successfully forward an interaction between a Wallet and a Verifier to a Verifier under the control of the attacker.
 
-A prerequisite for a successful attack of this kind is that the attacker has access to some messages between the Wallet and the Relying Party, for example,
-the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality, avoiding the leakage of the response.
+A prerequisite for a successful attack of this kind is attacker access to some messages between the Wallet and the Relying Party. For example, the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality and avoids leakage of the response.
 In addition to TLS, the existing implementation of **nonce** and audience checks in the presentation protocol should help to meet the P-41 security requirement.
 Regarding the **nonce** claim, the Relying Party MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Relying Party during the authorization request.
 Regarding the **aud** value, the Relying Party must check that the audience of the presentation matches the Relying Party's identifier.
@@ -238,11 +236,7 @@ In the issuance phase, the Holder binding happens at the Credential request to t
 first and therefore send the request to the Credential endpoint and bind the Credentials to the keys under his control. The IT-Wallet specification requires the use of a sender-constrained
 access token, which means that the access token binds to the device using cryptographic materials.
 
-The second surface for the attack is related to key management. In the case of using software-based keys, it is possible to clone the keys and move them to a device under
-attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports a
-hardware-backed Keystore that uses hardware-based keys. However, the lack of a
-certification profile that certifies the Keystore (TEE) against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
-as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ makes the requirement only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side), which provides certification at a higher assurance level.
+The second surface for the attack is related to key management. With software-based keys, the keys can be cloned and moved to a device under attacker control. If the Credentials are stolen as well, the attacker can create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks because IT-Wallet supports a hardware-backed Keystore that uses hardware-based keys. A certification profile that certifies the Keystore (TEE) against highly capable attackers is still missing. Current TEE solutions on the market reach AVA_VAN.3 at most, as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or on the `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_. The requirement is therefore only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side). The Remote WSCD provides certification at a higher assurance level.
 
 SR-V-10
 ^^^^^^^
@@ -257,7 +251,7 @@ The Relying Party checks the Wallet Attestation during exchanges sent with the a
 .. note::
   Currently, no explicit security and privacy measures related to this requirement are specified in [`OpenID4VC-SecTrust`_] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees
   that the Wallet Instance is operating on a secure, trusted device and adheres to the strict security policies set by the Wallet Provider. However, the attestation does not directly guarantee that each
-  Credential within the Wallet is stored securely; it verifies the overall security of the Wallet environment, within which the Credentials reside. Therefore, while the attestation supports the Relying Party's
+  Credential within the Wallet is stored securely. The attestation verifies the overall security of the Wallet environment, within which the Credentials reside. Therefore, while the attestation supports the Relying Party's
   confidence that the Credential comes from a secure source, it is ultimately a broad assurance of the Wallet's security, rather than a specific validation of individual Credential storage.
 
 SR-V-20
@@ -281,7 +275,7 @@ SR-W-20
    * - |check-icon|
      - The Wallet must provide trustworthy and complete information about Issuers to the User.
 
-The Wallet Instance discovers the trusted Credential Issuers using trusted third party resources, such as the Federation API (e.g., using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), inspecting the Credential Issuer metadata and Trust Marks for filtering the PID Provider.
+The Wallet Instance discovers the trusted Credential Issuers using trusted third party resources, such as the Federation API. An example is the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates. The Wallet Instance inspects the Credential Issuer metadata and Trust Marks to filter the PID Provider.
 
 The Credential Issuer's information is displayed to the User during the issuance process and can be subsequently read by the User as it is inside the issued Credential.
 In addition to the Credential Issuer's information, the Digital Credential Type Metadata also contains information on the Authentic Source.
@@ -392,7 +386,7 @@ SPR-E-50
 
 The Credential lifecycle includes a Credential revocation mechanism based on Status List [`TOKEN-STATUS-LIST`_] that ensures that Credentials are properly revoked when compromised or outdated.
 
-The revocation of a Federation Entity (i.e., Credential Issuer, Relying Party, Wallet Provider) is instead possible by not issuing the corresponding Subordinate Statement about that Entity and set a short expiration of the Trust Chain, thus preventing misuse during compromise.
+Revocation of a Federation Entity (Credential Issuer, Relying Party, or Wallet Provider) is possible by not issuing the corresponding Subordinate Statement about that Entity. A short expiration of the Trust Chain prevents misuse during compromise.
 
 .. tip::
   In addition, [`OID-FED`_] supports a historical key endpoint to retrieve the list of expired and revoked keys, with the motivation of the revocation.
@@ -407,8 +401,8 @@ SPR-P-10
 
 To mitigate this threat, the IT-Wallet specification requires the following security mechanisms in the issuance process:
 
-- *TLS*: Used in all communication between the Wallet and the Credential Issuer, ensuring that data in transit is encrypted and protected from interception by attackers.
-- *Wallet Attestation*: Ensures that the Wallet operates on a secure, trusted device and complies with the security standards required by the Credential Issuer, providing additional assurance that the Credential Issuer is interacting with a legitimate Wallet Instance.
+- *TLS*: Used in all communication between the Wallet and the Credential Issuer. Data in transit is encrypted and protected from interception by attackers.
+- *Wallet Attestation*: Ensures that the Wallet operates on a secure, trusted device and complies with the security standards required by the Credential Issuer. The attestation gives additional assurance that the Credential Issuer is interacting with a legitimate Wallet Instance.
 - *DPoP*: Ensures that the Holder of the access token possesses the private key associated with it, preventing attackers from reusing intercepted tokens.
 - *Holder binding*: Ties the Credential to a specific Holder, ensuring that only the legitimate Holder can use a Credential to authenticate with the Credential Issuer.
 - *redirect_uri validation*: This validation ensures that the authorization response is sent to the correct and authorized endpoint, thereby preventing unauthorized interception by malicious actors. Ensuring the integrity of the **redirect_uri** is critical to avoid any manipulation or misdirection of the URI.
@@ -425,16 +419,14 @@ SPR-P-60
 The IT Wallet complies with the requirements of P-60 by ensuring that all network connections are secured by TLS.
 
 In addition, as the Authorization Response contains PII is important that it is not sent to an attacker-controlled endpoint.
-In the IT Wallet specification the **response_uri**, which is the endpoint where the Wallet sends the Authorization Response, is included in the signed Request Object,
-which is verified by the Wallet using the Relying Party's public key and Trust Chain. This guarantees that the Authorization Response is being sent to the correct endpoint.
+In the IT Wallet specification the **response_uri** is the endpoint where the Wallet sends the Authorization Response. The **response_uri** is included in the signed Request Object. The Wallet verifies that object using the Relying Party's public key and Trust Chain. This guarantees that the Authorization Response is sent to the correct endpoint.
 Additionally, the Authorization Response is encrypted with the Relying Party's public key, ensuring that only the intended recipient can decrypt and read the sensitive information,
 further securing the transmission.
 
 Another endpoint to be validated is the **redirect_uri**, which is used to redirect the User back to the Relying Party after the Credential presentation is complete.
-In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Relying Party onboarding using OpenID Federation. During the presentation phase, the Wallet must validate this value by verifying the trust with the Relying Party according to the Section `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Relying Party onboarding using OpenID Federation. During the presentation phase, the Wallet validates this value by verifying trust in the Relying Party according to `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_.
 
-
-In order to be sure that the **redirect_uri** is received from a legit Wallet and not from the attacker, the Relying Party response endpoint upon the recipient of a valid authorization response creates a fresh cryptographic value that is linked to the authorization response and attaches it to the **redirect_uri** that is sent to the Wallet.
+The Relying Party response endpoint checks that the **redirect_uri** comes from a legitimate Wallet and not from an attacker. Upon receipt of a valid authorization response, the endpoint creates a fresh cryptographic value linked to that response. The endpoint attaches the value to the **redirect_uri** sent to the Wallet.
 When the Relying Party receives the redirect, it can extract the response code and check with its response endpoint whether the response code was associated with this Authorization Response. (See :ref:`remote-flow:Redirect URI`).
 
 SPR-P-70
@@ -448,8 +440,8 @@ SPR-P-70
 In the issuance process, as the Credential inside a Credential Response contains PII, it is required that the Credential is not sent to or intercepted by an attacker.
 To mitigate these threats, the IT-Wallet specification requires the following security mechanisms:
 
-- *TLS*: Used in all communication between the Wallet and the Credential Issuer, ensuring that data in transit is encrypted and protected from interception by attackers.
-- *Wallet Instance Attestation*: Ensures that the Wallet operates on a secure, trusted device and complies with the security standards required by the Credential Issuer, providing additional assurance that the Credential Issuer is interacting with a legitimate Wallet Instance.
+- *TLS*: Used in all communication between the Wallet and the Credential Issuer. Data in transit is encrypted and protected from interception by attackers.
+- *Wallet Instance Attestation*: Ensures that the Wallet operates on a secure, trusted device and complies with the security standards required by the Credential Issuer. The attestation gives additional assurance that the Credential Issuer is interacting with a legitimate Wallet Instance.
 - *DPoP*: Ensures that the Holder of the access token possesses the private key associated with it, preventing attackers from reusing intercepted tokens.
 - *Holder binding*: Ties the Credential to a specific Holder, ensuring that only the legitimate Holder can use a Credential to authenticate with the Credential Issuer.
 - *redirect_uri validation*: This validation ensures that the authorization response is sent to the correct and authorized endpoint, thereby preventing unauthorized interception by malicious actors. Ensuring the integrity of the **redirect_uri** is critical to avoid any manipulation or misdirection of the URI.
@@ -481,6 +473,6 @@ SPR-W-50
    * - |check-icon|
      - The Wallet must ensure that the Credentials and private keys are protected from unauthorized access.
 
-To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the Keystore (or the WSCA/WSCD for the PID), ensuring that only the User can access them, thereby preventing unauthorized use or tampering.
+To prevent unauthorized access, the Wallet is unlocked on the User's device by a personal identification number (PIN) or by biometric authentication. Biometric authentication includes fingerprint or facial recognition, based on the User's preferences and the device's capabilities. The cryptographic keys are stored within the Keystore, or within the WSCA/WSCD for the PID. Only the User can access those keys. That storage prevents unauthorized use or tampering.
 
 

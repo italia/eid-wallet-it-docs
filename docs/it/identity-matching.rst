@@ -8,9 +8,9 @@ Identity Matching e Identity Reconciliation
 
 L'**identity matching** è il processo con cui una Relying Party accerta che gli attributi di identificazione personale presentati in una transazione si riferiscano alla stessa persona fisica. È lo stesso approccio pratico già utilizzato in qualsiasi infrastruttura legacy di autenticazione e autorizzazione. Non è una funzionalità dell'Istanza del Wallet, né un passo del protocollo di presentazione. La verifica crittografica dell'Attestato Elettronico resta un prerequisito distinto, e l'identity reconciliation è un passo successivo e opzionale.
 
-Dopo la verifica crittografica di un Attestato Elettronico presentato, nei flussi remoto o di prossimità, la Relying Party DEVE prima effettuare l'**identity matching**, per accertare che gli attributi di identificazione personale presentati nella transazione corrente si riferiscano alla stessa persona fisica. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'**identity reconciliation**, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
+Dopo la verifica crittografica di un Attestato Elettronico presentato, nei flussi remoto o di prossimità, la Relying Party DEVE prima effettuare l'**identity matching**. L'identity matching accerta che gli attributi di identificazione personale presentati nella transazione corrente si riferiscano alla stessa persona fisica. Solo dopo un identity matching andato a buon fine, la Relying Party PUÒ effettuare l'**identity reconciliation**, collegando quella persona fisica a una precedente sessione Utente o a un record Utente memorizzato.
 
-Se l'identity matching fallisce, la Relying Party NON DEVE effettuare l'identity reconciliation e NON DEVE trattare chi presenta l'Attestato Elettronico come un Utente già noto.
+Se l'identity matching fallisce, la Relying Party NON DEVE effettuare l'identity reconciliation. La Relying Party NON DEVE trattare chi presenta l'Attestato Elettronico come un Utente già noto.
 
 Questa Sezione specifica le regole di matching e reconciliation che si applicano agli Attestati Elettronici di identificazione personale (PID e IT-Wallet ID). La correlazione delle identità durante l'emissione dell'IT-Wallet ID (IdP–MRTD) è specificata in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID` ed è fuori dallo scopo di questa Sezione.
 
@@ -71,7 +71,7 @@ Quando ``personal_administrative_number`` non è presentato, la Relying Party DE
 
 La Relying Party NON DEVE completare l'identity matching su un sottoinsieme di tali attributi che consentirebbe uno scambio di persona (:ref:`CI_202 <credential-issuer-testcases>`). In particolare:
 
-- il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta ``place_of_birth``, NON DEVE essere trattato come identity matching andato a buon fine.
+- il matching della sola coppia di nomi, del solo nome e della data di nascita, o di qualsiasi sottoinsieme che ometta ``place_of_birth``, NON DEVE essere trattato come un matching riuscito.
 - una discordanza su qualsiasi attributo del set minimo DEVE far fallire l'identity matching. La Relying Party NON DEVE ignorare una discordanza sul nome attuale (ad esempio dopo un cambio di nome) per forzare un match.
 - se l'Attribute-Based Binding corrisponde a più di un record Utente memorizzato, la Relying Party NON DEVE completare l'identity matching. PUÒ richiedere un identificativo nazionale univoco, oppure applicare un metodo di binding supplementare che identifichi univocamente la persona.
 
@@ -88,7 +88,7 @@ I metodi seguenti POSSONO integrare l'Attribute-Based Binding. NON DEVONO sostit
 Privacy e Selective Disclosure
 ------------------------------
 
-La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione, in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF, da considerarsi pienamente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
+La Selective Disclosure DEVE essere utilizzata affinché gli attributi identificativi necessari solo per il matching non siano rilasciati quando non richiesti dalla specifica transazione. L'uso è in linea con l'Articolo 5a del Regolamento sull'Identità Digitale Europea e con i principi di combined presentation privacy-preserving dell'ARF. Tali principi sono pienamente applicabili quando IT-Wallet sarà notificato come soluzione EUDIW.
 
 Applicazione all'Eliminazione degli Attributi dell'Utente
 ---------------------------------------------------------
@@ -97,4 +97,4 @@ Quando l'Utente richiede la cancellazione degli attributi presentati, la Relying
 
 Quando l'Utente si autentica per una richiesta di cancellazione dei dati presentando un Attestato Elettronico dall'Istanza del Wallet, la Relying Party DEVE applicare i pattern di matching di questa Sezione.
 
-Quando l'Utente si autentica per una richiesta di cancellazione dei dati senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation utilizzando gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID), ove tali attributi identifichino univocamente l'Utente nei record della Relying Party.
+Quando l'Utente si autentica per una richiesta di cancellazione dei dati senza usare l'Istanza del Wallet, la Relying Party PUÒ effettuare l'identity matching e l'identity reconciliation. La Relying Party utilizza gli attributi di identificazione personale ottenuti da uno schema nazionale di autenticazione preesistente (ad esempio CieID). Tali attributi identificano univocamente l'Utente nei record della Relying Party.

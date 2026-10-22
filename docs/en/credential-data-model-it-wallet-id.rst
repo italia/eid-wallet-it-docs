@@ -6,28 +6,28 @@ IT-Wallet ID Data Model
 
 The **IT-Wallet ID** (*Electronic Attestation of Person Identification Data (national scope)*) is an Electronic Attestation of Attributes (EAA) issued by the EAA Provider according to national laws. It is provided in SD-JWT VC format.
 
-The IT-Wallet ID is intended **exclusively for national use** with Italian Relying Parties to access online services. It MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework.
+The IT-Wallet ID is intended **exclusively for national use** with Italian Relying Parties to access online services. The IT-Wallet ID MUST NOT be used for cross-border interactions and does **not** constitute a PID under the European Digital Identity framework.
 
 The main scope of the IT-Wallet ID is allowing natural persons to be authenticated for access to a service or to a protected resource within the national jurisdiction.
 It is also presented to a Credential Issuer acting as a Relying Party to obtain other Electronic Attestations of Attributes, according to :ref:`pid-until-notification` and :ref:`credential-issuance-high-level:High-Level EAA flow`.
-The User attributes provided within the IT-Wallet ID are the ones listed below:
+The User attributes provided within the IT-Wallet ID are the ones listed below.
 
-- Current Family Name
-- Current First Name
-- Date of Birth
-- Place of Birth
-- Nationality
-- User identification number across public Relying Party services (for example the *taxpayer identification number*)
+- Current Family Name.
+- Current First Name.
+- Date of Birth.
+- Place of Birth.
+- Nationality.
+- User identification number across public Relying Party services (for example the *taxpayer identification number*).
 
-In addition to the User attributes listed above, the IT-Wallet ID includes also the following metadata attributes:
+In addition to the User attributes listed above, the IT-Wallet ID includes also the following metadata attributes.
 
-- Issuing authority
-- Issuing country
-- Expiry Date
-- Validity status information
-- Identity and data proofing information
+- Issuing authority.
+- Issuing country.
+- Expiry Date.
+- Validity status information.
+- Identity and data proofing information.
 
-The identity proofing information is REQUIRED for IT-Wallet ID to ensure:
+The identity proofing information is REQUIRED for IT-Wallet ID to ensure the following.
 
 - The evaluation of User authentication method used.
 - The level of Assurance compliance of identity proofing during the enrollment process, according to the LoA defined by the eIDAS Regulation.
@@ -71,20 +71,19 @@ The IT-Wallet ID in SD-JWT VC format includes the following User Attributes:
       - REQUIRED if ``personal_administrative_number`` is not present, OPTIONAL otherwise. *String*. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``.
       - Domestic extension
 
-.. note::
-   **Identity Matching**
+.. note:: Identity Matching
 
    For the IT-Wallet ID, at least one of ``tax_id_code`` and ``personal_administrative_number`` is present. The identity matching rules are specified in :ref:`identity-matching`.
 
 All the User attributed listed above MUST be selectively disclosable.
-In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a IT-Wallet ID:
+In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a IT-Wallet ID.
 
-  - **date_of_expiry**
-  - **sub** (domestic extension)
-  - **iat**
-  - **cnf**
-  - **status**
-  - **verification** (domestic extension)
+  - ``date_of_expiry``.
+  - ``sub`` (domestic extension).
+  - ``iat``.
+  - ``cnf``.
+  - ``status``.
+  - ``verification`` (domestic extension).
 
 SD-JWT-VC IT-Wallet ID Non-Normative Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -111,7 +110,7 @@ The disclosure list is presented below.
    ``WyJrZ2h0ZTVNRE5IYlFmZEpIcDg4cENBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
  * Contents:
-   ``["kghte5MDNHbQfdJHp88pCA", "given_name", "Mario"]``
+   ``["kghte5MDNHbQfdJHp88pCA", "given_name", "Mario"]``.
 
 
 **Claim** ``family_name``:
@@ -121,7 +120,7 @@ The disclosure list is presented below.
    ``WyJoWDFURXpfejg3N19YQXRyM0NPYVdnIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
  * Contents:
-   ``["hX1TEz_z877_XAtr3COaWg", "family_name", "Rossi"]``
+   ``["hX1TEz_z877_XAtr3COaWg", "family_name", "Rossi"]``.
 
 
 **Claim** ``birthdate``:
@@ -131,7 +130,7 @@ The disclosure list is presented below.
    ``WyJZV3RJMDZ4RGRDeXZUYWxjSW5URTNBIiwgImJpcnRoZGF0ZSIsICIxOTgw``
    ``LTAxLTEwIl0``
  * Contents:
-   ``["YWtI06xDdCyvTalcInTE3A", "birthdate", "1980-01-10"]``
+   ``["YWtI06xDdCyvTalcInTE3A", "birthdate", "1980-01-10"]``.
 
 
 **Claim** ``tax_id_code``:
@@ -142,7 +141,7 @@ The disclosure list is presented below.
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
  * Contents:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "tax_id_code",``
-   ``"TINIT-XXXXXXXXXXXXXXXX"]``
+   ``"TINIT-XXXXXXXXXXXXXXXX"]``.
 
 
 **Claim** ``place_of_birth``:
@@ -153,7 +152,7 @@ The disclosure list is presented below.
    ``eyJsb2NhbGl0eSI6ICJSb21hIn1d``
  * Contents:
    ``["XcXlPVCqjHNveBCnlVPYgA", "place_of_birth", {"locality":``
-   ``"Roma"}]``
+   ``"Roma"}]``.
 
 
 **Claim** ``nationalities``:
@@ -163,7 +162,7 @@ The disclosure list is presented below.
    ``WyJLTmM1LUdrOUNRaF9UZEdicUJLSTdBIiwgIm5hdGlvbmFsaXRpZXMiLCBb``
    ``IklUIl1d``
  * Contents:
-   ``["KNc5-Gk9CQh_TdGbqBKI7A", "nationalities", ["IT"]]``
+   ``["KNc5-Gk9CQh_TdGbqBKI7A", "nationalities", ["IT"]]``.
 
 The combined format for the IT-Wallet ID issuance is given by:
 

@@ -13,10 +13,10 @@ Le State Machine per i Trust Artifact sono descritte di seguito:
 
 - Per WRPAC, WRPRC e Sign/Seal Certificate, gli stati del ciclo di vita sono ``VALID`` e ``REVOKED``.
   La transizione da ``VALID`` a ``REVOKED`` è innescata dalla revoca del Trust Artifact, che può essere avviata dal corrispondente Trust Artifact provider per varie ragioni quali compromissione di chiave, cambiamenti organizzativi, o non conformità alle policy del framework.
-  Una volta che un Trust Artifact è nello stato ``REVOKED``, NON DEVE essere considerato fidato per qualsiasi uso operativo all'interno dell'ecosistema, e qualsiasi Entità che vi fa affidamento DEVE rifiutarlo per autenticazione, autorizzazione o qualsiasi altra operazione relativa alla fiducia.
+  Una volta che un Trust Artifact è nello stato ``REVOKED``, quel Trust Artifact NON DEVE essere considerato fidato per qualsiasi uso operativo all'interno dell'ecosistema. Qualsiasi Entità che fa affidamento su quel Trust Artifact DEVE rifiutarlo per autenticazione, autorizzazione o qualsiasi altra operazione relativa alla fiducia.
 
-  - Un WRPAC nello stato ``VALID`` NON DEVE essere presente nella CRL designata e/o DEVE restituire uno status ``good`` nella risposta OCSP.
-    Un WRPAC nello stato ``REVOKED`` DEVE essere presente nella CRL designata e/o DEVE restituire uno status ``revoked`` nella risposta OCSP.
+  - Un WRPAC nello stato ``VALID`` NON DEVE essere presente nella CRL designata. In alternativa, un WRPAC nello stato ``VALID`` DEVE restituire uno status ``good`` nella risposta OCSP.
+    Un WRPAC nello stato ``REVOKED`` DEVE essere presente nella CRL designata. In alternativa, un WRPAC nello stato ``REVOKED`` DEVE restituire uno status ``revoked`` nella risposta OCSP.
   - Un WRPRC nello stato ``VALID`` DEVE restituire uno status ``0x00`` nel corrispondente Status List Token.
     Un WRPRC nello stato ``REVOKED`` DEVE avere valore di status ``0x01`` all'interno del corrispondente Status List Token.
 - Per le Trust List (LoTE, LOTL, EUMS TL), gli stati del ciclo di vita sono ``CURRENT`` e ``HISTORICAL``.
@@ -44,13 +44,13 @@ Federation Entity Key Rotation
 La Federation Entity Key di un'Entità è attestata dal Subordinate Statement che il suo superiore immediato pubblica su di essa, e l'Entity Configuration dell'Entità DEVE essere firmata con una chiave che il Subordinate Statement attesta.
 Una nuova Federation Entity Key diventa fidata solo quando il superiore la attesta nel Subordinate Statement.
 
-La rotazione della Federation Entity Key DEVE essere eseguita come definito nei passi seguenti:
+La rotazione della Federation Entity Key DEVE essere eseguita come definito nei passi seguenti.
 
-- L'Entità aggiunge la nuova chiave al ``jwks`` della propria Entity Configuration e DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.
-- Nel processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`) il superiore DEVE leggere il ``jwks`` dall'Entity Configuration, DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata, e DEVE riemettere il Subordinate Statement attestando la nuova chiave.
-- La chiave precedente e la nuova chiave coesistono quindi fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute, e durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.
-- Una volta che le finestre di validità della Trust Chain sono scadute, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.
-- Poi, quando l'Entità vuole rimuovere la chiave precedente, PUÒ rimuoverla dal ``jwks`` notificando questo cambiamento al superiore attraverso il processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`), e il superiore DEVE rimuoverla dal Subordinate Statement.
+- L'Entità aggiunge la nuova chiave al ``jwks`` della propria Entity Configuration. L'Entità DEVE continuare a firmare l'Entity Configuration con la chiave precedente, che è ancora attestata.
+- Nel processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`) il superiore DEVE leggere il ``jwks`` dall'Entity Configuration. Il superiore DEVE verificare che l'Entity Configuration sia firmata con una chiave attestata. Il superiore DEVE riemettere il Subordinate Statement attestando la nuova chiave.
+- La chiave precedente e la nuova chiave coesistono fino a quando le Trust Chain costruite con il Subordinate Statement precedente sono scadute. Durante la coesistenza l'Entità continua a firmare con la chiave precedente, in modo che sia il Subordinate Statement precedente sia quello nuovo validino la sua Entity Configuration.
+- Una volta che la finestra di validità della Trust Chain è scaduta, l'Entità PUÒ firmare la propria Entity Configuration con la nuova chiave.
+- Quando l'Entità vuole rimuovere la chiave precedente, l'Entità PUÒ rimuoverla dal ``jwks`` e notificare questo cambiamento al superiore attraverso il processo di Entity Update (vedi :ref:`onboarding-system:Entity Update`). Il superiore DEVE rimuovere quella chiave dal Subordinate Statement.
 - Il superiore DEVE registrare l'evento come un ``jwks_update`` pubblicato sul Federation Subordinate Events Endpoint.
 
 
@@ -376,7 +376,7 @@ La tabella seguente elenca quelle richieste:
        L'identificatore OID è ``id-pkix-ocsp-nonce``.
      - [:rfc:`6960`, clausola 4.4.1]
 
-Quando inviata su HTTP usando POST, il body di questa richiesta DEVE contenere la codifica DER raw di questa SEQUENCE ``OCSPRequest`` e DEVE avere MIME type ``application/ocsp-request``.
+Quando è inviato su HTTP usando POST, il body di questa richiesta DEVE contenere la codifica DER raw di questa SEQUENCE ``OCSPRequest``. Il body di questa richiesta DEVE avere MIME type ``application/ocsp-request``.
 
 Di seguito un esempio non normativo di una richiesta OCSP:
 
@@ -573,7 +573,8 @@ Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LI
 
 Lo SLT Provider PUÒ essere il Provider of WRPRC o un'entità designata.
 
-**Status List**
+Token Status List (WRPRC Profile): Status List
+..............................................
 
 Una Status List contiene un array di byte compresso le cui entry rappresentano gli status di molti WRPRC. Il Provider of WRPRC DEVE assegnare un valore ``idx`` distinto, non negativo a ciascun WRPRC emesso e includerlo, insieme all'``uri`` della SLT, nel membro ``status.status_list`` del WRPRC. Per un WRPRC codificato JWT, ``idx`` è un intero JSON e ``uri`` è una stringa JSON.
 Per un WRPRC codificato CWT, ``idx`` è un intero non firmato CBOR e ``uri`` è una text string CBOR. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
@@ -583,7 +584,8 @@ Il Provider of WRPRC DEVE impostare il parametro ``bits`` nell'oggetto ``status_
 
 L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
 
-**Status List Token**
+Token Status List (WRPRC Profile): Status List Token
+....................................................
 
 Lo SLT Provider DEVE agire sia come Status Issuer sia come Status Provider.
 Lo SLT Provider DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``status.status_list.uri`` del WRPRC.

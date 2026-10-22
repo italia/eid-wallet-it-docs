@@ -68,7 +68,7 @@ Transizione dell'Attestato Elettronico a Expired
 
 Un Attestato Elettronico passa naturalmente allo stato **Expired** quando scade automaticamente al raggiungimento della sua data di fine validità (**PID/(Q)EAA EXP**).
 
-Se un Attestato Elettronico è **Expired**, l'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico è scaduto e l'Utente PUÒ eliminarlo (**PID/(Q)EAA DEL**).
+Se un Attestato Elettronico è **Expired**, l'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico è scaduto. L'Utente PUÒ eliminare l'Attestato Elettronico (**PID/(Q)EAA DEL**).
 Questo termina il suo ciclo di vita.
 
 Transizione dell'Attestato Elettronico a Revoked
@@ -93,8 +93,7 @@ Nel caso del solo PID e IT-Wallet ID, i seguenti casi si aggiungono a quelli sop
 .. note::
   Un Fornitore di Attestati Elettronici di Attributi (Q)EAA PUÒ revocare un Attestato Elettronico di Attributi (Q)EAA in caso di revoca del PID/IT-Wallet ID.
 
-Quando un Attestato Elettronico è **Revoked** non può tornare allo stato **Valid**, l'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico
-è stato revocato e l'Utente PUÒ eliminarlo (**PID/(Q)EAA DEL**). Questo termina il suo ciclo di vita.
+Quando un Attestato Elettronico è **Revoked**, l'Attestato Elettronico non può tornare allo stato **Valid**. L'Istanza del Wallet DOVREBBE notificare all'Utente che l'Attestato Elettronico è stato revocato. L'Utente PUÒ eliminare l'Attestato Elettronico (**PID/(Q)EAA DEL**). Questo termina il suo ciclo di vita.
 
 Transizione dell'Attestato Elettronico a Suspended
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,17 +161,14 @@ Fattori esterni relativi all'utente possono anche influenzare il ciclo di vita d
 Entità Coinvolte
 ^^^^^^^^^^^^^^^^
 
-Mentre il Fornitore di Attestati Elettronici DEVE gestire direttamente lo stato di validità degli Attestati Elettronici che ha emesso, altri attori POSSONO attivare il processo di revoca/sospensione dell'Attestato Elettronico:
+Il Fornitore di Attestati Elettronici DEVE gestire direttamente lo stato di validità degli Attestati Elettronici che ha emesso. Altri attori POSSONO attivare il processo di revoca/sospensione dell'Attestato Elettronico.
 
-  - Utenti, attraverso:
-
-    - La loro Istanza del Wallet
-    - Servizio web fornito dal Fornitore di Attestati Elettronici
-
-  - La Fonte Autentica quando gli attributi dell'Attestato Elettronico vengono aggiornati o cambiano stato di validità
-  - Il Fornitore di Wallet quando revoca un'Istanza del Wallet
-  - Il Gestore di Identità Digitale se l'Identità Digitale utilizzata per il rilascio del PID/IT-Wallet ID è stata rubata o compromessa
-  - Autorità legali o l'Organo di Vigilanza in caso di attività illegali comprovate
+  - Gli Utenti, attraverso la loro Istanza del Wallet.
+  - Gli Utenti, attraverso il servizio web fornito dal Fornitore di Attestati Elettronici.
+  - La Fonte Autentica, quando gli attributi dell'Attestato Elettronico vengono aggiornati o cambiano stato di validità.
+  - Il Fornitore di Wallet, quando revoca un'Istanza del Wallet.
+  - Il Gestore di Identità Digitale, se l'Identità Digitale utilizzata per il rilascio del PID/IT-Wallet ID è stata rubata o compromessa.
+  - Le autorità legali o l'Organo di Vigilanza, in caso di attività illegali comprovate.
 
 La seguente figura mostra un diagramma delle relazioni tra entità relative al flusso di aggiornamento dello stato.
 
@@ -235,9 +231,9 @@ Aggiornamento dello Stato da parte dell'Istanza del Wallet
 
 Quando l'Utente elimina un Attestato Elettronico dall'Istanza del Wallet, per impostazione predefinita l'Istanza del Wallet NON DEVE notificare questo evento al Fornitore di Attestati Elettronici. L'eliminazione dall'Istanza del Wallet rimuove solo la copia locale e non modifica lo stato di validità presso il Fornitore di Attestati Elettronici.
 
-L'Istanza del Wallet PUÒ informare l'Utente, prima dell'eliminazione, che l'eliminazione è un'azione locale e non implica la revoca presso il Fornitore di Attestati Elettronici, e PUÒ implementare, con il consenso esplicito dell’Utente al momento dell’eliminazione, una funzionalità di notifica per informare il Fornitore di Attestati Elettronici dell’intenzione dell’Utente di revocare l’Attestato Elettronico.
+L'Istanza del Wallet PUÒ informare l'Utente, prima dell'eliminazione, che l'eliminazione è un'azione locale e non implica la revoca presso il Fornitore di Attestati Elettronici,. L'Istanza del Wallet PUÒ implementare, con il consenso esplicito dell’Utente al momento dell’eliminazione, una funzionalità di notifica per informare il Fornitore di Attestati Elettronici dell’intenzione dell’Utente di revocare l’Attestato Elettronico.
 
-Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attestato Elettronico, DOVREBBE confermare esplicitamente tale intenzione tramite il prompt di eliminazione dell’Istanza del Wallet (quando disponibile), che a sua volta DEVE notificare il Fornitore di Attestati Elettronici. In alternativa, l'Utente PUÒ utilizzare il portale web del Fornitore di Attestati Elettronici o altri canali messi a disposizione.
+Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attestato Elettronico, l'Utente DOVREBBE confermare esplicitamente tale intenzione tramite il prompt di eliminazione dell’Istanza del Wallet (quando disponibile). L'Istanza del Wallet DEVE notificare il Fornitore di Attestati Elettronici. In alternativa, l'Utente PUÒ utilizzare il portale web del Fornitore di Attestati Elettronici o altri canali messi a disposizione.
 
 Quando l'Attestato Elettronico revocato è il PID/IT-Wallet ID, il Fornitore di Attestati Elettronici DEVE inviare una notifica di questo evento all'Utente entro 24 ore.
 Per qualsiasi altro Attestato Elettronico diverso dal PID/IT-Wallet ID, il Fornitore di Attestati Elettronici DOVREBBE inviare una notifica di questo evento all'Utente. La notifica all'Utente PUÒ essere implementata in diversi modi, ad esempio utilizzando l'indirizzo email dell'Utente, il numero di telefono o qualsiasi altro canale di comunicazione verificato e sicuro. La notifica all'Utente DEVE includere anche tutte le informazioni sullo stato di revoca dell'Attestato Elettronico. Il metodo utilizzato per la notifica all'Utente è fuori dallo scopo del presente profilo tecnico di implementazione. Quando la revoca avviene, il Fornitore di Attestati Elettronici DEVE aggiornare di conseguenza lo stato dell'Attestato Elettronico. Quando la Notification Response inviata dal Fornitore di Attestati Elettronici viene ricevuta con successo dall'Istanza del Wallet, l'Istanza del Wallet DEVE eliminare l'Attestato Elettronico.
@@ -328,7 +324,8 @@ Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LI
 
 Lo SLT Provider DEVE essere il Fornitore di Attestati Elettronici.
 
-**Status List**
+Status List
+"""""""""""
 
 Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molti Attestati Elettronici. Il Fornitore di Attestati Elettronici DEVE assegnare a ciascun Attestato Elettronico emesso un valore ``idx`` distinto e non negativo e includerlo, insieme all'``uri`` della SLT, nel riferimento alla status list dell'Attestato Elettronico. Per un Attestato Elettronico SD-JWT, il riferimento è in ``status.status_list``, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. Per un MSO mdoc, il riferimento è in ``issuerAuth.status_list``, ``idx`` è un intero non firmato CBOR e ``uri`` è una text string CBOR. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
 
@@ -344,22 +341,24 @@ Di conseguenza, il Fornitore di Attestati Elettronici DEVE impostare il parametr
 
 Il Fornitore di Attestati Elettronici PUÒ definire stati aggiuntivi specifici dell'applicazione nell'intervallo supportato da ``bits``. DOVREBBE considerare con attenzione le informazioni divulgate alle Relying Party quando definisce stati aggiuntivi per il ciclo di vita dell'Attestato Elettronico.
 
-Il Fornitore di Attestati Elettronici DEVE impacchettare le entry a partire dal bit meno significativo di ciascun byte, comprimere l'array di byte con DEFLATE nel formato dati ZLIB e pubblicare la Status List risultante nella SLT.
+Il Fornitore di Attestati Elettronici DEVE impacchettare le entry a partire dal bit meno significativo di ciascun byte. Il Fornitore di Attestati Elettronici DEVE comprimere l'array di byte con DEFLATE nel formato dati ZLIB. Il Fornitore di Attestati Elettronici DEVE pubblicare la Status List risultante nella SLT.
 
-**Status List Token**
+Status List Token
+"""""""""""""""""
 
 Il Fornitore di Attestati Elettronici DEVE agire sia come Status Issuer sia come Status Provider. DEVE rendere disponibile ciascuna SLT tramite HTTP GET all'URI specificato dal riferimento alla status list dell'Attestato Elettronico, usando ``application/statuslist+jwt`` per una SLT JWT oppure ``application/statuslist+cwt`` per una SLT CWT.
 
-Il formato della SLT PUÒ essere JWT oppure CWT. DEVE essere protetto da una firma crittografica. Indipendentemente dal formato scelto, la SLT DEVE essere conforme alla Sezione 5.1 per i JWT oppure alla Sezione 5.2 per i CWT di `TOKEN-STATUS-LIST`_.
+Il formato della SLT PUÒ essere JWT oppure CWT. Il formato della SLT DEVE essere protetto da una firma crittografica. Indipendentemente dal formato scelto, la SLT DEVE essere conforme alla Sezione 5.1 per i JWT oppure alla Sezione 5.2 per i CWT di `TOKEN-STATUS-LIST`_.
 
-Indipendentemente dal formato, il Fornitore di Attestati Elettronici DEVE firmare la SLT in uno dei modi seguenti:
+Indipendentemente dal formato, il Fornitore di Attestati Elettronici DEVE firmare la SLT in uno dei modi seguenti.
 
-- un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE del Fornitore di Attestati Elettronici, quando quest'ultimo è registrato nel Trust Framework EUDIW, oppure
-- una chiave valida attestata dalla Entity Configuration del Fornitore di Attestati Elettronici, quando quest'ultimo è registrato nel Trust Framework Nazionale.
+- Un certificato X.509 valido la cui catena di fiducia termina al Trust Anchor pubblicato nella LoTE del Fornitore di Attestati Elettronici, quando il Fornitore di Attestati Elettronici è registrato nel Trust Framework EUDIW.
+- Una chiave valida attestata dalla Entity Configuration del Fornitore di Attestati Elettronici, quando il Fornitore di Attestati Elettronici è registrato nel Trust Framework Nazionale.
 
-**Considerazioni sulla privacy**
+Considerazioni sulla privacy
+""""""""""""""""""""""""""""
 
-I Fornitori di Attestati Elettronici DEVONO integrare le informazioni di stato di molti Attestati Elettronici nella stessa lista. I Fornitori di Attestati Elettronici DEVONO pubblicare la SLT allo stesso ``uri`` per tutti quegli Attestati Elettronici. Lo scopo è impedire ai Fornitori di Attestati Elettronici di tracciare o profilare gli Utenti in base all'uso degli Attestati Elettronici. I Fornitori di Attestati Elettronici DEVONO configurare le Status List con almeno 100.000 voci di stato. Se vengono emessi ulteriori Attestati Elettronici, il Fornitore di Attestati Elettronici PUÒ creare SLT aggiuntive oppure aumentare il numero di entry nell'array, in base a considerazioni pratiche quali la dimensione totale di ciascuna SLT e la gestione di più endpoint.
+I Fornitori di Attestati Elettronici DEVONO integrare le informazioni di stato di molti Attestati Elettronici nella stessa lista. I Fornitori di Attestati Elettronici DEVONO pubblicare la SLT allo stesso ``uri`` per tutti quegli Attestati Elettronici. Lo scopo è impedire ai Fornitori di Attestati Elettronici di tracciare o profilare gli Utenti in base all'uso degli Attestati Elettronici. I Fornitori di Attestati Elettronici DEVONO configurare le Status List con almeno 100.000 voci di stato. Se vengono emessi ulteriori Attestati Elettronici, il Fornitore di Attestati Elettronici PUÒ creare SLT aggiuntive. Il Fornitore di Attestati Elettronici PUÒ aumentare il numero di entry nell'array. La scelta dipende da considerazioni pratiche quali la dimensione totale di ciascuna SLT e la gestione di più endpoint.
 
 Verifica degli Stati degli Attestati Elettronici
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -389,11 +388,8 @@ La Relying Party DOVREBBE inviare un header ``Accept`` che contiene ``applicatio
 
 Di seguito è riportato un esempio non normativo di una richiesta di Token di Status List:
 
-.. code-block:: http
-
-  GET /statuslists HTTP/1.1
-  Host: example-issuer.com
-  Accept: application/statuslist+jwt
+.. literalinclude:: ../../examples/shared/credential-revocation-1.http
+   :language: http
 
 
 Risposta HTTP di Status List
@@ -407,12 +403,8 @@ Se nella risposta HTTP sono presenti header relativi alla cache, le Relying Part
 
 Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List di tipo ``application/statuslist+jwt``:
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/statuslist+jwt
-
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjQsImxzdCI6ImVKeGpjRkFFQUFDa0FHSSJ9LCJzdWIiOiJodHRwczovL2V4YW1wbGUuY29tL3N0YXR1c2xpc3RzLzEiLCJ0dGwiOjQzMjAwfQ.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
+.. literalinclude:: ../../examples/shared/credential-revocation-2.http
+   :language: http
 
 Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguire la validazione dell'Attestato Elettronico stesso (ad esempio, il controllo degli attributi attesi, della firma valida e del tempo di scadenza). Se questa validazione non ha successo, l'Attestato Elettronico DEVE essere rifiutato. Se la validazione ha avuto successo, la Relying Party DEVE eseguire i seguenti passaggi di validazione per valutare lo stato dell'Attestato Elettronico:
 

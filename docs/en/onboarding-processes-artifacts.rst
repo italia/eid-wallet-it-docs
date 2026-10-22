@@ -15,15 +15,15 @@ The WRPAC, the Signature/Seal Certificate and the National Authentication Certif
 The Entity authenticates to the Certification Authority with its Federation Trust Chain, through the ``openid-federation-01`` challenge.
 The authentication reuses the trust evaluation of the National Trust Framework, so the validation of the Trust Chain and the authentication of the Entity follow :ref:`trust-evaluation:Trust Chain Validation` and :ref:`trust-evaluation:Federation Entity Authentication`.
 
-Once the Entity is authenticated, the Certification Authority applies its policy and reads the entitlements and the profile values first from the record of the Entity in the Register, through the :ref:`infrastructure-trust:Register Open APIs`, and, when the Entity has no record there, from the registration Trust Mark included in the Resolved Metadata of the Trust Chain.
+Once the Entity is authenticated, the Certification Authority applies its policy. The Certification Authority reads the entitlements and the profile values first from the record of the Entity in the Register, through the :ref:`infrastructure-trust:Register Open APIs`. When the Entity has no record there, the Certification Authority reads them from the registration Trust Mark included in the Resolved Metadata of the Trust Chain.
 Both sources provide the authorization data with the same logic of [`ETSI TS 119 475`_].
 
-The issuance of these certificates is a process on its own, separate from the registration and performed machine-to-machine, so the Entity presents its ``certificate_signing_requests`` in the ACME order only after the registration process has been successfully completed.
+The issuance of these certificates is a process on its own, separate from the registration and performed machine-to-machine. The Entity presents its ``certificate_signing_requests`` in the ACME order only after the registration process has been successfully completed.
 
 A distinct ACME service is provided for each purpose, so the type of the certificate is determined by the service, and the profile of each certificate is fixed by its type.
 
 Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
-A certificate has its own ``notBefore`` and ``notAfter`` and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see :ref:`onboarding-system:Entity Suspension and Removal`, and not by the expiration of the Trust Chain.
+A certificate has its own ``notBefore`` and ``notAfter`` and it is governed by the X.509 revocation. The loss of the federation membership of an Entity is reflected by the revocation of its certificates, see :ref:`onboarding-system:Entity Suspension and Removal`. That loss is not reflected by the expiration of the Trust Chain.
 
 The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity. The Wallet-Relying Party Registration Certificate is issued automatically as defined in :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`.
 
@@ -36,11 +36,11 @@ Certificate Signing Request Profile
 """""""""""""""""""""""""""""""""""
 
 This section defines the profile that the ``certificate_signing_requests`` MUST follow, see :ref:`onboarding-system:Registration Data Model`.
-The Entity provides one Certificate Signing Request for each X.509 certificate it needs, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate, and it presents each of them in the ACME order of the corresponding service.
+The Entity provides one Certificate Signing Request for each X.509 certificate it needs. Depending on the role, that certificate is the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate. The Entity presents each Certificate Signing Request in the ACME order of the corresponding service.
 The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify a key, so they are not requested through a Certificate Signing Request, see :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance` and :ref:`onboarding-system:Registration Trust Mark Issuance`.
 
 A Certificate Signing Request carries the public key to be certified, proves possession of the corresponding private key, and requests the values of the certificate fields supplied by the Entity.
-It does not determine the content of the issued certificate: the Certification Authority MUST validate the requested values against the registration data and the applicable certificate profile, and it MUST add or determine the issuer-dependent values required by that profile.
+The Certificate Signing Request does not determine the content of the issued certificate. The Certification Authority MUST validate the requested values against the registration data and the applicable certificate profile. The Certification Authority MUST add or determine the issuer-dependent values required by that profile.
 
 The Certificate Signing Request MUST be a ``CertificationRequest`` as defined in :rfc:`2986` (PKCS #10), DER-encoded, and it is carried in the ACME order as required by :rfc:`8555#section-7.4`.
 
@@ -122,7 +122,7 @@ Extensions not applicable to, or not listed in, the applicable certificate profi
 
 .. note::
    The Certificate Signing Request certifies a key that is separate from the Federation Entity Key.
-   The Federation Entity Key is bound to the Entity through the Entity Configuration and the Subordinate Statement, validated through the Federation Trust Chain and not through a certification path, see :ref:`infrastructure-trust:PKI Architecture`.
+   The Federation Entity Key is bound to the Entity through the Entity Configuration and the Subordinate Statement, validated through the Federation Trust Chain and not through a certificate chain, see :ref:`infrastructure-trust:PKI Architecture`.
 
 The following is a non-normative example of a Certificate Signing Request for a WRPAC, with test data.
 
@@ -133,20 +133,23 @@ Wallet-Relying Party Access Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Access Certificate Issuance process issues the WRPAC, defined in the :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
-The WRPAC belongs to the EUDIW Trust Framework, so its attributes MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_], and the fallback to the Trust Mark does not apply to it.
+The WRPAC belongs to the EUDIW Trust Framework. The attributes of the WRPAC MUST always be derived from the Register, as required by clause 5.1.2 of [`ETSI TS 119 475`_]. The fallback to the Trust Mark does not apply to the WRPAC.
 The Entity obtains one WRPAC.
 One WRPAC per registered Service, and a separate set of WRPACs for each intermediated Relying Party, are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
 
-**Input**
+Wallet-Relying Party Access Certificate Issuance: Input
+.......................................................
 
 The ``certificate_signing_requests`` of the Entity for the WRPAC, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
 The attributes of the certificate come from the record of the Entity in the Register.
 
-**Outcome**
+Wallet-Relying Party Access Certificate Issuance: Outcome
+.........................................................
 
 The WRPAC, issued by the WRPAC Certification Authority, that the Entity uses to authenticate towards the Wallet Units.
 
-**Process**
+Wallet-Relying Party Access Certificate Issuance: Process
+.........................................................
 
 1. The Entity requests the WRPAC to the ACME service of the WRPAC Certification Authority, presenting its ``certificate_signing_requests`` and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority checks that the Entity has a record in the Register and derives the attributes of the certificate from that record.
@@ -156,45 +159,51 @@ Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-The Provider of WRPRC MUST issue one WRPRC automatically and without undue delay, without a request from the Entity, once the Entity has a record with a valid registration status in the Register and a valid WRPAC, as required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
+The Provider of WRPRC MUST issue one WRPRC automatically and without undue delay, without a request from the Entity. The Provider of WRPRC does so once the Entity has a record with a valid registration status in the Register and a valid WRPAC. This is required by [`EIDAS-ARF`_] RPRC_09 and RPRC_13 and by Annex V, point 3(c) of [`CIR2025/848`_] as amended by [`CIR2026/1730`_].
 The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], revokes the WRPRC when the registration of the Entity changes, and MUST re-issue a new WRPRC automatically where the registration remains valid.
 
 A separate WRPRC for each combination of intended use and Relying Party Service, and a separate WRPRC for each registered Service of a PID or Attestation Provider, are deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
-A Relying Party Intermediary that does not declare intended uses does not receive a WRPRC of its own; the Wallet Unit relies on the WRPRC of the intermediated Relying Party.
+A Relying Party Intermediary that does not declare intended uses does not receive a WRPRC of its own. The Wallet Unit relies on the WRPRC of the intermediated Relying Party.
 
-**Input**
+Wallet-Relying Party Registration Certificate Issuance: Input
+.............................................................
 
 The signed record of the Entity in the Register and its valid WRPAC.
 The attributes of the certificate come from that record.
 
-**Outcome**
+Wallet-Relying Party Registration Certificate Issuance: Outcome
+...............................................................
 
 The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate and issued to the Entity, that the Entity presents to the Wallet Units together with its registration data.
 
-**Process**
+Wallet-Relying Party Registration Certificate Issuance: Process
+...............................................................
 
 1. The Provider of WRPRC is invoked without a request from the Entity when a valid WRPAC becomes available, or when the Register record changes after the previous WRPRC has been revoked.
-2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the information the certificate carries is consistent with that record, and that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
+2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register. The Provider of WRPRC verifies that the information the certificate carries is consistent with that record. The Provider of WRPRC verifies that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
 3. The Provider of WRPRC builds the WRPRC from the record of the Entity in the Register and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
 4. The Provider of WRPRC issues the WRPRC to the Entity.
-5. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider MUST re-issue a new WRPRC without undue delay.
+5. The Provider of WRPRC monitors any change of the Register in an automated manner. The Provider of WRPRC revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`. Where the registration remains valid, the Provider of WRPRC MUST re-issue a new WRPRC without undue delay.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""
 
-Signature and Seal Certificate Issuance covers the certificates issued by the National PKI, namely the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
-The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider, outside the National Root and outside this process, and its qualified status is evaluated in the eligibility, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+Signature and Seal Certificate Issuance covers the certificates issued by the National PKI. Those certificates are the Sign/Seal Certificate of the PID Provider, of the Wallet Provider and of the EAA Provider. Issuance uses the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
+The Sign/Seal Certificate of a QEAA Provider and of a PuB-EAA Provider is a qualified certificate issued by a Qualified Trust Service Provider. That certificate is outside the National Root and outside this process. Its qualified status is evaluated in the eligibility, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
 
-**Input**
+Signature and Seal Certificate Issuance: Input
+..............................................
 
 The ``certificate_signing_requests`` of the Entity for the Sign/Seal Certificate, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
 The attributes of the certificate come from the record of the Entity in the Register or, in its absence, from the registration Trust Mark.
 
-**Outcome**
+Signature and Seal Certificate Issuance: Outcome
+................................................
 
 The Sign/Seal Certificate, issued by the Certification Authority of the role of the Entity, that the Entity uses to sign or seal the Attestations it issues.
 
-**Process**
+Signature and Seal Certificate Issuance: Process
+................................................
 
 1. The Entity requests the Sign/Seal Certificate to the ACME service of the Certification Authority of its role, presenting its ``certificate_signing_requests`` and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority applies its policy, reading the attributes from the record in the Register or, in its absence, from the registration Trust Mark.
@@ -206,15 +215,18 @@ National Authentication Certificate Issuance
 National Authentication Certificate Issuance process issues the X.509 certificate that a Relying Party uses to authenticate in the Proximity Flow, through the mdoc reader authentication of [`ISO18013-5`_].
 The certificate follows the same profile of the WRPAC, and it is issued by the National Authentication Certification Authority, through the mechanism of :ref:`onboarding-system:Issuance of the X.509 Certificates through ACME and OpenID Federation`.
 
-**Input**
+National Authentication Certificate Issuance: Input
+...................................................
 
 The ``certificate_signing_requests`` of the Entity for the National Authentication Certificate, and the Federation Trust Chain used in the ``openid-federation-01`` challenge.
 
-**Outcome**
+National Authentication Certificate Issuance: Outcome
+.....................................................
 
 The National Authentication Certificate, issued by the National Authentication Certification Authority, that the Entity uses to authenticate in the Proximity Flow.
 
-**Process**
+National Authentication Certificate Issuance: Process
+.....................................................
 
 1. The Entity requests the certificate to the ACME service of the National Authentication Certification Authority, presenting its ``certificate_signing_requests`` and authenticating with its Federation Trust Chain, validated as in :ref:`trust-evaluation:Federation Entity Authentication`.
 2. The Certification Authority applies its policy, reading the attributes from the record in the Register or, in its absence, from the registration Trust Mark.
@@ -226,16 +238,19 @@ Registration Trust Mark Issuance
 Registration Trust Mark Issuance issues the registration Trust Mark, defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
 The Trust Mark is issued during the registration of the Entity and not through ACME, and it is invoked by the Entity Registration at the completion of the federation registration.
 
-**Input**
+Registration Trust Mark Issuance: Input
+.......................................
 
 The authorization data of the Entity: its entitlements and, where applicable, the Credentials and the attributes it is authorized to issue or to request, following the logic of [`ETSI TS 119 475`_].
 
-**Outcome**
+Registration Trust Mark Issuance: Outcome
+.........................................
 
 The registration Trust Mark, issued by the Federation Trust Anchor and carried in the Subordinate Statement about the Entity.
 It makes the Entity recognizable as a registered participant of the National Trust Framework, and it is the source of the authorization data when the Entity has no record in the Register.
 
-**Process**
+Registration Trust Mark Issuance: Process
+.........................................
 
 1. At the completion of the federation registration, the National Federation Management builds the registration Trust Mark with the authorization data of the Entity.
 2. The Federation Trust Anchor signs the Trust Mark, which is carried in the Subordinate Statement, as described in :ref:`onboarding-system:Entity Registration`.

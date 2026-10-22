@@ -19,19 +19,11 @@ In this case the Credential Issuer can send a subset of the metadata containing 
 
 Below is a non-normative example.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-1.http
+   :language: http
 
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/json
-    Accept-Language: it-IT, it;q=0.9
-
-.. code-block:: http
-
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/jwt
-    Accept-Language: it-IT, it;q=0.9
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-2.http
+   :language: http
 
 The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing:
 
@@ -51,10 +43,8 @@ In case the ``authorization_servers`` parameter is omitted, the Credential Issue
 
 Below is a non-normative example.
 
-.. code-block:: http
-
-    GET /.well-known/oauth-authorization-server HTTP/1.1
-    Host: oauth-authorization-server.example.com
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-3.http
+   :language: http
 
 The Oauth Authorization Server MUST respond with HTTP Status Code 200 and return the Oauth Authorization Server Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for oauth_authorization_server`, using a JSON document with the media type *application/json*.
 
