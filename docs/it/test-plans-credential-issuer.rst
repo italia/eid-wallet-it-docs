@@ -13,7 +13,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - ID
+  * - ID Caso di Test
     - Scopo
     - Descrizione
     - Risultato Atteso
