@@ -1,0 +1,6 @@
+GET /.well-known/it-wallet-registry HTTP/1.1
+Host: trust-anchor.eid-wallet.example.it
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json

@@ -1,0 +1,19 @@
+{
+  "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+  "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
+  "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
+  "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
+  "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
+  "intended_issuer": "https://credential-issuer.example.org",
+  "cnf": {
+    "jwk": {
+      "crv": "P-256",
+      "kty": "EC",
+      "x": "8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44",
+      "y": "MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
+    }
+  },
+  "platform": "iOS",
+  "wallet_solution_id": "Wallet-mobile",
+  "wallet_solution_version": "1.1.0"
+}

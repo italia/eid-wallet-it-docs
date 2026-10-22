@@ -1,0 +1,8 @@
+HTTP/1.1 400 Bad Request
+Content-Type: application/problem+json
+
+{
+    "title": "invalid_request",
+    "status": 400,
+    "detail": "The Agid-JWT-Signature header parameter is missing."
+}

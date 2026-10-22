@@ -1,0 +1,16 @@
+{
+  "wscd_key_attestation": {
+    "storage_type": "LOCAL_NATIVE",
+    "attestation": "MIICszCCA..."
+  },
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "xAH9SNfaq9J5dmkzXYQLek5YfpPc8i_PpMRT315hjMk",
+      "y": "PE2XLcpW6eXH4FlYGNP9BhwQQdEiZE1tAdT-EihACC8"
+    }
+  },
+  "iat": 1773053861,
+  "exp": 1773057461
+}

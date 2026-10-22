@@ -1,0 +1,15 @@
+{
+  "iss": "https://trust-registry.eid-wallet.example.it",
+  "iat": 1742040000,
+  "localization": {
+    "default_locale": "it",
+    "available_locales": ["en", "it"],
+    "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/",
+    "version": "1.0.0"
+  },
+  "credential": {
+    "credential_type": "mDL",
+    "version": "1",
+    "...": "..."
+  }
+}

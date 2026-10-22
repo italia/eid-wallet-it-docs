@@ -1,0 +1,7 @@
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+  "error": "invalid_request",
+  "error_description": "Trust cannot be established with the issuer: https://issuer.example.com"
+}

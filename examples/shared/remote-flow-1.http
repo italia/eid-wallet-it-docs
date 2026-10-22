@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Type: application/oauth-authz-req+jwt
+
+eyJhbGciOiJFUzI1NiIs...9t2LQ

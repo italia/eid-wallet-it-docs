@@ -1,0 +1,8 @@
+GET /.well-known/credential-catalog?state=ACTIVE&limit=20&offset=0 HTTP/1.1
+Host: trust-anchor.eid-wallet.example.it
+Accept: application/jwt
+
+HTTP/1.1 200 OK
+Content-Type: application/jwt
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
