@@ -24,7 +24,7 @@ L'oggetto JSON dei metadati la cui chiave è ``openid_wallet_provider`` contiene
     * - ``wallet_name`` 
       - OBBLIGATORIO. Stringa contenente il nome del Wallet. 
     * - ``authorization_endpoint``
-      - OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schemes* personalizzati possono anche essere utilizzati se necessario.
+      - OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. Gli schemi di invocazione sono specificati in :ref:`remote-flow:Flusso Remoto`.
     * - ``credential_offer_endpoint`` 
       - OBBLIGATORIO. Credential Offer Endpoint del Wallet.
     * - ``response_types_supported``
@@ -42,7 +42,8 @@ L'oggetto JSON dei metadati la cui chiave è ``openid_wallet_provider`` contiene
   Alcuni flussi relativi agli Attestati Elettronici richiedono il recupero delle informazioni del Wallet prima di interagire con il Wallet stesso. Il flusso è descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
 
 .. note::
-  Per l'``authorization_endpoint`` l'uso di *universal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-  Inoltre, gli *universal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli *URL scheme* personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP `OPENID4VC-HAIP`_, utilizzando ``openid4vp://`` o ``haip-vp://`` come specificato in :ref:`remote-flow:Flusso Remoto`.
+  Per l'``authorization_endpoint``, un link universale configurato con Assetlinks JSON per Android e Apple App Site Association per iOS riduce il rischio di dirottamento degli URL.
+  Un link universale consente anche al flusso di continuare in un browser quando l'Istanza del Wallet non è installata.
+  Gli schemi di invocazione sono specificati in :ref:`remote-flow:Flusso Remoto`.
 
 

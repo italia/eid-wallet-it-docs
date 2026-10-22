@@ -380,7 +380,7 @@
 <td><p>OBBLIGATORIO. Stringa contenente il nome del Wallet.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code></p></td>
-<td><p>OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schemes</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
+<td><p>OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Gli schemi di invocazione sono specificati in <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code></p></td>
 <td><p>OBBLIGATORIO. Credential Offer Endpoint del Wallet.</p></td>
@@ -408,8 +408,9 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>universal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-Inoltre, gli <em>universal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli <em>URL scheme</em> personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html">OPENID4VC-HAIP</a>, utilizzando <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> o <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> come specificato in <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>.</p>
+<p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, un link universale configurato con Assetlinks JSON per Android e Apple App Site Association per iOS riduce il rischio di dirottamento degli URL.
+Un link universale consente anche al flusso di continuare in un browser quando l'Istanza del Wallet non è installata.
+Gli schemi di invocazione sono specificati in <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>.</p>
 </div>
 </section>
 

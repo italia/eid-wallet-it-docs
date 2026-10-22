@@ -614,9 +614,13 @@ This information SHOULD be obtained using the Selection Page described in :ref:`
 - If the Selection Page is supported, the User selects the Wallet, and then the Credential Issuer or third party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The Wallet Instance invocation mechanism depends on the ``credential_offer_endpoint`` parameter in the Wallet metadata:
 
   - If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
-  - Otherwise, for an ETSI EUDI Wallet invocation, the Credential Issuer or third party MUST use one of the following custom URL schemes. The scheme ``eu-eaa-offer://`` is defined in [`ETSI TS 119 472-3`_]. The scheme ``openid-credential-offer://`` is defined in Section 4 of [`OpenID4VCI`_]. The scheme ``haip-vci://`` is defined in Section 4.2 of [`OPENID4VC-HAIP`_]. A EUDIW compliant interaction MUST use ``eu-eaa-offer://``. A National interaction MAY retain its configured national Universal Link or other retained national invocation mechanism.
+  - Otherwise, on the EUDIW path, the Credential Issuer or third party MUST use ``eu-eaa-offer://``.
+  - The Wallet Instance MUST support ``eu-eaa-offer://`` ([`ETSI TS 119 472-3`_] Section 4.1).
+  - The Wallet Instance MUST support ``openid-credential-offer://``. ``openid-credential-offer://`` is defined in Section 4 of [`OpenID4VCI`_].
+  - The Wallet Instance MUST support ``haip-vci://``. ``haip-vci://`` is defined in Section 4.2 of [`OPENID4VC-HAIP`_].
+  - When ``credential_offer_endpoint`` is absent, or when its value is not an HTTPS URL, on the National path the Credential Issuer or third party MAY retain its configured national Universal Link or other retained national invocation mechanism.
 
-  - The Credential Issuer or third party might not support the Selection Page, or the retrieval of the Wallet metadata might fail. In that case, the Credential Issuer or third party invokes the Wallet Instance using the applicable scheme described above.
+  - When the Credential Issuer or third party does not support the Selection Page, or when Wallet metadata retrieval fails, the Credential Issuer or third party MUST invoke the Wallet Instance with the scheme required above for that path.
 
 The Credential Offer can be transmitted by value or by reference:
 
