@@ -13,10 +13,10 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - ID Caso di Test
+    - Scopo
+    - Descrizione
+    - Risultato Atteso
   * - ATT-001
     - Discovery, Security
     - Valutazione dell'emittente
@@ -31,7 +31,7 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - L'algoritmo nell'header deve corrispondere all'operazione crittografica.
   * - ATT-004
     - Appropriate Algorithms
-    - Assicurarsi che siano usati solo gli algoritmi elencati come MUST o RECOMMENDED in :ref:`algorithms:Algoritmi Crittografici`. Gli algoritmi elencati come MUST NOT (incluso ``none``) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.
+    - Assicurarsi che siano usati solo gli algoritmi per i quali :ref:`algorithms:Algoritmi Crittografici` indica che DEVONO essere supportati. Gli algoritmi per i quali quella sezione indica che NON DEVONO essere supportati (incluso ``none``) sono rifiutati. Cipher suite e funzioni di hash non profilate in quella sezione seguono le Linee guida funzioni crittografiche ACN. Curve di Edwards e algoritmi post-quantum non sono obbligatori nel profilo attuale.
     - Solo gli algoritmi approvati sono accettati; quelli deprecati o non elencati sono rifiutati.
   * - ATT-005
     - Signature Validation
@@ -78,9 +78,9 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - Assicurarsi che COSE/JOSE non siano sostituiti in contesti diversi.
     - COSE/JOSE deve essere validato per l'uso specifico del contesto.
   * - ATT-013
-    - Issued At Validation
-    - Verificare che il parametro `issued at` sia impostato all'ora corrente, permettendo un periodo di grazia non superiore a 120 secondi.
-    - Il valore `issued at` deve essere entro 120 secondi dall'ora corrente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - ATT-014
     - Expiration Validation
     - Assicurarsi che il tempo di `expiration` sia maggiore del tempo `issued at`.

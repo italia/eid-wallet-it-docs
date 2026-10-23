@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via test-plans.rst at title level '-' (level 1).
 
 
 Signature Evaluation Test Matrix
@@ -13,10 +14,10 @@ This section provides the common set of test cases for Wallet Solutions, Relying
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - ATT-001
     - Discovery, Security
     - Evaluation of the issuer
@@ -78,9 +79,9 @@ This section provides the common set of test cases for Wallet Solutions, Relying
     - Ensure COSE/JOSE are not substituted across different contexts.
     - COSE/JOSE must be validated for context-specific use.
   * - ATT-013
-    - Issued At Validation
-    - Verify that the `issued at` parameter is set to the current time, allowing a grace period not exceeding 120 seconds.
-    - The `issued at` value must be within 120 seconds of the current time.
+    - Voided
+    - Voided
+    - Voided
   * - ATT-014
     - Expiration Validation
     - Ensure the `expiration` time is greater than the `issued at` time.

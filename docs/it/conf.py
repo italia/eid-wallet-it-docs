@@ -6,7 +6,7 @@ settings_project_name = "Specifiche Tecniche IT-Wallet"
 settings_site_title = "Specifiche Tecniche IT-Wallet"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.7'
+settings_doc_version = '1.5.0'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
@@ -72,6 +72,12 @@ redoc = [
         'page': 'OAS3-PDND-WP',
         'spec': './oas3/OAS3-PDND-WP.yaml',
         'embed': True,
+    },
+    {
+        'name': 'OAS3-Register-API-READ',
+        'page': 'OAS3-Register-API-READ',
+        'spec': './oas3/OAS3-Register-API-READ.yaml',
+        'embed': True,
     }
 ]
 
@@ -136,6 +142,40 @@ today = pdf_title_release_date(settings_doc_release_date, language)
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['.DS_Store', 'README', 'README.md', '.venv*', '.env*']
+
+# Partials pulled in with `.. include::` by an aggregating page. Sphinx reads
+# every .rst in the source dir as a standalone document, so without this they
+# would be parsed twice (standalone + inlined): that duplicates their explicit
+# labels, leaves their figures unnumbered for :numref:, and reports them as
+# documents missing from a toctree. Excluding them here does NOT affect the
+# `include` directive, which reads the files straight from disk.
+# Note: sections of these files are labelled under the *including* page, i.e.
+# `infrastructure-trust:<Section>` / `trust-evaluation:<Section>`.
+exclude_patterns += [
+    # included by introduction.rst (and, for HTML, by index.rst)
+    'introduction-lead.rst',
+    'how-to-read-spec.rst',
+    # included by infrastructure-trust.rst
+    'trust-pki-architecture.rst',
+    'x509-certificate-profile.rst',
+    'trust-artifact-common.rst',
+    'trust-artifact-eudiw.rst',
+    'trust-artifact-oidfed.rst',
+    'trust-management.rst',
+    # included by trust-evaluation.rst
+    'trust-evaluation-eudiw.rst',
+    'trust-evaluation-oidfed.rst',
+    'trust-override-rules.rst',
+    # included by onboarding-system.rst
+    'onboarding-overview.rst',
+    'onboarding-registration-model.rst',
+    'onboarding-processes.rst',
+    'onboarding-processes-entities.rst',
+    'onboarding-processes-artifacts.rst',
+    'onboarding-processes-credentials.rst',
+    'onboarding-notification.rst',
+    'onboarding-lifecycle.rst',
+]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -340,6 +380,61 @@ latex_elements = {
           luatexbase.add_to_callback(
             "pre_linebreak_filter", insert_identifier_breaks, "identifier_breaks")
         }
+
+        % Break a run of characters that is wider than the line. Sphinx
+        % measures a verbatim line before it inserts per-character breaks, and
+        % that measurement hits "Dimension too large" on a multi-kilobyte hex
+        % or JWT line. The break is inserted only once the run already exceeds
+        % \hsize, so ordinary words stay intact.
+        \directlua{
+          local glyph_id = node.id("glyph")
+          local glue_id = node.id("glue")
+          local penalty_id = node.id("penalty")
+          local disc_id = node.id("discretionary")
+          local kern_id = node.id("kern")
+          local rule_id = node.id("rule")
+          local hlist_id = node.id("hlist")
+          local vlist_id = node.id("vlist")
+          local math_id = node.id("math")
+          local function contributes(id)
+            return id == glyph_id or id == kern_id or id == rule_id
+                or id == hlist_id or id == vlist_id
+          end
+          local function break_overlong_runs(head)
+            local limit = tex.hsize
+            if not limit or limit < 65536 then
+              return head
+            end
+            local width = 0
+            local n = head
+            while n do
+              local id = n.id
+              if id == glue_id or id == penalty_id or id == disc_id or id == math_id then
+                width = 0
+                n = n.next
+              elseif contributes(id) then
+                local w = n.width or 0
+                if w < 0 then w = 0 end
+                if width > 0 and width + w > limit and (id == glyph_id or id == hlist_id) then
+                  local pen = node.new("penalty")
+                  pen.penalty = 0
+                  local g = node.new("glue")
+                  head = node.insert_before(head, n, pen)
+                  head = node.insert_before(head, n, g)
+                  width = w
+                else
+                  width = width + w
+                end
+                n = n.next
+              else
+                n = n.next
+              end
+            end
+            return head
+          end
+          luatexbase.add_to_callback(
+            "pre_linebreak_filter", break_overlong_runs, "break_overlong_runs")
+        }
         
         % -- prevent too big dim  --
         \maxdimen=16383.99999pt
@@ -386,20 +481,12 @@ latex_elements = {
         }
         \makeatother
 
-        % Break long JWT/URL lines in code blocks at any character
-        \RecustomVerbatimEnvironment{sphinxVerbatim}{Verbatim}{%
-            breaklines=true,%
-            breakanywhere=true,%
-            breaksymbolleft={},%
-            breaksymbolright={},%
-            commandchars=\\\{\}%
-        }
-        \RecustomVerbatimEnvironment{sphinxVerbatim*}{Verbatim}{%
-            breaklines=true,%
-            breakanywhere=true,%
-            breaksymbolleft={},%
-            breaksymbolright={}%
-        }
+        % Do not \RecustomVerbatimEnvironment{sphinxVerbatim}. That command
+        % replaces Sphinx's page-breakable verbatim with fancyvrb, errors
+        % because sphinxVerbatim* is not a LaTeX environment, and keeps a
+        % wrapped hex or JWT line in one box that overprints the footer.
+        % Sphinx verbatimforcewraps plus the overlong-run callback above
+        % wrap those lines and split them across pages.
 
         % Pygments puts a whole JWT in one macro argument, so fvextra cannot
         % break it. seqsplit cannot scan the \PYGZhy macros inside that
@@ -448,12 +535,26 @@ latex_elements = {
         }
         \newcommand{\sphinx@tablebreaks}{%
           \small
+          \linespread{1}\selectfont
           \setlength{\tabcolsep}{3.5pt}%
+          \setlength{\parskip}{0pt}%
           \emergencystretch=4em
           \exhyphenpenalty=0
         }
-        \AtBeginEnvironment{longtable}{\sphinx@tablebreaks}
+        \newif\ifspx@intable
+        \AtBeginEnvironment{longtable}{\spx@intabletrue\sphinx@tablebreaks}
+        \AtEndEnvironment{longtable}{\spx@intablefalse}
         \AtBeginEnvironment{tabular}{\sphinx@tablebreaks}
+        \newcommand{\sphinx@tablelistspacing}{%
+          \ifspx@intable
+            \setlength{\itemsep}{1pt}%
+            \setlength{\parsep}{0pt}%
+            \setlength{\topsep}{2pt}%
+            \setlength{\partopsep}{0pt}%
+          \fi
+        }
+        \AddToHook{env/itemize/begin}{\sphinx@tablelistspacing}
+        \AddToHook{env/enumerate/begin}{\sphinx@tablelistspacing}
         \makeatother
 
         % -- Improvement for long verbatim  --

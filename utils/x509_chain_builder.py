@@ -1,13 +1,82 @@
+from ipaddress import IPv4Network
+
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
 from cryptography.x509.oid import ExtensionOID
 
 from cryptography.hazmat.primitives.asymmetric import rsa, ec
 
-from pyeudiw.tests.x509.test_x509 import gen_chain
+from pyeudiw.x509.chain_builder import ChainBuilder
 
 import binascii
 import textwrap
+
+
+def example_key_usage():
+    # RFC 8813: keyEncipherment and dataEncipherment MUST NOT be present
+    # for id-ecPublicKey. RFC 5480: keyAgreement SHOULD NOT be present
+    # when keyCertSign or cRLSign is set.
+    return x509.KeyUsage(
+        digital_signature=True,
+        content_commitment=False,
+        key_encipherment=False,
+        data_encipherment=False,
+        key_agreement=False,
+        key_cert_sign=True,
+        crl_sign=True,
+        encipher_only=False,
+        decipher_only=False,
+    )
+
+
+def gen_chain():
+    excluded = [
+        x509.DNSName("localhost"),
+        x509.DNSName("localhost.localdomain"),
+        x509.IPAddress(IPv4Network("127.0.0.1/32")),
+    ]
+    chain = ChainBuilder()
+    chain.gen_certificate(
+        cn="ca.example.com",
+        organization_name="Example CA",
+        country_name="IT",
+        email_address="info@ca.example.com",
+        dns="ca.example.com",
+        uri="https://ca.example.com",
+        crl_distr_point="https://ca.example.com/crl/ca.example.com.crl",
+        ca=True,
+        path_length=None,
+        excluded_subtrees=excluded,
+        key_usage=example_key_usage(),
+    )
+    chain.gen_certificate(
+        cn="intermediate.example.org",
+        organization_name="Example Intermediate",
+        country_name="IT",
+        email_address="info@intermediate.example.org",
+        dns="intermediate.example.org",
+        uri="https://intermediate.example.org",
+        ca=True,
+        path_length=2,
+        excluded_subtrees=excluded,
+        key_usage=example_key_usage(),
+        crl_distr_point="https://intermediate.example.org/crl/intermediate.example.org.crl",
+    )
+    chain.gen_certificate(
+        cn="leaf.example.it",
+        organization_name="Example Leaf",
+        country_name="IT",
+        email_address="info@leaf.example.it",
+        dns="leaf.example.it",
+        uri="https://leaf.example.it/openid4vp",
+        ca=True,
+        path_length=1,
+        permitted_subtrees=[x509.DNSName("leaf.example.it")],
+        excluded_subtrees=excluded,
+        key_usage=example_key_usage(),
+        crl_distr_point="https://leaf.example.it/crl/leaf.example.it.crl",
+    )
+    return chain.get_chain("DER")
 
 
 # The NameOID.ORGANIZATION_IDENTIFIER.name is set to "Unknown OID" because the ORGANIZATION_IDENTIFIER OID is not a standard, widely recognized OID that the cryptography library has a predefined name for.
@@ -227,12 +296,13 @@ def format_certificate(cert):
     lines.append("")
     return "\n".join(lines)
 
-# Example usage:
-der_certs = gen_chain()
+def main():
+    for der in gen_chain():
+        cert = x509.load_der_x509_certificate(der)
+        print(format_certificate(cert))
+        pem = cert.public_bytes(serialization.Encoding.PEM)
+        print(pem.decode())
 
-for der in der_certs:
-    cert = x509.load_der_x509_certificate(der)
-    print(format_certificate(cert))
-    # Print PEM
-    pem = cert.public_bytes(serialization.Encoding.PEM)
-    print(pem.decode())
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,15 @@
+{
+  "client_id": "openid_federation:https://relying-party.example.org",
+  "response_mode": "direct_post.jwt",
+  "response_type": "vp_token",
+  "dcql_query": {"credentials": [{"id": "it-wallet id", "format": "dc+sd-jwt", "meta": {"vct_values": ["urn:it-wallet:eid:1"]}}]},
+  "response_uri": "https://relying-party.example.org/response_uri",
+  "client_metadata": {
+     "jwks": {"keys": [{"kty": "EC", "use": "enc", "crv": "P-256", "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU", "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0", "kid": "20260202-abc123", "alg": "ECDH-ES"}]},
+    "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
+  },
+  "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
+  "iss": "openid_federation:https://relying-party.example.org",
+  "iat": 1672418465,
+  "exp": 1672422065
+}

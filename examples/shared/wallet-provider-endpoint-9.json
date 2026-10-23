@@ -1,0 +1,16 @@
+{
+  "wscd_key_attestation": {
+    "storage_type": "LOCAL_NATIVE",
+    "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw..."
+  },
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "DUQVLhK1KQRd-gx7QNcaSaXCg9x4KtzBk-5b1Y3dye4",
+      "y": "FqV94MekVn_CNf521vmo-QHqfNnMvxgHGsEx9BNW8hQ"
+    }
+  },
+  "iat": 1773053861,
+  "exp": 1773057461
+}

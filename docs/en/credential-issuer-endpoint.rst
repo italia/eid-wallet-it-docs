@@ -10,7 +10,7 @@ Credential Issuer Endpoints
 Metadata Endpoints
 ^^^^^^^^^^^^^^^^^^^^
 
-The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
+The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`infrastructure-trust:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
 
 Alternatively the Credential Issuer's Metadata can be retrieved using the Credential Issuer Identifier. The Metadata document MUST be made available in JSON and JWT format through the ``/.well-known/openid-credential-issuer`` endpoint as defined in Section 12.2.2 of `OpenID4VCI`_.
 
@@ -19,19 +19,11 @@ In this case the Credential Issuer can send a subset of the metadata containing 
 
 Below is a non-normative example.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-1.http
+   :language: http
 
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/json
-    Accept-Language: it-IT, it;q=0.9
-
-.. code-block:: http
-
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/jwt
-    Accept-Language: it-IT, it;q=0.9
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-2.http
+   :language: http
 
 The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing:
 
@@ -44,17 +36,15 @@ The Credential Issuer MUST respond with HTTP Status Code 200 and return the Cred
 Below is a non-normative example of Credential Issuer metadata in signed form:
 
 .. literalinclude:: ../../examples/credential-issuer-metadata.txt
-  :language: text
+   :language: text
 
 The ``authorization_servers`` entries of the Credential Issuer Metadata can be used to obtain the Authorization Server metadata from the Oauth Authorization Server ``/.well-known/oauth-authorization-server`` as defined in Section 3 of :rfc:`8414`.
 In case the ``authorization_servers`` parameter is omitted, the Credential Issuer's identifier can be used to retrieve the Authorization Server metadata.
 
 Below is a non-normative example.
 
-.. code-block:: http
-
-    GET /.well-known/oauth-authorization-server HTTP/1.1
-    Host: oauth-authorization-server.example.com
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-3.http
+   :language: http
 
 The Oauth Authorization Server MUST respond with HTTP Status Code 200 and return the Oauth Authorization Server Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for oauth_authorization_server`, using a JSON document with the media type *application/json*.
 
@@ -85,5 +75,3 @@ Get Statistics
     - Credential Issuer
   * - **Consumer**
     - Authorized Third Party
-
-

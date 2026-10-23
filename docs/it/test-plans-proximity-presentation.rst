@@ -16,10 +16,10 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - ID Caso di Test
+    - Scopo
+    - Descrizione
+    - Risultato Atteso
 
   * - PPR-001
     - Device Engagement

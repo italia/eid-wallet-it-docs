@@ -1,0 +1,13 @@
+{
+  "id": "urn:it-wallet-registry:it-wallet",
+  "version": "1.0.0",
+  "last_modified": "2024-03-15T10:30:00Z",
+  "endpoints": {
+    "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
+    "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
+    "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
+    "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
+    "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas"
+  },
+  "content_negotiation": ["application/json", "application/jwt"]
+}

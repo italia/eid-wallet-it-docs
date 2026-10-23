@@ -1,0 +1,10 @@
+{
+    "alg": "ES256",
+    "typ": "dc+sd-jwt",
+    "kid": "dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
+    "x5u": "https://issuer.example.org/certs/qeaa.cer",
+    "x5t#S256": "bww8YajpegcFcrP8xDisd4AjsxoOxni8pM1bZx_a7n0",
+    "x5c": [
+        "<Issuer X.509 Certificate>"
+    ]
+}

@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "docRequests": [
+    {
+      "itemsRequest": 24(<<
+        {
+          "docType": "org.iso.18013.5.1.mDL",
+          "nameSpaces": {
+            "org.iso.18013.5.1": {
+              "family_name": true,
+              "document_number": true,
+              "driving_privileges": true,
+              "issue_date": true,
+              "expiry_date": true,
+              "portrait": false
+            }
+          },
+          "requestInfo": {
+            "euWrprc": h'5b73657269616c697a65642072632d7772702b6377742057525052435d',
+            "euWrpRegistrarInfo": {
+              "identifier": [
+                {"type": "organizationIdentifier", "identifier": "VATIT-EXAMPLE-RP"}
+              ],
+              "srvDescription": [
+                {"lang": "en", "content": "Example identity verification service"}
+              ],
+              "purpose": [
+                {"lang": "en", "content": "Identity verification"}
+              ],
+              "registryURI": "https://registry.example.org/entities/example-rp",
+              "intendedUseIdentifier": "identity-verification",
+              "policyURI": "https://example.org/privacy",
+              "credential": [
+                {"format": "mso_mdoc", "meta": {"doctype_value": "org.iso.18013.5.1.mDL"}, "claim": ["org.iso.18013.5.1/family_name", "org.iso.18013.5.1/document_number"]}
+              ]
+            }
+          }
+        }
+      >>),
+      "readerAuth": [
+        h'a10126',
+        {
+          33: [
+            h'57525041432d656e642d656e746974792d6365727469666963617465', % WRPAC end-entity certificate placeholder
+            h'57525041432d696e7465726d6564696174652d6365727469666963617465' % WRPAC intermediate certificate placeholder
+          ]
+        },
+        null,
+        h'65756469772d7265616465722d617574682d7369676e6174757265' % EUDIW reader-auth signature placeholder
+      ]
+    }
+  ]
+  % x5chain starts with the WRPAC; the Trust Anchor is intentionally omitted.
+  % The serialized DeviceRequest is encrypted inside SessionEstablishment.
+  % readerAuthAll, if present, is additional and cannot replace readerAuth.
+}

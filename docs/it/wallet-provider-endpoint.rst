@@ -68,16 +68,8 @@ Se si verificano errori durante il processo di recupero, DEVE essere restituita 
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code-block:: http
-
-   HTTP/1.1 403 Forbidden
-   Content-Type: application/json
-   Cache-Control: no-store
-
-   {
-     "error": "forbidden",
-     "error_description": "User is not authorized to retrieve Wallet Instances."
-   }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-1.http
+   :language: http
 
 
 Richiesta di Revoca dell'Istanza di Wallet
@@ -97,16 +89,8 @@ Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere re
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code-block:: http
-
-   HTTP/1.1 400 Bad Request
-   Content-Type: application/json
-   Cache-Control: no-store
-
-   {
-     "error": "bad_request",
-     "error_description": "The request is missing status parameter."
-   }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-2.http
+   :language: http
 
 Gestione degli Errori per la Gestione dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,15 +185,8 @@ Il body della richiesta di emissione della Wallet Instance Attestation contiene 
 
 Di seguito è riportato un esempio non normativo di una richiesta di emissione della Wallet Instance Attestation.
 
-.. code-block:: http
-
-    POST /wallet-instance-attestation HTTP/1.1
-    Host: application-provider.example.org
-    Content-Type: application/json
-
-    {
-      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-3.http
+   :language: http
 
 In particolare, il JWT della richiesta di emissione della Wallet Instance Attestation include i seguenti parametri di intestazione HTTP:
 
@@ -263,6 +240,12 @@ Il JWT della richiesta include le seguenti claim nel body:
     * - **hardware_key_tag**
       - Il valore del Tag della Chiave Crittografica Hardware.
       -
+    * - **intended_issuer**
+      - Identificatore URL HTTPS del PID Provider o dell'Attestation Provider a cui l'Istanza del Wallet presenterà la Wallet Instance Attestation.
+      - Sezione 2.5.1 di `EUDI-TS 3`_.
+    * - **status_list_idx**
+      - Intero non negativo. Presente solo quando l'Istanza del Wallet richiede il riutilizzo della voce di status list già assegnata per ``intended_issuer``. Vedi :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`.
+      - Sezione 2.5.1 di `EUDI-TS 3`_.
     * - **cnf**
       - Oggetto JSON contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'istanza del Wallet.
       - :rfc:`7800`.
@@ -279,34 +262,11 @@ Il JWT della richiesta include le seguenti claim nel body:
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-4.json
+   :language: json
 
-    {
-      "alg": "ES256",
-      "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wia-request+jwt"
-    }
-
-.. code-block:: json
-
-    {
-      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
-      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
-      "cnf": {
-        "jwk": {
-          "crv": "P-256",
-          "kty": "EC",
-          "x": "8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44",
-          "y": "MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-        }
-      },
-      "platform": "iOS",
-      "wallet_solution_id": "Wallet-mobile",
-      "wallet_solution_version": "1.1.0"
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-5.json
+   :language: json
 
 
 Risposta all'Emissione della Wallet Instance Attestation
@@ -338,15 +298,8 @@ Se si verifica un errore durante il processo, viene restituita una risposta di e
 
 Di seguito è riportato un esempio non normativo di una Wallet Instance Attestation Issuance Response.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-      "error": "invalid_request",
-      "error_description": "The provided challenge is invalid, expired, or already used."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-6.http
+   :language: http
 
 La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore supportati per la risposta di errore, salvo diversa indicazione (:ref:`WP_036–039 <wallet-instance-testcases>` e :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
@@ -382,6 +335,9 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``403 Forbidden``
       - ``invalid_request``
       - Il parametro ``iss`` non corrisponde all'identificatore URL previsto dal Fornitore di Wallet.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - L'Istanza del Wallet non è autorizzata a riutilizzare ``status_list_idx`` per ``intended_issuer``.
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza del Wallet non è stata trovata.
@@ -435,15 +391,6 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
-    * - **iss**
-      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
-      - :rfc:`7519`.
-    * - **sub**
-      - OBBLIGATORIO. JWK Thumbprint della chiave pubblica inclusa nel claim ``cnf``.
-      - :rfc:`7519` e `EUDI-TS 3`_.
-    * - **iat**
-      - OBBLIGATORIO. Timestamp UNIX con il tempo di emissione del JWT.
-      - :rfc:`9126` e :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT. La durata è specificata in :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>`.
       - :rfc:`9126` e :rfc:`7519` e `EUDI-TS 3`_.
@@ -459,19 +406,41 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **wallet_name**
       - OBBLIGATORIO. Stringa contenente un nome leggibile dall'uomo del Wallet.
       - `OpenID4VCI`_.
+    * - **wallet_version**
+      - OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
+      - `OpenID4VCI`_ e `EUDI-TS 3`_.
+    * - **wallet_solution_certification_information**
+      - OPZIONALE. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **client_status**
+      - OBBLIGATORIO. Meccanismo di stato per la Wallet Attestation.
+
+        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice E di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca dell’istanza del Wallet.
+        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
+      - `EUDI-TS 3`_.
+    * - **sub**
+      - OBBLIGATORIO. Identificatore dell’istanza del Wallet, che è l’identificatore univoco della Wallet Solution in formato URL.
+      - `EUDI-TS 3`_.
 
 
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
 
 .. literalinclude:: ../../examples/wa-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/wa-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
-    Come meccanismo di revoca per la WIA, è preferita l'opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
+    Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
+
+.. note::
+    Le regole di riutilizzo per emittente di ``client_status.status`` sono definite in :ref:`wallet-instance-attestation-issuance:Riutilizzo della Voce di Stato per Emittente`.
+
+
+.. note::
+    Il claim ``iss`` non è più necessario nel corpo della WIA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
 
 
 
@@ -480,28 +449,21 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 Endpoint di Emissione della Key Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation.
+Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Key Attestation, inviando una Richiesta di Emissione della Key Attestation. L'uso delle :term:`Key Attestation APIs (OEM)` è definito in :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
 
 Richiesta di Emissione della Key Attestation
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
 La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con ``Content-Type`` impostato a ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``wua-request+jwt``.
+L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``ka-request+jwt``.
 
 Il body della richiesta di emissione Key Attestation contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di header e i claim del body descritti di seguito.
 
 Di seguito è riportato un esempio non normativo di una Key Attestation Request.
 
-.. code-block:: http
-
-    POST /key-attestation HTTP/1.1
-    Host: application-provider.example.org
-    Content-Type: application/json
-
-    {
-      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-7.http
+   :language: http
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
 
@@ -521,7 +483,7 @@ In particolare, il JWT della Key Attestation Issuance include i seguenti paramet
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - Il tipo del JWT; DEVE essere impostato a ``wua-request+jwt``.
+      - Il tipo del JWT; DEVE essere impostato a ``ka-request+jwt``.
       -
 
 Il JWT della Key Attestation Request include i seguenti claim nel body:
@@ -547,13 +509,10 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - Il ``nonce`` ottenuto dal Nonce Endpoint.
       -
     * - **keys_to_attest**
-      - Array JSON di stringhe JWT, ciascuna delle quali rappresenta una ``Key_Attestation_Requests``.
+      - Array JSON di stringhe JWT. Ciascun JWT è un elemento di Key Attestation come definito in :ref:`wallet-provider-endpoint:Elemento di Key Attestation`. L'inclusione di materiale delle API di Key Attestation (OEM) è soggetta a :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
       -
     * - **hardware_signature**
       - La firma di ``client_data_hash`` ottenuta utilizzando la Cryptographic Hardware Key, codificata nel formato ``base64url``.
-      -
-    * - **integrity_assertion**
-      - L'Integrity Assertion per la Wallet Instance Attestation ottenuta dalle **Device Integrity Service APIs** con holder binding di ``client_data_hash``.
       -
     * - **hardware_key_tag**
       - Il valore del Cryptographic Hardware Key Tag.
@@ -572,41 +531,80 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       -
 
 
+Elemento di Key Attestation
+...........................
+
+Ciascun elemento di ``keys_to_attest`` è un JWT firmato con la chiave privata corrispondente al proprio claim ``cnf``.
+
+L'header JOSE contiene i seguenti parametri:
+
+.. _table_keys_to_attest_header:
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Parameter**
+      - **Description**
+      - **Reference**
+    * - **alg**
+      - Identificatore di algoritmo di firma digitale, come definito dal registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` né a un identificatore di algoritmo simmetrico (MAC).
+      - [:rfc:`7516#section-4.1.1`]
+    * - **kid**
+      - Thumbprint della JWK contenuta nel claim ``cnf`` di questo JWT.
+      - [:rfc:`7638#section_3`]
+    * - **typ**
+      - Il tipo del JWT. DEVE essere impostato a ``key-attestation-request+jwt``.
+      -
+
+Il body del JWT contiene i seguenti claim:
+
+.. _table_keys_to_attest_jwt:
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **iat**
+      - OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di emissione del JWT.
+      - [:rfc:`7519`]
+    * - **exp**
+      - OBBLIGATORIO. Timestamp UNIX che rappresenta il tempo di scadenza del JWT.
+      - [:rfc:`7519`]
+    * - **cnf**
+      - OBBLIGATORIO. Oggetto JSON contenente la chiave pubblica attestata da questo elemento.
+      - :rfc:`7800`.
+    * - **wscd_key_attestation**
+      - OBBLIGATORIO. Oggetto JSON che descrive l'archivio della chiave e, dove applicabile, l'attestazione di piattaforma di questa chiave.
+
+        - **storage_type**: OBBLIGATORIO. Stringa che identifica l'archivio della chiave. Il valore ``LOCAL_NATIVE`` identifica il Keystore locale.
+        - **attestation**: Su Android, quando sono usate le API di Key Attestation (OEM), la key attestation OEM prodotta alla generazione della chiave. L'Istanza del Wallet DEVE omettere questo membro per le chiavi del PID e su iOS. Vedi :ref:`wallet-attestation-issuance:Emissione della Key Attestation` e :ref:`wallet-solution-requirements:Uso delle API di Key Attestation (OEM)`.
+        - **integrity_assertion**: OBBLIGATORIO su iOS. L'asserzione del Servizio di Integrità del Dispositivo per questa chiave, vincolata a ``client_data_hash``. L'Istanza del Wallet DEVE omettere questo membro su Android.
+      - Questa specifica.
+
+
+Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su Android, quando è incluso materiale OEM.
+
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-8.json
+   :language: json
+
+Di seguito è riportato un esempio non normativo di un payload ``keys_to_attest`` decodificato su iOS.
+
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-9.json
+   :language: json
+
+
 Di seguito è riportato un esempio non normativo dell'header e del payload JWT di una Key Attestation Request.
 
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-10.json
+   :language: json
 
-    {
-      "alg": "ES256",
-      "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
-    }
-
-.. code-block:: json
-
-    {
-      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
-      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
-      "cnf": {
-        "jwk": {
-          "crv": "P-256",
-          "kty": "EC",
-          "x": "8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44",
-          "y": "MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-        }
-      },
-      "keys_to_attest": [
-        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw",
-        "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw"
-      ],
-      "platform": "iOS",
-      "wallet_solution_id": "Wallet-mobile",
-      "wallet_solution_version": "1.1.0"
-    }
+.. literalinclude:: ../../examples/shared/wallet-provider-endpoint-11.json
+   :language: json
 
 
 Risposta all'Emissione della Key Attestation
@@ -646,10 +644,10 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
       - **Description**
     * - ``400 Bad Request``
       - ``bad_request``
-      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header, Integrity Assertion o ``keys_to_attest``), oppure include parametri non validi o sconosciuti.
+      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di header o ``keys_to_attest``), oppure include parametri non validi o sconosciuti.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - La validazione dell'Integrity Assertion o della Key Attestation (``keys_to_attest``) non è riuscita; l'Integrity Assertion o la Key Attestation (``keys_to_attest``) è stata manomessa oppure firmata in modo non corretto.
+      - La validazione di ``keys_to_attest`` non è riuscita. La key attestation OEM o l'asserzione di integrità iOS è stata manomessa oppure firmata in modo non corretto.
     * - ``403 Forbidden``
       - ``invalid_request``
       - La firma della key Attestation Request non è valida oppure non corrisponde alla chiave pubblica associata (JWK).
@@ -701,9 +699,6 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
-    * - **iss**
-      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
-      - :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT.
       - :rfc:`9126` e :rfc:`7519`.
@@ -729,10 +724,11 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
         - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
         - ``iso_18045_basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
       - `OpenID4VCI`_.
-    * - **status**
+    * - **key_storage_status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.
 
-        - **status_list**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell'Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
+        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
+        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
@@ -743,10 +739,10 @@ Il Fornitore di Wallet DEVE impostare ``key_storage`` e ``user_authentication`` 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
 .. literalinclude:: ../../examples/ka-jwt_example_header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/ka-jwt_example_payload.json
-  :language: JSON
+   :language: JSON
 
 
 .. note::
@@ -756,7 +752,54 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. note::
     Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
 
+.. note::
+    Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel claim ``key_storage_status.exp``.
 
+
+Token Status List (Profilo dell'Attestato di Wallet Unit)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Questa sezione profila il meccanismo Token Status List (TSL) di `TOKEN-STATUS-LIST`_ per le Wallet Unit Attestation. Una TSL convoglia lo stato corrente di molte Wallet Unit Attestation in un Status List Token (SLT) compatto e firmato.
+
+Lo SLT Provider DEVE essere il Fornitore di Wallet.
+
+Status List
+"""""""""""
+
+Una Status List contiene un array di byte compresso le cui entry rappresentano gli stati di molte Wallet Instance Attestation (WIA) o Key Attestation (KA). Una WIA DEVE includere il proprio riferimento alla Status List in ``client_status.status.status_list``. Una KA DEVE includere il proprio riferimento alla Status List in ``key_storage_status.status.status_list``. Ciascun riferimento alla Status List DEVE contenere ``idx`` e ``uri``. Sia le WIA sia le KA sono JWT. Pertanto, in ciascun riferimento, ``idx`` è un intero JSON e ``uri`` è una stringa JSON. In entrambi i casi, ``uri`` DEVE essere un URI conforme a :rfc:`3986`.
+
+Secondo questa specifica, una WIA o una KA può avere uno dei seguenti stati:
+
+  - ``VALID``. La WIA o la KA è valida. Questo stato è rappresentato da ``0x00`` nella SLT.
+  - ``INVALID``. La WIA o la KA è revocata. Questo stato è rappresentato da ``0x01`` nella SLT.
+
+Di conseguenza, il Fornitore di Wallet DEVE impostare il parametro ``bits`` nell'oggetto ``status_list`` della SLT a ``1``.
+
+L'impacchettamento delle entry, la compressione DEFLATE, il formato dati ZLIB e la pubblicazione della Status List sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
+
+Assegnazione dell'indice della Key Attestation
+""""""""""""""""""""""""""""""""""""""""""""""
+
+Secondo R_KA_1 di `CIR2026/1731`_, un Fornitore di Wallet DEVE scegliere una delle seguenti opzioni di assegnazione dell'indice per il claim ``key_storage_status.status`` di una KA. L'opzione selezionata determina se l'indice della status list è condiviso dalle KA dello stesso tipo di archiviazione delle chiavi oppure è specifico di una singola KA.
+
+* **Indice condiviso per tipo.** Tutte le KA che attestano chiavi archiviate nello stesso tipo di WSCD o di keystore DEVONO contenere lo stesso valore di indice in ``key_storage_status.status``. Di conseguenza, lo stato rappresentato da quell'indice è condiviso da tutte tali KA.
+* **Indice per Key Attestation.** Una KA che attesta chiavi archiviate in un singolo WSCD o keystore DEVE contenere in ``key_storage_status.status`` un valore di indice univoco rispetto a ogni altra KA. Di conseguenza, ciascuna KA ha una entry distinta nella status list e il suo stato di revoca può essere gestito in modo indipendente.
+
+Il requisito di valori ``idx`` distinti si applica solo all'opzione per Key Attestation. Le KA che usano un indice condiviso per tipo ne sono esenti.
+
+Status List Token
+"""""""""""""""""
+
+Il Fornitore di Wallet DEVE agire sia come Status Issuer sia come Status Provider.
+Il Fornitore di Wallet DEVE pubblicare ciascuna SLT tramite HTTP GET all'URI nel membro ``client_status.status.status_list.uri`` della WIA oppure nel membro ``key_storage_status.status.status_list.uri`` della KA.
+I media type, il formato JWT o CWT e la protezione mediante firma sono specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
+
+Indipendentemente dal formato, il Fornitore di Wallet DEVE firmare la SLT con il Trust Anchor usato per validare le sue Wallet Instance Attestation, come specificato in :ref:`infrastructure-trust:Revocation Trust Anchors`.
+
+Considerazioni sulla privacy
+""""""""""""""""""""""""""""
+
+I Fornitori di Wallet DEVONO aggregare nella stessa Status List le informazioni di stato di più WIA o KA che usano indici per Key Attestation. I Fornitori di Wallet DEVONO pubblicare la SLT allo stesso ``uri`` per tali attestazioni. Lo scopo è impedire ai Fornitori di Wallet di tracciare o profilare gli Utenti in base all'uso delle Wallet Unit Attestation. Ove appropriato, ciascuna Status List DOVREBBE contenere circa 10.000 entry, in conformità a `EUDI-TS 3`_ e `CIR2026/1731`_. Questi requisiti di aggregazione e di dimensione non si applicano alle KA che usano un indice condiviso per tipo.
 
 
 Catalogo e-Service PDND del Fornitore di Wallet

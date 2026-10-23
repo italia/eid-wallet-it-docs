@@ -27,7 +27,7 @@ Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in 
       - :rfc:`6749`
     * - **request**
       - DEVE essere un JWT firmato. La chiave privata corrispondente a quella pubblica presente nel parametro ``cnf`` all'interno dell'Attestato di Unità di Wallet che DEVE essere utilizzata per firmare ilRequest Object.
-      - `OpenID Connect Core. Sezione 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
+      - Sezione 6 di [`OIDC`_]
 
 Il Pushed Authorization Endpoint è protetto con *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
 la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i seguenti parametri di header HTTP:
@@ -100,7 +100,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
       - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
     * - **state**
-      - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
+      - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `NIST`_.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.
     * - **code_challenge**
       - *Challenge* derivata dal **code verifier** che viene inviata nell'authorization request.
@@ -203,7 +203,7 @@ Se i controlli hanno esito positivo, il Credential Issuer DEVE fornire la respon
       - *JSON number*, numero intero positivo, che rappresenta la durata del Request URI in secondi.
       - [:rfc:`9126`].
 
-Se si verificano errori durante la PAR Request, l'Authorization Server DEVE restituire una response di errore come definito nel :rfc:`9126#section-2.3`. La response DEVE avere un content type *application/json* e DEVE includere i seguenti parametri:
+Se si verificano errori durante la PAR Request, l'Authorization Server DEVE restituire una response di errore come definito nel :rfc:`9126#section-2.3`. La response DEVE avere un content type *application/json*. La response DEVE includere i seguenti parametri:
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma *human-readable* che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
@@ -216,7 +216,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
   Content-Type: application/json
 
 .. literalinclude:: ../../examples/par-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -290,8 +290,8 @@ Per l'emissione di un IT-Wallet ID:
 
 Gli *hint* di autenticazione riconosciuti per l'emissione dell'IT-Wallet ID sono i seguenti:
 
-  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD;
-  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo;
+  * la presenza nell'array ``authorization_details`` di un oggetto con ``type`` valorizzato a ``it_l2+document_proof`` costituisce un *hint* opzionale con cui l'Istanza del Wallet indica la preferenza per l'Autenticazione eID Substantial con Verifica MRTD.
+  * il claim ``idphinting`` all'interno di tale oggetto, quando presente, costituisce un *hint* opzionale relativo all'URL del Provider di Identità LoA3 da utilizzare nel contesto di tale metodo.
   * l'assenza dell'oggetto ``it_l2+document_proof`` NON costituisce, di per sé, un mandato dell'Istanza del Wallet sul metodo di autenticazione: in tal caso l'*Authorization Server* applica le proprie politiche e NON DEVE offrire o applicare l'Autenticazione eID Substantial con Verifica MRTD per quella richiesta. In assenza di selezione dell'Utente tramite pagina di *discovery* del Credential Issuer, il metodo di autenticazione di *default* del Provider di IT-Wallet ID DEVE essere CieID con Livello di Garanzia Alto (CIE L3).
 
 .. note::
@@ -348,7 +348,7 @@ Se l'autenticazione ha esito positivo, il Credential Issuer reindirizza l'Utente
       - [:rfc:`9207`], [:rfc:`7519`, Sezione 4.1.1.].
 
 Se si verificano errori durante l'Authorization Request, l'Authorization Server DEVE restituire una response di errore come definito nel :rfc:`6749#section-4.1.2.1`.
-In caso di ``redirect_uri`` o ``client_id`` non valido/mancante, l'Authorization Server DEVE informare l'Utente con l'errore e NON DEVE reindirizzare l'Utente verso il *Redirection URI*.
+In caso di ``redirect_uri`` o ``client_id`` non valido o mancante, l'Authorization Server DEVE informare l'Utente con l'errore. L'Authorization Server NON DEVE reindirizzare l'Utente verso il *Redirection URI*.
 Se si verifica qualsiasi altro errore, l'Authorization Server DEVE reindirizzare l'Utente aggiungendo i seguenti parametri in query come richiesto al *redirect_uri* utilizzando il formato *application/x-www-form-urlencoded*:
 
   - *error*. Il codice di errore.
@@ -357,13 +357,8 @@ Se si verifica qualsiasi altro errore, l'Authorization Server DEVE reindirizzare
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code-block:: http
-
-  HTTP/1.1 302 Found
-  Location: https://client.example.com/cb?
-   error=invalid_request
-   &error_description=Unsupported%20response_type%20value
-   &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-1.http
+   :language: http
 
 Nel caso in cui l'Authorization Server reindirizza l'Utente verso il *redirect_uri* DEVE essere utilizzato lo *status code HTTP 302 (Found)*. I seguenti codici di errore sono supportati per la response di errore:
 
@@ -447,7 +442,7 @@ La token request contiene i seguenti claim:
       - [:rfc:`67491`].
     * - **code_verifier**
       - OBBLIGATORIO solo se il *grant type* è ``authorization_code``. Codice di verifica del **code_challenge**.
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. NON DEVE essere presente se il *grant type* è ``refresh_token``.
+      - :rfc:`7636`. NON DEVE essere presente se il *grant type* è ``refresh_token``.
     * - **refresh_token**
       - OBBLIGATORIO solo se il *grant type* è ``refresh_token``. Il Refresh Token precedentemente emesso all'Istanza del Wallet. NON DEVE essere presente se il *grant type* è ``authorization_code``.
       - [:rfc:`6749`].
@@ -534,22 +529,18 @@ Se la Token Request viene validata con successo, l'Authorization Server fornisce
             - **credential_identifiers**: Array di stringhe, ciascuna che identifica in modo univoco un set di dati dell'Attestato Elettronico disponibile per l'emissione.
       - [`OpenID4VCI`_].
 
-Se si verificano errori durante la convalida della Token Request, l'Authorization Server DEVE restituire una response di errore come definito nel :rfc:`6749#section-5.2`. La response DEVE utilizzare il Content-Type HTTP *application/json* e DEVE includere i seguenti parametri:
+Se si verificano errori durante la convalida della Token Request, l'Authorization Server DEVE restituire una response di errore come definito nel :rfc:`6749#section-5.2`. La response DEVE utilizzare il Content-Type HTTP *application/json*. La response DEVE includere i seguenti parametri:
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma *human-readable* che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code-block:: http
-
-  HTTP/1.1 401 Unauthorized
-  Content-Type: application/json;charset=UTF-8
-  Cache-Control: no-store
-  Pragma: no-cache
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-2.http
+   :language: http
 
 .. literalinclude:: ../../examples/token-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -592,7 +583,7 @@ Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di
 Access Token
 ................
 
-Un DPoP-bound Access Token viene fornito dal Token Endpoint del Credential Issuer come risultato di una token request andata a buon fine. L'Access Token è codificato in formato JWT, secondo [:rfc:`7519`]. L'Access Token DEVE avere almeno i seguenti claim obbligatori e DEVE essere vincolato alla chiave pubblica fornita dal *DPoP proof*. Questo vincolo può essere realizzato in base alla metodologia definita nella Sezione 6 del (:rfc:`9449`).
+Un DPoP-bound Access Token viene fornito dal Token Endpoint del Credential Issuer come risultato di una token request andata a buon fine. L'Access Token è codificato in formato JWT, secondo [:rfc:`7519`]. L'Access Token DEVE avere almeno i seguenti claim obbligatori. L'Access Token DEVE essere vincolato alla chiave pubblica fornita dal *DPoP proof*. Questo vincolo può essere realizzato in base alla metodologia definita nella Sezione 6 del (:rfc:`9449`).
 
 Il **JWT DPoP** contiene i seguenti parametri di header JOSE e claim.
 
@@ -651,7 +642,7 @@ Il **JWT DPoP** contiene i seguenti parametri di header JOSE e claim.
 Refresh Token
 ......................
 
-Un *DPoP-bound Refresh Token* viene fornito dal Token endpoint del Credential Issuer come risultato di una token request andata a buon fine. Il Refresh Token è codificato in formato JWT, secondo [:rfc:`7519`]. Il Refresh Token DEVE avere almeno i seguenti claim obbligatori e DEVE essere vincolato alla chiave pubblica fornita dal *DPoP proof*. Questo vincolo può essere realizzato in base alla metodologia definita nella Sezione 6 del (:rfc:`9449`).
+Un *DPoP-bound Refresh Token* viene fornito dal Token endpoint del Credential Issuer come risultato di una token request andata a buon fine. Il Refresh Token è codificato in formato JWT, secondo [:rfc:`7519`]. Il Refresh Token DEVE avere almeno i seguenti claim obbligatori. Il Refresh Token DEVE essere vincolato alla chiave pubblica fornita dal *DPoP proof*. Questo vincolo può essere realizzato in base alla metodologia definita nella Sezione 6 del (:rfc:`9449`).
 
 Il **JWT DPoP** DEVE contenere i seguenti parametri di header JOSE e claim.
 
@@ -799,7 +790,7 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
     - Rappresenta la chiave pubblica scelta dall'Istanza del Wallet, in formato JSON Web Key (JWK) [:rfc:`7517`] a cui l'Attestato Elettronico sarà vincolato, come definito nella Sezione 4.1.3 del [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
   * - **key_attestation**
-    - Representa la Key Attestation.
+    - Rappresenta la Key Attestation.
     - [`OpenID4VCI`_].
 
 .. list-table::
@@ -856,21 +847,18 @@ La Credential Response contiene i seguenti parametri:
     - Sezione 8.3 di [`OpenID4VCI`_].
 
 Nel caso in cui la Credential Request non contenga un Access Token valido, il Credential Endpoint restituisce una response di errore come definito nella Sezione 3 del [:rfc:`6750`].
-Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 8.3.1 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json* e DEVE includere i seguenti parametri:
+Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 8.3.1 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json*. La response DEVE includere i seguenti parametri:
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma *human-readable* che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code-block:: http
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-  Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-3.http
+   :language: http
 
 .. literalinclude:: ../../examples/credential-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -946,7 +934,7 @@ Se i Credential Issuer, che supportano questo flusso, non sono in grado di emett
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-response-deferred.json
-  :language: JSON
+   :language: JSON
 
 L'Istanza del Wallet DEVE utilizzare il valore fornito nel parametro *interval* per informare l'Utente quando l'Attestato Elettronico diventa disponibile (ad esempio utilizzando una notifica locale innescata dal valore di tempo *interval*). I Credential Issuer POSSONO inviare una notifica all'Utente tramite un canale di comunicazione (ad esempio indirizzo email), se precedentemente fornito dall'Utente al Credential Issuer.
 
@@ -967,34 +955,17 @@ Il seguente parametro viene utilizzato nella Deferred Credential Request:
 Il Credential Issuer DEVE invalidare il ``transaction_id`` dopo che l'Attestato Elettronico per cui era destinato è stata ottenuto dall'Istanza del Wallet.
 Di seguito è riportato un esempio non normativo di una Deferred Credential Request:
 
-.. code-block::
-
-  POST /credential HTTP/1.1
-  Host: eaa-provider.example.org
-  Content-Type: application/json
-  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
-  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
-      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
-      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
-      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
-      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
-      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
-
-
-  {
-    "transaction_id": "8xLOxBtZp8"
-  }
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-4.http
+   :language: text
 
 Deferred Response
 ..................
 
 La Deferred Credential Response DEVE essere inviata utilizzando il media type ``application/json``.
 
-Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con un HTTP Status 200 (vedi sezione 15.3.3 del :rfc:`9110`).
+Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response`. La Deferred Credential Response DEVE rispondere con un HTTP Status 200 (vedi sezione 15.3.3 del :rfc:`9110`).
 
-Se il Credential Issuer ha bisogno di più tempo, la Deferred Credential Response DEVE utilizzare i parametri ``interval`` e ``transaction_id`` come definiti nella sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con HTTP Status 202 (vedi Sezione 15.3.3 del :rfc:`9110`).
+Se il Credential Issuer ha bisogno di più tempo, la Deferred Credential Response DEVE utilizzare i parametri ``interval`` e ``transaction_id`` come definiti nella sezione :ref:`credential-issuance-endpoint:Credential Response`. La Deferred Credential Response DEVE rispondere con HTTP Status 202 (vedi Sezione 15.3.3 del :rfc:`9110`).
 
 Il valore di ``transaction_id`` DEVE essere identico a quello presente nella Deferred Credential Request.
 
@@ -1047,21 +1018,18 @@ La Notification Response DEVE utilizzare un *status code HTTP 204 (No Content)*,
 In caso di errori, si DEVE seguire quanto descritto nella Sezione 11.3 di [`OpenID4VCI`_].
 
 Nel caso in cui la Notification Request non contenga un Access Token valido, il Notification Endpoint restituisce una response di errore come definito nella Sezione 3 del [:rfc:`6750`].
-Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 11.3 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json* e DEVE includere i seguenti parametri:
+Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 11.3 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json*. La response DEVE includere i seguenti parametri:
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma *human-readable* che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code-block:: http
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-  Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-5.http
+   :language: http
 
 .. literalinclude:: ../../examples/notification-error.json
-  :language: JSON
+   :language: JSON
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
@@ -1094,7 +1062,7 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
 Correzione dati usando credential_failure
 .........................................
 
-Secondo `OpenID4VCI`_ Sezione 11, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
+Secondo `OpenID4VCI`_ Sezione 11, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure``. Parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
 
 Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_deleted`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
 

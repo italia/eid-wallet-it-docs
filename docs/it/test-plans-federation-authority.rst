@@ -4,7 +4,7 @@
 Matrice di Test per le Autorità di Federazione
 ----------------------------------------------
 
-Questa sezione definisce i casi di test per le Autorità di Federazione (Trust Anchor e Intermediari) responsabili del funzionamento dell'Infrastruttura di Trust come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. I test si concentrano sulla correttezza e conformità di:
+Questa sezione definisce i casi di test per le Autorità di Federazione (Trust Anchor e Intermediari) responsabili del funzionamento dell'Infrastruttura di Trust come descritto in :ref:`infrastructure-trust:Infrastructure of Trust`. I test si concentrano sulla correttezza e conformità di:
 
 - Entity Configuration (``.well-known/openid-federation``)
 - Subordinate Statement restituiti da ``/fetch``
@@ -18,10 +18,10 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - ID Caso di Test
+    - Scopo
+    - Descrizione
+    - Risultato Atteso
   * - FA_001
     - Discovery, Interoperability
     - Media type dell'Entity Configuration
@@ -41,15 +41,15 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_005
     - Security, Interoperability
     - Parametri comuni dell'Entity Configuration
-    - Il payload contiene ``jwks`` e ``metadata`` con l'oggetto ``federation_entity`` che include gli endpoint della Federazione pubblicati come da :ref:`trust-infrastructure:Integrazione dell'Infrastruttura di Trust e del Registro`.
+    - Il payload contiene ``jwks`` e ``metadata`` con l'oggetto ``federation_entity`` che include gli endpoint della Federazione pubblicati come da :ref:`infrastructure-trust:Federation API Endpoints`.
   * - FA_006
     - Security
     - Validità del materiale crittografico
     - Le voci in ``jwks.keys[*]`` usano algoritmi e dimensioni di chiave consentiti; le chiavi non sono scadute o revocate secondo ``/historical-jwks``; ogni ``kid`` è univoco.
   * - FA_007
     - Security
-    - Tolleranza di validazione per ``exp``
-    - La validazione rifiuta l'Entity Configuration se ``exp`` è nel passato; PUÒ essere applicato uno skew massimo di 120 secondi quando si confrontano ``iat``/``exp`` con l'ora corrente.
+    - Validazione di ``exp``
+    - La validazione rifiuta l'Entity Configuration se ``exp`` è nel passato.
   * - FA_008
     - Security
     - Firma e durata del Subordinate Statement
@@ -57,7 +57,7 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_009
     - Interoperability
     - Schema del Subordinate Statement
-    - Il Subordinate Statement contiene le chiavi pubbliche del subordinato (direttamente o per riferimento) e le eventuali policy di metadata o i metadata applicabili, conformi alla struttura della draft-43.
+    - Il Subordinate Statement contiene le chiavi pubbliche del subordinato (direttamente o per riferimento) e le eventuali policy di metadata o i metadata applicabili, conformi a OpenID Federation 1.0 (`OID-FED`_).
   * - FA_010
     - Discovery
     - Elenco dei subordinati
@@ -73,7 +73,7 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_013
     - Security
     - Propagazione della rotazione delle chiavi
-    - Dopo la rotazione delle chiavi, ``/.well-known/openid-federation`` e ``/historical-jwks`` sono aggiornati in modo atomico o entro una finestra di propagazione massima documentata. La verifica con la nuova chiave ha esito positivo e la chiave precedente compare nell'elenco storico.
+    - Dopo la rotazione delle chiavi, ``/.well-known/openid-federation`` e ``/historical-jwks`` sono aggiornati insieme. La verifica con la nuova chiave ha esito positivo e la chiave precedente compare nell'elenco storico.
   * - FA_014
     - Security
     - Disabilitare ``alg": "none"`` e algoritmi deboli
@@ -101,6 +101,6 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_020
     - Security
     - Applicazione delle policy di metadata (se usate)
-    - Quando nel Subordinate Statement sono presenti policy di metadata, i metadata effettivi risultanti da policy + metadata sorgente sono conformi alle regole della draft-43; i conflitti sono risolti in modo deterministico.
+    - Quando nel Subordinate Statement sono presenti policy di metadata, i metadata effettivi risultanti da policy + metadata sorgente sono conformi a OpenID Federation 1.0 (`OID-FED`_); i conflitti sono risolti in modo deterministico.
 
 

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-solution.rst at title level '=' (document title).
 
 
 Wallet Solution Components
@@ -78,28 +79,38 @@ Following the `OpenID4VCI`_ specification and the implementation profile in Sect
 Presentation Component
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Following the implementation profile in Section :ref:`credential-presentation:Digital Credential Presentation`, this component MUST be compliant with remote flows based on `OpenID4VP`_ and proximity flow based on `ISO18013-5`_ .
+Following the implementation profile in Section :ref:`credential-presentation:Digital Credential Presentation`, this component MUST be compliant with remote flows based on `OpenID4VP`_ and proximity flow based on `ISO18013-5`_.
 
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request issuance of that Digital Credential during restore as specified in Section :ref:`backup-restore:Backup and Restore`.
+For each device-bound Digital Credential other than the PID and the IT-Wallet ID, this component MUST add to the backup file the data necessary to request issuance of that Digital Credential during restore. The data are specified in Section :ref:`backup-restore:Backup Flow`.
+
+This component MUST keep the migration object specified in :ref:`backup-restore:Migration to a Different Wallet Solution`.
 
 .. note::
-   Currently the re-issuance of the PID and IT-Wallet ID is not managed by the Backup and Restore Component.
+   Restore of the backup file does not request issuance of the PID or the IT-Wallet ID. The migration object includes references to any PID or IT-Wallet ID present in the source Wallet Instance, enabling the receiving Wallet Instance to request their fresh issuance.
 
 Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This component MUST provide the Wallet Unit dashboard and transaction log functionality. In particular, this component MUST:
 
-- provide a user-accessible interface enabling the User to access transaction transparency information;
-- maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;
+- provide a user-accessible interface enabling the User to access transaction transparency information.
+- maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions.
 - support User interaction with transaction records, including viewing, export, and deletion.
 
-Secure Storage
-^^^^^^^^^^^^^^
+Keystore
+^^^^^^^^
 
-The Wallet Instance MUST use this component to protect critical assets and to securely execute cryptographic functions.
+The Wallet Instance MUST use this component to securely generate, store, and use cryptographic keys for all Digital Credentials. The Keystore relies on the device's OEM hardware-backed cryptographic environment (Strongbox or TEE on Android, and Secure Enclave on iOS). The Keystore is attested via the OEM Key Attestation APIs. The Keystore is the default secure storage mechanism for all Wallet Instance operations and Digital Credentials.
+
+
+WSCA/WSCD Interface
+^^^^^^^^^^^^^^^^^^^
+
+For PID issuance and management at Level of Assurance High, the Wallet Instance MUST interact with a **WSCA operating within a Remote WSCD** implemented as a remote Hardware Security Module (remote HSM) operated server-side. This component provides the interface to the WSCA and the Remote WSCD. This component ensures that PID private keys are generated and managed in a tamper-resistant remote hardware environment meeting the requirements for Level of Assurance High.
+
+The Wallet Provider performs key attestation for the Remote WSCD. After the WSCA generates the PID key pair within the Remote WSCD (remote HSM), the Wallet Provider attests to the properties of both the WSCA and the Remote WSCD. The attestation uses the attestation information (Public Key Confirmation) provided by the Remote WSCD (remote HSM). The Wallet Provider issues a Key Attestation (KA) that is presented to the PID Provider during PID issuance. The KA for the Remote WSCD differs from the Keystore-based KA. The KA for the Remote WSCD describes the remote HSM's security properties rather than the OEM device hardware. That description provides the higher certification level required for Level of Assurance High.
 
 
 Wallet Solution Interaction Patterns

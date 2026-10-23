@@ -1,394 +1,967 @@
 .. include:: ../common/common_definitions.rst
+.. Included via index.rst at title level '=' (document title).
 
+Registry Infrastructure
+=======================
 
-Infrastruttura del Registro
-===========================
+L'ecosistema IT-Wallet opera tramite un'infrastruttura di registro che fornisce definizioni di dati standardizzate e capacità di discovery delle Credenziali. Il sistema di registro è costituito da più componenti interconnessi che supportano l'intero ciclo di vita delle operazioni sugli Attestati Elettronici, dall'onboarding delle entità alla presentazione dell'Attestato Elettronico.
+L'architettura del registro affronta i requisiti di standardizzazione semantica e di discovery delle Credenziali tramite componenti di registro specializzati che assicurano interoperabilità e conformità nell'ecosistema.
 
-L'ecosistema IT-Wallet opera attraverso un'Infrastruttura del Registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle Credenziali. Il sistema di registro è composto da molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni sulle Credenziali digitali, dall'onboarding delle entità alla presentazione delle Credenziali.
+A livello UE la Commissione Europea mantiene due cataloghi EUDIW che sono le controparti transfrontaliere dei registri semantici nazionali a cui i registri nazionali si allineano, definiti in ARF TS11 (`EUDI-TS 11`_) (Interfaces and formats for the Catalogue of Attributes and the Catalogue of Schemes):
 
-L'architettura del registro risponde ai requisiti di standardizzazione semantica, gestione della fiducia federata e discovery delle Credenziali attraverso componenti specializzati che garantiscono interoperabilità e conformità nell'intero ecosistema.
+ - **Catalogue of Attributes** è il catalogo a livello UE delle definizioni e dei namespace di attributi standardizzati utilizzati negli Attestati.
+ - **Catalogue of Schemes** è il catalogo a livello UE degli schema di Attestato (``SchemaMeta``): i metadata machine-readable che vincolano un tipo di Attestato al proprio Rulebook e schema.
 
-Panoramica dell'Architettura di Registro
-----------------------------------------
+I registri e i cataloghi utilizzati all'interno dell'ecosistema IT-Wallet hanno finalità e ambiti diversi. I registri il cui contenuto è evidenza di una decisione di trust, quali il **Register of WRPs** operato da un Registrar nazionale ai sensi di `CIR2025/848`_ e i **Federation API Endpoints** del National Trust Framework, sono specificati in :ref:`infrastructure-trust:Infrastructure of Trust`.
+I registri per la definizione semantica e la discovery dei dati sono dettagliati in questa Sezione.
 
-Il Registro di Sistema IT-Wallet comprende sei componenti principali:
+In particolare, questa sezione fornisce innanzitutto una panoramica dell'infrastruttura di registro IT-Wallet (:ref:`registry:Registries and Catalogues of the Ecosystem`) e del suo meccanismo di discovery (:ref:`registry:Endpoint di Discovery del Registro`).
+Quindi, ne dettaglia i componenti: :ref:`registry:Taxonomy`, :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Schema Registry` e :ref:`registry:Catalogo degli Attestati Elettronici`.
+Infine, descrive le loro relazioni (:ref:`registry:Registry Integration and Cross-References`) e i journey di utilizzo (:ref:`registry:Registry Infrastructure Usage Journeys`).
 
-1. **Registro dei Claims**: Definizioni semantiche standardizzate per i singoli attributi delle Credenziali, i tipi di dati e le regole di validazione.
-2. **Registro delle Fonti Autentiche (FA)**: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e i claim disponibili.
-3. **Registro della Federazione**: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.
-4. **Catalogo delle Credenziali Digitali**: Meccanismo pubblico di discovery per le tipologie di Credenziale disponibili con i loro metadati e le informazioni di emissione.
-5. **Registro degli Schemi**: Elenco autorevole degli Schemi di Credenziale.
-6. **Tassonomia**: Sistema di classificazione gerarchica che organizza le Credenziali per dominio e finalità.
+Registries and Catalogues of the Ecosystem
+-------------------------------------------
 
-Questi componenti del registro sono interconnessi e mantenuti dall'Organismo di Vigilanza per garantire coerenza, sicurezza e conformità normativa nell'intero ecosistema.
+L'ecosistema IT-Wallet utilizza diversi registri e cataloghi, a livello nazionale e a livello UE, e essi servono due finalità diverse.
 
-Endpoint di Discovery del Registro
-----------------------------------
-
-Il Trust Anchor DEVE fornire un meccanismo di discovery per tutti i componenti del registro attraverso endpoint *well-known* standardizzati che forniscono metadati e informazioni di discovery REST API per gestire operazioni complesse come paginazione e filtraggio.
-
-Il Trust Anchor DEVE pubblicare i metadati di discovery del registro all'endpoint ``.well-known/it-wallet-registry`` con supporto alla negoziazione del contenuto:
-
-- **Content-Type predefinito**: ``application/jwt`` (JWT firmato che garantisce autenticità e integrità)
-- **Content-Type alternativo**: ``application/json`` (JSON semplice per scopi di sviluppo/debug)
-
-Inoltre, il Registro di Sistema IT-Wallet DEVE utilizzare due distinti pattern di accesso:
-
-- **API dei Registri Dati**: DEVONO supportare capacità di paginazione e filtraggio.
-- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
-
-Di seguito è riportato un esempio non normativo.
-
-.. code-block:: http
-
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-
-.. code-block:: http
-
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-Parametri dell'Endpoint di Discovery del Registro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Il payload JWT della risposta dell'Endpoint di Discovery del Registro DEVE contenere i seguenti parametri:
-
-.. list-table:: Endpoint di Discovery del Registro — Parametri del Payload JWT
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Nome Campo**
-     - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. Identificatore univoco del documento di discovery (es. ``urn:it-wallet-registry:it-wallet``).
-   * - **version**
-     - OBBLIGATORIO. Versione del formato del documento di discovery (es. ``1.0.0``).
-   * - **last_modified**
-     - OBBLIGATORIO. Timestamp dell'ultima modifica al documento di discovery (es. ``2024-03-15T10:30:00Z``).
-   * - **endpoints**
-     - OBBLIGATORIO. Oggetto JSON contenente gli URI di tutti i componenti del registro. DEVONO essere presenti le seguenti chiavi di endpoint:
-
-       * **claims_registry**: URI dell'API del Registro dei Claims.
-       * **authentic_sources**: URI dell'API del Registro delle Fonti Autentiche.
-       * **credential_catalog**: URI dell'endpoint well-known del Catalogo delle Credenziali Digitali.
-       * **taxonomy**: URI della risorsa Tassonomia.
-       * **schema_registry**: URI dell'API del Registro degli Schemi.
-       * **federation_list**: URI dell'endpoint di listing della federazione (OpenID Federation ``/list``).
-       * **federation_fetch**: URI dell'endpoint fetch della federazione (OpenID Federation ``/fetch``).
-       * **federation_resolve**: URI dell'endpoint resolve della federazione (OpenID Federation ``/resolve``).
-       * **federation_trust_mark_status**: URI dell'endpoint di stato del Trust Mark.
-       * **federation_historical_keys**: URI dell'endpoint degli JWK storici.
-   * - **content_negotiation**
-     - OBBLIGATORIO. Array dei tipi di contenuto supportati dall'endpoint di discovery (es. ``["application/json", "application/jwt"]``).
-
-Struttura del payload JWT (in forma decodificata):
-
-.. code-block:: json
-
-  {
-    "id": "urn:it-wallet-registry:it-wallet",
-    "version": "1.0.0",
-    "last_modified": "2024-03-15T10:30:00Z",
-    "endpoints": {
-      "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
-      "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
-      "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
-      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
-      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
-      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
-    },
-    "content_negotiation": ["application/json", "application/jwt"]
-  }
-
-Registro dei Claims
--------------------
-
-Il **Registro dei Claims** fornisce definizioni semantiche standardizzate per i singoli attributi delle Credenziali, i tipi di dati e le regole di validazione. Questo registro funge da fondamento semantico per la standardizzazione degli attributi delle Credenziali nell'intero ecosistema IT-Wallet, operando in coordinamento con il componente Tassonomia per la classificazione gerarchica.
-
-L'Organismo di Vigilanza DEVE mantenere il Registro dei Claims per garantire la coerenza semantica e la conformità normativa nell'intero ecosistema. Il registro DEVE contenere:
-
-  - **Claims Standardizzati**: Definizioni semantiche per tutti gli attributi delle Credenziali con tipi di dati e regole di validazione.
-  - **Mappature di Interoperabilità**: Definizioni di alias per i claim che utilizzano terminologie diverse tra gli standard (es. ``place_of_birth`` di ISO18013-5 mappato al canonico ``birth_place``).
-  - **Formati dei Dati**: Tipi di dati standardizzati (stringa, data, numerico, booleano, email, url, immagine, array, oggetto) con pattern di validazione.
-
-Il Registro dei Claims DEVE garantire:
-
-  - **Coerenza Semantica**: Previene conflitti tra claim duplicati o sovrapposti nell'intero ecosistema.
-  - **Interoperabilità Transfrontaliera**: Garantisce la conformità EU e l'interpretazione coerente dei claim.
-  - **Validazione degli Schemi**: Fornisce definizioni autorevoli per la validazione dei claim in tutti gli scenari di Credenziale.
-  - **Allineamento Normativo**: Si coordina con il quadro normativo nazionale ed europeo.
-  - **Scenari Credential-Agnostic**: Supporta scenari in cui la **comodità dell'utente** e l'**efficienza operativa aziendale** sono prioritarie rispetto alla **conformità normativa** e alle **audit trail**.
+- **Finalità di trust**: il contenuto del registro è consumato da un Trust Evaluator per accettare o rifiutare un'entità o un artifact.
+  Questi registri sono Trust Artifact, sono definiti in :ref:`infrastructure-trust:Infrastructure of Trust` e il modo in cui sono consumati è definito in :ref:`trust-evaluation:Trust Evaluation Process`.
+- **Finalità semantica e di discovery**: il contenuto del registro definisce gli attributi, gli schema e i tipi di Credenziale, o li rende scopribili. Questi registri sono definiti in questa Sezione.
 
 .. note::
-  Il Registro dei Claims definisce le proprietà semantiche dei singoli attributi, ma NON DEVE specificare le capacità di selective disclosure. La selective disclosure dipende dalle implementazioni del formato della Credenziale (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipologia di Credenziale all'interno del Catalogo delle Credenziali Digitali e implementate durante i flussi di presentazione delle Credenziali.
+  La distinzione tra registri di trust e registri semantici/di discovery è sulla finalità e non sul contenuto. Ad esempio, un registro con finalità semantica e di discovery può recare un parametro che punta a un trust framework, come fa ``trustedAuthorities`` del Digital Credentials Catalog, ma tale parametro identifica il trust framework applicabile e non è di per sé l'evidenza di una decisione di trust.
 
-Utilizzo del Registro dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _table_registries_and_catalogues:
+.. list-table:: Registries and Catalogues of the Ecosystem
+   :class: longtable
+   :widths: 32 18 26 24
+   :header-rows: 1
 
-Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema:
+   * - **Registry or Catalogue**
+     - **Purpose**
+     - **Maintained by**
+     - **Specified in**
+   * - Taxonomy, Claims Registry, Schema Registry, Authentic Source Registry, Digital Credentials Catalog
+     - Semantica e discovery
+     - Federation Trust Anchor, sotto l'Organismo di Supervisione
+     - Questa Sezione
+   * - Register of WRPs
+     - Trust
+     - Registrar
+     - :ref:`infrastructure-trust:Register of WRPs`
+   * - Federation API Endpoints, Entity Statements and Trust Marks
+     - Trust
+     - Federation Trust Anchor e Federation Intermediate
+     - :ref:`infrastructure-trust:National Trust Artifacts`
+   * - Catalogue of Attributes and Catalogue of Schemes
+     - Semantica e discovery
+     - Commissione Europea
+     - [`EUDI-TS 11`_]. L'allineamento dei registri nazionali è descritto in :ref:`registry:Registry Integration and Cross-References`
+   * - Lists of Trusted Entities, Trusted Lists and List of Trusted Lists
+     - Trust
+     - Commissione Europea e Stati membri
+     - :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`
 
-**Durante il Processo di Onboarding**:
+.. note::
+  I meccanismi che pubblicano lo stato di un certificato o di un Attestato, quali le Certificate Revocation List, i responder OCSP e le Token Status List, non sono registri e non sono elencati nella tabella precedente.
+  Sono descritti in :ref:`infrastructure-trust:Revocation Mechanisms`.
 
-  - **Registrazione FA**: Le Fonti Autentiche dichiarano i claim disponibili dal registro standardizzato durante la registrazione delle capacità.
-  - **Registrazione EI**: Gli Emittenti di Credenziali selezionano le entità FA in base ai claim richiesti e registrano le tipologie di Credenziale per la pubblicazione nel catalogo.
-  - **Registrazione RP**: Le Relying Party specificano i requisiti di autorizzazione utilizzando domini/finalità per tipologie specifiche di Credenziale e/o attributi dell'Utente.
+Cinque registri nazionali semantici e di discovery forniscono le definizioni standardizzate e i dati di discovery:
 
-**Durante le Attività Operative**:
+1. **Taxonomy**: Sistema di classificazione gerarchica che organizza le Credenziali per dominio e scopo.
+2. **Claims Registry**: Definizioni semantiche standardizzate per i singoli attributi delle Credenziali e i tipi di dato.
+3. **Authentic Source Registry**: Fonti Autentiche (AS) registrate con le loro capacità dichiarate, i claim disponibili e gli endpoint di verifica.
+4. **Schema Registry**: Elenco autorevole degli Schema delle Credenziali.
+5. **Digital Credentials Catalog**: Tipi di Credenziale disponibili con i relativi metadata e le informazioni di emissione.
 
-  - **Emissione di Credenziali**: Le definizioni dei claim garantiscono una rappresentazione coerente dei dati tra le diverse tipologie di Credenziale.
-  - **Richieste di Presentazione**: Le RP fanno riferimento ai claim per la validazione degli schemi e la verifica dell'autorizzazione in scenari sia credential-specific che credential-agnostic.
-  - **Applicazione delle Politiche**: Le politiche di autorizzazione sfruttano le classificazioni per dominio/finalità per il controllo degli accessi.
+I registri nazionali sono mantenuti dal Federation Trust Anchor sotto l'Organismo di Supervisione per assicurare coerenza, sicurezza e conformità normativa.
+Sono popolati dai processi di onboarding descritti in :ref:`onboarding-system:Onboarding Processes`, e sono letti sia durante l'onboarding sia durante le fasi operative.
 
-Struttura del Registro dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Le Entità che **forniscono** le informazioni sono le seguenti:
 
-Il Registro dei Claims mantiene definizioni tecniche neutrali rispetto alla lingua per la coerenza semantica nell'intero ecosistema. Le localizzazioni per gli utenti finali dei nomi e delle descrizioni dei claim sono fornite tramite bundle di localizzazione dedicati referenziati attraverso il campo ``localization.base_uri``, abilitando un efficiente supporto multilingue senza compromettere l'integrità strutturale del registro.
+  - l'Attestation Scheme Provider, per la definizione di un tipo di Credenziale e del suo schema.
+  - le Fonti Autentiche, per le loro capacità dati dichiarate.
+  - le Wallet-Relying Party e i Fornitori di Wallet, per i loro dati di registrazione.
 
-.. list-table:: Campi di Primo Livello del Registro dei Claims
+Questi ruoli sono descritti in :ref:`onboarding-system:System Actors and Roles`.
+
+Nessuna di queste Entità scrive direttamente in un registro. Forniscono le informazioni tramite i processi di onboarding, che le verificano e le scrivono.
+Ciascun registro è poi firmato e pubblicato dal Federation Trust Anchor per i registri nazionali e per gli statement di federazione, dal Registrar per il Register of WRPs, e dalla Commissione Europea per i cataloghi e le liste UE.
+
+.. note::
+  Non tutto il contenuto di un registro è fornito da un'Entità. Parte di esso è impostato dal Sistema di Onboarding stesso, quale lo stato di un tipo di Credenziale nel Digital Credentials Catalog, che deriva dalle condizioni della voce versionata. I componenti interni del Sistema di Onboarding e il processo che ciascuno di essi realizza sono descritti in :ref:`onboarding-system:System Components and Services`.
+
+.. note::
+  Un'Entità che fornisce un'informazione non è necessariamente l'Entità che la decide, perché le decisioni su un tipo di Credenziale sono assunte nel suo Attestation Rulebook, che è un input del Sistema di Onboarding.
+
+La Figura :ref:`fig_registry_infrastructure` mostra l'insieme completo dei registri e dei cataloghi, raggruppati per finalità e per livello, con le Entità che ne forniscono il contenuto e le autorità che li pubblicano.
+
+.. _fig_registry_infrastructure:
+.. plantuml:: plantuml/registry-infrastructure.puml
+    :width: 99%
+    :caption: `Registries and Catalogues of the Ecosystem <https://www.plantuml.com/plantuml/svg/ZLL1R-D63xthLymNV41J8DaSkhq4RR1U9mK2T1T6d6AF1YFHDh6Z6M589UiM-zyx6bhMoEiqyaaUyZqEoKVE1nO8qjQs-1-vqhOLcj_cxw_cxrTpNpVUePERelZ9tEAQ79hbuk7-yMwPEKlRG1L-kIfzNNjtSyAozaukuGNPrtZvwrM9GMXD9GXEyAv0u0buYkjNt4tmecfLGgWcUBw0jIWJ7F5RkGMtmHNOAUvhibDTUKjegudEBMFWj_okoB6Gj49TiugFldKLXDsv0ranrk24oWjpzXaw1x3c0JV44WZvmYptTWEkChV4fN_6i3EBDZIUyUndyqzn4Csvm3VlVBsBP8_xpxCBytzk0Wd-VgPzxL0PfhH0zIfeo0uvxmwulyJR15nkiOQSOPbEfZC0v-XPArjCAIzz6qgSpbF6G-itBKQMMzfG_6Vc0QkE3IoRUMz_XUbxSTGS2ItBQvrvx8olD4BJmH2n2i5W_DfyULXm7dkGsYYFDSQpXYBu3wmmfE1cjhWtTwvgF3dXY_Wf93kp512iCHubWUYTFa7u-dgSxrcIsAuiFgEDeUx-6kgZP7yI2-U9QObN81BegHNa23jWklnc1ykKNgsISdvaIVAPG66zOCIcQqQS9e-LbcPe4MecGqxgErZ-irJBNVIhpxbjC3mJ-x3xwAiayk74T4SvIRPk8ykUGhDT1FzC5GRkb2w2BDfUJTeSp3bTlxm6BkXdH4U4JupDY25RG97aqFwNq4JabxHpBn_GxiXjp0A246hZz-68kSN09yVAtAjn54xt_N3VeDnAtV4S1yl0msRN7lGS-ZJazTEBdwwPUe_qagPvvigj3-FHqgbHIyuH7xSHmNv9mJ3MyVlDldUFD377GDsKjS4t2CxC3wSvGNfE8ZG-_fVnPrwstZIQ7XlPeYcz4tIIhCMHekBXZSdVbEk-D0bQuPeSfOJzsa3UGjarcCQ3X8tky-9OOc-m-x01HtzhGScjVQZrEz9gU10m9JJmH3QDPn7LTo1DlHapxgkjB1swsCimWGwx_jhSOcaXA6YSb1PjPnAm60j8QVQhTXmv7c8UzsZuJrHYrdHTEkgHR44CiUaV0wnECWtwk3QVVQUVFG_kzrXiL_hlr5XrkUF6XsWQ2OLfutJBDUsJ9TuYgquouP-u-_97M8x8otJQkM-KklRPdlOTaatE_VjpRJu1EG4Q0x84mKQs-Y3zF0NpxbtED3juzdNhN-zX0hZuWAvgQ_il>`_
+
+La Figura :ref:`fig_registry_discovery` mostra, per i registri definiti in questa Sezione, la fase di onboarding o operativa in cui ciascuno di essi è letto e da chi. Maggiori dettagli sono forniti in ciascuna sezione.
+Il modo in cui i registri con finalità di trust sono letti è descritto in :ref:`trust-evaluation:Trust Evaluation Process`.
+
+.. _fig_registry_discovery:
+.. plantuml:: plantuml/registry-discovery.puml
+    :width: 99%
+    :alt: The figure illustrates who reads the national semantic and discovery registries and in which phase.
+    :caption: `Discovery on the Registry Infrastructure <https://www.plantuml.com/plantuml/svg/dLR1Rjim3BtxAxXWm58WQGxhBiDMT4jtw6K8cWux1ep4909ioPFafCQmVnybnucIEassNcfJvECZ-IZdpdcqlYhoB7kZjCWhIV1fV3CQtyp6fYYD9krli-mTtDD2QOBfvF7XwTiqSVPLYTA-7mbJ54RVTfmiZFP3t90p1Gq_Z2HwdAEZ2rmhH_O2DoLd0gsym9EUnGhracQO-mlSDvZdTDPnfBJpobTUXVgphwRI4ctTr-XdZWhKNea1zBvZSC0S7ccfdBUAt02cstD0BU5UEM7MP6kOLBOqZdfNy3lRpQ7lyTbeKzGCzhHzx0tWhIkjylIvrpQsTvN4Y1nLCRDDoX0v3WRNaZWFW2wD_bBv5KN2KrDPGPVZEB7YMbEiQRHSZY3Oc9jbHHnxhvQAts1iIGO-c3iOj-SdaFvasOIiCxeVTCKWF_XVwXlCx3UjdQUYhvohsBqp6JmqXsdqLeLx04jvhVHomWiMPzrxR0omjQJ1gJ3t2DXskscswnZ08OMz4FSWZOWdrgoLREhv6IsmCwKGZJT7yyuF-GysAmEMK3gGbGtiEJyOFJTSQtWjhM4MBZfdnuHXM9N3MpWKuSUTq2DMc108B76kSXNw0drSeyfndbCJwQx06t1CUM7iYVodKhSxSpwfqfwq90bbitmNPJsSSLjkAyGagT8B0tswNbuFaWIl8B_U_v9iUvsWy6hTr11d45JCJzqqzftjsA0iEzBA_y74ga8tbmt7y6m2RMLXAxsfoQDANMV6ewlYQ7JDAPX5VElAp_PwHu3uwLJoRBlZ9-iC6SGEUURhak9D7U9Gy_LdwLUbB1NiuDhn5lWyMsEkfFBrJ6BDSsQos47r8F-bLNS1mKRv5PyirPhqCUF3Ai-k8a-lG1_BbE6Zh-8CER6c84p-iW5w_dpDAq_k6kuRLIOAZbkJa_0HyyM5DMY5l6iY1v1sbULUyrIO6FitN2oLbXo_HY4T599ybv8gDYibLYzoXWmCxNbLObqhiuaYnRZUeQUxWhBkbJuzd7InryAFf15FtFJzRgSLx6xBm899HPa4ZNPjO_VTScf-aSS_vKoBlkEhB_mA_0i0>`_
+
+
+Endpoint di Discovery del Registro
+-----------------------------------
+
+Il Federation Trust Anchor DEVE fornire un meccanismo di discovery per i componenti del registro tramite endpoint *well-known* standardizzati che forniscono metadata e informazioni di discovery delle API REST.
+
+La paginazione e il filtraggio del Digital Credentials Catalog sono specificati in :ref:`registry:Digital Credentials Catalog Retrieval`.
+
+Il Federation Trust Anchor DEVE pubblicare i metadata di discovery del registro all'endpoint ``.well-known/it-wallet-registry`` con supporto alla content negotiation, come specificato in :ref:`registry:Content Negotiation and Signed Representation`.
+
+- **Default Content-Type**: ``application/jwt`` (JWT firmato che assicura autenticità e integrità)
+- **Alternative Content-Type**: ``application/json`` (JSON in chiaro per finalità di sviluppo/debug)
+
+Di seguito è fornito un esempio non normativo.
+
+.. literalinclude:: ../../examples/shared/registry-1.http
+   :language: http
+
+.. literalinclude:: ../../examples/shared/registry-2.http
+   :language: http
+
+Registry Discovery Endpoint Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Il payload JWT della risposta del Registry Discovery DEVE contenere i seguenti parametri:
+
+.. list-table:: Registry Discovery Endpoint JWT Payload Parameters
    :class: longtable
    :widths: 30 70
    :header-rows: 1
 
-   * - **Nome Campo**
-     - **Descrizione**
+   * - **Field Name**
+     - **Description**
    * - **id**
-     - OBBLIGATORIO. Identificatore univoco del Registro dei Claims (es. ``urn:claims:it-wallet``).
+     - OBBLIGATORIO. Identificativo univoco del documento Registry Discovery (ad es., ``urn:it-wallet-registry:it-wallet``).
    * - **version**
-     - OBBLIGATORIO. La versione del Registro dei Claims (es. ``1.0.0``).
+     - OBBLIGATORIO. La versione del documento Registry Discovery (ad es., ``1.0.0``).
    * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando il Registro dei Claims è stato aggiornato l'ultima volta (es. ``2026-03-06T00:00:00Z``).
+     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
+   * - **endpoints**
+     - OBBLIGATORIO. Oggetto JSON contenente gli URI di tutti i componenti del registro. Le seguenti chiavi di endpoint DEVONO essere presenti:
+
+       * **claims_registry**: URI dell'API del Claims Registry.
+       * **authentic_sources**: URI dell'API dell'Authentic Source Registry.
+       * **credential_catalog**: URI dell'endpoint di collection del Digital Credentials Catalog. Si veda :ref:`registry:Digital Credentials Catalog Retrieval`.
+       * **taxonomy**: URI della risorsa Taxonomy.
+       * **schema_registry**: URI della radice dell'API del Catalogue of Attestations. Si veda :ref:`registry:Catalogo delle Attestazioni`.
+   * - **content_negotiation**
+     - OBBLIGATORIO. Array dei content type supportati dall'endpoint di discovery (ad es., ``["application/json", "application/jwt"]``).
+
+Struttura del payload JWT (quando decodificato):
+
+.. literalinclude:: ../../examples/shared/registry-3.json
+   :language: json
+
+Content Negotiation and Signed Representation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ogni endpoint della Registry Infrastructure DEVE supportare la content negotiation e servire il proprio contenuto in due rappresentazioni:
+
+- **Default Content-Type**: ``application/jwt`` (JWT firmato che fornisce autenticità e integrità)
+- **Alternative Content-Type**: ``application/json`` (JSON in chiaro per sviluppo e debug)
+
+Entrambe le rappresentazioni sono servite allo stesso URL di endpoint, non come risorse o path distinti. Il client seleziona la rappresentazione con l'header di richiesta ``Accept``, e il Federation Trust Anchor indica la rappresentazione restituita nell'header di risposta ``Content-Type``. Se la richiesta non chiede un tipo supportato (``Accept`` assente, ``*/*``, o solo tipi non supportati), l'endpoint DEVE restituire la rappresentazione ``application/jwt``.
+
+Questo requisito si applica a tutti gli endpoint della Registry Infrastructure elencati nella tabella seguente:
+
+.. _table_registry_content_negotiation:
+.. list-table:: Registry endpoints supporting content negotiation
+   :class: longtable
+   :header-rows: 1
+   :widths: 40 60
+
+   * - **Registry component**
+     - **How the endpoint is located**
+   * - Registry Discovery
+     - Path well-known fisso ``.well-known/it-wallet-registry``.
+   * - Claims Registry
+     - URL assoluto pubblicato sotto la chiave ``claims_registry`` del documento di discovery.
+   * - Authentic Source Registry
+     - URL assoluto pubblicato sotto la chiave ``authentic_sources`` del documento di discovery.
+   * - Schema Registry
+     - URL assoluto pubblicato sotto la chiave ``schema_registry`` del documento di discovery. È la radice dell'API del Catalogue of Attestations.
+   * - Taxonomy
+     - URL assoluto pubblicato sotto la chiave ``taxonomy`` del documento di discovery.
+   * - Digital Credentials Catalog
+     - URL assoluto pubblicato sotto la chiave ``credential_catalog`` del documento di discovery.
+
+Il Registry Discovery Endpoint è l'unico a un path well-known fisso. Un client lo legge per primo per ottenere l'URL di ogni altro componente dal suo oggetto ``endpoints`` firmato (si veda :ref:`registry:Endpoint di Discovery del Registro`). Un client NON DEVE assumere un path fisso per gli altri componenti. La content negotiation si applica all'endpoint di discovery e a ogni URL di componente che pubblica.
+
+Tutti questi endpoint gestiscono la content negotiation allo stesso modo: la stessa richiesta, gli stessi due valori di ``Content-Type`` e la stessa rappresentazione firmata.
+
+La rappresentazione firmata è un JWT in compact serialization, servito come ``application/jwt``. Il suo header DEVE contenere i parametri nella tabella seguente.
+
+.. _table_catalog_parameters:
+.. list-table:: JWT header parameters of the signed representation
+   :class: longtable
+   :header-rows: 1
+   :widths: 25 50 25
+
+   * - **Header parameter**
+     - **Description**
+     - **Reference**
+   * - **typ**
+     - OBBLIGATORIO. DEVE essere impostato a ``JWT``.
+     - [:rfc:`7515` Section 4.1.9].
+   * - **alg**
+     - OBBLIGATORIO. Un identificativo di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` o con un identificativo di algoritmo simmetrico (MAC).
+     - [:rfc:`7515` Section 4.1.1].
+   * - **kid**
+     - OBBLIGATORIO. Identificativo univoco della chiave pubblica.
+     - [:rfc:`7515` Section 4.1.4].
+   * - **x5c**
+     - OPZIONALE. Contiene il certificato a chiave pubblica X.509 o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWT. Quando il valore del parametro di header `kid` è presente, DEVE fare riferimento alla stessa chiave pubblica crittografica della foglia utilizzata con il certificato X.509.
+     - [:rfc:`7515` Section 4.1.6.].
+   * - **cty**
+     - OBBLIGATORIO. DEVE essere impostato a ``application/json``.
+     - [:rfc:`7515` Section 4.1.6.].
+
+La rappresentazione in chiaro è lo stesso contenuto, servito come oggetto JSON in chiaro anziché come JWT firmato.
+
+L'esempio non normativo seguente richiede entrambe le rappresentazioni dall'endpoint del Digital Credentials Catalog. L'URL è quello risolto dal documento di discovery, qui accorciato per leggibilità.
+
+.. literalinclude:: ../../examples/shared/registry-4.http
+   :language: http
+
+.. literalinclude:: ../../examples/shared/registry-5.http
+   :language: http
+
+L'esempio richiede la prima pagina della collection. I parametri di query, le pagine successive e la risorsa entry sono specificati in :ref:`registry:Digital Credentials Catalog Retrieval`.
+
+Taxonomy
+--------
+
+La **Taxonomy** è il vocabolario autorevole che organizza le Credenziali nell'ecosistema IT-Wallet, ed è il fondamento semantico della loro interoperabilità. È indipendente dal formato della Credenziale.
+
+In una singola risorsa, definisce la gerarchia di Domain, Class e Purpose che i tipi di Credenziale referenziano, a supporto della valutazione delle policy di autorizzazione e della standardizzazione a livello di ecosistema.
+
+L'URL dell'endpoint Taxonomy è pubblicato sotto la chiave ``taxonomy`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
+
+Taxonomy Objectives
+^^^^^^^^^^^^^^^^^^^
+
+1. **Fondamento semantico**: Stabilire un vocabolario standardizzato per i domain e i purpose nell'ecosistema
+2. **Framework di policy**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
+3. **Interoperabilità**: Assicurare un'interpretazione coerente delle classificazioni delle Credenziali
+4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi Domain, Class, tipi di Credenziale e Purpose
+5. **Conformità transfrontaliera**: Allinearsi ai requisiti regolamentari UE e agli standard internazionali
+
+
+Taxonomy Usage
+^^^^^^^^^^^^^^
+
+- **Authentic Source Registry**: Le Fonti Autentiche dichiarano le capacità utilizzando le classificazioni della taxonomy
+- **Digital Credentials Catalog**: I tipi di Credenziale specificano Domain, Class e Purpose
+- **Policy di autorizzazione**: La valutazione delle policy sfrutta la struttura della taxonomy per le decisioni di controllo degli accessi
+
+
+Digital Credentials Hierarchy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet sono classificati e standardizzati secondo il seguente modello gerarchico a più livelli, progettato per migliorare la chiarezza semantica, la discovery delle Credenziali e la compatibilità sia con i workflow di verifica specifici della Credenziale sia con quelli basati sui claim.
+
+La gerarchia è definita come segue:
+
+Domain
+""""""
+
+Un **Domain** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali relative allo stesso contesto ampio (ad es., Identity, Health, Education, Mobility).
+I Domain forniscono uno strato organizzativo di primo livello.
+
+Credential Class
+""""""""""""""""
+
+Una **Credential Class** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es., Identification Documents, Civil Status Certificates).
+
+Ciascuna Class DOVREBBE definire:
+
+- un identificativo di Class stabile (URI),
+- la semantica attesa della Credential Family.
+
+Le Class consentono alle Relying Party e alle Soluzioni Wallet di richiedere o abbinare Credenziali in base alla loro categoria di tipo.
+
+Credential Type
+"""""""""""""""
+
+Un **Credential Type** rappresenta una Credenziale specifica all'interno di una Class (ad es. Digital Travel Credential, Birth Certificate, Mobile Driving License).
+Ciascun Credential Type DEVE includere:
+
+- un identificativo univoco,
+- l'identificativo del Credential Issuer,
+- l'insieme di Attributi che possono essere inclusi nelle presentazioni.
+
+I Credential Type consentono un targeting preciso per i flussi di verifica guidati dalla conformità o imposti dalla regolamentazione.
+
+Purpose (Verification Intent)
+"""""""""""""""""""""""""""""
+
+Un **Purpose (Verification Intent)** descrive *perché* una Credenziale può essere richiesta da una Relying Party (ad es., Identity Verification, Age Verification, Eligibility for specific services).
+I Purpose DEVONO descrivere **esiti di verifica**.
+Ciascun Credential Type DEVE dichiarare il proprio Domain, la propria Class e i Purpose supportati.
+
+Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Domain, Credential Class e Credential Type, seguiti dalla loro mappatura sui Purpose di verifica.
+Domain, Class, Credenziali specifiche e Purpose di verifica aggiuntivi **POSSONO** essere aggiunti nel tempo con l'evoluzione dell'ecosistema IT-Wallet.
+
+.. list-table:: Digital Credential Taxonomy: Hierarchy and Classification
+   :class: longtable
+   :header-rows: 1
+   :widths: 15 25 30 30
+
+   * - **Domain**
+     - **Description**
+     - **Credential Class**
+     - **Credential Type**
+
+   * - *IDENTITY*
+     - Credenziali che instaurano o confermano l'identità legale di una persona e lo stato personale, civile o giuridico.
+     -
+       * Identification Documents
+       * Civil Registry and Personal Status Certificates
+       * Economic and Legal Status
+     -
+       * Digital Travel Credential
+       * Mobile Driving License (Italy only)
+       * Tax Code / Health Insurance Card
+       * Age Certification
+       * Birth Certificate
+       * Residence Certificate
+       * Family Status Certificate
+       * Marriage Certificate
+       * Citizenship Certificate
+       * ISEE (Equivalent Economic Situation Indicator)
+       * Residence Permit
+       * Certificate of Pending Charges
+       * Criminal Record Certificate
+
+   * - *HOME AND FAMILY*
+     - Credenziali che attestano la composizione del nucleo familiare, la residenza e i rapporti giuridici o fiscali relativi all'abitazione.
+     -
+       * Property and Cadastral Documents
+       * Family Documents
+       * Local Tax Documents
+     -
+       * Deed of Sale
+       * Cadastral Survey
+       * Cadastral Floor Plan
+       * Cadastral Certificate
+       * Children's Tax Code / Health Card
+       * Birth Certificate
+       * Family Status Certificate
+       * IMU (Property Tax)
+       * TARI (Waste Tax)
+
+   * - *EDUCATION*
+     - Credenziali che attestano i risultati formativi, i titoli accademici e la formazione professionale.
+     -
+       * Educational Qualifications
+       * Professional Certifications
+     -
+       * Lower Secondary School Diploma
+       * Upper Secondary School Diploma
+       * Bachelor's Degree
+       * Master's Degree
+       * University Master
+       * PhD
+       * Professional Licenses (e.g. architect, lawyer)
+       * Vocational Training Certificates
+       * Language Certifications (e.g. IELTS)
+       * Academic Qualifications (e.g. Europass)
+
+   * - *HEALTH*
+     - Credenziali relative alla copertura sanitaria, allo stato medico e alle certificazioni sanitarie.
+     -
+       * Certifications and Eligibility
+       * Medical Records
+     -
+       * Health Insurance Card (TEAM)
+       * European Health Card (CED)
+       * Disability Certificate
+       * Vaccination Certificate
+       * Sports Fitness Certificate
+       * Work Fitness Certificate
+       * Medical Prescriptions
+       * Digital Medical Report
+
+   * - *FINANCIAL*
+     - Credenziali relative agli strumenti di pagamento, alle autorizzazioni finanziarie e alla prova dei pagamenti.
+     -
+       * Payment Instruments
+       * Payment Credentials and Authorisations
+       * Public Payments and Fees
+       * Recurring Payments and Subscriptions
+     -
+       * Digital Payment Card (debit / credit / prepaid)
+       * Virtual Card
+       * Bank Account (IBAN)
+       * Strong Customer Authentication (SCA) Credential
+       * Payment Receipt
+       * Digital Stamp Duty (Bollo digitale)
+       * Tax and Fee Payment Certificate
+       * Subscription Mandate
+       * Recurring Payment Credential
+
+   * - *CULTURE AND LEISURE*
+     - Credenziali che attestano l'appartenenza, l'affiliazione o la partecipazione a programmi culturali o ricreativi.
+     -
+       * Cultural Cards and Benefits
+       * Membership and Loyalty Programs
+     -
+       * Culture Card
+       * Annual Museum Passes
+       * Cinema Card
+       * Museum Card
+       * Association Membership Cards
+       * Library Card
+       * City Pass
+
+   * - *EMPLOYMENT*
+     - Credenziali che attestano i rapporti di lavoro, lo stato professionale e i contributi.
+     -
+       * Employment Documents
+       * Employment Status
+       * Employment Affiliation
+     -
+       * Digital Employment Contract
+       * Curriculum Vitae (CV)
+       * Residence Permit
+       * Employment Status Certificate
+       * INPS Contribution Record
+       * Physical Access Badge
+
+   * - *MOBILITY AND TRAVEL*
+     - Credenziali che attestano i diritti di mobilità, lo stato relativo al veicolo e i diritti connessi al viaggio.
+     -
+       * Licenses and Authorizations
+       * Vehicle Documents
+       * Transport Subscriptions
+       * Travel Documents
+       * Travel Insurance
+       * Bookings
+       * Discounts and Benefits
+     -
+       * Mobile Driving License
+       * Boating License
+       * Vehicle Registration Certificate
+       * Digital RCA Insurance
+       * Vehicle Inspection Certificate
+       * Green Card / International Insurance
+       * Public Transport Pass
+       * Road Charging Subscription
+       * Digital Travel Credential
+       * Travel Tickets (air, train, etc.)
+       * Travel Insurance Policy
+       * Hotel Reservation
+       * Discount Cards
+       * Tourist Benefits
+
+   * - *BONUSES*
+     - Credenziali che attestano il diritto a benefici economici, incentivi o voucher.
+     -
+       * Economic Benefits and Allowances
+       * Incentives and Vouchers
+       * Health and Wellbeing Bonuses
+     -
+       * Family Allowance Credential
+       * Unemployment Benefit Credential
+       * Digital Voucher
+       * Purchase Incentive Credential
+       * Cashback Eligibility Credential
+       * Healthcare Bonus Credential
+       * Mental Health Support Voucher
+       * Sports and Physical Activity Bonus
+
+.. list-table:: Mapping between Credential Classes and Purposes
+   :class: longtable
+   :header-rows: 1
+   :widths: 40 60
+
+   * - **Credential Class**
+     - **Supported Purposes**
+
+   * - Identification Documents
+     -
+       * Identity verification
+       * Age verification
+       * Person identification
+   * - Civil Registry and Personal Status Certificates
+     -
+       * Civil status verification
+       * Right of residence
+       * Household composition verification
+   * - Economic and Legal Status
+     -
+       * Eligibility for services or benefits
+       * Legal status verification
+       * Criminal record check
+   * - Property and Cadastral Documents
+     -
+       * Residence and household verification
+       * Property ownership verification
+       * Real estate compliance
+   * - Family Documents
+     -
+       * Household composition verification
+       * Eligibility for family-based social services
+   * - Local Tax Documents
+     -
+       * Compliance with local tax obligations
+       * Verification of property tax status
+   * - Educational Qualifications
+     -
+       * Qualification and degree verification
+       * Eligibility for education pathways
+   * - Professional Certifications
+     -
+       * Professional license verification
+       * Skills assessment for work
+   * - Certifications and Eligibility
+     -
+       * Verification of vaccination status
+       * Verification of fitness status
+       * Access to health-restricted areas
+   * - Medical Records
+     -
+       * Access to healthcare services
+       * Sharing of medical records
+       * Medical history validation
+   * - Payment Instruments
+     -
+       * Payment authorization
+       * Payment execution
+       * Proof of payment
+   * - Payment Credentials and Authorisations
+     -
+       * Management of financial authorizations
+       * Strong Customer Authentication (SCA)
+   * - Public Payments and Fees
+     -
+       * Proof of tax payment
+       * Proof of fee payment
+       * Digital stamp duty validation
+   * - Recurring Payments and Subscriptions
+     -
+       * Management of recurring payments
+       * Subscription mandate verification
+   * - Cultural Cards and Benefits
+     -
+       * Access to cultural services
+       * Access to leisure services
+       * Application of member discounts
+   * - Membership and Loyalty Programs
+     -
+       * Verification of affiliation
+       * Verification of participation
+       * Use of loyalty benefits
+   * - Employment Documents
+     -
+       * Employment status verification
+       * Professional profile validation
+   * - Employment Status
+     -
+       * Verification of contribution records
+       * Eligibility for employment-related benefits
+   * - Licenses and Authorizations
+     -
+       * Driving rights verification
+       * Navigation rights verification
+       * Law enforcement controls
+   * - Vehicle Documents
+     -
+       * Vehicle registration verification
+       * Vehicle inspection verification
+       * Insurance status check
+   * - Transport Subscriptions
+     -
+       * Access to transport services
+       * Public transport pass verification
+   * - Travel Documents
+     -
+       * Right to travel or circulate
+       * Cross-border mobility identity check
+   * - Travel Insurance and Bookings
+     -
+       * Verification of travel insurance coverage
+       * Accommodation reservation check
+       * Transport reservation check
+   * - Discounts and Benefits
+     -
+       * Application of member discounts
+       * Access to tourist benefits
+   * - Economic Benefits and Allowances
+     -
+       * Eligibility verification for family benefits
+       * Eligibility verification for unemployment benefits
+       * Allocation of economic support
+   * - Incentives and Vouchers
+     -
+       * Use of digital vouchers
+       * Use of purchase incentives
+       * Cashback eligibility verification
+   * - Health and Wellbeing Bonuses
+     -
+       * Access to healthcare bonuses
+       * Use of mental health vouchers
+       * Use of sports vouchers
+   * - Employment Affiliation
+     -
+       * Access permit verification
+
+Ciascuna Credenziale DEVE specificare domain, class e purpose per abilitare sia gli **scenari specifici della Credenziale** sia gli **scenari agnostici rispetto alla Credenziale** secondo i requisiti della Relying Party e i pattern di richiesta di presentazione, come definito nelle tabelle di mappatura precedenti.
+
+  1. **Scenari specifici della Credenziale** (primari per i settori governativi/regolamentati): le RP richiedono tipi di Credenziale specifici per requisiti di conformità e audit, inclusi ad esempio:
+
+    - **Servizi governativi**: ``"credential_type":"pid"`` per la verifica di identità specifica del PID o ``"credential_type":"eid"`` per la verifica di identità specifica dell'IT-Wallet ID.
+    - **Controlli di polizia**: ``"credential_type":"mDL"`` per la verifica della patente di guida.
+    - **KYC bancario**: tipi di Credenziale specifici imposti dalla regolamentazione finanziaria.
+    - **Servizi sanitari**: ``"credential_type":"european_disability_card"`` per l'accesso ai benefici di disabilità conformi all'UE.
+
+  2. **Scenari agnostici rispetto alla Credenziale** (tipici per le attività private): le RP richiedono claim specifici indipendentemente dalla fonte della Credenziale per l'efficienza operativa, quali:
+
+    - **Consegna e-commerce**: qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, contenente ``given_name``, ``family_name``, ``address`` per la spedizione.
+    - **Abbonamenti**: qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, con ``given_name``, ``email`` per la personalizzazione.
+    - **Personalizzazione del servizio**: applicazioni business che richiedono dati personali di base senza requisiti stringenti sulla fonte.
+
+Questo approccio consente:
+
+  - **Autorizzazione basata su policy** utilizzando le mappature **Domain / Class / Credential Type / Purpose**.
+  - **Registrazione flessibile delle RP** a supporto sia delle esigenze di conformità governativa sia dei requisiti operativi business.
+
+Taxonomy Structure
+^^^^^^^^^^^^^^^^^^
+
+La taxonomy mantiene una struttura gerarchica a quattro livelli, ossia i Domain, le Class, i Credential Type e i Purpose definiti in :ref:`registry:Digital Credentials Hierarchy` sopra.
+
+.. note::
+  Il Credential Type è un concetto definito a livello di Digital Credentials Catalog, non all'interno della Taxonomy. La Taxonomy fornisce il vocabolario di classificazione (Domain, Class, Purpose) che i Credential Type nel Catalog referenziano.
+
+Supporto alla localizzazione
+""""""""""""""""""""""""""""
+
+La taxonomy supporta ambienti multilingue tramite il pattern di suffisso ``_l10n_id``, consentendo una gestione efficiente della localizzazione per le interfacce utente e le implementazioni transfrontaliere.
+
+
+Struttura JSON della Taxonomy
+"""""""""""""""""""""""""""""
+
+.. list-table:: First-level Fields of the Taxonomy
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - OBBLIGATORIO. Identificativo univoco della Taxonomy (ad es., ``urn:taxonomy:it-wallet``).
+   * - **version**
+     - OBBLIGATORIO. La versione della Taxonomy (ad es., ``1.0.0``).
+   * - **last_modified**
+     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
+   * - **name_l10n_id**
+     - OBBLIGATORIO. Chiave di localizzazione che referenzia il nome leggibile della Taxonomy (ad es., ``taxonomy.name``).
+   * - **description_l10n_id**
+     - OBBLIGATORIO. Chiave di localizzazione che referenzia la descrizione leggibile della Taxonomy (ad es., ``taxonomy.description``).
    * - **localization**
      - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
-       * **default_locale**: Codice locale predefinito (es. ``it``).
-       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
-       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/``).
+       * **default_locale**: Codice locale predefinito (ad es., ``it``).
+       * **available_locales**: Array dei codici locale supportati (ad es., ``["en", "it"]``).
+       * **base_uri**: URI di base per il recupero dei bundle di localizzazione (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/``).
        * **version**: Versione del formato del bundle di localizzazione.
-   * - **claims**
-     - OBBLIGATORIO. Un Oggetto JSON in cui ogni chiave è il nome di un claim e ogni valore è un Oggetto JSON che descrive tale claim. Ogni oggetto claim contiene i parametri definiti nella tabella "Parametri di una Voce di Claim" di seguito.
+   * - **domains**
+     - OBBLIGATORIO. Array di oggetti Domain, ciascuno contenente:
 
-.. list-table:: Parametri di una Voce di Claim
+       * **id**: Identificativo univoco del Domain in SCREAMING_SNAKE_CASE (ad es., ``IDENTITY``).
+       * **name_l10n_id**: Chiave di localizzazione per il nome del domain (ad es., ``domain.identity.name``).
+       * **description_l10n_id**: Chiave di localizzazione per la descrizione del domain (ad es., ``domain.identity.description``).
+       * **classes**: Array di oggetti Class. Ciascuna class contiene ``id``, ``name_l10n_id`` e ``supported_purposes`` (array di stringhe ID di purpose).
+   * - **purposes**
+     - OBBLIGATORIO. Array piatto di tutti gli oggetti Purpose definiti nella taxonomy, ciascuno contenente:
+
+       * **id**: Identificativo univoco del Purpose in SCREAMING_SNAKE_CASE (ad es., ``IDENTITY_VERIFICATION``, ``ACCESS_PERMIT``).
+       * **name_l10n_id**: Chiave di localizzazione per il nome del purpose (ad es., ``purpose.identity_verification.name``).
+
+Di seguito è fornito un esempio non normativo della struttura della Taxonomy:
+
+.. literalinclude:: ../../examples/taxonomy-example.json
+   :language: JSON
+
+.. note::
+  Per una gestione migliore e più efficiente della localizzazione della Taxonomy, un'Entità che la consulta DOVREBBE:
+
+  - Scaricare la versione di base della Taxonomy (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/taxonomy``.
+  - Determinare la lingua preferita dell'Utente.
+  - Scaricare solo i bundle di localizzazione necessari.
+  - Unire dinamicamente il contenuto localizzato con la struttura della Taxonomy.
+
+Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
+
+.. literalinclude:: ../../examples/shared/registry-6.json
+   :language: json
+
+I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nella taxonomy. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
+
+Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
+
+Claims Registry
+---------------
+
+L'URL dell'endpoint Claims Registry è pubblicato sotto la chiave ``claims_registry`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
+
+Il Claims Registry DEVE contenere:
+
+  - **Claim standardizzati**: Definizioni semantiche per tutti gli attributi delle Credenziali con tipi di dato e regole di validazione.
+  - **Mapping di interoperabilità**: Definizioni di alias per i claim che utilizzano una terminologia diversa tra gli standard (ad es., ISO18013-5 ``place_of_birth`` mappato sul canonico ``birth_place``).
+  - **Formati di dati**: Tipi di dato standardizzati (string, date, numeric, boolean, email, url, image, array, object) con pattern di validazione.
+
+Il Claims Registry DEVE assicurare:
+
+  - **Coerenza semantica**: Previene i conflitti tra claim duplicati o sovrapposti nell'ecosistema.
+  - **Interoperabilità transfrontaliera**: Assicura la conformità UE e un'interpretazione coerente dei claim.
+  - **Validazione dello schema**: Fornisce definizioni autorevoli per la validazione dei claim in tutti gli scenari di Credenziale.
+  - **Allineamento regolamentare**: Si coordina con il quadro regolamentare nazionale e UE.
+  - **Scenari agnostici rispetto alla Credenziale**: Supporta gli scenari in cui la **convenienza dell'utente** e l'**efficienza operativa business** sono prioritarie rispetto alla **conformità regolamentare** e alle **piste di audit**.
+
+.. note::
+  Il Claims Registry definisce le proprietà semantiche dei singoli attributi, ma NON DEVE specificare le capacità di selective disclosure. La selective disclosure dipende dalle implementazioni del formato della Credenziale (SD-JWT, mDocs), dalle configurazioni tecniche dell'issuer e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di Credenziale all'interno del Digital Credentials Catalog e implementate durante i flussi di presentazione delle Credenziali.
+
+Claims Registry Usage
+^^^^^^^^^^^^^^^^^^^^^
+
+Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :ref:`fig_registry_discovery`, il Claims Registry DEVE supportare l'intero ciclo di vita dell'ecosistema:
+
+Claims Registry Usage: Durante il processo di Onboarding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  - **Registrazione AS**: Le Fonti Autentiche dichiarano i claim disponibili dal registro standardizzato durante la registrazione delle capacità.
+  - **Registrazione CI**: I Credential Issuer selezionano le entità Fonte Autentica in base ai claim richiesti. I tipi di Credenziale che utilizzano tali claim sono registrati nel catalogo dall'Attestation Scheme Provider, si veda :ref:`onboarding-system:Credential Type Registration`.
+  - **Registrazione RP**: Le Relying Party specificano i requisiti di autorizzazione utilizzando domain/purpose per attributi specifici dell'Utente.
+
+Claims Registry Usage: Durante le attività operative
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  - **Emissione delle Credenziali**: Le definizioni dei claim assicurano una rappresentazione coerente dei dati tra tipi di Credenziale diversi.
+  - **Richieste di presentazione**: Le Relying Party referenziano i claim per la validazione dello schema e la verifica dell'autorizzazione sia negli scenari specifici della Credenziale sia in quelli agnostici rispetto alla Credenziale.
+
+Claims Registry Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Il Claims Registry mantiene definizioni tecniche language-neutral per la coerenza semantica nell'ecosistema. Le localizzazioni rivolte all'utente per i nomi e le descrizioni dei claim sono fornite tramite bundle di localizzazione dedicati referenziati tramite il campo ``localization.base_uri``, consentendo un supporto multilingue efficiente senza compromettere l'integrità strutturale del registro.
+
+.. list-table:: First-level Fields of the Claims Registry
    :class: longtable
    :widths: 30 70
    :header-rows: 1
 
-   * - **Nome Campo**
-     - **Descrizione**
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - OBBLIGATORIO. Identificativo univoco del Claims Registry (ad es., ``urn:claims:it-wallet``).
+   * - **version**
+     - OBBLIGATORIO. La versione del Claims Registry (ad es., ``1.0.0``).
+   * - **last_modified**
+     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
+   * - **localization**
+     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+
+       * **default_locale**: Codice locale predefinito (ad es., ``it``).
+       * **available_locales**: Array dei codici locale supportati (ad es., ``["en", "it"]``).
+       * **base_uri**: URI di base per il recupero dei bundle di localizzazione (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/``).
+       * **version**: Versione del formato del bundle di localizzazione.
+   * - **claims**
+     - OBBLIGATORIO. Un oggetto JSON in cui ciascuna chiave è un nome di claim e ciascun valore è un oggetto JSON che descrive tale claim. Ciascun oggetto claim contiene i parametri definiti nella tabella "Claim Entry Parameters" seguente.
+
+.. list-table:: Claim Entry Parameters
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
    * - **description_l10n_id**
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento alla descrizione leggibile del claim nel bundle di localizzazione (es. ``claim.given_name.description``).
+     - OBBLIGATORIO. Chiave di localizzazione che referenzia la descrizione leggibile del claim nel bundle di localizzazione (ad es., ``claim.given_name.description``).
    * - **type**
      - OBBLIGATORIO. Tipo di dato del claim. Valori supportati: ``string``, ``boolean``, ``array``, ``object``.
    * - **format**
-     - OPZIONALE. Qualificatore di formato semantico per i tipi stringa (es. ``date`` per le date ISO 8601, ``uri``, ``data`` per dati binari Base64-encoded).
+     - OPZIONALE. Qualificatore di formato semantico per i tipi string (ad es., ``date`` per le date ISO 8601, ``uri``, ``data`` per il binario codificato in Base64).
    * - **encoding**
-     - OPZIONALE. Codifica applicata al valore (es. ``base64``). Presente quando ``format`` è ``data``.
+     - OPZIONALE. Encoding applicato al valore (ad es., ``base64``). Presente quando ``format`` è ``data``.
    * - **aliases**
-     - OPZIONALE. Array di nomi alternativi del claim utilizzati in altri standard che si mappano su questo claim canonico (es. ``["birthdate"]`` per ``birth_date``, ``["date_of_expiry"]`` per ``expiry_date``).
+     - OPZIONALE. Array di nomi di claim alternativi utilizzati in altri standard che mappano su questo claim canonico (ad es., ``["birthdate"]`` per ``birth_date``, ``["date_of_expiry"]`` per ``expiry_date``).
    * - **nested_claims**
-     - OPZIONALE. Array di nomi di claim che costituiscono le proprietà di un claim di tipo ``object`` (es. ``["country", "locality", "region"]`` per ``place_of_birth``).
+     - OPZIONALE. Array di nomi di claim che formano le proprietà di un claim di tipo ``object`` (ad es., ``["country", "locality", "region"]`` per ``place_of_birth``).
    * - **nested_item_claims**
-     - OPZIONALE. Array di nomi di claim che rappresentano le proprietà di ogni elemento in un claim di tipo ``array`` (es. ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` per ``driving_privileges``).
+     - OPZIONALE. Array di nomi di claim che rappresentano le proprietà di ciascun elemento in un claim di tipo ``array`` (ad es., ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` per ``driving_privileges``).
    * - **items**
-     - OPZIONALE. Oggetto JSON che descrive lo schema di ogni elemento in un claim di tipo ``array`` semplice (es. ``{"type": "string"}`` per ``nationalities``).
+     - OPZIONALE. Oggetto JSON che descrive lo schema di ciascun elemento in un claim di tipo ``array`` semplice (ad es., ``{"type": "string"}`` per ``nationalities``).
+   * - **attribute_identifier**
+     - OPZIONALE. Identificativo dell'attributo corrispondente nel EUDIW Catalogue of Attributes quando il claim è allineato a quel catalogo, come descritto in :ref:`registry:Registry Integration and Cross-References`. Quando presente, DEVE essere uguale all'``identifier`` di tale attributo.
 
-Di seguito è fornito un esempio non normativo della struttura del Registro dei Claims:
+Di seguito è fornito un esempio non normativo della struttura del Claims Registry:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Registro dei Claims, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Claims Registry, un'Entità che lo consulta DOVREBBE:
 
-  - Scaricare la versione base del Registro dei Claims (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/claims``.
-  - Determinare la lingua preferita dall'Utente.
+  - Scaricare la versione di base del Claims Registry (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/claims``.
+  - Determinare la lingua preferita dell'Utente.
   - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la struttura del Registro dei Claims.
+  - Unire dinamicamente il contenuto localizzato con la struttura del Claims Registry.
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/registry-7.json
+   :language: json
 
-  {
-    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
-    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
-    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
-    "...": "..."
-  }
+I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
-I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e ``.json`` al valore ``localization.base_uri`` (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
+Authentic Source Registry
+-------------------------
 
-Registro delle Fonti Autentiche
--------------------------------
+L'URL dell'endpoint Authentic Source Registry è pubblicato sotto la chiave ``authentic_sources`` del documento Registry Discovery. L'endpoint supporta la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
 
-L'Organismo di Vigilanza DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di Credenziali nell'intero ecosistema. Il Registro FA DEVE contenere almeno:
+L'Authentic Source Registry DEVE contenere almeno:
 
-  - **Informazioni sull'Organizzazione**: Dettagli della persona giuridica, stato normativo e ruolo autorevole in domini specifici.
-  - **Capacità sui Dati**: Disponibilità dei claim dichiarati facendo riferimento alle definizioni standardizzate del Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
-  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND).
-  - **Finalità Previste**: Tipologie di Credenziale supportate e contesti aziendali per il coordinamento FA-EI.
-  - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di audit trail.
+  - **Informazioni sull'organizzazione**: Dettagli della persona giuridica, status regolamentare e ruolo autorevole all'interno di domain specifici.
+  - **Capacità dati**: Disponibilità dei claim dichiarati con riferimento alle definizioni standardizzate del Claims Registry con le corrispondenti classificazioni della Taxonomy.
+  - **Metodi di integrazione**: Meccanismi tecnici di accesso (PDND).
+  - **Scopi previsti**: Tipi di Credenziale supportati e contesti business per il coordinamento AS-CI.
+  - **Assicurazione della qualità dei dati**: Status autorevole, frequenza di aggiornamento e capacità di pista di audit.
 
-Il Registro FA DEVE garantire:
+L'Authentic Source Registry DEVE assicurare:
 
-  - **Accesso Coordinato ai Dati**: Consente agli EI di scoprire i dati appropriati dalle Fonti Autentiche per l'emissione delle Credenziali.
-  - **Integrazione FA-EI**: Facilita i flussi di approvazione e il coordinamento dell'accesso ai dati tra le entità.
-  - **Garanzia della Qualità**: Mantiene lo stato autorevole e l'affidabilità dei dati nei diversi domini.
-  - **Conformità Normativa**: Supporta i requisiti di trasparenza della pubblica amministrazione e di coordinamento del settore privato.
+  - **Accesso coordinato ai dati**: Consente al CI la discovery dei dati appropriati dalle Fonti Autentiche per l'emissione delle Credenziali.
+  - **Integrazione AS-CI**: Gli endpoint tecnici e i metodi di accesso consentono una comunicazione AS-CI standardizzata. Facilita i workflow di approvazione e il coordinamento dell'accesso ai dati tra le entità.
+  - **Conformità regolamentare**: Supporta i requisiti di trasparenza della pubblica amministrazione e di coordinamento del settore privato.
 
 .. note::
-   Il Registro delle Fonti Autentiche è un registro pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.
+   L'Authentic Source Registry è un registro pubblico che fornisce al Credential Issuer indicazioni per il provisioning delle Credenziali.
 
-Utilizzo del Registro delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Authentic Source Registry Usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Registro FA supporta il coordinamento dell'ecosistema durante l'intero ciclo di vita operativo:
+Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :ref:`fig_registry_discovery`, l'Authentic Source Registry supporta il coordinamento dell'ecosistema durante l'intero ciclo di vita operativo:
 
-**Durante il Processo di Onboarding**:
-  - **Auto-Dichiarazione FA**: Le Fonti Autentiche registrano le capacità prima che esistano tipologie di Credenziale nel catalogo.
-  - **Discovery EI**: Gli Emittenti di Credenziali ricercano le entità FA in base ai claim richiesti e alle tipologie di Credenziale previste.
-  - **Coordinamento delle Approvazioni**: Le entità FA valutano e approvano le richieste di accesso degli EI per la fornitura dei dati.
+**Durante il processo di Onboarding**:
+  - **Auto-dichiarazione AS**: Le Fonti Autentiche registrano le capacità prima che esistano tipi di Credenziale nel catalogo.
+  - **Discovery CI**: I Credential Issuer cercano entità Fonte Autentica in base ai claim richiesti e ai tipi di Credenziale previsti.
 
-**Durante le Attività Operative**:
-  - **Risoluzione delle Sorgenti Dati**: I sistemi EI fanno riferimento al Registro FA per l'accesso in tempo reale ai dati durante l'emissione delle Credenziali.
-  - **Validazione della Qualità**: Le informazioni del Registro FA supportano la verifica dell'origine dei dati e i requisiti di audit.
-  - **Gestione dell'Integrazione**: Gli endpoint tecnici e i metodi di accesso consentono la comunicazione standardizzata FA-EI.
+Authentic Source Registry Usage: Durante le attività operative
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  - **Emissione delle Credenziali**: I sistemi del Credential Issuer referenziano l'Authentic Source Registry per l'accesso ai dati in tempo reale durante l'emissione delle Credenziali.
 
-Coordinamento FA Pubblica vs FA Privata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Authentic Source Registry Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'architettura del Registro FA supporta diversi pattern di coordinamento che riflettono distinte esigenze operative:
+Durante la registrazione, le Fonti Autentiche dichiarano le proprie capacità prima che esistano tipi di Credenziale nel catalogo. Questa dichiarazione costituisce il fondamento per la successiva registrazione dei CI e la creazione dei tipi di Credenziale.
 
-  1. **FA della Pubblica Amministrazione** (Integrazione Standardizzata): Gli enti pubblici forniscono dati autorevoli attraverso meccanismi regolamentati:
+Schema dell'identificativo univoco della Fonte Autentica
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    - **Integrazione PDND**: ``"integration_method": "pdnd"`` per l'accesso standardizzato ai dati pubblici.
-    - **Conformità Normativa**: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.
-    - **Requisiti di Audit**: Tracciabilità completa per i processi di emissione di Credenziali pubbliche.
+A ciascuna Fonte Autentica DEVE essere assegnato un identificativo univoco che segue lo schema URL HTTPS definito di seguito. Questo identificativo è utilizzato per referenziare le entità AS nel sistema di registro e nel Digital Credentials Catalog, assicurando coerenza con i pattern di identificazione delle entità OpenID Federation.
 
-  2. **FA del Settore Privato** (Integrazione Flessibile): Le entità private forniscono dati specializzati tramite accordi personalizzati:
-
-    - **API Personalizzate**: ``"integration_method": "pdnd"`` per l'accesso ai dati specifici del business.
-    - **Conformità Normativa**: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.
-    - **Selective Disclosure**: Visibilità pubblica limitata con flussi di approvazione specifici per EI.
-    - **Flessibilità Aziendale**: Integrazione su misura a supporto di casi d'uso diversificati del settore privato.
-
-Questo approccio consente sia la **trasparenza normativa** per la pubblica amministrazione sia la **flessibilità aziendale** per le entità del settore privato, mantenendo al contempo un accesso coordinato ai dati nell'intero ecosistema.
-
-Struttura del Registro FA
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Durante la registrazione, le Fonti Autentiche dichiarano le proprie capacità prima che le tipologie di Credenziale esistano nel catalogo. Questa dichiarazione costituisce la base per la successiva registrazione degli EI e la creazione delle tipologie di Credenziale.
-
-Schema di Identificazione Univoca delle FA
-""""""""""""""""""""""""""""""""""""""""""
-
-A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è utilizzato per referenziare le entità FA nell'intero sistema di registro e nel Catalogo delle Credenziali Digitali, garantendo la coerenza con i pattern di identificazione delle entità di OpenID Federation.
-
-**Schema di Identificazione FA:**
+*Schema dell'identificativo AS:*
 
 .. code-block:: text
 
   https://{organization_domain}[/{optional_path}]
 
-**Componenti dello Schema:**
+*Componenti dello schema:*
 
 - **organization_domain**: Dominio DNS controllato dall'organizzazione
-- **optional_path**: Componente di percorso aggiuntivo per servizi o dipartimenti specifici
+- **optional_path**: Componente di path aggiuntivo per servizi o dipartimenti specifici
 
-L'identificatore FA DEVE seguire le seguenti regole normative:
+L'identificativo AS DEVE seguire queste regole normative:
 
-1. **Protocollo HTTPS**: DEVE utilizzare lo schema HTTPS per sicurezza e verifica della fiducia
-2. **Proprietà del Dominio**: L'organizzazione DEVE controllare il dominio DNS utilizzato nell'identificatore
-3. **Unicità**: Garantita attraverso l'unicità del namespace DNS
+1. **Protocollo HTTPS**: DEVE utilizzare lo schema HTTPS per la verifica di sicurezza e trust
+2. **Titolarità del dominio**: L'organizzazione DEVE controllare il dominio DNS utilizzato nell'identificativo
+3. **Univocità**: Garantita tramite l'univocità del namespace DNS
 4. **Stabilità**: DOVREBBE rimanere stabile nel tempo per evitare la rottura dei riferimenti
-5. **Risolvibilità**: L'URL DOVREBBE essere risolvibile (ma non è obbligatorio che restituisca contenuto)
+5. **Risolvibilità**: L'URL DOVREBBE essere risolvibile (sebbene non sia richiesto che serva contenuto)
 
-**Esempi di identificatori FA conformi:**
+*Esempi di identificativi AS conformi:*
 
-- ``https://motorizzazione.gov.example``: Pubblico - Ministero dei Trasporti, Direzione Motorizzazione
+- ``https://motorizzazione.gov.example``: Pubblico - Ministero dei Trasporti, Dip. Motorizzazione
 - ``https://registry.anpr.example``: Pubblico - Anagrafe Nazionale della Popolazione Residente
-- ``https://api.bank.example/auth-source``: Privato - Servizi Finanziari Banca Esempio
+- ``https://api.bank.example/auth-source``: Privato - Servizi finanziari Banca Esempio
 
-Parametri del Registro delle Fonti Autentiche
-"""""""""""""""""""""""""""""""""""""""""""""
+Parametri dell'Authentic Source Registry
+""""""""""""""""""""""""""""""""""""""""
 
-Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
+L'Authentic Source Registry DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
 
-.. list-table:: Campi di Primo Livello del Registro delle Fonti Autentiche
+.. list-table:: First-level Fields of the Authentic Source Registry
    :class: longtable
    :widths: 30 70
    :header-rows: 1
 
-   * - **Nome Campo**
-     - **Descrizione**
+   * - **Field Name**
+     - **Description**
    * - **id**
-     - OBBLIGATORIO. Identificatore univoco del Registro delle Fonti Autentiche (es. ``urn:authentic-sources:it-wallet``).
+     - OBBLIGATORIO. Identificativo univoco dell'Authentic Source Registry (ad es., ``urn:authentic-sources:it-wallet``).
    * - **version**
-     - OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. ``1.0.0``).
+     - OBBLIGATORIO. La versione dell'Authentic Source Registry (ad es., ``1.0.0``).
    * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando il Registro delle Fonti Autentiche è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
+     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
    * - **localization**
      - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
-       * **default_locale**: Codice locale predefinito (es. ``it``).
-       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
-       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/``).
+       * **default_locale**: Codice locale predefinito (ad es., ``it``).
+       * **available_locales**: Array dei codici locale supportati (ad es., ``["en", "it"]``).
+       * **base_uri**: URI di base per il recupero dei bundle di localizzazione (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/``).
        * **version**: Versione del formato del bundle di localizzazione.
    * - **authentic_sources**
-     - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella "Parametri delle Fonti Autentiche" di seguito, inclusi identificazione dell'entità, informazioni organizzative, capacità sui dati e metodi di integrazione.
+     - OBBLIGATORIO. Un array JSON in cui ciascuna voce è un oggetto JSON che rappresenta un'entità Fonte Autentica. Ciascun oggetto contiene i parametri definiti nella tabella "Authentic Sources Parameters" seguente, compresi identificazione dell'entità, informazioni organizzative, capacità dati e metodi di integrazione.
 
-.. list-table:: Parametri delle Fonti Autentiche
+.. list-table:: Authentic Sources Parameters
    :class: longtable
    :widths: 25 15 60
    :header-rows: 1
 
-   * - **Parametro**
-     - **Tipo**
-     - **Descrizione**
+   * - **Parameter**
+     - **Type**
+     - **Description**
    * - **entity_id**
      - string
-     - OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
+     - OBBLIGATORIO. Identificativo univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
    * - **organization_info**
-     - oggetto JSON
-     - OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.
+     - JSON object
+     - OBBLIGATORIO. Dettagli della persona giuridica e metadata organizzativi.
    * - **organization_info.organization_name_l10n_id**
      - string
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome localizzato dell'organizzazione nel bundle di localizzazione (es. ``authentic_source1.name``).
+     - OBBLIGATORIO. Chiave di localizzazione che referenzia il nome localizzato dell'organizzazione nel bundle di localizzazione (ad es., ``authentic_source1.name``).
    * - **organization_info.organization_type**
      - string
      - OBBLIGATORIO. Classificazione dell'entità: ``"public"`` o ``"private"``.
    * - **organization_info.ipa_code**
      - string
-     - OBBLIGATORIO solo per FA Pubbliche. Codice di registrazione IPA per gli enti pubblici.
+     - OBBLIGATORIO solo per AS pubbliche. Codice di registrazione IPA per le entità governative.
    * - **organization_info.legal_identifier**
      - string
-     - OBBLIGATORIO. Identificativo di registrazione legale (Codice Fiscale/Partita IVA, o equivalente identificativo nazionale per entità straniere).
+     - OBBLIGATORIO. Identificativo di registrazione legale (Codice Fiscale/Partita IVA, o identificativo nazionale equivalente per le entità estere).
    * - **organization_info.homepage_uri**
      - string
-     - OBBLIGATORIO. URL della homepage dell'organizzazione.
+     - OBBLIGATORIO. URL che punta alla homepage dell'organizzazione.
    * - **organization_info.contacts**
-     - Array di stringhe
-     - OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.
+     - String Array
+     - OBBLIGATORIO. Array di indirizzi e-mail di contatto per almeno un supporto utente, un'applicazione e uno specialista di sistemi.
    * - **organization_info.dpa_contact**
      - string
-     - OBBLIGATORIO. Indirizzo email del DPA della Fonte Autentica.
+     - OBBLIGATORIO. Un indirizzo e-mail del DPA della Fonte Autentica.
    * - **organization_info.policy_uri**
      - string
      - OBBLIGATORIO. URL del documento di informativa sulla privacy.
@@ -403,7 +976,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OPZIONALE. URL dell'immagine del logo dell'organizzazione.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **organization_info.logo_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
@@ -412,31 +985,31 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.
    * - **organization_info.logo_extended_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo esteso per la verifica di integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **organization_info.logo_extended_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.
    * - **data_capabilities**
-     - Array di oggetti JSON
-     - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
+     - JSON Objects Array
+     - OBBLIGATORIO. Array contenente le specifiche delle capacità dati.
    * - **data_capabilities[].dataset_id**
      - string
      - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
+     - OBBLIGATORIO. Chiave di localizzazione che referenzia il nome leggibile dell'origine dei dati o del dipartimento che fornisce i dati (ad es., ``authentic_source1.dataset1.origin``).
    * - **data_capabilities[].intended_purposes**
-     - Array di stringhe
-     - OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
+     - String Array
+     - OBBLIGATORIO. Scopi business serviti, utilizzando gli identificativi di purpose della taxonomy (ad es., ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
    * - **data_capabilities[].available_claims**
-     - Array di stringhe
+     - String Array
      - OBBLIGATORIO. Claim disponibili da questa capacità dati.
    * - **data_capabilities[].available_claims.claim_name**
      - string
      - OBBLIGATORIO. Contiene il nome del claim.
    * - **data_capabilities[].available_claims.order**
      - number
-     - OBBLIGATORIO. Definisce l'ordine in cui le informazioni vengono mostrate.
+     - OBBLIGATORIO. Definisce l'ordine in cui le informazioni sarebbero mostrate.
    * - **data_capabilities[].available_claims.mandatory**
      - boolean
      - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
@@ -450,8 +1023,8 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - string
      - OPZIONALE. URL del documento di specifica `OAS3`_ per questa capacità dati.
    * - **data_capabilities[].data_provision**
-     - oggetto JSON
-     - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.
+     - JSON object
+     - OPZIONALE. Capacità di fornitura dei dati e specifiche di tempistica.
    * - **data_capabilities[].data_provision.immediate_flow**
      - boolean
      - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.
@@ -460,25 +1033,25 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.
    * - **data_capabilities[].data_provision.max_response_time_minutes**
      - integer
-     - CONDIZIONALE. Tempo massimo in minuti per la risposta della Fonte Autentica a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+     - Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].data_provision.notification_methods**
-     - Array di stringhe
-     - CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+     - String Array
+     - Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, quali ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].user_information_l10n_id**
      - string
-     - OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.
+     - OPZIONALE. Chiave di localizzazione che referenzia una stringa formattata in Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (ad es., ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo in chiaro o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere veicolata tramite questa chiave.
    * - **data_capabilities[].service_documentation_uri**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
      - string
-     - OPZIONALE. Indica la frequenza con cui la Fonte Autentica aggiorna i propri dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+     - OPZIONALE. Indica con quale frequenza la Fonte Autentica aggiorna i propri dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
    * - **data_capabilities[].logo_uri**
      - string
      - OPZIONALE. URL dell'immagine del logo relativa ai dati.
    * - **data_capabilities[].logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+     - Digest crittografico della risorsa immagine del logo per la verifica di integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad es., ``"sha-256-abc123..."``).
    * - **data_capabilities[].logo_alt_text_l10n_id**
      - string
      - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
@@ -486,967 +1059,666 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
    * - **data_capabilities[].contacts**
-     - Array di Oggetti
-     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti riferiti allo specifico dataset. Ogni oggetto contiene:
-    
-        - **type**: OBBLIGATORIO. Indica il tipo di informazione di contatto e DEVE essere impostato a ``email``, ``telephone`` oppure ``url``.
-        - **value**: OBBLIGATORIO. Contiene il valore dell'informazione di contatto corrispondente al tipo specificato.
-        - **description**: OPZIONALE. Contiene una descrizione testuale associata all'informazione di contatto.
+     - String Array
+     - OPZIONALE. Array di contatti del servizio clienti o canali di supporto utente (ad es., indirizzo e-mail).
+   * - **data_capabilities[].verification_endpoint**
+     - JSON object
+     - OPZIONALE. Presente solo per gli attributi dell'Annex VI che fanno affidamento su una Fonte Autentica del settore pubblico e che sono esportati nel EUDIW Catalogue of Attributes. Descrive l'interfaccia di verifica transfrontaliera esposta ai Qualified Trust Service Provider, distinta dall'e-Service PDND nazionale e conforme a ETSI TS 119 478. Contiene ``method`` (uno tra ``oots_edelivery`` per l'interfaccia ISO 15000/eDelivery di ETSI TS 119 478 Section 6.2, o ``rest_oauth2`` per l'interfaccia REST + OAuth 2.0 di ETSI TS 119 478 Section 6.1) e ``endpoint`` (l'identificativo party eDelivery o l'endpoint REST). L'interfaccia PUÒ essere esposta dalla Fonte Autentica direttamente o da un intermediario nazionale designato (ad es. un access point OOTS).
 
 .. note::
-  Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
+  Per ulteriori dettagli sulle funzionalità richieste e sull'esito atteso in termini di esperienza utente, si veda la Sezione :ref:`functionalities:Ottenimento dal Catalogo dell'Istanza del Wallet` per il parametro `data_capabilities.user_information` e la Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` e `data_capabilities.available_claims.order`.
 
-Esempio di Registro FA
-""""""""""""""""""""""
+Esempio di Authentic Source Registry
+""""""""""""""""""""""""""""""""""""
 
-Di seguito è fornito un esempio non normativo della struttura del Registro FA:
+Di seguito è fornito un esempio non normativo della struttura dell'AS Registry:
 
 .. literalinclude:: ../../examples/as-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Registro delle Fonti Autentiche, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nell'Authentic Source Registry, un'Entità che lo consulta DOVREBBE:
 
-  - Scaricare la versione base del Registro delle Fonti Autentiche (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/authentic-sources``.
-  - Determinare la lingua preferita dall'Utente.
+  - Scaricare la versione di base dell'Authentic Source Registry (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/authentic-sources``.
+  - Determinare la lingua preferita dell'Utente.
   - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la struttura del Registro delle Fonti Autentiche.
+  - Unire dinamicamente il contenuto localizzato con la struttura dell'Authentic Source Registry.
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/registry-8.json
+   :language: json
 
-  {
-    "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
-    "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
-    "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
-    "authentic_source2.name": "Banca Esempio SpA",
-    "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
-    "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
-    "...": "..."
-  }
-
-I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel registro. Ciascun bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel registro. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
 
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/it.json**.
 
-Coordinamento FA-EI
-^^^^^^^^^^^^^^^^^^^
+Schema Registry
+---------------
 
-A seguito della registrazione FA, il Registro FA consente agli Emittenti di Credenziali di individuare entità FA idonee e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è descritto in dettaglio in :ref:`entity-onboarding:Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali`.
+Lo **Schema Registry** è l'inventario autorevole di tutti gli **Schema delle Credenziali** noti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet.
 
-Registro della Federazione
---------------------------
+Schema Registry Objectives
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+1. **Centralizzazione degli schema**: Fornire un punto di accesso centralizzato per tutti gli schema tecnici utilizzati dagli Attestati Elettronici.
+2. **Integrità e autenticità**: Assicurare l'integrità e l'autenticità dei documenti di schema tramite digest crittografici.
+3. **Interoperabilità**: Facilitare l'integrazione senza soluzione di continuità dei Fornitori di Wallet e delle Relying Party fornendo versioni di schema coerenti.
+4. **Supporto al ciclo di vita delle Credenziali**: Agire come punto di riferimento verificabile per la validazione dello schema durante l'emissione e la presentazione.
 
-Ruolo di Integrazione del Registro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All'interno dell'architettura del Registro di Sistema IT-Wallet, il Registro della Federazione funge da **livello di validazione della fiducia** per:
+Utilizzo dello Schema Registry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. **Autenticazione delle Entità**: Valida l'identità crittografica di tutti i partecipanti prima delle operazioni di registro
-2. **Verifica della Catena di Fiducia**: Fornisce il fondamento crittografico per la validazione delle entità Emittenti di Credenziali, Relying Party e Fornitori di Wallet
-3. **Verifica della Conformità**: Mantiene i Trust Mark che attestano la conformità normativa e lo stato operativo
+Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :ref:`fig_registry_discovery`, le principali Entità che interagiscono con lo Schema Registry sono:
 
-Accesso al Registro della Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  - **Attestation Scheme Provider**: Forniscono lo schema di un tipo di Credenziale, o il suo allineamento allo schema di un Rulebook esterno, e il Sistema di Onboarding lo registra con il suo digest di integrità durante lo :ref:`onboarding-system:Schema Provisioning`.
+  - **Credential Issuer**: Utilizzano lo Schema Registry per costruire i propri metadata e per emettere gli Attestati Elettronici secondo lo schema registrato.
+  - **Relying Party**: Utilizzano lo Schema Registry per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
+  - **Fornitori di Wallet**: Accedono allo Schema Registry per recuperare tutte le informazioni necessarie per integrarli nelle proprie Soluzioni Wallet.
 
-Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
+Catalogo delle Attestazioni
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
-   Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) sia attraverso la Configurazione dell'Entità del Trust Anchor all'indirizzo ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le sorgenti forniscono gli stessi URL degli endpoint ma servono diversi pattern di discovery: la discovery del registro per l'orientamento iniziale nell'ecosistema, la Configurazione dell'Entità per la conformità standard a OpenID Federation 1.0.
+Il valore ``schema_registry`` nel documento Registry Discovery è la radice dell'API del Catalogue of Attestations.
+Il Federation Trust Anchor DEVE implementare la Section 5 di [`EUDI-TS 11`_] e il documento OpenAPI dell'Annex A.3 ([`EUDI-TS 11 OpenAPI`_]).
+Ciascuno schema di attestazione DEVE essere un oggetto ``SchemaMeta`` come definito nella Section 4.3 di [`EUDI-TS 11`_]. Lo schema DEVE essere valido rispetto allo JSON Schema dell'Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
+L'oggetto NON DEVE contenere proprietà esterne a quello schema.
 
-   Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+La radice dell'API ha questi path:
+
+- ``GET /schemas`` elenca gli schema con i parametri di query dell'Annex A.3.
+- ``GET /schemas/{schemaId}`` restituisce uno schema. ``schemaId`` è l'``id`` dello ``SchemaMeta``.
+- ``PUT /schemas/{schemaId}`` sostituisce uno schema.
+- ``DELETE /schemas/{schemaId}`` elimina uno schema.
+
+``id`` DEVE essere un UUID assegnato dal Federation Trust Anchor alla prima registrazione dello schema.
+``version`` DEVE seguire il semantic versioning. La prima versione pubblicata DEVE essere ``1.0.0``.
+``supportedFormats`` e ciascun elemento di ``schemaURIs`` DEVONO usare gli identificativi di formato della Section 4.3 di [`EUDI-TS 11`_].
+Il documento di schema specifico del formato servito a ``schemaURIs[].uri`` DEVE seguire la Section 4.3.4 di [`EUDI-TS 11`_].
+Un ``rulebookURI`` o un ``schemaURIs[].uri`` PUÒ recare un suffisso ``#integrity``. Il valore del suffisso DEVE essere integrity metadata come definito nella Section 3 di [`W3C-SRI`_]. Quando il suffisso è presente, il consumatore DEVE verificare il documento come definito nella Section 3.3.5 di [`W3C-SRI`_].
+Il ``frameworkType`` ``openid_federation`` DEVE essere usato solo per un EAA non qualificato.
+``isLoTE`` DEVE seguire la Section 4.3.3 di [`EUDI-TS 11`_].
+L'Attestation Rulebook di una QEAA o di una PuB-EAA DEVE essere pubblicato come richiesto dalla Section 4.2 di [`EUDI-TS 11`_].
+La pubblicazione del rulebook di un EAA è RACCOMANDATO.
+
+List of schemas
+"""""""""""""""
+
+``GET /schemas`` DEVE essere disponibile senza autenticazione.
+La risposta DEVE essere HTTP 200 quando la query è valida.
+Il payload del JWT DEVE contenere ``iss``, ``iat`` e ``data``.
+``data`` DEVE contenere ``total``, ``limit``, ``offset`` e ``data``.
+L'array ``data`` interno contiene gli oggetti ``SchemaMeta`` corrispondenti.
+``iss`` DEVE identificare il Federation Trust Anchor.
+``iat`` DEVE essere il tempo Unix in cui il JWT è stato emesso, come definito in :rfc:`7519`.
+
+Quando ``limit`` è assente, si applica il valore 20.
+Quando ``offset`` è assente, si applica il valore 0.
+Quando non è presente alcun filtro, l'insieme dei risultati è ogni schema registrato, restituito a partire da ``offset`` per al massimo ``limit`` elementi.
+Il Federation Trust Anchor DEVE ordinare tale insieme per ``id`` crescente.
+Un client che richiede ogni schema corrispondente DEVE richiedere la pagina successiva aumentando ``offset`` di ``limit`` fino a quando ``offset`` è maggiore o uguale a ``total``.
+Il Federation Trust Anchor DEVE rispondere con HTTP 400 quando la query non è conforme all'Annex A.3.
+
+Una risposta ``application/jwt`` con esito positivo DEVE includere l'header ``x-jku-url``. Il suo valore DEVE essere l'URI HTTPS del JSON Web Key Set usato per verificare la firma.
+La stessa risposta DEVE essere disponibile anche come ``application/json`` secondo :ref:`registry:Content Negotiation and Signed Representation`. Il corpo JSON è il payload del JWT.
+
+L'esempio non normativo seguente è una pagina di ``GET /schemas``.
+
+.. literalinclude:: ../../examples/schema-registry-example-payload.json
+   :language: JSON
+
+One schema
+""""""""""
+
+``GET /schemas/{schemaId}`` DEVE essere disponibile senza autenticazione.
+Il Federation Trust Anchor DEVE rispondere con HTTP 200 e un JWS il cui payload è lo ``SchemaMeta`` corrispondente quando ``schemaId`` esiste.
+Il Federation Trust Anchor DEVE rispondere con HTTP 404 quando ``schemaId`` non esiste.
+La risposta JWT DEVE includere ``x-jku-url`` come specificato per l'elenco.
+
+Update and deletion
+"""""""""""""""""""
+
+``PUT /schemas/{schemaId}`` e ``DELETE /schemas/{schemaId}`` DEVONO essere accettati solo da un rappresentante autenticato dell'Attestation Scheme Provider che ha registrato lo schema, come richiesto dalla Section 4.5.3 e dalla Section 5.2.2 di [`EUDI-TS 11`_].
+Il corpo della richiesta ``PUT`` DEVE essere lo ``SchemaMeta`` completo.
+Un ``PUT`` con esito positivo DEVE rispondere con HTTP 200 e lo ``SchemaMeta`` memorizzato come ``application/json``, come specificato nell'Annex A.3. Questa risposta non è selezionata dalla content negotiation che si applica al ``GET``.
+Un ``DELETE`` con esito positivo DEVE rispondere con HTTP 204.
+Il Federation Trust Anchor DEVE rispondere con HTTP 401 quando il chiamante non è autenticato.
+Il Federation Trust Anchor DEVE rispondere con HTTP 403 quando il chiamante autenticato non è un rappresentante dell'Attestation Scheme Provider che ha registrato lo schema.
+Il Federation Trust Anchor DEVE rispondere con HTTP 404 quando ``schemaId`` non esiste.
+La Section 5.2.2 di [`EUDI-TS 11`_] lascia il meccanismo di autenticazione della Commissione a una versione successiva. Fino a quando quel meccanismo è definito, il Sistema di Onboarding è il rappresentante che il Federation Trust Anchor DEVE accettare per questi due metodi.
+
+L'implementazione di ``GET /schemas`` DEVE tenere conto delle vulnerabilità descritte nella Section 5.4 di [`EUDI-TS 11`_].
+L'implementazione DOVREBBE applicare le misure della Section 5.5 e della Section 5.6 di [`EUDI-TS 11`_].
 
 Catalogo degli Attestati Elettronici
 ------------------------------------
 
-Il Catalogo delle Credenziali Digitali è il registro di tutte le Credenziali Digitali disponibili riconosciute nell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor ed è pubblicamente disponibile per tutte le Entità tramite un endpoint specializzato della Federazione. Funge da unico punto di riferimento per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo delle Credenziali Digitali.
+Il Digital Credentials Catalog è il registro di tutti gli Attestati Elettronici disponibili riconosciuti all'interno dell'ecosistema IT-Wallet. Agisce come singolo punto di riferimento per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo degli Attestati Elettronici.
+Il Digital Credentials Catalog DEVE contenere almeno:
 
-Il Catalogo delle Credenziali Digitali si prefigge di:
+.. list-table:: Digital Credentials Catalog - Main information
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
 
-  1. Facilitare la discovery delle Credenziali Digitali per gli Utenti.
-  2. Standardizzare la descrizione tecnica e funzionale delle Credenziali Digitali.
-  3. Abilitare l'interoperabilità tra diversi Emittenti e Relying Party.
+   * - **Information related to**
+     - **Description**
+   * - Digital Credential Metadata
+     - Informazioni identificative essenziali e caratteristiche dell'Attestato Elettronico, compresi:
+
+       - **Identificativo univoco della Credenziale**: Una stringa identificativa univoca di ciascun Attestato Elettronico.
+       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesto dagli Issuer o dalle Fonti Autentiche.
+       - **Livello di Garanzia minimo**: Il Livello di Garanzia minimo richiesto per l'affidabilità dell'Attestato Elettronico. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza del Wallet.
+   * - Digital Credential Issuers
+     - Dettagli sull'organizzazione autorizzata a emettere l'Attestato Elettronico, quali:
+
+       - **Identificativi dell'Issuer**: Identificativo univoco dell'issuer dell'Attestato Elettronico.
+       - **Tipo di Issuer**: Classificazione come PID, (Q)EAA o Pub-EAA Provider.
+       - **Informazioni aggiuntive**: Dettagli organizzativi compresi nome, codice e informazioni di contatto.
+   * - Authentic Sources
+     - Informazioni sulla fonte dati autorevole.
+   * - Technical Specification
+     - Dettagli tecnici, compresi:
+
+       - **Schema dell'Attestato Elettronico**: Specifiche di framework e struttura.
+       - **Formati dell'Attestato Elettronico**: Standard di formato dati e encoding.
+       - **Policy di autenticazione**: Metodi e requisiti per la verifica.
+   * - Terms of Use
+     - Condizioni e limitazioni per l'utilizzo dell'Attestato Elettronico, quali:
+
+       - **Validità della Credenziale**: Periodo di tempo durante il quale l'Attestato Elettronico è valido e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
+       - **Restriction policy**: Se applicabile, regole che governano l'uso e le limitazioni dell'Attestato Elettronico secondo la regolamentazione nazionale. È utilizzata, ad esempio, per specificare se solo Entità di un determinato legal type, ad esempio Pub-EAA Provider e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere l'Attestato Elettronico.
+       - **Pricing policy**: Informazioni relative ai modelli di prezzo dell'Attestato Elettronico, quali `free`, `issuance_based`, `verification_based`.
+       - **Scopi dell'Attestato Elettronico**: Informazioni relative agli scopi consentiti per i quali l'Attestato Elettronico può essere utilizzato. Ciascun tipo di Attestato Elettronico può essere utilizzato per più scopi.
+
+Il Digital Credentials Catalog DEVE assicurare di:
+
+  1. Facilitare la discovery degli Attestati Elettronici per gli Utenti.
+  2. Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.
+  3. Abilitare l'interoperabilità tra Issuer e Relying Party diversi.
   4. Semplificare il processo di integrazione per i Fornitori di Wallet e le Relying Party.
-  5. Garantire la fiducia nell'ecosistema attraverso informazioni verificabili e attendibili.
-  6. Fornire trasparenza sull'ecosistema delle Credenziali Digitali disponibili.
+  5. Assicurare la trust nell'ecosistema tramite informazioni verificabili e affidabili.
+  6. Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.
 
-Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
+Digital Credentials Catalog Usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  - **Trust Anchor**: Gestisce e mantiene il Catalogo delle Credenziali Digitali, garantendone l'autenticità e l'integrità.
-  - **Organismo di Vigilanza**: Interagisce con il Trust Anchor e il Catalogo delle Credenziali Digitali per monitorare la fase di registrazione garantendo sicurezza e privacy secondo la normativa nazionale/europea, mantenendo tutte le informazioni affidabili e aggiornate.
-  - **Emittenti di Credenziali Digitali**: Le entità autorizzate a emettere Credenziali Digitali, registrandole nel Catalogo.
-  - **Relying Party**: Utilizzano il Catalogo delle Credenziali Digitali per raccogliere tutte le informazioni necessarie sulle Credenziali Digitali che intendono richiedere durante la fase di presentazione.
-  - **Fornitori di Wallet**: Accedono al Catalogo delle Credenziali Digitali per identificare le Credenziali Digitali disponibili e recuperare tutte le informazioni necessarie per integrarle nelle proprie Soluzioni Wallet.
-  - **Utenti**: Gli Utenti che utilizzano indirettamente il Catalogo delle Credenziali Digitali attraverso le proprie Istanze Wallet per scoprire e richiedere Credenziali Digitali.
-  - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati nelle Credenziali Digitali. Forniscono supporto agli Emittenti nella registrazione delle Credenziali Digitali nel Catalogo.
+Come mostrato nella Figura :ref:`fig_registry_infrastructure` e nella Figura :ref:`fig_registry_discovery`, le principali Entità coinvolte nel Digital Credentials Catalog sono:
 
-.. _fig_catalog:
-.. plantuml:: plantuml/credential-catalog-entities.puml
-    :width: 99%
-    :alt: La figura illustra le Entità delle Credenziali Digitali.
-    :caption: `Diagramma Entità-Relazione del Catalogo delle Credenziali Digitali. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
+  - **Attestation Scheme Provider**: Le Entità che possiedono l'Attestation Rulebook di un Attestato Elettronico e che richiedono la registrazione della corrispondente voce versionata, si veda Attestation Scheme Provider.
+  - **Digital Credential Issuer**: Sono aggiunti al campo ``issuers`` di una voce versionata come risultato degli Attestati Elettronici che dichiarano nei propri dati di registrazione.
+  - **Relying Party**: Utilizzano il Digital Credentials Catalog per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
+  - **Fornitori di Wallet**: Accedono al Digital Credentials Catalog per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarli nelle proprie Soluzioni Wallet.
+  - **Utenti**: Gli Utenti che utilizzano indirettamente il Digital Credentials Catalog tramite le proprie Istanze del Wallet per scoprire e richiedere Attestati Elettronici.
+  - **Fonti Autentiche**: Sono referenziate dalla voce versionata come sua fonte dati e agiscono come Attestation Scheme Provider quando possiedono l'Attestation Rulebook.
 
-La seguente tabella riepiloga le principali informazioni che DEVONO essere fornite dal Catalogo delle Credenziali Digitali:
+Una voce versionata non è fornita da una singola Entità.
+I suoi campi provengono da fonti diverse e sono scritti in fasi di onboarding diverse, come sintetizzato nella tabella seguente.
+I Data Identifier che recano queste informazioni attraverso l'onboarding, e la loro mappatura sui campi della voce, sono definiti in :ref:`onboarding-system:Registration Data Model`.
 
-.. list-table:: Catalogo delle Credenziali Digitali - Informazioni principali
+.. _table_catalog_entry_provision:
+.. list-table:: Provision of a Versioned Entry of the Digital Credentials Catalog
    :class: longtable
-   :widths: 30 70
+   :widths: 40 32 28
    :header-rows: 1
 
-   * - **Informazioni relative a**
-     - **Descrizione**
-   * - Metadati della Credenziale Digitale
-     - Informazioni identificative essenziali e caratteristiche della Credenziale Digitale, tra cui:
+   * - **Fields**
+     - **Provided by**
+     - **Process**
+   * - ``credential_type``, ``version``, ``credential_name_l10n_id``, ``legal_type``, ``domains``, ``classes``, ``purposes``, ``authentication``, ``validity_info``, ``restriction_policy``, ``pricing_policy``, ``rulebookURI``, ``bindingType``, ``attestationLoS``, ``trustedAuthorities``
+     - L'Attestation Scheme Provider, che trae i valori dall'Attestation Rulebook che possiede
+     - :ref:`onboarding-system:Credential Type Registration`
+   * - ``authentic_sources`` or ``parent_credentials``
+     - L'Attestation Scheme Provider, referenziando le voci dell':ref:`registry:Authentic Source Registry` o un tipo di Credenziale già registrato
+     - :ref:`onboarding-system:Credential Type Registration`
+   * - ``schemaId``
+     - L'Attestation Scheme Provider, tramite lo ``SchemaMeta`` registrato nel :ref:`registry:Catalogo delle Attestazioni`
+     - :ref:`onboarding-system:Schema Provisioning`
+   * - ``issuers``
+     - Ciascun elemento deriva dagli Attestati Elettronici che un Credential Issuer dichiara nei propri dati di registrazione, con le capacità di emissione che offre per ciascuno di essi
+     - :ref:`onboarding-system:Entity Registration` e :ref:`onboarding-system:Entity Update`
+   * - ``state``
+     - Non fornito. Deriva dalle condizioni della voce versionata
+     - :ref:`onboarding-system:Credential Type Activation and Deactivation`
 
-       - **Identificatore univoco della Credenziale**: Una stringa identificativa univoca per ciascuna Credenziale Digitale.
-       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere la Credenziale Digitale, se richiesti dagli Emittenti o dalle Fonti Autentiche.
-       - **Livello Minimo di Garanzia**: Il Livello Minimo di Garanzia richiesto per l'affidabilità della Credenziale Digitale. DEVE tener conto del Livello di Garanzia dell'autenticazione dell'Utente, ove applicabile, e dell'Istanza Wallet.
-   * - Emittenti della Credenziale Digitale
-     - Dettagli sull'organizzazione autorizzata a emettere la Credenziale Digitale, quali:
+La registrazione della voce versionata è approvata dall'Organismo di Supervisione, come descritto in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, è scritta dal Sistema di Onboarding ed è pubblicata dal Federation Trust Anchor con il resto del catalogo.
 
-       - **Identificatori dell'Emittente**: Identificatore univoco dell'emittente della Credenziale Digitale.
-       - **Tipologia dell'Emittente**: Classificazione come fornitore PID, (Q)EAA o Pub-EAA.
-       - **Informazioni aggiuntive**: Dettagli organizzativi inclusi nome, codice e informazioni di contatto.
-   * - Fonti Autentiche
-     - Informazioni sulla fonte di dati autorevole.
-   * - Specifica Tecnica
-     - Dettagli tecnici, tra cui:
+.. note::
+  Lo schema è la definizione machine-readable di un tipo di Attestato, che a livello UE è registrata nel Catalogue of Schemes e che a livello nazionale corrisponde alla voce versionata del Digital Credentials Catalog.
+  Il Credential Schema è lo JSON Schema o lo CBOR Schema che valida la struttura dell'Attestato Elettronico, ed è registrato nello :ref:`registry:Schema Registry`.
+  L'Attestation Scheme Provider possiede il primo e fornisce il secondo come parte della specifica tecnica del tipo di Credenziale.
 
-       - **Schemi della Credenziale Digitale**: Specifiche del framework e della struttura.
-       - **Formati della Credenziale Digitale**: Standard di formato e codifica dei dati.
-       - **Politica di autenticazione**: Metodi e requisiti per la verifica.
-   * - Termini di Utilizzo
-     - Condizioni e limitazioni per l'utilizzo della Credenziale Digitale, quali:
+Digital Credentials Catalog Retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-       - **Validità della Credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, ove applicabile, meccanismi e dettagli tecnici per invalidare le Credenziali Digitali (metodi di revoca/sospensione).
-       - **Politica di restrizione**: Se applicabile, regole che disciplinano l'utilizzo e le limitazioni della Credenziale Digitale secondo la normativa nazionale. Viene utilizzata, ad esempio, per specificare se solo specifiche tipologie di entità legali, come i Fornitori Pub-EAA e le Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere la Credenziale Digitale.
-       - **Politica di prezzo**: Informazioni relative ai modelli di prezzo della Credenziale Digitale, come `free`, `issuance_based`, `verification_based`.
-       - **Finalità della Credenziale Digitale**: Informazioni relative alle finalità consentite per cui la Credenziale Digitale può essere utilizzata. Ogni tipologia di Credenziale Digitale può essere utilizzata per più finalità.
+Il Federation Trust Anchor DEVE pubblicare il Digital Credentials Catalog come due risorse HTTP.
+Entrambe le risorse usano la content negotiation e la rappresentazione firmata comuni a tutti gli endpoint della Registry Infrastructure (si veda :ref:`registry:Content Negotiation and Signed Representation`).
 
-Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo delle Credenziali Digitali garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo delle Credenziali Digitali DEVE essere disponibile attraverso l'endpoint ``.well-known/credential-catalog``. DEVE supportare ``application/jose`` come content-type.
+L'URL della collection è l'URL assoluto pubblicato sotto la chiave ``credential_catalog`` del documento Registry Discovery.
+L'URL della entry è l'URL della collection con due segmenti di path aggiunti, il ``credential_type`` e la ``version`` di una voce versionata.
+Un client DEVE costruire l'URL della entry a partire da quell'URL di collection.
+Entrambi i segmenti di path DEVONO essere percent-encoded come definito in :rfc:`3986`.
 
-Di seguito è riportato un esempio non normativo.
+Una risposta con esito positivo di ciascuna risorsa è un JWS in compact serialization.
+I parametri di header DEVONO essere quelli definiti nella :ref:`tabella corrispondente <table_catalog_parameters>`.
+Il Federation Trust Anchor DEVE firmare ciascuna risposta per proprio conto.
+Una scrittura che modifica una voce versionata non richiede una nuova firma sulle voci versionate che la scrittura ha lasciato invariate.
 
-.. code-block:: http
+Il metodo di elenco e il metodo di lettura della singola voce seguono la Section 5.3.1 di [`EUDI-TS 11`_].
+La risposta reca la voce versionata nazionale definita in :ref:`registry:Digital Credentials Catalog Structure`.
 
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jose
+Collection
+""""""""""
 
-    HTTP/1.1 200 OK
-    Content-Type: application/jose
+L'endpoint di collection DEVE accettare HTTP GET sull'URL della collection.
+Il Federation Trust Anchor DEVE rispondere con HTTP 200 a una richiesta di collection valida.
 
-    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+La richiesta PUÒ includere i parametri di query in :ref:`table_catalog_query_parameters`.
+``limit`` e ``offset`` seguono la Section 5.3.1 di [`EUDI-TS 11`_].
+``attestationLoS``, ``bindingType``, ``trustedAuthoritiesFrameworkType``, ``trustedAuthoritiesValue`` e ``rulebookUri`` sono i filtri di quella sezione che corrispondono a un campo della voce versionata nazionale.
+``credential_type`` e ``state`` selezionano la stessa voce.
+La risposta di collection DEVE includere una voce versionata solo quando quella voce corrisponde a ogni filtro fornito.
+Il Federation Trust Anchor DEVE rispondere con HTTP 400 quando la richiesta ripete un parametro di query, contiene un parametro di query non elencato in :ref:`table_catalog_query_parameters`, o contiene un valore che non soddisfa quel parametro.
 
-Nella sezione :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` è fornito un esempio del Catalogo delle Credenziali Digitali decodificato in JSON.
+Il Federation Trust Anchor DEVE ordinare le voci corrispondenti secondo l'ordine dei code point Unicode di ``credential_type`` e, a parità di ``credential_type``, secondo l'ordine dei code point Unicode di ``version``.
+L'array ``credentials`` DEVE contenere le voci corrispondenti in quell'ordine, a partire dalle voci successive a ``offset``. L'array ``credentials`` DEVE contenere al massimo ``limit`` voci.
+Quando nessuna voce versionata corrisponde, o quando ``offset`` è maggiore o uguale a ``total``, ``credentials`` DEVE essere un array vuoto. In quello stesso caso, ``total`` DEVE essere il numero di voci corrispondenti.
 
-Gerarchia delle Credenziali Digitali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Un client NON DEVE trattare ``credentials`` come l'insieme di tutte le voci versionate del catalogo.
+Il client che richiede ogni voce corrispondente DEVE richiedere la pagina successiva aumentando ``offset`` di ``limit`` fino a quando ``offset`` è maggiore o uguale a ``total``.
 
-Le Credenziali Digitali riconosciute nell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la discovery delle credenziali e la compatibilità con i flussi di verifica sia credential-specific che claim-based.
-
-La gerarchia è definita come segue:
-
-**Dominio**
-
-Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (es. Identità, Salute, Istruzione, Mobilità).
-I Domini forniscono un livello organizzativo di primo piano.
-
-**Classe di Credenziale**
-
-Una **Classe di Credenziale** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (es. Documenti di Identità, Certificati di Stato Civile).
-
-Ogni Classe DOVREBBE definire:
-
-- un identificatore di Classe stabile (URI),
-- la semantica attesa della Famiglia di Credenziali.
-
-Le Classi consentono alle Relying Party e alle Soluzioni Wallet di richiedere o abbinare le Credenziali in base alla loro categoria tipologica.
-
-**Tipologia di Credenziale**
-
-Una **Tipologia di Credenziale** rappresenta una Credenziale specifica all'interno di una Classe (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida Mobile).
-Ogni Tipologia di Credenziale DEVE includere:
-
-- un identificatore univoco,
-- l'identificatore dell'Emittente della Credenziale,
-- l'insieme degli Attributi che possono essere inclusi nelle presentazioni.
-
-Le Tipologie di Credenziale consentono il targeting preciso per i flussi di verifica conformi o normativamente mandatati.
-
-**Finalità (Intento di Verifica)**
-
-Una **Finalità (Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da una Relying Party (es. Verifica dell'Identità, Verifica dell'Età, Idoneità a servizi specifici).
-Le Finalità DEVONO descrivere **gli esiti della verifica**.
-Ogni Tipologia di Credenziale DEVE dichiarare il proprio Dominio, Classe e Finalità supportate.
-
-Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Domini, Classi di Credenziale e Tipologie di Credenziale, seguiti dalla loro mappatura sulle Finalità di verifica.
-Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSSONO** essere aggiunti nel tempo con l'evolversi dell'ecosistema IT-Wallet.
-
-.. list-table:: Tassonomia delle Credenziali Digitali: Gerarchia e Classificazione
-   :class: longtable
-   :header-rows: 1
-   :widths: 15 25 30 30
-
-   * - **Dominio**
-     - **Descrizione**
-     - **Classe di Credenziale**
-     - **Tipologia di Credenziale**
-
-   * - *IDENTITÀ*
-     - Credenziali che stabiliscono o confermano l'identità legale di una persona e il suo status personale, civile o giuridico.
-     -
-       * Documenti di Identità
-       * Certificati Anagrafici e di Stato Civile
-       * Stato Economico e Giuridico
-     -
-       * Credenziale di Viaggio Digitale
-       * Patente di Guida Mobile (solo Italia)
-       * Codice Fiscale / Tessera Sanitaria
-       * Certificazione dell'Età
-       * Certificato di Nascita
-       * Certificato di Residenza
-       * Certificato di Stato di Famiglia
-       * Certificato di Matrimonio
-       * Certificato di Cittadinanza
-       * ISEE (Indicatore della Situazione Economica Equivalente)
-       * Permesso di Soggiorno
-       * Certificato dei Carichi Pendenti
-       * Certificato del Casellario Giudiziale
-
-   * - *CASA E FAMIGLIA*
-     - Credenziali che attestano la composizione del nucleo familiare, la residenza e i rapporti giuridici o fiscali legati all'abitazione.
-     -
-       * Documenti Catastali e Immobiliari
-       * Documenti Familiari
-       * Documenti Tributari Locali
-     -
-       * Atto di Compravendita
-       * Visura Catastale
-       * Planimetria Catastale
-       * Certificato Catastale
-       * Codice Fiscale/Tessera Sanitaria dei Figli
-       * Certificato di Nascita
-       * Certificato di Stato di Famiglia
-       * IMU (Imposta Municipale Propria)
-       * TARI (Tassa sui Rifiuti)
-
-   * - *ISTRUZIONE*
-     - Credenziali che attestano risultati scolastici, titoli accademici e formazione professionale.
-     -
-       * Titoli di Studio
-       * Certificazioni Professionali
-     -
-       * Diploma di Licenza Media
-       * Diploma di Istruzione Secondaria Superiore
-       * Laurea Triennale
-       * Laurea Magistrale
-       * Master Universitario
-       * Dottorato di Ricerca
-       * Albi Professionali (es. architetto, avvocato)
-       * Attestati di Formazione Professionale
-       * Certificazioni Linguistiche (es. IELTS)
-       * Qualifiche Accademiche (es. Europass)
-
-   * - *SALUTE*
-     - Credenziali relative alla copertura sanitaria, allo stato di salute e a certificazioni di carattere sanitario.
-     -
-       * Certificazioni e Idoneità
-       * Cartelle Cliniche
-     -
-       * Tessera Sanitaria (TEAM)
-       * Tessera Europea di Assicurazione Malattia (CED)
-       * Certificato di Disabilità
-       * Certificato di Vaccinazione
-       * Certificato di Idoneità Sportiva
-       * Certificato di Idoneità al Lavoro
-       * Prescrizioni Mediche
-       * Referto Medico Digitale
-
-   * - *FINANZIARIO*
-     - Credenziali relative a strumenti di pagamento, autorizzazioni finanziarie e prove di pagamento.
-     -
-       * Strumenti di Pagamento
-       * Credenziali e Autorizzazioni di Pagamento
-       * Pagamenti e Tributi Pubblici
-       * Pagamenti Ricorrenti e Abbonamenti
-     -
-       * Carta di Pagamento Digitale (debito / credito / prepagata)
-       * Carta Virtuale
-       * Conto Bancario (IBAN)
-       * Credenziale di Strong Customer Authentication (SCA)
-       * Ricevuta di Pagamento
-       * Bollo Digitale
-       * Certificato di Pagamento di Tasse e Tributi
-       * Mandato di Abbonamento
-       * Credenziale di Pagamento Ricorrente
-
-   * - *CULTURA E TEMPO LIBERO*
-     - Credenziali che attestano l'appartenenza, l'affiliazione o la partecipazione a programmi culturali o ricreativi.
-     -
-       * Carte e Benefici Culturali
-       * Programmi di Fidelizzazione e Associativi
-     -
-       * Carta della Cultura
-       * Abbonamenti Annuali ai Musei
-       * Carta Cinema
-       * Carta Museo
-       * Tessere di Associazione
-       * Tessera Bibliotecaria
-       * City Pass
-
-   * - *LAVORO*
-     - Credenziali che attestano rapporti di lavoro, status professionale e contribuzione previdenziale.
-     -
-       * Documenti di Lavoro
-       * Stato Occupazionale
-       * Accesso
-     -
-       * Contratto di Lavoro Digitale
-       * Curriculum Vitae (CV)
-       * Permesso di Soggiorno
-       * Certificato di Stato Occupazionale
-       * Estratto Contributivo INPS
-       * Badge di Accesso Fisico
-
-   * - *MOBILITÀ E VIAGGI*
-     - Credenziali che attestano diritti di mobilità, stato del veicolo e titolarità in ambito di viaggio.
-     -
-       * Patenti e Autorizzazioni
-       * Documenti del Veicolo
-       * Abbonamenti al Trasporto
-       * Documenti di Viaggio
-       * Assicurazione Viaggio
-       * Prenotazioni
-       * Sconti e Agevolazioni
-     -
-       * Patente di Guida Mobile
-       * Patente Nautica
-       * Certificato di Proprietà del Veicolo
-       * Assicurazione RCA Digitale
-       * Certificato di Revisione del Veicolo
-       * Carta Verde / Assicurazione Internazionale
-       * Abbonamento ai Trasporti Pubblici
-       * Abbonamento Pedaggi Stradali
-       * Credenziale di Viaggio Digitale
-       * Biglietti di Viaggio (aereo, treno, ecc.)
-       * Polizza di Assicurazione Viaggio
-       * Prenotazione Hotel
-       * Carte Sconto
-       * Agevolazioni Turistiche
-
-   * - *BONUS*
-     - Credenziali che attestano il diritto a benefici economici, incentivi o voucher.
-     -
-       * Benefici Economici e Sussidi
-       * Incentivi e Voucher
-       * Bonus Salute e Benessere
-     -
-       * Credenziale Assegno Familiare
-       * Credenziale Indennità di Disoccupazione
-       * Voucher Digitale
-       * Credenziale Incentivo all'Acquisto
-       * Credenziale Idoneità Cashback
-       * Credenziale Bonus Sanitario
-       * Voucher Supporto Salute Mentale
-       * Bonus Sport e Attività Fisica
-
-.. list-table:: Tabella 2: Mappatura tra Classi di Credenziale e Finalità
-   :class: longtable
-   :header-rows: 1
-   :widths: 40 60
-
-   * - **Classe di Credenziale**
-     - **Finalità Supportate**
-
-   * - Documenti di Identità
-     -
-       * Verifica dell'identità
-       * Verifica dell'età
-       * Identificazione della persona
-   * - Certificati Anagrafici e di Stato Civile
-     -
-       * Verifica dello stato civile
-       * Diritto di residenza
-       * Verifica della composizione del nucleo familiare
-   * - Stato Economico e Giuridico
-     -
-       * Idoneità a servizi o benefici
-       * Verifica dello stato giuridico
-       * Verifica del casellario giudiziale
-   * - Documenti Catastali e Immobiliari
-     -
-       * Verifica di residenza e nucleo familiare
-       * Verifica della proprietà immobiliare
-       * Conformità urbanistica e catastale
-   * - Documenti Familiari
-     -
-       * Verifica della composizione del nucleo familiare
-       * Idoneità ai servizi sociali basati sul nucleo familiare
-   * - Documenti Tributari Locali
-     -
-       * Conformità agli obblighi tributari locali
-       * Verifica dello stato dell'imposta sulla proprietà
-   * - Titoli di Studio
-     -
-       * Verifica del titolo e del grado accademico
-       * Idoneità ai percorsi formativi
-   * - Certificazioni Professionali
-     -
-       * Verifica dell'abilitazione professionale
-       * Valutazione delle competenze ai fini lavorativi
-   * - Certificazioni e Idoneità
-     -
-       * Verifica dello stato vaccinale
-       * Verifica dello stato di idoneità
-       * Accesso ad aree con restrizioni sanitarie
-   * - Cartelle Cliniche
-     -
-       * Accesso ai servizi sanitari
-       * Condivisione della documentazione medica
-       * Validazione della storia clinica
-   * - Strumenti di Pagamento
-     -
-       * Autorizzazione al pagamento
-       * Esecuzione del pagamento
-       * Prova di pagamento
-   * - Credenziali e Autorizzazioni di Pagamento
-     -
-       * Gestione delle autorizzazioni finanziarie
-       * Strong Customer Authentication (SCA)
-   * - Pagamenti e Tributi Pubblici
-     -
-       * Prova di pagamento delle tasse
-       * Prova di pagamento dei tributi
-       * Validazione del bollo digitale
-   * - Pagamenti Ricorrenti e Abbonamenti
-     -
-       * Gestione dei pagamenti ricorrenti
-       * Verifica del mandato di abbonamento
-   * - Carte e Benefici Culturali
-     -
-       * Accesso ai servizi culturali
-       * Accesso ai servizi ricreativi
-       * Applicazione degli sconti per i soci
-   * - Programmi di Fidelizzazione e Associativi
-     -
-       * Verifica dell'affiliazione
-       * Verifica della partecipazione
-       * Utilizzo dei benefici fedeltà
-   * - Documenti di Lavoro
-     -
-       * Verifica dello stato occupazionale
-       * Validazione del profilo professionale
-   * - Stato Occupazionale
-     -
-       * Verifica dei contributi previdenziali
-       * Idoneità ai benefici correlati all'occupazione
-   * - Patenti e Autorizzazioni
-     -
-       * Verifica dei diritti di guida
-       * Verifica dei diritti di navigazione
-       * Controlli delle forze dell'ordine
-   * - Documenti del Veicolo
-     -
-       * Verifica dell'immatricolazione del veicolo
-       * Verifica della revisione del veicolo
-       * Verifica dello stato assicurativo
-   * - Abbonamenti al Trasporto
-     -
-       * Accesso ai servizi di trasporto
-       * Verifica dell'abbonamento al trasporto pubblico
-   * - Documenti di Viaggio
-     -
-       * Diritto di viaggio o circolazione
-       * Verifica dell'identità per la mobilità transfrontaliera
-   * - Assicurazione Viaggio e Prenotazioni
-     -
-       * Verifica della copertura assicurativa di viaggio
-       * Verifica della prenotazione alloggio
-       * Verifica della prenotazione di trasporto
-   * - Sconti e Agevolazioni
-     -
-       * Applicazione degli sconti per i soci
-       * Accesso alle agevolazioni turistiche
-   * - Benefici Economici e Sussidi
-     -
-       * Verifica dell'idoneità ai benefici familiari
-       * Verifica dell'idoneità ai sussidi di disoccupazione
-       * Erogazione del supporto economico
-   * - Incentivi e Voucher
-     -
-       * Utilizzo dei voucher digitali
-       * Utilizzo degli incentivi all'acquisto
-       * Verifica dell'idoneità al cashback
-   * - Bonus Salute e Benessere
-     -
-       * Accesso ai bonus sanitari
-       * Utilizzo dei voucher per la salute mentale
-       * Utilizzo dei voucher per lo sport
-   * - Affiliazione Lavorativa
-     -
-       * Verifica del permesso di accesso
-
-Ogni Credenziale DEVE specificare domini, classi e finalità per abilitare sia gli **Scenari Credential-Specific** che gli **Scenari Credential-Agnostic** in base ai requisiti della Relying Party e ai pattern di richiesta di presentazione, come definito nelle tabelle di mappatura sopra.
-
-  1. **Scenari Credential-Specific** (Primari per il settore governativo/regolamentato): Le RP richiedono tipologie specifiche di Credenziale per requisiti di conformità e audit, inclusi ad esempio:
-
-    - **Servizi Governativi**: ``"credential_type":"pid"`` per la verifica dell'identità specifica con PID oppure ``"credential_type":"eid"`` per la verifica dell'identità specifica con IT-Wallet ID.
-    - **Controlli di Polizia**: ``"credential_type":"mDL"`` per la verifica della patente di guida.
-    - **KYC Bancario**: Tipologie specifiche di credenziale previste dalla normativa finanziaria.
-    - **Servizi Sanitari**: ``"credential_type":"european_disability_card"`` per l'accesso ai benefici per disabilità conformi EU.
-
-  2. **Scenari Credential-Agnostic** (Tipici per le aziende private): Le RP richiedono claim specifici indipendentemente dalla fonte della Credenziale per l'efficienza operativa, quali:
-
-    - **Consegna E-commerce**: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, contenente ``given_name``, ``family_name``, ``address`` per la spedizione.
-    - **Abbonamenti**: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, con ``given_name``, ``email`` per la personalizzazione.
-    - **Personalizzazione del Servizio**: Applicazioni aziendali che richiedono dati personali di base senza forti requisiti sulla fonte.
-
-Questo approccio consente:
-
-  - **Autorizzazione basata su politiche** tramite mappature **Dominio / Classe / Tipologia di Credenziale / Finalità**.
-  - **Registrazione flessibile delle RP** a supporto sia delle esigenze di conformità governativa che dei requisiti operativi aziendali.
-
-Struttura del Catalogo degli Attestati Elettronici
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'intestazione JOSE:
-
-.. _table_catalog_parameters:
-.. list-table::
-   :class: longtable
-   :header-rows: 1
-   :widths: 25 50 25
-
-   * - **Intestazione JOSE**
-     - **Descrizione**
-     - **Riferimento**
-   * - **typ**
-     - OBBLIGATORIO. DEVE essere impostato su ``JOSE``.
-     - [:rfc:`7515` Section 4.1.9].
-   * - **alg**
-     - OBBLIGATORIO. Identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` né con un identificatore di algoritmo simmetrico (MAC).
-     - [:rfc:`7515` Section 4.1.1].
-   * - **kid**
-     - OBBLIGATORIO. Identificatore univoco della chiave pubblica.
-     - [:rfc:`7515` Section 4.1.4].
-   * - **x5c**
-     - OPZIONALE. Contiene il Certificato X.509 della chiave pubblica o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWS. Quando il parametro di intestazione `kid` è presente, DEVE fare riferimento alla stessa chiave pubblica crittografica foglia utilizzata con il Certificato X.509.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - OBBLIGATORIO. DEVE essere impostato su ``application/json``.
-     - [:rfc:`7515` Section 4.1.6.].
-
-Il payload JWS contiene i seguenti parametri:
-
-.. list-table:: Campi di Primo Livello del Catalogo delle Credenziali Digitali
+.. _table_catalog_query_parameters:
+.. list-table:: Query Parameters of the Digital Credentials Catalog Collection
    :class: longtable
    :header-rows: 1
    :widths: 30 70
 
-   * - **Nome Campo**
-     - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. Identificatore univoco del Catalogo delle Credenziali Digitali (es. ``urn:credential-catalog:it-wallet``).
-   * - **version**
-     - OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.
-   * - **last_modified**
-     - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali (es. ``2025-03-15T12:00:00Z``).
+   * - **Parameter**
+     - **Description**
+   * - ``limit``
+     - OPZIONALE. Numero massimo di voci versionate restituite in ``credentials``. Quando è assente, si applica il valore 20. Il valore DEVE essere un intero da 1 a 100 inclusi.
+   * - ``offset``
+     - OPZIONALE. Numero di voci corrispondenti da saltare prima di questa pagina. Quando è assente, si applica il valore 0. Il valore DEVE essere un intero maggiore o uguale a 0.
+   * - ``credential_type``
+     - OPZIONALE. Corrispondenza esatta su ``credential_type``.
+   * - ``state``
+     - OPZIONALE. Corrispondenza esatta su ``state``. Il valore DEVE essere ``ACTIVE`` o ``INACTIVE``.
+   * - ``attestationLoS``
+     - OPZIONALE. Corrispondenza esatta su ``attestationLoS``.
+   * - ``bindingType``
+     - OPZIONALE. Corrispondenza esatta su ``bindingType``.
+   * - ``trustedAuthoritiesFrameworkType``
+     - OPZIONALE. La voce corrisponde quando almeno un oggetto di ``trustedAuthorities`` ha ``frameworkType`` uguale a questo valore.
+   * - ``trustedAuthoritiesValue``
+     - OPZIONALE. La voce corrisponde quando almeno un oggetto di ``trustedAuthorities`` ha ``value`` uguale a questo valore.
+   * - ``rulebookUri``
+     - OPZIONALE. Corrispondenza esatta su ``rulebookURI``.
+
+L'esempio non normativo seguente richiede la prima pagina delle voci attive.
+
+.. literalinclude:: ../../examples/shared/registry-9.http
+   :language: http
+
+Il payload di una risposta di collection con esito positivo DEVE contenere i campi in :ref:`table_catalog_collection_payload`.
+
+Entry
+"""""
+
+L'endpoint di entry DEVE accettare HTTP GET sull'URL della entry.
+Il path identifica la voce versionata il cui ``credential_type`` e la cui ``version`` sono i due segmenti di path.
+Il Federation Trust Anchor DEVE rispondere con HTTP 200 quando quella coppia esiste.
+Il Federation Trust Anchor DEVE rispondere con HTTP 404 quando nessuna voce versionata ha quella coppia.
+
+.. _table_catalog_entry_payload:
+.. list-table:: Payload of a Digital Credentials Catalog Entry Response
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - **Field Name**
+     - **Description**
    * - **iss**
-     - OBBLIGATORIO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.
+     - OBBLIGATORIO. Identificativo dell'issuer. DEVE essere lo stesso valore di ``iss`` nella risposta di collection.
+   * - **iat**
+     - OBBLIGATORIO. Si veda ``iat`` in :ref:`table_catalog_collection_payload`.
+   * - **localization**
+     - OBBLIGATORIO. L'oggetto di localizzazione definito per la risposta di collection.
+   * - **credential**
+     - OBBLIGATORIO. La voce versionata identificata dal path. I suoi campi sono quelli in :ref:`table_catalog_parameters_first_level`.
+
+L'esempio non normativo seguente richiede una voce versionata. Il membro ``credential`` è abbreviato.
+
+.. literalinclude:: ../../examples/shared/registry-10.http
+   :language: http
+
+.. literalinclude:: ../../examples/shared/registry-11.json
+   :language: json
+
+Digital Credentials Catalog Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Questa sezione definisce il payload della risposta di collection e i campi di ciascuna voce versionata.
+Il payload della collection contiene i seguenti parametri.
+
+.. _table_catalog_collection_payload:
+.. list-table:: First-level Fields of a Collection Response
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``).
+   * - **version**
+     - OBBLIGATORIO. La versione del Digital Credentials Catalog (ad es., ``1.0.0``).
+   * - **last_modified**
+     - OBBLIGATORIO. Il timestamp che indica quando il contenuto del catalogo è stato aggiornato l'ultima volta (ad es., ``2025-03-15T12:00:00Z``).
+   * - **iss**
+     - OBBLIGATORIO. Identificativo dell'issuer del Digital Credentials Catalog.
+   * - **iat**
+     - OBBLIGATORIO. Tempo Unix in cui questo JWT di risposta è stato emesso, come definito in :rfc:`7519`. ``last_modified`` registra l'ultima modifica del contenuto del catalogo. ``iat`` registra l'emissione di questo JWT.
    * - **localization**
      - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
-       * **default_locale**: Codice locale predefinito (es. ``it``).
-       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
-       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **default_locale**: Codice locale predefinito (ad es., ``it``).
+       * **available_locales**: Array dei codici locale supportati (ad es., ``["en", "it"]``).
+       * **base_uri**: URI di base per il recupero dei bundle di localizzazione (ad es., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
        * **version**: Versione del formato del bundle di localizzazione.
+   * - **total**
+     - OBBLIGATORIO. Intero. Numero di voci versionate che corrispondono alla richiesta, prima che siano applicati ``limit`` e ``offset``.
+   * - **limit**
+     - OBBLIGATORIO. Intero. La dimensione di pagina applicata a questa risposta.
+   * - **offset**
+     - OBBLIGATORIO. Intero. Il numero di voci corrispondenti saltate prima di questa pagina.
    * - **credentials**
-     - OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.
+     - OBBLIGATORIO. Array delle voci versionate di questa pagina. Il numero di elementi DEVE essere minore o uguale a ``limit``.
 
-Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
+Ciascun elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
 .. _table_catalog_parameters_first_level:
-.. list-table:: Campi di Primo Livello di Ogni Voce di Credenziale
+.. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
   :header-rows: 1
   :widths: 30 70
 
-  * - **Nome Campo**
-    - **Descrizione**
+  * - **Field Name**
+    - **Description**
   * - **version**
-    - OBBLIGATORIO. Versione della definizione della Credenziale Digitale.
+    - OBBLIGATORIO. Versione della definizione dell'Attestato Elettronico.
   * - **credential_type**
-    - OBBLIGATORIO. Identificatore univoco della tipologia di Credenziale Digitale. Per il PID DEVE essere ``pid`` e per l'IT-Wallet ID DEVE essere ``eid``.
-  * - **credential_name_l10n_id**
-    - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile della Credenziale Digitale nel bundle di localizzazione (es. ``mDL.name``).
-  * - **legal_type**
-    - OBBLIGATORIO. Classificazione legale della Credenziale (es. ``pub-eaa``, ``qeaa``, ``eaa``).
-  * - **restriction_policy**
-    - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sugli Emittenti di Credenziali autorizzati a richiedere/emettere la Credenziale Digitale.
+    - OBBLIGATORIO. Identificativo univoco del tipo di Attestato Elettronico. Per il PID DEVE essere ``pid`` e per l'IT-Wallet ID DEVE essere ``eid``.
+  * - **schemaId**
+    - OBBLIGATORIO. UUID dello ``SchemaMeta`` nel :ref:`registry:Catalogo delle Attestazioni` per questo tipo di Credenziale. DEVE essere uguale all'``id`` di quello ``SchemaMeta``.
+  * - **state**
+    - OBBLIGATORIO. Stato di questa voce versionata del tipo di Credenziale. DEVE essere uno tra:
 
-      * **allowed_wallet_ids**: Elenco degli identificatori delle Soluzioni Wallet consentite.
-      * **allowed_issuer_ids**: Elenco degli identificatori degli Emittenti di Credenziali consentiti. Se presente, rappresenta una whitelist di Emittenti di Credenziali che possono essere aggiunti dal Trust Anchor nel campo **issuers** della corrispondente Credenziale Digitale.
+      * ``ACTIVE``: il tipo di Credenziale può essere emesso da questa voce versionata. Una voce può essere ``ACTIVE`` solo finché almeno un Credential Issuer è elencato nel campo **issuers**, la Fonte Autentica o il tipo di Credenziale padre referenziato è disponibile, e lo schema è registrato per almeno un formato supportato.
+      * ``INACTIVE``: il tipo di Credenziale NON DEVE essere emesso da questa voce versionata. Una voce è ``INACTIVE`` quando è stata appena registrata, quando una delle condizioni per lo stato ``ACTIVE`` cessa di valere, o quando è stata sostituita da una versione più recente.
+
+      Una sola voce versionata dello stesso ``credential_type`` DEVE essere ``ACTIVE`` in un dato momento.
+  * - **credential_name_l10n_id**
+    - OBBLIGATORIO. Chiave di localizzazione che referenzia il nome leggibile dell'Attestato Elettronico nel bundle di localizzazione (ad es., ``mDL.name``).
+  * - **legal_type**
+    - OBBLIGATORIO. Classificazione legale della Credenziale (ad es., ``pub-eaa``, ``qeaa``, ``eaa``). Un tipo il cui ``legal_type`` è ``qeaa`` o ``pub-eaa`` DEVE seguire :ref:`credential-data-model-qeaa-pub-eaa:Modello di Dati QEAA e PuB-EAA`.
+  * - **restriction_policy**
+    - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Credential Issuer autorizzati a richiedere/emettere l'Attestato Elettronico.
+
+      * **allowed_wallet_ids**: Elenco degli identificativi delle Soluzioni Wallet consentite.
+      * **allowed_issuer_ids**: Elenco degli identificativi dei Credential Issuer consentiti. Se presente, rappresenta una whitelist di Credential Issuer che possono essere aggiunti al campo **issuers** del corrispondente Attestato Elettronico, come descritto in :ref:`onboarding-system:Credential Type Registration`.
       * **presentation_flows**: Tipo di flussi di presentazione supportati; flusso remoto e/o di prossimità.
   * - **pricing_policy**
-    - OPZIONALE. Informazioni sul prezzo della Credenziale Digitale, inclusi:
+    - OPZIONALE. Informazioni sul prezzo dell'Attestato Elettronico, comprese:
 
-      * **models**: OBBLIGATORIO. Array di modelli di prezzo applicabili alla Credenziale Digitale, ciascuno contenente
+      * **models**: OBBLIGATORIO. Array di modelli di prezzo applicabili all'Attestato Elettronico, ciascuno contenente
 
-        - **pricing_type**: Tipo di modello di prezzo, come ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
+        - **pricing_type**: Tipo di modello di prezzo, quale ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
         - **price**: Costo associato al modello.
         - **currency**: Valuta del prezzo.
 
-      * **pricing_model_uri**: URI alla documentazione dettagliata del modello di prezzo.
+      * **pricing_model_uri**: URI della documentazione dettagliata del modello di prezzo.
   * - **validity_info**
-    - OBBLIGATORIO. Informazioni sulla validità della Credenziale Digitale, inclusi almeno:
+    - OBBLIGATORIO. Informazioni sulla validità dell'Attestato Elettronico, comprese almeno:
 
       * **max_validity_days**: Periodo massimo di validità in giorni.
-      * **status_methods**: Metodi di verifica dello stato supportati (es. ``status_list``).
-      * **allowed_states**: Array di oggetti che rappresentano gli stati consentiti della Credenziale Digitale. Ogni oggetto contiene un codice di stato esadecimale (es. ``0x00`` per ``VALID``, ``0x01`` per ``INVALID``, ``0x02`` per ``SUSPENDED``, ``0x03`` per ``UPDATE``, ``0x0F`` per ``ATTRIBUTE_UPDATE``), una chiave di localizzazione ``title_l10n_id`` e una chiave di localizzazione ``description_l10n_id`` per la visualizzazione nell'interfaccia utente.
-      * **administrative_expiration_user_info**: OPZIONALE. Oggetto contenente chiavi ``title_l10n_id`` e ``description_l10n_id`` per visualizzare le informazioni sulla scadenza amministrativa all'Utente.
+      * **status_methods**: Metodi di verifica dello stato supportati (ad es. ``status_list``).
+      * **allowed_states**: Array di oggetti che rappresentano gli stati consentiti dell'Attestato Elettronico. Ciascun oggetto contiene un codice di stato esadecimale (ad es., ``0x00`` per ``VALID``, ``0x01`` per ``INVALID``, ``0x02`` per ``SUSPENDED``, ``0x03`` per ``UPDATE``, ``0x0F`` per ``ATTRIBUTE_UPDATE``), una chiave di localizzazione ``title_l10n_id`` e una chiave di localizzazione ``description_l10n_id`` per la visualizzazione in UI.
+      * **administrative_expiration_user_info**: OPZIONALE. Oggetto contenente le chiavi ``title_l10n_id`` e ``description_l10n_id`` per visualizzare all'Utente le informazioni sulla scadenza amministrativa.
   * - **authentication**
-    - OBBLIGATORIO. Requisiti di autenticazione della Credenziale Digitale.
+    - OBBLIGATORIO. Requisiti di autenticazione dell'Attestato Elettronico.
 
-      * **user_auth_required**: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante l'emissione della Credenziale Digitale.
-      * **min_loa**: OBBLIGATORIO. Livello Minimo di Garanzia richiesto per l'autenticazione della Credenziale Digitale. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza Wallet che richiede la Credenziale Digitale.
-      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it_wallet"]``).
+      * **user_auth_required**: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante l'emissione dell'Attestato Elettronico.
+      * **min_loa**: OBBLIGATORIO. Livello di Garanzia minimo richiesto per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.
+      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione di identità digitale supportati (ad es., ``["it_wallet"]``).
   * - **domains**
-    - OBBLIGATORIO. Array contenente gli ID dei domini a cui appartiene la Credenziale Digitale (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
+    - OBBLIGATORIO. Array di ID di domain a cui l'Attestato Elettronico appartiene (ad es., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - OBBLIGATORIO. Array contenente gli ID delle classi a cui appartiene la Credenziale Digitale (es. ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
+    - OBBLIGATORIO. Array di ID di class a cui l'Attestato Elettronico appartiene (ad es., ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
   * - **purposes**
-    - OBBLIGATORIO. Array contenente gli ID delle finalità (definita nella Tassonomia) di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+    - OBBLIGATORIO. Array di ID di scopo di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, che definiscono contesti di utilizzo specifici e i claim richiesti per ciascun purpose (ad es., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati. Ogni elemento dell’array contiene:
+    - È OBBLIGATORIO solo se **state** è ``ACTIVE``. Array di informazioni rilevanti sui Credential Issuer autorizzati, compresi dati amministrativi e tecnici quali il nome dell'organizzazione, un riferimento al documento di specifica API e i meccanismi di emissione supportati. Ciascun elemento dell'array contiene:
 
-       * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE corrispondere al valore contenuto nel parametro ``iss`` dell’Entity Configuration del Credential Issuer.
-       * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che fa riferimento al nome localizzato dell’organizzazione nel bundle di localizzazione (es. ``issuer1.name``).
-       * **organization_code**: OBBLIGATORIO. Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.
-       * **organization_country**: OBBLIGATORIO. Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.
-       * **contacts**: OBBLIGATORIO. Stringa. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno specialista di sistemi.
-       * **legal_type**: OBBLIGATORIO. Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).
-       * **homepage_uri**: OBBLIGATORIO. Stringa. URL che punta alla homepage dell’organizzazione.
-       * **logo_uri**: OPZIONALE. Stringa. URL dell’immagine del logo dell’organizzazione.
-       * **policy_uri**: OBBLIGATORIO. Stringa. URL al documento di privacy policy.
-       * **tos_uri**: OPZIONALE. Stringa. URL al documento di termini di servizio.
+       * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE coincidere con il valore contenuto nel parametro ``iss`` dell'Entity Configuration del Credential Issuer.
+       * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che referenzia il nome localizzato dell'organizzazione nel bundle di localizzazione (ad es., ``issuer1.name``).
+       * **organization_code**: OBBLIGATORIO. Stringa. Codice IPA del Credential Issuer per le entità governative o partita IVA per le entità private.
+       * **organization_country**: OBBLIGATORIO. Stringa. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
+       * **contacts**: OBBLIGATORIO. Stringa. Array di indirizzi e-mail di contatto per almeno un supporto utente, un'applicazione e uno specialista di sistemi.
+       * **legal_type**: OBBLIGATORIO. Stringa. Classificazione legale del Credential Issuer (ad es., pub-eaa, qeaa, eaa).
+       * **homepage_uri**: OBBLIGATORIO. Stringa. URL che punta alla homepage dell'organizzazione.
+       * **logo_uri**: OPZIONALE. Stringa. URL dell'immagine del logo dell'organizzazione.
+       * **policy_uri**: OBBLIGATORIO. Stringa. URL del documento di informativa sulla privacy.
+       * **tos_uri**: OPZIONALE. Stringa. URL del documento dei termini di servizio.
        * **service_documentation_uri**: OPZIONALE. Stringa. URL che punta alla documentazione del servizio del Credential Issuer.
        * **issuance_flows**: OBBLIGATORIO. Oggetto. Contiene i seguenti parametri:
 
-          * **deferred_flow**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione differita.
-          * **immediate_flows**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.
-          * **wallet_initiated**: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.
-          * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
-          * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
-          * **notification_methods**: CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+          * **deferred_flow**: OBBLIGATORIO. Boolean. Indica se l'emissione differita è supportata.
+          * **immediate_flow**: OBBLIGATORIO. Boolean. Indica se l'emissione immediata è supportata.
+          * **wallet_initiated**: OBBLIGATORIO. Boolean. Indica se il flusso Wallet-Initiated è supportato.
+          * **issuer_initiated**: OBBLIGATORIO. Boolean. Indica se l'emissione del flusso Issuer-Initiated è supportata (Third Party Initiated Flow).
+          * **max_deferred_issuance_time_minutes**: Integer. Tempo massimo in minuti per la disponibilità dell'emissione della Credenziale. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+          * **notification_methods**: String Array. Contiene i metodi di notifica supportati dal Credential Issuer per l'emissione differita, quali ``"push"``, ``"polling"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
 
   * - **authentic_sources**
-    - CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
+    - È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON Fonte Autentica che referenziano le Fonti Autentiche autorizzate. Ciascun oggetto DEVE contenere l'identificativo dell'entità AS e l'identificativo della specifica capacità dati:
 
-      * **id**: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in :ref:`registry:Registro delle Fonti Autentiche`.
-      * **dataset_id**: Identificatore stringa della specifica capacità dati/dataset utilizzato dall'Emittente dalla FA.
+      * **id**: Identificativo stringa che referenzia l'entity_id della Fonte Autentica come registrato nell':ref:`registry:Authentic Source Registry`.
+      * **dataset_id**: Identificativo stringa della specifica capacità dati/dataset utilizzato dall'Issuer dalla AS.
   * - **parent_credentials**
-    - CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.
+    - È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array di identificativi ``credential_type`` corrispondenti alle Credenziali designate come fonti dati. Ciascun elemento identifica una Credenziale che agisce come Fonte Autentica durante il processo di emissione dell'Attestato Elettronico.
+  * - **trustedAuthorities**
+    - OBBLIGATORIO. Array di oggetti JSON che risolvono i trust anchor applicabili, contenenti:
+
+       * **frameworkType**: tipo del trust model applicabile. Una stringa dall'insieme di ``etsi_tl`` o ``openid_federation``.
+       * **value**: identificativo in formato URI standard per la Trusted List (per il tipo ``etsi_tl``) o Entity Identifier (per il tipo ``openid_federation``).
+       * **isLoTE**: un valore boolean che DEVE essere TRUE quando il tipo di trust framework applicabile è una ETSI Trusted List (``etsi_tl``) ma la trusted list dietro l'URI del valore è una list of trusted entities (LoTE) secondo ETSI TS 119 602. Il valore DEVE essere FALSE se la specifica della trusted list applicabile è ETSI TS 119 612. L'attributo NON DEVE essere utilizzato con altri tipi di framework.
+
+      Il ``frameworkType`` applicabile è il trust anchor di firma del tipo di Attestato, come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
+
+      .. note::
+        L'uso di ``isLoTE`` diventerà superfluo e dovrà essere deprecato una volta che OpenID4VCI specificherà una nuova enumerazione per le Lists of Trusted Entities secondo ETSI TS 119 602; l'enumerazione tentata è ``etsi_lote``.
+
+  * - **rulebookURI**
+    - OBBLIGATORIO. URI dell'Attestation Rulebook in forma leggibile che definisce tutti gli aspetti non machine-readable del tipo di Attestato Elettronico.
+  * - **bindingType**
+    - OBBLIGATORIO. Indica il tipo di associazione crittografica della chiave richiesto per l'emissione dell'Attestato Elettronico. Il valore consentito è una stringa dall'insieme di: ``claim`` (associazione a un claim crittografico presentato dall'Utente), ``key`` (associazione a una chiave posseduta dall'Utente), ``biometric`` (associazione ai biometrici presentati dell'Utente) o ``none`` (nessuna associazione crittografica).
+  * - **attestationLoS**
+    - OBBLIGATORIO. Livello di sicurezza (LoS) a cui l'Attestato Elettronico deve essere fornito. Il valore consentito è una stringa dall'insieme di: ``iso_18045_high``, ``iso_18045_moderate``, ``iso_18045_enhanced-basic`` o ``iso_18045_basic`` (si veda l'Annex D.2 di `OpenID4VCI`_ per maggiori dettagli).
 
 .. note::
-  L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Catalogo delle Credenziali.
+  Mentre ``min_loa`` nel claim ``authentication`` specifica i requisiti di autenticazione dell'Attestato Elettronico con riferimento al livello di garanzia del mezzo di identificazione elettronica richiesto durante l'autenticazione dell'utente nel processo di emissione, il claim ``attestationLoS`` integra questo requisito specificando la resistenza al potenziale di attacco sia per l'autenticazione dell'utente sia per l'archiviazione delle chiavi.
 
-Il corrispondente esempio di Catalogo delle Credenziali Digitali decodificato in JSON sia per l'intestazione che per il payload è il seguente:
+.. note::
+  L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Credential Catalog.
+
+L'esempio non normativo seguente è una pagina di una risposta di collection, decodificata in JSON sia per l'header sia per il payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
+   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Digital Credentials Catalog, un'Entità che lo consulta DOVREBBE:
 
-  - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/credential-catalog``.
-  - Determinare la lingua preferita dall'Utente.
+  - Richiedere le pagine di collection di cui ha bisogno, o una voce versionata, come specificato in :ref:`registry:Digital Credentials Catalog Retrieval`.
+  - Determinare la lingua preferita dell'Utente.
   - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la Struttura del Catalogo degli Attestati Elettronici.
+  - Unire dinamicamente il contenuto localizzato con la voce del catalogo.
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/registry-12.json
+   :language: json
 
-  {
-    "mDL.name": "Patente di Guida",
-    "mDL.issuer1.name": "Esempio di Credential Issuer",
-    "...": "..."
-  }
-
-I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel catalogo. Ciascun bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+I bundle di localizzazione DEVONO essere disponibili all'URI composto concatenando il codice locale e ``.json`` al valore ``localization.base_uri`` definito nel catalogo. Ciascun bundle di locale DEVE essere accessibile seguendo il pattern di naming **{locale_code}.json**, dove **{locale_code}** è sostituito con il corrispondente codice locale dell'array **available_locales**.
 
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
 
-Decentralizzazione delle Informazioni di Visualizzazione e dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Decentralization of Display and Claim Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La fonte canonica per le caratteristiche di visualizzazione e la struttura dei claim è determinata dai **Metadati dell'Emittente di Credenziali (Configurazione dell'Entità)**.
+La fonte canonica per le caratteristiche di visualizzazione e la struttura dei claim è determinata dai **Metadata del Credential Issuer**.
 
-La logica complessiva per la presentazione di una Credenziale è:
+La logica complessiva per presentare un Attestato Elettronico è la seguente:
 
-1. Il Wallet/Relying Party recupera il **Catalogo delle Credenziali Digitali** leggero per scoprire la ``credential_type`` disponibile e l'``entity_id`` dei relativi Emittenti di Credenziali.
-2. Recupera i **Metadati dell'Emittente di Credenziali** completi (Configurazione dell'Entità) dall'``entity_id`` rilevato.
-3. I Metadati dell'Emittente di Credenziali DEVONO contenere le caratteristiche di visualizzazione complete (logo, colori) e le informazioni dettagliate sullo schema (tramite link ai Metadati di Tipo appropriati o direttamente nella configurazione). L'Emittente costruisce questi metadati sulla base dei suggerimenti forniti dalla Fonte Autentica (tramite il Registro FA) e delle specifiche di schema standard (tramite il Registro degli Schemi).
+1. A seconda del Trust Framework richiesto, il Wallet o la Relying Party recupera le voci versionate applicabili dal :ref:`registry:Catalogo degli Attestati Elettronici`, per entrambi gli Attestati Elettronici gestiti da Credential Issuer ancorati nel National o nel Trust Framework EUDIW, per scoprire i `credential_type` disponibili e l'`entity_id` dei loro Credential Issuer. Il recupero usa l'endpoint di collection o di entry specificato in :ref:`registry:Digital Credentials Catalog Retrieval`.
+2. Recupera i Metadata completi del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
+3. I Metadata del Credential Issuer DEVONO contenere le caratteristiche di visualizzazione complete (loghi, colori) e le informazioni dettagliate di schema (tramite link ai Type Metadata appropriati o direttamente nella configurazione). L'Issuer costruisce questi metadata sulla base dei suggerimenti forniti dalla Fonte Autentica (tramite l'AS Registry) e delle specifiche di schema standard (tramite lo Schema Registry).
 
-Tassonomia
-----------
+Registry Integration and Cross-References
+------------------------------------------
 
-La **Tassonomia** fornisce il fondamento semantico per l'interoperabilità delle Credenziali Digitali mantenendo il vocabolario autorevole per l'organizzazione delle Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato della Credenziale.
+Come mostrato nella Figura :ref:`fig_registry_relationships`, i componenti del registro sono interconnessi e collaborano per supportare l'intero ecosistema delle Credenziali:
 
-La Tassonomia fornisce, in un'unica risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità applicabili alle Tipologie di Credenziale, supportando la valutazione delle politiche di autorizzazione e la standardizzazione a livello di ecosistema.
+1. **AS Registry** ↔ **Taxonomy**: Le Fonti Autentiche dichiarano le capacità utilizzando le classificazioni della taxonomy per una categorizzazione standardizzata.
+2. **AS Registry** ↔ **Claims Registry**: Le Fonti Autentiche dichiarano le capacità sui claim disponibili utilizzando il Claim Registry.
+3. **AS Registry** ↔ **DC Catalog**: I tipi di Credenziale referenziano le capacità AS per la validazione della fonte dati.
+4. **DC Catalog** ↔ **Taxonomy**: Le voci di Credenziale specificano domain e purpose dalla taxonomy per la discovery e l'autorizzazione.
+5. **Schema Registry** ↔ **DC Catalog**: I tipi di Credenziale fanno riferimento allo Schema Registry per la discovery e la validazione dei dati.
 
-**Obiettivi della Tassonomia:**
+.. _fig_registry_relationships:
+.. plantuml:: plantuml/registry-relationships.puml
+    :width: 99%
+    :alt: The figure illustrates the national registry relationships.
+    :caption: `Relationships between National Registries <https://www.plantuml.com/plantuml/svg/ZL9BRzD04BxxLmmH4gtKg0VAfOAenUNG2q9DxzLaT-oCj0zhPpQG8luxVZJM4a3DoTRiVe_lsxaHnQJPk-eD1-Eo9VXONrtMLqzrz5qC57HLLU_WZXeE1Ejl3_UFNzR5PSqTslJ-qaJlOrZzuwI9GPVudIHwMdwujAYuGQ6UzdFCmMBQdmLKZW7TKwAMHTF-0XPVNsRmy3A3-z0axF-oqPneSGu_gzdacK555zjCFVIEMzOUMIUo59JH2TI7yyK5l9KkiTAdnS7BuhnWGYbjt6RT3Xm6rZ4dGxETLtd4RCbZoRKU9wSp68ViIu9w6CZf18e_OeX-W3vEl__3_Agg8ZSiLt30NiDn1G86EzomOsKIi6GS9hAGXKCxuw2VYd33Pdn8WIOc4CNXnIq_amM3IcrC_3nUEDR_C_ohBc80t24xt3YQi7yxsnAC3Su5LbKrxmqiSzVB5YwkYmK2tNSaaAYXHC4GtAvB_IdTq2V8j2OxT6odOAL6udQhPRkbHlz90vTqPBZPWuqUEGXWiD3br4KPX5BqGvIPOf9cCN57QJzUngpRgTXZVKVD83_jvcb9DOvoHyix1pwIBdFVKB3Pkzy0>`_
 
-1. **Fondamento Semantico**: Stabilire un vocabolario standardizzato per domini e finalità nell'intero ecosistema
-2. **Framework per le Politiche**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
-3. **Interoperabilità**: Garantire un'interpretazione coerente delle classificazioni delle credenziali
-4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi Domini, Classi, Tipologie di Credenziale e Finalità
-5. **Conformità Transfrontaliera**: Allineamento con i requisiti normativi EU e gli standard internazionali
+La Figura :ref:`fig_eudiw_national_registry_relationships` mostra invece la mappatura tra i cataloghi EUDIW e le controparti nazionali:
 
-**Struttura della Tassonomia:**
+- **EUDIW Catalogue of Attributes** corrisponde al **Claims Registry** nazionale per la definizione semantica degli attributi e all'**Authentic Source Registry** per la discovery del punto di verifica. Si noti che le definizioni nazionali degli attributi si allineano al catalogo a livello UE per l'interoperabilità transfrontaliera.
+- **EUDIW Catalogue of Schemes** corrisponde al **Catalogue of Attestations** nazionale (:ref:`registry:Catalogo delle Attestazioni`), che implementa la Section 5 di [`EUDI-TS 11`_], e al **Digital Credentials Catalog** per i requisiti nazionali di emissione e presentazione. Il catalogo nazionale mantiene le informazioni aggiuntive, quali il modello di prezzo e le informazioni di validità.
 
-La tassonomia mantiene una struttura gerarchica a quattro livelli:
-
-- **Domini**: Classificazione di primo livello che rappresenta ampie aree funzionali (es. IDENTITY, HEALTH, FINANCIAL, AUTHENTICATION)
-- **Classe (Famiglia di Credenziali)**: Famiglia di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Albi Professionali, Accesso)
-- **Tipologia di Credenziale**: Definizione specifica di Credenziale emessa da un'autorità (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida Mobile).
-- **Finalità (Intento di Verifica)**: Obiettivi di verifica che una Credenziale può soddisfare (es. Verifica dell'Identità, Verifica dell'Età, Idoneità a servizi specifici, Verifica del permesso di accesso).
-
-.. note::
-  La Tipologia di Credenziale è un concetto definito a livello del Catalogo delle Credenziali Digitali, non all'interno della Tassonomia. La Tassonomia fornisce il vocabolario di classificazione (Domini, Classi, Finalità) a cui le Tipologie di Credenziale nel Catalogo fanno riferimento.
-
-**Supporto alla Localizzazione:**
-
-La tassonomia supporta ambienti multilingue tramite il pattern con suffisso ``_l10n_id``, abilitando una gestione efficiente della localizzazione per le interfacce utente e le implementazioni transfrontaliere.
-
-**Utilizzo della Tassonomia:**
-
-- **Registro dei Claims**: Catalogo dei singoli claim
-- **Registro FA**: Le Fonti Autentiche dichiarano le capacità utilizzando le classificazioni della tassonomia
-- **Catalogo delle Credenziali Digitali**: Le Tipologie di Credenziale specificano Domini, Classi e Finalità
-- **Politiche di Autorizzazione**: La valutazione delle politiche sfrutta la struttura della tassonomia per le decisioni di controllo degli accessi
-
-La Tassonomia è accessibile attraverso l'endpoint dedicato alla tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Vigilanza per garantire la conformità normativa e la coerenza semantica.
-
-**Struttura JSON della Tassonomia:**
-
-.. list-table:: Campi di Primo Livello della Tassonomia
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Nome Campo**
-     - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. Identificatore univoco della Tassonomia (es. ``urn:taxonomy:it-wallet``).
-   * - **version**
-     - OBBLIGATORIO. La versione della Tassonomia (es. ``1.0.0``).
-   * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando la Tassonomia è stata aggiornata l'ultima volta (es. ``2026-03-11T00:00:00Z``).
-   * - **name_l10n_id**
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile della Tassonomia (es. ``taxonomy.name``).
-   * - **description_l10n_id**
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento alla descrizione leggibile della Tassonomia (es. ``taxonomy.description``).
-   * - **localization**
-     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
-
-       * **default_locale**: Codice locale predefinito (es. ``it``).
-       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
-       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/``).
-       * **version**: Versione del formato del bundle di localizzazione.
-   * - **domains**
-     - OBBLIGATORIO. Array di oggetti Dominio, ciascuno contenente:
-
-       * **id**: Identificatore univoco del Dominio in SCREAMING_SNAKE_CASE (es. ``IDENTITY``).
-       * **name_l10n_id**: Chiave di localizzazione per il nome del dominio (es. ``domain.identity.name``).
-       * **description_l10n_id**: Chiave di localizzazione per la descrizione del dominio (es. ``domain.identity.description``).
-       * **classes**: Array di oggetti Classe. Ogni classe contiene ``id``, ``name_l10n_id`` e ``supported_purposes`` (array di stringhe di ID finalità).
-   * - **purposes**
-     - OBBLIGATORIO. Array piatto di tutti gli oggetti Finalità definiti nella tassonomia, ciascuno contenente:
-
-       * **id**: Identificatore univoco della Finalità in SCREAMING_SNAKE_CASE (es. ``IDENTITY_VERIFICATION``, ``ACCESS_PERMIT``).
-       * **name_l10n_id**: Chiave di localizzazione per il nome della finalità (es. ``purpose.identity_verification.name``).
-
-Di seguito è fornito un esempio non normativo della struttura della Tassonomia:
-
-.. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
+.. _fig_eudiw_national_registry_relationships:
+.. plantuml:: plantuml/eudiw-national-registry-relationships.puml
+    :width: 99%
+    :alt: The figure illustrates the relationships between National Registries and EUDIW Catalogues.
+    :caption: `Relationships between National Registries and EUDIW Catalogues <https://www.plantuml.com/plantuml/svg/bL9DRnCn4BtxLmm1YI8QHOHoer7BfeTS46f0712Afkj9OiaVmH-AAjJ_pcIJBXEBY7OFQy-RcUVtxBbA6MCkpgeNnhUsQ8AFpSMekLWqmMs29vydIhs6AIsD9vX_kPrzlPcBubmsgEFxKHkS2txoZymo-3p4BQNWQFXXf37Z7IPYsa-XU8tn_inZDi6ZNKHQcPJZ_JaCFXymk3rWCFFBYBmhRIwH1c_Wj-f5dc6IpTSbhnarBSn3YItr98DpU9KsqMIw71oKC9FWQIqQ9wcQ7P2UJh2n9RtZlhT7Q6hNv53opZla6S8Oj65LY7kdPcKuWYQItjb4cw1vp3z9uVYWy4691FqgQ7VQBpbJmUCzB1wDYZPRwUZcstJs_Q-ELB_GGbheoo0iuJhdQEvAflHVyUaqItUZ9oaUrBErxtg4QXZ2_eRKVk7uU5hKSSZvRXXKz-T8p2XKp3fi_O-NspMh_ZcSW71PazQbrMGfJAThUzBUGLNGmMEbL9BY7k7zmd5zfeY5yN5ddEl5kVnTaTV5sJy0>`_
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione della Tassonomia, un'Entità che la consulta DOVREBBE:
+  Come specificato in `EIDAS-ARF`_, la registrazione di uno schema di attestazione nel EUDIW Catalogue of Schemes non crea alcun obbligo di accettazione del relativo tipo di attestazione da parte di qualsiasi attore dell'ecosistema EUDI Wallet. Né implica automaticamente il riconoscimento transfrontaliero del tipo di attestazione. È utilizzato per scoprire il corrispondente trust framework.
 
-  - Scaricare la versione base della Tassonomia (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/taxonomy``.
-  - Determinare la lingua preferita dall'Utente.
-  - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la struttura della Tassonomia.
+Registry Infrastructure Usage Journeys
+--------------------------------------
 
-Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
+I componenti della Registry Infrastructure sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna delle quali coinvolge interazioni specifiche tra le entità.
+I principali Journey seguenti illustrano le interazioni operative che leggono la Registry Infrastructure.
+Il journey complementare che popola i registri è la registrazione di onboarding, che registra le entità, le Fonti Autentiche, i claim, gli schema e i tipi di Credenziale, come mostrato nella Figura :ref:`fig_registry_infrastructure` e descritto in :ref:`onboarding-system:Onboarding Processes`.
 
-.. code-block:: json
+Catalog Browsing
+^^^^^^^^^^^^^^^^
 
-  {
-    "taxonomy.name": "IT-Wallet Taxonomy",
-    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
-    "domain.identity.name": "Identity",
-    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
-    "class.identification_documents.name": "Identification Documents",
-    "purpose.identity_verification.name": "Identity verification",
-    "domain.authentication.name": "Authentication",
-    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
-    "class.access.name": "Access",
-    "purpose.access_permit.name": "Access permit verification",
-    "...": "..."
-  }
+Questo journey di *Catalog Browsing* supporta gli Utenti (sia utenti umani tramite un'**Istanza del Wallet** sia sistemi automatizzati quali **Relying Party** o portali web) nella discovery e nella selezione degli Attestati Elettronici disponibili.
 
-I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e ``.json`` al valore ``localization.base_uri`` definito nella tassonomia. Ciascun bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+1.  **Accesso al Discovery Endpoint**: L'entità (ad es., un Fornitore di Wallet o un portale informativo) accede al `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Digital Credentials Catalog** e della **Taxonomy**.
 
-Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
+2.  **Navigazione e selezione**:
 
-Registro degli Schema
----------------------
+    * **Discovery delle Credenziali**: L'entità richiede una o più pagine dell'endpoint di collection (:ref:`registry:Digital Credentials Catalog Retrieval`) e legge l'array ``credentials`` di ciascuna pagina per identificare i tipi di Credenziale rilevanti (ad es., ``pid``, ``eid``, ``mDL``). Se necessario, utilizza le informazioni sulla **Taxonomy** per navigarne la gerarchia e per fornire localizzazioni diverse.
+    * **Metadata dell'Issuer**: L'entità estrae i Metadata del Credential Issuer (si veda :ref:`credential-issuer-solution:Metadata per openid_credential_issuer`) come descritto nella Section 12.2.2 di `OpenID4VCI`_.
+    * **Consultazione di dettaglio**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** utilizzando l'identificativo recuperato.
 
-Il **Registro degli Schemi** è l'inventario autorevole di tutti gli **Schemi di Credenziale** (JSON Schema per SD-JWT, CBOR Schema per mDOC) noti e accettati nell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce un'unica fonte verificabile per il recupero delle specifiche tecniche necessarie per il parsing, la validazione e la visualizzazione delle Credenziali Digitali.
+3.  **Azione finale**: L'entità può quindi utilizzare i metadata per visualizzare le informazioni del catalogo a un Utente, o utilizzarli in altri modi.
 
-**Obiettivi del Registro degli Schemi:**
+Credential Issuance
+^^^^^^^^^^^^^^^^^^^
 
-1. **Centralizzazione degli Schemi**: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici utilizzati dalle Credenziali Digitali.
-2. **Integrità e Autenticità**: Garantire l'integrità e l'autenticità dei documenti di schema tramite digest crittografici.
-3. **Interoperabilità**: Facilitare l'integrazione senza soluzione di continuità dei Fornitori di Wallet e delle Relying Party fornendo versioni di schema coerenti.
-4. **Supporto al Ciclo di Vita della Credenziale**: Fungere da punto di riferimento verificabile per la validazione degli schemi durante l'emissione e la presentazione.
+Questo journey definisce come un Credential Issuer utilizza la Registry Infrastructure per preparare e emettere un Attestato Elettronico conforme.
 
-**Struttura e Accesso al Registro degli Schemi:**
+1.  **Identificazione dei requisiti**: Il Credential Issuer recupera la voce versionata del tipo di Credenziale dall'endpoint di entry del **Digital Credentials Catalog** (:ref:`registry:Digital Credentials Catalog Retrieval`) e legge i requisiti tecnici di quella voce (ad es., ``max_validity_days``, ``min_loa``).
 
-Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-known/it-wallet-registry`` nel campo `schema_registry`. Consente la discovery degli URI degli schemi e i relativi controlli di integrità crittografica.
+2.  **Risoluzione di schema e claim**:
 
-.. list-table:: Campi di Primo Livello del Registro degli Schemi
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
+  Il Credential Issuer consulta:
 
-   * - **Nome Campo**
-     - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. Identificatore univoco del Registro degli Schemi (es. ``urn:schemas:it-wallet``).
-   * - **version**
-     - OBBLIGATORIO. La versione del Registro degli Schemi (es. ``1.0.0``).
-   * - **last_modified**
-     - OBBLIGATORIO. Il timestamp che indica quando il Registro degli Schemi è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
-   * - **schemas**
-     - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella "Parametri di Definizione dello Schema" di seguito, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.
+    * il EUDIW Catalogue of Schemes per ottenere lo ``SchemaMeta`` dell'Attestato Elettronico ancorato a EUDIW, o
+    * :ref:`registry:Catalogo delle Attestazioni` per ottenere lo ``SchemaMeta`` dell'Attestato Elettronico nazionale mediante ``GET /schemas/{schemaId}``.
 
-.. list-table:: Parametri di Definizione dello Schema
-   :widths: 25 75
-   :header-rows: 1
+  Il Credential Issuer verifica il suffisso ``#integrity`` di ciascun ``schemaURIs[].uri`` quando tale suffisso è presente. Quindi, a seconda del Trust Framework che ancora l'Attestato Elettronico, accede al Catalogue of Attributes o al :ref:`registry:Claims Registry` per recuperare le definizioni semantiche standardizzate e i formati di dato degli attributi (claim) necessari.
 
-   * - **Nome Campo**
-     - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. L'identificatore univoco dello schema (es. ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
-   * - **version**
-     - OBBLIGATORIO. La versione della definizione dello schema (es. ``1.0.0``).
-   * - **credential_type**
-     - OBBLIGATORIO. L'identificatore univoco della tipologia di Credenziale Digitale (es. ``mDL``, ``pid``, ``eid``).
-   * - **format**
-     - OBBLIGATORIO. Il formato tecnico dello schema (es. ``mso_mdoc``, ``dc+sd-jwt``).
-   * - **vct**
-     - CONDIZIONALE. È OBBLIGATORIO se il ``format`` è ``dc+sd-jwt``, indicando il Tipo di Credenziale Verificabile (es. ``urn:eudi:mDL:it:1``).
-   * - **docType**
-     - CONDIZIONALE. È OBBLIGATORIO se il ``format`` è ``mso_mdoc``, indicando il tipo di documento utilizzato (es. ``org.iso.18013.5.1.mDL``).
-   * - **schema_uri**
-     - OBBLIGATORIO. L'URI dove è possibile recuperare il documento dello schema (es. ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
-   * - **schema_uri#integrity**
-     - OBBLIGATORIO. Digest crittografico del documento di schema per la verifica dell'integrità. Formato: ``{digest_method}-{digest_value}`` (es. ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
-   * - **description**
-     - OPZIONALE. Una descrizione leggibile dello schema, che può essere localizzata (es. "Schema tecnico per la mobile Driving License in formato mdoc.").
+3.  **Recupero dei dati autentici**:
 
-**Esempio di Registro degli Schemi:**
+  * Il Credential Issuer consulta l'**Authentic Source (AS) Registry** per identificare la **Fonte Autentica** (AS) autorizzata per il dataset richiesto. L'AS Registry fornisce l'``entity_id`` dell'AS e i dettagli tecnici dell'interfaccia (`integration_endpoint`, `integration_method`).
+  * Il Credential Issuer consulta la specifica dell'endpoint AS per implementare l'integrazione necessaria a recuperare i dati dell'Utente richiesti per popolare l'Attestato Elettronico.
 
-Un esempio non normativo del payload del Registro degli Schemi:
+4.  **Emissione della Credenziale**: Il Credential Issuer utilizza i dati recuperati, gli schema validati e i formati specificati per generare e firmare l'Attestato Elettronico nel formato corretto (ad es., SD-JWT o mDOC).
 
-.. literalinclude:: ../../examples/schema-registry-example-payload.json
-  :language: JSON
+Credential Presentation and Verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Integrazione del Registro e Riferimenti Incrociati
---------------------------------------------------
+Questo journey descrive come un'**Istanza del Wallet** e una **Relying Party (RP)** interagiscono con la Registry Infrastructure quando un Attestato Elettronico deve essere presentato da un Utente.
 
-I componenti del registro sono interconnessi e operano congiuntamente per supportare il completo ecosistema delle Credenziali:
+1.  **Autorizzazione e selezione della Wallet Unit**:
 
-1. **Registro FA** ↔ **Tassonomia**: Le entità FA dichiarano le capacità utilizzando le classificazioni della tassonomia per una categorizzazione standardizzata.
-2. **Registro FA** ↔ **Catalogo**: Le tipologie di Credenziale fanno riferimento alle capacità FA per la validazione della fonte dati.
-3. **Catalogo** ↔ **Tassonomia**: Le voci del Catalogo specificano domini e finalità della tassonomia per la discovery e l'autorizzazione.
-4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce la validazione crittografica della fiducia per tutte le operazioni di registro e l'autenticazione delle entità.
-5. **Registro degli Schemi** ↔ **Emittenti/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali note nell'ecosistema.
+  * La Wallet Unit riceve una Presentation Request dalla RP. La Wallet Unit DEVE valutare la trust con la RP che emette la Presentation Request come segue:
 
-Percorsi di Utilizzo dell'Infrastruttura del Registro
------------------------------------------------------
+    * **(EUDIW Trust Framework)**:
 
-I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità.
-I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura del Registro.
+      * La Wallet Unit valida la firma della Presentation Request e valuta la trust con la Relying Party che la produce come descritto in :ref:`trust-evaluation:EUDIW Authentication`.
+      * La Wallet Unit valida se la RP è titolata a questa presentazione come descritto in :ref:`trust-evaluation:EUDIW Authorization`.
 
-Navigazione del Catalogo
-^^^^^^^^^^^^^^^^^^^^^^^^
+    * **(National Trust Framework)**:
 
-Questo percorso di *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Party** o portali web) nella discovery e nella selezione delle Credenziali Digitali disponibili.
+      * La Wallet Unit valida la firma della Presentation Request e valuta la trust con la Relying Party che la produce come descritto in :ref:`trust-evaluation:Authentication`.
+      * La Wallet Unit valida se la RP è titolata a questa presentazione come descritto in :ref:`trust-evaluation:Authorization`.
 
-1.  **Accesso all'Endpoint di Discovery**: L'entità (es. un Fornitore di Wallet o un portale informativo) accede all'`Endpoint di Discovery del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali** e della **Tassonomia**.
+   Indipendentemente dal Trust Framework, la decisione finale su se la RP è Authorized durante la presentazione è assunta secondo :ref:`trust-evaluation:Authorization Decision and Override Rules`.
 
-2.  **Navigazione e Selezione**:
+  * L'Utente autorizza il rilascio degli attributi selezionati, oggetto di selective disclosure. Il Wallet quindi impacchetta e presenta l'Attestato Elettronico alla RP.
 
-  * **Discovery delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare le tipologie di Credenziale rilevanti (es. ``pid``, ``eid``, ``mDL``) e, se necessario, utilizza le informazioni sulla **Tassonomia** per navigare la gerarchia e fornire diverse localizzazioni.
-  * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` nel campo `issuers`) associato alla Credenziale desiderata.
-  * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede alla **Configurazione dell'Entità** (Metadati dell'Emittente) utilizzando l'identificatore recuperato.
+2.  **Discovery e integrità**:
 
-3.  **Azione Finale**: L'entità può quindi utilizzare i metadati per mostrare le informazioni del catalogo a un Utente (o utilizzare le informazioni in altro modo).
+  * La RP riceve l'Attestato Elettronico dall'Utente.
+  * A seconda del trust framework a cui la RP aderisce (ossia, il National o il Trust Framework EUDIW):
 
-Emissione di Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^
+    * **(EUDIW Trust Framework)**:
 
-Questo percorso definisce come un Emittente di Credenziali utilizza l'Infrastruttura del Registro per preparare ed emettere una Credenziale Digitale conforme.
+      * La RP valida la firma dell'Attestato Elettronico e valuta la trust con il suo issuer come descritto in :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
+      * La RP consulta il EUDIW Catalogue of Schemes e recupera lo ``SchemaMeta`` della Credenziale presentata, verificando ciascun ``schemaURIs[].uri`` che reca un suffisso ``#integrity`` come definito in [`W3C-SRI`_].
 
-1.  **Identificazione dei Requisiti**: L'EI consulta il **Catalogo delle Credenziali Digitali** per i requisiti tecnici della tipologia di Credenziale da emettere (es. ``max_validity_days``, ``min_loa``).
+    * **(National Trust Framework)**:
 
-2.  **Risoluzione di Schemi e Claims**:
+      * La RP valida la firma dell'Attestato Elettronico e valuta la trust con il suo issuer come descritto in :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`.
+      * La RP recupera lo ``SchemaMeta`` da ``GET /schemas/{schemaId}`` sul :ref:`registry:Catalogo delle Attestazioni`, usando lo ``schemaId`` della voce di catalogo, e verifica ciascun ``schemaURIs[].uri`` che reca un suffisso ``#integrity`` come definito in [`W3C-SRI`_].
 
-  * L'EI consulta il **Registro degli Schemi** per recuperare la specifica tecnica del formato e dello schema (es. JSON Schema per SD-JWT) richiesta dal Catalogo, verificandone la validità e l'integrità tramite l'hash (`schema_uri#integrity`).
-  * L'EI accede al **Registro dei Claims** per recuperare le definizioni semantiche standardizzate e i formati dei dati (tipi di dati) degli attributi (claim) necessari.
+3.  **Validazione dello schema e della policy finale**:
 
-3.  **Recupero dei Dati Autentici**:
+  * La RP utilizza lo schema recuperato per validare la struttura della Credenziale e i tipi di dato degli attributi rivelati.
+  * La RP esegue il controllo finale per assicurare che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e della policy di autorizzazione.
 
-  * L'EI consulta il **Registro delle Fonti Autentiche (FA)** per identificare la **Fonte Autentica** (FA) autorizzata per il dataset richiesto. Il Registro FA fornisce l'``entity_id`` della FA e i dettagli tecnici dell'interfaccia (`integration_endpoint`, `integration_method`).
-  * L'EI consulta la specifica dell'endpoint FA per implementare l'integrazione necessaria al recupero dei dati dell'Utente per popolare la Credenziale Digitale.
+4.  **Accettazione o rifiuto**: Sulla base della validazione crittografica, della conformità allo schema e dell'autorizzazione basata su policy, la RP accetta o rifiuta l'Attestato Elettronico per l'accesso al servizio.
 
-4.  **Emissione della Credenziale**: L'EI utilizza i dati recuperati, gli schemi validati e i formati specificati per generare e firmare la Credenziale Digitale nel formato corretto (es. SD-JWT o mDOC).
+Cross-border Attribute Verification by a QTSP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Presentazione e Verifica delle Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Questo journey descrive come un Qualified Trust Service Provider (QTSP), eventualmente stabilito in un altro Stato membro, verifica il valore di un attributo dell'Annex VI rispetto a una Fonte Autentica italiana del settore pubblico per emettere una QEAA.
+Utilizza il ``verification_endpoint`` dell':ref:`registry:Authentic Source Registry`, che è la controparte nazionale della discovery del punto di verifica nel EUDIW Catalogue of Attributes. Non utilizza la valutazione di trust OpenID Federation nazionale né l'e-Service PDND nazionale.
 
-Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)** interagiscono con l'Infrastruttura del Registro quando una Credenziale Digitale deve essere presentata da un Utente.
+1.  **Discovery del punto di verifica**: Il QTSP scopre il punto di verifica da ``data_capabilities[].verification_endpoint`` nell':ref:`registry:Authentic Source Registry`. ``endpoint`` è il punto di verifica. Il EUDIW Catalogue of Attributes è la controparte transfrontaliera di questa discovery, come descritto in :ref:`registry:Registry Integration and Cross-References`. Il Federation Trust Anchor non pubblica quel catalogo.
 
-1.  **Autorizzazione e Selezione del Wallet**:
+2.  **Selezione dell'interfaccia**: A seconda di ``verification_endpoint.method``, il QTSP utilizza l'interfaccia ISO 15000/eDelivery (``oots_edelivery``) o l'interfaccia REST + OAuth 2.0 (``rest_oauth2``) di ETSI TS 119 478 Section 6.
 
-  * Il Wallet riceve una Richiesta di Presentazione dalla RP, verifica la validità della richiesta confrontando i *claim* richiesti con le *Politiche di Autorizzazione* relative alla RP.
-  * Il Wallet consulta il **Catalogo delle Credenziali Digitali** e la **Tassonomia** per verificare i *Domini*, le *Classi* e le *Finalità* associate alle tipologie di Credenziale in suo possesso, valutando quali Credenziali sono adatte alla richiesta.
-  * Il Wallet verifica se gli attributi richiesti (claim) sono disponibili e autorizzati alla divulgazione in base alla politica della richiesta (scenari **Credential-Specific** o **Credential-Agnostic**).
-  * L'Utente autorizza il rilascio degli attributi selettivamente divulgati selezionati. Il Wallet quindi confeziona e presenta la Credenziale Digitale alla RP.
+3.  **Richiesta di verifica**: Il QTSP presenta la richiesta di verifica all'endpoint, esposto dalla Fonte Autentica o dall'intermediario nazionale designato, che restituisce la conferma autentica del valore dell'attributo per l'Utente. Come previsto dall'Articolo 45e di [`EIDAS`_], questa è una verifica di autenticità dell'attributo e non un accesso ai dati sottostanti.
 
-2.  **Discovery e Integrità**:
-
-  * La RP riceve la Credenziale Digitale dall'Utente.
-  * La RP consulta il **Registro della Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
-  * La RP consulta il **Registro degli Schemi** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
-
-3.  **Validazione dello Schema e della Politica Finale**:
-
-  * La RP utilizza lo schema recuperato per validare la struttura della Credenziale e i tipi di dati degli attributi rivelati.
-  * La RP esegue la verifica finale per assicurarsi che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e alla politica di autorizzazione.
-
-4.  **Accettazione o Rifiuto**: Sulla base della validazione crittografica, della conformità allo schema e dell'autorizzazione basata su politiche, la RP accetta o rifiuta la Credenziale per l'accesso al servizio.
-
-
+4.  **Emissione**: Il QTSP emette la QEAA secondo il proprio Rulebook e i propri trust anchor, ossia le EUDIW Trusted Lists. L'ancoraggio di trust della QEAA risultante non deriva dalla presenza di alcun schema nel Catalogue of Schemes, si veda la nota in :ref:`registry:Registry Integration and Cross-References`.

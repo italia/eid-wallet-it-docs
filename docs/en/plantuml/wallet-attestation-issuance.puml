@@ -1,82 +1,106 @@
-@startuml Wallet App and Wallet Unit Attestations Issuance
-autonumber
+@startuml Key Attestation Issuance
 hide footbox
 
 'Participants
 actor "User" as user
-participant "Wallet Instance" as app 
+participant "Wallet Instance" as app
 participant "Key Attestation APIs" as kats #springgreen
 participant "Device Integrity Service APIs" as aats #springgreen
+participant "WSCA/Remote WSCD" as wsca #springgreen
 participant "Wallet Provider backend" as bck
 
-user->app: Request a new operation that\nrequires a Key Attestation 
+user->app: Request a new operation that\nrequires a Key Attestation
 activate app
 
-app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag""), Key Attestation APIs, and Device Integrity APIs are available
+app->app: Verify that Cryptographic Hardware Keys exist\n(""hardware_key_tag""). Otherwise re-initialize
 
-app->app: Generates one or a batch of Credential key pair(s) to be attested in Key Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
-
-rnote over app,bck #LIGHTGREEN
-Check Wallet Provider is part of the Federation and obtain its metadata
-endrnote
+app->app: Verify the Wallet Provider federation membership\nand obtain its metadata
 
 app->bck: Request ""nonce""
 activate bck
-
 bck->bck: Generate ""nonce""
-
 bck-->app: ""nonce""
 deactivate bck
 
+alt Keys bound to a Digital Credential other than the PID
 
-app->app: Generate ""client_data_hash"" as SHA256(""nonce"", [""key_pub_1"",..., ""key_pub_n""]) 
-
-app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash"", ""hardware_key_tag""), ""hardware_key_priv"")
-
-app->aats: ""client_data_hash"" for Integrity Assertion
-aats->aats: Generate ""integrity_assertion""\nbound to nonce 
-aats-->app: ""integrity_assertion"" for Wallet Instance
-
-alt if Android - Key Attestation flow for each key pair
+alt Android
 
 activate kats
-
-app->kats: create ""client_data_hash"" for each key_pub
-
-kats->kats: Generate ""key_attestation""\nbound to nonce
-
-kats-->app: ""key_attestation"" 
-app->app : Generate ""keys_to_attest""= sign(""key_attestation"",""key_priv"")
-
+app->kats: Generate each Credential key pair\nwith attestation challenge = UTF-8 octets of ""nonce""
+kats-->app: ""key_pub"" and ""key_attestation""
 deactivate kats
 
-else if iOS - Key attestation flow for each key pair
+else iOS
 
-app->aats: create ""client_data_hash"" for each key_pub
-aats->aats: Generate ""integrity_assertion""\nbound to nonce for WUA
-aats-->app: ""integrity_assertion"" for WUA 
-app->app : Generate ""keys_to_attest""= sign(""integrity_assertion"",""key_priv"")
+app->app: Generate each Credential key pair\nin the Secure Enclave
+
 end
 
+else Keys bound to a PID
 
-app->app: Generate Key Attestation Request:""assertion""= sign((""integrity_assertion"", ""keys_to_attest"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""key_pub"", ""wallet_solution_id"", ""wallet_solution_version"", ""platform""),""key_priv"")
+app->wsca: Generate each PID key pair in the Remote WSCD
+wsca-->app: ""key_pub""
+
+end
+
+app->app: Create ""client_data"" from ""nonce"" and the JWK thumbprints,\nthen ""client_data_hash"" = SHA256(""client_data"")
+
+app->app: ""hardware_signature"" = sign(""client_data_hash"", ""hardware_key_priv"")
+
+alt Keys bound to a Digital Credential other than the PID
+
+alt Android
+
+app->app: ""keys_to_attest"" JWT: ""iat"", ""exp"", ""cnf"",\n""wscd_key_attestation"" (""storage_type"", ""attestation""),\nsigned with ""key_priv""
+
+else iOS
+
+app->aats: ""client_data_hash"" for each key
+aats-->app: ""integrity_assertion"" bound to ""client_data_hash""
+app->app: ""keys_to_attest"" JWT: ""iat"", ""exp"", ""cnf"",\n""wscd_key_attestation"" (""storage_type"", ""integrity_assertion""),\nsigned with ""key_priv""
+
+end
+
+else Keys bound to a PID
+
+app->app: ""keys_to_attest"" JWT:\n""iat"", ""exp"", ""cnf"", ""wscd_key_attestation""\nfor the Remote WSCD, without OEM material
+app->wsca: Request signature of JWT\nwith the corresponding PID private key
+wsca-->app: Signature
+app->app: Assemble signed ""keys_to_attest"" JWT
+
+end
+
+app->app: Key Attestation Request JWT (""ka-request+jwt""):\n""iss"", ""iat"", ""exp"", ""nonce"", ""keys_to_attest"", ""hardware_signature"",\n""hardware_key_tag"", ""cnf"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""
+
+alt Keys bound to a Digital Credential other than the PID
+
+app->app: Sign the Key Attestation Request JWT\nwith the private key corresponding to the first ""cnf""
+
+else Keys bound to a PID
+
+app->wsca: Request signature of the Key Attestation Request JWT\nwith the private key corresponding to the first ""cnf""
+wsca-->app: Signature
+app->app: Assemble the signed Key Attestation Request JWT
+
+end
 app->bck: Send ""assertion""
 activate bck
-Note over bck, bck #LIGHTGREEN
-Check if Wallet Instance is initialized and valid
-using "hardware_key_tag"
-End note
 
-bck->bck: Validate ""nonce""
-bck->bck: Validate ""keys_to_attest"" and Hardware key PoP
-bck->bck: Validate ""integrity_assertion""
-bck->bck: Validate ""hardware_signature""
-bck->bck: Validate ""key_pub"" PoP for signing\n Key Attestation Request
+bck->bck: Validate the HTTP headers
+bck->bck: Validate the request signature with the ""cnf"" ""jwk""
+bck->bck: Validate ""nonce"" (issued by the Wallet Provider, unused)
+bck->bck: Registered Wallet Instance for ""hardware_key_tag"".\nReject if its Wallet Instance Attestation is revoked
+bck->bck: Validate each ""keys_to_attest"" signature with its ""cnf"".\nAndroid: ""attestation"" challenge equals the ""nonce"".\niOS: validate ""integrity_assertion"".\nPID: no OEM material
+bck->bck: Reconstruct ""client_data"" and validate ""hardware_signature""
+bck->bck: Device meets the Wallet Provider security requirements
+bck->bck: ""iss"" matches the Wallet Provider URL identifier
 bck->bck: Create Key Attestation
 
-
 bck-->app: Key Attestation Response
-
 deactivate bck
+
+app->app: Verify the Key Attestation signature and the Issuer trust
+
 deactivate app
 @enduml

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-instance-functionalities.rst at title level '=' (document title).
 
 
 Wallet Instance Attestation Issuance
@@ -9,7 +10,7 @@ This section describes how the Wallet Provider issues a Wallet Instance Attestat
 .. plantuml:: plantuml/wallet-instance-attestation-issuance.puml
     :width: 99%
     :alt: The figure illustrates the Sequence Diagram for Wallet Instance Attestation acquisition.
-    :caption: `Sequence Diagram for Wallet Instance Attestation acquisition. <https://www.plantuml.com/plantuml/svg/ZLHFJni_4BtxKupCuHUa_2wLsWDIAn2bW5fL4T3s4YcQh2UxespihJsxQVhfQsyWku2XlQpYyVFyUMzUJeEWbtPJAsp5sNQp9AygDWGhvsJfVYdrNnCHN723LXGMuZpeRu6y1WpGXeWV0K3_mBecWMiR16r1FGgR1XwZFbB71KMKKEbPTd1Ble-SpQx3_WrAWAFGUBPbwObijipCkuuDULXYiIPh-gVBOgsKIgtz_o6MFe4R-jbI442mj0NNa4TXPq4gbBdryPOz1K1uqZoSYL2G7fn6vmw5qZHAnSzzylEAYZNm2ixzhX5NUcmgBk0AlTcY9_XCEvZREonXedLr7rsiQRSGBBK-1Ww07NADovhKEFCbsTHfwim2DHLjuh66-1GQP9_o7Q9zmgPTQZs5Ps7FNIoabBTE25n7FWqnZJp1qPVhowkxovkBYwzgFybJPZb0OXxS2gGY-4JcWJwq1jnIa2sm1DYGe451HTQaIeTXOfr10wsjItkX1q9xlUAdHmvZmyfJg8O7UymzDqFKq3XHbi28BcecAulKtwB2KEb-KswlpjwyVJSv99j2bjBZRD9Nz9wvsToEr0vSMfJMnnBm7j9fCidrD8NiYep3Ww93MoZX93kZIbS3PVnWjmM6G3w9g7LsjbUCS51oorAzb7GA-UcdC70zjxbXynBquQP6MJc_sP-sVOkBuEesrLomoSSxyg7l2UOsTK9ct_bWgBnVHhjxIzRy2oMFLtfmMpg-u3PUFKlC0TYoCDRycqpliYx-DgeDRCliXWoM6spqFRr1eO7np6LUlomqgsWMcLSmcM84FlVqbqKRs_rryaFZRA1d_mIZSqoYJicQTbF_0G00>`_
+    :caption: `Sequence Diagram for Wallet Instance Attestation acquisition. <https://www.plantuml.com/plantuml/svg/ZLLDRzim3BthLn3kOIcGNGPiXm8RMdHTMsmOWhRRBW4CncPi8exaIRBJxDUFifFOQTLk5yEY-V7uo2UVEu_MD-jAOUEDRjOBighad61fZ5-OHwNUrEB16TUelSBC6ml93qSs0NJGo8iQEK3o2wkAFDngoQmpwhomhk7OwpErd95uUIei-otSa-qi5xDRryUWTt3YQikwA2oHZfQPMTCAMWiBp5QayovqaQsKKW7QsqzI-Wpkw7T3pWE2fWsOcYnwDXfyYNwkhNnbIr8Ide272-ybhdCEhNEBda8tIibZb_oof6m5l8HBkwszAIpM9MTmWpRVe2NuIbkOwmSiO98avSwQhcYRUYoIv1HOAhV85IugKkFCrwG3qe1C0zKbhULOWOH2ZMn3leErIrWtYoIPmZEpvLOAAMMr4Voc5Rwam5HuWfDljzSt3zTtLrVVLT_9KsO5Nc0Up5Bu8lX2-Pu-r3cOXKVMm3AiDNdCqQEIENILzir8dM46IQ9Ds8ja8BIRbpnsdlksOIb3AKS1dS-Ecy6Qqt6Y287YdLLCsgS1NrgYAvDkK-vlBjwz_p0v98jm5oWzZIPzPTupCvlhqRGT5nfzOwK4V8HmcanYc4Bzo8eyCnycsiCIgPn5UrJXqq0Px-MMeXDrX246MYEzlIA4moGtxCkNaXuX7dK_7GOtFMBeqEnqbrBdbAViN2CtpKjp2UQwGhyqTjsVDXtkr9cg2K1IpkDsaO3hWCwrRF4KDYLfiDGukMta7WYjDWugbZQ5KhiDENfZ6eoIzp74XiuexvaO11hNtqWBzzBT_r1yB96HUkNuWdhb7dgQM0JCcZrZnNy4R51jA--vwhkD3M6Gy23Bdo6c5zDUUj6FyIMBkiOs9EuP6NuGsSZvqj8_5dTyVRnElgkDTlJiPXcTmp_WN4YIF-TV>`_
 
 
 **Step 1**: The User initiates a new operation that necessitates the acquisition of a Wallet Instance Attestation.
@@ -33,12 +34,8 @@ Upon a successful request, the Wallet Provider generates and returns the nonce v
 
 Below is a non-normative example of the ``client_data`` JSON object.
 
-.. code-block:: json
-
-  {
-    "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
-    "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-  }
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-1.json
+   :language: json
 
 
 **Steps 8-10**: The Wallet Instance:
@@ -53,7 +50,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 11-12 (Wallet Instance Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and other configuration related parameters (see :ref:`Table of the Wallet Instance Attestation Request Body <table_wia_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Constructs the Wallet Instance Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``intended_issuer``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and, when reusing a status list entry, ``status_list_idx`` (see :ref:`Table of the Wallet Instance Attestation Request Body <table_wia_request_claim>` and :ref:`wallet-instance-attestation-issuance:Per-Issuer Status Entry Reuse`). It is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Submits the Wallet Instance Attestation Request to the :ref:`wallet-provider-endpoint:Wallet Instance Attestation Issuance Endpoint` of the Wallet Provider Backend.
 
 
@@ -69,6 +66,7 @@ The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT
   6. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines. The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
   8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  9. The Wallet Provider MUST apply :ref:`wallet-instance-attestation-issuance:Per-Issuer Status Entry Reuse`.
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation that meets :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 
@@ -77,13 +75,29 @@ Upon successful completion of all checks, the Wallet Provider issues a Wallet In
 
 Below is a non-normative example of the response.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/wallet-instance-attestation-issuance-2.http
+   :language: http
 
-  HTTP/1.1 200 OK
-  Content-Type: application/json
 
-  {
-    "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
-  }
+Per-Issuer Status Entry Reuse
+-----------------------------
+
+The Wallet Provider MUST use the per-issuer reuse option of Section 2.5.1 of `EUDI-TS 3`_ for the ``client_status.status`` entry of each Wallet Instance Attestation.
+
+The Wallet Instance MUST keep the status list index assigned to it for each PID Provider or Attestation Provider.
+
+The Wallet Instance Attestation Request MUST include ``intended_issuer``.
+
+When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it already holds an index, the request MUST include ``status_list_idx`` set to that index.
+
+When the Wallet Instance requests a Wallet Instance Attestation for a PID Provider or Attestation Provider for which it holds no index, the request MUST omit ``status_list_idx``.
+
+When ``status_list_idx`` is present, the Wallet Provider MUST verify that the Wallet Instance is entitled to that index for ``intended_issuer`` before issuing a Wallet Instance Attestation that reuses it. The Wallet Provider MUST reject the request when the Wallet Instance is not entitled to that index.
+
+The Wallet Provider MUST NOT reuse the same status list entry for Wallet Instance Attestations that the same Wallet Instance presents to different PID Providers or Attestation Providers.
+
+When ``status_list_idx`` is absent, the Wallet Provider MUST assign a new status list entry for that Wallet Instance and ``intended_issuer``.
+
+The Wallet Provider MUST document the use of this option in its privacy policy.
 
 

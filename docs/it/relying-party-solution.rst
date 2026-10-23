@@ -4,16 +4,16 @@
 Soluzione di Relying Party
 ==========================
 
-Una Relying Party, come entità Organizzativa che si affida all'IT-Wallet, fornisce Soluzioni Tecniche (Soluzione di Relying Party) che potrebbero combinare software, hardware, servizi, impostazioni e configurazioni, incluse App di Verifica per l'autenticazione dell'Utente e la verifica degli Attestati Elettronici.
+Una Relying Party, come entità Organizzativa che si affida all'IT-Wallet, fornisce Soluzioni Tecniche (Soluzione di Relying Party). Tali Soluzioni Tecniche potrebbero combinare software, hardware, servizi, impostazioni e configurazioni, incluse App di Verifica per l'autenticazione dell'Utente e la verifica degli Attestati Elettronici.
 
-Per implementare e fornire Soluzioni Tecniche, una Relying Party può avvalersi dei servizi di un **Intermediario di Relying Party**. Ai sensi dell'articolo 5b, paragrafo 8, del `EU_2024_1183`_, gli intermediari che agiscono per conto delle Relying Party sono considerati Relying Party e **non devono conservare dati sul contenuto della transazione** tra l'Utente del Wallet e la Relying Party intermediata. Per le definizioni complete e il quadro giuridico europeo di riferimento, vedi **Intermediario di Relying Party** e **Intermediario IT-Wallet** in :ref:`defined-terms:Definizioni e Acronimi`.
+Per implementare e fornire Soluzioni Tecniche, una Relying Party può avvalersi dei servizi di un **Intermediario di Relying Party**. Ai sensi dell'articolo 5b, paragrafo 8, del `EU_2024_1183`_, gli intermediari che agiscono per conto delle Relying Party sono considerati Relying Party. Tali intermediari **non devono conservare dati sul contenuto della transazione** tra l'Utente del Wallet e la Relying Party intermediata. Per le definizioni complete e il quadro giuridico europeo di riferimento, vedi **Intermediario di Relying Party** e **Intermediario IT-Wallet** in :ref:`defined-terms:Definizioni e Acronimi`.
 
 .. note::
   Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un Intermediario di Federazione (**Intermediario IT-Wallet**).
 
 Una Relying Party fornisce almeno uno dei seguenti componenti:
 
-- **Backend della Relying Party**: Gestisce la registrazione delle Istanze di Relying Party e la relativa gestione dei Certificati. Ottiene il Certificato X.509 secondo l':ref:`trust-infrastructure:L'Infrastruttura di Trust`. DOVREBBE inoltre fornire un Certificato X.509 alle proprie App di Verifica. Può anche implementare servizi web aggiuntivi e logica di business per i propri scopi e casi d'uso.
+- **Backend della Relying Party**: Gestisce la registrazione delle Istanze di Relying Party e la relativa gestione dei Certificati. Ottiene il Certificato X.509 secondo l':ref:`infrastructure-trust:Infrastructure of Trust`. DOVREBBE inoltre fornire un Certificato X.509 alle proprie App di Verifica. Può anche implementare servizi web aggiuntivi e logica di business per i propri scopi e casi d'uso.
 - **App di Verifica**: È un frontend fornito agli Utenti per accedere ai Servizi della Relying Party, e può essere fornito come:
 
   - **Client Web**.

@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "n": "qU2Bp7xgkXBQI2w2PZ5LZGo34TIjoir-ul0x4jZ_d9hN6q...",
+      "e": "AQAB",
+      "alg": "ES256",
+      "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec"
+    },
+    {
+      "kty": "RSA",
+      "n": "05VukHBwiE1W_kgUS0zkOyHCrRivgw5cfSTmcvD_phieEY...",
+      "e": "AQAB",
+      "alg": "ES256",
+      "kid": "9432c16b-7aae-49df-b9c4-ea61b556652b"
+    }
+  ]
+}

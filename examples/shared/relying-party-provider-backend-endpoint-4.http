@@ -1,0 +1,7 @@
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "error": "invalid_request",
+    "error_description": "The public key in the CSR is different from the one associated with the Cryptographic Hardware Keys."
+}

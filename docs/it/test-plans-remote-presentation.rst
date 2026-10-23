@@ -57,8 +57,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il Relying Party accetta e predefinisce il metodo GET.
   * - RPR-10
     - Metadati
-    - Verifica che i parametri corrispondano ai metadati OpenID Credential Verifier.
-    - Solo i parametri consentiti saranno considerati.
+    - Verifica che i metadati della Relying Party seguano il prefisso di ``client_id``.
+    - Per ``openid_federation``, i parametri corrispondono ai metadati ``openid_credential_verifier`` e sono considerati solo i parametri consentiti. Per ``x509_hash``, i metadati della Relying Party sono trasportati in ``client_metadata`` e i dati di autorizzazione sono trasportati in ``verifier_info``.
   * - RPR-11
     - Consenso Utente
     - Test dell’idoneità di un Credential Verifier nel richiedere attributi utente.
@@ -76,9 +76,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di un oggetto Request non valido.
     - Viene inviata una risposta di errore.
   * - RPR-15
-    - Gestione Errori
-    - Verifica la registrazione degli errori.
-    - Gli errori vengono registrati correttamente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-16
     - Gestione Errori
     - Test del recupero da errore nella richiesta di autorizzazione.
@@ -87,6 +87,10 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Gestione Errori
     - Test di un cookie HTTP falso.
     - Il Relying Party verifica la coerenza della sessione utente accoppiando il cookie http di sessione con state e nonce forniti.
+  * - RPR-18
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-19
     - Redirect URI
     - Test del reindirizzamento all’endpoint del Relying Party.
@@ -95,21 +99,29 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Redirect URI
     - Verifica la gestione di un `redirect_uri` non valido.
     - Viene restituita una risposta di errore.
+  * - RPR-21
+    - Annullato
+    - Annullato
+    - Annullato
+  * - RPR-22
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-23
     - Presentazione Credenziali
     - Verifica la conformità del formato della risposta.
-    - Il Relying Party supporta tutti i formati di credenziali inclusi nel parametro ``vp_formats_supported`` dei suoi metadati.
+    - Il Relying Party supporta tutti i formati di Credenziali inclusi nel parametro ``vp_formats_supported`` dei suoi metadati.
   * - RPR-24
-    - Risposta di Autorizzazione
-    - Test della gestione dei timeout di risposta.
-    - I tentativi devono avere successo a meno che non venga acquisita la risposta.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-25
     - Gestione Errori
     - Verifica la gestione di claim malformati nel payload della presentazione.
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-26
     - Gestione Errori
-    - Verifica la gestione di claim malformati nelle credenziali presentate.
+    - Verifica la gestione di claim malformati nelle Credenziali presentate.
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-27
     - Gestione Errori
@@ -143,6 +155,10 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Flusso stesso e tra dispositivi
     - Verifica la gestione di condizioni di rete lente.
     - Il Relying Party fornisce la risposta http entro il limite massimo di 2 secondi.
+  * - RPR-35
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-36
     - Risposta di Presentazione
     - Verifica la gestione di payload di risposta di grandi dimensioni.
@@ -200,13 +216,13 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di content type non supportati.
     - Viene restituita una risposta di errore.
   * - RPR-50
-    - Consenso Utente
-    - Verifica la notifica all’utente delle modifiche al consenso.
-    - L’utente viene informato delle modifiche al consenso.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-51
-    - Consenso Utente
-    - Test del consenso dell’utente per dati sensibili.
-    - L’utente può acconsentire ai dati sensibili.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-52
     - Risposta di Autorizzazione
     - Verifica la gestione di errori di decifratura della risposta.
@@ -244,9 +260,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Test della gestione di metodi HTTP non validi.
     - Viene restituita una risposta di errore.
   * - RPR-61
-    - Consenso Utente
-    - Verifica la notifica all’utente della revoca del consenso.
-    - L’utente viene informato della revoca del consenso.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-62
     - Consenso Utente
     - Test del consenso dell’utente per dati opzionali.
@@ -296,13 +312,13 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Verifica la gestione dei timeout utente.
     - L’utente viene informato del timeout.
   * - RPR-74
-    - Flusso tra dispositivi
-    - Test della scansione del QR Code con dispositivi diversi.
-    - Il QR Code viene scansionato con successo.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-75
-    - Flusso tra dispositivi
-    - Verifica la scansione del QR Code con app diverse.
-    - Il QR Code viene scansionato con successo.
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-76
     - Metodo request_uri
     - Test della gestione di metodi HTTP non supportati.
@@ -314,19 +330,17 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il QR Code utilizza il livello di correzione Q richiesto.
 
   * - RPR-78
-    - Richiesta Wallet Instance Attestation (WIA)
-    - Test che la richiesta di Wallet Instance Attestation (WIA) utilizzi la query DCQL standard.
-    - La richiesta di Wallet Instance Attestation (WIA) utilizza correttamente la query DCQL standard.
-
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-79
-    - Richiesta Wallet Instance Attestation (WIA)
-    - Verifica che il parametro ``claims`` non sia incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
-    - Il parametro ``claims`` non è incluso nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
-
+    - Annullato
+    - Annullato
+    - Annullato
   * - RPR-80
-    - Richiesta Wallet Instance Attestation (WIA)
-    - Test che il parametro ``vct_values`` sia richiesto nella query DCQL per l’Attestato dell'Istanza del Wallet (WIA).
-    - Il parametro ``vct_values`` è correttamente richiesto nella query DCQL.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-81
     - Wallet Nonce
@@ -350,8 +364,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-85
     - Sicurezza Endpoint
-    - Test che ``request_uri`` sia attestato da una terza parte fidata.
-    - Il parametro ``request_uri`` è correttamente attestato da una terza parte fidata.
+    - Test che ``request_uri`` sia attestato nel Trust Framework selezionato.
+    - Nel percorso nazionale, ``request_uri`` corrisponde esattamente a un valore di ``request_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``request_uri`` è vincolato dal WRPAC e dal WRPRC. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
 
   * - RPR-86
     - Protezione della Privacy
@@ -400,18 +414,18 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-95
     - Sicurezza Response URI
-    - Test che ``response_uri`` sia attestato da una terza parte fidata.
-    - Il parametro ``response_uri`` è correttamente attestato da una terza parte fidata.
+    - Test che ``response_uri`` sia attestato nel Trust Framework selezionato.
+    - Nel percorso nazionale, ``response_uri`` corrisponde esattamente a un valore di ``response_uris`` nei metadati ``openid_credential_verifier``. Nel percorso EUDIW, ``response_uri`` è vincolato dal WRPAC e dal WRPRC. L'evidenza dell'altro Trust Framework non autorizza l'endpoint.
 
   * - RPR-96
     - Gestione Client Metadata
-    - Test che il Relying Party gestisca correttamente il ``client_metadata`` dell’istanza Wallet.
-    - Il ``client_metadata`` è correttamente allineato con i metadati della Trust Chain.
+    - Test che ``client_metadata`` segua il prefisso di ``client_id`` selezionato.
+    - Per ``openid_federation``, ``client_metadata`` non sovrascrive i metadati della Trust Chain, salvo ``jwks`` e i parametri di capacità di cifratura della risposta. Per ``x509_hash``, i metadati applicabili della Relying Party sono trasportati in ``client_metadata``.
 
   * - RPR-97
-    - Richiesta Wallet Instance Attestation (WIA)
-    - Test che il Relying Party richieda l’Attestato dell'Istanza del Wallet (WIA) tramite DCQL.
-    - Il Relying Party richiede correttamente l’Attestato dell'Istanza del Wallet (WIA) usando la query DCQL.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-98
     - Formato Risposta di Errore
@@ -424,9 +438,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - La risposta di errore include i parametri error ed ``error_description``.
 
   * - RPR-100
-    - Presentazione Wallet Instance Attestation (WIA)
-    - Test che il Relying Party richieda correttamente l’Attestato dell'Istanza del Wallet (WIA) all’istanza Wallet.
-    - Il Relying Party valuta correttamente l’Attestato dell'Istanza del Wallet (WIA) quando richiesta.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-101
     - Array Presentazione
@@ -455,8 +469,8 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
 
   * - RPR-106
     - Audience KB-JWT
-    - Test che ``aud`` di KB-JWT corrisponda all’identificativo del Relying Party.
-    - Il parametro ``aud`` di KB-JWT corrisponde all’identificativo univoco del Relying Party.
+    - Test che ``aud`` di KB-JWT corrisponda al Client Identifier della Relying Party, prefisso incluso.
+    - Il parametro ``aud`` di KB-JWT corrisponde al ``client_id`` della Relying Party, incluso il prefisso del Client Identifier.
 
   * - RPR-107
     - Nonce KB-JWT
@@ -479,9 +493,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - La Response URI restituisce HTTP 200 con content type ``application/json``.
 
   * - RPR-111
-    - Coerenza Codici di Errore
-    - Test che i codici di errore siano coerenti tra i diversi endpoint.
-    - I codici di errore sono coerenti su tutti gli endpoint del Relying Party.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-112
     - Inclusione Codice di Risposta
@@ -489,9 +503,9 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Il Relying Party include un nuovo codice di risposta in ``redirect_uri``.
 
   * - RPR-113
-    - Sicurezza Redirect URI
-    - Test che ``redirect_uri`` sia attestato da una terza parte fidata.
-    - Il parametro ``redirect_uri`` è correttamente attestato da una terza parte fidata.
+    - Annullato
+    - Annullato
+    - Annullato
 
   * - RPR-114
     - Risposta di Errore di Validazione
@@ -501,11 +515,31 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
   * - RPR-115
     - Identity Matching
     - Test dell'Unique National Identifier Binding quando è presentato ``personal_administrative_number`` o ``tax_id_code``.
-    - La Relying Party usa l'identificativo nazionale univoco come chiave primaria di identity matching prima della riconciliazione, come specificato in :ref:`identity-matching` (:ref:`CI_201 <credential-issuer-testcases>`).
+    - La Relying Party applica l'Unique National Identifier Binding come specificato in :ref:`identity-matching`.
 
   * - RPR-116
     - Identity Matching
     - Test dell'Attribute-Based Binding quando un PID è presentato senza ``personal_administrative_number``.
-    - La Relying Party confronta almeno ``family_name``, ``given_name``, ``birth_date`` (o ``birthdate``) e ``place_of_birth`` dopo normalizzazione e NON DEVE completare il matching su un sottoinsieme che consentirebbe uno scambio di persona, come specificato in :ref:`identity-matching` (:ref:`CI_202 <credential-issuer-testcases>`).
+    - La Relying Party applica l'Attribute-Based Binding come specificato in :ref:`identity-matching`.
+
+  * - RPR-117
+    - Prefisso dell'identificatore del Client
+    - Test che ``client_id`` utilizzi esattamente un prefisso di identificatore del Client per l'intera richiesta.
+    - ``client_id`` utilizza esattamente uno tra ``openid_federation`` e ``x509_hash`` per l'intera richiesta.
+
+  * - RPR-118
+    - Request Object EUDIW
+    - Test dell'header ``x5c`` quando ``client_id`` utilizza il prefisso ``x509_hash``.
+    - ``x5c`` inizia con il WRPAC ed esclude il trust anchor. La chiave di firma è la chiave del WRPAC e ``client_id`` è l'hash di quel certificato.
+
+  * - RPR-119
+    - Request Object nazionale
+    - Test dell'header quando ``client_id`` utilizza il prefisso ``openid_federation``.
+    - L'header utilizza ``kid`` e può includere ``trust_chain``. Il WRPAC e ``x5c`` non sono evidenza di trust nazionale.
+
+  * - RPR-120
+    - Autorizzazione EUDIW
+    - Test di ``verifier_info`` quando ``client_id`` utilizza il prefisso ``x509_hash``.
+    - ``verifier_info`` contiene ``registrar_dataset`` e ``registration_cert`` (il WRPRC). Questi oggetti non sono richiesti per ``openid_federation``.
 
 

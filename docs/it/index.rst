@@ -4,7 +4,13 @@
 Documentazione Tecnica IT-Wallet
 ================================
 
-Questo documento fornisce l'architettura tecnica, il framework di implementazione e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet.
+.. only:: html
+
+   .. include:: introduction-lead.rst
+
+.. only:: latex
+
+   Questo documento fornisce l'architettura tecnica, il framework di implementazione e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet.
 
 .. toctree::
   :maxdepth: 3
@@ -14,12 +20,11 @@ Questo documento fornisce l'architettura tecnica, il framework di implementazion
   introduction.rst
   brand-identity.rst
   architecture-overview.rst
-  onboarding-high-level.rst
   functionalities.rst
-  trust-infrastructure.rst
+  infrastructure-trust.rst
+  trust-evaluation.rst
   registry.rst
-  entity-onboarding.rst
-  x5c-evaluation.rst
+  onboarding-system.rst
   entities.rst
   digital-credential-management.rst
   digital-credential-flows.rst

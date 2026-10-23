@@ -1,0 +1,13 @@
+{
+  "taxonomy.name": "IT-Wallet Taxonomy",
+  "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
+  "domain.identity.name": "Identity",
+  "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
+  "class.identification_documents.name": "Identification Documents",
+  "purpose.identity_verification.name": "Identity verification",
+  "domain.authentication.name": "Authentication",
+  "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
+  "class.access.name": "Access",
+  "purpose.access_permit.name": "Access permit verification",
+  "...": "..."
+}

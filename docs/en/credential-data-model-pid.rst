@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via digital-credential-management.rst at title level '=' (document title).
 
 
 PID Data Model
@@ -6,30 +7,39 @@ PID Data Model
 
 The Person Identification Data (PID) is issued by the PID Provider according to national laws and it MUST be provided in both SD-JWT VC and mdoc-CBOR data format.
 
-.. note::
-  The PID will be issued when the IT-Wallet will be fully operational and notified as EUDIW, the **IT-Wallet ID** is intended for access online services of national RPs only.
-  
+.. _pid-until-notification:
+
+PID issuance before EUDIW notification
+--------------------------------------
+
+.. warning::
+
+   The PID MUST NOT be issued, stored or presented until the IT-Wallet is fully operational and notified as a European Digital Identity Wallet under [`CIR2024/2980`_].
+   Until that notification, national identification uses the :term:`IT-Wallet ID`.
+
+PID attributes
+--------------
 
 The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
-The PID MUST be provided according to data model requirements defined in  `EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the User attributes provided within the Italian PID are the ones listed below:
+The PID MUST be provided according to data model requirements defined in `EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]. The User attributes provided within the Italian PID are the ones listed below.
 
-- Current Family Name
-- Current First Name
-- Date of Birth
-- Place of Birth
-- Nationality
-- Portrait
-- Personal administrative number
+- Current Family Name.
+- Current First Name.
+- Date of Birth.
+- Place of Birth.
+- Nationality.
+- Portrait.
+- Personal administrative number.
 
-In addition to the User attributes listed above, the PID includes also the following metadata attributes (`EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
+In addition to the User attributes listed above, the PID includes also the following metadata attributes (`EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]).
 
-- Issuing authority
-- Issuing country
-- Expiry Date
-- Validity status information
-- Identity and data proofing information
+- Issuing authority.
+- Issuing country.
+- Expiry Date.
+- Validity status information.
+- Identity and data proofing information.
 
-Some attributes, such as the *identity and data proofing information*, are provided as **domestic extensions** defined by the Italian IT-Wallet specification. It is NOT part of the ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), but is **permitted under ARF requirement PID_06**, which allows Member States to define additional domestic attributes beyond those specified in Commission Implementing Regulation (CIR) 2024/2977 (`EU_2024/2977`_). In particular, the identity proofing information is REQUIRED for Italian PIDs to ensure:
+Some attributes, such as the *identity and data proofing information*, are provided as **domestic extensions** defined by the Italian IT-Wallet specification. The identity and data proofing information is NOT part of the ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3). The identity and data proofing information is permitted under ARF requirement PID_06. PID_06 allows Member States to define additional domestic attributes beyond those specified in Commission Implementing Regulation (CIR) 2024/2977 (`EU_2024/2977`_). In particular, the identity proofing information is REQUIRED for Italian PIDs to ensure:
 
 - The evaluation of User authentication method used.
 - The level of Assurance compliance of identity proofing during the enrollment process, according to the LoA defined by the eIDAS Regulation.
@@ -40,10 +50,9 @@ Attributes that are **domestic extensions** MUST be included in the **domestic n
 PID Data Model in SD-JWT VC Format
 -----------------------------------
 
-The SD-JWT VC PID defined in this specification MUST use the ``vct`` claim value set with ``urn:eudi:pid:it:1``, according to the domestic PID extensions defined in the ARF PID Rulebook v1.3 (see also ARF HLR **PID_14**, Section 4.2, extending the base type ``urn:eudi:pid:``).
+The SD-JWT VC PID defined in this specification MUST use the ``vct`` claim value set with ``urn:eudi:pid:it:1``. That value follows the domestic PID extensions defined in the ARF PID Rulebook v1.3 (see also ARF HLR **PID_14**, Section 4.2, extending the base type ``urn:eudi:pid:``).
 
-.. note::
-   **Transitional Phase:**
+.. note:: Transitional Phase
 
    During the transitional phase before full EUDIW operability, national implementations MAY use the ``vct`` value ``urn:it-wallet:pid:1``. Upon reaching full EUDIW operability, all implementations MUST transition to the EUDI-compliant identifier ``urn:eudi:pid:it:1`` specified above.
 
@@ -74,26 +83,25 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
       - REQUIRED. *Array of strings*. One or more alpha-2 country codes as specified in ISO 3166-1.
       - Commission Implementing Regulation `EU_2024/2977`_
     * - **picture**
-      - REQUIRED. *String*. Facial image encoded as a data URL containing the base64-encoded JPEG portrait, compliant with the quality requirements for a full frontal image type as set out in ISO/IEC 39794-5 or, for backward compatibility, ISO/IEC 19794-5, clauses 8.2, 8.3 and 8.4. It MUST NOT include the headers or blocks specified in clause 5 of ISO/IEC 19794-5, except for the image data itself. Except where the User explicitly opts out, where applicable; in case of opt-out, the value MUST be empty, as specified in ARF HLR **PID_03**. Mandatory inclusion of the portrait attribute applies as of 24 months after entry into force of the Regulation amending `EU_2024/2977`_.
-      - Commission Implementing Regulation `EU_2024/2977`_ and ARF PID Rulebook
+      - REQUIRED. *String*. Facial image encoded as a data URL containing the base64-encoded JPEG portrait, compliant with the quality requirements for a full frontal image type as set out in ISO/IEC 39794-5 or, for backward compatibility, ISO/IEC 19794-5, clauses 8.2, 8.3 and 8.4. It MUST NOT include the headers or blocks specified in clause 5 of ISO/IEC 19794-5, except for the image data itself. Before the end of the 24-month period following the entry into force of Commission Implementing Regulation `EU_2026/1731`_ (11 August 2028), the value MAY be set to empty.
+      - Commission Implementing Regulation `EU_2026/1731`_ (Annex I), `EU_2024/2977`_ and ARF PID Rulebook
     * - **personal_administrative_number**
       - OPTIONAL. *String*. National unique identifier of a natural person. It MUST be set according to ETSI EN 319 412-1 Section 5.1.3. The only natural person semantic identifiers (**NAT-5.1.3-03**) supported whithin IT-Wallet are ``PNO`` and ``TIN``. For IDANPR, ``PNO`` MUST be used, while for Fiscal Code, ``TIN`` MUST be used. 
       - Commission Implementing Regulation `EU_2024/2977`_
 
-.. note::
-   **Identity Matching and Identity Reconciliation**
+.. note:: Identity Matching and Identity Reconciliation
 
-   For the PID, ``personal_administrative_number`` is OPTIONAL. Relying Parties MUST NOT assume that a unique national identifier is always available. They MUST apply the identity matching and identity reconciliation rules defined in :ref:`identity-matching`. When that identifier is presented, Unique National Identifier Binding applies (:ref:`CI_201 <credential-issuer-testcases>`). When it is not presented, Attribute-Based Binding on at least ``family_name``, ``given_name``, ``birth_date`` (or ``birthdate``) and ``place_of_birth`` applies (:ref:`CI_202 <credential-issuer-testcases>`).
+   For the PID, ``personal_administrative_number`` is OPTIONAL. The identity matching and identity reconciliation rules are specified in :ref:`identity-matching`.
 
 All the User attributed listed above MUST be selectively disclosable.
-In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID:
+In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID.
 
-  - **date_of_expiry**
-  - **sub** (domestic extension)
-  - **iat**
-  - **cnf**
-  - **status**
-  - **verification** (domestic extension)
+  - **date_of_expiry**.
+  - **sub** (domestic extension).
+  - **iat**.
+  - **cnf**.
+  - **status**.
+  - **verification** (domestic extension).
 
 SD-JWT-VC PID Non-Normative Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,19 +109,19 @@ SD-JWT-VC PID Non-Normative Example
 In the following, the non-normative example of the payload of a PID represented in JSON format.
 
 .. literalinclude:: ../../examples/pid-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The corresponding SD-JWT version for PID is given by
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The disclosure list is presented below.
 
-**Claim** ``given_name``:
+**Claim** ``given_name``.
 
  * SHA-256 Hash: ``Jkbj8aLr-z2_c-HVxCbiw6YXFNHiyLSv1xGjN8lRogI``
  * Disclosure:
@@ -123,7 +131,7 @@ The disclosure list is presented below.
    ``["kghte5MDNHbQfdJHp88pCA", "given_name", "Mario"]``
 
 
-**Claim** ``family_name``:
+**Claim** ``family_name``.
 
  * SHA-256 Hash: ``MWJufQz_DFWc9cR4yxq8XqmTZfglkg2D2Sxa3UFN4Qk``
  * Disclosure:
@@ -133,7 +141,7 @@ The disclosure list is presented below.
    ``["hX1TEz_z877_XAtr3COaWg", "family_name", "Rossi"]``
 
 
-**Claim** ``birthdate``:
+**Claim** ``birthdate``.
 
  * SHA-256 Hash: ``uIapUlDTKsB5wN7BF6xuBNTtl74gl5iCu_aQ5nj3YL8``
  * Disclosure:
@@ -143,7 +151,7 @@ The disclosure list is presented below.
    ``["YWtI06xDdCyvTalcInTE3A", "birthdate", "1980-01-10"]``
 
 
-**Claim** ``place_of_birth``:
+**Claim** ``place_of_birth``.
 
  * SHA-256 Hash: ``tI5s2A_Ez6oZv6plZzUPjYAL-SJGiAUFyRbhzLsluGU``
  * Disclosure:
@@ -154,7 +162,7 @@ The disclosure list is presented below.
    ``"Roma"}]``
 
 
-**Claim** ``nationalities``:
+**Claim** ``nationalities``.
 
  * SHA-256 Hash: ``GHYjuGUthjtB4q4Oz_ZSGPmCokLOpv2kpFNzz1LfFUY``
  * Disclosure:
@@ -163,7 +171,7 @@ The disclosure list is presented below.
  * Contents:
    ``["KNc5-Gk9CQh_TdGbqBKI7A", "nationalities", ["IT"]]``
 
-**Claim** ``picture``:
+**Claim** ``picture``.
 
  * SHA-256 Hash: ``R6x9o0j4m3L4Pq6xYdK3rP4nNq8vJ2b7sFqT9cUwI7A``
  * Disclosure:
@@ -176,7 +184,7 @@ The disclosure list is presented below.
 The combined format for the PID issuance is given by:
 
 .. literalinclude:: ../../examples/pid-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 
 PID Data Model in mdoc-CBOR Format
@@ -184,12 +192,12 @@ PID Data Model in mdoc-CBOR Format
 
 The PID in mdoc-CBOR format MUST use the **docType** ``eu.europa.ec.eudi.pid.1`` in compliance with ARF HLR **PID_04**.
 
-The PID attributes MUST be encoded as specified in **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_] and organized in the following namespaces:
+The PID attributes MUST be encoded as specified in **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]. The PID attributes are organized in the following namespaces.
 
-- **Standard ARF PID attributes**: namespace ``eu.europa.ec.eudi.pid.1``
-- **Italian domestic extensions**: namespace ``eu.europa.ec.eudi.pid.it.1``
+- **Standard ARF PID attributes**: namespace ``eu.europa.ec.eudi.pid.1``.
+- **Italian domestic extensions**: namespace ``eu.europa.ec.eudi.pid.it.1``.
 
-According to `EU_2024/2977`_ and **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in mdoc-CBOR format includes the following User Attributes:
+According to `EU_2024/2977`_ and **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in mdoc-CBOR format includes the following User Attributes.
 
 .. _table_mdoc-cbor_pid_attributes:
 .. list-table::
@@ -216,11 +224,12 @@ According to `EU_2024/2977`_ and **Section 3 of the ARF PID Rulebook v1.3** [`EI
       - REQUIRED. *(array of tstr)*. One or more Alpha-2 country codes as specified in ISO 3166-1. Encoded as CDDL type ``nationalities`` (array of country codes).
       - ``eu.europa.ec.eudi.pid.1``
     * - **portrait**
-      - REQUIRED. *(bstr)*. Facial image in JPEG format, compliant with the quality requirements for a full frontal image type as set out in ISO/IEC 39794-5 or, for backward compatibility, ISO/IEC 19794-5, clauses 8.2, 8.3 and 8.4. It MUST NOT include the headers or blocks specified in clause 5 of ISO/IEC 19794-5, except for the image data itself. Except where the User explicitly opts out, where applicable; in case of opt-out, the value MUST be empty, as specified in ARF HLR **PID_03**. Mandatory inclusion of the portrait attribute applies as of 24 months after entry into force of the Regulation amending `EU_2024/2977`_.
+      - REQUIRED. *(bstr)*. Facial image in JPEG format, compliant with the quality requirements for a full frontal image type as set out in ISO/IEC 39794-5 or, for backward compatibility, ISO/IEC 19794-5, clauses 8.2, 8.3 and 8.4. It MUST NOT include the headers or blocks specified in clause 5 of ISO/IEC 19794-5, except for the image data itself. Before the end of the 24-month period following the entry into force of Commission Implementing Regulation `EU_2026/1731`_ (11 August 2028), the value MAY be set to empty.
       - ``eu.europa.ec.eudi.pid.1``
     * - **personal_administrative_number**
       - OPTIONAL. *(tstr)*. National unique identifier of a natural person generated by ANPR.
       - ``eu.europa.ec.eudi.pid.1``
+
 
 In addition to the mandatory metadata attributes defined in :ref:`MobileSecurityObject Table <table_MobileSecurityObject_attributes>` and :ref:`mdoc-CBOR Metadata Attributes Table <table_element_identifiers_mdoc>`, the following metadata attributes are REQUIRED for a PID:
 
@@ -242,10 +251,9 @@ In addition to the mandatory metadata attributes defined in :ref:`MobileSecurity
     * - **status**
       - MobileSecurityObject (as defined in Section 6.3 of `TOKEN-STATUS-LIST`_)
 
-.. note::
-   **Key differences from SD-JWT encoding:**
+.. note:: Key differences from SD-JWT encoding
 
-   The ARF PID Rulebook v1.3 uses different claim names between SD-JWT and mdoc-CBOR formats:
+   The ARF PID Rulebook v1.3 uses different claim names between SD-JWT and mdoc-CBOR formats.
 
    - mdoc uses ``birth_date`` (not ``birthdate`` as in SD-JWT)
    - mdoc uses ``expiry_date`` (not ``date_of_expiry`` as in SD-JWT)
@@ -261,6 +269,6 @@ mdoc-CBOR PID Non-Normative Example
 A non-normative example of a PID in mdoc-CBOR format (diagnostic notation) is shown below:
 
 .. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
-  :language: text
+   :language: text
 
 

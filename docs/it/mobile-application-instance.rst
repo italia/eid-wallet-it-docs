@@ -46,16 +46,20 @@ In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituis
 **Passo 6**: L'Istanza dell'Applicazione Mobile, attraverso il sistema operativo, crea una coppia di Cryptographic Hardware Keys e memorizza il corrispondente Cryptographic Hardware Key Tag nell'archivio locale una volta soddisfatti i seguenti requisiti (:ref:`WP_132 <wallet-instance-optional-testcases>`):
 
   1. DEVE assicurarsi che le Cryptographic Hardware Keys non esistano già. Se esistono e l'Istanza dell'Applicazione è nella fase di inizializzazione, DEVONO essere eliminate.
-  2. DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (``hardware_key_pub``, ``hardware_key_priv``) tramite un WSCD locale.
-  3. DOVREBBE ottenere un identificatore univoco Cryptographic Hardware Key Tag (``hardware_key_tag``) per le Cryptographic Hardware Keys generate dal sistema operativo. Se il sistema operativo consente di specificare un tag durante la creazione delle chiavi, allora DEVE essere selezionata una stringa casuale per l'``hardware_key_tag``. Questo valore casuale DEVE essere resistente alle collisioni e imprevedibile per garantire la sicurezza. Per raggiungere questo obiettivo, considerare l'utilizzo di una funzione di hash crittografico o un generatore di numeri casuali sicuro fornito dal sistema operativo o da una libreria crittografica affidabile.
-  4. Se i punti precedenti sono soddisfatti, DEVE memorizzare l'``hardware_key_tag`` nell'archivio locale.
+  2. DOVREBBE ottenere un Cryptographic Hardware Key Tag (``hardware_key_tag``) univoco per le Cryptographic Hardware Keys dal sistema operativo prima di generare la coppia di chiavi. Se il sistema operativo consente di specificare un tag durante la creazione delle chiavi, DEVE selezionare una stringa casuale come ``hardware_key_tag`` prima di generare la coppia di chiavi. Il valore casuale DEVE essere resistente alle collisioni e imprevedibile. L'Istanza dell'Applicazione Mobile DEVE usare un generatore di numeri casuali sicuro fornito dal sistema operativo o da una libreria crittografica affidabile per selezionare tale valore.
+  3. DEVE calcolare ``client_data_hash`` come il digest SHA-256 degli ottetti UTF-8 del ``nonce`` immediatamente seguiti dagli ottetti UTF-8 di ``hardware_key_tag``. Il digest NON DEVE includere ``hardware_key_pub`` (:ref:`WP_133a <wallet-instance-optional-testcases>`).
+  4. DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (``hardware_key_pub``, ``hardware_key_priv``) tramite un **Keystore**, passando ``client_data_hash`` come challenge della Key Attestation. Sulle piattaforme che vincolano il challenge dell'attestazione solo al momento della generazione della chiave, l'Istanza dell'Applicazione Mobile NON DEVE generare la chiave e attestarla in una chiamata successiva separata.
+  5. Se i punti precedenti sono soddisfatti, DEVE memorizzare l'``hardware_key_tag`` nell'archivio locale.
 
 .. note::
-  **WSCD**: L'Istanza dell'Applicazione Mobile PUÒ utilizzare un WSCD locale per operazioni crittografiche, inclusa la generazione di chiavi, l'archiviazione sicura e l'elaborazione crittografica, su dispositivi che supportano questa funzionalità. Sui dispositivi Android, Strongbox è RACCOMANDATO; Trusted Execution Environment (TEE) PUÒ essere utilizzato solo quando Strongbox non è disponibile. Per i dispositivi iOS, Secure Elements (SE) DEVONO essere utilizzati. Dato che ogni OEM offre un SDK distinto per accedere al WSCD locale, la discussione di seguito affronterà questo argomento in un contesto generale.
+  **Keystore**: L'Istanza dell'Applicazione Mobile utilizza il Keystore per operazioni crittografiche, inclusa la generazione di chiavi, l'archiviazione sicura e l'elaborazione crittografica, su dispositivi che supportano questa funzionalità. Sui dispositivi Android, Strongbox è RACCOMANDATO; Trusted Execution Environment (TEE) PUÒ essere utilizzato solo quando Strongbox non è disponibile. Per i dispositivi iOS, Secure Enclave DEVE essere utilizzato. Dato che ogni OEM offre un SDK distinto per accedere al Keystore, la discussione di seguito affronterà questo argomento in un contesto generale.
 
-  Se il WSCD fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.
+  Se il Keystore fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.
 
-**Passo 7**: L'Istanza dell'Applicazione Mobile utilizza le API di Key Attestation, fornendo il ``client_data_hash`` per acquisire la Key Attestation (:ref:`WP_133b <wallet-instance-optional-testcases>`).
+.. note::
+  **WSCA/Remote WSCD**: Per l'emissione del PID a LoA High, la Wallet Instance interagisce con un WSCA operante in un Remote WSCD basato su un HSM remoto lato server. Questo fornisce un livello di certificazione superiore rispetto al Keystore locale, soddisfacendo i requisiti per LoA High come definito da eIDAS 2.0.
+
+**Passo 7**: L'Istanza dell'Applicazione Mobile ottiene la Key Attestation prodotta per il ``client_data_hash`` calcolato al Passo 6 (:ref:`WP_133b <wallet-instance-optional-testcases>`).
 
 .. note::
   **API di Key Attestation**: In questa sezione, si presume che le API di Key Attestation siano fornite dai produttori di dispositivi. Questo servizio consente la verifica di una chiave memorizzata in modo sicuro all'interno dell'hardware del dispositivo attraverso un oggetto firmato. Inoltre, offre una prova verificabile che una specifica Istanza dell'Applicazione Mobile sia autentica, inalterata e nel suo stato originale utilizzando un documento firmato specializzato creato per questo scopo.
@@ -70,7 +74,7 @@ Se si verificano errori nel processo delle API di Key Attestation, come la verif
 
 **Passo 8**: Le API di Key Attestation eseguono le seguenti azioni:
 
-* Creano una Key Attestation che è collegata con il ``client_data_hash`` fornito e la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione.
+* Creano una Key Attestation il cui challenge è ``client_data_hash`` e il cui certificato contiene la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione.
 * Incorporano informazioni relative alla sicurezza del dispositivo.
 * Utilizzano una chiave privata OEM per firmare la Key Attestation, quindi verificabile con il relativo certificato OEM, confermando che le Cryptographic Hardware Keys sono gestite in modo sicuro dal sistema operativo.
 
@@ -78,13 +82,12 @@ Se si verificano errori nel processo delle API di Key Attestation, come la verif
 
 .. note::
   Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella ``key_attestation``.
-  Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al ``client_data_hash`` fornito, che è il digest del ``nonce`` del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`).
-  Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.
+  La chiave pubblica è vincolata dal certificato di attestazione. Non è un input di ``client_data_hash``. Il challenge di attestazione della piattaforma deve essere noto prima che la chiave pubblica esista, e il Fornitore dell'Applicazione può leggere quella chiave pubblica solo dopo aver validato l'attestazione.
 
 **Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: Il Fornitore dell'Applicazione convalida il ``nonce`` e la firma ``key_attestation``, quindi (:ref:`WP_135–137 <wallet-instance-optional-testcases>`):
 
   1. DEVE verificare che il ``nonce`` sia stato generato dal Fornitore dell'Applicazione e non sia già stato utilizzato (:ref:`WP_135a <wallet-instance-optional-testcases>`).
-  2. DEVE convalidare la ``key_attestation`` come definito dalle linee guida dei produttori di dispositivi (:ref:`WP_135b <wallet-instance-optional-testcases>`). Il Fornitore dell'Applicazione DEVE anche verificare il legame tra l'``hardware_key_tag`` ricevuto, l'``hardware_key_pub`` e il ``nonce`` con il ``client_data_hash`` fornito nella Key Attestation (:ref:`WP_136 <wallet-instance-optional-testcases>`).
+  2. DEVE convalidare la ``key_attestation`` come definito dalle linee guida dei produttori di dispositivi (:ref:`WP_135b <wallet-instance-optional-testcases>`). DEVE estrarre ``hardware_key_pub`` dall'attestazione validata. DEVE verificare che il challenge incorporato nell'attestazione sia uguale al digest SHA-256 degli ottetti UTF-8 del ``nonce`` ricevuto immediatamente seguiti dagli ottetti UTF-8 dell'``hardware_key_tag`` ricevuto (:ref:`WP_136 <wallet-instance-optional-testcases>`).
   3. DEVE verificare che il dispositivo in uso non abbia difetti di sicurezza e rifletta i requisiti minimi di sicurezza definiti dal Fornitore dell'Applicazione (:ref:`WP_135b <wallet-instance-optional-testcases>`).
   4. Se questi controlli sono superati, DEVE registrare l'Istanza dell'Applicazione Mobile, conservando il Cryptographic Hardware Key Tag (``hardware_key_tag``), la Public Hardware Key (``hardware_key_pub``) e possibilmente altre informazioni utili relative al dispositivo (:ref:`WP_137 <wallet-instance-optional-testcases>`).
 
@@ -119,14 +122,8 @@ Il corpo della Risposta di Nonce contiene il valore ``nonce``.
 
 Di seguito è riportato un esempio non normativo di una Risposta di Nonce.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-1.http
+   :language: http
 
 Risposta di Errore di Nonce dell'Applicazione Mobile
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,15 +135,8 @@ Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta
 
 Di seguito è riportato un esempio non normativo di una Risposta di Errore di Nonce.
 
-.. code-block:: http
-
-    HTTP/1.1 500 Internal Server Error
-    Content-Type: application/json
-
-    {
-        "error": "server_error",
-        "error_description": "The server encountered an unexpected error."
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-2.http
+   :language: http
 
 La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore:
 
@@ -193,17 +183,8 @@ Il corpo della Richiesta di Inizializzazione dell'Istanza contiene i seguenti at
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Inizializzazione dell'Istanza.
 
-.. code-block:: http
-
-    POST /instance-initialization HTTP/1.1
-    Host: application-provider.example.com
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
-      "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-3.http
+   :language: http
 
 
 Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile

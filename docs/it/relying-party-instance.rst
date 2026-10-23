@@ -51,7 +51,7 @@ Come mostrato in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, l'App di 
 Transizione a Installed
 """""""""""""""""""""""
 
-La macchina a stati inizia con l'installazione della App di Verifica (transizione **RPI INST**), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato **Installed**.
+La macchina a stati inizia con l'installazione della App di Verifica (transizione **RPI INST**). Gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo. L'installazione porta allo stato **Installed**.
 
 In questo stato, l'App di Verifica DEVE interagire solo con il Backend della Relying Party per essere registrata (cioè, per verificare l'integrità dell'Istanza, registrare le Cryptographic Hardware Keys e ottenere un Certificato di Accesso).
 
@@ -67,7 +67,7 @@ La revoca può avvenire nei seguenti casi:
 - In caso di de-registrazione della Relying Party (come dettagliato in `EIDAS-ARF`_, Sezione 6.4.3).
 - Attività illegali segnalate da Organi Giudiziari o di Supervisione.
 
-Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia) durante il quale l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione **RPI DEREG**) e tornare allo stato **Installed**. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.
+Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia). Durante tale periodo di grazia, l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione **RPI DEREG**) e tornare allo stato **Installed**. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.
 
 Transizione a Verified
 """"""""""""""""""""""
@@ -77,7 +77,7 @@ L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà
 1. **Inizializzazione**: Dopo la verifica dell'integrità dell'App di Verifica, questa registra una coppia di Cryptographic Hardware Keys.
 2. **Emissione del Certificato di Accesso**: L'App di Verifica ottiene un Certificato di Accesso.
 
-Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica; questa operazione è rappresentata dalla transizione **CERT REISS** verso lo stato **Verified**.
+Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica. Questa operazione è rappresentata dalla transizione **CERT REISS** verso lo stato **Verified**.
 
 In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi.
 
@@ -87,7 +87,7 @@ Transizione a Unverified
 
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
-In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.
+In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione. Per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.
 
 
 Transizione a Uninstalled
@@ -111,10 +111,10 @@ Un'App di Verifica DEVE supportare tre funzionalità fondamentali: **Registrazio
 Registrazione App di Verifica Mobile
 """"""""""""""""""""""""""""""""""""
 
-Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:
+Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party. Il processo consente anche l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:
 
-1. **Inizializzazione**: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo, che lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso; l'asserzione viene quindi convalidata dal Backend della Relying Party. Ulteriori dettagli sono forniti nella Sezione :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`.
-2. **Emissione del Certificato di Accesso**: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica sfruttando le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in :numref:`fig_RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance`, mentre una descrizione passo-passo è fornita di seguito.
+1. **Inizializzazione**: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo. L'asserzione lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso. Il Backend della Relying Party convalida quindi l'asserzione. Ulteriori dettagli sono forniti nella Sezione :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`.
+2. **Emissione del Certificato di Accesso**: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica. Il Backend della Relying Party utilizza le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in :numref:`fig_RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance`, mentre una descrizione passo-passo è fornita di seguito.
 
 .. note::
   I Certificati di Accesso POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.
@@ -152,12 +152,8 @@ Esempi non normativi della Richiesta e Risposta del Nonce possono essere trovati
 
 Di seguito è riportato un esempio non normativo di ``client_data``.
 
-.. code-block:: json
-
-    {
-      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "jwk_thumbprint": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY"
-    }
+.. literalinclude:: ../../examples/shared/relying-party-instance-1.json
+   :language: json
 
 **Passi 7-8:** L'App di Verifica Mobile:
 
@@ -167,7 +163,7 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
 **Passi 9-11:** L'App di Verifica Mobile:
 
   1. Genera un valore ``hardware_signature`` firmando il ``client_data_hash`` con la chiave privata Cryptographic Hardware, che servirà come prova di possesso per le Cryptographic Hardware Keys.
-  2. Genera la :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party` sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag`` e ``cnf`` (che rappresenta ``key_pub``); è firmato utilizzando ``key_priv``.
+  2. Genera la :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party` sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag`` e ``cnf`` (che rappresenta ``key_pub``). Il JWT è firmato utilizzando ``key_priv``.
   3. Invia il JWT firmato :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party` come parametro ``assertion`` nel corpo di HTTP request all':ref:`relying-party-provider-backend-endpoint:Endpoint di Associazione Chiavi della Relying Party`.
 
 **Passo 12:** Il Backend della Relying Party valuta la Richiesta di Key Binding ed esegue i seguenti controlli:
@@ -187,7 +183,7 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
 
 **Passo 15:** L'App di Verifica Mobile invia la CSR al :ref:`relying-party-provider-backend-endpoint:Endpoint del Certificato di Accesso della Relying Party` del Backend della Relying Party, come parte della :ref:`relying-party-provider-backend-endpoint:Richiesta del Certificato di Accesso della Relying Party`.
 
-**Passi 16-17:** Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata, cioè che corrisponda a quella legata alle Cryptographic Hardware Keys attraverso ``hardware_signature``. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.
+**Passi 16-17:** Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata. La chiave pubblica corrisponde a quella legata alle Cryptographic Hardware Keys attraverso ``hardware_signature``. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.
 
 **Passi 18-19:** L'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica firma la CSR, ottenendo un Certificato di Accesso valido (``access_certificate``) che invia al Backend della Relying Party.
 
@@ -204,16 +200,16 @@ Revoca App di Verifica Mobile
 """""""""""""""""""""""""""""
 
 Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza delle App di Verifica.
-Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata), e in ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
+Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata). In ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
 Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla validità dei Certificati di Accesso X.509.
 
-I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 
 App di Verifica Web
 -------------------
 
-Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 
 Funzionalità dell'App di Verifica Web

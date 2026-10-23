@@ -11,8 +11,23 @@ La funzionalità di **Backup e Ripristino** diventa rilevante quando l'Utente de
 - L'Utente ha cambiato il proprio dispositivo mobile e deve configurare la Soluzione Wallet sul nuovo dispositivo.
 - L'Utente esegue un ripristino delle impostazioni di fabbrica sul telefono attuale e deve configurare nuovamente la Soluzione Wallet.
 
-.. note::
-  Per le Soluzioni Wallet basate sulle Specifiche Tecniche dell'IT Wallet, la migrazione verso una Soluzione Wallet diversa (nota come portabilità dei dati) può essere supportata seguendo la funzionalità di backup e ripristino descritta in questa sezione.
+L'Istanza del Wallet DEVE eseguire il backup, il ripristino, l'esportazione e la portabilità di cui alla presente sezione in modo semplice, trasparente e tracciabile per l'Utente.
+
+L'Istanza del Wallet DEVE consentire all'Utente di scaricare i dati dell'Utente, gli attestati elettronici di attributi e le configurazioni, nella misura in cui ciò sia tecnicamente fattibile, come richiesto dall'articolo 5a(4)(f) del Regolamento (UE) n. 910/2014, come modificato da [`EU_2024_1183`_].
+
+L'Istanza del Wallet DEVE consentire all'Utente di esercitare i diritti di portabilità dei dati, come richiesto dall'articolo 5a(4)(g) di tale Regolamento.
+
+L'Istanza del Wallet DEVE supportare l'esportazione sicura e la portabilità dei dati personali dell'Utente, ove tecnicamente fattibile e ad eccezione degli asset critici, in modo che l'Utente possa migrare verso un'Istanza del Wallet di una Soluzione Wallet diversa mantenendo il livello di garanzia alto di cui al Regolamento di esecuzione (UE) 2015/1502. Si tratta dell'articolo 13 di [`CIR2024/2979`_].
+
+Il file di backup specificato in :ref:`backup-restore:Flusso di Backup` è il backup e il recupero dei riferimenti alle Credenziali Elettroniche con associazione al dispositivo.
+
+Il download dei dati dell'Utente e degli attestati elettronici di attributi, e la portabilità verso una Soluzione Wallet diversa, utilizzano l'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa`.
+
+Il download dei record di transazione utilizza anche l'esportazione dalla dashboard specificata in :ref:`wallet-instance-dashboard:Esportazione e Cancellazione dei Record di Transazione`.
+
+Il download delle configurazioni utilizza :ref:`backup-restore:Download della configurazione del Wallet`.
+
+Una chiave privata con associazione al dispositivo è un asset critico. Una chiave privata con associazione al dispositivo NON DEVE essere inclusa nel file di backup. Una chiave privata con associazione al dispositivo NON DEVE essere inclusa nell'oggetto di migrazione.
 
 
 Flusso di Backup
@@ -44,20 +59,21 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
   Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
 
 .. note::
-  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
+  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate. PBKDF2 è definita in :rfc:`2898`. `NIST SP 800-132`_ raccomanda PBKDF2. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati in `Practical Cryptography for Developers`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheat Sheet`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (:ref:`WP_122 <credential-backup-testcases>`):
 
-- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup (:ref:`WP_122d <credential-backup-testcases>`).
+- Per ciascuna delle Credenziali con chiave vincolata al dispositivo, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup (:ref:`WP_122d <credential-backup-testcases>`).
+- Il file di backup NON DEVE contenere un attestato non vincolato al dispositivo.
 - Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Instance Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Instance Attestation (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità della Wallet Instance Attestation prima di firmare il JWT di backup (:ref:`WP_123 <credential-backup-testcases>`).
 - Aggiunge il JWT di backup firmato come voce al file di backup (:ref:`WP_122 <credential-backup-testcases>`).
 - Cripta il file di backup utilizzando la frase chiave fornita (:ref:`WP_124 <credential-backup-testcases>`).
 
 .. note::
-  Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim ``credentials_backup`` (:ref:`WP_122c <credential-backup-testcases>`).
+  Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim ``credentials_backup`` (:ref:`WP_122c <credential-backup-testcases>`). Tale cronologia non è il registro delle transazioni. L'Istanza del Wallet NON DEVE ripristinare tale cronologia come registro delle transazioni della nuova Istanza del Wallet.
 
 **Passaggio 5**: All'Utente verrà richiesto di scegliere un'opzione di archiviazione per conservare in modo sicuro il file di backup. Le opzioni possono includere l'archiviazione nativa o soluzioni di archiviazione esterne, come l'archiviazione cloud, dispositivi USB, consegna via e-mail o altro (:ref:`WP_125 <credential-backup-testcases>`).
 
@@ -65,12 +81,8 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 
 Un esempio non normativo dell'intestazione e del payload del JWT di backup è il seguente:
 
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "wallet-unit-credentials-backup+jwt"
-  }
+.. literalinclude:: ../../examples/backup-jwt-header.json
+   :language: json
 
 .. code-block:: json
 
@@ -123,8 +135,8 @@ Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI (:ref:`WP_122b 
     - Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziali. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al ``credential_configuration_id`` che identifica la specifica Credenziale Elettronica che è stata emessa.
 
 
-Flusso di ripristino per Credenziale con associazione hardware
---------------------------------------------------------------
+Flusso di ripristino per Credenziale con associazione al dispositivo
+--------------------------------------------------------------------
 
 .. _fig_Restore_flow:
 
@@ -142,16 +154,19 @@ Flusso di ripristino per Credenziale con associazione hardware
 
 ..   Restore flow.
 
-Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
+Il ripristino del file di backup si applica quando la nuova Istanza del Wallet è già attiva con un PID o un IT-Wallet ID.
 
-Allo stesso modo del PID, anche l'IT-Wallet ID NON DEVE essere incluso nel file di backup.
+Il PID NON DEVE essere incluso nel file di backup. L'IT-Wallet ID NON DEVE essere incluso nel file di backup.
+
+L'elenco delle Credenziali dell'oggetto di migrazione specificato in :ref:`backup-restore:Migrazione verso una Soluzione Wallet diversa` include il PID e l'IT-Wallet ID.
+
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
 **Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
 L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (:ref:`WP_126 <credential-backup-testcases>`, :ref:`WP_127 <credential-backup-testcases>`).
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (:ref:`WP_129 <credential-backup-testcases>`). Per fare ciò, estrae prima il JWT della Wallet Instance Attestation dal claim ``wallet_instance_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Instance Attestation (claim ``cnf``) come specificato in :ref:`WP_128 <credential-backup-testcases>`.
 
-**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
+**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione al dispositivo nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
 
 - Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (:ref:`WP_130a <credential-backup-testcases>`).
 - Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di emissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (:ref:`WP_130b <credential-backup-testcases>`).
@@ -161,5 +176,92 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 
 .. note::
   L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Instance Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (:ref:`WP_128a <credential-backup-testcases>`).
+
+
+Migrazione verso una Soluzione Wallet diversa
+---------------------------------------------
+
+L'Istanza del Wallet DEVE fornire l'oggetto di migrazione nel formato comune di `EUDI-TS 10`_.
+
+L'oggetto di migrazione è distinto dal JWT di backup di tipo ``wallet-unit-credentials-backup+jwt``.
+
+L'Istanza del Wallet NON DEVE presentare il JWT di backup come oggetto di migrazione.
+
+L'accettazione dell'oggetto di migrazione NON DEVE dipendere dal supporto del JWT di backup.
+
+L'Istanza del Wallet DEVE mantenere aggiornato l'oggetto di migrazione rispetto alle Credenziali Elettroniche che conserva e rispetto al registro delle transazioni specificato in :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`.
+
+L'oggetto di migrazione DEVE contenere l'elenco delle Credenziali Elettroniche presenti nell'Istanza del Wallet, incluso il PID e l'IT-Wallet ID.
+
+L'Istanza del Wallet DEVE consentire all'Utente di indicare se gli identificatori e i valori di attributo di un attestato non vincolato al dispositivo sono conservati nell'oggetto di migrazione.
+
+Quando l'Utente indica che sono conservati, l'oggetto di migrazione DEVE contenere quell'attestato non vincolato al dispositivo come attestato stesso, come specificato in `EUDI-TS 10`_.
+
+Quando l'Utente non indica che sono conservati, l'oggetto di migrazione NON DEVE contenere quell'attestato non vincolato al dispositivo.
+
+L'oggetto di migrazione DEVE contenere il registro delle transazioni.
+
+Per ciascun PID, IT-Wallet ID o altra Credenziale Elettronica in tale elenco, l'oggetto di migrazione DEVE includere il tipo di attestato, il fornitore che ha emesso la Credenziale e il punto di fornitura del servizio di tale fornitore, come specificato in `EUDI-TS 10`_.
+
+Il tipo di attestato, il fornitore che ha emesso la Credenziale e il punto di fornitura del servizio di tale fornitore, per quell'attestato non vincolato al dispositivo, restano nell'elenco delle Credenziali.
+
+L'elenco delle Credenziali NON DEVE contenere identificatori di attributo o valori di attributo.
+
+L'elenco delle Credenziali NON DEVE contenere una chiave privata.
+
+L'oggetto di migrazione NON DEVE contenere una copia di un attestato con associazione al dispositivo.
+
+L'oggetto di migrazione NON DEVE contenere una Wallet Instance Attestation.
+
+L'Istanza del Wallet DEVE proteggere la riservatezza, l'integrità e l'autenticità dell'oggetto di migrazione con le misure specificate in `EUDI-TS 10`_.
+
+L'Istanza del Wallet NON DEVE proteggere l'oggetto di migrazione firmandolo come ``wallet-unit-credentials-backup+jwt``.
+
+L'Istanza del Wallet DEVE consentire all'Utente di conservare l'oggetto di migrazione in una posizione esterna o remota scelta dall'Utente, tra le opzioni di archiviazione supportate dall'Istanza del Wallet.
+
+Subito dopo l'installazione, la nuova Istanza del Wallet DEVE consentire all'Utente di importare un oggetto di migrazione da una posizione indicata dall'Utente, tra le opzioni di archiviazione supportate dall'Istanza del Wallet.
+
+La nuova Istanza del Wallet DEVE chiedere all'Utente se ripristinare il registro delle transazioni dall'oggetto di migrazione.
+
+Quando l'Utente acconsente, l'Istanza del Wallet DEVE ripristinare tale registro.
+
+L'Istanza del Wallet DEVE accodare le transazioni successive al registro ripristinato.
+
+L'esportazione dei record di transazione dalla dashboard resta il download di tali record, come specificato in :ref:`wallet-instance-dashboard:Esportazione e Cancellazione dei Record di Transazione`.
+
+La nuova Istanza del Wallet DEVE consentire all'Utente di selezionare ciascun attestato non vincolato al dispositivo elencato nell'oggetto di migrazione.
+
+Quando l'Utente seleziona un attestato non vincolato al dispositivo e l'oggetto di migrazione contiene quell'attestato, l'Istanza del Wallet DEVE ripristinare quell'attestato dall'oggetto di migrazione.
+
+Quando l'Utente seleziona un attestato non vincolato al dispositivo e l'oggetto di migrazione non contiene quell'attestato, l'Istanza del Wallet DEVE richiedere l'emissione di un attestato dello stesso tipo al fornitore identificato nell'elenco.
+
+Per ciascun PID, IT-Wallet ID e altra Credenziale Elettronica con associazione al dispositivo elencata nell'oggetto di migrazione, l'Istanza del Wallet DEVE consentire all'Utente di selezionarla.
+
+Quando l'Utente seleziona una Credenziale con associazione al dispositivo, l'Istanza del Wallet DEVE richiederne l'emissione al fornitore identificato nell'elenco.
+
+Una richiesta di emissione dall'oggetto di migrazione DEVE utilizzare una nuova Associazione Crittografica con l'Utente.
+
+Se l'elenco contiene un PID, l'Istanza del Wallet DEVE richiedere l'emissione del PID prima delle altre Credenziali dell'elenco.
+
+L'Istanza del Wallet DEVE richiedere tale emissione con il Wallet-Initiated Authorization Code Issuance Flow definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow`.
+
+Per una (Q)EAA si applica il gate di presentazione di :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
+
+L'Istanza del Wallet NON DEVE utilizzare il Re-issuance Flow definito nella Sezione :ref:`credential-issuance-low-level:Re-issuance Flow`.
+
+Download della configurazione del Wallet
+----------------------------------------
+
+L'Istanza del Wallet DEVE consentire all'Utente di scaricare la configurazione del Wallet dell'Utente nella misura in cui ciò sia tecnicamente fattibile.
+
+La configurazione del Wallet è l'insieme delle impostazioni scelte dall'Utente e conservate dall'Istanza del Wallet.
+
+Il download NON DEVE includere un asset critico.
+
+Un asset critico include una chiave privata con associazione al dispositivo, il materiale di chiave conservato nel Keystore o in un Remote WSCD, e una copia di un attestato con associazione al dispositivo.
+
+Il file di configurazione è distinto dal JWT di backup e dall'oggetto di migrazione.
+
+L'Istanza del Wallet DEVE consentire all'Utente di conservare il file di configurazione in una posizione scelta dall'Utente, tra le opzioni di archiviazione supportate dall'Istanza del Wallet.
 
 

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via index.rst at title level '=' (document title).
 
 
 Digital Credential Management
@@ -11,6 +12,7 @@ Digital Credential Management
   credential-data-model.rst
   credential-data-model-pid.rst
   credential-data-model-it-wallet-id.rst
+  credential-data-model-qeaa-pub-eaa.rst
   credential-revocation.rst
 
 

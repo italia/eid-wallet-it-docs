@@ -27,7 +27,7 @@ The HTTP POST method MUST use the parameters in the message body encoded in ``ap
       - :rfc:`6749`
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.
-      - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
+      - Section 6 of [`OIDC`_]
 
 The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
 the request to the Credential Issuer authorization endpoint MUST use the following HTTP Headers parameters:
@@ -38,8 +38,8 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Instance Attestation JWT.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - **It MUST be set to a value containing the Wallet Instance Attestation JWT.**
+      - **`OAUTH-ATTESTATION-CLIENT-AUTH`_.**
     * - **OAuth-Client-Attestation-PoP**
       - It MUST be set to a value containing the Wallet Instance Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
@@ -100,7 +100,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **state**
-      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
+      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in `NIST`_.
       - See [`OIDC`_] Section 3.1.2.1.
     * - **code_challenge**
       - A challenge derived from the **code verifier** that is sent in the authorization request.
@@ -203,7 +203,7 @@ If the verification is successful, the Credential Issuer MUST provide the respon
       - A JSON number that represents the lifetime of the request URI in seconds as a positive integer.
       - [:rfc:`9126`].
 
-If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in :rfc:`9126#section-2.3`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in :rfc:`9126#section-2.3`. The response MUST use *application/json* as the content type. The response MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -216,7 +216,7 @@ Below is a non-normative example of an error response.
   Content-Type: application/json
 
 .. literalinclude:: ../../examples/par-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -265,7 +265,7 @@ Authorization endpoint
 """"""""""""""""""""""
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
-The authorization server MUST first verify the identity of the User that own the credential.
+The authorization server MUST first verify the identity of the User that own the Credential.
 
 
 User Authentication Method Selection
@@ -290,8 +290,8 @@ For IT-Wallet ID issuance:
 
 The authentication hints recognized for IT-Wallet ID issuance are the following:
 
-  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification;
-  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method;
+  * the presence in the ``authorization_details`` array of an object with ``type`` set to ``it_l2+document_proof`` constitutes an optional hint by which the Wallet Instance indicates a preference for eID Substantial Authentication with MRTD Verification.
+  * the ``idphinting`` claim within that object, when present, constitutes an optional hint for the URL of the LoA3 Identity Provider to be used in the context of that method.
   * the absence of the ``it_l2+document_proof`` object does not, by itself, constitute a Wallet Instance mandate on the authentication method: in that case the Authorization Server applies its policies, and MUST NOT offer or apply eID Substantial Authentication with MRTD Verification for that request. In the absence of a User selection via a Credential Issuer discovery page, the IT-Wallet ID Provider default authentication method MUST be CieID with Level of Assurance High (CIE L3).
 
 .. note::
@@ -348,7 +348,7 @@ If the authentication is successful the Credential Issuer redirects the User by 
       - [:rfc:`9207`], [:rfc:`7519`, Section 4.1.1.].
 
 If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`.
-In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST inform the User with the error and MUST NOT redirect the User to the redirection URI.
+In case of an invalid or missing ``redirect_uri`` or ``client_id``, the Authorization Server MUST inform the User with the error. The Authorization Server MUST NOT redirect the User to the redirection URI.
 If any other error occurs the Authorization Server MUST redirect the User by adding the following query parameters as required to the *redirect_uri* using the *application/x-www-form-urlencoded* format:
 
   - *error*. The error code.
@@ -357,13 +357,8 @@ If any other error occurs the Authorization Server MUST redirect the User by add
 
 Below is a non-normative example of an error response.
 
-.. code-block:: http
-
-  HTTP/1.1 302 Found
-  Location: https://client.example.com/cb?
-   error=invalid_request
-   &error_description=Unsupported%20response_type%20value
-   &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-1.http
+   :language: http
 
 In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
 
@@ -419,11 +414,10 @@ Token Request
 
 The request to the Credential Issuer Token endpoint MUST be an HTTP request with method POST, with the body message encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` as header parameters according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
-The Token endpoint is protected with *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
-the request to the Credential Issuer authorization endpoint MUST use the following HTTP Headers parameters **OAuth-Client-Attestation** as **OAuth-Client-Attestation-PoP**
-as defined in the :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`"
+The Token endpoint is protected with *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+The request to the Credential Issuer authorization endpoint MUST use the HTTP header parameters **OAuth-Client-Attestation** and **OAuth-Client-Attestation-PoP**, as defined in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`.
 
-The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request includes in its HTTP header the DPoP proof parameter.
+The Token endpoint issues DPoP tokens. The request is REQUIRED to include the DPoP proof parameter in its HTTP header.
 The Authorization Server MUST validate the DPoP proof received at the Token endpoint, according to :rfc:`9449` Section 4.3. This mitigates the misuse of leaked or stolen Access Tokens/Refresh Tokens at the Credential/Token endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
 
 The token request contains the following claims:
@@ -447,7 +441,7 @@ The token request contains the following claims:
       - [:rfc:`67491`].
     * - **code_verifier**
       - REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. It MUST NOT be present if grant type is ``refresh_token``.
+      - :rfc:`7636`. It MUST NOT be present if grant type is ``refresh_token``.
     * - **refresh_token**
       - REQUIRED only if the grant type is ``refresh_token``. The Refresh Token previously issued to the Wallet Instance. It MUST NOT be present if grant type is ``authorization_code``.
       - [:rfc:`6749`].
@@ -534,22 +528,18 @@ If the Token Request is successfully validated, the Authorization Server provide
             - **credential_identifiers**: Array of strings, each uniquely identifying a Credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].
 
-If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use the HTTP Content-Type set to *application/json* and MUST include the following parameters:
+If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use the HTTP Content-Type set to *application/json*. The response MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
 Below is a non-normative example of an error response.
 
-.. code-block:: http
-
-  HTTP/1.1 401 Unauthorized
-  Content-Type: application/json;charset=UTF-8
-  Cache-Control: no-store
-  Pragma: no-cache
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-2.http
+   :language: http
 
 .. literalinclude:: ../../examples/token-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -592,7 +582,7 @@ In the following table are listed HTTP Status Codes and related error codes that
 Access Token
 ............
 
-A DPoP-bound Access Token is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
+A DPoP-bound Access Token is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims. The Access Token MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
 The **DPoP JWT** contains the following JOSE header parameters and claims.
 
@@ -624,7 +614,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - **Description**
     - **Reference**
   * - **iss**
-    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the credential.
+    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the Credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
     - REQUIRED. It identifies the subject of the JWT.
@@ -651,7 +641,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
 Refresh Token
 .............
 
-A *DPoP-bound Refresh Token* is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Refresh Token is encoded in JWT format, according to [:rfc:`7519`]. The Refresh Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
+A *DPoP-bound Refresh Token* is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Refresh Token is encoded in JWT format, according to [:rfc:`7519`]. The Refresh Token MUST have at least the following mandatory claims. The Refresh Token MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
 The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
 
@@ -775,7 +765,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
     - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID in SD-JWT VC format, it can be set to ``dc_sd_jwt_pid``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
+    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named ``jwt`` containing an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
 
 
@@ -856,21 +846,18 @@ The Credential Response contains the following parameters:
     - Section 8.3 of [`OpenID4VCI`_].
 
 In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
-If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json*. The response MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
 Below is a non-normative example of an error response.
 
-.. code-block:: http
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-  Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-3.http
+   :language: http
 
 .. literalinclude:: ../../examples/credential-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -946,7 +933,7 @@ If Credential Issuers, supporting this flow, are not able to immediately issue a
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-response-deferred.json
-  :language: JSON
+   :language: JSON
 
 The Wallet Instance MUST use the value given in the *interval* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *interval* time value). Credential Issuers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the Credential Issuer.
 
@@ -967,34 +954,17 @@ The following parameter is used in the Deferred Credential Request:
 The Credential Issuer MUST invalidate the ``transaction_id`` after the Credential for which it was meant has been obtained by the Wallet Instance.
 The following is a non-normative example of a Deferred Credential Request:
 
-.. code-block:: http
-
-  POST /credential HTTP/1.1
-  Host: eaa-provider.example.org
-  Content-Type: application/json
-  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
-  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
-      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
-      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
-      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
-      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
-      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
-
-
-  {
-    "transaction_id": "8xLOxBtZp8"
-  }
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-4.http
+   :language: http
 
 Deferred Response
 .................
 
 The Deferred Credential Response MUST be sent using the ``application/json`` media type.
 
-If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]).
+If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response`. The Deferred Credential Response MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`).
 
-If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]).
+If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response`. The Deferred Credential Response MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`).
 
 The value of ``transaction_id`` MUST be same as the value of ``transaction_id`` in the Deferred Credential Request.
 
@@ -1047,21 +1017,18 @@ The Notification Response MUST be use an HTTP status code *204 (No Content)*, as
 In case of errors, what is described in Section 11.3 of [`OpenID4VCI`_] MUST apply.
 
 In case of the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
-If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 11.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 11.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json*. The response MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
 Below is a non-normative example of an error response.
 
-.. code-block:: http
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-  Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/credential-issuance-endpoint-5.http
+   :language: http
 
 .. literalinclude:: ../../examples/notification-error.json
-  :language: JSON
+   :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -1094,7 +1061,7 @@ In the following table are listed HTTP Status Codes and related error codes that
 Data Correction using credential_failure
 ........................................
 
-According to `OpenID4VCI`_ Section 11, in all other unsuccessful cases ``event`` MUST use ``credential_failure`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
+According to `OpenID4VCI`_ Section 11, in all other unsuccessful cases ``event`` MUST use ``credential_failure``. Additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
 
 For holder-initiated data correction, the Wallet Instance SHOULD send a Notification Request with ``event=credential_deleted`` and include additional parameters to signal the data correction context. At minimum:
 

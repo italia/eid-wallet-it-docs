@@ -1,0 +1,5 @@
+{
+  "alg": "ES256",
+  "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+  "typ": "wia-request+jwt"
+}

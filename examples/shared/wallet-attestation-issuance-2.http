@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "key_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
+}

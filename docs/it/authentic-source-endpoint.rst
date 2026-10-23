@@ -44,8 +44,8 @@ Get Attribute Claims
 
 Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
 
-  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service).
-  - Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim ``object_id`` DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim ``object_id``, indipendentemente dal suo stato.
+  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service. La response dell'e-Service DEVE includere tutti i dataset delle Credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service).
+  - Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim ``object_id`` DEVE essere incluso nel payload della request dell'e-service. La risposta dell'e-Service DEVE restituire solamente il dataset delle Credenziali identificato dal claim ``object_id``, indipendentemente dal suo stato.
 
 .. note::
   La Fonte Autentica e il Credential Issuer DEVONO implementare la logica necessaria per tenere traccia delle richieste e delle risposte scambiate tramite questo e-Service, al fine di essere in grado di correlarle con la relativa emissione di un Attestato Elettronico. In particolare,
@@ -56,31 +56,37 @@ Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
 Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Per garantire la coerenza tra il "Ciclo di Vita degli Attestati Elettronici" documentato in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici` e l'Enum status delle OpenAPI, la seguente mappatura e logica operativa DEVE essere applicata per il campo ``status`` negli ``attributeClaims``.
+La seguente mappatura e logica operativa DEVE essere applicata al campo ``status`` negli ``attributeClaims``. La mappatura mantiene la coerenza con il Ciclo di Vita degli Attestati Elettronici documentato in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici` e con l'Enum status delle OpenAPI.
 
-**Direzionalità e Responsabilità:**
+Direzionalità e Responsabilità
+..............................
+
 I cambiamenti di stato di un Attestato Elettronico a livello di Fornitore di Attestati Elettronici NON implicano un cambiamento presso la Fonte Autentica. Al contrario, qualsiasi cambiamento di stato di un dataset presso la Fonte Autentica DEVE essere elaborato dal Fornitore di Attestati Elettronici per aggiornare lo stato tecnico dell'Attestato Elettronico.
 
-**Guida Operativa:**
+Guida Operativa
+...............
 
 * **Validità Tecnica vs Amministrativa**: Gli Attestati Elettronici distinguono tra una **validità tecnica** stabilita dal Fornitore di Attestati Elettronici (claim ``iat`` ed ``exp``) e una **validità amministrativa** determinata dalla Fonte Autentica (claim ``issuance_date`` ed ``expiry_date``).
 * **Gerarchia delle Scadenze**: La scadenza tecnica (``exp``) NON DEVE essere successiva alla scadenza amministrativa (``expiry_date``). Per esempio, una patente di guida può essere amministrativamente valida per 10 anni, mentre l'Attestato Elettronico emesso può avere una scadenza tecnica di 1 anno.
-* **Riemissione**: Se un Attestato Elettronico raggiunge la sua scadenza tecnica (``exp``) ma il dataset è ancora amministrativamente valido, lo stato OpenAPI rimane ``VALID``, consentendo all'Attestato Elettronico di essere riemesso più volte entro l'arco temporale amministrativo.
+* **Riemissione**: Se un Attestato Elettronico raggiunge la sua scadenza tecnica (``exp``) ma il dataset è ancora amministrativamente valido, lo stato OpenAPI rimane ``VALID``. Tale stato consente all'Attestato Elettronico di essere riemesso più volte entro l'arco temporale amministrativo.
 * **Verifica dei Metadati**: Il Fornitore di Attestati Elettronici DEVE verificare l'effettiva usabilità controllando sia i claim tecnici che le date amministrative.
-* **Irreversibilità**: Dopo una transizione a ``INVALID``, l'Attestato Elettronico non può tornare a uno stato ``VALID``. È richiesta una nuova emissione per un nuovo dataset. Questo si applica sia alla revoca esplicita che alla scadenza amministrativa.
+* **Irreversibilità**: Quando un Attestato Elettronico passa allo stato ``INVALID``, quell'Attestato Elettronico non può tornare allo stato ``VALID``. Una nuova emissione dopo ``INVALID`` usa un nuovo ``object_id``. Quando ``expiry_date`` è superata, l'Attestato Elettronico mantiene lo stato corrente.
 * **Elaborazione dei Segnali**: I Segnali DEVONO essere elaborati sequenzialmente. Se un Segnale invalida un Attestato Elettronico, i successivi Segnali di correzione per lo stesso oggetto vengono ignorati.
 
-**Mapping degli Stati e Logica dei Casi:**
+Mapping degli Stati e Logica dei Casi
+.....................................
 
-Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attestato Elettronico in base ai Segnali ricevuti dalla Fonte Autentica via Signal Hub (``signalType=UPDATE``):
+Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attestato Elettronico in base ai Segnali ricevuti dalla Fonte Autentica via Signal Hub (``signalType=UPDATE``).
 
 * **Revoca**: Se un dataset viene revocato presso la Fonte Autentica (stato ``INVALID``), il Fornitore di Attestati Elettronici DEVE revocare gli Attestati Elettronici che utilizzano quel dataset (transizione di stato da ``VALID/SUSPENDED`` a ``INVALID``).
 * **Sospensione**: Se un dataset viene sospeso presso la Fonte Autentica (stato ``SUSPENDED``), il Fornitore di Attestati Elettronici DEVE sospendere gli Attestati Elettronici (transizione di stato da ``VALID`` a ``SUSPENDED``).
 * **Ripristino**: Se un dataset sospeso torna a essere ``VALID`` presso la Fonte Autentica, il Fornitore di Attestati Elettronici DEVE ripristinare la validità dell'Attestato Elettronico (transizione di stato da ``SUSPENDED`` a ``VALID``).
-* **Modifica**: Se un dataset viene modificato ma rimane ``VALID`` presso la Fonte Autentica, il Fornitore di Attestati Elettronici — rilevando il cambiamento tramite il campo ``last_updated`` — assegna lo stato tecnico ``ATTRIBUTE_UPDATE`` all'Attestato Elettronico. Questo avvia un flusso di riemissione quando l'Istanza del Wallet controlla lo stato.
+* **Modifica**: La Fonte Autentica sceglie come rappresentare un cambiamento del dataset.
+    * PUÒ impostare il dataset su ``INVALID`` e identificare il dataset sostitutivo con un nuovo ``object_id``. Il Fornitore di Attestati Elettronici applica la **Revoca** agli Attestati Elettronici che usano il precedente ``object_id``.
+    * PUÒ mantenere lo stesso ``object_id`` e lasciare lo stato ``VALID``. Aggiorna gli attributi e ``last_updated`` e invia un Segnale con ``signalType=UPDATE``. Il Fornitore di Attestati Elettronici imposta ``ATTRIBUTE_UPDATE``. L'Istanza del Wallet segue il flusso di riemissione quando controlla lo stato.
 * **Scadenza Amministrativa**:
-    * **Scenario A (Basato sui metadati)**: Se ``expiry_date`` è stata condivisa con il Fornitore di Attestati Elettronici nei metadati, la Fonte Autentica NON invia Segnali alla scadenza; il Fornitore di Attestati Elettronici gestisce il ciclo di vita in modo indipendente garantendo che l'``exp`` tecnico sia <= ``expiry_date``.
-    * **Scenario B (Basato sui segnali)**: Se ``expiry_date`` NON è presente nei metadati e il dataset scade, la Fonte Autentica DEVE impostare il suo stato su ``INVALID`` e inviare un Segnale via Signal Hub; il Fornitore di Attestati Elettronici revoca quindi gli Attestati Elettronici (transizione di stato a ``INVALID``).
+    * **Scenario A (Data nel dataset)**: Quando ``expiry_date`` è presente in ``attributeClaims``, la Fonte Autentica NON DEVE inviare un Segnale al superamento di tale data. L'``exp`` tecnico segue la Gerarchia delle Scadenze sopra indicata e ``max_validity_days`` in :ref:`registry:Catalogo degli Attestati Elettronici`. Quando ``expiry_date`` è presente come attributo, l'Istanza del Wallet applica :ref:`functionalities:Stato degli Attestati Elettronici`.
+    * Quando il tipo di Attestato Elettronico ha una scadenza amministrativa, la Fonte Autentica DEVE includere ``expiry_date`` in ``attributeClaims``. Il Fornitore di Attestati Elettronici DEVE includere tale valore come attributo dell'Attestato Elettronico. La Fonte Autentica NON DEVE modificare lo stato del dataset solo perché ``expiry_date`` è stata superata. Un successivo stato del dataset ``INVALID`` o ``SUSPENDED`` è trattato come **Revoca** o **Sospensione**.
 
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
@@ -88,20 +94,20 @@ Esempio di risposta della Authentic Source
 La risposta DEVE avere come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
-  :language: json
-  :caption: Esempio di payload JSON di risposta (Get Attribute Claims)
+   :language: json
+   :caption: Esempio di payload JSON di risposta (Get Attribute Claims)
 
 In sintesi:
 
 - **userClaims**: dati anagrafici dell'utente (nome, cognome, data/luogo di nascita, codice fiscale o numero di identificazione). Almeno uno tra ``tax_id_code`` e ``personal_administrative_number`` è richiesto se si forniscono user claims.
-- **attributeClaims**: array di dataset; ogni elemento **DEVE** contenere ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (formato ISO 8601), più eventuali attributi aggiuntivi specifici del dataset (es. ``nationality``, ``residence_address``).
-- **metadataClaims**: array di metadati per dataset (``object_id`` obbligatorio; ``issuance_date`` e ``expiry_date`` opzionali).
-- **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
+- **attributeClaims**: array di dataset. Ogni elemento contiene ``object_id``, ``issuance_date`` e ``expiry_date`` opzionali, e gli attributi che entrano nell'Attestato Elettronico (es. ``nationality``, ``residence_address``).
+- **metadataClaims**: array di metadati per dataset. Ogni elemento contiene ``object_id``, ``description``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (formato ISO 8601) e ``interval``.
+- **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta. Indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
 
 La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**, accompagnato dagli header di integrità ``Agid-JWT-Signature`` e ``Digest``.
 
 Verifica della Firma e Gestione Chiavi
-''''''''''''''''''''''''''''''''''''''
+......................................
 
 Il Credential Issuer (Fruitore) DEVE verificare l'integrità e l'autenticità della risposta JSON validando gli header ``Agid-JWT-Signature`` e ``Digest`` ricevuti dalla Fonte Autentica.
 

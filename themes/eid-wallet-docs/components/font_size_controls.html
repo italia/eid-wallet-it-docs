@@ -1,0 +1,44 @@
+{%- from "components/icons.html" import icon_font_decrease, icon_font_increase with context -%}
+{%- if current_lang == 'it' -%}
+  {%- set font_group_label = 'Dimensione del testo' -%}
+  {%- set font_decrease_label = 'Riduci la dimensione del testo' -%}
+  {%- set font_increase_label = 'Aumenta la dimensione del testo' -%}
+  {%- set font_status_m2 = 'Dimensione del testo: molto ridotta' -%}
+  {%- set font_status_m1 = 'Dimensione del testo: ridotta' -%}
+  {%- set font_status_0 = 'Dimensione del testo: predefinita' -%}
+  {%- set font_status_1 = 'Dimensione del testo: maggiore' -%}
+  {%- set font_status_2 = 'Dimensione del testo: molto maggiore' -%}
+{%- else -%}
+  {%- set font_group_label = 'Text size' -%}
+  {%- set font_decrease_label = 'Decrease text size' -%}
+  {%- set font_increase_label = 'Increase text size' -%}
+  {%- set font_status_m2 = 'Text size: much smaller' -%}
+  {%- set font_status_m1 = 'Text size: smaller' -%}
+  {%- set font_status_0 = 'Text size: default' -%}
+  {%- set font_status_1 = 'Text size: larger' -%}
+  {%- set font_status_2 = 'Text size: much larger' -%}
+{%- endif -%}
+<div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="{{ font_group_label }}"
+     data-it-docs-font-status-m2="{{ font_status_m2 }}"
+     data-it-docs-font-status-m1="{{ font_status_m1 }}"
+     data-it-docs-font-status-0="{{ font_status_0 }}"
+     data-it-docs-font-status-1="{{ font_status_1 }}"
+     data-it-docs-font-status-2="{{ font_status_2 }}">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="{{ font_decrease_label }}"
+          aria-label="{{ font_decrease_label }}">
+    {{ icon_font_decrease() }}
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="{{ font_increase_label }}"
+          aria-label="{{ font_increase_label }}">
+    {{ icon_font_increase() }}
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div>

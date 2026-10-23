@@ -1,0 +1,7 @@
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+    "error": "server_error",
+    "error_description": "The server encountered an unexpected error."
+}

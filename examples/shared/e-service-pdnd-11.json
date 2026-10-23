@@ -1,0 +1,8 @@
+{
+    "iss": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
+    "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
+    "aud": "https://interop.pagopa.it/authorization-server",
+    "exp": 1733233500,
+    "iat": 1733232300,
+    "jti": "d2c9a7b4-3e81-4d27-b6f7-51a8c9f0a3c6"
+}

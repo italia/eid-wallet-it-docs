@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+
+[
+  {
+    "id": "f7b2a8d9",
+    "status": "ACTIVE",
+    "issued_at": "2024-03-12T10:00:00Z"
+  },
+  {
+    "id": "g8b235c4",
+    "status": "REVOKED",
+    "issued_at": "2024-02-28T15:30:00Z"
+  }
+]

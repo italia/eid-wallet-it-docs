@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via digital-credential-management.rst at title level '=' (document title).
 
 
 Digital Credential Data Model
@@ -14,6 +15,7 @@ A Digital Credential data model has the following structure:
 - **User attributes**: Information about the User, such as identity or qualifications.
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT VC or mdoc-CBOR data format.
+A QEAA and a PuB-EAA MUST also follow :ref:`credential-data-model-qeaa-pub-eaa:QEAA and PuB-EAA Data Model`.
 The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.
 
 Format-Agnostic Credential Metadata Attributes
@@ -40,18 +42,18 @@ The following table defines the common metadata attributes that are applicable t
   * - **expiry_date**
     - OPTIONAL. Date (and if possible time) when the Digital Credential will expire.
   * - **location_status**
-    - OPTIONAL. The location of validity status information on the Digital Credential where the Credential Issuer revoke Digital Credential.
+    - OPTIONAL. The location of validity status information on the Digital Credential where the Credential Issuer revokes the Digital Credential.
   * - **cryptographic_binding**
     - OPTIONAL. Object containing the proof-of-possession key materials.
   * - **verification**
     - OPTIONAL. Object containing Identity proofing and User data verification information.
 
-The following sections provide format-specific attributes and a mapping of the above metadata attributes to format-specific technical parameters when the credential is encoded in SD-JWT VC or mdoc-CBOR format.
+The following sections provide format-specific attributes and a mapping of the above metadata attributes to format-specific technical parameters when the Credential is encoded in SD-JWT VC or mdoc-CBOR format.
 
 SD-JWT-VC Credential Format
 ---------------------------
 
-When Digital Credentials are issued in the SD-JWT VC format, they MUST be compliant to `SD-JWT`_ and `SD-JWT-VC`_ specifications.
+When Digital Credentials are issued in the SD-JWT VC format, they MUST be compliant with the `SD-JWT`_ and `SD-JWT-VC`_ specifications.
 
 SD-JWT-VC Digital Credentials MUST be signed using the Issuer's private key. SD-JWT VC Digital Credentials MAY be provided along with a Type Metadata Document related to the issued Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload of Digital Credentials MUST contain the **_sd_alg** claim described in Section 4.1.1 `SD-JWT`_ and other claims specified in this section.
 
@@ -111,24 +113,24 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - **Reference**
     * - **iss**
       - REQUIRED. *String*. URL string representing the Credential Issuer unique identifier.
-      - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.1`.
     * - **sub**
       - OPTIONAL. *String*. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
-      - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.2`.
     * - **iat**
       - OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
-      - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.6`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
-      - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.4`.
     * - **nbf**
-      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
-      - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - REQUIRED for a PID and an EAA. OPTIONAL otherwise. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+      - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, and Commission Implementing Regulation `EU_2026/1731`_ Annex I, Section 4.2.
     * - **issuing_authority**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
+      - REQUIRED for a Digital Credential that is not a QEAA or a PuB-EAA. *String*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. For a QEAA or a PuB-EAA, ``issuing_authority`` follows :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuing_country**
-      - REQUIRED. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.
+      - REQUIRED for a Digital Credential that is not a QEAA or a PuB-EAA. *String*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. For a QEAA or a PuB-EAA, ``issuing_country`` follows :ref:`credential-data-model-qeaa-pub-eaa:Issuer Identification`.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuance_date**
       - OPTIONAL. *String*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the JWT ``iat`` claim.
@@ -137,17 +139,17 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
-      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_list`.
+      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived and it is not a QEAA or a PuB-EAA. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain the JSON member `status_list`. For a QEAA or a PuB-EAA, ``status`` follows :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
+      - :rfc:`7800#section-3.1` and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - REQUIRED. *String*. Format-encoded data identifier `credential_type_identifier` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. Unless otherwise specified by `EIDAS-ARF`_ and EUDI Rulebooks, the `vct` SHOULD follow a structure like `urn:it-wallet:{credential_type}:{credential_type_version}`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
-      - OPTIONAL. *String*. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
-      - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
+      - REQUIRED for a PID and an EAA. OPTIONAL otherwise. *String*. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
+      - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_], [`ETSI TS 119 472-1`_] EAA-5.2.1.2-03, and Commission Implementing Regulation `EU_2026/1731`_ Annex I, Section 4 and Annex IV.
     * - **verification**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It includes the following sub-value:
 
@@ -174,15 +176,15 @@ The ``status`` parameter ``status_list``, it MUST be a *JSON object* compliant w
 Below is a non-normative example of (Q)EAA in JSON.
 
 .. literalinclude:: ../../examples/qeaa-json-example-payload.json
-  :language: JSON
+   :language: JSON
 
 The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-payload.json
-  :language: JSON
+   :language: JSON
 
 In the following the disclosure list is given:
 
@@ -251,16 +253,12 @@ In the following the disclosure list is given:
 The combined format for the (Q)EAA issuance is represented below:
 
 .. literalinclude:: ../../examples/qeaa-sd-jwt-example-combined.txt
-  :language: text
+   :language: text
 
 Digital Credential Type Metadata Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When provided, the Type Metadata Document MUST be a *JSON object* compliant with Section 6.2 of [`SD-JWT-VC`_].
-
-In addition to the properties defined in section 9.2 of [`SD-JWT-VC`_] the following property SHOULD be included:
-
-  - ``name``: A human-readable label for the claim, intended for end users.
 
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
@@ -347,7 +345,8 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - :rfc:`9053`
 
 .. note::
-  Only the signature algorithm MUST be present in the protected header, other elements SHOULD NOT be present in the protected header.
+  For a Digital Credential that is not a QEAA or a PuB-EAA, only the signature algorithm MUST be present in the protected header.
+  For a QEAA or a PuB-EAA, the protected header is specified in :ref:`credential-data-model-qeaa-pub-eaa:Mobile Security Object Headers`.
 
 The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 
@@ -362,7 +361,7 @@ The **unprotected header** MUST contain the following parameters, unless otherwi
       - **Reference**
     * - **4**
       - *(tstr, OPTIONAL)*. Unique identifier of the Issuer JWK. Required when the Issuer of mdoc uses OpenID Federation.
-      - :ref:`trust-infrastructure:The Infrastructure of Trust`
+      - :ref:`infrastructure-trust:Infrastructure of Trust`
     * - **33**
       - *(array)*. X.509 certificate chain about the Issuer. Required for X.509 certificate-based authentication.
       - :rfc:`9360`
@@ -400,7 +399,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
       - *(map, REQUIRED)*. Contains the `MobileSecurityObject` issuance and expiration datetimes. It includes the following sub-values:
 
           * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
-          * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
+          * **validFrom** *(tdate)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time. For a Digital Credential that is not a QEAA or a PuB-EAA, ``validFrom`` is OPTIONAL. For a QEAA or a PuB-EAA, ``validFrom`` is REQUIRED as specified in :ref:`credential-data-model-qeaa-pub-eaa:Technical and Administrative Validity`.
           * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
 
       - [ISO 18013-5#9.1.2.4]
@@ -419,7 +418,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_.
+      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived and it is not a QEAA or a PuB-EAA. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_. For a QEAA or a PuB-EAA, ``status`` follows :ref:`credential-data-model-qeaa-pub-eaa:Status and Short-Lived Attestations`.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::
@@ -509,12 +508,12 @@ mdoc-CBOR Examples
 A non-normative example of an mDL encoded in CBOR is shown below in binary encoding.
 
 .. literalinclude:: ../../examples/mDL-cbor-encoded-example.txt
-  :language: text
+   :language: text
 
 The Diagnostic Notation of the CBOR-encoded mDL is given below.
 
 .. literalinclude:: ../../examples/mDL-mdoc-cbor-example.txt
-  :language: text
+   :language: text
 
 CBOR Acronyms
 ^^^^^^^^^^^^^
