@@ -20,7 +20,8 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
 Il Trust Framework per l'emissione è selezionato come specificato in :ref:`trust-evaluation:Selection at Issuance`.
 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico.
-Il supporto all'Authorization Code Grant è specificato in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
+La Wallet Unit DEVE supportare l'Authorization Code Grant.
+Ciascun Credential Issuer DEVE supportare l'Authorization Code Grant.
 Il Credential Issuer DEVE pubblicare tale supporto nei metadata dell'Authorization Server [`ETSI TS 119 472-3`_].
 I Credential Issuer DEVONO supportare:
 
@@ -81,7 +82,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: La figura illustra il flusso dettagliato per l'emissione degli Attestati Elettronici.
-    :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/nLPVRzis47_NfpYq3xC0kTswFHN8KCVn6cEPwoNkyZB0eEMpJKGcDVwnctxw7K-MoJXAksm55WIMnFl_k-EFV6UTCCvlgqnufvNVBj1aMKrhifIrK0vUVBHeNe2muBDieJyr2zzPi5lIgZTQuGjuUINN6tTUUNneUsxq_cWk7ifkHLMXWx6Y55I9hBFFK2s1efpaC3IuHEMag61ihJzub1dz6QKTWjwXWNqXAPFn-ylP--lHQ98DDrZUmIDRa1Q2Tz0hS1k4NqXkX9DQWQ3eUk64L22TXIqwiHHEXAmu3iNRG_zdsCDRA0qAXp3zTJY2KYyHA0MvacZOo-sWFzNJWxeazUdW6gxnBu_MGUzF1L1M4fMRosKHlamZoY5yxANRm8U1Tvl-aBNw0-T86fDyIXY2WbHSroKAAYm5g0kUGnkcHk_ayelW70oiN2lXlC5MvQIHS98h8xaJbLnATmyfb1BwZ6KBZgsriWYz0nPpRsG1-AcM1krSgZoWpoPUl8K0W3RoCyU9o4PK8N6JPrwmfNosOIOgbyxGsHbCnnSFK2qylBoz7Cz6cRUX_HGWA9SSeMdcKEBu0gxq02vffq3lwiUSiIb3nOh2wpee4vBtj4PubawgDNZUQa7BYTBPFAA7bSMJjCQpVjkARvAVDX0MR_p2Ej546NIO_dOzku0_UFQRvNzJ67onijxl-MWmo9zR5FKf597YyXz1LyjsQhs0qr6A0npee82m1-WXhJsEt_vPHf5hrgZGa00kmlw-m_idPRNHUfKm4AoqwQ10f-zG0TLJQwbSbl3KZ2HnMp2EYMDchhKHoitTVOrCNPHuV9ctBCWh55SQB7ahCRLzKsRB96CGapvYASeIhPrpbM4_hmpQJVl9ZoRzb5qI32PQbNZ4u78scyBqmyqCNgiWIEAoOjh3EMiqJ7LoK4GKktkIhepQnZ3xtD1KLdXg8JWLWDC3gGb1_xMs5gqbx69Yu2qv8n2JKG8u5Xv3T4n02YgtAfsBycWvb_p29w4sa0XAhLPoxPlZX9cMZItq-Fb3dcVDxZyNhjnyhTuu-1FW_gO6L1UvdPoTBOAhkPMVCU-s_OTunIZiEWMDi_sVeJjylobUlNfLyEiapo5ZnZezmQG5iHEo4eiA8NlwVZ2ZefiR8Q6JEB310vL8hfm65xKoKYDqsjJgvagnXCLzrpqXqchSJp58kgbYv0B8u7ZG40wH95FZvBv1O3EdUWjbkBuSz3tf2tl7Ep7SPzip8VC7R-r2AD4wRJ1r7uDsoYADn5oxsIIHzqugAm1tgFX2c0pIW0UfuRlErfrVVHnbrxYMrj4g8SxGHmZx1YlXS0cPL5JybiCn3Bla27zjSASFYK5NezBIOgkujZVV_qHY66hb0g2FpdDfOV9X5aVmAzsNvCPGEmjmHYWhohRpQVM-aDdiyOWL85OCWmAnrLurjrgvHR0rbbH0Cvnj21wM_GOLXPBhDPeuks56-70splB2gj9x46iXrSFhmJlwyTlgRm00>`_
+    :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/nLTjRnf74Fv-lsBaV2X8XzEc-HJ9bJ2c0TN555_gBvNGShV0oiVkTLyWvDTtPkzjEN1Igv5gMOAxdTTdPfvPcBDAkjsAwoWgcBOY5GMJ5gu-6QwlW1bmKRHIdyiNFnWmEvGgjahoAtXpBpPRUvixVgfxgzMXKMUdPqyipxc5gJIMoPHxcKF4PGRefHF3IFECIojO3bDZN6LHHFYdfR8Sr9vhECG28vb-d2GV5-FnB1fjUVeCPxeW391rK6kmMmw_uhbcLYW93BshbML2Wh06TjooZ5b6KNa_wEy0Wr_W01yWrPoXv_blep6aAkE08OYrGFjavMaucAjv9IvGV3vSm8B_xRYnqFjB0gIvmB2M8elfIPT7VQ27Wx1RU1WwknsClDHWQ2sUja6-T4XE0QEdl2QSOM8XG9VWgSemrselig-2KoaOiP7CEirhaKuXeHih8RbdkSY4FK88fO11XMK9ZYcKD1nw5HPBfqKC_7CXD3TB8Vib-gZYs0SW09GMNqe_3R8jgX2OwKUEUKtnQiM8vJRiePiRc4_lJb2D7RnvcaoJSUGCbHyTa71QUl3570a-lODxDOG9JWhqxd_kUsnIoXWxlASA4aOaZ_WEyKoja1jmvQYXb6MfDVqMFPuZKgTXJPD1NOhl4f_IG2yVtOeAwxqCBwZ-laZku4_V-sbRz5Sc1b_DhFT7VpmSzb-R5DQ9aWXn-O-WowpkMkodyrQg6vZe80QQ0VmGnZJjTtYLKiir6ovf2ZdSqNm_y-EBPuLME9Oj0y4Q4JYdGAkUkGJCfr12sYZWgSIVr6FXSGmCU-RQQ6o7fJqMt5EN3xp-ignPi6Ar38StBKU9gEsxCXkLeiIW3hh6agKfDsRfiwHvNYE3REj7_r66Vyek3GOpHJnMOp19aZdC7nuJU2lf8F1R2pOrN7g9agawYo90yN9DWZVZfZ34Fe_ObJdlQZ0V2YwBZf_I1VuNoXX4WO1j0iFcfXOd40DpAo4pUasDLHaa60A9ytu88VQ52xiaRJIHKEcBtukOTN20yxKM6rSk5y-xNjb0pt_-r4SKFHVSCfjklvbzCmOpyDKE5J0lD3kxkLcHgQKHNx14btN_BNgr5syw1Eqisly1kkhvNNnzVHtxhxC-Kcp9NvrzXlkUxPd8sGfRB7hvjf1WqkNzaD1f3HYoW2cYAQiyD9LKX6A8JXrQKLumy7Ptl7Hh2Eu5pNITWDYCMEiv1bHerWxY459c665p-o2mYKySqZjTPYfvX_BCFFkvfDjjlI4YrynMjJ8mHMEL3gV714vVEYj9fOtrChS4vxrEPiXKUpJPSgXlcQ5lf9BzBfRkzlxJE5hmZJ2MTcIUU-XR20UQvzZt6KH2OlAxqZd1i0yM-blDzweA32uLgfDQLIgVsxiVt-CnZ72P4g1dsnsRP_QGj2tuZUeZ9tADvKGMnoLaS3_NbG-oTx7mxTffiHZOsiE0GxTJJfPtNB7ZO0gUqfpvvgnT-6OvuAK2NOdDXkksTwb7_AhMUBMb5-jS7O1jy7V3oMNX7m00>`_
 
 
 .. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
@@ -298,7 +299,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 .. note::
    Se l'Istanza del Wallet richiede l'emissione in batch di Attestati Elettronici, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
 
-**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet, per la richiesta delle Credenziali Digitali, crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13**. L'Istanza del Wallet usa la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP (:ref:`WP_056c <wallet-credential-issuance-testcases>`).
+**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet crea una prova di possesso del materiale crittografico a cui la Credenziale sarà associata. L'Istanza del Wallet usa il ``c_nonce`` ottenuto nel **Passo 13**. L'Istanza del Wallet DEVE firmare quella prova con la chiave privata di quel materiale. Il valore ``jwk`` nella prova DEVE essere la chiave pubblica di quella coppia. La chiave di binding della Credenziale è indipendente dalla chiave DPoP usata nel **Passo 14**.
 
 **Passo 16 (`Credential Request`)**: L'Istanza del Wallet invia una richiesta per l'Attestato Elettronico al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT di `DPoP proof`, il tipo di Attestato Elettronico, la prova (che dimostra il possesso del materiale crittografico) come specificato in :ref:`WP_056 <wallet-credential-issuance-testcases>`. Il parametro ``proofs`` DEVE essere un oggetto che contiene la prova di possesso del materiale crittografico a cui sarà associato l'Attestato Elettronico emesso. Per verificare la prova, il Credential Issuer conduce i seguenti controlli al Credential Endpoint:
 
@@ -354,20 +355,8 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 **Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Credenziali Digitali al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Credenziale e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Credenziali Digitali emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco (:ref:`WP_058 <wallet-credential-issuance-testcases>`).
 
 
-.. code-block:: http
-
-    POST /credential HTTP/1.1
-    Host: eaa-provider.example.org
-    Content-Type: application/json
-    Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
-    DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
-      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
-      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
-      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
-      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
-      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+.. literalinclude:: ../../examples/shared/credential-issuance-low-level-5.http
+   :language: http
 
 .. literalinclude:: ../../examples/batch-credential-request.json
    :language: JSON
@@ -705,20 +694,7 @@ L'Istanza del Wallet invia:
 
 L'Authentic Source risponde:
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  Cache-Control: no-store
-
-  {
-    "credential_issuer": "https://credential-issuer.example.org",
-    "credential_configuration_ids": ["mso_mdoc_mDL"],
-    "grants": {
-      "authorization_code": {
-       "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
-      }
-    }
-  }
+.. literalinclude:: ../../examples/shared/credential-offer-response.http
+   :language: http
 
 

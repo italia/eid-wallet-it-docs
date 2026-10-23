@@ -501,9 +501,9 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Prova DPoP fresca
      - Istanza del Wallet genera una prova DPoP fresca con la stessa chiave utilizzata per il DPoP-JWT della Token Request, e in accordo con :rfc:`9449#section-4`.
    * - WP_056c
-     - Issuance, Sicurezza
-     - Abbinare la prova chiave Attestato Elettronico alla chiave DPoP
-     - Istanza del Wallet include un oggetto JSON come valore del parametro ``proofs`` nella Credential Request. Al suo interno sono è presente l'array ``jwt``. Quest'ultimo è valorizzato con uno o più JWT i cui parametro dell'header ``jwk`` rappresenta la prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.
+     - Annullato
+     - Annullato
+     - Annullato
    * - WP_057
      - Issuance, Interoperabilità
      - Richiesta di Attestati Elettronici multipli

@@ -49,7 +49,7 @@ La documentazione, gli strumenti e le risorse aggiuntive, di seguito definite Ri
 Linguaggio Normativo e Convenzioni
 ----------------------------------
 
-Le parole chiave in questo documento devono essere interpretate come descritto in BCP 14 [RFC2119] [RFC8174] quando, e solo quando, appaiono in maiuscolo, come mostrato qui.
+Le parole chiave in questo documento devono essere interpretate come descritto in BCP 14 :rfc:`2119` :rfc:`8174` quando, e solo quando, appaiono in maiuscolo, come mostrato qui.
 
 - MUST.
 - MUST NOT.

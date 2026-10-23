@@ -10,9 +10,8 @@ PID Provider indica il Fornitore di Attestati Elettronici di Dati di Identificaz
 (Q)EAA Provider indica il Fornitore di Attestati Elettronici di Attributi.
 
 L'emissione utilizza [`OpenID4VCI`_], profilato da [`OPENID4VC-HAIP`_], come richiesto da [`CIR2024/2982`_], ed è controllata da [`ETSI TS 119 472-3`_].
-La Wallet Unit DEVE supportare l'Authorization Code Grant.
+Il supporto all'Authorization Code Grant è specificato in :ref:`credential-issuance-low-level:Issuance Flow`.
 Dove [`ETSI TS 119 472-3`_] lo richiede, la Wallet Unit supporta il Pre-Authorized Code Grant.
-Ciascun Credential Issuer DEVE supportare l'Authorization Code Grant.
 Il Trust Framework applicabile è selezionato come specificato in :ref:`trust-evaluation:Selection at Issuance`.
 Lo schema per le Credential Offer nel flusso EUDI Wallet è specificato in :ref:`credential-issuance-low-level:Flusso Credential Offer`.
 L'emissione del PID prima della notifica EUDIW è specificata in :ref:`pid-until-notification`.

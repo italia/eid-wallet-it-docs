@@ -387,20 +387,20 @@ L'uso dei Trust Anchor a runtime è definito in <a class="reference internal" hr
 <p>All'interno dell'IT-Wallet è operata una singola Root Certification Authority nazionale.
 Essa emette i certificati delle Autorità di Certificazione subordinate e non è utilizzata per alcun altro scopo.
 Ciascuna Autorità di Certificazione subordinata serve un servizio, e il suo certificato è il Trust Anchor pubblicato per tale servizio.</p>
-<figure class="align-center" id="id787">
+<figure class="align-center" id="id859">
 <span id="fig-pki-architecture"></span><p class="plantuml">
 <object data="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png"><img src="_images/plantuml-682aabd8b36c2ce07a4ced05b0191d93ec2f936c.png" alt="La figura illustra le gerarchie di certificazione dell'ecosistema IT-Wallet e il canale di pubblicazione del Trust Anchor derivato da ciascuna Autorità di Certificazione." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0">Architettura PKI dell'Ecosistema IT-Wallet.</a></span><a class="headerlink" href="#id787" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLPHRzis47xNhpYq3tvPx2tOWAqFHHN7NhDagM8xy1u23BHqaeZGP41I3hoW_tqyIYP4EuxRAa02alTztztn8vbFnZ9jcxL81Z16RNd9SsQvab1pr4pdxey19WjuQbPYjvRNJ4eKe4gmDKA1cc-mW8LkZ8LKvhNIPfWavf7B9wRP6apD2lNCPGKb4mPxAmMMh15sggIzPMk4poWsQ9tGwp5p_X_2B-UznLHhzJnMGcbu_wl_UeiQSyja9H1U4e0BbZzMMZMoQEENDRT8yqgx4cAEhpsM9uTZrUiSxwSf_Uop_Eu_D-kJjbk1i5AYSBI9mDA2LQ1vLLieEEN8bKoIdSoxMqOJJ41sVVKEc87RTE744mZrz8DcIbaOfmzoD59bARZ4dq0rrl02_UvicE253tQ5s7eqyfIpBryMUupPrILaMcqSKCESLt8qHoOwwcEBmJDeMcON_wyBdiVSIoO4skFqyVffXMNc-FSaPbawzdHfdgCnaFUGPDLMuso6OajEp9XRTYk1al17UfmsjaPfE_ztEVU9ji3YaFpLjDFxnUU3h6VZWtQ4yK4HJYHqYSOUt-iB3ME56LRSMCqEcnvMJhPxDldpI6ScQNh0UwdoPetI-WNKHthXaCdNdkll6YPSLBX7vgWtFCTGhSVTBUOPlCIv160dV-UOlzr9Ts-JPSt5sNVnPVSNKLcJ-ykhPLVILBCrFYlzw8DTvEGUNeuVGlCWRxY3gRB5Om4JQJcvrXFSq45xyvoTPl07QH1b45TyceDAZhC8K0BvStMImqUzpJ8xoVAc_K-23qp-DwvNjEEMMGmW8Y5ZfDhot4MTdnCbNbscyz6eOrhSH1O8X-M82_pr7ajFqHNkOT6h-Y1zpbiOArdogcb3EjNfXCmWbQMtnbgrTYE0HOtGO-lmrxWrm3IspxgfiI2ElvRN7iEblsTUqp93OjmIbgJWd-5lF_z1eFYcOh888ToOnl6l72Z-7uDW_cfLskaCtH1bqHO0r41we-3ix6DuKleJoomUad-Y6RfhzqDcKGZjU3IcAodfn60u_DYTCA_MZacsFUGqRhTwfqupmSdnPA2X548SfTDcqKrHFdGbHTn1skqlV83mLYwqQNQ-68sIhkAzsF1mnLuA62evXlYtXyjgFpOPzAr5dc-Tw-Q_tsI37p7PuCTCDeXDDWWcInA15Gt2QPahmObIg-SFBQEX7FkgkpVOD2kb2ovfAjAB3Nt9NDc1qjP7WoCDRgAMHLi1N0uJbtMRU_B9_MhMudy0">Architettura PKI dell'Ecosistema IT-Wallet.</a></span><a class="headerlink" href="#id859" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>La tabella seguente elenca le Autorità di Certificazione, i certificati emessi da ciascuna di esse e il canale attraverso il quale è distribuito il Trust Anchor derivato.
 Le List of Trusted Entities e le Trusted List nominate nella tabella sono definite in <a class="reference internal" href="#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
-<span id="table-pki-certification-authorities"></span><table class="longtable docutils align-default" id="id788">
-<caption><span class="caption-number">Tabella 5.1 </span><span class="caption-text">Autorità di Certificazione e Trust Anchor Derivati</span><a class="headerlink" href="#id788" title="Link to this table">¶</a></caption>
+<span id="table-pki-certification-authorities"></span><table class="longtable docutils align-default" id="id860">
+<caption><span class="caption-number">Tabella 5.1 </span><span class="caption-text">Autorità di Certificazione e Trust Anchor Derivati</span><a class="headerlink" href="#id860" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 38.0%" />
@@ -507,8 +507,8 @@ Un'entità verificatrice deve poter distinguere quali Trust Anchor sono utilizza
 </ul>
 <p>Questo profilo stabilisce i requisiti di sintassi, semantica e codifica per i certificati X.509 sulla base di <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a> e ETSI EN 319 412.
 Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformarsi ai requisiti di questa sezione, salvo diversa indicazione esplicita.</p>
-<table class="longtable docutils align-default" id="id789">
-<caption><span class="caption-number">Tabella 5.2 </span><span class="caption-text">Campi del Certificato X.509</span><a class="headerlink" href="#id789" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id861">
+<caption><span class="caption-number">Tabella 5.2 </span><span class="caption-text">Campi del Certificato X.509</span><a class="headerlink" href="#id861" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -542,8 +542,8 @@ Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformar
 <p>Il campo <code class="docutils literal notranslate"><span class="pre">tbsCertificate</span></code> DEVE contenere una struttura <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code>. I campi <code class="docutils literal notranslate"><span class="pre">TBSCertificate</span></code> DEVONO conformarsi a <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html#section-4.1.2"><strong>RFC 5280#section-4.1.2</strong></a>.</p>
 <p>La tabella seguente definisce i campi del certificato applicabili al profilo di certificato specificato in questo documento.
 Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi. I singoli profili di certificato NON DEVONO modificare i requisiti di presenza ivi specificati.</p>
-<table class="longtable docutils align-default" id="id790">
-<caption><span class="caption-number">Tabella 5.3 </span><span class="caption-text">Campi TBSCertificate</span><a class="headerlink" href="#id790" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id862">
+<caption><span class="caption-number">Tabella 5.3 </span><span class="caption-text">Campi TBSCertificate</span><a class="headerlink" href="#id862" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -605,8 +605,8 @@ Le estensioni applicabili e i relativi vincoli specifici del profilo sono defini
 <li><p><strong>C</strong>: l'estensione DEVE essere marcata come critica.</p></li>
 <li><p><strong>NC</strong>: l'estensione DEVE essere marcata come non critica.</p></li>
 </ul>
-<table class="longtable docutils align-default" id="id791">
-<caption><span class="caption-number">Tabella 5.4 </span><span class="caption-text">Estensioni di Certificato Supportate</span><a class="headerlink" href="#id791" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id863">
+<caption><span class="caption-number">Tabella 5.4 </span><span class="caption-text">Estensioni di Certificato Supportate</span><a class="headerlink" href="#id863" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 20.0%" />
@@ -711,8 +711,8 @@ I National Sign/Seal Certificate DEVONO essere conformi ai requisiti definiti in
 <p>I requisiti specifici per i PID Provider Sign/Seal Certificate sono specificati nella Clausola 4 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id792">
-<caption><span class="caption-number">Tabella 5.5 </span><span class="caption-text">Estensioni del PID Provider Sign/Seal Certificate</span><a class="headerlink" href="#id792" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id864">
+<caption><span class="caption-number">Tabella 5.5 </span><span class="caption-text">Estensioni del PID Provider Sign/Seal Certificate</span><a class="headerlink" href="#id864" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -903,8 +903,8 @@ Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href
 <p>I requisiti specifici per i Wallet Provider Sign/Seal Certificate sono specificati nella Clausola 5 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id793">
-<caption><span class="caption-number">Tabella 5.6 </span><span class="caption-text">Estensioni del Wallet Provider Sign/Seal Certificate</span><a class="headerlink" href="#id793" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id865">
+<caption><span class="caption-number">Tabella 5.6 </span><span class="caption-text">Estensioni del Wallet Provider Sign/Seal Certificate</span><a class="headerlink" href="#id865" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1100,8 +1100,8 @@ Per dettagli aggiuntivi, vedi Clausola 4.4.1 [<a class="reference external" href
 <p>I requisiti specifici per i Sign/Seal Certificate di EAA Provider e QEAA Provider sono specificati rispettivamente nelle Clausole 6 e 7 di [<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.02.01_60/ts_11941206v010201p.pdf">ETSI TS 119 412-6</a>].</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id794">
-<caption><span class="caption-number">Tabella 5.7 </span><span class="caption-text">Estensioni del (Q)EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id794" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id866">
+<caption><span class="caption-number">Tabella 5.7 </span><span class="caption-text">Estensioni del (Q)EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id866" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1303,8 +1303,8 @@ Per dettagli aggiuntivi, vedi Clausola 4.3.2 [<a class="reference external" href
 </div>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id795">
-<caption><span class="caption-number">Tabella 5.8 </span><span class="caption-text">Estensioni del PuB-EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id795" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id867">
+<caption><span class="caption-number">Tabella 5.8 </span><span class="caption-text">Estensioni del PuB-EAA Provider Sign/Seal Certificate</span><a class="headerlink" href="#id867" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1523,8 +1523,8 @@ Le implementazioni DEVONO supportare la validazione sia di certificati Trust Anc
 </div>
 <p>La tabella seguente definisce i requisiti specifici del profilo per i campi del certificato.
 I campi non elencati nella tabella restano soggetti ai requisiti definiti nel <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> comune.</p>
-<table class="longtable docutils align-default" id="id796">
-<caption><span class="caption-number">Tabella 5.9 </span><span class="caption-text">Campi del Trust Anchor Certificate</span><a class="headerlink" href="#id796" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id868">
+<caption><span class="caption-number">Tabella 5.9 </span><span class="caption-text">Campi del Trust Anchor Certificate</span><a class="headerlink" href="#id868" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1544,8 +1544,8 @@ Altrimenti, il distinguished name dell'issuer DEVE identificare l'entità che ha
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id797">
-<caption><span class="caption-number">Tabella 5.10 </span><span class="caption-text">Estensioni del Trust Anchor Certificate</span><a class="headerlink" href="#id797" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id869">
+<caption><span class="caption-number">Tabella 5.10 </span><span class="caption-text">Estensioni del Trust Anchor Certificate</span><a class="headerlink" href="#id869" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2224,8 +2224,8 @@ Il profilo del WRPAC non include un Signed Certificate Timestamp, il Provider of
 <p>Questa sezione estende il <a class="reference internal" href="#x-509-certificate-profile"><span class="std std-ref">X.509 Certificate Profile</span></a> generale e specifica un <strong>Certificate Profile</strong> per i <strong>Registrar Sign/Seal Certificates</strong>.</p>
 <p>La tabella seguente definisce l'insieme completo di estensioni applicabili al profilo di certificato.
 Le estensioni non elencate nella tabella NON DEVONO essere presenti.</p>
-<table class="longtable docutils align-default" id="id798">
-<caption><span class="caption-number">Tabella 5.11 </span><span class="caption-text">Estensioni del Registrar Sign/Seal Certificate</span><a class="headerlink" href="#id798" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id870">
+<caption><span class="caption-number">Tabella 5.11 </span><span class="caption-text">Estensioni del Registrar Sign/Seal Certificate</span><a class="headerlink" href="#id870" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2493,8 +2493,8 @@ Questa specifica segue la Tabella 10 normativa e usa <code class="docutils liter
 Lo schema XML delle Trusted List e della List of Trusted Lists è pubblicato all'indirizzo <code class="docutils literal notranslate"><span class="pre">https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd</span></code>.
 La List of Trusted Lists machine-readable e le Trusted List nazionali sono pubblicate in <a class="reference external" href="https://ec.europa.eu/tools/lotl/eu-lotl.xml">EUMS-LOTL</a>.
 Gli schemi JSON e XML normativi delle List of Trusted Entities sono pubblicati in <a class="reference external" href="https://forge.etsi.org/rep/esi/x19_60201_lists_of_trusted_entities">ETSI-LOTE-SCHEMAS</a>.</p>
-<table class="longtable docutils align-default" id="id799">
-<caption><span class="caption-number">Tabella 5.12 </span><span class="caption-text">Profili dell'Ecosistema delle Trust List eIDAS</span><a class="headerlink" href="#id799" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id871">
+<caption><span class="caption-number">Tabella 5.12 </span><span class="caption-text">Profili dell'Ecosistema delle Trust List eIDAS</span><a class="headerlink" href="#id871" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 14.0%" />
 <col style="width: 20.0%" />
@@ -2848,8 +2848,8 @@ Per una presentazione <strong>intermediata</strong> il WRPRC nella richiesta è 
 <p class="admonition-title">Avvertimento</p>
 <p>I nomi dei parametri sono definiti in questa sezione e non si basano su una specifica ETSI normativa. La Sezione 4.2.5.2 di <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf">ETSI TS 119 472-3</a> definisce i requisiti di alto livello per il modello dati, ma lo schema JSON finale sarà pubblicato separatamente da ETSI. La struttura definita qui è un profilo di implementazione basato sui requisiti del modello dati ETSI, e i nomi dei parametri POSSONO cambiare quando lo schema ETSI è pubblicato.</p>
 </div>
-<table class="longtable docutils align-default" id="id800">
-<caption><span class="caption-number">Tabella 5.13 </span><span class="caption-text">Parametri dell'Embedded Disclosure Policy</span><a class="headerlink" href="#id800" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id872">
+<caption><span class="caption-number">Tabella 5.13 </span><span class="caption-text">Parametri dell'Embedded Disclosure Policy</span><a class="headerlink" href="#id872" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -3038,14 +3038,14 @@ Definisce gli Entity Type Identifier delle Entità usate in questa sezione.</p><
 </ul>
 <p>La figura <a class="reference internal" href="#fig-oid-fed-roles"><span class="std std-ref">OID-FED Roles</span></a> mappa ciascuna entità dell'ecosistema wallet sul ruolo OpenID Federation che svolge.
 Le Wallet-Relying Party e i Wallet Provider sono Federation Entity che DEVONO essere registrate da una Federation Authority, cioè un Federation TA o Intermediate.</p>
-<figure class="align-default" id="id801">
+<figure class="align-default" id="id873">
 <span id="fig-oid-fed-roles"></span><p class="plantuml">
 <object data="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.png"><img src="_images/plantuml-a23c8cfd88f16b6ec0d893fde8bde635fdf8f6a6.png" alt="I ruoli all'interno della Federazione, dove il Trust Anchor sovrintende i suoi subordinati, che includono uno o più Intermediate e Foglie." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00">OID-FED Roles</a></span><a class="headerlink" href="#id801" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TOz1Q_90443l-olcypjBiPNQGn4bAWWzI2dqKYXZCjh1pMoOdLMa-DyRecYqz9OXxysy7KL3jLHwzuybzwaWUCxwTrd_CmjYo48wT2vkM2fKB669-MQj8KcH1HyKJ55Y_Ol4MjHODUoEmDBNXdDEAJUKjIVepAWWHUCWC4xs5PIDANO08wpmV1R-hnvcWqaFlXr0otxJ50t6ajTYunZ2DJ4N8osfO3Hg21RhrUjwqy7qyNRTA_azoneMgBQ73xd8kczahTZ1mHskt_12k3qrUy9LR6LFdsRtarzttj5xCbXes791n_9T1N_7dAxV8fbIGMAC7kOnfjEcd8-15NHJrHqsqUV1qELy-TQgDUnQq8YaIAN_0G00">OID-FED Roles</a></span><a class="headerlink" href="#id873" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -3812,8 +3812,8 @@ L'onboarding dell'Intermediary è definito in <a class="reference internal" href
 <section id="trust-mark-types-and-schema-trust-mark-structure">
 <h5><span class="section-number">5.6.4.2.1. </span>Trust Mark Types and Schema: Trust Mark Structure<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-structure" title="Link to this heading">¶</a></h5>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id802">
-<caption><span class="caption-number">Tabella 5.14 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nell'Entity Configuration)</span><a class="headerlink" href="#id802" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id874">
+<caption><span class="caption-number">Tabella 5.14 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nell'Entity Configuration)</span><a class="headerlink" href="#id874" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -3839,8 +3839,8 @@ Un JSON Web Token firmato che rappresenta il Trust Mark emesso dalla Federation 
 <section id="trust-mark-types-and-schema-trust-mark-jwt-header">
 <h5><span class="section-number">5.6.4.2.2. </span>Trust Mark Types and Schema: Trust Mark JWT Header<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-jwt-header" title="Link to this heading">¶</a></h5>
 <p>L'header JOSE del Trust Mark JWT DEVE includere i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id803">
-<caption><span class="caption-number">Tabella 5.15 </span><span class="caption-text">Parametri dell'Header JWT del Trust Mark</span><a class="headerlink" href="#id803" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id875">
+<caption><span class="caption-number">Tabella 5.15 </span><span class="caption-text">Parametri dell'Header JWT del Trust Mark</span><a class="headerlink" href="#id875" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -3880,8 +3880,8 @@ I Trust Mark senza un parametro di header <code class="docutils literal notransl
 <section id="trust-mark-types-and-schema-trust-mark-jwt-payload">
 <h5><span class="section-number">5.6.4.2.3. </span>Trust Mark Types and Schema: Trust Mark JWT Payload<a class="headerlink" href="#trust-mark-types-and-schema-trust-mark-jwt-payload" title="Link to this heading">¶</a></h5>
 <p>Il payload del Trust Mark JWT include i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id804">
-<caption><span class="caption-number">Tabella 5.16 </span><span class="caption-text">Claim JWT del Trust Mark</span><a class="headerlink" href="#id804" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id876">
+<caption><span class="caption-number">Tabella 5.16 </span><span class="caption-text">Claim JWT del Trust Mark</span><a class="headerlink" href="#id876" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -4149,40 +4149,14 @@ Lo status può essere controllato usando l'endpoint Trust Mark Status (vedi Sezi
 Durante la loro pubblicazione possono essere aggiornati.</p>
 </div>
 <p>Il diagramma <a class="reference internal" href="#fig-trust-artifacts-states"><span class="std std-numref">Fig. 5.3</span></a> evidenzia la state machine dei Trust Artifact sopra menzionati:</p>
-<figure class="align-default" id="id805">
+<figure class="align-default" id="id877">
 <span id="fig-trust-artifacts-states"></span><p class="plantuml">
 <object data="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.svg" type="image/svg+xml" style="width:90%">
-<a href="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png"><img src="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png" alt="&#64;startuml
-hide empty description
-
-state &quot;Certificates (WRPAC, WRPRC, Signature/Seal)&quot; as CertGroup {
-   [*] --&gt; VALID : Issuance
-   VALID --&gt; REVOKED : Revocation Trigger \n(CRL, OCSP, or Status List)
-   REVOKED --&gt; [*] : Terminal State
-}
-
-state &quot;Trust Lists (LoTE, LOTL, TL)&quot; as TLGroup {
-    [*] --&gt; TL_CURRENT : Publication of Current Version
-    state &quot;CURRENT&quot; as TL_CURRENT
-        
-   TL_CURRENT --&gt; HISTORICAL : Superseded by New Version \n(The old one is archived to `ServiceHistory`)
-   HISTORICAL --&gt; [*]
-}
-
-state &quot;Trust Marks&quot; as TMGroup {
-
-   state &quot;REVOKED&quot; as TM_REVOKED
-   [*] --&gt; ACTIVE: Issuance and publication of a Trust Mark
-   ACTIVE --&gt; EXPIRED: The expiration time is reached
-   ACTIVE --&gt; TM_REVOKED: The Federation Authority \nremoved the Trust Mark
-   TM_REVOKED --&gt; [*]
-}
-
-&#64;enduml" style="width: 90.0%"/></a>
+<a href="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png"><img src="_images/plantuml-48c086c3f0139d194ded74121e9035aa57fa77fb.png" alt="Macchina a stati degli stati dei Trust Artifact." style="width: 90.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0">Trust Artifacts States.</a></span><a class="headerlink" href="#id805" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PL5TRzCm57tFhpZQquOwyRu7j2eBB29RgyGK942Rbzmr5aaSNTk52l7ViLENj28lbdFl-JZ7jyPAjgxlabOr1Ef7kqT3fcOrMgM79F4Bbd2H4blrgcf_CRZyNAwNwGB-AFrHgUqWhMDwMv7ihYuW3SB-1zPknEy4mDSttt5z_GwRPP7VuGQvCKuEDVbP_1UcPRPPVSp2lAIThcLm0C5gkoN6j-4oBOi5LccrNa0pAkj53Gfbx5K2HFI1AUZTG13tQf3Tj4h9dtzf13jZ9wGFKsYHBL2iX2SNnMJVdxFvsRqedj9FPPaz2a--TY-TYXxrArB7J8F5XjY4uW8kgaLC93vI98XV0fmo1w7xl1AhCa-NXHUgtEWvgQ46Btiyqi-ZHgX4j0JTDT03GHb8hbkryvjMuxaYtgcQxdrCpVldKD8fS-pflreU9Fym1xCFnnQIEKsiEIuynUlf8ozJaM-o-P4XXmRZULqIivZ7Him4pxwiypAxkq78Hhz6nGUKLVsKaKdMBJNdgDbA1BwdXY9mwMohMTczBuofrrC_BPqxE24uRUQMXiRrtLy0">Trust Artifacts States.</a></span><a class="headerlink" href="#id877" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -4242,8 +4216,8 @@ Lo scope di una delta CRL DEVE essere lo stesso della base CRL che referenzia.</
 <p>Una CRL X.509 v2 è rappresentata come la codifica ASN.1 DER della SEQUENCE <code class="docutils literal notranslate"><span class="pre">CertificateList</span></code>.
 La codifica ASN.1 DER è un sistema di encoding tag, length e value strettamente definito per ciascun elemento.
 I byte finali trasmessi rappresentano la codifica DER della SEQUENCE di livello superiore contenente i campi nella tabella seguente:</p>
-<table class="longtable docutils align-default" id="id806">
-<caption><span class="caption-number">Tabella 5.17 </span><span class="caption-text">Struttura CertificateList di Livello Superiore</span><a class="headerlink" href="#id806" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id878">
+<caption><span class="caption-number">Tabella 5.17 </span><span class="caption-text">Struttura CertificateList di Livello Superiore</span><a class="headerlink" href="#id878" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4283,8 +4257,8 @@ La selezione DOVREBBE allinearsi agli standard rilevanti (ad es., [ETSI TS 119 3
 <h5><span class="section-number">5.7.3.1.1. </span>Certificate List Content<a class="headerlink" href="#certificate-list-content" title="Link to this heading">¶</a></h5>
 <p>La <code class="docutils literal notranslate"><span class="pre">tbsCertList</span></code> (To Be Signed Certificate List) è una SEQUENCE ASN.1 contenente diversi campi ed estensioni.
 La tabella seguente elenca tutti tali campi ed estensioni che sono richiesti in una CRL o condizionalmente richiesti.</p>
-<table class="longtable docutils align-default" id="id807">
-<caption><span class="caption-number">Tabella 5.18 </span><span class="caption-text">Campi ed Estensioni tbsCertList</span><a class="headerlink" href="#id807" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id879">
+<caption><span class="caption-number">Tabella 5.18 </span><span class="caption-text">Campi ed Estensioni tbsCertList</span><a class="headerlink" href="#id879" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4359,8 +4333,8 @@ Se presente, la <code class="docutils literal notranslate"><span class="pre">ver
 </table>
 <p>Il campo <code class="docutils literal notranslate"><span class="pre">crlExtensions</span></code> PUÒ contenere varie estensioni.
 Le estensioni standard notevoli includono:</p>
-<table class="longtable docutils align-default" id="id808">
-<caption><span class="caption-number">Tabella 5.19 </span><span class="caption-text">crlExtensions Notevoli</span><a class="headerlink" href="#id808" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id880">
+<caption><span class="caption-number">Tabella 5.19 </span><span class="caption-text">crlExtensions Notevoli</span><a class="headerlink" href="#id880" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4421,8 +4395,8 @@ Fornisce informazioni di revoca più tempestive di quanto tipicamente possibile 
 <p>Se supportato dalla Certificate Authority, l'URI a cui il Responder OCSP può essere invocato DEVE essere presente nell'estensione <code class="docutils literal notranslate"><span class="pre">authorityInfoAccess.accessLocation</span></code> del Wallet Relying Party Access Certificate (WRPAC).</p>
 <p>Questo protocollo specifica i dati che DEVONO essere scambiati tra il client OCSP (che controlla lo status di uno o più certificati) e il server OCSP (che fornisce lo status corrispondente).</p>
 <p>La tabella seguente sintetizza i ruoli del client e del server OCSP nell'ecosistema EUDIW.</p>
-<table class="longtable docutils align-default" id="id809">
-<caption><span class="caption-number">Tabella 5.20 </span><span class="caption-text">Ruoli OCSP nell'ecosistema EUDIW</span><a class="headerlink" href="#id809" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id881">
+<caption><span class="caption-number">Tabella 5.20 </span><span class="caption-text">Ruoli OCSP nell'ecosistema EUDIW</span><a class="headerlink" href="#id881" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 28.0%" />
 <col style="width: 28.0%" />
@@ -4461,8 +4435,8 @@ Fornisce informazioni di revoca più tempestive di quanto tipicamente possibile 
 <h5><span class="section-number">5.7.3.2.1. </span>Online Certificate Status Protocol Request Format<a class="headerlink" href="#online-certificate-status-protocol-request-format" title="Link to this heading">¶</a></h5>
 <p>La richiesta OCSP DEVE essere la codifica ASN.1 DER della SEQUENCE <code class="docutils literal notranslate"><span class="pre">OCSPRequest</span></code>, che contiene la <code class="docutils literal notranslate"><span class="pre">tbsRequest</span></code> (To-Be-Signed Request) e una firma opzionale.
 La tabella seguente elenca i parametri trovati all'interno della struttura <code class="docutils literal notranslate"><span class="pre">tbsRequest</span></code>.</p>
-<table class="longtable docutils align-default" id="id810">
-<caption><span class="caption-number">Tabella 5.21 </span><span class="caption-text">Parametri della Struttura tbsRequest</span><a class="headerlink" href="#id810" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id882">
+<caption><span class="caption-number">Tabella 5.21 </span><span class="caption-text">Parametri della Struttura tbsRequest</span><a class="headerlink" href="#id882" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4499,8 +4473,8 @@ Se omesso, il valore predefinito è <code class="docutils literal notranslate"><
 </tbody>
 </table>
 <p>Il parametro <code class="docutils literal notranslate"><span class="pre">reqCert</span></code> utilizza la struttura <code class="docutils literal notranslate"><span class="pre">CertID</span></code>, DEVE essere una <em>SEQUENCE</em> ASN.1 contenente i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id811">
-<caption><span class="caption-number">Tabella 5.22 </span><span class="caption-text">Parametri della Struttura CertID</span><a class="headerlink" href="#id811" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id883">
+<caption><span class="caption-number">Tabella 5.22 </span><span class="caption-text">Parametri della Struttura CertID</span><a class="headerlink" href="#id883" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4541,8 +4515,8 @@ Se omesso, il valore predefinito è <code class="docutils literal notranslate"><
 </table>
 <p>Le strutture <code class="docutils literal notranslate"><span class="pre">requestExtensions</span></code> e <code class="docutils literal notranslate"><span class="pre">singleRequestExtensions</span></code> POSSONO contenere varie estensioni.
 La tabella seguente elenca quelle richieste:</p>
-<table class="longtable docutils align-default" id="id812">
-<caption><span class="caption-number">Tabella 5.23 </span><span class="caption-text">Estensione Nonce OCSP</span><a class="headerlink" href="#id812" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id884">
+<caption><span class="caption-number">Tabella 5.23 </span><span class="caption-text">Estensione Nonce OCSP</span><a class="headerlink" href="#id884" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4597,8 +4571,8 @@ L'identificatore OID è <code class="docutils literal notranslate"><span class="
 <p>Una risposta OCSP DEVE essere la codifica ASN.1 DER della <em>SEQUENCE</em> <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code>.
 Quando trasportata su HTTP, il body della risposta HTTP DEVE contenere la codifica DER raw di questa <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code>, con il MIME type <code class="docutils literal notranslate"><span class="pre">application/ocsp-response</span></code>.
 La <em>SEQUENCE</em> <code class="docutils literal notranslate"><span class="pre">OCSPResponse</span></code> contiene i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id813">
-<caption><span class="caption-number">Tabella 5.24 </span><span class="caption-text">Parametri della Struttura OCSPResponse</span><a class="headerlink" href="#id813" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id885">
+<caption><span class="caption-number">Tabella 5.24 </span><span class="caption-text">Parametri della Struttura OCSPResponse</span><a class="headerlink" href="#id885" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4638,8 +4612,8 @@ Per un responder OCSP basic, questo valore DEVE essere <code class="docutils lit
 Corrispondentemente, i client OCSP DEVONO essere in grado di ricevere ed elaborare risposte del tipo di risposta <code class="docutils literal notranslate"><span class="pre">id-pkix-ocsp-basic</span></code>.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">BasicOCSPResponse</span></code> è una SEQUENCE ASN.1 contenente i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id814">
-<caption><span class="caption-number">Tabella 5.25 </span><span class="caption-text">Parametri della Struttura BasicOCSPResponse</span><a class="headerlink" href="#id814" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id886">
+<caption><span class="caption-number">Tabella 5.25 </span><span class="caption-text">Parametri della Struttura BasicOCSPResponse</span><a class="headerlink" href="#id886" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4712,8 +4686,8 @@ Se non sono inclusi certificati, questo campo DOVREBBE essere assente.</p></td>
 </table>
 <p>La struttura <code class="docutils literal notranslate"><span class="pre">responseExtensions</span></code> PUÒ contenere varie estensioni.
 La tabella seguente elenca quelle richieste:</p>
-<table class="longtable docutils align-default" id="id815">
-<caption><span class="caption-number">Tabella 5.26 </span><span class="caption-text">Estensioni di Risposta Nonce</span><a class="headerlink" href="#id815" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id887">
+<caption><span class="caption-number">Tabella 5.26 </span><span class="caption-text">Estensioni di Risposta Nonce</span><a class="headerlink" href="#id887" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -4736,8 +4710,8 @@ L'identificatore OID è <code class="docutils literal notranslate"><span class="
 </table>
 <p>Nella Risposta OCSP DEVE esserci almeno una <code class="docutils literal notranslate"><span class="pre">SingleResponse</span></code> per ciascun <code class="docutils literal notranslate"><span class="pre">CertID</span></code> nella richiesta.
 Ciascuna <code class="docutils literal notranslate"><span class="pre">SingleResponse</span></code> è una <em>SEQUENCE</em> ASN.1 che reca i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id816">
-<caption><span class="caption-number">Tabella 5.27 </span><span class="caption-text">Parametri della Struttura SingleResponse</span><a class="headerlink" href="#id816" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id888">
+<caption><span class="caption-number">Tabella 5.27 </span><span class="caption-text">Parametri della Struttura SingleResponse</span><a class="headerlink" href="#id888" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />

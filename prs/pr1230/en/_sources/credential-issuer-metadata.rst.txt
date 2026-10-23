@@ -30,7 +30,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **code_challenge_methods_supported**
     - JSON array containing a list of Proof Key for Code Exchange (PKCE) :rfc:`7636` code challenge methods supported by the authorization server. The authorization server MUST support *S256*.
   * - **acr_values_supported**
-    - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
+    - See Section 3 of [`OpenID Connect Discovery 1.0`_]. The supported values are:
 
       - `https://{Trust Anchor Domain}/loa/low`
       - `https://{Trust Anchor Domain}/loa/substantial`
@@ -54,7 +54,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **require_signed_request_object**
     - Boolean value. It MUST be set to `true` to indicate that the authorization request is protected using a signed Request Object [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**
-    - JSON array containing a list of the signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
+    - JSON array containing a list of the signing algorithms ("*alg*" values) supported for Request Objects. See [`OpenID Connect Discovery 1.0`_].
   * - **dpop_signing_alg_values_supported**
     - JSON array containing a list of the signing algorithms ("*alg*" values) supported for DPoP proof JWTs. See :rfc:`9449`.
   * - **jwks**

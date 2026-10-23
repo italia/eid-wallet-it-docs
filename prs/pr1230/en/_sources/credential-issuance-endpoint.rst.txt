@@ -27,7 +27,7 @@ The HTTP POST method MUST use the parameters in the message body encoded in ``ap
       - :rfc:`6749`
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.
-      - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
+      - Section 6 of [`OIDC`_]
 
 The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
 the request to the Credential Issuer authorization endpoint MUST use the following HTTP Headers parameters:
@@ -100,7 +100,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **state**
-      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
+      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in `NIST`_.
       - See [`OIDC`_] Section 3.1.2.1.
     * - **code_challenge**
       - A challenge derived from the **code verifier** that is sent in the authorization request.
@@ -441,7 +441,7 @@ The token request contains the following claims:
       - [:rfc:`67491`].
     * - **code_verifier**
       - REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. It MUST NOT be present if grant type is ``refresh_token``.
+      - :rfc:`7636`. It MUST NOT be present if grant type is ``refresh_token``.
     * - **refresh_token**
       - REQUIRED only if the grant type is ``refresh_token``. The Refresh Token previously issued to the Wallet Instance. It MUST NOT be present if grant type is ``authorization_code``.
       - [:rfc:`6749`].

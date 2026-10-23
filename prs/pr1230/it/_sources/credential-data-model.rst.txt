@@ -112,16 +112,16 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - **Riferimento**
     * - **iss**
       - OBBLIGATORIO. *Stringa*. Stringa URL che rappresenta l'identificativo univoco del Fornitore di Attestati Elettronici.
-      - `[RFC7519, Sezione 4.1.1] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.1`.
     * - **sub**
       - OPZIONALE. *Stringa*. L'identificativo del soggetto dell'Attestato Elettronico, l'Utente, DEVE essere un valore opaco e NON DEVE corrispondere a nessun dato anagrafico o essere derivato dai dati anagrafici dell'Utente tramite pseudonimizzazione. Inoltre, è richiesto che due diverse Credenziali emesse NON DEVONO utilizzare lo stesso valore di ``sub``.
-      - `[RFC7519, Sezione 4.1.2] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.2`.
     * - **iat**
       - OPZIONALE. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
-      - `[RFC7519, Sezione 4.1.6] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.6`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
-      - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.4`.
     * - **nbf**
       - OBBLIGATORIO per un PID e un EAA. Altrimenti è OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, e Regolamento di esecuzione della Commissione `EU_2026/1731`_ Allegato I, Sezione 4.2.
@@ -142,7 +142,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
-      - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
+      - :rfc:`7800#section-3.1` e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - OBBLIGATORIO. *Stringa*. Identificativo del dato `credential_type_identifier` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere impostato utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici, il confronto dei caratteri letterali inclusi in questa URN DEVE essere eseguito in modo case-sensitive. È l'identificativo del tipo di SD-JWT VC e DEVE essere impostato con un valore resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione del tipo di Attestato Elettronico. A meno che non sia diversamente specificato da `EIDAS-ARF`_ e dagli EUDI Rulebook, il ``vct`` DOVREBBE seguire una struttura come ``urn:it-wallet:{credential_type}:{credential_type_version}``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.

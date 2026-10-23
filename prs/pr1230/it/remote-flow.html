@@ -415,7 +415,7 @@ Quando <code class="docutils literal notranslate"><span class="pre">authorizatio
 <div><p>Nel <strong>Flusso Cross Device</strong>, l'URI dell'Authorization Request viene presentato attraverso un Codice QR mostrato all'Utente. L'Utente scansiona il Codice QR utilizzando l'Istanza del Wallet e recupera un URL.
 Di seguito è rappresentato un esempio non normativo di un Codice QR emesso dalla Relying Party.</p>
 <figure class="align-center" style="width: 50%">
-<img alt="_images/verifier_qr_code.svg" src="_images/verifier_qr_code.svg" />
+<img alt="Codice QR mostrato dalla Relying Party nel flusso cross-device." src="_images/verifier_qr_code.svg" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -625,7 +625,6 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 <p>Di seguito è riportato un esempio non normativo che mostra l'intestazione protetta del JWE decifrata e il payload del JWT contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">response</span></code>, prima della codifica base64url. Il valore del parametro <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> corrisponde al formato utilizzato quando il linguaggio di query DCQL è utilizzato nella richiesta di presentazione.</p>
-</div></blockquote>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECDH-ES&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">,</span>
@@ -639,6 +638,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -732,7 +732,7 @@ Nel Flusso Cross Device, il completamento non dipende da quel reindirizzamento.<
 </tr>
 </tbody>
 </table>
-<p>Il valore corrispondente all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DOVREBBE essere casuale, secondo quanto prescritto da <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Sezione 5.2.1.</p>
+<p>Il valore corrispondente all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DOVREBBE essere casuale, secondo quanto prescritto da <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html#section-5.2.1"><strong>RFC 9101#section-5.2.1</strong></a>.</p>
 </section>
 <section id="protezione-da-endpoint-mix-up">
 <span id="endpoint-mix-up-protection"></span><h2><span class="section-number">11.2.1.2. </span>Protezione da Endpoint Mix-Up<a class="headerlink" href="#protezione-da-endpoint-mix-up" title="Link to this heading">¶</a></h2>
@@ -799,7 +799,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Nell’IT Wallet, le Relying Party legacy che utilizzano un URI <code class="docutils literal notranslate"><span class="pre">https</span></code> come <code class="docutils literal notranslate"><span class="pre">client_id</span></code> seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (<code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>), come definito in [<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], per garantire la compatibilità con le versioni precedenti.</p>
+<p>Nell’IT Wallet, le Relying Party legacy che utilizzano un URI <code class="docutils literal notranslate"><span class="pre">https</span></code> come <code class="docutils literal notranslate"><span class="pre">client_id</span></code> seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (<code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>), come definito in [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], per garantire la compatibilità con le versioni precedenti.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -834,15 +834,15 @@ La risposta DEVE includere i seguenti parametri:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>L'Oggetto di Richiesta non può essere recuperato a causa di una richiesta non valida o malformata all’endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
+<td><p>L'Oggetto di Richiesta non può essere recuperato a causa di una richiesta non valida o malformata all’endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. (<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request ha incontrato un problema interno. (<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request ha incontrato un problema interno. (<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -878,13 +878,13 @@ Un nuovo Codice QR PUÒ essere offerto ove applicabile (<a class="reference inte
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>OBBLIGATORIO. Algoritmo utilizzato per firmare il JWT, secondo [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>. NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o su un identificatore di algoritmo simmetrico (MAC) (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-88</span></a>).</p></td>
+<td><p>OBBLIGATORIO. Algoritmo utilizzato per firmare il JWT, secondo [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>. NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o su un identificatore di algoritmo simmetrico (MAC) (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-88</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>OBBLIGATORIO. Media Type del JWT, come definito in [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] e [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. Il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-89</span></a>).</p></td>
+<td><p>OBBLIGATORIO. Media Type del JWT, come definito in [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] e [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. Il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-89</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>Solo sul percorso nazionale. OBBLIGATORIO quando <code class="docutils literal notranslate"><span class="pre">client_id</span></code> utilizza il prefisso <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>. Identifica la chiave pubblica nei metadata di Federazione ottenuti dopo <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a> e <a class="reference internal" href="trust-evaluation.html#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>, come definito in [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. Non è evidenza di autenticazione EUDIW.</p></td>
+<td><p>Solo sul percorso nazionale. OBBLIGATORIO quando <code class="docutils literal notranslate"><span class="pre">client_id</span></code> utilizza il prefisso <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>. Identifica la chiave pubblica nei metadata di Federazione ottenuti dopo <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a> e <a class="reference internal" href="trust-evaluation.html#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>, come definito in [<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. Non è evidenza di autenticazione EUDIW.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>Solo sul percorso nazionale. OPZIONALE. Sequenza di Entity Statement che compongono la Trust Chain della Relying Party, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>. Non è evidenza di autenticazione EUDIW.</p></td>
@@ -1063,7 +1063,7 @@ L'Istanza del Wallet DOVREBBE preferire <code class="docutils literal notranslat
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>.</p></td>
+<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>OBBLIGATORIO. Algoritmo di Firma utilizzando uno di quelli specificati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>.</p></td>
@@ -1083,7 +1083,7 @@ L'Istanza del Wallet DOVREBBE preferire <code class="docutils literal notranslat
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore DEVE essere il Client Identifier (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) della Relying Party, incluso il prefisso del Client Identifier (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> o <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>). Ad esempio, <code class="docutils literal notranslate"><span class="pre">openid_federation:https://relying-party.example.org</span></code>.</p></td>
@@ -1139,7 +1139,7 @@ Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri</span></code></p></td>
-<td><p>Il <cite>request_uri</cite> nella Authorization Request restituisce un errore, contiene dati non validi o è altrimenti malformato. <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
+<td><p>Il <cite>request_uri</cite> nella Authorization Request restituisce un errore, contiene dati non validi o è altrimenti malformato. <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_not_supported</span></code></p></td>
 <td><p>L'Istanza del Wallet non supporta nessuno dei formati vp richiesti dalla Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
@@ -1334,7 +1334,7 @@ La risposta DEVE includere i seguenti parametri:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>L'URI di Reindirizzamento fornito dalla Relying Party non corrisponde a nessuno degli URI collegati alla sessione dell'Utente. (<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
+<td><p>L'URI di Reindirizzamento fornito dalla Relying Party non corrisponde a nessuno degli URI collegati alla sessione dell'Utente. (<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -1342,11 +1342,11 @@ La risposta DEVE includere i seguenti parametri:</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta a causa di un errore interno del server. (<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta a causa di un errore interno del server. (<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché il servizio è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta perché il servizio è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>

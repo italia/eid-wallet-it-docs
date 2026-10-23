@@ -61,10 +61,10 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
   As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the :term:`Issuer` identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of :term:`User` privacy.
 
 .. note::
-  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
+  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on :rfc:`2898`. `NIST SP 800-132`_ recommends PBKDF2. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found in `Practical Cryptography for Developers`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheat Sheet`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
@@ -83,12 +83,8 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
 
 A non-normative example of the backup JWT header and payload is as the following:
 
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "wallet-unit-credentials-backup+jwt"
-  }
+.. literalinclude:: ../../examples/backup-jwt-header.json
+   :language: json
 
 .. code-block:: json
 
