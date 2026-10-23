@@ -151,9 +151,9 @@ Nell'Entity Configuration (`OID-FED`_ Sezione 3.1.2):
 - **trust_marks** (``trust_marks``): OBBLIGATORIO per Foglie e Federation Intermediate.
   Array JSON dei Trust Mark del subject.
   Il Trust Mark di registrazione è definito in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-- **trust_mark_issuers** (``trust_mark_issuers``): OBBLIGATORIO solo per Federation TA. Il parametro NON DEVE essere incluso altrimenti.
+- **trust_mark_issuers** (``trust_mark_issuers``): OBBLIGATORIO per il Federation TA.
   Oggetto JSON che dichiara, per ciascun tipo di Trust Mark, le Federation Authority fidate a emetterlo, indicate dai loro Federation Entity Identifier.
-  All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi DEVE contenere almeno l'identificatore del Federation TA.
+  All'interno di IT-Wallet il Trust Mark di registrazione è emesso solo dal Federation Trust Anchor, quindi l'Entity Configuration del Federation TA DEVE contenere almeno l'identificatore del Federation TA.
 
 Nel Subordinate Statement (`OID-FED`_ Sezione 3.1.3):
 
@@ -368,8 +368,8 @@ Dove:
   - ``<entity_type>``: L'Entity Type Identifier del subject, tra quelli definiti in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (per esempio ``openid_credential_issuer`` o ``openid_credential_verifier``), e ``intermediate`` per un Relying Party Intermediary.
 
 .. note::
-  Il Federation TA nazionale è l'issuer di Trust Mark riconosciuto all'interno della federazione e l'unica Entità che può abilitare altri issuer di Trust Mark usando il parametro ``trust_mark_issuers`` nella propria Entity Configuration.
-  Scopi aggiuntivi di Trust Mark, quando definiti, PUÒ quindi essere emessi da altre Entità autorizzate attraverso ``trust_mark_issuers``.
+  Il Federation TA nazionale è l'issuer di Trust Mark riconosciuto all'interno della federazione.
+  Scopi aggiuntivi di Trust Mark, quando definiti, POSSONO quindi essere emessi da altre Entità autorizzate attraverso ``trust_mark_issuers``.
 
 Trust Mark registration-entity
 """""""""""""""""""""""""""""""

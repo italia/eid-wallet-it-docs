@@ -151,9 +151,9 @@ In Entity Configuration (`OID-FED`_ Section 3.1.2):
 - **trust_marks** (``trust_marks``): REQUIRED for Leaves and Federation Intermediates.
   JSON Array of the Trust Marks of the subject.
   The registration Trust Mark is defined in :ref:`infrastructure-trust:Trust Mark registration-entity`.
-- **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED only for Federation TA. The parameter MUST NOT be included otherwise.
+- **trust_mark_issuers** (``trust_mark_issuers``): REQUIRED for the Federation TA.
   JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers.
-  Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.
+  Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so the Federation TA Entity Configuration MUST contain at least the Federation TA identifier.
 
 In Subordinate Statement (`OID-FED`_ Section 3.1.3):
 
@@ -368,7 +368,7 @@ Where:
   - ``<entity_type>``: The Entity Type Identifier of the subject, among those defined in :ref:`infrastructure-trust:Entity Type Identifiers and Metadata` (for example ``openid_credential_issuer`` or ``openid_credential_verifier``), and ``intermediate`` for a Relying Party Intermediary.
 
 .. note::
-  The national Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the ``trust_mark_issuers`` parameter in its Entity Configuration.
+  The national Federation TA is the Trust Mark issuer recognized within the federation.
   Additional Trust Mark purposes, when defined, MAY therefore be issued by other Entities authorized through ``trust_mark_issuers``.
 
 Trust Mark registration-entity
