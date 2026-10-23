@@ -63,7 +63,6 @@
 .. _JWS: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-signature
 .. _JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-json-web-token
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
-.. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
 .. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
