@@ -3183,9 +3183,9 @@ The metadata types are defined in <a class="reference internal" href="#entity-ty
 <li><p><strong>trust_marks</strong> (<code class="docutils literal notranslate"><span class="pre">trust_marks</span></code>): REQUIRED for Leaves and Federation Intermediates.
 JSON Array of the Trust Marks of the subject.
 The registration Trust Mark is defined in <a class="reference internal" href="#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>.</p></li>
-<li><p><strong>trust_mark_issuers</strong> (<code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>): REQUIRED only for Federation TA. The parameter MUST NOT be included otherwise.
+<li><p><strong>trust_mark_issuers</strong> (<code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>): REQUIRED for the Federation TA.
 JSON Object that declares, for each Trust Mark type, the Federation Authorities that are trusted to issue it, given by their Federation Entity Identifiers.
-Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so it MUST contain at least the Federation TA identifier.</p></li>
+Within IT-Wallet the registration Trust Mark is issued only by the Federation Trust Anchor, so the Federation TA Entity Configuration MUST contain at least the Federation TA identifier.</p></li>
 </ul>
 <p>In Subordinate Statement (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 3.1.3):</p>
 <ul class="simple">
@@ -3792,7 +3792,7 @@ Additional Trust Mark purposes MAY be defined for future needs, but they are not
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The national Federation TA is the Trust Mark issuer recognized within the federation and the only Entity that may enable other Trust Mark issuers using the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> parameter in its Entity Configuration.
+<p>The national Federation TA is the Trust Mark issuer recognized within the federation.
 Additional Trust Mark purposes, when defined, MAY therefore be issued by other Entities authorized through <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code>.</p>
 </div>
 </section>
