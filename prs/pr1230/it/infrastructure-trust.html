@@ -3772,7 +3772,10 @@ Gli esempi seguenti riportano i claim principali. I metadata di protocollo sono 
 <section id="trust-marks">
 <h3><span class="section-number">5.6.4. </span>Trust Marks<a class="headerlink" href="#trust-marks" title="Link to this heading">¶</a></h3>
 <p>A seguito del completamento con successo dell'onboarding, le entità ricevono i Trust Mark della Federazione IT-Wallet.
-I Trust Mark sono emessi dalla Federation Authority (Trust Anchor per l'onboarding diretto, Intermediate per l'onboarding mediato) attraverso il Federation Trust Mark Endpoint e servono come attestation verificabili relative alla conformità ai profili tecnici IT-Wallet e/o alle policy di autorizzazione.</p>
+I Trust Mark sono emessi dalla Federation Authority attraverso il Federation Trust Mark Endpoint.
+Per l'onboarding diretto l'issuer è il Trust Anchor.
+Per l'onboarding mediato l'issuer è l'Intermediate.
+Un Trust Mark attesta la conformità ai profili tecnici IT-Wallet, alle policy di autorizzazione, o a entrambi.</p>
 <section id="trust-mark-types-and-schema">
 <h4><span class="section-number">5.6.4.1. </span>Trust Mark Types and Schema<a class="headerlink" href="#trust-mark-types-and-schema" title="Link to this heading">¶</a></h4>
 <p>Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che riflette lo scope di autorizzazione:</p>
