@@ -502,9 +502,9 @@ This section lists the test cases from Sections:
      - Fresh DPoP proof
      - Wallet Instance generates a fresh DPoP proof with the same key used for the Token Request DPoP proof, and in accordance with :rfc:`9449#section-4`.
    * - WP_056c
-     - Issuance, Security
-     - Match the Credential key proof to the DPoP key
-     - Wallet Instance includes a ``proofs`` object of type ``jwt`` in the Credential Request that demonstrates possession of the cryptographic key material; the ``jwk`` value in this object matches the public key referenced in the DPoP proof.
+     - Voided
+     - Voided
+     - Voided
    * - WP_057
      - Issuance, Interoperability
      - Multiple Digital Credential request

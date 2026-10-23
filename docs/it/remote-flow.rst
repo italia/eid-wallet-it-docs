@@ -94,12 +94,14 @@ La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo
     .. figure:: ./images/svg/verifier_qr_code.svg
       :figwidth: 50%
       :align: center
+      :alt: Codice QR mostrato dalla Relying Party nel flusso cross-device.
 
   .. only:: format_latex
 
     .. figure:: ./images/pdf/verifier_qr_code.pdf
       :width: 50%
       :align: center
+      :alt: Codice QR mostrato dalla Relying Party nel flusso cross-device.
 
   .. note::
     Il *livello di correzione degli errori* scelto per il Codice QR DEVE essere Q (Quartile - fino al 25%), poiché offre un buon equilibrio tra capacità di correzione degli errori e densità/spazio dei dati. Questo livello di qualità e correzione degli errori consente al Codice QR di rimanere leggibile anche se è danneggiato o parzialmente oscurato (:ref:`RPR-77 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
@@ -212,19 +214,8 @@ Una valutazione fallita termina l'elaborazione. L'Istanza del Wallet NON DEVE in
 
   Di seguito è riportato un esempio non normativo che mostra l'intestazione protetta del JWE decifrata e il payload del JWT contenuto nel parametro ``response``, prima della codifica base64url. Il valore del parametro ``vp_token`` corrisponde al formato utilizzato quando il linguaggio di query DCQL è utilizzato nella richiesta di presentazione.
 
-.. code-block:: json
-
-    {
-      "alg": "ECDH-ES",
-      "enc": "A256GCM",
-      "kid": "20260202-abc123",
-      "epk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
-        "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
-      }
-    }
+  .. literalinclude:: ../../examples/shared/remote-flow-jwe-protected-header.json
+     :language: json
 
 .. literalinclude:: ../../examples/shared/remote-flow-7.json
    :language: json
@@ -306,7 +297,7 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
   * - **request_uri_method**
     - OPZIONALE solo se ``request_uri`` è presente. Altrimenti NON DEVE essere presente. Il valore DEVE essere ``get`` o ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-08 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-09 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Se non è fornito o è uguale a ``get``, l'Istanza del Wallet DEVE recuperare il Request Object con il metodo HTTP ``GET``. Se è uguale a ``post``, l'Istanza del Wallet DEVE fornire i suoi metadata nel corpo della richiesta HTTP POST, codificati in ``application/x-www-form-urlencoded``.
 
-Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
+Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da :rfc:`9101#section-5.2.1`.
 
 .. _endpoint-mix-up-protection:
 

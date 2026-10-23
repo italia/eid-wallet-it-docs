@@ -30,7 +30,7 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
   * - **code_challenge_methods_supported**
     - Array JSON contenente un elenco di metodi di *code challenge* previsti da Proof Key for Code Exchange (PKCE) :rfc:`7636` e supportati dall'*authorization server*. L'*authorization server* DEVE supportare *S256*.
   * - **acr_values_supported**
-    - Vedi `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. I valori supportati sono:
+    - Vedi la Sezione 3 di [`OpenID Connect Discovery 1.0`_]. I valori supportati sono:
 
       - `https://{Trust Anchor Domain}/loa/low`
       - `https://{Trust Anchor Domain}/loa/substantial`
@@ -54,7 +54,7 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
   * - **require_signed_request_object**
     - Booleano. DEVE essere impostato a `true` per indicare che la richiesta di autorizzazione è protetta usando un Request Object firmato [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**
-    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati per i *Request Objects*. Vedi `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
+    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati per i *Request Objects*. Vedi [`OpenID Connect Discovery 1.0`_].
   * - **dpop_signing_alg_values_supported**
     - Array JSON contenente un elenco degli algoritmi di firma (valori "*alg*") supportati per i JWT DPoP proof. Vedi :rfc:`9449`.
   * - **jwks**

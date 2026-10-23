@@ -9,7 +9,7 @@ Questa specifica è progettata per soddisfare i requisiti di molteplici stakehol
 Linguaggio normativo
 ^^^^^^^^^^^^^^^^^^^^
 
-Il testo italiano usa parole chiave normative interamente in maiuscolo. La convenzione segue BCP 14, RFC 2119 e RFC 8174. Le parole chiave inglesi corrispondenti sono MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED, MAY e OPTIONAL.
+Il testo italiano usa parole chiave normative interamente in maiuscolo. La convenzione segue BCP 14, :rfc:`2119` e :rfc:`8174`. Le parole chiave inglesi corrispondenti sono MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED, MAY e OPTIONAL.
 
 Ogni forma italiana ha lo stesso valore della parola chiave inglese corrispondente.
 

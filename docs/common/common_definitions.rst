@@ -91,7 +91,19 @@
 .. _OIDC-FED#Section-7.4: https://openid.net/specs/openid-federation-1_0.html#Section-7.4
 .. _OIDC-FED#Section-7.4.1: https://openid.net/specs/openid-federation-1_0.html#Section-7.4.1
 .. _OIDC-FED#Section-7.5: https://openid.net/specs/openid-federation-1_0.html#Section-7.5
+.. _CEN/TS 18099: https://conto.uni.com/en/cen-ts-18099-2024
+.. _ETSI TS 119 431-1: https://www.etsi.org/deliver/etsi_ts/119400_119499/11943101/01.03.01_60/ts_11943101v010301p.pdf
+.. _GP TEE Protection Profile: https://globalplatform.org/specs-library/tee-protection-profile-v1-3/
+.. _GP_OMAPI_GPD_SPE_075: https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/
+.. _NIST SP 800-132: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
+.. _NIST: https://csrc.nist.gov/glossary/term/special_character
+.. _NSCIB-CC-0244671: https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf
 .. _OIDC: https://openid.net/specs/openid-connect-core-1_0.html
+.. _OWASP Password Storage Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2
+.. _OpenID Connect Discovery 1.0: https://openid.net/specs/openid-connect-discovery-1_0.html
+.. _OpenID Connect Registration 1.0: https://openid.net/specs/openid-connect-registration-1_0.html
+.. _Practical Cryptography for Developers: https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password
+.. _W3C-CredentialAPI: https://wicg.github.io/digital-credentials/
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html

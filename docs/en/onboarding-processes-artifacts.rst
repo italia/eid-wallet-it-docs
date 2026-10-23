@@ -29,6 +29,7 @@ The Wallet-Relying Party Registration Certificate and the registration Trust Mar
 
 .. plantuml:: plantuml/acme-oidfed-x509-issuance.puml
    :width: 99%
+   :alt: Issuance of an X.509 certificate through ACME and the OpenID Federation profile.
    :caption: `Issuance of an X.509 certificate through ACME and the OpenID Federation profile. <https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0>`_
    
 

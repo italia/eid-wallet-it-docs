@@ -145,8 +145,8 @@ SR-I-40
 The issuance process securely binds the Credential to the User as follows (see :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`).
 
 * Authorization (Steps 8-10): The Wallet Instance sends an authorization request. The Credential Issuer authenticates the User using a CieID scheme or a valid PID/IT-Wallet ID. The Credential Issuer provides the Access Token to the User.
-* Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.
-* Credential Issuance (Steps 18-21): The Credential request is verified using proof of possession, which is cryptographically bound to the User. The use of the same key in the DPoP ensures that the key material is controlled by the Wallet Instance, and not by a third party.
+* Proof of Key Possession (Steps 12-13, 16-17): The Wallet Instance creates a DPoP Proof JWT. The DPoP Proof JWT binds the Access Token to the Wallet Instance. The Wallet Instance uses that same DPoP key when it presents the Access Token at the Credential Endpoint.
+* Credential Issuance (Steps 18-21): The Credential Issuer verifies the proof of possession of the key material to which the Credential will be bound. The Credential Issuer verifies the Key Attestation of that key material. The Key Attestation shows that the Wallet Instance controls that key material.
 
 SR-I-50
 ^^^^^^^
@@ -236,7 +236,7 @@ In the issuance phase, the Holder binding happens at the Credential request to t
 first and therefore send the request to the Credential endpoint and bind the Credentials to the keys under his control. The IT-Wallet specification requires the use of a sender-constrained
 access token, which means that the access token binds to the device using cryptographic materials.
 
-The second surface for the attack is related to key management. With software-based keys, the keys can be cloned and moved to a device under attacker control. If the Credentials are stolen as well, the attacker can create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks because IT-Wallet supports a hardware-backed Keystore that uses hardware-based keys. A certification profile that certifies the Keystore (TEE) against highly capable attackers is still missing. Current TEE solutions on the market reach AVA_VAN.3 at most, as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or on the `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_. The requirement is therefore only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side). The Remote WSCD provides certification at a higher assurance level.
+The second surface for the attack is related to key management. With software-based keys, the keys can be cloned and moved to a device under attacker control. If the Credentials are stolen as well, the attacker can create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks because IT-Wallet supports a hardware-backed Keystore that uses hardware-based keys. A certification profile that certifies the Keystore (TEE) against highly capable attackers is still missing. Current TEE solutions on the market reach AVA_VAN.3 at most, as shown for example in this `NSCIB-CC-0244671`_ or in the `GP TEE Protection Profile`_. The requirement is therefore only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side). The Remote WSCD provides certification at a higher assurance level.
 
 SR-V-10
 ^^^^^^^

@@ -1,0 +1,4 @@
+{
+  "alg": "ES256",
+  "typ": "wallet-unit-credentials-backup+jwt"
+}

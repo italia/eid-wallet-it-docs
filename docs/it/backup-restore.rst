@@ -59,10 +59,10 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
   Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
 
 .. note::
-  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
+  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate. PBKDF2 è definita in :rfc:`2898`. `NIST SP 800-132`_ raccomanda PBKDF2. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati in `Practical Cryptography for Developers`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheat Sheet`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (:ref:`WP_122 <credential-backup-testcases>`):
 
@@ -81,12 +81,8 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 
 Un esempio non normativo dell'intestazione e del payload del JWT di backup è il seguente:
 
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "wallet-unit-credentials-backup+jwt"
-  }
+.. literalinclude:: ../../examples/backup-jwt-header.json
+   :language: json
 
 .. code-block:: json
 

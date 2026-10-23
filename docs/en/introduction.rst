@@ -50,7 +50,7 @@ Additional documentation, tools and resources - hereinafter defined Official Res
 Normative Language and Conventions
 ----------------------------------
 
-The key words in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words in this document are to be interpreted as described in BCP 14 :rfc:`2119` :rfc:`8174` when, and only when, they appear in all capitals, as shown here.
 
 - MUST.
 - MUST NOT.

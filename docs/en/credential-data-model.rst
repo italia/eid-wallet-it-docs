@@ -113,16 +113,16 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - **Reference**
     * - **iss**
       - REQUIRED. *String*. URL string representing the Credential Issuer unique identifier.
-      - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.1`.
     * - **sub**
       - OPTIONAL. *String*. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
-      - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.2`.
     * - **iat**
       - OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
-      - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.6`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
-      - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.4`.
     * - **nbf**
       - REQUIRED for a PID and an EAA. OPTIONAL otherwise. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - :rfc:`7519#section-4.1.5`, [`ETSI TS 119 472-1`_] EAA-5.2.7.1-01, and Commission Implementing Regulation `EU_2026/1731`_ Annex I, Section 4.2.
@@ -143,7 +143,7 @@ The JWT payload contains the following claims. Unless otherwise specified, the f
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
+      - :rfc:`7800#section-3.1` and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - REQUIRED. *String*. Format-encoded data identifier `credential_type_identifier` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. Unless otherwise specified by `EIDAS-ARF`_ and EUDI Rulebooks, the `vct` SHOULD follow a structure like `urn:it-wallet:{credential_type}:{credential_type_version}`.
       - Section 3.2.2.2 `SD-JWT-VC`_.

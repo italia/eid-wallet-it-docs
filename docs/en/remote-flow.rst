@@ -95,12 +95,14 @@ For a redirect flow, the Relying Party provides the user-agent with a JavaScript
     .. figure:: ./images/svg/verifier_qr_code.svg
       :figwidth: 50%
       :align: center
+      :alt: QR code displayed by the Relying Party in the cross-device flow.
 
   .. only:: format_latex
 
     .. figure:: ./images/pdf/verifier_qr_code.pdf
       :width: 50%
       :align: center
+      :alt: QR code displayed by the Relying Party in the cross-device flow.
 
   .. note::
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured (:ref:`RPR-77 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
@@ -220,19 +222,8 @@ A failed evaluation terminates processing. The Wallet Instance MUST NOT trigger 
 
   Below is a non-normative example showing the decrypted JWE protected header and the payload of the JWT contained in the response, before base64url encoding. The ``vp_token`` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
 
-  .. code-block:: json
-
-      {
-        "alg": "ECDH-ES",
-        "enc": "A256GCM",
-        "kid": "20260202-abc123",
-        "epk": {
-          "kty": "EC",
-          "crv": "P-256",
-          "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
-          "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
-        }
-      }
+  .. literalinclude:: ../../examples/shared/remote-flow-jwe-protected-header.json
+     :language: json
 
   .. literalinclude:: ../../examples/shared/remote-flow-7.json
      :language: json
@@ -315,7 +306,7 @@ The URL parameters contained in the Relying Party Authorization Request are desc
      - OPTIONAL only if ``request_uri`` is present. Otherwise it MUST NOT be present. The value MUST be ``get`` or ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-08 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-09 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`). If it is not provided or is equal to ``get``, the Wallet Instance MUST fetch the Request Object with HTTP ``GET``. If it is equal to ``post``, the Wallet Instance MUST provide its metadata in the HTTP POST body, encoded as ``application/x-www-form-urlencoded``.
 
 .. note::
-   The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
+   The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to :rfc:`9101#section-5.2.1`.
 
 .. _endpoint-mix-up-protection:
 

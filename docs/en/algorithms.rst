@@ -4,7 +4,7 @@
 
 Cryptographic Algorithms
 ========================
-This section lists cryptographic algorithms used in the IT-Wallet ecosystem. Algorithm identifiers are primarily expressed as JOSE ``alg`` values; when COSE is used, the corresponding COSE algorithms are explicitly marked (e.g., ESP256 vs ES256).
+This section lists cryptographic algorithms used in the IT-Wallet ecosystem. Algorithm identifiers are primarily expressed as JOSE ``alg`` values. When COSE is used, the corresponding COSE algorithms are explicitly marked (e.g., ESP256 vs ES256).
 
 The following algorithms MUST be supported:
 

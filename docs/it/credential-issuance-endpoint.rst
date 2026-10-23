@@ -27,7 +27,7 @@ Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in 
       - :rfc:`6749`
     * - **request**
       - DEVE essere un JWT firmato. La chiave privata corrispondente a quella pubblica presente nel parametro ``cnf`` all'interno dell'Attestato di Unità di Wallet che DEVE essere utilizzata per firmare ilRequest Object.
-      - `OpenID Connect Core. Sezione 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
+      - Sezione 6 di [`OIDC`_]
 
 Il Pushed Authorization Endpoint è protetto con *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
 la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i seguenti parametri di header HTTP:
@@ -100,7 +100,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
       - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
     * - **state**
-      - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
+      - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `NIST`_.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.
     * - **code_challenge**
       - *Challenge* derivata dal **code verifier** che viene inviata nell'authorization request.
@@ -442,7 +442,7 @@ La token request contiene i seguenti claim:
       - [:rfc:`67491`].
     * - **code_verifier**
       - OBBLIGATORIO solo se il *grant type* è ``authorization_code``. Codice di verifica del **code_challenge**.
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. NON DEVE essere presente se il *grant type* è ``refresh_token``.
+      - :rfc:`7636`. NON DEVE essere presente se il *grant type* è ``refresh_token``.
     * - **refresh_token**
       - OBBLIGATORIO solo se il *grant type* è ``refresh_token``. Il Refresh Token precedentemente emesso all'Istanza del Wallet. NON DEVE essere presente se il *grant type* è ``authorization_code``.
       - [:rfc:`6749`].

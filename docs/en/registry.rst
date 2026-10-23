@@ -79,8 +79,8 @@ They are populated by the onboarding processes described in :ref:`onboarding-sys
 
 The Entities that **provide** the information are the following:
 
-  - the Attestation Scheme Provider, for the definition of a Credential type and its scheme;
-  - the Authentic Sources, for their declared data capabilities;
+  - the Attestation Scheme Provider, for the definition of a Credential type and its scheme.
+  - the Authentic Sources, for their declared data capabilities.
   - the Wallet-Relying Parties and the Wallet Providers, for their registration data.
 
 These roles are described in :ref:`onboarding-system:System Actors and Roles`.

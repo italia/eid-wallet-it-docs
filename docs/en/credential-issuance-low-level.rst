@@ -21,7 +21,8 @@ The Credential Issuance flow is based on [`OpenID4VCI`_], as required by [`CIR20
 The Trust Framework for issuance is selected as specified in :ref:`trust-evaluation:Selection at Issuance`.
 
 The Credential Issuer MUST use an *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential.
-Support for the Authorization Code Grant is specified in :ref:`credential-issuance:Digital Credential Issuance`.
+The Wallet Unit MUST support the Authorization Code Grant.
+Each Credential Issuer MUST support the Authorization Code Grant.
 The Credential Issuer MUST advertise that support in Authorization Server metadata [`ETSI TS 119 472-3`_].
 Credential Issuers MUST support:
 
@@ -82,7 +83,7 @@ The following diagram shows the *Issuance flow*. The normative trust requirement
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Issuance Low-Level Flow.
-    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/vLZTSnCv4d_NNz6r-q1IDNP821yB2xKX2U1Q2BuGu2LLBdaisph6qfoaYTVxrr_tj6QYcGmitDt3NLqLLJYZ_lxuTKk_-I1Tg3Q5AF5_dUjIcW0_VVJA_GJIGoN4tFx17-vvy1kaAjVMg9_WvxTwjGulYqfrULywkstPPVViiomA5M1YKAt9LKsp5Sei0BM8BksfKmjbWfO5JBoleaJT9RfobITvIoTzS5KUAiTIWn07z-1ghM2XvSh93TIUUf3Be1m4F22Vu5Bzer8eubLXjsEuTo24CpOei3TukCqqkZbv_URgzUNv-OKWSJqNmAj2vIXN_I7pKEm0OmEXjggKOGqoW4RhYNGinFd7iyddft0Z2xsGGTLco3nNtezoXMujTOwVHrwlZ5f4j-6T2XAffP0OfrAvfNKRg2N1IHNMrka_PT3MeFoB-eSide927HMfU8LHTFLdECTeXbtDH87D-Ij9RVX4Hs06H0Xs7gGsR6jP5iWtBnGiDTB39jesfYJMaHD25e7DI-8W0BOmUW4Qdi9A1OWUzdESE0j8EqAEBN8mTQiCjXeZ-_boUd9ArjElozD6GuWQfixUQ7GTxB9F2c_jrRb7Xj1ge2-DX2qa6M9MJgL9J22J95NR4DU0Np8Dh525LstGqp0bJZZbRN4p98kB_dIDMKcT-7fsQjETMcaVk1IYY7VIVHcqFz50l0bvTctmmryxQ1P2s3B0IndoTPUSko7LcwzL_YLsKffdhFHhCoS9ixoLC6lwgRQCJxt-Kx5ERFeFGPKU3aT7Js5wSjbqUDPj5ZYr2mMl7Q68DSMEMh-rvzVv2n82XxyUp5zS6zHDGLawvTSm_Vtq779YHeJ0XbKEG_9vSW9JEyrgatn0Qi7IT2BjYAKbDi7UjG782usUpVGYexyS7zM_ISqiNnFYc9MYJzqmpnOgI5ruKdjW7VZSbanMsx0FrwPkbVVa-kYqrZCw2G7bjxr_RRvsEaAF83R-6oMnbuJGJNKoA2Gbny2Oz1rNzGRjS9WrBXkA4qclF0ec7EDguHAcMFM5SE6Tc1oTvk0ojrE-Aa87hBjG_Ic5s2RSx-T_Ltc0NW7h-WTbqe-xV3rhChQ_wVnQJWBR8gT-oI2eJMcTBBYT474pSEh6HhXb1xXICC1ZSJAtxdP8W5xYqOwZ5njZIJbE4JOMEJoWgcMOJClsGLfelhJ6AzYpHes2tgYcm6QLqnbEhL8xvMVQx2UzSpnwoFr0aYkPY3vcqTrMQglvjf9JBVi2HOnwpV3mNn8qdEyucbDIUFVnmnNC5PJe7OhAe3Biwu93NvdAgyKpeSDj_ZqbdJXkjAqyOeAlvXiT298ebb5yVzGbbVJyEKmdPm8WDJEhuEVFRoOqNzBHgzeTXCVPgLQJCvn39_06zohOEvsSmzi7-mB8tARTSclO6rlox40ZSriGRcgpekCWym0H5iR8tDZA8wThw-Hg52lyFsmqM8TyTFIXcliWMMDtxs01xowlpk1J3QJyEKD68kjvJ44OSFf7FTxxs_xvoSatV7qVOOrxbx89rdK21KjdDn3kReAruSvM68VtfJAJi-DFq-mxV17mVTvqfjkZqUFO-_qEVJJGM0aCq4Z9U3na13hSd3q0UVoZCkvk4AwXBgMJ6nMKymqBZm9j0hgay0Vl3tiaAF7moUZmS70eFs7ZLieeHvfa7CndDAw-g1rgrEuksozTDYOldRLBM5g-40JxHHcAU6dHke49VdYVXLmHONU8hsYJc8LTgPvtHtGTBABe_9WbomC0rgXsAcUGYqCxCV3ROnhAelB_3rEy4rSE9-ZWOQxDWj0lM28JCe6hHRz9iqwiioJ8cI33UBjB4pJ6F9TAXgyk1AAx4F0IaCp-ti3dcPwEyu49VdYO55hIUNnNdDM5YfNJW0WuLVT0FE12helnQnF-y6XqIDl3G8t7DVN2OhZQ6dzpTJM5wNkSgGU63ePiVf0m9ZPpT-QpcgzZm_7ey9VXlViuNRo7MZM1zVFOhpoDFs0b5EgR5uvKqSEE8jQ1_qhhlVA-7LFH-cjJ-RhIrgrH-WOP2NPOV2-M4OmJQvg0thOuvvHpnlsL-5jZIthtQNTLi2uzoArPwbN5rxjubs0P7lRg_mzPv-zg1mayxE_pdEHxslU6xN4FJ2yOWrF-1eaHclOkSFOcDxNzGPbF-Z9h4Um2cqvXztAZcdGCXZpYFFlptn7uZFy-oc0y7iS_BWQpuIaTPl6_Yj09ci89HxT6C0O_XToxswGcToqbypkX-FezAqAik0knpHKy3HVg6w6-e78UbXOFTkFwlc2gpRn-8E8T9BqKUhv0OCt80a9AAswhyXbGPhYmize9Fc3UoYiyh8p6kYChnkAoVe5Hhb6N9-e8s0hAON9N7BZoUJYwFpew9YSpsD9kQHGAmJ_uYO6smjwjn8FURDH2e_1Y1_96we828m3kO3WAxmDM0kGq0v3YFbPuOda6niRCS0D4G3bJI-MGhBtP3Yjy_DSAZr0XROiE4vv1SD9ucRVAkijybMrlb_b9NVhnoiADkvKwj4E4zWRU4Xhnj74FFVB6MwHlBmPfTGCl1m9QdzkPD8O95bTeXd06bMzU91WmMG0zFWlWVBO9UWOMATrMrtLar1OwcqtoOk1Z4R3rZ96zE85JmMdiG0_e6YoYeLoxII5sxnpukx2sX8zuLX1ZSmVkzOfqgbDOFLnE4zs4Q0YQztgvvKMO8yxOaeQzrjClzQuLmoNUC-JVgtLIqhjeUl0OhW8gyntM38Vbnnk1BKdcQblf3GTOLxV1GM5pMNGyOI_CWdFF4sZRdK1tNtolJOlGtV4XGkFcNQQKSk2ITXJttkOQoJCZ5TET2auLTI_m3EHwIKXojok3NJbPhdNUZaYCuWQPPR1kDtXFJQgSTkW3dw_LHiPxAq_JPo2zjxcMWGpPnSTwwlopAP0LF0xmiO6Th58duuOTjJ0sDMy3mO97mz9wslFxGXPTEjyGoXKLLtMtiE8sNlA4RsWR_g4Dx2XktLxb5GPsDsW8rJfRWX-ryjzb19Bk-XQa3nf8-N3eCeAVuvqYATR1EqboZljchqipAYCJ8fuC8CdGUlFoxSVpTc8JzYKeEOfrbovN4OC5jHpAQVLpdIOp_PLrjqk3DQgFAP2J7Px615Cz4vAganJpX_f1cEgR_ay8Xvw8ZnuDlX7Zzy78ncQ8W7CC5nPEhGcKhzzGUBKf_Wa0>`_
+    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/vLbjRziu4lwkNp7eVhW4a9qcRVUbsHPmatHZR9juKwVv4i2WPThcLIPr8XMlzzVV35yaIbRITd70uN10qTecEPoNPvwPOGjM6f69Waa3psurBvy1qr0boLpzwNxuXmQzmLt5Mad-37xu85PhyowlU5B4Pz-LQbiVP-srEvRdtC1OQiDanksURSBb0l2MfBtthEGBBerWEOorhhn4qTuqBIjDyfObqwQiCbELJgf9agIKod1G3xo4RIfGuV5lbzFVRYukhfBfcaD76T0yvvdHmFzacSbtW5Q2iV8BPjR030ZKWxOEa-JYzdnyzneUM2uM36ynA91b6TTwa75KS2ao_7cWnKhoXJS0FdB3S3TB65fSy7AfoWrOIJ2gp5gLuYzcX98e_yf-OFbhu7X7HLUyHt-KzcUuGB-OdJr4BihShoGrd4jQ0bFIJuAQ6oQaqxKeSZmtppai1Uw7ZTTjIE6mdaiIbXklNkE7160BWxSWu3Miq7tUmhreDSO2xXtWYIsUyBl3PR0LwDcxcydep6gFdsxEmWt6tp0frOD0qq4jkrlXWvfUQ3nWwXlebo21ljSHSaTTA6Ma0gd423Uzf_RjOh5Z4vvhNZkznqraHCcroX_wP3dudgqnAYqZ7esELRtaAu5eTq5t8Zwoyakl_j4DzcopFRsNzCDN3PIB9565WNVCPElkTig6-DvipRClFfFYE2FIx-MS9CooMi8iv9FLpArgyHTtTzOoVvs__MHu0SU_7itVtaiyJuOjqQjhcFn-TW6PMd30BCUauoMQTJSUmKHDKYiMavkWN6CsI3jnqYQZ6xZX_weuUkNWNW9akK3jPcAHqhVIBTdFTCqiMnDho1MtFxLSDLkWjIBNTEsHAa5dgd3Rh0w7S2yjtAyfDGTdzfx1o1XEopv_x-LZgmEq27poNdA6-P0a8Y3C9tO46qzkTUuuP6vGZn8zxq9FVYBf5TAg92vo4NSm95zrXJZmZ6I6HjVEnTCOYYetBS9jq-tdc2Q3kw_d_qIKG0U4mdwWIEfX-rn7czJf7xBNoeceDya8yqXyV5Ee4WNRb43MJ57T1-KfqndWa88E7YQZkIeReWUnnAMTzvu3zv9Y7BDamsu1MozYREb2IUI80omd0oCsF61gLfKYnM9J27JVJCX32rAKLB58r4idgiNc3M0RiCPI3nCKCUZW_TNV4lHuIAc2HblXu-sdASmv56WDYagXaiwsXVDk9IlD5wU9C4s8jOqhddWGgj9OSdKrtmX3p46-y-Ax5Ia2ovitC1cV8m75QgOL_71tERPb8AgG3aJKoBYgSoRu-1pBnGWkiP61WxFn1NnuSOY7I5sVKHd5Zgn11hGKZqfcAYTw4t95omQR1V2PFyJ3jQwsChHr7Ky7eUdupoeDggIhSUbJDQTsnjxOQG-iW8ytqtFuRBdI_PnIuOcQ0s-nSyAUqTzhyS4VXnUZqHEsNdlcSkb9qKHRMev2fbURc012msOLBrM5VhWkk1oVl_myIR_1bWI-pHegGc8_8t_iJwIGvbGbKiVuAV58dOmnGVpqlJBs2tiPTcC_pB3E8b-68uxTXJHe0gQIS6Nzm0hQBwi_ErrMN59tYJpgI-iv5PmlV8SNY7B_s2-TOtPxKIfiqh2Ks7WPzGLZWKeK2fNfgS77pvsGgTtOAiEh4a4yCxk2lsaNMUkRK8wRkXoLVwhQ2oIUp75OABkHWayMMYZoIly_rE6MNvqxGU3yCnToGUHc56rBMCH6YsuEfYrVfv6JKplarFrP7Q0Xnhd03kxHafvqIhehuqtrxfHiLvM_Kf2FZzj02udc9hQP1IeY9t046cLpm2yu85imxXVi3g9zMtcbg7i8YBwSJYSmkSO2UIHfeK_35-s3GKENYzdCdkjBt-ENhRQu9mqZHhweSv4AwIUCSiw_rjBN5xrgNUJkm3-5qXgTM5SOh-izrdkBehO60Ln8BF4aML_YsJKw4PpO9B6BcekAow38QjV4HpD6tKzIOOaMaFkNObMvCIhq-rQ6XWFxxx6xytVam8W03WzTeVkcUQYswwSENLvvbetE1wv5yZcuekBPJ4I7lJ9_tfDfHJWJhEhaV8tL8GIbr-MUoVVi-IywFdNVJr8O3eV-orLlD3I5mrVg_q4EZlWIHiwxKySv99BZwLqJr6WUuYpRSyNZiv0dqMIVHEinEN8NtZV0-mprk5GE5IxiXhRXbzLcxXvYR5CH3sxQJG286Ne7YVSc3IfFmVPw5jYfCyA1nvx50G4NAoaGTwJ5CBcnBntaGdTT5br7z9PJ3ADvxl5H0SEwsM2fmWFOpR87RFV8sDRZLFqqyBo7X08XMou_UVuyjKmOfAU0bzOzDOBQayGvN_Aoz4sO9uVcmgSkEC4Bg8KhCMXOWR0TqYohXRSxwYhTDXtrsCAtcHlGJLk6KrSe1qJ0hfO7yTJszZs8-b5ErzrvZ51m9HoFrZQ6wZA4CGB4X5APsi2woT-HdXFmFbTR8YHgsEk0d8B2dULMM2n8leLs_z5CvXfNqNsBeBtbkRQV41cc59X5Q4AUOvVl5RNuYy7KQlpnSwvK0RUubjk3VX3ju9rHeaL0wk7M4q_xjOjwwFMW4rlVhZgFMtw8tMxlwKAxhSLJaEvNvBknJPTqfZsDd2BGLvLyN9k_ZtSdgIw1DQ332K8veVqeHoR8MmexPR54kB-RjyMeMEmzWjxBXanRJ9-OFcjQpxbkvtwdTkARq7g4S_GUYMaJUCbp2tbNhZmicYrPkIkCmZcfM8kihcRenGqUPaQXwDuPiG4pDRH76lld3VCpeojyfy2qLfcmqw3SXVThJF3pYIl2bhbfiBT6Lh6HlW7sjpWA2dCuJXGQ5OjXSu0pAS4vtgV3HhOY35NxQFRDSk6ASTWRplSrIoU-JTOyG-VHKrEF8XRILXFyaPwdlaK9tBhRqw11MOiENeKclu5d_v3Gh6Cps4c_b80ZpM4yrxOeeg_tUFVXzg8ffqHgJOOF0jAYpiUJQq99zX0z5tbaDWNtFRK_eQBJVvbrj4MNu7dtqcTtdIOCxF_XqJHWYPXUL0dHzcMrsVZqI7VoOwylFU0zgRo4AmLdYbv2pBy1>`_
 
 
 .. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
@@ -300,7 +301,7 @@ Below is a non-normative example of a Nonce Response:
 .. note::
    If the Wallet Instance requests a batch issuance of Digital Credentials, the flow continues with **Step 17**. Otherwise Steps **15-16** are performed.
 
-**Step 15 (Proof of Possession of Credential)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** using the private key used for the DPoP. The ``jwk`` value in the proof parameter MUST be equal to the public key referenced in the DPoP (:ref:`WP_056c <wallet-credential-issuance-testcases>`).
+**Step 15 (Proof of Possession of Credential)**: The Wallet Instance creates a proof of possession of the key material to which the Digital Credential will be bound. The Wallet Instance uses the ``c_nonce`` obtained in **Step 13**. The Wallet Instance MUST sign that proof with the private key of that key material. The ``jwk`` value in the proof MUST be the public key of that key pair. The Credential binding key is independent of the DPoP key used in **Step 14**.
 
 **Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proof (which demonstrates possession of the key) as per :ref:`WP_056 <wallet-credential-issuance-testcases>`. The ``proofs`` parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued Digital Credential will be bound. To verify the proof, the Credential Issuer conducts the following checks at the Credential endpoint:
 
@@ -356,20 +357,8 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 **Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer, in addition to the predefined checks in **Step 16**, must ensure the ``jwk`` attribute in each key proofs is unique (:ref:`WP_058 <wallet-credential-issuance-testcases>`).
 
 
-.. code-block:: http
-
-  POST /credential HTTP/1.1
-    Host: eaa-provider.example.org
-  Content-Type: application/json
-  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
-  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
-      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
-      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
-      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
-      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
-      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+.. literalinclude:: ../../examples/shared/credential-issuance-low-level-5.http
+   :language: http
 
 .. literalinclude:: ../../examples/batch-credential-request.json
    :language: JSON
@@ -714,18 +703,5 @@ The Wallet Instance sends:
 
 The Authentic Source responds:
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  Cache-Control: no-store
-
-  {
-    "credential_issuer": "https://credential-issuer.example.org",
-    "credential_configuration_ids": ["mso_mdoc_mDL"],
-    "grants": {
-      "authorization_code": {
-        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
-      }
-    }
-  }
+.. literalinclude:: ../../examples/shared/credential-offer-response.http
+   :language: http
