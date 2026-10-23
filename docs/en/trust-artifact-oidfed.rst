@@ -350,7 +350,10 @@ Trust Marks
 ^^^^^^^^^^^
 
 As a result of a successful onboarding completion, entities receive IT-Wallet Federation Trust Marks.
-Trust Marks are issued by the Federation Authority (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) through the Federation Trust Mark Endpoint and serve as verifiable attestations about compliance with IT-Wallet technical profiles and/or authorization policies.
+Trust Marks are issued by the Federation Authority through the Federation Trust Mark Endpoint.
+For direct onboarding the issuer is the Trust Anchor.
+For mediated onboarding the issuer is the Intermediate.
+A Trust Mark attests compliance with IT-Wallet technical profiles, authorization policies, or both.
 
 Trust Mark Types and Schema
 """""""""""""""""""""""""""
