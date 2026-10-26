@@ -1025,7 +1025,7 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
      - **Description**
      - **Reference**
    * - **typ**
-     - REQUIRED. It MUST be set to ``JOSE``.
+     - REQUIRED. It MUST be set to ``it-wallet-credential-catalog+jwt``.
      - [:rfc:`7515` Section 4.1.9].
    * - **alg**
      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
@@ -1035,9 +1035,6 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
      - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - REQUIRED. It MUST be set to ``application/json``.
      - [:rfc:`7515` Section 4.1.6.].
 
 The JWS payload contains the following parameters:
@@ -1049,8 +1046,6 @@ The JWS payload contains the following parameters:
 
    * - **Field Name**
      - **Description**
-   * - **id**
-     - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``).
    * - **version**
      - REQUIRED. Version of the Digital Credential Catalog format.
    * - **last_modified**
