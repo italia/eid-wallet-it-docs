@@ -423,18 +423,28 @@ Di seguito è rappresentato un esempio non normativo di un Codice QR emesso dall
 </div>
 <p>L'URL all'interno del Codice QR contiene <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> e, se presente, <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>).
 Di seguito è riportato un esempio non normativo del contenuto del Codice QR per un Request Object per riferimento:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;request_uri_method=post
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eu-eaap://authorize?client_id=x509_hash%3AAbCdEfGhIjKlMnOp&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post
 </pre></div>
 </div>
 <p>Un template HTML ufficiale e autoconsistente per questa pagina QR <strong>Cross Device</strong>—con header, footer, accessibilità, testi multilingua e payload dimostrativo configurabile—è disponibile nella sezione <a class="reference internal" href="official-resources.html#componenti-html"><span class="std std-ref">Componenti HTML</span></a> (<strong>IT-Wallet Presentation QR Code Page</strong>). È raggiungibile dalle card della <strong>IT-Wallet Selection Page</strong> nella stessa sezione.</p>
-<p>Mentre, nel <strong>Flusso Same Device</strong>, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a <code class="docutils literal notranslate"><span class="pre">302</span></code>) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>).
-Di seguito è riportato un esempio non normativo per un Request Object by reference:</p>
+<p>Mentre, nel <strong>Flusso Same Device</strong>, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a <code class="docutils literal notranslate"><span class="pre">302</span></code>) o mostra all'utente una pagina html con un pulsante href (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Nel percorso EUDIW, l'URL usa <code class="docutils literal notranslate"><span class="pre">client_id</span></code> con il prefisso <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, l'invocazione <code class="docutils literal notranslate"><span class="pre">eu-eaap://</span></code> e <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>.</p></li>
+<li><p>Nel percorso nazionale usa il prefisso <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Di seguito è riportato un esempio non normativo per un Request Object by reference:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-<span class="na">Location</span><span class="o">:</span> <span class="l">https://wallet-solution.digital-strategy.europa.eu?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2Fcb&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">eu-eaap://authorize?client_id=x509_hash%3AAbCdEfGhIjKlMnOp&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Passaggio 8</strong>: L'Istanza del Wallet valuta la trust con la Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_078–080</span></a>).</p>
+<p><strong>Passaggio 8</strong>: L'Istanza del Wallet valuta la trust con la Relying Party usando esattamente il framework selezionato dal prefisso di <code class="docutils literal notranslate"><span class="pre">client_id</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_078–080</span></a>).</p>
+<ul class="simple">
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>, segue <a class="reference internal" href="trust-evaluation.html#eudiw-authentication"><span class="std std-ref">EUDIW Authentication</span></a>, <a class="reference internal" href="trust-evaluation.html#eudiw-authorization"><span class="std std-ref">EUDIW Authorization</span></a> e <a class="reference internal" href="trust-evaluation.html#eudiw-metadata-retrieval-and-validation"><span class="std std-ref">EUDIW Metadata Retrieval and Validation</span></a>.</p></li>
+<li><p>Per <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>, segue <a class="reference internal" href="trust-evaluation.html#federation-entity-authentication"><span class="std std-ref">Federation Entity Authentication</span></a>, <a class="reference internal" href="trust-evaluation.html#authorization"><span class="std std-ref">Authorization</span></a> e <a class="reference internal" href="trust-evaluation.html#metadata-retrieval-and-validation"><span class="std std-ref">Metadata Retrieval and Validation</span></a>.</p></li>
+</ul>
 <p><strong>Passaggi 9-11 (Richiesta URI Request)</strong>: L'Istanza del Wallet verifica se la Relying Party ha fornito il request_uri_method all'interno del suo Request Object firmato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083</span></a>).</p>
 <blockquote>
 <div><ul>
@@ -1475,7 +1485,7 @@ La risposta DEVE includere i seguenti parametri:</p>
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 23/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 26/10/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

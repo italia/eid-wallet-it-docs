@@ -6,6 +6,7 @@ Digital Credential Issuance
 ============================
 
 This section describes the PID and (Q)EAAs issuance flow with a high level of security.
+The high-level flows are specified in :ref:`credential-issuance-high-level:Credential Issuance High-Level Flows`.
 
 Issuance uses [`OpenID4VCI`_], profiled by [`OPENID4VC-HAIP`_], as required by [`CIR2024/2982`_], and is controlled by [`ETSI TS 119 472-3`_].
 Support for the Authorization Code Grant is specified in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`.

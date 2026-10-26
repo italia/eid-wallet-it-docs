@@ -5,6 +5,7 @@ Emissione di Attestati Elettronici
 ==================================
 
 Questa sezione descrive il flusso di emissione di un Attestato Elettronico di Dati di Identificazione Personale (PID) e di Attestati Elettronici di Attributi ((Q)EAA) con un elevato livello di sicurezza.
+I flussi ad alto livello sono specificati in :ref:`credential-issuance-high-level:Flussi ad Alto Livello per l'Emissione di Attestati Elettronici`.
 Nelle sezioni successive, Credential Issuer indica il Fornitore di Attestati Elettronici.
 PID Provider indica il Fornitore di Attestati Elettronici di Dati di Identificazione Personale.
 (Q)EAA Provider indica il Fornitore di Attestati Elettronici di Attributi.
