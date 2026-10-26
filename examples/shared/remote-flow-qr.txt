@@ -1,0 +1,1 @@
+eu-eaap://authorize?client_id=x509_hash%3AAbCdEfGhIjKlMnOp&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
