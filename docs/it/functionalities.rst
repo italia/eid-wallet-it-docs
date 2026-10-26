@@ -217,8 +217,8 @@ Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elet
 
 Tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica possono verificarsi problemi di comunicazione. Processi amministrativi o tecnici possono non consentire di fornire immediatamente l'Attestato Elettronico di Attributi. In questi casi gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire quanto segue.
 
-- l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato.
-- l'Utente venga informato dal Fornitore di Attestati Elettronici di Attributi non appena l'Attestato Elettronico di Attributi è disponibile.
+- l'Utente, dopo aver approvato la presentazione dei propri dati di identificazione personale, visualizza un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato.
+- l'Utente viene informato dal Fornitore di Attestati Elettronici di Attributi non appena l'Attestato Elettronico di Attributi è disponibile all'ottenimento.
 
 In caso di dati errati all'interno di un Attestato Elettronico di Attributi già ottenuto o in fase di ottenimento, il Fornitore di Wallet DOVREBBE garantire all'Utente un'adeguata assistenza attraverso la propria Istanza del Wallet. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`.
 
@@ -859,9 +859,9 @@ I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il proce
 - **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione.
 - **Error Page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione.
 
-Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici:
+Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici.
 
-- un **header e/o un subheader**, che permette all'Utente di tornare alla pagina precedente.
+- un **header e/o un subheader**, da personalizzare, che permette all'Utente di tornare alla pagina precedente e avere contezza dell'ente di provenienza.
 - un **footer** che include l'informativa privacy, le note legali e la Dichiarazione di Accessibilità, ove previsto da normativa.
 
 Di seguito invece gli elementi specifici caratteristici delle diverse pagine.
@@ -909,7 +909,7 @@ La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Aut
   Questa sezione descrive come visualizzare la Selection Page come parte di un processo di Autenticazione. La stessa pagina DOVREBBE essere utilizzata anche dai Verificatori di Attestati Elettronici durante la presentazione e da terze parti che supportano il Credential Offer per abilitare l'opzione di selezione della Soluzione Wallet. Ulteriori dettagli sono forniti in :ref:`remote-flow:Flusso Remoto` e :ref:`credential-issuance-low-level:Flusso Credential Offer`.
 
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
+Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page come resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.
 
 .. only:: format_html
 
@@ -975,7 +975,7 @@ QR Code Page (*solo per modalità cross-device*)
 
 La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device. La pagina invita l'Utente a scansionare il codice QR generato con la propria Istanza del Wallet o con la fotocamera del proprio dispositivo.
 
-Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
+Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) come resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.
 
 .. only:: format_html
 
@@ -1017,7 +1017,7 @@ Thank You Page
 
 La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di informare l’Utente sull’avvenuta Autenticazione.
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
+Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page come resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.
 
 .. only:: format_html
 
@@ -1047,7 +1047,7 @@ Error Page
 
 La pagina di errore rappresenta quella tipologia di pagina su cui l'Utente atterra in caso di errori nel corso del flusso di Autenticazione, e ha lo scopo di comunicare all'Utente la natura di tali errori (es. errore tecnico, assenza di rete, malfunzionamento dell'Istanza del Wallet, consenso alla presentazione dei dati negato etc.) e di presentare le azioni che l'Utente può intraprendere. Per approfondimenti sulle casistiche di errore si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
+Il Verificatore di Attestati Elettronici DEVE implementare la Error Page come resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`, personalizzando gli elementi trasversali header e/o subheader con il proprio logo.
 
 .. only:: format_html
 
