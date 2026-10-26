@@ -109,22 +109,26 @@ La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo
   L'URL all'interno del Codice QR contiene ``client_id``, ``request_uri`` e, se presente, ``request_uri_method`` (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
   Di seguito è riportato un esempio non normativo del contenuto del Codice QR per un Request Object per riferimento:
 
-  .. code-block:: text
-
-    https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
+  .. literalinclude:: ../../examples/shared/remote-flow-qr.txt
+     :language: text
 
   Un template HTML ufficiale e autoconsistente per questa pagina QR **Cross Device**—con header, footer, accessibilità, testi multilingua e payload dimostrativo configurabile—è disponibile nella sezione :ref:`official-resources:Componenti HTML` (**IT-Wallet Presentation QR Code Page**). È raggiungibile dalle card della **IT-Wallet Selection Page** nella stessa sezione.
 
-  Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
+  Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
+
+    * Nel percorso EUDIW, l'URL usa ``client_id`` con il prefisso ``x509_hash``, l'invocazione ``eu-eaap://`` e ``request_uri``.
+    * Nel percorso nazionale usa il prefisso ``openid_federation``.
+
   Di seguito è riportato un esempio non normativo per un Request Object by reference:
 
-  .. code-block:: http
-
-    HTTP/1.1 302 Found
-    Location: https://wallet-solution.digital-strategy.europa.eu?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2Fcb&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
+  .. literalinclude:: ../../examples/shared/remote-flow-same-device.http
+     :language: http
 
 
-**Passaggio 8**: L'Istanza del Wallet valuta la trust con la Relying Party (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`).
+**Passaggio 8**: L'Istanza del Wallet valuta la trust con la Relying Party usando esattamente il framework selezionato dal prefisso di ``client_id`` (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`).
+
+* Per ``x509_hash``, segue :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization` e :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
+* Per ``openid_federation``, segue :ref:`trust-evaluation:Federation Entity Authentication`, :ref:`trust-evaluation:Authorization` e :ref:`trust-evaluation:Metadata Retrieval and Validation`.
 
 **Passaggi 9-11 (Richiesta URI Request)**: L'Istanza del Wallet verifica se la Relying Party ha fornito il request_uri_method all'interno del suo Request Object firmato (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 

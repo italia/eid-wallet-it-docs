@@ -1,0 +1,65 @@
+name: Check remote-flow QR
+
+on:
+  push:
+    branches: [ "*" ]
+    paths:
+      - 'examples/shared/remote-flow-qr.txt'
+      - 'docs/en/remote-flow.rst'
+      - 'docs/it/remote-flow.rst'
+      - 'docs/en/images/svg/verifier_qr_code.svg'
+      - 'docs/it/images/svg/verifier_qr_code.svg'
+      - 'docs/en/images/pdf/verifier_qr_code.pdf'
+      - 'docs/it/images/pdf/verifier_qr_code.pdf'
+      - 'utils/check_remote_flow_qr.py'
+      - '.github/workflows/check-remote-flow-qr.yml'
+  pull_request:
+    branches: [ "*" ]
+    paths:
+      - 'examples/shared/remote-flow-qr.txt'
+      - 'docs/en/remote-flow.rst'
+      - 'docs/it/remote-flow.rst'
+      - 'docs/en/images/svg/verifier_qr_code.svg'
+      - 'docs/it/images/svg/verifier_qr_code.svg'
+      - 'docs/en/images/pdf/verifier_qr_code.pdf'
+      - 'docs/it/images/pdf/verifier_qr_code.pdf'
+      - 'utils/check_remote_flow_qr.py'
+      - '.github/workflows/check-remote-flow-qr.yml'
+  workflow_dispatch:
+
+jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
+  check-remote-flow-qr:
+    name: Compare remote-flow QR with included text
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install QR decode dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libzbar0 poppler-utils libcairo2-dev pkg-config
+          python -m pip install pyzbar pillow==12.3.0 svglib==1.5.1 reportlab==4.4.0 pycairo rlPyCairo
+
+      - name: Check QR payload
+        run: python utils/check_remote_flow_qr.py

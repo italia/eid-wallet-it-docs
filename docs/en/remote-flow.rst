@@ -110,9 +110,8 @@ For a redirect flow, the Relying Party provides the user-agent with a JavaScript
   The URL inside the QR Code contains ``client_id``, ``request_uri``, and optional ``request_uri_method`` parameters (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
   Below is represented a non-normative example of the QR Code raw payload with Request Object by reference:
 
-  .. code-block:: text
-
-    https://wallet-solution.example.org/authorization?client_id=openid_federation%3Ahttps%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest&request_uri_method=post
+  .. literalinclude:: ../../examples/shared/remote-flow-qr.txt
+     :language: text
 
   An official, self-contained HTML template for this **Cross Device** QR code page—including header, footer, accessibility, multilingual copy, and a configurable demonstrative payload—is provided in the :ref:`official-resources:HTML Components` section (**IT-Wallet Presentation QR Code Page**). It is linked from the wallet cards on the **IT-Wallet Selection Page** in the same section.
 
@@ -123,10 +122,8 @@ For a redirect flow, the Relying Party provides the user-agent with a JavaScript
   
   Below is a non-normative example with Request Object by reference:
 
-  .. code-block:: http
-
-    HTTP/1.1 302 Found
-    Location: eu-eaap://authorize?client_id=x509_hash%3AAbCdEfGhIjKlMnOp&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
+  .. literalinclude:: ../../examples/shared/remote-flow-same-device.http
+     :language: http
 
 
 **Step 8**: The Wallet Instance evaluates the trust with the Relying Party using exactly the framework selected by the ``client_id`` prefix (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`). 
