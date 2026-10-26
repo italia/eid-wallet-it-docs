@@ -34,7 +34,7 @@ def convert_svg_to_pdf(input_file: str, output_dir: str = None) -> str:
 
         # SVG → PDF conversion
         drawing = svg2rlg(str(input_path))
-        renderPDF.drawToFile(drawing, str(output_path))
+        renderPDF.drawToFile(drawing, str(output_path), pdfVersion=(1, 5))
 
         print(f"Conversion completed: {input_path} → {output_path}")
         return str(output_path)
