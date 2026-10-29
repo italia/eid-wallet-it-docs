@@ -435,11 +435,11 @@ Below is a non-normative example of a successful response containing a batch of 
   HTTP/1.1 204 No Content
 
 .. note::
-   In some cases there are multiple sets of Credential data available in the Authentic Source system, and the User may be interested in obtaining more than one Credential. In these cases the Issuance Flow remains the same as described in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. In the Token Response (**Step 11**), the Credential Issuer generates a unique identifier (``credential_identifier``) for each Credential Dataset provided in the `AttributeClaims` parameter of the e-service PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Therefore, the ``credential_identifiers`` array within the ``authorization_details`` object contains the identifiers of all Credentials available for issuance. The Wallet sends a Credential Request (**Step 16**) for each identifier, obtaining multiple distinct Credentials that are individually shown to the User for the acceptance. Finally, the Credential Issuer is notified by the Wallet of the outcome through the :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_057 <wallet-credential-issuance-testcases>`).
+   In some cases there are multiple sets of Credential data available in the Authentic Source system, and the User may be interested in obtaining more than one Credential. In these cases the Issuance Flow remains the same as described in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. In the Token Response (**Step 11**), the Credential Issuer generates a unique identifier (``credential_identifier``) for each Credential Dataset provided in the `AttributeClaims` parameter of the e-service PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Therefore, the ``credential_identifiers`` array within the ``authorization_details`` object contains the identifiers of all Credentials available for issuance. The Wallet sends a Credential Request (**Step 16**) for each identifier, obtaining multiple distinct Credentials that are individually shown to the User for the acceptance. Finally, the Credential Issuer is notified by the Wallet of the outcome through the :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 
 .. note::
-   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure.
+   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (``credential_accepted``) applies to all Credentials, any partial failure is treated as a batch failure.
 
 
 Refresh Token Flow
@@ -450,7 +450,7 @@ To use the Deferred, Credential Request, and Notification endpoints, the Wallet 
 An Access Token obtained as a result of a Refresh Token flow MUST be limited to the following endpoints.
 
   - The Deferred endpoint, to obtain a new Digital Credential after the time set in the parameter ``interval`` or when the Digital Credential is notified as ready to be issued (:ref:`WP_066 <wallet-credential-issuance-testcases>`).
-  - The Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer.
+  - The Notification endpoint, to notify the issuance outcome (``credential_accepted``, ``credential_deleted``, ``credential_failure``) to the Credential Issuer.
   - The Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`credential-issuance-low-level:Re-Issuance Flow`).
 
 To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in Section :ref:`credential-issuance-low-level:Security Considerations`.

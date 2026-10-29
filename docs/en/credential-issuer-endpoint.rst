@@ -33,10 +33,15 @@ The Credential Issuer MUST respond with HTTP Status Code 200 and return the Cred
 
 - the header and payload parameters defined in Section 12.2.3 of `OpenID4VCI`_ in addition to those defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` as a signed JSON Web Token using the media type *application/jwt*.
 
-Below is a non-normative example of Credential Issuer metadata in signed form:
+On the EUDIW path the Wallet Unit obtains the Credential Issuer Metadata as that signed JSON Web Token. The media type is *application/jwt*. The unsigned JSON document remains available at the same endpoint. The unsigned JSON document is not the artifact authenticated in :ref:`trust-evaluation:Metadata Validation`.
 
-.. literalinclude:: ../../examples/credential-issuer-metadata.txt
-   :language: text
+On the wire the EUDIW document is one signed JSON Web Token. Below is a non-normative example of its protected header and payload. The ``x5c`` chain starts with the access certificate. The trust anchor is absent. The ``registration_cert`` value is the compact serialization of the WRPRC example in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-header.json
+   :language: json
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-payload.json
+   :language: json
 
 The ``authorization_servers`` entries of the Credential Issuer Metadata can be used to obtain the Authorization Server metadata from the Oauth Authorization Server ``/.well-known/oauth-authorization-server`` as defined in Section 3 of :rfc:`8414`.
 In case the ``authorization_servers`` parameter is omitted, the Credential Issuer's identifier can be used to retrieve the Authorization Server metadata.
