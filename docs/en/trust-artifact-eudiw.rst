@@ -77,6 +77,11 @@ The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`
 The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available as `EUDI-TS 5 JSON Schema`_.
 The national Register API provides only the read methods of `EUDI-TS 5 OpenAPI`_.
 
+.. only:: html
+
+  .. note::
+    The national read profile is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
+
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -98,6 +103,11 @@ Revocation on suspension or cancellation of the WRP services is specified in :re
 The following is an example of a WRPAC for legal persons following the NCP.
 
 .. literalinclude:: ../../examples/wrpac-ncp.txt
+   :language: text
+
+The following is an example of a WRPAC for a PID Provider following the NCP.
+
+.. literalinclude:: ../../examples/wrpac-pid-provider.txt
    :language: text
 
 Registrar Sign/Seal Certificate Profile
@@ -166,6 +176,11 @@ Below a non-normative example of WRPRC header and payload for a Relying Party.
    :language: json
 
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
+   :language: json
+
+Below a non-normative example of a WRPRC payload for a PID Provider. The header is the one above.
+
+.. literalinclude:: ../../examples/wrprc-payload-pid-provider.json
    :language: json
 
 Below a non-normative example of WRPRC payload for an intermediated Relying Party.
