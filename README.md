@@ -64,11 +64,17 @@ LTS does not cover new features, API changes, or modifications that would imply 
 
 This section contains the references about the official releases of this project.
 
-#### Stable release
+#### LTS stable release
 
 | Version | English | Italian |
 |---------|---------|---------|
 | 1.4.7 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.7/eid-wallet-it-docs-en-20260922-133003.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.7/eid-wallet-it-docs-it-20260922-133003.pdf) |
+
+#### EUDIW release
+
+| Version | English | Italian |
+|---------|---------|---------|
+| 1.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.5.0/eid-wallet-it-docs-en-20261027-111543.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.5.0/eid-wallet-it-docs-it-20261027-111543.pdf) |
 
 For previous releases see [RELEASES-HISTORY.md](RELEASES-HISTORY.md).
 
