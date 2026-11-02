@@ -92,7 +92,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Key Attestat
   6. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e le rispettive thumbprint JWKs ``[key_pub_1,...,key_pub_n]``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   7. L'``integrity_assertion`` DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   8. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
-  9. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  9. L'identificativo opaco nel parametro ``iss`` DEVE identificare l'Istanza del Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
 Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Key Attestation valida per almeno un mese (:ref:`WP_144 <wallet-instance-optional-testcases>`).
 

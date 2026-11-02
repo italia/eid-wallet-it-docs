@@ -243,7 +243,7 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - **Description**
       - **Reference**
     * - **iss**
-      - String containing the unique identifier of the Wallet Instance.
+      - Opaque string containing the unique identifier of the Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp representing the JWT expiration time.
@@ -381,7 +381,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The Proof of Possession (``hardware_signature``) is invalid.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The ``iss`` parameter does not match the Wallet Provider's expected URL identifier.
+      - The opaque identifier in the ``iss`` parameter does not identify the Wallet Instance.
     * - ``404 Not Found``
       - ``not_found``
       - The Wallet Instance was not found.
@@ -535,7 +535,7 @@ The Key Attestation Request JWT includes the following body claims:
       - **Description**
       - **Reference**
     * - **iss**
-      - String containing the unique identifier of the Wallet Instance.
+      - Opaque string containing the unique identifier of the Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp representing the JWT expiration time.
