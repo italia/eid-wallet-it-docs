@@ -68,7 +68,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Insta
   5. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e la chiave pubblica ``jwk``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   6. L'``integrity_assertion`` DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
-  8. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  8. L'identificativo opaco nel parametro ``iss`` DEVE identificare l'Istanza del Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
 Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Instance Attestation che soddisfa :ref:`la durata della Wallet Instance Attestation <wia-time-to-live>` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 

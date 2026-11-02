@@ -243,7 +243,7 @@ Il JWT della richiesta include le seguenti claim nel body:
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - Stringa contenente l'identificativo univoco della Wallet Instance.
+      - Stringa opaca contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp che rappresenta il tempo di scadenza del JWT.
@@ -381,7 +381,7 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
       - La Proof of Possession (``hardware_signature``) non è valida.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - Il parametro ``iss`` non corrisponde all'identificatore URL previsto dal Fornitore di Wallet.
+      - L'identificativo opaco nel parametro ``iss`` non identifica l'Istanza del Wallet associata.
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza del Wallet non è stata trovata.
@@ -535,7 +535,7 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - **Description**
       - **Reference**
     * - **iss**
-      - Stringa contenente l'identificativo univoco della Wallet Instance.
+      - Stringa opaca contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - Timestamp UNIX che rappresenta il tempo di scadenza del JWT.
