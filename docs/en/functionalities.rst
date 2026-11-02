@@ -216,8 +216,8 @@ The Wallet Provider MUST allow the User to remove an Electronic Attestation of A
 
 In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the actors involved MAY support a deferred issuance process. In this case the Wallet Provider MUST guarantee that:
 
-- Upon reaching the final step of the process, the User visualizes a message prompting them to wait until the Electronic Attestation of Attributes can be issued.
-- The User is informed by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available.
+- After approving the presentation of their personal identification data, the User views a message prompting them to wait until the Electronic Attestation of Attributes can be issued.
+- The User is informed by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available for issuance.
 
 If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the :ref:`functionalities:User Assistance` section.
 
@@ -856,7 +856,7 @@ Relying Parties MUST implement and provide the following pages as part of the Au
 
 Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:
 
-- A **header and/or subheader** allowing Users to navigate back to the previous page.
+- A **header and/or subheader**, to customize, allowing Users to navigate back to the previous page and see where they came from.
 - A **footer** including the privacy policy, legal notice, and accessibility statement, where required by current regulations.
 
 Specific requirements for each individual page are detailed below.
@@ -902,7 +902,7 @@ The Selection Page is the page on which the User lands after they have chosen to
    This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in :ref:`remote-flow:Remote Flow` and :ref:`credential-issuance-low-level:Credential Offer Flow`.
 
 
-The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`.
+The Relying Party MUST implement the Selection Page as provided in the :ref:`official-resources:Official Resources`, customizing the recurring header and/or subheader elements with its logo.
 
 .. only:: format_html
 
@@ -967,7 +967,7 @@ The Relying Party MAY also include a text component on the Selection Page to pro
 
 The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.
 
-Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`.
+Relying Parties MUST implement the QR Code Page (cross-device) as provided in the :ref:`official-resources:Official Resources`, customizing the recurring header and/or subheader elements with its logo.
 
 .. only:: format_html
 
@@ -1008,7 +1008,7 @@ Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the 
 
 The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.
 
-Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`.
+Relying Parties MUST implement the Thank You Page as provided in the :ref:`official-resources:Official Resources`, customizing the recurring header and/or subheader elements with its logo.
 
 .. only:: format_html
 
@@ -1037,7 +1037,7 @@ The Relying Party implementing the page:
 
 The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the :ref:`functionalities:Error Management` section.
 
-Relying Parties MUST implement the Error Page provided in the :ref:`official-resources:Official Resources`.
+Relying Parties MUST implement the Error Page as provided in the :ref:`official-resources:Official Resources`, customizing the recurring header and/or subheader elements with its logo.
 
 .. only:: format_html
 
