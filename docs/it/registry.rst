@@ -1025,7 +1025,7 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
      - **Descrizione**
      - **Riferimento**
    * - **typ**
-     - OBBLIGATORIO. DEVE essere impostato su ``JOSE``.
+     - OBBLIGATORIO. DEVE essere impostato su ``it-wallet-credential-catalog+jwt``.
      - [:rfc:`7515` Section 4.1.9].
    * - **alg**
      - OBBLIGATORIO. Identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` né con un identificatore di algoritmo simmetrico (MAC).
@@ -1035,9 +1035,6 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
      - OPZIONALE. Contiene il Certificato X.509 della chiave pubblica o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWS. Quando il parametro di intestazione `kid` è presente, DEVE fare riferimento alla stessa chiave pubblica crittografica foglia utilizzata con il Certificato X.509.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - OBBLIGATORIO. DEVE essere impostato su ``application/json``.
      - [:rfc:`7515` Section 4.1.6.].
 
 Il payload JWS contiene i seguenti parametri:
@@ -1049,8 +1046,6 @@ Il payload JWS contiene i seguenti parametri:
 
    * - **Nome Campo**
      - **Descrizione**
-   * - **id**
-     - OBBLIGATORIO. Identificatore univoco del Catalogo delle Credenziali Digitali (es. ``urn:credential-catalog:it-wallet``).
    * - **version**
      - OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.
    * - **last_modified**
