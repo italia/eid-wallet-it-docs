@@ -1071,7 +1071,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Loading Page resa 
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/error-page.svg
+  .. figure:: ./images/svg/loading-page.svg
      :alt: Loading Page
      :width: 100%
      :align: center
@@ -1080,7 +1080,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Loading Page resa 
 
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore;
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'operazione;
 - DEVE assicurare che i copy presenti nella pagina siano in linea con il tono di voce degli altri asset riportati nelle :ref:`official-resources:Risorse Ufficiali`.
 
 
