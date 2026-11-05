@@ -852,7 +852,8 @@ I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il proce
 - **Selection Page**: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e permettere di scegliere con quale continuare il processo di Autenticazione;
 - **QR Code Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a inquadrare il codice QR;
 - **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione;
-- **Error Page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione.
+- **Error Page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione;
+- **Loading Page**: ha lo scopo di tenere informato l'Utente sull'operazione in corso a backend tra uno step e l'altro del flusso. 
 
 Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici:
 
@@ -1061,6 +1062,26 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore;
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.).
+
+
+**Loading Page**
+La Loading Page è la pagina che l'Utente vede quando il passaggio tra uno step e il successivo richiede del tempo a backend che equivale a tempo di attesa per l'Utente. Ad esempio tra la presentazione dei propri dati personali sull'IT-Wallet e la verifica degli stessi sulla pagina del servizio del Verificatore di Attestati Elettronici.
+
+Il Verificatore di Attestati Elettronici DEVE implementare la Loading Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/error-page.svg
+     :alt: Loading Page
+     :width: 100%
+     :align: center
+
+     Loading Page
+
+Il Verificatore di Attestati Elettronici che implementa la pagina:
+
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore;
+- DEVE assicurare che i copy presenti nella pagina siano in linea con il tono di voce degli altri asset riportati nelle :ref:`official-resources:Risorse Ufficiali`.
 
 
 Authentication Button
