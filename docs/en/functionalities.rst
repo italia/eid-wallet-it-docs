@@ -1071,7 +1071,7 @@ Relying Parties MUST implement the Loading Page provided in the :ref:`official-r
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/error-page.svg
+  .. figure:: ./images/svg/loading-page.svg
      :alt: Loading Page
      :width: 100%
      :align: center
