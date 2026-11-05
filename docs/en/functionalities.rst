@@ -852,7 +852,8 @@ Relying Parties MUST implement and provide the following pages as part of the Au
 - **Selection Page**: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with;
 - **QR Code Page** (*cross-device only*): prompts the User to scan a QR code;
 - **Thank You Page**: confirms the successful Authentication;
-- **Error Page**: displays error messages related to the Authentication process.
+- **Error Page**: displays error messages related to the Authentication process;
+- **Loading Page**: keeps the user informed about the backend operation taking place between one step and the next in the flow. 
 
 Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:
 
@@ -1062,6 +1063,25 @@ The Relying Party implementing the page:
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
+
+**Loading Page**
+The Loading Page is the page the User sees when the transition from one step to the next in the flow takes time on the backend, which results in a waiting time for the User. For example, between presenting their personal data on the IT-Wallet Solution and verifying that information on the Relying Party's service page.
+
+Relying Parties MUST implement the Loading Page provided in the :ref:`official-resources:Official Resources`.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/error-page.svg
+     :alt: Loading Page
+     :width: 100%
+     :align: center
+
+     Loading Page
+
+The Relying Party implementing the page:
+
+- MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of operation;
+- MUST ensure that the copy on the page is aligned to the tone of voice of the assets reported in the :ref:`official-resources:Official Resources`.
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
