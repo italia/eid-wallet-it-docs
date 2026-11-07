@@ -1,0 +1,12 @@
+{
+  "alg": "ECDH-ES",
+  "enc": "A256GCM",
+  "typ": "issuer-state+jwe",
+  "kid": "e8a1c2d3-4b56-7890-ab12-cd34ef567890",
+  "epk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "VVjUll-kdjk59Y9YvFiimBUsFHAvc-H3cCwALnQkwSw",
+    "y": "DDnc8uFMGhOqNR0uYXr6PV8JY9vIxqJ2F8YxiTjlkH0"
+  }
+}
