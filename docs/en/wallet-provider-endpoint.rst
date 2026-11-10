@@ -508,6 +508,9 @@ The Key Attestation Request JWT includes the following body claims:
     * - **nonce**
       - The ``nonce`` obtained from the Nonce Endpoint.
       -
+    * - **c_nonce**
+      - The ``c_nonce`` obtained from the Credential Issuer.
+      -
     * - **keys_to_attest**
       - JSON array of JWT strings. Each JWT is a Key Attestation element as defined in :ref:`wallet-provider-endpoint:Key Attestation Element`. Inclusion of Key Attestation APIs (OEM) material is subject to :ref:`wallet-solution-requirements:Use of Key Attestation APIs (OEM)`.
       -
@@ -723,6 +726,9 @@ The body of the Key Attestation JWT contains the following claims:
         - **status**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
         - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
       - `EUDI-TS 3`_.
+    * - **nonce**
+      - OPTIONAL. String that represents a nonce provided by the Issuer (``c_nonce``) to prove that a key attestation was freshly generated.
+      - `OpenID4VCI`_.
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
       - `OpenID4VCI`_.
