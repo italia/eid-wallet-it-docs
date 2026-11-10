@@ -22,7 +22,7 @@ Use of the :term:`Key Attestation APIs (OEM)` is defined in :ref:`wallet-solutio
 
 ..   Sequence Diagram for Wallet App Attestation acquisition
 
-**Step 1**: The User initiates a new operation that necessitates the acquisition of a Key Attestation.
+**Step 1**: The User initiates a Digital Credential request operation that necessitates the acquisition of a Key Attestation and it already obtained a fresh ``c_nonce`` from the Credential Issuer. 
 
 **Steps 2-3**: The Wallet Instance MUST:
 
