@@ -373,7 +373,7 @@ Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare
 
 - [Brand Identity](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/brand-identity.html)
 - [Processo di Registrazione della Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica)
-- [Registro delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/registry.html#registro-delle-fonti-autentiche)
+- [Registro delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/registry.html#registro-delle-fonti-autentiche)
 
 In questo step, l'Ente interessato deve:
 
