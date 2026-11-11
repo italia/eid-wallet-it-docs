@@ -302,7 +302,7 @@ Questo step, suggerito ma non vincolante per le fasi successive, ha l'obiettivo 
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
+- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/authentic-source-endpoint.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
 
 In questo step, in caso di disponibilità da parte del Fornitore di Attestati Elettronici di Attributi, l'Ente interessato può:
