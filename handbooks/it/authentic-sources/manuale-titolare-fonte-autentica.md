@@ -395,7 +395,7 @@ Una volta resi disponibili agli utenti gli EAA prodotti con i propri dati, la Fo
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Assistenza utente](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente)
+- [Assistenza utente](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente)
 
 In questo step, l'Ente interessato deve:
 
