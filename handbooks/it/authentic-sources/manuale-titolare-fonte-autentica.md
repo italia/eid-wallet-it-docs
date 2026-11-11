@@ -325,7 +325,7 @@ Questo step ha l'obiettivo di rilasciare in produzione l'e-service che espone i 
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
+- [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/e-service-pdnd.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
 
 In questo step, l'Ente interessato deve:
