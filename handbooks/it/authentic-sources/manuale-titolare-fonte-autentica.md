@@ -525,7 +525,7 @@ Per ciascuno dei **cinque** stati, il modulo prevede una `descrizione` testuale 
 2. Il campo `descrizione` per ciascuno stato è quello predefinito del modulo (vincolato dallo schema e non modificabile); usa `azione utente`, `note` e opzionalmente `messaggio` per chiarire al cittadino cosa fare;
 3. Definisci la `causa` del cambiamento di stato e l'`azione utente` ovvero il messaggio da comunicare all’utente in caso di cambiamento stato (es. “I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento”). Usa opzionalmente il campo `note` per aggiungere ulteriori informazioni utili o indicazioni operative.
 
-Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
+Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/credential-revocation.html).
 
 ---
 
