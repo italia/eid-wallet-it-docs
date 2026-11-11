@@ -72,13 +72,7 @@ Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di r
 
 ## Come diventare Titolare di Fonte Autentica
 
-Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
-
-- Portale di Registrazione IT-Wallet
-- Registro delle Fonti Autentiche
-- Catalogo degli Attestati Elettronici
-
-In particolare, il processo prevede i seguenti step:
+Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di progettazione e implementazione tecnica:
 
 - **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche dell'Attestato Elettronico di Attributi relativo al proprio dataset, in termini di modalità di scoperta e ottenimento dell’EAA, casi d’uso, dataset, modalità di gestione di errori, stati e assistenza.
   [Vai allo Step 1](#step-1--progettazione-caratteristiche-eaa)
@@ -369,12 +363,18 @@ Questo step ha l'obiettivo di pianificare e gestire le attività di rilascio agl
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
 - [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html)
+- [Processo di Registrazione della Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica)
+- [Registro delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/registry.html#registro-delle-fonti-autentiche)
 
 In questo step, l'Ente interessato deve:
 
+### Registrarsi al Sistema IT-Wallet
+
+Contestualmente all'iter tecnico di implementazione e test descritto negli step precedenti, per il passaggio in produzione e il rilascio del servizio è necessario che l'Ente aderisca al Sistema IT-Wallet secondo quanto previsto dal [Regolamento](https://trasparenza.agid.gov.it/page/9/details/5656/adozione-del-regolamento-modalita-recante-le-modalita-di-registrazione-al-sistema-it-wallet-e-presentazione-dei-progetti-di-sperimentazione-regolamento-it-wallet-adottato-ai-sensi-dellarticolo-64-quater-comma-3-del-d-lgs-7-marzo-2005-n-82-recante-il-codice-dellamministrazione-digitale.html) AgID.
+
 ### Pianificare il go-live
 
-A valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell'EAA, quindi la possibilità di ottenimento dell'EAA da parte degli utenti. L'Ente dovrà in ogni caso effettuare la registrazione amministrativa, non appena disponibile, secondo quanto definito dal Regolamento IT-Wallet.
+A valle dell'avvenuta registrazione presso il Registro delle Fonte Autentiche e l'inserimento dell'EAA nel Catalogo degli Attestati Elettronici, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell'EAA, quindi la possibilità di ottenimento dell'EAA da parte degli utenti. L'Ente dovrà in ogni caso effettuare la registrazione amministrativa, non appena disponibile, secondo quanto definito dal Regolamento IT-Wallet.
 
 ### Valutare attività di comunicazione
 
