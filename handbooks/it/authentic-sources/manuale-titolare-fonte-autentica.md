@@ -407,7 +407,7 @@ L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, progra
 
 ### Gestire problematiche e fornire assistenza agli utenti
 
-L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) al fine di:
+L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente) al fine di:
 
 - **Contribuire alla risoluzione di bug**
   Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione "Assistenza" del modulo, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet.
