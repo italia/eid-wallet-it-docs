@@ -33,7 +33,16 @@ Il Sistema di portafoglio digitale italiano (Sistema IT-Wallet) è stato istitui
 
 La novità normativa si inquadra nella più ampia iniziativa europea introdotta dal [Regolamento (UE) 2024/1183 del Parlamento europeo e del Consiglio dell'11 aprile 2024](http://data.europa.eu/eli/reg/2024/1183/oj) – c.d. eIDAS 2 – che modifica il [Regolamento (UE) n. 910/2014](https://eur-lex.europa.eu/eli/reg/2014/910/oj) per quanto riguarda l'istituzione del quadro europeo relativo all'identità digitale.
 
-Per la piena attuazione del Sistema IT-Wallet, all'articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento delle Specifiche è quella mantenuta nel branch **Long-Term Support (LTS)** come descritto nel relativo [README](https://github.com/italia/eid-wallet-it-docs) all'interno della sezione [Branching Approach](https://github.com/italia/eid-wallet-it-docs?tab=readme-ov-file#branching-approach). La versione corrente delle Specifiche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/) ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)).
+IT‑Wallet è istituito dall’[art. 64-quater del Codice dell’Amministrazione Digitale (CAD)](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-03-07;82) e attuato da:
+- [Decreto 17 giugno 2026](https://www.gazzettaufficiale.it/eli/id/2026/07/23/26A03678/sg) che approva le Linee Guida del Sistema IT-Wallet;
+- [Decreto 19 marzo 2026](https://www.gazzettaufficiale.it/eli/id/2026/08/03/26A03804/sg) che disciplina ruoli e servizi del Sistema IT-Wallet;
+- [Regolamento IT‑Wallet di AgID](https://trasparenza.agid.gov.it/page/9/details/5656/adozione-del-regolamento-modalita-recante-le-modalita-di-registrazione-al-sistema-it-wallet-e-presentazione-dei-progetti-di-sperimentazione-regolamento-it-wallet-adottato-ai-sensi-dellarticolo-64-quater-comma-3-del-d-lgs-7-marzo-2005-n-82-recante-il-codice-dellamministrazione-digitale.html) che disciplina le modalità di adesione delle diverse entità;
+- [Decreto del Dipartimento per la trasformazione digitale](https://www.governo.it/it/articolo/definizione-delle-misure-tecniche-e-organizzative-del-sistema-it-wallet/33033) sul trattamento dei dati personali nell'ambito del Sistema IT-Wallet;
+- [Decreto del Dipartimento per la trasformazione digitale(https://www.governo.it/it/articolo/adozione-delle-specifiche-tecniche-del-sistema-it-wallet/33045) che approva le Specifiche Tecniche di funzionamento del Sistema IT-Wallet.
+
+La versione di riferimento delle Specifiche Tecniche è la versione 1.4.7 del branch **Long-Term Support (LTS)** descritto nel README del [repository ufficiale](https://github.com/italia/eid-wallet-it-docs) all'interno della sezione Branching Approach.
+
+La versione 1.4.7 delle Specifiche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/) ([versione inglese](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/en/)).
 
 ## Scopo e ambito di applicazione
 
