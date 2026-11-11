@@ -343,7 +343,7 @@ Questo step ha l'obiettivo di eseguire i test necessari a un adeguato funzioname
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
+- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/authentic-source-endpoint.html)
 
 In questo step, l'Ente interessato deve:
 
