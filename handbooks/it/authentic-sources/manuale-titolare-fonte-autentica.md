@@ -371,7 +371,7 @@ Questo step ha l'obiettivo di pianificare e gestire le attività di rilascio agl
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html)
+- [Brand Identity](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/brand-identity.html)
 - [Processo di Registrazione della Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica)
 - [Registro delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/registry.html#registro-delle-fonti-autentiche)
 
