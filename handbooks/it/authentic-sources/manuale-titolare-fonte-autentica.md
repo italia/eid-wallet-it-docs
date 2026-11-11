@@ -387,7 +387,7 @@ A valle dell'avvenuta registrazione presso il Registro delle Fonte Autentiche e 
 
 ### Valutare attività di comunicazione
 
-L'Ente può prevedere attività di comunicazione finalizzate a informare gli utenti della possibilità di ottenere e utilizzare l'EAA prodotto con i propri dati all'interno di IT-Wallet. Per approfondimento, vai alle Specifiche Tecniche, sezione [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html) del Sistema IT-Wallet.
+L'Ente può prevedere attività di comunicazione finalizzate a informare gli utenti della possibilità di ottenere e utilizzare l'EAA prodotto con i propri dati all'interno di IT-Wallet. Per approfondimento, vai alle Specifiche Tecniche, sezione [Brand Identity](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/brand-identity.html) del Sistema IT-Wallet.
 
 ## Step 7 | Manutenzione e assistenza
 
