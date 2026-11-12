@@ -33,7 +33,16 @@ Il Sistema di portafoglio digitale italiano (Sistema IT-Wallet) è stato istitui
 
 La novità normativa si inquadra nella più ampia iniziativa europea introdotta dal [Regolamento (UE) 2024/1183 del Parlamento europeo e del Consiglio dell'11 aprile 2024](http://data.europa.eu/eli/reg/2024/1183/oj) – c.d. eIDAS 2 – che modifica il [Regolamento (UE) n. 910/2014](https://eur-lex.europa.eu/eli/reg/2014/910/oj) per quanto riguarda l'istituzione del quadro europeo relativo all'identità digitale.
 
-Per la piena attuazione del Sistema IT-Wallet, all'articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento delle Specifiche è quella mantenuta nel branch **Long-Term Support (LTS)** come descritto nel relativo [README](https://github.com/italia/eid-wallet-it-docs) all'interno della sezione [Branching Approach](https://github.com/italia/eid-wallet-it-docs?tab=readme-ov-file#branching-approach). La versione corrente delle Specifiche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/) ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)).
+IT‑Wallet è istituito dall’[art. 64-quater del Codice dell’Amministrazione Digitale (CAD)](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-03-07;82) e attuato da:
+- [Decreto 17 giugno 2026](https://www.gazzettaufficiale.it/eli/id/2026/07/23/26A03678/sg) che approva le Linee Guida del Sistema IT-Wallet;
+- [Decreto 19 marzo 2026](https://www.gazzettaufficiale.it/eli/id/2026/08/03/26A03804/sg) che disciplina ruoli e servizi del Sistema IT-Wallet;
+- [Regolamento IT‑Wallet di AgID](https://trasparenza.agid.gov.it/page/9/details/5656/adozione-del-regolamento-modalita-recante-le-modalita-di-registrazione-al-sistema-it-wallet-e-presentazione-dei-progetti-di-sperimentazione-regolamento-it-wallet-adottato-ai-sensi-dellarticolo-64-quater-comma-3-del-d-lgs-7-marzo-2005-n-82-recante-il-codice-dellamministrazione-digitale.html) che disciplina le modalità di adesione delle diverse entità;
+- [Decreto del Dipartimento per la trasformazione digitale](https://www.governo.it/it/articolo/definizione-delle-misure-tecniche-e-organizzative-del-sistema-it-wallet/33033) sul trattamento dei dati personali nell'ambito del Sistema IT-Wallet;
+- [Decreto del Dipartimento per la trasformazione digitale(https://www.governo.it/it/articolo/adozione-delle-specifiche-tecniche-del-sistema-it-wallet/33045) che approva le Specifiche Tecniche di funzionamento del Sistema IT-Wallet.
+
+La versione di riferimento delle Specifiche Tecniche è la versione 1.4.7 del branch **Long-Term Support (LTS)** descritto nel README del [repository ufficiale](https://github.com/italia/eid-wallet-it-docs) all'interno della sezione Branching Approach.
+
+La versione 1.4.7 delle Specifiche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/) ([versione inglese](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/en/)).
 
 ## Scopo e ambito di applicazione
 
@@ -72,13 +81,7 @@ Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di r
 
 ## Come diventare Titolare di Fonte Autentica
 
-Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
-
-- Portale di Registrazione IT-Wallet
-- Registro delle Fonti Autentiche
-- Catalogo degli Attestati Elettronici
-
-In particolare, il processo prevede i seguenti step:
+Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di progettazione e implementazione tecnica:
 
 - **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche dell'Attestato Elettronico di Attributi relativo al proprio dataset, in termini di modalità di scoperta e ottenimento dell’EAA, casi d’uso, dataset, modalità di gestione di errori, stati e assistenza.
   [Vai allo Step 1](#step-1--progettazione-caratteristiche-eaa)
@@ -283,7 +286,7 @@ Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EA
 
 ### Attivare il servizio Signal Hub in collaudo
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
 
 ### Sviluppare il Credential Offer (opzionale)
 
@@ -299,8 +302,8 @@ Questo step, suggerito ma non vincolante per le fasi successive, ha l'obiettivo 
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
-- [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
+- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/authentic-source-endpoint.html)
+- [Signal Hub](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/signal-hub-endpoint.html)
 
 In questo step, in caso di disponibilità da parte del Fornitore di Attestati Elettronici di Attributi, l'Ente interessato può:
 
@@ -322,8 +325,8 @@ Questo step ha l'obiettivo di rilasciare in produzione l'e-service che espone i 
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
-- [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
+- [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/e-service-pdnd.html)
+- [Signal Hub](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/signal-hub-endpoint.html)
 
 In questo step, l'Ente interessato deve:
 
@@ -333,7 +336,7 @@ L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di int
 
 ### Attivare il servizio Signal Hub in produzione
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
 
 ### Portare in produzione il Credential Offer (opzionale)
 
@@ -349,7 +352,7 @@ Questo step ha l'obiettivo di eseguire i test necessari a un adeguato funzioname
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
+- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/authentic-source-endpoint.html)
 
 In questo step, l'Ente interessato deve:
 
@@ -368,17 +371,23 @@ Questo step ha l'obiettivo di pianificare e gestire le attività di rilascio agl
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html)
+- [Brand Identity](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/brand-identity.html)
+- [Processo di Registrazione della Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica)
+- [Registro delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/registry.html#registro-delle-fonti-autentiche)
 
 In questo step, l'Ente interessato deve:
 
+### Registrarsi al Sistema IT-Wallet
+
+Contestualmente all'iter tecnico di implementazione e test descritto negli step precedenti, per il passaggio in produzione e il rilascio del servizio è necessario che l'Ente aderisca al Sistema IT-Wallet secondo quanto previsto dal [Regolamento](https://trasparenza.agid.gov.it/page/9/details/5656/adozione-del-regolamento-modalita-recante-le-modalita-di-registrazione-al-sistema-it-wallet-e-presentazione-dei-progetti-di-sperimentazione-regolamento-it-wallet-adottato-ai-sensi-dellarticolo-64-quater-comma-3-del-d-lgs-7-marzo-2005-n-82-recante-il-codice-dellamministrazione-digitale.html) AgID.
+
 ### Pianificare il go-live
 
-A valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell'EAA, quindi la possibilità di ottenimento dell'EAA da parte degli utenti. L'Ente dovrà in ogni caso effettuare la registrazione amministrativa, non appena disponibile, secondo quanto definito dal Regolamento IT-Wallet.
+A valle dell'avvenuta registrazione presso il Registro delle Fonte Autentiche e l'inserimento dell'EAA nel Catalogo degli Attestati Elettronici, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell'EAA, quindi la possibilità di ottenimento dell'EAA da parte degli utenti. L'Ente dovrà in ogni caso effettuare la registrazione amministrativa, non appena disponibile, secondo quanto definito dal Regolamento IT-Wallet.
 
 ### Valutare attività di comunicazione
 
-L'Ente può prevedere attività di comunicazione finalizzate a informare gli utenti della possibilità di ottenere e utilizzare l'EAA prodotto con i propri dati all'interno di IT-Wallet. Per approfondimento, vai alle Specifiche Tecniche, sezione [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html) del Sistema IT-Wallet.
+L'Ente può prevedere attività di comunicazione finalizzate a informare gli utenti della possibilità di ottenere e utilizzare l'EAA prodotto con i propri dati all'interno di IT-Wallet. Per approfondimento, vai alle Specifiche Tecniche, sezione [Brand Identity](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/brand-identity.html) del Sistema IT-Wallet.
 
 ## Step 7 | Manutenzione e assistenza
 
@@ -386,7 +395,7 @@ Una volta resi disponibili agli utenti gli EAA prodotti con i propri dati, la Fo
 
 Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
-- [Assistenza utente](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente)
+- [Assistenza utente](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente)
 
 In questo step, l'Ente interessato deve:
 
@@ -398,10 +407,10 @@ L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, progra
 
 ### Gestire problematiche e fornire assistenza agli utenti
 
-L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) al fine di:
+L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente) al fine di:
 
 - **Contribuire alla risoluzione di bug**
-  Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione "Assistenza" del modulo, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet.
+  Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione "Assistenza" del modulo, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet.
 - **Garantire il supporto agli utenti**
   Il referente per l'ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), devono sempre essere disponibili per gestire eventuali problemi relativi all'EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell'EAA da parte dell'utente.
 
@@ -516,7 +525,7 @@ Per ciascuno dei **cinque** stati, il modulo prevede una `descrizione` testuale 
 2. Il campo `descrizione` per ciascuno stato è quello predefinito del modulo (vincolato dallo schema e non modificabile); usa `azione utente`, `note` e opzionalmente `messaggio` per chiarire al cittadino cosa fare;
 3. Definisci la `causa` del cambiamento di stato e l'`azione utente` ovvero il messaggio da comunicare all’utente in caso di cambiamento stato (es. “I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento”). Usa opzionalmente il campo `note` per aggiungere ulteriori informazioni utili o indicazioni operative.
 
-Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
+Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/credential-revocation.html).
 
 ---
 
@@ -524,7 +533,7 @@ Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.
 
 L’obiettivo della sezione "Assistenza" è quello di supportare gli Enti nella definizione dei contenuti per l'informazione e il supporto all'utente nell’interazione con l'EAA.
 
-Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili i recapiti necessari per la risoluzione di eventuali malfunzionamenti, i canali disponibili per la gestione dell'assistenza agli utenti e i contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi da esporre all’utente in IT-Wallet.
+Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili i recapiti necessari per la risoluzione di eventuali malfunzionamenti, i canali disponibili per la gestione dell'assistenza agli utenti e i contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi da esporre all’utente in IT-Wallet.
 
 #### Destinatari
 
@@ -535,6 +544,6 @@ La sezione “Assistenza” si rivolge ad utenti amministrativi, responsabili di
 - Referenti: fornisci e mantieni aggiornati i dati di contatto (nome, cognome, email, telefono) di almeno 1 referente per l’assistenza agli utenti, 1 referente in ambito applicativo e 1 referente in ambito sistemistico che possano prontamente collaborare con il Fornitore di Attestati Elettronici di Attributi (IPZS per gli Attestati Elettronici di interesse pubblico) e con il Fornitore di Wallet (PagoPA per la soluzione IT-Wallet pubblica) per la risoluzione congiunta di segnalazioni degli utenti e/o malfunzionamenti tra i servizi.
 - Canali: fornisci almeno un canale di assistenza (es. e-mail assistenza, numero di telefono, etc.) di responsabilità dell’Ente che rappresenti, nel ruolo di Titolare di Fonte Autentica, a cui si possa indirizzare l’utente per quelle richieste di supporto e segnalazioni non gestibili all’interno della soluzione IT-Wallet.
 - FAQ: per ciascuna voce compila `risposta` (stringa, booleano o null); `domanda` e `esempio` sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `esempio` con esempio di risposta, poi `risposta` da valorizzare).
-- Testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare:
+- Testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/releases/1.4.7/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare:
   1. Poniti le seguenti domande (puoi fare riferimento alla sezione "Casi d'uso", già compilata): a chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA?
   2. Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
