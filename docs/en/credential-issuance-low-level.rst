@@ -270,7 +270,7 @@ A non-normative example of the DPoP Refresh Token is given below.
 .. literalinclude:: ../../examples/rt-dpop-payload.json
    :language: JSON
 
-**Step 12 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce``. The Wallet Instance can use that ``c_nonce`` to create the proof of possession of key material for the subsequent request to the Credential Endpoint (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
+**Step 12 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce``. The Wallet Instance can use that ``c_nonce`` to create the proof of possession of key material for the subsequent request to the Credential Endpoint. The Wallet Instance MUST also include the same ``c_nonce`` inside the Key Attestation request to the Wallet Provider, which is used to create the Key Attestation JWT. This allows the Credential Issuer to verify that the Key Attestation was freshly generated in response to its challenge (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
 
 Below is a non-normative example of a Nonce Request:
 
@@ -280,8 +280,8 @@ Below is a non-normative example of a Nonce Request:
     Host: eaa-provider.example.org
     Content-Length: 0
 
-**Step 13 (Nonce Response)**: The Credential Issuer provides the ``c_nonce`` to the Wallet Instance. The parameter ``c_nonce`` is a string value, which MUST be unpredictable. The Wallet Instance uses ``c_nonce`` later in Step 16 to create the proof(s) of possession of the key (``proofs`` claim). The parameter is the primary countermeasure against a key proof replay attack.
-Note that, the received ``c_nonce`` value can be used to create the proof(s) as long as the Issuer
+**Step 13 (Nonce Response)**: The Credential Issuer provides the ``c_nonce`` to the Wallet Instance. The parameter ``c_nonce`` is a string value, which MUST be unpredictable. The Wallet Instance uses ``c_nonce`` later in Step 16 to create the proof(s) of possession of the key (``proofs`` claim). The parameter is the primary countermeasure against a key proof replay attack. Furthermore, the ``c_nonce`` value is used to create the Key Attestation JWT, which is sent to the Credential Issuer in Step 16 (inside the header of ``proofs`` claim). The Credential Issuer MUST verify that the Key Attestation was freshly generated in response to its challenge. The Credential Issuer MUST reject any request with a stale or previously used ``c_nonce`` value.
+Note that, the received ``c_nonce`` value can be used to create the proof(s), and Key Attestations as long as the Issuer
 provides the Wallet Instance with a new ``c_nonce`` value.
 
 Below is a non-normative example of a Nonce Response:
@@ -311,7 +311,7 @@ Below is a non-normative example of a Nonce Response:
  4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
  5. The header parameter MUST NOT contain a private key.
  6. The signature on the Key Attestation JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key. The ``kid`` header parameter inside the Key Attestation JWT identifies that public key.
- 7. If a ``c_nonce`` value was previously provided by the server, the ``nonce`` claim in the JWT MUST match this ``c_nonce`` value. Furthermore, the creation time of the JWT, as indicated by the ``iat`` claim or a server-managed timestamp via the ``nonce`` claim, MUST be within an acceptable window of time as determined by the server.
+ 7. If a ``c_nonce`` value was previously provided by the server, the ``nonce`` claim in the proof JWT and the ``nonce`` claim in the Key Attestation JWT MUST match this ``c_nonce`` value. Furthermore, the creation time of the JWT, as indicated by the ``iat`` claim or a server-managed timestamp via the ``nonce`` claim, MUST be within an acceptable window of time as determined by the server.
  8. For each Key Attestation of a Wallet Unit, the Credential Issuer MUST establish trust in the Wallet Provider through the Trust Framework selected for the Wallet Instance Attestation, as specified in :ref:`trust-evaluation:Selection at Issuance`.
     The Credential Issuer MUST validate the Key Attestation signing certificate chain according to :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
     The Credential Issuer MUST check the temporal validity of the Key Attestation.

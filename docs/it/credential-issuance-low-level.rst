@@ -268,7 +268,7 @@ Un esempio non normativo del Refresh Token DPoP è fornito di seguito.
 .. literalinclude:: ../../examples/rt-dpop-payload.json
    :language: JSON
 
-**Passo 12 (`Nonce Request`)**: Secondo la Sezione 7.1 di [`OpenID4VCI`_], l'Istanza del Wallet invia una richiesta HTTP POST al Nonce Endpoint per ottenere un nuovo ``c_nonce``. L'Istanza del Wallet può usare quel ``c_nonce`` per creare la prova di possesso del materiale crittografico per la successiva richiesta al Credential Endpoint (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
+**Passo 12 (`Nonce Request`)**: Secondo la Sezione 7.1 di [`OpenID4VCI`_], l'Istanza del Wallet invia una richiesta HTTP POST al Nonce Endpoint per ottenere un nuovo ``c_nonce``. L'Istanza del Wallet può usare quel ``c_nonce`` per creare la prova di possesso del materiale crittografico per la successiva richiesta al Credential Endpoint. L'Istanza del Wallet DEVE inoltre includere lo stesso ``c_nonce`` nella richiesta di Key Attestation inviata al Wallet Provider, utilizzata per generare il JWT di Key Attestation. Ciò consente all'Emittente di Credenziali di verificare che la Key Attestation sia stata appena generata in risposta alla propria challenge (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una `Nonce Request`:
 
@@ -278,9 +278,9 @@ Di seguito è riportato un esempio non normativo di una `Nonce Request`:
     Host: eaa-provider.example.org
     Content-Length: 0
 
-**Passo 13 (`Nonce Response`)**: Il Credential Issuer fornisce il ``c_nonce`` all'Istanza del Wallet. Il parametro ``c_nonce`` è una stringa, che DEVE essere imprevedibile. L'Istanza del Wallet lo utilizza successivamente nel Passo 16 per creare la prova o le prove di possesso della chiave (claim ``proofs``). Il parametro è la principale contromisura contro l'attacco di replay della prova della chiave.
-Si noti che il valore ``c_nonce`` ricevuto può essere utilizzato per creare la(e) prova(e) finché l'Issuer
-fornisce all'Istanza del Wallet un nuovo valore ``c_nonce``.
+**Passo 13 (`Nonce Response`)**: Il Credential Issuer fornisce il ``c_nonce`` all'Istanza del Wallet. Il parametro ``c_nonce`` è una stringa, che DEVE essere imprevedibile. L'Istanza del Wallet lo utilizza successivamente nel Passo 16 per creare la prova o le prove di possesso della chiave (claim ``proofs``). Il parametro è la principale contromisura contro l'attacco di replay della prova della chiave. Inoltre, il valore ``c_nonce`` viene utilizzato per generare il JWT di Key Attestation, che viene inviato al Credential Issuer nel Passo 16 (all'interno dell'header delle prove contenute nel claim ``proofs``). Il Credential Issuer DEVE verificare che la Key Attestation sia stata appena generata in risposta alla propria challenge. Il Credential Issuer DEVE rifiutare qualsiasi richiesta contenente un valore ``c_nonce`` non più valido o già utilizzato.
+
+Si noti che il valore ``c_nonce`` ricevuto può essere utilizzato per creare le prove e le Key Attestation finché l'Issuer non fornisce all'Istanza del Wallet un nuovo valore ``c_nonce``.
 
 Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 
@@ -309,7 +309,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
  4. La firma sulla prova della chiave DEVE essere verificata utilizzando la chiave pubblica specificata nel parametro dell'header.
  5. Il parametro dell'header NON DEVE contenere una chiave privata.
  6. La firma sul JWT di Key Attestation, come valore del parametro di intestazione ``key_attestation``, DEVE essere verificata utilizzando la chiave pubblica del Wallet Provider. Il parametro di intestazione ``kid`` all'interno del JWT di Key Attestation identifica quella chiave pubblica.
- 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT DEVE corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
+ 7. Se un valore ``c_nonce`` è stato precedentemente fornito dal server, il claim ``nonce`` nel JWT di prova e il claim ``nonce`` nel JWT di Key Attestation DEVONO corrispondere a tale valore ``c_nonce``. Inoltre, il tempo di creazione del JWT, indicato dal claim ``iat`` o da un timestamp gestito dal server tramite il claim ``nonce``, DEVE rientrare in una finestra temporale accettabile determinata dal server.
  8. Per ciascuna Key Attestation di una Wallet Unit, il Credential Issuer DEVE stabilire la fiducia nel Wallet Provider attraverso il Trust Framework selezionato per la Wallet Instance Attestation, come specificato in :ref:`trust-evaluation:Selection at Issuance`.
     Il Credential Issuer DEVE validare la catena del certificato di firma della Key Attestation secondo :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
     Il Credential Issuer DEVE controllare la validità temporale della Key Attestation.

@@ -495,8 +495,8 @@ This section lists the test cases from Sections:
      - Wallet Instance sends a POST request to the Credential Endpoint including the Access Token, DPoP Proof JWT, Credential type, and the valid PoP of Credential-bound key.
    * - WP_056a
      - Issuance, Security
-     - Fetch nonce for the Digital Credential key proof
-     - Wallet Instance sends a POST request to the Credential Issuer’s Nonce Endpoint and obtains a fresh nonce, which is then used to generate the PoP of the key material bound to the issued Digital Credential.
+     - Fetch nonce for the Digital Credential key proof and Key Attestation Issuance Request
+     - Wallet Instance sends a POST request to the Credential Issuer’s Nonce Endpoint and obtains a fresh nonce, which is then used to generate the PoP of the key material bound to the issued Digital Credential. The Wallet Provider receives this value from the Wallet Instance in the Key Attestation request and includes the same value in the nonce claim of the signed Key Attestation JWT.
    * - WP_056b
      - Issuance, Security
      - Fresh DPoP proof
@@ -520,7 +520,7 @@ This section lists the test cases from Sections:
    * - WP_058b
      - Issuance, Interoperability
      - Batch Issuance: PoP of batch Credential keys
-     - In case of Batch Issuance, Wallet Instance generates N key proofs using the provided ``c_nonce``, one for each Digital Credential in the batch, where N equals the ``batch_size`` value.
+     - In case of Batch Issuance, Wallet Instance generates N key proofs, one for each Digital Credential in the batch, where N equals the ``batch_size`` value. For each proof, the ``nonce`` claim in the key proof JWT and the ``nonce`` claim in the Key Attestation JWT carried in its ``key_attestation`` JOSE header both equal the same ``c_nonce`` provided by the Credential Issuer for the batch.
    * - WP_059
      - Issuance, Interoperability
      - Validate Credential Response for required parameters

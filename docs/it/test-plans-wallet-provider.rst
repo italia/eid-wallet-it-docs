@@ -494,8 +494,8 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet invia una richiesta POST al Credential Endpoint includendo l'Access Token, il DPoP-JWT, tipo Attestato Elettronico (``credential_identifier``), e il PoP valido della chiave associata all'Attestato Elettronico.
    * - WP_056a
      - Issuance, Sicurezza
-     - Recuperare nonce per la dimostrazione di possesso chiave per Issuance di Attestato Elettronico
-     - Istanza del Wallet invia una richiesta POST al Nonce Endpoint del Credential Issuer e ottiene un nuovo nonce, che viene poi utilizzato per generare una PoP del materiale crittografico che verrà associato all'Attestato Elettronico rilasciata.
+     - Recuperare nonce per la dimostrazione di possesso chiave per Issuance di Attestato Elettronico e richiesta di emissione della Key Attestation
+     - L'Istanza del Wallet invia una richiesta POST al Nonce Endpoint del Credential Issuer e ottiene un nuovo nonce, che viene poi utilizzato per generare la prova di possesso (PoP) del materiale crittografico associato alla Credenziale Digitale emessa. Il Wallet Provider riceve questo valore dall'Istanza del Wallet nella richiesta di Key Attestation e include lo stesso valore nel claim ``nonce`` del JWT di Key Attestation firmato.
    * - WP_056b
      - Issuance, Sicurezza
      - Prova DPoP fresca
@@ -519,7 +519,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_058b
      - Issuance, Interoperabilità
      - Batch Issuance: PoP delle chiavi Attestati Elettronici batch
-     - In caso di Batch Issuance, Istanza del Wallet genera N prove di possesso (PoP) di chiave utilizzando il ``c_nonce`` fornito, una per ogni Attestato Elettronico nel batch, dove N uguale al valore ``batch_size``.
+     - In caso di Batch Issuance, l'Istanza del Wallet genera N prove di possesso delle chiavi, una per ciascuna Credenziale Digitale nel batch, dove N è uguale al valore ``batch_size``. Per ciascuna prova, il claim ``nonce`` nel JWT di prova di possesso della chiave e il claim ``nonce`` nel JWT di Key Attestation, incluso nel parametro ``key_attestation`` dell'header JOSE della prova, DEVONO entrambi corrispondere allo stesso valore ``c_nonce`` fornito dal Credential Issuer per il batch.
    * - WP_059
      - Issuance, Interoperabilità
      - Validare la Credential Response per parametri richiesti
