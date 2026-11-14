@@ -873,6 +873,31 @@ Flusso di Reperimento delle Chiavi degli Aderenti
 .. note::
   L'API di Interoperabilità include un endpoint di notifica degli eventi che avvisa gli Aderenti iscritti sui cambiamenti all'interno dell'Infrastruttura PDND. Tra queste notifiche, l'endpoint ``/events/keys`` fornisce aggiornamenti sulle modifiche al materiale crittografico, come aggiunte o eliminazioni di chiavi. Sfruttando questo meccanismo, gli Aderenti possono implementare una strategia di polling periodico per recuperare tutte le chiavi modificate e aggiornare la loro cache locale. Ciò elimina la necessità di richiedere ogni chiave individualmente durante il flusso.
 
+Chiavi di cifratura del Consumer di GetAttributeClaims
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Le chiavi degli Aderenti registrate per l'emissione dei Voucher PDND e per l'integrità delle richieste sono chiavi di firma, come nell'esempio non normativo precedente. Tali chiavi NON DEVONO essere utilizzate per cifrare ``issuer_state``.
+
+Il Credential Issuer, in qualità di Consumer dell'e-service ``GetAttributeClaims`` definito in :ref:`authentic-source-endpoint:Get Attribute Claims`, DEVE registrare una coppia di chiavi di cifratura dedicata sul `Client e-service` utilizzato per quell'e-service. Questa chiave di cifratura è aggiuntiva rispetto alla chiave di firma usata per i Voucher.
+
+La chiave pubblica DEVE essere pubblicata come JWK [:rfc:`7517`] con i seguenti parametri:
+
+- **kty**: DEVE essere ``EC``.
+- **crv**: DEVE essere ``P-256``.
+- **use**: DEVE essere ``enc``.
+- **key_ops**: DEVE includere ``deriveKey`` e NON DEVE includere ``sign``.
+- **alg**: DEVE essere ``ECDH-ES``.
+- **kid**: OBBLIGATORIO. Identificatore univoco di questa chiave.
+
+Chi genera la Credential Offer (il Credential Issuer o la Fonte Autentica) DEVE ottenere il ``kid`` di tale chiave di cifratura e DEVE recuperare il JWK utilizzando l'API di Interoperabilità PDND ``GET /keys/{kid}`` come definito in questa sezione. La Fonte Autentica PUÒ scoprire ``kid`` nuovi o ruotati tramite l'endpoint ``/events/keys`` descritto sopra. Il JWK utilizzato per la cifratura DEVE avere ``use`` impostato a ``enc``.
+
+L'utilizzo di tale chiave per cifrare ``issuer_state`` è definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
+
+Di seguito un esempio non normativo di un JWK di cifratura:
+
+.. literalinclude:: ../../examples/issuer-state-encryption-jwk.json
+  :language: JSON
+
 Endpoint API di Interoperabilità PDND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
