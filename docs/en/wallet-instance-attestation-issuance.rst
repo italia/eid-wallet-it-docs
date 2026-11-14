@@ -68,7 +68,7 @@ The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT
   5. The ``client_data`` MUST be reconstructed using the ``nonce`` and the ``jwk`` public key. The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   6. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines. The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
-  8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier (:ref:`WP_143g <wallet-instance-optional-testcases>`).
+  8. The opaque identifier in the ``iss`` parameter MUST identify the Wallet Instance (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation that meets :ref:`the Wallet Instance Attestation lifetime <wia-time-to-live>` (:ref:`WP_028 <wallet-instance-testcases>`, :ref:`WP_144 <wallet-instance-optional-testcases>`).
 

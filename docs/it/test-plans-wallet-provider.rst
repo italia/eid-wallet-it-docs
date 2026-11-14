@@ -1269,7 +1269,7 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
    * - WP_143g
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Verifica parametro ``iss``
-     - Il Fornitore del Wallet verifica che il parametro ``iss`` nel JWT Richiesta di Emissione della Wallet Instance Attestation (WIA) corrisponda al suo identificativo URL.
+     - il Fornitore del Wallet accetta un ``iss`` opaco che identifica l'Istanza del Wallet e rifiuta una richiesta il cui ``iss`` è sconosciuto o identifica un'Istanza del Wallet diversa.
    * - WP_144
      - Rilascio Wallet Instance Attestation (WIA), Ciclo di vita, Sicurezza
      - Rilascio Attestato

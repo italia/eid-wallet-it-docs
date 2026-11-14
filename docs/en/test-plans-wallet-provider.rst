@@ -1269,7 +1269,7 @@ These test cases are optional and have been designed for the IT Wallet implement
    * - WP_143g
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - ``iss`` parameter verification
-     - Wallet Provider verifies that the ``iss`` parameter in the Wallet Instance Attestation (WIA) Request JWT matches its own URL identifier.
+     - Wallet Provider accepts an opaque ``iss`` identifying the Wallet Instance and rejects a request whose ``iss`` is unknown or identifies a different Wallet Instance.
    * - WP_144
      - Wallet Instance Attestation (WIA) Issuance, Lifecycle, Security
      - Attestation Issuance
