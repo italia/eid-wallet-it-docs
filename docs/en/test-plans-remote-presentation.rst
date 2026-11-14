@@ -455,8 +455,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-106
     - KB-JWT Audience
-    - Test that KB-JWT ``aud`` matches Relying Party identifier.
-    - KB-JWT ``aud`` parameter matches Relying Party unique entity identifier.
+    - Test that KB-JWT ``aud`` matches the Relying Party Client Identifier, including its Client Identifier Prefix.
+    - KB-JWT ``aud`` parameter equals the Relying Party ``client_id``, including its Client Identifier Prefix.
 
   * - RPR-107
     - KB-JWT Nonce
