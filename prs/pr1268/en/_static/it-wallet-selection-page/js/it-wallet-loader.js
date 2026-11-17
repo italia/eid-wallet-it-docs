@@ -830,7 +830,7 @@ i18next
   .init({
     lng: walletInitialLang,
     fallbackLng: 'it',
-    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json' }
+    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json?v=wallet-ui-20261117' }
   })
   .then(() => {
     if (typeof window.initHeaderLangDropdown === 'function') {

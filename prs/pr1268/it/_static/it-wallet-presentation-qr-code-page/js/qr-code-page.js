@@ -401,11 +401,14 @@ function updateTexts(t) {
   if (title) title.textContent = t('contentTitle');
 
   const info = document.getElementById('content-qrcode-info-text');
+  const expired = document.getElementById('content-qrcode-payload')?.classList.contains('is-expired');
   if (info) {
-    info.innerHTML = t('qrCodeValidInfo', {
-      seconds: String(Math.max(expirationTime, 0)),
-      interpolation: { escapeValue: true },
-    });
+    info.innerHTML = expired
+      ? renderExpiredInfo(t)
+      : t('qrCodeValidInfo', {
+        seconds: String(Math.max(expirationTime, 0)),
+        interpolation: { escapeValue: true },
+      });
   }
 
   const support = document.getElementById('content-text');
@@ -419,15 +422,15 @@ function stopCountdown() {
   }
 }
 
-function startCountdown(t) {
+function startCountdown() {
   if (countdownStarted) return;
   countdownStarted = true;
   countdown = setInterval(() => {
     expirationTime -= 1;
     updateTimerDisplay();
-    if (expirationTime < 0) {
+    if (expirationTime <= 0) {
       stopCountdown();
-      showExpiredState(t);
+      showExpiredState(i18next.t.bind(i18next));
     }
   }, 1000);
 }
@@ -472,7 +475,7 @@ function showExpiredState(t) {
 
 async function fetchDemoConfig() {
   try {
-    const response = await fetch(`${getBasePath()}data/qr-demo-config.json?v=wallet-ui-qr-20261117`);
+    const response = await fetch(`${getBasePath()}data/qr-demo-config.json?v=wallet-ui-qr-20261117c`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     demoConfig = { ...QR_CONFIG_FALLBACK, ...data };
@@ -515,7 +518,7 @@ function initI18n() {
         });
       }
       updateTexts(t);
-      startCountdown(t);
+      startCountdown();
     })
     .catch((err) => {
       console.error('qr-code-page: i18next init failed', err);
