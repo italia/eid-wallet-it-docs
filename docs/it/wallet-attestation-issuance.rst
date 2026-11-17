@@ -21,7 +21,7 @@ L'uso delle :term:`Key Attestation APIs (OEM)` è definito in :ref:`wallet-solut
 
 ..   Sequence Diagram for Wallet Attestation acquisition
 
-**Passo 1**: L'Utente avvia un'operazione di richiesta di una Credenziale Digitale che richiede l'acquisizione di una Key Attestation, avendo già ottenuto un nuovo ``c_nonce`` dal Credential Issuer.
+**Passo 1**: L'Utente avvia una richiesta di Credenziale Digitale che richiede una Key Attestation. L'Istanza del Wallet ha già ottenuto un nuovo ``c_nonce`` dal Credential Issuer.
 
 **Passi 2-3**: L'Istanza del Wallet DEVE:
 
@@ -64,7 +64,7 @@ Ciascun JWT DEVE essere firmato con la chiave privata della coppia di chiavi di 
 
 **Passi 17-18 (Richiesta di Emissione della Key Attestation)**: L'Istanza del Wallet:
 
-* Costruisce la Key Attestation Request sotto forma di JWT. Questo JWT include ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``c_nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Key Attestation <table_ka_request_claim>`). Il claim ``nonce`` contiene il valore ottenuto dal Wallet Provider. Quando richiede una Key Attestation per l'emissione di una Credenziale Digitale, l'Istanza del Wallet DEVE includere anche un claim ``c_nonce`` separato, impostato al valore ricevuto dal Credential Issuer nel Passo 13 del Flusso di Emissione della Credenziale Digitale. La Key Attestation Request DEVE essere firmata utilizzando la chiave privata corrispondente alla chiave pubblica inclusa nella richiesta, tramite il parametro ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Costruisce la Key Attestation Request sotto forma di JWT. Questo JWT include ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``c_nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Key Attestation <table_ka_request_claim>`). Il claim ``nonce`` contiene il valore ottenuto dal Wallet Provider. Quando richiede una Key Attestation per l'emissione di una Credenziale Digitale, l'Istanza del Wallet DEVE includere anche un claim ``c_nonce`` separato. Il claim ``c_nonce`` DEVE essere uguale al valore ricevuto dal Credential Issuer nel Passo 13 di quel flusso di emissione. La Key Attestation Request DEVE essere firmata utilizzando la chiave privata corrispondente alla chiave pubblica inclusa nella richiesta, tramite il parametro ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Key Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Key Attestation` del Backend del Fornitore del Wallet.
 
 L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Key Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Key Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).
