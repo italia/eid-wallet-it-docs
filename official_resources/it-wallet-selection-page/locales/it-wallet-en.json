@@ -1,6 +1,6 @@
 {
   "header": {
-    "region_name": "Organization Name",
+    "region_name": "Affiliated entity",
     "lang_active_hint": "active language:",
     "lang_trigger": "Language selection, {{name}} selected"
   },
