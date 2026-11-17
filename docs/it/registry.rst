@@ -214,8 +214,15 @@ La rappresentazione firmata è un JWT in compact serialization, servito come ``a
      - **Description**
      - **Reference**
    * - **typ**
-     - OBBLIGATORIO. DEVE essere impostato a ``JWT``.
-     - [:rfc:`7515` Section 4.1.9].
+     - OBBLIGATORIO. Media type del JWT. DEVE essere impostato a un valore specifico del componente e NON DEVE essere impostato a ``JWT`` o ``JOSE``, per prevenire attacchi di JWT confusion. Il valore DEVE essere uno tra:
+
+       * ``it-wallet-registry+jwt`` per il Registry Discovery Endpoint
+       * ``it-wallet-claims-registry+jwt`` per il Claims Registry
+       * ``it-wallet-authentic-sources+jwt`` per l'Authentic Source Registry
+       * ``it-wallet-schema-registry+jwt`` per lo Schema Registry
+       * ``it-wallet-taxonomy+jwt`` per la Taxonomy
+       * ``it-wallet-credential-catalog+jwt`` per il Digital Credentials Catalog
+     - [:rfc:`7515` Section 4.1.9] e [:rfc:`8725`].
    * - **alg**
      - OBBLIGATORIO. Un identificativo di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` o con un identificativo di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Section 4.1.1].
@@ -224,9 +231,6 @@ La rappresentazione firmata è un JWT in compact serialization, servito come ``a
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
      - OPZIONALE. Contiene il certificato a chiave pubblica X.509 o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWT. Quando il valore del parametro di header `kid` è presente, DEVE fare riferimento alla stessa chiave pubblica crittografica della foglia utilizzata con il certificato X.509.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - OBBLIGATORIO. DEVE essere impostato a ``application/json``.
      - [:rfc:`7515` Section 4.1.6.].
 
 La rappresentazione in chiaro è lo stesso contenuto, servito come oggetto JSON in chiaro anziché come JWT firmato.
@@ -1410,7 +1414,7 @@ Il payload della collection contiene i seguenti parametri.
    * - **Field Name**
      - **Description**
    * - **id**
-     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``).
+     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``). È mantenuto per retrocompatibilità con le implementazioni precedenti.
    * - **version**
      - OBBLIGATORIO. La versione del Digital Credentials Catalog (ad es., ``1.0.0``).
    * - **last_modified**
