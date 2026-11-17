@@ -2262,16 +2262,19 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., <code class="docutils literal notranslate"><span class="pre">urn:credential-catalog:it-wallet</span></code>). È mantenuto per retrocompatibilità con le implementazioni precedenti.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>last_modified</strong></p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
 <td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>OBBLIGATORIO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
 <td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
 <ul class="simple">
 <li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
@@ -2281,7 +2284,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.</p></td>
 </tr>
 </tbody>
@@ -2419,6 +2422,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:credential-catalog:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
@@ -3662,7 +3666,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 30/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

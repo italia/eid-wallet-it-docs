@@ -2261,16 +2261,19 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., <code class="docutils literal notranslate"><span class="pre">urn:credential-catalog:it-wallet</span></code>). It is retained for backward compatibility with previous implementations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
 <td><p>REQUIRED. Version of the Digital Credential Catalog format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>last_modified</strong></p></td>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
 <td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalog (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<tr class="row-odd"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
 <td><p>REQUIRED. Localization configuration object containing:</p>
 <ul class="simple">
 <li><p><strong>default_locale</strong>: Default locale code (e.g., <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
@@ -2280,7 +2283,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>credentials</strong></p></td>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
 </tr>
 </tbody>
@@ -2418,6 +2421,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:credential-catalog:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
@@ -3661,7 +3665,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 30/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.7</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

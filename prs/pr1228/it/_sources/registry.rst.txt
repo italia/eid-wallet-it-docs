@@ -1046,6 +1046,8 @@ Il payload JWS contiene i seguenti parametri:
 
    * - **Nome Campo**
      - **Descrizione**
+   * - **id**
+     - OBBLIGATORIO. Identificativo univoco del Digital Credentials Catalog (ad es., ``urn:credential-catalog:it-wallet``). È mantenuto per retrocompatibilità con le implementazioni precedenti.
    * - **version**
      - OBBLIGATORIO. Versione del formato del Catalogo delle Credenziali Digitali.
    * - **last_modified**
