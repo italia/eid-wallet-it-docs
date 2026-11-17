@@ -92,7 +92,7 @@
       "logo_text": "Login with {Alternative 1}",
       "logo": "../shared-ui/svg/sprites.svg#it-code-circle",
       "login_url": "CAMBIAMI",
-      "learn_more_descr": "{Alternative 1} is a federated identity system that allows you to access services that support {Alternative 1} authentication."
+      "learn_more_descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
   },
   "footer": {
