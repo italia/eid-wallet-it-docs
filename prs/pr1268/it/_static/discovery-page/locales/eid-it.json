@@ -62,7 +62,7 @@
       "login_url": "#spid-idp-button-xlarge-post",
       "learn_more_descr": "SPID (Sistema Pubblico di Identità Digitale) è il sistema pubblico di identità digitale italiano. Scegli il tuo gestore di identità per accedere con le tue credenziali SPID.",
       "learn_more_link": "https://www.spid.gov.it/",
-      "learn_more_label": "Scopri come ottenerla"
+      "learn_more_label": "Scopri come ottenerlo"
     },
     "eidas": {
       "name": "European digital ID",

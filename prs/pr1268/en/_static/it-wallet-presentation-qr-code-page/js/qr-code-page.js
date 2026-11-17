@@ -47,6 +47,17 @@ function resolveAsset(path) {
   return new URL(path, window.location.href).href;
 }
 
+function fitHeaderLogoToText() {
+  const svg = document.getElementById('header-logo');
+  const text = document.getElementById('header-logo-text');
+  if (!(svg instanceof SVGSVGElement) || !text || typeof text.getBBox !== 'function') return;
+  const box = text.getBBox();
+  const x = Math.min(0, box.x);
+  const width = Math.max(1, box.x + box.width - x);
+  svg.setAttribute('viewBox', `${x} 0 ${width} 40`);
+  svg.style.width = '';
+}
+
 function getSelectionPageUrl() {
   return demoConfig.selection_page_url || QR_CONFIG_FALLBACK.selection_page_url;
 }
@@ -338,6 +349,10 @@ function updateShellTexts(t) {
 
   const headerLogoText = document.getElementById('header-logo-text');
   if (headerLogoText) headerLogoText.textContent = logoAlt;
+  fitHeaderLogoToText();
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => fitHeaderLogoToText());
+  }
 
   document.querySelectorAll('.qr-header-logo-wallet').forEach((img) => {
     img.setAttribute('alt', getWalletBrandName());
@@ -430,8 +445,15 @@ function renderExpiredInfo(t) {
 }
 
 function showExpiredState(t) {
+  const wrap = document.getElementById('content-qrcode-payload');
+  if (wrap) wrap.classList.add('is-expired');
+
   const qrLink = document.getElementById('qr-code-link');
-  if (qrLink) qrLink.classList.add('qr-faded');
+  if (qrLink) {
+    qrLink.classList.remove('qr-faded');
+    qrLink.setAttribute('aria-hidden', 'true');
+    qrLink.setAttribute('tabindex', '-1');
+  }
 
   const info = document.getElementById('content-qrcode-info-text');
   if (info) info.innerHTML = renderExpiredInfo(t);
@@ -450,7 +472,7 @@ function showExpiredState(t) {
 
 async function fetchDemoConfig() {
   try {
-    const response = await fetch(`${getBasePath()}data/qr-demo-config.json`);
+    const response = await fetch(`${getBasePath()}data/qr-demo-config.json?v=wallet-ui-qr-20261117`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     demoConfig = { ...QR_CONFIG_FALLBACK, ...data };
@@ -480,7 +502,7 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20260625`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261117`,
       },
     })
     .then((t) => {

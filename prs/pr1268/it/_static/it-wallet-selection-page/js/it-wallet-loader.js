@@ -15,6 +15,23 @@ function resolveAsset(path) {
   return new URL(path, window.location.href).href;
 }
 
+function walletDisplayName(wallet) {
+  const lang = String(i18next.language || 'it').toLowerCase();
+  if (lang.startsWith('en') && wallet?.name_en) return wallet.name_en;
+  return wallet?.name || '';
+}
+
+function fitHeaderLogoToText() {
+  const svg = document.getElementById('header-logo');
+  const text = document.getElementById('header-logo-text');
+  if (!(svg instanceof SVGSVGElement) || !text || typeof text.getBBox !== 'function') return;
+  const box = text.getBBox();
+  const x = Math.min(0, box.x);
+  const width = Math.max(1, box.x + box.width - x);
+  svg.setAttribute('viewBox', `${x} 0 ${width} 40`);
+  svg.style.width = '';
+}
+
 function getWalletGrid() {
   return document.getElementById('wallet-grid');
 }
@@ -73,6 +90,10 @@ function loadDocument(resource) {
   if (eidTitle) eidTitle.textContent = logoText;
   const headerLogoText = document.getElementById('header-logo-text');
   if (headerLogoText) headerLogoText.textContent = logoText;
+  fitHeaderLogoToText();
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => fitHeaderLogoToText());
+  }
   const headerLogo = document.getElementById('header-logo');
   if (headerLogo instanceof SVGElement && eidTitle) {
     headerLogo.setAttribute('role', 'img');
@@ -166,10 +187,10 @@ function shuffleWallets(wallets) {
 
 function sortWallets(wallets, sortValue) {
   if (sortValue === 'az') {
-    return [...wallets].sort((a, b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' }));
+    return [...wallets].sort((a, b) => walletDisplayName(a).localeCompare(walletDisplayName(b), undefined, { sensitivity: 'base' }));
   }
   if (sortValue === 'za') {
-    return [...wallets].sort((a, b) => (b.name || '').localeCompare(a.name || '', undefined, { sensitivity: 'base' }));
+    return [...wallets].sort((a, b) => walletDisplayName(b).localeCompare(walletDisplayName(a), undefined, { sensitivity: 'base' }));
   }
   return wallets;
 }
@@ -187,7 +208,7 @@ function filterWallets(wallets, query) {
   const q = query.trim().toLowerCase();
   return wallets.filter((w) => {
     const idMatch = matchesLike(w.id, q);
-    const nameMatch = matchesLike(w.name, q);
+    const nameMatch = matchesLike(walletDisplayName(w), q);
     return idMatch || nameMatch;
   });
 }
@@ -252,7 +273,7 @@ function createWalletCard(wallet, resource, basePath) {
   const title = document.createElement('h2');
   title.id = `it-wallet-card-title-${walletCardSlug(wallet)}`;
   title.className = 'it-card-title mb-0 it-wallet-card-title text-start h5';
-  title.textContent = wallet.name;
+  title.textContent = walletDisplayName(wallet);
   card.setAttribute('aria-labelledby', title.id);
   left.appendChild(title);
 
@@ -430,7 +451,7 @@ async function loadItWalletPage() {
   let wallets = [];
   let loadFailed = false;
   try {
-    const resp = await fetch(basePath + 'data/it-wallets.json');
+    const resp = await fetch(basePath + 'data/it-wallets.json?v=wallet-ui-20261117');
     if (!resp.ok) {
       loadFailed = true;
       console.error('Error loading it-wallets.json: HTTP', resp.status);

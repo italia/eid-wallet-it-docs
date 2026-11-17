@@ -620,6 +620,7 @@ header svg.icon {
 .eid-havent-digital-id-heading {
   color: #2f475e;
   font-size: 24px;
+  font-weight: 600;
   line-height: 32px;
 }
 
@@ -1103,6 +1104,7 @@ html.it-wallet-html body.it-wallet-body {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
+  gap: 12px;
   width: fit-content;
   max-width: 100%;
   min-width: 0;
@@ -1124,7 +1126,7 @@ html.it-wallet-html body.it-wallet-body {
 
 .it-wallet-body .header-title-section .navbar-separator {
   flex: 0 0 auto;
-  margin: 0 1rem;
+  margin: 0;
 }
 
 @media (max-width: 575.98px) {
@@ -1141,7 +1143,7 @@ html.it-wallet-html body.it-wallet-body {
 
   .it-wallet-body .header-title-section .navbar-separator {
     height: 28px;
-    margin: 0 0.5rem;
+    margin: 0;
   }
 }
 
@@ -1196,6 +1198,11 @@ html.it-wallet-html body.it-wallet-body {
     margin-right: 0 !important;
     width: 24px;
     height: 24px;
+  }
+
+  .it-wallet-page .it-wallet-icon-btn {
+    border: none;
+    background: transparent;
   }
 }
 
@@ -1296,6 +1303,8 @@ html.it-wallet-html body.it-wallet-body {
 
 .it-wallet-subtitle {
   color: #17324D;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
 .it-wallet-layout-surface {
@@ -1351,6 +1360,7 @@ html.it-wallet-html body.it-wallet-body {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
+  align-self: start;
   box-sizing: border-box;
 }
 
@@ -1480,7 +1490,7 @@ html.it-wallet-html body.it-wallet-body {
 
   .it-wallet-controls.it-wallet-controls-panel.is-mobile-panel-open .it-wallet-sort-wrap {
     flex-shrink: 0;
-    align-self: center;
+    align-self: flex-start;
   }
 }
 
@@ -1879,7 +1889,7 @@ html.it-wallet-html body.it-wallet-body {
   }
 
   .it-wallet-title-row {
-    padding-top: 2rem;
+    margin-top: 2rem;
   }
 
 }
@@ -1971,8 +1981,8 @@ html.it-wallet-html body.it-wallet-body {
   .it-wallet-subtitle {
     font-family: "Titillium Web", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 400 !important;
-    font-size: 20px !important;
-    line-height: 32px !important;
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
     letter-spacing: 0 !important;
     text-align: center !important;
   }
