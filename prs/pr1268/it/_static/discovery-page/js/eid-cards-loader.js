@@ -74,7 +74,7 @@ i18next
     lng: eidInitialLang,
     fallbackLng: 'it',
     backend: {
-      loadPath: 'locales/eid-{{lng}}.json'
+      loadPath: 'locales/eid-{{lng}}.json?v=wallet-ui-20261117e'
     }
   })
   .then(() => {

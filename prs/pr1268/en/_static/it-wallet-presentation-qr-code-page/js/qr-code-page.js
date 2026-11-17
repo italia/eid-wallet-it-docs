@@ -505,7 +505,7 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261117`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261117d`,
       },
     })
     .then((t) => {
