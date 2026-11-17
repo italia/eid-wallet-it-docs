@@ -469,11 +469,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_094
     - Issuance, Security
     - Access Token Generation and Bound
-    - When all validation checks succeed, Credential Issuer generates new Access Token and new Refresh Token, both bound to the DPoP key
+    - When all validation checks succeed, the Credential Issuer generates a new Access Token bound to the DPoP key and does not issue a new Refresh Token
   * - CI_095
     - Issuance, Security
     - Successful Refresh Token Response
-    - Both the Access Token and the Refresh Token are sent back to the Wallet Instance
+    - The response contains the Access Token and does not contain ``refresh_token``
   * - CI_096
     - Issuance, Security
     - Invalid Refresh Token Error Handling
