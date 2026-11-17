@@ -681,23 +681,28 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
-<td><p>[<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.9].</p></td>
+<td><p>REQUIRED. Media type of the JWT. It MUST be set to a component-specific value and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code> or <code class="docutils literal notranslate"><span class="pre">JOSE</span></code>, to prevent JWT confusion attacks. The value MUST be one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-registry+jwt</span></code> for the Registry Discovery Endpoint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-claims-registry+jwt</span></code> for the Claims Registry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-authentic-sources+jwt</span></code> for the Authentic Source Registry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-schema-registry+jwt</span></code> for the Schema Registry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-taxonomy+jwt</span></code> for the Taxonomy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it-wallet-credential-catalog+jwt</span></code> for the Digital Credentials Catalog</p></li>
+</ul>
+</td>
+<td><p>[<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.9] and [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.1].</p></td>
+<td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.1].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the public key.</p></td>
-<td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.4].</p></td>
+<td><p>[<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.4].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>x5c</strong></p></td>
-<td><p>OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWT. When the header parameter <cite>kid</cite> value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.</p></td>
-<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>cty</strong></p></td>
-<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<td><p>OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWT. When the header parameter <cite>kid</cite> value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.</p></td>
 <td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
 </tr>
 </tbody>

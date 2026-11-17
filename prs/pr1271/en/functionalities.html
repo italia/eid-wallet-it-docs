@@ -857,6 +857,7 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <li><p><strong>QR Code Page</strong> (<em>cross-device only</em>): prompts the User to scan a QR code.</p></li>
 <li><p><strong>Thank You Page</strong>: confirms the successful Authentication.</p></li>
 <li><p><strong>Error Page</strong>: displays error messages related to the Authentication process.</p></li>
+<li><p><strong>Loading Page</strong>: keeps the User informed about the backend operation taking place between one step and the next in the flow.</p></li>
 </ul>
 <p>Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint.</p>
 <ul class="simple">
@@ -970,8 +971,24 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 <li><p>MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).</p></li>
 </ul>
+</section>
+<section id="loading-page">
+<h5><span class="section-number">4.5.2.3.6. </span>Loading Page<a class="headerlink" href="#loading-page" title="Link to this heading">¶</a></h5>
+<p>The Loading Page is the page the User sees when the transition from one step to the next in the flow takes time on the backend, which results in a waiting time for the User. For example, between presenting their personal data on the IT-Wallet Solution and verifying that information on the Relying Party's service page.</p>
+<p>Relying Parties MUST implement the Loading Page as provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
+<figure class="align-center" id="id201">
+<a class="reference internal image-reference" href="_images/loading-page.svg"><img alt="Loading Page" src="_images/loading-page.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.58 </span><span class="caption-text">Loading Page</span><a class="headerlink" href="#id201" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Relying Party implementing the page:</p>
+<ul class="simple">
+<li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of operation.</p></li>
+<li><p>MUST ensure that the copy on the page is aligned to the tone of voice of the assets reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
+</ul>
 <section id="authentication-button">
-<h6><span class="section-number">4.5.2.3.5.1. </span>Authentication Button<a class="headerlink" href="#authentication-button" title="Link to this heading">¶</a></h6>
+<h6><span class="section-number">4.5.2.3.6.1. </span>Authentication Button<a class="headerlink" href="#authentication-button" title="Link to this heading">¶</a></h6>
 <p>The Authentication Button &quot;Login with IT-Wallet&quot; serves as an <a class="reference internal" href="#engagement-button"><span class="std std-ref">Engagement Button</span></a>, providing Users with a standardized way to Authenticate themselves using their digital Wallet.</p>
 <p>Relying Parties MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services using the Wallet Instance under their control.</p>
 <p>The Authentication Button has the following requirements.</p>
@@ -986,24 +1003,24 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <li><p>Where space allows, or where the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text. The text is: &quot;IT-Wallet is the Italian digital wallet system that allows you to authenticate online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.&quot;</p></li>
 </ul>
 <p>Below are some non-mandatory examples of Authentication Button layout:</p>
-<figure class="align-center" id="id201">
+<figure class="align-center" id="id203">
 <a class="reference internal image-reference" href="_images/authentication-button-layout.svg"><img alt="Variants of Authentication Button layout" src="_images/authentication-button-layout.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.58 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id201" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.60 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id203" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
-<figure class="align-center" id="id203">
+<figure class="align-center" id="id205">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="Examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.60 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id203" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.62 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id205" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
 </section>
 </section>
 <section id="login-with-it-wallet-button-html-code">
-<h5><span class="section-number">4.5.2.3.6. </span>&quot;Login with IT-Wallet&quot; button - html code<a class="headerlink" href="#login-with-it-wallet-button-html-code" title="Link to this heading">¶</a></h5>
+<h5><span class="section-number">4.5.2.3.7. </span>&quot;Login with IT-Wallet&quot; button - html code<a class="headerlink" href="#login-with-it-wallet-button-html-code" title="Link to this heading">¶</a></h5>
 <p>The button is available in three variants of dimensions (S - default / M / L) as per the .Italia Design System, and in &quot;get&quot; (call to an external page) and &quot;post&quot; (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:</p>
 <ul class="simple">
 <li><p>the fixed-width version with icon on the left and centered text.</p></li>
@@ -1012,24 +1029,24 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <p>The Official Resource of the Authentication Button is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> of these Technical Specification.</p>
 </section>
 <section id="login-with-it-wallet-button-svg">
-<h5><span class="section-number">4.5.2.3.7. </span>&quot;Login with IT-Wallet&quot; button – svg<a class="headerlink" href="#login-with-it-wallet-button-svg" title="Link to this heading">¶</a></h5>
+<h5><span class="section-number">4.5.2.3.8. </span>&quot;Login with IT-Wallet&quot; button – svg<a class="headerlink" href="#login-with-it-wallet-button-svg" title="Link to this heading">¶</a></h5>
 <p>For further information on the Authentication button refer to the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section. The Authentication button Official Resource is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section of these Technical Specifications.</p>
-<figure class="align-center" id="id205">
+<figure class="align-center" id="id207">
 <a class="reference internal image-reference" href="_images/Authentication-button-ENG_size_variants.svg"><img alt="Authentication button in its dimension variants" src="_images/Authentication-button-ENG_size_variants.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.62 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id205" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id207">
-<a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg"><img alt="Authentication button fixed justified" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4.64 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id207" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.64 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id207" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id209">
+<a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg"><img alt="Authentication button fixed justified" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.66 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id209" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id211">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg"><img alt="Authentication button fixed centered" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.66 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id209" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.68 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id211" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1157,10 +1174,10 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <li><p>The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p></li>
 </ul>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id211">
+<figure class="align-default" id="id213">
 <a class="reference internal image-reference" href="_images/Update-EAA.svg"><img alt="Example of User Experience in Updating an Electronic Attestation" src="_images/Update-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.68 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id211" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.70 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id213" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="revocation-of-electronic-attestations">
@@ -1193,10 +1210,10 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 - The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation.
 - The User sees the successful outcome of the revocation.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id213">
+<figure class="align-center" id="id215">
 <a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet-1.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet-1.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id213" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.72 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id215" title="Link to this image">¶</a></p>
 <div class="legend">
 <p>Example of User Experience in Revoking an Electronic Attestation.</p>
 </div>
@@ -1264,10 +1281,10 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <p>Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a> and <a class="reference internal" href="#backup-and-restore-of-electronic-attestation-of-attributes"><span class="std std-ref">Backup and Restore of Electronic Attestation of Attributes</span></a>.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id215">
+<figure class="align-default" id="id217">
 <a class="reference internal image-reference" href="_images/wallet-deactivation.svg"><img alt="Example of User Experience in Deactivating a Wallet Instance" src="_images/wallet-deactivation.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.72 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id215" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.74 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id217" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1575,12 +1592,13 @@ The Primary Actors MUST keep the resources in use up to date, in line with the l
 <li><a class="reference internal" href="#selection-page">4.5.2.3.2. Selection Page</a></li>
 <li><a class="reference internal" href="#qr-code-page-cross-device-only">4.5.2.3.3. QR Code Page (cross-device only)</a></li>
 <li><a class="reference internal" href="#thank-you-page">4.5.2.3.4. Thank You Page</a></li>
-<li><a class="reference internal" href="#error-page">4.5.2.3.5. Error Page</a><ul>
-<li><a class="reference internal" href="#authentication-button">4.5.2.3.5.1. Authentication Button</a></li>
+<li><a class="reference internal" href="#error-page">4.5.2.3.5. Error Page</a></li>
+<li><a class="reference internal" href="#loading-page">4.5.2.3.6. Loading Page</a><ul>
+<li><a class="reference internal" href="#authentication-button">4.5.2.3.6.1. Authentication Button</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#login-with-it-wallet-button-html-code">4.5.2.3.6. &quot;Login with IT-Wallet&quot; button - html code</a></li>
-<li><a class="reference internal" href="#login-with-it-wallet-button-svg">4.5.2.3.7. &quot;Login with IT-Wallet&quot; button – svg</a></li>
+<li><a class="reference internal" href="#login-with-it-wallet-button-html-code">4.5.2.3.7. &quot;Login with IT-Wallet&quot; button - html code</a></li>
+<li><a class="reference internal" href="#login-with-it-wallet-button-svg">4.5.2.3.8. &quot;Login with IT-Wallet&quot; button – svg</a></li>
 </ul>
 </li>
 </ul>

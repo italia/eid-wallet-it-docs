@@ -214,8 +214,15 @@ The signed representation is a JWT in compact serialization, served as ``applica
      - **Description**
      - **Reference**
    * - **typ**
-     - REQUIRED. It MUST be set to ``JWT``.
-     - [:rfc:`7515` Section 4.1.9].
+     - REQUIRED. Media type of the JWT. It MUST be set to a component-specific value and MUST NOT be set to ``JWT`` or ``JOSE``, to prevent JWT confusion attacks. The value MUST be one of:
+
+       * ``it-wallet-registry+jwt`` for the Registry Discovery Endpoint
+       * ``it-wallet-claims-registry+jwt`` for the Claims Registry
+       * ``it-wallet-authentic-sources+jwt`` for the Authentic Source Registry
+       * ``it-wallet-schema-registry+jwt`` for the Schema Registry
+       * ``it-wallet-taxonomy+jwt`` for the Taxonomy
+       * ``it-wallet-credential-catalog+jwt`` for the Digital Credentials Catalog
+     - [:rfc:`7515` Section 4.1.9] and [:rfc:`8725`].
    * - **alg**
      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
      - [:rfc:`7515` Section 4.1.1].
@@ -224,9 +231,6 @@ The signed representation is a JWT in compact serialization, served as ``applica
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
      - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWT. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
-     - [:rfc:`7515` Section 4.1.6.].
-   * - **cty**
-     - REQUIRED. It MUST be set to ``application/json``.
      - [:rfc:`7515` Section 4.1.6.].
 
 The plain representation is the same content, served as a plain JSON object instead of a signed JWT.
