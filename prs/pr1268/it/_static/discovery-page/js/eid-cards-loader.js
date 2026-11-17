@@ -1,4 +1,4 @@
-/* global initHeaderLangDropdown */
+/* global initHeaderLangDropdown, getPreferredLang */
 
 const EID_LOADING_FALLBACK = 'Caricamento in corso...';
 const EID_ERROR_FALLBACK = 'Impossibile caricare i metodi di autenticazione. Ricarica la pagina.';
@@ -64,11 +64,14 @@ function loadEidCardsi18next() {
   //  }
 }
 
-// Inizializza i18next
+// Inizializza i18next (keep language across pages via localStorage)
+const eidInitialLang =
+  typeof getPreferredLang === 'function' ? getPreferredLang() : (localStorage.getItem('lang') || 'it');
+
 i18next
   .use(i18nextHttpBackend)
   .init({
-    lng: 'it',
+    lng: eidInitialLang,
     fallbackLng: 'it',
     backend: {
       loadPath: 'locales/eid-{{lng}}.json'

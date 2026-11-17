@@ -1,4 +1,4 @@
-/* global i18next, initHeaderLangDropdown */
+/* global i18next, initHeaderLangDropdown, getPreferredLang */
 
 const DEFAULT_WALLET_BRAND = 'IT-Wallet';
 
@@ -471,7 +471,8 @@ function applyDemoConfig() {
 }
 
 function initI18n() {
-  const initialLang = localStorage.getItem('lang') || 'it';
+  const initialLang =
+    typeof getPreferredLang === 'function' ? getPreferredLang() : (localStorage.getItem('lang') || 'it');
 
   i18next
     .use(i18nextHttpBackend)
@@ -485,9 +486,8 @@ function initI18n() {
     .then((t) => {
       if (typeof initHeaderLangDropdown === 'function') {
         initHeaderLangDropdown(i18next, {
-          afterLanguageChange(lng) {
-            const code = (lng || 'it').split('-')[0];
-            localStorage.setItem('lang', code === 'en' ? 'en' : 'it');
+          afterLanguageChange() {
+            // Language is persisted by header-lang-dropdown.js
             updateTexts(i18next.t);
           },
         });

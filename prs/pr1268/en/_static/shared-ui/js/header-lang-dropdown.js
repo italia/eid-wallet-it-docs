@@ -1,15 +1,40 @@
 /**
  * Language switcher aligned with developers.italia.it (slim header dropdown + link-list).
+ * Persists the selected language in localStorage so it is kept across pages.
  */
 (function (global) {
   /** Spazio tra trigger e menu: il margin sul .dropdown-menu è ignorato da Popper (usa transform). */
   var MENU_OFFSET_PX = 24;
+  var LANG_STORAGE_KEY = 'lang';
 
   var LANG_DISPLAY = { it: 'Italiano', en: 'English' };
   var boundI18next = null;
 
   function normalizeLang(lng) {
     return (lng || 'it').split('-')[0] === 'en' ? 'en' : 'it';
+  }
+
+  function getPreferredLang() {
+    try {
+      if (global.localStorage) {
+        return normalizeLang(global.localStorage.getItem(LANG_STORAGE_KEY));
+      }
+    } catch (err) {
+      /* private mode / blocked storage */
+    }
+    return 'it';
+  }
+
+  function persistLang(lng) {
+    var code = normalizeLang(lng);
+    try {
+      if (global.localStorage) {
+        global.localStorage.setItem(LANG_STORAGE_KEY, code);
+      }
+    } catch (err) {
+      /* private mode / blocked storage */
+    }
+    return code;
   }
 
   function setDocumentLanguage(lng) {
@@ -104,6 +129,8 @@
     });
   }
 
+  global.getPreferredLang = getPreferredLang;
+
   global.initHeaderLangDropdown = function (i18next, options) {
     if (!i18next || typeof i18next.changeLanguage !== 'function') return;
     boundI18next = i18next;
@@ -113,6 +140,7 @@
     if (!global.__headerLangDropdownLanguageListener) {
       global.__headerLangDropdownLanguageListener = true;
       i18next.on('languageChanged', function (lng) {
+        persistLang(lng);
         syncAllLangDropdowns(lng);
       });
     }
@@ -138,6 +166,7 @@
             if (dd) dd.hide();
           }
           i18next.changeLanguage(lng).then(function () {
+            persistLang(lng);
             setDocumentLanguage(lng);
             if (typeof afterChange === 'function') afterChange(lng);
           });

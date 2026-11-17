@@ -798,10 +798,16 @@ async function loadItWalletPage() {
   setupBackLink();
 }
 
+// Keep language across pages via localStorage
+const walletInitialLang =
+  typeof window.getPreferredLang === 'function'
+    ? window.getPreferredLang()
+    : (localStorage.getItem('lang') || 'it');
+
 i18next
   .use(i18nextHttpBackend)
   .init({
-    lng: 'it',
+    lng: walletInitialLang,
     fallbackLng: 'it',
     backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json' }
   })
