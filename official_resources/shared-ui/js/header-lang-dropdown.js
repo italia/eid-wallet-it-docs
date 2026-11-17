@@ -7,7 +7,7 @@
   var MENU_OFFSET_PX = 24;
   var LANG_STORAGE_KEY = 'lang';
 
-  var LANG_DISPLAY = { it: 'Italiano', en: 'English' };
+  var LANG_DISPLAY = { it: 'ITA', en: 'ENG' };
   var boundI18next = null;
 
   function normalizeLang(lng) {
@@ -93,7 +93,7 @@
   function syncRoot(root, lng) {
     var code = normalizeLang(lng);
     var label = root.querySelector('.it-header-lang-label');
-    if (label) label.textContent = code === 'en' ? 'EN' : 'ITA';
+    if (label) label.textContent = code === 'en' ? 'ENG' : 'ITA';
 
     var activeHint = root.querySelector('#header-lang-active-hint');
     if (activeHint) activeHint.textContent = langActiveHint(code);
